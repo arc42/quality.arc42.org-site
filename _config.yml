@@ -26,21 +26,13 @@ favicon: /assets/img/arc42logosquare.png
 language: en
 
 #
-# want disqus comments?
-#
-disqus: false
-
-#
 # want subtle ads (on post-pages)
 #
 show-subtle-ads: true
 
 
-# Analytics
-analytics: false
-
 #
-# Icons
+# Icons and Social-Media accounts
 #
 icons:
   rss: false
@@ -49,6 +41,7 @@ icons:
   twitter: gernotstarke
   youtube: arc42-video
   stack_overflow: arc42
+  dev_to: gernotstarke
 
 #
 # Prettify url.
@@ -69,10 +62,17 @@ str_show_all_posts: Show all...
 #
 # Gems.
 #
-gems:
+plugins:
   - jekyll-paginate
   - jemoji
 
+#
+# tags, collections etc -
+# see https://jekyllrb.com/docs/collections/
+collections:
+  - qualities
+
+  
 #
 # Styles: see "_sass/base/_variables.scss"
 #
@@ -99,4 +99,8 @@ exclude:
   - Gemfile.lock
   - LICENSE
   - README.md
-  - vendor
+  - .vscode
+  - originals
+  - _docker-compose*
+  - _manage*
+

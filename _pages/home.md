@@ -9,7 +9,8 @@ permalink: /home/
 >
 >Please assist humanitarian efforts for the Ukrainian people and those affected by the military invasion of Ukraine by supporting international aid organizations, including the [International Committee of the Red Cross](https://www.icrc.org/en). 
 
-![arc42 Quality Model (v1.0)](/images/QM-42-v1.webp)
+## arc42 Quality Model (v 1.0)
+![arc42 Quality Model (v1.0)](/images/QM-42-v1.svg)
 
 {% assign categoryA_posts = site.posts | where: "category", "general" %}
 
