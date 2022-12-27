@@ -1,0 +1,102 @@
+#
+# URL settings
+#
+# these need to be adjusted depending on target platform,
+# local Jekyll tests need different settings than github-pages :-(
+
+
+# "real" deployment with github-pages but custom domain
+# -----------------------------------------------------
+url: https://quality.arc42.org
+imageurl: https://quality.arc42.org
+baseurl:
+#######################################################
+
+
+
+
+
+#
+# basic settings
+#
+title: arc42 Quality 
+description: quality attributes, explained.
+avatar: /assets/img/arc42logosquare.png
+favicon: /assets/img/arc42logosquare.png
+language: en
+
+#
+# want disqus comments?
+#
+disqus: false
+
+#
+# want subtle ads (on post-pages)
+#
+show-subtle-ads: true
+
+
+# Analytics
+analytics: false
+
+#
+# Icons
+#
+icons:
+  rss: false
+  email: 
+  github: arc42
+  twitter: gernotstarke
+  youtube: arc42-video
+  stack_overflow: arc42
+
+#
+# Prettify url.
+#
+permalink: pretty
+
+
+#
+# Localizations.
+#
+str_next: Next
+str_prev: Prev
+str_read_more: Read more...
+str_search: Search
+str_recent_posts: Recent answers
+str_show_all_posts: Show all...
+
+#
+# Gems.
+#
+gems:
+  - jekyll-paginate
+  - jemoji
+
+#
+# Styles: see "_sass/base/_variables.scss"
+#
+
+#
+# !! Danger zone !!
+#
+
+include: ["_pages"]
+
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+
+excerpt_separator: <!--more-->
+
+sass:
+  sass_dir: _sass
+  style: :compressed # or :expanded
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - LICENSE
+  - README.md
+  - vendor

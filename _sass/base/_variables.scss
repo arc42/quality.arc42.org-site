@@ -1,0 +1,31 @@
+// typography.
+$font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
+$font-size: 16px;
+
+// source code typography.
+$code-font-family: Consolas, Monaco, 'Andale Mono', monospace;
+$code-font-size: 0.85em;
+
+// vertical margin.
+$margin: 50px;
+
+// brand color.
+
+$brand-color: #5FB49C;
+$brand-color-light: #deefb7;
+$brand-color-blue: #1675b9;
+$brand-color-lila: #682D63;
+$brand-color-dark: $brand-color-lila;
+$marker-color: $brand-color-blue;
+
+// other major colors.
+$site-title-color: $brand-color-light;
+$page-title-color: $marker-color;
+$background-color: #fff;
+$border-color: rgba(#000, .1);
+$border-contrast-color: #414288;
+
+// typography colors.
+$text-color: #383838;
+$link-color: #1675b9;
+$blockquote-color: #777;
