@@ -3,7 +3,7 @@
 # helper, so you don't need to remember docker-compose syntax...
 
 # what's the site?
-site="docs.arc42.org"
+site="qualities.arc42.org"
 
 remotedir="."
 
@@ -20,6 +20,8 @@ echo "Docker container to develop or build the ${BLUE}$site ${RESET}website:"
 echo "============================================================"
 echo
 echo "Please select wether to ${GREEN}develop ${RESET} or ${RED} build ${RESET} the site:"
+echo
+echo "${GREEN}(c)lean ${RESET} _site directory"
 echo
 echo "${GREEN}(d)evelop ${RESET} starts a jekyll server on port 0.0.0.0:4000,"
 echo "which performs incremental builds and listens for file changes."
@@ -41,6 +43,10 @@ fi
 case "$choice" in
   b|B|build) echo "build Docker image"
                      docker-compose --file _docker-compose-dev.yml build --force-rm
+                     ;;
+
+  c|C|clean) echo "clean _dite directory "
+                     rm -r _site
                      ;;
 
   d|D|dev|develop) echo "develop, incremental build"

@@ -1,0 +1,24 @@
+---
+layout: page
+title: Tags 
+permalink: /tags/
+order: 3
+share: false
+---
+
+{% assign alldocs = site.qualities  %}	
+{% assign grouptag =  alldocs | map: 'tags' | join: ','  | split: ','  | group_by: tag %}
+
+{% for tag in grouptag %}
+    <h2>{{ tag.name }} - {{tag.size}}</h2>
+    <ul>
+	{% for document in alldocs %}
+    	{% if document.tags contains tag.name %}
+         <li> {{ document.title }}</li>
+	    {% endif %}
+    {% endfor %}
+    </ul>
+{% endfor %}
+
+
+<h2> next try</h2>
