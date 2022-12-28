@@ -72,6 +72,10 @@ collections:
     sort_by: title
 
 
+#
+# with this default, all files under /_qualities (our collection)
+# get the qualities-layout per default, saving a bit of typing
+#
 defaults:
   -
     scope:

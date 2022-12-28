@@ -1,7 +1,7 @@
 ---
 title: Flexibility
 tags: flexible
-related: Maintainability, Modularity, Adaptability, Configurability
+related: Maintainability, Modularity, Adaptability, Configurabilityq
 permalink: /qualities/flexibility
 ---
 

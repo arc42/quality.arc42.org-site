@@ -6,29 +6,18 @@ order: 2
 share: false
 ---
 
+## flexible
 
-<!-->
-{% capture site_tags %}{% for tag in site.tags %}{{ tag | first }}
-{% unless forloop.last %},{% endunless %}{% endfor %}{% endcapture %}
--->
+<ul>
 
-{% assign tag_words = site_tags | split:',' | sort %}
+{% assign flexible = site.qualities | where_exp: "qualities", "qualities.tags contains 'flexible'" %}
 
-<div id="tags">
-  <ul class="tag-box inline">
-  {% for tag in tag_words %}
-    <li><a href="#{{ tag | cgi_escape }}">{{ tag }} <span>{{ site.tags[tag] | size }}</span></a></li>
-  {% endfor %}
-  </ul>
+</ul>
 
-  {% for item in (0..site.tags.size) %}{% unless forloop.last %}
-    {% capture this_word %}{{ tag_words[item] | strip_newlines }}{% endcapture %}
-  <h2 id="{{ this_word | cgi_escape }}">{{ this_word }}</h2>
-  <ul class="posts">
-    {% assign sorted_posts = site.tags[this_word] | sort_by: 'title'  | reverse %}
-    {% for post in sorted_posts %}{% if post.title != null %}
-    <li> <a href="{{ post.url }}">{{ post.title }}</a></li>
-    {% endif %}{% endfor %}
-  </ul>
-  {% endunless %}{% endfor %}
-</div>
+
+## reliable
+
+{{ assign reliables = site.qualities |  where_exp: "qualities", "qualities.tags contains 'reliable'" }}
+
+
+

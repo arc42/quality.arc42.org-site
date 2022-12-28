@@ -11,10 +11,9 @@ permalink: /
 ## arc42 Quality Model (v 1.0)
 ![arc42 Quality Model (v1.0)](/images/QM-42-v1.svg)
 
-{% assign categoryA_posts = site.posts | where: "category", "general" %}
+Information-technology systems have to meed required, desired and expected quality goals and requirements. 
+Therefore, development teams we need such requirements in concrete, specific and operationalized ways.
 
-{% assign categoryB_posts = site.posts | where: "category", "method" %}
-{% assign categoryC_posts = site.posts | where_exp: "post", "post.category contains 'section'" %}
 
 
 On this site you find explanations to (currently {{ site.qualities | size }}) _qualities_ of software systems and -architectures.
@@ -22,11 +21,14 @@ On this site you find explanations to (currently {{ site.qualities | size }}) _q
 These are organized along the following top-level tags (we like to call them _tags_ instead of properties or attributes, as a single quality attribute (like "availability") might have multiple tags (#reliable, #usable and #safe, in this case)).
 
 
+{% assign tags_reliable = site.qualities | where_exp: "qualities", "qualities.tags contains 'reliable'" %}
+{% assign tags_flexible = site.posts | where_exp: "post", "post.tags contains 'flexible'" %}
+
 | Tag         | Explanation                   |
 |:-----------------|:----------------------------|
-| [**#reliable**](/tag_reliable/) ({{ tag_reliable }}) | definition of reliable |
+| [**#reliable**](/tag_reliable/) ({{ tag_reliable | size }}) | definition of reliable |
 |-----------------|----------------------------|
-| [**#flexible**](/tag_flexible/) ({{ categoryB_posts | size }})  |  definition of flexible |
+| [**#flexible**](/tag_flexible/) ({{ tags_flexible | size }})  |  definition of flexible |
 |-----------------|----------------------------|
 
 

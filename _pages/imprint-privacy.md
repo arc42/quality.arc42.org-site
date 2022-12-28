@@ -2,7 +2,6 @@
 layout: page
 title: Imprint & Privacy
 permalink: /imprint/
-order: 90
 share: false
 hide: true
 ---
