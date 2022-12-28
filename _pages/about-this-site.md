@@ -7,7 +7,7 @@ order: 25
 
 ## Imprint and Privacy
 
-Imprint and privacy information is contained on its own [page](/imprint-privacy/).
+Imprint and privacy information is contained on its own [page](/imprint/).
  
 
 ## You like what you see?
