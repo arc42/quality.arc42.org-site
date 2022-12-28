@@ -2,17 +2,14 @@
 # URL settings
 #
 # these need to be adjusted depending on target platform,
-# local Jekyll tests need different settings than github-pages :-(
-
 
 # "real" deployment with github-pages but custom domain
 # -----------------------------------------------------
 url: https://quality.arc42.org
 imageurl: https://quality.arc42.org
 baseurl:
+
 #######################################################
-
-
 
 
 
@@ -28,7 +25,7 @@ language: en
 #
 # want subtle ads (on post-pages)
 #
-show-subtle-ads: true
+show-subtle-ads: false
 
 
 #
@@ -70,9 +67,18 @@ plugins:
 # tags, collections etc -
 # see https://jekyllrb.com/docs/collections/
 collections:
-  - qualities
+  qualities:
+    output: true
+    sort_by: title
 
-  
+
+defaults:
+  -
+    scope:
+      path: ""
+      type: "qualities" # a collection in your site, in plural form
+    values:
+      layout: "qualities"  
 #
 # Styles: see "_sass/base/_variables.scss"
 #

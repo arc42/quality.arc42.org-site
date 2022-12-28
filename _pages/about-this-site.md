@@ -3,7 +3,6 @@ layout: page
 title: About this site
 permalink: /aboutthissite/
 order: 25
-share: false
 ---
 
 ## Imprint and Privacy

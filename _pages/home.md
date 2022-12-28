@@ -1,8 +1,7 @@
 ---
 layout: default
 title: Home
-order: 0
-permalink: /home/
+permalink: /
 ---
 
 >### ![](/images/ua-flag.svg){:width="5%"} We stand with the people of Ukraine ![](/images/ua-flag.svg){:width="5%"}
@@ -18,7 +17,7 @@ permalink: /home/
 {% assign categoryC_posts = site.posts | where_exp: "post", "post.category contains 'section'" %}
 
 
-On this site you find explanations to (currently {{ site.posts | size }}) _qualities_ of software systems and -architectures.
+On this site you find explanations to (currently {{ site.qualities | size }}) _qualities_ of software systems and -architectures.
 
 These are organized along the following top-level tags (we like to call them _tags_ instead of properties or attributes, as a single quality attribute (like "availability") might have multiple tags (#reliable, #usable and #safe, in this case)).
 

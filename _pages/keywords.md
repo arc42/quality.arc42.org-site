@@ -1,17 +1,18 @@
 ---
 layout: page
-title: All keywords
-permalink: /keywords/
+title: Tags
+permalink: /tags/
 order: 2
 share: false
 ---
 
 
+<!-->
+{% capture site_tags %}{% for tag in site.tags %}{{ tag | first }}
+{% unless forloop.last %},{% endunless %}{% endfor %}{% endcapture %}
+-->
 
-{% capture site_tags %}{% for tag in site.tags %}{{ tag | first }}{% unless forloop.last %},{% endunless %}{% endfor %}{% endcapture %}
-<!-- site_tags: {{ site_tags }} -->
 {% assign tag_words = site_tags | split:',' | sort %}
-<!-- tag_words: {{ tag_words }} -->
 
 <div id="tags">
   <ul class="tag-box inline">

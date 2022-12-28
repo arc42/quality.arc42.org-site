@@ -1,0 +1,33 @@
+---
+layout: default
+---
+
+<div class="article-wrapper">
+    <article>
+        {% include article-header.html page=page link=false share=page.share %}
+        <section class="post-content">
+            {{ content }}
+        </section>
+
+
+        {% assign related-qualities = page.related | split:', ' | sort %}
+        
+        <h2>Related Qualities</h2>
+
+        <ul class="posts">
+            {% for quality in related-qualities %}
+            <li> <a href="/qualities/{{quality }}">{{quality}}</a></li>
+            {% endfor %}
+        </ul>
+
+
+        {% include article-footer.html page=page share=page.share %}
+    </article>
+</div>
+
+
+{% if site.show-subtle-ads %}
+<section class="subtle-ads">
+  {% include subtle-ads/subtle-ads.html %}
+</section>
+{% endif %}
