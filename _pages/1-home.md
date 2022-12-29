@@ -5,7 +5,7 @@ permalink: /
 order: 1
 ---
 
->### ![](/images/ua-flag.svg){:width="5%"} We stand with the people of Ukraine ![](/images/ua-flag.svg){:width="5%"}
+>### ![](/images/ua-flag.svg){:width="5%"} We stand with the people of Ukraine <span style="font-size: 22px; color: #005bbb;"><i class="fa-solid fa-heart"></i></span><span style="position:relative; right:10px;font-size: 14px; color: #fed401;"><i class="fa-solid fa-heart fa-beat" style="--fa-beat-scale: 1.2;"></i></span>
 >
 >Please assist humanitarian efforts for the Ukrainian people and those affected by the military invasion of Ukraine by supporting international aid organizations, including the [International Committee of the Red Cross](https://www.icrc.org/en). 
 
