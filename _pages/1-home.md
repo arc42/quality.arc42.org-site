@@ -12,7 +12,7 @@ order: 1
 ## arc42 Quality Model (v 1.0)
 ![arc42 Quality Model (v1.0)](/images/QM-42-v1.svg)
 
-Information-technology systems have to meed required, desired and expected quality goals and requirements. 
+Information-technology systems have to meet required, desired and expected quality goals and requirements. 
 Therefore, development teams we need such requirements in concrete, specific and operationalized ways.
 
 
