@@ -1,7 +1,7 @@
 ---
 title: Availability
 tags: reliable usable
-related: robustness, reliability, useability, fault-tolerance, recoverability 
+related: robustness, reliability, usability, fault-tolerance, recoverability 
 permalink: /qualities/availability
 ---
 

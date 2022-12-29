@@ -24,55 +24,14 @@ This page is based upon [Jekyll](), a static website generator, using the [Ttskc
 It's maintained on [Github](https://github.com/arc42/quality.arc42.org-site/) and published via github-pages.
 
 
-### Markdown and Jekyll
+### Jekyll and Liquid
 
 Some issues occured during the creation of this site.
-### Images size
 
-Use the standard markdown image tag, append Jekyll-specific with-attributes:
+### Collections, Tags and Categories
+Collections have problems with tags, therefore I decided to describe all the "qualities" under `_posts`, instead of making them a collection.
 
-{% highlight markdown %}
-{% raw %}
-![]({{ site.imageurl }}/images/faq/B-Method/whitebox-sample.png){:width="30%"}
-{% endraw %}
-{% endhighlight %}
-
-### Image location
-
-In contrast to the plain markdown (e.g. used at LeanPub), we have to prepend
-a ```/``` to the image path:
-
-{% highlight markdown %}
-{% raw %}
-![]({{ site.imageurl }}/images/...)
-{% endraw %}
-{% endhighlight %}
-
-The image directory is located in the root of the site, parallel to the Jekyll
-standard directories ```_posts``` etc.
-
-### Source code
-
-The Liquid processor used by Jekyll to generate the site is peculiar with source
-code - making especially difficult to display Liquid code itself :-(
-
-
-### Sorting stuff
-
-To loop through a collection called `collection_name` and sorts it by the front matter variable `date` and than filters the collection with `reverse` in reverse order 
-
-{% highlight html %}
-{% raw  %}
-    <ul>
-    {% assign sorted = (site.collection_name | sort: 'date') | reverse %}
-    {% for item in sorted %}
-    <li>{{ item.title }}</li>
-    {% endfor %}
-    </ul>
-{% endraw  %}
-{% endhighlight %}
-
-Thanx to [Phlow](https://gist.github.com/Phlow/1f27dfafdf2bbcc5c48e)
+The issue was that the tags on collections-pages are not collected with the `site.tags` variable
 
 ### List Posts sorted by Tags
 

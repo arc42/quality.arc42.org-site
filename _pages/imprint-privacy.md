@@ -11,11 +11,11 @@ due to our sometimes strange, inconsistent and user-unfriendly data privacy laws
 
 ## Imprint
 
-#### Anbieter
+#### Anbieter / Provider
 
 Dr. Gernot Starke, Willi-Lauf Allee 43, D-50858 Köln
 
-#### Kontakt
+#### Kontakt / Contact
 
 Telefon: +49-177-728 2570<br>
 e-Mail: gernotstarke - at - mailbox - dot - org<br>

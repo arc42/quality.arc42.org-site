@@ -1,15 +1,15 @@
 ---
 layout: page
 title: Jekyll Info
+hide: true
 permalink: /jekyll-info/
-order: 99
 ---
 
 Debugging Jekyll can be kind of a nightmare...
 
 
 <ul>
-{% assign sorted = site.qualities | sort: 'title'  %}
+{% assign sorted = site.posts | sort: 'title'  %}
     {% for item in sorted %}
     <li>{{ item.title }}</li>
 {% endfor %}

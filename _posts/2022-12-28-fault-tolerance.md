@@ -1,7 +1,7 @@
 ---
 title: Fault tolerance
 tags: reliable usable
-related: robustness, reliability, useability, availability, recoverability, faultlessness 
+related: robustness, reliability, usability, availability, recoverability, faultlessness 
 permalink: /qualities/fault-tolerance
 ---
 

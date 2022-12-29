@@ -1,7 +1,7 @@
 ---
 title: Configurability
-tags: flexible useable
-related: flexibility, changeability, adaptability
+tags: flexible usable
+related: flexibility, changeability, adaptability, modifiability
 permalink: /qualities/configurability
 ---
 

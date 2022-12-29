@@ -16,7 +16,7 @@ baseurl:
 #
 # basic settings
 #
-title: arc42 Quality 
+title: arc42 Quality Model
 description: quality attributes, explained.
 avatar: /assets/img/arc42logosquare.png
 favicon: /assets/img/arc42logosquare.png
@@ -66,21 +66,23 @@ plugins:
 #
 # tags, collections etc -
 # see https://jekyllrb.com/docs/collections/
-collections:
-  qualities:
-    output: true
-    sort_by: title
+
+# this DOES NOT WORK with tags!
+#collections:
+#  qualities:
+#    output: true
+#    sort_by: title
 
 
 #
-# with this default, all files under /_qualities (our collection)
+# with this default, all files under /_posts (a collection did not work with tags)
 # get the qualities-layout per default, saving a bit of typing
 #
 defaults:
   -
     scope:
       path: ""
-      type: "qualities" # a collection in your site, in plural form
+      type: "posts" # a collection in your site, in plural form
     values:
       layout: "qualities"  
 #
@@ -113,4 +115,5 @@ exclude:
   - originals
   - _docker-compose*
   - _manage*
+  - .sass-cache
 
