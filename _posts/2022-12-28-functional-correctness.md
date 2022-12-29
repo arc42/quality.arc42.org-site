@@ -12,6 +12,6 @@ Definitions:
 
 >Provide accurate results when used by intended users for intended functions.
 > 
->[ISO-25010-2022](/references/#iso-25050-2022)
+>[ISO-25010-2022](/references/#iso-25010-2022)
 
 

@@ -9,6 +9,6 @@ Definitions:
 
 >Provide a set of functions that covers all the specified tasks and intended users’ objectives.
 >
->[ISO-25010-2022](/references/#iso-25050-2022)
+>[ISO-25010-2022](/references/#iso-25010-2022)
 
 

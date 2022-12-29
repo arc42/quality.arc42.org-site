@@ -11,7 +11,7 @@ Definitions:
 
 >Capability of a product to exchange information with other products, and/or to perform its required functions while sharing the same common environments and resources.
 > 
->[ISO-25010-2022](/references/#iso-25050-2022)
+>[ISO-25010-2022](/references/#iso-25010-2022)
 
 <hr class="with-no-margin"/>
 

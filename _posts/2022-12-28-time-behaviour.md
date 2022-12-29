@@ -9,7 +9,7 @@ Definition:
 
 >Response and processing times and throughput rates of a product or system, when performing its functions, meet requirements.
 >
->[ISO-25010-2011](/references/#iso-25050-2011)
+>[ISO-25010-2011](/references/#iso-25010-2011)
 
 
 Note: Resources can be CPU, memory, storage, processes, threads, network, energy, paper etc. 
