@@ -2,7 +2,7 @@
 layout: page
 title: About arc42
 permalink: /about/
-order: 20
+order: 30
 ---
 
 arc42 is a template for software architecture documentation and communication, answering the following two questions in a pragmatic way:

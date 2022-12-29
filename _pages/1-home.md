@@ -48,6 +48,7 @@ A single quality attribute (like "availability") might have multiple tags (#reli
 
 
 
+<!--
 ## <font color="#dd354b">We're offering architecture training!</font>
 
 The _dynamic duo_, always two trainers in parallel, practically applicable knowledge from Peter Hruschka and Gernot Starke. 
@@ -55,3 +56,5 @@ See [arc42.de](https://www.arc42.de/termine) for details, and schedule.
 
 We've successfully trained more than 1000 developers in software architecture, many of them passed the [iSAQB CPSA-F](https://isaqb.org) certification.
 (sorry - public training currently German-only, English for inhouse trainings.)
+
+-->
