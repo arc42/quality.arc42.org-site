@@ -16,17 +16,24 @@ Therefore, development teams we need such requirements in concrete, specific and
 
 
 
-On this site you find explanations to (currently {{ site.qualities | size }}) _qualities_ of software systems and -architectures.
+On this site you find explanations to (currently {{ site.posts | size }}) _qualities_ of software systems and -architectures.
 
-These are organized along the following top-level tags (we like to call them _tags_ instead of properties or attributes, as a single quality attribute (like "availability") might have multiple tags (#reliable, #usable and #safe, in this case)).
+These are organized along the following top-level tags (properties or attributes). 
+A single quality attribute (like "availability") might have multiple tags (#reliable, #usable and #safe, in this case)).
 
 
-{% assign tags_reliable = site.qualities | where_exp: "qualities", "qualities.tags contains 'reliable'" %}
-{% assign tags_flexible = site.posts | where_exp: "post", "post.tags contains 'flexible'" %}
+{% assign tags_reliable = site.posts | where_exp: "posts", "posts.tags contains 'reliable'" %}
+{% assign tags_flexible = site.posts | where_exp: "posts", "posts.tags contains 'flexible'" %}
+{% assign tags_efficient = site.posts | where_exp: "posts", "posts.tags contains 'efficient'" %}
+{% assign tags_usable = site.posts | where_exp: "posts", "posts.tags contains 'usable'" %}
+{% assign tags_safe = site.posts | where_exp: "posts", "posts.tags contains 'save'" %}
+{% assign tags_secure = site.posts | where_exp: "posts", "posts.tags contains 'secure'" %}
+{% assign tags_testable = site.posts | where_exp: "posts", "posts.tags contains 'testable'" %}
+{% assign tags_operable = site.posts | where_exp: "posts", "posts.tags contains 'operable'" %}
 
-| Tag         | Explanation                   |
+| Tag ()         | Explanation                   |
 |:-----------------|:----------------------------|
-| [**#reliable**](/tag_reliable/) ({{ tag_reliable | size }}) | definition of reliable |
+| [**#reliable**](/tag_reliable/) ({{ tags_reliable | size }}) | definition of reliable |
 |-----------------|----------------------------|
 | [**#flexible**](/tag_flexible/) ({{ tags_flexible | size }})  |  definition of flexible |
 |-----------------|----------------------------|
