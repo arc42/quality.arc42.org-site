@@ -2,6 +2,7 @@
 layout: default
 title: Home
 permalink: /
+order: 1
 ---
 
 >### ![](/images/ua-flag.svg){:width="5%"} We stand with the people of Ukraine ![](/images/ua-flag.svg){:width="5%"}
@@ -31,12 +32,18 @@ A single quality attribute (like "availability") might have multiple tags (#reli
 {% assign tags_testable = site.posts | where_exp: "posts", "posts.tags contains 'testable'" %}
 {% assign tags_operable = site.posts | where_exp: "posts", "posts.tags contains 'operable'" %}
 
-| Tag ()         | Explanation                   |
-|:-----------------|:----------------------------|
-| [**#reliable**](/tag_reliable/) ({{ tags_reliable | size }}) | definition of reliable |
-|-----------------|----------------------------|
-| [**#flexible**](/tag_flexible/) ({{ tags_flexible | size }})  |  definition of flexible |
-|-----------------|----------------------------|
+| Tag (quality) | Explanation          |
+| :--- | :--- |
+| [**#reliable**](/tag_reliable/) ({{ tags_reliable | size }}) | Perform specified functions under specified conditions without interruptions and failures.  |
+|-|----------------------------|
+| [**#flexible**](/tag_flexible/) ({{ tags_flexible | size }})  |  Serve a different or expanded set of requirements; the ease with which the product can be adapted to changes in its requirements, contexts of use, or system environment. Synonyms: modifiable, adjustable, changeable, versatile. |
+| [**#efficient**](/tag_efficient/) ({{ tags_efficient | size }})  |  Perform functions within specified time, capacity and throughput parameters, using appropriate resources (like memory, network bandwith, threads). |
+| [**#usable**](/tag_usable/) ({{ tags_usable | size }})  |  Enable users to perform their tasks safely, effectively, and efficiently while enjoying the experience. |
+| [**#safe**](/tag_safe/) ({{ tags_safe | size }})  |  Avoid states in which human life, health, property, or the environment is endangered, detects and warns of risks and hazards.  |
+| [**#secure**](/tag_secure/) ({{ tags_secure | size }})  |  Protect information and data so that persons or other products have only access to an extend appropriate to their types and levels, and to defend against attack patterns by malicious actors. |
+| [**#testable**](/tag_testable/) ({{ tags_testable | size }})  |  Enable an objective and feasible test to be designed and performed to determine whether requirements are met. |
+| [**#operable**](/tag_operable/) ({{ tags_operable | size }})  |  Easy to deploy, operate, monitor and control. |
+
 
 
 
