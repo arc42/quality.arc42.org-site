@@ -5,7 +5,7 @@ related: robustness, reliability, usability, fault-tolerance, recoverability, de
 permalink: /qualities/availability
 ---
 
-ö
+
 
 >Capability of a product to be accessible and operational when required for use.
 >
