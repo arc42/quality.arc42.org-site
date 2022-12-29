@@ -23,8 +23,7 @@ echo "Please select wether to ${GREEN}develop ${RESET} or ${RED} build ${RESET} 
 echo
 echo "${GREEN}(c)lean ${RESET} _site directory"
 echo
-echo "${GREEN}(d)evelop ${RESET} starts a jekyll server on port 0.0.0.0:4000,"
-echo "which performs incremental builds and listens for file changes."
+echo "${GREEN}(d)evelop ${RESET} starts a jekyll server on port 0.0.0.0:4000, with incremental build and change listener."
 echo
 echo "${GREEN}(b)build ${RESET} build the required docker image."
 echo
@@ -42,20 +41,21 @@ fi
 
 case "$choice" in
   b|B|build) echo "build Docker image"
-                     docker-compose --file _docker-compose-dev.yml build --force-rm
-                     ;;
+        docker-compose --file _docker-compose-dev.yml build --force-rm
+        ;;
 
   c|C|clean) echo "clean _dite directory "
-                     rm -r _site
-                     ;;
+        rm -r _site
+        ;;
 
   d|D|dev|develop) echo "develop, incremental build"
-                   docker-compose --file _docker-compose-dev.yml up
-                   ;;
+        rm -r _site
+        docker-compose --file _docker-compose-dev.yml up
+        ;;
 
   r|R|remove) echo "remove running docker container"
-             docker-compose --file _docker-compose-dev.yml down
-             ;;
+        docker-compose --file _docker-compose-dev.yml down
+        ;;
 
   
 
