@@ -1,5 +1,5 @@
 ---
-title: appropriateness-recognizability
+title: Appropriateness-recognizability
 tags: usable operable
 related: usability, attractiveness, operability, user-error-protection, user-engagement
 permalink: /qualities/appropriateness-recognizability
