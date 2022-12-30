@@ -5,11 +5,15 @@ order: 12
 permalink: /tag-efficient/
 ---
 
-Definitions: 
+<div class="arc42-help" markdown="1">
 
-Resource-efficient, fast, energy-, storage- and network efficient, having adequate capacity
+* Resource-efficient, fast, low-footprint, low latency.
+* Energy-, storage- and network efficient, having adequate capacity
 
-<hr class="with-no-margin"/>
+</div><br>
+
+### Definitions
+
 
 >capable of producing desired results with little or no waste (as of time or materials) 
 >
