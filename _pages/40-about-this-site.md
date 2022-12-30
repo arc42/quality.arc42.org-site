@@ -10,62 +10,16 @@ order: 25
 Imprint and privacy information is contained on its own [page](/imprint/).
  
 
-## You like what you see?
-
-> In case you like what you read here, share your experience with colleagues and friends...
-
 ## Support
 
-[INNOQ](https://innoq.com) supports creation and maintenance of this site.
+[INNOQ](https://innoq.com) <span style="color: #ff9c66;"><i class="fa-solid fa-heart fa-beat" style="--fa-beat-scale: 1.2;"></i></span> supports creation and maintenance of this site.
 
 
 ## Tooling
-This page is based upon [Jekyll](), a static website generator, using the [TtskchTheme](https://github.com/ttskch/jekyll-ttskch-theme) theme.
-It's maintained on [Github](https://github.com/arc42/quality.arc42.org-site/) and published via github-pages.
 
-
-### Jekyll and Liquid
-
-Some issues occured during the creation of this site.
-
-### Collections, Tags and Categories
-Collections have problems with tags, therefore I decided to describe all the "qualities" under `_posts`, instead of making them a collection.
-
-The issue was that the tags on collections-pages are not collected with the `site.tags` variable
-
-### List Posts sorted by Tags
-
-Needed for the "Keywords" page:
-
-{% highlight html %}
-{% raw %}
-
-{% capture site_tags %}{% for tag in site.tags %}{{ tag | first }}{% unless forloop.last %},{%endunless %}{% endfor %}{% endcapture %}
-{% assign tag_words = site_tags | split:',' | sort %}
-
-<div id="tags">
-  <ul class="tag-box inline">
-  {% for tag in tag_words %}
-    <li><a href="#{{ tag | cgi_escape }}">{{ tag }} <span>{{ site.tags[tag] | size }}</span></a></li>
-  {% endfor %}
-  </ul>
-
-  {% for item in (0..site.tags.size) %}{% unless forloop.last %}
-    {% capture this_word %}{{ tag_words[item] | strip_newlines }}{% endcapture %}
-  <h2 id="{{ this_word | cgi_escape }}">{{ this_word }}</h2>
-  <ul class="posts">
-    {% assign sorted_posts = (site.tags[this_word] | sort_by: 'title' ) | reverse %}
-    {% for post in sorted_posts %}{% if post.title != null %}
-    <li> <a href="{{ post.url }}">{{ post.title }}</a></li>
-    {% endif %}{% endfor %}
-  </ul>
-  {% endunless %}{% endfor %}
-</div>
-
-{% endraw %}
-{% endhighlight %}
-
-Thanx to [LanyonM](https://github.com/LanyonM/lanyonm.github.io/blob/master/tags.html)
+* This page is based upon [Jekyll](https://jekyll.rb), a static website generator, using a slightly modified version of the [Ttskch](https://github.com/ttskch/jekyll-ttskch-theme) theme.
+* It's maintained on [Github](https://github.com/arc42/quality.arc42.org-site/) and published via github-pages.
+* An Alpine based Docker container allows for local build- and test of the site 
 
 
 ## About me
