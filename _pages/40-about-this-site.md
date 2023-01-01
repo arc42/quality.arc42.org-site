@@ -17,7 +17,7 @@ Imprint and privacy information is contained on its own [page](/imprint/).
 
 ## Tooling
 
-* This page is based upon [Jekyll](https://jekyll.rb), a static website generator, using a slightly modified version of the [Ttskch](https://github.com/ttskch/jekyll-ttskch-theme) theme.
+* This page is based upon [Jekyll](https://jekyllrb.com), a static website generator, using a slightly modified version of the [Ttskch](https://github.com/ttskch/jekyll-ttskch-theme) theme.
 * It's maintained on [Github](https://github.com/arc42/quality.arc42.org-site/) and published via github-pages.
 * An Alpine based Docker container allows for local build- and test of the site 
 
