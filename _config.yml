@@ -89,6 +89,11 @@ defaults:
 # Styles: see "_sass/base/_variables.scss"
 #
 
+plugins:
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+
 #
 # !! Danger zone !!
 #
@@ -110,9 +115,11 @@ exclude:
   - Gemfile
   - Gemfile.lock
   - LICENSE
+  - Dockerfile
+  - .code-workspace
   - README.md
   - .vscode
-  - originals
+  - originals/*
   - _docker-compose*
   - _manage*
   - .sass-cache
