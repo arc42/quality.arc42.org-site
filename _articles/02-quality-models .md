@@ -1,8 +1,7 @@
 ---
 layout: page
 title: "Quality Models"
-hide: true
-share: false
+tags: iso-25010 quality-model
 permalink: /articles/02-quality-models
 ---
 

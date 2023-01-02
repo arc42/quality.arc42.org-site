@@ -71,8 +71,10 @@ plugins:
 collections:
   articles:
     output: true
+    hide: true
   examples:
-    output: true    
+    output: true
+    hide: true    
 
 
 #

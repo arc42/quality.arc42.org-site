@@ -27,7 +27,7 @@ A single quality attribute (like "availability") might have multiple tags (#reli
 {% assign tags_flexible = site.posts | where_exp: "posts", "posts.tags contains 'flexible'" %}
 {% assign tags_efficient = site.posts | where_exp: "posts", "posts.tags contains 'efficient'" %}
 {% assign tags_usable = site.posts | where_exp: "posts", "posts.tags contains 'usable'" %}
-{% assign tags_safe = site.posts | where_exp: "posts", "posts.tags contains 'save'" %}
+{% assign tags_safe = site.posts | where_exp: "posts", "posts.tags contains 'safe'" %}
 {% assign tags_secure = site.posts | where_exp: "posts", "posts.tags contains 'secure'" %}
 {% assign tags_testable = site.posts | where_exp: "posts", "posts.tags contains 'testable'" %}
 {% assign tags_operable = site.posts | where_exp: "posts", "posts.tags contains 'operable'" %}

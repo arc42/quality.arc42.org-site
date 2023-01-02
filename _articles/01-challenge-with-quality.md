@@ -1,8 +1,7 @@
 ---
 layout: page
 title: "Challenges with Quality"
-hide: true
-share: false
+tags: quality introduction
 permalink: /articles/01-challenge-with-quality
 ---
 
