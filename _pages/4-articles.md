@@ -24,5 +24,4 @@ Here you find a list of some background articles about _quality_, quality-models
 {% endfor %}
 
 
-
 </div>

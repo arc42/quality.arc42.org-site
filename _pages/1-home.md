@@ -14,7 +14,13 @@ order: 1
 
 Information-technology systems have to meet required, desired and expected quality goals and requirements. 
 Therefore, development teams we need such requirements in concrete, specific and operationalized ways.
+The current quality standards, like ISO-25010, lack practical guidance and pragmatism, therefore we propose a usable and simple alternative.
+<br>
+Read more on the [shortcomings of the ISO-25010](articles/)
 
+
+
+<hr class="with-no-margin"/>
 
 
 On this site you find explanations to (currently {{ site.posts | size }}) _qualities_ of software systems and -architectures.
