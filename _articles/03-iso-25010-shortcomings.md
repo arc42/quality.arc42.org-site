@@ -5,8 +5,14 @@ tags: iso-25010 quality-model
 permalink: /articles/iso-25010-shortcomings
 ---
 
+
+<div class="arc42-help" markdown="1">
 Published in 2011, the ISO-25010 standard on software product quality, lacks pragmatism and practical applicability. 
+Terms like scalability, deployability, energy efficiency, safety, or code quality are missing.
 This article explains these shortcomings, and shows that even the (draft) update from 2022 still needs polishing... <i class="fa-regular fa-face-frown"></i> 
+</div><br>
+
+
 
 
 ### ISO 25010 - An Overview
@@ -71,9 +77,54 @@ Testing definitely has something todo with reliability, at least in my world.
 But I am not a standardization body <i class="fa-regular fa-face-grin"></i> 
 
 
+My conclusion so far: A lot of mass, but a few nutrients (e.g. conceptual consistency and clarity) are missing. 
+These and other problems with ISO-25010 have been worked out in detail by e.g. Len Bass et. al in [3].
 
-### ISO Shortcomings
-The current ISO-25010 standard lacks some practical features, such as scalability, deployability, energy efficiency, safety, or code quality.
+### Does the 2022-Draft Improve the Situation?
+When ISO announced an update to the 2011-version in a mailing list in mid-November 2022, my expectations were high.
+After all, ISO has had time since 2011 to come up with a better proposal. 
+At first glance, it is noticeable that the top-level features have grown to 9, see the diagram below.
 
-A recent (Nov. 2022 _draft_) update proposes to add _safety_ and _scalability_, but that is still a draft, and no official standard.
+
+![ISO-25010-draft-2022-details]()
+
+Still I see overlapping terms in the areas of "maintainability" and "flexibility". 
+This remains dubious even when considering the ISO definitions (see [2]):
+
+* Flexibility: ability to meet different or extended requirements, the ease with which changes can be adapted to requirements or the system environment.
+* Maintainability: ability to be changed effectively and efficiently.
+
+This is too close in content for me, and in practice confuses more than it helps.
+
+In _Usability_, _Aesthetics_ and _Accessibility_ are replaced by _Engagement_ and _Assistance_.  
+Again, we could argue about this - but in my perception, the term "Accessibility" has become established in the UI/UX field, which is why this replacement rather bothers me.
+
+In the new version I consider it positive that:
+
+* finally _scalability_ has been added, as a subcharacteristic of _flexibility_, and
+*-* _maturity_ has now become_faultlessness_.
+
+### Practical Use?
+You can obviously use the ISO-25010 standard as a checklist to be reminded of possible omissions regarding specific quality requirements. 
+In my opinion, however, a well-designed top level would be sufficient for this (our arc42-quality-model defines just one level!).
+
+The price of almost 140 Swiss francs for the ISO-25010 standard certainly prevents many from reading the complete document. 
+In addition, ISO prescribes a meta-model with Quality-in-Use, Data-Quality, Service Quality and Product Quality - which in my opinion makes them too difficult to digest for real world projects.
+
+### Summary
+
+ISO-25010 is neither fast food nor gourmet dinner. 
+In my opinion, even the 2022 draft update of ISO-25010 doesn't go beyound canteen food. 
+Versatile, but difficult to access due to the multitude of terms (as well as the meta model). 
+The often abstract definitions of terms build up superfluous hurdles for practioners to overcome. 
+Concrete examples of practical applications are missing (again, arc42 to the rescue).
+
+In my opinion, less would have been more. 
+Instead of nearly 40 terms at various levels, I personally think a limitation to 10 or fewer top-level features is sufficient, coupled with suggestions for specific quality requirements ("concretization"). 
+
+In this respect, Len Bass and Co. have done a great job with their fundamental work [3] - they had already invented the concept of "quality scenarios" many years ago, and followed up with a multitude of practical examples in the current fourth edition. 
+
+Hopefully, our arc42 quality model will be more useful to development projects. 
+
+
 
