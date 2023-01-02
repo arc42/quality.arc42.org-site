@@ -30,7 +30,7 @@ Dr. Gernot Starke.
 ## Privacy Statement (Datenschutzerklärung)
 
 #### Web Analytics
-This page uses privacy-friendly web analytics <i class="fa-solid fa-chart-mixed"></i> from [plausible.io](https://plausible.io), but sets NO COOKIES.
+This page uses privacy-friendly web analytics from [plausible.io](https://plausible.io), but sets NO COOKIES.
 
 
 <p>Stand: 1. Januar 2023</p><h2>Inhaltsübersicht</h2>
