@@ -1,6 +1,6 @@
 ---
 title: Fault isolation
-tags: safe robust
+tags: safe reliable
 related: safety, fail-safe, fault-tolerance, faultlessness, risk-identification, hazard-warning
 permalink: /qualities/fault-isolation
 ---

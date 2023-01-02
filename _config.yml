@@ -68,10 +68,11 @@ plugins:
 # see https://jekyllrb.com/docs/collections/
 
 # this DOES NOT WORK with tags!
-#collections:
-#  qualities:
-#    output: true
-#    sort_by: title
+collections:
+  articles:
+    output: true
+  examples:
+    output: true    
 
 
 #
