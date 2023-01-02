@@ -16,6 +16,13 @@ Note: Resources can be CPU, memory, storage, processes, threads, network, energy
 
 <hr class="with-no-margin"/>
 
+>Performance relative to the amount of resources used under stated conditions.
+>
+>NOTE: Resources can include other software products, the software and hardware configuration of the system, and materials (e.g. print paper, storage media).
+>
+>[ISO-25010-2011](/references/#iso-25010-2011)
+<hr class="with-no-margin"/>
+
 Performance relative to the amount of resources used under stated conditions. 
 Composed of the following sub-characteristics:
 
