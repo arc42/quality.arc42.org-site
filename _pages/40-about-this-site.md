@@ -5,7 +5,6 @@ permalink: /aboutthissite/
 order: 25
 ---
 
-
 ## Support
 
 [INNOQ](https://innoq.com) <span style="color: #ff9c66;"><i class="fa-solid fa-heart fa-beat" style="--fa-beat-scale: 1.2;"></i></span> supports creation and maintenance of this site.
@@ -21,6 +20,9 @@ order: 25
 
 * build_revision: {{ site.github.build_revision }}
 * The site was last built on {{ site.time | date: '%c' }}. 
+
+
+
 
 ## About me
 
