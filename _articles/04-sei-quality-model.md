@@ -56,7 +56,7 @@ But let's consider the SEI-Model step-by-step:
 
 The following diagram shows how the (compact) arc42 quality model relates to the (slightly heavier) SEI model.
 
-![from SEI-model to arc42-quality-model](/images/articles/sei-2022/sei-to-arc42qm.png)
+![from SEI-model to arc42-quality-model](/images/articles/sei-2022/sei-to-arc42qm.png){:width="50%"}
 
 
 
