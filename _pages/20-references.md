@@ -27,6 +27,6 @@ Online on [iso.org](https://www.iso.org/obp/ui/#iso:std:iso-iec:25010:dis:ed-2:v
 <a id="bass-swa-practice"/>
 ### Bass et. al: Software Architecture in Practice
 
-Len Bass, Paul Clements, Rick Kazman: Software Architecture in Practice. 4th Edition, Addison Wesley 2021.
+Len Bass, Paul Clements, Rick Kazman: Software Architecture in Practice. 4th Edition, Addison Wesley 2022.
 
 
