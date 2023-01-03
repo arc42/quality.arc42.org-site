@@ -67,12 +67,14 @@ plugins:
 # tags, collections etc -
 # see https://jekyllrb.com/docs/collections/
 
-# this DOES NOT WORK with tags!
+# every collection has their own tags...
 collections:
   articles:
     output: true
     hide: true
-  examples:
+
+## quality scenarios to describe and capture specific quality requirements
+  scenarios:
     output: true
     hide: true    
 
