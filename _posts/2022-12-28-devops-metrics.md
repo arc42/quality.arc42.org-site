@@ -17,3 +17,13 @@ See also [deployability](/qualities/deployability)
 >
 >quoted from [Atlassian](https://www.atlassian.com/devops/frameworks/devops-metrics)
 
+<hr class="with-no-margin"/>
+
+For a slightly more detailed introduction, see the four metrics themselves:
+
+* [Lead time for changes](/qualities/lead-time-for-changes)
+* [Change failure rate](/qualities/change-failure-rate)
+* [Deployment frequency](/qualities/deployment-frequency)
+* [Mean time to recovery](/qualities/mean-time-to-recovery)
+
+
