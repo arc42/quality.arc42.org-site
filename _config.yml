@@ -78,6 +78,10 @@ collections:
     output: true
     hide: true    
 
+# Filtering Content
+future              : false
+unpublished         : false
+
 
 #
 # with this default, all files under /_posts (a collection did not work with tags)
@@ -103,7 +107,7 @@ plugins:
 # !! Danger zone !!
 #
 
-include: ["_pages"]
+include: ["_pages", "robots.txt"]
 
 markdown: kramdown
 kramdown:
@@ -119,12 +123,11 @@ sass:
 exclude:
   - Gemfile
   - Gemfile.lock
-  - LICENSE
+  - originals/*
   - Dockerfile
   - .code-workspace
   - README.md
   - .vscode
-  - originals/*
   - _docker-compose*
   - _manage*
   - .sass-cache
