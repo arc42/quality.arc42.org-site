@@ -120,9 +120,11 @@ sass:
   sass_dir: _sass
   style: :compressed # or :expanded
 
+include:
+  - CNAME
+  - robots.txt
+
 exclude:
-  - Gemfile
-  - Gemfile.lock
   - originals/*
   - Dockerfile
   - .code-workspace
@@ -131,4 +133,5 @@ exclude:
   - _docker-compose*
   - _manage*
   - .sass-cache
-
+  - "*.graffle"
+  

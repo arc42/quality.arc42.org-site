@@ -16,14 +16,23 @@ This article presents a few quality models and comes to a (potentially) surprisi
 
 </div><br>
 
-(you find all the references at the end of this article).
+Quality consists of many characteristics. 
+Therefore, quality is usually captured in a model or terminology that contains these
+characteristics and their relationships. 
+Such quality models show what people consider important when talking about quality.
+
 ### A Bit of History
 
 In 1977, McCall suggested to model quality as a hierarchy of terms, whose first level consists of _Operation, Revision_ and _Transition_. To revision he counted e.g. Maintainbility, Flexibility and Testability.
 
-Later, there were a number of alternative proposals, of which, the approaches FURPS and its extension FURPS+ by IBM found proper acceptance in practice. 
+Just a year later, Barry Boehm published his slightly enhanced model, including inner qualities like _structuredness_ and _legibilit_.
 
-The ISO organization then took up the issue, publishing vendor- and product-neutral standards since 1991, starting with ISO-9126, which "lasted" for 20 years, and was superseded in 2011 by ISO-25010, which is still in effect today. Both were each considered the conceptual reference for software quality, and have gained considerable currency in practice. In my humble opinion, this is largely due to the fact that the ISO bodies define the terms used quite properly. Therefore, they can be forgiven for simply ignoring (or forgetting?) some really relevant quality characteristics.
+Next were authors at Hewlett-Packard and IBM who published FURPS and its extension FURPS+, the latter found proper acceptance in practice due to its integration into the (once popular) IBM Rational Unified Process. 
+
+The ISO organization then took up the issue, publishing vendor- and product-neutral standards since 1991, starting with ISO-9126, which "lasted" for 20 years, and was superseded in 2011 by ISO-25010, which is still in effect today. 
+Both were considered the conceptual reference for software quality, and have gained considerable currency in practice. 
+In my humble opinion, this is largely due to the fact that the ISO bodies define the terms used quite properly. 
+Therefore, they can be forgiven for simply ignoring (or forgetting?) some really relevant quality characteristics.
 I also liked quality features of the VOLERE Requirements Template, which, however, have found less acceptance in the German-speaking world than the ISO standards.
 
 ### Quick-Check of Software Quality Models
@@ -31,7 +40,7 @@ I also liked quality features of the VOLERE Requirements Template, which, howeve
 | Authors / Name| Year | Summary | Nr of Quality attributes |
 |:--------|-----:|:--------|:-------------------------|
 | McCall  | 1977 | Hierarchical model, 2 levels. Top-level areas: _operation_, _revision_, _transition_. Predecessor of current quality models. | 11 |
-| Boehm   | 1978 | Hierarchical model, 3 levels. Top-level qualities: _utility, maintainability, portability_. | 23 |
+| Boehm   | 1978 | Hierarchical model, 3 levels. Top-level qualities: _utility, maintainability, portability_. See below for more info. | 23 |
 | ISO-9126 | 1991| Hierarchical model, 2 levels, 6 top-level qualities. No safety, security underrated, disputable terminology | 27 |
 | R. Grady, FURPS | 1992 | Single level with _functionality, useability, reliability, performance, supportability_. Lacks operational qualities and safety | 6 |
 | IBM FURPS+ | 1999 | Add lots of sub-characteristics to FURPS, adressing _requirements_ in general. Part of the (overly complex) Rational-Unified process | 30 |
@@ -41,7 +50,16 @@ I also liked quality features of the VOLERE Requirements Template, which, howeve
 | ISO-25010, draft 2022 | 2022 | Proposal to add safety and change a number of terms and definitions. Still [disputable terminology](/articles/iso-25010-shortcomings), overly complex for day-to-day use.  | 39 |
 
 ### Boehm Software Quality Model
+Barry Boehm supposedly was the first to propose a hierarchical model of software quality, with three top-level qualities, that are refined on two further levels. 
+When looking into details of his model, one will notice that several attributes from level-2 and level-3 are referenced multiple times, making this model more of a graph than a tree.
+In my opinion, this is perfectly realistic, but the later ISO-standards got rid of this pragmatic feature.
 
+![Boehm Quality Model](/images/articles/quality-models/Boehm-Quality-Model.svg)
+
+Please consider this model within the historical perspective: No private person owned a computer, as the personal computer hadn't been invented.
+Only very few companies used them, and programming computers was a black art that only a few _magicians_ could apply.
+
+With this perspective, the Boehm model was incredible farsighted, as it included inner quality attributes like _legibility_ and _structuredness_ (which became for)
 ### FURPS+ for Classifying Requirements ([[Eeles-2005]](#Eeles-2005))
 Robert Grady (from Hewlett-Packard) proposed the following schema for classifying requirements:
 
@@ -57,11 +75,36 @@ Robert Grady (from Hewlett-Packard) proposed the following schema for classifyin
 
 Despite the lack of security, safety, resource-consumption and operational qualities, this model was (and likely still is) intensively used in practice.
 
+### The ISO Standards 9126 and 25010
+_Design-by-Committee_ is regarded as a _suboptimal approach to development_ - and in my opinion that happened to the ISO-standards for software quality.
+Instead of just unifying definitions from Boehm and FURPS, the invented a kind of meta-model, distinguishing between five different areas of quality (see figure below).
+Divisions? Model and Management? Measurement and Evaluation? 
+These distinctions seem overly complicated from my practitioners' viewpoint.
+
+![Areas of quality as defined by ISO](/images/articles/quality-models/ISO-25-Meta-Structure.svg)
+
+I really wonder if anybody working in development projects (except me) ever took the time to read through all those standards. (Ok, I exaggerated, I read only 25010, but that was hard-enough work).
+
+Apart from being in wide use, these models really lack practical applicability.
+I covered a few downsides in my [article on ISO-25010 shortcomings](/_articles/03-iso-25010-shortcomings.md).
+
+But the standards would not have survived as long if they didn't contain some goodies:
+The ISO defines all terms contained within the standard, and _these_ definitions are available free-of-charge.
+Although some of these definitions are quite academic, they provide a nice starting point, and help to avoid conflict when discussing with different stakeholders.
+
+>Remark: The [arc42-quality-model](https://quality.arc42.org) is free to use, and also contains definitions and explanations for terms related to software and product quality, for many more terms than are mentioned in the ISO standard.
+
+### SEI Quality Model
+
 ### References for Quality Models
 
 * L R. B. Grady, Practical Software Metrics for Project Management and Process Improvement. Contains the FURPS-Model Prentice Hall, 1992.
 * ISO-25010, https://www.iso.org/standard/35733.html
 * Eeles, Peter: Non-functional Requirements, online: https://pdfs.semanticscholar.org/f3bb/91080c4573f6f78f30bc5b48bda3ef252bf2.pdf
+
+<a id="boehm-1978">[Boehm-1978]</a>Barry W. Boehm, Characteristics of Software Quality, North-Holland Publishing Company, 1978
+
+<a id="astrotech">[Astrotech]</a> Matt Harasymczuk on Astrotech, explanation of quality models, [online](https://dev.astrotech.io/sonarqube/quality-models.html)
 
 <a id="jamwal">[Jamwal-2009]</a> Jamwal et. Al: Comparative Analysis of Different Software Quality Models. Proceedings of the 3rd National Conference; INDIACom-2009, online: https://enos.itcollege.ee/~nafurs/suvi2019/huvitavat/alternatiivid_FURPSile.pdf
 

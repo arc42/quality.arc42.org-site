@@ -106,6 +106,12 @@ In the new version I consider it positive that:
 * finally _scalability_ has been added, as a subcharacteristic of _flexibility_, and
 *-* _maturity_ has now become_faultlessness_.
 
+### Isn't Software made up from Code?
+Although internal structure, legibility and conciseness have been part of historical quality models (Boehm mentioned these qualities in his model from 1978!), the ISO-guys refused to include such properties in their model.
+
+In my opinion, development teams are important stakeholders, and structure and readability of code will often be really important goals for them.
+Ignoring code quality and component structure as quality requirements is simply not acceptable from my point of view, and I consider their absence a serious problem within the ISO-25010 standard.
+
 ### Practical Use?
 You can obviously use the ISO-25010 standard as a checklist to be reminded of possible omissions regarding specific quality requirements. 
 In my opinion, however, a well-designed top level would be sufficient for this (our arc42-quality-model defines just one level!).
