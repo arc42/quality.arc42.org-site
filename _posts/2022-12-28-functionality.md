@@ -1,7 +1,7 @@
 ---
 title: Functionality
 tags: usable reliable testable
-related: usability, functional-suitability
+related: usability, functional-suitability, functional-correctness, functional-completeness
 permalink: /qualities/functionality
 ---
 
@@ -13,4 +13,10 @@ The main system or product features.
 >
 >[Bass et al, 2022](/references/#bass-swa-practice)
 
+<hr class="with-no-margin"/>
 
+>Functionality describes what the system does and quality describes how well the system does its function. That is, qualities are attributes of the system and function is the purpose of the system. 
+>
+>[Bass et al, 2022](/references/#bass-swa-practice)
+
+<hr class="with-no-margin"/>

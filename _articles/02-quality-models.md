@@ -30,7 +30,7 @@ I also liked quality features of the VOLERE Requirements Template, which, howeve
 
 | Authors / Name| Year | Summary | Nr of Quality attributes |
 |:--------|-----:|:--------|:-------------------------|
-| McCall  | 1977 | Hierarchical model, 2 levels. Top-level qualities: _operation_, _revision_, _transition_. Overly academic | 11 |
+| McCall  | 1977 | Hierarchical model, 2 levels. Top-level areas: _operation_, _revision_, _transition_. Predecessor of current quality models. | 11 |
 | Boehm   | 1978 | Hierarchical model, 3 levels. Top-level qualities: _utility, maintainability, portability_. | 23 |
 | ISO-9126 | 1991| Hierarchical model, 2 levels, 6 top-level qualities. No safety, security underrated, disputable terminology | 27 |
 | R. Grady, FURPS | 1992 | Single level with _functionality, useability, reliability, performance, supportability_. Lacks operational qualities and safety | 6 |
@@ -40,25 +40,33 @@ I also liked quality features of the VOLERE Requirements Template, which, howeve
 | Bass et. al | 2022 | One level, see [this article](/_articles/sei-quality-model). Practical, with a few rough edges. | 10 |
 | ISO-25010, draft 2022 | 2022 | Proposal to add safety and change a number of terms and definitions. Still [disputable terminology](/articles/iso-25010-shortcomings), overly complex for day-to-day use.  | 39 |
 
+### Boehm Software Quality Model
 
 ### FURPS+ for Classifying Requirements ([[Eeles-2005]](#Eeles-2005))
 Robert Grady (from Hewlett-Packard) proposed the following schema for classifying requirements:
 
-* Functionality
-* Usability
-* Reliability
-* Performance
-* Supportability
+>* _Functionality_
+>* _Usability_ is concerned with characteristics such as aesthetics and consistency in the user interface.
+>* _Reliability_ is concerned with characteristics such as availability (the amount of system "up time"), accuracy of system calculations, and the system's ability to recover from failure.
+>* _Performance_ is concerned with characteristics such as throughput, response time, recovery time, start-up time, and shutdown time.
+>* _Supportability_ is concerned with characteristics such as testability, adaptability, maintainability, compatibility, configurability, installability, scalability, and localizability.
+>
+>The "+" represented several additional categories, such as design-, implementation-, interface- and physical- requirements.
+>
+>From [[Eeles-2005]](#Eeles-2005)
 
-The "+" represented several additional categories, such as design, implementation, interface and physical requirements.
+Despite the lack of security, safety, resource-consumption and operational qualities, this model was (and likely still is) intensively used in practice.
 
 ### References for Quality Models
 
-* Jamwal et. Al: Comparative Analysis of Different Software Quality Models. Proceedings of the 3rd National Conference; INDIACom-2009, online: https://enos.itcollege.ee/~nafurs/suvi2019/huvitavat/alternatiivid_FURPSile.pdf
 * L R. B. Grady, Practical Software Metrics for Project Management and Process Improvement. Contains the FURPS-Model Prentice Hall, 1992.
 * ISO-25010, https://www.iso.org/standard/35733.html
 * Eeles, Peter: Non-functional Requirements, online: https://pdfs.semanticscholar.org/f3bb/91080c4573f6f78f30bc5b48bda3ef252bf2.pdf
 
+<a id="jamwal">[Jamwal-2009]</a> Jamwal et. Al: Comparative Analysis of Different Software Quality Models. Proceedings of the 3rd National Conference; INDIACom-2009, online: https://enos.itcollege.ee/~nafurs/suvi2019/huvitavat/alternatiivid_FURPSile.pdf
+
+<a id="McCall-1977">[McCall-1977]</a> McCall, J. A., Richards, P. K., and Walters, G. F., "Factors in Software Quality", National Technical Information Service, no. Vol. 1, 2 and 3, 1977.
+
 <a id="Eeles-2005">[Eeles-2005]</a> Eeles, Peter: Capturing Architectural Requirements, IBM Developerworks 2005, available via [archive.org](https://web.archive.org/web/20201112020231/http://www.ibm.com/developerworks/rational/library/4706.html#N100A7)
 
-VOLERE Requirements Template. Online: https://www.volere.org/
+<a id="volere">[volere]</a> VOLERE Requirements Template. Online: https://www.volere.org/
