@@ -34,12 +34,23 @@ I also liked quality features of the VOLERE Requirements Template, which, howeve
 | Boehm   | 1978 | Hierarchical model, 3 levels. Top-level qualities: _utility, maintainability, portability_. | 23 |
 | ISO-9126 | 1991| Hierarchical model, 2 levels, 6 top-level qualities. No safety, security underrated, disputable terminology | 27 |
 | R. Grady, FURPS | 1992 | Single level with _functionality, useability, reliability, performance, supportability_. Lacks operational qualities and safety | 6 |
-| IBM FURPS+ | 1999 | Add lots of sub-characteristics to FURPS. Part of the (overly complex) Rational-Unified process | 30 |
+| IBM FURPS+ | 1999 | Add lots of sub-characteristics to FURPS, adressing _requirements_ in general. Part of the (overly complex) Rational-Unified process | 30 |
 | VOLERE | 1999 | Integrated in sophisticated template for requirements. Combines qualities and constraints | 8 |
 | ISO-25010 | 2011 | Superseedes ISO-9126. Hierarchical model with 8 top-level qualities. Adds security as top-level. Widespread, afaik. Disputable definitions of terms. | 32 |
 | Bass et. al | 2022 | One level, see [this article](/_articles/sei-quality-model). Practical, with a few rough edges. | 10 |
 | ISO-25010, draft 2022 | 2022 | Proposal to add safety and change a number of terms and definitions. Still [disputable terminology](/articles/iso-25010-shortcomings), overly complex for day-to-day use.  | 39 |
 
+
+### FURPS+ for Classifying Requirements ([[Eeles-2005]](#Eeles-2005))
+Robert Grady (from Hewlett-Packard) proposed the following schema for classifying requirements:
+
+* Functionality
+* Usability
+* Reliability
+* Performance
+* Supportability
+
+The "+" represented several additional categories, such as design, implementation, interface and physical requirements.
 
 ### References for Quality Models
 
@@ -47,4 +58,7 @@ I also liked quality features of the VOLERE Requirements Template, which, howeve
 * L R. B. Grady, Practical Software Metrics for Project Management and Process Improvement. Contains the FURPS-Model Prentice Hall, 1992.
 * ISO-25010, https://www.iso.org/standard/35733.html
 * Eeles, Peter: Non-functional Requirements, online: https://pdfs.semanticscholar.org/f3bb/91080c4573f6f78f30bc5b48bda3ef252bf2.pdf
-* VOLERE Requirements Template. Online: https://www.volere.org/
+
+<a id="Eeles-2005">[Eeles-2005]</a> Eeles, Peter: Capturing Architectural Requirements, IBM Developerworks 2005, available via [archive.org](https://web.archive.org/web/20201112020231/http://www.ibm.com/developerworks/rational/library/4706.html#N100A7)
+
+VOLERE Requirements Template. Online: https://www.volere.org/
