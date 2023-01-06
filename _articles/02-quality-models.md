@@ -85,18 +85,58 @@ These distinctions seem overly complicated from my practitioners' viewpoint.
 
 I really wonder if anybody working in development projects (except me) ever took the time to read through all those standards. (Ok, I exaggerated, I read only 25010, but that was hard-enough work).
 
-Apart from being in wide use, these models really lack practical applicability.
+Apart from being in wide use, these models really lack practical applicability, although the (still inofficial draft) update from November 2022 somewhat improves the situation).
 I covered a few downsides in my [article on ISO-25010 shortcomings](/_articles/03-iso-25010-shortcomings.md).
+To summarize:
+
+* Overly many terms, with a lot of overlap.
+* Critical qualities (e.g. safety, scalability, operational properties) missing from the official version
+* Despite proposing 30+ attributes, code- and architectural qualities are missing
+* No examples how the ISO-model might be applied to real-world problems 
+
 
 But the standards would not have survived as long if they didn't contain some goodies:
 The ISO defines all terms contained within the standard, and _these_ definitions are available free-of-charge.
 Although some of these definitions are quite academic, they provide a nice starting point, and help to avoid conflict when discussing with different stakeholders.
 
->Remark: The [arc42-quality-model](https://quality.arc42.org) is free to use, and also contains definitions and explanations for terms related to software and product quality, for many more terms than are mentioned in the ISO standard.
 
 ### SEI Quality Model
 
-### References for Quality Models
+>A quality attribute (QA) is a measurable or testable property of a system that is used to indicate how well the system satisfies the needs of its stakeholders beyond the basic function of the system. 
+>You can think of a quality attribute as measuring the “utility” of a product along some dimension of interest to a stakeholder.
+>
+>[Len Bass et. al, 2022, p. 39](/references/#bass-swa-practice)
+
+
+For Bass and his colleagues, quality consists of 10 major properties, depicted in the following overview.
+
+![10-top level quality attributes from SEI](/images/articles/sei-2022/sei-quality-model-v2022.png)
+
+Whow, what a difference - only 10 _areas_ instead of 40 terms in the ISO 25010 standard.
+They differentiate these qualities into two categories:
+
+>We will focus on two categories of quality attributes. The first category includes those attributes that describe some property of the system at runtime, such as availability, performance, or usability. 
+>The second category includes those that describe some property of the development of the system, such as modifiability, testability, or deployability.
+>
+>[Len Bass et. al, 2022, p. 42](/references/#bass-swa-practice)
+
+
+For their work, a huge "thank you" goes to Len Bass and his colleagues, for providing an alternative to the ISO-25010 approach. 
+They did a great job, and their book is definitely recommended to read in full (please use the fourth edition, as it was heavily updated and modernized!)
+
+Now comes my "but": Their approach can imho be further improved. 
+Let me consider the SEI-Model step-by-step:
+
+
+* _Availability_ is surely an important goal for many systems, but I know of many systems (or services) that need to work only on certain occasions, and can be turned off the rest of the time. Therefore, I suggest to make "reliable" the top-level goal, and availability is part of that.
+* _Deployability_ is great for online- and mobile systems, that are built in highly automated continous-integration workflows. Real-time and embedded systems are (even in 2023) deployed less often, and with less automation. Next thing is, that once the system is deployed, we definitely need to administer, configure and monitor it. Therefore, I suggest to make "operable" a top-level quality, and consider "deployable" a sub-goal of that.
+* _Energy-efficiency_ is in many people's mind, partially due to the incredible increase in energy-consumption by IT infrastructure worldwide. But energy is just one critical resource: What about water, and carbon-dioxide? Again, I prefer a slightly more general term, "resource-efficient". That even makes "Performance" redundant.
+* _Modifiability_ sounds important, but here again I consider additional aspects: Sometimes I don't want to modify a system, just install it on another operating system. Or configure a new database for it. In my opinion, the general term is "flexible". That even allows for removing "Integrability" from the SEI wishlist.
+  
+### arc42 Quality Model
+Trying to learn from its predecessors (or, as others have called it "it's easy to stand high on the shoulders of giants), arc42 proposes a simple, efficient and practical model.
+
+### References 
 
 * L R. B. Grady, Practical Software Metrics for Project Management and Process Improvement. Contains the FURPS-Model Prentice Hall, 1992.
 * ISO-25010, https://www.iso.org/standard/35733.html
