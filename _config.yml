@@ -12,7 +12,6 @@ baseurl:
 #######################################################
 
 
-
 #
 # basic settings
 #
@@ -21,6 +20,7 @@ description: quality attributes, explained.
 avatar: /assets/img/arc42logosquare.webp
 favicon: /assets/img/arc42logosquare.webp
 language: en
+repository: arc42/quality.arc42.org-site
 
 #
 # want subtle ads (on post-pages)
@@ -39,6 +39,7 @@ icons:
   youtube: arc42-video
   stack_overflow: arc42
   dev_to: gernotstarke
+  mastodon: gernotstarke
 
 #
 # Prettify url.
@@ -57,11 +58,15 @@ str_recent_posts: Recent answers
 str_show_all_posts: Show all...
 
 #
-# Gems.
+# Plugins.
 #
 plugins:
-  - jekyll-paginate
+  - jekyll-sitemap
+  - jekyll-seo-tag
   - jemoji
+  - jekyll-paginate
+  - jekyll-github-metadata
+
 
 #
 # tags, collections etc -
@@ -69,22 +74,24 @@ plugins:
 
 # every collection has their own tags...
 collections:
+  posts:
+    hide: true
   articles:
     output: true
     hide: true
-
 ## quality scenarios to describe and capture specific quality requirements
   scenarios:
     output: true
     hide: true    
 
-# Filtering Content
-future              : false
-unpublished         : false
+## Filtering Content
+future        : false
+unpublished   : false
+
 
 
 #
-# with this default, all files under /_posts (a collection did not work with tags)
+# with this default, all files under /_posts (other collections did not work with tags)
 # get the qualities-layout per default, saving a bit of typing
 #
 defaults:
@@ -93,21 +100,14 @@ defaults:
       path: ""
       type: "posts" # a collection in your site, in plural form
     values:
-      layout: "qualities"  
-#
-# Styles: see "_sass/base/_variables.scss"
-#
-
-plugins:
-  - jekyll-sitemap
-  - jekyll-seo-tag
+      layout: qualities  
+      hide: "true"
 
 
 #
 # !! Danger zone !!
 #
 
-include: ["_pages", "robots.txt"]
 
 markdown: kramdown
 kramdown:
@@ -121,17 +121,15 @@ sass:
   style: :compressed # or :expanded
 
 include:
-  - CNAME
-  - robots.txt
+  - _pages
 
 exclude:
-  - originals/*
+  - originals/
   - Dockerfile
-  - .code-workspace
   - README.md
   - .vscode
   - _docker-compose*
   - _manage*
   - .sass-cache
-  - "*.graffle"
+  - .code-workspace
   
