@@ -20,8 +20,11 @@ order: 25
 
 * build_revision: {{ site.github.build_revision }}
 * The site was last built on {{ site.time | date: '%c' }}. 
-
-
+* It contains:
+   -  {{ site.pages | size }} pages 
+    -  {{ site.posts | size }} posts (aka quality attributes)
+    - {{ site.articles | size }} articles
+    - {{ site.examples | size }} examples of quality requirements
 
 
 ## About me
