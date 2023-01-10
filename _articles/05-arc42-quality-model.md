@@ -51,14 +51,14 @@ Based upon the importance of stakeholders for project success, we centered our a
 
 | Stakeholder Type | Typical Expectations  |
 | :--- | :--- |
-| User| |
-| Management| |
-| Domain expert| |
-| Product owner| |
-| Developer| |
-| Tester| |
-| Admin| |
-| Other| |
+| User| usable in terms of providing expected and desired functions, easy and pleasant to use, reliable, available when needed, safe |
+| Management| efficient in terms of development and operational cost, reliable |
+| Domain expert| reliable and efficient in terms of providing required functions, flexible in terms of providing new functions,   |
+| Product owner| flexible in terms of new features, |
+| Developer| flexible and reliable in terms of maintaining the code, testable |
+| Tester| testable, flexible in terms of automation and instrumentation, reliable in terms of reproducible test results |
+| Admin| operable and reliable in terms of easily operating and administering the system, secure and reliable when integrating with other sytems, flexible in terms of execution environments, safe and secure|
+| Others|  |
 
 ### Just Eight, not 35
 Q42 proposes 8 "tags", which suffice to cover most (hopefully all) of the traditional qualities.
@@ -75,8 +75,22 @@ These tags should be almost self-explanatory, but I'll try to clarify them with 
 | `#secure`| |
 | `#safe`| |
 
+### Code and Architecture Qualities
+In several of the historical quality models, the development teams' interest was either completely ignored or had low priority.
+In 1978, [Barry Boehm](/_articles/02-quality-models) proposed to care for for _structuredness, conciseness_ and _legibility_, but in later models, for example in the ISO-25010 standard, these properties are out of scope.
+
+From my viewpoint, development teams play a crucial role in both initial development and long-term maintenance and evolution of systems.
+Therefore we should consider their requirements on the internal structure and concepts as highly relevant, for example influencing the important _time-to-market_ that most managers constantly call for.
+
+Q42 regards development teams as first-class citizens:
+
+* `#reliable` in terms of "we can add now features or otherwise modify the systems, and can reliably predict the consequences of our changes. We can reliably fix bugs. We can reliably predict runtime behaviour.
+* `#flexible` in several dimensions, e.g. flexible module or component structure, flexible code that is easy to modify, flexible software and hardware infrastructure.
+* `#usable` in terms of understandable module structures, understandable code and data structures, understandable runtime behaviour.
+* `#testable` in terms of test automation, e.g. the systems allows for easy creation and maintenance of unit and acceptance tests to reduce development risks.
+
 ### Summary
-The arc42 quality model has to prove its practical applicability, as it hit the _market_ only in January 2023.
-Alas - we are highly optimistic that Q42 will mirror the usefulness of it's elder sister, the arc42-template.
+The arc42 quality model has yet to prove its practical applicability, as it hit the _market_ only in January 2023.
+Alas - we are highly optimistic that Q42 will mirror the usefulness of it's elder sister, the [arc42-template](https://arc42.org).
 
 Please let us know of any positive or negative experience you encounter with our approach.
