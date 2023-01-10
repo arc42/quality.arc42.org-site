@@ -67,13 +67,13 @@ These tags should be almost self-explanatory, but I'll try to clarify them with 
 | Tag | Meaning(s)  |
 | :--- | :--- |
 | `#reliable`| available, robust, dependable, fail-safe, fault-tolerant, consistent, recoverable, safe, secure|
-| `#flexible`| |
-| `#efficient`| |
-| `#usable`| |
-| `#operable`| |
-| `#testable`| |
-| `#secure`| |
-| `#safe`| |
+| `#flexible`| flexible during development (easy to change and enhance), flexible concerning infrastucture and environments, flexible at runtime (configurable, adjustable, integratable)|
+| `#efficient`| fast, responsive, efficient in terms of memory, cpu, threads, network and other resources, efficiently maintainable and operable|
+| `#usable`| easy and pleasurable to use, attractive, aesthetic|
+| `#operable`| easy to install, operate, monitor and administer, adequate operational costs|
+| `#testable`| easy to test with reliable and consistent results, also in the sense of "easy to analyze or evaluate"|
+| `#secure`| consistent, accountable, confidential, integrous |
+| `#safe`| fail safe, isolating faults, warns of hazards early, identifies risks early |
 
 ### Code and Architecture Qualities
 In several of the historical quality models, the development teams' interest was either completely ignored or had low priority.

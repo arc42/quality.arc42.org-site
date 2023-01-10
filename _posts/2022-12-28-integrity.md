@@ -21,3 +21,9 @@ See [#secure](/tag-secure)
 >Corrupted information is untrustworthy, yet uncorrupted information is of value. 
 >
 >[Wikipedia](https://en.wikipedia.org/wiki/Integrity#In_other_disciplines)
+
+<hr class="with-no-margin"/>
+
+>In common usage, **integrity** is much more common than its adjectival form, **integrous**.
+>
+>[Wiktionary](https://en.wiktionary.org/wiki/integrous)
