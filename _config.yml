@@ -95,17 +95,16 @@ unpublished   : false
 # get the qualities-layout per default, saving a bit of typing
 #
 defaults:
-  -
-    scope:
+  - scope:
       path: ""
       type: "posts" # a collection in your site, in plural form
     values:
       layout: qualities  
       hide: "true"
-    scope:
+  - scope:
       type: "scenarios"
     values:
-      layout: qualities
+      layout: scenarios
       hide: "true"
 
 #
