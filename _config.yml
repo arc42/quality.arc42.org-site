@@ -102,7 +102,11 @@ defaults:
     values:
       layout: qualities  
       hide: "true"
-
+    scope:
+      type: "scenarios"
+    values:
+      layout: qualities
+      hide: "true"
 
 #
 # !! Danger zone !!
