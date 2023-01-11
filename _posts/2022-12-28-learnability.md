@@ -1,7 +1,7 @@
 ---
 title: Learnability
 tags: usable operable
-related: usability, user-error-protection, user-engagement
+related: usability, user-error-protection, user-engagement,conciseness, understandability
 permalink: /qualities/learnability
 ---
 
