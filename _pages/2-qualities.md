@@ -33,8 +33,8 @@ Here you find a list of several _qualities_ (meaning: desirable, expected or req
 {% assign letter_array = letter_string | split: "," %}
 {% for letter in letter_array %}
 <nobr>
-<a style="background-color: #7DCEA0;
-    color: black;
+<b> <a style="background-color: #AED6F1;
+    color: #dd354b;
     padding: 5px 10px;
     border-radius: 11px;
     text-align: center;
@@ -42,7 +42,7 @@ Here you find a list of several _qualities_ (meaning: desirable, expected or req
     display: inline-block;
     margin-top: 3px;
     margin-bottom: 3px"
-    href="{{site.baseurl}}/qualities/#{{letter|slugize}}">{{letter}}</a>
+    href="{{site.baseurl}}/qualities/#{{letter|slugize}}">{{letter}}</a></b>
 </nobr>
 {% endfor %}
 
