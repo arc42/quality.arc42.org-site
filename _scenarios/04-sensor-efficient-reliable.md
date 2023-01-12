@@ -1,6 +1,5 @@
 ---
-layout: qualities
-title: "Example Sensor"
+title: "Fast and accurate sensor"
 tags: efficient reliable
 related: efficiency, preciseness, accuracy
 permalink: /scenarios/sensor

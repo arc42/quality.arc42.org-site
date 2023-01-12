@@ -8,6 +8,7 @@ permalink: /tag-flexible/
 <div class="arc42-help" markdown="1">
 
 Easy to:
+
 * change to new or modified requirements
 * bring into a new or modified execution environment (e.g. new hardware, operating system or cloud provider)
 * handle changed workload
