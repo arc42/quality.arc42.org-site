@@ -48,13 +48,13 @@ Here you find a list of several _qualities_ (meaning: desirable, expected or req
 
 <div id="search-results">
     <hr id="first-hr" class="with-no-margin"/>
-    <h1 ID = "A"> A </h1>
+    <h2 ID = "A"> – A – </h2>
     {% assign previous_first_letter = "A" %}
     {% assign qualities = site.posts | sort %}
     {% for post in qualities  %}
     {% assign current_first_letter = post.title | slice: 0 %}
     {% if current_first_letter != previous_first_letter %}
-    <h1 ID = {{current_first_letter}}> {{current_first_letter}} </h1>
+    <h2 ID = {{current_first_letter}}> – {{current_first_letter}} – </h2>
     {% endif %}
     {% assign previous_first_letter = current_first_letter %}
     <div class="article-wrapper">
