@@ -30,3 +30,6 @@ Online on [iso.org](https://www.iso.org/obp/ui/#iso:std:iso-iec:25010:dis:ed-2:v
 Len Bass, Paul Clements, Rick Kazman: Software Architecture in Practice. 4th Edition, Addison Wesley 2022.
 
 
+<a id="starke-lorz"/>
+### Gernot Starke, Alexander Lorz: Software Architecture Foundations: CPSA-F Exam Preparation. VanHaren Publishing, 2021
+
