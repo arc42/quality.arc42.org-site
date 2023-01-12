@@ -11,7 +11,8 @@ Here you find a list of some background articles about _quality_, quality-models
 <div id="search-results">
     <hr id="first-hr" class="with-no-margin"/>
 
-{% assign examples = site.scenarios | sort %}
+{% assign examples_unsorted = site.posts | where: "categories", "scenarios" %}
+{% assign examples = examples_unsorted | sort %}
 
 
 {% for article in examples %}
