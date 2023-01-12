@@ -45,4 +45,5 @@ I'm:
 
 ## Acknowledgements
 
-Thanx to Michael Mahlberg and Peter Hruschka for suggestions, bug fixes and moral support.
+* Thanx to Michael Mahlberg and Peter Hruschka for suggestions, bug fixes and moral support.
+* Thanx to Per Starke for his awesome technical support in things around Liquid and Jekyl.
