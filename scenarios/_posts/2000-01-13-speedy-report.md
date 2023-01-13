@@ -3,7 +3,6 @@ title: "Speedy report"
 tags: efficient
 related: efficiency, performance, time-behaviour, speed
 permalink: /scenarios/speedy-report
-layout: scenarios
 ---
 
 <div class="arc42-help" markdown="1">

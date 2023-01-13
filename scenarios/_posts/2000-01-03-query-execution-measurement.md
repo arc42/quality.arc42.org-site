@@ -3,7 +3,6 @@ title: "Query execution measurement"
 tags: efficient
 related: efficiency, time-behaviour, memory-usage, resource-efficiency, resource-utilization
 permalink: /scenarios/query-execution-management
-layout: scenarios
 ---
 
 <div class="arc42-help" markdown="1">
