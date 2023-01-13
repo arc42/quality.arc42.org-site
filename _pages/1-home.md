@@ -38,7 +38,7 @@ A single quality attribute (like "availability") might have multiple tags (#reli
 {% assign tags_testable = site.posts | where_exp: "posts", "posts.tags contains 'testable'" %}
 {% assign tags_operable = site.posts | where_exp: "posts", "posts.tags contains 'operable'" %}
 
-| Tag (quality) | Explanation          |
+| Key property | Explanation          |
 | :--- | :--- |
 | [**#reliable**](/tag-reliable/) ({{ tags_reliable | size }}) | Perform specified functions under specified conditions without interruptions and failures.  |
 |-|----------------------------|
