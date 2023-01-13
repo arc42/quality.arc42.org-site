@@ -3,6 +3,7 @@ title: "Generated code is easily understandable"
 tags: efficient usable testable
 related: efficiency, maintainability, understandability
 permalink: /scenarios/generated-code-understandable
+layout: scenarios
 ---
 
 <div class="arc42-help" markdown="1">

@@ -3,6 +3,7 @@ title: "New checking strategy"
 tags: efficient
 related: efficiency, maintainability,
 permalink: /scenarios/new-checking-strategy
+layout: scenarios
 
 ---
 

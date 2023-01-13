@@ -3,6 +3,7 @@ title: "Calculation of gamma coefficient with high precision"
 tags: reliable
 related: preciseness, accuracy, correctness
 permalink: /scenarios/high-precision-calculation
+layout: scenarios
 ---
 
 <div class="arc42-help" markdown="1">

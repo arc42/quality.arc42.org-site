@@ -3,6 +3,7 @@ title: "Updates of annual accounting report"
 tags: efficient flexible
 related: efficiency, maintainability,
 permalink: /scenarios/annual-tax-update
+layout: scenarios
 
 ---
 

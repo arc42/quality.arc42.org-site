@@ -18,7 +18,8 @@ Read more on the **[background of scenarios](/_articles/06-quality-requirements/
 <div id="search-results">
     <hr id="first-hr" class="with-no-margin"/>
 
-{% assign examples = site.scenarios | sort %}
+{% assign examples_unsorted = site.posts | where: "categories", "scenarios" %}
+{% assign examples = examples_unsorted | sort %}
 
 
 {% for example in examples %}

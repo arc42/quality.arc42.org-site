@@ -3,6 +3,7 @@ title: "Business Data Checker"
 tags: flexible operable
 related: portability, adaptability, flexibility 
 permalink: /scenarios/business-data-checker
+layout: scenarios
 ---
 
 <div class="arc42-help" markdown="1">
