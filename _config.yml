@@ -96,13 +96,14 @@ unpublished   : false
 #
 defaults:
   - scope:
-      path: ""
-      type: "posts" # a collection in your site, in plural form
+      path: "qualities"
+      type: "posts"
     values:
-      layout: qualities  
+      layout: qualities
       hide: "true"
   - scope:
-      type: "scenarios"
+      path: "scenarios"
+      type: "posts"
     values:
       layout: scenarios
       hide: "true"
