@@ -16,7 +16,7 @@
     color: #fed401;
 }
 
-.ukraine-heart {
+.heart {
     --fa-beat-scale: 1.2;
 }
 
@@ -57,3 +57,12 @@ a.hov.tags {
     margin-left: 10px;
     margin-right: 1px
 }
+
+
+
+/* style for INNOQ on about-this-site */
+
+.innoq-text {
+    color: #ff9c66;
+}
+

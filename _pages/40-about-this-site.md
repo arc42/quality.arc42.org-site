@@ -7,7 +7,7 @@ order: 25
 
 ## Support
 
-[INNOQ](https://innoq.com) <span style="color: #ff9c66;"><i class="fa-solid fa-heart fa-beat" style="--fa-beat-scale: 1.2;"></i></span> supports creation and maintenance of this site.
+[INNOQ](https://innoq.com) <span class="innoq-text"><i class="fa-solid fa-heart fa-beat heart"></i></span> supports creation and maintenance of this site.
 
 
 ## Tooling
