@@ -22,8 +22,8 @@ Read more on the [shortcomings of the ISO-25010](articles/)
 
 <hr class="with-no-margin"/>
 
-
-On this site you find explanations to (currently {{ site.posts | size }}) _qualities_ of software systems and -architectures.
+{% assign qualities = site.posts | where: "categories", "qualities" %}
+On this site you find explanations to (currently {{ qualities | size }}) _qualities_ of software systems and -architectures.
 
 These are organized along the following top-level properties (attributes or _tags_). 
 A single quality attribute (like "availability") might have multiple tags (#reliable, #usable and #safe, in this case)).
