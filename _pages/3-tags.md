@@ -5,12 +5,6 @@ permalink: /tags/
 order: 5
 ---
 
-<style>
-  li.hov:hover {
-    transform: scale(1.2);
-  }
-</style>
-
 {% capture site_tags %}{% for tag in site.tags %}{{ tag | first }}{% unless forloop.last %},{% endunless %}{% endfor %}{% endcapture %}
 <!-- site_tags: {{ site_tags }} -->
 {% assign tag_words = site_tags |  split:',' | sort %}
@@ -21,11 +15,11 @@ order: 5
   {% for tag in tag_words %}
     <!-- make the tags of the arc42-quality-model stand out -->
     {% if tag == "reliable" or tag == "flexible" or tag=="efficient" or tag == "usable" or tag == "safe" or tag == "secure" or tag == "testable" or tag == "operable" %}
-       <li  class="hov"><a href="/tag-{{ tag | cgi_escape }}"><font color="#dd354b"><b>{{ tag }}</b>
-       <span>{{ site.tags[tag] | size }}</span></font></a></li>
+    <a class="hov tags" href="/tag-{{ tag | cgi_escape }}"><b>{{ tag }}</b>
+       <span>{{ site.tags[tag] | size }}</span></a>
     {% else %}
         <!-- other tags in different color  -->
-        <li class="hov"><a href="#{{ tag | cgi_escape }}">{{ tag }}
+        <li><a class="hov tags" href="#{{ tag | cgi_escape }}">{{ tag }}
         <span>{{ site.tags[tag] | size }}</span></a></li>
     {% endif %}
   {% endfor %}

@@ -43,3 +43,17 @@ a.hov {
     margin-top: 3px;
     margin-bottom: 3px
 }
+
+a.hov.tags {
+    line-height: 1.2;
+    background-color: #AED6F1;
+    color: #dd354b;
+    border-radius: 11px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    margin-left: 10px;
+    margin-right: 1px
+}
