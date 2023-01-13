@@ -1,0 +1,19 @@
+/* special styles for arc42 quality website like ukraine-text & hovers for tag-links */
+
+/* Ukraine on home.md */
+
+.ukraine-text {
+    font-size: 22px;
+    color: #005bbb;
+}
+
+.ukraine-size {
+    position:relative;
+    right:10px;
+    font-size: 14px;
+    color: #fed401;
+}
+
+.ukraine-heart {
+    --fa-beat-scale: 1.2;
+}
