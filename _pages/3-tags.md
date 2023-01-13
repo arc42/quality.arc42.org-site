@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Qualities by tags 
+title: Quality properties 
 permalink: /tags/
 order: 5
 ---
