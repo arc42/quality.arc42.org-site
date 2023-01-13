@@ -10,13 +10,12 @@ order: 1
 >Please assist humanitarian efforts for the Ukrainian people and those affected by the military invasion of Ukraine by supporting international aid organizations, including the [International Committee of the Red Cross](https://www.icrc.org/en). 
 
 ## arc42 Quality Model (v 1.0)
-![arc42 Quality Model (v1.0)](/images/arc42-system-qualities-overview.webp)
 
 Information-technology systems have to meet required, desired and expected quality goals and requirements. 
 Therefore, development teams we need such requirements in concrete, specific and operationalized ways.
 The current quality standards, like ISO-25010, lack practical guidance and pragmatism, therefore we propose a usable and simple alternative.
-<br>
-Read more on the [shortcomings of the ISO-25010](articles/)
+
+![arc42 Quality Model (v1.0)](/images/arc42-system-qualities-overview.webp)
 
 
 
