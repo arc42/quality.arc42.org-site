@@ -3,7 +3,6 @@ title: "Fast and accurate sensor"
 tags: efficient reliable
 related: efficiency, preciseness, accuracy
 permalink: /scenarios/sensor
-layout: scenarios
 ---
 
 <div class="arc42-help" markdown="1">

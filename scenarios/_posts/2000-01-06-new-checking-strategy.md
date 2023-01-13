@@ -3,8 +3,6 @@ title: "New checking strategy"
 tags: efficient
 related: efficiency, maintainability,
 permalink: /scenarios/new-checking-strategy
-layout: scenarios
-
 ---
 
 <div class="arc42-help" markdown="1">

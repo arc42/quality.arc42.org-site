@@ -3,7 +3,6 @@ title: "Fast rollout of changes"
 tags: efficient operable
 related: efficiency, operability, speed
 permalink: /scenarios/fast-rollout-of-changes
-layout: scenarios
 ---
 
 <div class="arc42-help" markdown="1">

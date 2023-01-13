@@ -3,7 +3,6 @@ title: "Change cloud provider"
 tags: flexible
 related: flexibility, maintainability, adaptability
 permalink: /scenarios/change-cloud-provider
-layout: scenarios
 ---
 
 <div class="arc42-help" markdown="1">
