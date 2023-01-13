@@ -1,5 +1,7 @@
 /* special styles for arc42 quality website like ukraine-text & hovers for tag-links */
 
+
+
 /* Ukraine on home.md */
 
 .ukraine-text {
@@ -16,4 +18,28 @@
 
 .ukraine-heart {
     --fa-beat-scale: 1.2;
+}
+
+
+
+/* hover for a-tags (post-tags and initial letters) */
+a.hov:hover {
+    transform: scale(1.25);
+    text-decoration: none
+}
+
+
+
+/* style for post-tags and initial letters */
+
+a.hov {
+    background-color: #AED6F1;
+    color: #dd354b;
+    padding: 5px 10px;
+    border-radius: 11px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 3px;
+    margin-bottom: 3px
 }

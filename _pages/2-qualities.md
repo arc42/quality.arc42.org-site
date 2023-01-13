@@ -23,27 +23,12 @@ Here you find a list of several _qualities_ (meaning: desirable, expected or req
     {% endif %}
 {% endfor %}
 
-<style>
-  a.hov:hover {
-    transform: scale(1.25);
-  }
-</style>
-
 ### Jump to specific letter:
 
 {% assign letter_array = letter_string | split: "," %}
 {% for letter in letter_array %}
 <nobr>
-<b><a class="hov" style="background-color: #AED6F1;
-    color: #dd354b;
-    padding: 5px 10px;
-    border-radius: 11px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    margin-top: 3px;
-    margin-bottom: 3px"
-    href="{{site.baseurl}}/qualities/#{{letter|slugize}}">{{letter}}</a></b>
+<b><a class="hov" href="{{site.baseurl}}/qualities/#{{letter|slugize}}">{{letter}}</a></b>
 </nobr>
 {% endfor %}
 
