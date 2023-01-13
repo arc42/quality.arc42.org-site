@@ -3,7 +3,6 @@ title: "Luggage routing at airport"
 tags: flexible efficient
 related: flexibility, maintainability, changeability, adaptability 
 permalink: /scenarios/luggage-routing
-layout: scenarios
 ---
 
 <div class="arc42-help" markdown="1">

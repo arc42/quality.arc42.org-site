@@ -3,7 +3,6 @@ title: "Quickly locate bugs"
 tags: efficient
 related: efficiency, maintainability
 permalink: /scenarios/quickly-locate-bugs
-layout: scenarios
 ---
 
 <div class="arc42-help" markdown="1">
