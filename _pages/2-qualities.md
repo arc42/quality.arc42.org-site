@@ -11,7 +11,8 @@ Here you find a list of several _qualities_ (meaning: desirable, expected or req
 {% assign letter_string = "A" %}
 {% assign previous_first_letter = "A" %}
 
-{% assign qualities = site.posts | sort %}
+{% assign qualities_unsorted = site.posts | where: "categories", "qualities" %}
+{% assign qualities = qualities_unsorted | sort %}
 
 {% for post in qualities  %}
     {% assign current_first_letter = post.title | slice: 0 %}
@@ -28,7 +29,7 @@ Here you find a list of several _qualities_ (meaning: desirable, expected or req
   }
 </style>
 
-### Jump to a specific letter:
+### Jump to specific letter:
 
 {% assign letter_array = letter_string | split: "," %}
 {% for letter in letter_array %}
@@ -48,13 +49,12 @@ Here you find a list of several _qualities_ (meaning: desirable, expected or req
 
 <div id="search-results">
     <hr id="first-hr" class="with-no-margin"/>
-    <h2 ID = "A"> – A – </h2>
+    <h2 ID = "A"> &mdash; A &mdash; </h2>
     {% assign previous_first_letter = "A" %}
-    {% assign qualities = site.posts | sort %}
     {% for post in qualities  %}
     {% assign current_first_letter = post.title | slice: 0 %}
     {% if current_first_letter != previous_first_letter %}
-    <h2 ID = {{current_first_letter}}> – {{current_first_letter}} – </h2>
+    <h2 ID = {{current_first_letter}}> &mdash; {{current_first_letter}} &mdash; </h2>
     {% endif %}
     {% assign previous_first_letter = current_first_letter %}
     <div class="article-wrapper">

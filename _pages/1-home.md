@@ -25,7 +25,7 @@ Read more on the [shortcomings of the ISO-25010](articles/)
 
 On this site you find explanations to (currently {{ site.posts | size }}) _qualities_ of software systems and -architectures.
 
-These are organized along the following top-level tags (properties or attributes). 
+These are organized along the following top-level properties (attributes or _tags_). 
 A single quality attribute (like "availability") might have multiple tags (#reliable, #usable and #safe, in this case)).
 
 
@@ -38,7 +38,7 @@ A single quality attribute (like "availability") might have multiple tags (#reli
 {% assign tags_testable = site.posts | where_exp: "posts", "posts.tags contains 'testable'" %}
 {% assign tags_operable = site.posts | where_exp: "posts", "posts.tags contains 'operable'" %}
 
-| Tag (quality) | Explanation          |
+| Top-level property | Explanation          |
 | :--- | :--- |
 | [**#reliable**](/tag-reliable/) ({{ tags_reliable | size }}) | Perform specified functions under specified conditions without interruptions and failures.  |
 |-|----------------------------|
