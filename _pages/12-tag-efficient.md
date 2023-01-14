@@ -1,7 +1,7 @@
 ---
 layout: page
 title: "#efficient"
-order: 12
+hide: true
 permalink: /tag-efficient/
 ---
 

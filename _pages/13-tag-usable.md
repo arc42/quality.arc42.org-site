@@ -1,7 +1,7 @@
 ---
 layout: page
 title: "#usable"
-order: 13
+hide: true
 permalink: /tag-usable/
 ---
 

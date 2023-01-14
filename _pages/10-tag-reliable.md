@@ -1,7 +1,7 @@
 ---
 layout: page
 title: "#reliable"
-order: 10
+hide: true
 permalink: /tag-reliable/
 ---
 

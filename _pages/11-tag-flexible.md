@@ -1,7 +1,7 @@
 ---
 layout: page
 title: "#flexible"
-order: 11
+hide: true
 permalink: /tag-flexible/
 ---
 

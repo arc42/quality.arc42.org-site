@@ -1,7 +1,7 @@
 ---
 layout: page
 title: "#secure"
-order: 15
+hide: true
 permalink: /tag-secure/
 ---
 

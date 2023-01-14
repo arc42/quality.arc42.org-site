@@ -1,7 +1,7 @@
 ---
 layout: page
 title: "#operable"
-order: 17
+hide: true
 permalink: /tag-operable/
 ---
 
