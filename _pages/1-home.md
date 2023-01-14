@@ -28,11 +28,12 @@ Find out more in our **[introduction to the Q42 quality model](/_articles/05-arc
 ## Explanations, Examples and Cross-References
 
 {% assign qualities = site.posts | where: "categories", "qualities" %}
+{% assign scenarios = site.posts | where: "categories", "scenarios" %}
 
 On this site you find: 
 
 * explanations to (currently {{ qualities | size }}) _qualities_ of software systems and -architectures.
-* {{ scenarios | size }} examples for specific quality requirements
+* {{ scenarios | size }} examples for specific quality requirements
   
 These are cross-referenced organized along the following top-level properties (attributes or _tags_). 
 A single quality attribute (like "availability") might have multiple tags (#reliable, #usable and #safe, in this case)).
