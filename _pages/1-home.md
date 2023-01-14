@@ -13,18 +13,28 @@ order: 1
 
 Information-technology systems have to meet required, desired and expected quality goals and requirements. 
 Therefore, development teams we need such requirements in concrete, specific and operationalized ways.
-The current quality standards, like ISO-25010, lack practical guidance and pragmatism, therefore we propose a usable and simple alternative.
+The current quality standards, like ISO-25010, lack practical guidance and pragmatism, therefore we propose a usable and simple alternative:
 
 ![arc42 Quality Model (v1.0)](/images/arc42-system-qualities-overview.webp)
 
+The arc42 quality model Q42 (pronounced "Kju-Fortytwo" or "Kju-Four-Two") is a simple, pragmatic yet effective approach to product and system quality.
+It starts with stakeholders' expectations and requirements. 
+From these, it derives 8 important system properties, which are sufficient to cover most, if not all, required, desireable or expected of the more than 100 _traditional_ qualities.
 
+Find out more in our **[introduction to the Q42 quality model](/_articles/05-arc42-quality-model)**
 
 <hr class="with-no-margin"/>
 
-{% assign qualities = site.posts | where: "categories", "qualities" %}
-On this site you find explanations to (currently {{ qualities | size }}) _qualities_ of software systems and -architectures.
+## Explanations, Examples and Cross-References
 
-These are organized along the following top-level properties (attributes or _tags_). 
+{% assign qualities = site.posts | where: "categories", "qualities" %}
+
+On this site you find: 
+
+* explanations to (currently {{ qualities | size }}) _qualities_ of software systems and -architectures.
+* {{ scenarios | size }} examples for specific quality requirements
+  
+These are cross-referenced organized along the following top-level properties (attributes or _tags_). 
 A single quality attribute (like "availability") might have multiple tags (#reliable, #usable and #safe, in this case)).
 
 
