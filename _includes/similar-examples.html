@@ -1,0 +1,19 @@
+<h2>Similar Examples</h2>
+{% assign page_tags = page.tags %}
+{% assign no_show_titles = page.title %}
+<ul class="posts">
+    {% for page_tag in page_tags %}
+    {% assign posts = site.tags[page_tag] | where: "categories", "scenarios" %}
+    {% for post in posts %}
+    {% unless no_show_titles contains post.title %}
+    <li> <a href="{{post.permalink}}">{{post.title}}</a> &nbsp; | &nbsp; <i>
+        {% assign no_show_titles = no_show_titles | append: post.title%}
+        <small> <i class="fa fa-tags" style="color: #1675b9;"> </i> &nbsp; </small>
+        {% for tag in post.tags %}
+        <small> <a href="/tag-{{tag}}">#{{tag}}</a> </small>
+        {% endfor %}
+        {% endunless %}
+    </i></li>
+    {% endfor %}
+    {% endfor %}
+</ul>
