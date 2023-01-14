@@ -41,9 +41,10 @@ I'm:
 * active member and working group lead within the <a href="https://www.isaqb.org">iSAQB</a>,
 * regular presenter at IT-conferences,
 * author and co-author of more than a dozen books on software architecture, patterns, arc, and the like. I'm really sorry - most of these books are written in German. Have a look at <a href="https://www.leanpub.com">Leanpub</a> for some of my English books.
+* author of quite a few [articles](https://www.gernotstarke.de/artikel)
 
 
 ## Acknowledgements
 
-* Thanx to Michael Mahlberg and Peter Hruschka for suggestions, bug fixes and moral support.
-* Thanx to Per Starke for his awesome technical support in things around Liquid and Jekyl.
+* Thanx to Michael Mahlberg, Markus Meuten and Peter Hruschka for suggestions, bug fixes and moral support.
+* Thanx to Per Starke for his awesome technical support in things around Liquid and Jekyll.
