@@ -41,7 +41,9 @@ a.hov {
     text-decoration: none;
     display: inline-block;
     margin-top: 3px;
-    margin-bottom: 3px
+    margin-bottom: 3px;
+    margin-left: 2px;
+    margin-right: 2px
 }
 
 a.hov.tags {
