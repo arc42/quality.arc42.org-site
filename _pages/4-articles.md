@@ -2,7 +2,7 @@
 layout: page
 title: Background on "Quality"
 permalink: /articles/
-order: 5
+order: 10
 ---
 
 Here you find a list of some background articles about _quality_, quality-models, the ISO-25010 standard and quality requirements.
