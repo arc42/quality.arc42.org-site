@@ -6,18 +6,18 @@
 
 .ukraine-text {
     font-size: 22px;
-    color: #005bbb;
+    color: #005bbb
 }
 
 .ukraine-size {
     position:relative;
     right:10px;
     font-size: 14px;
-    color: #fed401;
+    color: #fed401
 }
 
 .heart {
-    --fa-beat-scale: 1.2;
+    --fa-beat-scale: 1.2
 }
 
 
@@ -41,7 +41,9 @@ a.hov {
     text-decoration: none;
     display: inline-block;
     margin-top: 3px;
-    margin-bottom: 3px
+    margin-bottom: 3px;
+    margin-left: 2px;
+    margin-right: 2px
 }
 
 a.hov.tags {
