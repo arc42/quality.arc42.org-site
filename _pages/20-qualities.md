@@ -2,7 +2,7 @@
 layout: page
 title: Qualities by name
 permalink: /qualities/
-order: 3
+order: 20
 ---
 
 Here you find a list of several _qualities_ (meaning: desirable, expected or required properties) of IT systems).

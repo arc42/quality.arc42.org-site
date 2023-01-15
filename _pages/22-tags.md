@@ -2,7 +2,7 @@
 layout: page
 title: Quality properties 
 permalink: /tags/
-order: 5
+order: 22
 ---
 
 {% capture site_tags %}{% for tag in site.tags %}{{ tag | first }}{% unless forloop.last %},{% endunless %}{% endfor %}{% endcapture %}

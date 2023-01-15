@@ -25,7 +25,7 @@ The arc42 quality model Q42 (pronounced "Kju-Fortytwo" or "Kju-Four-Two") is a s
 It starts with stakeholders' expectations and requirements. 
 From these, it derives 8 important system properties, which are sufficient to cover most, if not all, required, desireable or expected of the more than 100 _traditional_ qualities.
 
-Find out more in our **[introduction to the Q42 quality model](/_articles/05-arc42-quality-model)**
+Find out more in our **[introduction to the Q42 quality model](/articles/arc42-quality-model)**
 
 <hr class="with-no-margin"/>
 
