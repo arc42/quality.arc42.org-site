@@ -5,15 +5,15 @@ tags: arc42 quality-model
 permalink: /articles/arc42-quality-model
 ---
 
-<div class="arc42-help" markdown="1">
-Instead of just complaining we decided to go forward with a simple, pragmatic yet effective approach to product and system quality.
 
-The arc42 quality model Q42 (pronounced "Kju-Fortytwo" or "Kju-Four-Two") starts with stakeholders' expectations and requirements. 
-From these, we derived 8 important system properties, which are sufficient to cover most, if not all, required, desireable or expected of the nearly 100 _traditional_ qualities.
+The arc42 quality model Q42 (pronounced "Kju-Fortytwo" or "Kju-Four-Two") is simple, pragmatic yet effective approach to product and system quality.
+It starts with **stakeholders' expectations and requirements**.
 
-![arc42 quality model](/images/arc42-system-qualities-overview.webp)
-</div><br>
+Based upon typical stakeholder needs, Q42 consists of just 8 key system properties, which are sufficient to cover most, if not all, required, desireable or expected of the more than 100 [_traditional_ qualities](/qualities).
 
+![arc42 quality model](/images/arc42-system-qualities-overview.svg)
+
+But let's start at the beginning:
 ### Goals for Q42
 
 * minimal, yet covering most of the traditional product and system quality properties
@@ -24,22 +24,25 @@ From these, we derived 8 important system properties, which are sufficient to co
 * agnostic to develoment methods
 
 ### Fresh Approach
-Q42 which methodically breaks new ground. 
-After more than 40 years of using nouns (like "Flexibility") to describe properties (like "flexible"), we have finally turned to adjectives.
+Existing models like ISO-25010 propagated a fixed hierarchy (like a tree) of system qualities.
+Within these _trees_, it is often difficult or impossible to determine to which of the top-level characteristics a particular and specific quality requirement belongs. 
+Therefore, Q42 breaks new ground by proposing only 8 adjectives (like _flexible_) as core quality properties.
+
+It uses adjectives instead of nouns (like _flexibility_), which better reflects stakeholder expectations like _"I need XYZ to be flexible"_.
+These core properties (like reliable, flexible, usable, efficient etc) are used like labels or tags:
+Specific quality requirements might have several of such labels or tags.
+
 It has been unclear to me for years that those responsible for ISO and other quality models write about "quality attributes", but fail to use that type of words in their respective models.
 But that is a minor thing, despite being immediately visible.
 
-A second and fundamental difference is the abandonment of a fixed hierarchy: 
-Existing models (e.g. [ISO-25010](/_articles/03-iso-25010-shortcomings)), it is often difficult or impossible to determine to which of the top-level characteristics a particular and specific quality requirement belongs. 
-Take, for example, the requirement "Product search must be constantly available during office hours from 9-17 o'clock".
+To facilitate stakeholder communication and understanding, Q42 contains definitions and explanations for more than 100 different _traditional_ system or product qualities, all labelled or tagged with one or several of the 8 key properties.
 
-Does this requirement belong to availability or usability in the fixed ISO-25010 hierarchy? 
-My opinion: both. 
-The traditional models propose that stakeholders decide for one, but in my opinion that leads to useless discussions.
+#### Example Quality Requirements
 
-Q42 takes a different approach here: 
-Instead of focusing on a fixed hierarchy of terms, Q42 relies on just eight "tags" (labels). 
-This makes it possible to label a concrete quality requirement with several of these tags.
+#### Hyperlinks as Best-Friends
+All terms and example-requirements are cross-referenced (_hyperlinked_).
+
+
 
 ### Stakeholder first
 
