@@ -1,11 +1,11 @@
 /* style for the ukraine-quote on home.md, made to be included on other webpages as well */
 
-.ukraine-text {
+.ua-text {
     font-size: 22px;
     color: #005bbb
 }
 
-.ukraine-size {
+.ua-size {
     position:relative;
     right:10px;
     font-size: 14px;
@@ -16,6 +16,6 @@
     --fa-beat-scale: 1.2
 }
 
-div.greybackground {
-    background-color: Gainsboro;
+div.ua-background {
+    background-color: #e7ddd8;
 }
