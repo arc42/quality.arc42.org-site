@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: page_examples
 title: Examples of Quality Requirements
 permalink: /scenarios/
 order: 6

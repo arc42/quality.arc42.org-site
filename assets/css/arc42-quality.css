@@ -49,3 +49,11 @@ a.hov.tags {
     color: #ff9c66;
 }
 
+
+
+/* different header color for scenarios */
+
+#scenario-header{
+    background-color: #DEEFB7;
+}
+

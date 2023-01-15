@@ -8,25 +8,9 @@ layout: default
         <section class="post-content">
             {{ content }}
         </section>
-
-
-        {% include similar-examples.html %}
-
-
-        <h2>Related Qualities</h2>
-
-        {% assign related_qualities = page.related | split:', ' | sort %}
-        <ul class="posts">
-            {% for quality in related_qualities %}
-            <li> <a href="/qualities/{{quality }}">{{quality}}</a></li>
-            {% endfor %}
-        </ul>
-
-
         {% include article-footer.html page=page share=page.share %}
     </article>
 </div>
-
 
 {% if site.show-subtle-ads %}
 <section class="subtle-ads">
