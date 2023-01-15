@@ -14,7 +14,7 @@ permalink: /scenarios/detect-inconsistent-user-input
 
 **Background**: It needs to be clarified what kind of inconsistencies can be recognized within the domain.
 
-</div><br>
+</div>
 
 
 
