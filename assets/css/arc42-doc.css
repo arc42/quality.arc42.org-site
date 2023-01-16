@@ -28,6 +28,30 @@ p {
   background-size: 24px 26px;
 }
 
+/* unified style for quality requirement text */
+.quality-requirement {
+  color: #002080;
+  padding: 5px 5px;
+  background: #DEEFB7;
+  border-radius: 4px;
+
+  -webkit-box-shadow: 3px 3px 4px 0px #ACBD85;
+  -moz-box-shadow: 3px 3px 4px 0px #ACBD85;
+  box-shadow: 3px 3px 4px 0px #ACBD85;
+}
+
+/* use before-pseudo-class to add icon */
+.quality-requirement::before {
+  display: block;
+  float: right;
+  width: 24px;
+  height: 26px;
+
+  content: "";
+  background: url("./arc42-exclamation.svg") no-repeat;
+  background-size: 24px 26px;
+}
+
 /* subtle ads */
 
 .subtle-ad {
