@@ -5,7 +5,7 @@ related: usability, functionality, functional-suitability, functional-correctnes
 permalink: /qualities/correctness
 ---
 
-See also [correctness](/qualities/functional-correctness)
+See also [functional-correctness](/qualities/functional-correctness)
 
 
 Definitions:
