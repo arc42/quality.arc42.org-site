@@ -34,7 +34,13 @@ p {
     font-size: 1em;
 }
 .quality-requirement ul > li::before {
-    content: "•";
+    content: "●";
+    display: table-cell;
+    text-align: right;
+    padding-right: 5px;
+}
+.quality-requirement ul > li > ul > li::before {
+    content: "○";
     display: table-cell;
     text-align: right;
     padding-right: 5px;
