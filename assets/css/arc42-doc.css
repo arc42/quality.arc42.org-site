@@ -28,6 +28,22 @@ p {
   box-shadow: 3px 3px 4px 0px #ACBD85;
 }
 
+/* Proper indentation for lists inside quality requirement */
+.quality-requirement ul {
+    display: table;
+}
+
+.quality-requirement ul > li {
+    display: table-row;
+}
+
+.quality-requirement ul > li::before {
+    content: "•";
+    display: table-cell;
+    text-align: right;
+    padding-right: 5px;
+}
+
 /* use before-pseudo-class to add icon */
 .arc42-help::before, .quality-requirement::before {
   display: block;
