@@ -13,7 +13,7 @@ Easy to:
 * bring into a new or modified execution environment (e.g. new hardware, operating system or cloud provider)
 * handle changed workload
   
-</div><br>
+</div>
 
 ### Definition
 
