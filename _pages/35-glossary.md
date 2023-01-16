@@ -1,8 +1,8 @@
 ---
 layout: page
-title: References
-permalink: /references/
-order: 60
+title: Glossary
+permalink: /glossary/
+order: 35
 ---
 
 

@@ -1,8 +1,7 @@
 
 <hr class="with-no-margin"/>
-## Qualities tagged with \#{{ include.topic }}
 
-
+## <font style="background-color:#dbf0fe">Qualities tagged with #{{ include.topic }}</font>
 
 <div id="search-results">
   <ul class="posts">
@@ -15,7 +14,8 @@
 </div>
 
 
-## Scenarios tagged with \#{{ include.topic }}
+ 
+## <font style="background-color:#ddefb7">Requirements tagged with #{{ include.topic }}</font>
 
 <div id="search-results">
   <ul class="posts">

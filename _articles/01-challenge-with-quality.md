@@ -70,6 +70,10 @@ Tea, coffee, cheese, shoes, pants or even a smartphone:
 The exact characteristics that make up the quality of these things can (sorry, _will surely!_) lead to debates.
 
 
+>_Quality is conformance to requirements._
+>
+>[Crosby, p.17](/references/#crosby-quality)
+
 ### Two Dimensions...
 
 Now it's getting complicated, because the term "quality" gets two different dimensions. 

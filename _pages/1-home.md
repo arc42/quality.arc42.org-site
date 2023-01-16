@@ -13,7 +13,14 @@ order: 1
 
 </div>
 
+<center>
+
+<b>System and product quality, made as simple and pragmatic as possible.</b>
+
+</center>
+
 ## arc42 Quality Model (v 1.0)
+
 
 Information-technology systems have to meet required, desired and expected quality goals and requirements. 
 Therefore, development teams we need such requirements in concrete, specific and operationalized ways.
@@ -36,14 +43,14 @@ Find out more in our **[introduction to the Q42 quality model](/articles/arc42-q
 
 On this site you find: 
 
-<ul>
-<li> <font style="background-color:#dbf0fe;">explanations to (currently {{ qualities | size }}) _qualities_ of software systems and -architectures, which are blueish in color.</font></li>
-<li> <font style="background-color:#ddefb7">{{ scenarios | size }} examples for specific quality requirements, which are greenish in color.</font></li>
-</ul>
+* <font style="background-color:#dbf0fe;">explanations to (currently {{ qualities | size }}) _qualities_ of software systems and -architectures, which are blueish in color.</font>
+* <font style="background-color:#ddefb7">{{ scenarios | size }} examples for specific quality **requirements**, which are greenish in color.</font>
+* several [articles with background information](/articles) on quality
+* a brief glossary of quality-related terms
 
 
-These are cross-referenced organized along the following top-level properties (attributes or _tags_). 
-A single quality attribute (like "availability") might have multiple tags (#reliable, #usable and #safe, in this case)).
+Qualities and example-requirements are organized along the following top-level properties (attributes or _tags_), and cross-referenced. 
+A single quality attribute (like "availability") might have multiple properties (#reliable, #usable and #safe, in this case)).
 
 
 {% assign tags_reliable = site.posts | where_exp: "posts", "posts.tags contains 'reliable'" %}
