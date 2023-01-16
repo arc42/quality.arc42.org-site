@@ -6,6 +6,7 @@ permalink: /scenarios/dummy
 ---
 
 <div class="arc42-help" markdown="1">
+
 **Background**: 
 
 **Stimulus**: 
