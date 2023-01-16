@@ -16,18 +16,6 @@ p {
   box-shadow: 3px 3px 4px 0px rgba(11,82,185,1);
 }
 
-/* use before-pseudo-class to add icon */
-.arc42-help::before {
-  display: block;
-  float: right;
-  width: 24px;
-  height: 26px;
-
-  content: "";
-  background: url("./arc42-exclamation.svg") no-repeat;
-  background-size: 24px 26px;
-}
-
 /* unified style for quality requirement text */
 .quality-requirement {
   color: #002080;
@@ -41,7 +29,7 @@ p {
 }
 
 /* use before-pseudo-class to add icon */
-.quality-requirement::before {
+.arc42-help::before, .quality-requirement::before {
   display: block;
   float: right;
   width: 24px;
@@ -51,6 +39,8 @@ p {
   background: url("./arc42-exclamation.svg") no-repeat;
   background-size: 24px 26px;
 }
+
+
 
 /* subtle ads */
 
