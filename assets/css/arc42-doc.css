@@ -29,14 +29,10 @@ p {
 }
 
 /* Proper indentation for lists inside quality requirement */
-.quality-requirement ul {
-    display: table;
-}
-
 .quality-requirement ul > li {
     display: table-row;
+    font-size: 1em;
 }
-
 .quality-requirement ul > li::before {
     content: "•";
     display: table-cell;
