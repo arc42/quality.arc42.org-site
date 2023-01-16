@@ -5,7 +5,7 @@ related: flexibility, maintainability, adaptability
 permalink: /scenarios/change-cloud-provider
 ---
 
-<div class="arc42-help" markdown="1">
+<div class="quality-requirement" markdown="1">
 
 
 **Stimulus**: Management or other important stakeholders decide to change the cloud provider.

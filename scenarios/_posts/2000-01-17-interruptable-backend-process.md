@@ -5,7 +5,7 @@ related: usability, user-experience, time-behaviour
 permalink: /scenarios/interruptable-backend-process
 ---
 
-<div class="arc42-help" markdown="1">
+<div class="quality-requirement" markdown="1">
 
 **Stimulus**: User has (accidently) started a report generation, but now wants to interrupt and clicks the `abort` or `cancel` button or select the cancel-function via keyboard.
 **Reaction**: The system interrupts the report generation, saves the current generation state (in case user wants to continue later) and returns control to the user interface. 

@@ -5,7 +5,7 @@ related: efficiency, maintainability,
 permalink: /scenarios/maintainable-checking-strategy
 ---
 
-<div class="arc42-help" markdown="1">
+<div class="quality-requirement" markdown="1">
 
 **Stimulus**: A user needs a specific kind of check currently not available in HtmlSC
 

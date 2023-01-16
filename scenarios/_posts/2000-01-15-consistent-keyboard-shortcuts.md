@@ -5,7 +5,7 @@ related: usability, consistency, user-experience, user-assistance
 permalink: /scenarios/consistent-keyboard-shortcuts
 ---
 
-<div class="arc42-help" markdown="1">
+<div class="quality-requirement" markdown="1">
 
 
 **Stimulus**: User expects/requires to use the keyboard (instead of the mouse) to navigate within the user interface, in all parts of the user interface.

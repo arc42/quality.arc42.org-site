@@ -5,7 +5,7 @@ related: usability, user-experience, compliance
 permalink: /scenarios/compliance-with-ui-styleguide
 ---
 
-<div class="arc42-help" markdown="1">
+<div class="quality-requirement" markdown="1">
 
 **Stimulus**: The user interface and interactive components of the system are to be redesigned and implemented.
 

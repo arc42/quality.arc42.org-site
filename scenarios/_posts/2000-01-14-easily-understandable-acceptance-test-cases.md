@@ -5,7 +5,7 @@ related: efficiency, maintainability, suitability, consistency
 permalink: /scenarios/dummy
 ---
 
-<div class="arc42-help" markdown="1">
+<div class="quality-requirement" markdown="1">
 
 
 **Stimulus**: A new tester joins the team, who has no development skills. This person is supposed to test the new business features of the upcoming release.

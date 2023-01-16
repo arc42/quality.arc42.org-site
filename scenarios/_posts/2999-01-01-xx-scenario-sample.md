@@ -5,7 +5,7 @@ related: efficiency, maintainability
 permalink: /scenarios/dummy
 ---
 
-<div class="arc42-help" markdown="1">
+<div class="quality-requirement" markdown="1">
 
 **Background**: 
 

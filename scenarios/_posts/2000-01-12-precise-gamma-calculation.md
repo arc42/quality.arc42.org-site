@@ -5,7 +5,7 @@ related: preciseness, accuracy, correctness
 permalink: /scenarios/high-precision-calculation
 ---
 
-<div class="arc42-help" markdown="1">
+<div class="quality-requirement" markdown="1">
 
 **Scenario**: The preciseness of the gamma-coefficient calculation is four digits after the decimal point.
 

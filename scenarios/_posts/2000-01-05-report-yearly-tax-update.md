@@ -5,7 +5,7 @@ related: efficiency, maintainability, changeability
 permalink: /scenarios/annual-tax-update
 ---
 
-<div class="arc42-help" markdown="1">
+<div class="quality-requirement" markdown="1">
 
 **Stimulus**: Updated specification of the data output format for booking reports becomes available, usually October 31st.
 

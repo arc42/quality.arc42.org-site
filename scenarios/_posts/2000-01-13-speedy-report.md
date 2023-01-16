@@ -5,7 +5,7 @@ related: efficiency, performance, time-behaviour, speed
 permalink: /scenarios/fast-creation-of-sales-report
 ---
 
-<div class="arc42-help" markdown="1">
+<div class="quality-requirement" markdown="1">
 
 **Stimulus**: An authenticated user requests generation of the daily sales report in PDF format via the graphical user interface. 
 

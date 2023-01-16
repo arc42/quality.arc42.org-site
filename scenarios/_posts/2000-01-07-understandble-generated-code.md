@@ -5,7 +5,7 @@ related: efficiency, maintainability, understandability
 permalink: /scenarios/understandable-generated-code
 ---
 
-<div class="arc42-help" markdown="1">
+<div class="quality-requirement" markdown="1">
 
 **Stimulus**: A developer has created a new test case in xml.
 

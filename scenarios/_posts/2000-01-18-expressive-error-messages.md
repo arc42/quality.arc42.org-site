@@ -5,7 +5,7 @@ related: usability, user-experience, fault-isolation, graceful-degradation, haza
 permalink: /scenarios/expressive-error-messages
 ---
 
-<div class="arc42-help" markdown="1">
+<div class="quality-requirement" markdown="1">
 
 **Stimulus**: An error / exceptional situation occurs in the technical infrastructure (memory overflow, out-of-memory, hardware error, virtual-machine-issue, container-related-issue).
 

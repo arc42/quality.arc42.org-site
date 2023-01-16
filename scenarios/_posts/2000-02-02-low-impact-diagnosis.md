@@ -5,7 +5,7 @@ related: efficiency, time-behaviour, resource-efficiency
 permalink: /scenarios/low-impact-diagnosis
 ---
 
-<div class="arc42-help" markdown="1">
+<div class="quality-requirement" markdown="1">
 
 **Stimulus**: A tester needs a large set of test data for system xyz.
 

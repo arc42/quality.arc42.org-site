@@ -5,7 +5,7 @@ related: efficiency, time-behaviour, memory-usage, resource-efficiency, resource
 permalink: /scenarios/query-execution-management
 ---
 
-<div class="arc42-help" markdown="1">
+<div class="quality-requirement" markdown="1">
 
 * Query diagnosis must not add more than 1% or 2msec runtime overhead to the queries, whichever is larger. For example:  
    * a query which takes 200msec to complete must not take more than 202msec with diagnosis, 

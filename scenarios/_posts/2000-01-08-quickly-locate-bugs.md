@@ -5,7 +5,7 @@ related: efficiency, maintainability
 permalink: /scenarios/quickly-locate-bugs
 ---
 
-<div class="arc42-help" markdown="1">
+<div class="quality-requirement" markdown="1">
 
 **Stimulus**: Developers, testers or the build system execute automatic test cases (unit or integration tests). 
 

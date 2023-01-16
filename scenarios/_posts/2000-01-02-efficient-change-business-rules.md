@@ -5,7 +5,7 @@ related: flexibility, maintainability, changeability, adaptability
 permalink: /scenarios/luggage-routing
 ---
 
-<div class="arc42-help" markdown="1">
+<div class="quality-requirement" markdown="1">
 
 **Scenario**: Luggage routing at the airport shall reflect the official government travel warnings at the latest 4 hours after their publication.
 

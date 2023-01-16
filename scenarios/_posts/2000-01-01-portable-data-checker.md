@@ -5,7 +5,7 @@ related: portability, adaptability, flexibility
 permalink: /scenarios/portable-business-data-checker
 ---
 
-<div class="arc42-help" markdown="1">
+<div class="quality-requirement" markdown="1">
 
 **Scenario**: The BuDIC tool needs to be compatible with the latest versions of MySql, PostgreSQL, Oracle and DB2.<br>
 If an update or new version of one of these databases is released by the respective vendor, BuDIC can be updated to be compliant with the new version within 2 person-days of development and test effort.
