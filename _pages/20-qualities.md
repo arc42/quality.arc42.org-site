@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Qualities by name
+title: Qualities by Name
 permalink: /qualities/
 order: 20
 ---

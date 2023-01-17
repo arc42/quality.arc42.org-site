@@ -1,6 +1,6 @@
 ---
 layout: page
-title: About this site
+title: About this Site
 permalink: /aboutthissite/
 order: 50
 ---

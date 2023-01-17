@@ -23,7 +23,7 @@ order: 1
 
 
 Information-technology systems have to meet required, desired and expected quality goals and requirements. 
-Therefore, development teams we need such requirements in concrete, specific and operationalized ways.
+Therefore, development teams need such requirements in concrete, specific and operationalized ways.
 The current quality standards, like ISO-25010, lack practical guidance and pragmatism, therefore we propose a usable and simple alternative:
 
 ![arc42 Quality Model (v1.0)](/images/arc42-system-qualities-overview.svg){:width="90%"}
@@ -42,6 +42,7 @@ Find out more in our **[introduction to the Q42 quality model](/articles/arc42-q
 {% assign scenarios = site.posts | where: "categories", "scenarios" %}
 
 On this site you find: 
+
 
 * <font style="background-color:var(--quality-color)">explanations to (currently {{ qualities | size }}) _qualities_ of software systems and -architectures, which are blueish in color.</font>
 * <font style="background-color:var(--qual-req-color)">{{ scenarios | size }} examples for specific quality **requirements**, which are greenish in color.</font>
@@ -64,15 +65,15 @@ A single quality attribute (like "availability") might have multiple properties 
 
 | Top-level property | Explanation          |
 | :--- | :--- |
-| [**#reliable**](/tag-reliable/) ({{ tags_reliable | size }}) | Perform specified functions under specified conditions without interruptions and failures.  |
+| [**#reliable**](/tag-reliable/) ({{ tags_reliable | size }}) | Perform specified functions under specified conditions without interruptions or failures  |
 |-|----------------------------|
-| [**#flexible**](/tag-flexible/) ({{ tags_flexible | size }})  |  Serve a different or expanded set of requirements; the ease with which the product can be adapted to changes in its requirements, contexts of use, or system environment. Synonyms: modifiable, adjustable, changeable, versatile. |
-| [**#efficient**](/tag-efficient/) ({{ tags_efficient | size }})  |  Perform functions within specified time, capacity and throughput parameters, using appropriate resources (like memory, network bandwith, threads). |
-| [**#usable**](/tag-usable/) ({{ tags_usable | size }})  |  Enable users to perform their tasks safely, effectively, and efficiently while enjoying the experience. |
-| [**#safe**](/tag-safe/) ({{ tags_safe | size }})  |  Avoid states in which human life, health, property, or the environment is endangered, detects and warns of risks and hazards.  |
-| [**#secure**](/tag-secure/) ({{ tags_secure | size }})  |  Protect information and data so that persons or other products have only access to an extend appropriate to their types and levels, and to defend against attack patterns by malicious actors. |
-| [**#testable**](/tag-testable/) ({{ tags_testable | size }})  |  Enable an objective and feasible test to be designed and performed to determine whether requirements are met. |
-| [**#operable**](/tag-operable/) ({{ tags_operable | size }})  |  Easy to deploy, operate, monitor and control. |
+| [**#flexible**](/tag-flexible/) ({{ tags_flexible | size }})  |  Serve a different or expanded set of requirements, the ease with which the product can be adapted to changes in its requirements, contexts of use, or system environment. Synonyms: modifiable, adjustable, changeable, versatile |
+| [**#efficient**](/tag-efficient/) ({{ tags_efficient | size }})  |  Perform functions within specified time, capacity and throughput parameters, using appropriate resources (like memory, network bandwith, threads) |
+| [**#usable**](/tag-usable/) ({{ tags_usable | size }})  |  Enable users to perform their tasks safely, effectively and efficiently while enjoying the experience |
+| [**#safe**](/tag-safe/) ({{ tags_safe | size }})  |  Avoid states in which human life, health, property or the environment is endangered, detects and warns of risks and hazards.  |
+| [**#secure**](/tag-secure/) ({{ tags_secure | size }})  |  Protect information and data so that persons or other products have only access to an extend appropriate to their types and levels, and to defend against attack patterns by malicious actors |
+| [**#testable**](/tag-testable/) ({{ tags_testable | size }})  |  Enable an objective and feasible test to be designed and performed to determine whether requirements are met |
+| [**#operable**](/tag-operable/) ({{ tags_operable | size }})  |  Easy to deploy, operate, monitor and control |
 
 
 

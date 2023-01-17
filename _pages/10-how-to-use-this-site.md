@@ -1,6 +1,6 @@
 ---
 layout: page
-title: How to use this site
+title: How to Use this Site
 permalink: /how-to-use-this-site/
 order: 10
 ---
