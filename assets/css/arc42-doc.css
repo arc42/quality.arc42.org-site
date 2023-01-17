@@ -30,9 +30,9 @@ p {
   background: var(--qual-req-color);
   border-radius: 4px;
 
-  -webkit-box-shadow: 3px 3px 4px 0px #ACBD85;
-  -moz-box-shadow: 3px 3px 4px 0px #ACBD85;
-  box-shadow: 3px 3px 4px 0px #ACBD85;
+  -webkit-box-shadow: 3px 3px 4px 0px #9CAD75;
+  -moz-box-shadow: 3px 3px 4px 0px #9CAD75;
+  box-shadow: 3px 3px 4px 0px #9CAD75;
 }
 
 /* Proper indentation for lists inside quality requirement */
