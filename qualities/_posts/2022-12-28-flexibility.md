@@ -1,7 +1,7 @@
 ---
 title: Flexibility
 tags: flexible
-related: Maintainability, Modularity, Adaptability, Configurabilityq
+related: maintainability, modularity, adaptability, configurability, changeability, agility
 permalink: /qualities/flexibility
 ---
 
@@ -41,6 +41,9 @@ The ease with which the product can be:
 * modified without introducing defects,
 * transferred to different hardware, software or other operational or usage environments
 
+<hr class="with-no-margin"/>
+
+A system can **easily** be changed (as opposed to agility, which means that system can _rapidly_ be changed.)
 
 
 
