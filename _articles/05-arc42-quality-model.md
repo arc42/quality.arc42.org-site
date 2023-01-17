@@ -25,7 +25,7 @@ But let's start at the beginning:
 
 ### Fresh Approach
 Existing models like ISO-25010 propagated a fixed hierarchy (like a tree) of system qualities.
-Within these _trees_, it is often difficult or impossible to determine to which of the top-level characteristics a particular and specific quality requirement belongs. 
+Within this _tree_, it is often difficult or impossible to determine to which of the top-level characteristics a particular and specific quality requirement belongs. 
 Therefore, Q42 breaks new ground by proposing only 8 adjectives (like _flexible_) as core quality properties.
 
 It uses adjectives instead of nouns (like _flexibility_), which better reflects stakeholder expectations like _"I need XYZ to be flexible"_.

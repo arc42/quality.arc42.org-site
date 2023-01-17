@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Quality properties 
+title: Quality Properties
 permalink: /tags/
 order: 22
 ---
