@@ -2,7 +2,7 @@
 title: "Quickly locate bugs"
 tags: efficient
 related: efficiency, maintainability
-permalink: /scenarios/quickly-locate-bugs
+permalink: /requirements/quickly-locate-bugs
 ---
 
 <div class="quality-requirement" markdown="1">

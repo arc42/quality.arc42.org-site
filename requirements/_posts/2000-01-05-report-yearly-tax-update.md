@@ -2,7 +2,7 @@
 title: "Efficient update of annual accounting report"
 tags: efficient flexible
 related: efficiency, maintainability, changeability
-permalink: /scenarios/annual-tax-update
+permalink: /requirements/annual-tax-update
 ---
 
 <div class="quality-requirement" markdown="1">

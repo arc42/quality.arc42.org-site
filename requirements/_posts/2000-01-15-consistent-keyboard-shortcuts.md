@@ -2,7 +2,7 @@
 title: "Consistent keyboard shortcuts"
 tags: usable efficient
 related: usability, consistency, user-experience, user-assistance
-permalink: /scenarios/consistent-keyboard-shortcuts
+permalink: /requirements/consistent-keyboard-shortcuts
 ---
 
 <div class="quality-requirement" markdown="1">

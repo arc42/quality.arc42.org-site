@@ -2,7 +2,7 @@
 title: "Fast and accurate sensor"
 tags: efficient reliable
 related: efficiency, preciseness, accuracy
-permalink: /scenarios/fast-accurate-sensor
+permalink: /requirements/fast-accurate-sensor
 ---
 
 <div class="quality-requirement" markdown="1">

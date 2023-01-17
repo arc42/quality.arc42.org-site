@@ -2,7 +2,7 @@
 title: "Efficient generation of test data"
 tags: efficient testable
 related: efficiency, time-behaviour, capacity
-permalink: /scenarios/efficient-generation-of-test-data
+permalink: /requirements/efficient-generation-of-test-data
 ---
 
 <div class="quality-requirement" markdown="1">

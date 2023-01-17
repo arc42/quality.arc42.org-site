@@ -79,8 +79,8 @@ collections:
   articles:
     output: true
     hide: true
-## quality scenarios to describe and capture specific quality requirements
-  scenarios:
+## quality requirements to describe and capture specific quality requirements
+  requirements:
     output: true
     hide: true    
 
@@ -102,10 +102,10 @@ defaults:
       layout: qualities
       hide: "true"
   - scope:
-      path: "scenarios"
+      path: "requirements"
       type: "posts"
     values:
-      layout: scenarios
+      layout: requirements
       hide: "true"
 
 #

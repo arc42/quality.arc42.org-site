@@ -2,7 +2,7 @@
 title: "Efficient change of business rules"
 tags: flexible efficient
 related: flexibility, maintainability, changeability, adaptability 
-permalink: /scenarios/luggage-routing
+permalink: /requirements/luggage-routing
 ---
 
 <div class="quality-requirement" markdown="1">

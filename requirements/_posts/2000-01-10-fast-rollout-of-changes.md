@@ -2,7 +2,7 @@
 title: "Fast rollout of changes"
 tags: efficient operable
 related: efficiency, operability, speed
-permalink: /scenarios/fast-rollout-of-changes
+permalink: /requirements/fast-rollout-of-changes
 ---
 
 <div class="quality-requirement" markdown="1">

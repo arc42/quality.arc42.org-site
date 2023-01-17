@@ -2,7 +2,7 @@
 title: "Low impact diagnosis"
 tags: efficient 
 related: efficiency, time-behaviour, resource-efficiency
-permalink: /scenarios/low-impact-diagnosis
+permalink: /requirements/low-impact-diagnosis
 ---
 
 <div class="quality-requirement" markdown="1">

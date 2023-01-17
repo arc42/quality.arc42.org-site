@@ -2,7 +2,7 @@
 title: "Dummy"
 tags: efficient
 related: efficiency, maintainability
-permalink: /scenarios/dummy
+permalink: /requirements/dummy
 ---
 
 <div class="quality-requirement" markdown="1">

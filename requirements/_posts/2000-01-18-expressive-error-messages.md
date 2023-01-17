@@ -2,7 +2,7 @@
 title: "Expressive error messages"
 tags: usable
 related: usability, user-experience, fault-isolation, graceful-degradation, hazard-warning, user-assistance
-permalink: /scenarios/expressive-error-messages
+permalink: /requirements/expressive-error-messages
 ---
 
 <div class="quality-requirement" markdown="1">

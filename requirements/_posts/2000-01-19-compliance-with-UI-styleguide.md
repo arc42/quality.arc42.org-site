@@ -2,7 +2,7 @@
 title: "Compliance with UI styleguide"
 tags: usable
 related: usability, user-experience, compliance
-permalink: /scenarios/compliance-with-ui-styleguide
+permalink: /requirements/compliance-with-ui-styleguide
 ---
 
 <div class="quality-requirement" markdown="1">

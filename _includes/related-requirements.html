@@ -4,7 +4,7 @@
 {% assign no_show_titles = page.title %}
 <ul class="posts">
     {% for page_tag in page_tags %}
-    {% assign posts = site.tags[page_tag] | where: "categories", "scenarios" %}
+    {% assign posts = site.tags[page_tag] | where: "categories", "requirements" %}
     {% for post in posts %}
     {% unless no_show_titles contains post.title %}
     <li> <a href="{{post.permalink}}">{{post.title}}</a> &nbsp; | &nbsp; <i>

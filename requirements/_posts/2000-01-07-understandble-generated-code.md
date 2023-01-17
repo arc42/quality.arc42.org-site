@@ -2,7 +2,7 @@
 title: "Easily understandable generated code"
 tags: efficient usable testable
 related: efficiency, maintainability, understandability
-permalink: /scenarios/understandable-generated-code
+permalink: /requirements/understandable-generated-code
 ---
 
 <div class="quality-requirement" markdown="1">
