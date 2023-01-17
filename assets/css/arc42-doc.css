@@ -1,12 +1,19 @@
 /* style for arc42 websites */
 
+/* define colors for qualities and requirements */
+:root {
+  --quality-color: #dbf0fe;
+  --qual-req-color: #DEEFB7;
+  --dark-blue-text-color: #002080
+}
+
 p {
   font-family: sans-serif;
 }
 
 /* unified style for template help */
 .arc42-help {
-  color: #002080;
+  color: var(--dark-blue-text-color);
   padding: 5px 5px;
   background: #dcf0ff;
   border-radius: 4px;
@@ -18,9 +25,9 @@ p {
 
 /* unified style for quality requirement text */
 .quality-requirement {
-  color: #002080;
+  color: var(--dark-blue-text-color);
   padding: 5px 5px;
-  background: #DEEFB7;
+  background: var(--qual-req-color);
   border-radius: 4px;
 
   -webkit-box-shadow: 3px 3px 4px 0px #ACBD85;
