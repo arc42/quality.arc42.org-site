@@ -11,7 +11,7 @@ You can approach in several ways:
 
 1. top-down, starting with the eight top-level properties from [Q42, the pragmatical arc42 quality model](/articles/arc42-quality-model)
 2. bottom-up, by reading through the [extensive list of qualities](/qualities/).
-3. by reading the [examples of quality requirements](/scenarios).
+3. by reading the [examples of quality requirements](/requirements).
 
 All these approaches are described below.
 

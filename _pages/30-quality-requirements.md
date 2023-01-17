@@ -1,7 +1,7 @@
 ---
 layout: page_examples
 title: Examples of Quality Requirements
-permalink: /scenarios/
+permalink: /requirements/
 order: 30
 ---
 
