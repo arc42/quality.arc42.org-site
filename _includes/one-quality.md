@@ -1,7 +1,7 @@
 
 <hr class="with-no-margin"/>
 
-## <font style="background-color:#dbf0fe">Qualities tagged with #{{ include.topic }}</font>
+## <font style="background-color:var(--quality-color)">Qualities tagged with #{{ include.topic }}</font>
 
 <div id="search-results">
   <ul class="posts">
@@ -15,7 +15,7 @@
 
 
  
-## <font style="background-color:#ddefb7">Requirements tagged with #{{ include.topic }}</font>
+## <font style="background-color:var(--qual-req-color)">Requirements tagged with #{{ include.topic }}</font>
 
 <div id="search-results">
   <ul class="posts">

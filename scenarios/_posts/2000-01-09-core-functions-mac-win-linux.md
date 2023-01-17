@@ -5,7 +5,7 @@ related: flexibility, portability, compatibility
 permalink: /scenarios/core-functions-on-mac-win-linux
 ---
 
-<div class="arc42-help" markdown="1">
+<div class="quality-requirement" markdown="1">
 
 **Background**: The system offers a few complex core business functions.
 

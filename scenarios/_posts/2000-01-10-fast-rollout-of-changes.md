@@ -5,7 +5,7 @@ related: efficiency, operability, speed
 permalink: /scenarios/fast-rollout-of-changes
 ---
 
-<div class="arc42-help" markdown="1">
+<div class="quality-requirement" markdown="1">
 
 **Background**: More than 1000 devices running our system are distributed _in the field_ in customer sites on various locations.
 

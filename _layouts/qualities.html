@@ -12,7 +12,7 @@ layout: default
 
         {% assign related-qualities = page.related | split:', ' | sort %}
         
-        <h2><font style="background-color:#dbf0fe">Related Qualities</font></h2>
+        <h2><font style="background-color:var(--quality-color)">Related Qualities</font></h2>
 
         <ul class="posts">
             {% for quality in related-qualities %}

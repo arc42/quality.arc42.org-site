@@ -5,7 +5,7 @@ related: usability, consistency, user-experience, user-assistance
 permalink: /scenarios/detect-inconsistent-user-input
 ---
 
-<div class="arc42-help" markdown="1">
+<div class="quality-requirement" markdown="1">
 
 
 **Stimulus**: User manually enters data into the system.

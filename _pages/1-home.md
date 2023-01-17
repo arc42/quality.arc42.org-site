@@ -43,9 +43,10 @@ Find out more in our **[introduction to the Q42 quality model](/articles/arc42-q
 
 On this site you find: 
 
-* <font style="background-color:#dbf0fe;">explanations to (currently {{ qualities | size }}) _qualities_ of software systems and -architectures, which are blueish in color,</font>
-* <font style="background-color:#ddefb7">{{ scenarios | size }} examples for specific quality **requirements**, which are greenish in color,</font>
-* several [articles with background information](/articles) on quality,
+
+* <font style="background-color:var(--quality-color)">explanations to (currently {{ qualities | size }}) _qualities_ of software systems and -architectures, which are blueish in color.</font>
+* <font style="background-color:var(--qual-req-color)">{{ scenarios | size }} examples for specific quality **requirements**, which are greenish in color.</font>
+* several [articles with background information](/articles) on quality
 * a brief glossary of quality-related terms
 
 

@@ -5,7 +5,7 @@ related: efficiency, time-behaviour, capacity
 permalink: /scenarios/efficient-generation-of-test-data
 ---
 
-<div class="arc42-help" markdown="1">
+<div class="quality-requirement" markdown="1">
 
 **Stimulus**: A tester needs a large set of test data for system xyz.
 
