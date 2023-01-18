@@ -13,18 +13,12 @@ order: 1
 
 </div>
 
-<center>
 
-<b>System and product quality, made as simple and pragmatic as possible.</b>
+## System and product quality, made easy
 
-</center>
-
-## arc42 Quality Model (v 1.0)
-
-
-Information-technology systems have to meet required, desired and expected quality goals and requirements. 
+Information-technology systems have to meet required, desired and expected quality requirements. 
 Therefore, development teams need such requirements in concrete, specific and operationalized ways.
-The current quality standards, like ISO-25010, lack practical guidance and pragmatism, therefore we propose a usable and simple alternative:
+The current quality standards, like ISO-25010, [lack practical guidance and pragmatism](/articles/iso-25010-shortcomings), therefore we propose a usable and simple alternative:
 
 ![arc42 Quality Model (v1.0)](/images/arc42-system-qualities-overview.svg){:width="90%"}
 
