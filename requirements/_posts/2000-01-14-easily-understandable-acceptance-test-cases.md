@@ -2,7 +2,7 @@
 title: "Easily understandable acceptance test cases"
 tags: usable testable efficient
 related: efficiency, maintainability, suitability, consistency
-permalink: /scenarios/dummy
+permalink: /requirements/dummy
 ---
 
 <div class="quality-requirement" markdown="1">

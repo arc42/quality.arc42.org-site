@@ -2,7 +2,7 @@
 title: "Fast creation of sales report"
 tags: efficient
 related: efficiency, performance, time-behaviour, speed
-permalink: /scenarios/fast-creation-of-sales-report
+permalink: /requirements/fast-creation-of-sales-report
 ---
 
 <div class="quality-requirement" markdown="1">

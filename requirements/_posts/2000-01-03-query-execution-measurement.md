@@ -2,7 +2,7 @@
 title: "Low-overhead query execution measurement"
 tags: efficient
 related: efficiency, time-behaviour, memory-usage, resource-efficiency, resource-utilization
-permalink: /scenarios/query-execution-management
+permalink: /requirements/query-execution-management
 ---
 
 <div class="quality-requirement" markdown="1">

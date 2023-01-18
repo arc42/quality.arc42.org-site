@@ -2,7 +2,7 @@
 title: "Maintainable checking strategies"
 tags: efficient
 related: efficiency, maintainability,
-permalink: /scenarios/maintainable-checking-strategy
+permalink: /requirements/maintainable-checking-strategy
 ---
 
 <div class="quality-requirement" markdown="1">

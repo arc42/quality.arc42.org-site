@@ -2,7 +2,7 @@
 title: "Core functions can be used on multiple OSs"
 tags: flexible usable operable
 related: flexibility, portability, compatibility
-permalink: /scenarios/core-functions-on-mac-win-linux
+permalink: /requirements/core-functions-on-mac-win-linux
 ---
 
 <div class="quality-requirement" markdown="1">

@@ -2,7 +2,7 @@
 title: "Easily change cloud provider"
 tags: flexible
 related: flexibility, maintainability, adaptability
-permalink: /scenarios/change-cloud-provider
+permalink: /requirements/change-cloud-provider
 ---
 
 <div class="quality-requirement" markdown="1">

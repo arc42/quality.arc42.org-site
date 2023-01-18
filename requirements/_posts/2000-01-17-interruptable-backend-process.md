@@ -2,7 +2,7 @@
 title: "Interruptable backend process"
 tags: usable
 related: usability, user-experience, time-behaviour
-permalink: /scenarios/interruptable-backend-process
+permalink: /requirements/interruptable-backend-process
 ---
 
 <div class="quality-requirement" markdown="1">

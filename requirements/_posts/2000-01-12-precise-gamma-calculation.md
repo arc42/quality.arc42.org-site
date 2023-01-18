@@ -2,7 +2,7 @@
 title: "Precise calculation of gamma coefficient"
 tags: reliable
 related: preciseness, accuracy, correctness
-permalink: /scenarios/high-precision-calculation
+permalink: /requirements/high-precision-calculation
 ---
 
 <div class="quality-requirement" markdown="1">

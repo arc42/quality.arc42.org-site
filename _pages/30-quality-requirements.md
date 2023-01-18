@@ -1,7 +1,7 @@
 ---
-layout: page_examples
+layout: page_requirements
 title: Examples of Quality Requirements
-permalink: /scenarios/
+permalink: /requirements/
 order: 30
 ---
 
@@ -11,14 +11,14 @@ That term was coined by authors from the Software Engineering Institute (SEI), e
 
 <hr class="with-no-margin"/>
 
-Read more on the **[background of scenarios](/_articles/06-quality-requirements/)** in our short article.
+Read more on the **[background of requirements](/articles/specify-quality-requirements)** in our short article.
 
 <hr class="with-no-margin"/>
 
 <div id="search-results">
     <hr id="first-hr" class="with-no-margin"/>
 
-{% assign examples_unsorted = site.posts | where: "categories", "scenarios" %}
+{% assign examples_unsorted = site.posts | where: "categories", "requirements" %}
 {% assign examples = examples_unsorted | sort %}
 
 
