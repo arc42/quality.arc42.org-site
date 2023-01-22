@@ -9,8 +9,8 @@ order: 35
 <a id="quality"/>
 ### Quality
 
-Properties of a system.
-
+* Properties of a system.
+* 
 
 <a id="quality-attribute"/>
 ### Quality Attribute

@@ -15,9 +15,24 @@ You can approach in several ways:
 
 All these approaches are described below.
 
+![inside-out vs outside-in graphic](/images/how2use/how-to-use-this-site.svg)
+
 ### Inside-Out, starting with Q42 Quality Properties
+Let's assume that your stakeholders want a "flexible" system. 
+This is completely unsuitable as a requirement because it is too unspecific. 
+
+You could search under the term "#flexible" (to be found under "[Quality Properties](/tags/)".
+There you fin a collection of related terms ("Qualities tagged with #flexible"), and also a collection of exemplary quality requirements of this generic term.
+
+
 ### Outside-In
+The other way round is viable too:
+In case your stakeholders have specific requirements, like "compliance":
+Just start with the (extensive!) list of [qualities](/qualities/).
+
+Again, you will find related qualities and examples on the detail-pages
 
 ### Start with Examples
 
-
+The third option starts with the [examples of quality requirements](/requirements).
+These are
