@@ -7,4 +7,4 @@ permalink: /qualities/reusability
 
 >Capability of a product to be used as assets in more than one system, or in building other assets.
 >
->from [ISO-25010-v2022]()
+>from [ISO-25010-v2022](/references/#iso-25010-2022)
