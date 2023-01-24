@@ -1,5 +1,5 @@
 ---
-title: "Usable Despite Color Blindness"
+title: "Usable With Gloves"
 tags: usable
 related: usability, user-experience, compliance
 permalink: /requirements/usable-despite-color-blindness
