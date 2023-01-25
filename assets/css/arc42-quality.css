@@ -41,6 +41,20 @@ a.hov.tags {
     margin-right: 1px
 }
 
+a.hov.tags.req {
+    line-height: 1.2;
+    background-color: var(--qual-req-color);
+    color: #dd354b;
+    border-radius: 11px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    margin-left: 10px;
+    margin-right: 1px
+}
+
 
 
 /* style for INNOQ on about-this-site */
