@@ -16,11 +16,11 @@ order: 22
     <!-- make the tags of the arc42-quality-model stand out -->
     {% if tag == "reliable" or tag == "flexible" or tag=="efficient" or tag == "usable" or tag == "safe" or tag == "secure" or tag == "testable" or tag == "operable" %}
     <a class="hov tags" href="/tag-{{ tag | cgi_escape }}"><b>{{ tag }}</b>
-       <span>{{ site.tags[tag] | size }}</span></a>
+       <span>{{ site.tags[tag] | where: "categories", "qualities" | size }}</span></a>
     {% else %}
         <!-- other tags in different color  -->
         <li><a class="hov tags" href="#{{ tag | cgi_escape }}">{{ tag }}
-        <span>{{ site.tags[tag] | size }}</span></a></li>
+        <span>{{ site.tags[tag] | where: "categories", "qualities" | size }}</span></a></li>
     {% endif %}
   {% endfor %}
   </ul>
