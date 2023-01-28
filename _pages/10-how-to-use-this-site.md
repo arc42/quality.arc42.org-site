@@ -22,7 +22,7 @@ Let's assume that your stakeholders want a "flexible" system.
 This is completely unsuitable as a requirement because it is too unspecific. 
 
 You could search under the term "#flexible" (to be found under "[Quality Properties](/tags/)".
-There you fin a collection of related terms ("Qualities tagged with #flexible"), and also a collection of exemplary quality requirements of this generic term.
+There you find a collection of related terms ("Qualities tagged with #flexible"), and also a collection of exemplary quality requirements of this generic term.
 
 
 ### Outside-In
