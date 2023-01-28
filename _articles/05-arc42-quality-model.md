@@ -80,7 +80,7 @@ These tags should be almost self-explanatory, but I'll try to clarify them with 
 
 ### Code and Architecture Qualities
 In several of the historical quality models, the development teams' interest was either completely ignored or had low priority.
-In 1978, [Barry Boehm](/_articles/02-quality-models) proposed to care for for _structuredness, conciseness_ and _legibility_, but in later models, for example in the ISO-25010 standard, these properties are out of scope.
+In 1978, [Barry Boehm](/articles/02-quality-models) proposed to care for _structuredness, conciseness_ and _legibility_, but in later models, for example in the ISO-25010 standard, these properties are out of scope.
 
 From my viewpoint, development teams play a crucial role in both initial development and long-term maintenance and evolution of systems.
 Therefore we should consider their requirements on the internal structure and concepts as highly relevant, for example influencing the important _time-to-market_ that most managers constantly call for.
