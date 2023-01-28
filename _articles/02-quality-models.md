@@ -134,7 +134,7 @@ Let me consider the SEI-Model step-by-step:
 * _Modifiability_ sounds important, but here again I consider additional aspects: Sometimes I don't want to modify a system, just install it on another operating system. Or configure a new database for it. In my opinion, the general term is "flexible". That even allows for removing "Integrability" from the SEI wishlist.
   
 ### arc42 Quality Model
-Trying to learn from its predecessors (or, as others have called it "it's easy to stand high on the shoulders of giants), arc42 proposes a simple, efficient and practical model.
+Trying to learn from its predecessors (or, as others have called it "it's easy to stand high on the shoulders of giants"), arc42 proposes a simple, efficient and practical model.
 
 ### References 
 
