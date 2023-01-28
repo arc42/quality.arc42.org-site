@@ -5,7 +5,7 @@ permalink: /qualities/
 order: 20
 ---
 
-Here you find a list of several _qualities_ (meaning: desirable, expected or required properties) of IT systems).
+Here you find a list of several _qualities_ (meaning: desirable, expected or required properties) of IT systems.
 
 
 {% assign letter_string = "A" %}
