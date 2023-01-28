@@ -39,7 +39,7 @@ Let's start in daily life.
 ### What is "Quality"?
 
 We use "quality" colloquially to express something good or positive about products or services. 
-For example, we label a piece of clothing, a special meal or even a technical "gadget" as "high quality. 
+For example, we label a piece of clothing, a special meal or even a technical "gadget" as "high quality". 
 Unfortunately, we usually remain unspecific as to what exactly we mean by the term "quality" in these cases.
 
 Some time ago, I was allowed to listen to the (rather expensive) over-ear headphones of a British noble manufacturer at a valued colleague's house. 
@@ -78,14 +78,14 @@ The exact characteristics that make up the quality of these things can (sorry, _
 
 Now it's getting complicated, because the term "quality" gets two different dimensions. 
 
-1. **Which features or attributes** count as quality (in the example: volume, frequency range, comfort, weight, connections, noise cancelling, channel separation, sustainability, interchangeability of parts)
+1. **Which features or attributes** count as quality (in the example: volume, frequency range, comfort, weight, connections, noise cancelling, channel separation, sustainability, interchangeability of parts).
 2. **What is the desired level, value or amount** of these features (e.g. frequency response from 15 to 25000Hz, weight less than 400g, soft leather ear cups, wireless connection, jack and USB, etc.).
 
 In order to work on "quality" in practice, we need to get a handle on both of these dimensions. 
 Let's try the transition to software development at this point. 
 
 Even for dimension-1 ("which properties belong to quality") you can surely think of a multitude of such properties, which you or other involved parties (aka stakeholders) count to quality: Performance, security, robustness and a few dozen more (see figure below). 
-Scientists and practioners developed so called [quality models](/_articles/quality-models), which collect more or less of such quality attributes.
+Scientists and practioners developed so called [quality models](/articles/quality-models), which collect more or less of such quality attributes.
 
 
 ![quality terminology word cloud](/images/articles/quality-challenges/quality-terms-wordcloud.svg){:width="70%"}
@@ -108,13 +108,13 @@ Once we have agreed with stakeholders on a set of relevant attributes (i.e., dim
 
 Another article in this series will dive deep into this topic of specific quality requirements.
 
- Unfortunately, concrete quality requirements are rarely available in everyday project work.
+Unfortunately, concrete quality requirements are rarely available in everyday project work.
 That's when development teams start making implicit assumptions.
 Such assumptions can, however, contain considerable risks.
 We propose to involve stakeholders, and help them formulate their specific quality requirements.
 
 ### Compromises and miracles
-A vehicle optimized for low energy consumption (about 5 kWh per 100 km, or 3l of fuel per 100 km ) cannot simultaneously be designed for high seating capacity (about 8 people) or high payload (8 tons payload). 
+A vehicle optimized for low energy consumption (about 5 kWh per 100 km, or 3l of fuel per 100 km) cannot simultaneously be designed for high seating capacity (about 8 people) or high payload (8 tons payload). 
 Tea is either flavored or not. 
 One cannot accommodate long audio sequences with high sampling rates in the strictly limited memory of an embedded onboard controller with only 64kByte of available memory. 
 Generally speaking, some combinations of quality characteristics make each other difficult, or even mutually exclusive. 
