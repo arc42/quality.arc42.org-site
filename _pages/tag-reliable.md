@@ -8,7 +8,7 @@ permalink: /tag-reliable/
 
 <div class="arc42-help" markdown="1">
 
-being trustworthy or of performing consistently well.
+Being trustworthy or performing consistently well.
 
 </div><br>
 
@@ -22,6 +22,19 @@ being trustworthy or of performing consistently well.
 >[ISO-25010-2022](/references/#iso-25010-2022)
 </div><br>
 
+
+<hr/>
+
+## Typical Acceptance Criteria
+
+* Time or time interval when the system shall be available
+* Availability percentage
+* Time to detect a fault
+* Time to repair a fault
+* Time or time interval in which the system may operate in degraded mode
+* Proportion (e.g. 99%) or rate (e.g. up to 42 per second) of a certain class or type of faults that the system either prevents or handles without failing
+
+Source: [Len Bass et. al, 2022, p. 75](/references/#bass-swa-practice)
 
 
 <!-- include all qualities associated with this tag -->
