@@ -34,6 +34,18 @@ Quoted from [Wikipedia/Safety](https://en.wikipedia.org/wiki/Safety)
 >[ISO-25010-2022](/references/#iso-25010-2022)
 
 
+### Scenario Response Measures from [Bass et al.]
+
+>* Amount or percentage of unsafe states that are avoided
+>* Amount or percentage of unsafe states from which the system can (automatically) recover
+>* Change in risk exposure: size(loss) * prob(loss)
+>* Percentage of times the system can recover
+>* Amount of time the system is in a degraded or safe mode
+>* Amount or percentage of time the system is shut down
+>* Elapsed time to enter and recover (from manual operation, from a safe or degraded mode)
+>
+>[Bass et. al, 2022](/references/#bass-swa-practice)
+
 
 
 <!-- include all qualities associated with this tag -->

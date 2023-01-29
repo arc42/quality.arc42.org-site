@@ -9,6 +9,9 @@ permalink: /tag-efficient/
 
 * Resource-efficient, fast, low-footprint, low latency.
 * Energy-, storage- and network efficient, having adequate capacity
+* Development-efficient, beeing easy to change (although that aspect may better be covered by [#flexible](/tag-flexible))
+* Time-to-market, how efficient new features can _go live_
+  
 
 </div><br>
 
@@ -28,6 +31,13 @@ permalink: /tag-efficient/
 >The word _effective_ puts more attention on the actual ability to produce a desired result. The word _efficient_ puts more attention on the lack of waste in producing that result.
 >[Britannica Dictionary](https://www.britannica.com/dictionary/eb/qa/How-to-Use-Effective-and-Efficient)
 
+
+## Typical Acceptance Criteria
+
+Efficient, as we saw above, can mean several different things:
+
+* Runtime efficiency, like defined time or memory behaviour
+* XXX - todo
 
 <!-- include all qualities associated with this tag -->
 {% include one-quality.md topic="efficient"  %}

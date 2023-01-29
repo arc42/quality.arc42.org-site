@@ -21,7 +21,36 @@ Easy to:
 >
 >[ISO-25010-2022](/references/#iso-25010-2022)
 
-<hr class="with-no-margin"/>
+
+<hr/>
+
+## Typical Acceptance Criteria
+
+Flexible, as we saw above, means "_adaptable to change_".
+
+When defining what exactly _#flexible_ shall mean for a specific system and specific stakehoders, we need to consider the following questions:
+
+* what type of change (e.g. changed functionality, changed quality requirements, changed workload, changed infrastructure) 
+* when does this change occur or when do people want to respond to the changes: at development-, compile/build-, installation-, startup- or runtime?
+
+Typical acceptance criteria might include:
+
+* Effort or number/type of changed artifacts to handle changes 
+* Time or money spent for such changes 
+* Side-effects on other system properties
+
+
+### Scenario Response Measures from [Bass et al.]
+>Cost in terms of
+>
+>* Number, size, complexity of affected artifacts
+>* Effort
+>* Elapsed time
+>* Money
+>* Extend to which this modification affects other quality attributes
+>* New defects introduced
+>
+>[Bass et. al, 2022](/references/#bass-swa-practice)
 
 
 <!-- include all qualities associated with this tag -->
