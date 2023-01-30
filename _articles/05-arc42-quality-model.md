@@ -87,7 +87,7 @@ Therefore we should consider their requirements on the internal structure and co
 
 Q42 regards development teams as first-class citizens:
 
-* `#reliable` in terms of "we can add now features or otherwise modify the systems, and can reliably predict the consequences of our changes. We can reliably fix bugs. We can reliably predict runtime behaviour.
+* `#reliable` in terms of "We can add now features or otherwise modify the systems, and can reliably predict the consequences of our changes. We can reliably fix bugs. We can reliably predict runtime behaviour."
 * `#flexible` in several dimensions, e.g. flexible module or component structure, flexible code that is easy to modify, flexible software and hardware infrastructure.
 * `#usable` in terms of understandable module structures, understandable code and data structures, understandable runtime behaviour.
 * `#testable` in terms of test automation, e.g. the systems allows for easy creation and maintenance of unit and acceptance tests to reduce development risks.

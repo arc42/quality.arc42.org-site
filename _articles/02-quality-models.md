@@ -134,7 +134,7 @@ Let me consider the SEI-Model step-by-step:
 * _Modifiability_ sounds important, but here again I consider additional aspects: Sometimes I don't want to modify a system, just install it on another operating system. Or configure a new database for it. In my opinion, the general term is "flexible". That even allows for removing "Integrability" from the SEI wishlist.
   
 ### arc42 Quality Model
-Trying to learn from its predecessors (or, as others have called it "it's easy to stand high on the shoulders of giants), arc42 proposes a simple, efficient and practical model.
+Trying to learn from its predecessors (or, as others have called it "it's easy to stand high on the shoulders of giants"), arc42 proposes a simple, efficient and practical model.
 
 ### References 
 
@@ -142,7 +142,7 @@ Trying to learn from its predecessors (or, as others have called it "it's easy t
 * ISO-25010, https://www.iso.org/standard/35733.html
 * Eeles, Peter: Non-functional Requirements, online: https://pdfs.semanticscholar.org/f3bb/91080c4573f6f78f30bc5b48bda3ef252bf2.pdf
 
-<a id="boehm-1978">[Boehm-1978]</a>Barry W. Boehm, Characteristics of Software Quality, North-Holland Publishing Company, 1978
+<a id="boehm-1978">[Boehm-1978]</a> Barry W. Boehm, Characteristics of Software Quality, North-Holland Publishing Company, 1978
 
 <a id="astrotech">[Astrotech]</a> Matt Harasymczuk on Astrotech, explanation of quality models, [online](https://dev.astrotech.io/sonarqube/quality-models.html)
 
