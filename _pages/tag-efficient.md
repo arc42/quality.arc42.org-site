@@ -39,5 +39,16 @@ Efficient, as we saw above, can mean several different things:
 * Runtime efficiency, like defined time or memory behaviour
 * XXX - todo
 
+### Scenario Response Measures from [Bass et al.]
+
+>* The (maximum, medium, mean median) time the response takes ([[latency](/qualities/latency)])
+>* The number or percentage of satisfied requests over some time interval (throughput) or set of events received
+>* The number or percentage of requests that go unsatisfied
+>* The variation in response time (jitter)
+>* Usage level of a computing resource
+>
+>[Bass et. al, 2022](/references/#bass-swa-practice)
+
+
 <!-- include all qualities associated with this tag -->
 {% include one-quality.md topic="efficient"  %}

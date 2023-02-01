@@ -34,6 +34,7 @@ Quoted from [Wikipedia/Safety](https://en.wikipedia.org/wiki/Safety)
 >[ISO-25010-2022](/references/#iso-25010-2022)
 
 
+## Typical Acceptance Criteria
 ### Scenario Response Measures from [Bass et al.]
 
 >* Amount or percentage of unsafe states that are avoided
