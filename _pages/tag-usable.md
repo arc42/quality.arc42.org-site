@@ -26,6 +26,15 @@ The main idea of _usability_ is that a system shall be designed with (generalize
 >[Wikipedia](https://en.wikipedia.org/wiki/Usability)
 
 
+## Typical Acceptance Criteria
+
+<!--TODO -->
+
+### Scenario Response Measures from [Bass et al.]
+
+>
+>[Bass et. al, 2022](/references/#bass-swa-practice)
+
 
 <!-- include all qualities associated with this tag -->
 {% include one-quality.md topic="usable"  %}

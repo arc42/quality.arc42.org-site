@@ -36,8 +36,10 @@ permalink: /tag-efficient/
 
 Efficient, as we saw above, can mean several different things:
 
-* Runtime efficiency, like defined time or memory behaviour
-* XXX - todo
+* efficient at runtime, like defined by specific time behavior, resource consumption (e.g. energy, memory, processes, threads, network) or capacity (throughput, volume processed)
+* efficient to change or modify something within the system or its infrastructure
+* efficient concerning energy or CO2 consumption
+* efficient development processes, like short time-to-market
 
 ### Scenario Response Measures from [Bass et al.]
 
