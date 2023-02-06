@@ -2,7 +2,7 @@
 title: Graceful degradation
 tags: reliable usable
 related: robustness, reliability, usability, availability, recoverability, faultlessness, fault-tolerance
-permalink: /qualities/fault-tolerance
+permalink: /qualities/graceful-degradation
 ---
 
 >The ability of maintaining functionality when portions of a system break down.
