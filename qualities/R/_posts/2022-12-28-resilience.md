@@ -5,9 +5,9 @@ related: availability
 permalink: /qualities/resilience
 ---
 
->Resilience is the ability to "provide and maintain an acceptable level of service in the face of faults and challenges to normal operation.
+>Resilience is the ability to "provide and maintain an acceptable level of service in the face of faults and challenges to normal operation."
 >
->[Wikipedia](https://en.wikipedia.org/wiki/Resilience_(network)
+>[Wikipedia](https://en.wikipedia.org/wiki/Resilience_(network))
 
 <hr>
 
