@@ -44,7 +44,7 @@ case "$choice" in
         docker-compose --file _docker-compose-dev.yml build --force-rm
         ;;
 
-  c|C|clean) echo "clean _dite directory "
+  c|C|clean) echo "clean _site directory"
         rm -r _site
         ;;
 
