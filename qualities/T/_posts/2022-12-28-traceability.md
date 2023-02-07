@@ -16,7 +16,7 @@ permalink: /qualities/traceability
 
 >* the degree to which a relationship can be established between two or more products of the development process, especially products having a predecessor-successor or primary-subordinate relationship to one another; 
 >* the identification and documentation of derivation paths (upward) and allocation or flowdown paths (downward) of work products in the work product hierarchy;
->*the degree to which each element in a software development product establishes its reason for existing; and 
+>* the degree to which each element in a software development product establishes its reason for existing; and 
 >* discernible association among two or more logical entities, such as requirements, system elements, verifications, or tasks.
 >
 >[Wikipedia/Requirements traceability](https://en.wikipedia.org/wiki/Requirements_traceability)
