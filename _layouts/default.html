@@ -49,9 +49,9 @@
         <h1 class="clearfix">
             <a class="title {% if site.avatar == null %}slim{% endif %}" href="{{ '/' | prepend: site.baseurl }}">{{ site.title }}</a>
             {% assign quality_posts = site.posts | where: "categories", "qualities" %}
-            <br><span class="description"><font color=#414288>{{ quality_posts | size }}</font> {{ site.description }}</span>
+            <br><span class="description"><span style="color:#414288">{{ quality_posts | size }}</span> {{ site.description }}</span>
             {% assign requirement_posts = site.posts | where: "categories", "requirements" %}
-            <br><span class="description"><font color=#414288>{{ requirement_posts | size }}</font> examples of quality requirements.</span>
+            <br><span class="description"><span style="color:#414288">{{ requirement_posts | size }}</span> examples of quality requirements.</span>
         </h1>
     </div>
 </header>
