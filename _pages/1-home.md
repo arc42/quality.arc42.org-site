@@ -11,7 +11,7 @@ order: 1
 >
 >Please assist humanitarian efforts for the Ukrainian people and those affected by the military invasion of Ukraine by supporting international aid organizations, including the [International Committee of the Red Cross](https://www.icrc.org/en).
 
-</>
+</div>
 
 
 ## System and product quality, made easy
