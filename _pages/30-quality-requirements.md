@@ -40,7 +40,7 @@ Read more on the **[background of requirements](/articles/specify-quality-requir
 <a href="/tag-{{ this_word | cgi_escape }}">
 <h2>#{{ this_word }}</h2></a>
   <ul class="posts">
-    {% assign sorted_posts = site.tags[this_word] | sort_by: 'title'  | reverse %}
+    {% assign sorted_posts = site.tags[this_word] | sort: 'title' %}
     {% assign sorted_posts = sorted_posts | where: "categories", "requirements" %}
     {% for post in sorted_posts %}{% if post.title != null %}
     <li> <a href="{{ post.url }}">{{ post.title }}</a></li>
