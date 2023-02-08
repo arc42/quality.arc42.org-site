@@ -19,10 +19,10 @@
 
 <div id="search-results">
   <ul class="posts">
-    {% assign sorted_posts = site.tags[include.topic] | sort_by: 'title'  | reverse %}
+    {% assign sorted_posts = site.tags[include.topic] | sort: 'title' %}
     {% assign sorted_posts = sorted_posts | where: "categories", "requirements" %}
     {% for post in sorted_posts %}{% if post.title != null %}
-    <li> <a href="{{ post.url }}">{{ post.title }}</a>&nbsp; | &nbsp; <i>
+    <li> <a href="{{ post.url }}" markdown="1">{{ post.title }}</a>&nbsp; | &nbsp; <i>
         <small> <i class="fa fa-tags" style="color: #1675b9;"> </i> &nbsp; </small>
         {% for tag in post.tags %}
         <small> <a href="/tag-{{tag}}">#{{tag}}</a> </small>
