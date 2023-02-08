@@ -2,19 +2,39 @@
 
 {% assign page_tags = page.tags %}
 {% assign no_show_titles = page.title %}
-<ul class="posts">
-    {% for page_tag in page_tags %}
+{% assign posts_to_show = "" %}
+{% for page_tag in page_tags %}
     {% assign posts = site.tags[page_tag] | where: "categories", "requirements" %}
     {% for post in posts %}
-    {% unless no_show_titles contains post.title %}
-    <li> <a href="{{post.permalink}}">{{post.title}}</a> &nbsp; | &nbsp; <i>
-        {% assign no_show_titles = no_show_titles | append: post.title%}
-        <small> <i class="fa fa-tags" style="color: #1675b9;"> </i> &nbsp; </small>
-        {% for tag in post.tags %}
-        <small> <a href="/tag-{{tag}}">#{{tag}}</a> </small>
-        {% endfor %}
+        {% unless no_show_titles contains post.title %}
+            {% assign no_show_titles = no_show_titles | append: post.title%}
+            {% assign posts_to_show = posts_to_show | append: post.title %}
+            {% assign posts_to_show = posts_to_show | append: ":" %}
+            {% for tag in post.tags%}
+                {% assign posts_to_show = posts_to_show | append: tag %}
+                {% assign posts_to_show = posts_to_show | append: ";" %}
+            {% endfor %}
+            {% assign posts_to_show = posts_to_show | append: ", " %}
         {% endunless %}
+    {% endfor %}
+{% endfor %}
+
+{% assign posts_to_show = posts_to_show | split: ", " %}
+{% assign posts_to_show = posts_to_show | sort %}
+
+<ul class="posts">
+{% for post in posts_to_show %}
+    {% assign post_and_tags = post | split: ":" %}
+    {% assign post_title = post_and_tags[0] %}
+    {% assign post_tags = post_and_tags[1] %}
+    {% assign post_tags = post_tags | split: ";" %}
+
+    <li> <a href="LINK">{{post_title}}</a> &nbsp; | &nbsp; <i>
+    <small> <i class="fa fa-tags" style="color: #1675b9;"> </i> &nbsp; </small>
+    {% for tag in post_tags %}
+        <small> <a href="/tag-{{tag}}">#{{tag}}</a> </small>
+    {% endfor %}
     </i></li>
-    {% endfor %}
-    {% endfor %}
+
+{% endfor %}
 </ul>
