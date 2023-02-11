@@ -1,8 +1,8 @@
 ---
 title: "System can run >12h without re-booting the operating system"
-tags: operable 
-related: mean-time-between-failures, stability
-permalink: /requirements/shutdown-to-safe-state
+tags: operable reliable
+related: mean-time-between-failures, stability, reliability, availability
+permalink: /requirements/long-running-without-reboot
 ---
 
 <div class="quality-requirement" markdown="1">
