@@ -94,6 +94,8 @@ As you might guess by now, I'm currently full of doubt wether the ISO 25000 clan
 I seriously doubt that many organizations are willing to cover the complete expenses. 
 Personally I invested in 25010, which I consider a valuable source, despite its [shortcomings](/articles/iso-25010-shortcomings).
 
+But still I consider the groundwork of ISO-25010 a valid and helpful resource to avoid lengthy discussions on the meaning of (certain) terms. Hopefully our own site can serve this purpuse in the future. Until then, many people will be refering to the [public ISO-25010 collection of terms](https://www.iso.org/obp/ui/#iso:std:iso-iec:25010:dis:ed-2:v1:en), and most likely ignoring the potentially valuable additions of all the other documents.
+
 
 
 
