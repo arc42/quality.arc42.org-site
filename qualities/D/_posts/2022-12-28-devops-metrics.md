@@ -1,6 +1,6 @@
 ---
 title: Devops-Metrics
-tags: operable testable
+tags: operable 
 related: controllability, operability, testability, analysability, deployability
 permalink: /qualities/devops-metrics
 ---

@@ -1,6 +1,6 @@
 ---
 title: "Efficient generation of test data"
-tags: efficient testable
+tags: efficient suitable
 related: efficiency, time-behaviour, capacity
 permalink: /requirements/efficient-generation-of-test-data
 ---

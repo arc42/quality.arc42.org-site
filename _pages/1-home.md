@@ -54,7 +54,7 @@ A single quality attribute (like "availability") might have multiple properties 
 {% assign tags_usable = site.posts | where_exp: "posts", "posts.tags contains 'usable'" %}
 {% assign tags_safe = site.posts | where_exp: "posts", "posts.tags contains 'safe'" %}
 {% assign tags_secure = site.posts | where_exp: "posts", "posts.tags contains 'secure'" %}
-{% assign tags_testable = site.posts | where_exp: "posts", "posts.tags contains 'testable'" %}
+{% assign tags_suitable = site.posts | where_exp: "posts", "posts.tags contains 'suitable'" %}
 {% assign tags_operable = site.posts | where_exp: "posts", "posts.tags contains 'operable'" %}
 
 | Top-level property | Explanation          |
@@ -66,7 +66,7 @@ A single quality attribute (like "availability") might have multiple properties 
 | [**#usable**](/tag-usable/) ({{ tags_usable | size }})  |  Enable users to perform their tasks safely, effectively and efficiently while enjoying the experience |
 | [**#safe**](/tag-safe/) ({{ tags_safe | size }})  |  Avoid states in which human life, health, property or the environment is endangered, detects and warns of risks and hazards.  |
 | [**#secure**](/tag-secure/) ({{ tags_secure | size }})  |  Protect information and data so that persons or other products have only access to an extend appropriate to their types and levels, and to defend against attack patterns by malicious actors |
-| [**#testable**](/tag-testable/) ({{ tags_testable | size }})  |  Enable an objective and feasible test to be designed and performed to determine whether requirements are met |
+| [**#suitable**](/tag-suitable/) ({{ tags_suitable | size }})  | An abstract property, applicable to various objects: the software system itself, the specification, the documentation, the functional interfaces, the test cases, the runtime environment or similar.  |
 | [**#operable**](/tag-operable/) ({{ tags_operable | size }})  |  Easy to deploy, operate, monitor and control |
 
 
