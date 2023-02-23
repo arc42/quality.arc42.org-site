@@ -21,7 +21,7 @@ Before we dive into the details, please allow me some nitpicking.
 The ISO standard (and most of the historical quality models too) is writing about the "properties of a system or product".
 Such properties are crucial in everyday life, therefore our (natural) language provides _adjectives_ as a specific category of words:
 In real life, people call things _delicious, fast, usable_ or _secure_.
-Product owners want or require systems to be _responsive, reliable, testable_, or _easy to change_.
+Product owners want or require systems to be _responsive, reliable, suitable_, or _easy to change_.
 
 
 Too bad, computer scientists plus the ISO 25010 standard committee, as well as the inventors of traditional quality models, preferred to use nouns to describe properties:

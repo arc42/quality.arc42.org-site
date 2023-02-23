@@ -1,6 +1,6 @@
 ---
 title: Correctness
-tags: usable reliable testable
+tags: usable reliable suitable
 related: usability, functionality, functional-suitability, functional-correctness
 permalink: /qualities/correctness
 ---

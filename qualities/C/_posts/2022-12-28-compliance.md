@@ -1,6 +1,6 @@
 ---
 title: Compliance 
-tags: secure safe usable reliable efficient testable
+tags: secure safe usable reliable efficient suitable
 related: security, safety, usability, reliability, efficience, testability
 permalink: /qualities/compliance
 ---

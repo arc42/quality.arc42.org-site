@@ -58,8 +58,8 @@ Based upon the importance of stakeholders for project success, we centered our a
 | Management| efficient in terms of development and operational cost, reliable |
 | Domain expert| reliable and efficient in terms of providing required functions, flexible in terms of providing new functions,   |
 | Product owner| flexible in terms of new features, |
-| Developer| flexible and reliable in terms of maintaining the code, testable |
-| Tester| testable, flexible in terms of automation and instrumentation, reliable in terms of reproducible test results |
+| Developer| flexible and reliable in terms of maintaining the code, easily testable |
+| Tester| testable with suitable effort, flexible in terms of automation and instrumentation, reliable in terms of reproducible test results |
 | Admin| operable and reliable in terms of easily operating and administering the system, secure and reliable when integrating with other sytems, flexible in terms of execution environments, safe and secure|
 | Others|  |
 
@@ -74,7 +74,7 @@ These tags should be almost self-explanatory, but I'll try to clarify them with 
 | `#efficient`| fast, responsive, efficient in terms of memory, cpu, threads, network and other resources, efficiently maintainable and operable|
 | `#usable`| easy and pleasurable to use, attractive, aesthetic|
 | `#operable`| easy to install, operate, monitor and administer, adequate operational costs|
-| `#testable`| easy to test with reliable and consistent results, also in the sense of "easy to analyze or evaluate"|
+| `#suitable`| providing suitable properties and responsitilities or functions|
 | `#secure`| consistent, accountable, confidential, integrous |
 | `#safe`| fail safe, isolating faults, warns of hazards early, identifies risks early |
 
@@ -90,7 +90,7 @@ Q42 regards development teams as first-class citizens:
 * `#reliable` in terms of "We can add now features or otherwise modify the systems, and can reliably predict the consequences of our changes. We can reliably fix bugs. We can reliably predict runtime behaviour."
 * `#flexible` in several dimensions, e.g. flexible module or component structure, flexible code that is easy to modify, flexible software and hardware infrastructure.
 * `#usable` in terms of understandable module structures, understandable code and data structures, understandable runtime behaviour.
-* `#testable` in terms of test automation, e.g. the systems allows for easy creation and maintenance of unit and acceptance tests to reduce development risks.
+* `#suitable` in terms of appropriately "We can easily understand, test and modify code, and we can add new responsibilities and functions with appropriate risks".
 
 ### Summary
 The arc42 quality model has yet to prove its practical applicability, as it hit the _market_ only in January 2023.

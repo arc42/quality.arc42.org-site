@@ -1,6 +1,6 @@
 ---
 title: "Easily understandable acceptance test cases"
-tags: usable testable efficient
+tags: usable suitable efficient
 related: efficiency, maintainability, suitability, consistency
 permalink: /requirements/dummy
 ---

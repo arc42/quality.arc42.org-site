@@ -24,7 +24,7 @@ Read more on the **[background of requirements](/articles/specify-quality-requir
   <ul class="tag-box inline">
   {% for tag in tag_words %}
     <!-- make the tags of the arc42-quality-model stand out -->
-    {% if tag == "reliable" or tag == "flexible" or tag=="efficient" or tag == "usable" or tag == "safe" or tag == "secure" or tag == "testable" or tag == "operable" %}
+    {% if tag == "reliable" or tag == "flexible" or tag=="efficient" or tag == "usable" or tag == "safe" or tag == "secure" or tag == "suitable" or tag == "operable" %}
     <a class="hov tags req" href="/tag-{{ tag | cgi_escape }}"><b>{{ tag }}</b>
        <span>{{ site.tags[tag] | where: "categories", "requirements" | size }}</span></a>
     {% else %}
