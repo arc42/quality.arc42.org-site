@@ -27,10 +27,6 @@ Read more on the **[background of requirements](/articles/specify-quality-requir
     {% if tag == "reliable" or tag == "flexible" or tag=="efficient" or tag == "usable" or tag == "safe" or tag == "secure" or tag == "suitable" or tag == "operable" %}
     <a class="hov tags req" href="/tag-{{ tag | cgi_escape }}"><b>{{ tag }}</b>
        <span>{{ site.tags[tag] | where: "categories", "requirements" | size }}</span></a>
-    {% else %}
-        <!-- other tags in different color  -->
-        <li><a class="hov tags req" href="#{{ tag | cgi_escape }}">{{ tag }}
-        <span>{{ site.tags[tag] | size }}</span></a></li>
     {% endif %}
   {% endfor %}
   </ul>
