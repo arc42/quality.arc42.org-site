@@ -1,6 +1,6 @@
 ---
 title: Testability
-tags: testable flexible
+tags: suitable flexible
 related: maintainability, flexibility, modifiability, analysability
 permalink: /qualities/testability
 ---
