@@ -1,6 +1,6 @@
 ---
 title: Traceability
-tags: reliable operable testable
+tags: reliable operable
 related: devops-metrics, operability, testability
 permalink: /qualities/traceability
 ---

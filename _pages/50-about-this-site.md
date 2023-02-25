@@ -25,6 +25,7 @@ order: 50
 
 
 
+
 ## About me
 
 ![Gernot, avatar](/images/ai-profile-gs-256px.webp){:width="20%"}
@@ -45,6 +46,7 @@ I'm:
 ## Acknowledgements
 
 * Thanx to Michael Mahlberg, Markus Meuten and Peter Hruschka for suggestions, bug fixes and moral support.
+* Thanx to Steffen Späthe for his intense reviews and constructive comments concerning the content. 
 * Thanx to Per Starke for his awesome technical support in things around Liquid and Jekyll.
   
 ## Stats

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg xmlns:xl="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" xmlns:dc="http://purl.org/dc/elements/1.1/" version="1.1" viewBox="-17.478896 76.14548 630.9722 342.4519" width="630.9722" height="342.4519">
+<svg xmlns:xl="http://www.w3.org/1999/xlink" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:dc="http://purl.org/dc/elements/1.1/" viewBox="-17.478896 76.14548 630.9722 342.4519" width="630.9722" height="342.4519">
   <defs>
     <linearGradient x1="0" x2="1" id="Gradient" gradientUnits="userSpaceOnUse">
       <stop offset="0" stop-color="#fffd78"/>
@@ -14,7 +14,7 @@
       </g>
     </marker>
   </defs>
-  <g id="arc42_QM_nicer_design_1" stroke-opacity="1" fill="none" fill-opacity="1" stroke-dasharray="none" stroke="none">
+  <g id="arc42_QM_nicer_design_1" stroke-dasharray="none" fill="none" fill-opacity="1" stroke="none" stroke-opacity="1">
     <title>arc42 QM nicer design 1</title>
     <g id="arc42_QM_nicer_design_1_Ebene_1">
       <title>Ebene 1</title>
@@ -23,12 +23,12 @@
         <rect x="92.25" y="148.5" width="414" height="186.75" stroke="#929292" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
       </g>
       <g id="Graphic_1246">
-        <text transform="translate(108.5 203.25862)" fill="black">
+        <text transform="translate(101.97917 203.25862)" fill="black">
           <tspan font-family="Mark Pro" font-size="20" fill="black" x="2.8882507" y="20">#reliable</tspan>
         </text>
       </g>
       <g id="Graphic_1247">
-        <text transform="translate(175.35798 165.11638)" fill="black">
+        <text transform="translate(164.75 165.11638)" fill="black">
           <tspan font-family="Mark Pro" font-size="20" fill="black" x="3.851999" y="20">#flexible</tspan>
         </text>
       </g>
@@ -43,7 +43,7 @@
         </text>
       </g>
       <g id="Graphic_1250">
-        <text transform="translate(108.5 257.63362)" fill="black">
+        <text transform="translate(97.25 257.63362)" fill="black">
           <tspan font-family="Mark Pro" font-size="20" fill="black" x="13.258492" y="20">#safe</tspan>
         </text>
       </g>
@@ -54,7 +54,7 @@
       </g>
       <g id="Graphic_1252">
         <text transform="translate(328.75 294.75862)" fill="black">
-          <tspan font-family="Mark Pro" font-size="20" fill="black" x="2.64" y="20">#testable</tspan>
+          <tspan font-family="Mark Pro" font-size="20" fill="black" x="4.27" y="20">#suitable</tspan>
         </text>
       </g>
       <g id="Graphic_1253">
@@ -63,9 +63,8 @@
         </text>
       </g>
       <g id="Graphic_1254">
-        <text transform="translate(248.36825 209.5625)" fill="black">
-          <tspan font-family="Mark Pro" font-size="23" fill="black" x="4618528e-19" y="23">System /</tspan>
-          <tspan font-family="Mark Pro" font-size="23" fill="black" x="6.50325" y="52">Product</tspan>
+        <text transform="translate(251.17874 227.375)" fill="black">
+          <tspan font-family="Mark Pro" font-size="23" fill="black" x="3.07625" y="23">System </tspan>
         </text>
       </g>
       <g id="Graphic_1271">
