@@ -30,12 +30,12 @@ The diagram given below is contained in several of the official documents.
 You find the following five _families_ (yes, each block 01, 02, 03 etc. contains one or several parts).
 The official terminology is _divisions_ instead of families, but I think the latter sounds a bit more friendly.
 
-— ISO/IEC 2500n - Quality Management Division. The International Standards that form this division define all common models, terms and definitions referred to by all other standards from the SQuaRE series.
-— ISO/IEC 2501n - Quality Model Division. The International Standards that form this division present detailed quality models for systems and software product, quality in use and data. Practical guidance on the use of the quality model is also provided.
-— ISO/IEC 2502n - Quality Measurement Division. The International Standards that form this division include a system and software product quality measurement reference model, mathematical definitions of quality measures, and practical guidance for their application.
-— ISO/IEC 2503n - Quality Requirements Division. The International Standard that forms this division helps specifying quality requirements.
-— ISO/IEC 2504n - Quality Evaluation Division. The International Standards that form this division provide requirements, recommendations and guidelines for product evaluation, whether performed by independent evaluators, acquirers or developers. The support for documenting a measure as an Evaluation Module is also presented.
-— ISO/IEC 25050-25099-Extension Division. SQuaRE extension (ISO/IEC 25050 to ISO/IEC 25099) is designated to contain system or software product quality International Standards and/or Technical Reports that address specific application domains or that can be used to complement one or more SQuaRE International Standards.
+* ISO/IEC 2500n - Quality Management Division. The International Standards that form this division define all common models, terms and definitions referred to by all other standards from the SQuaRE series.
+* ISO/IEC 2501n - Quality Model Division. The International Standards that form this division present detailed quality models for systems and software product, quality in use and data. Practical guidance on the use of the quality model is also provided.
+* ISO/IEC 2502n - Quality Measurement Division. The International Standards that form this division include a system and software product quality measurement reference model, mathematical definitions of quality measures, and practical guidance for their application.
+* ISO/IEC 2503n - Quality Requirements Division. The International Standard that forms this division helps specifying quality requirements.
+* ISO/IEC 2504n - Quality Evaluation Division. The International Standards that form this division provide requirements, recommendations and guidelines for product evaluation, whether performed by independent evaluators, acquirers or developers. The support for documenting a measure as an Evaluation Module is also presented.
+* ISO/IEC 25050-25099-Extension Division. SQuaRE extension (ISO/IEC 25050 to ISO/IEC 25099) is designated to contain system or software product quality International Standards and/or Technical Reports that address specific application domains or that can be used to complement one or more SQuaRE International Standards.
 
 
 
