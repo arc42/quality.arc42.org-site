@@ -1,7 +1,7 @@
 ---
 title: Reliability
 tags: reliable
-related: availability, robustness, fault-tolerance, dependability
+related: availability, robustness, fault-tolerance, dependability, resilience
 permalink: /qualities/reliability
 ---
 
