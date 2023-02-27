@@ -22,6 +22,10 @@ permalink: /tag-efficient/
 >
 >[Merriam-Webster](https://www.merriam-webster.com/dictionary/efficient)
 
+> The amount of computing resources and code required by a program to perform a function.
+>
+> [McCall-1978](/references/#mccall)
+
 ### Effective vs Efficient
 >The words effective and efficient both mean "capable of producing a result," but there is an important difference. Effective means "producing a result that is wanted". Efficient means "capable of producing desired results without wasting materials, time, or energy".
 >The difference is that when something is effective it produces a result even if it takes some unnecessary resources to do so. When something is efficient, not only does it produce a result, but it does so in a quick or simple way using as little material, time, effort, or energy as possible. The following example sentences show how the two words are used.

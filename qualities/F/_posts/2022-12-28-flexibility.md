@@ -46,6 +46,6 @@ The ease with which the product can be:
 A system can **easily** be changed (as opposed to agility, which means that system can _rapidly_ be changed.)
 
 
-
-
-
+> Effort required to modify an operational program.
+> 
+> [McCall-1978](/references/#mccall)

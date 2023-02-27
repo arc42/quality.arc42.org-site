@@ -22,3 +22,6 @@ Definition:
 >[ISO-25010-2022](/references/#iso-25010-2022)
 
 
+> Extent to which a program can be expected to perform its intended function with required precision.
+>
+> [McCall-1978](/references/#mccall)

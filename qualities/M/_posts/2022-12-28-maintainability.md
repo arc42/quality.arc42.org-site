@@ -34,3 +34,6 @@ ing the maintenance task and that individual’s level of skill or knowledge.
 >from [ISO-25010-v2022](/references/#iso-25010-2022)
 
 
+> Effort required to locate and fix an error in an operational program.
+>
+> [McCall-1978](/references/#mccall)

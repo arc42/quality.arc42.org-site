@@ -15,3 +15,6 @@ Definitions:
 >[ISO-25010-2022](/references/#iso-25010-2022)
 
 
+> Extent to which a program satisfies its specifications and fulfills the user's mission objectives.
+>
+> [McCall-1978](/references/#mccall)
