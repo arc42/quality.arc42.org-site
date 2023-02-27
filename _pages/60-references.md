@@ -60,6 +60,18 @@ Rick Kazman, Phil Bianco, James Ivers and John Klein: Maintainability. SEI Techn
 [CMU/SEI-2020-TR-006](https://resources.sei.cmu.edu/asset_files/TechnicalReport/2020_005_001_650490.pdf)
 
 
+<a id="mccall"/>
+### McCall/Cavano: A framework for the measurement of software quality 
+
+ACM SIGSOFT Software Engineering Notes, Volume 3, Issue 5, November 1978, pp 133–139.
+[available online](https://doi.org/10.1145/953579.811113)
+
+Nice statement: 
+
+>One problem ... is the absence of a widely accepted definition of software quality.
+>
+>Cavano/McCall, p 133. 
+
 <a id="robertsons-requirements"/>
 ### Robertson: Mastering the Requirements Process 
 Suzanne Robertson and James Robertson: Mastering the Requirements Process - Getting Requirements Right. Pearson, 3rd edition 2012.
