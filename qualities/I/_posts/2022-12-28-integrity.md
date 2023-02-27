@@ -27,3 +27,7 @@ See [#secure](/tag-secure)
 >In common usage, **integrity** is much more common than its adjectival form, **integrous**.
 >
 >[Wiktionary](https://en.wiktionary.org/wiki/integrous)
+
+> Extent to which access to software or data by unauthorized persons can be controlled.
+>
+> [McCall-1978](/references/#mccall)

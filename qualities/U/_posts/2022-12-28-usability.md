@@ -16,3 +16,6 @@ Definitions:
 >[ISO-25010-2022](/references/#iso-25010-2022)
 
 
+> Effort required to learn, operate, prepare input, and interpret output of a program.
+>
+> [McCall-1978](/references/#mccall)

@@ -17,3 +17,6 @@ Work (together) with other products or systems.
 > 
 >[ISO-25010-2022](/references/#iso-25010-2022)
 
+> Effort required to couple one system with another.
+> 
+> [McCall-1978](/references/#mccall)
