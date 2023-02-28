@@ -1,8 +1,8 @@
 ---
-title: "Time Behavious"
+title: "Capacity to process 1000 sensor inputs per minute"
 tags: efficient
 related: time-behaviour, speed, performance 
-permalink: /requirements/time-behaviour
+permalink: /requirements/capacity-to-process-sensor-inputs
 ---
 
 <div class="quality-requirement" markdown="1">
