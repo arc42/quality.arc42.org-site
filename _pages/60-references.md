@@ -60,6 +60,24 @@ Rick Kazman, Phil Bianco, James Ivers and John Klein: Maintainability. SEI Techn
 [CMU/SEI-2020-TR-006](https://resources.sei.cmu.edu/asset_files/TechnicalReport/2020_005_001_650490.pdf)
 
 
+<a id="mccallMatsumoto1980"/>
+### McCall/Matsumuto: Software Quality Measurement Manual 
+
+Available [online](https://apps.dtic.mil/sti/pdfs/ADA086986.pdf)
+
+From this document:
+
+>The purpose of this manual is to present a complete set of procedures and guidelines for introducing and utilizing current software quality measurement techniques in a quality assurance program associated with large scale software system developments.
+>
+>These procedures and guidelines will identify:
+>
+>1. How to identify and specify software quality requirements (Setting Quality Goals).
+>2. How and when to apply software metrics (Applying Metrics), and
+>3. How to interpret the information obtained from the application of the metrics (Making a Quality Assessment)."
+
+
+(thanx to @ichsteffen for pointing out this awesome reference!)
+
 <a id="mccall"/>
 ### McCall/Cavano: A framework for the measurement of software quality 
 
