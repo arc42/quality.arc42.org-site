@@ -1,7 +1,7 @@
 ---
 title: Compatible with 5 major battery providers
 tags: flexible
-related: flexibility, adaptability, interoperability
+related: flexibility, adaptability, interoperability, compatibility
 permalink: /requirements/compatible-with-5-battery-providers
 ---
 
