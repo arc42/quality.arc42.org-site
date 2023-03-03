@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Quality Properties
-permalink: /tags/
+permalink: /properties/
 order: 22
 ---
 
