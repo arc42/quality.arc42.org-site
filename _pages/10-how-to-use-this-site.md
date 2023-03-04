@@ -23,12 +23,15 @@ Let's explain some terms:
 | **Examples** and Acceptance Criteria | These are the specific requirements stakeholders have for a system or product. They should enable stakeholders to explicitely determine if anything is _good enough_. |
 
 
-## How to 
+## How to Use Q42
+
 You can approach in several ways:
 
-1. top-down, starting with the eight top-level properties from [Q42, the pragmatical arc42 quality model](/articles/arc42-quality-model)
-2. bottom-up, by reading through the [extensive list of qualities](/qualities/).
-3. by reading the [examples of quality requirements](/requirements).
+1. Top-down, starting with the eight top-level [**properties**](/properties) 
+2. Bottom-up, by reading through the [extensive list of **qualities**](/qualities/).
+3. By asking your stakeholders for terms (either properties or specific qualities) they consider important, and then continue with steps 1 or 2.
+4. By reading the [**examples** of quality requirements](/requirements).
+
 
 All these approaches are described below.
 

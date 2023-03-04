@@ -5,6 +5,9 @@ tags: arc42 quality-model
 permalink: /articles/arc42-quality-model
 ---
 
+{% assign quality_posts = site.posts | where: "categories", "qualities" %}
+{% assign requirement_posts = site.posts | where: "categories", "requirements" %}
+
 
 The arc42 quality model Q42 (pronounced "Kju-Fortytwo" or "Kju-Four-Two") is simple, pragmatic yet effective approach to product and system quality.
 It starts with **stakeholders' expectations and requirements**.
@@ -39,9 +42,17 @@ To facilitate stakeholder communication and understanding, Q42 contains definiti
 
 #### Example Quality Requirements
 
-#### Hyperlinks as Best-Friends
-All terms and example-requirements are cross-referenced (_hyperlinked_).
+Q42 contains numerous (currently {{ requirement_posts | size }}) [examples for specific quality requirements](/quality-requirements).
+You can use these examples as starting point to find and describe quality requirements for your own system.
 
+#### Hyperlinks as Best-Friends
+All terms and example-requirements are cross-referenced (_hyperlinked_). 
+That enables different _access patterns_ to this website:
+
+1. Start with the eight [fundamental and generic **properties**](/properties), and dive into details from these.
+2. Start with any specific quality, and navigate to the appropriate example(s) from there. Look through the extensive list of {{ quality_posts | size }} of these [**specific qualities**](/qualities). 
+3. Start with asking your stakeholders for their generic or specific requirements - and then continue with 1. or 2.
+4. Finally, you might read through the list of [**example requirements**](/requirements).
 
 
 ### Stakeholder first
