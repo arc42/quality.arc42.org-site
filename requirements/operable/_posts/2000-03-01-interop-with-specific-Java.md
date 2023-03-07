@@ -1,7 +1,8 @@
 ---
 title: "Interoperable with Java 12"
 tags: operable
-related: compatibility, interoperability, portability
+related: compatibility, interoperability, backward-compatibility
+stakeholder: management, product-owner, user
 permalink: /requirements/interoperable-with-java-12
 ---
 

@@ -54,10 +54,11 @@ Efficient, as we saw above, can mean several different things:
 >* The (maximum, medium, mean median) time the response takes ([[latency](/qualities/latency)])
 >* The number or percentage of satisfied requests over some time interval (throughput) or set of events received
 >* The number or percentage of requests that go unsatisfied
->* The variation in response time (jitter)
+>* The variation in response time ([jitter](/qualities/jitter))
 >* Usage level of a computing resource
 >
 >[Bass et. al, 2022](/references/#bass-swa-practice)
+
 
 
 <!-- include all qualities associated with this tag -->

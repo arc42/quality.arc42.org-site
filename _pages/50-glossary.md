@@ -2,7 +2,8 @@
 layout: page
 title: Glossary
 permalink: /glossary/
-order: 35
+hide: true
+order: 50
 ---
 
 
