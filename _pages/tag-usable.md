@@ -32,8 +32,40 @@ The main idea of _usability_ is that a system shall be designed with (generalize
 
 ### Scenario Response Measures from [Bass et al.]
 
+>The system should:
+>
+>* provide the user with the features needed
+>* anticipate the user's needs
+>* provide appropriate feedback to the user
+>
+>The system's response might be  measured in one or more of the following:
+>
+>* task time
+>* number of errors
+>* learning time
+>* ratio of learning time to task time
+>* number of tasks accomplished
+>* user satisfaction
+>* gain of user knowledge
+>* ratio of successful operations to total operations
+>* amount of time or data lost when an error occurs 
 >
 >[Bass et. al, 2022](/references/#bass-swa-practice)
+
+### _usable_ for Stakeholdes
+
+
+| Stakeholder | (potential) Expectation for _usable_ |
+|:--- |:--- |
+| User ||
+| Product-Owner | |
+| Management |  |
+| Developer |  |
+| Tester | |
+| Admin |   |
+| Domain-Expert |  |
+| Others |   |
+
 
 
 <!-- include all qualities associated with this tag -->
