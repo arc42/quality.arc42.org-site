@@ -15,6 +15,7 @@ permalink: /qualities/predictability
 >[Wikipedia](https://en.wikipedia.org/wiki/Predictability)
 
 <hr>
+
 In software development, stakeholders might need to predict:
 
 * cost and effort required to change or enhance parts of the system
