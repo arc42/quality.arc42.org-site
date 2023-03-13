@@ -37,6 +37,19 @@ That is, from our perspective, a matter of taste.
 
 (todo)
 
+### _suitable_ for Stakeholders
+
+
+| Stakeholder | (potential) Expectation for _suitable_ |
+|:--- |:--- |
+| User ||
+| Product-Owner | |
+| Management |  |
+| Developer |  |
+| Tester | |
+| Admin |   |
+| Domain-Expert |  |
+| Others |   |
 
 
 

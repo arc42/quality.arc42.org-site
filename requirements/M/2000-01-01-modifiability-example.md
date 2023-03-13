@@ -1,9 +1,9 @@
 ---
 title: "New Features Introduce No Bugs"
-tags: efficient
+tags: reliable
 related: modifiability, reliability, changeability
 stakeholder: management, product-owner, developer
-permalink: /requirements/dummy
+permalink: /requirements/new-features-introduct-no-bugs
 ---
 
 <div class="quality-requirement" markdown="1">
