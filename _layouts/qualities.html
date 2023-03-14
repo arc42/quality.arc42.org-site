@@ -16,7 +16,7 @@ layout: default
 
         <ul class="posts">
             {% for quality in related-qualities %}
-            <li> <a href="/qualities/{{quality }}">{{quality}}</a></li>
+            <li> <a href="/qualities/{{quality }}">{{quality | replace: "-", " "}}</a></li>
             {% endfor %}
         </ul>
 
