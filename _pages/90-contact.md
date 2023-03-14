@@ -2,7 +2,7 @@
 layout: page
 title: Contact
 permalink: /contact/
-order: 70
+order: 90
 ---
 
 ## You have questions?
