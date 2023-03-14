@@ -37,15 +37,15 @@ That is, from our perspective, a matter of taste.
 
 (todo)
 
-### _suitable_ for Stakeholders
+### What Stakeholders mean by _suitable_ 
 
 
 | Stakeholder | (potential) Expectation for _suitable_ |
 |:--- |:--- |
-| User ||
-| Product-Owner | |
-| Management |  |
-| Developer |  |
+| User |* offers the required (_suitable_) functions,<br>* and in _suitable_ quality<br>* adequate performance<br>* adequate robustness|
+| Product-Owner |* providing appropriate (_suitable_) functions in _suitable_ quality<br>* easy to enhance by new functions or features<br> |
+| Management |* appropriate cost/benefit ratio<br>* appropriate effort required to add new features of functions  |
+| Developer |* appropriate effort required to understand internals<br>* good [code readability](/qualities/code-readability)  |
 | Tester | |
 | Admin |   |
 | Domain-Expert |  |
