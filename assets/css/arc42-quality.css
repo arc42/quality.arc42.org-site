@@ -98,5 +98,10 @@ hr.big-sep {
 }
 
 .rel-pos {
-    position: relative
+    position: relative;
+}
+
+li.small {
+    font-size: 80%;
+    padding-left: 20px;
 }
