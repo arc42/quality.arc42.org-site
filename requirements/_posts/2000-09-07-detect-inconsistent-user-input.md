@@ -1,7 +1,7 @@
 ---
 title: "Detect inconsistent user input"
 tags: usable reliable
-related: usability, consistency, user-experience, user-assistance
+related: usability, consistency, user experience, user assistance
 permalink: /requirements/detect-inconsistent-user-input
 ---
 

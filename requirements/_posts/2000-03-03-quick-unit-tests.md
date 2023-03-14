@@ -1,7 +1,7 @@
 ---
 title: "Quick unit tests"
 tags: operable
-related: testability, 
+related: testability
 permalink: /requirements/quick-unit-tests
 ---
 
