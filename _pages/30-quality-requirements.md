@@ -9,7 +9,7 @@ Here you find some examples of
 <span style="color: var(--req-text-color)" markdown="1">
 _quality requirements_
 </span>
-by the properties they are related to, with 
+sorted by the properties they are related to, with 
 <span style="color: var(--blue-text-color)">
 related qualities
 </span>
