@@ -5,7 +5,15 @@ permalink: /requirements/
 order: 30
 ---
 
-Here you find some examples of _quality requirements_ by the properties they are related to, with related qualities listed below each requirement. <br>
+Here you find some examples of 
+<span style="color: var(--req-text-color)" markdown="1">
+_quality requirements_
+</span>
+by the properties they are related to, with 
+<span style="color: var(--blue-text-color)">
+related qualities
+</span>
+listed below each requirement. <br>
 Within the Software Engineering literature you might find the term "quality scenario" for such examples. 
 That term was coined by authors from the Software Engineering Institute (SEI), especially [Len Bass et. al.](/references/#bass-swa-practice)
 
