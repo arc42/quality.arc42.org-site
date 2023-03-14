@@ -1,4 +1,20 @@
+<h2><span style="background-color:var(--qual-req-color)">Directly Related Quality Requirements</span></h2>
+
+{% assign requirements_unsorted = site.posts | where: "categories", "requirements" %}
+{% assign requirements = requirements_unsorted | sort %}
+
+<ul class="posts no-bullets">
+    {% for requirement in requirements %}
+    {% assign check_title = page.title | downcase %}
+    {% if requirement.related contains check_title %}
+    <li><a class="reqs" href="{{requirement.permalink}}"><i class="fa fa-lightbulb fa-xs as-bullet" style="color: var(--req-text-color);"> </i> {{ requirement.title }}</a></li>
+    {% endif %}
+    {% endfor %}
+</ul>
+
+
 <h2><span style="background-color:var(--qual-req-color)">Related Quality Requirements</span></h2>
+
 
 {% assign page_tags = page.tags %}
 {% assign no_show_titles = page.title %}
@@ -24,6 +40,7 @@
 {% assign posts_to_show = posts_to_show | split: ", " %}
 {% assign posts_to_show = posts_to_show | sort %}
 
+
 <ul class="posts">
 {% for post in posts_to_show %}
     {% assign post_and_tags = post | split: ":" %}
@@ -33,12 +50,14 @@
     {% assign post_tags = post_and_tags[1] %}
     {% assign post_tags = post_tags | split: ";" %}
 
-    <li> <a href="{{post_link}}">{{post_title}}</a> &nbsp; | &nbsp; <i>
-    <small> <i class="fa fa-tags" style="color: #1675b9;"> </i> &nbsp; </small>
+    <li> <a class="reqs" href="{{post_link}}">{{post_title}}</a>
+    <span class="parent children rel-pos">
+    &nbsp; | &nbsp; <i>
+    <small> <i class="fa fa-tags" style="color: var(--blue-text-color);"> </i> &nbsp; </small>
     {% for tag in post_tags %}
-        <small> <a href="/tag-{{tag}}">#{{tag}}</a> </small>
+        <small> <a style="color: var(--blue-text-color);" href="/tag-{{tag}}">#{{tag}}</a> </small>
     {% endfor %}
-    </i></li>
+    </i></span></li>
 
 {% endfor %}
 </ul>

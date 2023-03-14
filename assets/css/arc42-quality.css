@@ -89,6 +89,14 @@ hr.big-sep {
     border-top: 3px solid grey;
 }
 
-li.no-bullets {
+.no-bullets {
     list-style-type: none;
+}
+
+.as-bullet {
+    margin-right: 10px;
+}
+
+.rel-pos {
+    position: relative
 }
