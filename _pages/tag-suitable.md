@@ -42,14 +42,14 @@ That is, from our perspective, a matter of taste.
 
 | Stakeholder | (potential) Expectation for _suitable_ |
 |:--- |:--- |
-| User |* offers the required (_suitable_) functions,<br>* and in _suitable_ quality<br>* adequate performance<br>* adequate robustness|
+| User |* offers the required (_suitable_) functions in appropriate quality<br>* adequate performance<br>* adequate robustness<br>* adequate accessibility and useability|
 | Product-Owner |* providing appropriate (_suitable_) functions in _suitable_ quality<br>* easy to enhance by new functions or features<br> |
 | Management |* appropriate cost/benefit ratio<br>* appropriate effort required to add new features of functions  |
-| Developer |* appropriate effort required to understand internals<br>* good [code readability](/qualities/code-readability)  |
-| Tester | |
-| Admin |   |
-| Domain-Expert |  |
-| Others |   |
+| Developer |* appropriate effort required to understand internals<br>* good [code readability](/qualities/code-readability)<br>* appropriate effort required to locate and fix bugs<br>* appropriate technologies used<br>* appropriate technical documentation  |
+| Tester |* appropriate effort required for testing |
+| Admin |* easy to perform required administration tasks (like deploy, install, configure etc)  |
+| Domain-Expert | - |
+| Others | -   |
 
 
 
