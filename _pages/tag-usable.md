@@ -57,14 +57,14 @@ The main idea of _usability_ is that a system shall be designed with (generalize
 
 | Stakeholder | (potential) Expectation for _usable_ |
 |:--- |:--- |
-| User ||
-| Product-Owner | |
-| Management |  |
-| Developer |  |
-| Tester | |
-| Admin |   |
-| Domain-Expert |  |
-| Others |   |
+| User |see the criteria above. More specifically:<br>* [functional-completeness](/qualities/functional-completeness)<br>* [accessibility](/qualities/accessibility)<br>* [correctness](/qualities/correctness)<br>* visual and behavioural [consistency](/qualities/consistency) <br>* [understandability](/qualities/understandability) <br>* [ease-of-use](/qualities/ease-of-use)<br>* [functional-suitability](/qualities/functional-suitability) <br>* [learnability](/qualities/learnability)<br>* nice [user-experience](/qualities/user-experience)<br>(maybe even more)|
+| Product-Owner | -  |
+| Management | -  |
+| Developer |* understandable source-code and dependencies<br>* an appropriate technology-stack<br>* no (or at least predictable) side-effects when changing the system |
+| Tester |* [testability](/qualities/testability)<br>* predictable test behaviour |
+| Admin |* easy to deploy and install,<br>* [installability](/qualities/installability)<br>* [deployability](/qualities/deployability)   |
+| Domain-Expert | - |
+| Others | -  |
 
 
 
