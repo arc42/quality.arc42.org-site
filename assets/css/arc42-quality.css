@@ -71,6 +71,20 @@ a.hov.tags.req {
     background-color: #DEEFB7;
 }
 
+
+
+
 a.reqs {
     color: var(--req-text-color);
+}
+
+li.related-quality {
+    padding-left: 20px;
+    color: var(--blue-text-color);
+}
+
+
+/* a big separating line */
+hr.big-sep {
+    border-top: 3px solid grey;
 }
