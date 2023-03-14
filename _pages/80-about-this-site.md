@@ -2,7 +2,7 @@
 layout: page
 title: About this Site
 permalink: /aboutthissite/
-order: 50
+order: 80
 ---
 
 ## Support
