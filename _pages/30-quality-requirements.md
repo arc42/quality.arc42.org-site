@@ -7,9 +7,15 @@ order: 30
 
 Here you find some examples of 
 <span style="color: var(--req-text-color)" markdown="1">
+<i class="fa fa-lightbulb"></i>
 _quality requirements_
 </span>
-sorted by the properties they are related to, with 
+sorted by the
+<span style="color: var(--blue-text-color)">
+<i class="fa fa-tags"></i>
+properties
+</span>
+they are related to, with 
 <span style="color: var(--blue-text-color)">
 related qualities
 </span>
