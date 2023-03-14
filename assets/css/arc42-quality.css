@@ -88,3 +88,7 @@ li.related-quality {
 hr.big-sep {
     border-top: 3px solid grey;
 }
+
+li.no-bullets {
+    list-style-type: none;
+}

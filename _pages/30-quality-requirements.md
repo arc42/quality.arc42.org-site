@@ -45,12 +45,12 @@ Read more on the **[background of requirements](/articles/specify-quality-requir
 {% for item in (0..site.tags.size) %}{% unless forloop.last %}
 {% capture this_word %}{{ tag_words[item] | strip_newlines }}{% endcapture %}
 <a href="/tag-{{ this_word | cgi_escape }}">
-<h2>#{{ this_word }}</h2></a>
+<h2><i class="fa fa-tag fa-xs"></i> #{{ this_word }}</h2></a>
   <ul class="posts">
     {% assign sorted_posts = site.tags[this_word] | sort: 'title' %}
     {% assign sorted_posts = sorted_posts | where: "categories", "requirements" %}
     {% for post in sorted_posts %}{% if post.title != null %}
-    <h3 style="color: var(--req-text-color)"><li><a style="color: var(--req-text-color)" href="{{ post.url }}">{{ post.title }}</a></li></h3>
+    <h3 style="color: var(--req-text-color)"><li class="no-bullets"><a style="color: var(--req-text-color)" href="{{ post.url }}"><i class="fa fa-lightbulb fa-xs"></i> {{ post.title }}</a></li></h3>
     {% for quality in qualities %}
         {% assign check_title = quality.title | downcase %}
         {% if post.related contains check_title %}
