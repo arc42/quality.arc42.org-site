@@ -5,7 +5,21 @@ permalink: /requirements/
 order: 30
 ---
 
-Here you find some examples of quality requirements. 
+Here you find some examples of 
+<span style="color: var(--req-text-color)" markdown="1">
+<i class="fa fa-lightbulb"></i>
+_quality requirements_
+</span>
+sorted by the
+<span style="color: var(--blue-text-color)">
+<i class="fa fa-tags"></i>
+properties
+</span>
+they are related to, with 
+<span style="color: var(--blue-text-color)">
+related qualities
+</span>
+listed below each requirement. <br>
 Within the Software Engineering literature you might find the term "quality scenario" for such examples. 
 That term was coined by authors from the Software Engineering Institute (SEI), especially [Len Bass et. al.](/references/#bass-swa-practice)
 
@@ -31,18 +45,30 @@ Read more on the **[background of requirements](/articles/specify-quality-requir
   {% endfor %}
   </ul>
 
+{% assign qualities_unsorted = site.posts | where: "categories", "qualities" %}
+{% assign qualities = qualities_unsorted | sort %}
+
 {% for item in (0..site.tags.size) %}{% unless forloop.last %}
 {% capture this_word %}{{ tag_words[item] | strip_newlines }}{% endcapture %}
 <a href="/tag-{{ this_word | cgi_escape }}">
-<h2>#{{ this_word }}</h2></a>
+<h2><i class="fa fa-tag fa-xs"></i> #{{ this_word }}</h2></a>
   <ul class="posts">
     {% assign sorted_posts = site.tags[this_word] | sort: 'title' %}
     {% assign sorted_posts = sorted_posts | where: "categories", "requirements" %}
     {% for post in sorted_posts %}{% if post.title != null %}
-    <li> <a href="{{ post.url }}">{{ post.title }}</a></li>
+    <h3 style="color: var(--req-text-color)"><li class="no-bullets"><a style="color: var(--req-text-color)" href="{{ post.url }}"><i class="fa fa-lightbulb fa-xs"></i> {{ post.title }}</a></li></h3>
+    {% for quality in qualities %}
+        {% assign check_title = quality.title | downcase %}
+        {% assign related = post.related | split: ", "%}
+        {% if related contains check_title %}
+            <li class="related-quality"><a href="{{quality.url}}"> {{quality.title}} </a></li>
+        {% endif %}
+    {% endfor %}
     {% endif %}{% endfor %}
   </ul>
+<hr class="big-sep">
   {% endunless %}{% endfor %}
+
 </div>
 
 

@@ -1,7 +1,7 @@
 ---
 title: "Usable Despite Color Blindness"
 tags: usable
-related: usability, user-experience, compliance, accessibility
+related: usability, user experience, compliance, accessibility
 permalink: /requirements/usable-despite-color-blindness
 ---
 

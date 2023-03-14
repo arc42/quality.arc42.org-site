@@ -1,7 +1,7 @@
 ---
-title: "Access _find_ function in three seconds"
+title: "Access find function in three seconds"
 tags: usable
-related: usability, user-experience, ease-of-use
+related: usability, user experience, ease of use
 permalink: /requirements/access-find-function-quickly
 ---
 

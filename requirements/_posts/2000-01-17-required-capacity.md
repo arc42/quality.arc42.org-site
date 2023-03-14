@@ -1,7 +1,7 @@
 ---
 title: "Respond to 15000 requests per workday"
 tags: efficient
-related: capacity, resource-efficiency, 
+related: capacity, resource efficiency
 permalink: /requirements/respond-to-15000-requests-per-workday
 ---
 

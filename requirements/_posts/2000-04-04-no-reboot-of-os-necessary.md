@@ -1,7 +1,7 @@
 ---
 title: "System can run >12h without re-booting the operating system"
 tags: operable reliable
-related: mean-time-between-failures, stability, reliability, availability
+related: mean time between failures, stability, reliability, availability
 permalink: /requirements/long-running-without-reboot
 ---
 

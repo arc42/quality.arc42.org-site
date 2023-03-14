@@ -1,7 +1,7 @@
 ---
 title: "Fast creation of sales report"
 tags: efficient
-related: efficiency, performance, time-behaviour, speed
+related: efficiency, performance, time behaviour, speed
 permalink: /requirements/fast-creation-of-sales-report
 ---
 

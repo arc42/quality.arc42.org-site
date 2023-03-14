@@ -1,7 +1,7 @@
 ---
 title: "Severe errors are detected and the system shuts down into safe state"
 tags: operable safe reliable
-related: dependability, safety, operability, failure-transparency, degradeability, reliability
+related: dependability, safety, operability, failure transparency, degradeability, reliability
 permalink: /requirements/shutdown-to-safe-state
 ---
 
@@ -9,7 +9,7 @@ permalink: /requirements/shutdown-to-safe-state
 
 Severe errors shall be detected.
 
-In such cases and the system shuts down gracefully into a safe state.
+In such cases the system shuts down gracefully into a safe state.
 
 </div><br>
 

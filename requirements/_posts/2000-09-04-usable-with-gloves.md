@@ -1,7 +1,7 @@
 ---
 title: "Usable With Gloves"
 tags: usable
-related: usability, user-experience, compliance
+related: usability, user experience, compliance
 permalink: /requirements/usable-with-gloves
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: "Fast startup time"
 tags: efficient
-related: time-behaviour, speed, performance 
+related: time behaviour, speed, performance 
 permalink: /requirements/fast-startup-time
 ---
 

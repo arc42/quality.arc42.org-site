@@ -71,3 +71,37 @@ a.hov.tags.req {
     background-color: #DEEFB7;
 }
 
+
+
+
+a.reqs {
+    color: var(--req-text-color);
+}
+
+li.related-quality {
+    padding-left: 20px;
+    color: var(--blue-text-color);
+}
+
+
+/* a big separating line */
+hr.big-sep {
+    border-top: 3px solid grey;
+}
+
+.no-bullets {
+    list-style-type: none;
+}
+
+.as-bullet {
+    margin-right: 10px;
+}
+
+.rel-pos {
+    position: relative;
+}
+
+li.small {
+    font-size: 90%;
+    padding-left: 20px;
+}
