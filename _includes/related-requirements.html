@@ -1,18 +1,3 @@
-<h2><span style="background-color:var(--qual-req-color)">Directly Related Quality Requirements</span></h2>
-
-{% assign requirements_unsorted = site.posts | where: "categories", "requirements" %}
-{% assign requirements = requirements_unsorted | sort %}
-
-<ul class="posts no-bullets">
-    {% for requirement in requirements %}
-    {% assign check_title = page.title | downcase %}
-    {% if requirement.related contains check_title %}
-    <li><a class="reqs" href="{{requirement.permalink}}"><i class="fa fa-lightbulb fa-xs as-bullet" style="color: var(--req-text-color);"> </i> {{ requirement.title }}</a></li>
-    {% endif %}
-    {% endfor %}
-</ul>
-
-
 <h2><span style="background-color:var(--qual-req-color)">Related Quality Requirements</span></h2>
 
 

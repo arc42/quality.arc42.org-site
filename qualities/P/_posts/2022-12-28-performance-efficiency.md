@@ -1,7 +1,7 @@
 ---
 title: Performance efficiency
 tags: efficient
-related: efficiency, resource-efficiency, speed,  
+related: efficiency, resource-efficiency, speed
 permalink: /qualities/performance-efficiency
 ---
 
