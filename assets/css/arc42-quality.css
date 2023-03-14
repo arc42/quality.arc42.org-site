@@ -71,3 +71,6 @@ a.hov.tags.req {
     background-color: #DEEFB7;
 }
 
+a.reqs {
+    color: var(--req-text-color);
+}

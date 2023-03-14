@@ -5,7 +5,11 @@ permalink: /qualities/
 order: 20
 ---
 
-Here you find a list of several _qualities_ (meaning: desirable, expected or required properties) of IT systems.
+Here you find a list of several _qualities_ (meaning: desirable, expected or required properties) of IT systems.  
+Listed below each quality, you find 
+*<i class="fa fa-tags" style="color: #1675b9;"></i> <span style="color: #1675b9;">related quality properties</span>*
+ and 
+*<i class="fa fa-lightbulb" style="color: var(--req-text-color)"></i> <span style="color: var(--req-text-color);">related quality requirements</span>*.
 
 
 {% assign letter_string = "A" %}
@@ -44,7 +48,7 @@ Here you find a list of several _qualities_ (meaning: desirable, expected or req
     {% assign previous_first_letter = current_first_letter %}
     <div class="article-wrapper">
         <article>
-            {% include article-header.html page=post link=true share=false %}
+            {% include article-req-header.html page=post link=true share=false %}
         </article>
     </div>
     <hr class="with-no-margin"/>
