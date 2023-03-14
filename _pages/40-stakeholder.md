@@ -2,6 +2,7 @@
 layout: page
 title: Qualities by Stakeholder
 permalink: /stakeholders/
+hide: true
 order: 40
 ---
 

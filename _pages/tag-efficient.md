@@ -59,18 +59,18 @@ Efficient, as we saw above, can mean several different things:
 >
 >[Bass et. al, 2022](/references/#bass-swa-practice)
 
-### _efficient_ for Stakeholders
+### What Stakeholders mean by _efficient_
 
 | Stakeholder | (potential) Expectation for _efficient_ |
 |:--- |:--- |
-| User ||
-| Product-Owner | |
-| Management |  |
-| Developer |  |
-| Tester | |
-| Admin |   |
-| Domain-Expert |  |
-| Others |   |
+| User |* system produces desired results quickly<br>* can achieve desired results with low effort, e.g. only few keystrokes<br>* system reacts immediately to commands<br>* low energy consumption, e.g. long battery life |
+| Product-Owner |* dev-team can implement new features quickly |
+| Management |* high return on investment<br>  |
+| Developer |* new features can be implemented quickly<br>* build works quickly<br>* automated tests run quickly  |
+| Tester |* tests run quickly<br>* automated tests find relevant bugs<br>* test infrastructure works with appropriate resources |
+| Admin |* fast deplyoment, installation and configuration   |
+| Domain-Expert | -  |
+| Others | -  |
 
 
 

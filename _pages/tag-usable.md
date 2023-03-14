@@ -52,7 +52,7 @@ The main idea of _usability_ is that a system shall be designed with (generalize
 >
 >[Bass et. al, 2022](/references/#bass-swa-practice)
 
-### _usable_ for Stakeholdes
+### What Stakeholders mean by _usable_
 
 
 | Stakeholder | (potential) Expectation for _usable_ |

@@ -44,7 +44,7 @@ Developers need to _reliably_ work on the system (e.g. add new features) without
 * When I add a new feature to the system, no surprising bugs occur.
 * When I add a new feature to the system, I can reliably predict the effects that change has onto the system.
 
-### _reliable_ for Stakeholders
+### What  Stakeholders mean by _reliable_
 
 
 | Stakeholder | (potential) Expectation for _reliable_ |
