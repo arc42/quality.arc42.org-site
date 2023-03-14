@@ -59,6 +59,19 @@ Efficient, as we saw above, can mean several different things:
 >
 >[Bass et. al, 2022](/references/#bass-swa-practice)
 
+### _efficient_ for Stakeholders
+
+| Stakeholder | (potential) Expectation for _efficient_ |
+|:--- |:--- |
+| User ||
+| Product-Owner | |
+| Management |  |
+| Developer |  |
+| Tester | |
+| Admin |   |
+| Domain-Expert |  |
+| Others |   |
+
 
 <!-- include all qualities associated with this tag -->
 {% include one-quality.md topic="efficient"  %}

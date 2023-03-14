@@ -53,5 +53,20 @@ Typical acceptance criteria might include:
 >[Bass et. al, 2022](/references/#bass-swa-practice)
 
 
+### _flexible_ for Stakeholders
+
+
+| Stakeholder | (potential) Expectation for _flexible_ |
+|:--- |:--- |
+| User ||
+| Product-Owner | |
+| Management |  |
+| Developer |  |
+| Tester | |
+| Admin |   |
+| Domain-Expert |  |
+| Others |   |
+
+
 <!-- include all qualities associated with this tag -->
 {% include one-quality.md topic="flexible"  %}
