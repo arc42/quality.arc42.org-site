@@ -46,5 +46,21 @@ Bass et al define [deployability](/qualities/deployability) as a property, and s
 >[Bass et. al, 2022](/references/#bass-swa-practice)
 
 
+
+### What Stakeholders mean by _operable_
+
+
+| Stakeholder | (potential) Expectation for _operable_ |
+|:--- |:--- |
+| User | - |
+| Product-Owner | -  |
+| Management |* appropriate operational costs<br>* appropriate licensing cost for required 3rd party software, like database, middleware  |
+| Developer |* automated test and build<br>* appropriate automation of deployments<br>* appropriate similarity of development and production environments |
+| Tester | - |
+| Admin |* easy to build and deploy<br>* appropriate monitoring facilities<br>* appropriate procedures for crisis management in place<br>* appropriate management of credentials required<br>   |
+| Domain-Expert | - |
+| Others | -  |
+
+
 <!-- include all qualities associated with this tag -->
 {% include one-quality.md topic="operable"  %}

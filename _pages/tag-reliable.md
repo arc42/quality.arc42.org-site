@@ -37,12 +37,6 @@ Being trustworthy or performing consistently well.
 >
 >Source: [Bass et. al, 2022, p. 75](/references/#bass-swa-practice)
 
-### _reliable_ for Developers
-
-Developers need to _reliably_ work on the system (e.g. add new features) without being surprised by side effects or problems at other locations.
-
-* When I add a new feature to the system, no surprising bugs occur.
-* When I add a new feature to the system, I can reliably predict the effects that change has onto the system.
 
 ### What  Stakeholders mean by _reliable_
 
