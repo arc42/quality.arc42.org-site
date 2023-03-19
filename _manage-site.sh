@@ -3,7 +3,7 @@
 # helper, so you don't need to remember docker-compose syntax...
 
 # what's the site?
-site="qualities.arc42.org"
+site="quality.arc42.org"
 
 remotedir="."
 
