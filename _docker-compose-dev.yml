@@ -3,9 +3,10 @@
 version: '2'
 
 services:
-  faq-arc42-jekyll:
+  arc42-jekyll:
     build: .
-    image: doc-arc42-site:latest
+    image: arc42-site:latest
+#    platform: linux/arm64/v8
     command: jekyll serve --trace --host 0.0.0.0 --watch --incremental --config _config.yml
     environment:
       - JEKYLL_ENV=development
