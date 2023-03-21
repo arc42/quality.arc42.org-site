@@ -6,7 +6,6 @@ order: 10
 ---
 
 
-
 This site supports you in defining specific quality requirements for your system.
 
 To make the best use, you should become familiar with our terminology.
@@ -25,6 +24,19 @@ Let's explain some terms:
 | **Stakeholder** | People, roles or organizations that need, want or require certain quality requirements for their systems. |
 | **Examples**  | These are the specific requirements stakeholders have for a system or product, often expressed in form of quality scenarios. They should facilitate stakeholder communication by enabling a common understanding of the _good enough_. |
 | **Acceptance criterion**  | What does _good enough_ mean with respect to a specific quality. |
+
+## Three Dimensions of Quality
+
+![3 Dimensions of Quality](/images/articles/metamodel/terms-3-dimensions.svg )
+
+<dl>
+  <dt><strong>Dimension 1: Properties/Qualities</strong></dt>
+  <dd>What property (like availability, latency, speed or maintainability) is relevant. On this site, we use the color blue to denote qualities.</dd>
+  <dt><strong>Dimension 2: Acceptance Criteria</strong></dt>
+  <dd>What amount, size or extend of any property (like 99% availability...). We use the colour green for these criteria or examples.</dd>
+  <dt><strong>Dimension 3: Stakeholder</strong></dt>
+  <dd>For whom or what roles/organizations is this quality/property relevant?</dd>
+</dl>
 
 
 ## How to Use Q42
@@ -59,4 +71,4 @@ Again, you will find related qualities and examples on the detail-pages
 ### Start with Examples
 
 The third option starts with the [examples of quality requirements](/requirements).
-These are
+These are automatically mapped to the properties and low-level qualities.
