@@ -29,6 +29,8 @@ echo "${GREEN}(b)build ${RESET} build the required docker image."
 echo
 echo "${GREEN}(r)emove ${RESET} the running docker container."
 echo
+echo "${GREEN}(a)pple silicon ${RESET} specific container on port 0.0.0.0:4000."
+echo
 echo "=================================================="
 echo
 
@@ -51,6 +53,11 @@ case "$choice" in
   d|D|dev|develop) echo "develop, incremental build"
         rm -r _site
         docker-compose --file _docker-compose-dev.yml up
+        ;;
+  
+  a|A|apple) echo "develop, for apple silicon"
+        rm -r _site
+        docker run -p 4000:4000 -v $(pwd):/site bretfisher/jekyll-serve
         ;;
 
   r|R|remove) echo "remove running docker container"
