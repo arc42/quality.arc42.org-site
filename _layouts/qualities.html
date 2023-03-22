@@ -14,9 +14,17 @@ layout: default
         
         <h2><span style="background-color:var(--quality-color)">Related Qualities</span></h2>
 
+        {% assign all_qualities = site.posts | where: "categories", "qualities" %}
+
+        {% assign related_qualities = page.related | split:', ' | sort %}
         <ul class="posts">
-            {% for quality in related-qualities %}
-            <li> <a href="/qualities/{{quality }}">{{quality | replace: "-", " "}}</a></li>
+            {% for quality in related_qualities %}
+            {% for whole_quality in all_qualities %}
+            {% assign check_title = whole_quality.title | downcase %}
+            {% if check_title == quality %}
+            <li> <a href="{{whole_quality.permalink}}">{{quality | replace: "-", " "}}</a></li>
+            {% endif %}
+            {% endfor %}
             {% endfor %}
         </ul>
 
