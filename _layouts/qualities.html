@@ -9,6 +9,7 @@ layout: default
             {{ content }}
         </section>
 
+        {% include directly-related-requirements.html %}
 
         {% assign related-qualities = page.related | split:', ' | sort %}
         
@@ -30,8 +31,6 @@ layout: default
                 {% endfor %}
             {% endfor %}
         </ul>
-
-        {% include directly-related-requirements.html %}
 
         {% include related-requirements.html %}
 
