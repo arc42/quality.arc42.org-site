@@ -1,7 +1,7 @@
 ---
 title: Self-descriptiveness
 tags: usable
-related: usability
+related: usability, user-assistance, user-experience, learnability, conciseness
 permalink: /qualities/self-descriptiveness
 ---
 
@@ -16,4 +16,10 @@ Definitions:
 >[ISO-25010-2022](/references/#iso-25010-2022)
 
 Such resources might include user documentation, help desks or other sources of assistance.
+
+<hr class="with-no-margin"/>
+
+> Self-descriptiveness requires that the system describes itself. It is closely related to understandability and one approach to making an application easier to understand.
+>
+>[ISO-9241-110](/references/#iso-9241-110)
 
