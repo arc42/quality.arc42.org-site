@@ -35,8 +35,14 @@ IBM Developerworks 2005, available via [archive.org](https://web.archive.org/web
 
 Also by this author: [Non-functional Requirements](https://pdfs.semanticscholar.org/f3bb/91080c4573f6f78f30bc5b48bda3ef252bf2.pdf)
 
+<a id="iso-9241-110"/>
+### ISO 9241 (v. 2006-2020)
 
-<a id="ISO-25010-2011"/>
+I. O. for Standardization, ISO 9241-110: Ergonomics of human-system interaction - Part 110: Dialogue Principles. ISO, 2020
+
+Online on [iso.org](https://www.iso.org/obp/ui/#iso:std:iso:9241:-110:ed-2:v1:en)
+
+<a id="iso-25010-2011"/>
 ### ISO 25010 (v. 2011-2017)
 
 ISO/IEC DIS 25010(en): Systems and software engineering — Systems and software Quality Requirements and Evaluation (SQuaRE) — Product quality model
@@ -44,7 +50,7 @@ ISO/IEC DIS 25010(en): Systems and software engineering — Systems and software
 Online on [iso.org](https://www.iso.org/obp/ui/#iso:std:iso-iec:25010:dis:ed-2:v1:en)
 
 
-<a id="ISO-25010-2022"/>
+<a id="iso-25010-2022"/>
 ### ISO 25010 (draft version 2022)
 
 ISO/IEC TS 25052-1:2022(en)
