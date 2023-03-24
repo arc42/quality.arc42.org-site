@@ -5,7 +5,6 @@ permalink: /references/
 order: 70
 ---
 
-
 <a id="bass-swa-practice"/>
 ### Bass et. al: Software Architecture in Practice
 
@@ -82,13 +81,20 @@ From this document:
 ### McCall/Cavano: A framework for the measurement of software quality 
 
 ACM SIGSOFT Software Engineering Notes, Volume 3, Issue 5, November 1978, pp 133–139.
-[available online](https://doi.org/10.1145/953579.811113)
+Available [online](https://doi.org/10.1145/953579.811113)
 
 Nice statement: 
 
 >One problem ... is the absence of a widely accepted definition of software quality.
 >
->Cavano/McCall, p 133. 
+>Cavano/McCall, p 133.
+
+<a id="nist-idps"/>
+### NIST Intrusion Detection and Prevention Systems (IDPS)
+
+E. Aroms, ‘NIST special publication 800-94 guide to intrusion detection and prevention systems (IDPS)’. CreateSpace, 2012.
+
+Available [online](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-94.pdf)
 
 <a id="robertsons-requirements"/>
 ### Robertson: Mastering the Requirements Process 
