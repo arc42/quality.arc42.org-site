@@ -48,6 +48,9 @@ I'm:
 * Thanx to Michael Mahlberg, Markus Meuten and Peter Hruschka for suggestions, bug fixes and moral support.
 * Thanx to Steffen Späthe for his intense reviews and constructive comments concerning the content. 
 * Thanx to Per Starke for his awesome technical support in things around Liquid and Jekyll.
+* Thanx to Remko Plantenga and Martin Weck for his contributions.
+
+Find the current list of contributors [here](https://github.com/arc42/quality.arc42.org-site/graphs/contributors)
   
 ## Stats
 
