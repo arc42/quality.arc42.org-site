@@ -20,9 +20,9 @@ Let's explain some terms:
 | Term | Explanation          |
 | :--- | :--- |
 | **Property**| Our 8 top-level properties (#flexible, #efficient, #reliable etc.). Find the full list plus the mapping to qualities [**here**](/properties). These terms are highly abstract, and will be interpreted individually by different stakeholders. They can be used as starting points, but need to be detailed. Q42 maps these properties to 10-30 different specific qualities. |
-| Specific **Quality**| The detailed and specific terms, like  accessibility, accountability, accuracy etc. Currently Q42 collects more than 100 such terms under [**Qualities by Name**](qualities)). These terms are usually well-defined, but need examples or acceptance criteria  to really help in developing systems. Q42 contains examples for many (hopefully all, at some day in the future) |
-| **Stakeholder** | People, roles or organizations that need, want or require certain quality requirements for their systems. |
-| **Examples**  | These are the specific requirements stakeholders have for a system or product, often expressed in form of quality scenarios. They should facilitate stakeholder communication by enabling a common understanding of the _good enough_. |
+| Specific **Quality**| The detailed and specific terms, like  accessibility, accountability, accuracy etc. Currently Q42 collects more than 100 such terms under [**Qualities by Name**](/qualities)). These terms are usually well-defined, but need examples or acceptance criteria  to really help in developing systems. Q42 contains examples for many (hopefully all, at some day in the future) |
+| **Stakeholder** | People, roles or organizations that need, want or require certain quality [**requirements**](/requirements/) for their systems. |
+| **Examples**  | These are the specific requirements stakeholders have for a system or product, often expressed in form of quality scenarios. They should facilitate stakeholder communication by enabling a common understanding of the _good enough_. Q42 provides >50 of these [**examples**](/requirements/)|
 | **Acceptance criterion**  | What does _good enough_ mean with respect to a specific quality. |
 
 ## Three Dimensions of Quality

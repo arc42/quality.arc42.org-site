@@ -1,7 +1,6 @@
 ---
 layout: page
 title: "Shortcomings of ISO 25010"
-tags: iso-25010 quality-model
 permalink: /articles/iso-25010-shortcomings
 canonical_url: https://innoq.com/blog/iso-25010-shortcomings
 ---

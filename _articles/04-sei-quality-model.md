@@ -1,7 +1,6 @@
 ---
 layout: page
 title: "SEI Quality Model"
-tags: sei quality-model
 permalink: /articles/sei-quality-model
 ---
 
@@ -61,4 +60,4 @@ The following diagram shows how the (compact) arc42 quality model relates to the
 
 
 ### Summary
-The SEI quality model proposes only 10 major quality attributes, which is a great simplification when compared to the (somewhat bloated) ISO-25010 model (described in detail in [another article](/_articles/iso-25010-shortcomings))
+The SEI quality model proposes only 10 major quality attributes, which is a great simplification when compared to the (somewhat bloated) ISO-25010 model (described in detail in [another article](/articles/iso-25010-shortcomings))

@@ -1,7 +1,6 @@
 ---
 layout: page
 title: "arc42 Quality Model"
-tags: arc42 quality-model
 permalink: /articles/arc42-quality-model
 ---
 
@@ -42,7 +41,7 @@ To facilitate stakeholder communication and understanding, Q42 contains definiti
 
 #### Example Quality Requirements
 
-Q42 contains numerous (currently {{ requirement_posts | size }}) [examples for specific quality requirements](/quality-requirements).
+Q42 contains numerous (currently {{ requirement_posts | size }}) [examples for specific quality requirements](/requirements).
 You can use these examples as starting point to find and describe quality requirements for your own system.
 
 #### Hyperlinks as Best-Friends
@@ -91,7 +90,7 @@ These tags should be almost self-explanatory, but I'll try to clarify them with 
 
 ### Code and Architecture Qualities
 In several of the historical quality models, the development teams' interest was either completely ignored or had low priority.
-In 1978, [Barry Boehm](/articles/02-quality-models) proposed to care for _structuredness, conciseness_ and _legibility_, but in later models, for example in the ISO-25010 standard, these properties are out of scope.
+In 1978, [Barry Boehm](/articles/quality-models) proposed to care for _structuredness, conciseness_ and _legibility_, but in later models, for example in the ISO-25010 standard, these properties are out of scope.
 
 From my viewpoint, development teams play a crucial role in both initial development and long-term maintenance and evolution of systems.
 Therefore we should consider their requirements on the internal structure and concepts as highly relevant, for example influencing the important _time-to-market_ that most managers constantly call for.
@@ -105,6 +104,6 @@ Q42 regards development teams as first-class citizens:
 
 ### Summary
 The arc42 quality model has yet to prove its practical applicability, as it hit the _market_ only in January 2023.
-Alas - we are highly optimistic that Q42 will mirror the usefulness of it's elder sister, the [arc42-template](https://arc42.org).
+Alas - we are highly optimistic that Q42 will mirror the usefulness of it's elder sister, the [arc42-template](https://www.arc42.org).
 
 Please let us know of any positive or negative experience you encounter with our approach.

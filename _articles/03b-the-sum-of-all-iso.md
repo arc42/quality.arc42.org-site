@@ -1,7 +1,6 @@
 ---
 layout: page
 title: "The Sum of All ISO"
-tags: iso-25010 quality-model
 permalink: /articles/sum-of-all-iso
 ---
 
@@ -13,9 +12,9 @@ permalink: /articles/sum-of-all-iso
 
 Some reviewers remarked that I should give the ISO/IEC 25000 "Systems and software engineering — Systems and software Quality Requirements and Evaluation (SQuaRE)" some more respect.
 
-Actually, [SQuaRE]([https://](https://www.iso.org/obp/ui/#iso:std:iso-iec:25000:ed-2:v1:en)) is more a _clan_ than a single standard, it has not even been published in a single source, but is spread across numerous documents.
+Actually, [SQuaRE](https://www.iso.org/obp/ui/#iso:std:iso-iec:25000:ed-2:v1:en) is more a _clan_ than a single standard, it has not even been published in a single source, but is spread across numerous documents.
 
-In my (personal and professional) _bubble_, the major representative of this clan is definitely ISO/IEC 25010, which is explicitly referenced in the [iSAQB Software Architecture Foundation curriculum](https://public.isaqb.org/curriculum-foundation/release-candidate/curriculum-foundation-en.html#iso25010) as an important source for software quality terminology.
+In my (personal and professional) _bubble_, the major representative of this clan is definitely ISO/IEC 25010, which is explicitly referenced in the [iSAQB Software Architecture Foundation curriculum](https://public.isaqb.org/curriculum-foundation/curriculum-foundation-en.html#iso25010) as an important source for software quality terminology.
 
 Why did I use the strange term _clan_, instead of the commonly used _family_: Just read on.
 

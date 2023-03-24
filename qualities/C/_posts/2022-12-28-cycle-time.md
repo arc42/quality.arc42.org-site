@@ -21,7 +21,7 @@ Cycle time starts when a task is moved to “In Progress” and ends when it is 
 
 <hr class="with-no-margin"/>
 
-Not to be confused with [lead-time-for-changes](qualities/lead-time-for-changes).
+Not to be confused with [lead-time-for-changes](/qualities/lead-time-for-changes).
 
 <hr class="with-no-margin"/>
 

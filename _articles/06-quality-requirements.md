@@ -1,7 +1,6 @@
 ---
 layout: page
 title: "How to specify quality requirements"
-tags: quality requirements scenario
 permalink: /articles/specify-quality-requirements
 ---
 

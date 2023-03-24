@@ -1,8 +1,7 @@
 ---
 layout: page
 title: "Quality Models"
-tags: iso-25010 quality-model
-permalink: /articles/02-quality-models
+permalink: /articles/quality-models
 ---
 
 <div class="arc42-help" markdown="1">
@@ -50,7 +49,7 @@ I also liked quality features of the VOLERE Requirements Template, which, howeve
 | IBM FURPS+ | 1999 | Add lots of sub-characteristics to FURPS, adressing _requirements_ in general. Part of the (overly complex) Rational-Unified process | 30 |
 | VOLERE | 1999 | Integrated in sophisticated template for requirements. Combines qualities and constraints | 8 |
 | ISO-25010 | 2011 | Superseedes ISO-9126. Hierarchical model with 8 top-level qualities. Adds security as top-level. Widespread, afaik. Disputable definitions of terms. | 32 |
-| Bass et. al | 2022 | One level, see [this article](/_articles/sei-quality-model). Practical, with a few rough edges. | 10 |
+| Bass et. al | 2022 | One level, see [this article](/articles/sei-quality-model). Practical, with a few rough edges. | 10 |
 | ISO-25010, draft 2022 | 2022 | Proposal to add safety and change a number of terms and definitions. Still [disputable terminology](/articles/iso-25010-shortcomings), overly complex for day-to-day use.  | 39 |
 
 ### Boehm Software Quality Model ([[Boehm+1976]](/references/#boehm-model))
@@ -91,7 +90,7 @@ These distinctions seem overly complicated from my practitioners' viewpoint.
 I really wonder if anybody working in development projects (except me) ever took the time to read through all those standards. (Ok, I exaggerated, I read only 25010, but that was hard-enough work).
 
 Apart from being in wide use, these models really lack practical applicability, although the (still inofficial draft) update from November 2022 somewhat improves the situation).
-I covered a few downsides in my [article on ISO-25010 shortcomings](/_articles/03-iso-25010-shortcomings.md).
+I covered a few downsides in my [article on ISO-25010 shortcomings](/articles/iso-25010-shortcomings).
 To summarize:
 
 * Overly many terms, with a lot of overlap.
@@ -150,8 +149,8 @@ Trying to learn from its predecessors (or, as others have called it "it's easy t
 
 * <a id="astrotech">[Astrotech]</a> Matt Harasymczuk on Astrotech, explanation of quality models, [online](https://dev.astrotech.io/sonarqube/quality-models.html)
 
-* <a id="jamwal">[Jamwal-2009]</a> Jamwal et. Al: Comparative Analysis of Different Software Quality Models. Proceedings of the 3rd National Conference; INDIACom-2009, online: https://enos.itcollege.ee/~nafurs/suvi2019/huvitavat/alternatiivid_FURPSile.pdf
+* <a id="jamwal">[Jamwal-2009]</a> Jamwal et. Al: Comparative Analysis of Different Software Quality Models. Proceedings of the 3rd National Conference; INDIACom-2009, [online](https://enos.itcollege.ee/~nafurs/suvi2019/huvitavat/alternatiivid_FURPSile.pdf)
 
 * <a id="McCall-1977">[McCall-1977]</a> McCall, J. A., Richards, P. K., and Walters, G. F., "Factors in Software Quality", National Technical Information Service, no. Vol. 1, 2 and 3, 1977.
 
-<a id="volere">[volere]</a> VOLERE Requirements Template. Online: https://www.volere.org/
+<a id="volere">[volere]</a> VOLERE Requirements Template. [Online (volere.org)](https://www.volere.org/)

@@ -8,7 +8,7 @@ permalink: /qualities/mean-time-between-failures
 
 See also [deployability](/qualities/deployability)
 
-In DevOps practics, time-between-failures is regarded historical, and superseeded by [key devops metrics](/qualities/devops-metrics), especially [Mean time to recover (MTTR)](/qualities/mean-time-to-recover).
+In DevOps practics, time-between-failures is regarded historical, and superseeded by [key devops metrics](/qualities/devops-metrics), especially [Mean time to recover (MTTR)](/qualities/mean-time-to-recovery).
 
 
 >**Mean time between failures (MTBF)** is the predicted elapsed time between inherent failures of a mechanical or electronic system during normal system operation. 

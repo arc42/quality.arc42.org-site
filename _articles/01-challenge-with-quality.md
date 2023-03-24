@@ -1,8 +1,7 @@
 ---
 layout: page
 title: "Challenges with Quality"
-tags: quality introduction
-permalink: /articles/01-challenge-with-quality
+permalink: /articles/challenge-with-quality
 ---
 
 <div class="arc42-help" markdown="1">
