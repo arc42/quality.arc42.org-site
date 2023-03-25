@@ -20,16 +20,21 @@ layout: default
         {% assign related_qualities = page.related | split:', ' | sort %}
 
         <ul class="posts">
+            {% assign number = 0 %}
             {% for quality in related_qualities %}
                 {% assign quality_title = quality | replace: "-", " " %}
                 {% for whole_quality in all_qualities %}
                     {% assign check_title = whole_quality.title | downcase %}
                     {% assign check_title_downcase = check_title | replace: "-", " " %}
                     {% if check_title_downcase == quality_title %}
+                        {% assign number = 1 %}
                         <li> <a href="{{whole_quality.permalink}}">{{whole_quality.title}}</a></li>
                     {% endif %}
                 {% endfor %}
             {% endfor %}
+            {% if number == 0 %}
+            No related qualities found.
+            {% endif %}
         </ul>
 
         {% include related-requirements.html %}

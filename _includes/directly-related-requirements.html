@@ -4,11 +4,16 @@
 {% assign requirements = requirements_unsorted | sort %}
 
 <ul class="posts no-bullets">
+    {% assign number = 0 %}
     {% for requirement in requirements %}
     {% assign check_title = page.title | downcase %}
     {% assign related = requirement.related | split: ", "%}
     {% if related contains check_title %}
+    {% assign number = 1 %}
     <li><a class="reqs" href="{{requirement.permalink}}"><i class="fa fa-lightbulb fa-xs as-bullet" style="color: var(--req-text-color);"> </i> {{ requirement.title }}</a></li>
     {% endif %}
     {% endfor %}
+    {% if number == 0 %}
+    No directly related quality requirements found.
+    {% endif %}
 </ul>
