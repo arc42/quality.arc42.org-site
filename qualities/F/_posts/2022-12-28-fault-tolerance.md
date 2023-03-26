@@ -18,3 +18,10 @@ permalink: /qualities/fault-tolerance
 >
 >[Wikipedia](https://en.wikipedia.org/wiki/Fault_tolerance)
 
+<hr>
+
+A special case is the _byzantine fault tolerance_ (BFT): 
+In that case, some components may fail, but there is imperfect information on whether a component has failed.
+
+See the detailed explanation on [Wikipedia on BFT](https://en.wikipedia.org/wiki/Byzantine_fault).
+
