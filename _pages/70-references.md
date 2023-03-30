@@ -35,6 +35,11 @@ IBM Developerworks 2005, available via [archive.org](https://web.archive.org/web
 
 Also by this author: [Non-functional Requirements](https://pdfs.semanticscholar.org/f3bb/91080c4573f6f78f30bc5b48bda3ef252bf2.pdf)
 
+<a id="hohpe2004enterprise"/>
+### G. Hohpe and B. Woolf, Enterprise integration patterns
+
+G. Hohpe and B. Woolf, Enterprise integration patterns: Designing, building, and deploying messaging solutions. Addison-Wesley Professional, 2004, p. 10.
+
 <a id="iso-9241-110"/>
 ### ISO 9241 (v. 2006-2020)
 
