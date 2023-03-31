@@ -21,7 +21,7 @@ Within their fourth edition, the authors present a modernized approach to softwa
 >A quality attribute (QA) is a measurable or testable property of a system that is used to indicate how well the system satisfies the needs of its stakeholders beyond the basic function of the system. 
 >You can think of a quality attribute as measuring the “utility” of a product along some dimension of interest to a stakeholder.
 >
->[Len Bass et. al, 2022, p. 39](/references/#bass-swa-practice)
+>[Len Bass et. al, 2021, p. 39](/references/#bass2021software)
 
 
 For Bass and his colleagues, quality consists of 10 major properties, depicted in the following overview.
@@ -34,7 +34,7 @@ They differentiate these qualities into two categories:
 >We will focus on two categories of quality attributes. The first category includes those attributes that describe some property of the system at runtime, such as availability, performance, or usability. 
 >The second category includes those that describe some property of the development of the system, such as modifiability, testability, or deployability.
 >
->[Len Bass et. al, 2022, p. 42](/references/#bass-swa-practice)
+>[Len Bass et. al, 2021, p. 42](/references/#bass2021software)
 
 ### Shortcomings of the SEI Quality Model
 

@@ -124,7 +124,7 @@ The recently published arc42 quality model allows exactly that (see [2]).
 
 
 My conclusion so far: A lot of mass, but important nutrients (e.g. conceptual consistency and clarity) are missing.
-These and other problems with ISO 25010 have initially been pointed out by Len Bass et al.[^bass]
+These and other problems with ISO 25010 have initially been pointed out by [Bass+2021](/references/#bass2021software).
 
 
 ### Does the 2022-Draft Improve the Situation?
@@ -162,7 +162,7 @@ In the new version, I consider it positive that:
 
 
 ### Isn't Software made up from Code?
-Although internal structure, legibility and conciseness have been part of previous quality models (Boehm[^boehm] mentioned these qualities in his model from 1978!), the ISO refused (or forgot?) to include such properties in their model.
+Although internal structure, legibility and conciseness have been part of previous quality models ([Boehm+1976](/references/#boehm1976quantitative) mentioned these qualities in his model from 1978!), the ISO refused (or forgot?) to include such properties in their model.
 
 
 In my opinion, development teams are important stakeholders, and structure and readability of code will often be essential goals for them.
@@ -174,10 +174,10 @@ Although one can use the ISO 25010 standard as a checklist for specific quality 
 For example, the arc42 quality model (Q42) consists of just eight key properties, instead of the 35 terms from ISO 25010.
 
 
-Maybe the most serious disadvantage of ISO 25010 is the complete lack of specific examples of how to apply the model to practical, real-world systems. That leaves development teams and other system stakeholders out in the cold. Len Bass et al.[^bass] have proven in their book that such examples can be systematic and useful. [arc42](https://quality.arc42.org) followed suit, providing numerous tagged and cross-referenced examples of quality requirements.
+Maybe the most serious disadvantage of ISO 25010 is the complete lack of specific examples of how to apply the model to practical, real-world systems. That leaves development teams and other system stakeholders out in the cold. [Bass+2021](/references/#bass2021software) have proven in their book that such examples can be systematic and useful. [arc42](https://quality.arc42.org) followed suit, providing numerous tagged and cross-referenced examples of quality requirements.
 
 
-Another potential source of unwanted complexity is the ISO metamodel[^ISO25010], which distinguishes Quality-in-Use, Data Quality, Service Quality and Product Quality.
+Another potential source of unwanted complexity is the ISO metamodel, which distinguishes Quality-in-Use, Data Quality, Service Quality and Product Quality. (The meta-model is part of the official documentation in the “ISO/IEC 2501n Quality Model Division”, explained within the non-public parts of 25010. It refers to additional standards 25011 (IT service quality model), 25012 (Data quality model) and 25019 (Quality-in-use model), cf. [ISO+25011](/references/#iso-25010-2011)).
 In my opinion, this makes the ISO 25010 model overly difficult to digest for real-world projects.
 
 
@@ -205,29 +205,13 @@ Instead of nearly 40 terms at various levels, a few top-level features would be 
 
 
 
-In this respect, Len Bass and Co. have done an outstanding job with their fundamental work [^bass]. They had already invented the concept of "quality scenarios" many years ago.
+In this respect, Len Bass and Co. have done an outstanding job with their fundamental work [Bass+2021](/references/#bass2021software). They had already invented the concept of "quality scenarios" many years ago.
 In their fourth and latest edition of their book, they followed up with a multitude of practical examples.
 You can find a brief overview of their work in [another article](/articles/sei-quality-model).
 
 
 ### Acknowledgements
 Thanx to “m” , Anja Kammer, Daniel Lauxtermann, Joachim Praetorius and Ben Wolf for bug fixing and dramatically improving the quality of this post. Thanx to Eberhard Wolff for encouragements.
-
-
-
-### References
-
-
-[^bass]: Len Bass et. Al: Software Architecture in Practice, Fourth Edition, Addison-Wesley, 2022. 
-
-
-[^boehm]: Boehm, B. W., Brown, H., Lipow,M. (1978) “Quantitative Evaluation of Software Quality,”, TRW Systems and Energy Group, 1978. This source is hard to come by. Their approach is covered in a comparative study of [Software Quality Models](https://enos.itcollege.ee/~nafurs/suvi2019/huvitavat/alternatiivid_FURPSile.pdf).
-
-
-[^iso25010]: The meta-model is part of the official documentation in the “ISO/IEC 2501n Quality Model Division”, explained within the non-public parts of 25010. It refers to additional standards 25011 (IT service quality model), 25012 (Data quality model) and 25019 (Quality-in-use model). 
-
-
-[^Q42]: arc42 Quality Model, online on https://quality.arc42.org
 
 
 

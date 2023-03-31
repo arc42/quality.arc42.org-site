@@ -21,7 +21,7 @@ Deployability is a...
 >Measure of cost, time or process effectiveness for a deployment, 
 >for a series of deployments over time.
 >
->[Bass et. al, 2022](/references/#bass-swa-practice)
+>[Bass et. al, 2021](/references/#bass2021software)
 
 
 ## Typical Acceptance Criteria
@@ -43,7 +43,7 @@ Bass et al define [deployability](/qualities/deployability) as a property, and s
 >* Traceability of the process
 >* Cycle time of the process
 >
->[Bass et. al, 2022](/references/#bass-swa-practice)
+>[Bass et. al, 2021](/references/#bass2021software)
 
 
 

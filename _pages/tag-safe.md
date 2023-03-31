@@ -45,7 +45,7 @@ Quoted from [Wikipedia/Safety](https://en.wikipedia.org/wiki/Safety)
 >* Amount or percentage of time the system is shut down
 >* Elapsed time to enter and recover (from manual operation, from a safe or degraded mode)
 >
->[Bass et. al, 2022](/references/#bass-swa-practice)
+>[Bass et. al, 2021](/references/#bass2021software)
 
 
 

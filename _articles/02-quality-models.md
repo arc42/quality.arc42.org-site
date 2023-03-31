@@ -25,7 +25,7 @@ Quality models define a _common language_ for terms related to product, system a
 
 ### A Bit of History
 
-In 1976, Barry Boehm and colleagues published [their quality model](/references/#boehm-model), including inner qualities like _structuredness_ and _legibility_. Have a look at the original paper, it is a nice example of _historical typesetting_, some graphs look like drawn with a ballpen :-)
+In 1976, Barry Boehm and colleagues published [their quality model](/references/#boehm1976quantitative), including inner qualities like _structuredness_ and _legibility_. Have a look at the original paper, it is a nice example of _historical typesetting_, some graphs look like drawn with a ballpen :-)
 
 In 1977, McCall suggested to model quality as a hierarchy of terms, whose first level consists of _Operation, Revision_ and _Transition_. To revision he counted e.g. Maintainbility, Flexibility and Testability.
 
@@ -52,8 +52,8 @@ I also liked quality features of the VOLERE Requirements Template, which, howeve
 | Bass et. al | 2022 | One level, see [this article](/articles/sei-quality-model). Practical, with a few rough edges. | 10 |
 | ISO-25010, draft 2022 | 2022 | Proposal to add safety and change a number of terms and definitions. Still [disputable terminology](/articles/iso-25010-shortcomings), overly complex for day-to-day use.  | 39 |
 
-### Boehm Software Quality Model ([[Boehm+1976]](/references/#boehm-model))
-[Barry Boehm](/references/#boehm-model) supposedly was the first to propose a hierarchical model of software quality, with three top-level qualities, that are refined on two further levels. 
+### Boehm Software Quality Model ([[Boehm+1976]](/references/#boehm1976quantitative))
+[Barry Boehm](/references/#boehm1976quantitative) supposedly was the first to propose a hierarchical model of software quality, with three top-level qualities, that are refined on two further levels. 
 When looking into details of his model, one will notice that several attributes from level-2 and level-3 are referenced multiple times, making this model more of a graph than a tree.
 In my opinion, this is perfectly realistic, but the later ISO-standards got rid of this pragmatic feature.
 
@@ -109,7 +109,7 @@ Although some of these definitions are quite academic, they provide a nice start
 >A quality attribute (QA) is a measurable or testable property of a system that is used to indicate how well the system satisfies the needs of its stakeholders beyond the basic function of the system. 
 >You can think of a quality attribute as measuring the “utility” of a product along some dimension of interest to a stakeholder.
 >
->[Len Bass et. al, 2022, p. 39](/references/#bass-swa-practice)
+>[Len Bass et. al, 2021, p. 39](/references/#bass2021software)
 
 
 For Bass and his colleagues, quality consists of 10 major properties, depicted in the following overview.
@@ -122,7 +122,7 @@ They differentiate these qualities into two categories:
 >We will focus on two categories of quality attributes. The first category includes those attributes that describe some property of the system at runtime, such as availability, performance, or usability. 
 >The second category includes those that describe some property of the development of the system, such as modifiability, testability, or deployability.
 >
->[Len Bass et. al, 2022, p. 42](/references/#bass-swa-practice)
+>[Len Bass et. al, 2021, p. 42](/references/#bass2021software)
 
 
 For their work, a huge "thank you" goes to Len Bass and his colleagues, for providing an alternative to the ISO-25010 approach. 

@@ -20,7 +20,7 @@ These sentences, in natural language, describe requirements or expectations of s
 Formulating requirements in such a way allows a development team to know what needs to be achieved, and what is _good enough_.
 
 Len Bass and his colleagues from the _Software Engineering Institute_ (SEI) coined the term "quality attribute scenarios" for such kind of sentences.
-See [Bass et al, 2022](/references/#bass-swa-practice) for details.
+See [Bass et al, 2021](/references/#bass2021software) for details.
 
 Quality scenarios, for short, are a pragmatic, easy-to-use and general approach to specifying quality requirements.
 
