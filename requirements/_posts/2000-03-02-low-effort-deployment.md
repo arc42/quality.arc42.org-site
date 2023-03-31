@@ -17,7 +17,7 @@ A new release of an authentication/authorization service (which our product uses
 It takes less than 40 hours of elapsed time and no more than 120 person-hours of effort. 
 The deployment introduces no defects and no SLA is violated.
 
-Idea: >[Bass et. al, 2022](/references/#bass-swa-practice)
+Idea: >[Bass et. al, 2021](/references/#bass2021software)
 
 </div><br>
 

@@ -34,7 +34,7 @@ permalink: /tag-secure/
 >* How long does it take to recover from successful attack?
 >* How much data is vulnerable to a particular attack?
 >
->[Bass et. al, 2022](/references/#bass-swa-practice)
+>[Bass et. al, 2021](/references/#bass2021software)
 
 
 ### What Stakeholders mean by _secure_

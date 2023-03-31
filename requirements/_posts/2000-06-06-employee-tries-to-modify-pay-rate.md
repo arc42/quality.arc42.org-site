@@ -13,7 +13,7 @@ permalink: /requirements/employee-attempts-to-modify-pay-rate
 
 **Measure**: The correct data is restored within one day.
 
-Source: [Bass et. al, 2022](/references/#bass-swa-practice)
+Source: [Bass et. al, 2021](/references/#bass2021software)
 
 </div><br>
 

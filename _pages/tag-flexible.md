@@ -50,7 +50,7 @@ Typical acceptance criteria might include:
 >* Extend to which this modification affects other quality attributes
 >* New defects introduced
 >
->[Bass et. al, 2022](/references/#bass-swa-practice)
+>[Bass et. al, 2021](/references/#bass2021software)
 
 
 ### _flexible_ for Stakeholders
