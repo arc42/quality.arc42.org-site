@@ -11,5 +11,3 @@ permalink: /qualities/appearance
 >Your client may have made particular demands for the product, such as corporate branding, colours to be used, and so on. 
 >
 >[Volere Version 2.0](/references/#volere)
-
-<hr class="with-no-margin"/>
