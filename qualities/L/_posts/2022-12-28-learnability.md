@@ -15,4 +15,13 @@ Definitions:
 >
 >[ISO-25010-2022](/references/#iso-25010-2022)
 
+<hr>
+
+>Capability of a product to have specified users learn to use specified product functions within a specified amount of time.
+>
+>Requirements specifying how easy it should be to learn to use the product. 
+>This learning curve ranges from zero time for products intended for placement in the public domain (e.g., a parking meter or a web site) to a considerable amount of time for complex, highly technical products. 
+>(We know of one product where it was necessary for graduate engineers to spend 18 months in a training program before being qualified to use the product.) 
+>
+>[Volere Version 2.0](/references/#volere)
 
