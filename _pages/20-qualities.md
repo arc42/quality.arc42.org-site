@@ -20,6 +20,10 @@ Listed below each quality, you find
 
 {% for post in qualities  %}
     {% assign current_first_letter = post.title | slice: 0 %}
+
+ <!-- we need to "upcase" to avoid issues with i18n -->
+    {% assign current_first_letter = current_first_letter | upcase %}
+    
     {% if current_first_letter != previous_first_letter %}
         {% assign letter_string = letter_string | append: "," %}
         {% assign letter_string = letter_string | append: current_first_letter %}
@@ -41,8 +45,10 @@ Listed below each quality, you find
     <h2 ID = "A"> &mdash; A &mdash; </h2>
     {% assign previous_first_letter = "A" %}
     {% for post in qualities  %}
-    {% assign current_first_letter = post.title | slice: 0 %}
-    {% if current_first_letter != previous_first_letter %}
+      {% assign current_first_letter = post.title | slice: 0 %}
+      {% assign current_first_letter = current_first_letter | upcase %}
+  
+      {% if current_first_letter != previous_first_letter %}
     <h2 ID = {{current_first_letter}}> &mdash; {{current_first_letter}} &mdash; </h2>
     {% endif %}
     {% assign previous_first_letter = current_first_letter %}
