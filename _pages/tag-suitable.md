@@ -30,7 +30,7 @@ In our opinion it is useful in a broader sense: For example, seen from a testing
 
 ### "Responsibility" as alternative term
 
-[Bass et. al, 2022](/references/#bass-swa-practice) propose to use the term "responsibility" instead of (functional) suitability.
+[Bass et. al, 2021](/references/#bass2021software) propose to use the term "responsibility" instead of (functional) suitability.
 That is, from our perspective, a matter of taste.
 
 ## Typical Acceptance Criteria

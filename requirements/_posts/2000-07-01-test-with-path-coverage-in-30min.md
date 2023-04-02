@@ -7,7 +7,7 @@ permalink: /requirements/test-with-path-coverage-30min
 
 <div class="quality-requirement" markdown="1">
 
-Idea: [Bass et. al, 2022](/references/#bass-swa-practice)
+Idea: [Bass et. al, 2021](/references/#bass2021software)
  
 **Stimulus**: The developer completes a code unit.
 

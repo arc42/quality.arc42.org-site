@@ -5,22 +5,24 @@ permalink: /references/
 order: 70
 ---
 
-<a id="bass-swa-practice"/>
+<a id="bass2021software"/>
 ### Bass et. al: Software Architecture in Practice
 
-Len Bass, Paul Clements, Rick Kazman: Software Architecture in Practice. 4th Edition, Addison Wesley 2022.
+L. Bass, P. Clements, and R. Kazman, Software architecture in practice, 4th ed. Addison-Wesley Professional, 2021.
 
-<a id="boehm-model"/>
+<a id="boehm1976quantitative"/>
 ### Boehm et al: Quantitative Evaluation of Software Quality
 
-B. W. Boehm, J. R. Brown and M. Lipow: Quantitative evaluation of software quality.
+B. W. Boehm, J. R. Brown, and M. Lipow, ‘Quantitative evaluation of software quality’, in Proceedings of the 2nd international conference on Software engineering, 1976, pp. 592–605.
 
-ICSE '76: Proceedings of the 2nd international conference on Software engineeringOctober 1976 Pages 592–605, available [online](https://dl.acm.org/doi/10.5555/800253.807736)
+Available [online](https://dl.acm.org/doi/10.5555/800253.807736)
 
 From the abstract:
 
 >A definitive hierarchy of well-defined, well-differentiated characteristics of software quality is developed. 
 >Its higher-level structure reflects the actual uses to which software quality evaluation would be put; its lower-level characteristics are closely correlated with actual software metric evaluations which can be performed.
+
+Please note: Their approach is covered in [Software Quality Models](/references/#suman2014comparative)
 
 Please note: Boehm's quality model is often (wrongly) dated to a 1978 publication, but in reality the authors published it 1976.
 
@@ -34,6 +36,11 @@ Philip B. Crosby: Quality is Free: The Art of Making Quality Certain. McGraw Hil
 IBM Developerworks 2005, available via [archive.org](https://web.archive.org/web/20201112020231/http://www.ibm.com/developerworks/rational/library/4706.html#N100A7). 
 
 Also by this author: [Non-functional Requirements](https://pdfs.semanticscholar.org/f3bb/91080c4573f6f78f30bc5b48bda3ef252bf2.pdf)
+
+<a id="hohpe2004enterprise"/>
+### G. Hohpe and B. Woolf, Enterprise integration patterns
+
+G. Hohpe and B. Woolf, Enterprise integration patterns: Designing, building, and deploying messaging solutions. Addison-Wesley Professional, 2004, p. 10.
 
 <a id="iso-9241-110"/>
 ### ISO 9241 (v. 2006-2020)
@@ -102,6 +109,11 @@ E. Aroms, ‘NIST special publication 800-94 guide to intrusion detection and pr
 
 Available [online](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-94.pdf)
 
+<a id="quality-arc42-org"/>
+### quality.arc42.org
+
+"arc42 Quality Model." quality.arc42.org.  [https://www.quality.arc42.org](https://www.quality.arc42.org) (accessed Mar. 31, 2023).
+
 <a id="robertsons-requirements"/>
 ### Robertson: Mastering the Requirements Process 
 Suzanne Robertson and James Robertson: Mastering the Requirements Process - Getting Requirements Right. Pearson, 3rd edition 2012.
@@ -111,6 +123,12 @@ Suzanne Robertson and James Robertson: Mastering the Requirements Process - Gett
 ### Gernot Starke, Alexander Lorz: Software Architecture Foundations 
 CPSA-F Exam Preparation. VanHaren Publishing, 2021
 
+<a id="suman2014comparative"/>
+### A comparative study of software quality models
+
+M. W. Suman and M. D. U. Rohtak, ‘A comparative study of software quality models’, International Journal of Computer Science and Information Technologies, vol. 5, no. 4, pp. 5634–5638, 2014.
+
+Available [online](https://www.ijcsit.com/docs/Volume%205/vol5issue04/ijcsit20140504177.pdf)
 
 <a id="volere"/>
 ### Volere Requirements Specification Template
