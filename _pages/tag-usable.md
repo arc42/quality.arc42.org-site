@@ -26,6 +26,13 @@ The main idea of _usability_ is that a system shall be designed with (generalize
 >[Wikipedia](https://en.wikipedia.org/wiki/Usability)
 
 
+<hr class="with-no-margin"/>
+
+>Enable users to perform their tasks safely, effectively and efficiently while enjoying the experience.
+>
+>[Volere Version 2.0](/references/#volere)
+
+
 ## Typical Acceptance Criteria
 
 <!--TODO -->
