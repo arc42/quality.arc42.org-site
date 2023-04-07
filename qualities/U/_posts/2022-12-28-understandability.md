@@ -22,3 +22,10 @@ permalink: /qualities/understandability
 >* **Organized**. The engineer should be able to easily locate cross-referenced information within the system. This is where modularity, software documentation, source-code navigation controls, and source code management tools allow engineers to find their way around the system.
 >
 >[infoq](https://www.infoq.com/articles/understandability-metric-not-tracking/)
+
+>This specifies the requirement for the product to be understood by its users. 
+>While “usability” refers to ease of use, efficiency, and similar characteristics, “understandability” determines whether the users instinctively know what the product will do for them and how it fits into their view of the world. 
+>You can think of understandability as the product being polite to its users and not expecting them to know or learn things that have nothing to do with their business problem. 
+>Another aspect of politeness is that the product should not expect the user to input any information to which the product already has access.
+>
+>[Volere Version 2.0](/references/#volere)
