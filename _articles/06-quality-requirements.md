@@ -14,7 +14,7 @@ Consider the following examples of quality requirements:
 >* A new insurance tariff can be implemented in the system in less than 10 days.
 >* A service crashed at runtime. It can be restarted to fully operational state in less than 30 seconds.
 >
->[Starke/Lorz-21, p, 141](/references/#starke-lorz)
+>[Starke+2021, p. 141](/references/#starke2021software)
 
 These sentences, in natural language, describe requirements or expectations of some stakeholder in a quite specific manner.
 Formulating requirements in such a way allows a development team to know what needs to be achieved, and what is _good enough_.

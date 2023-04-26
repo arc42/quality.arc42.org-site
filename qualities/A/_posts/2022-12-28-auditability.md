@@ -8,7 +8,7 @@ permalink: /qualities/auditability
 
 >... what the product has to do (usually retain records) to permit the required audit checks.
 >
->[Volere Version 2.0](/references/#volere)
+>[Volere+2012, p. 3](/references/#volere)
 
 
 <hr class="with-no-margin"/>

@@ -29,5 +29,5 @@ permalink: /qualities/ease-of-use
 > * Overall satisfaction in using the product: This is especially important for commercial, interactive products that face a lot of competition. Web sites are a good example. 
 > * Feedback: How much feedback the user needs to feel confident that the product is actually accurately doing what the user expects. The necessary degree of feedback will be higher for some products (e.g., safety-critical products) than for others. (VOLERE V20)"
 > 
->[Volere Version 2.0](/references/#volere)
+>[Volere+2012, p. 47](/references/#volere)
 

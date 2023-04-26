@@ -7,6 +7,6 @@ permalink: /qualities/operational-environment-requirements
 
 > Requirements for Interfacing with Adjacent Systems, Productization Requirements, Release Requirements, Backwards Compatibility Requirements
 >
->[Volere Version 2.0](/references/#volere)
+>[Volere+2012, p. 57](/references/#volere)
 
 

@@ -7,6 +7,6 @@ permalink: /qualities/expected-physical-environment
 
 >... specifies the physical environment in which the product will operate. 
 >
->[Volere Version 2.0](/references/#volere)
+>[Volere+2012, p. 56](/references/#volere)
 
 

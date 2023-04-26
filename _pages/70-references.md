@@ -8,15 +8,17 @@ order: 70
 <a id="astrotech"></a>
 ### astrotech.io: Quality Models
 
-M. Harasymczuk "Quality - The Software Engineering." astrotech.io. [https://dev.astrotech.io/sonarqube/quality-models.html](https://dev.astrotech.io/sonarqube/quality-models.html) (accessed Apr. 5, 2023)
+M. Harasymczuk "Quality - The Software Engineering." astrotech.io. 
+
+Available [online](https://dev.astrotech.io/sonarqube/quality-models.html)
 
 <a id="bass2021software"></a>
-### Bass et. al: Software Architecture in Practice
+### Bass et al.: Software Architecture in Practice
 
 L. Bass, P. Clements, and R. Kazman, Software architecture in practice, 4th ed. Addison-Wesley Professional, 2021.
 
 <a id="boehm1976quantitative"></a>
-### Boehm et al: Quantitative Evaluation of Software Quality
+### Boehm et al.: Quantitative Evaluation of Software Quality
 
 B. W. Boehm, J. R. Brown, and M. Lipow, ‘Quantitative evaluation of software quality’, in Proceedings of the 2nd international conference on Software engineering, 1976, pp. 592–605.
 
@@ -30,7 +32,7 @@ From the abstract:
 Please note: Boehm's quality model is often (wrongly) dated to a 1978 publication, but in reality the authors published it 1976.
 
 <a id="boehm1978characteristics"></a>
-### Boehm et al: Characteristics of Software Quality
+### Boehm et al.: Characteristics of Software Quality
 
 B. Barry, ‘Characteristics of Software Quality, TRW Series of Software Technology’. New York: American Elsevier, 1978.
 
@@ -39,10 +41,12 @@ B. Barry, ‘Characteristics of Software Quality, TRW Series of Software Technol
 
 Philip B. Crosby: Quality is Free: The Art of Making Quality Certain. McGraw Hill Books, 1994.
 
-<a id="Eeles-2005"></a>
-### Eeles, Peter: Capturing Architectural Requirements
+<a id="eeles2005capturing"></a>
+### Eeles: Capturing Architectural Requirements
 
-IBM Developerworks 2005, available via [archive.org](https://web.archive.org/web/20201112020231/http://www.ibm.com/developerworks/rational/library/4706.html#N100A7). 
+P. Eeles, ‘Capturing architectural requirements’, IBM Rational developer works, 2005.
+
+Available [online](https://web.archive.org/web/20201112020231/http://www.ibm.com/developerworks/rational/library/4706.html#N100A7) 
 
 Also by this author: [Non-functional Requirements](https://pdfs.semanticscholar.org/f3bb/91080c4573f6f78f30bc5b48bda3ef252bf2.pdf)
 
@@ -54,7 +58,7 @@ R. B. Grady, Practical software metrics for project management and process impro
 <a id="hohpe2004enterprise"></a>
 ### G. Hohpe and B. Woolf, Enterprise integration patterns
 
-G. Hohpe and B. Woolf, Enterprise integration patterns: Designing, building, and deploying messaging solutions. Addison-Wesley Professional, 2004, p. 10.
+G. Hohpe and B. Woolf, Enterprise integration patterns: Designing, building, and deploying messaging solutions. Addison-Wesley Professional, 2004.
 
 <a id="iso-9241-110"></a>
 ### ISO 9241 (v. 2006-2020)
@@ -79,22 +83,24 @@ Systems and software engineering — Systems and software Quality Requirements a
 Available [online](https://www.iso.org/obp/ui/#iso:std:iso-iec:25010:dis:ed-2:v1:en)
 
 <a id="jamwal"></a>
-### Jamwal et. al: omparative Analysis of Different Software Quality Models
+### Jamwal et al.: Comparative Analysis of Different Software Quality Models
 
-Ranbireshwar S. Jamwal, Deepshikha Jamwal & Devanand Padha "Comparative Analysis of Different Software Quality Models" Proceedings of the 3rd National Conference; INDIACom-2009.
+R. S. Jamwal, D. Jamwal, and D. Padha, ‘Comparative analysis of different software quality models’, in 3rd National Conference, 2009.
 
 Available [online](https://docplayer.net/15320992-Comparative-analysis-of-different-software-quality-models.html)
 
 <a id="kazman-maintainability"></a>
-### Kazman et. al: Maintainability
+### Kazman et al.: Maintainability
 
-Rick Kazman, Phil Bianco, James Ivers and John Klein: Maintainability. SEI Technical Report, December 2020.
-[CMU/SEI-2020-TR-006](https://resources.sei.cmu.edu/asset_files/TechnicalReport/2020_005_001_650490.pdf)
+R. Kazman, P. Bianco, J. Ivers, and J. Klein, ‘Maintainability’, 2020.
+
+Available [online](https://resources.sei.cmu.edu/asset_files/TechnicalReport/2020_005_001_650490.pdf)
 
 <a id="mccall"></a>
 ### McCall/Cavano: A framework for the measurement of software quality 
 
-ACM SIGSOFT Software Engineering Notes, Volume 3, Issue 5, November 1978, pp 133–139.
+J. P. Cavano and J. A. McCall, ‘A framework for the measurement of software quality’, in Proceedings of the software quality assurance workshop on Functional and performance issues, 1978, pp. 133–139.
+
 Available [online](https://doi.org/10.1145/953579.811113)
 
 Nice statement: 
@@ -103,8 +109,17 @@ Nice statement:
 >
 >Cavano/McCall, p 133.
 
-<a id="mccallMatsumoto1980"></a>
+<a id="mccabe1976complexity"></a>
+### McCabe: A complexity measure
+
+T. J. McCabe, ‘A complexity measure’, IEEE Transactions on software Engineering, no. 4, pp. 308–320, 1976. 
+
+Available [online](https://www.cs.mtsu.edu/~untch/6050/private/McCabe1976.pdf)
+
+<a id="mccall1980software"></a>
 ### McCall/Matsumuto: Software Quality Measurement Manual 
+
+J. A. McCall and M. T. Matsumoto, ‘Software Quality Measurement Manual. Volume 2’, GENERAL ELECTRIC CO SUNNYVALE CA, 1980.
 
 Available [online](https://apps.dtic.mil/sti/pdfs/ADA086986.pdf)
 
@@ -126,25 +141,34 @@ From this document:
 
 J. McCall and G. Walters, ‘Factors in Software Quality. National Technical Information Service (NTIS)’, Springfield, VA, USA, 1977.
 
+<a id="mockus2010experiences"></a>
+### Mockus et. al.: Experiences from replicating a case study to investigate reproducibility of software development
+
+A. Mockus, B. Anda, and D. I. K. Sjøberg, ‘Experiences from replicating a case study to investigate reproducibility of software development’, in Proceedings of the 1st International Workshop on Replication in Empirical Software Engineering Research, 2010.
+
+Available [online](https://www.academia.edu/download/48902272/Experiences_from_replicating_a_case_stud20160917-12517-1j07fpz.pdf)
+
 <a id="nist-idps"></a>
-### NIST Intrusion Detection and Prevention Systems (IDPS)
+### Aroms: NIST Intrusion Detection and Prevention Systems (IDPS)
 
 E. Aroms, ‘NIST special publication 800-94 guide to intrusion detection and prevention systems (IDPS)’. CreateSpace, 2012.
 
 Available [online](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-94.pdf)
 
-<a id="robertsons-requirements"></a>
+<a id="robertson2012mastering"></a>
 ### Robertson: Mastering the Requirements Process 
 
-Suzanne Robertson and James Robertson: Mastering the Requirements Process - Getting Requirements Right. Pearson, 3rd edition 2012.
+S. Robertson and J. Robertson, Mastering the requirements process: Getting requirements right. Addison-wesley, 2012.
 
+<a id="starke2021software"></a>
+### Starke/Lorz: Software Architecture Foundations 
 
-<a id="starke-lorz"></a>
-### Gernot Starke, Alexander Lorz: Software Architecture Foundations 
-
-CPSA-F Exam Preparation. VanHaren Publishing, 2021
+G. Starke and A. Lorz, Software Architecture Foundation: CPSA Foundation® Exam Preparation. Van Haren, 2021.
 
 <a id="volere"></a>
-### Volere Requirements Specification Template
+### Robertson/Robertson: Volere Requirements Specification Template
 
-S. Robertson and J. Robertson, ‘Volere Requirements Resources.‘ volere.org. [https://www.volere.org/](https://www.volere.org/) (accessed Apr. 5, 2023)
+S. Robertson and J. Robertson, Volere Requirements Specification Template
+
+Available [online](https://www.cin.ufpe.br/~in1020/docs/publicacoes/Volere_template16.pdf)
+

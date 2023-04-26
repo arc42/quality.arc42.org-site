@@ -12,5 +12,5 @@ permalink: /qualities/personalization
 >* Currencies, including the symbols and decimal conventions
 >* Personal configuration options 
 >
->[Volere Version 2.0](/references/#volere)
+>[Volere+2012, p. 48](/references/#volere)
 
