@@ -8,7 +8,7 @@ permalink: /qualities/robustness
 
 >The ability of the product to continue to function under abnormal circumstances. 
 >
->[Volere V20](https://www.volere.org/templates/volere-requirements-specification-template/)
+>[Volere+2012, p. 54](/references/#volere)
 
 <hr>
 

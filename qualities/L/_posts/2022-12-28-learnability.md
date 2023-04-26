@@ -23,5 +23,5 @@ Definitions:
 >This learning curve ranges from zero time for products intended for placement in the public domain (e.g., a parking meter or a web site) to a considerable amount of time for complex, highly technical products. 
 >(We know of one product where it was necessary for graduate engineers to spend 18 months in a training program before being qualified to use the product.) 
 >
->[Volere Version 2.0](/references/#volere)
+>[Volere](https://www.volere.org/)
 

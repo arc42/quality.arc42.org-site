@@ -30,7 +30,7 @@ In 1976, [[Boehm+1976]](/references/#boehm1976quantitative) published their qual
 <a name="mccall"></a>[[McCall+1977]](/references/#mccall1977factors) suggested to model quality as a hierarchy of terms, whose first level consists of _Operation, Revision_ and _Transition_. To revision he counted e.g. Maintainbility, Flexibility and Testability.
 
 
-Next [[Grady+1992]](/references/#grady1992practical) at Hewlett-Packard published FURPS and its extension FURPS+, the latter found proper acceptance in practice due to its integration into the (once popular) IBM Rational Unified Process [[Eeles+2005]](/references/#Eeles-2005). 
+Next [[Grady+1992]](/references/#grady1992practical) at Hewlett-Packard published FURPS and its extension FURPS+, the latter found proper acceptance in practice due to its integration into the (once popular) IBM Rational Unified Process [[Eeles+2005]](/references/#eeles2005capturing). 
 
 The ISO organization then took up the issue, publishing vendor- and product-neutral standards since 1991, starting with ISO-9126, which "lasted" for 20 years, and was superseded in 2011 by ISO-25010, which is still in effect today. 
 Both were considered the conceptual reference for software quality, and have gained considerable currency in practice. 
@@ -65,7 +65,7 @@ Only very few companies used them, and programming computers was a black art tha
 
 With this perspective, the Boehm model was incredible farsighted, as it included inner quality attributes like _legibility_ and _structuredness_ (which got lost in modern models like ISO)
 
-### FURPS+ for Classifying Requirements ([[Grady+1992]](/references/#grady1992practical), [[Eeles+2005]](/references/#Eeles-2005))
+### FURPS+ for Classifying Requirements ([[Grady+1992]](/references/#grady1992practical), [[Eeles+2005]](/references/#eeles2005capturing))
 <a name="eeles"></a>
 Robert Grady and Peter Eeles (from Hewlett-Packard) proposed the following schema for classifying requirements:
 
@@ -77,7 +77,7 @@ Robert Grady and Peter Eeles (from Hewlett-Packard) proposed the following schem
 >
 >The "+" represented several additional categories, such as design-, implementation-, interface- and physical- requirements.
 >
->[[Eeles+2005]](/references/#Eeles-2005)
+>[[Eeles+2005]](/references/#eeles2005capturing)
 
 Despite the lack of security, safety, resource-consumption and operational qualities, this model was (and likely still is) intensively used in practice.
 

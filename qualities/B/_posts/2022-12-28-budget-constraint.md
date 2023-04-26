@@ -5,9 +5,9 @@ related: efficiency
 permalink: /qualities/budget-constraint
 ---
 
->... the budget for the project or system, expressed in money or available resources.
+>... the budget for the project, expressed in money or available resources.
 >
->[Volere Version 2.0](/references/#volere)
+>[Volere+2012, p. 22](/references/#volere)
 
 
 

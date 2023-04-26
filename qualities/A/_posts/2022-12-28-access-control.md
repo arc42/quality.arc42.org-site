@@ -11,5 +11,5 @@ Definition:
 
 >... who is authorized to access to the product (both functionality and data), under what circumstances that access is granted, and to which parts of the product access is allowed.
 >
->[Volere Version 2.0](/references/#volere)
+>[Volere+2012, p. 60](/references/#volere)
 <hr class="with-no-margin"/>

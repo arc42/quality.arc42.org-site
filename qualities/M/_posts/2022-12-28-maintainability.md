@@ -51,4 +51,4 @@ ing the maintenance task and that individual’s level of skill or knowledge.
 >
 >A quantification of the time necessary to make specified changes to the product.
 >
->[Volere Version 2.0](/references/#volere)
+>[Volere](https://www.volere.org/)
