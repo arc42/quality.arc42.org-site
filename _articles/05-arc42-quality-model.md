@@ -7,11 +7,10 @@ permalink: /articles/arc42-quality-model
 {% assign quality_posts = site.posts | where: "categories", "qualities" %}
 {% assign requirement_posts = site.posts | where: "categories", "requirements" %}
 
-
-The arc42 quality model Q42 (pronounced "Kju-Fortytwo" or "Kju-Four-Two") is simple, pragmatic yet effective approach to product and system quality.
+The arc42 quality model Q42 (pronounced "Kju-Fortytwo" or "Kju-Four-Two") is a simple, pragmatic yet effective approach to product and system quality.
 It starts with **stakeholders' expectations and requirements**.
 
-Based upon typical stakeholder needs, Q42 consists of just 8 key system properties, which are sufficient to cover most, if not all, required, desireable or expected of the more than 100 [_traditional_ qualities](/qualities).
+Based upon typical stakeholder needs, Q42 consists of just 8 key system properties, which are sufficient to cover most, if not all, required, desirable or expected of the more than 100 [_traditional_ qualities](/qualities).
 
 ![arc42 quality model](/images/arc42-system-qualities-overview.svg)
 
@@ -23,7 +22,7 @@ But let's start at the beginning:
 * supported by extensive and free (online) documentation
 * free and open-source, maintained in a public repository
 * technology- and vendor-neutral 
-* agnostic to develoment methods
+* agnostic to development methods
 
 ### Fresh Approach
 Existing models like ISO-25010 propagated a fixed hierarchy (like a tree) of system qualities.
@@ -42,7 +41,7 @@ To facilitate stakeholder communication and understanding, Q42 contains definiti
 #### Example Quality Requirements
 
 Q42 contains numerous (currently {{ requirement_posts | size }}) [examples for specific quality requirements](/requirements).
-You can use these examples as starting point to find and describe quality requirements for your own system.
+You can use these examples as a starting point to find and describe quality requirements for your own system.
 
 #### Hyperlinks as Best-Friends
 All terms and example-requirements are cross-referenced (_hyperlinked_). 
@@ -70,7 +69,7 @@ Based upon the importance of stakeholders for project success, we centered our a
 | Product owner| flexible in terms of new features, |
 | Developer| flexible and reliable in terms of maintaining the code, easily testable |
 | Tester| testable with suitable effort, flexible in terms of automation and instrumentation, reliable in terms of reproducible test results |
-| Admin| operable and reliable in terms of easily operating and administering the system, secure and reliable when integrating with other sytems, flexible in terms of execution environments, safe and secure|
+| Admin| operable and reliable in terms of easily operating and administering the system, secure and reliable when integrating with other systems, flexible in terms of execution environments, safe and secure |
 | Others|  |
 
 ### Just Eight, not 35
@@ -80,20 +79,20 @@ These tags should be almost self-explanatory, but I'll try to clarify them with 
 | Tag | Meaning(s)  |
 | :--- | :--- |
 | `#reliable`| available, robust, dependable, fail-safe, fault-tolerant, consistent, recoverable, safe, secure|
-| `#flexible`| flexible during development (easy to change and enhance), flexible concerning infrastucture and environments, flexible at runtime (configurable, adjustable, integratable)|
-| `#efficient`| fast, responsive, efficient in terms of memory, cpu, threads, network and other resources, efficiently maintainable and operable|
+| `#flexible`| flexible during development (easy to change and enhance), flexible concerning infrastructure and environments, flexible at runtime (configurable, adjustable, integratable) |
+| `#efficient`| fast, responsive, efficient in terms of memory, CPU, threads, network and other resources, efficiently maintainable and operable |
 | `#usable`| easy and pleasurable to use, attractive, aesthetic|
 | `#operable`| easy to install, operate, monitor and administer, adequate operational costs|
-| `#suitable`| providing suitable properties and responsitilities or functions|
+| `#suitable`| providing suitable properties and responsibilities or functions |
 | `#secure`| consistent, accountable, confidential, integrous |
-| `#safe`| fail safe, isolating faults, warns of hazards early, identifies risks early |
+| `#safe`| fail-safe, isolating faults, warns of hazards early, identifies risks early |
 
 ### Code and Architecture Qualities
 In several of the historical quality models, the development teams' interest was either completely ignored or had low priority.
 In 1978, [Barry Boehm](/articles/quality-models) proposed to care for _structuredness, conciseness_ and _legibility_, but in later models, for example in the ISO-25010 standard, these properties are out of scope.
 
 From my viewpoint, development teams play a crucial role in both initial development and long-term maintenance and evolution of systems.
-Therefore we should consider their requirements on the internal structure and concepts as highly relevant, for example influencing the important _time-to-market_ that most managers constantly call for.
+Therefore, we should consider their requirements on the internal structure and concepts as highly relevant, for example influencing the important _time-to-market_ that most managers constantly call for.
 
 Q42 regards development teams as first-class citizens:
 

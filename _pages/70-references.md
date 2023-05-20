@@ -13,6 +13,7 @@ M. Harasymczuk "Quality - The Software Engineering." astrotech.io.
 Available [online](https://dev.astrotech.io/sonarqube/quality-models.html)
 
 <a id="bass2021software"></a>
+
 ### Bass et al.: Software Architecture in Practice
 
 L. Bass, P. Clements, and R. Kazman, Software architecture in practice, 4th ed. Addison-Wesley Professional, 2021.
@@ -29,7 +30,7 @@ From the abstract:
 >A definitive hierarchy of well-defined, well-differentiated characteristics of software quality is developed. 
 >Its higher-level structure reflects the actual uses to which software quality evaluation would be put; its lower-level characteristics are closely correlated with actual software metric evaluations which can be performed.
 
-Please note: Boehm's quality model is often (wrongly) dated to a 1978 publication, but in reality the authors published it 1976.
+Please note: Boehm's quality model is often (wrongly) dated to a 1978 publication, but in reality the authors published it in 1976.
 
 <a id="boehm1978characteristics"></a>
 ### Boehm et al.: Characteristics of Software Quality
@@ -125,7 +126,7 @@ Available [online](https://apps.dtic.mil/sti/pdfs/ADA086986.pdf)
 
 From this document:
 
->The purpose of this manual is to present a complete set of procedures and guidelines for introducing and utilizing current software quality measurement techniques in a quality assurance program associated with large scale software system developments.
+>The purpose of this manual is to present a complete set of procedures and guidelines for introducing and utilizing current software quality measurement techniques in a quality assurance program associated with large-scale software system developments.
 >
 >These procedures and guidelines will identify:
 >
@@ -142,7 +143,7 @@ From this document:
 J. McCall and G. Walters, ‘Factors in Software Quality. National Technical Information Service (NTIS)’, Springfield, VA, USA, 1977.
 
 <a id="mockus2010experiences"></a>
-### Mockus et. al.: Experiences from replicating a case study to investigate reproducibility of software development
+### Mockus et al.: Experiences from replicating a case study to investigate reproducibility of software development
 
 A. Mockus, B. Anda, and D. I. K. Sjøberg, ‘Experiences from replicating a case study to investigate reproducibility of software development’, in Proceedings of the 1st International Workshop on Replication in Empirical Software Engineering Research, 2010.
 

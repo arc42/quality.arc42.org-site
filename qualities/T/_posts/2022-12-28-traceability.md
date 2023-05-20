@@ -10,7 +10,7 @@ permalink: /qualities/traceability
 >It also includes the test cases that were run on that element and the tools that were used to produce the element. 
 >Errors in tools used in the deployment pipeline can cause problems in production.
 >
->[Bass et al, 2021](/references/#bass2021software)
+>[Bass et al., 2021](/references/#bass2021software)
 
 <hr class="with-no-margin"/>
 

@@ -6,9 +6,10 @@ permalink: /articles/challenge-with-quality
 
 <div class="arc42-help" markdown="1">
 Quality is one of the central topics of development teams. 
-Approaches such as _Domain-Driven Design_, help us to get our systems well structured, but performance, robustness, flexibility, security and other important properties are left out. 
+Approaches such as _Domain-Driven Design_, help us to get our systems well-structured, but performance, robustness, flexibility, security and other important properties are left out. 
 Therefore, I propose _Quality-Driven Software Architecture_ as a complement:
 A practical approach to achieve essential quality properties.
+
 
 </div><br>
 
@@ -30,11 +31,11 @@ The (in my _humble opinion_) worst definition comes from the [German Wikipedia](
 >
 >[German Wikipedia/Quality](https://de.wikipedia.org/wiki/Qualit%C3%A4t)
 
-However, this strange definitions don't in daily life.
+However, these strange definitions don't in daily life.
 Unfortunately, the "set of all properties" can mean just about anything. 
 For real work on specific (software) products, we need this to be more concrete.
 
-Let's start in daily life.
+Let's start with daily life.
 ### What is "Quality"?
 
 We use "quality" colloquially to express something good or positive about products or services. 
@@ -52,7 +53,7 @@ Is it the
 * type and number of possible connections, 
 * faithful reproduction or 
 * reproduction optimized for specific music genres, 
-* attenuation of external noise (noise cancelling), 
+* attenuation of external noise (noise-cancelling), 
 * clean channel separation or 
 * operability via gestures or buttons? 
 * sustainable and environmentally optimized manufacturing process? 
@@ -75,16 +76,16 @@ The exact characteristics that make up the quality of these things can (sorry, _
 
 ### Two Dimensions...
 
-Now it's getting complicated, because the term "quality" gets two different dimensions. 
+Now it's getting complicated because the term "quality" gets two different dimensions. 
 
-1. **Which features or attributes** count as quality (in the example: volume, frequency range, comfort, weight, connections, noise cancelling, channel separation, sustainability, interchangeability of parts).
+1. **Which features or attributes** count as quality (in the example: volume, frequency range, comfort, weight, connections, noise-cancelling, channel separation, sustainability, interchangeability of parts).
 2. **What is the desired level, value or amount** of these features (e.g. frequency response from 15 to 25000Hz, weight less than 400g, soft leather ear cups, wireless connection, jack and USB, etc.).
 
 In order to work on "quality" in practice, we need to get a handle on both of these dimensions. 
 Let's try the transition to software development at this point. 
 
 Even for dimension-1 ("which properties belong to quality") you can surely think of a multitude of such properties, which you or other involved parties (aka stakeholders) count to quality: Performance, security, robustness and a few dozen more (see figure below). 
-Scientists and practioners developed so called [quality models](/articles/quality-models), which collect more or less of such quality attributes.
+Scientists and practitioners developed so-called [quality models](/articles/quality-models), which collect more or less of such quality attributes.
 
 
 ![quality terminology word cloud](/images/articles/quality-challenges/quality-terms-wordcloud.svg){:width="70%"}
@@ -93,7 +94,7 @@ Scientists and practioners developed so called [quality models](/articles/qualit
 
 This is where the subjectivity of quality hits us: 
 Our IT security officer or the data protection officers are guaranteed to prioritize the issue of IT security much higher than ease of use, responsiveness ("snappiness"), or robustness, which end users eagerly desire. 
-Oh yes - the development team would like to see comprehensibility of the source code and traceability of the architectural decisions, as well as the use of interesting and modern technologies (which, in turn, the security people don't like at all, because security risks may still be lurking in modern technologies that have long been eliminated in "boring" old-school frameworks). 
+Oh, yes - the development team would like to see comprehensibility of the source code and traceability of the architectural decisions, as well as the use of interesting and modern technologies (which, in turn, the security people don't like at all because security risks may still be lurking in modern technologies that have long been eliminated in "boring" old-school frameworks). 
 Last but not least, the management demands the lowest possible costs for development and operation.
 
 But these different priorities and wishes are not enough: 
@@ -113,7 +114,7 @@ Such assumptions can, however, contain considerable risks.
 We propose to involve stakeholders, and help them formulate their specific quality requirements.
 
 ### Compromises and miracles
-A vehicle optimized for low energy consumption (about 5 kWh per 100 km, or 3l of fuel per 100 km) cannot simultaneously be designed for high seating capacity (about 8 people) or high payload (8 tons payload). 
+A vehicle optimized for low-energy consumption (about 5 kWh per 100 km, or 3l of fuel per 100 km) cannot simultaneously be designed for high seating capacity (about 8 people) or high payload (8 tons payload). 
 Tea is either flavored or not. 
 One cannot accommodate long audio sequences with high sampling rates in the strictly limited memory of an embedded onboard controller with only 64kByte of available memory. 
 Generally speaking, some combinations of quality characteristics make each other difficult, or even mutually exclusive. 
@@ -125,7 +126,6 @@ You have to clarify two dimensions when you want to have specific information on
 
 1. What properties are important (e.g. performance, flexibility, security, safety...)
 2. What level of these properties is required, desired or expected from the system, its development or operation?
-
 
 
 
