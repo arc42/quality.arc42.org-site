@@ -12,17 +12,16 @@ Here you find a list of typical stakeholders, plus a list of qualities these rol
 People who actively _use_ the system.
 
 ### Management
-Prople who sponsor or pay for 
+People who sponsor or pay for 
 * development 
 * operation 
-* testing 
-of the system
+* testing of the system
 
 People who take organizational responsibility for the system and/or its development and operation,
 who care for financial and other resources.
 
 ### Domain Expert
-aka _subject matter experts_, people who know or have experience in the business or technical processes or data the system supports or enhances.
+aka _subject-matter experts_, people who know or have experience in the business or technical processes or data the system supports or enhances.
 
 
 ### Developer

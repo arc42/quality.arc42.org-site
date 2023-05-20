@@ -13,7 +13,7 @@ permalink: /requirements/low-impact-diagnosis
 **Reaction**: A specific generator creates 1GByte of test data for system xyz.
 
 
-**Metric**: The data is created in less than 60minutes
+**Metric**: The data is created in less than 60 minutes
 
 **Background**: Diagnosis has little effect on execution time
 The diagnostics subsystem has only a minor impact on the execution time of system functions and transactions 

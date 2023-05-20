@@ -9,10 +9,9 @@ permalink: /requirements/shutdown-to-safe-state
 
 Severe errors shall be detected.
 
-In such cases the system shuts down gracefully into a safe state.
+In such cases, the system shuts down gracefully into a safe state.
 
 </div><br>
-
 
 
 

@@ -33,9 +33,9 @@ Being trustworthy or performing consistently well.
 >* Time to detect a fault
 >* Time to repair a fault
 >* Time or time interval in which the system may operate in degraded mode
->* Proportion (e.g. 99%) or rate (e.g. up to 42 per second) of a certain class or type of faults that the system either prevents or handles without failing
+>* Proportion (e.g. 99%) or rate (e.g. up to 42 per second) of a certain class or types of faults that the system either prevents or handles without failing
 >
->Source: [Bass et. al, 2021, p. 75](/references/#bass2021software)
+>Source: [Bass et al., 2021, p. 75](/references/#bass2021software)
 
 
 ### What  Stakeholders mean by _reliable_

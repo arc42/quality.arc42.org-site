@@ -57,7 +57,7 @@ The main idea of _usability_ is that a system shall be designed with (generalize
 >* ratio of successful operations to total operations
 >* amount of time or data lost when an error occurs 
 >
->[Bass et. al, 2021](/references/#bass2021software)
+>[Bass et al., 2021](/references/#bass2021software)
 
 ### What Stakeholders mean by _usable_
 

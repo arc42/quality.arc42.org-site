@@ -12,7 +12,7 @@ As examples of such systems, think of a mobile phone, a standalone GPS navigatio
 
 The system shall be compatible with battery models provided by the five preferred battery suppliers.
 
-The concrete list of supplieres will be available about 6 month prior to product release. 
+The concrete list of suppliers will be available about 6 months prior to product release. 
 Battery specifications from several vendors are available upon request.
 
 </div><br>

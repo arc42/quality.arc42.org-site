@@ -9,7 +9,7 @@ permalink: /requirements/server-fails-operation-without-downtime
 
 >A server in a server farm fails during normal operation, and the system informs the operator and continues to operate with no downtime.
 >
->[Len Bass et. al, 2021, p. 76](/references/#bass2021software)
+>[Len Bass et al., 2021, p. 76](/references/#bass2021software)
 
 </div>
 
