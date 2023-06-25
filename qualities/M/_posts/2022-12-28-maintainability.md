@@ -5,7 +5,7 @@ related: flexibility, adaptability, changeability, configurability, modularity
 permalink: /qualities/maintainability
 ---
 
-[Kazman et al](/references/#kazman-maintainability) is an extensive technical report covering many aspects of maintainability. Recommended reading.
+[Kazman et al.](/references/#kazman-maintainability) is an extensive technical report covering many aspects of maintainability. Recommended reading.
 
 <hr class="with-no-margin"/>
 
@@ -20,7 +20,7 @@ change (or type of change) can be labeled differently, depending on the maintain
 base in response to changes in environmental elements. This measure may depend on who is perform-
 ing the maintenance task and that individual’s level of skill or knowledge.
 >
->from [Kazman et al, p.5](/references/#kazman-maintainability)
+>from [Kazman et al., p.5](/references/#kazman-maintainability)
 
 <hr class="with-no-margin"/>
 

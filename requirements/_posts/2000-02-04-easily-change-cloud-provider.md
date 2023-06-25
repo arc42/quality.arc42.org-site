@@ -14,9 +14,8 @@ permalink: /requirements/change-cloud-provider
 
 **Background**: We are operating our system in a public cloud.
 
-**Remark**: We do **not** count account creation, contract negotiation and the initial feasability study towards these 15 days.
+**Remark**: We do **not** count account creation, contract negotiation and the initial feasibility study towards these 15 days.
 </div><br>
-
 
 
 

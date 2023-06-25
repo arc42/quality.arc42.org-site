@@ -21,4 +21,3 @@ All parts of the system shall be usable by people suffering color blindnesses:
 
 
 
-

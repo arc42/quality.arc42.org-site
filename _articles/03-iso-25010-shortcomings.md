@@ -54,8 +54,7 @@ The diagram shows the top-level characteristics of ISO 25010 from the  2011 vers
 Developers of embedded or real-time systems in medicine, aerospace, the automotive industry, chemistry, mechanical engineering, and others will immediately notice an omission: "Safety" (safety of life and health, physical integrity, etc.) is missing from this overview.
 And no, it does not appear as a subfeature in the ISO standard either.
 
-
-Now for the teams that develop modern web or mobile applications:
+Now, for the teams that develop modern web or mobile applications:
 They will be surprised that operational or _DevOps_ topics like deployability are missing from the standard.
 Oh yes, scalability, which is usually a challenge in online applications, is missing too.
 
@@ -176,8 +175,7 @@ For example, the arc42 quality model (Q42) consists of just eight key properties
 
 Maybe the most serious disadvantage of ISO 25010 is the complete lack of specific examples of how to apply the model to practical, real-world systems. That leaves development teams and other system stakeholders out in the cold. [Bass+2021](/references/#bass2021software) have proven in their book that such examples can be systematic and useful. [arc42](https://quality.arc42.org) followed suit, providing numerous tagged and cross-referenced examples of quality requirements.
 
-
-Another potential source of unwanted complexity is the ISO metamodel, which distinguishes Quality-in-Use, Data Quality, Service Quality and Product Quality. (The meta-model is part of the official documentation in the “ISO/IEC 2501n Quality Model Division”, explained within the non-public parts of 25010. It refers to additional standards 25011 (IT service quality model), 25012 (Data quality model) and 25019 (Quality-in-use model), cf. [ISO+25011](/references/#iso-25010-2011)).
+Another potential source of unwanted complexity is the ISO metamodel, which distinguishes Quality-in-Use, Data Quality, Service Quality and Product Quality. (The metamodel is part of the official documentation in the “ISO/IEC 2501n Quality Model Division”, explained within the non-public parts of 25010. It refers to additional standards 25011 (IT service quality model), 25012 (Data quality model) and 25019 (Quality-in-use model), cf. [ISO+25011](/references/#iso-25010-2011)).
 In my opinion, this makes the ISO 25010 model overly difficult to digest for real-world projects.
 
 
@@ -190,17 +188,16 @@ My final complaint is the paywall: The price of almost 140 Swiss Francs (approx.
 
 ### Fast Food or Gourmet Dinner?
 
-
 ISO 25010 is neither.
 Even the 2022 draft update of ISO 25010 doesn't go beyond canteen food:
-Versatile, but difficult to access due to the multitude of overlapping and sometimes confusing terms 
+Versatile, but difficult to access due to the multitude of overlapping and sometimes confusing terms.
 Formality-lovers will adore the metamodel, but practitioners will lack practical guidance.
 The often abstract definitions of terms build up superfluous hurdles.
 Specific, usable examples of practical applications are missing (again, arc42 to the rescue).
 
 
 In my opinion, less would have been more:
-Instead of nearly 40 terms at various levels, a few top-level features would be sufficient, coupled with suggestions or examples for each of thems.
+Instead of nearly 40 terms at various levels, a few top-level features would be sufficient, coupled with suggestions or examples for each of them.
 
 
 
@@ -212,7 +209,6 @@ You can find a brief overview of their work in [another article](/articles/sei-q
 
 ### Acknowledgements
 Thanx to “m” , Anja Kammer, Daniel Lauxtermann, Joachim Praetorius and Ben Wolf for bug fixing and dramatically improving the quality of this post. Thanx to Eberhard Wolff for encouragements.
-
 
 
 

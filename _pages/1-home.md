@@ -24,7 +24,7 @@ The current quality standards, like ISO-25010, [lack practical guidance and prag
 
 The arc42 quality model Q42 (pronounced "Kju-Fortytwo" or "Kju-Four-Two") is a simple, pragmatic yet effective approach to product and system quality.
 It starts with stakeholders' expectations and requirements. 
-From these, it derives 8 important system properties, which are sufficient to cover most, if not all, required, desireable or expected of the more than 100 _traditional_ qualities.
+From these, it derives 8 important system properties, which are sufficient to cover most, if not all, required, desirable or expected of the more than 100 _traditional_ qualities.
 
 Find out more in our **[introduction to the Q42 quality model](/articles/arc42-quality-model)**
 
@@ -43,9 +43,8 @@ On this site you find:
 * several [articles with background information](/articles) on quality
 * a brief glossary of quality-related terms
 
-
 Qualities and example-requirements are organized along the following top-level properties (attributes or _tags_), and cross-referenced. 
-A single quality attribute (like "availability") might have multiple properties (#reliable, #usable and #safe, in this case)).
+A single quality attribute (like "availability") might have multiple properties (#reliable, #usable and #safe, in this case).
 
 
 {% assign tags_reliable = site.posts | where_exp: "posts", "posts.tags contains 'reliable'" %}
@@ -80,6 +79,6 @@ The _dynamic duo_, always two trainers in parallel, practically applicable knowl
 See [arc42.de](https://www.arc42.de/termine) for details, and schedule.
 
 We've successfully trained more than 1000 developers in software architecture, many of them passed the [iSAQB CPSA-F](https://isaqb.org) certification.
-(sorry - public training currently German-only, English for inhouse trainings.)
+(sorry - public training currently German-only, English for in-house trainings.)
 
 -->

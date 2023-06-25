@@ -15,5 +15,5 @@ permalink: /qualities/auditability
 
 How easy the product or system allows (usually external) stakeholders to audit/inspect/verify certain features or capabilities.
 
-Oftentimes an audit is performed to verify _compliance_ to standards related to product or process features (like SPICE in automative domain).
+Often times an audit is performed to verify _compliance_ to standards related to product or process features (like SPICE in automotive domain).
 
