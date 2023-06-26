@@ -136,4 +136,5 @@ exclude:
   - _manage*
   - .sass-cache
   - .code-workspace
+  - vendor/bundle
   
