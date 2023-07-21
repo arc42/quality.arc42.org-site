@@ -18,17 +18,17 @@ Easy to:
 
 Deployability is a...
 
->Measure of cost, time or process effectiveness for a deployment, 
+>Measure of cost, time or process effectiveness for a deployment,
 >for a series of deployments over time.
 >
->[Bass et. al, 2021](/references/#bass2021software)
+>[Bass et al., 2021](/references/#bass2021software)
 
 
 ## Typical Acceptance Criteria
 
 ### Scenario Response Measures for "Deployability" from [Bass et al.]
 
-Bass et al define [deployability](/qualities/deployability) as a property, and somehow omit other operational characteristics.
+Bass et al. define [deployability](/qualities/deployability) as a property, and somehow omit other operational characteristics.
 
 >Cost in terms of
 >* Number, size and complexity of affected artifacts
@@ -43,7 +43,7 @@ Bass et al define [deployability](/qualities/deployability) as a property, and s
 >* Traceability of the process
 >* Cycle time of the process
 >
->[Bass et. al, 2021](/references/#bass2021software)
+>[Bass et al., 2021](/references/#bass2021software)
 
 
 
@@ -60,7 +60,6 @@ Bass et al define [deployability](/qualities/deployability) as a property, and s
 | Admin |* easy to build and deploy<br>* appropriate monitoring facilities<br>* appropriate procedures for crisis management in place<br>* appropriate management of credentials required<br>   |
 | Domain-Expert | - |
 | Others | -  |
-
 
 <!-- include all qualities associated with this tag -->
 {% include one-quality.md topic="operable"  %}

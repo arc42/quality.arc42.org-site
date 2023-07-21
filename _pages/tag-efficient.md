@@ -9,7 +9,7 @@ permalink: /tag-efficient/
 
 * Resource-efficient, fast, low-footprint, low latency.
 * Energy-, storage- and network efficient, having adequate capacity
-* Development-efficient, beeing easy to change (although that aspect may better be covered by [#flexible](/tag-flexible))
+* Development-efficient, being easy to change (although that aspect may better be covered by [#flexible](/tag-flexible))
 * Time-to-market, how efficient new features can _go live_
   
 
@@ -31,7 +31,7 @@ permalink: /tag-efficient/
 ### Effective vs Efficient
 
 >The words effective and efficient both mean "capable of producing a result," but there is an important difference. Effective means "producing a result that is wanted". Efficient means "capable of producing desired results without wasting materials, time, or energy".
->The difference is that when something is effective it produces a result even if it takes some unnecessary resources to do so. When something is efficient, not only does it produce a result, but it does so in a quick or simple way using as little material, time, effort, or energy as possible. The following example sentences show how the two words are used.
+>The difference is that when something is effective it produces a result even if it takes some unnecessary resources to do so. When something is efficient, not only does it produce a result, but it does so in a quick or simple way using as little material, time, effort, or energy as possible. The following example sentences show how the two words are used.
 >* The 200-page instruction manual was effective (_=successful_) in teaching the teen to repair the car himself, but it would have been more efficient (_=faster and easier_) for someone to show him.
 >* His disorganized method of cleaning the house was effective but it was not efficient; in the end, the house was clean, but it took much longer than it should have.
 >
@@ -57,18 +57,18 @@ Efficient, as we saw above, can mean several different things:
 >* The variation in response time ([jitter](/qualities/jitter))
 >* Usage level of a computing resource
 >
->[Bass et. al, 2021](/references/#bass2021softwaree)
+>[Bass et al., 2021](/references/#bass2021softwaree)
 
 ### What Stakeholders mean by _efficient_
 
 | Stakeholder | (potential) Expectation for _efficient_ |
 |:--- |:--- |
-| User |* system produces desired results quickly<br>* can achieve desired results with low effort, e.g. only few keystrokes<br>* system reacts immediately to commands<br>* low energy consumption, e.g. long battery life |
+| User |* system produces desired results quickly<br>* can achieve desired results with low effort, e.g. only a few keystrokes<br>* system reacts immediately to commands<br>* low-energy consumption, e.g. long battery life |
 | Product-Owner |* dev-team can implement new features quickly |
 | Management |* high return on investment<br>  |
 | Developer |* new features can be implemented quickly<br>* build works quickly<br>* automated tests run quickly  |
 | Tester |* tests run quickly<br>* automated tests find relevant bugs<br>* test infrastructure works with appropriate resources |
-| Admin |* fast deplyoment, installation and configuration   |
+| Admin |* fast deployment, installation and configuration   |
 | Domain-Expert | -  |
 | Others | -  |
 

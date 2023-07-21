@@ -21,7 +21,7 @@ related qualities
 </span>
 listed below each requirement. <br>
 Within the Software Engineering literature you might find the term "quality scenario" for such examples. 
-That term was coined by authors from the Software Engineering Institute (SEI), especially [Len Bass et. al.](/references/#bass2021software)
+That term was coined by authors from the Software Engineering Institute (SEI), especially [Len Bass et al.](/references/#bass2021software)
 
 <hr class="with-no-margin"/>
 
@@ -70,5 +70,4 @@ Read more on the **[background of requirements](/articles/specify-quality-requir
   {% endunless %}{% endfor %}
 
 </div>
-
 

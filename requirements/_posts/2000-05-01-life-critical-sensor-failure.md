@@ -7,7 +7,7 @@ permalink: /requirements/backup-patient-monitoring-sensor
 
 <div class="quality-requirement" markdown="1">
 
-Idea: [Bass et. al, 2021](/references/#bass2021software)
+Idea: [Bass et al., 2021](/references/#bass2021software)
 
 **Background**: The system monitors patients several health and vitality parameters (e.g. heartbeat frequency and amplitude, blood flow in coronary artery etc)
 

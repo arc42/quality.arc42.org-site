@@ -36,10 +36,10 @@ I'm:
 * fellow at [INNOQ](https://www.innoq.com),
 * quite busy coaching and consulting medium and large-scale enterprises on topics around software architecture and methodical software engineering,
 * co-founder and maintainer of [arc42](https://www.arc42.org), the template for pragmatic and systematic software architecture documentation,
-* founder of [aim42](https://www.aim42.org), the open source framework for systematic _software architecture improvement_,
+* founder of [aim42](https://www.aim42.org), the open-source framework for systematic _software architecture improvement_,
 * active member and working group lead within the International Software Architecture Qualification Board, [iSAQB](https://www.isaqb.org),
-* regular presenter at IT-conferences,
-* author and co-author of more than a [dozen books](https://gernotstarke.de/buecher) on software architecture, patterns, arc, and the like. I'm really sorry - most of these books are written in German. Have a look at <a href="https://www.leanpub.com">Leanpub</a> for some of my English books.
+* regular speaker at IT-conferences,
+* author and co-author of more than a [dozen books](https://gernotstarke.de/buecher) on software architecture, patterns, arc, and the like. I'm really sorry - most of these books are written in German. Take a look at <a href="https://www.leanpub.com">Leanpub</a> for some of my English books.
 * author of quite a few [articles](https://www.gernotstarke.de/artikel)
 
 
@@ -51,7 +51,7 @@ I'm:
 * Thanx to Remko Plantenga and Martin Weck for their contributions.
 
 Find the current list of contributors [here](https://github.com/arc42/quality.arc42.org-site/graphs/contributors)
-  
+
 ## Stats
 
 * build_revision: {{ site.github.build_revision }}

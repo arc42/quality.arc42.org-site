@@ -9,11 +9,10 @@ permalink: /requirements/core-functions-on-mac-win-linux
 
 **Background**: The system offers a few complex core business functions.
 
-* Core functions can be re-used on Mac-OS, Windows and Linux applications without changes to their source code.
+* Core functions can be re-used on MacOS, Windows and Linux applications without changes to their source code.
 * Future releases or distributions of these operating systems shall not affect their ability to work on these platforms, at least in comparable execution environments (concerning cpu and memory capacity).
 
 </div><br>
-
 
 
 
