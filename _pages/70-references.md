@@ -97,6 +97,12 @@ R. Kazman, P. Bianco, J. Ivers, and J. Klein, ‘Maintainability’, 2020.
 
 Available [online](https://resources.sei.cmu.edu/asset_files/TechnicalReport/2020_005_001_650490.pdf)
 
+<a id="martin-clean-architecture"></a>
+### Martin et al.: Clean Architecture
+
+R. C. Martin, J. Grenning, and S. Brown, Clean architecture.
+Prentice Hall, 2018.
+
 <a id="mccall"></a>
 ### McCall/Cavano: A framework for the measurement of software quality 
 
