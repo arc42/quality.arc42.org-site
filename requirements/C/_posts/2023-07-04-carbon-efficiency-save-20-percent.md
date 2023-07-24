@@ -1,8 +1,8 @@
 ---
 title: Save at least 20% of carbon emissions with every new version
 tags: efficient
-related: reliability, accuracy, correctness
-permalink: /requirements/carbon-efficiency-save-
+related: efficiency, carbon-emission-efficiency
+permalink: /requirements/carbon-efficiency-save
 ---
 
 <div class="quality-requirement" markdown="1">
