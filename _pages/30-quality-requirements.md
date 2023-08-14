@@ -59,8 +59,9 @@ Read more on the **[background of requirements](/articles/specify-quality-requir
     <h3 style="color: var(--req-text-color)"><li class="no-bullets"><a style="color: var(--req-text-color)" href="{{ post.url }}"><i class="fa fa-lightbulb fa-xs"></i> {{ post.title }}</a></li></h3>
     {% for quality in qualities %}
         {% assign check_title = quality.title | downcase %}
+        {% assign check_title_two = check_title | replace: " ", "-" %}
         {% assign related = post.related | split: ", "%}
-        {% if related contains check_title %}
+        {% if related contains check_title or related contains check_title_two %}
             <li class="related-quality"><a href="{{quality.url}}"> {{quality.title}} </a></li>
         {% endif %}
     {% endfor %}

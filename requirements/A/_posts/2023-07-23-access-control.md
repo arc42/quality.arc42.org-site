@@ -1,7 +1,7 @@
 ---
 title: Access control is enforced
 tags: secure suitable
-related: access control  
+related: access-control  
 permalink: /requirements/access-control
 ---
 
