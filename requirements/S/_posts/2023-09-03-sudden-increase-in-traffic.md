@@ -1,5 +1,5 @@
 ---
-title: "Sudden increase in traffic"
+title: "Handle sudden increase in traffic"
 tags: reliable
 related: resilience, reliability
 permalink: /requirements/handle-sudden-increase-in-traffic
