@@ -1,6 +1,6 @@
 ---
 title: User tries to achieve primary function
-tags: suitable
+tags: usable
 related: functional appropriateness, functional completeness, user experience 
 permalink: /requirements/user-tries-primary-function
 ---
