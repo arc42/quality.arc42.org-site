@@ -2,7 +2,7 @@
 title: Recovery time
 tags: reliable
 related: recoverability, fault tolerance, availability, resilience, high availability
-permalink: /qualities/q
+permalink: /qualities/recovery-time
 ---
 
 see [recoverability](qualities/recoverability).
