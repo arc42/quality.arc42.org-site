@@ -16,10 +16,8 @@ Please let us know - we're listening:
 
 <li><a href="https://github.com/arc42/quality.arc42.org-site/issues"><i class="fab fa-fw fa-github" aria-hidden="true"></i>github issue tracker</a></li>
 <li>
-    <a href="(https://stackoverflow.com/questions/tagged/arc42">
-        <i class="fab fa-fw fa-stack-overflow" aria-hidden="true"></i>
-        Stackoverflow
-    </a>
+    <a href="https://stackoverflow.com/questions/tagged/arc42">
+        <i class="fab fa-fw fa-stack-overflow" aria-hidden="true"></i>Stackoverflow</a>
 </li>
 </ul>
 
