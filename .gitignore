@@ -4,3 +4,4 @@ _site
 Gemfile.lock
 .jekyll-metadata
 .idea
+vendor
