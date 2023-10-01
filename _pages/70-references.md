@@ -18,6 +18,13 @@ Available [online](https://dev.astrotech.io/sonarqube/quality-models.html)
 
 L. Bass, P. Clements, and R. Kazman, Software architecture in practice, 4th ed. Addison-Wesley Professional, 2021.
 
+<a id="bbvquality"></a>
+### BBV Software Development Quality Map
+
+BBV (a Swiss consulting and software company) have published a visual map of [software development quality](https://quality.bbv.ch/).
+
+
+
 <a id="boehm1976quantitative"></a>
 ### Boehm et al.: Quantitative Evaluation of Software Quality
 
@@ -171,6 +178,9 @@ S. Robertson and J. Robertson, Mastering the requirements process: Getting requi
 ### Starke/Lorz: Software Architecture Foundations 
 
 G. Starke and A. Lorz, Software Architecture Foundation: CPSA Foundation® Exam Preparation. Van Haren, 2021.
+
+>Remark: Since May 2023 a second edition of this book is available, containing several bugfixes.
+
 
 <a id="volere"></a>
 ### Robertson/Robertson: Volere Requirements Specification Template
