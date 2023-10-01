@@ -1,7 +1,7 @@
 ---
 title: Affordability
 tags: suitable usable efficient
-related: budget constraint, changeability
+related: budget constraint, cost, changeability
 permalink: /qualities/affordability
 ---
 
