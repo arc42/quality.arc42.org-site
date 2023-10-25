@@ -8,6 +8,7 @@ permalink: /qualities/accessibility
 
 See also [#usable](/tag-usable). 
 
+There is a [W3C standard on this topic](https://www.w3.org/TR/WCAG21/)
 
 Definitions:
 
