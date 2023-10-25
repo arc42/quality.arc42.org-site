@@ -31,7 +31,7 @@ The user accesses the web application in a standard web browser, using the lates
     
 **Load time**: Despite any accessibility enhancements, page load times should not exceed 3 seconds for 90% of page loads, ensuring that the accessibility features don't negatively impact performance.
 
-**Compliance**: The application should meet WCAG 2.1 Level AA criteria. 
+**Compliance**: The application should meet [WCAG 2.1](https://www.w3.org/TR/WCAG21/) Level AA standard criteria. 
 Automated testing tools should report zero non-compliance issues, and manual testing should identify no more than 2 issues per page.
 
 </div><br>
