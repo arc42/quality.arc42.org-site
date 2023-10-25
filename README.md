@@ -28,13 +28,11 @@ You have an environment that allows to run
 - a bash script (`/bin/bash`)
 - [docker](https://docs.docker.com/build/building/context/) and [docker-compose](https://docs.docker.com/compose/)
 
-### Build
+### Build and test
 
-In the root directory you find the script `_manage-site.sh`. Run it:
+In the root directory, run `docker compose up`.
 
-`quality.arc42.org-site (main)$ ./_manage-site.sh`.
 
-Once executed the script suggests the possible commands. Only after you have chosen a command it will actually do something, i.e. to build and run it. The script starts a server with the updated website that you access via `http://localhost:4000`.
 
 ## How to contribute
 
@@ -42,4 +40,4 @@ Create a fork of [https://github.com/arc42/quality.arc42.org-site](https://githu
 
 Hint: `_todo-qualities` contains qualities whose definitions are missing. You may fill those files with content. Then move them to the appropriate folder (e.g. `qualities/<letter>/_posts`).
 
-Hint: If you add new files you have to clean-rebuild the whole application. The watch is only for modifications of existing files.
+Hint: If you add new files you have to clean-rebuild the whole application.
