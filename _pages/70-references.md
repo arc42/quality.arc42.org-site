@@ -19,9 +19,9 @@ Available [online](https://dev.astrotech.io/sonarqube/quality-models.html)
 L. Bass, P. Clements, and R. Kazman, Software architecture in practice, 4th ed. Addison-Wesley Professional, 2021.
 
 <a id="bbvquality"></a>
-### BBV Software Development Quality Map
+### bbv Software Development Quality Map
 
-BBV (a Swiss consulting and software company) have published a visual map of [software development quality](https://quality.bbv.ch/).
+bbv (a Swiss consulting and software company) have published a visual map of [software development quality](https://quality.bbv.ch/).
 
 
 
