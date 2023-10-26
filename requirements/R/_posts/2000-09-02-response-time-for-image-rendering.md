@@ -1,7 +1,7 @@
 ---
 title: Response time for image rendering
 tags: efficient
-related: response time, efficiency, performance, time behaviour, speed
+related: response time, efficiency, performance, time behaviour, speed, responsive
 permalink: /requirements/response-time-for-image-rendering
 ---
 
