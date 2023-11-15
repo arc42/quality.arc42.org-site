@@ -34,9 +34,13 @@ Read more on the **[background of requirements](/articles/specify-quality-requir
 {% assign tag_words = site_tags |  split:',' | sort %}
 <!-- tag_words: {{ tag_words }} -->
 
+{% assign tag_words_unique = tag_words | uniq %}
+
+{% assign site_tags = tag_words_unique | join: ',' %}
+
 <div id="tags">
   <ul class="tag-box inline">
-  {% for tag in tag_words %}
+  {% for tag in tag_words_unique %}
     <!-- make the tags of the arc42-quality-model stand out -->
     {% if tag == "reliable" or tag == "flexible" or tag=="efficient" or tag == "usable" or tag == "safe" or tag == "secure" or tag == "suitable" or tag == "operable" %}
     <a class="hov tags req" href="/tag-{{ tag | cgi_escape }}"><b>{{ tag }}</b>
@@ -48,7 +52,9 @@ Read more on the **[background of requirements](/articles/specify-quality-requir
 {% assign qualities_unsorted = site.posts | where: "categories", "qualities" %}
 {% assign qualities = qualities_unsorted | sort %}
 
-{% for item in (0..site.tags.size) %}{% unless forloop.last %}
+{% assign tag_count = tag_words_unique | size %}
+
+{% for item in (0..tag_count) %}{% unless forloop.last %}
 {% capture this_word %}{{ tag_words[item] | strip_newlines }}{% endcapture %}
 <a href="/tag-{{ this_word | cgi_escape }}">
 <h2><i class="fa fa-tag fa-xs"></i> #{{ this_word }}</h2></a>
