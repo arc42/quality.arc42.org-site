@@ -82,13 +82,14 @@ ISO/IEC DIS 25010(en): Systems and software engineering — Systems and software
 
 Available [online](https://www.iso.org/obp/ui/#iso:std:iso-iec:25010:dis:ed-2:v1:en)
 
-<a id="iso-25010-2022"></a>
-### ISO 25010 (draft version 2022)
+<a id="iso-25010-2023"></a>
+### ISO 25010 (updated version 2023)
 
-ISO/IEC TS 25052-1:2022(en)
+ISO/IEC TS 25010:2023(en)
 Systems and software engineering — Systems and software Quality Requirements and Evaluation (SQuaRE): Product quality model
 
-Available [online](https://www.iso.org/obp/ui/#iso:std:iso-iec:25010:dis:ed-2:v1:en)
+Available [online](https://www.iso.org/obp/ui/#iso:std:iso-iec:25010:ed-2:v1:en)
+
 
 <a id="jamwal"></a>
 ### Jamwal et al.: Comparative Analysis of Different Software Quality Models

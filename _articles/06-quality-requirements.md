@@ -24,12 +24,13 @@ See [Bass et al., 2021](/references/#bass2021software) for details.
 
 Quality scenarios, in short, are a pragmatic, easy-to-use and general approach to specifying quality requirements.
 
+>You find {{ requirement_posts | size }} examples of such quality requirements on this site (see [examples](/requirements)).
+
 
 ### General structure of quality scenarios
 
 ![general form of quality scenarios](/images/articles/q-requirements/q-scenario.png){:width="50%"}
 
->This structure has been proposed by 
 
 * **Event/stimulus**: Any condition or event arriving at the system.
 * **Response**: The activity undertaken after the arrival of the stimulus.
