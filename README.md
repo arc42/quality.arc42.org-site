@@ -30,7 +30,7 @@ You have an environment that allows to run
 
 ### Build and test
 
-In the root directory, run `docker compose up`.
+In the root directory, run `docker-compose up`.
 
 
 
