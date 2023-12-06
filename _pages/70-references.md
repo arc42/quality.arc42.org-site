@@ -82,6 +82,7 @@ ISO/IEC DIS 25010(en): Systems and software engineering — Systems and software
 
 Available [online](https://www.iso.org/obp/ui/#iso:std:iso-iec:25010:dis:ed-2:v1:en)
 
+<a id="iso-25010-2022"></a>
 <a id="iso-25010-2023"></a>
 ### ISO 25010 (updated version 2023)
 

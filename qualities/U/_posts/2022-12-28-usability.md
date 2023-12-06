@@ -6,7 +6,10 @@ permalink: /qualities/usability
 ---
 
 
-See also [#usable](/tag-usable).
+See also 
+
+* [#usable](/tag-usable).
+* [interaction-capability](/qualities/interaction-capability), a term that is used within the ISO-25010:2023 standard as a successor to "usability"
 
 
 Definitions:
