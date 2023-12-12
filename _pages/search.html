@@ -18,7 +18,11 @@ share: false
     <div id="{{ post.id | replace: '/', '-' }}" style="display: none;">
         <div class="article-wrapper">
             <article>
+                {% if post.categories contains "requirements" %}
                 {% include search-req-header.html page=post link=true share=false %}
+                {% else %}
+                {% include article-header.html page=post link=true share=false %}
+                {% endif %}
             </article>
         </div>
         <hr class="with-no-margin"/>
