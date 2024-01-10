@@ -10,6 +10,6 @@ services:
       - ./vendor/bundle/:/usr/local/bundle
     ports:
       - "4000:4000"
-    command: jekyll serve --trace --host 0.0.0.0 --watch --incremental --config _config.yml
+    command: bundle exec jekyll serve --trace --host 0.0.0.0 --watch --incremental --config _config.yml
     environment:
       - JEKYLL_ENV=development
