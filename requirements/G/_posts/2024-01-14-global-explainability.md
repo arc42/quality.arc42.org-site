@@ -11,6 +11,6 @@ permalink: /requirements/global-explainability
 
 **Response**: An administrator can request the average impact of specific features.
 
-**Background**: Using AI to generate decisions involves finding patterns in large sets of data. Some of these patterns are biases in the data or represent information that is not allowed to be used in the analysis (like sexual orientation or religious beliefs). 
+**Background**: Using AI to generate decisions involves finding patterns in large sets of data. Some of these patterns are a result of biases in the data or represent information or characteristics (like sexual orientation or religious beliefs) that most modern legal frameworks explicitly forbid from being used in analyses and decision making.
 
 </div><br>

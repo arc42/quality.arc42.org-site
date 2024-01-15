@@ -4,7 +4,7 @@ tags: safe suitable
 related: accountability, analysability, clarity
 permalink: /qualities/explainability
 ---
-Explainability is a quality sometimes required in the context of Artificial Intelligence (AI). The proposed AI Act of the European Union will probably contain obligations for some AI systems to provide explanations about decisions that impact user rights.
+Explainability is a quality sometimes required in the context of Artificial Intelligence (AI). The European's proposed AI Act will probably contain obligations for some AI systems to provide explanations about decisions that impact user rights.
 
 ### Definitions
 
