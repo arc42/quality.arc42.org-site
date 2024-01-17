@@ -1,7 +1,7 @@
 ---
-title: "Add new product"
+title: "Add new product under 60 minutes"
 tags: suitable efficient reliable
-related: 
+related: efficiency, usability, extensibility
 permalink: /requirements/add-new-product
 ---
 
