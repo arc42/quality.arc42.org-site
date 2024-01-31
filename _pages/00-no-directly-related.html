@@ -1,0 +1,35 @@
+---
+layout: page
+title: Qualities with no directly related requirements
+permalink: /no-directly-related/
+hide: true
+---
+
+{% assign qualities_with_no_directly_related_requirements = 0 %}
+
+{% assign qualities_unsorted = site.posts | where: "categories", "qualities" %}
+{% assign qualities = qualities_unsorted | sort %}
+
+{% assign requirements_unsorted = site.posts | where: "categories", "requirements" %}
+{% assign requirements = requirements_unsorted | sort %}
+
+{% for quality in qualities %}
+
+    <ul>
+        {% assign number = 0 %}
+        {% for requirement in requirements %}
+            {% assign check_title = quality.title | downcase %}
+            {% assign related = requirement.related | split: ", "%}
+            {% if related contains check_title %}
+                {% assign number = 1 %}
+            {% endif %}
+        {% endfor %}
+        {% if number == 0 %}
+            <li> {{quality.title}} </li>
+            {% assign qualities_with_no_directly_related_requirements = qualities_with_no_directly_related_requirements | plus: 1 %}
+        {% endif %}
+    </ul>
+
+{% endfor %}
+
+<h2> Number of qualities with no directly related requirements: {{qualities_with_no_directly_related_requirements}} </h2>
