@@ -5,6 +5,29 @@ permalink: /aboutthissite/
 order: 80
 ---
 
+<!-- Liquid to count number of qualities with no directly related requirements -->
+{% assign qualities_with_no_directly_related_requirements = 0 %}
+{% assign qualities_unsorted = site.posts | where: "categories", "qualities" %}
+{% assign qualities = qualities_unsorted | sort %}
+{% assign requirements_unsorted = site.posts | where: "categories", "requirements" %}
+{% assign requirements = requirements_unsorted | sort %}
+{% for quality in qualities %}
+{% assign number = 0 %}
+{% for requirement in requirements %}
+{% assign check_title = quality.title | downcase %}
+{% assign related = requirement.related | split: ", "%}
+{% if related contains check_title %}
+{% assign number = 1 %}
+{% endif %}
+{% endfor %}
+{% if number == 0 %}
+{% assign qualities_with_no_directly_related_requirements = qualities_with_no_directly_related_requirements | plus: 1 %}
+{% endif %}
+{% endfor %}
+
+
+
+
 ## Support
 
 [INNOQ](https://innoq.com) <span class="innoq-text"><i class="fas fa-heart beat heart"></i></span> supports creation and maintenance of this site.
@@ -47,7 +70,7 @@ I'm:
 
 * Thanx to Michael Mahlberg, Markus Meuten and Peter Hruschka for suggestions, bug fixes and moral support.
 * Thanx to Steffen Späthe for his intense reviews and constructive comments concerning the content. 
-* Thanx to Per Starke for his awesome technical support in things around Liquid and Jekyll.
+* Thanx to [Per Starke](https://perstarke-webdev.de/) for his awesome technical support in things around Liquid and Jekyll.
 * Thanx to Remko Plantenga and Martin Weck for their contributions.
 
 Find the current list of contributors [here](https://github.com/arc42/quality.arc42.org-site/graphs/contributors)
@@ -58,8 +81,9 @@ Find the current list of contributors [here](https://github.com/arc42/quality.ar
 * The site was last built on {{ site.time | date: '%c' }}. 
 * It contains:
    -  {{ site.pages | size }} pages 
-    - {{ site.posts | size }} posts (aka quality attributes and/or requirements)
-    - {{ site.articles | size }} articles
+    - {{ site.posts | size }} posts (aka quality attributes and/or requirements), of that {{ qualities_with_no_directly_related_requirements }} qualities with no directly related requirements
+    - {{ site.articles | size }} articles   
+  
    
 
 <iframe plausible-embed src="https://plausible.io/share/quality.arc42.org?auth=cjoKlapPdw3czFugGy6jM&embed=true&theme=light" scrolling="no" frameborder="0" loading="lazy" style="width: 1px; min-width: 100%; height: 1600px;"></iframe>
