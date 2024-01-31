@@ -81,7 +81,8 @@ Find the current list of contributors [here](https://github.com/arc42/quality.ar
 * The site was last built on {{ site.time | date: '%c' }}. 
 * It contains:
    -  {{ site.pages | size }} pages 
-    - {{ site.posts | size }} posts (aka quality attributes and/or requirements), of that {{ qualities_with_no_directly_related_requirements }} qualities with no directly related requirements
+    - {{ site.posts | size }} posts (aka quality attributes and/or requirements), 
+    - of that {{ qualities_with_no_directly_related_requirements }} qualities [without directly related requirements](/no-directly-related/)
     - {{ site.articles | size }} articles   
   
    
