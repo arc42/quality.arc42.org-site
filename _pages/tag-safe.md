@@ -31,7 +31,7 @@ Quoted from [Wikipedia/Safety](https://en.wikipedia.org/wiki/Safety)
 
 >Capability of a product under defined conditions to avoid a state in which human life, health, property, or the environment is endangered.
 >
->[ISO-25010-2022](/references/#iso-25010-2022)
+>[ISO-25010-2023](/references/#iso-25010-2023)
 
 
 ## Typical Acceptance Criteria

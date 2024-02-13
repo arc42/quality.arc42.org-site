@@ -18,9 +18,11 @@ Easy to:
 
 ### Definition
 
->Capability of a product to serve a different or expanded set of requirements or contexts of use; or the ease with which the product can be adapted to changes in its requirements, contexts of use, or system environment
+>Capability of a product to be adapted to changes in its requirements, contexts of use, or system environment.
+> 
+>Note: Flexibility to context of use should consider two distinguished aspects, i.e. technical and non-technical. The technical aspect is related with the execution environment of products, such as software, hardware and communication facility; and the non-technical aspect is related with the social environment, such as user and task, and the physical environment, such as climate and nature.
 >
->[ISO-25010-2022](/references/#iso-25010-2022)
+>[ISO-25010-2023](/references/#iso-25010-2023)
 
 
 <hr/>
