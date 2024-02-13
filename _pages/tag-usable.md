@@ -18,7 +18,7 @@ The main idea of _usability_ is that a system shall be designed with (generalize
 ### Definitions:
 
 >Capability of a product to be interacted with by specified users to exchange information between a user and a system via the user interface to complete the intended task.
->[ISO-25010-2023](/references/#iso-25010-2023)
+>[ISO-25010:2023](/references/#iso-25010-2023)
 
 <hr class="with-no-margin"/>
 

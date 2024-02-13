@@ -20,7 +20,7 @@ permalink: /tag-secure/
 
 >Capability of a product to protect information and data so that persons or other products have the degree of data access appropriate to their types and levels of authorization, and to defend against attack patterns by malicious actors.
 >
->[ISO-25010-2023](/references/#iso-25010-2023)
+>[ISO-25010:2023](/references/#iso-25010-2023)
 
 ## Typical Acceptance Criteria
 

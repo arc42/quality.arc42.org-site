@@ -22,7 +22,7 @@ Easy to:
 > 
 >Note: Flexibility to context of use should consider two distinguished aspects, i.e. technical and non-technical. The technical aspect is related with the execution environment of products, such as software, hardware and communication facility; and the non-technical aspect is related with the social environment, such as user and task, and the physical environment, such as climate and nature.
 >
->[ISO-25010-2023](/references/#iso-25010-2023)
+>[ISO-25010:2023](/references/#iso-25010-2023)
 
 
 <hr/>
