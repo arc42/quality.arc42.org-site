@@ -17,7 +17,7 @@ permalink: /qualities/scalability
 
 >Capability of a product to handle growing or shrinking workloads or the ease with which the product’s capacity can be adapted to handle variability
 >
->[ISO-25010-2022](/references/#iso-25010-2022)
+>[ISO-25010:2023](/references/#iso-25010-2023)
 
 <hr class="with-no-margin"/>
 

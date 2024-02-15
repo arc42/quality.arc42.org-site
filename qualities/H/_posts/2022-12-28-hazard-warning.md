@@ -15,6 +15,6 @@ permalink: /qualities/hazard-warning
 >Capability of a productto provide warnings of unacceptable risks to operations or internal controls so that they can react in sufficient time to sustain safe operations.
 
 >
->[ISO-25010-2022](/references/#iso-25010-2022)
+>[ISO-25010:2023](/references/#iso-25010-2023)
 
 

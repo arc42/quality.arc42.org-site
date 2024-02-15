@@ -25,13 +25,13 @@ Applies to several _stages_ in the life of a system or product, for example:
 >* serve a different or expanded set of requirements 
 >* work with different infrastructures or environments
 >
->[ISO-25010-2022](/references/#iso-25010-2022)
+>[ISO-25010:2023](/references/#iso-25010-2023)
 
 <hr class="with-no-margin"/>
 
 >Flexibility to context of use should consider two distinguished aspects, i.e., technical and non-technical. Technical aspect is related with execution environment of products, such as software, hardware and communication facility, and non-technical aspect is related with social environment ,such as user and task, and physical environment, such as climate and nature.
 >
->[ISO-25010-2022](/references/#iso-25010-2022)
+>[ISO-25010:2023](/references/#iso-25010-2023)
 
 
 <hr class="with-no-margin"/>

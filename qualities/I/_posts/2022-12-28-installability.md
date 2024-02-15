@@ -7,4 +7,4 @@ permalink: /qualities/installability
 
 >Capability of a product to be effectively and efficiently installed successfully and/or uninstalled in a specified environment
 >
->[ISO-25010-2022](/references/#iso-25010-2022)
+>[ISO-25010:2023](/references/#iso-25010-2023)

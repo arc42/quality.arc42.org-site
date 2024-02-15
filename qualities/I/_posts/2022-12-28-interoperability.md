@@ -15,7 +15,7 @@ Work (together) with other products or systems.
 
 >Capability of a product to exchange information with other products and mutually use the information that has been exchanged.
 > 
->[ISO-25010-2022](/references/#iso-25010-2022)
+>[ISO-25010:2023](/references/#iso-25010-2023)
 
 <hr>
 

@@ -12,7 +12,7 @@ See [#secure](/tag-secure)
 
 >Capability of a product to ensure that the state of its system and data are protected from unauthorized modification or deletion either by malicious action or computer error
 >
->[ISO-25010-2022](/references/#iso-25010-2022)
+>[ISO-25010:2023](/references/#iso-25010-2023)
 
 <hr class="with-no-margin"/>
 

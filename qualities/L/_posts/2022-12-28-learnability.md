@@ -13,7 +13,7 @@ Definitions:
 
 >Capability of a product to have specified users learn to use specified product functions within a specified amount of time.
 >
->[ISO-25010-2022](/references/#iso-25010-2022)
+>[ISO-25010:2023](/references/#iso-25010-2023)
 
 <hr>
 

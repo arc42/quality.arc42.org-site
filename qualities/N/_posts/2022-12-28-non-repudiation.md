@@ -12,7 +12,7 @@ See [#secure](/tag-secure)
 
 >Capability of a product to prove that actions or events have taken place, so that the events or actions cannot be repudiated later.
 >
->[ISO-25010-2022](/references/#iso-25010-2022)
+>[ISO-25010:2023](/references/#iso-25010-2023)
 
 <hr class="with-no-margin"/>
 

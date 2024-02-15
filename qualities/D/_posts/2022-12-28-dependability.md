@@ -24,7 +24,7 @@ Definitions:
 
 >[_Dependability_](/qualities/dependability) is often used as a synonym for reliability. However, dependability has a larger scope in that it includes security, performance efficiency, and continuing support and others in addition to reliability.
 >
->[ISO-25010-2022](/references/#iso-25010-2022)
+>[ISO-25010:2023](/references/#iso-25010-2023)
 
 
 <hr class="with-no-margin"/>
@@ -38,5 +38,5 @@ The IEC-6050-192 (Standard on Dependability):
 >— Maintenance support performance: effectiveness of an organization in respect of maintenance support. SOURCE: IEC 60050-192-01-29<br>
 >— Durability: ability to perform as required, under given conditions of use and maintenance, until the end of useful life. SOURCE: IEC 60050-192-01-21
 >
->[ISO-25010-2022](/references/#iso-25010-2022), Annex-B
+>[ISO-25010:2023](/references/#iso-25010-2023), Annex-B
 

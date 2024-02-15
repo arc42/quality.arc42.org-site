@@ -15,7 +15,7 @@ A special case is [_performance efficiency_](/qualities/performance-efficiency):
 
 >Perform its functions within specified time and throughput parameters and be efficient in the use of resources under specified conditions
 >
->[ISO-25010-2022](/references/#iso-25010-2022)
+>[ISO-25010:2023](/references/#iso-25010-2023)
 
 
 

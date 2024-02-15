@@ -9,4 +9,4 @@ permalink: /qualities/modularity
 >
 >Modularity implies that the product will be composed of discrete modules or components with cohesive content and minimal coupling to other modules or components.
 >
->from [ISO-25010-v2022](/references/#iso-25010-2022)
+>from [ISO-25010:2023](/references/#iso-25010-2023)
