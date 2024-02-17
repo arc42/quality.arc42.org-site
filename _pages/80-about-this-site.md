@@ -44,7 +44,7 @@ order: 80
 
 * This page is based upon [Jekyll](https://jekyllrb.com), a static website generator, using a modified version of the [Ttskch](https://github.com/ttskch/jekyll-ttskch-theme) theme.
 * It's maintained on [Github](https://github.com/arc42/quality.arc42.org-site/) and published via github-pages.
-* An [Alpine based Docker](https://github.com/arc42/quality.arc42.org-site/blob/main/Dockerfile) container allows for local build- and test of the site (`docker compose up` after cloning the repo locally)
+* An [Docker container]) provided by Bret E. Fisher for local build- and test of the site (`docker compose up` after cloning the repo locally).
 
 
 
