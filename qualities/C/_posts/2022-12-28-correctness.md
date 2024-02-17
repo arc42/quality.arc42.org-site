@@ -12,7 +12,7 @@ Definitions:
 
 >Provide accurate results when used by intended users for intended functions.
 > 
->[ISO-25010-2022](/references/#iso-25010-2022)
+>[ISO-25010:2023](/references/#iso-25010-2023)
 
 
 > Extent to which a program satisfies its specifications and fulfills the user's mission objectives.

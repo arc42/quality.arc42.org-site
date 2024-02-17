@@ -12,6 +12,6 @@ See [#secure](/tag-secure)
 
 >Capability of a product to ensure that data are accessible only to those authorized to have access.
 >
->[ISO-25010-2022](/references/#iso-25010-2022)
+>[ISO-25010:2023](/references/#iso-25010-2023)
 
 

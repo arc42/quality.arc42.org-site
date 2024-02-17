@@ -31,7 +31,7 @@ ing the maintenance task and that individual’s level of skill or knowledge.
 >* Maintainability includes installation of updates and upgrades.
 >* Maintainability can be interpreted as either an inherent capability of the product to facilitate maintenance activities, or the quality in use experienced by the maintainers for the goal of maintaining the product.
 >
->from [ISO-25010-v2022](/references/#iso-25010-2022)
+>from [ISO-25010:2023](/references/#iso-25010-2023)
 
 
 <hr class="with-no-margin"/>

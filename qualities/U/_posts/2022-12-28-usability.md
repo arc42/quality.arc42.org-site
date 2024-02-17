@@ -16,7 +16,7 @@ Definitions:
 
 >Capability of a product to be used by specified users to exchange information between a user and an interactive system via the user interface to complete the intended task.
 >
->[ISO-25010-2022](/references/#iso-25010-2022)
+>[ISO-25010:2023](/references/#iso-25010-2023)
 
 
 > Effort required to learn, operate, prepare input, and interpret output of a program.

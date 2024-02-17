@@ -12,7 +12,7 @@ See [#secure](/tag-secure)
 
 >Capability of a product to prove that the identity of a subject or resource is the one claimed.
 >
->[ISO-25010-2022](/references/#iso-25010-2022)
+>[ISO-25010:2023](/references/#iso-25010-2023)
 
 <hr class="with-no-margin"/>
 

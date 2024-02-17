@@ -11,5 +11,5 @@ Definitions:
 
 >Provide functions that meet stated and implied needs of intended users when it is used under specified conditions.
 >
->[ISO-25010-2022](/references/#iso-25010-2022)
+>[ISO-25010:2023](/references/#iso-25010-2023)
 

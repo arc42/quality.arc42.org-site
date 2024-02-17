@@ -7,7 +7,7 @@ permalink: /qualities/fault-tolerance
 
 >Capability of a product to operate as intended despite the presence of hardware or software faults.
 >
->[ISO-25010-2022](/references/#iso-25010-2022)
+>[ISO-25010:2023](/references/#iso-25010-2023)
 
 <hr class="with-no-margin"/>
 

@@ -19,7 +19,7 @@ See [#secure](/tag-secure)
 >* to minimize vulnerability of a product by secure software coding and/or to incorporate security enhancement functions or mechanisms;<br>
 >* to maintain product updated during life time for security reason.
 >
->[ISO-25010-2022](/references/#iso-25010-2022)
+>[ISO-25010:2023](/references/#iso-25010-2023)
 
 
 

@@ -10,6 +10,6 @@ permalink: /qualities/adaptability
 >* Adaptations include those carried out by specialized support staff, and those carried out by business or operational staff, or end users.
 >*If the product is to be adapted by the end user, adaptability corresponds to suitability for individualization 
 > 
->[ISO-25010-2022](/references/#iso-25010-2022)
+>[ISO-25010:2023](/references/#iso-25010-2023)
 
 
