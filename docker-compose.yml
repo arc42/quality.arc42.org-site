@@ -1,15 +1,7 @@
-# docker-compose definition for developing the site.
-#
-version: '3'
 services:
   jekyll:
-    build: .
-    image: arc42-site:latest
+    image: bretfisher/jekyll-serve
     volumes:
-      - .:/srv/jekyll
-      - ./vendor/bundle/:/usr/local/bundle
+      - .:/site
     ports:
-      - "4000:4000"
-    command: bundle exec jekyll serve --trace --host 0.0.0.0 --watch --incremental --config _config.yml
-    environment:
-      - JEKYLL_ENV=development
+      - '4000:4000'
