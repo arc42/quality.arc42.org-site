@@ -1,7 +1,7 @@
 ---
-title: "Fast startup time"
+title: "Fast startup time (less than 90 seconds)"
 tags: efficient
-related: time behaviour, speed, performance, startup-time 
+related: time behaviour, speed, performance, startup-time, elasticity 
 permalink: /requirements/fast-startup-time
 ---
 
