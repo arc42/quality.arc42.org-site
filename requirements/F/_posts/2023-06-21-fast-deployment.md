@@ -1,7 +1,7 @@
 ---
 title: "Fast deployment"
 tags: reliable operable
-related: 
+related: time behaviour, operability, deployment frequency, extensibility, lead time for changes, cycle time
 permalink: /requirements/fast-deployment
 ---
 
