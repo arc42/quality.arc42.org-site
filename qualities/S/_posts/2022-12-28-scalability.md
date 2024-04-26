@@ -1,7 +1,7 @@
 ---
 title: Scalability
 tags: flexible
-related: Maintainability, Modularity, Adaptability, Configurabilityq
+related: adaptability, elasticity, performance
 permalink: /qualities/scalability
 ---
 

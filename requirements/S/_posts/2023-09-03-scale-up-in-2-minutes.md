@@ -1,6 +1,6 @@
 ---
 title: "Scale up in 2 Minutes"
-tags: efficient, reliable
+tags: efficient reliable
 related: elasticity, scalability, performance
 permalink: /requirements/scale-up-in-2-minutes
 ---
@@ -8,7 +8,8 @@ permalink: /requirements/scale-up-in-2-minutes
 <div class="quality-requirement" markdown="1">
 
 
-**Background**: A cloud-based web application, with a sudden increase in user traffic, such as during a promotional event or a major product launch. Auto-scaling features are available and configured.
+**Background**: A cloud-based web application, with a sudden increase in user traffic, such as during a promotional event or a major product launch. 
+Auto-scaling features are available and configured.
 
 
 **Response**: The system automatically detects the increase in load and provisions additional resources to handle the increased traffic, without human intervention.

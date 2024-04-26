@@ -1,7 +1,7 @@
 ---
 title: Adaptability
 tags: flexible usable
-related: changeability, configurability, maintainability, flexibility, usability
+related: changeability, configurability, maintainability, flexibility, usability, scalability, elasticity
 permalink: /qualities/adaptability
 ---
 
