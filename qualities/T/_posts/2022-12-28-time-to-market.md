@@ -5,9 +5,11 @@ related: flexibility, efficiency, deployment frequency, extensibility, lead time
 permalink: /qualities/time-to-market
 ---
 
+Synonym: Speed-to-Market
+
 <div class="arc42-help" markdown="1">
 
-Time to marketis the length of time it takes to bring a product or product-feature  from conception to production. 
+Time to market is the length of time it takes to bring a product or product-feature  from conception to production. 
 
 <hr>
 Time to market" in software engineering refers to the duration it takes to develop, test, and release a software product or feature from its initial conception. 
