@@ -5,5 +5,5 @@ related: flexibility, efficiency, deployment frequency, extensibility, lead time
 permalink: /qualities/speed-to-market
 ---
 
-See the synonym: [Time-to-Market](qualities/time-to-market).
+See the synonym: [Time-to-Market](/qualities/time-to-market).
 

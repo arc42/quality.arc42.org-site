@@ -1,7 +1,7 @@
 ---
 title: Affordable CRM (customer relationship management)
 tags: efficient suitable
-related: affordability, cost, budget constraint, time to market
+related: affordability, cost, budget constraint, profitability
 permalink: /requirements/affordable-crm
 ---
 

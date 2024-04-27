@@ -1,7 +1,7 @@
 ---
 title: "Fast rollout of changes"
 tags: efficient operable
-related: efficiency, operability, speed
+related: efficiency, operability, speed, time to market, speed to  market
 permalink: /requirements/fast-rollout-of-changes
 ---
 
