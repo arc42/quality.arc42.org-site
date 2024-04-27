@@ -33,6 +33,11 @@
 </script>
 <link href="{{ '/assets/css/style.css' | prepend: site.baseurl }}" rel="stylesheet">
 <script defer data-domain="quality.arc42.org" src="https://plausible.io/js/script.js"></script>
+
+{% if page.mermaid %}
+   {% include mermaid-config.html %}
+{% endif %}
+
 </head>
 <body>
 

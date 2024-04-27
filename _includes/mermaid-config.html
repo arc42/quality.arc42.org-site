@@ -1,0 +1,21 @@
+{% assign page = include.page %}
+
+<script type="text/javascript" src="/mermaid/mermaid.js"></script>
+
+<script type="text/javascript">
+    let config = { 
+        theme: 'default',
+        securityLevel: 'antiscript',
+        startOnLoad: true,
+        flowchart: { 
+            useMaxWidth: true, 
+            htmlLabels: true,
+            rankSpacing: 100,
+            nodeSpacing: 10
+        } 
+    };
+    mermaid.initialize(config);
+</script>
+
+
+
