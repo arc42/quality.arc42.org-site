@@ -9,22 +9,28 @@ mermaid: true
 For basic information about using this site see [**how to use this site**](/how-to-use-this-site).
 
 ## Mapping ISO 25010 to Q42 Qualities
+
 A click on a node leads to the corresponding Q42 description.
+
 
 <div class='mermaid'>
   flowchart LR
-    root((ISO 25010:2023))
-    click root "/articles/iso-25010-update-2023"
+    classDef level1 font-size:30px,font-weight:bold
+    classDef level2 font-size:20px,font-weight:bold
 
-    root --- func[3.1 Functional suitablility]
-    root --- perf[3.2 Performance efficiency]
-    root --- compa[3.3 Compatibility]
-    root --- intcap[3.4 Interaction capability]
-    root --- relia[3.5 Reliability]
-    root --- sec[3.6 Security]
-    root --- maint[3.7 Maintainability]
-    root --- flex[3.8 Flexibility]
-    root --- safe[3.9 Safety]
+    root((ISO 25010<br>2023))
+    click root "/articles/iso-25010-update-2023"
+    class root level1
+
+    root --- func(3.1 Functional suitablility)
+    root --- perf(3.2 Performance efficiency)
+    root --- compa(3.3 Compatibility)
+    root --- intcap(3.4 Interaction capability)
+    root --- relia(3.5 Reliability)
+    root --- sec(3.6 Security)
+    root --- maint(3.7 Maintainability)
+    root --- flex(3.8 Flexibility)
+    root --- safe(3.9 Safety)
     click func "/qualities/functional-suitability"
     click perf "/qualities/performance-efficiency"
     click compa "/qualities/compatibility"
@@ -34,6 +40,7 @@ A click on a node leads to the corresponding Q42 description.
     click maint "/qualities/maintainability"
     click flex "/qualities/flexibility"
     click safe "/qualities/safety"
+    class func,perf,compa,intcap,relia,sec,maint,flex,safe level2
 
     func --- fcomp([3.1.1 Functional completeness])
     func --- fcorr([3.1.2 Functional correctness])
