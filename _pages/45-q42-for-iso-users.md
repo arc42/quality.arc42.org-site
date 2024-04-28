@@ -2,27 +2,28 @@
 layout: page
 title: Q42 for ISO 25010 users
 permalink: /q42-for-iso-users/
-order: 11
+order: 45
 mermaid: true
 ---
 
 For basic information about using this site see [**how to use this site**](/how-to-use-this-site).
 
-## Mapping ISO 25010 to Q42 Qualities
 
-A click on a node leads to the corresponding Q42 description.
+From here you can navigate the site based upon the established ISO-25010 tree structure. 
+Clicking a node leads to the corresponding Q42 description.
 
+<small>Version 1.0.</small>
 
 <div class='mermaid'>
   flowchart LR
     classDef level1 font-size:30px,font-weight:bold
     classDef level2 font-size:20px,font-weight:bold
 
-    root((ISO 25010<br>2023))
+    root([ISO 25010<br>2023])
     click root "/articles/iso-25010-update-2023"
     class root level1
 
-    root --- func(3.1 Functional suitablility)
+    root --- func(3.1 Functional suitablility<br>#suitable)
     root --- perf(3.2 Performance efficiency)
     root --- compa(3.3 Compatibility)
     root --- intcap(3.4 Interaction capability)
