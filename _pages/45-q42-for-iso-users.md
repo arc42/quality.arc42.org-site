@@ -12,14 +12,14 @@ For basic information about using this site see [**how to use this site**](/how-
 From here you can navigate the site based upon the established ISO-25010 tree structure. 
 Clicking a node leads to the corresponding Q42 description.
 
-<small>Version 1.0.</small>
+<small>Version 1.0. Needs JavaScript to function properly.</small>
 
 <div class='mermaid'>
   flowchart LR
     classDef level1 font-size:30px,font-weight:bold
     classDef level2 font-size:20px,font-weight:bold
 
-    root([ISO 25010<br>2023])
+    root[[ISO 25010<br>-2023]]
     click root "/articles/iso-25010-update-2023"
     class root level1
 
