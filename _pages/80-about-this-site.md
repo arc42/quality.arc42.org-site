@@ -74,9 +74,10 @@ I'm:
 * Thanx to 
   [Remko Plantenga @exde3297](https://github.com/exde3297), 
   [Martin Weck @martinweck](https://github.com/martinweck), 
-  [Eberhard Wolff @ewolff](https://github.com/PapaBravo)
+  [Eberhard Wolff @ewolff](https://github.com/PapaBravo),
   [Paul Boeck @PapaBravo](https://github.com/PapaBravo),
-  [Dean de Bree @ddebree](https://github.com/ddebree) 
+  [Dean de Bree @ddebree](https://github.com/ddebree),
+  [Markus Stier @mstier](https://github.com/mstier) 
   for their contributions.
 
 Find the current list of contributors [here](https://github.com/arc42/quality.arc42.org-site/graphs/contributors)
