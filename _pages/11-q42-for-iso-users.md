@@ -9,188 +9,122 @@ mermaid: true
 For basic information about using this site see [**how to use this site**](/how-to-use-this-site).
 
 ## Mapping ISO 25010 to Q42 Qualities
-
-Version 10
+A click on a node leads to the corresponding Q42 description.
 
 <div class='mermaid'>
   flowchart LR
-    root((ISO 25010))
+    root((ISO 25010:2023))
     click root "/articles/iso-25010-update-2023"
 
-    root --- func[Functional Suitablility]
-    root --- perf[Performance efficiency]
-    root --- compa[Compatibility]
-    root --- sec[Security]
+    root --- func[3.1 Functional suitablility]
+    root --- perf[3.2 Performance efficiency]
+    root --- compa[3.3 Compatibility]
+    root --- intcap[3.4 Interaction capability]
+    root --- relia[3.5 Reliability]
+    root --- sec[3.6 Security]
+    root --- maint[3.7 Maintainability]
+    root --- flex[3.8 Flexibility]
+    root --- safe[3.9 Safety]
+    click func "/qualities/functional-suitability"
+    click perf "/qualities/performance-efficiency"
+    click compa "/qualities/compatibility"
+    click intcap "/qualities/interaction-capability"
+    click relia "/qualities/reliability"
     click sec "/qualities/security"
-    root --- maint[Maintainability]
     click maint "/qualities/maintainability"
-    root --- flex[Flexibility]
-    root --- safe[Safety]
+    click flex "/qualities/flexibility"
     click safe "/qualities/safety"
-    root --- intcap[Interaction capability]
-    root --- relia[Reliability]
 
-    sec --- conf([Confidentially])
-    click conf "/qualities/maintainability"
-    sec --- int([Integrity])
-    click int "/qualities/maintainability"
-    sec --- nonrep([Non-repudiation])
-    click nonrep "/qualities/maintainability"
-    sec --- acc([Accountability])
-    click acc "/qualities/maintainability"
-    sec --- auth([Authenticity])
-    click auth "/qualities/maintainability"
-    sec --- res([Resistance])
-    click res "/qualities/maintainability"
+    func --- fcomp([3.1.1 Functional completeness])
+    func --- fcorr([3.1.2 Functional correctness])
+    func --- fappr([3.1.3 Functional appropriateness])
+    click fcomp "/qualities/functional-completeness"
+    click fcorr "/qualities/functional-correctness"
+    click fappr "/qualities/functional-appropriateness"
+
+    perf --- time([3.2.1 Time behaviour])
+    perf --- resutil([3.2.2 Resource utilization])
+    perf --- capa([3.2.3 Capacity])
+    click time "/qualities/time-behaviour"
+    click resutil "/qualities/resource-utilization"
+    click capa "/qualities/capacity"
+
+    compa --- coex([3.3.1 Co-existence])
+    compa --- interop([3.3.2 Interoperability])
+    click coex "/qualities/co-existence"
+    click interop "/qualities/interoperability"
+
+    intcap --- apprec([3.4.1 Appropriateness recognizability])
+    intcap --- learn([3.4.2 Learnability])
+    intcap --- opera([3.4.3 Operability])
+    intcap --- uerrprot([3.4.4 User error protection])
+    intcap --- uengage([3.4.5 User engagement])
+    intcap --- inclusiv([3.4.6 Inclusivity])
+    intcap --- uass([3.4.7 User assistance])
+    intcap --- selfdesc([3.4.8 Self-descriptiveness])
+    click apprec "/qualities/appropriateness-recognizability"
+    click learn "/qualities/learnability"
+    click opera "/qualities/operability"
+    click uerrprot "/qualities/user-error-protection"
+    click uengage "/qualities/user-engagement"
+    click inclusiv "/qualities/inclusivity"
+    click uass "/qualities/user-assistance"
+    click selfdesc "/qualities/self-descriptiveness"
+
+    relia --- faultles([3.5.1 Faultlessness])
+    relia --- avail([3.5.2 Availability])
+    relia --- faulttol([3.5.3 Fault tolerance])
+    relia --- recover([3.5.4 Recoverability])
+    click faultles "/qualities/faultlessness"
+    click avail "/qualities/availability"
+    click faulttol "/qualities/fault-tolerance"
+    click recover "/qualities/recoverability"
+
+    sec --- conf([3.6.1 Confidentiality])
+    sec --- int([3.6.2 Integrity])
+    sec --- nonrep([3.6.3 Non-repudiation])
+    sec --- acc([3.6.4 Accountability])
+    sec --- auth([3.6.5 Authenticity])
+    sec --- res([3.6. Resistance])
+    click conf "/qualities/confidentiality"
+    click int "/qualities/integrity"
+    click nonrep "/qualities/non-repudiation"
+    click acc "/qualities/accountability"
+    click auth "/qualities/authenticity"
+    click res "/qualities/resistance"
     
-    maint --- modul([Modularity])
-    click modul "/qualities/maintainability"
-    maint --- reuse([Reusability])
-    click reuse "/qualities/maintainability"
-    maint --- analyze([Analysability])
-    click analyze "/qualities/maintainability"
-    maint --- modify([Modifiability])
-    click modify "/qualities/maintainability"
-    maint --- test([Testability])
-    click test "/qualities/maintainability"
+    maint --- modul([3.7.1 Modularity])
+    maint --- reuse([3.7.2 Reusability])
+    maint --- analyze([3.7.3 Analysability])
+    maint --- modify([3.7.4 Modifiability])
+    maint --- test([3.7.5 Testability])
+    click modul "/qualities/modularity"
+    click reuse "/qualities/reusability"
+    click analyze "/qualities/analysability"
+    click modify "/qualities/modifiability"
+    click test "/qualities/testability"
 
-    flex --- adapt([x])
-    flex --- scale([x])
-    flex --- install([x])
-    flex --- replace([x])
+    flex --- adapt([3.8.1 Adaptability])
+    flex --- scale([3.8.2 Scalability])
+    flex --- install([3.8.3 Installability])
+    flex --- replace([3.8.4 Replaceability])
+    click adapt "/qualities/adaptability"
+    click scale "/qualities/scalability"
+    click install "/qualities/installability"
+    click replace "/qualities/replaceability"
 
-    safe --- opconst([x])
-    safe --- riskid([x])
-    safe --- failsafe([x])
-    safe --- hazwarn([x])
-    safe --- safeint([x])
-    
-    func --- fcomp([x])
-    func --- fappr([x])
-    func --- fcorr([x])
-
-    perf --- time([x])
-    perf --- resutil([x])
-    perf --- capa([x])
-
-    intcap --- apprec([x])
-    intcap --- learn([x])
-    intcap --- opera([x])
-    intcap --- uerrprot([x])
-    intcap --- uengage([x])
-    intcap --- inclusiv([x])
-    intcap --- uass([x])
-    intcap --- selfdesc([x])
-
-    relia --- faultles([x])
-    relia --- avail([x])
-    relia --- faulttol([x])
-    relia --- recover([x])
-
-    compa --- coex([x])
-    compa --- interop([x])
+    safe --- opconst([3.9.1 Operational constraint])
+    safe --- riskid([3.9.2 Risk identification])
+    safe --- failsafe([3.9.3 Fail safe])
+    safe --- hazwarn([3.9.4 Hazard warning])
+    safe --- safeint([3.9.5 Safe integration])
+    click opconst "/qualities/operational-constraint"
+    click riskid "/qualities/risk-identification"
+    click failsafe "/qualities/fail-safe"
+    click hazwarn "/qualities/hazard-warning"
+    click safeint "/qualities/safe-integration"
 </div>
 
-
-
-<!-- div class='mermaid'>
- flowchart TB
-    root((ISO 25010))
-    click root "/articles/iso-25010-update-2023"
-
-    root --- func[Functional Suitablility]
-    root --- perf[Performance efficiency]
-    root --- compa[Compatibility]
-    root --- sec[Security]
-    click sec "/qualities/security"
-    root --- maint[Maintainability]
-    click maint "/qualities/maintainability"
-    root --- flex[Flexibility]
-    root --- safe[Safety]
-    click safe "/qualities/safety"
-    root --- intcap[Interaction capability]
-    root --- relia[Reliability]
-
-    sec --- Security-Details
-    subgraph Security-Details
-        direction TB
-        conf([Confidentially])
-        click conf "/qualities/security"
-        int([Integrity])
-        nonrep([Non-repudiation])
-        acc([Accountability])
-        auth([Authenticity])
-        res([Resistance])
-        conf ~~~ int ~~~ acc ~~~ nonrep ~~~ auth ~~~ res
-    end
-
-    maint --- Maintainability-Details
-    subgraph Maintainability-Details
-        modul([Modularity])
-        reuse([Reusability])
-        analyse([Analysability])
-        modify([Modifiability])
-        test([Testability])
-    end
-
-    flex --- Flexibility-Details
-    subgraph Flexibility-Details
-        adapt([x])
-        scale([x])
-        install([x])
-        replace([x])
-    end
-
-    safe --- Safety-Details
-    subgraph Safety-Details
-        opconst([x])
-        riskid([x])
-        failsafe([x])
-        hazwarn([x])
-        safeint([x])
-    end
-    
-    func --- Functional-Suitablility-Details
-    subgraph Functional-Suitablility-Details
-        fcomp([x])
-        fappr([x])
-        fcorr([x])
-    end
-
-    perf --- Performance-efficiency-Details
-    subgraph Performance-efficiency-Details
-        time([x])
-        resutil([x])
-        capa([x])
-    end
-
-    intcap --- Interaction-capability-Details
-    subgraph Interaction-capability-Details
-        apprec([x])
-        learn([x])
-        opera([x])
-        uerrprot([x])
-        uengage([x])
-        inclusiv([x])
-        uass([x])
-        selfdesc([x])
-    end
-
-    relia --- Reliability-Details
-    subgraph Reliability-Details
-        faultles([x])
-        avail([x])
-        faulttol([x])
-        recover([x])
-    end
-
-    compa --- Compatibility-Details
-    subgraph Compatibility-Details
-        coex([x])
-        interop([x])
-    end
-
-</div -->
 
 
 
