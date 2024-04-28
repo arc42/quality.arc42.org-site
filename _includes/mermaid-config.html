@@ -4,7 +4,7 @@
 
 <script type="text/javascript">
     let config = { 
-        theme: 'default',
+        theme: 'base',
         securityLevel: 'antiscript',
         startOnLoad: true,
         flowchart: { 
@@ -12,7 +12,13 @@
             htmlLabels: true,
             rankSpacing: 100,
             nodeSpacing: 10
-        } 
+        },
+        themeVariables: {
+            primaryColor: '#dbf0fe',
+            primaryTextColor: '#1675b9',
+            primaryBorderColor: '#808080',
+            lineColor: '#d3d3d3'
+        }
     };
     mermaid.initialize(config);
 </script>
