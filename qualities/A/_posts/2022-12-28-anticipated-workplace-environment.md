@@ -1,7 +1,7 @@
 ---
 title: Anticipated Workplace Environment
 tags: usable
-related: appropriateness
+related: Functional Appropriateness
 permalink: /qualities/anticipated-workplace-environment
 ---
 

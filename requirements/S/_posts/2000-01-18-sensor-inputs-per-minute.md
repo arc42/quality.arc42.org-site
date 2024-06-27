@@ -1,7 +1,7 @@
 ---
 title: "Capacity to process 1000 sensor inputs per minute"
 tags: efficient
-related: time behaviour, speed, performance efficiency
+related: time behaviour, speed, performance
 permalink: /requirements/capacity-to-process-sensor-inputs
 ---
 

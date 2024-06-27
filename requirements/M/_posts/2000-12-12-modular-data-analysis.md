@@ -1,7 +1,7 @@
 ---
 title: "Modular System for Data Analysis"
 tags: efficient flexible
-related: composability, modularity, integrability, stability
+related: composability, modularity, stability
 permalink: /requirements/modular-system-for-data-analysis
 ---
 
