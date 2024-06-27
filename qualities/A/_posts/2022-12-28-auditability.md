@@ -1,7 +1,7 @@
 ---
 title: Auditability
-tags: 
-related: 
+tags: operable
+related: transparency, traceability, operability, observability, devops-metrics
 permalink: /qualities/auditability
 ---
 

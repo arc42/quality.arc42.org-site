@@ -1,7 +1,7 @@
 ---
 title: Portability
 tags: flexible operable 
-related: integrability, compatibility, flexibility, installability, interoperability, maintainability, configurability, replaceability
+related: compatibility, flexibility, installability, interoperability, maintainability, configurability, replaceability
 permalink: /qualities/portability
 ---
 

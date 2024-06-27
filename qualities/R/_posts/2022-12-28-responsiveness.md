@@ -1,7 +1,7 @@
 ---
 title: Responsiveness
 tags: usable, efficient
-related: response time, useability, user experience
+related: response time, usability, user experience
 permalink: /qualities/responsiveness
 ---
 

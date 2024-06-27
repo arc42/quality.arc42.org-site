@@ -11,7 +11,7 @@ permalink: /qualities/resource-efficiency
 
 <hr>
 
-A special case is [_performance efficiency_](/qualities/performance-efficiency):
+A special case is [_performance_](/qualities/performance) (synonym: _performance efficiency_):
 
 >Perform its functions within specified time and throughput parameters and be efficient in the use of resources under specified conditions
 >

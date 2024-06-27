@@ -1,7 +1,7 @@
 ---
 title: Response Time
 tags: efficient
-related: performance efficiency, speed, time behaviour
+related: performance, speed, time behaviour
 permalink: /qualities/response-time
 ---
 

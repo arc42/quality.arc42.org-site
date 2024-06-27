@@ -1,7 +1,7 @@
 ---
 title: User error protection
 tags: usable operable
-related: usability, operability, user-error-robustness
+related: usability, operability, robustness
 permalink: /qualities/user-error-protection
 ---
 

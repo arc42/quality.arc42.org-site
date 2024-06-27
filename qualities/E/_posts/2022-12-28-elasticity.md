@@ -1,7 +1,7 @@
 ---
 title: Elasticity
 tags: flexible
-related: adaptability, scalabiltiy, flexibility
+related: adaptability, scalability, flexibility
 permalink: /qualities/elasticity
 ---
 

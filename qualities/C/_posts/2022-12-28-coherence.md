@@ -1,7 +1,7 @@
 ---
 title: Coherence
 tags: usable efficient
-related: consistent
+related: Consistency
 permalink: /qualities/coherence
 ---
 
