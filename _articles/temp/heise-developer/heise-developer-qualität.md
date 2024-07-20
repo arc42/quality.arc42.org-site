@@ -1,3 +1,8 @@
+<comment>
+Super verständliche und logische Struktur des gesamten Artikels, finde es sehr nachvollziebar und verständlich!
+Kleinigkeiten hab ich kommentiert oder geändert. 
+</comment>
+
 
 Abstract:
 Schnell soll Software laufen, niemals abstürzen, hochgradig ergonomisch zu bedienen und gleichzeitig und kostengünstig zu entwickeln sein. Ach ja, perfekte Datensicherheit versteht sich von selbst.
@@ -22,6 +27,10 @@ Aber: Es gibt (Open-Source) Alternativen, mit denen Qualität deutlich greifbare
 <hr>
 
 ## iX-tract
+
+<comment> Was ist iX-tract? 
+Und, Kommasetzung nach den Aufzählungspunkten ist inkonsequent (erster mit Komma, dann ohne)
+</comment>
 
 - Qualität ist stark subjektiv, 
 - Softwareentwicklung benötigt klare, überprüfbare Anforderungen (_Akzeptanzkriterien_), beispielsweise Qualitätsszenarien
@@ -51,7 +60,7 @@ Aber lassen wir erstmal die Kopfhörer und kommen zu Software und deren Qualitä
 
 ## Qualität von Quellcode
 
-Auch unsere Branche nutzt den Begriff "Qualität" oftmals intuitiv. So geistert durch Bücher und Websites die "Codequalität". Intuitiv verstehen viele darunter die leichte Verständlichkeit die Einhaltung von Clean-Code Regeln oder Programmierkonventionen.
+Auch unsere Branche nutzt den Begriff "Qualität" oftmals intuitiv. So geistert durch Bücher und Websites die "Codequalität". Intuitiv verstehen viele darunter die leichte Verständlichkeit und die Einhaltung von Clean-Code Regeln oder Programmierkonventionen.
 
 Aber bilden "leichte Verständlichkeit" und "Clean-Code" wirklich die einzigen Kriterien für Quellcode? Manchmal kommt es auf höchste Performance an, oder Robustheit oder hohe Datensicherheit. Ich habe in realen Systemen Clean-Code gesehen, der fürchterlich schlechte Performance gezeigt hat, Schwachstellen gegenüber (bekannten!) CVE-Angriffen, oder schlichtweg falsche Resultate geliefert hat. In solchen Fällen sollten wir das Wort "Codequalität" doch lieber vermeiden.
 
@@ -69,9 +78,13 @@ Für Software brauchen wir eine robuste Methode, um Qualität zu konkretisieren,
 
 Eine Definition von Qualität
 
+<comment> 
+Ich würde statt "im Beispiel oben" zu sagen lieber konkret auf die Kopfhörer verweisen, du hattest ja viele Beispiele oben. Also "im Beispiel der oben genannten Kopfhörer", oder einfach "im Kopfhörerbeispiel"
+</comment>
+
 Jetzt wird’s langsam kompliziert, denn der Begriff „Qualität“ bekommt damit zwei verschiedene Dimensionen:
 1.	Welche _Eigenschaften_ zu Qualität zählen (im Beispiel oben: Lautstärke, Frequenzumfang, Bequemlichkeit, Gewicht, Anschlüsse, Noise Cancelling, Kanaltrennung, Nachhaltigkeit, Austauschbarkeit von Teilen, Langlebigkeit)
-2.	Die _Ausprägung_ oder Wert dieser Eigenschaften (etwa Frequenzgang von 15 bis 25000Hz, Gewicht unter 400 g, Ohrmuscheln aus weichem Leder, Anschluss wireless und Bluetooth, mit Klinke und USB usw.)
+2.	Die _Ausprägung_ oder Wert dieser Eigenschaften (etwa Frequenzgang von 15 bis 25000 Hz, Gewicht unter 400 g, Ohrmuscheln aus weichem Leder, Anschluss wireless und Bluetooth, mit Klinke und USB usw.)
 
 ![zwei Dimensionen von Qualität](abb-1-Q-Dimensionen-Kopfhörer.png)
 Abbildung 1: Zwei Dimensionen von Qualität (am fiktiven Beispiel Kopfhörer)
@@ -97,12 +110,12 @@ Abbildung 3: ISO-25010:2023
 >
 >Der ISO-25010 Standard (genauer: Die 25xxx-Familie) zur Qualität von Softwaresystemen existiert seit etwa 2011. Erst in der Aktualisierung von 2023 kam das Thema "Safety" (Sicherheit für Leib und Leben) hinzu, das hatte der Standard ganze 12 Jahre geflissentlich ignoriert. 
 >In der strikt hierarchischen Struktur (siehe Abbildung 3) dieses Standards finden sich etwa 40 Qualitätseigenschaften von Software.
->Interessant ist, dass selbst Wikipedia (siehe [[6]](#6)) mehr als doppelte Anzahl an Begriffen auflistet - da hätten sich die Verantwortlichen der ISO etwas Inspiration holen sollen. 
+>Interessant ist, dass selbst Wikipedia (siehe [[6]](#6)) mehr als die doppelte Anzahl an Begriffen auflistet - da hätten sich die Verantwortlichen der ISO etwas Inspiration holen sollen. 
 >Häufig kommt im Projektalltag lediglich eine Übersichtsgrafik (ähnlich Abbildung 3) zur Anwendung. Dann beschweren sich Stakeholder über fehlende Eigenschaften. 
 >Leider fehlen nämlich im ISO-Standard einige Themen, die für vielerlei IT-Systeme heutzutage hohe Relevanz besitzen: 
 >
 >* _time-to-market_ (auch genannt _speed-to-market_ oder Liefergeschwindigkeit): Im ISO-Standard leider nicht vorhanden.
->* In der Version von 2023 hat die ISO das Themenfeld "Usability" in den etwas sperrige "Interaction Capability" umgetauft. Daran können sich UI- und UX-Stakeholder auf längere Sicht gewöhnen - aber Benutzungsfreundlichkeit gibt es nicht mehr.
+>* In der Version von 2023 hat die ISO das Themenfeld "Usability" in die etwas sperrige "Interaction Capability" umgetauft. Daran können sich UI- und UX-Stakeholder auf längere Sicht gewöhnen - aber Benutzungsfreundlichkeit gibt es nicht mehr.
 >* Betriebsfähigkeit, Installierbarkeit, Portabilität oder Observability spart der ISO-25010 ebenfalls aus. Betriebliche Stakeholder haben damit berechtigt ein Problem. 
 >* EInhaltung von Standards (z.B. Data-Privacy, DSGVO) fehlt, obwohl für nahezu alle öffentlich eingesetzten Systeme (Web, Mobile, APIs) hochgradig relevant.
 >* "Operability" ist als Unterpunkt von "Interaction Capability" aus meiner Sicht falsch eingeordnet.
@@ -181,6 +194,11 @@ Das jedoch erweist sich im Alltag schwerer als erhofft.
 In der Praxis höre ich immer wieder, dass es schwierig und zeitaufwändig sei, gute Qualitätsszenarien zu finden.
 Einerseits helfen etablierte Standards und Qualitätsmodelle (wie ISO-25010) dabei nicht weiter, andererseits fehlt Entwicklungsteams und schlichtweg die Erfahrung, ihre Stakeholder dabei zu unterstützen.
 
+<comment>
+Im obigen Abschnitt, "andererseits fehlt Entwicklungsteams und schlichtweg die Erfahrung", da stimmt was im grammatikalischen Konstrukt nicht :D 
+Aber bin nicht ganz sicher was du sagen wolltest, deshalb kann ich's nicht korrigieren
+</comment>
+
 Zur Abhilfe hat der Autor mit tatkräftiger Hilfe Freiwilliger eine open-source Sammlung solcher Beispiele angelegt: Q42 (siehe [[2]](#2)), unter dem Mantel der bekannten arc42-Methodik ([[5]](#5)).
 
 Q42 verfolgt gleich mehrere ambitionierte Ziele: 
@@ -192,7 +210,7 @@ Für jede der über 150 Qualitätseigenschaft soll es mindestens ein passendes Q
 Hier gibt es aktuell noch eine Lücke, die allerdings stetig kleiner wird.
 
 Anders als bisherige Qualitätsmodellen wie ISO-25010 verzichtet Q42 auf die strikte Hierarchie der Merkmale, den Baum der ISO-25010 Eigenschaften finden Sie in Abbildung 3. Q42 organisiert die vielen Merkmale in einer graphenartigen Struktur, mit viel mehr Querverweisen und Vernetzung als ein starrer Baum das kann.
-Dazu nutzt Q42 das einfache und im Web verbreitete _tagging_: Jede Qualitätseigenschaft kann ein- oder mehrere _Tags_ (Label, Etiketten) haben.
+Dazu nutzt Q42 das einfache und im Web verbreitete _tagging_: Jede Qualitätseigenschaft kann ein oder mehrere _Tags_ (Label, Etiketten) haben.
 Statt also darüber zu streiten, ob die Anforderung "User kann Farben des UI zur Laufzeit ändern" eher zu Flexibilität oder Benutzungsfreundlichkeit gehört, bekommt sie einfach beide Tags `#flexible` und `#usable` (siehe Abbildung 5).
 
 ![Tags/Labels von Q42](abb-5-q42-tags-qualities.png)
