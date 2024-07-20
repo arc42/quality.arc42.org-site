@@ -1,7 +1,7 @@
 ---
 title: Resource utilization
 tags: efficient
-related: efficiency, resource-efficiency, speed, performance-efficiency, time-behaviour, memory-usage
+related: efficiency, resource-efficiency, speed, performance, time-behaviour, memory-usage
 permalink: /qualities/resource-utilization
 ---
 

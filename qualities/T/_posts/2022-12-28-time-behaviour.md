@@ -1,7 +1,7 @@
 ---
 title: Time behaviour
 tags: efficient
-related: efficiency, resource-efficiency, speed, performance-efficiency 
+related: efficiency, resource-efficiency, speed, performance
 permalink: /qualities/time-behaviour
 ---
 

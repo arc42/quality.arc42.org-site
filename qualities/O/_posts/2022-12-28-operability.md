@@ -1,7 +1,7 @@
 ---
 title: Operability
 tags: usable operable
-related: usability, user-error-protection, controllability, operrobustness
+related: usability, user-error-protection, controllability, robustness
 permalink: /qualities/operability
 ---
 

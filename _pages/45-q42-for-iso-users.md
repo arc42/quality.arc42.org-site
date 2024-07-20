@@ -33,7 +33,7 @@ Clicking a node leads to the corresponding Q42 description.
     root --- flex(3.8 Flexibility)
     root --- safe(3.9 Safety)
     click func "/qualities/functional-suitability"
-    click perf "/qualities/performance-efficiency"
+    click perf "/qualities/performancey"
     click compa "/qualities/compatibility"
     click intcap "/qualities/interaction-capability"
     click relia "/qualities/reliability"
