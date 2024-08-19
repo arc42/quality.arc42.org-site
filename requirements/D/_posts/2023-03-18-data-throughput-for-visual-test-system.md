@@ -6,21 +6,30 @@ permalink: /requirements/data-throughput-for-visual-test-system
 ---
 
 <div class="quality-requirement" markdown="1">
+#### Context/Background
 
-**Background**: Our hardware boards enhance simple webcams with image recognition capabilities.
-Our (proprietory) advanced image recognition algorithms are embedded in the firmware of these boards.
+The system consists of hardware boards that enhance simple webcams with image recognition capabilities.
+These boards contain proprietary advanced image recognition algorithms embedded in their firmware.
+The boards are used in applications such as license-plate recognition systems in public parking facilities.
+A test and verification system is used to validate firmware updates prior to release.
+The quality requirement pertains to the performance of this firmware test and verification system.
 
-These boards are used for example in license-plate recognition systems in many public parking facilities.
+#### Source
 
-The quality requirement relates to the firmware test and verification system.
+An update of the firmware is available, typically including additional functionality or improved recognition performance.
 
-**Scenario**: An update of the firmware is available (usually with additional functionality of improved recognition performance). Prior to release, we need to verify that this updated firmware recognizes with at least the accuracy of the previous versions.
-The test and verification process needs approximately 1000 hours of video and image playback.
+#### Metric/Acceptance Criteria
 
-**Metric**: The 1000 real-hours of video need to be played back to the device-under-test in less than 72 hours.
+* The test and verification system must process 1000 real-hours of video and image playback in less than 72 hours
+* This translates to a minimum playback speed of 14 times real-time (1000 hours / 72 hours ≈ 14)
 
-That means that a video taken in real-time needs to be played back to the device-under-test in at least 14-fold speed. The test and verification system needs to ensure this throughput from both software and hardware (I/O, network and processing capabilities).
-
+* Specific criteria include:
+  * Consistent maintenance of at least 14x playback speed throughout the entire test process (or less if tests are performed in parallel)
+  * Accurate data transmission to the device-under-test at this accelerated rate
+  * No loss of video frames or degradation of image quality during accelerated playback
+  * Verification that the updated firmware recognizes images with at least the accuracy of previous versions
+  * Complete processing of all 1000 hours of test data within the 72-hour timeframe
+  * Accurate logging and reporting of test results, including any anomalies or performance issues detected
 </div><br>
 
 
