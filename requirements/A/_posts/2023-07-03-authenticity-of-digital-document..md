@@ -7,19 +7,31 @@ permalink: /requirements/authenticity-of-digital-document
 
 <div class="quality-requirement" markdown="1">
 
-**Stimulus**: A user attempts to verify the authenticity of a digital document.
+#### Context/Background
 
-**Environment**: System operates in a context where document integrity and trustworthiness are critical.
+The system operates in an environment where document integrity and trustworthiness are critical.
+It provides functionality for users to verify the authenticity of digital documents.
+The system employs a robust digital signature mechanism to ensure document authenticity and integrity.
+A secure and tamper-proof audit trail is maintained for all document-related activities.
 
-**Response**: The system should provide a robust digital signature mechanism that verifies the authenticity and integrity of the document, ensuring that any modifications or tampering can be detected. 
-    Additionally, the system should maintain a secure and tamper-proof audit trail that records all document-related activities, including creation, modifications, and approvals, with timestamps and user identifiers.
+#### Source
 
-**Background:** In this scenario, the authenticity requirement is described for a system where document integrity and trustworthiness are crucial. 
-When a user attempts to verify the authenticity of a digital document, the system should respond by providing a robust digital signature mechanism. 
-This mechanism ensures that the document's authenticity and integrity can be validated, enabling the detection of any unauthorized modifications or tampering.
+A user attempts to verify the authenticity of a digital document.
 
-Furthermore, the system should maintain a secure and tamper-proof audit trail that records all document-related activities. This includes the creation, modifications, and approvals of the document, along with timestamps and user identifiers. By capturing these details in the audit trail, the system enhances accountability and transparency, allowing users to track the document's history and ensuring that the document's authenticity can be reliably verified.
+#### Metric/Acceptance Criteria
 
+The system must provide a robust digital signature mechanism and maintain a secure audit trail.
+The authenticity verification process must meet the following criteria:
+* Digital signature mechanism correctly verifies the authenticity and integrity of 100% of unmodified documents
+* Any modifications or tampering to a document are detected with 100% accuracy
+* The audit trail records all document-related activities, including creation, modifications, and approvals
+* Each audit trail entry includes accurate timestamps and user identifiers
+* The audit trail is tamper-proof, with any attempts at unauthorized modification being detected and logged
+* Digital signature verification process completes within 5 seconds for documents up to 10MB in size
+* Audit trail entries are created and logged within 1 second of the corresponding document activity
+* The system provides a clear, user-friendly interface for users to initiate and understand the results of the authenticity verification process
+* The audit trail is searchable, allowing authorized users to retrieve the complete history of a document within 30 seconds
+* The system maintains 99.99% uptime for the authenticity verification service
 </div><br>
 
 

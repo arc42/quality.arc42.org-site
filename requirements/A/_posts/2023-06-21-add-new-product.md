@@ -7,15 +7,20 @@ permalink: /requirements/add-new-product
 
 <div class="quality-requirement" markdown="1">
 
-**Background**: Editor uses administration panel to add a new product to a webshop
 
-**Source**: Editor
+#### Context/Background
 
-**Stimulus**: Adds new product
+The system is a webshop with an administration panel for editors to manage products.
+Editors can add new products to the webshop through this administration panel.
 
-**Reaction**: Product is visible in the webshop in under 60 minutes
+#### Source
 
-**Metric**: The time taken for a newly added product to become visible and available for users in the webshop is 60 minutes or less
+Editor uses the administration panel to add a new product to the webshop.
+
+#### Metric/Acceptance Criteria
+
+The time taken for a newly added product to become visible and available for users in the webshop is 60 minutes or less,
+for at least 95% of newly added products.
 
 
 </div><br>
