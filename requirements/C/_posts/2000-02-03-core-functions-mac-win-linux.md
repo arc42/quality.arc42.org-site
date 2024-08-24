@@ -7,11 +7,24 @@ permalink: /requirements/core-functions-on-mac-win-linux
 
 <div class="quality-requirement" markdown="1">
 
-**Background**: The system offers a few complex core business functions.
 
+#### Context/Background
+
+* The system offers a few complicated core business functions.
+* The system is available on different operating systems, especially MacOS, Windows and a few major Linux distributions.
+  
+#### Source
+
+* A new release of one of the supported operating (OS) systems becomes available. 
+
+#### Metric/Acceptance Criteria
+
+* The new release of the OS does not affect the  ability to work on this platform, 
+ at least in comparable execution environments (concerning cpu and memory capacity).
+ 
 * Core functions can be re-used on MacOS, Windows and Linux applications without changes to their source code.
-* Future releases or distributions of these operating systems shall not affect their ability to work on these platforms, at least in comparable execution environments (concerning cpu and memory capacity).
 
+   
 </div><br>
 
 
