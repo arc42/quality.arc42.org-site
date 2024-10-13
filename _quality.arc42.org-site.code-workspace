@@ -24,6 +24,9 @@
 			"titleBar.inactiveBackground": "#8cd99f99",
 			"titleBar.inactiveForeground": "#15202b99"
 		},
-		"peacock.color": "#8cd99f"
+		"peacock.color": "#8cd99f",
+		"languageToolLinter.languageTool.ignoredWordsInWorkspace": [
+			"frontmatter"
+		]
 	}
 }
