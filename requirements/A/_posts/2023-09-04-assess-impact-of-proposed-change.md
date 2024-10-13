@@ -7,20 +7,42 @@ permalink: /requirements/assess-impact-of-proposed-change
 
 <div class="quality-requirement" markdown="1">
 
-### Stimulus 
-A software development team needs to analyse / assess the impact of a proposed change to a specific module of a financial software application.
+#### Context/Background
 
-### Response 
+The system is a financial software application with multiple modules.
+A software development team needs to analyze and assess the impact of a proposed change to a specific module.
+The system's analysability is crucial for efficient change management and maintenance.
+Tools and practices are in place to support code documentation, dependency mapping, and change simulation.
+
+#### Source
+
+A software development team initiates an impact analysis for a proposed change to a specific module of the financial software application.
+
+#### Metric/Acceptance Criteria
+
 The system's analysability requirement will be considered met when the following precise metrics are achieved:
 
-**Change Impact Assessment Time**: The team should be able to assess the impact of the proposed change within 2 hours of reviewing the relevant documentation and source code.
+* Change Impact Assessment Time:
+  * The team must be able to assess the impact of the proposed change within 2 hours
+  * This time starts from the moment the team begins reviewing relevant documentation and source code
+  * The assessment should cover all potential areas affected by the change
 
-**Code Comment Density**: The code for the affected module should have a minimum code comment density of 20%, ensuring that code documentation is sufficiently detailed.
+* Code Comment Density:
+  * The affected module must have a minimum code comment density of 20%
+  * This density should be measured using automated code analysis tools
+  * Comments should be meaningful and provide clear explanations of code functionality
 
-**Dependency Mapping**: The system should provide a visual dependency map of the module, indicating all dependencies on other components. The map should be generated within 5 minutes of requesting it.
+* Dependency Mapping:
+  * The system must provide a visual dependency map of the module, that indicates all dependencies on and from other components
+  * Generation time for the dependency map must not exceed 5 minutes
+  * The map should be accurate, showing 100% of actual dependencies
 
-**Change Simulation**: The system should offer a simulation tool that allows the team to simulate the proposed change's impact on the module's behavior. The simulation should complete within 10 minutes and provide clear results.
 
+* Overall Compliance:
+  * All three criteria (assessment time, comment density, and dependency mapping) must be met for the requirement to be satisfied
+  * Compliance should be verified through at least 3 different change scenarios
+  * Any failures in meeting these criteria should be documented and addressed
+  * The system should maintain this level of analysability for at least 90% of all modules
 
 </div><br>
 

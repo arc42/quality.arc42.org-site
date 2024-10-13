@@ -1,0 +1,208 @@
+/* legend.css */
+#legend {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    z-index: 1000;
+    font-family: sans-serif;
+    font-size: 12px;
+    display: flex;
+    flex-direction: column;
+    /* width: max-content; */
+width: 200px; /* Adjust this value as needed */
+max-width: 90%; /* Prevent legend from being too wide on small screens */
+box-sizing: border-box;
+}
+
+.node-types-container {
+    margin-bottom: 10px;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+    cursor: pointer;
+    white-space: nowrap;
+    justify-content: space-between;
+}
+
+.legend-color {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    margin-right: 10px;
+    flex-shrink: 0;
+}
+
+.legend-item.hidden {
+    opacity: 0.5;
+}
+
+.legend-item.dimmed {
+    opacity: 0.5;
+}
+
+.legend-item.dimmed .legend-color {
+    opacity: 0.3;
+}
+
+#legend hr {
+    width: 100%;
+    border: none;
+    border-top: 1px solid #ccc;
+    margin: 5px 0;
+}
+
+.zoom-control, .slider-control {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+.slider-label {
+    margin-bottom: 5px;
+}
+
+.zoom-slider, .force-slider {
+    width: 100%;
+}
+#fullscreen-label {
+    cursor: pointer;
+    font-size: 12px;
+    margin-top: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#fullscreen-label .fullscreen-text {
+    text-align: left;
+}
+
+#fullscreen-label .fullscreen-icon {
+    font-size: 14px;
+    margin-left: 5px;
+}
+
+
+/* Toggle switch styles */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 20px;
+    margin-left: 10px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    left: 2px;
+    bottom: 2px;
+    background-color: white;
+    transition: .4s;
+}
+
+input:checked + .slider {
+    background-color: #2196F3;
+}
+
+input:checked + .slider:before {
+    transform: translateX(20px);
+}
+
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+.collapsible-section {
+    margin-bottom: 15px;
+}
+
+.collapsible-header {
+    cursor: pointer;
+    padding: 5px;
+    background-color: #f1f1f1;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.collapsible-icon {
+    font-size: 12px;
+}
+
+.collapsible-content {
+    display: none;
+    padding: 10px 5px;
+    border: 1px solid #ddd;
+    border-top: none;
+    border-radius: 0 0 4px 4px;
+}
+
+/* Add these styles to legend.css */
+.radio-label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.radio-label input[type="radio"] {
+    margin-right: 5px;
+}
+
+.search-section {
+    margin-bottom: 15px;
+    padding: 0 10px; /* Add some padding to align with other legend elements */
+}
+
+.search-section label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.search-section input {
+    width: calc(100% - 10px); /* Subtract padding to prevent overflow */
+    max-width: 180px; /* Adjust this value as needed */
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    box-sizing: border-box; /* Include padding and border in element's total width */
+}
+
+.nodes .dimmed {
+    opacity: 0.3;
+}
+
+.links .dimmed {
+    opacity: 0.1;
+}

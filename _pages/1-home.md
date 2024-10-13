@@ -22,6 +22,8 @@ The current quality standards, like ISO-25010, [lack practical guidance and prag
 
 ![arc42 Quality Model (v1.0)](/images/arc42-system-qualities-overview.svg){:width="90%"}
 
+[(click here for the interactive graphical version)](/home-new)
+
 The arc42 quality model Q42 (pronounced "Kju-Fortytwo" or "Kju-Four-Two") is a simple, pragmatic yet effective approach to product and system quality.
 It starts with stakeholders' expectations and requirements. 
 From these, it derives 8 important system properties, which are sufficient to cover most, if not all, required, desirable or expected of the more than 100 _traditional_ qualities.

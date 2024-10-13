@@ -7,21 +7,31 @@ permalink: /requirements/detailed-audit-log
 
 <div class="quality-requirement" markdown="1">
 
-**Stimulus**: A user submits a request to access personal data stored in the system.
 
-**Environment**: System operates in compliance with privacy and data protection regulations.
+#### Context/Background
 
-**Response:** The system should maintain a detailed audit log of all user actions, including data access, modification, and deletion, along with associated timestamps and user identifiers. 
-This log should be tamper-proof, accessible only to authorized personnel, and retained for a minimum of five years.
+The system stores personal data and operates in compliance with privacy and data protection regulations.
+The system maintains detailed audit logs of all user actions related to personal data.
+These logs are crucial for ensuring accountability, transparency, and compliance with regulations.
+The logs facilitate the identification and investigation of any unauthorized or suspicious activities related to personal data.
 
-**Background:** In this scenario, the accountability requirement is described for a system that stores personal data and operates in compliance with privacy and data protection regulations. 
-When a user requests access to their personal data, the system should respond by maintaining a detailed audit log that captures all user actions related to data access, modification, and deletion. 
-The log should include timestamps and user identifiers, ensuring traceability and accountability for all data-related activities. 
-It should be tamper-proof and accessible only to authorized personnel to prevent unauthorized modifications. 
-Furthermore, the log should be retained for a minimum of five years, aligning with data retention requirements. 
+#### Source
 
-By meeting this accountability requirement, the system promotes transparency, facilitates compliance with regulations, and enables the identification and investigation of any unauthorized or suspicious activities related to personal data.
+User submits a request to access personal data stored in the system.
 
+#### Metric/Acceptance Criteria
+
+The system must maintain a detailed audit log of all user actions, including data access, modification, and deletion.
+The audit log must meet the following criteria:
+* Include associated timestamps and user identifiers for each action
+* Be tamper-proof to prevent unauthorized modifications
+* Be accessible only to authorized personnel
+* Be retained for a minimum of five years
+* Capture 100% of user actions related to personal data
+* Be searchable and retrievable within 24 hours of a request by authorized personnel
+* Undergo regular integrity checks to ensure no tampering has occurred
+* Be backed up securely to prevent data loss
+* Comply with all relevant privacy and data protection regulations
 </div><br>
 
 >This "requirement" describes a solution approach to accountability.

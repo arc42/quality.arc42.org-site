@@ -11,8 +11,27 @@ permalink: /requirements/accessible-user-interface
 
 **Metrics:**
 
-* Accessibility Compliance: Achieve and maintain WCAG 2.1 AA compliance for all user interfaces.
-* Screen Reader Compatibility: Ensure 100% compatibility with leading screen readers.
+
+
+#### Context/Background
+
+Software UI must be accessible to users with various disabilities.
+System aims to comply with WCAG 2.1 AA and be compatible with leading screen readers.
+
+#### Source
+
+Development team implementing and maintaining the software UI with accessibility focus.
+
+#### Metric/Acceptance Criteria
+
+* Achieve and maintain WCAG 2.1 AA compliance for all user interfaces
+  * 100% pass rate on automated WCAG 2.1 AA tests
+
+* Ensure 100% compatibility with leading screen readers (e.g., JAWS, NVDA, VoiceOver)
+  * All UI elements properly labeled and described
+  * Full keyboard navigation possible
+  * Dynamic content changes appropriately announced
+
 
 </div><br>
 

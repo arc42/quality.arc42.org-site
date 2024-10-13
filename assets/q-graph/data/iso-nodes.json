@@ -1,0 +1,54 @@
+{
+  "nodes": [
+    { "id": "home", "label": "ISO-25010 Quality", "type": "central" },
+
+    { "id": "FunctionalSuitability", "label": "Functional Suitability", "type": "quality" },
+    { "id": "FunctionalCompleteness", "label": "Functional Completeness", "type": "quality" },
+    { "id": "FunctionalCorrectness", "label": "Functional Correctness", "type": "quality" },
+    { "id": "FunctionalAppropriateness", "label": "Functional Appropriateness", "type": "quality" },
+
+    { "id": "PerformanceEfficiency", "label": "Performance Efficiency", "type": "quality" },
+    { "id": "TimeBehavior", "label": "Time Behavior", "type": "quality" },
+    { "id": "ResourceUtilization", "label": "Resource Utilization", "type": "quality" },
+    { "id": "Capacity", "label": "Capacity", "type": "quality" },
+
+    { "id": "Compatibility", "label": "Compatibility", "type": "quality" },
+    { "id": "CoExistence", "label": "Co-Existence", "type": "quality" },
+    { "id": "Interoperability", "label": "Interoperability", "type": "quality" },
+
+    { "id": "InteractionCapability", "label": "Interaction Capability", "type": "quality" },
+    { "id": "AppropriatenessRecognizability", "label": "Appropriateness Recognizability", "type": "quality" },
+    { "id": "Learnability", "label": "Learnability", "type": "quality" },
+    { "id": "Operability", "label": "Operability", "type": "quality" },
+    { "id": "UserErrorProtection", "label": "User Error Protection", "type": "quality" },
+    { "id": "UserInterfaceAesthetics", "label": "User Interface Aesthetics", "type": "quality" },
+    { "id": "Accessibility", "label": "Accessibility", "type": "quality" },
+
+    { "id": "Reliability", "label": "Reliability", "type": "quality" },
+    { "id": "Maturity", "label": "Maturity", "type": "quality" },
+    { "id": "Availability", "label": "Availability", "type": "quality" },
+    { "id": "FaultTolerance", "label": "Fault Tolerance", "type": "quality" },
+    { "id": "Recoverability", "label": "Recoverability", "type": "quality" },
+
+    { "id": "Security", "label": "Security", "type": "quality" },
+    { "id": "Confidentiality", "label": "Confidentiality", "type": "quality" },
+    { "id": "Integrity", "label": "Integrity", "type": "quality" },
+    { "id": "NonRepudiation", "label": "Non-repudiation", "type": "quality" },
+    { "id": "Accountability", "label": "Accountability", "type": "quality" },
+    { "id": "Authenticity", "label": "Authenticity", "type": "quality" },
+
+    { "id": "Safety", "label": "Safety", "type": "quality" },
+
+    { "id": "Maintainability", "label": "Maintainability", "type": "quality" },
+    { "id": "Modularity", "label": "Modularity", "type": "quality" },
+    { "id": "Reusability", "label": "Reusability", "type": "quality" },
+    { "id": "Analysability", "label": "Analysability", "type": "quality" },
+    { "id": "Modifiability", "label": "Modifiability", "type": "quality" },
+    { "id": "Testability", "label": "Testability", "type": "quality" },
+
+    { "id": "Portability", "label": "Portability", "type": "quality" },
+    { "id": "Adaptability", "label": "Adaptability", "type": "quality" },
+    { "id": "Installability", "label": "Installability", "type": "quality" },
+    { "id": "Replaceability", "label": "Replaceability", "type": "quality" }
+  ]
+}

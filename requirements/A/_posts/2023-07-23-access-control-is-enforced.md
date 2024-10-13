@@ -7,38 +7,38 @@ permalink: /requirements/access-control
 
 <div class="quality-requirement" markdown="1">
 
-### Stimulus 
+#### Context/Background
+
+The system operates in a multi-user environment with varying levels of user roles and permissions.
+
+* Sensitive features and confidential information are present within the system.
+* Access control is crucial to maintain data security and privacy.
+* The system employs role-based access control (RBAC) to manage user permissions.
+* An audit trail is maintained for all access attempts to sensitive data.
+
+#### Source
+
 A user attempts to access a sensitive feature or confidential information within the system.
 
-### Environment 
-Multi-user environment with varying levels of user roles and permissions.
+#### Metric/Acceptance Criteria
 
-### Response
-The system should enforce appropriate access controls based on the user's role and permissions. 
-If the user's role grants access to the requested feature or information, the system should allow access without any impediments. 
-However, if the user's role does not have the required permissions, the system should deny access and display a relevant and user-friendly error message. 
-Additionally, any access control violations should be logged and reported to authorized personnel for further investigation.
+The system must enforce appropriate access controls based on the user's role and permissions.
 
-
-### Background 
-In this scenario, the access control requirement is defined for a multi-user system with different levels of user roles and permissions. 
-When a user attempts to access a sensitive feature or confidential information, the system should respond by enforcing appropriate access controls.
-
-Precise metrics to determine when the requirement is met include:
-
-**Authentication**: Users must be authenticated before accessing any sensitive data. Authentication should be based on a strong authentication method, such as multi-factor authentication (MFA) or biometric authentication.
-
-**Authorization**: The system should grant access to sensitive customer data based on the principle of least privilege. Authorized users should have only the minimum level of access necessary to perform their tasks.
-
-**Role-Based Access Control** (RBAC): Access to sensitive data should be determined by user roles. Precise roles should be defined, such as "Customer Service Representative," "Financial Analyst," and "Administrator," and access permissions should be assigned accordingly.
-
-**Data Classification**: Sensitive customer data should be classified based on its level of sensitivity (e.g., public, internal, confidential). Access controls should be configured according to these classifications, with stricter controls for highly sensitive data.
-
-**Audit Trail**: The system should maintain a detailed audit trail of all access attempts to sensitive data. This includes recording the user's identity, timestamp, accessed data, and the outcome (granted or denied). Audit logs should be tamper-proof and securely stored.
-
-**Access Revocation**: The system should allow authorized personnel to revoke access permissions immediately when necessary, such as in cases of employee termination or data breaches.
-
-**Session Management**: Sessions should have a timeout mechanism to automatically log users out after a period of inactivity to prevent unauthorized access in the event a user leaves their session unattended.
+The access control mechanism must meet the following criteria:
+* 100% of access attempts must be authenticated before granting access to any sensitive data
+* Multi-factor authentication (MFA) or biometric authentication is implemented for accessing highly sensitive data
+* User roles are precisely defined (e.g., "Customer Service Representative," "Financial Analyst," "Administrator")
+* Access permissions are assigned based on the principle of least privilege
+* Sensitive data is classified into at least three levels (e.g., public, internal, confidential)
+* Access controls are configured according to data classification, with stricter controls for highly sensitive data
+* 100% of access attempts (successful and failed) to sensitive data are logged in a tamper-proof audit trail
+* Audit logs include user identity, timestamp, accessed data, and outcome (granted or denied)
+* Authorized personnel can revoke access permissions immediately, with changes taking effect within 60 seconds
+* User sessions automatically timeout after a maximum of 30 minutes of inactivity
+* Access denials display a relevant and user-friendly error message within 2 seconds
+* 100% of access control violations are logged and reported to authorized personnel within 5 minutes
+* The system maintains 99.99% uptime for the access control service
+* Access control policy updates are applied system-wide within 5 minutes of being implemented
 </div><br>
 
 
