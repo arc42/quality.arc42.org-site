@@ -8,13 +8,19 @@ permalink: /requirements/consistent-keyboard-shortcuts
 <div class="quality-requirement" markdown="1">
 
 
-**Stimulus**: User expects/requires to use a keyboard (instead of a mouse) to navigate within the user interface, in all parts of the user interface.
+### Context/Background
 
-**Reaction**: User can use the system with keyboard-only, without resorting to a mouse or trackpad. 
+* The user can use keyboard shortcuts to select and execute functions within the graphical user interface.
+* The system must support keyboard-only navigation across all parts of the interface.
 
-**Metric**: Keyboard shortcuts are consistent. Functions that are identical or similar in different parts of the system (like "save", "copy", "paste") have identical shortcuts throughout the system.
+### Source
+Somebody navigates the graphical interface with only a keyboard, without using a mouse or trackpad.
 
-**Background**: User can use keyboard shortcuts to select and execute functions within the (graphical) user interface.  
+### Metric/Acceptance Criteria
+
+* The user shall be able to perform all actions with the keyboard alone.
+* Keyboard shortcuts must be consistent throughout the system: 
+Identical or similar functions, such as "save", "copy", and "paste", shall have identical shortcuts across the entire system.
 
 </div><br>
 
