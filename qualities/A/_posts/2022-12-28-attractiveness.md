@@ -2,7 +2,7 @@
 title: Attractiveness
 tags: usable
 related: usability, clarity, User interface aesthetics, user experience, user assistance
-permalink: /qualities/q
+permalink: /qualities/attractiveness
 ---
 
 >Attractiveness summarizes properties that make software appealing to users and stakeholders. Attractive software typically exhibits:
