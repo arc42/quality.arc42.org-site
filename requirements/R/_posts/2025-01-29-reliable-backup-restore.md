@@ -1,7 +1,7 @@
 ---
 title: "Reliable Backup and Restore"
 tags: safe reliable
-related: patient-safety, safety, reliability, availability
+related: patient safety, safety, reliability, availability
 permalink: /requirements/reliable-backup-and-restore
 ---
 
