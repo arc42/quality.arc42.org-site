@@ -1,7 +1,7 @@
 ---
 title: Attractiveness
 tags: usable
-related: usability, clarity, User interface aesthetics, user experience, user assistance
+related: usability, clarity, user-interface-aesthetics, user-experience, user-assistance
 permalink: /qualities/attractiveness
 ---
 
