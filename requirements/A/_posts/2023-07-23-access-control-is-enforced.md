@@ -1,7 +1,7 @@
 ---
 title: Access control is enforced
 tags: secure suitable
-related: access control, auditability
+related: access-control, auditability
 permalink: /requirements/access-control
 ---
 

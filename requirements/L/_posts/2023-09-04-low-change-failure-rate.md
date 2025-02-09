@@ -1,7 +1,7 @@
 ---
 title: Low change-failure rate
 tags: reliable
-related: change failure rate, reliability
+related: change-failure-rate, reliability
 permalink: /requirements/low-change-failure-rate
 ---
 

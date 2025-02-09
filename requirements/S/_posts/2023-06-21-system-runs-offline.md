@@ -1,7 +1,7 @@
 ---
 title: "System runs offline"
 tags: reliable operable
-related: reliability autonomy
+related: reliability, autonomy
 permalink: /requirements/system-runs-offline
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: User tries to achieve primary function
 tags: usable
-related: functional appropriateness, functional completeness, user experience, appropriateness recognizability, interaction capability
+related: functional-appropriateness, functional-completeness, user-experience, appropriateness-recognizability, interaction-capability
 permalink: /requirements/user-tries-primary-function
 ---
 

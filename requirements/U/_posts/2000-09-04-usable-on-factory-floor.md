@@ -1,7 +1,7 @@
 ---
 title: Usable on Factory Floor
 tags: usable
-related: anticipated workplace environment, usability, interaction capability
+related: anticipated-workplace-environment, usability, interaction-capability
 permalink: /requirements/usable-on-factory-floor
 ---
 

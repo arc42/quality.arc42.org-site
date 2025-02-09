@@ -1,7 +1,7 @@
 ---
 title: "Easily understandable acceptance test cases"
 tags: usable suitable efficient
-related: efficiency, maintainability, suitability, consistency, interaction capability
+related: efficiency, maintainability, suitability, consistency, interaction-capability
 permalink: /requirements/understandable-acceptance-tests
 ---
 

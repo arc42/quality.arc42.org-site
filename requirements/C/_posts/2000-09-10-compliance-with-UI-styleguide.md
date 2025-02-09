@@ -1,7 +1,7 @@
 ---
 title: "Compliance with UI styleguide"
 tags: usable
-related: usability, user experience, compliance, interaction capability
+related: usability, user-experience, compliance, interaction-capability
 permalink: /requirements/compliance-with-ui-styleguide
 ---
 

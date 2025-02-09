@@ -1,7 +1,7 @@
 ---
 title: "Keep data on error"
 tags: reliable usable
-related: reliability, robustness, ease-of-use, user-experience, interaction capability
+related: reliability, robustness, ease-of-use, user-experience, interaction-capability
 permalink: /requirements/keep-data-on-error
 ---
 
