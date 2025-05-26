@@ -1,7 +1,7 @@
 ---
 title: Risk identification
 tags: safe reliable
-related: safety, analysability, 
+related: safety, analysability
 permalink: /qualities/risk-identification
 ---
 

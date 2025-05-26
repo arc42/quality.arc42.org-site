@@ -17,12 +17,12 @@
                 {% assign posts_to_show = posts_to_show | append: tag %}
                 {% assign posts_to_show = posts_to_show | append: ";" %}
             {% endfor %}
-            {% assign posts_to_show = posts_to_show | append: ", " %}
+            {% assign posts_to_show = posts_to_show | append: "| " %}
         {% endunless %}
     {% endfor %}
 {% endfor %}
 
-{% assign posts_to_show = posts_to_show | split: ", " %}
+{% assign posts_to_show = posts_to_show | split: "| " %}
 {% assign posts_to_show = posts_to_show | sort %}
 
 

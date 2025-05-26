@@ -1,8 +1,8 @@
 ---
 title: Access control is enforced
 tags: secure suitable
-related: access control, auditability
-permalink: /requirements/access-control
+related: access-control, auditability
+permalink: /requirements/access-control-is-enforced
 ---
 
 <div class="quality-requirement" markdown="1">

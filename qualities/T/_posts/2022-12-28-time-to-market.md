@@ -1,7 +1,7 @@
 ---
 title: Time to Market
 tags: efficient
-related: flexibility, efficiency, deployment frequency, extensibility, lead time for changes, cycle time
+related: flexibility, efficiency, deployment-frequency, extensibility, lead-time-for-changes, cycle-time
 permalink: /qualities/time-to-market
 ---
 

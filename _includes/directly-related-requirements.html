@@ -6,7 +6,7 @@
 <ul class="posts no-bullets">
     {% assign number = 0 %}
     {% for requirement in requirements %}
-    {% assign check_title = page.title | downcase %}
+    {% assign check_title = page.permalink | split: "/" | last | downcase %}
     {% assign related = requirement.related | split: ", "%}
     {% if related contains check_title %}
     {% assign number = 1 %}

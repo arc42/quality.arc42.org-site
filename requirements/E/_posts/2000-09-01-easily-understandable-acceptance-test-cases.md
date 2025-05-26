@@ -1,8 +1,8 @@
 ---
 title: "Easily understandable acceptance test cases"
 tags: usable suitable efficient
-related: efficiency, maintainability, suitability, consistency, interaction capability
-permalink: /requirements/dummy
+related: efficiency, maintainability, suitability, consistency, interaction-capability
+permalink: /requirements/understandable-acceptance-tests
 ---
 
 <div class="quality-requirement" markdown="1">

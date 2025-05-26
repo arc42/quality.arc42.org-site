@@ -1,7 +1,7 @@
 ---
 title: Precision of vehicle's orientation
 tags: reliable
-related: accuracy, preciseness, precision, reliability, functional correctness
+related: accuracy, preciseness, precision, reliability, functional-correctness
 permalink: /requirements/precise-vehicle-orientation-gps
 ---
 
