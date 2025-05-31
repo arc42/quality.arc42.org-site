@@ -2,6 +2,7 @@
 title: Interoperability
 tags: usable operable
 related: co-existence, compatibility
+standards: iso25010
 permalink: /qualities/interoperability
 ---
 

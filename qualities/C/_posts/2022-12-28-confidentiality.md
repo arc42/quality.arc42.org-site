@@ -2,6 +2,7 @@
 title: Confidentiality
 tags: secure
 related: integrity, accountability
+standards: iso25010
 permalink: /qualities/confidentiality
 ---
 

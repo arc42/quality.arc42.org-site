@@ -2,6 +2,7 @@
 title: Authenticity
 tags: secure
 related: integrity, security, non-repudiation
+standards: iso25010
 permalink: /qualities/authenticity
 ---
 

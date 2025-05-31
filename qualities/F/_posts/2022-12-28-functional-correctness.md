@@ -2,6 +2,7 @@
 title: Functional correctness
 tags: usable reliable suitable
 related: usability, functionality, functional-suitability, correctness
+standards: iso25010
 permalink: /qualities/functional-correctness
 ---
 

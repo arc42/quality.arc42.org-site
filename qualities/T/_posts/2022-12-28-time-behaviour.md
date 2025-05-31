@@ -2,6 +2,7 @@
 title: Time behaviour
 tags: efficient
 related: efficiency, resource-efficiency, speed, performance
+standards: iso25010
 permalink: /qualities/time-behaviour
 ---
 

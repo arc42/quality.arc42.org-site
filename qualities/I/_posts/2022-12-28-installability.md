@@ -2,6 +2,7 @@
 title: Installability
 tags: operable flexible
 related: maintainability, analysability, operability, deployability
+standards: iso25010
 permalink: /qualities/installability
 ---
 

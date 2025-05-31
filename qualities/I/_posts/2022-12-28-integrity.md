@@ -2,6 +2,7 @@
 title: Integrity
 tags: secure
 related: confidentiality, security
+standards: iso25010
 permalink: /qualities/integrity
 ---
 

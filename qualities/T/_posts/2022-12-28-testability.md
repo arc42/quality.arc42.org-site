@@ -2,6 +2,7 @@
 title: Testability
 tags: suitable flexible
 related: maintainability, flexibility, modifiability, analysability
+standards: iso25010
 permalink: /qualities/testability
 ---
 

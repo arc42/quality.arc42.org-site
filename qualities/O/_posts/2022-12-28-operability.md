@@ -2,6 +2,7 @@
 title: Operability
 tags: usable operable
 related: usability, user-error-protection, controllability, robustness
+standards: iso25010
 permalink: /qualities/operability
 ---
 

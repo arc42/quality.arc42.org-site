@@ -2,6 +2,7 @@
 title: Co-existence
 tags: flexible
 related: compatibility, interoperability
+standards: iso25010
 permalink: /qualities/co-existence
 ---
 

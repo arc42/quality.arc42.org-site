@@ -2,6 +2,7 @@
 title: Operational constraint
 tags: safe reliable
 related: availability, robustness, flexibility, safety
+standards: iso25010
 permalink: /qualities/operational-constraint
 ---
 

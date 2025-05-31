@@ -2,6 +2,7 @@
 title: Scalability
 tags: flexible
 related: adaptability, elasticity, performance
+standards: iso25010
 permalink: /qualities/scalability
 ---
 

@@ -2,6 +2,7 @@
 title: Adaptability
 tags: flexible usable
 related: changeability, configurability, maintainability, flexibility, usability, scalability, elasticity
+standards: iso25010
 permalink: /qualities/adaptability
 ---
 
