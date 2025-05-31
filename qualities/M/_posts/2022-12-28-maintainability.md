@@ -2,6 +2,7 @@
 title: Maintainability
 tags: flexible
 related: flexibility, adaptability, changeability, configurability, modularity
+standards: iso25010
 permalink: /qualities/maintainability
 ---
 
