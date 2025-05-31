@@ -20,9 +20,8 @@ Information-technology systems have to meet required, desired and expected quali
 Therefore, development teams need such requirements in concrete, specific and operationalized ways.
 The current quality standards, like ISO-25010, [lack practical guidance and pragmatism](/articles/iso-25010-shortcomings), therefore we propose a usable and simple alternative:
 
-![arc42 Quality Model (v1.0)](/images/arc42-system-qualities-overview.svg){:width="90%"}
-
-[(click here for the interactive graphical version)](/home-new)
+<div id="q-graph-container"></div>
+<script src="/assets/js/homepage/main.js"></script>
 
 The arc42 quality model Q42 (pronounced "Kju-Fortytwo" or "Kju-Four-Two") is a simple, pragmatic yet effective approach to product and system quality.
 It starts with stakeholders' expectations and requirements. 
@@ -58,17 +57,17 @@ A single quality attribute (like "availability") might have multiple properties 
 {% assign tags_suitable = site.posts | where_exp: "posts", "posts.tags contains 'suitable'" %}
 {% assign tags_operable = site.posts | where_exp: "posts", "posts.tags contains 'operable'" %}
 
-| Top-level property | Explanation          |
-| :--- | :--- |
-| [**#reliable**](/tag-reliable/) ({{ tags_reliable | size }}) | Perform specified functions under specified conditions without interruptions or failures  |
-|-|----------------------------|
-| [**#flexible**](/tag-flexible/) ({{ tags_flexible | size }})  |  Serve a different or expanded set of requirements, the ease with which the product can be adapted to changes in its requirements, contexts of use, or system environment. Synonyms: modifiable, adjustable, changeable, versatile |
-| [**#efficient**](/tag-efficient/) ({{ tags_efficient | size }})  |  Perform functions within specified time, capacity and throughput parameters, using appropriate resources (like memory, network bandwith, threads) |
-| [**#usable**](/tag-usable/) ({{ tags_usable | size }})  |  Enable users to perform their tasks safely, effectively and efficiently while enjoying the experience |
-| [**#safe**](/tag-safe/) ({{ tags_safe | size }})  |  Avoid states in which human life, health, property or the environment is endangered, detects and warns of risks and hazards.  |
-| [**#secure**](/tag-secure/) ({{ tags_secure | size }})  |  Protect information and data so that persons or other products have only access to an extend appropriate to their types and levels, and to defend against attack patterns by malicious actors |
-| [**#suitable**](/tag-suitable/) ({{ tags_suitable | size }})  | An abstract property, applicable to various objects. Provide properties that meet stated and implied needs of intended stakeholders.  |
-| [**#operable**](/tag-operable/) ({{ tags_operable | size }})  |  Easy to deploy, operate, monitor and control |
+| Top-level property                                   | Explanation                  |
+| :--------------------------------------------------- | :--------------------------- |
+| [**#reliable**](/tag-reliable/) ({{ tags_reliable    | size }})                     | Perform specified functions under specified conditions without interruptions or failures                                                                                                                                          |
+| -                                                    | ---------------------------- |
+| [**#flexible**](/tag-flexible/) ({{ tags_flexible    | size }})                     | Serve a different or expanded set of requirements, the ease with which the product can be adapted to changes in its requirements, contexts of use, or system environment. Synonyms: modifiable, adjustable, changeable, versatile |
+| [**#efficient**](/tag-efficient/) ({{ tags_efficient | size }})                     | Perform functions within specified time, capacity and throughput parameters, using appropriate resources (like memory, network bandwith, threads)                                                                                 |
+| [**#usable**](/tag-usable/) ({{ tags_usable          | size }})                     | Enable users to perform their tasks safely, effectively and efficiently while enjoying the experience                                                                                                                             |
+| [**#safe**](/tag-safe/) ({{ tags_safe                | size }})                     | Avoid states in which human life, health, property or the environment is endangered, detects and warns of risks and hazards.                                                                                                      |
+| [**#secure**](/tag-secure/) ({{ tags_secure          | size }})                     | Protect information and data so that persons or other products have only access to an extend appropriate to their types and levels, and to defend against attack patterns by malicious actors                                     |
+| [**#suitable**](/tag-suitable/) ({{ tags_suitable    | size }})                     | An abstract property, applicable to various objects. Provide properties that meet stated and implied needs of intended stakeholders.                                                                                              |
+| [**#operable**](/tag-operable/) ({{ tags_operable    | size }})                     | Easy to deploy, operate, monitor and control                                                                                                                                                                                      |
 
 
 

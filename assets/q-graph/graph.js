@@ -1,10 +1,9 @@
 // Global variables
 let svg, g, link, nodeGroup, simulation, width, height, zoom;
-let currentDataset = 'tiny';
+let currentDataset = "tiny";
 let legend;
 let currentZoom = 1;
 let searchTerm = ""; // Declare searchTerm in the global scope
-
 
 // Set up the dimensions
 width = window.innerWidth;
@@ -22,7 +21,7 @@ async function initializeGraph(datasetName = currentDataset) {
         central: true, // Always visible
         property: true,
         quality: true,
-        example: true
+        example: true,
     };
 
     // Clear existing graph and legend
@@ -30,7 +29,8 @@ async function initializeGraph(datasetName = currentDataset) {
     d3.select("#legend").remove();
 
     // Create new SVG element
-    svg = d3.select("#graph-container")
+    svg = d3
+        .select("#graph-container")
         .append("svg")
         .attr("width", width)
         .attr("height", height);
@@ -39,71 +39,83 @@ async function initializeGraph(datasetName = currentDataset) {
     g = svg.append("g");
 
     // Set up zoom behavior
-    zoom = d3.zoom()
-        .scaleExtent([0.1, 4])
-        .on("zoom", zoomed);
+    zoom = d3.zoom().scaleExtent([0.1, 4]).on("zoom", zoomed);
 
     svg.call(zoom);
 
     // Define color scale for different node types
-    const colorScale = d3.scaleOrdinal()
-        .domain(['central', 'property', 'quality', 'example'])
-        .range(['orange', '#4CAF50', '#2196F3', '#FFC107']);
+    const colorScale = d3
+        .scaleOrdinal()
+        .domain(["central", "property", "quality", "example"])
+        .range(["orange", "#4CAF50", "#2196F3", "#FFC107"]);
 
     // Set up force simulation
 
     // Set up force simulation
-    simulation = d3.forceSimulation(data.nodes)
-        .force("link", d3.forceLink(data.links).id(d => d.id).distance(150))
+    simulation = d3
+        .forceSimulation(data.nodes)
+        .force(
+            "link",
+            d3
+                .forceLink(data.links)
+                .id((d) => d.id)
+                .distance(150),
+        )
         .force("charge", d3.forceManyBody().strength(-1000))
         .force("center", d3.forceCenter(width / 2, height / 2))
         .force("collide", d3.forceCollide().radius(60));
 
-    
     // Create links
-    link = g.append("g")
+    link = g
+        .append("g")
         .attr("class", "links")
         .selectAll("line")
         .data(data.links)
-        .enter().append("line")
+        .enter()
+        .append("line")
         .attr("stroke", "#999")
         .attr("stroke-width", 1);
 
     // Determine the types of nodes present in the dataset
-    const nodeTypes = [...new Set(data.nodes.map(node => node.type))];
+    const nodeTypes = [...new Set(data.nodes.map((node) => node.type))];
 
     // Create nodes
-    nodeGroup = g.append("g")
+    nodeGroup = g
+        .append("g")
         .attr("class", "nodes")
         .selectAll("g")
         .data(data.nodes)
-        .enter().append("g")
-        .call(d3.drag()
-            .on("start", dragstarted)
-            .on("drag", dragged)
-            .on("end", dragended));
+        .enter()
+        .append("g")
+        .call(
+            d3
+                .drag()
+                .on("start", dragstarted)
+                .on("drag", dragged)
+                .on("end", dragended),
+        );
 
     // Add circles to nodes
-    nodeGroup.append("circle")
+    nodeGroup
+        .append("circle")
         .attr("r", 8)
-        .attr("fill", d => colorScale(d.type));
+        .attr("fill", (d) => colorScale(d.type));
 
     // Add labels to nodes
-    nodeGroup.append("text")
+    nodeGroup
+        .append("text")
         .attr("text-anchor", "middle")
-        .attr("dy", d => d.type === "central" ? 30 : 20)
-        .attr("font-size", d => d.type === "central" ? "14px" : "10px")
+        .attr("dy", (d) => (d.type === "central" ? 30 : 20))
+        .attr("font-size", (d) => (d.type === "central" ? "14px" : "10px"))
         .attr("fill", "#333")
-        .each(function(d) {
+        .each(function (d) {
             const words = d.label.split(/\s+/);
             const elem = d3.select(this);
-            elem.text('');
+            elem.text("");
 
             for (let i = 0; i < words.length; i++) {
-                const tspan = elem.append('tspan')
-                    .text(words[i]);
-                if (i > 0)
-                    tspan.attr('x', 0).attr('dy', '1.2em');
+                const tspan = elem.append("tspan").text(words[i]);
+                if (i > 0) tspan.attr("x", 0).attr("dy", "1.2em");
             }
         });
 
@@ -121,7 +133,16 @@ async function initializeGraph(datasetName = currentDataset) {
     };
 
     // Create new legend
-    legend = new Legend(colorScale, zoomFunction, toggleFullscreen, toggleNodeVisibility, simulation, datasetChangeHandler, nodeTypes, searchNodes);
+    legend = new Legend(
+        colorScale,
+        zoomFunction,
+        toggleFullscreen,
+        toggleNodeVisibility,
+        simulation,
+        datasetChangeHandler,
+        nodeTypes,
+        searchNodes,
+    );
 
     legend.create();
 
@@ -130,11 +151,15 @@ async function initializeGraph(datasetName = currentDataset) {
 }
 
 function getDatasetLabel(datasetName) {
-    switch(datasetName) {
-        case 'tiny': return 'Quality';
-        case 'iso25010': return 'ISO 25010';
-        case 'q42': return 'Q42';
-        default: return 'Quality';
+    switch (datasetName) {
+        case "tiny":
+            return "Quality";
+        case "iso25010":
+            return "ISO 25010";
+        case "q42":
+            return "Q42";
+        default:
+            return "Quality";
     }
 }
 
@@ -148,23 +173,28 @@ function searchNodes(term) {
 }
 
 function updateNodeVisibility() {
-    nodeGroup.classed("dimmed", d => {
+    nodeGroup.classed("dimmed", (d) => {
         if (d.type === "central") return false; // Never dim the central node
         const matchesSearch = d.label.toLowerCase().includes(searchTerm);
         const isVisible = nodeVisibility[d.type];
         return !matchesSearch || !isVisible;
     });
 
-    link.classed("dimmed", d => {
-        if (d.source.type === "central" || d.target.type === "central") return false; // Never dim links to/from central node
-        const sourceMatches = d.source.label.toLowerCase().includes(searchTerm) && nodeVisibility[d.source.type];
-        const targetMatches = d.target.label.toLowerCase().includes(searchTerm) && nodeVisibility[d.target.type];
+    link.classed("dimmed", (d) => {
+        if (d.source.type === "central" || d.target.type === "central")
+            return false; // Never dim links to/from central node
+        const sourceMatches =
+            d.source.label.toLowerCase().includes(searchTerm) &&
+            nodeVisibility[d.source.type];
+        const targetMatches =
+            d.target.label.toLowerCase().includes(searchTerm) &&
+            nodeVisibility[d.target.type];
         return !sourceMatches && !targetMatches;
     });
 
     // Update legend to reflect current visibility state
     if (legend) {
-        Object.keys(nodeVisibility).forEach(type => {
+        Object.keys(nodeVisibility).forEach((type) => {
             legend.updateLegendItemStyle(type, nodeVisibility[type]);
         });
     }
@@ -200,14 +230,12 @@ function toggleNode(event, d) {
 }
 
 function ticked() {
-    link
-        .attr("x1", d => d.source.x)
-        .attr("y1", d => d.source.y)
-        .attr("x2", d => d.target.x)
-        .attr("y2", d => d.target.y);
+    link.attr("x1", (d) => d.source.x)
+        .attr("y1", (d) => d.source.y)
+        .attr("x2", (d) => d.target.x)
+        .attr("y2", (d) => d.target.y);
 
-    nodeGroup
-        .attr("transform", d => `translate(${d.x},${d.y})`);
+    nodeGroup.attr("transform", (d) => `translate(${d.x},${d.y})`);
 
     updateNodeVisibility();
 }
@@ -224,19 +252,27 @@ function fitToScreen() {
 
     if (boundWidth === 0 || boundHeight === 0) return; // nothing to fit
 
-    const scale = 0.8 / Math.max(boundWidth / fullWidth, boundHeight / fullHeight);
-    const translate = [fullWidth / 2 - scale * midX, fullHeight / 2 - scale * midY];
+    const scale =
+        0.8 / Math.max(boundWidth / fullWidth, boundHeight / fullHeight);
+    const translate = [
+        fullWidth / 2 - scale * midX,
+        fullHeight / 2 - scale * midY,
+    ];
 
-    svg.transition().duration(750).call(
-        zoom.transform,
-        d3.zoomIdentity.translate(translate[0], translate[1]).scale(scale)
-    );
+    svg.transition()
+        .duration(750)
+        .call(
+            zoom.transform,
+            d3.zoomIdentity.translate(translate[0], translate[1]).scale(scale),
+        );
 }
 
 function toggleFullscreen() {
     if (!document.fullscreenElement) {
-        document.documentElement.requestFullscreen().catch(err => {
-            console.error(`Error attempting to enable fullscreen: ${err.message}`);
+        document.documentElement.requestFullscreen().catch((err) => {
+            console.error(
+                `Error attempting to enable fullscreen: ${err.message}`,
+            );
         });
     } else {
         if (document.exitFullscreen) {
@@ -251,28 +287,32 @@ function toggleNodeVisibility(nodeType) {
 }
 
 function updateNodeVisibility() {
-    nodeGroup.classed("dimmed", d => {
+    nodeGroup.classed("dimmed", (d) => {
         const matchesSearch = d.label.toLowerCase().includes(searchTerm);
         const isVisible = nodeVisibility[d.type];
         return !matchesSearch || !isVisible;
     });
 
-    link.classed("dimmed", d => {
-        const sourceMatches = d.source.label.toLowerCase().includes(searchTerm) && nodeVisibility[d.source.type];
-        const targetMatches = d.target.label.toLowerCase().includes(searchTerm) && nodeVisibility[d.target.type];
+    link.classed("dimmed", (d) => {
+        const sourceMatches =
+            d.source.label.toLowerCase().includes(searchTerm) &&
+            nodeVisibility[d.source.type];
+        const targetMatches =
+            d.target.label.toLowerCase().includes(searchTerm) &&
+            nodeVisibility[d.target.type];
         return !sourceMatches && !targetMatches;
     });
 
     // Update legend to reflect current visibility state
     if (legend) {
-        Object.keys(nodeVisibility).forEach(type => {
+        Object.keys(nodeVisibility).forEach((type) => {
             legend.updateLegendItemStyle(type, nodeVisibility[type]);
         });
     }
 }
 
 // Ensure the graph resizes when the window is resized
-window.addEventListener('resize', () => {
+window.addEventListener("resize", () => {
     width = window.innerWidth;
     height = window.innerHeight;
     if (svg) {
@@ -289,8 +329,8 @@ async function main() {
     try {
         await initializeGraph();
     } catch (error) {
-        console.error('Failed to initialize graph:', error);
-        document.getElementById('graph-container').innerHTML = `
+        console.error("Failed to initialize graph:", error);
+        document.getElementById("graph-container").innerHTML = `
             <p>Failed to load graph data. Please check the console for more information.</p>
             <p>Error: ${error.message}</p>
         `;

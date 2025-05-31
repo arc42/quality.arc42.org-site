@@ -11,7 +11,6 @@ baseurl:
 
 #######################################################
 
-
 #
 # basic settings
 #
@@ -27,15 +26,14 @@ repository: arc42/quality.arc42.org-site
 #
 show-subtle-ads: false
 
-
 #
 # Icons and Social-Media accounts
 #
 icons:
   rss: false
-  email: 
+  email:
   github: arc42
-  twitter: 
+  twitter:
   youtube: arc42-video
   stack_overflow: arc42
   dev_to: gernotstarke
@@ -45,7 +43,6 @@ icons:
 # Prettify url.
 #
 permalink: pretty
-
 
 #
 # Localizations.
@@ -67,7 +64,6 @@ plugins:
   - jekyll-paginate
   - jekyll-github-metadata
 
-
 #
 # tags, collections etc -
 # see https://jekyllrb.com/docs/collections/
@@ -79,16 +75,14 @@ collections:
   articles:
     output: true
     hide: true
-## quality requirements to describe and capture specific quality requirements
+  ## quality requirements to describe and capture specific quality requirements
   requirements:
     output: true
-    hide: true    
+    hide: true
 
 ## Filtering Content
-future        : false
-unpublished   : false
-
-
+future: false
+unpublished: false
 
 #
 # with this default, all files under /_posts (other collections did not work with tags)
@@ -112,7 +106,6 @@ defaults:
 # !! Danger zone !!
 #
 
-
 markdown: kramdown
 kramdown:
   input: GFM
@@ -132,9 +125,20 @@ exclude:
   - Dockerfile
   - README.md
   - .vscode
-  - _docker-compose*
+  - docker-compose.yml
   - _manage*
   - .sass-cache
   - .code-workspace
   - vendor/bundle
-  
+  - node_modules
+  - package.json
+  - package-lock.json
+  - build.js
+  - src/
+  - .prettierrc
+
+watch_exclude:
+  - assets/js/fullpage # handled by esbuild
+  - assets/js/homepage # handled by esbuild
+
+incremental: true

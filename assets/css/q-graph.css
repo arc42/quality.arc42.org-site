@@ -1,0 +1,15 @@
+#q-graph-container {
+  background-color: #f0ffff;
+  height: 50vh;
+}
+
+#graph-site {
+  margin: 0 !important;
+  width: 100% !important;
+}
+
+#full-q-graph-container {
+  background-color: #f0ffff;
+  height: 100vh;
+  width: 100% !important;
+}
