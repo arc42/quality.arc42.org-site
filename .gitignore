@@ -6,3 +6,6 @@ Gemfile.lock
 .idea
 vendor
 node_modules
+/assets/js/fullpage/
+/assets/data/
+/assets/js/homepage/
