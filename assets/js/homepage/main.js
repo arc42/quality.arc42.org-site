@@ -17578,9 +17578,14 @@ void main() {
   }
 
   // src/graphs/events.js
+  var addPointerOnForNonQualityRootNode = (hoveredNode, renderer2) => {
+    if (hoveredNode !== "quality-root") renderer2.getContainer().style.cursor = "pointer";
+  };
+  var resetCursorToDefault = (renderer2) => renderer2.getContainer().style.cursor = "default";
   var registerHomeGraphEvents = (renderer2, graph2) => {
     renderer2.on("enterNode", (event) => {
       const hoveredNode = event.node;
+      addPointerOnForNonQualityRootNode(hoveredNode, renderer2);
       if (graph2.getNodeAttribute(hoveredNode, "qualityType") === "property") {
         graph2.forEachEdge((edge, _, sourceNode, targetNode) => {
           const isSourceProperty = graph2.getNodeAttribute(sourceNode, "qualityType") === "property";
@@ -17595,6 +17600,7 @@ void main() {
       renderer2.refresh();
     });
     renderer2.on("leaveNode", () => {
+      resetCursorToDefault(renderer2);
       graph2.forEachNode((node) => {
         const { qualityType, hidden } = graph2.getNodeAttributes(node);
         if (qualityType === "quality" && !hidden) {
@@ -17607,6 +17613,7 @@ void main() {
   var registerFullGraphEvents = (renderer2, graph2) => {
     renderer2.on("enterNode", (event) => {
       const hoveredNode = event.node;
+      addPointerOnForNonQualityRootNode(hoveredNode, renderer2);
       graph2.forEachEdge((edgeId, _, sourceNode, targetNode) => {
         const isRelated = sourceNode === hoveredNode || targetNode === hoveredNode;
         graph2.updateEdgeAttribute(edgeId, "color", () => isRelated ? "red" : "#E0E0E0");
@@ -17621,6 +17628,7 @@ void main() {
       });
     });
     renderer2.on("leaveNode", () => {
+      resetCursorToDefault(renderer2);
       graph2.forEachEdge((edgeId) => {
         graph2.updateEdgeAttribute(edgeId, "color", () => DEFAULT_SETTINGS.defaultEdgeColor);
       });
