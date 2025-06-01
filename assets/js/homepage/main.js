@@ -17578,69 +17578,70 @@ void main() {
   }
 
   // src/graphs/events.js
-  function registerGraphEvents(graph2, renderer2) {
+  var registerHomeGraphEvents = (renderer2, graph2) => {
+    renderer2.on("enterNode", (event) => {
+      const hoveredNode = event.node;
+      if (graph2.getNodeAttribute(hoveredNode, "qualityType") === "property") {
+        graph2.forEachEdge((edge, _, sourceNode, targetNode) => {
+          const isSourceProperty = graph2.getNodeAttribute(sourceNode, "qualityType") === "property";
+          if (targetNode === hoveredNode) {
+            graph2.updateNodeAttribute(sourceNode, "hidden", () => false);
+            graph2.updateEdgeAttribute(edge, "hidden", () => false);
+          } else if (!isSourceProperty) {
+            graph2.updateEdgeAttribute(edge, "hidden", () => true);
+          }
+        });
+      }
+      renderer2.refresh();
+    });
+    renderer2.on("leaveNode", () => {
+      graph2.forEachNode((node) => {
+        const { qualityType, hidden } = graph2.getNodeAttributes(node);
+        if (qualityType === "quality" && !hidden) {
+          graph2.updateNodeAttribute(node, "hidden", () => true);
+        }
+      });
+      renderer2.refresh();
+    });
+  };
+  var registerFullGraphEvents = (renderer2, graph2) => {
+    renderer2.on("enterNode", (event) => {
+      const hoveredNode = event.node;
+      graph2.forEachEdge((edgeId, _, sourceNode, targetNode) => {
+        const isRelated = sourceNode === hoveredNode || targetNode === hoveredNode;
+        graph2.updateEdgeAttribute(edgeId, "color", () => isRelated ? "red" : "#E0E0E0");
+      });
+      graph2.forEachNode((node) => {
+        const isConnected = graph2.hasEdge(hoveredNode, node) || graph2.hasEdge(node, hoveredNode);
+        graph2.updateNodeAttribute(
+          node,
+          "color",
+          () => isConnected ? graph2.getNodeAttribute(node, "color") : "#CCCCCC"
+        );
+      });
+    });
+    renderer2.on("leaveNode", () => {
+      graph2.forEachEdge((edgeId) => {
+        graph2.updateEdgeAttribute(edgeId, "color", () => DEFAULT_SETTINGS.defaultEdgeColor);
+      });
+      graph2.forEachNode((node) => {
+        graph2.updateNodeAttribute(node, "color", () => getDefaultNodeColor(graph2, node));
+      });
+    });
+  };
+  var registerGraphEvents = (graph2, renderer2) => {
     const graphName = graph2.getAttribute("name");
     renderer2.on("doubleClickNode", (event) => {
       if (event.node !== "quality-root") {
-        window.location.href = `${graph2.getNodeAttribute(event.node, "page")}`;
+        window.location.href = graph2.getNodeAttribute(event.node, "page");
       }
     });
     if (graphName === "home") {
-      renderer2.on("clickStage", () => {
-        window.location.href = "/full-quality-graph";
-      });
-      renderer2.on("enterNode", (event) => {
-        const hoveredNode = event.node;
-        const isPropertyNode = graph2.getNodeAttribute(hoveredNode, "qualityType") === "property";
-        if (isPropertyNode) {
-          graph2.forEachEdge((edge, _, sourceNode, targetNode) => {
-            const isSourcePropertyNode = graph2.getNodeAttribute(sourceNode, "qualityType") === "property";
-            if (targetNode === hoveredNode) {
-              graph2.updateNodeAttribute(sourceNode, "hidden", () => false);
-              graph2.updateEdgeAttribute(edge, "hidden", () => false);
-            } else if (!isSourcePropertyNode) {
-              graph2.updateEdgeAttribute(edge, "hidden", () => true);
-            }
-          });
-        }
-        renderer2.refresh();
-      });
-      renderer2.on("leaveNode", () => {
-        graph2.forEachNode((node) => {
-          const { qualityType, hidden } = graph2.getNodeAttributes(node);
-          if (qualityType === "quality" && !hidden) {
-            graph2.updateNodeAttribute(node, "hidden", () => true);
-          }
-        });
-        renderer2.refresh();
-      });
+      registerHomeGraphEvents(renderer2, graph2);
+    } else {
+      registerFullGraphEvents(renderer2, graph2);
     }
-    if (graphName !== "home") {
-      renderer2.on("enterNode", (event) => {
-        const hoveredNode = event.node;
-        graph2.forEachEdge((edgeId, _, sourceNode, targetNode) => {
-          const isRelated = sourceNode === hoveredNode || targetNode === hoveredNode;
-          graph2.updateEdgeAttribute(edgeId, "color", () => isRelated ? "red" : "#E0E0E0");
-        });
-        graph2.forEachNode((node) => {
-          const isConnected = graph2.hasEdge(hoveredNode, node) || graph2.hasEdge(node, hoveredNode);
-          graph2.updateNodeAttribute(
-            node,
-            "color",
-            () => isConnected ? graph2.getNodeAttribute(node, "color") : "#CCCCCC"
-          );
-        });
-      });
-      renderer2.on("leaveNode", () => {
-        graph2.forEachEdge((edgeId) => {
-          graph2.updateEdgeAttribute(edgeId, "color", () => DEFAULT_SETTINGS.defaultEdgeColor);
-        });
-        graph2.forEachNode((node) => {
-          graph2.updateNodeAttribute(node, "color", () => getDefaultNodeColor(graph2, node));
-        });
-      });
-    }
-  }
+  };
 
   // src/graphs/homepage/main.js
   var graph = new MultiGraph();
