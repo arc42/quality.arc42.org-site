@@ -27,7 +27,7 @@ simple alternative:
 <script src="/assets/js/homepage/main.js"></script>
 
 Double-click a node in the graph above to view its definition, related qualities and requirements.
-View the full interactive quality graph [here](/full-quality-graph).
+View the full interactive quality graph **[here](/full-quality-graph)**.
 
 The arc42 quality model Q42 (pronounced "Kju-Fortytwo" or "Kju-Four-Two") is a simple, pragmatic yet effective approach
 to product and system quality.

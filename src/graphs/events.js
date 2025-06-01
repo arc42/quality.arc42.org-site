@@ -1,6 +1,6 @@
-import { MultiGraph }          from "graphology";
-import { Sigma }               from "sigma";
-import { DEFAULT_SETTINGS }    from "sigma/settings";
+import { MultiGraph } from "graphology";
+import { Sigma } from "sigma";
+import { DEFAULT_SETTINGS } from "sigma/settings";
 import { getDefaultNodeColor } from "./utils";
 
 /**
