@@ -31,7 +31,7 @@ jobs:
         run: npm ci
 
       - name: Build JavaScript assets
-        run: npm run build
+        run: npm run data && npm run build
 
       - name: Build the site
         run: bundle exec jekyll build
