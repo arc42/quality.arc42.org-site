@@ -2,7 +2,7 @@ name: Deploy Jekyll Site to GitHub Pages
 
 on:
   push:
-    branches: [ main, feature/quality-graphs-v1 ]  # Change if your default branch is different
+    branches: [ main ]  # Change if your default branch is different
 
 jobs:
   build-and-deploy:
@@ -37,7 +37,7 @@ jobs:
         run: bundle exec jekyll build
 
       - name: Deploy to GitHub Pages
-        if: github.ref == 'refs/heads/main'
+        if: github.ref == 'refs/heads/main' # Ensure this only runs on the main branch, even if the push is to a different branch and build is triggered
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
