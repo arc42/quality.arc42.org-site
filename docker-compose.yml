@@ -16,4 +16,4 @@ services:
     tty: true
     stdin_open: true
     restart: always
-    command: sh -c "npm install && npm run watch"
+    command: sh -c "npm install && npm run data && npm run watch"
