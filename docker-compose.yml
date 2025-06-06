@@ -1,7 +1,21 @@
 services:
+  esbuild:
+    image: node:22-alpine
+    volumes:
+      - .:/site
+      - /site/node_modules
+    working_dir: /site
+    tty: true
+    stdin_open: true
+    restart: always
+    command: sh -c "npm install && npm run data && npm run watch"
+
   jekyll:
+    depends_on:
+      - esbuild
     image: bretfisher/jekyll-serve
     volumes:
       - .:/site
     ports:
-      - '4000:4000'
+      - "4000:4000"
+    command: bundle exec jekyll serve --incremental --watch --host 0.0.0.0

@@ -1,0 +1,35 @@
+{
+  "name": "quality.arc42.org-site",
+  "version": "1.0.0",
+  "description": "Quality requirements and goals for software and system architectures",
+  "author": "arc42",
+  "license": "CC-BY-SA-4.0",
+  "type": "module",
+  "private": true,
+  "keywords": [
+    "arc42",
+    "isaqb",
+    "quality"
+  ],
+  "scripts": {
+    "build": "node build.js",
+    "watch": "node build.js --watch",
+    "data": "rimraf \"./assets/data\" && node src/scripts/data.js"
+  },
+  "dependencies": {
+    "graphology": "^0.26.0",
+    "graphology-layout": "^0.6.1",
+    "graphology-layout-forceatlas2": "^0.10.1",
+    "sigma": "^3.0.1"
+  },
+  "devDependencies": {
+    "esbuild": "^0.25.0",
+    "gray-matter": "^4.0.3",
+    "prettier": "^3.4.2",
+    "rimraf": "^6.0.1"
+  },
+  "volta": {
+    "node": "22.13.1",
+    "npm": "11.0.0"
+  }
+}
