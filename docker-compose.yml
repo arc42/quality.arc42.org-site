@@ -1,12 +1,4 @@
 services:
-  jekyll:
-    image: bretfisher/jekyll-serve
-    volumes:
-      - .:/site
-    ports:
-      - "4000:4000"
-    command: bundle exec jekyll serve --incremental --watch --host 0.0.0.0
-
   esbuild:
     image: node:22-alpine
     volumes:
@@ -17,3 +9,13 @@ services:
     stdin_open: true
     restart: always
     command: sh -c "npm install && npm run data && npm run watch"
+
+  jekyll:
+    depends_on:
+      - esbuild
+    image: bretfisher/jekyll-serve
+    volumes:
+      - .:/site
+    ports:
+      - "4000:4000"
+    command: bundle exec jekyll serve --incremental --watch --host 0.0.0.0
