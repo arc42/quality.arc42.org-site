@@ -7,13 +7,13 @@ import { MultiGraph } from "graphology";
  * @param {number} size
  * @param {string} color
  */
-export function createRootNode(graph , label , size , color) {
-    graph.addNode("quality-root" , {
-        label ,
-        size ,
-        x: 0 ,
-        y: 0 ,
-        color ,
+export function createRootNode(graph, label, size, color) {
+    graph.addNode("quality-root", {
+        label,
+        size,
+        x: 0,
+        y: 0,
+        color,
     });
 }
 
@@ -22,15 +22,15 @@ export function createRootNode(graph , label , size , color) {
  * @param {MultiGraph} graph
  * @param {{id: string, label: string, size: number, color: string, qualityType: string, page: string}[]} nodes
  */
-export function createNodes(graph , nodes) {
+export function createNodes(graph, nodes) {
     nodes.forEach((node) =>
-        graph.addNode(node.id , {
-            label: node.label ,
-            size: node.size ,
-            color: node.color ,
-            qualityType: node.qualityType ,
-            page: node.page ,
-        }) ,
+        graph.addNode(node.id, {
+            label: node.label,
+            size: node.size,
+            color: node.color,
+            qualityType: node.qualityType,
+            page: node.page,
+        }),
     );
 }
 
@@ -39,8 +39,8 @@ export function createNodes(graph , nodes) {
  * @param {MultiGraph} graph
  * @param {{source: string, target: string}[]} edges
  */
-export function createEdges(graph , edges) {
-    edges.forEach((edge) => graph.addEdge(edge.source , edge.target));
+export function createEdges(graph, edges) {
+    edges.forEach((edge) => graph.addEdge(edge.source, edge.target));
 }
 
 /**
@@ -48,51 +48,53 @@ export function createEdges(graph , edges) {
  * @param {MultiGraph} graph
  * @param {string} node
  */
-export function getDefaultNodeColor(graph , node) {
-    switch (graph.getNodeAttribute(node , "qualityType")) {
+export function getDefaultNodeColor(graph, node) {
+    switch (graph.getNodeAttribute(node, "qualityType")) {
         case "property":
             return "green";
         case "quality":
             return "blue";
+        case "requirement":
+            return "gold";
         default:
-            return "orange";
+            return "darkorange";
     }
 }
 
 /**
- * Creates an enhanced radial hierarchical layout that handles interconnected nodes
+ * Creates an enhanced radial hierarchical layout that handles interconnected nodes using D3.js
  *
  * @param {MultiGraph} graph - The graph to layout
  * @param {string} rootId - ID of the root node
  * @param {number} levelRadius - Base radius between hierarchy levels
  */
-export function applyEnhancedRadialLayout(graph , rootId , levelRadius = 150) {
+export function applyEnhancedRadialLayout(graph, rootId, levelRadius = 150) {
     // Place root at center
-    graph.updateNodeAttributes(rootId , (attr) => ({
-        ...attr ,
-        x: 0 ,
-        y: 0 ,
-        hierarchyLevel: 1 ,
+    graph.updateNodeAttributes(rootId, (attr) => ({
+        ...attr,
+        x: 0,
+        y: 0,
+        hierarchyLevel: 1,
     }));
 
     // STEP 1: Position property nodes (Level 2) in a circle around root
     const propertyNodes = graph
         .inNeighbors(rootId)
-        .filter((n) => graph.getNodeAttribute(n , "qualityType") === "property");
+        .filter((n) => graph.getNodeAttribute(n, "qualityType") === "property");
 
     const propertyAngleStep = (2 * Math.PI) / propertyNodes.length;
 
-    propertyNodes.forEach((propNode , i) => {
+    propertyNodes.forEach((propNode, i) => {
         const angle = i * propertyAngleStep;
         const x = levelRadius * Math.cos(angle);
         const y = levelRadius * Math.sin(angle);
 
-        graph.updateNodeAttributes(propNode , (attr) => ({
-            ...attr ,
-            x ,
-            y ,
-            angle ,
-            hierarchyLevel: 2 ,
+        graph.updateNodeAttributes(propNode, (attr) => ({
+            ...attr,
+            x,
+            y,
+            angle,
+            hierarchyLevel: 2,
         }));
     });
 
@@ -102,12 +104,12 @@ export function applyEnhancedRadialLayout(graph , rootId , levelRadius = 150) {
 
     propertyNodes.forEach((propNode) => {
         graph.inNeighbors(propNode).forEach((n) => {
-            if (graph.getNodeAttribute(n , "qualityType") === "quality") {
+            if (graph.getNodeAttribute(n, "qualityType") === "quality") {
                 qualityNodes.add(n);
 
                 // Track connections
                 if (!propertyConnections.has(n)) {
-                    propertyConnections.set(n , []);
+                    propertyConnections.set(n, []);
                 }
                 propertyConnections.get(n).push(propNode);
             }
@@ -117,14 +119,14 @@ export function applyEnhancedRadialLayout(graph , rootId , levelRadius = 150) {
     // STEP 3: Organize quality nodes by number of property connections
     const qualityNodesByConnections = new Map(); // Group quality nodes by connection count
 
-    propertyConnections.forEach((connections , qualityNode) => {
+    propertyConnections.forEach((connections, qualityNode) => {
         const count = connections.length;
         if (!qualityNodesByConnections.has(count)) {
-            qualityNodesByConnections.set(count , []);
+            qualityNodesByConnections.set(count, []);
         }
         qualityNodesByConnections.get(count).push({
-            id: qualityNode ,
-            connections: connections ,
+            id: qualityNode,
+            connections: connections,
         });
     });
 
@@ -135,34 +137,34 @@ export function applyEnhancedRadialLayout(graph , rootId , levelRadius = 150) {
 
         // Group by parent property
         const nodesByProperty = new Map();
-        singleConnNodes.forEach(({ id , connections }) => {
+        singleConnNodes.forEach(({ id, connections }) => {
             const propId = connections[0];
             if (!nodesByProperty.has(propId)) {
-                nodesByProperty.set(propId , []);
+                nodesByProperty.set(propId, []);
             }
             nodesByProperty.get(propId).push(id);
         });
 
         // Place them in circles around their property
-        nodesByProperty.forEach((nodes , propId) => {
-            const propX = graph.getNodeAttribute(propId , "x");
-            const propY = graph.getNodeAttribute(propId , "y");
-            const propAngle = graph.getNodeAttribute(propId , "angle");
+        nodesByProperty.forEach((nodes, propId) => {
+            const propX = graph.getNodeAttribute(propId, "x");
+            const propY = graph.getNodeAttribute(propId, "y");
+            const propAngle = graph.getNodeAttribute(propId, "angle");
 
             const qualityRadius = levelRadius * 1; // Slightly smaller than main level radius
             const angleStep = Math.PI / 1.5 / (nodes.length + 1);
 
-            nodes.forEach((nodeId , i) => {
+            nodes.forEach((nodeId, i) => {
                 // Use angle that points away from center
                 const angle = propAngle - Math.PI / 4 + (i + 1) * angleStep;
                 const x = propX + qualityRadius * Math.cos(angle);
                 const y = propY + qualityRadius * Math.sin(angle);
 
-                graph.updateNodeAttributes(nodeId , (attr) => ({
-                    ...attr ,
-                    x ,
-                    y ,
-                    hierarchyLevel: 3 ,
+                graph.updateNodeAttributes(nodeId, (attr) => ({
+                    ...attr,
+                    x,
+                    y,
+                    hierarchyLevel: 3,
                 }));
             });
         });
@@ -173,13 +175,13 @@ export function applyEnhancedRadialLayout(graph , rootId , levelRadius = 150) {
         if (qualityNodesByConnections.has(connCount)) {
             const multiConnNodes = qualityNodesByConnections.get(connCount);
 
-            multiConnNodes.forEach(({ id , connections }) => {
+            multiConnNodes.forEach(({ id, connections }) => {
                 // Calculate center position between all connected properties
-                let avgX = 0 ,
+                let avgX = 0,
                     avgY = 0;
                 connections.forEach((propId) => {
-                    avgX += graph.getNodeAttribute(propId , "x");
-                    avgY += graph.getNodeAttribute(propId , "y");
+                    avgX += graph.getNodeAttribute(propId, "x");
+                    avgY += graph.getNodeAttribute(propId, "y");
                 });
 
                 avgX /= connections.length;
@@ -196,11 +198,11 @@ export function applyEnhancedRadialLayout(graph , rootId , levelRadius = 150) {
                     avgY *= factor;
                 }
 
-                graph.updateNodeAttributes(id , (attr) => ({
-                    ...attr ,
-                    x: avgX ,
-                    y: avgY ,
-                    hierarchyLevel: 3 ,
+                graph.updateNodeAttributes(id, (attr) => ({
+                    ...attr,
+                    x: avgX,
+                    y: avgY,
+                    hierarchyLevel: 3,
                 }));
             });
         }
@@ -210,7 +212,7 @@ export function applyEnhancedRadialLayout(graph , rootId , levelRadius = 150) {
     const reqNodes = new Set();
     qualityNodes.forEach((qualityNode) => {
         graph.inNeighbors(qualityNode).forEach((n) => {
-            if (graph.getNodeAttribute(n , "qualityType") === "requirement") {
+            if (graph.getNodeAttribute(n, "qualityType") === "requirement") {
                 reqNodes.add(n);
             }
         });
@@ -223,48 +225,48 @@ export function applyEnhancedRadialLayout(graph , rootId , levelRadius = 150) {
         reqNodes.forEach((reqId) => {
             const parents = graph
                 .outNeighbors(reqId)
-                .filter((n) => graph.getNodeAttribute(n , "qualityType") === "quality");
+                .filter((n) => graph.getNodeAttribute(n, "qualityType") === "quality");
 
             // For simplicity, assign to first parent (could be enhanced for multi-parent)
             if (parents.length > 0) {
                 const mainParent = parents[0];
                 if (!reqByQuality.has(mainParent)) {
-                    reqByQuality.set(mainParent , []);
+                    reqByQuality.set(mainParent, []);
                 }
                 reqByQuality.get(mainParent).push(reqId);
             }
         });
 
         // Position requirements in circles around their quality nodes
-        reqByQuality.forEach((reqs , qualityId) => {
-            const qualityX = graph.getNodeAttribute(qualityId , "x");
-            const qualityY = graph.getNodeAttribute(qualityId , "y");
+        reqByQuality.forEach((reqs, qualityId) => {
+            const qualityX = graph.getNodeAttribute(qualityId, "x");
+            const qualityY = graph.getNodeAttribute(qualityId, "y");
 
             // Calculate angle to center
-            const angleToCenter = Math.atan2(qualityY , qualityX);
+            const angleToCenter = Math.atan2(qualityY, qualityX);
 
             const reqRadius = levelRadius * 0.7;
             const reqAngleStep = Math.PI / (reqs.length + 1);
 
-            reqs.forEach((reqId , i) => {
+            reqs.forEach((reqId, i) => {
                 // Start from the opposite direction of the center
                 const angle =
                     angleToCenter + Math.PI - reqAngleStep * (reqs.length / 2) + reqAngleStep * (i + 1);
                 const x = qualityX + reqRadius * Math.cos(angle);
                 const y = qualityY + reqRadius * Math.sin(angle);
 
-                graph.updateNodeAttributes(reqId , (attr) => ({
-                    ...attr ,
-                    x ,
-                    y ,
-                    hierarchyLevel: 4 ,
+                graph.updateNodeAttributes(reqId, (attr) => ({
+                    ...attr,
+                    x,
+                    y,
+                    hierarchyLevel: 4,
                 }));
             });
         });
     }
 
     // STEP 7: Adjust nodes to avoid overlaps
-    adjustNodeOverlaps(graph , 30); // 30 = minimum distance between nodes
+    adjustNodeOverlaps(graph, 30); // 30 = minimum distance between nodes
 }
 
 /**
@@ -273,92 +275,91 @@ export function applyEnhancedRadialLayout(graph , rootId , levelRadius = 150) {
  * @param {MultiGraph} graph - The graph
  * @param {number} minDistance - Minimum distance between nodes
  */
-function adjustNodeOverlaps(graph , minDistance) {
+function adjustNodeOverlaps(graph, minDistance) {
     const iterations = 50;
     const nodePositions = [];
 
-    // Create an array of node positions for faster access
-    graph.forEachNode((nodeId , attrs) => {
+    // Internal Helper to compute the force of repulsion between two nodes
+    function computeRepulsion(nodeA, nodeB) {
+        const xDiff = nodeA.x - nodeB.x;
+        const yDiff = nodeA.y - nodeB.y;
+        const distance = Math.sqrt(xDiff * xDiff + yDiff * yDiff);
+        const effectiveMinDist = Math.max(nodeA.minDist, nodeB.minDist);
+
+        if (distance > 0 && distance < effectiveMinDist) {
+            let forceMultiplier = nodeA.qualityType === "quality" ? 0.15 : 0.1;
+            const force = (effectiveMinDist - distance) / distance;
+            return {
+                dx: xDiff * force * forceMultiplier,
+                dy: yDiff * force * forceMultiplier,
+                moved: true,
+            };
+        }
+        return { dx: 0, dy: 0, moved: false };
+    }
+
+    // keep nodes at a distance from the center based on their hierarchy level
+    function adjustDistanceFromCenter(node, minDistance) {
+        const distFromCenter = Math.sqrt(node.x * node.x + node.y * node.y);
+        const targetDist = (node.level - 1) * minDistance * 3;
+        if (Math.abs(distFromCenter - targetDist) > minDistance * 0.5) {
+            const angle = Math.atan2(node.y, node.x);
+            node.x = targetDist * Math.cos(angle);
+            node.y = targetDist * Math.sin(angle);
+        }
+    }
+
+    // Map node positions to an array for easier manipulation
+    graph.forEachNode((nodeId, attrs) => {
         const qualityType = attrs.qualityType;
         let nodeDist = minDistance;
         if (qualityType === "quality") {
-            nodeDist = minDistance * 1.5; // Larger minimum distance for blue nodes
+            nodeDist = minDistance * 1.5;
         }
-
         nodePositions.push({
-            id: nodeId ,
-            x: attrs.x ,
-            y: attrs.y ,
-            level: attrs.hierarchyLevel || 1 ,
-            fixed: nodeId === "quality-root" , // Don't move root node
-            qualityType: qualityType , // Track node type
-            minDist: nodeDist , // Individual min distance
+            id: nodeId,
+            x: attrs.x,
+            y: attrs.y,
+            level: attrs.hierarchyLevel || 1,
+            fixed: nodeId === "quality-root",
+            qualityType: qualityType,
+            minDist: nodeDist,
         });
     });
 
-    // Run several iterations of overlap adjustment
+    // Adjust positions iteratively to minimize overlaps
     for (let iter = 0; iter < iterations; iter++) {
         let moved = false;
-
-        // Check each pair of nodes
         for (let i = 0; i < nodePositions.length; i++) {
-            if (nodePositions[i].fixed) continue;
+            const nodeA = nodePositions[i];
+            if (nodeA.fixed) continue;
 
-            let dx = 0 ,
-                dy = 0;
-
-            // Compare with all other nodes
+            let dx = 0, dy = 0;
             for (let j = 0; j < nodePositions.length; j++) {
                 if (i === j) continue;
-
-                const xDiff = nodePositions[i].x - nodePositions[j].x;
-                const yDiff = nodePositions[i].y - nodePositions[j].y;
-                const distance = Math.sqrt(xDiff * xDiff + yDiff * yDiff);
-
-                // Use the larger of the two nodes' minimum distances
-                const effectiveMinDist = Math.max(nodePositions[i].minDist , nodePositions[j].minDist);
-
-                // If too close, calculate repulsion force
-                if (distance > 0 && distance < effectiveMinDist) {
-                    let forceMultiplier = 0.1;
-                    if (nodePositions[i].qualityType === "quality") {
-                        forceMultiplier = 0.15;
-                    }
-
-                    const force = (effectiveMinDist - distance) / distance;
-                    dx += xDiff * force * forceMultiplier;
-                    dy += yDiff * force * forceMultiplier;
-                    moved = true;
-                }
+                const nodeB = nodePositions[j];
+                const repulsion = computeRepulsion(nodeA, nodeB);
+                dx += repulsion.dx;
+                dy += repulsion.dy;
+                if (repulsion.moved) moved = true;
             }
 
-            // Apply the force to move the node
             if (dx !== 0 || dy !== 0) {
-                nodePositions[i].x += dx;
-                nodePositions[i].y += dy;
+                nodeA.x += dx;
+                nodeA.y += dy;
             }
 
-            // Keep nodes at appropriate distances based on level
-            const node = nodePositions[i];
-            const distFromCenter = Math.sqrt(node.x * node.x + node.y * node.y);
-            const targetDist = (node.level - 1) * minDistance * 3;
-
-            if (Math.abs(distFromCenter - targetDist) > minDistance * 0.5) {
-                const angle = Math.atan2(node.y , node.x);
-                nodePositions[i].x = targetDist * Math.cos(angle);
-                nodePositions[i].y = targetDist * Math.sin(angle);
-            }
+            adjustDistanceFromCenter(nodeA, minDistance);
         }
-
-        if (!moved) break; // Stop if no nodes were moved
+        if (!moved) break;
     }
 
-    // Update the graph with new positions
-    nodePositions.forEach(({ id , x , y }) => {
-        graph.updateNodeAttributes(id , (attrs) => ({
-            ...attrs ,
-            x ,
-            y ,
+    // Update graph with new positions
+    nodePositions.forEach(({ id, x, y }) => {
+        graph.updateNodeAttributes(id, (attrs) => ({
+            ...attrs,
+            x,
+            y,
         }));
     });
 }

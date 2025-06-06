@@ -45,3 +45,7 @@ Hint: `_todo-qualities` contains qualities whose definitions are missing. You ma
 move them to the appropriate folder (e.g. `qualities/<letter>/_posts`).
 
 Hint: If you add new files you have to clean-rebuild the whole application.
+
+## Technical details
+
+The quality graph visualizations are implemented using D3.js forced graphs. The graph data is stored in JSON files in the `assets/data` directory and loaded by the JavaScript code in the `src/graphs` directory.

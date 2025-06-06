@@ -17,10 +17,10 @@
     "data": "rimraf \"./assets/data\" && node src/scripts/data.js"
   },
   "dependencies": {
+    "d3": "^7.8.5",
     "graphology": "^0.26.0",
     "graphology-layout": "^0.6.1",
-    "graphology-layout-forceatlas2": "^0.10.1",
-    "sigma": "^3.0.1"
+    "graphology-layout-forceatlas2": "^0.10.1"
   },
   "devDependencies": {
     "esbuild": "^0.25.0",
