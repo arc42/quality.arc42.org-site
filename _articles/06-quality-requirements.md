@@ -4,6 +4,8 @@ title: "How to specify quality requirements"
 permalink: /articles/specify-quality-requirements
 ---
 
+{% assign requirement_posts = site.posts | where: "categories", "requirements" %}
+
 **Quality** is such a vague and broad term, that it needs clarification for system development projects.
 
 Consider the following examples of quality requirements:
@@ -59,6 +61,6 @@ Only three (instead of SEI six) attributes, but understandable and precise.
 
 ### Summary
 **Quality scenarios** document and clarify the required quality attributes. 
-They help to describe required or desired qualities of a system in a pragmatic and informal manner, making the abstract term “quality” more concrete, specific and tangible.
+They help to describe required or desired qualities of a system in a pragmatic and informal manner, making the abstract term "quality" more concrete, specific and tangible.
 
 We propose you try the pragmatic and simple Q42-Quality-Scenario template for your own projects.

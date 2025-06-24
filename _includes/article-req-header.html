@@ -27,7 +27,7 @@
 
         <ul class="tags">
             {% for requirement in requirements %}
-            {% assign check_title = page.title | downcase %}
+            {% assign check_title = page.title | downcase | replace: ' ', '-' %}
             {% if requirement.related contains check_title %}
             <li><i class="fa fa-lightbulb" style="color: var(--req-text-color)"></i></li>
             <li>
