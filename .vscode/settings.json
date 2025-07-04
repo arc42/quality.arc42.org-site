@@ -1,22 +1,36 @@
 {
-    "workbench.colorCustomizations": {
-        "activityBar.activeBackground": "#b2e6bf",
-        "activityBar.background": "#b2e6bf",
-        "activityBar.foreground": "#15202b",
-        "activityBar.inactiveForeground": "#15202b99",
-        "activityBarBadge.background": "#9b87d8",
-        "activityBarBadge.foreground": "#15202b",
-        "commandCenter.border": "#15202b99",
-        "sash.hoverBorder": "#b2e6bf",
-        "statusBar.background": "#8cd99f",
-        "statusBar.foreground": "#15202b",
-        "statusBarItem.hoverBackground": "#66cc7f",
-        "statusBarItem.remoteBackground": "#8cd99f",
-        "statusBarItem.remoteForeground": "#15202b",
-        "titleBar.activeBackground": "#8cd99f",
-        "titleBar.activeForeground": "#15202b",
-        "titleBar.inactiveBackground": "#8cd99f99",
-        "titleBar.inactiveForeground": "#15202b99"
-    },
-    "peacock.color": "#8cd99f"
+  "workbench.colorCustomizations": {
+    "activityBar.activeBackground": "#b2e6bf",
+    "activityBar.background": "#b2e6bf",
+    "activityBar.foreground": "#15202b",
+    "activityBar.inactiveForeground": "#15202b99",
+    "activityBarBadge.background": "#9b87d8",
+    "activityBarBadge.foreground": "#15202b",
+    "commandCenter.border": "#15202b99",
+    "sash.hoverBorder": "#b2e6bf",
+    "statusBar.background": "#8cd99f",
+    "statusBar.foreground": "#15202b",
+    "statusBarItem.hoverBackground": "#66cc7f",
+    "statusBarItem.remoteBackground": "#8cd99f",
+    "statusBarItem.remoteForeground": "#15202b",
+    "titleBar.activeBackground": "#8cd99f",
+    "titleBar.activeForeground": "#15202b",
+    "titleBar.inactiveBackground": "#8cd99f99",
+    "titleBar.inactiveForeground": "#15202b99"
+  },
+  "editor.formatOnSave": false,
+  "[javascript]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.formatOnSave": true
+  },
+  "[html]": {
+    "editor.formatOnSave": false
+  },
+  "[markdown]": {
+    "editor.formatOnSave": false
+  },
+  "peacock.color": "#8cd99f"
 }
