@@ -39,7 +39,7 @@ icons:
   youtube: arc42-video
   stack_overflow: arc42
   dev_to: gernotstarke
-  mastodon: gernotstarke
+  mastodon: 
 
 #
 # Prettify url.
@@ -83,6 +83,11 @@ collections:
   requirements:
     output: true
     hide: true    
+## quality standards
+  standards:
+    output: true
+    hide: true
+
 
 ## Filtering Content
 future        : false
@@ -106,6 +111,12 @@ defaults:
       type: "posts"
     values:
       layout: requirements
+      hide: "true"
+  - scope:
+      path: "standards"
+      type: "posts"
+    values:
+      layout: standards
       hide: "true"
 
 #
