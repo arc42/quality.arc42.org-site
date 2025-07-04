@@ -37,7 +37,7 @@ import process from "node:process";
  */
 function toSortedJSON(array, property) {
     return JSON.stringify(
-        array.sort((a, b) => a[property].localeCompare(b[property])),
+        array.toSorted((a, b) => a[property].localeCompare(b[property])),
         null,
         2,
     );
@@ -70,9 +70,19 @@ async function writeJsonToFile(jsonString, filename) {
  */
 
 const NODE_CONFIGS = {
-    requirement: { color: 'gold', size: 5, qualityType: 'requirement' },
-    quality: { color: 'blue', size: 10, qualityType: 'quality' },
-    property: { color: 'green', size: 20, qualityType: 'property' }
+    requirement: { color: '#ceffce', size: 15, qualityType: 'requirement' },
+    quality: { color: '#dcf1ff', size: 25, qualityType: 'quality' },
+    property: { color: '#dcf1ff', size: 40, qualityType: 'property' }
+};
+
+/**
+ * Maps to track node connections for pre-calculation
+ */
+const nodeConnections = {
+    // Maps quality nodes to their connected property nodes
+    qualityToProperties: new Map(),
+    // Maps property nodes to their connected quality nodes
+    propertyToQualities: new Map()
 };
 
 /**
@@ -118,7 +128,20 @@ function processNodeTags(id, tags, isRequirements) {
     for (const tag of tags) {
         if (!isRequirements) {
             edges.add({ source: id, target: tag });
+
+            // Track quality to property connections
+            if (!nodeConnections.qualityToProperties.has(id)) {
+                nodeConnections.qualityToProperties.set(id, new Set());
+            }
+            nodeConnections.qualityToProperties.get(id).add(tag);
+
+            // Track property to quality connections
+            if (!nodeConnections.propertyToQualities.has(tag)) {
+                nodeConnections.propertyToQualities.set(tag, new Set());
+            }
+            nodeConnections.propertyToQualities.get(tag).add(id);
         }
+
         if (!propertyNodes.has(tag)) {
             propertyNodes.set(tag, createPropertyNode(tag));
             edges.add({ source: tag, target: "quality-root" });
@@ -132,10 +155,17 @@ function processNodeTags(id, tags, isRequirements) {
  */
 function createPropertyNode(tag) {
     const config = NODE_CONFIGS.property;
+
+    // Calculate size based on number of connected quality nodes
+    // If no connections yet, use the default size
+    let nodeSize = config.size;
+
+    // We'll update the size later when we have all connections
+
     return {
         id: tag,
         label: capitalizeFirstLetter(tag),
-        size: config.size,
+        size: nodeSize,
         color: config.color,
         qualityType: config.qualityType,
         page: `/tag-${ tag }`
@@ -157,6 +187,9 @@ function capitalizeFirstLetter(text) {
 function processRelatedNodes(id, relatedIds) {
     for (const relatedId of relatedIds) {
         edges.add({ source: id, target: relatedId });
+
+        // If this is a quality node connecting to another quality node, we don't need to track it
+        // for size calculations, as we're setting fixed sizes for qualities
     }
 }
 
@@ -167,10 +200,17 @@ function processRelatedNodes(id, relatedIds) {
  */
 function addMainNode(id, data, isRequirements) {
     const config = NODE_CONFIGS[isRequirements ? 'requirement' : 'quality'];
+
+    // For quality nodes, use fixed size as specified in NODE_CONFIGS
+    // This ensures all qualities have the same size regardless of related nodes
+    let nodeSize = config.size;
+
+    // For property nodes, we would calculate size based on connections, but this is handled in createPropertyNode
+
     nodes.add({
         id,
         label: data.title,
-        size: config.size,
+        size: nodeSize,
         color: config.color,
         qualityType: config.qualityType,
         page: data.permalink

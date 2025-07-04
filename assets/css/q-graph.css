@@ -1,5 +1,5 @@
 #q-graph-container {
-    background-color: #f0ffff;
+    background-color: #ffffff;
     height: 50vh;
 }
 
@@ -10,7 +10,7 @@
 
 #full-q-graph-container {
     position: relative;
-    background-color: #f0ffff;
+    background-color: #ffffff;
     height: calc(100dvh - 200px); /* 50px for controls 150px for the footer, 216px for the header*/
     width: calc(100dvw - 1.1rem);
 }
