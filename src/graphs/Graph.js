@@ -317,52 +317,62 @@ export class Graph {
         const iterations = 50;
         const nodePositions = [];
 
-        // Map node positions to an array for easier manipulation
-        this.graph.forEachNode((nodeId, attrs) => {
-            const qualityType = attrs.qualityType;
-            let nodeDist = minDistance;
-            if (qualityType === "quality") {
-                nodeDist = minDistance * 1.5;
-            }
-            nodePositions.push({
-                id: nodeId,
-                x: attrs.x,
-                y: attrs.y,
-                level: attrs.hierarchyLevel || 1,
-                fixed: nodeId === "quality-root",
-                qualityType: qualityType,
-                minDist: nodeDist,
+        // Hilfsfunktion: Initialisiere nodePositions
+        const initNodePositions = () => {
+            this.graph.forEachNode((nodeId, attrs) => {
+                const qualityType = attrs.qualityType;
+                let nodeDist = minDistance;
+                if (qualityType === "quality") {
+                    nodeDist = minDistance * 1.5;
+                }
+                nodePositions.push({
+                    id: nodeId,
+                    x: attrs.x,
+                    y: attrs.y,
+                    level: attrs.hierarchyLevel || 1,
+                    fixed: nodeId === "quality-root",
+                    qualityType: qualityType,
+                    minDist: nodeDist,
+                });
             });
-        });
+        };
 
-        // Adjust positions iteratively to minimize overlaps
+        // Hilfsfunktion: Berechne Verschiebung für einen Knoten
+        const computeNodeShift = (nodeA, i) => {
+            if (nodeA.fixed) return { dx: 0, dy: 0, moved: false };
+            let dx = 0, dy = 0, moved = false;
+            for (let j = 0; j < nodePositions.length; j++) {
+                if (i === j) continue;
+                const nodeB = nodePositions[j];
+                const repulsion = this._computeRepulsion(nodeA, nodeB);
+                dx += repulsion.dx;
+                dy += repulsion.dy;
+                if (repulsion.moved) moved = true;
+            }
+            return { dx, dy, moved };
+        };
+
+        initNodePositions();
+
+        // Iterative Anpassung
         for (let iter = 0; iter < iterations; iter++) {
             let moved = false;
             for (let i = 0; i < nodePositions.length; i++) {
                 const nodeA = nodePositions[i];
-                if (nodeA.fixed) continue;
-
-                let dx = 0, dy = 0;
-                for (let j = 0; j < nodePositions.length; j++) {
-                    if (i === j) continue;
-                    const nodeB = nodePositions[j];
-                    const repulsion = this._computeRepulsion(nodeA, nodeB);
-                    dx += repulsion.dx;
-                    dy += repulsion.dy;
-                    if (repulsion.moved) moved = true;
-                }
+                const { dx, dy, moved: nodeMoved } = computeNodeShift(nodeA, i);
 
                 if (dx !== 0 || dy !== 0) {
                     nodeA.x += dx;
                     nodeA.y += dy;
                 }
+                if (nodeMoved) moved = true;
 
                 this._adjustDistanceFromCenter(nodeA, minDistance);
             }
             if (!moved) break;
         }
 
-        // Update graph with new positions
+        // Update graph mit neuen Positionen
         nodePositions.forEach(({ id, x, y }) => {
             this.graph.updateNodeAttributes(id, (attrs) => ({
                 ...attrs,
