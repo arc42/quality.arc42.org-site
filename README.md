@@ -1,9 +1,20 @@
 # arc42 Quality model
 
-Here we collect definitions of quality attributes and their relationships .
+Here we collect definitions and explanations of 
 
+* _quality attributes_ (short: qualities) and their relationships, plus 
+* many practical, real-world examples of _quality requirements_
+* quality-related standards, like ISO-25010, ISO-27001, ISO-26262, MISRA and others.
+
+
+![Our metamodel](images/articles/metamodel/q42-metamodel.webp)
+
+
+## The website (https://quality.arc42.org)
 
 It's powered by Jekyll and a modified TTSCK theme (see below).
+We use Liquid for extensive automatic hyperlinking along the dependencies you see in the model above.
+
 
 ## License
 As all of the arc42 content, this FAQ is free to use under a liberal Creative-Commons
