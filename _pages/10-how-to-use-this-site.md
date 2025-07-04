@@ -12,7 +12,7 @@ To make the best use, you should become familiar with our terminology.
 
 ## Our _Domain Language_
 
-![Q42 explanatory **model**](/images/articles/metamodel/q42-metamodel.svg)
+![Q42 explanatory **model**](/images/articles/metamodel/q42-metamodel.webp)
 
 Let's explain some terms:
 
@@ -24,6 +24,8 @@ Let's explain some terms:
 | **Stakeholder** | People, roles or organizations that need, want or require certain quality [**requirements**](/requirements/) for their systems. |
 | **Examples**  | These are the specific requirements stakeholders have for a system or product, often expressed in the form of quality scenarios. They should facilitate stakeholder communication by enabling a common understanding of the _good enough_. Q42 provides >50 of these [**examples**](/requirements/) |
 | **Acceptance criterion**  | What does _good enough_ mean with respect to a specific quality. |
+| **Approach**  | How to achieve one or several qualities.  |
+| **Standard**  | Numerous international standards describe/prescribe/care about certain aspects of quality. Important ones are ISO-25000:2023, ISO-27001 or MISRA.  |
 
 ## Three Dimensions of Quality
 
