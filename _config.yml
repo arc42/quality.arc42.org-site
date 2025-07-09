@@ -79,6 +79,10 @@ collections:
   articles:
     output: true
     hide: true
+## qualities are the attributes/properties, like efficiency, flexibility etc
+  qualities:
+    output: true
+    hide: true    
 ## quality requirements to describe and capture specific quality requirements
   requirements:
     output: true

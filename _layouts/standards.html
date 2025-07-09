@@ -1,0 +1,35 @@
+---
+layout: default
+---
+
+<div class="article-wrapper">
+    <article>
+        {% include article-header.html page=page link=false share=page.share %}
+        <section class="post-content">
+            {{ content }}
+        </section>
+        {% include article-footer.html page=page share=page.share %}
+    </article>
+</div>
+
+
+<h2><span style="background-color:var(--quality-color)">Related Qualities</span></h2>
+
+{% assign qualities = site.posts | where: "categories", "qualities" %}
+
+{{ qualities | size}} qualities found.
+
+<ul>
+{% for quality in qualities %}
+      {% if quality.standards contains page.standard_id %}
+        <li><a href="{{ quality.url | relative_url }}">{{ quality.title }}</a></li>
+      {% endif %}
+    {% endfor %}
+</ul>
+
+
+{% if site.show-subtle-ads %}
+<section class="subtle-ads">
+  {% include subtle-ads/subtle-ads.html %}
+</section>
+{% endif %}
