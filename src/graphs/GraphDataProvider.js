@@ -140,27 +140,18 @@ export class GraphDataProvider {
     }
 
     /**
-     * Prepare data for the home graph (hide quality nodes, remove requirement nodes)
+     * Prepare data for the home graph (only include root and property nodes)
      * @returns {Object} Object with prepared propertyNodes, nodes, and edges
      */
     prepareHomeGraphData() {
-        // For homepage, hide quality nodes and remove requirement nodes
-        const homeNodes = this.nodes.filter(node =>
-            node.qualityType !== "requirement"
-        ).map(node => ({
-            ...node,
-            hidden: node.qualityType === "quality"
-        }));
+        const rootNode = this.nodes.find(node => node.id === "quality-root");
+        const homeNodes = rootNode ? [rootNode] : [];
 
-
-        // Filter edges to include only those between visible nodes
+        // Filter edges to only include those connecting property nodes to the root node
         const homeEdges = this.edges.filter(edge => {
-            const sourceNode = this.nodes.find(node => node.id === edge.source);
-            const targetNode = this.nodes.find(node => node.id === edge.target);
-
-            return sourceNode && targetNode &&
-                sourceNode.qualityType !== "requirement" &&
-                targetNode.qualityType !== "requirement";
+            // Only keep edges between property nodes and the root node
+            return (edge.source === "quality-root" && this.propertyNodes.some(node => node.id === edge.target)) ||
+                (edge.target === "quality-root" && this.propertyNodes.some(node => node.id === edge.source));
         });
 
         return {

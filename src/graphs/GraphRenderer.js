@@ -75,10 +75,10 @@ export class GraphRenderer {
     /**
      * Render the graph with the given data
      * @param {Object} graphData - Object with nodes and links arrays
-     * @param {Function} onNodeClick - Function to call when a node is clicked
+     * @param {Function} onNodeHover - Function to call when a node is hovered
      * @param {Function} onNodeDoubleClick - Function to call when a node is double-clicked
      */
-    render(graphData, onNodeClick, onNodeDoubleClick) {
+    render(graphData, onNodeHover, onNodeDoubleClick) {
         // Clear existing elements
         if (this.svg) {
             this.svg.selectAll("g").remove();
@@ -134,9 +134,9 @@ export class GraphRenderer {
         this.setupDrag();
 
         // Setup node interactions
-        if (onNodeClick) {
+        if (onNodeHover) {
             // Add mouseenter event to highlight the node
-            this.nodes.on("mouseenter", onNodeClick);
+            this.nodes.on("mouseenter", onNodeHover);
 
             // Add mouseleave event to reset highlighting
             this.nodes.on("mouseleave", (event, d) => {
@@ -147,7 +147,7 @@ export class GraphRenderer {
                 });
 
                 // Reset visual appearance
-                this.highlightNode(d.id, false);
+                this.highlightNode(d.id, false, null);
             });
         }
 
@@ -251,20 +251,24 @@ export class GraphRenderer {
      * Highlight nodes and their connections
      * @param {string} nodeId - ID of the node to highlight
      * @param {boolean} highlight - Whether to highlight or unhighlight
+     * @param {Set} [providedConnectedNodes] - Optional Set of connected node IDs
      */
-    highlightNode(nodeId, highlight = true) {
+    highlightNode(nodeId, highlight = true, providedConnectedNodes = null) {
         if (!this.nodes || !this.links || !this.labels) return;
 
         // Highlight the node
         this.nodes.filter(d => d.id === nodeId)
             .classed("highlighted", highlight);
 
-        // Highlight connected nodes
-        const connectedNodes = new Set();
-        this.links.each(function (d) {
-            if (d.source.id === nodeId) connectedNodes.add(d.target.id);
-            if (d.target.id === nodeId) connectedNodes.add(d.source.id);
-        });
+        // Use provided connected nodes if available, otherwise calculate them
+        const connectedNodes = providedConnectedNodes || (() => {
+            const nodes = new Set();
+            this.links.each(function (d) {
+                if (d.source.id === nodeId) nodes.add(d.target.id);
+                if (d.target.id === nodeId) nodes.add(d.source.id);
+            });
+            return nodes;
+        })();
 
         this.nodes.filter(d => connectedNodes.has(d.id))
             .classed("connected-highlighted", highlight);

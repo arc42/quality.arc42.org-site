@@ -19,21 +19,17 @@ export class HomeGraph extends Graph {
      */
     buildGraph() {
         // For homepage, we need to prepare the data differently
-        // Get home graph data (no requirements, hidden qualities)
+        // Get home graph data (only root and property nodes)
         const homeData = this.dataProvider.prepareHomeGraphData();
 
-        // #941651
-
         try {
-            this.graph.clear(); // Clear any existing graph data
+            this.graph.clear();
 
-            this.createRootNode("Quality", 35, "#ebebeb");
+            this.createRootNode("Quality", 45, "#ebebeb");
             this.createNodes(homeData.propertyNodes);
-            this.createNodes(homeData.nodes);
             this.createEdges(homeData.edges);
 
             this.applyEnhancedRadialLayout("quality-root", 250);
-
         } catch (error) {
             console.error("Could not build home graph", { cause: error });
         }
@@ -43,7 +39,7 @@ export class HomeGraph extends Graph {
 
     /**
      * Register default event handlers for the home graph
-     * @returns {HomeGraph} This graph instance for chaining
+     * @returns {Graph} This graph instance for chaining
      */
     registerDefaultEventHandlers() {
         // Default double-click handler for navigation
@@ -53,8 +49,8 @@ export class HomeGraph extends Graph {
             }
         };
 
-        // Default click handler for highlighting
-        const nodeClick = (event, d) => {
+        // Default click hover handler for highlighting
+        const nodeHover = (event, d) => {
             // Toggle highlight state
             const isHighlighted = d.highlighted;
 
@@ -64,12 +60,12 @@ export class HomeGraph extends Graph {
                 node.connectedHighlighted = false;
             });
 
+            const connectedNodes = new Set();
             if (!isHighlighted) {
                 // Highlight this node and its connections
                 d.highlighted = true;
 
                 // Find connected nodes
-                const connectedNodes = new Set();
                 this.renderer.links.each(function (link) {
                     if (link.source.id === d.id) {
                         connectedNodes.add(link.target.id);
@@ -83,11 +79,11 @@ export class HomeGraph extends Graph {
             }
 
             // Update visual appearance
-            this.renderer.highlightNode(d.id, !isHighlighted);
+            this.renderer.highlightNode(d.id, !isHighlighted, connectedNodes);
         };
 
         return this.registerEventHandlers({
-            nodeClick,
+            nodeHover,
             nodeDoubleClick
         });
     }

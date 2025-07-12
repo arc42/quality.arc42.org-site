@@ -470,7 +470,7 @@ export class Graph {
         // Render the graph
         this.renderer.render(
             graphData,
-            this.eventHandlers.nodeClick,
+            this.eventHandlers.nodeHover,
             this.eventHandlers.nodeDoubleClick
         );
 

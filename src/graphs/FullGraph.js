@@ -84,8 +84,8 @@ export class FullGraph extends Graph {
             }
         };
 
-        // Default click handler for highlighting
-        const nodeClick = (event, d) => {
+        // Default click hover handler for highlighting
+        const nodeHover = (event, d) => {
             // Toggle highlight state
             const isHighlighted = d.highlighted;
 
@@ -95,12 +95,12 @@ export class FullGraph extends Graph {
                 node.connectedHighlighted = false;
             });
 
+            const connectedNodes = new Set();
             if (!isHighlighted) {
                 // Highlight this node and its connections
                 d.highlighted = true;
 
                 // Find connected nodes
-                const connectedNodes = new Set();
                 this.renderer.links.each(function (link) {
                     if (link.source.id === d.id) {
                         connectedNodes.add(link.target.id);
@@ -114,11 +114,11 @@ export class FullGraph extends Graph {
             }
 
             // Update visual appearance
-            this.renderer.highlightNode(d.id, !isHighlighted);
+            this.renderer.highlightNode(d.id, !isHighlighted, connectedNodes);
         };
 
         return this.registerEventHandlers({
-            nodeClick,
+            nodeHover,
             nodeDoubleClick
         });
     }
