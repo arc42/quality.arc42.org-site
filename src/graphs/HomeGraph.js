@@ -11,6 +11,17 @@ export class HomeGraph extends Graph {
      */
     constructor(containerId, dataProvider) {
         super(containerId, "home", dataProvider);
+        this.fullGraphToggle = null;
+    }
+
+    /**
+     * Initialize the graph and add the full graph toggle button
+     * @returns {HomeGraph} This graph instance for chaining
+     */
+    initialize() {
+        super.initialize();
+        this.addFullGraphToggle();
+        return this;
     }
 
     /**
@@ -33,6 +44,29 @@ export class HomeGraph extends Graph {
         } catch (error) {
             console.error("Could not build home graph", { cause: error });
         }
+
+        return this;
+    }
+
+    /**
+     * Add the full graph toggle button to the container
+     * @returns {HomeGraph} This graph instance for chaining
+     */
+    addFullGraphToggle() {
+        // Create the button element
+        this.fullGraphToggle = document.createElement('button');
+        this.fullGraphToggle.id = 'full-graph-toggle';
+        this.fullGraphToggle.innerHTML = '<i class="fas fa-expand"></i>';
+        this.fullGraphToggle.setAttribute('aria-label', 'Open full graph');
+        this.fullGraphToggle.title = 'Open full graph';
+
+        // Add click event listener to navigate to the full graph page
+        this.fullGraphToggle.addEventListener('click', () => {
+            window.location.href = '/full-quality-graph';
+        });
+
+        // Add the button to the container
+        this.container.appendChild(this.fullGraphToggle);
 
         return this;
     }

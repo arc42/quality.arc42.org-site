@@ -1,6 +1,7 @@
 #q-graph-container {
     background-color: #ffffff;
     height: 50vh;
+    position: relative;
 }
 
 #graph-site {
@@ -35,4 +36,31 @@
     overflow: hidden;
     padding: 0;
     position: absolute;
+}
+
+#full-graph-toggle {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    background-color: #941651;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+    cursor: pointer;
+    display: none;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out;
+}
+
+#full-graph-toggle:hover {
+    transform: scale(1.1);
+    background-color: #c77da3;
+}
+
+#q-graph-container:hover #full-graph-toggle {
+    display: block;
 }
