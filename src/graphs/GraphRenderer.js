@@ -149,6 +149,24 @@ export class GraphRenderer {
                 // Reset visual appearance
                 this.highlightNode(d.id, false, null);
             });
+
+            // Add hover events to labels that are inside nodes (quality-root and property types)
+            const internalLabels = this.labels.filter(d => d.id === "quality-root" || d.qualityType === "property");
+
+            // Add mouseenter event to highlight the node
+            internalLabels.on("mouseenter", onNodeHover);
+
+            // Add mouseleave event to reset highlighting
+            internalLabels.on("mouseleave", (event, d) => {
+                // Reset all highlights
+                this.nodes.each(function (node) {
+                    node.highlighted = false;
+                    node.connectedHighlighted = false;
+                });
+
+                // Reset visual appearance
+                this.highlightNode(d.id, false, null);
+            });
         }
 
         if (onNodeDoubleClick) {
@@ -232,7 +250,8 @@ export class GraphRenderer {
      * Setup drag behavior
      */
     setupDrag() {
-        this.nodes.call(d3.drag()
+        // Define the drag behavior
+        const dragBehavior = d3.drag()
             .on("start", (event, d) => {
                 if (!event.active) this.simulation.alphaTarget(0.3).restart();
                 d.fx = d.x;
@@ -244,7 +263,14 @@ export class GraphRenderer {
             })
             .on("end", (event, _) => {
                 if (!event.active) this.simulation.alphaTarget(0);
-            }));
+            });
+
+        // Apply drag behavior to nodes
+        this.nodes.call(dragBehavior);
+
+        // Apply drag behavior to labels that are inside nodes (quality-root and property types)
+        this.labels.filter(d => d.id === "quality-root" || d.qualityType === "property")
+            .call(dragBehavior);
     }
 
     /**
