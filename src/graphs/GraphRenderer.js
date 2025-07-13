@@ -320,6 +320,66 @@ export class GraphRenderer {
     }
 
     /**
+     * Center the view on the visible nodes
+     */
+    centerView() {
+        if (!this.svg || !this.nodes || this.nodes.size() === 0) return;
+
+        // Calculate the bounding box of all visible nodes
+        let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
+
+        this.nodes.each(function(d) {
+            if (d3.select(this).style("display") !== "none") {
+                minX = Math.min(minX, d.x);
+                minY = Math.min(minY, d.y);
+                maxX = Math.max(maxX, d.x);
+                maxY = Math.max(maxY, d.y);
+            }
+        });
+
+        // If no visible nodes, return
+        if (minX === Infinity) return;
+
+        // Calculate center and scale
+        const width = this.width;
+        const height = this.height;
+        const graphWidth = maxX - minX;
+        const graphHeight = maxY - minY;
+        const centerX = minX + graphWidth / 2;
+        const centerY = minY + graphHeight / 2;
+
+        // Calculate scale to fit the graph with some padding
+        const padding = 50;
+        const scale = Math.min(
+            0.9 * width / (graphWidth + padding),
+            0.9 * height / (graphHeight + padding),
+            3 // Maximum zoom level
+        );
+
+        // Apply the transform
+        const transform = d3.zoomIdentity
+            .translate(width / 2, height / 2)
+            .scale(scale)
+            .translate(-centerX, -centerY);
+
+        this.svg.transition()
+            .duration(750)
+            .call(d3.zoom().transform, transform);
+
+        // Update current zoom scale
+        this.currentZoomScale = scale;
+
+        // Update label and node visibility with the new zoom scale
+        if (this.updateLabelVisibility) {
+            this.updateLabelVisibility(this.currentZoomScale);
+        }
+
+        if (this.updateNodeVisibility) {
+            this.updateNodeVisibility(this.currentZoomScale);
+        }
+    }
+
+    /**
      * Get the renderer components
      * @returns {Object} Object with nodes, links, labels, and simulation
      */

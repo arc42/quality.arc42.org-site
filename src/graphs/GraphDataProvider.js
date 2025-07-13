@@ -123,18 +123,45 @@ export class GraphDataProvider {
         // Always include the root node
         allVisibleNodeIds.add("quality-root");
 
+        // Find property nodes that have visible neighbors other than the root node
+        const visiblePropertyNodeIds = new Set();
+
+        // For each property node, check if it has visible neighbors other than the root node
+        this.propertyNodes.forEach(propNode => {
+            let hasVisibleNeighbor = false;
+
+            // Check if this property node is connected to any visible node other than the root
+            this.edges.forEach(edge => {
+                if (edge.source === propNode.id && edge.target !== "quality-root" && allVisibleNodeIds.has(edge.target)) {
+                    hasVisibleNeighbor = true;
+                }
+                if (edge.target === propNode.id && edge.source !== "quality-root" && allVisibleNodeIds.has(edge.source)) {
+                    hasVisibleNeighbor = true;
+                }
+            });
+
+            // If it has visible neighbors, add it to the visible property nodes
+            if (hasVisibleNeighbor) {
+                visiblePropertyNodeIds.add(propNode.id);
+                allVisibleNodeIds.add(propNode.id);
+            }
+        });
+
         // Filter nodes to include only visible ones
         this.filteredNodes = this.nodes.filter(node =>
             allVisibleNodeIds.has(node.id)
         );
 
         // Filter edges to include only those between visible nodes
-        this.filteredEdges = this.edges.filter(edge =>
-            allVisibleNodeIds.has(edge.source) && allVisibleNodeIds.has(edge.target)
-        );
+        this.filteredEdges = this.edges.filter(edge => {
+            // Include edges between visible nodes
+            return allVisibleNodeIds.has(edge.source) && allVisibleNodeIds.has(edge.target);
+        });
 
-        // Always include all property nodes
-        this.filteredPropertyNodes = this.propertyNodes;
+        // Only include property nodes that have visible neighbors
+        this.filteredPropertyNodes = this.propertyNodes.filter(node =>
+            visiblePropertyNodeIds.has(node.id)
+        );
 
         return this.getData();
     }
