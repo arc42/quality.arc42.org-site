@@ -55,7 +55,11 @@ export class GraphRenderer {
         }
 
         if (this.simulation) {
-            this.simulation.force("center").x(this.width / 2).y(this.height / 2);
+            // Adjust center position to account for sidebar width
+            const sidebarWidth = 200;
+            const centerX = (this.width + sidebarWidth) / 2;
+
+            this.simulation.force("center").x(centerX).y(this.height / 2);
             this.simulation.alpha(1).restart();
         }
     }
@@ -244,6 +248,11 @@ export class GraphRenderer {
             });
 
         this.svg.call(zoom);
+
+        // Set initial transform to account for sidebar width
+        const sidebarWidth = 200;
+        const initialTransform = d3.zoomIdentity.translate(sidebarWidth / 2, 0);
+        this.svg.call(zoom.transform, initialTransform);
     }
 
     /**

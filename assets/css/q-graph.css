@@ -12,19 +12,85 @@
 #full-q-graph-container {
     position: relative;
     background-color: #ffffff;
-    height: calc(100dvh - 200px); /* 50px for controls 150px for the footer, 216px for the header*/
+    height: calc(100dvh - 150px); /* 150px for the footer, 216px for the header*/
     width: calc(100dvw - 1.1rem);
 }
 
-#full-q-graph-controls-container {
-    position: relative;
-    top: 0;
-    left: 0;
-    padding: 1rem 1.5rem;
-    width: fit-content;
-    height: 50px;
-    background-color: transparent;
+#full-q-graph-sidebar {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 200px;
+    max-height: 80%;
+    background-color: rgba(255, 255, 255, 0.6);
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
     z-index: 1000;
+    overflow-y: auto;
+    transition: background-color 0.3s ease;
+}
+
+#full-q-graph-sidebar:hover {
+    background-color: rgba(255, 255, 255, 1);
+}
+
+#full-q-graph-controls-container {
+    margin-bottom: 2rem;
+}
+
+#full-q-graph-controls-container h3,
+#full-q-graph-legend h3 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+    color: #333;
+}
+
+#full-q-graph-filter__input {
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+#full-q-graph-filter__btn {
+    width: 100%;
+    padding: 0.5rem;
+    background-color: #941651;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#full-q-graph-filter__btn:hover {
+    background-color: #c77da3;
+}
+
+#full-q-graph-legend {
+    margin-top: 1rem;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.color-box {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+.legend-label {
+    font-size: 0.7rem;
 }
 
 .sr-only {
