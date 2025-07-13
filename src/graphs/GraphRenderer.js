@@ -38,7 +38,7 @@ export class GraphRenderer {
         this.simulation = this.createSimulation();
 
         // Setup resize handler
-        this.container.addEventListener("resize", this.handleResize.bind(this));
+        this._addResizeHandler();
 
         return this;
     }
@@ -46,18 +46,16 @@ export class GraphRenderer {
     /**
      * Handle container resize
      */
-    handleResize() {
-        this.width = this.container.clientWidth;
-        this.height = this.container.clientHeight;
+    _handleResize(width, height) {
+        this.width = width;
+        this.height = height;
 
         if (this.svg) {
             this.svg.attr("width", this.width).attr("height", this.height);
         }
 
         if (this.simulation) {
-            // Adjust center position to account for sidebar width
-            const sidebarWidth = 200;
-            const centerX = (this.width + sidebarWidth) / 2;
+            const centerX = this.width / 2;
 
             this.simulation.force("center").x(centerX).y(this.height / 2);
             this.simulation.alpha(1).restart();
@@ -540,5 +538,12 @@ export class GraphRenderer {
                 });
             }
         };
+    }
+
+    _addResizeHandler() {
+        new ResizeObserver(entries => {
+            const rect = entries[0].contentRect;
+            this._handleResize(rect.width, rect.height);
+        }).observe(this.container);
     }
 }
