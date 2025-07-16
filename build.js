@@ -1,7 +1,13 @@
 import esbuild from "esbuild";
+import { generateData } from "./src/scripts/data.js";
 
 async function build({ watch = false } = {}) {
   try {
+    // Generate data files first
+    console.log("Generating graph data...");
+    await generateData();
+    console.log("Graph data generation complete.");
+
     const context = await esbuild.context({
       entryPoints: [
         "src/graphs/homepage/main.js",
