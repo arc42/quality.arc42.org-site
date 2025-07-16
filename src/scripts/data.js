@@ -47,8 +47,9 @@ function toSortedJSON(array, property) {
  * Write JSON to assets
  * @param {string} jsonString
  * @param {string} filename
+ * @param {string} assetsDir
  */
-async function writeJsonToFile(jsonString, filename) {
+async function writeJsonToFile(jsonString, filename, assetsDir) {
     const dataPath = path.join(assetsDir, "data");
     const outputPath = path.join(dataPath, filename);
     await fs.mkdir(dataPath, { recursive: true });
@@ -89,16 +90,19 @@ const nodeConnections = {
  * Create and write a JSON file that represents all types of quality nodes
  * @param {FrontmatterData[]} frontmatterData
  * @param {boolean} isRequirements
+ * @param {Map<string, Q42Node>} propertyNodes
+ * @param {Set<Q42Node>} nodes
+ * @param {Set<Q42Edge>} edges
  */
-function createGraphData(frontmatterData, isRequirements = false) {
+function createGraphData(frontmatterData, isRequirements = false, propertyNodes, nodes, edges) {
     for (const data of frontmatterData) {
         const id = extractId(data.permalink);
         const tags = parseList(data.tags, ' ');
         const relatedIds = parseList(data.related, ',');
 
-        processNodeTags(id, tags, isRequirements);
-        processRelatedNodes(id, relatedIds);
-        addMainNode(id, data, isRequirements);
+        processNodeTags(id, tags, isRequirements, propertyNodes, edges);
+        processRelatedNodes(id, relatedIds, edges);
+        addMainNode(id, data, isRequirements, nodes);
     }
 }
 
@@ -123,8 +127,10 @@ function parseList(value, separator) {
  * @param {string} id
  * @param {string[]} tags
  * @param {boolean} isRequirements
+ * @param {Map<string, Q42Node>} propertyNodes
+ * @param {Set<Q42Edge>} edges
  */
-function processNodeTags(id, tags, isRequirements) {
+function processNodeTags(id, tags, isRequirements, propertyNodes, edges) {
     for (const tag of tags) {
         if (!isRequirements) {
             edges.add({ source: id, target: tag });
@@ -183,8 +189,9 @@ function capitalizeFirstLetter(text) {
 /**
  * @param {string} id
  * @param {string[]} relatedIds
+ * @param {Set<Q42Edge>} edges
  */
-function processRelatedNodes(id, relatedIds) {
+function processRelatedNodes(id, relatedIds, edges) {
     for (const relatedId of relatedIds) {
         edges.add({ source: id, target: relatedId });
 
@@ -197,8 +204,9 @@ function processRelatedNodes(id, relatedIds) {
  * @param {string} id
  * @param {FrontmatterData} data
  * @param {boolean} isRequirements
+ * @param {Set<Q42Node>} nodes
  */
-function addMainNode(id, data, isRequirements) {
+function addMainNode(id, data, isRequirements, nodes) {
     const config = NODE_CONFIGS[isRequirements ? 'requirement' : 'quality'];
 
     // For quality nodes, use fixed size as specified in NODE_CONFIGS
@@ -258,38 +266,50 @@ async function getFilePaths(dir) {
 }
 
 
-const projectRoot = process.cwd();
-const qualitiesDir = path.join(projectRoot, "qualities");
-const requirementsDir = path.join(projectRoot, "requirements");
-const assetsDir = path.join(projectRoot, "assets");
+/**
+ * Generate graph data files
+ */
+async function generateData() {
+    const projectRoot = process.cwd();
+    const qualitiesDir = path.join(projectRoot, "qualities");
+    const requirementsDir = path.join(projectRoot, "requirements");
+    const assetsDir = path.join(projectRoot, "assets");
 
-let [qualityFiles, requirementFiles] = await Promise.all([
-    getFilePaths(qualitiesDir),
-    getFilePaths(requirementsDir),
-]);
+    let [qualityFiles, requirementFiles] = await Promise.all([
+        getFilePaths(qualitiesDir),
+        getFilePaths(requirementsDir),
+    ]);
 
-qualityFiles = qualityFiles.filter((f) => !f.includes("_files-must-have-identical-dates"));
-requirementFiles = requirementFiles.filter((f) => !f.includes("_req-template-simple"));
+    qualityFiles = qualityFiles.filter((f) => !f.includes("_files-must-have-identical-dates"));
+    requirementFiles = requirementFiles.filter((f) => !f.includes("_req-template-simple"));
 
-const [qualityData, requirementsData] = await Promise.all([
-    parseFrontmatter(qualityFiles),
-    parseFrontmatter(requirementFiles),
-]);
+    const [qualityData, requirementsData] = await Promise.all([
+        parseFrontmatter(qualityFiles),
+        parseFrontmatter(requirementFiles),
+    ]);
 
-/** @type {Map<string, Q42Node>} */
-const propertyNodes = new Map();
+    /** @type {Map<string, Q42Node>} */
+    const propertyNodes = new Map();
 
-/** @type {Set<Q42Node>} */
-const nodes = new Set();
+    /** @type {Set<Q42Node>} */
+    const nodes = new Set();
 
-/** @type {Set<Q42Edge>} */
-const edges = new Set();
+    /** @type {Set<Q42Edge>} */
+    const edges = new Set();
 
-createGraphData(qualityData);
-createGraphData(requirementsData, true);
+    createGraphData(qualityData, false, propertyNodes, nodes, edges);
+    createGraphData(requirementsData, true, propertyNodes, nodes, edges);
 
-await Promise.all([
-    writeJsonToFile(toSortedJSON(Array.from(propertyNodes.values()), "label"), "property-nodes.json"),
-    writeJsonToFile(toSortedJSON(Array.from(nodes), "label"), "nodes.json"),
-    writeJsonToFile(toSortedJSON(Array.from(edges), "source"), "edges.json"),
-]);
+    await Promise.all([
+        writeJsonToFile(toSortedJSON(Array.from(propertyNodes.values()), "label"), "property-nodes.json", assetsDir),
+        writeJsonToFile(toSortedJSON(Array.from(nodes), "label"), "nodes.json", assetsDir),
+        writeJsonToFile(toSortedJSON(Array.from(edges), "source"), "edges.json", assetsDir),
+    ]);
+}
+
+// Run if called directly
+if (import.meta.url === `file://${process.argv[1]}`) {
+    await generateData();
+}
+
+export { generateData };
