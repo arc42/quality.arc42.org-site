@@ -1,0 +1,21 @@
+<div class="quality-requirement">
+
+  <h3 id="overall-goal-reduce-and-control-jitter-in-the-real-time-streaming-of-data">Overall goal: Reduce and control <a href="/qualities/jitter">jitter</a> in the real-time streaming of data.</h3>
+
+  <p><strong>Stimulus</strong>: Continuous transmission of real-time data (from sensors) over a network,.</p>
+
+  <p><strong>Environment</strong>: Operational phase under standard network conditions.</p>
+
+  <p><strong>Response</strong>: The system handles variations in delay of data packet delivery.</p>
+
+  <p><strong>Response Measure</strong>:</p>
+
+  <ul>
+    <li>The variance in delay between data packets (jitter) should not exceed 5 milliseconds for 95% of the transmitted packets</li>
+    <li>In instances where jitter exceeds this threshold, the system should employ buffering mechanisms to smooth the data flow, ensuring that the effective jitter experienced by the end-user remains below 7 milliseconds</li>
+    <li>The system must detect and log instances of high jitter (above 5 milliseconds) in real-time, triggering alerts for the technical team when such instances exceed 5% of the total packets in any 10-minute window</li>
+    <li>During peak load times, the allowable jitter can increase to a maximum of 10 milliseconds, but such instances should not exceed 2% of the total packets transmitted in a 24-hour period.</li>
+  </ul>
+
+</div>
+<p><br /></p>

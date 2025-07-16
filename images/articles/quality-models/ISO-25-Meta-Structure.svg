@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:xl="http://www.w3.org/1999/xlink" viewBox="203 185 449 311" width="449" height="311">
+  <defs/>
+  <g id="Canvas_1" stroke-dasharray="none" fill-opacity="1" fill="none" stroke="none" stroke-opacity="1">
+    <title>Canvas 1</title>
+    <rect fill="white" x="203" y="185" width="449" height="311"/>
+    <g id="Canvas_1_Layer_1">
+      <title>Layer 1</title>
+      <g id="Graphic_7">
+        <rect x="204" y="185.5" width="447" height="309.5" fill="#ebebeb"/>
+        <rect x="204" y="185.5" width="447" height="309.5" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(209 439.2019)" fill="black">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="14" fill="black" x="159.133" y="31">Extension</tspan>
+          <tspan font-family="Helvetica Neue" font-size="14" fill="black" y="31"> Division</tspan>
+          <tspan font-family="Helvetica Neue" font-size="14" fill="black" x="118.785" y="47.4061">ISO/IEC 25050 - ISO/IEC 25099</tspan>
+        </text>
+      </g>
+      <g id="Graphic_2">
+        <rect x="222" y="211" width="128" height="232.5" fill="white"/>
+        <rect x="222" y="211" width="128" height="232.5" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(227 285.4519)" fill="black">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="14" fill="black" x="35.676" y="14">Quality </tspan>
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="14" fill="black" x="12.345" y="31.406097">Requirements</tspan>
+          <tspan font-family="Helvetica Neue" font-size="14" fill="black" x="34.5" y="47.812195">Division</tspan>
+          <tspan font-family="Helvetica Neue" font-size="14" fill="black" x="39.54" y="80.20419">2503n</tspan>
+        </text>
+      </g>
+      <g id="Graphic_3">
+        <rect x="350" y="285" width="152.5" height="84.5" fill="white"/>
+        <rect x="350" y="285" width="152.5" height="84.5" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(355 294.15495)" fill="black">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="14" fill="black" x="2.174" y="14">Quality Management</tspan>
+          <tspan font-family="Helvetica Neue" font-size="14" fill="black" x="46.75" y="30.406097">Division</tspan>
+          <tspan font-family="Helvetica Neue" font-size="14" fill="black" x="51.79" y="62.798096">2500n</tspan>
+        </text>
+      </g>
+      <g id="Graphic_4">
+        <rect x="350" y="211" width="152.5" height="74" fill="white"/>
+        <rect x="350" y="211" width="152.5" height="74" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(355 214.90495)" fill="black">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="14" fill="black" x="25.253" y="14">Quality Model</tspan>
+          <tspan font-family="Helvetica Neue" font-size="14" fill="black" x="46.75" y="30.406097">Division</tspan>
+          <tspan font-family="Helvetica Neue" font-size="14" fill="black" x="51.79" y="62.798096">2501n</tspan>
+        </text>
+      </g>
+      <g id="Graphic_5">
+        <rect x="350" y="369.5" width="152.5" height="74" fill="white"/>
+        <rect x="350" y="369.5" width="152.5" height="74" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(352 373.40495)" fill="black">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="14" fill="black" x="3.095" y="14">Quality Measurement</tspan>
+          <tspan font-family="Helvetica Neue" font-size="14" fill="black" x="49.75" y="30.406097">Division</tspan>
+          <tspan font-family="Helvetica Neue" font-size="14" fill="black" x="54.79" y="62.798096">2502n</tspan>
+        </text>
+      </g>
+      <g id="Graphic_6">
+        <rect x="502.5" y="211" width="128" height="232.5" fill="white"/>
+        <rect x="502.5" y="211" width="128" height="232.5" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(507.5 285.4519)" fill="black">
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="14" fill="black" x="35.676" y="14">Quality </tspan>
+          <tspan font-family="Helvetica Neue" font-weight="bold" font-size="14" fill="black" x="24.133" y="31.406097">Evaluation</tspan>
+          <tspan font-family="Helvetica Neue" font-size="14" fill="black" x="34.5" y="47.812195">Division</tspan>
+          <tspan font-family="Helvetica Neue" font-size="14" fill="black" x="39.54" y="80.20419">2504n</tspan>
+        </text>
+      </g>
+    </g>
+  </g>
+</svg>

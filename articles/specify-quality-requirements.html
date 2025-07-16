@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    
+
+
+
+    
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+ 
+ <!-- SEO includes title and canonical tags, plus several others -->
+ <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>How to specify quality requirements | arc42 Quality Model</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="How to specify quality requirements" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Quality is such a vague and broad term, that it needs clarification for system development projects. Consider the following examples of quality requirements: An authenticated user requests generation of the daily sales report in PDF format via the graphical user interface. The system generates this report in less than 10 seconds. When a user configures a health insurance contract, the system calculates a price estimate based on the currently available information. This estimate must be within a ±15% margin relative to the final price. The user registration service must be available 7x24h 99%. A new insurance tariff can be implemented in the system in less than 10 days. A service crashed at runtime. It can be restarted to a fully operational state in less than 30 seconds. Starke+2021, p. 141 These sentences, in natural language, describe requirements or expectations of some stakeholder in a quite specific manner. Formulating requirements in such a way allows a development team to know what needs to be achieved, and what is good enough. Len Bass and his colleagues from the Software Engineering Institute (SEI) coined the term “quality attribute scenarios” for such kinds of sentences. See Bass et al., 2021 for details. Quality scenarios, in short, are a pragmatic, easy-to-use and general approach to specifying quality requirements. You find 104 examples of such quality requirements on this site (see examples). General structure of quality scenarios (SEI-version) Event/stimulus: Any condition or event arriving at the system. Source of stimulus: The entity (person, system, or other actor) that generates the stimulus. Environment:The conditions or context under which the stimulus occurs. Artifact: The part of the system that is affected by the stimulus. Response: How the system should react to the stimulus. The activity undertaken after the arrival of the stimulus. Metric (response measure): The response should be measurable in some fashion, so that this scenario (quality requirement) can be objectively assessed or tested. Although this template is widely used, it suffers from some drawbacks: The template’s detailed nature can make it time-consuming to complete, especially for numerous scenarios. Teams might feel compelled to fill out all sections in detail, even when not necessary for every scenario. The comprehensive approach might not align well with fast-paced, agile development methodologies. In practice, a slightly reduced template proved to be sufficient, let’s call it the Q42-Requirements template: Pragmatical Quality Scenario Context/Background: A brief description of the situation. This includes the type of system, the relevant environment or operational setting, and the specific condition being considered. Source: The origin of the event or stimulus that triggers the scenario. This could be a stakeholder action (e.g., user interaction, administrator action) or an external event (e.g., system load, security threat, API call). Metric/Acceptance Criteria: A clear, measurable outcome that determines whether the system meets the desired quality attribute. This could be expressed as a specific performance metric, threshold, or success criterion that must be achieved under the given context. Only three (instead of SEI six) attributes, but understandable and precise. Summary Quality scenarios document and clarify the required quality attributes. They help to describe required or desired qualities of a system in a pragmatic and informal manner, making the abstract term “quality” more concrete, specific and tangible. We propose you try the pragmatic and simple Q42-Quality-Scenario template for your own projects." />
+<meta property="og:description" content="Quality is such a vague and broad term, that it needs clarification for system development projects. Consider the following examples of quality requirements: An authenticated user requests generation of the daily sales report in PDF format via the graphical user interface. The system generates this report in less than 10 seconds. When a user configures a health insurance contract, the system calculates a price estimate based on the currently available information. This estimate must be within a ±15% margin relative to the final price. The user registration service must be available 7x24h 99%. A new insurance tariff can be implemented in the system in less than 10 days. A service crashed at runtime. It can be restarted to a fully operational state in less than 30 seconds. Starke+2021, p. 141 These sentences, in natural language, describe requirements or expectations of some stakeholder in a quite specific manner. Formulating requirements in such a way allows a development team to know what needs to be achieved, and what is good enough. Len Bass and his colleagues from the Software Engineering Institute (SEI) coined the term “quality attribute scenarios” for such kinds of sentences. See Bass et al., 2021 for details. Quality scenarios, in short, are a pragmatic, easy-to-use and general approach to specifying quality requirements. You find 104 examples of such quality requirements on this site (see examples). General structure of quality scenarios (SEI-version) Event/stimulus: Any condition or event arriving at the system. Source of stimulus: The entity (person, system, or other actor) that generates the stimulus. Environment:The conditions or context under which the stimulus occurs. Artifact: The part of the system that is affected by the stimulus. Response: How the system should react to the stimulus. The activity undertaken after the arrival of the stimulus. Metric (response measure): The response should be measurable in some fashion, so that this scenario (quality requirement) can be objectively assessed or tested. Although this template is widely used, it suffers from some drawbacks: The template’s detailed nature can make it time-consuming to complete, especially for numerous scenarios. Teams might feel compelled to fill out all sections in detail, even when not necessary for every scenario. The comprehensive approach might not align well with fast-paced, agile development methodologies. In practice, a slightly reduced template proved to be sufficient, let’s call it the Q42-Requirements template: Pragmatical Quality Scenario Context/Background: A brief description of the situation. This includes the type of system, the relevant environment or operational setting, and the specific condition being considered. Source: The origin of the event or stimulus that triggers the scenario. This could be a stakeholder action (e.g., user interaction, administrator action) or an external event (e.g., system load, security threat, API call). Metric/Acceptance Criteria: A clear, measurable outcome that determines whether the system meets the desired quality attribute. This could be expressed as a specific performance metric, threshold, or success criterion that must be achieved under the given context. Only three (instead of SEI six) attributes, but understandable and precise. Summary Quality scenarios document and clarify the required quality attributes. They help to describe required or desired qualities of a system in a pragmatic and informal manner, making the abstract term “quality” more concrete, specific and tangible. We propose you try the pragmatic and simple Q42-Quality-Scenario template for your own projects." />
+<link rel="canonical" href="https://quality.arc42.org/articles/specify-quality-requirements" />
+<meta property="og:url" content="https://quality.arc42.org/articles/specify-quality-requirements" />
+<meta property="og:site_name" content="arc42 Quality Model" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2025-07-16T08:19:41+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="How to specify quality requirements" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2025-07-16T08:19:41+00:00","datePublished":"2025-07-16T08:19:41+00:00","description":"Quality is such a vague and broad term, that it needs clarification for system development projects. Consider the following examples of quality requirements: An authenticated user requests generation of the daily sales report in PDF format via the graphical user interface. The system generates this report in less than 10 seconds. When a user configures a health insurance contract, the system calculates a price estimate based on the currently available information. This estimate must be within a ±15% margin relative to the final price. The user registration service must be available 7x24h 99%. A new insurance tariff can be implemented in the system in less than 10 days. A service crashed at runtime. It can be restarted to a fully operational state in less than 30 seconds. Starke+2021, p. 141 These sentences, in natural language, describe requirements or expectations of some stakeholder in a quite specific manner. Formulating requirements in such a way allows a development team to know what needs to be achieved, and what is good enough. Len Bass and his colleagues from the Software Engineering Institute (SEI) coined the term “quality attribute scenarios” for such kinds of sentences. See Bass et al., 2021 for details. Quality scenarios, in short, are a pragmatic, easy-to-use and general approach to specifying quality requirements. You find 104 examples of such quality requirements on this site (see examples). General structure of quality scenarios (SEI-version) Event/stimulus: Any condition or event arriving at the system. Source of stimulus: The entity (person, system, or other actor) that generates the stimulus. Environment:The conditions or context under which the stimulus occurs. Artifact: The part of the system that is affected by the stimulus. Response: How the system should react to the stimulus. The activity undertaken after the arrival of the stimulus. Metric (response measure): The response should be measurable in some fashion, so that this scenario (quality requirement) can be objectively assessed or tested. Although this template is widely used, it suffers from some drawbacks: The template’s detailed nature can make it time-consuming to complete, especially for numerous scenarios. Teams might feel compelled to fill out all sections in detail, even when not necessary for every scenario. The comprehensive approach might not align well with fast-paced, agile development methodologies. In practice, a slightly reduced template proved to be sufficient, let’s call it the Q42-Requirements template: Pragmatical Quality Scenario Context/Background: A brief description of the situation. This includes the type of system, the relevant environment or operational setting, and the specific condition being considered. Source: The origin of the event or stimulus that triggers the scenario. This could be a stakeholder action (e.g., user interaction, administrator action) or an external event (e.g., system load, security threat, API call). Metric/Acceptance Criteria: A clear, measurable outcome that determines whether the system meets the desired quality attribute. This could be expressed as a specific performance metric, threshold, or success criterion that must be achieved under the given context. Only three (instead of SEI six) attributes, but understandable and precise. Summary Quality scenarios document and clarify the required quality attributes. They help to describe required or desired qualities of a system in a pragmatic and informal manner, making the abstract term “quality” more concrete, specific and tangible. We propose you try the pragmatic and simple Q42-Quality-Scenario template for your own projects.","headline":"How to specify quality requirements","mainEntityOfPage":{"@type":"WebPage","@id":"https://quality.arc42.org/articles/specify-quality-requirements"},"url":"https://quality.arc42.org/articles/specify-quality-requirements"}</script>
+<!-- End Jekyll SEO tag -->
+
+    
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="theme-color" content="#ffffff">
+<meta name="description" content="Quality is such a vague and broad term, that it needs clarification for system development projects.Consider the following examples of quality requirements: ...">
+<link rel="shortcut icon" href="/assets/img/arc42logosquare.webp" type="image/x-icon">
+    
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+<script>
+      try { document.getElementsByTagName('html')[0].className += ' js'; } catch(e) { /* NO-JS */ }
+</script>
+<link href="/assets/css/style.css" rel="stylesheet">
+<script defer data-domain="quality.arc42.org" src="https://plausible.io/js/script.js"></script>
+
+
+
+
+
+
+</head>
+<body>
+
+<header class="site-header">
+    <div class="inner clearfix">
+        <button class="fa fa-fw fa-bars nav-toggle" data-target=".site-aside"></button>
+        
+        <a href="/">
+            <img class="avatar" src="/assets/img/arc42logosquare.webp" alt=""/>
+        </a>
+        
+        <h1 class="clearfix">
+            <a class="title " href="/">arc42 Quality Model</a>
+            
+            <br><span class="description"><span style="color:#414288">162</span> quality attributes, explained.</span>
+            
+            <br><span class="description"><span style="color:#414288">104</span> examples of quality requirements.</span>
+        </h1>
+    </div>
+</header>
+
+<div class="site-container">
+    <aside class="site-aside">
+        <div class="inner">
+            <div class="block">
+                <form action="/search">
+                    <input type="search" id="search" name="q" placeholder="Search" />
+                </form>
+            </div>
+            <ul>
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                <li><a class="page-link" href="/">Home</a></li>
+                
+                
+                
+                <li><a class="page-link" href="/how-to-use-this-site/">How to Use this Site</a></li>
+                
+                
+                
+                <li><a class="page-link" href="/qualities/">Qualities by Name</a></li>
+                
+                
+                
+                <li><a class="page-link" href="/properties/">Quality Properties</a></li>
+                
+                
+                
+                <li><a class="page-link" href="/requirements/">Examples of Quality Requirements</a></li>
+                
+                
+                
+                
+                
+                <li><a class="page-link" href="/q42-for-iso-users/">Q42 for ISO 25010 users</a></li>
+                
+                
+                
+                <li><a class="page-link" href="/standards/">Standards</a></li>
+                
+                
+                
+                <li><a class="page-link" href="/articles/">Background on "Quality"</a></li>
+                
+                
+                
+                <li><a class="page-link" href="/references/">References</a></li>
+                
+                
+                
+                <li><a class="page-link" href="/aboutthissite/">About this Site</a></li>
+                
+                
+                
+                <li><a class="page-link" href="/contact/">Contact</a></li>
+                
+                
+            </ul>
+            <ul class="icons">
+                
+
+<li>
+    <a href="xmxaxixlxtxo:ixnxfxox@xaxrxcx4x2x.xdxe" onmouseover="this.href=this.href.replace(/x/g,'');">
+        <i class="fa fa-fw fa-envelope" aria-hidden="true"></i>
+    </a>
+</li>
+
+<li><a href="https://linkedin.com/in/gernotstarke">
+      <i class="fab fa-fw fa-linkedin" aria-hidden="true"></i>
+    </a>
+</li>
+
+
+
+<li>
+    <a href="https://github.com/arc42" target="_blank">
+        <i class="fab fa-fw fa-github" aria-hidden="true"></i>
+    </a>
+</li>
+
+
+
+
+
+<li>
+    <a href="https://stackoverflow.com/tags/arc42" target="_blank">
+        <i class="fab fa-fw fa-stack-overflow" aria-hidden="true"></i>
+    </a>
+</li>
+
+
+
+
+<li>
+    <a href="https://youtube.com/arc42-video" target="_blank">
+        <i class="fab fa-fw fa-youtube" aria-hidden="true"></i>
+    </a>
+</li>
+
+
+
+<li><a href="https://dev.to/gernotstarke/" target="_blank">
+  <i class="fab fa-dev" aria-hidden="true"></i> </a>
+</li>
+
+
+<li><a href="https://www.innoq.com/de/staff/gernot-starke/" target="_blank">
+  <i class="fas fa-heart fa-fw" style="color:#ff9c66;"></i> </a>
+</li>
+
+
+
+
+            </ul>
+            <hr class="with-no-margin margin-bottom"/>
+            <a href="https://github.com/arc42/quality.arc42.org-site/issues">
+               <img alt="GitHub issues" src="https://img.shields.io/github/issues-raw/arc42/quality.arc42.org-site?style=social">
+               <img alt="GitHub closed issues" src="https://img.shields.io/github/issues-closed-raw/arc42/quality.arc42.org-site?style=social">
+            </a>
+            <hr class="with-no-margin margin-bottom"/>
+        </div>
+    </aside>
+
+    <div class="site-content">
+        <div class="article-wrapper">
+    <article>
+        
+
+<header>
+    <div class="panel">
+        <h1>
+            
+            How to specify quality requirements
+            
+        </h1>
+
+        <ul class="tags">
+            
+            
+            
+        </ul>
+
+        <div class="clearfix">
+            <ul class="meta">
+                
+                
+            </ul>
+        </div>
+    </div>
+
+
+</header>
+
+        <section class="post-content">
+            
+<p><strong>Quality</strong> is such a vague and broad term, that it needs clarification for system development projects.</p>
+
+<p>Consider the following examples of quality requirements:</p>
+
+<blockquote>
+  <ul>
+    <li>An authenticated user requests generation of the daily sales report in PDF format via the graphical user interface. The system generates this report in less than 10 seconds.</li>
+    <li>When a user configures a health insurance contract, the system calculates a price estimate based on the currently available information. This estimate must be within a ±15% margin relative to the final price.</li>
+    <li>The user registration service must be available 7x24h 99%.</li>
+    <li>A new insurance tariff can be implemented in the system in less than 10 days.</li>
+    <li>A service crashed at runtime. It can be restarted to a fully operational state in less than 30 seconds.</li>
+  </ul>
+
+  <p><a href="/references/#starke2021software">Starke+2021, p. 141</a></p>
+</blockquote>
+
+<p>These sentences, in natural language, describe requirements or expectations of some stakeholder in a quite specific manner.
+Formulating requirements in such a way allows a development team to know what needs to be achieved, and what is <em>good enough</em>.</p>
+
+<p>Len Bass and his colleagues from the <em>Software Engineering Institute</em> (SEI) coined the term “quality attribute scenarios” for such kinds of sentences.
+See <a href="/references/#bass2021software">Bass et al., 2021</a> for details.</p>
+
+<p>Quality scenarios, in short, are a pragmatic, easy-to-use and general approach to specifying quality requirements.</p>
+
+<blockquote>
+  <p>You find 104 examples of such quality requirements on this site (see <a href="/requirements">examples</a>).</p>
+</blockquote>
+
+<h3 id="general-structure-of-quality-scenarios-sei-version">General structure of quality scenarios (SEI-version)</h3>
+
+<p><img src="/images/articles/q-requirements/q-scenario.png" alt="general form of quality scenarios" width="50%" /></p>
+
+<ul>
+  <li><strong>Event/stimulus</strong>: Any condition or event arriving at the system.</li>
+  <li><strong>Source of stimulus</strong>: The entity (person, system, or other actor) that generates the stimulus.</li>
+  <li><strong>Environment</strong>:The conditions or context under which the stimulus occurs.</li>
+  <li><strong>Artifact</strong>: The part of the system that is affected by the stimulus.</li>
+  <li><strong>Response</strong>: How the system should react to the stimulus. The activity undertaken after the arrival of the stimulus.</li>
+  <li><strong>Metric</strong> (response measure): The response should be measurable in some fashion, so that this scenario (quality requirement) can be objectively assessed or tested.</li>
+</ul>
+
+<p>Although this template is widely used, it suffers from some drawbacks:</p>
+
+<ul>
+  <li>The template’s detailed nature can make it time-consuming to complete, especially for numerous scenarios.</li>
+  <li>Teams might feel compelled to fill out all sections in detail, even when not necessary for every scenario.</li>
+  <li>The comprehensive approach might not align well with fast-paced, agile development methodologies.</li>
+</ul>
+
+<p>In practice, a slightly reduced template proved to be sufficient, let’s call it the Q42-Requirements template:</p>
+
+<h3 id="pragmatical-quality-scenario">Pragmatical Quality Scenario</h3>
+
+<p><strong>Context/Background</strong>: A brief description of the situation. This includes the type of system, the relevant environment or operational setting, and the specific condition being considered.</p>
+
+<p><strong>Source</strong>: The origin of the event or stimulus that triggers the scenario. This could be a stakeholder action (e.g., user interaction, administrator action) or an external event (e.g., system load, security threat, API call).</p>
+
+<p><strong>Metric/Acceptance Criteria</strong>: A clear, measurable outcome that determines whether the system meets the desired quality attribute. This could be expressed as a specific performance metric, threshold, or success criterion that must be achieved under the given context.</p>
+
+<p>Only three (instead of SEI six) attributes, but understandable and precise.</p>
+
+<h3 id="summary">Summary</h3>
+<p><strong>Quality scenarios</strong> document and clarify the required quality attributes. 
+They help to describe required or desired qualities of a system in a pragmatic and informal manner, making the abstract term “quality” more concrete, specific and tangible.</p>
+
+<p>We propose you try the pragmatic and simple Q42-Quality-Scenario template for your own projects.</p>
+
+        </section>
+        <footer>
+    
+</footer>
+
+    </article>
+</div>
+
+
+
+    </div>
+</div>
+
+<footer class="site-footer">
+    <div class="inner">
+        <p class="footer-icons"><a href="https://www.innoq.com" target="_blank" rel="noopener noreferrer nofollow"><img class="supported-by-innoq" src="/images/supported-by-innoq--petrol-apricot.svg"></a><br>
+            <a href="https://status.arc42.org">
+                <i class="fa fa-chart-bar fa-fw" style="color:#50C878;" ></i>Status</a><i>&nbsp;&nbsp;</i>
+            <i class="fa fa-user-secret" aria-hidden="true"></i>
+            <a href="/imprint">
+                Imprint + Privacy</a></p>
+        <span>Maintained by <a target="_blank" rel="noopener noreferrer nofollow" href="https://gernotstarke.de">Gernot Starke</a>,
+          supported by <a target="_blank" rel="noopener noreferrer nofollow" href="https://perstarke-webdev.de">Per Starke Web Development</a>
+        </span>
+    </div>
+</footer>
+
+
+<script src="/assets/jquery/jquery-3.7.1-min.js"></script>
+<script src="/assets/lib/garand-sticky/jquery.sticky.js"></script>
+<script src="/assets/js/script.js"></script>
+
+
+<script src="/assets/js/header-link.js"></script>
+
+
+
+
+
+</body>
+</html>

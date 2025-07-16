@@ -1,0 +1,144 @@
+/* style for arc42 websites */
+
+/* define colors for qualities and requirements */
+:root {
+  --quality-color: #dbf0fe;
+  --qual-req-color: #DEEFB7;
+  --req-text-color: #899A62;
+  --dark-blue-text-color: #002080;
+  --blue-text-color: #1675b9;
+}
+
+p {
+  font-family: sans-serif;
+}
+
+/* unified style for template help */
+.arc42-help {
+  color: var(--dark-blue-text-color);
+  padding: 5px 5px;
+  background: #dcf0ff;
+  border-radius: 4px;
+
+  -webkit-box-shadow: 3px 3px 4px 0px rgba(11,82,185,1);
+  -moz-box-shadow: 3px 3px 4px 0px rgba(11,82,185,1);
+  box-shadow: 3px 3px 4px 0px rgba(11,82,185,1);
+}
+
+/* unified style for quality requirement text */
+.quality-requirement {
+  color: var(--dark-blue-text-color);
+  padding: 5px 5px;
+  background: var(--qual-req-color);
+  border-radius: 4px;
+
+  -webkit-box-shadow: 3px 3px 4px 0px #9CAD75;
+  -moz-box-shadow: 3px 3px 4px 0px #9CAD75;
+  box-shadow: 3px 3px 4px 0px #9CAD75;
+}
+
+/* Proper indentation for lists inside quality requirement */
+.quality-requirement ul > li {
+    display: table-row;
+    font-size: 1em;
+}
+.quality-requirement ul > li::before {
+    content: "●";
+    display: table-cell;
+    text-align: right;
+    padding-right: 5px;
+}
+.quality-requirement ul > li > ul > li::before {
+    content: "○";
+    display: table-cell;
+    text-align: right;
+    padding-right: 5px;
+}
+
+/* use before-pseudo-class to add icon */
+.arc42-help::before, .quality-requirement::before {
+  display: block;
+  float: right;
+  width: 24px;
+  height: 26px;
+
+  content: "";
+  background: url("./arc42-exclamation.svg") no-repeat;
+  background-size: 24px 26px;
+}
+
+
+
+/* subtle ads */
+
+.subtle-ad {
+  width: 70%;
+  margin: 5px;
+  padding: 5px;
+
+  background-color: rgba(254, 228, 228, 0.3);
+  border-radius: 4px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #800000;
+
+  -webkit-box-shadow: 3px 3px 4px 0px rgba(156,61,75,1);
+  -moz-box-shadow: 3px 3px 4px 0px rgba(156,61,75,1);
+  box-shadow: 3px 3px 4px 0px rgba(156,61,75,1);
+
+  font-family: "Palatino Linotype", "Book Antiqua", serif;
+  color: #032f7f;
+}
+
+/* use before-pseudo-class to add icon */
+.subtle-ad::before {
+  display: block;
+  float: right;
+  width: 50px;
+  height: 80px;
+
+  content: "";
+  background: url("./arc42-exclamation.svg") no-repeat;
+  background-size: 80px 80px;
+}
+
+
+.subtle-ad h4 {
+  line-height: 1.2pt;
+  margin-top: 5px;
+}
+
+.subtle-ad a {
+  color: ff796a;
+}
+
+
+
+
+
+
+.supported-by-innoq {
+    margin-bottom: 13px;
+    width: 110px;
+}
+
+.supported-by-innoq:hover {
+    opacity: 0.8;
+}
+
+
+@media (max-width: 900px) {
+    .supported-by-innoq {
+        width: 100px;
+    }
+}
+
+@media (max-width: 600px) {
+    .supported-by-innoq {
+        width: 90px;
+    }
+}
+
+p.footer-icons {
+    margin-bottom: 8px;
+}

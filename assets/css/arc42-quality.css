@@ -1,0 +1,107 @@
+/* special styles for arc42 quality website like ua-text & hovers for tag-links */
+
+
+
+
+/* hover for a-tags (post-tags and initial letters) */
+a.hov:hover {
+    transform: scale(1.25);
+    text-decoration: none
+}
+
+
+
+/* style for post-tags and initial letters */
+
+a.hov {
+    background-color: #AED6F1;
+    color: #dd354b;
+    padding: 5px 10px;
+    border-radius: 11px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    margin-left: 2px;
+    margin-right: 2px
+}
+
+a.hov.tags {
+    line-height: 1.2;
+    background-color: #AED6F1;
+    color: #dd354b;
+    border-radius: 11px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    margin-left: 10px;
+    margin-right: 1px
+}
+
+a.hov.tags.req {
+    line-height: 1.2;
+    background-color: var(--qual-req-color);
+    color: #dd354b;
+    border-radius: 11px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    margin-left: 10px;
+    margin-right: 1px
+}
+
+
+
+/* style for INNOQ on about-this-site */
+
+.innoq-text {
+    color: #ff9c66;
+}
+
+
+
+/* different header color for scenarios */
+
+#scenario-header{
+    background-color: #DEEFB7;
+}
+
+
+
+
+a.reqs {
+    color: var(--req-text-color);
+}
+
+li.related-quality {
+    padding-left: 20px;
+    color: var(--blue-text-color);
+}
+
+
+/* a big separating line */
+hr.big-sep {
+    border-top: 3px solid grey;
+}
+
+.no-bullets {
+    list-style-type: none;
+}
+
+.as-bullet {
+    margin-right: 10px;
+}
+
+.rel-pos {
+    position: relative;
+}
+
+li.small {
+    font-size: 90%;
+    padding-left: 20px;
+}

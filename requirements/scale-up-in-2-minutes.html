@@ -1,0 +1,20 @@
+<div class="quality-requirement">
+
+  <p><strong>Background</strong>: A cloud-based web application, with a sudden increase in user traffic, such as during a promotional event or a major product launch. 
+Auto-scaling features are available and configured.</p>
+
+  <p><strong>Response</strong>: The system automatically detects the increase in load and provisions additional resources to handle the increased traffic, without human intervention.</p>
+
+  <p><strong>Metric</strong>:</p>
+  <ul>
+    <li>Time to Scale: The system should begin scaling up additional resources within 2 minutes of detecting a 50% increase in traffic load.</li>
+    <li>Resource Utilization: After scaling, CPU and memory utilization should stabilize at approximately 70%, ensuring that resources are neither underutilized (wasteful) nor overburdened (which could degrade performance).</li>
+    <li>Performance Maintenance: The response time of the web application should not exceed 3 seconds for 95% of the requests, even during peak traffic.
+Cost Efficiency: The cost of scaled resources should not exceed a 150% increase despite a 200% increase in traffic, emphasizing cost-effective scaling.</li>
+  </ul>
+
+</div>
+<p><br /></p>
+
+<p>This requirement was created with help from <a href="https://chat.openai.com">ChatGPT</a> by using the prompt <code class="language-plaintext highlighter-rouge">create a quality attribute scenario to describe a elasticity requirement for a web application</code>.</p>
+

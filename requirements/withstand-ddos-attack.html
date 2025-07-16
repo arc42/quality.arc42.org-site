@@ -1,0 +1,36 @@
+<div class="quality-requirement">
+
+  <p><strong>Stimulus</strong>: A distributed denial of service (DDoS) attack targeting the web application.
+Environment: The web application is hosted on a cloud-based infrastructure with multiple server instances distributed across different regions.
+<strong>Response</strong>: The web application should effectively withstand and mitigate the DDoS attack, ensuring service availability and acceptable performance levels. Precise metrics to determine when the requirement is met include:</p>
+
+  <ol>
+    <li>
+      <p><strong>Availability</strong>: The web application should maintain at least 99.9% uptime during the DDoS attack, measured over a 24-hour period. Uptime is defined as the percentage of time the application remains accessible and responsive to legitimate user requests.</p>
+    </li>
+    <li>
+      <p><strong>Response Time</strong>: The application should maintain a maximum response time of 500 milliseconds for 95% of legitimate user requests during the DDoS attack. Response time is measured as the time taken to respond to a request from the moment it’s received.</p>
+    </li>
+    <li>
+      <p><strong>Traffic Handling</strong>: The application should be capable of handling a sustained traffic load of 10 times its typical peak traffic during the attack without service degradation. This is measured by monitoring the incoming request rate and system resource utilization.</p>
+    </li>
+    <li>
+      <p><strong>Security</strong>: The application should effectively identify and block malicious traffic sources during the DDoS attack, with a false positive rate of no more than 1%. False positives refer to legitimate users or traffic mistakenly identified as malicious and blocked.</p>
+    </li>
+    <li>
+      <p><strong>Failover and Recovery</strong>: In the event of server or infrastructure failures caused by the DDoS attack, the application should automatically failover to healthy resources within 2 minutes, minimizing downtime.</p>
+    </li>
+    <li>
+      <p><strong>Data Integrity</strong>: Throughout the attack, the application should ensure data integrity and prevent data corruption, with zero data loss or inconsistencies.</p>
+    </li>
+    <li>
+      <p><strong>Logs and Reporting</strong>: The application should log and report DDoS attack incidents, including the attack vectors, traffic patterns, and response actions, for further analysis and improvement.</p>
+    </li>
+  </ol>
+
+  <p>By meeting these precise metrics, the web application demonstrates its resilience by maintaining service availability, acceptable performance, and security even in the face of a DDoS attack. These metrics help ensure that the application not only survives the attack but also continues to provide a satisfactory user experience and maintains data integrity.</p>
+</div>
+<p><br /></p>
+
+<p>This requirement was created with help from <a href="https://chat.openai.com">ChatGPT</a> by using the prompt <code class="language-plaintext highlighter-rouge">create a quality attribute scenario to describe a resilience requirement for a web application</code>.</p>
+

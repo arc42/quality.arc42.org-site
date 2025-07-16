@@ -1,0 +1,34 @@
+<div class="quality-requirement">
+
+  <h4 id="contextbackground">Context/Background</h4>
+
+  <p>The system operates in an environment where document integrity and trustworthiness are critical.
+It provides functionality for users to verify the authenticity of digital documents.
+The system employs a robust digital signature mechanism to ensure document authenticity and integrity.
+A secure and tamper-proof audit trail is maintained for all document-related activities.</p>
+
+  <h4 id="source">Source</h4>
+
+  <p>A user attempts to verify the authenticity of a digital document.</p>
+
+  <h4 id="metricacceptance-criteria">Metric/Acceptance Criteria</h4>
+
+  <p>The system must provide a robust digital signature mechanism and maintain a secure audit trail.
+The authenticity verification process must meet the following criteria:</p>
+  <ul>
+    <li>Digital signature mechanism correctly verifies the authenticity and integrity of 100% of unmodified documents</li>
+    <li>Any modifications or tampering to a document are detected with 100% accuracy</li>
+    <li>The audit trail records all document-related activities, including creation, modifications, and approvals</li>
+    <li>Each audit trail entry includes accurate timestamps and user identifiers</li>
+    <li>The audit trail is tamper-proof, with any attempts at unauthorized modification being detected and logged</li>
+    <li>Digital signature verification process completes within 5 seconds for documents up to 10MB in size</li>
+    <li>Audit trail entries are created and logged within 1 second of the corresponding document activity</li>
+    <li>The system provides a clear, user-friendly interface for users to initiate and understand the results of the authenticity verification process</li>
+    <li>The audit trail is searchable, allowing authorized users to retrieve the complete history of a document within 30 seconds</li>
+    <li>The system maintains 99.99% uptime for the authenticity verification service</li>
+  </ul>
+</div>
+<p><br /></p>
+
+<p>Source: This scenario has been created with help from <a href="https://chat.openai.com">ChatGPT</a> by using the prompt <code class="language-plaintext highlighter-rouge">create a quality scenario to describe an authenticity requirement</code>.</p>
+

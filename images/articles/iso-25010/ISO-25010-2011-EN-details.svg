@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" xmlns:xl="http://www.w3.org/1999/xlink" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://www.w3.org/2000/svg" viewBox="47.460547 161.5 839.9365 397.875" width="839.9365" height="397.875">
+  <defs/>
+  <g id="ISO-25010-all" stroke="none" stroke-opacity="1" fill="none" stroke-dasharray="none" fill-opacity="1">
+    <title>ISO-25010-all</title>
+    <rect fill="white" x="47.460547" y="161.5" width="839.9365" height="397.875"/>
+    <g id="ISO-25010-all_Ebene_1">
+      <title>Ebene 1</title>
+      <g id="Line_1230">
+        <line x1="553.0629" y1="208.79016" x2="836.223" y2="299.84693" stroke="#929292" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Line_1229">
+        <line x1="542.0175" y1="211.69904" x2="745.5" y2="300" stroke="#929292" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Line_1228">
+        <line x1="461.1361" y1="211.86591" x2="379.0642" y2="300" stroke="#929292" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Line_1227">
+        <line x1="516.2429" y1="211.80997" x2="627.8652" y2="300" stroke="#929292" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Line_1226">
+        <line x1="484.5244" y1="212" x2="484.5244" y2="300" stroke="#929292" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Line_1225">
+        <line x1="434.36854" y1="211.72286" x2="257.07133" y2="300" stroke="#929292" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Line_1224">
+        <line x1="506.1112" y1="211.87927" x2="581.48376" y2="299.62073" stroke="#929292" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Line_1223">
+        <line x1="415.9866" y1="209.13158" x2="137.72555" y2="300" stroke="#929292" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_1222">
+        <rect x="416.4619" y="162" width="136.125" height="49.5" fill="white"/>
+        <rect x="416.4619" y="162" width="136.125" height="49.5" stroke="#929292" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(421.4619 162.75)" fill="black">
+          <tspan font-family="Mark Pro" font-size="13" fill="black" x="30.27" y="13">ISO 25010</tspan>
+          <tspan font-family="Mark Pro" font-size="13" fill="black" x="5.97625" y="29">System/Software </tspan>
+          <tspan font-family="Mark Pro" font-size="13" fill="black" x="13.0125" y="45">Product Quality</tspan>
+        </text>
+      </g>
+      <g id="Graphic_1221">
+        <rect x="90.89055" y="300" width="93.67" height="45" fill="white"/>
+        <rect x="90.89055" y="300" width="93.67" height="45" stroke="#929292" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(95.89055 306.5)" fill="black">
+          <tspan font-family="Mark Pro" font-size="13" fill="black" x="8.346999" y="13">Functional </tspan>
+          <tspan font-family="Mark Pro" font-size="13" fill="black" x="10.647999" y="29">suitability</tspan>
+        </text>
+      </g>
+      <g id="Graphic_1220">
+        <rect x="545.8096" y="300" width="72" height="45" fill="white"/>
+        <rect x="545.8096" y="300" width="72" height="45" stroke="#929292" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(550.8096 314.5)" fill="black">
+          <tspan font-family="Mark Pro" font-size="13" fill="black" x=".16075" y="13">Reliability</tspan>
+        </text>
+      </g>
+      <g id="Graphic_1219">
+        <rect x="210.23633" y="300" width="93.67" height="45" fill="white"/>
+        <rect x="210.23633" y="300" width="93.67" height="45" stroke="#929292" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(215.23633 306.5)" fill="black">
+          <tspan font-family="Mark Pro" font-size="13" fill="black" x=".5632491" y="13">Performance </tspan>
+          <tspan font-family="Mark Pro" font-size="13" fill="black" x="11.619749" y="29">efficiency</tspan>
+        </text>
+      </g>
+      <g id="Graphic_1218">
+        <rect x="447.6244" y="300" width="73.8" height="45" fill="white"/>
+        <rect x="447.6244" y="300" width="73.8" height="45" stroke="#929292" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(452.6244 314.5)" fill="black">
+          <tspan font-family="Mark Pro" font-size="13" fill="black" x=".6057496" y="13">Useability</tspan>
+        </text>
+      </g>
+      <g id="Graphic_1217">
+        <rect x="627.8652" y="300" width="72" height="45" fill="white"/>
+        <rect x="627.8652" y="300" width="72" height="45" stroke="#929292" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(632.8652 314.5)" fill="black">
+          <tspan font-family="Mark Pro" font-size="13" fill="black" x="4.987" y="13">Security</tspan>
+        </text>
+      </g>
+      <g id="Graphic_1216">
+        <rect x="328.8662" y="300" width="100.396" height="45" fill="white"/>
+        <rect x="328.8662" y="300" width="100.396" height="45" stroke="#929292" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(333.8662 314.5)" fill="black">
+          <tspan font-family="Mark Pro" font-size="13" fill="black" x="1.9632519" y="13">Compatibility</tspan>
+        </text>
+      </g>
+      <g id="Graphic_1215">
+        <rect x="709.5" y="300" width="72" height="45" fill="white"/>
+        <rect x="709.5" y="300" width="72" height="45" stroke="#929292" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(714.5 306.5)" fill="black">
+          <tspan font-family="Mark Pro" font-size="13" fill="black" x="2.7055" y="13">Maintain</tspan>
+          <tspan font-family="Mark Pro" font-size="13" fill="black" x="8.7895" y="29">-ability</tspan>
+        </text>
+      </g>
+      <g id="Graphic_1214">
+        <rect x="793.6" y="300" width="86.198" height="45" fill="white"/>
+        <rect x="793.6" y="300" width="86.198" height="45" stroke="#929292" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(798.6 314.5)" fill="black">
+          <tspan font-family="Mark Pro" font-size="13" fill="black" x="4.714999" y="13">Portability</tspan>
+        </text>
+      </g>
+      <g id="Graphic_1213">
+        <rect x="47.960547" y="375.25" width="179.53" height="55" stroke="#929292" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(52.96055 380.25)" fill="black">
+          <tspan font-family="Mark Pro" font-size="12" fill="black" x="0" y="12">* Functional completeness</tspan>
+          <tspan font-family="Mark Pro" font-size="12" fill="black" x="0" y="27">* Functional correctness</tspan>
+          <tspan font-family="Mark Pro" font-size="12" fill="black" x="0" y="42">* Functional appropriateness</tspan>
+        </text>
+      </g>
+      <g id="Graphic_1212">
+        <rect x="533.11914" y="371.992" width="107.884" height="70" stroke="#929292" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(538.11914 376.992)" fill="black">
+          <tspan font-family="Mark Pro" font-size="12" fill="black" x="0" y="12">* Maturity </tspan>
+          <tspan font-family="Mark Pro" font-size="12" fill="black" x="0" y="27">* Availability</tspan>
+          <tspan font-family="Mark Pro" font-size="12" fill="black" x="0" y="42">* Fault tolerance</tspan>
+          <tspan font-family="Mark Pro" font-size="12" fill="black" x="0" y="57">* Recoverability</tspan>
+        </text>
+      </g>
+      <g id="Line_1211">
+        <line x1="137.72555" y1="345.5" x2="137.72555" y2="375.25" stroke="#929292" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Line_1210">
+        <line x1="581.8096" y1="345" x2="587.06114" y2="371.992" stroke="#929292" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_1209">
+        <rect x="190.47233" y="460.5" width="133.198" height="55" stroke="#929292" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(195.47233 465.5)" fill="black">
+          <tspan font-family="Mark Pro" font-size="12" fill="black" x="0" y="12">* Time behaviour</tspan>
+          <tspan font-family="Mark Pro" font-size="12" fill="black" x="0" y="27">* Resource utilisation</tspan>
+          <tspan font-family="Mark Pro" font-size="12" fill="black" x="0" y="42">* Capacity</tspan>
+        </text>
+      </g>
+      <g id="Graphic_1208">
+        <rect x="382.5734" y="458.875" width="203.902" height="100" stroke="#929292" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(387.5734 463.875)" fill="black">
+          <tspan font-family="Mark Pro" font-size="12" fill="black" x="0" y="12">* Appropriateness recognizability</tspan>
+          <tspan font-family="Mark Pro" font-size="12" fill="black" x="0" y="27">* Learnability</tspan>
+          <tspan font-family="Mark Pro" font-size="12" fill="black" x="0" y="42">* Operability</tspan>
+          <tspan font-family="Mark Pro" font-size="12" fill="black" x="0" y="57">* User error protection</tspan>
+          <tspan font-family="Mark Pro" font-size="12" fill="black" x="0" y="72">* User interface aesthetics</tspan>
+          <tspan font-family="Mark Pro" font-size="12" fill="black" x="0" y="87">* Accessibility</tspan>
+        </text>
+      </g>
+      <g id="Graphic_1207">
+        <rect x="606.3322" y="466.375" width="115.066" height="85" stroke="#929292" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(611.3322 471.375)" fill="black">
+          <tspan font-family="Mark Pro" font-size="12" fill="black" x="0" y="12">* Confidentiality</tspan>
+          <tspan font-family="Mark Pro" font-size="12" fill="black" x="0" y="27">* Integrity</tspan>
+          <tspan font-family="Mark Pro" font-size="12" fill="black" x="0" y="42">* Non-repudiation</tspan>
+          <tspan font-family="Mark Pro" font-size="12" fill="black" x="0" y="57">* Accountability</tspan>
+          <tspan font-family="Mark Pro" font-size="12" fill="black" x="0" y="72">* Authenticity</tspan>
+        </text>
+      </g>
+      <g id="Graphic_1206">
+        <rect x="324.50977" y="378.992" width="108.982" height="40" stroke="#929292" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(329.50977 383.992)" fill="black">
+          <tspan font-family="Mark Pro" font-size="12" fill="black" x="0" y="12">* Co-existence</tspan>
+          <tspan font-family="Mark Pro" font-size="12" fill="black" x="0" y="27">* Interoperability</tspan>
+        </text>
+      </g>
+      <g id="Graphic_1205">
+        <rect x="786.501" y="481.375" width="100.396" height="55" stroke="#929292" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(791.501 486.375)" fill="black">
+          <tspan font-family="Mark Pro" font-size="12" fill="black" x="0" y="12">* Adaptability</tspan>
+          <tspan font-family="Mark Pro" font-size="12" fill="black" x="0" y="27">* Installability</tspan>
+          <tspan font-family="Mark Pro" font-size="12" fill="black" x="0" y="42">* Replaceability</tspan>
+        </text>
+      </g>
+      <g id="Graphic_1204">
+        <rect x="698.665" y="370.6875" width="93.67" height="85" stroke="#929292" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(703.665 375.6875)" fill="black">
+          <tspan font-family="Mark Pro" font-size="12" fill="black" x="0" y="12">* Modularity</tspan>
+          <tspan font-family="Mark Pro" font-size="12" fill="black" x="0" y="27">* Reusability</tspan>
+          <tspan font-family="Mark Pro" font-size="12" fill="black" x="0" y="42">* Analyzability</tspan>
+          <tspan font-family="Mark Pro" font-size="12" fill="black" x="0" y="57">* Modifiability</tspan>
+          <tspan font-family="Mark Pro" font-size="12" fill="black" x="0" y="72">* Testability</tspan>
+        </text>
+      </g>
+      <g id="Line_1203">
+        <line x1="257.07133" y1="345.5" x2="257.07133" y2="460" stroke="#929292" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Line_1202">
+        <line x1="484.5244" y1="345" x2="484.5244" y2="458.375" stroke="#929292" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Line_1201">
+        <line x1="663.8652" y1="345" x2="663.8652" y2="465.875" stroke="#929292" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Line_1200">
+        <line x1="379.0642" y1="345" x2="379.02485" y2="378.492" stroke="#929292" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Line_1199">
+        <line x1="836.699" y1="345.5" x2="836.699" y2="480.875" stroke="#929292" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Line_1198">
+        <line x1="745.5" y1="345" x2="745.5" y2="370.1875" stroke="#929292" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+    </g>
+  </g>
+</svg>

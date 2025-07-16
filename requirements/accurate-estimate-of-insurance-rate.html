@@ -1,0 +1,26 @@
+<div class="quality-requirement">
+
+  <h4 id="contextbackground">Context/Background</h4>
+
+  <p>The system is an online application for configuring health insurance contracts.
+The final price of the insurance rate needs to be determined by the backoffice employees of the insurance company due to legal and organizational reasons.
+This constraint cannot currently be relaxed.</p>
+
+  <h4 id="source">Source</h4>
+
+  <p>User interaction: A user configures a health insurance contract in the online app.</p>
+
+  <h4 id="metricacceptance-criteria">Metric/Acceptance Criteria</h4>
+
+  <p>The system must calculate a price estimate based on the currently available information.
+This estimate must be within a ±15% margin relative to the final price.
+This can be measured by:</p>
+  <ul>
+    <li>Comparing the system-generated estimate to the final price determined by backoffice employees</li>
+    <li>Calculating the percentage difference between the estimate and final price</li>
+    <li>Ensuring that at least 95% of estimates fall within the ±15% margin</li>
+    <li>Regularly auditing a sample of contracts to verify compliance with this metric</li>
+  </ul>
+</div>
+<p><br /></p>
+

@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    
+
+
+
+    
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+ 
+ <!-- SEO includes title and canonical tags, plus several others -->
+ <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>arc42 Quality Model | quality attributes, explained.</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="arc42 Quality Model" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="The arc42 quality model Q42 (pronounced “Kju-Fortytwo” or “Kju-Four-Two”) is a simple, pragmatic yet effective approach to product and system quality. It starts with stakeholders’ expectations and requirements. Based upon typical stakeholder needs, Q42 consists of just 8 key system properties, which are sufficient to cover most, if not all, required, desirable or expected of the more than 100 traditional qualities. But let’s start at the beginning: Goals for Q42 minimal, yet covering most of the traditional product and system quality properties simple and understandable explanations of our top-level properties supported by extensive and free (online) documentation free and open-source, maintained in a public repository technology- and vendor-neutral agnostic to development methods Fresh Approach Existing models like ISO-25010 propagated a fixed hierarchy (like a tree) of system qualities. Within this tree, it is often difficult or impossible to determine to which of the top-level characteristics a particular and specific quality requirement belongs. Therefore, Q42 breaks new ground by proposing only 8 adjectives (like flexible) as core quality properties. It uses adjectives instead of nouns (like flexibility), which better reflects stakeholder expectations like “I need XYZ to be flexible”. These core properties (like reliable, flexible, usable, efficient etc) are used like labels or tags: Specific quality requirements might have several of such labels or tags. It has been unclear to me for years that those responsible for ISO and other quality models write about “quality attributes”, but fail to use that type of words in their respective models. But that is a minor thing, despite being immediately visible. To facilitate stakeholder communication and understanding, Q42 contains definitions and explanations for more than 100 different traditional system or product qualities, all labelled or tagged with one or several of the 8 key properties. Example Quality Requirements Q42 contains numerous (currently 104) examples for specific quality requirements. You can use these examples as a starting point to find and describe quality requirements for your own system. Hyperlinks as Best-Friends All terms and example-requirements are cross-referenced (hyperlinked). That enables different access patterns to this website: Start with the eight fundamental and generic properties, and dive into details from these. Start with any specific quality, and navigate to the appropriate example(s) from there. Look through the extensive list of 162 of these specific qualities. Start with asking your stakeholders for their generic or specific requirements - and then continue with 1. or 2. Finally, you might read through the list of example requirements. Stakeholder first Forgotten stakeholders are forgotten requirements. Peter Hruschka, private conversation Based upon the importance of stakeholders for project success, we centered our approach around the needs of the following typical stakeholder groups: Stakeholder Type Typical Expectations User usable in terms of providing expected and desired functions, easy and pleasant to use, reliable, available when needed, safe Management efficient in terms of development and operational cost, reliable Domain expert reliable and efficient in terms of providing required functions, flexible in terms of providing new functions, Product owner flexible in terms of new features, Developer flexible and reliable in terms of maintaining the code, easily testable Tester testable with suitable effort, flexible in terms of automation and instrumentation, reliable in terms of reproducible test results Admin operable and reliable in terms of easily operating and administering the system, secure and reliable when integrating with other systems, flexible in terms of execution environments, safe and secure Others   Just Eight, not 35 Q42 proposes 8 “tags”, which suffice to cover most (hopefully all) of the traditional qualities. These tags should be almost self-explanatory, but I’ll try to clarify them with examples: Tag Meaning(s) #reliable available, robust, dependable, fail-safe, fault-tolerant, consistent, recoverable, safe, secure #flexible flexible during development (easy to change and enhance), flexible concerning infrastructure and environments, flexible at runtime (configurable, adjustable, integratable) #efficient fast, responsive, efficient in terms of memory, CPU, threads, network and other resources, efficiently maintainable and operable #usable easy and pleasurable to use, attractive, aesthetic #operable easy to install, operate, monitor and administer, adequate operational costs #suitable providing suitable properties and responsibilities or functions #secure consistent, accountable, confidential, integrous #safe fail-safe, isolating faults, warns of hazards early, identifies risks early Code and Architecture Qualities In several of the historical quality models, the development teams’ interest was either completely ignored or had low priority. In 1978, Barry Boehm proposed to care for structuredness, conciseness and legibility, but in later models, for example in the ISO-25010 standard, these properties are out of scope. From my viewpoint, development teams play a crucial role in both initial development and long-term maintenance and evolution of systems. Therefore, we should consider their requirements on the internal structure and concepts as highly relevant, for example influencing the important time-to-market that most managers constantly call for. Q42 regards development teams as first-class citizens: #reliable in terms of “We can add now features or otherwise modify the systems, and can reliably predict the consequences of our changes. We can reliably fix bugs. We can reliably predict runtime behaviour.” #flexible in several dimensions, e.g. flexible module or component structure, flexible code that is easy to modify, flexible software and hardware infrastructure. #usable in terms of understandable module structures, understandable code and data structures, understandable runtime behaviour. #suitable in terms of appropriately “We can easily understand, test and modify code, and we can add new responsibilities and functions with appropriate risks”. Summary The arc42 quality model has yet to prove its practical applicability, as it hit the market only in January 2023. Alas - we are highly optimistic that Q42 will mirror the usefulness of it’s elder sister, the arc42-template. Please let us know of any positive or negative experience you encounter with our approach." />
+<meta property="og:description" content="The arc42 quality model Q42 (pronounced “Kju-Fortytwo” or “Kju-Four-Two”) is a simple, pragmatic yet effective approach to product and system quality. It starts with stakeholders’ expectations and requirements. Based upon typical stakeholder needs, Q42 consists of just 8 key system properties, which are sufficient to cover most, if not all, required, desirable or expected of the more than 100 traditional qualities. But let’s start at the beginning: Goals for Q42 minimal, yet covering most of the traditional product and system quality properties simple and understandable explanations of our top-level properties supported by extensive and free (online) documentation free and open-source, maintained in a public repository technology- and vendor-neutral agnostic to development methods Fresh Approach Existing models like ISO-25010 propagated a fixed hierarchy (like a tree) of system qualities. Within this tree, it is often difficult or impossible to determine to which of the top-level characteristics a particular and specific quality requirement belongs. Therefore, Q42 breaks new ground by proposing only 8 adjectives (like flexible) as core quality properties. It uses adjectives instead of nouns (like flexibility), which better reflects stakeholder expectations like “I need XYZ to be flexible”. These core properties (like reliable, flexible, usable, efficient etc) are used like labels or tags: Specific quality requirements might have several of such labels or tags. It has been unclear to me for years that those responsible for ISO and other quality models write about “quality attributes”, but fail to use that type of words in their respective models. But that is a minor thing, despite being immediately visible. To facilitate stakeholder communication and understanding, Q42 contains definitions and explanations for more than 100 different traditional system or product qualities, all labelled or tagged with one or several of the 8 key properties. Example Quality Requirements Q42 contains numerous (currently 104) examples for specific quality requirements. You can use these examples as a starting point to find and describe quality requirements for your own system. Hyperlinks as Best-Friends All terms and example-requirements are cross-referenced (hyperlinked). That enables different access patterns to this website: Start with the eight fundamental and generic properties, and dive into details from these. Start with any specific quality, and navigate to the appropriate example(s) from there. Look through the extensive list of 162 of these specific qualities. Start with asking your stakeholders for their generic or specific requirements - and then continue with 1. or 2. Finally, you might read through the list of example requirements. Stakeholder first Forgotten stakeholders are forgotten requirements. Peter Hruschka, private conversation Based upon the importance of stakeholders for project success, we centered our approach around the needs of the following typical stakeholder groups: Stakeholder Type Typical Expectations User usable in terms of providing expected and desired functions, easy and pleasant to use, reliable, available when needed, safe Management efficient in terms of development and operational cost, reliable Domain expert reliable and efficient in terms of providing required functions, flexible in terms of providing new functions, Product owner flexible in terms of new features, Developer flexible and reliable in terms of maintaining the code, easily testable Tester testable with suitable effort, flexible in terms of automation and instrumentation, reliable in terms of reproducible test results Admin operable and reliable in terms of easily operating and administering the system, secure and reliable when integrating with other systems, flexible in terms of execution environments, safe and secure Others   Just Eight, not 35 Q42 proposes 8 “tags”, which suffice to cover most (hopefully all) of the traditional qualities. These tags should be almost self-explanatory, but I’ll try to clarify them with examples: Tag Meaning(s) #reliable available, robust, dependable, fail-safe, fault-tolerant, consistent, recoverable, safe, secure #flexible flexible during development (easy to change and enhance), flexible concerning infrastructure and environments, flexible at runtime (configurable, adjustable, integratable) #efficient fast, responsive, efficient in terms of memory, CPU, threads, network and other resources, efficiently maintainable and operable #usable easy and pleasurable to use, attractive, aesthetic #operable easy to install, operate, monitor and administer, adequate operational costs #suitable providing suitable properties and responsibilities or functions #secure consistent, accountable, confidential, integrous #safe fail-safe, isolating faults, warns of hazards early, identifies risks early Code and Architecture Qualities In several of the historical quality models, the development teams’ interest was either completely ignored or had low priority. In 1978, Barry Boehm proposed to care for structuredness, conciseness and legibility, but in later models, for example in the ISO-25010 standard, these properties are out of scope. From my viewpoint, development teams play a crucial role in both initial development and long-term maintenance and evolution of systems. Therefore, we should consider their requirements on the internal structure and concepts as highly relevant, for example influencing the important time-to-market that most managers constantly call for. Q42 regards development teams as first-class citizens: #reliable in terms of “We can add now features or otherwise modify the systems, and can reliably predict the consequences of our changes. We can reliably fix bugs. We can reliably predict runtime behaviour.” #flexible in several dimensions, e.g. flexible module or component structure, flexible code that is easy to modify, flexible software and hardware infrastructure. #usable in terms of understandable module structures, understandable code and data structures, understandable runtime behaviour. #suitable in terms of appropriately “We can easily understand, test and modify code, and we can add new responsibilities and functions with appropriate risks”. Summary The arc42 quality model has yet to prove its practical applicability, as it hit the market only in January 2023. Alas - we are highly optimistic that Q42 will mirror the usefulness of it’s elder sister, the arc42-template. Please let us know of any positive or negative experience you encounter with our approach." />
+<link rel="canonical" href="https://quality.arc42.org/articles/arc42-quality-model" />
+<meta property="og:url" content="https://quality.arc42.org/articles/arc42-quality-model" />
+<meta property="og:site_name" content="arc42 Quality Model" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2025-07-16T08:19:41+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="arc42 Quality Model" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2025-07-16T08:19:41+00:00","datePublished":"2025-07-16T08:19:41+00:00","description":"The arc42 quality model Q42 (pronounced “Kju-Fortytwo” or “Kju-Four-Two”) is a simple, pragmatic yet effective approach to product and system quality. It starts with stakeholders’ expectations and requirements. Based upon typical stakeholder needs, Q42 consists of just 8 key system properties, which are sufficient to cover most, if not all, required, desirable or expected of the more than 100 traditional qualities. But let’s start at the beginning: Goals for Q42 minimal, yet covering most of the traditional product and system quality properties simple and understandable explanations of our top-level properties supported by extensive and free (online) documentation free and open-source, maintained in a public repository technology- and vendor-neutral agnostic to development methods Fresh Approach Existing models like ISO-25010 propagated a fixed hierarchy (like a tree) of system qualities. Within this tree, it is often difficult or impossible to determine to which of the top-level characteristics a particular and specific quality requirement belongs. Therefore, Q42 breaks new ground by proposing only 8 adjectives (like flexible) as core quality properties. It uses adjectives instead of nouns (like flexibility), which better reflects stakeholder expectations like “I need XYZ to be flexible”. These core properties (like reliable, flexible, usable, efficient etc) are used like labels or tags: Specific quality requirements might have several of such labels or tags. It has been unclear to me for years that those responsible for ISO and other quality models write about “quality attributes”, but fail to use that type of words in their respective models. But that is a minor thing, despite being immediately visible. To facilitate stakeholder communication and understanding, Q42 contains definitions and explanations for more than 100 different traditional system or product qualities, all labelled or tagged with one or several of the 8 key properties. Example Quality Requirements Q42 contains numerous (currently 104) examples for specific quality requirements. You can use these examples as a starting point to find and describe quality requirements for your own system. Hyperlinks as Best-Friends All terms and example-requirements are cross-referenced (hyperlinked). That enables different access patterns to this website: Start with the eight fundamental and generic properties, and dive into details from these. Start with any specific quality, and navigate to the appropriate example(s) from there. Look through the extensive list of 162 of these specific qualities. Start with asking your stakeholders for their generic or specific requirements - and then continue with 1. or 2. Finally, you might read through the list of example requirements. Stakeholder first Forgotten stakeholders are forgotten requirements. Peter Hruschka, private conversation Based upon the importance of stakeholders for project success, we centered our approach around the needs of the following typical stakeholder groups: Stakeholder Type Typical Expectations User usable in terms of providing expected and desired functions, easy and pleasant to use, reliable, available when needed, safe Management efficient in terms of development and operational cost, reliable Domain expert reliable and efficient in terms of providing required functions, flexible in terms of providing new functions, Product owner flexible in terms of new features, Developer flexible and reliable in terms of maintaining the code, easily testable Tester testable with suitable effort, flexible in terms of automation and instrumentation, reliable in terms of reproducible test results Admin operable and reliable in terms of easily operating and administering the system, secure and reliable when integrating with other systems, flexible in terms of execution environments, safe and secure Others   Just Eight, not 35 Q42 proposes 8 “tags”, which suffice to cover most (hopefully all) of the traditional qualities. These tags should be almost self-explanatory, but I’ll try to clarify them with examples: Tag Meaning(s) #reliable available, robust, dependable, fail-safe, fault-tolerant, consistent, recoverable, safe, secure #flexible flexible during development (easy to change and enhance), flexible concerning infrastructure and environments, flexible at runtime (configurable, adjustable, integratable) #efficient fast, responsive, efficient in terms of memory, CPU, threads, network and other resources, efficiently maintainable and operable #usable easy and pleasurable to use, attractive, aesthetic #operable easy to install, operate, monitor and administer, adequate operational costs #suitable providing suitable properties and responsibilities or functions #secure consistent, accountable, confidential, integrous #safe fail-safe, isolating faults, warns of hazards early, identifies risks early Code and Architecture Qualities In several of the historical quality models, the development teams’ interest was either completely ignored or had low priority. In 1978, Barry Boehm proposed to care for structuredness, conciseness and legibility, but in later models, for example in the ISO-25010 standard, these properties are out of scope. From my viewpoint, development teams play a crucial role in both initial development and long-term maintenance and evolution of systems. Therefore, we should consider their requirements on the internal structure and concepts as highly relevant, for example influencing the important time-to-market that most managers constantly call for. Q42 regards development teams as first-class citizens: #reliable in terms of “We can add now features or otherwise modify the systems, and can reliably predict the consequences of our changes. We can reliably fix bugs. We can reliably predict runtime behaviour.” #flexible in several dimensions, e.g. flexible module or component structure, flexible code that is easy to modify, flexible software and hardware infrastructure. #usable in terms of understandable module structures, understandable code and data structures, understandable runtime behaviour. #suitable in terms of appropriately “We can easily understand, test and modify code, and we can add new responsibilities and functions with appropriate risks”. Summary The arc42 quality model has yet to prove its practical applicability, as it hit the market only in January 2023. Alas - we are highly optimistic that Q42 will mirror the usefulness of it’s elder sister, the arc42-template. Please let us know of any positive or negative experience you encounter with our approach.","headline":"arc42 Quality Model","mainEntityOfPage":{"@type":"WebPage","@id":"https://quality.arc42.org/articles/arc42-quality-model"},"url":"https://quality.arc42.org/articles/arc42-quality-model"}</script>
+<!-- End Jekyll SEO tag -->
+
+    
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="theme-color" content="#ffffff">
+<meta name="description" content="The arc42 quality model Q42 (pronounced “Kju-Fortytwo” or “Kju-Four-Two”) is a simple, pragmatic yet effective approach to product and system quality.It star...">
+<link rel="shortcut icon" href="/assets/img/arc42logosquare.webp" type="image/x-icon">
+    
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+<script>
+      try { document.getElementsByTagName('html')[0].className += ' js'; } catch(e) { /* NO-JS */ }
+</script>
+<link href="/assets/css/style.css" rel="stylesheet">
+<script defer data-domain="quality.arc42.org" src="https://plausible.io/js/script.js"></script>
+
+
+
+
+
+
+</head>
+<body>
+
+<header class="site-header">
+    <div class="inner clearfix">
+        <button class="fa fa-fw fa-bars nav-toggle" data-target=".site-aside"></button>
+        
+        <a href="/">
+            <img class="avatar" src="/assets/img/arc42logosquare.webp" alt=""/>
+        </a>
+        
+        <h1 class="clearfix">
+            <a class="title " href="/">arc42 Quality Model</a>
+            
+            <br><span class="description"><span style="color:#414288">162</span> quality attributes, explained.</span>
+            
+            <br><span class="description"><span style="color:#414288">104</span> examples of quality requirements.</span>
+        </h1>
+    </div>
+</header>
+
+<div class="site-container">
+    <aside class="site-aside">
+        <div class="inner">
+            <div class="block">
+                <form action="/search">
+                    <input type="search" id="search" name="q" placeholder="Search" />
+                </form>
+            </div>
+            <ul>
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                <li><a class="page-link" href="/">Home</a></li>
+                
+                
+                
+                <li><a class="page-link" href="/how-to-use-this-site/">How to Use this Site</a></li>
+                
+                
+                
+                <li><a class="page-link" href="/qualities/">Qualities by Name</a></li>
+                
+                
+                
+                <li><a class="page-link" href="/properties/">Quality Properties</a></li>
+                
+                
+                
+                <li><a class="page-link" href="/requirements/">Examples of Quality Requirements</a></li>
+                
+                
+                
+                
+                
+                <li><a class="page-link" href="/q42-for-iso-users/">Q42 for ISO 25010 users</a></li>
+                
+                
+                
+                <li><a class="page-link" href="/standards/">Standards</a></li>
+                
+                
+                
+                <li><a class="page-link" href="/articles/">Background on "Quality"</a></li>
+                
+                
+                
+                <li><a class="page-link" href="/references/">References</a></li>
+                
+                
+                
+                <li><a class="page-link" href="/aboutthissite/">About this Site</a></li>
+                
+                
+                
+                <li><a class="page-link" href="/contact/">Contact</a></li>
+                
+                
+            </ul>
+            <ul class="icons">
+                
+
+<li>
+    <a href="xmxaxixlxtxo:ixnxfxox@xaxrxcx4x2x.xdxe" onmouseover="this.href=this.href.replace(/x/g,'');">
+        <i class="fa fa-fw fa-envelope" aria-hidden="true"></i>
+    </a>
+</li>
+
+<li><a href="https://linkedin.com/in/gernotstarke">
+      <i class="fab fa-fw fa-linkedin" aria-hidden="true"></i>
+    </a>
+</li>
+
+
+
+<li>
+    <a href="https://github.com/arc42" target="_blank">
+        <i class="fab fa-fw fa-github" aria-hidden="true"></i>
+    </a>
+</li>
+
+
+
+
+
+<li>
+    <a href="https://stackoverflow.com/tags/arc42" target="_blank">
+        <i class="fab fa-fw fa-stack-overflow" aria-hidden="true"></i>
+    </a>
+</li>
+
+
+
+
+<li>
+    <a href="https://youtube.com/arc42-video" target="_blank">
+        <i class="fab fa-fw fa-youtube" aria-hidden="true"></i>
+    </a>
+</li>
+
+
+
+<li><a href="https://dev.to/gernotstarke/" target="_blank">
+  <i class="fab fa-dev" aria-hidden="true"></i> </a>
+</li>
+
+
+<li><a href="https://www.innoq.com/de/staff/gernot-starke/" target="_blank">
+  <i class="fas fa-heart fa-fw" style="color:#ff9c66;"></i> </a>
+</li>
+
+
+
+
+            </ul>
+            <hr class="with-no-margin margin-bottom"/>
+            <a href="https://github.com/arc42/quality.arc42.org-site/issues">
+               <img alt="GitHub issues" src="https://img.shields.io/github/issues-raw/arc42/quality.arc42.org-site?style=social">
+               <img alt="GitHub closed issues" src="https://img.shields.io/github/issues-closed-raw/arc42/quality.arc42.org-site?style=social">
+            </a>
+            <hr class="with-no-margin margin-bottom"/>
+        </div>
+    </aside>
+
+    <div class="site-content">
+        <div class="article-wrapper">
+    <article>
+        
+
+<header>
+    <div class="panel">
+        <h1>
+            
+            arc42 Quality Model
+            
+        </h1>
+
+        <ul class="tags">
+            
+            
+            
+        </ul>
+
+        <div class="clearfix">
+            <ul class="meta">
+                
+                
+            </ul>
+        </div>
+    </div>
+
+
+</header>
+
+        <section class="post-content">
+            
+<p>The arc42 quality model Q42 (pronounced “Kju-Fortytwo” or “Kju-Four-Two”) is a simple, pragmatic yet effective approach to product and system quality.
+It starts with <strong>stakeholders’ expectations and requirements</strong>.</p>
+
+<p>Based upon typical stakeholder needs, Q42 consists of just 8 key system properties, which are sufficient to cover most, if not all, required, desirable or expected of the more than 100 <a href="/qualities"><em>traditional</em> qualities</a>.</p>
+
+<p><img src="/images/arc42-system-qualities-overview.svg" alt="arc42 quality model" /></p>
+
+<p>But let’s start at the beginning:</p>
+<h3 id="goals-for-q42">Goals for Q42</h3>
+
+<ul>
+  <li>minimal, yet covering most of the traditional product and system quality properties</li>
+  <li>simple and understandable explanations of our top-level properties</li>
+  <li>supported by extensive and free (online) documentation</li>
+  <li>free and open-source, maintained in a public repository</li>
+  <li>technology- and vendor-neutral</li>
+  <li>agnostic to development methods</li>
+</ul>
+
+<h3 id="fresh-approach">Fresh Approach</h3>
+<p>Existing models like ISO-25010 propagated a fixed hierarchy (like a tree) of system qualities.
+Within this <em>tree</em>, it is often difficult or impossible to determine to which of the top-level characteristics a particular and specific quality requirement belongs. 
+Therefore, Q42 breaks new ground by proposing only 8 adjectives (like <em>flexible</em>) as core quality properties.</p>
+
+<p>It uses adjectives instead of nouns (like <em>flexibility</em>), which better reflects stakeholder expectations like <em>“I need XYZ to be flexible”</em>.
+These core properties (like reliable, flexible, usable, efficient etc) are used like labels or tags:
+Specific quality requirements might have several of such labels or tags.</p>
+
+<p>It has been unclear to me for years that those responsible for ISO and other quality models write about “quality attributes”, but fail to use that type of words in their respective models.
+But that is a minor thing, despite being immediately visible.</p>
+
+<p>To facilitate stakeholder communication and understanding, Q42 contains definitions and explanations for more than 100 different <em>traditional</em> system or product qualities, all labelled or tagged with one or several of the 8 key properties.</p>
+
+<h4 id="example-quality-requirements">Example Quality Requirements</h4>
+
+<p>Q42 contains numerous (currently 104) <a href="/requirements">examples for specific quality requirements</a>.
+You can use these examples as a starting point to find and describe quality requirements for your own system.</p>
+
+<h4 id="hyperlinks-as-best-friends">Hyperlinks as Best-Friends</h4>
+<p>All terms and example-requirements are cross-referenced (<em>hyperlinked</em>). 
+That enables different <em>access patterns</em> to this website:</p>
+
+<ol>
+  <li>Start with the eight <a href="/properties">fundamental and generic <strong>properties</strong></a>, and dive into details from these.</li>
+  <li>Start with any specific quality, and navigate to the appropriate example(s) from there. Look through the extensive list of 162 of these <a href="/qualities"><strong>specific qualities</strong></a>.</li>
+  <li>Start with asking your stakeholders for their generic or specific requirements - and then continue with 1. or 2.</li>
+  <li>Finally, you might read through the list of <a href="/requirements"><strong>example requirements</strong></a>.</li>
+</ol>
+
+<h3 id="stakeholder-first">Stakeholder first</h3>
+
+<blockquote>
+  <p>Forgotten stakeholders are forgotten requirements.</p>
+
+  <p>Peter Hruschka, private conversation</p>
+</blockquote>
+
+<p>Based upon the importance of stakeholders for project success, we centered our approach around the needs of the following typical stakeholder groups:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Stakeholder Type</th>
+      <th style="text-align: left">Typical Expectations</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">User</td>
+      <td style="text-align: left">usable in terms of providing expected and desired functions, easy and pleasant to use, reliable, available when needed, safe</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Management</td>
+      <td style="text-align: left">efficient in terms of development and operational cost, reliable</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Domain expert</td>
+      <td style="text-align: left">reliable and efficient in terms of providing required functions, flexible in terms of providing new functions,</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Product owner</td>
+      <td style="text-align: left">flexible in terms of new features,</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Developer</td>
+      <td style="text-align: left">flexible and reliable in terms of maintaining the code, easily testable</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Tester</td>
+      <td style="text-align: left">testable with suitable effort, flexible in terms of automation and instrumentation, reliable in terms of reproducible test results</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Admin</td>
+      <td style="text-align: left">operable and reliable in terms of easily operating and administering the system, secure and reliable when integrating with other systems, flexible in terms of execution environments, safe and secure</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Others</td>
+      <td style="text-align: left"> </td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="just-eight-not-35">Just Eight, not 35</h3>
+<p>Q42 proposes 8 “tags”, which suffice to cover most (hopefully all) of the traditional qualities.
+These tags should be almost self-explanatory, but I’ll try to clarify them with examples:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Tag</th>
+      <th style="text-align: left">Meaning(s)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">#reliable</code></td>
+      <td style="text-align: left">available, robust, dependable, fail-safe, fault-tolerant, consistent, recoverable, safe, secure</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">#flexible</code></td>
+      <td style="text-align: left">flexible during development (easy to change and enhance), flexible concerning infrastructure and environments, flexible at runtime (configurable, adjustable, integratable)</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">#efficient</code></td>
+      <td style="text-align: left">fast, responsive, efficient in terms of memory, CPU, threads, network and other resources, efficiently maintainable and operable</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">#usable</code></td>
+      <td style="text-align: left">easy and pleasurable to use, attractive, aesthetic</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">#operable</code></td>
+      <td style="text-align: left">easy to install, operate, monitor and administer, adequate operational costs</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">#suitable</code></td>
+      <td style="text-align: left">providing suitable properties and responsibilities or functions</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">#secure</code></td>
+      <td style="text-align: left">consistent, accountable, confidential, integrous</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">#safe</code></td>
+      <td style="text-align: left">fail-safe, isolating faults, warns of hazards early, identifies risks early</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="code-and-architecture-qualities">Code and Architecture Qualities</h3>
+<p>In several of the historical quality models, the development teams’ interest was either completely ignored or had low priority.
+In 1978, <a href="/articles/quality-models">Barry Boehm</a> proposed to care for <em>structuredness, conciseness</em> and <em>legibility</em>, but in later models, for example in the ISO-25010 standard, these properties are out of scope.</p>
+
+<p>From my viewpoint, development teams play a crucial role in both initial development and long-term maintenance and evolution of systems.
+Therefore, we should consider their requirements on the internal structure and concepts as highly relevant, for example influencing the important <em>time-to-market</em> that most managers constantly call for.</p>
+
+<p>Q42 regards development teams as first-class citizens:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">#reliable</code> in terms of “We can add now features or otherwise modify the systems, and can reliably predict the consequences of our changes. We can reliably fix bugs. We can reliably predict runtime behaviour.”</li>
+  <li><code class="language-plaintext highlighter-rouge">#flexible</code> in several dimensions, e.g. flexible module or component structure, flexible code that is easy to modify, flexible software and hardware infrastructure.</li>
+  <li><code class="language-plaintext highlighter-rouge">#usable</code> in terms of understandable module structures, understandable code and data structures, understandable runtime behaviour.</li>
+  <li><code class="language-plaintext highlighter-rouge">#suitable</code> in terms of appropriately “We can easily understand, test and modify code, and we can add new responsibilities and functions with appropriate risks”.</li>
+</ul>
+
+<h3 id="summary">Summary</h3>
+<p>The arc42 quality model has yet to prove its practical applicability, as it hit the <em>market</em> only in January 2023.
+Alas - we are highly optimistic that Q42 will mirror the usefulness of it’s elder sister, the <a href="https://www.arc42.org">arc42-template</a>.</p>
+
+<p>Please let us know of any positive or negative experience you encounter with our approach.</p>
+
+        </section>
+        <footer>
+    
+</footer>
+
+    </article>
+</div>
+
+
+
+    </div>
+</div>
+
+<footer class="site-footer">
+    <div class="inner">
+        <p class="footer-icons"><a href="https://www.innoq.com" target="_blank" rel="noopener noreferrer nofollow"><img class="supported-by-innoq" src="/images/supported-by-innoq--petrol-apricot.svg"></a><br>
+            <a href="https://status.arc42.org">
+                <i class="fa fa-chart-bar fa-fw" style="color:#50C878;" ></i>Status</a><i>&nbsp;&nbsp;</i>
+            <i class="fa fa-user-secret" aria-hidden="true"></i>
+            <a href="/imprint">
+                Imprint + Privacy</a></p>
+        <span>Maintained by <a target="_blank" rel="noopener noreferrer nofollow" href="https://gernotstarke.de">Gernot Starke</a>,
+          supported by <a target="_blank" rel="noopener noreferrer nofollow" href="https://perstarke-webdev.de">Per Starke Web Development</a>
+        </span>
+    </div>
+</footer>
+
+
+<script src="/assets/jquery/jquery-3.7.1-min.js"></script>
+<script src="/assets/lib/garand-sticky/jquery.sticky.js"></script>
+<script src="/assets/js/script.js"></script>
+
+
+<script src="/assets/js/header-link.js"></script>
+
+
+
+
+
+</body>
+</html>

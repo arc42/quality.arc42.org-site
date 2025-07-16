@@ -1,0 +1,52 @@
+{
+  "links": [
+    { "source": "home", "target": "PerformanceEfficiency" },
+    { "source": "home", "target": "FunctionalSuitability" },
+    { "source": "home", "target": "Compatibility" },
+    { "source": "home", "target": "InteractionCapability" },
+    { "source": "home", "target": "Reliability" },
+    { "source": "home", "target": "Security" },
+    { "source": "home", "target": "Safety" },
+    { "source": "home", "target": "Maintainability" },
+    { "source": "home", "target": "Portability" },
+
+    { "source": "FunctionalSuitability", "target": "FunctionalCompleteness" },
+    { "source": "FunctionalSuitability", "target": "FunctionalCorrectness" },
+    { "source": "FunctionalSuitability", "target": "FunctionalAppropriateness" },
+
+    { "source": "PerformanceEfficiency", "target": "TimeBehavior" },
+    { "source": "PerformanceEfficiency", "target": "ResourceUtilization" },
+    { "source": "PerformanceEfficiency", "target": "Capacity" },
+
+    { "source": "Compatibility", "target": "CoExistence" },
+    { "source": "Compatibility", "target": "Interoperability" },
+
+    { "source": "InteractionCapability", "target": "AppropriatenessRecognizability" },
+    { "source": "InteractionCapability", "target": "Learnability" },
+    { "source": "InteractionCapability", "target": "Operability" },
+    { "source": "InteractionCapability", "target": "UserErrorProtection" },
+    { "source": "InteractionCapability", "target": "UserInterfaceAesthetics" },
+    { "source": "InteractionCapability", "target": "Accessibility" },
+
+    { "source": "Reliability", "target": "Maturity" },
+    { "source": "Reliability", "target": "Availability" },
+    { "source": "Reliability", "target": "FaultTolerance" },
+    { "source": "Reliability", "target": "Recoverability" },
+
+    { "source": "Security", "target": "Confidentiality" },
+    { "source": "Security", "target": "Integrity" },
+    { "source": "Security", "target": "NonRepudiation" },
+    { "source": "Security", "target": "Accountability" },
+    { "source": "Security", "target": "Authenticity" },
+
+    { "source": "Maintainability", "target": "Modularity" },
+    { "source": "Maintainability", "target": "Reusability" },
+    { "source": "Maintainability", "target": "Analysability" },
+    { "source": "Maintainability", "target": "Modifiability" },
+    { "source": "Maintainability", "target": "Testability" },
+
+    { "source": "Portability", "target": "Adaptability" },
+    { "source": "Portability", "target": "Installability" },
+    { "source": "Portability", "target": "Replaceability" }
+  ]
+}

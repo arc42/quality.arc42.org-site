@@ -1,0 +1,3 @@
+Sitemap: https://quality.arc42.org/sitemap.xml
+User-agent: *
+Allow: /

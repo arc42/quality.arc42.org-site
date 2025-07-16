@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    
+
+
+
+    
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+ 
+ <!-- SEO includes title and canonical tags, plus several others -->
+ <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Challenges with Quality | arc42 Quality Model</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="Challenges with Quality" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Quality is one of the central topics of development teams. Approaches such as Domain-Driven Design, help us to get our systems well-structured, but performance, robustness, flexibility, security and other important properties are left out. Therefore, I propose Quality-Driven Software Architecture as a complement: A practical approach to achieve essential quality properties. The (incredibly un-useful) Definition Let’s ask the System-Engineering Body of Knowledge (SEBok): Quality: Ability of a product, service, system, component, or process to meet customer or user needs, expectations, or requirements. (ISO/IEC/IEEE 2010) Sounds true, but does not help in practice. The (in my humble opinion) worst definition comes from the German Wikipedia Quality is the set of all properties of an object or system. (…) Quality is the designation of a perceptible state form of systems and its characteristics, which is defined in a certain period of time on the basis of certain properties of the system in this state. German Wikipedia/Quality However, these strange definitions don’t in daily life. Unfortunately, the “set of all properties” can mean just about anything. For real work on specific (software) products, we need this to be more concrete. Let’s start with daily life. What is “Quality”? We use “quality” colloquially to express something good or positive about products or services. For example, we label a piece of clothing, a special meal or even a technical “gadget” as “high quality”. Unfortunately, we usually remain unspecific as to what exactly we mean by the term “quality” in these cases. Some time ago, I was allowed to listen to the (rather expensive) over-ear headphones of a British noble manufacturer at a valued colleague’s house. This led to a lively discussion about what exactly constitutes the “quality” of headphones: Is it the frequency spectrum achievable by the speakers, maximum achievable volume, comfort while wearing the headphones, weight, type and number of possible connections, faithful reproduction or reproduction optimized for specific music genres, attenuation of external noise (noise-cancelling), clean channel separation or operability via gestures or buttons? sustainable and environmentally optimized manufacturing process? a production process free of child labor? ear pads be replaceable? And what about durability, longevity or the price? As you can see, when discussing quality, personal preferences and interests almost inevitably come into play. This brings up an interesting feature of quality: it is highly subjective. Try to put this into concrete terms with people you know, talk about the quality of everyday things: Tea, coffee, cheese, shoes, pants or even a smartphone: The exact characteristics that make up the quality of these things can (sorry, will surely!) lead to debates. Quality is conformance to requirements. Crosby, p.17 Two Dimensions… Now it’s getting complicated because the term “quality” gets two different dimensions. Which features or attributes count as quality (in the example: volume, frequency range, comfort, weight, connections, noise-cancelling, channel separation, sustainability, interchangeability of parts). What is the desired level, value or amount of these features (e.g. frequency response from 15 to 25000Hz, weight less than 400g, soft leather ear cups, wireless connection, jack and USB, etc.). In order to work on “quality” in practice, we need to get a handle on both of these dimensions. Let’s try the transition to software development at this point. Even for dimension-1 (“which properties belong to quality”) you can surely think of a multitude of such properties, which you or other involved parties (aka stakeholders) count to quality: Performance, security, robustness and a few dozen more (see figure below). Scientists and practitioners developed so-called quality models, which collect more or less of such quality attributes. … and Some Problems This is where the subjectivity of quality hits us: Our IT security officer or the data protection officers are guaranteed to prioritize the issue of IT security much higher than ease of use, responsiveness (“snappiness”), or robustness, which end users eagerly desire. Oh, yes - the development team would like to see comprehensibility of the source code and traceability of the architectural decisions, as well as the use of interesting and modern technologies (which, in turn, the security people don’t like at all because security risks may still be lurking in modern technologies that have long been eliminated in “boring” old-school frameworks). Last but not least, the management demands the lowest possible costs for development and operation. But these different priorities and wishes are not enough: Some say maintainability, others changeability or modifiability. Then adaptability comes into play, and extensibility. And last but not least, someone adds “flexibility”. Do you all mean the same thing now, even though you used different terms? You see - even a discussion about proper terminology might turn out difficult. Once we have agreed with stakeholders on a set of relevant attributes (i.e., dimension 1 of quality), we must now define the necessary or desired characteristics (dimension 2) - i.e., formulate these quality requirements explicitly and concretely. Another article in this series will dive deep into this topic of specific quality requirements. Unfortunately, concrete quality requirements are rarely available in everyday project work. That’s when development teams start making implicit assumptions. Such assumptions can, however, contain considerable risks. We propose to involve stakeholders, and help them formulate their specific quality requirements. Compromises and miracles A vehicle optimized for low-energy consumption (about 5 kWh per 100 km, or 3l of fuel per 100 km) cannot simultaneously be designed for high seating capacity (about 8 people) or high payload (8 tons payload). Tea is either flavored or not. One cannot accommodate long audio sequences with high sampling rates in the strictly limited memory of an embedded onboard controller with only 64kByte of available memory. Generally speaking, some combinations of quality characteristics make each other difficult, or even mutually exclusive. In software development and architecture, we often have to compromise because we can’t achieve all the features to suit all stakeholders (unless you can work miracles). Summary You have to clarify two dimensions when you want to have specific information on required, desired or expected levels of product quality: What properties are important (e.g. performance, flexibility, security, safety…) What level of these properties is required, desired or expected from the system, its development or operation?" />
+<meta property="og:description" content="Quality is one of the central topics of development teams. Approaches such as Domain-Driven Design, help us to get our systems well-structured, but performance, robustness, flexibility, security and other important properties are left out. Therefore, I propose Quality-Driven Software Architecture as a complement: A practical approach to achieve essential quality properties. The (incredibly un-useful) Definition Let’s ask the System-Engineering Body of Knowledge (SEBok): Quality: Ability of a product, service, system, component, or process to meet customer or user needs, expectations, or requirements. (ISO/IEC/IEEE 2010) Sounds true, but does not help in practice. The (in my humble opinion) worst definition comes from the German Wikipedia Quality is the set of all properties of an object or system. (…) Quality is the designation of a perceptible state form of systems and its characteristics, which is defined in a certain period of time on the basis of certain properties of the system in this state. German Wikipedia/Quality However, these strange definitions don’t in daily life. Unfortunately, the “set of all properties” can mean just about anything. For real work on specific (software) products, we need this to be more concrete. Let’s start with daily life. What is “Quality”? We use “quality” colloquially to express something good or positive about products or services. For example, we label a piece of clothing, a special meal or even a technical “gadget” as “high quality”. Unfortunately, we usually remain unspecific as to what exactly we mean by the term “quality” in these cases. Some time ago, I was allowed to listen to the (rather expensive) over-ear headphones of a British noble manufacturer at a valued colleague’s house. This led to a lively discussion about what exactly constitutes the “quality” of headphones: Is it the frequency spectrum achievable by the speakers, maximum achievable volume, comfort while wearing the headphones, weight, type and number of possible connections, faithful reproduction or reproduction optimized for specific music genres, attenuation of external noise (noise-cancelling), clean channel separation or operability via gestures or buttons? sustainable and environmentally optimized manufacturing process? a production process free of child labor? ear pads be replaceable? And what about durability, longevity or the price? As you can see, when discussing quality, personal preferences and interests almost inevitably come into play. This brings up an interesting feature of quality: it is highly subjective. Try to put this into concrete terms with people you know, talk about the quality of everyday things: Tea, coffee, cheese, shoes, pants or even a smartphone: The exact characteristics that make up the quality of these things can (sorry, will surely!) lead to debates. Quality is conformance to requirements. Crosby, p.17 Two Dimensions… Now it’s getting complicated because the term “quality” gets two different dimensions. Which features or attributes count as quality (in the example: volume, frequency range, comfort, weight, connections, noise-cancelling, channel separation, sustainability, interchangeability of parts). What is the desired level, value or amount of these features (e.g. frequency response from 15 to 25000Hz, weight less than 400g, soft leather ear cups, wireless connection, jack and USB, etc.). In order to work on “quality” in practice, we need to get a handle on both of these dimensions. Let’s try the transition to software development at this point. Even for dimension-1 (“which properties belong to quality”) you can surely think of a multitude of such properties, which you or other involved parties (aka stakeholders) count to quality: Performance, security, robustness and a few dozen more (see figure below). Scientists and practitioners developed so-called quality models, which collect more or less of such quality attributes. … and Some Problems This is where the subjectivity of quality hits us: Our IT security officer or the data protection officers are guaranteed to prioritize the issue of IT security much higher than ease of use, responsiveness (“snappiness”), or robustness, which end users eagerly desire. Oh, yes - the development team would like to see comprehensibility of the source code and traceability of the architectural decisions, as well as the use of interesting and modern technologies (which, in turn, the security people don’t like at all because security risks may still be lurking in modern technologies that have long been eliminated in “boring” old-school frameworks). Last but not least, the management demands the lowest possible costs for development and operation. But these different priorities and wishes are not enough: Some say maintainability, others changeability or modifiability. Then adaptability comes into play, and extensibility. And last but not least, someone adds “flexibility”. Do you all mean the same thing now, even though you used different terms? You see - even a discussion about proper terminology might turn out difficult. Once we have agreed with stakeholders on a set of relevant attributes (i.e., dimension 1 of quality), we must now define the necessary or desired characteristics (dimension 2) - i.e., formulate these quality requirements explicitly and concretely. Another article in this series will dive deep into this topic of specific quality requirements. Unfortunately, concrete quality requirements are rarely available in everyday project work. That’s when development teams start making implicit assumptions. Such assumptions can, however, contain considerable risks. We propose to involve stakeholders, and help them formulate their specific quality requirements. Compromises and miracles A vehicle optimized for low-energy consumption (about 5 kWh per 100 km, or 3l of fuel per 100 km) cannot simultaneously be designed for high seating capacity (about 8 people) or high payload (8 tons payload). Tea is either flavored or not. One cannot accommodate long audio sequences with high sampling rates in the strictly limited memory of an embedded onboard controller with only 64kByte of available memory. Generally speaking, some combinations of quality characteristics make each other difficult, or even mutually exclusive. In software development and architecture, we often have to compromise because we can’t achieve all the features to suit all stakeholders (unless you can work miracles). Summary You have to clarify two dimensions when you want to have specific information on required, desired or expected levels of product quality: What properties are important (e.g. performance, flexibility, security, safety…) What level of these properties is required, desired or expected from the system, its development or operation?" />
+<link rel="canonical" href="https://quality.arc42.org/articles/challenge-with-quality" />
+<meta property="og:url" content="https://quality.arc42.org/articles/challenge-with-quality" />
+<meta property="og:site_name" content="arc42 Quality Model" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2025-07-16T08:19:41+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Challenges with Quality" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2025-07-16T08:19:41+00:00","datePublished":"2025-07-16T08:19:41+00:00","description":"Quality is one of the central topics of development teams. Approaches such as Domain-Driven Design, help us to get our systems well-structured, but performance, robustness, flexibility, security and other important properties are left out. Therefore, I propose Quality-Driven Software Architecture as a complement: A practical approach to achieve essential quality properties. The (incredibly un-useful) Definition Let’s ask the System-Engineering Body of Knowledge (SEBok): Quality: Ability of a product, service, system, component, or process to meet customer or user needs, expectations, or requirements. (ISO/IEC/IEEE 2010) Sounds true, but does not help in practice. The (in my humble opinion) worst definition comes from the German Wikipedia Quality is the set of all properties of an object or system. (…) Quality is the designation of a perceptible state form of systems and its characteristics, which is defined in a certain period of time on the basis of certain properties of the system in this state. German Wikipedia/Quality However, these strange definitions don’t in daily life. Unfortunately, the “set of all properties” can mean just about anything. For real work on specific (software) products, we need this to be more concrete. Let’s start with daily life. What is “Quality”? We use “quality” colloquially to express something good or positive about products or services. For example, we label a piece of clothing, a special meal or even a technical “gadget” as “high quality”. Unfortunately, we usually remain unspecific as to what exactly we mean by the term “quality” in these cases. Some time ago, I was allowed to listen to the (rather expensive) over-ear headphones of a British noble manufacturer at a valued colleague’s house. This led to a lively discussion about what exactly constitutes the “quality” of headphones: Is it the frequency spectrum achievable by the speakers, maximum achievable volume, comfort while wearing the headphones, weight, type and number of possible connections, faithful reproduction or reproduction optimized for specific music genres, attenuation of external noise (noise-cancelling), clean channel separation or operability via gestures or buttons? sustainable and environmentally optimized manufacturing process? a production process free of child labor? ear pads be replaceable? And what about durability, longevity or the price? As you can see, when discussing quality, personal preferences and interests almost inevitably come into play. This brings up an interesting feature of quality: it is highly subjective. Try to put this into concrete terms with people you know, talk about the quality of everyday things: Tea, coffee, cheese, shoes, pants or even a smartphone: The exact characteristics that make up the quality of these things can (sorry, will surely!) lead to debates. Quality is conformance to requirements. Crosby, p.17 Two Dimensions… Now it’s getting complicated because the term “quality” gets two different dimensions. Which features or attributes count as quality (in the example: volume, frequency range, comfort, weight, connections, noise-cancelling, channel separation, sustainability, interchangeability of parts). What is the desired level, value or amount of these features (e.g. frequency response from 15 to 25000Hz, weight less than 400g, soft leather ear cups, wireless connection, jack and USB, etc.). In order to work on “quality” in practice, we need to get a handle on both of these dimensions. Let’s try the transition to software development at this point. Even for dimension-1 (“which properties belong to quality”) you can surely think of a multitude of such properties, which you or other involved parties (aka stakeholders) count to quality: Performance, security, robustness and a few dozen more (see figure below). Scientists and practitioners developed so-called quality models, which collect more or less of such quality attributes. … and Some Problems This is where the subjectivity of quality hits us: Our IT security officer or the data protection officers are guaranteed to prioritize the issue of IT security much higher than ease of use, responsiveness (“snappiness”), or robustness, which end users eagerly desire. Oh, yes - the development team would like to see comprehensibility of the source code and traceability of the architectural decisions, as well as the use of interesting and modern technologies (which, in turn, the security people don’t like at all because security risks may still be lurking in modern technologies that have long been eliminated in “boring” old-school frameworks). Last but not least, the management demands the lowest possible costs for development and operation. But these different priorities and wishes are not enough: Some say maintainability, others changeability or modifiability. Then adaptability comes into play, and extensibility. And last but not least, someone adds “flexibility”. Do you all mean the same thing now, even though you used different terms? You see - even a discussion about proper terminology might turn out difficult. Once we have agreed with stakeholders on a set of relevant attributes (i.e., dimension 1 of quality), we must now define the necessary or desired characteristics (dimension 2) - i.e., formulate these quality requirements explicitly and concretely. Another article in this series will dive deep into this topic of specific quality requirements. Unfortunately, concrete quality requirements are rarely available in everyday project work. That’s when development teams start making implicit assumptions. Such assumptions can, however, contain considerable risks. We propose to involve stakeholders, and help them formulate their specific quality requirements. Compromises and miracles A vehicle optimized for low-energy consumption (about 5 kWh per 100 km, or 3l of fuel per 100 km) cannot simultaneously be designed for high seating capacity (about 8 people) or high payload (8 tons payload). Tea is either flavored or not. One cannot accommodate long audio sequences with high sampling rates in the strictly limited memory of an embedded onboard controller with only 64kByte of available memory. Generally speaking, some combinations of quality characteristics make each other difficult, or even mutually exclusive. In software development and architecture, we often have to compromise because we can’t achieve all the features to suit all stakeholders (unless you can work miracles). Summary You have to clarify two dimensions when you want to have specific information on required, desired or expected levels of product quality: What properties are important (e.g. performance, flexibility, security, safety…) What level of these properties is required, desired or expected from the system, its development or operation?","headline":"Challenges with Quality","mainEntityOfPage":{"@type":"WebPage","@id":"https://quality.arc42.org/articles/challenge-with-quality"},"url":"https://quality.arc42.org/articles/challenge-with-quality"}</script>
+<!-- End Jekyll SEO tag -->
+
+    
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="theme-color" content="#ffffff">
+<meta name="description" content="  Quality is one of the central topics of development teams. Approaches such as Domain-Driven Design, help us to get our systems well-structured, but perform...">
+<link rel="shortcut icon" href="/assets/img/arc42logosquare.webp" type="image/x-icon">
+    
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+<script>
+      try { document.getElementsByTagName('html')[0].className += ' js'; } catch(e) { /* NO-JS */ }
+</script>
+<link href="/assets/css/style.css" rel="stylesheet">
+<script defer data-domain="quality.arc42.org" src="https://plausible.io/js/script.js"></script>
+
+
+
+
+
+
+</head>
+<body>
+
+<header class="site-header">
+    <div class="inner clearfix">
+        <button class="fa fa-fw fa-bars nav-toggle" data-target=".site-aside"></button>
+        
+        <a href="/">
+            <img class="avatar" src="/assets/img/arc42logosquare.webp" alt=""/>
+        </a>
+        
+        <h1 class="clearfix">
+            <a class="title " href="/">arc42 Quality Model</a>
+            
+            <br><span class="description"><span style="color:#414288">162</span> quality attributes, explained.</span>
+            
+            <br><span class="description"><span style="color:#414288">104</span> examples of quality requirements.</span>
+        </h1>
+    </div>
+</header>
+
+<div class="site-container">
+    <aside class="site-aside">
+        <div class="inner">
+            <div class="block">
+                <form action="/search">
+                    <input type="search" id="search" name="q" placeholder="Search" />
+                </form>
+            </div>
+            <ul>
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                <li><a class="page-link" href="/">Home</a></li>
+                
+                
+                
+                <li><a class="page-link" href="/how-to-use-this-site/">How to Use this Site</a></li>
+                
+                
+                
+                <li><a class="page-link" href="/qualities/">Qualities by Name</a></li>
+                
+                
+                
+                <li><a class="page-link" href="/properties/">Quality Properties</a></li>
+                
+                
+                
+                <li><a class="page-link" href="/requirements/">Examples of Quality Requirements</a></li>
+                
+                
+                
+                
+                
+                <li><a class="page-link" href="/q42-for-iso-users/">Q42 for ISO 25010 users</a></li>
+                
+                
+                
+                <li><a class="page-link" href="/standards/">Standards</a></li>
+                
+                
+                
+                <li><a class="page-link" href="/articles/">Background on "Quality"</a></li>
+                
+                
+                
+                <li><a class="page-link" href="/references/">References</a></li>
+                
+                
+                
+                <li><a class="page-link" href="/aboutthissite/">About this Site</a></li>
+                
+                
+                
+                <li><a class="page-link" href="/contact/">Contact</a></li>
+                
+                
+            </ul>
+            <ul class="icons">
+                
+
+<li>
+    <a href="xmxaxixlxtxo:ixnxfxox@xaxrxcx4x2x.xdxe" onmouseover="this.href=this.href.replace(/x/g,'');">
+        <i class="fa fa-fw fa-envelope" aria-hidden="true"></i>
+    </a>
+</li>
+
+<li><a href="https://linkedin.com/in/gernotstarke">
+      <i class="fab fa-fw fa-linkedin" aria-hidden="true"></i>
+    </a>
+</li>
+
+
+
+<li>
+    <a href="https://github.com/arc42" target="_blank">
+        <i class="fab fa-fw fa-github" aria-hidden="true"></i>
+    </a>
+</li>
+
+
+
+
+
+<li>
+    <a href="https://stackoverflow.com/tags/arc42" target="_blank">
+        <i class="fab fa-fw fa-stack-overflow" aria-hidden="true"></i>
+    </a>
+</li>
+
+
+
+
+<li>
+    <a href="https://youtube.com/arc42-video" target="_blank">
+        <i class="fab fa-fw fa-youtube" aria-hidden="true"></i>
+    </a>
+</li>
+
+
+
+<li><a href="https://dev.to/gernotstarke/" target="_blank">
+  <i class="fab fa-dev" aria-hidden="true"></i> </a>
+</li>
+
+
+<li><a href="https://www.innoq.com/de/staff/gernot-starke/" target="_blank">
+  <i class="fas fa-heart fa-fw" style="color:#ff9c66;"></i> </a>
+</li>
+
+
+
+
+            </ul>
+            <hr class="with-no-margin margin-bottom"/>
+            <a href="https://github.com/arc42/quality.arc42.org-site/issues">
+               <img alt="GitHub issues" src="https://img.shields.io/github/issues-raw/arc42/quality.arc42.org-site?style=social">
+               <img alt="GitHub closed issues" src="https://img.shields.io/github/issues-closed-raw/arc42/quality.arc42.org-site?style=social">
+            </a>
+            <hr class="with-no-margin margin-bottom"/>
+        </div>
+    </aside>
+
+    <div class="site-content">
+        <div class="article-wrapper">
+    <article>
+        
+
+<header>
+    <div class="panel">
+        <h1>
+            
+            Challenges with Quality
+            
+        </h1>
+
+        <ul class="tags">
+            
+            
+            
+        </ul>
+
+        <div class="clearfix">
+            <ul class="meta">
+                
+                
+            </ul>
+        </div>
+    </div>
+
+
+</header>
+
+        <section class="post-content">
+            <div class="arc42-help">
+  <p>Quality is one of the central topics of development teams. 
+Approaches such as <em>Domain-Driven Design</em>, help us to get our systems well-structured, but performance, robustness, flexibility, security and other important properties are left out. 
+Therefore, I propose <em>Quality-Driven Software Architecture</em> as a complement:
+A practical approach to achieve essential quality properties.</p>
+
+</div>
+<p><br /></p>
+
+<h3 id="the-incredibly-un-useful-definition">The (incredibly un-useful) Definition</h3>
+
+<p>Let’s ask the <a href="https://www.sebokwiki.org/wiki/Quality_(glossary)">System-Engineering Body of Knowledge (SEBok)</a>:</p>
+
+<blockquote>
+  <p>Quality: Ability of a product, service, system, component, or process to meet customer or user needs, expectations, or requirements.</p>
+
+  <p>(ISO/IEC/IEEE 2010)</p>
+</blockquote>
+
+<p>Sounds true, but does not help in practice.</p>
+
+<p>The (in my <em>humble opinion</em>) worst definition comes from the <a href="https://de.wikipedia.org/wiki/Qualit%C3%A4t">German Wikipedia</a> <i class="fa-solid fa-person-circle-question"></i></p>
+
+<blockquote>
+  <p>Quality is the set of all properties of an object or system. (…) 
+Quality is the designation of a perceptible state form of systems and its characteristics, which is defined in a certain period of time on the basis of certain properties of the system in this state.</p>
+
+  <p><a href="https://de.wikipedia.org/wiki/Qualit%C3%A4t">German Wikipedia/Quality</a></p>
+</blockquote>
+
+<p>However, these strange definitions don’t in daily life.
+Unfortunately, the “set of all properties” can mean just about anything. 
+For real work on specific (software) products, we need this to be more concrete.</p>
+
+<p>Let’s start with daily life.</p>
+<h3 id="what-is-quality">What is “Quality”?</h3>
+
+<p>We use “quality” colloquially to express something good or positive about products or services. 
+For example, we label a piece of clothing, a special meal or even a technical “gadget” as “high quality”. 
+Unfortunately, we usually remain unspecific as to what exactly we mean by the term “quality” in these cases.</p>
+
+<p>Some time ago, I was allowed to listen to the (rather expensive) over-ear headphones of a British noble manufacturer at a valued colleague’s house. 
+This led to a lively discussion about what exactly constitutes the “quality” of headphones:</p>
+
+<p>Is it the</p>
+<ul>
+  <li>frequency spectrum achievable by the speakers,</li>
+  <li>maximum achievable volume,</li>
+  <li>comfort while wearing the headphones,</li>
+  <li>weight,</li>
+  <li>type and number of possible connections,</li>
+  <li>faithful reproduction or</li>
+  <li>reproduction optimized for specific music genres,</li>
+  <li>attenuation of external noise (noise-cancelling),</li>
+  <li>clean channel separation or</li>
+  <li>operability via gestures or buttons?</li>
+  <li>sustainable and environmentally optimized manufacturing process?</li>
+  <li>a production process free of child labor?</li>
+  <li>ear pads be replaceable?</li>
+</ul>
+
+<p>And what about durability, longevity or the price?</p>
+
+<p>As you can see, when discussing quality, personal preferences and interests almost inevitably come into play. 
+This brings up an interesting feature of quality: it is <em>highly subjective</em>.</p>
+
+<p>Try to put this into concrete terms with people you know, talk about the <em>quality</em> of everyday things: 
+Tea, coffee, cheese, shoes, pants or even a smartphone: 
+The exact characteristics that make up the quality of these things can (sorry, <em>will surely!</em>) lead to debates.</p>
+
+<blockquote>
+  <p><em>Quality is conformance to requirements.</em></p>
+
+  <p><a href="/references/#crosby-quality">Crosby, p.17</a></p>
+</blockquote>
+
+<h3 id="two-dimensions">Two Dimensions…</h3>
+
+<p>Now it’s getting complicated because the term “quality” gets two different dimensions.</p>
+
+<ol>
+  <li><strong>Which features or attributes</strong> count as quality (in the example: volume, frequency range, comfort, weight, connections, noise-cancelling, channel separation, sustainability, interchangeability of parts).</li>
+  <li><strong>What is the desired level, value or amount</strong> of these features (e.g. frequency response from 15 to 25000Hz, weight less than 400g, soft leather ear cups, wireless connection, jack and USB, etc.).</li>
+</ol>
+
+<p>In order to work on “quality” in practice, we need to get a handle on both of these dimensions. 
+Let’s try the transition to software development at this point.</p>
+
+<p>Even for dimension-1 (“which properties belong to quality”) you can surely think of a multitude of such properties, which you or other involved parties (aka stakeholders) count to quality: Performance, security, robustness and a few dozen more (see figure below). 
+Scientists and practitioners developed so-called <a href="/articles/quality-models">quality models</a>, which collect more or less of such quality attributes.</p>
+
+<p><img src="/images/articles/quality-challenges/quality-terms-wordcloud.svg" alt="quality terminology word cloud" width="70%" /></p>
+
+<h3 id="-and-some-problems">… and Some Problems</h3>
+
+<p>This is where the subjectivity of quality hits us: 
+Our IT security officer or the data protection officers are guaranteed to prioritize the issue of IT security much higher than ease of use, responsiveness (“snappiness”), or robustness, which end users eagerly desire. 
+Oh, yes - the development team would like to see comprehensibility of the source code and traceability of the architectural decisions, as well as the use of interesting and modern technologies (which, in turn, the security people don’t like at all because security risks may still be lurking in modern technologies that have long been eliminated in “boring” old-school frameworks). 
+Last but not least, the management demands the lowest possible costs for development and operation.</p>
+
+<p>But these different priorities and wishes are not enough: 
+Some say maintainability, others changeability or modifiability. 
+Then adaptability comes into play, and extensibility. 
+And last but not least, someone adds “flexibility”. 
+Do you all mean the same thing now, even though you used different terms? 
+You see - even a discussion about proper terminology might turn out difficult.</p>
+
+<p>Once we have agreed with stakeholders on a set of relevant attributes (i.e., dimension 1 of quality), we must now define the necessary or desired characteristics (dimension 2) - i.e., formulate these quality requirements explicitly and concretely.</p>
+
+<p>Another article in this series will dive deep into this topic of specific quality requirements.</p>
+
+<p>Unfortunately, concrete quality requirements are rarely available in everyday project work.
+That’s when development teams start making implicit assumptions.
+Such assumptions can, however, contain considerable risks.
+We propose to involve stakeholders, and help them formulate their specific quality requirements.</p>
+
+<h3 id="compromises-and-miracles">Compromises and miracles</h3>
+<p>A vehicle optimized for low-energy consumption (about 5 kWh per 100 km, or 3l of fuel per 100 km) cannot simultaneously be designed for high seating capacity (about 8 people) or high payload (8 tons payload). 
+Tea is either flavored or not. 
+One cannot accommodate long audio sequences with high sampling rates in the strictly limited memory of an embedded onboard controller with only 64kByte of available memory. 
+Generally speaking, some combinations of quality characteristics make each other difficult, or even mutually exclusive. 
+In software development and architecture, we often have to compromise because we can’t achieve all the features to suit all stakeholders (unless you can work miracles).</p>
+
+<h3 id="summary">Summary</h3>
+<p>You have to clarify two dimensions when you want to have specific information on required, desired or expected levels of product quality:</p>
+
+<ol>
+  <li>What properties are important (e.g. performance, flexibility, security, safety…)</li>
+  <li>What level of these properties is required, desired or expected from the system, its development or operation?</li>
+</ol>
+
+
+        </section>
+        <footer>
+    
+</footer>
+
+    </article>
+</div>
+
+
+
+    </div>
+</div>
+
+<footer class="site-footer">
+    <div class="inner">
+        <p class="footer-icons"><a href="https://www.innoq.com" target="_blank" rel="noopener noreferrer nofollow"><img class="supported-by-innoq" src="/images/supported-by-innoq--petrol-apricot.svg"></a><br>
+            <a href="https://status.arc42.org">
+                <i class="fa fa-chart-bar fa-fw" style="color:#50C878;" ></i>Status</a><i>&nbsp;&nbsp;</i>
+            <i class="fa fa-user-secret" aria-hidden="true"></i>
+            <a href="/imprint">
+                Imprint + Privacy</a></p>
+        <span>Maintained by <a target="_blank" rel="noopener noreferrer nofollow" href="https://gernotstarke.de">Gernot Starke</a>,
+          supported by <a target="_blank" rel="noopener noreferrer nofollow" href="https://perstarke-webdev.de">Per Starke Web Development</a>
+        </span>
+    </div>
+</footer>
+
+
+<script src="/assets/jquery/jquery-3.7.1-min.js"></script>
+<script src="/assets/lib/garand-sticky/jquery.sticky.js"></script>
+<script src="/assets/js/script.js"></script>
+
+
+<script src="/assets/js/header-link.js"></script>
+
+
+
+
+
+</body>
+</html>

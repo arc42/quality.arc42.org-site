@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" xmlns:xl="http://www.w3.org/1999/xlink" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://www.w3.org/2000/svg" viewBox="-96.125 105 893.3148 46" width="893.3148" height="46">
+  <defs/>
+  <g id="ISO-25010-top-level" stroke="none" stroke-opacity="1" fill="none" stroke-dasharray="none" fill-opacity="1">
+    <title>ISO-25010-top-level</title>
+    <rect fill="white" x="-96.125" y="105" width="893.3148" height="46"/>
+    <g id="ISO-25010-top-level_Ebene_1">
+      <title>Ebene 1</title>
+      <g id="Graphic_1221">
+        <rect x="-95.625" y="105.5" width="96.93977" height="45" fill="#ccc"/>
+        <rect x="-95.625" y="105.5" width="96.93977" height="45" stroke="#929292" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(-90.625 112)" fill="black">
+          <tspan font-family="Mark Pro" font-size="13" fill="black" x="9.981887" y="13">Functional </tspan>
+          <tspan font-family="Mark Pro" font-size="13" fill="black" x="12.282887" y="29">suitability</tspan>
+        </text>
+      </g>
+      <g id="Graphic_1220">
+        <rect x="358.875" y="105.5" width="96.93977" height="45" fill="#ccc"/>
+        <rect x="358.875" y="105.5" width="96.93977" height="45" stroke="#929292" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(363.875 120)" fill="black">
+          <tspan font-family="Mark Pro" font-size="13" fill="black" x="12.630637" y="13">Reliability</tspan>
+        </text>
+      </g>
+      <g id="Graphic_1219">
+        <rect x="18" y="105.5" width="96.93977" height="45" fill="#ccc"/>
+        <rect x="18" y="105.5" width="96.93977" height="45" stroke="#929292" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(23 112)" fill="black">
+          <tspan font-family="Mark Pro" font-size="13" fill="black" x="2.1981368" y="13">Performance </tspan>
+          <tspan font-family="Mark Pro" font-size="13" fill="black" x="13.254637" y="29">efficiency</tspan>
+        </text>
+      </g>
+      <g id="Graphic_1218">
+        <rect x="245.25" y="105.5" width="96.93977" height="45" fill="#ccc"/>
+        <rect x="245.25" y="105.5" width="96.93977" height="45" stroke="#929292" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(250.25 120)" fill="black">
+          <tspan font-family="Mark Pro" font-size="13" fill="black" x="12.175637" y="13">Useability</tspan>
+        </text>
+      </g>
+      <g id="Graphic_1217">
+        <rect x="472.5" y="105.5" width="96.93977" height="45" fill="#ccc"/>
+        <rect x="472.5" y="105.5" width="96.93977" height="45" stroke="#929292" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(477.5 120)" fill="black">
+          <tspan font-family="Mark Pro" font-size="13" fill="black" x="17.456887" y="13">Security</tspan>
+        </text>
+      </g>
+      <g id="Graphic_1216">
+        <rect x="131.625" y="105.5" width="96.93977" height="45" fill="#ccc"/>
+        <rect x="131.625" y="105.5" width="96.93977" height="45" stroke="#929292" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(136.625 120)" fill="black">
+          <tspan font-family="Mark Pro" font-size="13" fill="black" x=".23513678" y="13">Compatibility</tspan>
+        </text>
+      </g>
+      <g id="Graphic_1215">
+        <rect x="586.125" y="105.5" width="96.93977" height="45" fill="#ccc"/>
+        <rect x="586.125" y="105.5" width="96.93977" height="45" stroke="#929292" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(591.125 112)" fill="black">
+          <tspan font-family="Mark Pro" font-size="13" fill="black" x="12.442137" y="13">Maintain-</tspan>
+          <tspan font-family="Mark Pro" font-size="13" fill="black" x="23.992637" y="29">ability</tspan>
+        </text>
+      </g>
+      <g id="Graphic_1214">
+        <rect x="699.75" y="105.5" width="96.93977" height="45" fill="#ccc"/>
+        <rect x="699.75" y="105.5" width="96.93977" height="45" stroke="#929292" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(704.75 120)" fill="black">
+          <tspan font-family="Mark Pro" font-size="13" fill="black" x="10.085887" y="13">Portability</tspan>
+        </text>
+      </g>
+    </g>
+  </g>
+</svg>

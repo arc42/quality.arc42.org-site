@@ -1,0 +1,34 @@
+<div class="quality-requirement">
+  <h4 id="contextbackground">Context/Background</h4>
+
+  <p>The system consists of hardware boards that enhance simple webcams with image recognition capabilities.
+These boards contain proprietary advanced image recognition algorithms embedded in their firmware.
+The boards are used in applications such as license-plate recognition systems in public parking facilities.
+A test and verification system is used to validate firmware updates prior to release.
+The quality requirement pertains to the performance of this firmware test and verification system.</p>
+
+  <h4 id="source">Source</h4>
+
+  <p>An update of the firmware is available, typically including additional functionality or improved recognition performance.</p>
+
+  <h4 id="metricacceptance-criteria">Metric/Acceptance Criteria</h4>
+
+  <ul>
+    <li>The test and verification system must process 1000 real-hours of video and image playback in less than 72 hours</li>
+    <li>
+      <p>This translates to a minimum playback speed of 14 times real-time (1000 hours / 72 hours ≈ 14)</p>
+    </li>
+    <li>Specific criteria include:
+      <ul>
+        <li>Consistent maintenance of at least 14x playback speed throughout the entire test process (or less if tests are performed in parallel)</li>
+        <li>Accurate data transmission to the device-under-test at this accelerated rate</li>
+        <li>No loss of video frames or degradation of image quality during accelerated playback</li>
+        <li>Verification that the updated firmware recognizes images with at least the accuracy of previous versions</li>
+        <li>Complete processing of all 1000 hours of test data within the 72-hour timeframe</li>
+        <li>Accurate logging and reporting of test results, including any anomalies or performance issues detected</li>
+      </ul>
+    </li>
+  </ul>
+</div>
+<p><br /></p>
+

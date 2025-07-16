@@ -1,0 +1,43 @@
+<div class="quality-requirement">
+
+  <h4 id="contextbackground">Context/Background</h4>
+
+  <p>The system operates in a multi-user environment with varying levels of user roles and permissions.</p>
+
+  <ul>
+    <li>Sensitive features and confidential information are present within the system.</li>
+    <li>Access control is crucial to maintain data security and privacy.</li>
+    <li>The system employs role-based access control (RBAC) to manage user permissions.</li>
+    <li>An audit trail is maintained for all access attempts to sensitive data.</li>
+  </ul>
+
+  <h4 id="source">Source</h4>
+
+  <p>A user attempts to access a sensitive feature or confidential information within the system.</p>
+
+  <h4 id="metricacceptance-criteria">Metric/Acceptance Criteria</h4>
+
+  <p>The system must enforce appropriate access controls based on the user’s role and permissions.</p>
+
+  <p>The access control mechanism must meet the following criteria:</p>
+  <ul>
+    <li>100% of access attempts must be authenticated before granting access to any sensitive data</li>
+    <li>Multi-factor authentication (MFA) or biometric authentication is implemented for accessing highly sensitive data</li>
+    <li>User roles are precisely defined (e.g., “Customer Service Representative,” “Financial Analyst,” “Administrator”)</li>
+    <li>Access permissions are assigned based on the principle of least privilege</li>
+    <li>Sensitive data is classified into at least three levels (e.g., public, internal, confidential)</li>
+    <li>Access controls are configured according to data classification, with stricter controls for highly sensitive data</li>
+    <li>100% of access attempts (successful and failed) to sensitive data are logged in a tamper-proof audit trail</li>
+    <li>Audit logs include user identity, timestamp, accessed data, and outcome (granted or denied)</li>
+    <li>Authorized personnel can revoke access permissions immediately, with changes taking effect within 60 seconds</li>
+    <li>User sessions automatically timeout after a maximum of 30 minutes of inactivity</li>
+    <li>Access denials display a relevant and user-friendly error message within 2 seconds</li>
+    <li>100% of access control violations are logged and reported to authorized personnel within 5 minutes</li>
+    <li>The system maintains 99.99% uptime for the access control service</li>
+    <li>Access control policy updates are applied system-wide within 5 minutes of being implemented</li>
+  </ul>
+</div>
+<p><br /></p>
+
+<p>Source: This scenario has been created with help from <a href="https://chat.openai.com">ChatGPT</a> by using the prompt <code class="language-plaintext highlighter-rouge">create a quality scenario to describe an access control requirement</code>.</p>
+
