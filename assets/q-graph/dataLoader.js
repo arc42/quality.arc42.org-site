@@ -1,7 +1,7 @@
 // dataLoader.js
 const DATA_PATH = '/assets/q-graph/data/';
 
-function loadData(datasetName) {
+async function loadData(datasetName) {
     let nodesFile, linksFile;
 
     switch(datasetName) {
@@ -20,13 +20,16 @@ function loadData(datasetName) {
             break;
     }
 
-    return Promise.all([
-        fetch(`${DATA_PATH}${nodesFile}`).then(response => response.json()),
-        fetch(`${DATA_PATH}${linksFile}`).then(response => response.json())
-    ]).then(([nodesData, linksData]) => {
-        return { nodes: nodesData.nodes, links: linksData.links };
-    }).catch(error => {
-        console.error('Error loading data:', error);
+    try {
+        const nodesURL = `${DATA_PATH}${nodesFile}`
+        const linksURL = `${DATA_PATH}${linksFile}`
+        const [nodes, links] = await Promise.all([
+            (await fetch(nodesURL)).json(), 
+            (await fetch(linksURL)).json()
+        ])
+        return { nodes, links }
+    } catch (error) {
+        console.error(`Error fetching quality graph data: ${error}`)
         return { nodes: [], links: [] };
-    });
+    }
 }

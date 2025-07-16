@@ -1,29 +1,20 @@
 # arc42 Quality model
 
-Here we collect definitions and explanations of 
+Here we collect definitions of quality attributes and their relationships .
 
-* _quality attributes_ (short: qualities) and their relationships, plus 
-* many practical, real-world examples of _quality requirements_
-* quality-related standards, like ISO-25010, ISO-27001, ISO-26262, MISRA and others.
-
-
-![Our metamodel](images/articles/metamodel/q42-metamodel.webp)
-
-
-## The website (https://quality.arc42.org)
 
 It's powered by Jekyll and a modified TTSCK theme (see below).
 We use Liquid for extensive automatic hyperlinking along the dependencies you see in the model above.
 
 
 ## License
+
 As all of the arc42 content, this FAQ is free to use under a liberal Creative-Commons
 license:
 
 ![](https://i.creativecommons.org/l/by-sa/4.0/88x31.png)
 This work is licensed under a
 [Creative Commons Attribution-ShareAlike 4.0 International License](https://creativecommons.org/licenses/by-sa/4.0/).
-
 
 ## Jekyll TTSCK Theme
 
@@ -36,26 +27,38 @@ We implemented several enhancements over the original theme (e.g. responsive nav
 ### Preconditions
 
 You have an environment that allows to run
+
 - a bash script (`/bin/bash`)
 - [docker](https://docs.docker.com/build/building/context/) and [docker-compose](https://docs.docker.com/compose/)
 
 ### Build and test
 
 In the root directory, run `docker compose up`.
+This will build the site and start a web server on port 4000.
 
-
+In case you already had the environment spun up, run `docker compose down` to stop the server so that changes in the
+docker-compose.yml file are applied.
 
 ## How to contribute
 
-Create a fork of [https://github.com/arc42/quality.arc42.org-site](https://github.com/arc42/quality.arc42.org-site). Change files and create a pull request with your changes using your fork.
+Create a fork of [https://github.com/arc42/quality.arc42.org-site](https://github.com/arc42/quality.arc42.org-site).
+Change files and create a pull request with your changes using your fork.
 
-Hint: `_todo-qualities` contains qualities whose definitions are missing. You may fill those files with content. Then move them to the appropriate folder (e.g. `qualities/<letter>/_posts`).
+Hint: `_todo-qualities` contains qualities whose definitions are missing. You may fill those files with content. Then
+move them to the appropriate folder (e.g. `qualities/<letter>/_posts`).
 
 Hint: If you add new files you have to clean-rebuild the whole application.
 
-## Site Architecture and Configuration
+# Technical details
 
-This site uses [Jekyll](https://jekyllrb.com/) to generate a static website from a set of Markdown files and templates. The following sections explain the key concepts and configurations used in this site.
+The quality graph visualizations are implemented using D3.js forced graphs. 
+The graph data is stored in JSON files in the `assets/data` directory and loaded by the JavaScript code in the `src/graphs` directory.
+
+
+## Site Structure and Configuration
+
+This site uses [Jekyll](https://jekyllrb.com/) to generate a static website from a set of Markdown files and templates. 
+The following sections explain the key concepts and configurations used in this site.
 
 ### Collections
 
@@ -134,6 +137,7 @@ The front matter contains the following fields:
 
 *   `title`: The title of the requirement.
 *   `tags`: A list of tags related to the requirement.
+*   `standards`: A list of standards (like iso25010) where this quality is used/defined/part-of
 *   `related`: A list of related qualities.
 *   `permalink`: The URL of the requirement's page.
 
