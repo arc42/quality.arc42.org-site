@@ -17,8 +17,6 @@ layout: default
 
 {% assign qualities = site.posts | where: "categories", "qualities" %}
 
-{{ qualities | size}} qualities found.
-
 <ul>
 {% for quality in qualities %}
       {% if quality.standards contains page.standard_id %}
