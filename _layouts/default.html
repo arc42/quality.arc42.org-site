@@ -1,7 +1,14 @@
 <!DOCTYPE html>
 <html lang="{{ site.language }}">
 <head>
-    {% capture title %}{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}{% endcapture %}
+    {% capture ti            <ul>
+                {% assign pages = site.pages | sort: 'order' %}
+                {% for page in pages %}
+                {% if page.title and page.hide != true %}
+                <li><a class="page-link" href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a></li>
+                {% endif %}
+                {% endfor %}
+            </ul> if page.title %}{{ page.title }} | {% endif %}{{ site.title }}{% endcapture %}
     {% include page-url-resolver.html page=page %}
     {% if page.excerpt %}
        {% assign description = page.excerpt | strip_html | strip_newlines | truncate: 160 %}
@@ -75,9 +82,9 @@
             <ul>
                 {% assign pages = site.pages | sort: 'order' %}
                 {% for page in pages %}
-                {% if page.title and page.hide != true %}
-                <li><a class="page-link" href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a></li>
-                {% endif %}
+                    {% if page.title and page.hide != true %}
+                        <li><a class="page-link" href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a></li>
+                    {% endif %}
                 {% endfor %}
             </ul>
             <ul class="icons">
