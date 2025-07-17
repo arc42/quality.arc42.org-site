@@ -71,6 +71,7 @@ plugins:
 collections:
   posts:
     hide: true
+
   articles:
     output: true
     hide: true
@@ -79,20 +80,19 @@ collections:
   qualities:
     output: true
     hide: true    
+    sort_by: title
+
 ## (quality) requirements to describe and capture specific qualities
   requirements:
     output: true
-    hide: true    
+    hide: true
+    sort_by: title
 
 ## quality standards like iso25010, misra
   standards:
     output: true
     hide: true
 
-
-## Filtering Content
-future: false
-unpublished: false
 
 #
 # with this default, all files under /_posts (other collections did not work with tags)
@@ -101,7 +101,7 @@ unpublished: false
 defaults:
   - scope:
       path: "qualities"
-      type: "posts"
+      type: "qualities"
     values:
       layout: qualities
       hide: "true"
@@ -112,8 +112,8 @@ defaults:
       layout: requirements
       hide: "true"
   - scope:
-      path: "standards"
-      type: "posts"
+      path: ""
+      type: "standards"
     values:
       layout: standards
       hide: "true"
