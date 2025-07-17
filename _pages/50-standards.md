@@ -11,8 +11,7 @@ Overview of quality standards
 
 
 
-{% assign standards_unsorted = site.posts | where: "categories", "standards" %}
-{% assign standards = standards_unsorted | sort %}
+{% assign standards = site.standards %}
 
 
 <ul>
