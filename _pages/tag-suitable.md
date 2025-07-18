@@ -53,4 +53,4 @@ That is, from our perspective, a matter of taste.
 
 
 <!-- include all qualities associated with this tag -->
-{% include one-quality.md topic="suitable"  %}
+{% include one-quality.liquid tag="suitable"  %}

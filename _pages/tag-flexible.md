@@ -72,4 +72,4 @@ Typical acceptance criteria might include:
 
 
 <!-- include all qualities associated with this tag -->
-{% include one-quality.md topic="flexible"  %}
+{% include one-quality.liquid tag="flexible"  %}

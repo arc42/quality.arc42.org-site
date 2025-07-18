@@ -51,4 +51,4 @@ permalink: /tag-secure/
 | Others |Security auditor, Data protection officer, government or corporate security departments, attackers  |
 
 <!-- include all qualities associated with this tag -->
-{% include one-quality.md topic="secure"  %}
+{% include one-quality.liquid tag="secure"  %}

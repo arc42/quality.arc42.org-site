@@ -56,4 +56,4 @@ Being trustworthy or performing consistently well.
 
 
 <!-- include all qualities associated with this tag -->
-{% include one-quality.md topic="reliable"  %}
+{% include one-quality.liquid tag="reliable"  %}

@@ -59,7 +59,7 @@ Efficient, as we saw above, can mean several different things:
 >
 >[Bass et al., 2021](/references/#bass2021softwaree)
 
-### What Stakeholders mean by _efficient_
+### What Stakeholders (might) mean by _efficient_
 
 | Stakeholder | (potential) Expectation for _efficient_ |
 |:--- |:--- |
@@ -75,4 +75,4 @@ Efficient, as we saw above, can mean several different things:
 
 
 <!-- include all qualities associated with this tag -->
-{% include one-quality.md topic="efficient"  %}
+{% include one-quality.liquid tag="efficient"  %}
