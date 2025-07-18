@@ -2,7 +2,7 @@
 ---
 
 [
-{% for post in site.posts %}
+{% for post in site.collections | map: "docs" | flatten %}
 {
 "id": {{ post.id | replace: '/', '-' | jsonify }},
 "title": {{ post.title | jsonify }},

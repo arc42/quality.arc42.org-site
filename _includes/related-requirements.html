@@ -5,7 +5,7 @@
 {% assign no_show_titles = page.title %}
 {% assign posts_to_show = "" %}
 {% for page_tag in page_tags %}
-    {% assign posts = site.tags[page_tag] | where: "categories", "requirements" %}
+    {% assign posts = site.tags[page_tag] | where: "collection", "requirements" %}
     {% for post in posts %}
         {% unless no_show_titles contains post.title %}
             {% assign no_show_titles = no_show_titles | append: post.title%}

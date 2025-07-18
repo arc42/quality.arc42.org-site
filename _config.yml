@@ -79,7 +79,7 @@ collections:
 ## qualities are the attributes/properties, like efficiency, flexibility etc
   qualities:
     output: true
-    hide: true    
+    hide: true   
     sort_by: title
 
 ## (quality) requirements to describe and capture specific qualities
@@ -100,7 +100,6 @@ collections:
 #
 defaults:
   - scope:
-      path: "qualities"
       type: "qualities"
     values:
       layout: qualities
