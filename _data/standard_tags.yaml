@@ -1,0 +1,14 @@
+# _data/standard_tags.yml
+# to have a single source of truth concerning tags
+#
+# tags are used in qualities and requirements
+tags:
+  - efficient
+  - flexible
+  - operable
+  - reliable
+  - safe
+  - secure
+  - usable
+  - suitable
+

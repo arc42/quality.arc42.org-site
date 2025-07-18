@@ -134,6 +134,8 @@ sass:
 
 include:
   - _pages
+  - assets/search.liquid
+  - _data/standard_tags.yaml
 
 exclude:
   - originals/
