@@ -5,6 +5,9 @@ permalink: /properties/
 order: 22
 ---
 
+Properties (also known as _tags_ or _labels_) are used to structure the fairly large set of _qualities_.
+
+
 {% assign all_tags = "" | split: "" %}
 {% for quality in site.qualities %}
   {% for tag in quality.tags %}
@@ -39,18 +42,4 @@ order: 22
   {% endfor %}
   </ul>
 
-{% assign tag_count = tag_words_unique | size %}
-
-  {% for tag in tag_words_unique %}
-    {% capture this_word %}{{ tag | strip_newlines }}{% endcapture %}
-  <a href="/tag-{{ this_word | cgi_escape }}">
-  <h2>#{{ this_word }}</h2></a>
-  <ul class="posts">
-    {% assign sorted_posts = site.tags[this_word] | sort_by: 'title'  | reverse %}
-    {% assign sorted_posts = sorted_posts | where: "collection", "qualities" %}
-    {% for post in sorted_posts %}{% if post.title != null %}
-    <li> <a href="{{ post.url }}">{{ post.title }}</a></li>
-    {% endif %}{% endfor %}
-  </ul>
-  {% endfor %}
 </div>
