@@ -9,14 +9,13 @@ layout: default
             {{ content }}
         </section>
 
-        {% include directly-related-requirements.html %}
+        {% include directly-related-requirements.liquid %}
 
         {% assign related-qualities = page.related | split:', ' | sort %}
         
         <h2><span style="background-color:var(--quality-color)">Related Qualities</span></h2>
 
-        {% assign all_qualities = site.posts | where: "categories", "qualities" %}
-
+        {% assign all_qualities = site.qualities %}
         {% assign related_qualities = page.related | split:', ' | sort %}
 
         <ul class="posts">
@@ -33,12 +32,11 @@ layout: default
                 {% endfor %}
             {% endfor %}
             {% if number == 0 %}
-            No related qualities found.
+               No related qualities found.
             {% endif %}
         </ul>
 
-        {% include related-requirements.html %}
-
+      
         {% include article-footer.html page=page share=page.share %}
     </article>
 </div>

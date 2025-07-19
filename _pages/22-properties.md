@@ -52,8 +52,8 @@ Consider an excerpt of our metamodel:
 
 
 {% assign all_tags = "" | split: "" %}
-{% for quality in site.requirements %}
-  {% for tag in quality.tags %}
+{% for req in site.requirements %}
+  {% for tag in req.tags %}
     {% assign all_tags = all_tags | push: tag %}
   {% endfor %}
 {% endfor %}

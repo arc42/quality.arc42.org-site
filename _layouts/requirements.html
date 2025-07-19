@@ -10,12 +10,12 @@ layout: default
         </section>
 
 
-        {% include related-requirements.html %}
+        {% include related-requirements.liquid %}
 
 
         <h2><span style="background-color:var(--quality-color)">Related Qualities</span></h2>
 
-        {% assign all_qualities = site.posts | where: "categories", "qualities" %}
+        {% assign all_qualities = site.qualities %}
 
         {% assign related_qualities = page.related | split:', ' | sort %}
 
