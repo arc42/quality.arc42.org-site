@@ -1,14 +1,14 @@
 {% assign page = include.page %}
 
-<script type="text/javascript" src="/assets/js/mermaid.js"></script>
+<script type="text/javascript" src="{{ '/assets/js/mermaid.js' | prepend: site.baseurl }}"></script>
 
 <script type="text/javascript">
-    let config = { 
+    let config = {
         theme: 'base',
         securityLevel: 'antiscript',
         startOnLoad: true,
-        flowchart: { 
-            useMaxWidth: true, 
+        flowchart: {
+            useMaxWidth: true,
             htmlLabels: true,
             rankSpacing: 100,
             nodeSpacing: 10

@@ -24,7 +24,7 @@ ISO-25010, [lack practical guidance and pragmatism](/articles/iso-25010-shortcom
 simple alternative:
 
 <div id="q-graph-container"></div>
-<script src="/assets/js/homepage/main.js"></script>
+<script src="{{ '/assets/js/homepage/main.js' | prepend: site.baseurl }}"></script>
 
 Double-click a node in the graph above to view its definition, related qualities and requirements.
 View the full interactive quality graph **[here](/full-quality-graph)**.
