@@ -10,7 +10,9 @@
     {% assign related = requirement.related | split: ", "%}
     {% if related contains check_title %}
     {% assign number = 1 %}
-    <li><a class="reqs" href="{{requirement.permalink}}"><i class="fa fa-lightbulb fa-xs as-bullet" style="color: var(--req-text-color);"> </i> {{ requirement.title }}</a></li>
+    <li><a class="reqs" href="{{ requirement.permalink | prepend: site.baseUrl }}"><i
+            class="fa fa-lightbulb fa-xs as-bullet" style="color: var(--req-text-color);"> </i> {{ requirement.title }}</a>
+    </li>
     {% endif %}
     {% endfor %}
     {% if number == 0 %}

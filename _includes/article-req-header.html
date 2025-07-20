@@ -31,15 +31,16 @@
             {% if requirement.related contains check_title %}
             <li><i class="fa fa-lightbulb" style="color: var(--req-text-color)"></i></li>
             <li>
-                <a class="reqs" href="{{requirement.permalink}}">{{ requirement.title }}</a>
-            </li> <br>
+                <a class="reqs" href="{{ requirement.permalink | prepend: site.baseUrl }}">{{ requirement.title }}</a>
+            </li>
+            <br>
             {% endif %}
             {% endfor %}
         </ul>
 
         <div class="clearfix">
             <ul class="meta">
-                
+
                 {% if page.author %}
                 <li>
                     <a href="{{ '/search/?a=' | append: page.author | prepend: site.baseurl }}">

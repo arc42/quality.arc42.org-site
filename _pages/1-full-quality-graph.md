@@ -32,4 +32,4 @@ hide: true
     </div>
 </div>
 
-<script src="/assets/js/fullpage/main.js"></script>
+<script src="{{ '/assets/js/fullpage/main.js' | prepend: site.baseurl }}"></script>

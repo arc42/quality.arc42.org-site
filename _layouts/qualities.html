@@ -12,7 +12,7 @@ layout: default
         {% include directly-related-requirements.html %}
 
         {% assign related-qualities = page.related | split:', ' | sort %}
-        
+
         <h2><span style="background-color:var(--quality-color)">Related Qualities</span></h2>
 
         {% assign all_qualities = site.posts | where: "categories", "qualities" %}
@@ -22,15 +22,15 @@ layout: default
         <ul class="posts">
             {% assign number = 0 %}
             {% for quality in related_qualities %}
-                {% assign quality_title = quality | replace: "-", " " %}
-                {% for whole_quality in all_qualities %}
-                    {% assign check_title = whole_quality.title | downcase %}
-                    {% assign check_title_downcase = check_title | replace: "-", " " %}
-                    {% if check_title_downcase == quality_title %}
-                        {% assign number = 1 %}
-                        <li> <a href="{{whole_quality.permalink}}">{{whole_quality.title}}</a></li>
-                    {% endif %}
-                {% endfor %}
+            {% assign quality_title = quality | replace: "-", " " %}
+            {% for whole_quality in all_qualities %}
+            {% assign check_title = whole_quality.title | downcase %}
+            {% assign check_title_downcase = check_title | replace: "-", " " %}
+            {% if check_title_downcase == quality_title %}
+            {% assign number = 1 %}
+            <li><a href="{{ whole_quality.permalink | prepend: site.baseUrl }}">{{whole_quality.title}}</a></li>
+            {% endif %}
+            {% endfor %}
             {% endfor %}
             {% if number == 0 %}
             No related qualities found.
@@ -44,10 +44,8 @@ layout: default
 </div>
 
 
-
-
 {% if site.show-subtle-ads %}
 <section class="subtle-ads">
-  {% include subtle-ads/subtle-ads.html %}
+    {% include subtle-ads/subtle-ads.html %}
 </section>
 {% endif %}
