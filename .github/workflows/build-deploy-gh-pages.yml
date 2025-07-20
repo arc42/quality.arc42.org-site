@@ -1,11 +1,16 @@
-name: Deploy Jekyll Site to GitHub Pages
+name: Build & Deploy Graph & Jekyll Site to GitHub Pages
 
 on:
   push:
     branches: [ main ]  # Change if your default branch is different
 
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
 
     steps:
@@ -17,6 +22,7 @@ jobs:
         with:
           ruby-version: 3.1  # or match your local Ruby version
           bundler-cache: true
+          cache-version: 0
 
       - name: Install Ruby dependencies
         run: bundle install
@@ -30,16 +36,31 @@ jobs:
       - name: Install npm dependencies
         run: npm ci
 
+      - name: Setup Pages
+        id: pages
+        uses: actions/configure-pages@v5
+
       - name: Build JavaScript assets
         run: npm run data && npm run build
 
-      - name: Build the site
-        run: bundle exec jekyll build
+      - name: Build the site with Jekyll
+        # Outputs to the './_site' directory by default
+        run: bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"
+        env:
+          JEKYLL_ENV: production
 
+      - name: Upload artifact
+        # Automatically uploads an artifact from the './_site' directory by default
+        uses: actions/upload-pages-artifact@v3
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
       - name: Deploy to GitHub Pages
-        if: github.ref == 'refs/heads/main' # Ensure this only runs on the main branch, even if the push is to a different branch and build is triggered
-        uses: peaceiris/actions-gh-pages@v4
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./_site
-          publish_branch: gh-pages
+        if: github.ref == 'refs/heads/main'
+        id: deployment
+        uses: actions/deploy-pages@v4
