@@ -105,13 +105,11 @@ defaults:
       layout: qualities
       hide: "true"
   - scope:
-      path: "requirements"
-      type: "posts"
+      type: "requirements"
     values:
       layout: requirements
       hide: "true"
   - scope:
-      path: ""
       type: "standards"
     values:
       layout: standards

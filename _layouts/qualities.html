@@ -2,16 +2,28 @@
 layout: default
 ---
 
+{% comment %}
+These requirements pages are structured as follows:
+- Header with title and metadata
+- Content section  
+- Related requirements ("related to this quality")
+- Related qualities
+{% endcomment %}
+
 <div class="article-wrapper">
     <article>
         {% include article-header.html page=page link=false share=page.share %}
-        <section class="post-content">
-            {{ content }}
-        </section>
+     <section class="post-content">
+        {{ content }}
+     </section>
 
-        {% include directly-related-requirements.liquid %}
+     <hr class="with-no-margin"/>
+     
+     {% include directly-related-requirements.liquid %}
+     
+     <hr class="with-no-margin"/>
 
-        {% assign related-qualities = page.related | split:', ' | sort %}
+     {% assign related-qualities = page.related | split:', ' | sort %}
         
         <h2><span style="background-color:var(--quality-color)">Related Qualities</span></h2>
 
