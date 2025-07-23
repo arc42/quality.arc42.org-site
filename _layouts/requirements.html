@@ -20,7 +20,12 @@ These requirements pages are structured as follows:
     <hr class="with-no-margin"/>
 
 
-        <h2><span style="background-color:var(--quality-color)">Related Qualities</span></h2>
+    {% comment %}
+     Find related qualities by iterating over all other qualities.
+   {% endcomment %}
+
+    <h2><span style="background-color:var(--quality-color)">Related Qualities</span></h2>
+
 
         {% assign all_qualities = site.qualities %}
 
@@ -28,16 +33,46 @@ These requirements pages are structured as follows:
 
         <ul class="posts">
             {% for quality in related_qualities %}
-                {% assign quality_title = quality | replace: "-", " " %}
-                {% for whole_quality in all_qualities %}
-                    {% assign check_title = whole_quality.title | downcase %}
-                    {% assign check_title_downcase = check_title | replace: "-", " " %}
-                    {% if check_title_downcase == quality_title %}
-                        <li> <a href="{{whole_quality.permalink}}">{{whole_quality.title}}</a></li>
-                    {% endif %}
-                {% endfor %}
+            {% assign quality_title = quality | replace: "-", " " %}
+            {% for whole_quality in all_qualities %}
+            {% assign check_title = whole_quality.title | downcase %}
+            {% assign check_title_downcase = check_title | replace: "-", " " %}
+            {% if check_title_downcase == quality_title %}
+            <li> <a href="{{whole_quality.permalink}}">{{whole_quality.title}}</a></li>
+            {% endif %}
+            {% endfor %}
             {% endfor %}
         </ul>
+        
+    <hr class="with-no-margin"/>
+        
+    {% comment %}
+     Find related requirements by comparing the tags of all other requirements.
+    {% endcomment %}
+        
+    <h2><span style="background-color:var(--qual-req-color)">Directly Related Quality Requirements</span></h2>
+
+        
+    {% assign page_tags = page.tags  | sort %}
+    
+
+    Related here means "having the same tags/properties ({{ page_tags | join: ", " }})".
+
+        
+        {% assign all_reqs = site.requirements %}
+        
+        <ul class="posts">
+        {% for req in all_reqs %}
+            {% assign req_tags = req.tags %}
+            {% if req.tags == this_tags and req.title != page.title %}
+                <li> <a class="reqs" href="{{req.permalink}}">{{req.title}}</a>
+                </li>
+            {% endif %}
+        
+        {% endfor %}
+        </ul>
+
+<hr class="with-no-margin"/>
 
 
         {% include article-footer.html page=page share=page.share %}
