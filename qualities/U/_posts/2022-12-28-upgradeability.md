@@ -6,7 +6,7 @@ permalink: /qualities/upgradeability
 ---
 
 
-See also [installability](qualities/installabilitx)
+See also [installability](/qualities/installability)
 
 >Upgrading is the process of replacing a product with a newer version of the same product. 
 >In computing and consumer electronics an upgrade is generally a replacement of hardware, software or firmware with a newer or better version, in order to bring the system up to date or to improve its characteristics. 
@@ -19,4 +19,4 @@ Upgradeability refers to the ability of a software system or product to be easil
 
 An upgradeable system allows for the seamless installation of patches, enhancements, or major version changes while maintaining its reliability, compatibility, and performance. 
 
-(these explanations were drafted by [ChatGPT v 3.5](chat.openai.com))
+(these explanations were drafted by [ChatGPT v 3.5](/chat.openai.com))

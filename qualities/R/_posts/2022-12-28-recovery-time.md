@@ -5,7 +5,7 @@ related: recoverability, fault-tolerance, availability, resilience, high-availab
 permalink: /qualities/recovery-time
 ---
 
-see [recoverability](qualities/recoverability).
+see [recoverability](/qualities/recoverability).
 
 
 >Recoverability refers to the amount of time a system takes to return to its normal operational state after experiencing a failure or disruption. 

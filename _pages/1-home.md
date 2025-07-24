@@ -41,8 +41,8 @@ Find out more in our **[introduction to the Q42 quality model](/articles/arc42-q
 
 ## Explanations, Examples and Cross-References
 
-{% assign qualities = site.posts | where: "categories", "qualities" %}
-{% assign requirements = site.posts | where: "categories", "requirements" %}
+{% assign qualities = site.qualities %}
+{% assign requirements = site.requirements %}
 
 On this site you find:
 

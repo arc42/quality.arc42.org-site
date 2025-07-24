@@ -6,5 +6,5 @@ permalink: /qualities/high-availability
 ---
 
 
-Synonym for [availability](qualities/availability)
+Synonym for [availability](/qualities/availability)
 

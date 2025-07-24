@@ -57,7 +57,7 @@ Efficient, as we saw above, can mean several different things:
 >* The variation in response time ([jitter](/qualities/jitter))
 >* Usage level of a computing resource
 >
->[Bass et al., 2021](/references/#bass2021softwaree)
+>[Bass et al., 2021](/references/#bass2021software)
 
 ### What Stakeholders mean by _efficient_
 
