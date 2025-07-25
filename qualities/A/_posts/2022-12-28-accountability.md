@@ -2,7 +2,7 @@
 title: Accountability
 tags: secure
 related: authenticity, security, non-repudiation
-standards: iso25010
+standards: iso25010,iso27001
 permalink: /qualities/accountability
 ---
 
