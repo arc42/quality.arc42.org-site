@@ -1,6 +1,6 @@
 ---
 title: "Usable With Gloves"
-tags: usable
+tags: usable suitable
 related: usability, user-experience, compliance, interaction-capability
 permalink: /requirements/usable-with-gloves
 ---
