@@ -19,3 +19,11 @@ permalink: /qualities/availability
 >
 >[ISO-25010:2023](/references/#iso-25010-2023)
 
+
+<hr class="with-no-margin"/>
+
+>The property of being accessible and usable on demand by an authorized entity.
+>
+>[ISO-27001:2022](https://www.iso.org/standard/27001)
+
+Essentially, information and systems should be up and running when needed.

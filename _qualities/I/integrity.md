@@ -17,6 +17,13 @@ See [#secure](/tag-secure)
 
 <hr class="with-no-margin"/>
 
+>The property of accuracy and completeness of information.
+>
+>[ISO-27001:2022](https://www.iso.org/standard/27001)
+
+<hr class="with-no-margin"/>
+
+
 >Electronic signals are said to have integrity when there is no corruption of information between one domain and another, such as from a disk drive to a computer display. 
 >Such integrity is a fundamental principle of information assurance. 
 >Corrupted information is untrustworthy, yet uncorrupted information is of value. 
