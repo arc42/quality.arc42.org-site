@@ -2,6 +2,13 @@
 layout: default
 ---
 
+{% assign qualities_for_standard = "" | split: "" %}
+{% for quality in site.qualities %}
+  {% if quality.standards contains page.standard_id %}
+    {% assign qualities_for_standard = qualities_for_standard | push: quality %}
+  {% endif %}
+{% endfor %}
+
 <div class="article-wrapper">
     <article>
         {% include article-header.html page=page link=false share=page.share %}
@@ -13,17 +20,11 @@ layout: default
 </div>
 
 
-<h2><span style="background-color:var(--quality-color)">Related Qualities</span></h2>
-
-{% assign qualities = site.posts | where: "categories", "qualities" %}
-
-{{ qualities | size}} qualities found.
+<h2><span style="background-color:var(--quality-color)">Related Qualities ({{ qualities_for_standard | size }})</span></h2>
 
 <ul>
-{% for quality in qualities %}
-      {% if quality.standards contains page.standard_id %}
+{% for quality in qualities_for_standard  %}
         <li><a href="{{ quality.url | relative_url }}">{{ quality.title }}</a></li>
-      {% endif %}
     {% endfor %}
 </ul>
 

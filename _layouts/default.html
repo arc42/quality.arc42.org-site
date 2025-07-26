@@ -56,10 +56,14 @@
         {% endif %}
         <h1 class="clearfix">
             <a class="title {% if site.avatar == null %}slim{% endif %}" href="{{ '/' | prepend: site.baseurl }}">{{ site.title }}</a>
-            {% assign quality_posts = site.posts | where: "categories", "qualities" %}
-            <br><span class="description"><span style="color:#414288">{{ quality_posts | size }}</span> {{ site.description }}</span>
-            {% assign requirement_posts = site.posts | where: "categories", "requirements" %}
-            <br><span class="description"><span style="color:#414288">{{ requirement_posts | size }}</span> examples of quality requirements.</span>
+
+            {% assign qualities_count = site.qualities | size %}
+            {% assign requirements_count = site.requirements | size %}
+            {% assign standards_count = site.standards | size %}
+            
+            <br><span class="description"><span style="color:#414288">{{ qualities_count }}</span> {{ site.description }}</span>
+
+            <br><span class="description"><span style="color:#414288">{{ requirements_count }}</span> examples of quality requirements, related to <span style="color:#414288">{{ standards_count }}</span> quality standards.</span>
         </h1>
     </div>
 </header>

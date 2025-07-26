@@ -15,8 +15,7 @@ Listed below each quality, you find
 {% assign letter_string = "A" %}
 {% assign previous_first_letter = "A" %}
 
-{% assign qualities_unsorted = site.posts | where: "categories", "qualities" %}
-{% assign qualities = qualities_unsorted | sort %}
+{% assign qualities = site.qualities %}
 
 {% for post in qualities  %}
     {% assign current_first_letter = post.title | slice: 0 %}

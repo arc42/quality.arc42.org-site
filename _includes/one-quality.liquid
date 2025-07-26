@@ -1,0 +1,27 @@
+{% comment %}
+This file is "included" from each of the tag-efficient.md, tag-flexible.md etc files,
+as these pages need to display all related qualities/requirements.
+
+{% endcomment %}
+
+{%- assign tag_to_find = include.tag -%}
+{%- if tag_to_find and tag_to_find != "" -%}
+
+<hr class="with-no-margin"/>
+
+## <span style="background-color:var(--quality-color)">Qualities tagged with #{{ include.tag }}</span>
+<div id="search-results">
+
+<ul class="posts">
+    {%- for item in site.qualities -%}
+      {%- if item.tags contains tag_to_find -%}
+        <li> <a href="{{ item.url }}">{{ item.title }}</a></li>
+      {%- endif -%}
+    {%- endfor -%}
+  
+  </ul>
+</div>
+
+{%- endif -%}
+
+ 

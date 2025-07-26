@@ -271,8 +271,8 @@ async function getFilePaths(dir) {
  */
 async function generateData() {
     const projectRoot = process.cwd();
-    const qualitiesDir = path.join(projectRoot, "qualities");
-    const requirementsDir = path.join(projectRoot, "requirements");
+    const qualitiesDir = path.join(projectRoot, "_qualities");
+    const requirementsDir = path.join(projectRoot, "_requirements");
     const assetsDir = path.join(projectRoot, "assets");
 
     let [qualityFiles, requirementFiles] = await Promise.all([

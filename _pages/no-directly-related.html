@@ -7,10 +7,10 @@ hide: true
 
 {% assign qualities_with_no_directly_related_requirements = 0 %}
 
-{% assign qualities_unsorted = site.posts | where: "categories", "qualities" %}
+{% assign qualities_unsorted = site.qualities %}
 {% assign qualities = qualities_unsorted | sort %}
 
-{% assign requirements_unsorted = site.posts | where: "categories", "requirements" %}
+{% assign requirements_unsorted = site.requirements %}
 {% assign requirements = requirements_unsorted | sort %}
 
 {% for quality in qualities %}

@@ -5,42 +5,80 @@ permalink: /properties/
 order: 22
 ---
 
-{% capture site_tags %}{% for tag in site.tags %}{{ tag | first }}{% unless forloop.last %},{% endunless %}{% endfor %}{% endcapture %}
-<!-- site_tags: {{ site_tags }} -->
-{% assign tag_words = site_tags |  split:',' | sort %}
-<!-- tag_words: {{ tag_words }} -->
+Properties (also known as _tags_ or _labels_) are used to structure the fairly large set of _qualities_.
 
-{% assign tag_words_unique = tag_words | uniq %}
+Consider an excerpt of our metamodel:
 
-{% assign site_tags = tag_words_unique | join: ',' %}
+
+![Properties and qualities](/images/Q42-properties-tags.webp)
+
+
+### Properties and Qualities
+
+{% assign all_tags = "" | split: "" %}
+{% for quality in site.qualities %}
+  {% for tag in quality.tags %}
+    {% assign all_tags = all_tags | push: tag %}
+  {% endfor %}
+{% endfor %}
+
+
+{% assign tag_words_unique = all_tags | uniq | sort %}
 
 <div id="tags">
   <ul class="tag-box inline">
   {% for tag in tag_words_unique %}
+    {% assign qualities_count_for_tag = 0 %}
+    {% for quality in site.qualities %}
+      {% if quality.tags contains tag %}
+        {% assign qualities_count_for_tag = qualities_count_for_tag | plus: 1 %}
+      {% endif %}
+    {% endfor %}
+
     <!-- make the tags of the arc42-quality-model stand out -->
     {% if tag == "reliable" or tag == "flexible" or tag=="efficient" or tag == "usable" or tag == "safe" or tag == "secure" or tag == "suitable" or tag == "operable" %}
     <a class="hov tags" href="/tag-{{ tag | cgi_escape }}"><b>{{ tag }}</b>
-       <span>{{ site.tags[tag] | where: "categories", "qualities" | size }}</span></a>
+       <span>{{ qualities_count_for_tag }}</span></a>
     {% else %}
         <!-- other tags in different color  -->
         <li><a class="hov tags" href="#{{ tag | cgi_escape }}">{{ tag }}
-        <span>{{ site.tags[tag] | where: "categories", "qualities" | size }}</span></a></li>
+        <span>{{ qualities_count_for_tag }}</span></a></li>
     {% endif %}
   {% endfor %}
   </ul>
+</div>
 
-{% assign tag_count = tag_words_unique | size %}
+### Properties and Quality-Requirements
 
-  {% for item in (0..tag_count) %}{% unless forloop.last %}
-    {% capture this_word %}{{ tag_words[item] | strip_newlines }}{% endcapture %}
-  <a href="/tag-{{ this_word | cgi_escape }}">
-  <h2>#{{ this_word }}</h2></a>
-  <ul class="posts">
-    {% assign sorted_posts = site.tags[this_word] | sort_by: 'title'  | reverse %}
-    {% assign sorted_posts = sorted_posts | where: "categories", "qualities" %}
-    {% for post in sorted_posts %}{% if post.title != null %}
-    <li> <a href="{{ post.url }}">{{ post.title }}</a></li>
-    {% endif %}{% endfor %}
+
+{% assign all_tags = "" | split: "" %}
+{% for req in site.requirements %}
+  {% for tag in req.tags %}
+    {% assign all_tags = all_tags | push: tag %}
+  {% endfor %}
+{% endfor %}
+
+
+{% assign tag_words_unique = all_tags | uniq | sort %}
+
+<div id="tags">
+  <ul class="tag-box inline">
+  {% for tag in tag_words_unique %}
+    {% assign req_count_for_tag = 0 %}
+    {% for requirement in site.requirements %}
+      {% if requirement.tags contains tag %}
+        {% assign req_count_for_tag = req_count_for_tag | plus: 1 %}
+      {% endif %}
+    {% endfor %}
+
+    {% if tag == "reliable" or tag == "flexible" or tag=="efficient" or tag == "usable" or tag == "safe" or tag == "secure" or tag == "suitable" or tag == "operable" %}
+    <a class="hov tags" href="/tag-{{ tag | cgi_escape }}"><b>{{ tag }}</b>
+       <span>{{ req_count_for_tag }}</span></a>
+    {% else %}
+        <!-- other tags in different color  -->
+        <li><a class="hov tags" href="#{{ tag | cgi_escape }}">{{ tag }}
+        <span>{{ req_count_for_tag }}</span></a></li>
+    {% endif %}
+  {% endfor %}
   </ul>
-  {% endunless %}{% endfor %}
 </div>

@@ -76,4 +76,4 @@ The main idea of _usability_ is that a system shall be designed with (generalize
 
 
 <!-- include all qualities associated with this tag -->
-{% include one-quality.md topic="usable"  %}
+{% include one-quality.liquid tag="usable"  %}
