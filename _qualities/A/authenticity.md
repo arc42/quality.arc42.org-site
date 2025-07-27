@@ -17,6 +17,12 @@ See [#secure](/tag-secure)
 
 <hr class="with-no-margin"/>
 
+>The property that an entity is what it claims to be.
+>
+>[ISO-27001:2022](https://www.iso.org/standard/27001)
+
+<hr class="with-no-margin"/>
+
 >* The property that data originated from its purported source.
 >* The property of being genuine and being able to be verified and trusted; confidence in the validity of a transmission, a message, or message originator.
 >

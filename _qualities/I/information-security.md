@@ -2,6 +2,7 @@
 title: Information Security
 tags: secure reliable
 related: integrity, availability, non-repudiation, confidentiality, accountability, authenticity, resistance, cyber-security
+standards: iso27001
 permalink: /qualities/information-security
 ---
 
@@ -15,6 +16,7 @@ Definitions:
 
 Protect system against malicious attacks, so that the system continues to function correctly. 
 Security requires at least integrity, availability and non-repudiation.
+
 </div><br>
 
 <hr class="with-no-margin"/>
