@@ -1,0 +1,27 @@
+{% comment %}
+This file is "included" from each of the tag-efficient.md, tag-flexible.md etc files,
+as these pages need to display all related requirements.
+
+{% endcomment %}
+
+{%- assign tag_to_find = include.tag -%}
+{%- if tag_to_find and tag_to_find != "" -%}
+
+<hr class="with-no-margin"/>
+
+## <span style="background-color:var(--qual-req-color)">Requirements tagged with #{{ include.tag }}</span>
+<div id="search-results">
+
+<ul class="posts">
+    {%- for item in site.requirements -%}
+      {%- if item.tags contains tag_to_find -%}
+        <li><a class="reqs" href="{{item.permalink}}"><i class="fa fa-lightbulb fa-xs as-bullet" style="color: var(--req-text-color);"> </i> {{ item.title }}</a></li>
+      {%- endif -%}
+    {%- endfor -%}
+  
+  </ul>
+</div>
+
+{%- endif -%}
+
+ 

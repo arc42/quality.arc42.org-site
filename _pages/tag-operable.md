@@ -64,4 +64,7 @@ Bass et al. define [deployability](/qualities/deployability) as a property, and 
 <!-- include all qualities associated with this tag -->
 {% include one-quality.liquid tag="operable"  %}
 
+<!-- include all requirements associated with this tag -->
+{% include one-requirement.liquid tag="operable"  %}
+
 
