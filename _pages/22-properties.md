@@ -72,8 +72,9 @@ Consider an excerpt of our metamodel:
     {% endfor %}
 
     {% if tag == "reliable" or tag == "flexible" or tag=="efficient" or tag == "usable" or tag == "safe" or tag == "secure" or tag == "suitable" or tag == "operable" %}
-    <a class="hov tags" href="/tag-{{ tag | cgi_escape }}"><b>{{ tag }}</b>
+    <a class="hov tags req" href="/tag-{{ tag | cgi_escape }}"><b>{{ tag }}</b>
        <span>{{ req_count_for_tag }}</span></a>
+   
     {% else %}
         <!-- other tags in different color  -->
         <li><a class="hov tags" href="#{{ tag | cgi_escape }}">{{ tag }}

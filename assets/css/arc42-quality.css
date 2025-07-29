@@ -44,7 +44,7 @@ a.hov.tags {
 a.hov.tags.req {
     line-height: 1.2;
     background-color: var(--qual-req-color);
-    color: #dd354b;
+    color: var(--dark-blue-text-color);
     border-radius: 11px;
     text-align: center;
     text-decoration: none;
