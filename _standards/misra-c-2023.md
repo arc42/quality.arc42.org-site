@@ -1,5 +1,5 @@
 ---
-layout: standards
+layout: page_standard
 title: "MISRA C - Guidelines for the use of the C language in critical systems"
 permalink: /standards/misra-c
 standard_id: misra-c

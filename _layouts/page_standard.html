@@ -1,0 +1,36 @@
+---
+layout: default
+---
+
+{% assign qualities_for_standard = "" | split: "" %}
+{% for quality in site.qualities %}
+  {% if quality.standards contains page.standard_id %}
+    {% assign qualities_for_standard = qualities_for_standard | push: quality %}
+  {% endif %}
+{% endfor %}
+
+<div class="article-wrapper">
+    <article>
+        {% include standards-header.html page=page link=false share=page.share %}
+        <section class="post-content">
+            {{ content }}
+        </section>
+        {% include article-footer.html page=page share=page.share %}
+    </article>
+</div>
+
+
+<h2><span style="background-color:var(--quality-color)">Related Qualities ({{ qualities_for_standard | size }})</span></h2>
+
+<ul>
+{% for quality in qualities_for_standard  %}
+        <li><a href="{{ quality.url | relative_url }}">{{ quality.title }}</a></li>
+    {% endfor %}
+</ul>
+
+
+{% if site.show-subtle-ads %}
+<section class="subtle-ads">
+  {% include subtle-ads/subtle-ads.html %}
+</section>
+{% endif %}
