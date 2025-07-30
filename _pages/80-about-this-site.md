@@ -57,8 +57,8 @@ I'm:
   [Paul Boeck @PapaBravo](https://github.com/PapaBravo),
   [Dean de Bree @ddebree](https://github.com/ddebree),
   [Markus Stier @mstier](https://github.com/mstier), 
-  Fabian Angst,
-  Yadullah Duman
+  [Fabian Angst @angstitc](https://github.com/angstitc),
+  Yadullah Duman, Peter Hruschka, Markus Meuten
   for their contributions.
 
 Find the current list of contributors [here](https://github.com/arc42/quality.arc42.org-site/graphs/contributors)
