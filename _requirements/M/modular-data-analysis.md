@@ -7,7 +7,9 @@ permalink: /requirements/modular-system-for-data-analysis
 
 <div class="quality-requirement" markdown="1">
 
-**Background:** A modular software application designed for data analysis, consisting of independent modules for data import, processing, visualization, and export.
+#### Context
+
+A modular software application designed for data analysis, consisting of independent modules for data import, processing, visualization, and export.
     The system currently handles structured data formats and is used primarily for financial data analysis.
 
 **Event**: As a new requirement, social media data needs to be analyzed. 
@@ -18,7 +20,7 @@ That data is unstructured and requires natural language processing (NLP) capabil
 * Module Compatibility: The new NLP module should seamlessly integrate with the existing data import and visualization modules.
 * User Configuration: Users should be able to configure the system to include the NLP module in their data analysis workflow.
 
-**Metrics:**
+#### Metric/Acceptance Criteria
 
 * Integration Time: The time taken from the initiation of integrating the new NLP module to the point where it is fully functional is less than 4 hours.
 * Component Compatibility Success Rate: The percentage of successful data flows between the new NLP module and existing modules is >= 95% (in other words: 5% of queries concerning the new NLP module are allowed to fail).

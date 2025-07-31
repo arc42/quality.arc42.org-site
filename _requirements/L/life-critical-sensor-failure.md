@@ -9,7 +9,9 @@ permalink: /requirements/backup-patient-monitoring-sensor
 
 Idea: [Bass et al., 2021](/references/#bass2021software)
 
-**Context**: The system monitors patients several health and vitality parameters (e.g. heartbeat frequency and amplitude, blood flow in coronary artery etc)
+#### Context
+
+The system monitors patients several health and vitality parameters (e.g. heartbeat frequency and amplitude, blood flow in coronary artery etc)
 
 #### Stimulus
 

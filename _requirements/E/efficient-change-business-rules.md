@@ -7,7 +7,9 @@ permalink: /requirements/luggage-routing
 
 <div class="quality-requirement" markdown="1">
 
-**Scenario**: Luggage routing at the airport shall reflect the official government travel warnings at the latest 4 hours after their publication.
+#### Scenario
+
+Luggage routing at the airport shall reflect the official government travel warnings at the latest 4 hours after their publication.
 
 #### Background
 

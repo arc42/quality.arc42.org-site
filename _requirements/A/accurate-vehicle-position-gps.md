@@ -7,7 +7,9 @@ permalink: /requirements/accurate-vehicle-position-gps
 
 <div class="quality-requirement" markdown="1">
 
-**Scenario**: The vehicle's position on the map of the navigation system
+#### Scenario
+
+The vehicle's position on the map of the navigation system
 
 #### Stimulus
 

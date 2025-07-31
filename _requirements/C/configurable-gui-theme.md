@@ -7,7 +7,9 @@ permalink: /requirements/configurable-ui-theme
 
 <div class="quality-requirement" markdown="1">
 
-**Scenario**: Users can change (_customize_ or _configure_) the UI theme at runtime.
+#### Scenario
+
+Users can change (_customize_ or _configure_) the UI theme at runtime.
 
 #### Background
 

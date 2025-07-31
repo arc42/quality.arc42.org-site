@@ -12,7 +12,9 @@ Prior to using the system, users must authenticate themselves, either by using S
 
 After authentication, the system determines this users' authorization level (which function these users are allowed to use and which data they are allowed to see and/or modify)
 
-**Scenario**: Users are allowed to use only those system functions and see only the data they are authorized for.
+#### Scenario
+
+Users are allowed to use only those system functions and see only the data they are authorized for.
 
 
 </div><br>

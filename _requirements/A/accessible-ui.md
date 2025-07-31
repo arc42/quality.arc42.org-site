@@ -9,7 +9,7 @@ permalink: /requirements/accessible-user-interface
 
 **Requirement:** The software UI must be accessible to users with various disabilities.
 
-**Metrics:**
+#### Metric/Acceptance Criteria
 
 
 

@@ -7,7 +7,9 @@ permalink: /requirements/learnability-find-article
 
 <div class="quality-requirement" markdown="1">
 
-**Scenario**: A user who has never used the system before, but other IT systems in general
+#### Scenario
+
+A user who has never used the system before, but other IT systems in general
 
 #### Stimulus
 

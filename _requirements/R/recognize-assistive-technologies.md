@@ -14,7 +14,7 @@ permalink: /requirements/recognize-assistive-technology
 * offering voice navigation, and 
 * maintaining high contrast for users with visual impairments.
 
-**Metrics:**
+#### Metric/Acceptance Criteria
 
 * Screen Reader Efficiency: 95% of the content must be accurately read out by screen readers without user confusion over navigation or actions.
 * Keyboard Navigability: All interactive elements must be accessible with a keyboard alone, and users should be able to complete all forms and transactions using keyboard shortcuts, aiming for task completion within 120% of the time taken using a mouse.

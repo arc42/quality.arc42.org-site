@@ -7,7 +7,9 @@ permalink: /requirements/precise-vehicle-orientation-gps
 
 <div class="quality-requirement" markdown="1">
 
-**Scenario**: The orientation of the vehicle
+#### Scenario
+
+The orientation of the vehicle
 
 #### Stimulus
 
