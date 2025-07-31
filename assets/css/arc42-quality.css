@@ -15,7 +15,7 @@ a.hov:hover {
 
 a.hov {
     background-color: var(--quality-background-color);
-    color: white;
+    color: var(--quality-text-color);
     padding: 5px 10px;
     border-radius: 11px;
     text-align: center;
@@ -30,7 +30,7 @@ a.hov {
 a.hov.tags {
     line-height: 1.2;
     background-color: var(--quality-background-color);
-    color: white;
+    color: var(--quality-text-color);
     border-radius: 11px;
     text-align: center;
     text-decoration: none;
@@ -104,7 +104,7 @@ a.standards {
 
 li.related-quality {
     padding-left: 20px;
-    color: var(--blue-text-color);
+    color: var(--quality-text-color);
 }
 
 
@@ -145,5 +145,5 @@ h2.section-heading.requirements {
 
 h2.section-heading.qualities {
     background-color: var(--quality-background-color);
-    color: white;
+    color: var(--quality-text-color);
 }
