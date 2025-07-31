@@ -24,7 +24,7 @@ These requirements pages are structured as follows:
      Find related qualities by iterating over all other qualities.
    {% endcomment %}
 
-    <h2><span style="background-color:var(--quality-background-color)">Related Qualities</span></h2>
+    <h2 class="section-heading qualities">Related Qualities</h2>
 
 
         {% assign all_qualities = site.qualities %}
@@ -50,7 +50,7 @@ These requirements pages are structured as follows:
      Find related requirements by comparing the tags of all other requirements.
     {% endcomment %}
         
-    <h2><span style="background-color:var(--reqs-background-color)">Directly Related Quality Requirements</span></h2>
+    <h2 class="section-heading requirements">Directly Related Quality Requirements</h2>
 
         
     {% assign page_tags = page.tags  | sort %}

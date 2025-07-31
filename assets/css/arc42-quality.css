@@ -129,3 +129,21 @@ li.small {
     font-size: 90%;
     padding-left: 20px;
 }
+
+/* Full-width section headings */
+h2.section-heading {
+    margin: 1em 0;
+    padding: 0.8em 1.5em;
+    border-radius: 0;
+    font-size: 1.8em;
+}
+
+h2.section-heading.requirements {
+    background-color: var(--reqs-background-color);
+    color: var(--req-text-color);
+}
+
+h2.section-heading.qualities {
+    background-color: var(--quality-background-color);
+    color: white;
+}
