@@ -18,7 +18,7 @@ Definitions:
 
 Such capabilities include the use of different language, supportive measures for disabilities associated with age, sight, hearing, use of hands, arms and legs, etc.
 
-#### Examples for such capabilities
+### Examples for such capabilities
 
 * A system that can interact with users using multiple input/output methods, such as voice, gaze, and touch, in addition to visual display, in order to accommodate differences in vision, hearing, and body parts that can be moved, or changes in these areas.
 * Software that reads the user's voice and facial expressions and responds to them, such as conversing with a person.

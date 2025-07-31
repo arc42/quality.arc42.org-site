@@ -38,7 +38,7 @@ But that is a minor thing, despite being immediately visible.
 
 To facilitate stakeholder communication and understanding, Q42 contains definitions and explanations for more than 100 different _traditional_ system or product qualities, all labelled or tagged with one or several of the 8 key properties.
 
-#### Example Quality Requirements
+### Example Quality Requirements
 
 Q42 contains numerous (currently {{ requirement_posts | size }}) [examples for specific quality requirements](/requirements).
 You can use these examples as a starting point to find and describe quality requirements for your own system.
