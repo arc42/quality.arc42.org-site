@@ -272,6 +272,14 @@
     "page": "/requirements/capacity-to-process-sensor-inputs"
   },
   {
+    "id": "capacity-new",
+    "label": "capacity-new",
+    "size": 25,
+    "color": "#dcf1ff",
+    "qualityType": "quality",
+    "page": "/qualities/capacity-new"
+  },
+  {
     "id": "carbon-emission-efficiency",
     "label": "Carbon Emission Efficiency",
     "size": 25,

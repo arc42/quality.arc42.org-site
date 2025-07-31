@@ -115,12 +115,14 @@ function extractId(permalink) {
 }
 
 /**
- * @param {string|undefined} value
+ * @param {string|string[]|undefined} value
  * @param {string} separator
  * @returns {string[]}
  */
 function parseList(value, separator) {
-    return value ? value.split(separator).map(item => item.trim()) : [];
+    if (!value) return [];
+    if (Array.isArray(value)) return value.map(item => item.trim());
+    return value.split(separator).map(item => item.trim());
 }
 
 /**

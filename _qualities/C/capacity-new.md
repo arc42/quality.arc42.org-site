@@ -1,6 +1,6 @@
 ---
-title: Capacity New
-tags: efficient reliable
+title: capacity-new
+tags: [efficient, reliable]
 related: efficiency, resource-efficiency
 standards: iso25010
 permalink: /qualities/capacity-new

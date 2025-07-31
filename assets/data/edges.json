@@ -644,6 +644,22 @@
     "target": "resource-efficiency"
   },
   {
+    "source": "capacity-new",
+    "target": "efficient"
+  },
+  {
+    "source": "capacity-new",
+    "target": "reliable"
+  },
+  {
+    "source": "capacity-new",
+    "target": "efficiency"
+  },
+  {
+    "source": "capacity-new",
+    "target": "resource-efficiency"
+  },
+  {
     "source": "capacity-to-process-sensor-inputs",
     "target": "time-behaviour"
   },
