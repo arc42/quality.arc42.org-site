@@ -14,8 +14,8 @@ a.hov:hover {
 /* style for post-tags and initial letters */
 
 a.hov {
-    background-color: #AED6F1;
-    color: #dd354b;
+    background-color: var(--quality-color);
+    color: white;
     padding: 5px 10px;
     border-radius: 11px;
     text-align: center;
@@ -29,8 +29,8 @@ a.hov {
 
 a.hov.tags {
     line-height: 1.2;
-    background-color: #AED6F1;
-    color: #dd354b;
+    background-color: var(--quality-color);
+    color: white;
     border-radius: 11px;
     text-align: center;
     text-decoration: none;
@@ -82,7 +82,7 @@ a.hov.tags.standard {
 /* different header color for scenarios */
 
 #scenario-header{
-    background-color: #DEEFB7;
+    background-color: var(--qual-req-color);
 }
 
 /* different header color for standards */

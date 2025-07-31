@@ -77,7 +77,8 @@ iframe, img, embed, object, video {
 .tag-box a {
   padding: 4px 6px;
   margin: 2px;
-  background-color: #aee3f8;
+  background-color: var(--quality-color);
+  color: white;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;

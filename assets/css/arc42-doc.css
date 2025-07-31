@@ -2,13 +2,13 @@
 
 /* define colors for qualities and requirements */
 :root {
-  --quality-color: #dbf0fe;
-  --qual-req-color: #DEEFB7;
-  --standard-color: #E6D7F0;
-  --req-text-color: #899A62;
-  --standard-text-color: #4A2764;
-  --dark-blue-text-color: #002080;
-  --blue-text-color: #1675b9;
+  --quality-color: #3498DB;
+  --qual-req-color: #2ECC71;
+  --standard-color: #9B59B6;
+  --req-text-color: #1B5E20;
+  --standard-text-color: #FFFFFF;
+  --dark-blue-text-color: #FFFFFF;
+  --blue-text-color: #2C3E50;
 }
 
 p {
