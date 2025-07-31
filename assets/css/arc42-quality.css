@@ -14,7 +14,7 @@ a.hov:hover {
 /* style for post-tags and initial letters */
 
 a.hov {
-    background-color: var(--quality-color);
+    background-color: var(--quality-background-color);
     color: white;
     padding: 5px 10px;
     border-radius: 11px;
@@ -29,7 +29,7 @@ a.hov {
 
 a.hov.tags {
     line-height: 1.2;
-    background-color: var(--quality-color);
+    background-color: var(--quality-background-color);
     color: white;
     border-radius: 11px;
     text-align: center;
@@ -43,8 +43,8 @@ a.hov.tags {
 
 a.hov.tags.req {
     line-height: 1.2;
-    background-color: var(--qual-req-color);
-    color: var(--dark-blue-text-color);
+    background-color: var(--reqs-background-color);
+    color: var(--req-text-color);
     border-radius: 11px;
     text-align: center;
     text-decoration: none;
@@ -57,7 +57,7 @@ a.hov.tags.req {
 
 a.hov.tags.standard {
     line-height: 1.2;
-    background-color: var(--standard-color);
+    background-color: var(--standard-background-color);
     color: var(--standard-text-color);
     border-radius: 11px;
     text-align: center;
@@ -82,13 +82,13 @@ a.hov.tags.standard {
 /* different header color for scenarios */
 
 #scenario-header{
-    background-color: var(--qual-req-color);
+    background-color: var(--reqs-background-color);
 }
 
 /* different header color for standards */
 
 #standard-header{
-    background-color: var(--standard-color);
+    background-color: var(--standard-background-color);
 }
 
 
