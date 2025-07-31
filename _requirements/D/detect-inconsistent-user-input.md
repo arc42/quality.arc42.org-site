@@ -8,13 +8,21 @@ permalink: /requirements/detect-inconsistent-user-input
 <div class="quality-requirement" markdown="1">
 
 
-**Stimulus**: User manually enters data into the system.
+#### Stimulus
 
-**Reaction**: User accepts consistent or correct data, and rejects inconsistent or wrong data. 
+User manually enters data into the system.
 
-**Metric**: In case of inconsistent or wrong data, system displays appropriate messages that clearly explains the inconsistency or error.
+#### Reaction
 
-**Background**: It needs to be clarified what kind of inconsistencies can be recognized within the domain.
+User accepts consistent or correct data, and rejects inconsistent or wrong data. 
+
+#### Metric
+
+In case of inconsistent or wrong data, system displays appropriate messages that clearly explains the inconsistency or error.
+
+#### Background
+
+It needs to be clarified what kind of inconsistencies can be recognized within the domain.
 
 </div>
 

@@ -9,7 +9,9 @@ permalink: /requirements/usable-with-gloves
 
 All interactive functions (the graphical user frontend) of the system must be usable by people wearing gloves.
 
-**Background**: The graphical frontend plus input media (keyboards and other input devices) are located in a factory, where people are often required to wear gloves due to safety considerations.
+#### Background
+
+The graphical frontend plus input media (keyboards and other input devices) are located in a factory, where people are often required to wear gloves due to safety considerations.
 
 </div><br>
 

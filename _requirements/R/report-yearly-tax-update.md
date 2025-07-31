@@ -7,13 +7,21 @@ permalink: /requirements/annual-tax-update
 
 <div class="quality-requirement" markdown="1">
 
-**Stimulus**: Updated specification of the data output format for booking reports becomes available, usually October 31st.
+#### Stimulus
 
-**Reaction**: The source code of the reporting components is updated. The system creates the report according to the new specification.
+Updated specification of the data output format for booking reports becomes available, usually October 31st.
 
-**Metric**: The change can be implemented in less than 80 person hours.
+#### Reaction
 
-**Background**: The data output format of the annual accounting report is adjusted every year on December 31 to comply with the legal and tax changes. The system must be able to generate the new format.
+The source code of the reporting components is updated. The system creates the report according to the new specification.
+
+#### Metric
+
+The change can be implemented in less than 80 person hours.
+
+#### Background
+
+The data output format of the annual accounting report is adjusted every year on December 31 to comply with the legal and tax changes. The system must be able to generate the new format.
 
 </div><br>
 

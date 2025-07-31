@@ -7,13 +7,21 @@ permalink: /requirements/response-time-for-image-rendering
 
 <div class="quality-requirement" markdown="1">
 
-**Stimulus**: A user selects a graphical filter (like shadow, greyscaling, resizing or similar) and clicks or selects the `apply filter` function. 
+#### Stimulus
 
-**Reaction**: The system displays the changed image next to the original upon.
+A user selects a graphical filter (like shadow, greyscaling, resizing or similar) and clicks or selects the `apply filter` function. 
 
-**Metric**: The system displays the changed image in less than a second.
+#### Reaction
 
-**Background**: We develop an image manipulation software, offering a variety of image filters for users to select and apply to their images. Such filters include shadows, greyscaling, resizing, background-removal and others.
+The system displays the changed image next to the original upon.
+
+#### Metric
+
+The system displays the changed image in less than a second.
+
+#### Background
+
+We develop an image manipulation software, offering a variety of image filters for users to select and apply to their images. Such filters include shadows, greyscaling, resizing, background-removal and others.
 
 To achieve the required response time, it's an option to reduce the resolution of the image for the preview.
 </div><br>

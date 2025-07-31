@@ -6,11 +6,17 @@ permalink: /requirements/carbon-efficiency-save
 ---
 
 <div class="quality-requirement" markdown="1">
-**Stimulus**: The system processes a high volume of data and performs resource-intensive computations.
+#### Stimulus
 
-**Environment**: Data center powered by non-renewable energy sources.
+The system processes a high volume of data and performs resource-intensive computations.
 
-**Response**: The system should minimize its carbon footprint by optimizing energy usage and resource allocation, aiming to reduce energy consumption by at least 20% compared to previous versions.
+#### Environment
+
+Data center powered by non-renewable energy sources.
+
+#### Response
+
+The system should minimize its carbon footprint by optimizing energy usage and resource allocation, aiming to reduce energy consumption by at least 20% compared to previous versions.
 
 
 </div><br>

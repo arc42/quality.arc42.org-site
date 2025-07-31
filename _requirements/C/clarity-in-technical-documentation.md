@@ -12,11 +12,15 @@ permalink: /requirements/clarity-in-technical-documentation
 
 <div class="quality-requirement" markdown="1">
 
-**Stimulus**: Users referr to the documentation to understand technical details or troubleshoot issues.
+#### Stimulus
+
+Users referr to the documentation to understand technical details or troubleshoot issues.
 
 **Artifact**: Technical Documentation
 
-**Response**: The documentation provides coherent and intelligible explanations and instructions.
+#### Response
+
+The documentation provides coherent and intelligible explanations and instructions.
 
 **Response Measure** (aka _metrics_):
 

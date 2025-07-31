@@ -13,7 +13,9 @@ permalink: /requirements/query-execution-management
 
 * Query diagnosis must not add more than 1MB memory footprint to system execution.
 
-**Background**: We execute a large number of CPU- and memory-intensive database queries within our system. 
+#### Background
+
+We execute a large number of CPU- and memory-intensive database queries within our system. 
 A diagnostic component can measure the execution time of these queries, if `query-diagnosis` configuration is turned on.
 </div><br>
 
