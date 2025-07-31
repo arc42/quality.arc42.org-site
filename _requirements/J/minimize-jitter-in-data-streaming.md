@@ -10,11 +10,17 @@ permalink: /requirements/minimize-jitter
 ### Overall goal: Reduce and control [jitter](/qualities/jitter) in the real-time streaming of data.
 
 
-**Stimulus**: Continuous transmission of real-time data (from sensors) over a network,.
+#### Stimulus
 
-**Environment**: Operational phase under standard network conditions.
+Continuous transmission of real-time data (from sensors) over a network,.
 
-**Response**: The system handles variations in delay of data packet delivery.
+#### Environment
+
+Operational phase under standard network conditions.
+
+#### Response
+
+The system handles variations in delay of data packet delivery.
 
 **Response Measure**:
 

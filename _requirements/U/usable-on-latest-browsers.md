@@ -6,7 +6,9 @@ permalink: /requirements/user-interface-works-with-current-browsers
 ---
 
 <div class="quality-requirement" markdown="1">
-**Background**: The system offers an HTML/web based user interfaces.
+#### Background
+
+The system offers an HTML/web based user interfaces.
 
 The user interface works seamlessly without restrictions in the five latest versions of the major browsers.
 

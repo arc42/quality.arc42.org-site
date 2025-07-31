@@ -7,17 +7,25 @@ permalink: /requirements/up-to-date-api
 
 <div class="quality-requirement" markdown="1">
 
-**Background**: API provides configuration data from multiple sources. These configurations can be changed and the API should always provide up to date information.
+#### Background
+
+API provides configuration data from multiple sources. These configurations can be changed and the API should always provide up to date information.
 
 #### Source
 
 Consumer of the API
 
-**Stimulus**: Requests data
+#### Stimulus
 
-**Reaction**: Configuration returned is up to date
+Requests data
 
-**Metric**: If the configuration is changed, only in 5% of the requests after 30 seconds, the data returned is still the previous configuration.
+#### Reaction
+
+Configuration returned is up to date
+
+#### Metric
+
+If the configuration is changed, only in 5% of the requests after 30 seconds, the data returned is still the previous configuration.
 
 
 </div><br>

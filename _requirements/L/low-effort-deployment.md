@@ -6,10 +6,14 @@ permalink: /requirements/low-effort-deployment
 ---
 
 <div class="quality-requirement" markdown="1">
-**Stimulus**: 
+#### Stimulus
+
+
 A new release of an authentication/authorization service (which our product uses) is made available in the component marketplace, and the product owner decides to incorporate this version into the release. 
 
-**Response**: The new service is tested and deployed to the production environment. 
+#### Response
+
+The new service is tested and deployed to the production environment. 
 
 
 **Measure**: 

@@ -9,10 +9,16 @@ permalink: /requirements/precise-vehicle-orientation-gps
 
 **Scenario**: The orientation of the vehicle
 
-**Stimulus**: is measured twice for the same orientation.
+#### Stimulus
 
-**Reaction**: The orientation is displayed in the gps software.
+is measured twice for the same orientation.
 
-**Metric**: The orientation precision is better than ± 3°
+#### Reaction
+
+The orientation is displayed in the gps software.
+
+#### Metric
+
+The orientation precision is better than ± 3°
 
 </div><br>
