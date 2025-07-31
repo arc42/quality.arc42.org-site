@@ -1,7 +1,7 @@
 {% assign page = include.page %}
 
 <header>
-    <div class="panel">
+    <div class="panel{% if page.collection == 'qualities' %} quality-header{% elsif page.collection == 'requirements' %} requirements-header{% elsif page.collection == 'standards' %} standards-header{% endif %}">
         <h1>
             {% if include.link %}
             <a class="post-link" href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>

@@ -147,3 +147,31 @@ h2.section-heading.qualities {
     background-color: var(--quality-background-color);
     color: var(--quality-text-color);
 }
+
+/* Page header colors for different collections */
+.panel.quality-header {
+    background-color: var(--quality-background-color) !important;
+}
+
+.panel.quality-header h1, 
+.panel.quality-header h1 a {
+    color: var(--quality-text-color) !important;
+}
+
+.panel.requirements-header {
+    background-color: var(--reqs-background-color) !important;
+}
+
+.panel.requirements-header h1, 
+.panel.requirements-header h1 a {
+    color: var(--req-text-color) !important;
+}
+
+.panel.standards-header {
+    background-color: var(--standard-background-color) !important;
+}
+
+.panel.standards-header h1, 
+.panel.standards-header h1 a {
+    color: var(--standard-text-color) !important;
+}
