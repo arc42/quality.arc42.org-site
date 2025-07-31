@@ -9,7 +9,9 @@ permalink: /requirements/independent-enhancement-of-subsystem
 
 **Background**: Extensions or changes to a subsystem should be possible independently of all other subsystems.
 
-**Source**: Development team
+#### Source
+
+Development team
 
 **Stimulus**: Changes code or configuration within a subsystem or component
 

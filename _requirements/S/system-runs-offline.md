@@ -9,7 +9,9 @@ permalink: /requirements/system-runs-offline
 
 **Background**: Conductor in a train uses device to validate a ticket without any network connection being available. During validation only 5% false-negatives are allowed
 
-**Source**: Conductor
+#### Source
+
+Conductor
 
 **Stimulus**: Validates ticket using device
 

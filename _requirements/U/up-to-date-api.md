@@ -9,7 +9,9 @@ permalink: /requirements/up-to-date-api
 
 **Background**: API provides configuration data from multiple sources. These configurations can be changed and the API should always provide up to date information.
 
-**Source**: Consumer of the API
+#### Source
+
+Consumer of the API
 
 **Stimulus**: Requests data
 

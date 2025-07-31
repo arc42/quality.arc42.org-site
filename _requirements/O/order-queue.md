@@ -9,7 +9,9 @@ permalink: /requirements/order-queue
 
 **Background**: The database is down, so orders received from the shop cannot be processed immediately
 
-**Source**: User
+#### Source
+
+User
 
 **Stimulus**: Sends an order to the shop
 

@@ -9,7 +9,9 @@ permalink: /requirements/fast-deployment
 
 **Background**: Developer deploys a new version of the application to production
 
-**Source**: Developer
+#### Source
+
+Developer
 
 **Stimulus**: Deploys a new version of the application
 

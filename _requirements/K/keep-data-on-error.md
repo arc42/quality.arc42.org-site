@@ -9,7 +9,9 @@ permalink: /requirements/keep-data-on-error
 
 **Background**: A user wants to open a new bank account and is required to identify herself using an external system
 
-**Source**: External system that identifies users
+#### Source
+
+External system that identifies users
 
 **Stimulus**: Returns an error that identification could not be completed
 

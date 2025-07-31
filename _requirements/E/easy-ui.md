@@ -9,7 +9,9 @@ permalink: /requirements/easy-ui
 
 **Background**: As a user, I want to be able to register my smartphone as a device for a two-factor authentication
 
-**Source**: User
+#### Source
+
+User
 
 **Stimulus**: Wants to register smartphone
 
