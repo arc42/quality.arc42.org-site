@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: page_standards
 title: Standards
 permalink: /standards/
 order: 50

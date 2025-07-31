@@ -55,6 +55,20 @@ a.hov.tags.req {
     margin-right: 1px
 }
 
+a.hov.tags.standard {
+    line-height: 1.2;
+    background-color: var(--standard-color);
+    color: var(--standard-text-color);
+    border-radius: 11px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    margin-left: 10px;
+    margin-right: 1px
+}
+
 
 
 /* style for INNOQ on about-this-site */
@@ -71,11 +85,21 @@ a.hov.tags.req {
     background-color: #DEEFB7;
 }
 
+/* different header color for standards */
+
+#standard-header{
+    background-color: var(--standard-color);
+}
+
 
 
 
 a.reqs {
     color: var(--req-text-color);
+}
+
+a.standards {
+    color: var(--standard-text-color);
 }
 
 li.related-quality {

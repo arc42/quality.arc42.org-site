@@ -4,7 +4,9 @@
 :root {
   --quality-color: #dbf0fe;
   --qual-req-color: #DEEFB7;
+  --standard-color: #E6D7F0;
   --req-text-color: #899A62;
+  --standard-text-color: #4A2764;
   --dark-blue-text-color: #002080;
   --blue-text-color: #1675b9;
 }
