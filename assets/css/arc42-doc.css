@@ -2,13 +2,14 @@
 
 /* define colors for qualities and requirements */
 :root {
-  --quality-color: #dbf0fe;
-  --qual-req-color: #DEEFB7;
-  --standard-color: #E6D7F0;
-  --req-text-color: #899A62;
-  --standard-text-color: #4A2764;
-  --dark-blue-text-color: #002080;
-  --blue-text-color: #1675b9;
+  --quality-background-color: #00B8F5;
+  --reqs-background-color: #92EF80;
+  --standard-background-color: #FFC95C;
+  --quality-text-color: #003366;
+  --req-text-color: #1B5E20;
+  --standard-text-color: #2C3E50;
+  --dark-blue-text-color: #FFFFFF;
+  --blue-text-color: #2C3E50;
 }
 
 p {
@@ -29,9 +30,9 @@ p {
 
 /* unified style for quality requirement text */
 .quality-requirement {
-  color: var(--dark-blue-text-color);
+  color: var(--req-text-color);
   padding: 5px 5px;
-  background: var(--qual-req-color);
+  background: var(--reqs-background-color);
   border-radius: 4px;
 
   -webkit-box-shadow: 3px 3px 4px 0px #9CAD75;
