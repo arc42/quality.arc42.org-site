@@ -9,13 +9,13 @@ as these pages need to display all related requirements.
 
 <hr class="with-no-margin"/>
 
-## <span style="background-color:var(--reqs-background-color)">Requirements tagged with #{{ include.tag }}</span>
+## <span class="requirement-background">Requirements tagged with #{{ include.tag }}</span>
 <div id="search-results">
 
 <ul class="posts">
     {%- for item in site.requirements -%}
       {%- if item.tags contains tag_to_find -%}
-        <li><a class="reqs" href="{{item.permalink}}"><i class="fa fa-lightbulb fa-xs as-bullet" style="color: var(--req-text-color);"> </i> {{ item.title }}</a></li>
+        <li><a class="reqs" href="{{item.permalink}}"><i class="fa fa-lightbulb fa-xs as-bullet requirement-text-color"> </i> {{ item.title }}</a></li>
       {%- endif -%}
     {%- endfor -%}
   

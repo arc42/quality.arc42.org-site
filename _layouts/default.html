@@ -64,9 +64,9 @@
             {% assign requirements_count = site.requirements | size %}
             {% assign standards_count = site.standards | size %}
             
-            <br><span class="description"><span style="color:#414288">{{ qualities_count }}</span> {{ site.description }}</span>
+            <br><span class="description"><span class="accent-color">{{ qualities_count }}</span> {{ site.description }}</span>
 
-            <br><span class="description"><span style="color:#414288">{{ requirements_count }}</span> examples of quality requirements, related to <span style="color:#414288">{{ standards_count }}</span> quality standards.</span>
+            <br><span class="description"><span class="accent-color">{{ requirements_count }}</span> examples of quality requirements, related to <span class="accent-color">{{ standards_count }}</span> quality standards.</span>
         </h1>
     </div>
 </header>
@@ -112,7 +112,7 @@
                 class="supported-by-innoq"
                 src="{{ '/images/supported-by-innoq--petrol-apricot.svg' | prepend: site.baseurl }}"></a><br>
             <a href="https://status.arc42.org">
-                <i class="fa fa-chart-bar fa-fw" style="color:#50C878;"></i>Status</a><i>&nbsp;&nbsp;</i>
+                <i class="fa fa-chart-bar fa-fw status-ok-color"></i>Status</a><i>&nbsp;&nbsp;</i>
             <i class="fa fa-user-secret" aria-hidden="true"></i>
             <a href="{{ site.baseurl }}/imprint">
                 Imprint + Privacy</a></p>
