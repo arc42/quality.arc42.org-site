@@ -12,7 +12,30 @@ These requirements pages are structured as follows:
 
 <div class="article-wrapper">
     <article>
-        {% include requirements-header.html page=page link=false share=page.share %}
+        <header>
+            <div class="panel requirements-header">
+                <h1>
+                    <a class="post-link" href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>
+                </h1>
+
+                <ul class="tags">
+                    {% assign tags_num = (page.tags | size) %}
+                    {% if tags_num > 0 %}
+                    <li><i class="fa fa-tags" style="color: var(--req-text-color);"> </i></li>
+                    {% endif %}
+                    {% for tag in page.tags %}
+                    <li>
+                        <a class="tag" href="{{ '/tag-' | append: tag | prepend: site.baseurl }}">#{{ tag }}</a>
+                    </li>
+                    {% endfor %}
+                </ul>
+
+                <div class="clearfix">
+                    <ul class="meta">
+                    </ul>
+                </div>
+            </div>
+        </header>
         <section class="post-content">
             {{ content }}
         </section>
