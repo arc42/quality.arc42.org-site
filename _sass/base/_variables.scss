@@ -9,8 +9,12 @@ $code-font-size: 0.85em;
 // vertical margin.
 $margin: 50px;
 
-// brand color.
+// Layout.
+$site-max-width: 1200px;
+$mobile-width: 800px;
+$side-padding: 10px;
 
+// brand color.
 $brand-color: #5FB49C;
 $brand-color-light: #deefb7;
 $brand-color-blue: #00B8F5;
@@ -24,8 +28,15 @@ $page-title-color: $marker-color;
 $background-color: #fff;
 $border-color: rgba(#000, .1);
 $border-contrast-color: #414288;
+$accent-color: #414288;
+$status-ok-color: #50C878;
 
 // typography colors.
 $text-color: #383838;
 $link-color: #1675b9;
 $blockquote-color: #777;
+
+// Tag-specific colors
+$quality-background-color: lighten($brand-color, 25%);
+$requirement-background-color: lighten($brand-color-blue, 35%);
+$requirement-text-color: darken($brand-color-blue, 20%);
