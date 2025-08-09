@@ -1,7 +1,7 @@
 {% assign page = include.page %}
 
 <header>
-    <div class="panel{% if page.collection == 'qualities' or page.name contains 'tag-' or page.name == '22-properties.md' %} quality-header{% elsif page.collection == 'requirements' %} requirements-header{% elsif page.collection == 'standards' %} standards-header{% endif %}">
+    <div class="panel">
         <h1>
             {% if include.link %}
             <a class="post-link" href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>
@@ -22,27 +22,6 @@
             {% endfor %}
         </ul>
 
-        <div class="clearfix">
-            <ul class="meta">
-                
-                {% if page.author %}
-                <li>
-                    <a href="{{ '/search/?a=' | append: page.author | prepend: site.baseurl }}">
-                        <i class="fa fa-user"></i>
-                        {{ page.author }}
-                    </a>
-                </li>
-                {% if page.icons %}
-                <li>
-                    <ul class="icons">
-                        {% include icons.html icons=page.icons %}
-                    </ul>
-                </li>
-                {% endif %}
-                {% endif %}
-            </ul>
-        </div>
+        <div class="clearfix"></div>
     </div>
-
-
 </header>
