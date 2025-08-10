@@ -7,7 +7,7 @@ permalink: /requirements/minimize-jitter
 
 <div class="quality-requirement" markdown="1">
 
-### Overall Goal
+#### Overall Goal
 Reduce and control [jitter](/qualities/jitter) in the real-time streaming of data.
 
 

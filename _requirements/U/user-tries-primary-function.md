@@ -7,22 +7,22 @@ permalink: /requirements/user-tries-primary-function
 
 <div class="quality-requirement" markdown="1">
 
-### Source
+#### Source
 User trying to accomplish a primary task in the application.
 
-### Stimulus
+#### Stimulus
 User attempts to use a feature of the software for its intended purpose.
 
-### Environment
+#### Environment
 The software is operational, running on its standard platform in a typical use-case setting.
 
-### Artifact
+#### Artifact
 The specific feature or function within the software system that the user is interacting with.
 
-### Response
+#### Response
 The software provides functionality that allows the user to achieve the desired outcome without any unnecessary steps or interactions.
 
-### Response Measure
+#### Response Measure
 
 **Success Rate**: 95% of users are able to complete the desired task using the feature on their first attempt.
 
@@ -33,6 +33,5 @@ The software provides functionality that allows the user to achieve the desired 
 **User Feedback**: Post-interaction, at least 90% of users should rate their experience with the feature as "Intuitive" or "Very Easy" on a feedback scale.
 
 </div><br>
-
 
 
