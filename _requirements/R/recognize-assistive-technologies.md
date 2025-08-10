@@ -7,7 +7,8 @@ permalink: /requirements/recognize-assistive-technology
 
 <div class="quality-requirement" markdown="1">
 
-**Requirement:**  The software recognizes the use of assistive technologies and adapts its user interface to improve accessibility. This includes at least the following:
+#### Requirement
+The software recognizes the use of assistive technologies and adapts its user interface to improve accessibility. This includes at least the following:
 
 * providing alt text for images, 
 * ensuring keyboard navigability, 
@@ -23,5 +24,4 @@ permalink: /requirements/recognize-assistive-technology
 </div><br>
 
 This requirement has been crafted with help from ChatGPT 4.0.
-
 

@@ -10,7 +10,7 @@ permalink: /requirements/low-change-failure-rate
 ### Stimulus
 A software development team deploys a new version of a web application to a production environment.
 
-### Response 
+### Response
 The change failure rate requirement will be considered met when the following precise metrics are achieved over a three-month period:
 
 **Successful Deployments**: The percentage of successful deployments, where all changes are rolled out without causing production incidents, should be at least 98%.
@@ -29,6 +29,5 @@ The change failure rate requirement will be considered met when the following pr
 
 
 Source: This scenario has been created with help from [ChatGPT](https://chat.openai.com) by using the prompt `create a quality scenario to describe a change-failure-rate requirement`.
-
 
 

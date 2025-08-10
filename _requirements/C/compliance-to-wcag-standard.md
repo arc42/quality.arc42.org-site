@@ -1,5 +1,5 @@
 ---
-title: Compliance with WCA accessibility guidelines
+title: Compliance with WCAG accessibility guidelines
 tags: usable
 related: accessibility, user-experience, user-assistance, interaction-capability
 permalink: /requirements/compliance-to-wcag
@@ -38,6 +38,5 @@ Automated testing tools should report zero non-compliance issues, and manual tes
 
 
 Source: This scenario has been created with help from [ChatGPT](https://chat.openai.com) by using the prompt `Please generate a quality attribute scenario for accessibility compliance with WCAG 2.1 with precise metrics`.
-
 
 

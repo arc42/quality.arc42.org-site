@@ -16,13 +16,12 @@ A new release of an authentication/authorization service (which our product uses
 The new service is tested and deployed to the production environment. 
 
 
-**Measure**: 
+#### Measure
 It takes less than 40 hours of elapsed time and no more than 120 person-hours of effort. 
 The deployment introduces no defects and no SLA is violated.
 
-Idea: >[Bass et al., 2021](/references/#bass2021software)
+Idea: [Bass et al., 2021](/references/#bass2021software)
 
 </div><br>
-
 
 

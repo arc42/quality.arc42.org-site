@@ -20,8 +20,8 @@ Moving our application to another cloud provider shall need at most 15 person da
 
 We are operating our system in a public cloud.
 
-**Remark**: We do **not** count account creation, contract negotiation and the initial feasibility study towards these 15 days.
+#### Remark
+We do **not** count account creation, contract negotiation and the initial feasibility study towards these 15 days.
 </div><br>
-
 
 

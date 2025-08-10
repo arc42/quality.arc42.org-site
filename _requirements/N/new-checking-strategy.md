@@ -15,7 +15,7 @@ A user needs a specific kind of check currently not available in HtmlSC
 
 The new checking algorithm is implemented and integrated in (a fork of) HtmlSC.
 
-**Metrics**: 
+#### Metric
 
 * The integration of the new check into HtmlSC takes less than 15 min for a developer knowledgeable in HtmlSC
 * Purely structural checks (like checking the availability of referenced external URLs) shall be implemented in less than 1person-day of effort
@@ -29,6 +29,5 @@ It can check multiple types of problems, but sometimes users need specific addit
 Such changes are usually **not** integrated in the main branch, but will remain in user-specific forks.
 
 </div><br>
-
 
 

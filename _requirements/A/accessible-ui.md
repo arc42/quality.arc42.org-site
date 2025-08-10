@@ -7,11 +7,8 @@ permalink: /requirements/accessible-user-interface
 
 <div class="quality-requirement" markdown="1">
 
-**Requirement:** The software UI must be accessible to users with various disabilities.
-
-#### Metric/Acceptance Criteria
-
-
+#### Requirement
+The software UI must be accessible to users with various disabilities.
 
 #### Context/Background
 
@@ -34,6 +31,5 @@ Development team implementing and maintaining the software UI with accessibility
 
 
 </div><br>
-
 
 

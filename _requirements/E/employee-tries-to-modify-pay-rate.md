@@ -14,11 +14,11 @@ A disgruntled employee at a remote location improperly attempts to modify the pa
 
 The unauthorized access is detected and the system maintains an audit trail.
 
-**Measure**: The correct data is restored within one day.
+#### Measure
+The correct data is restored within one day.
 
 Source: [Bass et al., 2021](/references/#bass2021software)
 
 </div><br>
-
 
 

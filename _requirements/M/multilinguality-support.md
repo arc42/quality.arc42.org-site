@@ -7,7 +7,8 @@ permalink: /requirements/multilinguality-support
 
 <div class="quality-requirement" markdown="1">
 
-**Requirement:**  The system should support multiple languages to cater to a diverse user base.
+#### Requirement
+The system should support multiple languages to cater to a diverse user base.
 
 
 #### Metric/Acceptance Criteria
@@ -16,6 +17,5 @@ permalink: /requirements/multilinguality-support
 * Localization Accuracy: Maintain a translation accuracy rate of over 95%, as verified by native speakers.
 
 </div><br>
-
 
 
