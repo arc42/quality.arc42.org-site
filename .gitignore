@@ -9,3 +9,6 @@ node_modules
 
 # Build artifacts - JavaScript and source maps
 assets/js/**/*.js.map
+
+# Local Crush agent artifacts
+.crush
