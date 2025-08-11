@@ -2,14 +2,16 @@
 
 /* define colors for qualities and requirements */
 :root {
-  --quality-background-color: #00B8F5;
-  --reqs-background-color: #92EF80;
-  --standard-background-color: #FFC95C;
+  --quality-background-color: #00b8f5;
+  --reqs-background-color: #92ef80;
+  --standard-background-color: #ffc95c;
   --quality-text-color: #003366;
-  --req-text-color: #1B5E20;
-  --standard-text-color: #2C3E50;
-  --dark-blue-text-color: #FFFFFF;
+  --req-text-color: #1b5e20;
+  --standard-text-color: #2c3e50;
+  --dark-blue-text-color: #ffffff;
   --blue-text-color: #003366;
+  --error-color: #ec645b;
+  --article-background-color: #e6daf2;
 }
 
 p {
@@ -20,12 +22,12 @@ p {
 .arc42-help {
   color: #003366;
   padding: 5px 5px;
-  background: #00B8F5;
+  background: #00b8f5;
   border-radius: 4px;
 
-  -webkit-box-shadow: 3px 3px 4px 0px rgba(11,82,185,1);
-  -moz-box-shadow: 3px 3px 4px 0px rgba(11,82,185,1);
-  box-shadow: 3px 3px 4px 0px rgba(11,82,185,1);
+  -webkit-box-shadow: 3px 3px 4px 0px rgba(11, 82, 185, 1);
+  -moz-box-shadow: 3px 3px 4px 0px rgba(11, 82, 185, 1);
+  box-shadow: 3px 3px 4px 0px rgba(11, 82, 185, 1);
 }
 
 /* unified style for quality requirement text */
@@ -35,31 +37,32 @@ p {
   background: var(--reqs-background-color);
   border-radius: 4px;
 
-  -webkit-box-shadow: 3px 3px 4px 0px #9CAD75;
-  -moz-box-shadow: 3px 3px 4px 0px #9CAD75;
-  box-shadow: 3px 3px 4px 0px #9CAD75;
+  -webkit-box-shadow: 3px 3px 4px 0px #9cad75;
+  -moz-box-shadow: 3px 3px 4px 0px #9cad75;
+  box-shadow: 3px 3px 4px 0px #9cad75;
 }
 
 /* Proper indentation for lists inside quality requirement */
 .quality-requirement ul > li {
-    display: table-row;
-    font-size: 1em;
+  display: table-row;
+  font-size: 1em;
 }
 .quality-requirement ul > li::before {
-    content: "●";
-    display: table-cell;
-    text-align: right;
-    padding-right: 5px;
+  content: "●";
+  display: table-cell;
+  text-align: right;
+  padding-right: 5px;
 }
 .quality-requirement ul > li > ul > li::before {
-    content: "○";
-    display: table-cell;
-    text-align: right;
-    padding-right: 5px;
+  content: "○";
+  display: table-cell;
+  text-align: right;
+  padding-right: 5px;
 }
 
 /* use before-pseudo-class to add icon */
-.arc42-help::before, .quality-requirement::before {
+.arc42-help::before,
+.quality-requirement::before {
   display: block;
   float: right;
   width: 24px;
@@ -69,8 +72,6 @@ p {
   background: url("./arc42-exclamation.svg") no-repeat;
   background-size: 24px 26px;
 }
-
-
 
 /* subtle ads */
 
@@ -85,9 +86,9 @@ p {
   border-width: 1px;
   border-color: #800000;
 
-  -webkit-box-shadow: 3px 3px 4px 0px rgba(156,61,75,1);
-  -moz-box-shadow: 3px 3px 4px 0px rgba(156,61,75,1);
-  box-shadow: 3px 3px 4px 0px rgba(156,61,75,1);
+  -webkit-box-shadow: 3px 3px 4px 0px rgba(156, 61, 75, 1);
+  -moz-box-shadow: 3px 3px 4px 0px rgba(156, 61, 75, 1);
+  box-shadow: 3px 3px 4px 0px rgba(156, 61, 75, 1);
 
   font-family: "Palatino Linotype", "Book Antiqua", serif;
   color: #032f7f;
@@ -105,7 +106,6 @@ p {
   background-size: 80px 80px;
 }
 
-
 .subtle-ad h4 {
   line-height: 1.2pt;
   margin-top: 5px;
@@ -115,33 +115,27 @@ p {
   color: ff796a;
 }
 
-
-
-
-
-
 .supported-by-innoq {
-    margin-bottom: 13px;
-    width: 110px;
+  margin-bottom: 13px;
+  width: 110px;
 }
 
 .supported-by-innoq:hover {
-    opacity: 0.8;
+  opacity: 0.8;
 }
 
-
 @media (max-width: 900px) {
-    .supported-by-innoq {
-        width: 100px;
-    }
+  .supported-by-innoq {
+    width: 100px;
+  }
 }
 
 @media (max-width: 600px) {
-    .supported-by-innoq {
-        width: 90px;
-    }
+  .supported-by-innoq {
+    width: 90px;
+  }
 }
 
 p.footer-icons {
-    margin-bottom: 8px;
+  margin-bottom: 8px;
 }

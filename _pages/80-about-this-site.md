@@ -77,6 +77,7 @@ The following {{ orphan_qualities.size }} qualities have no directly related qua
   {% endfor %}
   {% endif %}
 
+
 ## Qualities without Requirements
 
 {% assign unreferenced_qualities = "" | split: "," %}
@@ -107,10 +108,8 @@ The following {{ orphan_qualities.size }} qualities have no directly related qua
 
 The following {{ unreferenced_qualities.size }} qualities currently have no requirements directly related to them:
 
-{% for quality in unreferenced_qualities %}
+{% for quality in unreferenced_qualities %}[{{ quality.title }}]({{ quality.permalink }}), {% endfor %}
 
-- [{{ quality.title }}]({{ quality.permalink }})
-  {% endfor %}
 
 ## Stats
 
