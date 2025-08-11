@@ -60,67 +60,90 @@ Find the current list of contributors [here](https://github.com/arc42/quality.ar
 ## Stats
 
 - build_revision: {{ site.github.build_revision }}
-- The site was last built on {{ site.time | date: '%c' }}.  
-
+- The site was last built on {{ site.time | date: '%c' }}.
 
 ## Orphan Qualities
 
+{% assign orphan_qualities = site.qualities | where_exp: "quality", "quality.related == nil or quality.related == empty or quality.related == ''" %}
+{% if orphan_qualities.size == 0 %}
 All qualities in this site have at least one directly related quality defined, so there are currently no orphan qualities.
+{% else %}
+The following {{ orphan_qualities.size }} qualities have no directly related qualities defined:
+
+{% for quality in orphan_qualities %}
+
+- [{{ quality.title }}]({{ quality.permalink }})
+  {% endfor %}
+  {% endif %}
 
 ## Qualities without Requirements
 
-The following 50 qualities currently have no requirements directly related to them:
+{% comment %}Build a list of all quality slugs that are referenced in requirements{% endcomment %}
+{% assign referenced_quality_slugs = "" | split: "," %}
+{% for requirement in site.requirements %}
+{% if requirement.related %}
+{% assign related_list = requirement.related | split: ", " %}
+{% for related_quality in related_list %}
+{% assign trimmed_quality = related_quality | strip %}
+{% unless referenced_quality_slugs contains trimmed_quality %}
+{% assign referenced_quality_slugs = referenced_quality_slugs | push: trimmed_quality %}
+{% endunless %}
+{% endfor %}
+{% endif %}
+{% endfor %}
 
-- [Attractiveness](/qualities/attractiveness/)
-- [Co-existence](/qualities/co-existence/)
-- [Cohesion](/qualities/cohesion/)
-- [Communicability](/qualities/communicability/)
-- [Conciseness](/qualities/conciseness/)
-- [Controllability](/qualities/controllability/)
-- [Credibility](/qualities/credibility/)
-- [DORA Metrics](/qualities/DORA/)
-- [Deployability](/qualities/deployability/)
-- [Devops-Metrics](/qualities/devops-metrics/)
-- [Effectiveness](/qualities/effectiveness/)
-- [Expected physical environment](/qualities/expected-physical-environment/)
-- [Faultlessness](/qualities/faultlessness/)
-- [Features](/qualities/features/)
-- [Functional suitability](/qualities/functional-suitability/)
-- [Functionality](/qualities/functionality/)
-- [i18n (Internationalization)](/qualities/i18n/)
-- [Immunity](/qualities/immunity/)
-- [Independence](/qualities/independence/)
-- [Installability](/qualities/installability/)
-- [Internationalization](/qualities/internatlionalization/)
-- [Intrusion Prevention](/qualities/intrusion-prevention/)
-- [Learnability](/qualities/learnability/)
-- [Legal Requirements](/qualities/legal/)
-- [Localizability](/qualities/localizabiity/)
-- [Longevity](/qualities/longevity/)
-- [Loose Coupling](/qualities/loose-coupling/)
-- [Non-repudiation](/qualities/non-repudiation/)
-- [Observability](/qualities/observability/)
-- [Operational and Environment Requirements](/qualities/operational-environment-requirements/)
-- [Operational constraint](/qualities/operational-constraint/)
-- [Performance Efficiency](/qualities/performance-efficiency/)
-- [Personalization](/qualities/personalization/)
-- [Recovery time](/qualities/recovery-time/)
-- [Releasability](/qualities/releasability/)
-- [Replaceability](/qualities/replaceability/)
-- [Reproducibility](/qualities/reproducibility/)
-- [Reusability](/qualities/reusability/)
-- [Safe integration](/qualities/safe-integration/)
-- [Securability](/qualities/securability/)
-- [Self-containedness](/qualities/self-containedness/)
-- [Self-descriptiveness](/qualities/self-descriptiveness/)
-- [Simplicity](/qualities/simplicity/)
-- [Standard Compliance](/qualities/standard-compliance/)
-- [Test Coverage](/qualities/test-coverage/)
-- [Timeliness](/qualities/timeliness/)
-- [Transparency](/qualities/transparency/)
-- [Upgradeability](/qualities/upgradeability/)
-- [User engagement](/qualities/user-engagement/)
-- [Versatility](/qualities/versatility/)
+{% comment %}Find qualities that are not in the referenced list{% endcomment %}
+{% assign unreferenced_qualities = "" | split: "," %}
+{% for quality in site.qualities %}
+{% assign quality_slug = quality.permalink | remove: "/qualities/" | remove: "/" %}
+{% unless referenced_quality_slugs contains quality_slug %}
+{% assign unreferenced_qualities = unreferenced_qualities | push: quality %}
+{% endunless %}
+{% endfor %}
+
+The following {{ unreferenced_qualities.size }} qualities currently have no requirements directly related to them:
+
+{% for quality in unreferenced_qualities %}
+
+- [{{ quality.title }}]({{ quality.permalink }})
+  {% endfor %}
+  {% endif %}
+
+## Qualities without Requirements
+
+{% comment %}
+Build a list of all quality titles that are referenced in requirements
+{% endcomment %}
+{% assign referenced_qualities = "" | split: "," %}
+{% for requirement in site.requirements %}
+{% if requirement.related %}
+{% assign related_list = requirement.related | split: ", " %}
+{% for related_quality in related_list %}
+{% assign trimmed_quality = related_quality | strip %}
+{% unless referenced_qualities contains trimmed_quality %}
+{% assign referenced_qualities = referenced_qualities | push: trimmed_quality %}
+{% endunless %}
+{% endfor %}
+{% endif %}
+{% endfor %}
+
+{% comment %}
+Find qualities that are not in the referenced list
+{% endcomment %}
+{% assign unreferenced_qualities = "" | split: "," %}
+{% for quality in site.qualities %}
+{% assign quality_slug = quality.permalink | remove: "/qualities/" | remove: "/" %}
+{% unless referenced_qualities contains quality_slug %}
+{% assign unreferenced_qualities = unreferenced_qualities | push: quality %}
+{% endunless %}
+{% endfor %}
+
+The following {{ unreferenced_qualities.size }} qualities currently have no requirements directly related to them:
+
+{% for quality in unreferenced_qualities %}
+
+- [{{ quality.title }}]({{ quality.permalink }})
+  {% endfor %}
 
 <iframe plausible-embed src="https://plausible.io/share/quality.arc42.org?auth=cjoKlapPdw3czFugGy6jM&embed=true&theme=light" scrolling="no" frameborder="0" loading="lazy" style="width: 1px; min-width: 100%; height: 1600px;"></iframe>
 <div style="font-size: 14px; padding-bottom: 14px;">Stats powered by <a target="_blank" style="color: #4F46E5; text-decoration: underline;" href="https://plausible.io">Plausible Analytics</a></div>
