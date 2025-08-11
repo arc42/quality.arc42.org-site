@@ -1,177 +1,190 @@
 /* special styles for arc42 quality website like ua-text & hovers for tag-links */
 
-
-
-
 /* hover for a-tags (post-tags and initial letters) */
 a.hov:hover {
-    transform: scale(1.25);
-    text-decoration: none
+  transform: scale(1.25);
+  text-decoration: none;
 }
-
-
 
 /* style for post-tags and initial letters */
 
 a.hov {
-    background-color: var(--quality-background-color);
-    color: var(--quality-text-color);
-    padding: 5px 10px;
-    border-radius: 11px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    margin-top: 3px;
-    margin-bottom: 3px;
-    margin-left: 2px;
-    margin-right: 2px
+  background-color: var(--quality-background-color);
+  color: var(--quality-text-color);
+  padding: 5px 10px;
+  border-radius: 11px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin-top: 3px;
+  margin-bottom: 3px;
+  margin-left: 2px;
+  margin-right: 2px;
 }
 
 a.hov.tags {
-    line-height: 1.2;
-    background-color: var(--quality-background-color);
-    color: var(--quality-text-color);
-    border-radius: 11px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    margin-top: 3px;
-    margin-bottom: 3px;
-    margin-left: 10px;
-    margin-right: 1px
+  line-height: 1.2;
+  background-color: var(--quality-background-color);
+  color: var(--quality-text-color);
+  border-radius: 11px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin-top: 3px;
+  margin-bottom: 3px;
+  margin-left: 10px;
+  margin-right: 1px;
 }
 
 a.hov.tags.req {
-    line-height: 1.2;
-    background-color: var(--reqs-background-color);
-    color: var(--req-text-color);
-    border-radius: 11px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    margin-top: 3px;
-    margin-bottom: 3px;
-    margin-left: 10px;
-    margin-right: 1px
+  line-height: 1.2;
+  background-color: var(--reqs-background-color);
+  color: var(--req-text-color);
+  border-radius: 11px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin-top: 3px;
+  margin-bottom: 3px;
+  margin-left: 10px;
+  margin-right: 1px;
 }
 
 a.hov.tags.standard {
-    line-height: 1.2;
-    background-color: var(--standard-background-color);
-    color: var(--standard-text-color);
-    border-radius: 11px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    margin-top: 3px;
-    margin-bottom: 3px;
-    margin-left: 10px;
-    margin-right: 1px
+  line-height: 1.2;
+  background-color: var(--standard-background-color);
+  color: var(--standard-text-color);
+  border-radius: 11px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin-top: 3px;
+  margin-bottom: 3px;
+  margin-left: 10px;
+  margin-right: 1px;
 }
-
-
 
 /* style for INNOQ on about-this-site */
 
 .innoq-text {
-    color: #ff9c66;
+  color: #ff9c66;
 }
-
-
 
 /* different header color for scenarios */
 
-#scenario-header{
-    background-color: var(--reqs-background-color);
+#scenario-header {
+  background-color: var(--reqs-background-color);
 }
 
 /* different header color for standards */
 
-#standard-header{
-    background-color: var(--standard-background-color);
+#standard-header {
+  background-color: var(--standard-background-color);
 }
 
-
-
-
 a.reqs {
-    color: var(--req-text-color);
+  color: var(--req-text-color);
 }
 
 a.standards {
-    color: var(--standard-text-color);
+  color: var(--standard-text-color);
 }
 
 li.related-quality {
-    padding-left: 20px;
-    color: var(--quality-text-color);
+  padding-left: 20px;
+  color: var(--quality-text-color);
 }
-
 
 /* a big separating line */
 hr.big-sep {
-    border-top: 3px solid grey;
+  border-top: 3px solid grey;
 }
 
 .no-bullets {
-    list-style-type: none;
+  list-style-type: none;
 }
 
 .as-bullet {
-    margin-right: 10px;
+  margin-right: 10px;
 }
 
 .rel-pos {
-    position: relative;
+  position: relative;
 }
 
 li.small {
-    font-size: 90%;
-    padding-left: 20px;
+  font-size: 90%;
+  padding-left: 20px;
 }
 
 /* Full-width section headings */
 h2.section-heading {
-    margin: 1em 0;
-    padding: 0.8em 1.5em;
-    border-radius: 0;
-    font-size: 1.8em;
+  margin: 1em 0;
+  padding: 0.8em 1.5em;
+  border-radius: 0;
+  font-size: 1.8em;
 }
 
 h2.section-heading.requirements {
-    background-color: var(--reqs-background-color);
-    color: var(--req-text-color);
+  background-color: var(--reqs-background-color);
+  color: var(--req-text-color);
 }
 
 h2.section-heading.qualities {
-    background-color: var(--quality-background-color);
-    color: var(--quality-text-color);
+  background-color: var(--quality-background-color);
+  color: var(--quality-text-color);
 }
 
 /* Page header colors for different collections */
 .panel.quality-header {
-    background-color: var(--quality-background-color) !important;
+  background-color: var(--quality-background-color) !important;
 }
 
-.panel.quality-header h1, 
+.panel.quality-header h1,
 .panel.quality-header h1 a {
-    color: var(--quality-text-color) !important;
+  color: var(--quality-text-color) !important;
 }
 
 .panel.requirements-header {
-    background-color: var(--reqs-background-color) !important;
+  background-color: var(--reqs-background-color) !important;
 }
 
-.panel.requirements-header h1, 
+.panel.requirements-header h1,
 .panel.requirements-header h1 a {
-    color: var(--req-text-color) !important;
+  color: var(--req-text-color) !important;
 }
 
 .panel.standards-header {
-    background-color: var(--standard-background-color) !important;
+  background-color: var(--standard-background-color) !important;
 }
 
-.panel.standards-header h1, 
+.panel.standards-header h1,
 .panel.standards-header h1 a {
-    color: var(--standard-text-color) !important;
+  color: var(--standard-text-color) !important;
+}
+
+.panel.article-header {
+  background-color: var(--article-background-color) !important;
+}
+
+.panel.article-header h1,
+.panel.article-header h1 a {
+  color: var(--blue-text-color) !important;
+}
+
+.callout-error,
+.sanity-check,
+.error-box {
+  color: #ffffff;
+  background-color: var(--error-color);
+  padding: 8px 10px;
+  border-radius: 4px;
+  -webkit-box-shadow: 3px 3px 4px 0px rgba(156, 61, 75, 1);
+  -moz-box-shadow: 3px 3px 4px 0px rgba(156, 61, 75, 1);
+  box-shadow: 3px 3px 4px 0px rgba(156, 61, 75, 1);
+}
+
+h2.section-heading.articles {
+  background-color: var(--article-background-color);
+  color: var(--blue-text-color);
 }
