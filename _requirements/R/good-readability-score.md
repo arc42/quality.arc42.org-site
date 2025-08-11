@@ -8,7 +8,9 @@ permalink: /requirements/good-code-readability-score
 
 <div class="quality-requirement" markdown="1">
 
-**Background**: We use the [SonarQube](https://www.sonarsource.com/open-source-editions/) to obtain several kinds of metrics on the system.
+#### Background
+
+We use the [SonarQube](https://www.sonarsource.com/open-source-editions/) to obtain several kinds of metrics on the system.
 
 All source code requires a [SonarQube cognitive complexity](https://www.sonarsource.com/blog/cognitive-complexity-because-testability-understandability/) score of 15 or lower.
 

@@ -7,15 +7,25 @@ permalink: /requirements/fast-deployment
 
 <div class="quality-requirement" markdown="1">
 
-**Background**: Developer deploys a new version of the application to production
+#### Background
 
-**Source**: Developer
+Developer deploys a new version of the application to production
 
-**Stimulus**: Deploys a new version of the application
+#### Source
 
-**Reaction**: Application is fully rolled out in under 2 hours
+Developer
 
-**Metric**: Deployment of a new version of the application to production does not take longer than 2 hours
+#### Stimulus
+
+Deploys a new version of the application
+
+#### Reaction
+
+Application is fully rolled out in under 2 hours
+
+#### Metric
+
+Deployment of a new version of the application to production does not take longer than 2 hours
 
 
 </div><br>

@@ -6,11 +6,17 @@ permalink: /requirements/reduce-energy-consumption-with-new-version
 ---
 
 <div class="quality-requirement" markdown="1">
-**Stimulus**: The software system is in operation, serving a high number of concurrent users in a data center powered by non-renewable energy sources.
+#### Stimulus
 
-**Environment**: High demand for data processing and computational resources, typical of a large-scale application.
+The software system is in operation, serving a high number of concurrent users in a data center powered by non-renewable energy sources.
 
-**Response**: The system should prioritize energy efficiency and carbon reduction in its operations. 
+#### Environment
+
+High demand for data processing and computational resources, typical of a large-scale application.
+
+#### Response
+
+The system should prioritize energy efficiency and carbon reduction in its operations. 
 It should be designed to:
 
 * optimize energy consumption, aiming to reduce overall energy usage by 25% compared to the previous year's energy consumption. 

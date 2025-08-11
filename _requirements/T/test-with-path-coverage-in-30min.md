@@ -9,11 +9,17 @@ permalink: /requirements/test-with-path-coverage-30min
 
 Idea: [Bass et al., 2021](/references/#bass2021software)
 
-**Stimulus**: The developer completes a code unit.
+#### Stimulus
 
-**Reaction**: The developer then performs a test sequence whose results are captured.
+The developer completes a code unit.
 
-**Metric**: This test sequence achieves path coverage of 85% within at most 30 minutes.
+#### Reaction
+
+The developer then performs a test sequence whose results are captured.
+
+#### Metric
+
+This test sequence achieves path coverage of 85% within at most 30 minutes.
 
 </div><br>
 

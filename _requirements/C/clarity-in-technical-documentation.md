@@ -4,26 +4,28 @@ tags: usable reliable
 related: clarity, coherence, understandability, legibility 
 permalink: /requirements/clarity-in-technical-documentation
 ---
-
->### Background
->
->The system is fairly large, and maintained/developed by an internationally distributed and highly heterogenerous, diverse and volatile development team. 
-
-
 <div class="quality-requirement" markdown="1">
 
-**Stimulus**: Users referr to the documentation to understand technical details or troubleshoot issues.
+#### Background
 
-**Artifact**: Technical Documentation
+The system is fairly large, and maintained/developed by an internationally distributed and highly heterogeneous, diverse and volatile development team. 
 
-**Response**: The documentation provides coherent and intelligible explanations and instructions.
+#### Stimulus
 
-**Response Measure** (aka _metrics_):
+Users refer to the documentation to understand technical details or troubleshoot issues.
+
+#### Artifact
+Technical Documentation
+
+#### Response
+
+The documentation provides coherent and intelligible explanations and instructions.
+
+#### Response Measure
 
 * At least 90% of the system-specific terms used in the documentation are defined in a glossary section accessible within the same document or via direct links.
 * The readability score of the documentation, as measured by the Flesch-Kincaid Readability Test, should be between 60 to 70, which corresponds to a 8th to 9th-grade reading level, ensuring it is easily understandable by the average dev-team member.
 </div><br>
-
 
 
 

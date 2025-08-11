@@ -1,0 +1,30 @@
+{% assign page = include.page %}
+
+<header>
+    <div class="panel quality-header">
+        <h1>
+            {% if include.link %}
+            <a class="post-link" href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>
+            {% else %}
+            {{ page.title }}
+            {% endif %}
+        </h1>
+
+        <ul class="tags">
+            {% assign tags_num = (page.tags | size) %}
+            {% if tags_num > 0 %}
+            <li><i class="fa fa-tags" style="color: var(--blue-text-color);"></i></li>
+            {% endif %}
+            {% for tag in page.tags %}
+            <li>
+                <a class="tag" href="{{ '/tag-' | append: tag | prepend: site.baseurl }}">#{{ tag }}</a>
+            </li>
+            {% endfor %}
+        </ul>
+
+        <div class="clearfix">
+        </div>
+    </div>
+
+
+</header>

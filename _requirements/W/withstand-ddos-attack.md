@@ -7,9 +7,13 @@ permalink: /requirements/withstand-ddos-attack
 
 <div class="quality-requirement" markdown="1">
 
-**Stimulus**: A distributed denial of service (DDoS) attack targeting the web application.
+#### Stimulus
+
+A distributed denial of service (DDoS) attack targeting the web application.
 Environment: The web application is hosted on a cloud-based infrastructure with multiple server instances distributed across different regions.
-**Response**: The web application should effectively withstand and mitigate the DDoS attack, ensuring service availability and acceptable performance levels. Precise metrics to determine when the requirement is met include:
+#### Response
+
+The web application should effectively withstand and mitigate the DDoS attack, ensuring service availability and acceptable performance levels. Precise metrics to determine when the requirement is met include:
 
 
 1. **Availability**: The web application should maintain at least 99.9% uptime during the DDoS attack, measured over a 24-hour period. Uptime is defined as the percentage of time the application remains accessible and responsive to legitimate user requests.

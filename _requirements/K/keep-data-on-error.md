@@ -7,15 +7,25 @@ permalink: /requirements/keep-data-on-error
 
 <div class="quality-requirement" markdown="1">
 
-**Background**: A user wants to open a new bank account and is required to identify herself using an external system
+#### Background
 
-**Source**: External system that identifies users
+A user wants to open a new bank account and is required to identify herself using an external system
 
-**Stimulus**: Returns an error that identification could not be completed
+#### Source
 
-**Reaction**: System keeps any data entered by the user
+External system that identifies users
 
-**Metric**: 
+#### Stimulus
+
+Returns an error that identification could not be completed
+
+#### Reaction
+
+System keeps any data entered by the user
+
+#### Metric
+
+
 
 
 </div><br>

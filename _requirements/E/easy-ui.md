@@ -7,15 +7,25 @@ permalink: /requirements/easy-ui
 
 <div class="quality-requirement" markdown="1">
 
-**Background**: As a user, I want to be able to register my smartphone as a device for a two-factor authentication
+#### Background
 
-**Source**: User
+As a user, I want to be able to register my smartphone as a device for a two-factor authentication
 
-**Stimulus**: Wants to register smartphone
+#### Source
 
-**Reaction**: Configuration setting for adding your smartphone as a device is found within 10 minutes
+User
 
-**Metric**: 95% of users trying to register their smartphone as a device for a two-factor authentication can access the configuration settings in 10 minutes or less
+#### Stimulus
+
+Wants to register smartphone
+
+#### Reaction
+
+Configuration setting for adding your smartphone as a device is found within 10 minutes
+
+#### Metric
+
+95% of users trying to register their smartphone as a device for a two-factor authentication can access the configuration settings in 10 minutes or less
 
 
 </div><br>

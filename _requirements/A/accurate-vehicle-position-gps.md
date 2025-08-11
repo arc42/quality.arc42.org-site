@@ -7,15 +7,25 @@ permalink: /requirements/accurate-vehicle-position-gps
 
 <div class="quality-requirement" markdown="1">
 
-**Scenario**: The vehicle's position on the map of the navigation system
+#### Scenario
 
-**Stimulus**: is updated.
+The vehicle's position on the map of the navigation system
 
-**Reaction**: The current position of the vehicle is determined by extrapolation and not GPS data.
+#### Stimulus
 
-**Metric**: The extrapolated position is recalculated with a frequency greater than 10Hz.
+is updated.
 
-**Background**: The GPS position retrieval rate via satellite might be insufficient low, such that in-between positions are determined using extrapolation.
+#### Reaction
+
+The current position of the vehicle is determined by extrapolation and not GPS data.
+
+#### Metric
+
+The extrapolated position is recalculated with a frequency greater than 10Hz.
+
+#### Background
+
+The GPS position retrieval rate via satellite might be insufficient low, such that in-between positions are determined using extrapolation.
 
 #### Context/Background
 

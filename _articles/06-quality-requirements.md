@@ -51,13 +51,17 @@ In practice, a slightly reduced template proved to be sufficient, let's call it 
 
 ### Pragmatical Quality Scenario
 
-**Context/Background**: A brief description of the situation. This includes the type of system, the relevant environment or operational setting, and the specific condition being considered.
+#### Context/Background
+A brief description of the situation. This includes the type of system, the relevant environment or operational setting, and the specific condition being considered.
 
-**Source**: The origin of the event or stimulus that triggers the scenario. This could be a stakeholder action (e.g., user interaction, administrator action) or an external event (e.g., system load, security threat, API call).
+#### Source 
+The origin of the event or stimulus that triggers the scenario. This could be a stakeholder action (e.g., user interaction, administrator action) or an external event (e.g., system load, security threat, API call).
 
-**Metric/Acceptance Criteria**: A clear, measurable outcome that determines whether the system meets the desired quality attribute. This could be expressed as a specific performance metric, threshold, or success criterion that must be achieved under the given context.
+#### Metric/Acceptance Criteria
+A clear, measurable outcome that determines whether the system meets the desired quality attribute. This could be expressed as a specific performance metric, threshold, or success criterion that must be achieved under the given context.
 
 Only three (instead of SEI six) attributes, but understandable and precise.
+
 
 ### Summary
 **Quality scenarios** document and clarify the required quality attributes. 

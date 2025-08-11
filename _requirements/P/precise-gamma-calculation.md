@@ -7,9 +7,13 @@ permalink: /requirements/high-precision-calculation
 
 <div class="quality-requirement" markdown="1">
 
-**Scenario**: The preciseness of the gamma-coefficient calculation is four digits after the decimal point.
+#### Scenario
 
-**Background**: The (hypothetical) Gamma coefficient is an important variable for calculating energy efficiency of the machines we produce.
+The preciseness of the gamma-coefficient calculation is four digits after the decimal point.
+
+#### Background
+
+The (hypothetical) Gamma coefficient is an important variable for calculating energy efficiency of the machines we produce.
 Standard mathematical libraries do not support this coefficient,
 
 Our system calculates this Gamma coefficient, based upon complex mathematical algorithms. 
