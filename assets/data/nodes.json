@@ -393,7 +393,7 @@
   },
   {
     "id": "compliance-to-wcag",
-    "label": "Compliance with WCA accessibility guidelines",
+    "label": "Compliance with WCAG accessibility guidelines",
     "size": 15,
     "color": "#ceffce",
     "qualityType": "requirement",
