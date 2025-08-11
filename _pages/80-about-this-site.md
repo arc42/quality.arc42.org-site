@@ -5,8 +5,6 @@ permalink: /aboutthissite/
 order: 80
 ---
 
-
-
 ## Support
 
 [INNOQ](https://innoq.com) <span class="innoq-text"><i class="fas fa-heart beat heart"></i></span> supports creation and maintenance of this site.
@@ -21,12 +19,9 @@ order: 80
 
 ## Tooling
 
-* This page is based upon [Jekyll](https://jekyllrb.com), a static website generator, using a modified version of the [Ttskch](https://github.com/ttskch/jekyll-ttskch-theme) theme.
-* It's maintained on [Github](https://github.com/arc42/quality.arc42.org-site/) and published via github-pages.
-* A [Docker container](https://github.com/BretFisher/jekyll-serve) provided by Bret E. Fisher for local build- and test of the site (`docker compose up` after cloning the repo locally).
-
-
-
+- This page is based upon [Jekyll](https://jekyllrb.com), a static website generator, using a modified version of the [Ttskch](https://github.com/ttskch/jekyll-ttskch-theme) theme.
+- It's maintained on [Github](https://github.com/arc42/quality.arc42.org-site/) and published via github-pages.
+- A [Docker container](https://github.com/BretFisher/jekyll-serve) provided by Bret E. Fisher for local build- and test of the site (`docker compose up` after cloning the repo locally).
 
 ## About me
 
@@ -34,40 +29,94 @@ order: 80
 
 I'm:
 
-* happily married with two (grown-up) kids and a few cats in Cologne, Germany,
-* fellow at [INNOQ](https://www.innoq.com),
-* quite busy coaching and consulting medium and large-scale enterprises on topics around software architecture and methodical software engineering,
-* co-founder and maintainer of [arc42](https://www.arc42.org), the template for pragmatic and systematic software architecture documentation,
-* founder of [aim42](https://www.aim42.org), the open-source framework for systematic _software architecture improvement_,
-* active member and working group lead within the International Software Architecture Qualification Board, [iSAQB](https://www.isaqb.org),
-* regular speaker at IT-conferences,
-* author and co-author of more than a [dozen books](https://gernotstarke.de/buecher) on software architecture, patterns, arc, and the like. I'm really sorry - most of these books are written in German. Take a look at <a href="https://www.leanpub.com">Leanpub</a> for some of my English books.
-* author of quite a few [articles](https://www.gernotstarke.de/artikel)
-
+- happily married with two (grown-up) kids and a few cats in Cologne, Germany,
+- fellow at [INNOQ](https://www.innoq.com),
+- quite busy coaching and consulting medium and large-scale enterprises on topics around software architecture and methodical software engineering,
+- co-founder and maintainer of [arc42](https://www.arc42.org), the template for pragmatic and systematic software architecture documentation,
+- founder of [aim42](https://www.aim42.org), the open-source framework for systematic _software architecture improvement_,
+- active member and working group lead within the International Software Architecture Qualification Board, [iSAQB](https://www.isaqb.org),
+- regular speaker at IT-conferences,
+- author and co-author of more than a [dozen books](https://gernotstarke.de/buecher) on software architecture, patterns, arc, and the like. I'm really sorry - most of these books are written in German. Take a look at <a href="https://www.leanpub.com">Leanpub</a> for some of my English books.
+- author of quite a few [articles](https://www.gernotstarke.de/artikel)
 
 ## Acknowledgements
 
-* Thanx to Michael Mahlberg, Markus Meuten and Peter Hruschka for suggestions, bug fixes and moral support.
-* Thanx to Steffen Späthe for his intense reviews and constructive comments concerning the content. 
-* Thanx to [Per Starke](https://perstarke-webdev.de/) for his awesome technical support in things around Liquid and Jekyll.
-* Thanx to 
-  [Remko Plantenga @exde3297](https://github.com/exde3297), 
-  [Martin Weck @martinweck](https://github.com/martinweck), 
+- Thanx to Michael Mahlberg, Markus Meuten and Peter Hruschka for suggestions, bug fixes and moral support.
+- Thanx to Steffen Späthe for his intense reviews and constructive comments concerning the content.
+- Thanx to [Per Starke](https://perstarke-webdev.de/) for his awesome technical support in things around Liquid and Jekyll.
+- Thanx to
+  [Remko Plantenga @exde3297](https://github.com/exde3297),
+  [Martin Weck @martinweck](https://github.com/martinweck),
   [Eberhard Wolff @ewolff](https://github.com/PapaBravo),
   [Paul Boeck @PapaBravo](https://github.com/PapaBravo),
   [Dean de Bree @ddebree](https://github.com/ddebree),
-  [Markus Stier @mstier](https://github.com/mstier), 
+  [Markus Stier @mstier](https://github.com/mstier),
   [Fabian Angst @angstitc](https://github.com/angstitc),
   Yadullah Duman, Peter Hruschka, Markus Meuten
   for their contributions.
 
 Find the current list of contributors [here](https://github.com/arc42/quality.arc42.org-site/graphs/contributors)
 
+## Orphan Qualities
+
+{% assign orphan_qualities = "" | split: "," %}
+{% for quality in site.qualities %}
+{% unless quality.related %}
+{% assign orphan_qualities = orphan_qualities | push: quality %}
+{% endunless %}
+{% endfor %}
+
+{% if orphan_qualities.size == 0 %}
+All qualities in this site have at least one directly related quality defined, so there are currently no orphan qualities.
+{% else %}
+The following {{ orphan_qualities.size }} qualities have no directly related qualities defined:
+
+{% for quality in orphan_qualities %}
+
+- [{{ quality.title }}]({{ quality.permalink }})
+  {% endfor %}
+  {% endif %}
+
+## Qualities without Requirements
+
+{% assign unreferenced_qualities = "" | split: "," %}
+{% for quality in site.qualities %}
+{% assign quality_slug = quality.permalink | split: "/" | last %}
+{% assign found_reference = false %}
+
+{% for requirement in site.requirements %}
+{% if requirement.related %}
+{% assign related_list = requirement.related | split: ", " %}
+{% for related_quality in related_list %}
+{% assign trimmed_quality = related_quality | strip %}
+{% if trimmed_quality == quality_slug %}
+{% assign found_reference = true %}
+{% break %}
+{% endif %}
+{% endfor %}
+{% endif %}
+{% if found_reference %}
+{% break %}
+{% endif %}
+{% endfor %}
+
+{% unless found_reference %}
+{% assign unreferenced_qualities = unreferenced_qualities | push: quality %}
+{% endunless %}
+{% endfor %}
+
+The following {{ unreferenced_qualities.size }} qualities currently have no requirements directly related to them:
+
+{% for quality in unreferenced_qualities %}
+
+- [{{ quality.title }}]({{ quality.permalink }})
+  {% endfor %}
+
 ## Stats
 
-* build_revision: {{ site.github.build_revision }}
-* The site was last built on {{ site.time | date: '%c' }}.   
-   
+- build_revision: {{ site.github.build_revision }}
+- The site was last built on {{ site.time | date: '%c' }}.  
+
 
 <iframe plausible-embed src="https://plausible.io/share/quality.arc42.org?auth=cjoKlapPdw3czFugGy6jM&embed=true&theme=light" scrolling="no" frameborder="0" loading="lazy" style="width: 1px; min-width: 100%; height: 1600px;"></iframe>
 <div style="font-size: 14px; padding-bottom: 14px;">Stats powered by <a target="_blank" style="color: #4F46E5; text-decoration: underline;" href="https://plausible.io">Plausible Analytics</a></div>
