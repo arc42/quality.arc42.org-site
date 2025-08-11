@@ -12,3 +12,4 @@ assets/js/**/*.js.map
 
 # Local Crush agent artifacts
 .crush
+.crush
