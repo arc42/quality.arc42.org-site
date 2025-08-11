@@ -91,6 +91,10 @@ a.hov.tags.standard {
     background-color: var(--standard-background-color);
 }
 
+#standard-header h1 {
+    color: var(--standard-text-color);
+}
+
 
 
 
