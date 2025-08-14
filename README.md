@@ -1,5 +1,7 @@
 # arc42 Quality model
 
+[![Better Stack Badge](https://uptime.betterstack.com/status-badges/v2/monitor/20tqv.svg)](https://uptime.betterstack.com/?utm_source=status_badge)
+
 Here we collect definitions of quality attributes and their relationships .
 
 
