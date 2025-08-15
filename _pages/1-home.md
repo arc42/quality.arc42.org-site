@@ -57,6 +57,7 @@ Qualities and example-requirements are organized along the following top-level p
 A single quality attribute (like "availability") might have multiple properties (#reliable, #usable and #safe, in this case).
 
 {% comment %}Count tags from both qualities and requirements collections{% endcomment %}
+
 {% assign tags_reliable_qualities = site.qualities | where_exp: "item", "item.tags contains 'reliable'" %}
 {% assign tags_reliable_requirements = site.requirements | where_exp: "item", "item.tags contains 'reliable'" %}
 {% assign tags_reliable_count = tags_reliable_qualities.size | plus: tags_reliable_requirements.size %}
@@ -91,14 +92,14 @@ A single quality attribute (like "availability") might have multiple properties 
 
 | Top-level property                                   | Explanation                  |
 |:-----------------------------------------------------|:-----------------------------|
-| [**#reliable**](/tag-reliable/) ({{ tags_reliable    | size }}) | Perform specified functions under specified conditions without interruptions or failures |
-| [**#flexible**](/tag-flexible/) ({{ tags_flexible    | size }}) | Serve a different or expanded set of requirements, the ease with which the product can be adapted to changes in its requirements, contexts of use, or system environment. Synonyms: modifiable, adjustable, changeable, versatile |
-| [**#efficient**](/tag-efficient/) ({{ tags_efficient | size }}) | Perform functions within specified time, capacity and throughput parameters, using appropriate resources (like memory, network bandwith, threads) |
-| [**#usable**](/tag-usable/) ({{ tags_usable          | size }}) | Enable users to perform their tasks safely, effectively and efficiently while enjoying the experience |
-| [**#safe**](/tag-safe/) ({{ tags_safe                | size }}) | Avoid states in which human life, health, property or the environment is endangered, detects and warns of risks and hazards.|
-| [**#secure**](/tag-secure/) ({{ tags_secure          | size }}) | Protect information and data so that persons or other products have only access to an extend appropriate to their types and levels, and to defend against attack patterns by malicious actors |
-| [**#suitable**](/tag-suitable/) ({{ tags_suitable    | size }}) | An abstract property, applicable to various objects. Provide properties that meet stated and implied needs of intended stakeholders. |
-| [**#operable**](/tag-operable/) ({{ tags_operable    | size }}) | Easy to deploy, operate, monitor and control |
+| [**#reliable**](/tag-reliable/) ({{ tags_reliable_count }}) | Perform specified functions under specified conditions without interruptions or failures |
+| [**#flexible**](/tag-flexible/) ({{ tags_flexible_count }}) | Serve a different or expanded set of requirements, the ease with which the product can be adapted to changes in its requirements, contexts of use, or system environment. Synonyms: modifiable, adjustable, changeable, versatile |
+| [**#efficient**](/tag-efficient/) ({{ tags_efficient_count }}) | Perform functions within specified time, capacity and throughput parameters, using appropriate resources (like memory, network bandwith, threads) |
+| [**#usable**](/tag-usable/) ({{ tags_usable_count }}) | Enable users to perform their tasks safely, effectively and efficiently while enjoying the experience |
+| [**#safe**](/tag-safe/) ({{ tags_safe_count }}) | Avoid states in which human life, health, property or the environment is endangered, detects and warns of risks and hazards.|
+| [**#secure**](/tag-secure/) ({{ tags_secure_count }}) | Protect information and data so that persons or other products have only access to an extend appropriate to their types and levels, and to defend against attack patterns by malicious actors |
+| [**#suitable**](/tag-suitable/) ({{ tags_suitable_count }}) | An abstract property, applicable to various objects. Provide properties that meet stated and implied needs of intended stakeholders. |
+| [**#operable**](/tag-operable/) ({{ tags_operable_count }}) | Easy to deploy, operate, monitor and control |
 
 <small>The numbers at the tags denote the qualities plus the requirements that carry that tag.</small>
 

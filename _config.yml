@@ -22,23 +22,16 @@ language: en
 repository: arc42/quality.arc42.org-site
 
 #
-# want subtle ads (on post-pages)
-#
-show-subtle-ads: false
-
-#
 # Icons and Social-Media accounts
 #
 icons:
   rss: false
   email:
   github: arc42
-  twitter:
   youtube: arc42-video
   stack_overflow: arc42
   dev_to: gernotstarke
-  mastodon: 
-
+  
 #
 # Prettify url.
 #
@@ -139,7 +132,7 @@ exclude:
   - originals/
   - Dockerfile
   - README.md
-  - docs/
+  - docs/*
   - .vscode
   - docker-compose.yml
   - _manage*
