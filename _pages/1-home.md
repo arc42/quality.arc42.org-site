@@ -56,14 +56,38 @@ On this site you find:
 Qualities and example-requirements are organized along the following top-level properties (attributes or _tags_), and cross-referenced.
 A single quality attribute (like "availability") might have multiple properties (#reliable, #usable and #safe, in this case).
 
-{% assign tags_reliable = site.posts | where_exp: "posts", "posts.tags contains 'reliable'" %}
-{% assign tags_flexible = site.posts | where_exp: "posts", "posts.tags contains 'flexible'" %}
-{% assign tags_efficient = site.posts | where_exp: "posts", "posts.tags contains 'efficient'" %}
-{% assign tags_usable = site.posts | where_exp: "posts", "posts.tags contains 'usable'" %}
-{% assign tags_safe = site.posts | where_exp: "posts", "posts.tags contains 'safe'" %}
-{% assign tags_secure = site.posts | where_exp: "posts", "posts.tags contains 'secure'" %}
-{% assign tags_suitable = site.posts | where_exp: "posts", "posts.tags contains 'suitable'" %}
-{% assign tags_operable = site.posts | where_exp: "posts", "posts.tags contains 'operable'" %}
+{% comment %}Count tags from both qualities and requirements collections{% endcomment %}
+{% assign tags_reliable_qualities = site.qualities | where_exp: "item", "item.tags contains 'reliable'" %}
+{% assign tags_reliable_requirements = site.requirements | where_exp: "item", "item.tags contains 'reliable'" %}
+{% assign tags_reliable_count = tags_reliable_qualities.size | plus: tags_reliable_requirements.size %}
+
+{% assign tags_flexible_qualities = site.qualities | where_exp: "item", "item.tags contains 'flexible'" %}
+{% assign tags_flexible_requirements = site.requirements | where_exp: "item", "item.tags contains 'flexible'" %}
+{% assign tags_flexible_count = tags_flexible_qualities.size | plus: tags_flexible_requirements.size %}
+
+{% assign tags_efficient_qualities = site.qualities | where_exp: "item", "item.tags contains 'efficient'" %}
+{% assign tags_efficient_requirements = site.requirements | where_exp: "item", "item.tags contains 'efficient'" %}
+{% assign tags_efficient_count = tags_efficient_qualities.size | plus: tags_efficient_requirements.size %}
+
+{% assign tags_usable_qualities = site.qualities | where_exp: "item", "item.tags contains 'usable'" %}
+{% assign tags_usable_requirements = site.requirements | where_exp: "item", "item.tags contains 'usable'" %}
+{% assign tags_usable_count = tags_usable_qualities.size | plus: tags_usable_requirements.size %}
+
+{% assign tags_safe_qualities = site.qualities | where_exp: "item", "item.tags contains 'safe'" %}
+{% assign tags_safe_requirements = site.requirements | where_exp: "item", "item.tags contains 'safe'" %}
+{% assign tags_safe_count = tags_safe_qualities.size | plus: tags_safe_requirements.size %}
+
+{% assign tags_secure_qualities = site.qualities | where_exp: "item", "item.tags contains 'secure'" %}
+{% assign tags_secure_requirements = site.requirements | where_exp: "item", "item.tags contains 'secure'" %}
+{% assign tags_secure_count = tags_secure_qualities.size | plus: tags_secure_requirements.size %}
+
+{% assign tags_suitable_qualities = site.qualities | where_exp: "item", "item.tags contains 'suitable'" %}
+{% assign tags_suitable_requirements = site.requirements | where_exp: "item", "item.tags contains 'suitable'" %}
+{% assign tags_suitable_count = tags_suitable_qualities.size | plus: tags_suitable_requirements.size %}
+
+{% assign tags_operable_qualities = site.qualities | where_exp: "item", "item.tags contains 'operable'" %}
+{% assign tags_operable_requirements = site.requirements | where_exp: "item", "item.tags contains 'operable'" %}
+{% assign tags_operable_count = tags_operable_qualities.size | plus: tags_operable_requirements.size %}
 
 | Top-level property                                   | Explanation                  |
 |:-----------------------------------------------------|:-----------------------------|
@@ -77,13 +101,11 @@ A single quality attribute (like "availability") might have multiple properties 
 | [**#operable**](/tag-operable/) ({{ tags_operable    | size }}) | Easy to deploy, operate, monitor and control |
 
 <small>The numbers at the tags denote the qualities plus the requirements that carry that tag.</small>
-<!--
+
+
 ## <font color="#dd354b">We're offering architecture training!</font>
 
 The _dynamic duo_, always two trainers in parallel, practically applicable knowledge from Peter Hruschka and Gernot Starke. 
 See [arc42.de](https://www.arc42.de/termine) for details, and schedule.
 
-We've successfully trained more than 1000 developers in software architecture, many of them passed the [iSAQB CPSA-F](https://isaqb.org) certification.
-(sorry - public training currently German-only, English for in-house trainings.)
-
--->
+We've successfully trained more than 3000 developers in software architecture, many of them passed the [iSAQB CPSA-F](https://isaqb.org) certification. 
