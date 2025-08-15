@@ -1,5 +1,6 @@
 # ISO 26262 — Qualities addressed (directly or indirectly)
 
+
 - safety
 - reliability
 - fault-tolerance
