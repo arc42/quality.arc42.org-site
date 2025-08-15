@@ -27,10 +27,3 @@ layout: default
         <li><a href="{{ quality.url | relative_url }}">{{ quality.title }}</a></li>
     {% endfor %}
 </ul>
-
-
-{% if site.show-subtle-ads %}
-<section class="subtle-ads">
-  {% include subtle-ads/subtle-ads.html %}
-</section>
-{% endif %}
