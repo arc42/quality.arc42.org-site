@@ -139,6 +139,7 @@ exclude:
   - originals/
   - Dockerfile
   - README.md
+  - docs/
   - .vscode
   - docker-compose.yml
   - _manage*
