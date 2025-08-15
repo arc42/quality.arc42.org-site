@@ -1,0 +1,21 @@
+---
+layout: null
+permalink: /search.json
+---
+[
+{% assign all_items = site.qualities | concat: site.requirements | concat: site.standards %}
+{% for item in all_items %}
+{
+    "id": {{ item.id | replace: '/', '-' | jsonify }},
+    "title": {{ item.title | jsonify }},
+    "author": {{ item.author | jsonify }},
+    "collection": "{{ item.collection }}",
+    "tags": [
+        {% for tag in item.tags %}{{ tag | jsonify }}{% unless forloop.last %},{% endunless %}{% endfor %}
+    ],
+    "url": {{ item.url | jsonify }},
+    "date": {{ item.date | date: '%Y-%m-%d' | jsonify }},
+    "content": {{ item.content | strip_html | strip_newlines | jsonify }}
+}{% unless forloop.last %},{% endunless %}
+{% endfor %}
+]
