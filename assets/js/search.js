@@ -51,7 +51,7 @@ function showPosts(words, targets)
 
         var dfd = $.Deferred();
         $.ajax({
-            url: baseurl + "/search.liquid",
+            url: baseurl + "/search.json",
             dataType: "json",
             timeout: 3000,  // 3 sec
             success: function (posts) {
