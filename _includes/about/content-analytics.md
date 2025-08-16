@@ -20,3 +20,34 @@
 
 
 ### Qualities without Requirements {#qualitieswithoutrequirements} 
+
+
+{% assign unreferenced_qualities = "" | split: "," %}
+{% for quality in site.qualities %}
+{% assign quality_slug = quality.permalink | split: "/" | last %}
+{% assign found_reference = false %}
+
+{% for requirement in site.requirements %}
+{% if requirement.related %}
+{% assign related_list = requirement.related | split: ", " %}
+{% for related_quality in related_list %}
+{% assign trimmed_quality = related_quality | strip %}
+{% if trimmed_quality == quality_slug %}
+{% assign found_reference = true %}
+{% break %}
+{% endif %}
+{% endfor %}
+{% endif %}
+{% if found_reference %}
+{% break %}
+{% endif %}
+{% endfor %}
+
+{% unless found_reference %}
+{% assign unreferenced_qualities = unreferenced_qualities | push: quality %}
+{% endunless %}
+{% endfor %}
+
+The following {{ unreferenced_qualities.size }} qualities currently have no requirements directly related to them:
+
+{% for quality in unreferenced_qualities %}[{{ quality.title }}]({{ quality.permalink }}), {% endfor %}

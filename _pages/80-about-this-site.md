@@ -24,20 +24,17 @@ order: 80
 ---
 
 {% include about/sponsors.md %}
+---
 {% include about/author.md %}
-
 ---
 
 {% include about/contributors.md %}
-
 ---
 
-{% include about/technical.md %}
-
+{% include about/tooling.md %}
 ---
 
 {% include about/content-analytics.md %}
-
 ---
 
 {% include about/pageviews.md %}
