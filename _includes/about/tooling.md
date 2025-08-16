@@ -6,6 +6,7 @@
 - A [Docker container](https://github.com/BretFisher/jekyll-serve) provided by Bret E. Fisher for local build- and test of the site.
 - In case you want to run the site locally, use `docker compose up` after cloning the repo locally. 
  
-> build_revision: {{ site.github.build_revision }}, last built and published on {{ site.time | date: '%c' }}.
+- build_revision: {{ site.github.build_revision }}, 
+- last built and published on {{ site.time | date: '%c' }}
 
 

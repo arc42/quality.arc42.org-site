@@ -1,5 +1,12 @@
 ## Content Analytics {#analytics} 
 
+Here we analyze our content, especially the links between content elements.
+In the long run we aim at having everything well-connected:
+
+- Every quality has relations to other qualities (check: [orphan qualities](#orphanqualities))
+- Every quality has at least one specific requirement (check: [qualities without requirements](#qualitieswithoutrequirements))
+- Every standard relates to one or multiple qualities (currently not checked)
+
 ### Orphan Qualities {#orphanqualities} 
 
 {% assign orphan_qualities = "" | split: "," %} 
