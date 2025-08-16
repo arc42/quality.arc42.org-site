@@ -2,6 +2,7 @@
 title: Robustness 
 tags: reliable
 related: resilience, dependability, reliability 
+standards: iso26262
 permalink: /qualities/robustness
 ---
 

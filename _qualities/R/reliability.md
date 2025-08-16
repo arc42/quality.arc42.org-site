@@ -2,7 +2,7 @@
 title: Reliability
 tags: reliable
 related: availability, robustness, fault-tolerance, dependability, resilience
-standards: iso25010, iso27001
+standards: iso25010, iso27001,iso26262
 permalink: /qualities/reliability
 ---
 

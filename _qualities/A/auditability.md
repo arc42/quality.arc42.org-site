@@ -2,6 +2,7 @@
 title: Auditability
 tags: operable
 related: transparency, traceability, operability, observability, devops-metrics
+standards: iso26262
 permalink: /qualities/auditability
 ---
 

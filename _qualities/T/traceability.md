@@ -2,6 +2,7 @@
 title: Traceability
 tags: reliable operable
 related: devops-metrics, operability, testability
+standards: iso26262
 permalink: /qualities/traceability
 ---
 
