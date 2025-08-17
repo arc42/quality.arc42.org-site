@@ -3,9 +3,31 @@
 Here we analyze our content, especially the links between content elements.
 In the long run we aim at having everything well-connected:
 
-- Every quality has relations to other qualities (check: [orphan qualities](#orphanqualities))
-- Every quality has at least one specific requirement (check: [qualities without requirements](#qualitieswithoutrequirements))
+- Every quality is associated with at least one (high-level) property (check: [Qualities without Tag](#qualitieswithouttag))
+- Every quality has relations to other qualities (check: [Orphan Qualities](#orphanqualities))
+- Every quality has at least one specific requirement (check: [Qualities without Requirements](#qualitieswithoutrequirements))
 - Every standard relates to one or multiple qualities (currently not checked)
+
+### Qualities without Tag (aka _property_)
+
+{% assign notag_qualities = "" | split: "," %} 
+{% for quality in site.qualities %} 
+   {% assign tags_num = (quality.tags | size) %}
+     {% if tags_num <= 0 %}
+       {% assign notag_qualities = notag_qualities | push: quality %}      
+     {% endif %}
+{% endfor %} 
+
+{% if notag_qualities.size == 0 %} 
+  All qualities in this site have at least one tag defined. 
+{% else %} 
+  The following {{ notag_qualities.size }} qualities have no tag defined: 
+
+{% for quality in notag_qualities %} 
+   <a href="{{quality.permalink}}"><i class="fa fa-bolt fa-xs as-bullet" style="color: var(--error-color);"></i>{{ quality.title }}</a> <br>
+{% endfor %} 
+{% endif %} 
+
 
 ### Orphan Qualities {#orphanqualities} 
 
@@ -20,9 +42,8 @@ In the long run we aim at having everything well-connected:
 {% else %} 
   The following {{ orphan_qualities.size }} qualities have no directly related qualities defined: 
 
-{% for quality in orphan_qualities %} 
-- [{{ quality.title }}]({{ quality.permalink }}) 
-{% endfor %} 
+{% for quality in orphan_qualities %}
+  <a href="{{quality.permalink}}"><i class="fa fa-bolt fa-xs as-bullet" style="color: var(--error-color);"></i>{{ quality.title }}</a><br>{% endfor %} 
 {% endif %} 
 
 
