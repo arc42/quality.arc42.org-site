@@ -1,26 +1,23 @@
 ---
-title: "Fast startup time (less than 90 sec)"
+title: "Fast shutdown time (less than 10 sec)"
 tags: efficient
-related: time-behaviour, speed, performance, startup-time, elasticity, scalability
-permalink: /requirements/fast-startup-time
+related: time-behaviour, speed, shutdown-time
+permalink: /requirements/fast-shutdown-time
 ---
 
 <div class="quality-requirement" markdown="1">
 
 #### Background
 
-Imagine a mobile phone or a navigation system in your car. 
-Such systems are sometimes in _power-off_ state (aka turned-off).
-When users power-on (turn on, power-up, start) the system, they want them to be operational (aka usable) in a relatively short time.
+Within a large corporation with many thousands of employees, the credentials (e.g. password, API-key) for the central employee database containing all personal information (e.g. salaries, health-issues etc) become compromised (e.g. stolen by a former employee or outside hacker).
 
-This also holds for systems that are automatically managed, e.g. services deployed in the cloud.
-
+#### 
 #### Metric
 
-The system must be able to start from _power-off_ to _operational_ state in less than 90 seconds.
+To avoid a data breach this employee database shall be taken offline (aka _shutdown_) in less than 10 seconds from the moment the shutdown command was issued.
 
 
-</div><br>
+</div>
 
 
 
