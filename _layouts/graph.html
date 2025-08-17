@@ -41,19 +41,26 @@
 <body>
 <header class="site-header">
     <div class="inner clearfix">
+        <button class="fa fa-fw fa-bars nav-toggle" data-target=".site-aside"></button>
+        {% if site.avatar %}
         <a href="{{ '/' | prepend: site.baseurl }}">
             <img class="avatar" src="{{ site.avatar | prepend: site.baseurl }}" alt=""/>
         </a>
+        {% endif %}
         <h1 class="clearfix">
-            <a class="title {% if site.avatar == null %}slim{% endif %}" href="{{ '/' | prepend: site.baseurl }}">{{
-                site.title }}</a>
-            {% assign quality_posts = site.posts | where: "categories", "qualities" %}
-            <br><span class="description"><span style="color:#414288">{{ quality_posts | size }}</span> {{ site.description }}</span>
-            {% assign requirement_posts = site.posts | where: "categories", "requirements" %}
-            <br><span class="description"><span style="color:#414288">{{ requirement_posts | size }}</span> examples of quality requirements.</span>
+            <a class="title {% if site.avatar == null %}slim{% endif %}" href="{{ '/' | prepend: site.baseurl }}">{{ site.title }}</a>
+
+            {% assign qualities_count = site.qualities | size %}
+            {% assign requirements_count = site.requirements | size %}
+            {% assign standards_count = site.standards | size %}
+            
+            <br><span class="description"><span class="accent-color">{{ qualities_count }}</span> {{ site.description }}</span>
+
+            <br><span class="description"><span class="accent-color">{{ requirements_count }}</span> examples of quality requirements, related to <span class="accent-color">{{ standards_count }}</span> quality standards.</span>
         </h1>
     </div>
 </header>
+
 
 <div class="site-container" id="graph-site">
     <div>
