@@ -1,7 +1,7 @@
 ---
 title: Self-containedness
 tags: flexible
-related: flexibility, adaptability, changeability, configurability, maintainability, modifiability, modularity
+related: flexibility, adaptability, changeability, configurability, maintainability, modifiability, modularity, autonomy
 permalink: /qualities/self-containedness
 ---
 

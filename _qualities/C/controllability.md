@@ -1,7 +1,7 @@
 ---
 title: Controllability
 tags: usable operable
-related: usability
+related: usability, autonomy
 permalink: /qualities/controllability
 ---
 
@@ -13,10 +13,10 @@ permalink: /qualities/controllability
 
 ### In context of DevOps
 
->In the context of DevOps, controllability refers to the ability to effectively manage, manipulate, and influence the behavior of systems and processes throughout the software development and deployment lifecycle. Key aspects are:
+> In the context of DevOps, controllability refers to the ability to effectively manage, manipulate, and influence the behavior of systems and processes throughout the software development and deployment lifecycle. Key aspects are:
 >
->* Infrastructure Control
->* Deployment Control
->* Monitoring and Observability
+> - Infrastructure Control
+> - Deployment Control
+> - Monitoring and Observability
 >
->[Devops.com](https://devops.com/the-devops-pendulum-agility-vs-control/)
+> [Devops.com](https://devops.com/the-devops-pendulum-agility-vs-control/)
