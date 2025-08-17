@@ -108,6 +108,43 @@ hr.big-sep {
   list-style-type: none;
 }
 
+/* About author layout styles */
+#about-author {
+  margin: 2rem 0;
+}
+
+/* Target the image that comes after the about-author heading */
+#about-author + p img {
+  float: left;
+  width: 200px;
+  max-width: 200px;
+  margin: 0 2rem 1rem 0;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Ensure proper text flow around the image */
+#about-author + p + p,
+#about-author + p + p + ul {
+  overflow: hidden;
+}
+
+/* Clear float after the author section */
+#about-author ~ hr {
+  clear: both;
+}
+
+/* Responsive design for mobile */
+@media screen and (max-width: 768px) {
+  #about-author + p img {
+    float: none;
+    display: block;
+    margin: 0 auto 1rem auto;
+    width: 150px;
+    max-width: 150px;
+  }
+}
+
 .as-bullet {
   margin-right: 10px;
 }
