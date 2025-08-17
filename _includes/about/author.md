@@ -1,7 +1,6 @@
-## About me {#about-author} 
+## About me (Gernot) {#about-author} 
 
-![Gernot, avatar](/images/gernot-avatar.webp){:width="20%"} 
-<br>
+![Gernot, avatar](/images/gernot-avatar.webp)
 
 I'm: 
 
