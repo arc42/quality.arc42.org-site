@@ -1,14 +1,14 @@
 ---
-title: Autonomy 
+title: Autonomy
 tags: operable suitable
-related: 
+related: independence, self-containedness, controllability, composability, flexibility
 permalink: /qualities/autonomy
 ---
 
-Things that work independently from others. 
+Things that work independently from others.
 
 <hr>
 
->Autonomy is the ability to make your own decisions about what to do rather than being influenced by someone else or told what to do. 
+> Autonomy is the ability to make your own decisions about what to do rather than being influenced by someone else or told what to do.
 >
->[Vocabulary.com](https://www.vocabulary.com/dictionary/autonomous)
+> [Vocabulary.com](https://www.vocabulary.com/dictionary/autonomous)
