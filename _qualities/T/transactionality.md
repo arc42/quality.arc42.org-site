@@ -1,7 +1,7 @@
 ---
 title: Transactionality
 tags: reliable
-related: atomicity, consistency, isolation, durability, data-integrity, robustness
+related: consistency, durability, data-integrity, robustness
 permalink: /qualities/transactionality
 ---
 
@@ -18,3 +18,10 @@ permalink: /qualities/transactionality
 > *   **Durability:** Guarantees that once a transaction is committed, it will remain so, even in the event of a system failure.
 > 
 > Source: [Härder, T., Reuter, A. "Principles of transaction-oriented database recovery.", 1983](https://dl.acm.org/doi/10.1145/357389.357413)
+>
+
+## Related Topics
+
+- atomicity
+- isolation
+- [durability](/qualities/durability)
