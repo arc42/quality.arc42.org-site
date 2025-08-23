@@ -1,0 +1,16 @@
+---
+title: Transactionality
+tags: reliable
+related: atomicity, consistency, isolation, durability, data-integrity, robustness
+permalink: /qualities/transactionality
+---
+
+> A transaction is a sequence of operations performed as a single, logical unit of work. For a transaction to be considered complete, all operations within it must succeed. If any single operation fails, the entire transaction fails, and the system is rolled back to the state it was in before the transaction began.
+
+<hr class="with-no-margin"/>
+
+> Transactions are most commonly discussed in the context of databases and are defined by the **ACID properties**:
+> *   **Atomicity:** Guarantees that all operations within a transaction are treated as a single, indivisible unit.
+> *   **Consistency:** Ensures that a transaction brings the database from one valid state to another, upholding all predefined rules.
+> *   **Isolation:** Ensures that concurrent transactions do not interfere with each other.
+> *   **Durability:** Guarantees that once a transaction is committed, it will remain so, even in the event of a system failure.
