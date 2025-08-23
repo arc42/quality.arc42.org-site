@@ -484,6 +484,26 @@
     "target": "suitable"
   },
   {
+    "source": "autonomy",
+    "target": "independence"
+  },
+  {
+    "source": "autonomy",
+    "target": "self-containedness"
+  },
+  {
+    "source": "autonomy",
+    "target": "controllability"
+  },
+  {
+    "source": "autonomy",
+    "target": "composability"
+  },
+  {
+    "source": "autonomy",
+    "target": "flexibility"
+  },
+  {
     "source": "availability",
     "target": "reliable"
   },
@@ -1182,6 +1202,10 @@
   {
     "source": "controllability",
     "target": "usability"
+  },
+  {
+    "source": "controllability",
+    "target": "autonomy"
   },
   {
     "source": "convenience",
@@ -1912,6 +1936,18 @@
     "target": "speed-to-market"
   },
   {
+    "source": "fast-shutdown-time",
+    "target": "time-behaviour"
+  },
+  {
+    "source": "fast-shutdown-time",
+    "target": "speed"
+  },
+  {
+    "source": "fast-shutdown-time",
+    "target": "shutdown-time"
+  },
+  {
     "source": "fast-startup-time",
     "target": "time-behaviour"
   },
@@ -2074,6 +2110,10 @@
   {
     "source": "flexibility",
     "target": "agility"
+  },
+  {
+    "source": "flexibility",
+    "target": "autonomy"
   },
   {
     "source": "flexible",
@@ -2486,6 +2526,10 @@
   {
     "source": "independence",
     "target": "flexibility"
+  },
+  {
+    "source": "independence",
+    "target": "autonomy"
   },
   {
     "source": "independent-enhancement-of-subsystem",
@@ -4304,6 +4348,10 @@
     "target": "modularity"
   },
   {
+    "source": "self-containedness",
+    "target": "autonomy"
+  },
+  {
     "source": "self-descriptiveness",
     "target": "usable"
   },
@@ -4346,6 +4394,18 @@
   {
     "source": "server-fails-operation-without-downtime",
     "target": "stability"
+  },
+  {
+    "source": "shutdown-time",
+    "target": "efficient"
+  },
+  {
+    "source": "shutdown-time",
+    "target": "startup-time"
+  },
+  {
+    "source": "shutdown-time",
+    "target": "time-behaviour"
   },
   {
     "source": "shutdown-to-safe-state",

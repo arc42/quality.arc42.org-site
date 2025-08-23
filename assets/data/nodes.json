@@ -824,6 +824,14 @@
     "page": "/requirements/fast-rollout-of-changes"
   },
   {
+    "id": "fast-shutdown-time",
+    "label": "Fast shutdown time (less than 10 sec)",
+    "size": 15,
+    "color": "#ceffce",
+    "qualityType": "requirement",
+    "page": "/requirements/fast-shutdown-time"
+  },
+  {
     "id": "fast-startup-time",
     "label": "Fast startup time (less than 90 sec)",
     "size": 15,
@@ -1560,6 +1568,14 @@
     "page": "/requirements/reduce-energy-consumption-with-new-version"
   },
   {
+    "id": "redundancy",
+    "label": "Redundancy",
+    "size": 25,
+    "color": "#dcf1ff",
+    "qualityType": "quality",
+    "page": "/qualities/redundancy"
+  },
+  {
     "id": "releasability",
     "label": "Releasability",
     "size": 25,
@@ -1814,6 +1830,14 @@
     "color": "#ceffce",
     "qualityType": "requirement",
     "page": "/requirements/shutdown-to-safe-state"
+  },
+  {
+    "id": "shutdown-time",
+    "label": "Shutdown Time",
+    "size": 25,
+    "color": "#dcf1ff",
+    "qualityType": "quality",
+    "page": "/qualities/shutdown-time"
   },
   {
     "id": "simplicity",
