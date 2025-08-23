@@ -6,6 +6,8 @@ permalink: /qualities/transactionality
 ---
 
 > A transaction is a sequence of operations performed as a single, logical unit of work. For a transaction to be considered complete, all operations within it must succeed. If any single operation fails, the entire transaction fails, and the system is rolled back to the state it was in before the transaction began.
+> 
+> Source: [Jim Gray, "The Transaction Concept: Virtues and Limitations", 1981](https://www.microsoft.com/en-us/research/publication/the-transaction-concept-virtues-and-limitations/)
 
 <hr class="with-no-margin"/>
 
@@ -14,3 +16,5 @@ permalink: /qualities/transactionality
 > *   **Consistency:** Ensures that a transaction brings the database from one valid state to another, upholding all predefined rules.
 > *   **Isolation:** Ensures that concurrent transactions do not interfere with each other.
 > *   **Durability:** Guarantees that once a transaction is committed, it will remain so, even in the event of a system failure.
+> 
+> Source: [Härder, T., Reuter, A. "Principles of transaction-oriented database recovery.", 1983](https://dl.acm.org/doi/10.1145/357389.357413)
