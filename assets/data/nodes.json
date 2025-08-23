@@ -1984,6 +1984,14 @@
     "page": "/qualities/traceability"
   },
   {
+    "id": "transactionality",
+    "label": "Transactionality",
+    "size": 25,
+    "color": "#dcf1ff",
+    "qualityType": "quality",
+    "page": "/qualities/transactionality"
+  },
+  {
     "id": "transparency",
     "label": "Transparency",
     "size": 25,

@@ -4776,6 +4776,38 @@
     "target": "testability"
   },
   {
+    "source": "transactionality",
+    "target": "reliable"
+  },
+  {
+    "source": "transactionality",
+    "target": "secure"
+  },
+  {
+    "source": "transactionality",
+    "target": "consistency"
+  },
+  {
+    "source": "transactionality",
+    "target": "integrity"
+  },
+  {
+    "source": "transactionality",
+    "target": "reliability"
+  },
+  {
+    "source": "transactionality",
+    "target": "fault-tolerance"
+  },
+  {
+    "source": "transactionality",
+    "target": "dependability"
+  },
+  {
+    "source": "transactionality",
+    "target": "fault-isolation"
+  },
+  {
     "source": "transparency",
     "target": "reliable"
   },
