@@ -26,10 +26,11 @@ The guidelines are designed to enforce a safer subset of the C language, which d
 ## References
 
 ### Official Standards Documents
-- The MISRA C guidelines are published by the Motor Industry Software Reliability Association (MISRA).
+- **MISRA C:2023**: "Guidelines for the use of the C language in critical systems". The latest version of the standard, available for purchase from the [official MISRA website](https://www.misra.org.uk).
+- **MISRA C:2012**: "Guidelines for the use of the C language in critical systems". A widely adopted version of the standard, also available for purchase from the MISRA website.
 
 ### Related Standards
 - ISO/IEC 9899 - The C programming language standard.
 
 ### Additional Resources
-- t.b.d
+- [Official MISRA Website](https://www.misra.org.uk): The primary source for all information regarding MISRA, including the standards documents themselves.
