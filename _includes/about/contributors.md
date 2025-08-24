@@ -6,4 +6,6 @@
 - Thanx to [Per Starke](https://perstarke-webdev.de/) for his awesome technical support in things around Liquid and Jekyll. 
 - Thanx to [Remko Plantenga @exde3297](https://github.com/exde3297), [Martin Weck @martinweck](https://github.com/martinweck), [Eberhard Wolff @ewolff](https://github.com/PapaBravo), [Paul Boeck @PapaBravo](https://github.com/PapaBravo), [Dean de Bree @ddebree](https://github.com/ddebree), [Markus Stier @mstier](https://github.com/mstier), [Fabian Angst @angstitc](https://github.com/angstitc) for their contributions. 
 
+- Numerous issues and PRs were fixed with support by GPT-5, Claude-Sonnet and Gemini-2.5 Pro. These LLMs know css definitely better than I do.
+  
 Find the complete list of contributors [here](https://github.com/arc42/quality.arc42.org-site/graphs/contributors)

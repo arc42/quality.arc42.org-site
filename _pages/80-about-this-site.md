@@ -15,6 +15,7 @@ order: 80
 - [Support & Sponsors](#sponsors)
 - [About the Author](#about-author)
 - [Acknowledgements](#acknowledgements)
+- [Color Scheme](#colors)
 - [Tooling and Build](#tooling)
 - [Content Analytics](#analytics) 
    - <small>[Orphan Qualities](#orphanqualities)</small>
@@ -32,6 +33,7 @@ order: 80
 ---
 
 {% include about/color-scheme.md %}
+
 ---
 
 {% include about/tooling.md %}

@@ -27,7 +27,7 @@
 }
 </style>
 
-## Color Scheme
+## Color Scheme {#colors}
 
 This site uses a simple color scheme to distinguish between the main content types.
 

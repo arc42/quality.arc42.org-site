@@ -29,6 +29,10 @@ The guidelines enforce a safer subset of C and structured practices that directl
 | **[Maintainability](/qualities/maintainability)** | Promoted through rules that improve code clarity, consistency, traceability, and comprehensibility. |
 | **[Flexibility](/qualities/flexibility)** | Addresses portability aspects by avoiding implementation‑defined behavior and reducing compiler-/platform‑specific constructs. |
 | **[Security](/qualities/security)** | Many rules that enhance safety also contribute to security by preventing vulnerabilities such as buffer overflows and data corruption. |
+| **[Testability](/qualities/testability)** | Indirectly supported by rules that lead to simpler, more modular, and deterministic code, which is easier to test. |
+| **[Analyzability](/qualities/analyzability)** | A key goal. The guidelines are designed to make the code more analyzable by static analysis tools. |
+| **[Efficiency](/qualities/efficiency)** | Indirectly supported by catching errors early in the development cycle, which leads to a more efficient development process. |
+| **[Understandability](/qualities/understandability)** | Promoted through rules that improve code clarity, consistency, and comprehensibility. |
 
 Note: Compliance with MISRA C is often required or strongly recommended in safety‑critical industries such as automotive, aerospace, rail, industrial, and medical devices.
 
@@ -42,11 +46,6 @@ Note: Compliance with MISRA C is often required or strongly recommended in safet
 - MISRA C:2023 announcement (overview): https://misra.org.uk/misra-c2023-released/
 - MISRA Publications (free guidance and addenda): https://misra.org.uk/publications/
 - MISRA Compliance:2020 (free PDF): https://misra.org.uk/app/uploads/2021/06/MISRA-Compliance-2020.pdf
-- MISRA C:2012 – Technical Corrigendum 2 (free PDF): https://misra.org.uk/app/uploads/2022/04/MISRA-C-2012-TC2.pdf
-- MISRA C:2012 – Amendment 3 (free PDF): https://misra.org.uk/app/uploads/2022/12/MISRA-C-2012-AMD3.pdf
-- MISRA C:2012 – Amendment 4 (free PDF): https://misra.org.uk/app/uploads/2023/03/MISRA-C-2012-AMD4.pdf
-- MISRA C:2023 – Addendum 2 (coverage vs. ISO/IEC 17961) (free PDF): https://misra.org.uk/app/uploads/2024/10/MISRA-C-2023-ADD2.pdf
-- MISRA C:2023 – Addendum 4 (coverage vs. ISO/IEC 24772) (free PDF): https://misra.org.uk/app/uploads/2024/10/MISRA-C-2023-ADD4.pdf
 - MISRA FAQs: https://misra.org.uk/faqs/
 
 ### Related standards and guidance
