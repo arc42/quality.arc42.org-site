@@ -1,19 +1,21 @@
+---
 layout: page_standard
 title: "MISRA C - Guidelines for the use of the C language in critical systems"
 permalink: /standards/misra-c
 standard_id: misra-c
 ---
 
-## MISRA C: guidelines for safe and secure use of the C language
+MISRA C is a widely adopted set of guidelines (aka "standard") for developing software in the C language, especially for safety‑ and security‑related embedded systems. 
+It defines a safer, more predictable subset of C and practices to reduce undefined behavior, increase analyzability, and improve assurance.
 
-MISRA C is a widely adopted set of guidelines for developing software in the C language, especially for safety‑ and security‑related embedded systems. It defines a safer, more predictable subset of C and practices to reduce undefined behavior, increase analyzability, and improve assurance.
+Current edition: MISRA C:2023 (Third edition, Second revision), which consolidates and updates MISRA C:2012 and its amendments and corrigenda. 
 
-Current edition: MISRA C:2023 (Third edition, Second revision), which consolidates and updates MISRA C:2012 and its amendments and corrigenda. Earlier projects may still reference MISRA C:2012 and its amendments.
 
 ### Scope and core concepts
 - Safer C subset: rules and directives restrict dangerous or ambiguous language features and usage patterns.
 - Classification: guidance is categorized as Mandatory, Required, or Advisory; rules are also marked as Decidable or Undecidable and as Single Translation Unit or System level.
-- Compliance and deviations: projects can deviate from Required/Advisory items with documented rationale; Mandatory items must always be met. MISRA Compliance:2020 gives the authoritative compliance process.
+- Compliance and deviations: projects can deviate from Required/Advisory items with documented rationale; Mandatory items must always be met. 
+  MISRA Compliance:2020 gives the authoritative compliance process.
 - Tool support: many guidelines are checkable by static analysis, but there is no official MISRA certification of tools; judgment and review remain essential.
 
 ### Quality attributes emphasized
