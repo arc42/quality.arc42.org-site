@@ -5,32 +5,54 @@ permalink: /standards/misra-c
 standard_id: misra-c
 ---
 
-## MISRA C is a set of software development guidelines for the C programming language.
+MISRA C is a widely adopted set of guidelines (aka "standard") for developing software in the C language, especially for safety‑ and security‑related embedded systems. 
+It defines a safer, more predictable subset of C and practices to reduce undefined behavior, increase analyzability, and improve assurance.
 
-It aims to facilitate code safety, security, portability and reliability in the context of embedded systems, specifically those systems programmed in ISO C / C99 / C11.
+Current edition: MISRA C:2023 (Third edition, Second revision), which consolidates and updates MISRA C:2012 and its amendments and corrigenda. 
 
-## Quality Attributes Required or Emphasized
 
-The guidelines are designed to enforce a safer subset of the C language, which directly impacts several quality attributes:
+### Scope and core concepts
+- Safer C subset: rules and directives restrict dangerous or ambiguous language features and usage patterns.
+- Classification: guidance is categorized as Mandatory, Required, or Advisory; rules are also marked as Decidable or Undecidable and as Single Translation Unit or System level.
+- Compliance and deviations: projects can deviate from Required/Advisory items with documented rationale; Mandatory items must always be met. 
+  MISRA Compliance:2020 gives the authoritative compliance process.
+- Tool support: many guidelines are checkable by static analysis, but there is no official MISRA certification of tools; judgment and review remain essential.
+
+### Quality attributes emphasized
+
+The guidelines enforce a safer subset of C and structured practices that directly support several software qualities:
 
 | Attribute | Relevance in MISRA C |
 |:--- |:--- |
 | **[Safety](/qualities/safety)** | The primary goal. The rules are designed to prevent undefined behavior and common programming errors that can lead to safety hazards. |
 | **[Reliability](/qualities/reliability)** | Enforced by rules that reduce the likelihood of defects and unexpected behavior. |
-| **[Maintainability](/qualities/maintainability)** | Promoted through rules that improve code clarity, consistency, and comprehensibility. |
-| **[Portability](/qualities/portability)** | Addressed by rules that avoid implementation-defined behavior, making the code more portable across different compilers and platforms. |
+| **[Maintainability](/qualities/maintainability)** | Promoted through rules that improve code clarity, consistency, traceability, and comprehensibility. |
+| **[Flexibility](/qualities/flexibility)** | Addresses portability aspects by avoiding implementation‑defined behavior and reducing compiler-/platform‑specific constructs. |
 | **[Security](/qualities/security)** | Many rules that enhance safety also contribute to security by preventing vulnerabilities such as buffer overflows and data corruption. |
 
-**Note:** Compliance with MISRA C is often a requirement in safety-critical industries such as automotive, aerospace, and medical devices.
+Note: Compliance with MISRA C is often required or strongly recommended in safety‑critical industries such as automotive, aerospace, rail, industrial, and medical devices.
+
+### When to use
+- Safety‑ and security‑related embedded software in C where high assurance is required.
+- To meet or demonstrate alignment with sector standards (e.g., automotive, medical, industrial) that reference or permit MISRA C as a suitable C subset.
 
 ## References
 
-### Official Standards Documents
-- **MISRA C:2023**: "Guidelines for the use of the C language in critical systems". The latest version of the standard, available for purchase from the [official MISRA website](https://www.misra.org.uk).
-- **MISRA C:2012**: "Guidelines for the use of the C language in critical systems". A widely adopted version of the standard, also available for purchase from the MISRA website.
+### Official
+- MISRA C:2023 announcement (overview): https://misra.org.uk/misra-c2023-released/
+- MISRA Publications (free guidance and addenda): https://misra.org.uk/publications/
+- MISRA Compliance:2020 (free PDF): https://misra.org.uk/app/uploads/2021/06/MISRA-Compliance-2020.pdf
+- MISRA C:2012 – Technical Corrigendum 2 (free PDF): https://misra.org.uk/app/uploads/2022/04/MISRA-C-2012-TC2.pdf
+- MISRA C:2012 – Amendment 3 (free PDF): https://misra.org.uk/app/uploads/2022/12/MISRA-C-2012-AMD3.pdf
+- MISRA C:2012 – Amendment 4 (free PDF): https://misra.org.uk/app/uploads/2023/03/MISRA-C-2012-AMD4.pdf
+- MISRA C:2023 – Addendum 2 (coverage vs. ISO/IEC 17961) (free PDF): https://misra.org.uk/app/uploads/2024/10/MISRA-C-2023-ADD2.pdf
+- MISRA C:2023 – Addendum 4 (coverage vs. ISO/IEC 24772) (free PDF): https://misra.org.uk/app/uploads/2024/10/MISRA-C-2023-ADD4.pdf
+- MISRA FAQs: https://misra.org.uk/faqs/
 
-### Related Standards
-- ISO/IEC 9899 - The C programming language standard.
+### Related standards and guidance
+- [ISO 26262 - Road vehicles — Functional safety](/standards/iso-26262)
+- [IEC 62304 - Medical device software](/standards/iec-62304)
+- ISO/IEC 9899 — Programming Languages — C (language standard)
 
-### Additional Resources
-- [Official MISRA Website](https://www.misra.org.uk): The primary source for all information regarding MISRA, including the standards documents themselves.
+### Additional overview
+- Wikipedia: MISRA C — https://en.wikipedia.org/wiki/MISRA_C
