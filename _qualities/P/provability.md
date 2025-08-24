@@ -11,4 +11,4 @@ permalink: /qualities/provability
 
 > Provability aims to formally prove the correctness of software, rather than inferring quality from testing alone. It is based on **Formal Methods**, which are a set of techniques based on mathematics and logic used to specify, design, and verify software and hardware systems.
 > 
-> Source: [Galois, "Formal Methods"](https://galois.com/formal-methods/)
+> Source: [Galois, "Formal Methods"](https://www.galois.com/what-are-formal-methods)
