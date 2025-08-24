@@ -2,7 +2,7 @@
 title: Safety
 tags: safe reliable secure
 related: availability, robustness
-standards: iso25010,iso26262
+standards: iso25010,iso26262,misra-c
 permalink: /qualities/safety
 ---
 
