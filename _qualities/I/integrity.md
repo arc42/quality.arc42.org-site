@@ -2,7 +2,7 @@
 title: Integrity
 tags: secure
 related: confidentiality, security
-standards: iso25010, iso27001,iso26262
+standards: iso25010, iso27001,iso26262, misra-c
 permalink: /qualities/integrity
 ---
 

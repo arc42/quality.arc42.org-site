@@ -2,7 +2,7 @@
 title: Portability
 tags: flexible operable 
 related: compatibility, flexibility, installability, interoperability, maintainability, configurability, replaceability
-standards: iso26262
+standards: iso26262, misra-c
 permalink: /qualities/portability
 ---
 

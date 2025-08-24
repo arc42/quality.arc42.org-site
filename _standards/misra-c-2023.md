@@ -10,6 +10,7 @@ It defines a safer, more predictable subset of C and practices to reduce undefin
 
 Current edition: MISRA C:2023 (Third edition, Second revision), which consolidates and updates MISRA C:2012 and its amendments and corrigenda. 
 
+>Note: Compliance with MISRA C is often required or strongly recommended in safety‑critical industries such as automotive, aerospace, rail, industrial, and medical devices.
 
 ### Scope and core concepts
 - Safer C subset: rules and directives restrict dangerous or ambiguous language features and usage patterns.
@@ -26,15 +27,14 @@ The guidelines enforce a safer subset of C and structured practices that directl
 |:--- |:--- |
 | **[Safety](/qualities/safety)** | The primary goal. The rules are designed to prevent undefined behavior and common programming errors that can lead to safety hazards. |
 | **[Reliability](/qualities/reliability)** | Enforced by rules that reduce the likelihood of defects and unexpected behavior. |
+| **[Analyzability](/qualities/analyzability)** | A key goal. The guidelines are designed to make the code more analyzable by static analysis tools. |
 | **[Maintainability](/qualities/maintainability)** | Promoted through rules that improve code clarity, consistency, traceability, and comprehensibility. |
 | **[Flexibility](/qualities/flexibility)** | Addresses portability aspects by avoiding implementation‑defined behavior and reducing compiler-/platform‑specific constructs. |
 | **[Security](/qualities/security)** | Many rules that enhance safety also contribute to security by preventing vulnerabilities such as buffer overflows and data corruption. |
 | **[Testability](/qualities/testability)** | Indirectly supported by rules that lead to simpler, more modular, and deterministic code, which is easier to test. |
-| **[Analyzability](/qualities/analyzability)** | A key goal. The guidelines are designed to make the code more analyzable by static analysis tools. |
 | **[Efficiency](/qualities/efficiency)** | Indirectly supported by catching errors early in the development cycle, which leads to a more efficient development process. |
 | **[Understandability](/qualities/understandability)** | Promoted through rules that improve code clarity, consistency, and comprehensibility. |
 
-Note: Compliance with MISRA C is often required or strongly recommended in safety‑critical industries such as automotive, aerospace, rail, industrial, and medical devices.
 
 ### When to use
 - Safety‑ and security‑related embedded software in C where high assurance is required.
