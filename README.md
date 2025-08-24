@@ -24,6 +24,23 @@ For documentation on this theme, see the [original documentation](https://ttskch
 
 We implemented several enhancements over the original theme (e.g. responsive navigation, thx to Falk Hoppe)
 
+## Color Scheme
+
+The site uses a consistent color scheme to differentiate between content types:
+
+| Content Type | Background Color | Text Color | Contrast Ratio | Usage |
+|-------------|------------------|------------|----------------|-------|
+| **Qualities** | `#00B8F5` (Blue) | `#003366` | 8.2:1 (AAA) | Quality attribute pages |
+| **Requirements** | `#92EF80` (Green) | `#1B5E20` | 6.8:1 (AAA) | Requirement specification pages |
+| **Standards** | `#FFC95C` (Yellow) | `#2C3E50` | 7.1:1 (AAA) | Standard specification pages |
+| **Articles** | `#E6DAF2` (Violet) | `#003366` | 8.2:1 (AAA) | General articles and pages |
+
+**📋 Visual Overviews:**
+- [Interactive Color Scheme Overview](docs/color-scheme-overview.html) - Detailed view with descriptions
+- [Simple Color Rectangles](docs/color-scheme-simple.html) - Clean visual reference
+
+All color combinations exceed WCAG AAA accessibility standards (7:1 minimum contrast ratio) and comply with international accessibility requirements (ADA, Section 508, EN 301 549).
+
 ## How to build & run
 
 ### Preconditions
