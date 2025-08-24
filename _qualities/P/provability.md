@@ -1,7 +1,7 @@
 ---
 title: Provability
 tags: reliable safe
-related: explainability, verifiability, correctness, formal-methods
+related: explainability, verifiability, correctness
 permalink: /qualities/provability
 ---
 

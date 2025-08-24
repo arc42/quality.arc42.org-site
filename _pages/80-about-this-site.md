@@ -20,6 +20,7 @@ order: 80
 - [Content Analytics](#analytics) 
    - <small>[Orphan Qualities](#orphanqualities)</small>
    - <small>[Qualities without Requirements](#qualitieswithoutrequirements)</small>
+   - <small>[Orphan Relations](#orphanrelations)</small>
 - [Pageviews and Visitor Count](#site-statistics)
 
 ---
