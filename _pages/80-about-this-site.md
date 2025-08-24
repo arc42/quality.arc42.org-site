@@ -31,6 +31,9 @@ order: 80
 {% include about/contributors.md %}
 ---
 
+{% include about/color-scheme.md %}
+---
+
 {% include about/tooling.md %}
 ---
 
