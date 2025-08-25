@@ -59,15 +59,15 @@
 #full-q-graph-filter__btn {
     width: 100%;
     padding: 0.5rem;
-    background-color: #941651;
-    color: white;
+    background-color: #e6daf2;
+    color: #003366;
     border: none;
     border-radius: 4px;
     cursor: pointer;
 }
 
 #full-q-graph-filter__btn:hover {
-    background-color: #c77da3;
+    background-color: #cb9fff;
 }
 
 #full-q-graph-legend {
@@ -108,8 +108,8 @@
     position: absolute;
     bottom: 20px;
     right: 20px;
-    background-color: #941651;
-    color: white;
+    background-color: #e6daf2;
+    color: #003366;
     border: none;
     border-radius: 50%;
     width: 50px;
@@ -124,7 +124,7 @@
 
 #full-graph-toggle:hover {
     transform: scale(1.1);
-    background-color: #c77da3;
+    background-color: #cb9fff;
 }
 
 #q-graph-container:hover #full-graph-toggle {

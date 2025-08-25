@@ -21,11 +21,11 @@ hide: true
                 <span class="legend-label">Root Node</span>
             </div>
             <div class="legend-item">
-                <span class="color-box" style="background-color: #dcf1ff;"></span>
+                <span class="color-box" style="background-color: #00B8F5;"></span>
                 <span class="legend-label">Quality/Property Nodes</span>
             </div>
             <div class="legend-item">
-                <span class="color-box" style="background-color: #ceffce;"></span>
+                <span class="color-box" style="background-color: #92ef80;"></span>
                 <span class="legend-label">Requirement Nodes</span>
             </div>
         </div>
