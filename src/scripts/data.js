@@ -71,9 +71,9 @@ async function writeJsonToFile(jsonString, filename, assetsDir) {
  */
 
 const NODE_CONFIGS = {
-    requirement: { color: '#ceffce', size: 15, qualityType: 'requirement' },
-    quality: { color: '#dcf1ff', size: 25, qualityType: 'quality' },
-    property: { color: '#dcf1ff', size: 40, qualityType: 'property' }
+    requirement: { color: '#92ef80', size: 15, qualityType: 'requirement' },
+    quality: { color: '#00B8F5', size: 25, qualityType: 'quality' },
+    property: { color: '#00B8F5', size: 40, qualityType: 'property' }
 };
 
 /**
@@ -231,7 +231,7 @@ function addMainNode(id, data, isRequirements, nodes) {
  * @returns {Promise<Object[]>} - Array of frontmatter objects
  */
 async function parseFrontmatter(filePaths) {
-    return await Promise.all(
+    return Promise.all(
         filePaths.map(async (filePath) => {
             const content = await fs.readFile(filePath, "utf-8");
             const { data } = matter(content);
@@ -305,11 +305,6 @@ async function generateData() {
         writeJsonToFile(toSortedJSON(Array.from(nodes), "label"), "nodes.json", assetsDir),
         writeJsonToFile(toSortedJSON(Array.from(edges), "source"), "edges.json", assetsDir),
     ]);
-}
-
-// Run if called directly
-if (import.meta.url === `file://${process.argv[1]}`) {
-    await generateData();
 }
 
 export { generateData };
