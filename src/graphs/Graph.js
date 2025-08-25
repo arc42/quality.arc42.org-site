@@ -97,7 +97,20 @@ export class Graph {
      * @param {{source: string, target: string}[]} edges - Array of edge data
      */
     createEdges(edges) {
-        edges.forEach((edge) => this.graph.addEdge(edge.source, edge.target));
+        edges.forEach((edge) => {
+            try {
+                if (this.graph.hasNode(edge.source) && this.graph.hasNode(edge.target)) {
+                    this.graph.addEdge(edge.source, edge.target);
+                } else {
+                    // Silently skip edges whose endpoints are not present in the current view
+                    // This can happen after filtering where some nodes are intentionally hidden
+                }
+            } catch (e) {
+                // Extra safety: do not let a bad edge crash the graph build
+                // You may enable logging below for debugging specific datasets
+                console.warn("Skipped invalid edge", edge, e);
+            }
+        });
     }
 
 
@@ -120,6 +133,11 @@ export class Graph {
         const propertyNodes = this.graph
             .inNeighbors(rootId)
             .filter((n) => this.graph.getNodeAttribute(n, "qualityType") === "property");
+
+        // If there are no property nodes (e.g., after filtering), skip radial placement for properties
+        if (propertyNodes.length === 0) {
+            return;
+        }
 
         const propertyAngleStep = (2 * Math.PI) / propertyNodes.length;
 
