@@ -315,7 +315,7 @@ export class GraphRenderer {
 
         this.links.filter(d => d.source.id === nodeId || d.target.id === nodeId)
             .classed("highlighted", highlight)
-            .attr("stroke", highlight ? "#941651" : "#E0E0E0")
+            .attr("stroke", highlight ? "#cb9fff" : "#e6daf2")
             .attr("stroke-width", highlight ? 2 : 1);
     }
 
@@ -328,7 +328,7 @@ export class GraphRenderer {
         // Calculate the bounding box of all visible nodes
         let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
 
-        this.nodes.each(function(d) {
+        this.nodes.each(function (d) {
             if (d3.select(this).style("display") !== "none") {
                 minX = Math.min(minX, d.x);
                 minY = Math.min(minY, d.y);

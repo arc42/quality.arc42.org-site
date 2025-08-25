@@ -400,7 +400,7 @@
       id: "efficient",
       label: "Efficient",
       size: 40,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "property",
       page: "/tag-efficient"
     },
@@ -408,7 +408,7 @@
       id: "flexible",
       label: "Flexible",
       size: 40,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "property",
       page: "/tag-flexible"
     },
@@ -416,7 +416,7 @@
       id: "operable",
       label: "Operable",
       size: 40,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "property",
       page: "/tag-operable"
     },
@@ -424,7 +424,7 @@
       id: "reliable",
       label: "Reliable",
       size: 40,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "property",
       page: "/tag-reliable"
     },
@@ -432,7 +432,7 @@
       id: "safe",
       label: "Safe",
       size: 40,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "property",
       page: "/tag-safe"
     },
@@ -440,7 +440,7 @@
       id: "secure",
       label: "Secure",
       size: 40,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "property",
       page: "/tag-secure"
     },
@@ -448,7 +448,7 @@
       id: "suitable",
       label: "Suitable",
       size: 40,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "property",
       page: "/tag-suitable"
     },
@@ -456,7 +456,7 @@
       id: "usable",
       label: "Usable",
       size: 40,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "property",
       page: "/tag-usable"
     }
@@ -468,7 +468,7 @@
       id: "access-control",
       label: "Access Control",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/access-control"
     },
@@ -476,7 +476,7 @@
       id: "access-control-is-enforced",
       label: "Access control is enforced",
       size: 15,
-      color: "#ceffce",
+      color: "#92ef80",
       qualityType: "requirement",
       page: "/requirements/access-control-is-enforced"
     },
@@ -484,7 +484,7 @@
       id: "access-control-via-sso",
       label: "Access Control via SSO",
       size: 15,
-      color: "#ceffce",
+      color: "#92ef80",
       qualityType: "requirement",
       page: "/requirements/access-control-via-sso"
     },
@@ -492,7 +492,7 @@
       id: "access-find-function-quickly",
       label: "Access find function in three seconds",
       size: 15,
-      color: "#ceffce",
+      color: "#92ef80",
       qualityType: "requirement",
       page: "/requirements/access-find-function-quickly"
     },
@@ -500,7 +500,7 @@
       id: "accessibility",
       label: "Accessibility",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/accessibility"
     },
@@ -508,7 +508,7 @@
       id: "accessible-user-interface",
       label: "Accessible User Interface",
       size: 15,
-      color: "#ceffce",
+      color: "#92ef80",
       qualityType: "requirement",
       page: "/requirements/accessible-user-interface"
     },
@@ -516,7 +516,7 @@
       id: "accountability",
       label: "Accountability",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/accountability"
     },
@@ -524,7 +524,7 @@
       id: "accuracy",
       label: "Accuracy",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/accuracy"
     },
@@ -532,7 +532,7 @@
       id: "accurate-estimate-of-insurance-rate",
       label: "Accurate estimate of insurance contract rate",
       size: 15,
-      color: "#ceffce",
+      color: "#92ef80",
       qualityType: "requirement",
       page: "/requirements/accurate-estimate-of-insurance-rate"
     },
@@ -540,7 +540,7 @@
       id: "adaptability",
       label: "Adaptability",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/adaptability"
     },
@@ -548,7 +548,7 @@
       id: "add-new-product",
       label: "Add new product under 60 minutes",
       size: 15,
-      color: "#ceffce",
+      color: "#92ef80",
       qualityType: "requirement",
       page: "/requirements/add-new-product"
     },
@@ -556,7 +556,7 @@
       id: "affordability",
       label: "Affordability",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/affordability"
     },
@@ -564,7 +564,7 @@
       id: "affordable-crm",
       label: "Affordable CRM (customer relationship management)",
       size: 15,
-      color: "#ceffce",
+      color: "#92ef80",
       qualityType: "requirement",
       page: "/requirements/affordable-crm"
     },
@@ -572,7 +572,7 @@
       id: "agility",
       label: "Agility",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/agility"
     },
@@ -580,7 +580,7 @@
       id: "analysability",
       label: "Analysability",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/analysability"
     },
@@ -588,7 +588,7 @@
       id: "anticipated-workplace-environment",
       label: "Anticipated Workplace Environment",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/anticipated-workplace-environment"
     },
@@ -596,7 +596,7 @@
       id: "appearance",
       label: "Appearance",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/appearance"
     },
@@ -604,7 +604,7 @@
       id: "appearance-requirements",
       label: "Appearance of mobile UI",
       size: 15,
-      color: "#ceffce",
+      color: "#92ef80",
       qualityType: "requirement",
       page: "/requirements/appearance-requirements"
     },
@@ -612,7 +612,7 @@
       id: "appropriateness-recognizability",
       label: "Appropriateness recognizability",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/appropriateness-recognizability"
     },
@@ -620,7 +620,7 @@
       id: "assess-impact-of-proposed-change",
       label: "Assess impact of proposed change",
       size: 15,
-      color: "#ceffce",
+      color: "#92ef80",
       qualityType: "requirement",
       page: "/requirements/assess-impact-of-proposed-change"
     },
@@ -628,7 +628,7 @@
       id: "attractiveness",
       label: "Attractiveness",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/attractiveness"
     },
@@ -636,7 +636,7 @@
       id: "auditability",
       label: "Auditability",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/auditability"
     },
@@ -644,7 +644,7 @@
       id: "authenticity",
       label: "Authenticity",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/authenticity"
     },
@@ -652,7 +652,7 @@
       id: "authenticity-of-digital-document",
       label: "Authenticity of a digital document",
       size: 15,
-      color: "#ceffce",
+      color: "#92ef80",
       qualityType: "requirement",
       page: "/requirements/authenticity-of-digital-document"
     },
@@ -660,7 +660,7 @@
       id: "autonomy",
       label: "Autonomy",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/autonomy"
     },
@@ -668,7 +668,7 @@
       id: "availability",
       label: "Availability",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/availability"
     },
@@ -676,7 +676,7 @@
       id: "available-7-24-99",
       label: "Available 7x24 with 99% uptime",
       size: 15,
-      color: "#ceffce",
+      color: "#92ef80",
       qualityType: "requirement",
       page: "/requirements/available-7-24-99"
     },
@@ -684,7 +684,7 @@
       id: "avoid-common-vulnerabilities",
       label: "Avoid common vulnerabilities",
       size: 15,
-      color: "#ceffce",
+      color: "#92ef80",
       qualityType: "requirement",
       page: "/requirements/avoid-common-vulnerabilities"
     },
@@ -692,7 +692,7 @@
       id: "backup-patient-monitoring-sensor",
       label: "Backup patient monitoring sensor takes over",
       size: 15,
-      color: "#ceffce",
+      color: "#92ef80",
       qualityType: "requirement",
       page: "/requirements/backup-patient-monitoring-sensor"
     },
@@ -700,7 +700,7 @@
       id: "backward-compatibility",
       label: "Backward compatibility",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/backward-compatibility"
     },
@@ -708,7 +708,7 @@
       id: "budget-constraint-library-update",
       label: "Budget constrained library update",
       size: 15,
-      color: "#ceffce",
+      color: "#92ef80",
       qualityType: "requirement",
       page: "/requirements/budget-constraint-library-update"
     },
@@ -716,7 +716,7 @@
       id: "budget-constraint",
       label: "Budget constraint",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/budget-constraint"
     },
@@ -724,7 +724,7 @@
       id: "capacity",
       label: "Capacity",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/capacity"
     },
@@ -732,7 +732,7 @@
       id: "capacity-to-process-sensor-inputs",
       label: "Capacity to process 1000 sensor inputs per minute",
       size: 15,
-      color: "#ceffce",
+      color: "#92ef80",
       qualityType: "requirement",
       page: "/requirements/capacity-to-process-sensor-inputs"
     },
@@ -740,7 +740,7 @@
       id: "carbon-emission-efficiency",
       label: "Carbon Emission Efficiency",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/carbon-emission-efficiency"
     },
@@ -748,7 +748,7 @@
       id: "change-failure-rate",
       label: "Change failure rate",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/change-failure-rate"
     },
@@ -756,7 +756,7 @@
       id: "changeability",
       label: "Changeability",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/changeability"
     },
@@ -764,7 +764,7 @@
       id: "clarity",
       label: "Clarity",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/clarity"
     },
@@ -772,7 +772,7 @@
       id: "clarity-in-technical-documentation",
       label: "Clarity in technical documentation",
       size: 15,
-      color: "#ceffce",
+      color: "#92ef80",
       qualityType: "requirement",
       page: "/requirements/clarity-in-technical-documentation"
     },
@@ -780,7 +780,7 @@
       id: "co-existence",
       label: "Co-existence",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/co-existence"
     },
@@ -788,7 +788,7 @@
       id: "code-complexity",
       label: "Code Complexity",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/code-complexity"
     },
@@ -796,7 +796,7 @@
       id: "code-readability",
       label: "Code Readability",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/code-readability"
     },
@@ -804,7 +804,7 @@
       id: "coherence",
       label: "Coherence",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/coherence"
     },
@@ -812,7 +812,7 @@
       id: "cohesion",
       label: "Cohesion",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/cohesion"
     },
@@ -820,7 +820,7 @@
       id: "communicability",
       label: "Communicability",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/communicability"
     },
@@ -828,7 +828,7 @@
       id: "compatibility",
       label: "Compatibility",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/compatibility"
     },
@@ -836,7 +836,7 @@
       id: "compatible-with-5-battery-providers",
       label: "Compatible with 5 different battery providers",
       size: 15,
-      color: "#ceffce",
+      color: "#92ef80",
       qualityType: "requirement",
       page: "/requirements/compatible-with-5-battery-providers"
     },
@@ -844,7 +844,7 @@
       id: "compliance",
       label: "Compliance",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/compliance"
     },
@@ -852,7 +852,7 @@
       id: "compliance-with-ui-styleguide",
       label: "Compliance with UI styleguide",
       size: 15,
-      color: "#ceffce",
+      color: "#92ef80",
       qualityType: "requirement",
       page: "/requirements/compliance-with-ui-styleguide"
     },
@@ -860,7 +860,7 @@
       id: "compliance-to-wcag",
       label: "Compliance with WCAG accessibility guidelines",
       size: 15,
-      color: "#ceffce",
+      color: "#92ef80",
       qualityType: "requirement",
       page: "/requirements/compliance-to-wcag"
     },
@@ -868,7 +868,7 @@
       id: "composability",
       label: "Composability",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/composability"
     },
@@ -876,7 +876,7 @@
       id: "conciseness",
       label: "Conciseness",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/conciseness"
     },
@@ -884,7 +884,7 @@
       id: "confidentiality",
       label: "Confidentiality",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/confidentiality"
     },
@@ -892,7 +892,7 @@
       id: "confidentiality-by-multitenance",
       label: "Confidentiality by multi-tenancy",
       size: 15,
-      color: "#ceffce",
+      color: "#92ef80",
       qualityType: "requirement",
       page: "/requirements/confidentiality-by-multitenance"
     },
@@ -900,7 +900,7 @@
       id: "configurability",
       label: "Configurability",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/configurability"
     },
@@ -908,7 +908,7 @@
       id: "configurable-ui-theme",
       label: "Configurable UI theme",
       size: 15,
-      color: "#ceffce",
+      color: "#92ef80",
       qualityType: "requirement",
       page: "/requirements/configurable-ui-theme"
     },
@@ -916,7 +916,7 @@
       id: "consistency",
       label: "Consistency",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/consistency"
     },
@@ -924,7 +924,7 @@
       id: "consistent-keyboard-shortcuts",
       label: "Consistent keyboard shortcuts",
       size: 15,
-      color: "#ceffce",
+      color: "#92ef80",
       qualityType: "requirement",
       page: "/requirements/consistent-keyboard-shortcuts"
     },
@@ -932,7 +932,7 @@
       id: "controllability",
       label: "Controllability",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/controllability"
     },
@@ -940,7 +940,7 @@
       id: "convenience",
       label: "Convenience",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/convenience"
     },
@@ -948,7 +948,7 @@
       id: "convenient-online-banking",
       label: "Convenient online banking",
       size: 15,
-      color: "#ceffce",
+      color: "#92ef80",
       qualityType: "requirement",
       page: "/requirements/convenient-online-banking"
     },
@@ -956,7 +956,7 @@
       id: "core-functions-on-mac-win-linux",
       label: "Core functions can be used on multiple OSs",
       size: 15,
-      color: "#ceffce",
+      color: "#92ef80",
       qualityType: "requirement",
       page: "/requirements/core-functions-on-mac-win-linux"
     },
@@ -964,7 +964,7 @@
       id: "correctness",
       label: "Correctness",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/correctness"
     },
@@ -972,7 +972,7 @@
       id: "cost",
       label: "Cost",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/cost"
     },
@@ -980,7 +980,7 @@
       id: "credibility",
       label: "Credibility",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/credibility"
     },
@@ -988,7 +988,7 @@
       id: "cultural-sensitivity-in-content",
       label: "Cultural Sensitivity in Content",
       size: 15,
-      color: "#ceffce",
+      color: "#92ef80",
       qualityType: "requirement",
       page: "/requirements/cultural-sensitivity-in-content"
     },
@@ -996,7 +996,7 @@
       id: "customizability",
       label: "Customizability",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/customizability"
     },
@@ -1004,7 +1004,7 @@
       id: "cyber-security",
       label: "Cyber Security",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/cyber-security"
     },
@@ -1012,7 +1012,7 @@
       id: "cycle-time",
       label: "Cycle time",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/cycle-time"
     },
@@ -1020,15 +1020,23 @@
       id: "data-throughput-for-visual-test-system",
       label: "Data Throughput for Visual Test System",
       size: 15,
-      color: "#ceffce",
+      color: "#92ef80",
       qualityType: "requirement",
       page: "/requirements/data-throughput-for-visual-test-system"
+    },
+    {
+      id: "debuggability",
+      label: "Debuggability",
+      size: 25,
+      color: "#00B8F5",
+      qualityType: "quality",
+      page: "/qualities/debuggability"
     },
     {
       id: "dependability",
       label: "Dependability",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/dependability"
     },
@@ -1036,7 +1044,7 @@
       id: "deployability",
       label: "Deployability",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/deployability"
     },
@@ -1044,7 +1052,7 @@
       id: "deployment-frequency",
       label: "Deployment frequency",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/deployment-frequency"
     },
@@ -1052,7 +1060,7 @@
       id: "detailed-audit-log",
       label: "Detailed audit log",
       size: 15,
-      color: "#ceffce",
+      color: "#92ef80",
       qualityType: "requirement",
       page: "/requirements/detailed-audit-log"
     },
@@ -1060,7 +1068,7 @@
       id: "detect-inconsistent-user-input",
       label: "Detect inconsistent user input",
       size: 15,
-      color: "#ceffce",
+      color: "#92ef80",
       qualityType: "requirement",
       page: "/requirements/detect-inconsistent-user-input"
     },
@@ -1068,15 +1076,23 @@
       id: "devops-metrics",
       label: "Devops-Metrics",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/devops-metrics"
+    },
+    {
+      id: "discoverability",
+      label: "Discoverability",
+      size: 25,
+      color: "#00B8F5",
+      qualityType: "quality",
+      page: "/qualities/discoverability"
     },
     {
       id: "display-data-based-on-context",
       label: "Display Data Based on Context",
       size: 15,
-      color: "#ceffce",
+      color: "#92ef80",
       qualityType: "requirement",
       page: "/requirements/display-data-based-on-context"
     },
@@ -1084,15 +1100,23 @@
       id: "DORA-metrics",
       label: "DORA Metrics",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/DORA-metrics"
+    },
+    {
+      id: "durability",
+      label: "Durability",
+      size: 25,
+      color: "#00B8F5",
+      qualityType: "quality",
+      page: "/qualities/durability"
     },
     {
       id: "ease-of-use",
       label: "Ease of Use",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/ease-of-use"
     },
@@ -1100,7 +1124,7 @@
       id: "change-cloud-provider",
       label: "Easily change cloud provider",
       size: 15,
-      color: "#ceffce",
+      color: "#92ef80",
       qualityType: "requirement",
       page: "/requirements/change-cloud-provider"
     },
@@ -1108,7 +1132,7 @@
       id: "understandable-acceptance-tests",
       label: "Easily understandable acceptance test cases",
       size: 15,
-      color: "#ceffce",
+      color: "#92ef80",
       qualityType: "requirement",
       page: "/requirements/understandable-acceptance-tests"
     },
@@ -1116,7 +1140,7 @@
       id: "understandable-generated-code",
       label: "Easily understandable generated code",
       size: 15,
-      color: "#ceffce",
+      color: "#92ef80",
       qualityType: "requirement",
       page: "/requirements/understandable-generated-code"
     },
@@ -1124,7 +1148,7 @@
       id: "easy-ui",
       label: "Easy UI",
       size: 15,
-      color: "#ceffce",
+      color: "#92ef80",
       qualityType: "requirement",
       page: "/requirements/easy-ui"
     },
@@ -1132,7 +1156,7 @@
       id: "effectiveness",
       label: "Effectiveness",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/effectiveness"
     },
@@ -1140,7 +1164,7 @@
       id: "efficiency",
       label: "Efficiency",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/efficiency"
     },
@@ -1148,7 +1172,7 @@
       id: "luggage-routing",
       label: "Efficient change of business rules",
       size: 15,
-      color: "#ceffce",
+      color: "#92ef80",
       qualityType: "requirement",
       page: "/requirements/luggage-routing"
     },
@@ -1156,7 +1180,7 @@
       id: "efficient-generation-of-test-data",
       label: "Efficient generation of test data",
       size: 15,
-      color: "#ceffce",
+      color: "#92ef80",
       qualityType: "requirement",
       page: "/requirements/efficient-generation-of-test-data"
     },
@@ -1164,7 +1188,7 @@
       id: "efficient-save-function",
       label: "Efficient save function",
       size: 15,
-      color: "#ceffce",
+      color: "#92ef80",
       qualityType: "requirement",
       page: "/requirements/efficient-save-function"
     },
@@ -1172,7 +1196,7 @@
       id: "annual-tax-update",
       label: "Efficient update of annual accounting report",
       size: 15,
-      color: "#ceffce",
+      color: "#92ef80",
       qualityType: "requirement",
       page: "/requirements/annual-tax-update"
     },
@@ -1180,7 +1204,7 @@
       id: "elasticity",
       label: "Elasticity",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/elasticity"
     },
@@ -1188,7 +1212,7 @@
       id: "employee-attempts-to-modify-pay-rate",
       label: "Employee attempts to modify pay rate",
       size: 15,
-      color: "#ceffce",
+      color: "#92ef80",
       qualityType: "requirement",
       page: "/requirements/employee-attempts-to-modify-pay-rate"
     },
@@ -1196,7 +1220,7 @@
       id: "encrypted-storage",
       label: "Encrypted storage",
       size: 15,
-      color: "#ceffce",
+      color: "#92ef80",
       qualityType: "requirement",
       page: "/requirements/encrypted-storage"
     },
@@ -1204,7 +1228,7 @@
       id: "energy-efficiency",
       label: "Energy Efficiency",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/energy-efficiency"
     },
@@ -1212,15 +1236,23 @@
       id: "every-data-modification-is-logged",
       label: "Every data modification is logged",
       size: 15,
-      color: "#ceffce",
+      color: "#92ef80",
       qualityType: "requirement",
       page: "/requirements/every-data-modification-is-logged"
+    },
+    {
+      id: "evolvability",
+      label: "Evolvability",
+      size: 25,
+      color: "#00B8F5",
+      qualityType: "quality",
+      page: "/qualities/evolvability"
     },
     {
       id: "expected-physical-environment",
       label: "Expected physical environment",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/expected-physical-environment"
     },
@@ -1228,7 +1260,7 @@
       id: "explainability",
       label: "Explainability",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/explainability"
     },
@@ -1236,7 +1268,7 @@
       id: "expressive-error-messages",
       label: "Expressive error messages",
       size: 15,
-      color: "#ceffce",
+      color: "#92ef80",
       qualityType: "requirement",
       page: "/requirements/expressive-error-messages"
     },
@@ -1244,7 +1276,7 @@
       id: "extensibility",
       label: "Extensibility",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/extensibility"
     },
@@ -1252,7 +1284,7 @@
       id: "fail-safe",
       label: "Fail safe",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/fail-safe"
     },
@@ -1260,7 +1292,7 @@
       id: "fast-accurate-sensor",
       label: "Fast and accurate sensor",
       size: 15,
-      color: "#ceffce",
+      color: "#92ef80",
       qualityType: "requirement",
       page: "/requirements/fast-accurate-sensor"
     },
@@ -1268,7 +1300,7 @@
       id: "fast-creation-of-sales-report",
       label: "Fast creation of sales report",
       size: 15,
-      color: "#ceffce",
+      color: "#92ef80",
       qualityType: "requirement",
       page: "/requirements/fast-creation-of-sales-report"
     },
@@ -1276,7 +1308,7 @@
       id: "fast-deployment",
       label: "Fast deployment",
       size: 15,
-      color: "#ceffce",
+      color: "#92ef80",
       qualityType: "requirement",
       page: "/requirements/fast-deployment"
     },
@@ -1284,15 +1316,23 @@
       id: "fast-rollout-of-changes",
       label: "Fast rollout of changes",
       size: 15,
-      color: "#ceffce",
+      color: "#92ef80",
       qualityType: "requirement",
       page: "/requirements/fast-rollout-of-changes"
+    },
+    {
+      id: "fast-shutdown-time",
+      label: "Fast shutdown time (less than 10 sec)",
+      size: 15,
+      color: "#92ef80",
+      qualityType: "requirement",
+      page: "/requirements/fast-shutdown-time"
     },
     {
       id: "fast-startup-time",
       label: "Fast startup time (less than 90 sec)",
       size: 15,
-      color: "#ceffce",
+      color: "#92ef80",
       qualityType: "requirement",
       page: "/requirements/fast-startup-time"
     },
@@ -1300,7 +1340,7 @@
       id: "fault-isolation",
       label: "Fault isolation",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/fault-isolation"
     },
@@ -1308,7 +1348,7 @@
       id: "fault-tolerance",
       label: "Fault tolerance",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/fault-tolerance"
     },
@@ -1316,7 +1356,7 @@
       id: "faultlessness",
       label: "Faultlessness",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/faultlessness"
     },
@@ -1324,7 +1364,7 @@
       id: "features",
       label: "Features",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/features"
     },
@@ -1332,7 +1372,7 @@
       id: "flexibility",
       label: "Flexibility",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/flexibility"
     },
@@ -1340,7 +1380,7 @@
       id: "functional-appropriateness",
       label: "Functional Appropriateness",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/functional-appropriateness"
     },
@@ -1348,7 +1388,7 @@
       id: "functional-completeness",
       label: "Functional completeness",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/functional-completeness"
     },
@@ -1356,7 +1396,7 @@
       id: "functional-correctness",
       label: "Functional correctness",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/functional-correctness"
     },
@@ -1364,7 +1404,7 @@
       id: "functional-suitability",
       label: "Functional suitability",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/functional-suitability"
     },
@@ -1372,7 +1412,7 @@
       id: "functionality",
       label: "Functionality",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/functionality"
     },
@@ -1380,7 +1420,7 @@
       id: "global-explainability",
       label: "Global Explainability",
       size: 15,
-      color: "#ceffce",
+      color: "#92ef80",
       qualityType: "requirement",
       page: "/requirements/global-explainability"
     },
@@ -1388,7 +1428,7 @@
       id: "good-code-readability-score",
       label: "Good code readability score",
       size: 15,
-      color: "#ceffce",
+      color: "#92ef80",
       qualityType: "requirement",
       page: "/requirements/good-code-readability-score"
     },
@@ -1396,7 +1436,7 @@
       id: "graceful-degradation",
       label: "Graceful degradation",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/graceful-degradation"
     },
@@ -1404,7 +1444,7 @@
       id: "handle-sudden-increase-in-traffic",
       label: "Handle sudden increase in traffic",
       size: 15,
-      color: "#ceffce",
+      color: "#92ef80",
       qualityType: "requirement",
       page: "/requirements/handle-sudden-increase-in-traffic"
     },
@@ -1412,7 +1452,7 @@
       id: "hazard-warning",
       label: "Hazard warning",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/hazard-warning"
     },
@@ -1420,7 +1460,7 @@
       id: "high-availability",
       label: "High availability",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/high-availability"
     },
@@ -1428,7 +1468,7 @@
       id: "i18n",
       label: "i18n (Internationalization)",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/i18n"
     },
@@ -1436,7 +1476,7 @@
       id: "immunity",
       label: "Immunity",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/immunity"
     },
@@ -1444,7 +1484,7 @@
       id: "inclusive-user-testing",
       label: "Inclusive User Testing",
       size: 15,
-      color: "#ceffce",
+      color: "#92ef80",
       qualityType: "requirement",
       page: "/requirements/inclusive-user-testing"
     },
@@ -1452,7 +1492,7 @@
       id: "inclusivity",
       label: "Inclusivity",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/inclusivity"
     },
@@ -1460,7 +1500,7 @@
       id: "independence",
       label: "Independence",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/independence"
     },
@@ -1468,7 +1508,7 @@
       id: "independent-enhancement-of-subsystem",
       label: "Independent enhancement of subsystem",
       size: 15,
-      color: "#ceffce",
+      color: "#92ef80",
       qualityType: "requirement",
       page: "/requirements/independent-enhancement-of-subsystem"
     },
@@ -1476,7 +1516,7 @@
       id: "independent-replacement-of-subsystem",
       label: "Independent replacement of subsystem",
       size: 15,
-      color: "#ceffce",
+      color: "#92ef80",
       qualityType: "requirement",
       page: "/requirements/independent-replacement-of-subsystem"
     },
@@ -1484,7 +1524,7 @@
       id: "information-security",
       label: "Information Security",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/information-security"
     },
@@ -1492,7 +1532,7 @@
       id: "installability",
       label: "Installability",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/installability"
     },
@@ -1500,7 +1540,7 @@
       id: "integrity",
       label: "Integrity",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/integrity"
     },
@@ -1508,7 +1548,7 @@
       id: "interaction-capability",
       label: "Interaction capability",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/interaction-capability"
     },
@@ -1516,7 +1556,7 @@
       id: "internationalization",
       label: "Internationalization",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/internationalization"
     },
@@ -1524,7 +1564,7 @@
       id: "interoperability",
       label: "Interoperability",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/interoperability"
     },
@@ -1532,7 +1572,7 @@
       id: "interoperable-with-java-12",
       label: "Interoperable with Java 12",
       size: 15,
-      color: "#ceffce",
+      color: "#92ef80",
       qualityType: "requirement",
       page: "/requirements/interoperable-with-java-12"
     },
@@ -1540,7 +1580,7 @@
       id: "interruptable-backend-process",
       label: "Interruptable backend process",
       size: 15,
-      color: "#ceffce",
+      color: "#92ef80",
       qualityType: "requirement",
       page: "/requirements/interruptable-backend-process"
     },
@@ -1548,7 +1588,7 @@
       id: "intrusion-detection",
       label: "Intrusion Detection",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/intrusion-detection"
     },
@@ -1556,7 +1596,7 @@
       id: "intrusion-prevention",
       label: "Intrusion Prevention",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/intrusion-prevention"
     },
@@ -1564,7 +1604,7 @@
       id: "jitter",
       label: "Jitter",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/jitter"
     },
@@ -1572,7 +1612,7 @@
       id: "keep-data-on-error",
       label: "Keep data on error",
       size: 15,
-      color: "#ceffce",
+      color: "#92ef80",
       qualityType: "requirement",
       page: "/requirements/keep-data-on-error"
     },
@@ -1580,7 +1620,7 @@
       id: "latency",
       label: "Latency",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/latency"
     },
@@ -1588,7 +1628,7 @@
       id: "lead-time-for-changes",
       label: "Lead time for changes",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/lead-time-for-changes"
     },
@@ -1596,7 +1636,7 @@
       id: "learnability",
       label: "Learnability",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/learnability"
     },
@@ -1604,7 +1644,7 @@
       id: "legal-requirements",
       label: "Legal Requirements",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/legal-requirements"
     },
@@ -1612,7 +1652,7 @@
       id: "legibility",
       label: "Legibility",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/legibility"
     },
@@ -1620,7 +1660,7 @@
       id: "local-explainability",
       label: "Local Explainability",
       size: 15,
-      color: "#ceffce",
+      color: "#92ef80",
       qualityType: "requirement",
       page: "/requirements/local-explainability"
     },
@@ -1628,7 +1668,7 @@
       id: "localizability",
       label: "Localizability",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/localizability"
     },
@@ -1636,7 +1676,7 @@
       id: "localizable-to-n-languages",
       label: "Localizable to several languages",
       size: 15,
-      color: "#ceffce",
+      color: "#92ef80",
       qualityType: "requirement",
       page: "/requirements/localizable-to-n-languages"
     },
@@ -1644,7 +1684,7 @@
       id: "longevity",
       label: "Longevity",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/longevity"
     },
@@ -1652,7 +1692,7 @@
       id: "loose-coupling",
       label: "Loose Coupling",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/loose-coupling"
     },
@@ -1660,7 +1700,7 @@
       id: "low-change-failure-rate",
       label: "Low change-failure rate",
       size: 15,
-      color: "#ceffce",
+      color: "#92ef80",
       qualityType: "requirement",
       page: "/requirements/low-change-failure-rate"
     },
@@ -1668,7 +1708,7 @@
       id: "low-effort-deployment",
       label: "Low effort deployment",
       size: 15,
-      color: "#ceffce",
+      color: "#92ef80",
       qualityType: "requirement",
       page: "/requirements/low-effort-deployment"
     },
@@ -1676,7 +1716,7 @@
       id: "low-impact-diagnosis",
       label: "Low impact diagnosis",
       size: 15,
-      color: "#ceffce",
+      color: "#92ef80",
       qualityType: "requirement",
       page: "/requirements/low-impact-diagnosis"
     },
@@ -1684,7 +1724,7 @@
       id: "query-execution-management",
       label: "Low-overhead query execution measurement",
       size: 15,
-      color: "#ceffce",
+      color: "#92ef80",
       qualityType: "requirement",
       page: "/requirements/query-execution-management"
     },
@@ -1692,7 +1732,7 @@
       id: "maintainability",
       label: "Maintainability",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/maintainability"
     },
@@ -1700,7 +1740,7 @@
       id: "maintainable-checking-strategy",
       label: "Maintainable checking strategies",
       size: 15,
-      color: "#ceffce",
+      color: "#92ef80",
       qualityType: "requirement",
       page: "/requirements/maintainable-checking-strategy"
     },
@@ -1708,7 +1748,7 @@
       id: "mean-time-between-failures",
       label: "Mean time between failures",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/mean-time-between-failures"
     },
@@ -1716,7 +1756,7 @@
       id: "mean-time-to-recovery",
       label: "Mean time to recovery",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/mean-time-to-recovery"
     },
@@ -1724,7 +1764,7 @@
       id: "memory-usage",
       label: "Memory usage",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/memory-usage"
     },
@@ -1732,7 +1772,7 @@
       id: "minimize-jitter",
       label: "Minimize jitter in real-time data streaming",
       size: 15,
-      color: "#ceffce",
+      color: "#92ef80",
       qualityType: "requirement",
       page: "/requirements/minimize-jitter"
     },
@@ -1740,7 +1780,7 @@
       id: "modifiability",
       label: "Modifiability",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/modifiability"
     },
@@ -1748,7 +1788,7 @@
       id: "modular-system-for-data-analysis",
       label: "Modular System for Data Analysis",
       size: 15,
-      color: "#ceffce",
+      color: "#92ef80",
       qualityType: "requirement",
       page: "/requirements/modular-system-for-data-analysis"
     },
@@ -1756,7 +1796,7 @@
       id: "modularity",
       label: "Modularity",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/modularity"
     },
@@ -1764,7 +1804,7 @@
       id: "multilinguality-support",
       label: "Multilinguality Support",
       size: 15,
-      color: "#ceffce",
+      color: "#92ef80",
       qualityType: "requirement",
       page: "/requirements/multilinguality-support"
     },
@@ -1772,7 +1812,7 @@
       id: "near-instant-search-results",
       label: "Near instant search results",
       size: 15,
-      color: "#ceffce",
+      color: "#92ef80",
       qualityType: "requirement",
       page: "/requirements/near-instant-search-results"
     },
@@ -1780,7 +1820,7 @@
       id: "new-features-introduct-no-bugs",
       label: "New Features Introduce No Bugs",
       size: 15,
-      color: "#ceffce",
+      color: "#92ef80",
       qualityType: "requirement",
       page: "/requirements/new-features-introduct-no-bugs"
     },
@@ -1788,7 +1828,7 @@
       id: "learnability-find-article",
       label: "New users learn to find articles on their own",
       size: 15,
-      color: "#ceffce",
+      color: "#92ef80",
       qualityType: "requirement",
       page: "/requirements/learnability-find-article"
     },
@@ -1796,7 +1836,7 @@
       id: "non-repudiation",
       label: "Non-repudiation",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/non-repudiation"
     },
@@ -1804,7 +1844,7 @@
       id: "observability",
       label: "Observability",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/observability"
     },
@@ -1812,7 +1852,7 @@
       id: "only-authenticated-users-can-access",
       label: "Only authenticated users can access data",
       size: 15,
-      color: "#ceffce",
+      color: "#92ef80",
       qualityType: "requirement",
       page: "/requirements/only-authenticated-users-can-access"
     },
@@ -1820,7 +1860,7 @@
       id: "operability",
       label: "Operability",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/operability"
     },
@@ -1828,7 +1868,7 @@
       id: "operational-environment-requirements",
       label: "Operational and Environment Requirements",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/operational-environment-requirements"
     },
@@ -1836,7 +1876,7 @@
       id: "operational-constraint",
       label: "Operational constraint",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/operational-constraint"
     },
@@ -1844,7 +1884,7 @@
       id: "order-queue",
       label: "Order queue",
       size: 15,
-      color: "#ceffce",
+      color: "#92ef80",
       qualityType: "requirement",
       page: "/requirements/order-queue"
     },
@@ -1852,7 +1892,7 @@
       id: "parallel-data-modification",
       label: "Parallel Data Modification",
       size: 15,
-      color: "#ceffce",
+      color: "#92ef80",
       qualityType: "requirement",
       page: "/requirements/parallel-data-modification"
     },
@@ -1860,7 +1900,7 @@
       id: "patient-safety",
       label: "Patient Safety",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/patient-safety"
     },
@@ -1868,7 +1908,7 @@
       id: "performance",
       label: "Performance",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/performance"
     },
@@ -1876,7 +1916,7 @@
       id: "performance-efficiency",
       label: "Performance Efficiency",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/performance-efficiency"
     },
@@ -1884,7 +1924,7 @@
       id: "personalization",
       label: "Personalization",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/personalization"
     },
@@ -1892,7 +1932,7 @@
       id: "portability",
       label: "Portability",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/portability"
     },
@@ -1900,7 +1940,7 @@
       id: "portable-business-data-checker",
       label: "Portable Business Data Checker",
       size: 15,
-      color: "#ceffce",
+      color: "#92ef80",
       qualityType: "requirement",
       page: "/requirements/portable-business-data-checker"
     },
@@ -1908,7 +1948,7 @@
       id: "high-precision-calculation",
       label: "Precise calculation of gamma coefficient",
       size: 15,
-      color: "#ceffce",
+      color: "#92ef80",
       qualityType: "requirement",
       page: "/requirements/high-precision-calculation"
     },
@@ -1916,7 +1956,7 @@
       id: "preciseness",
       label: "Preciseness",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/preciseness"
     },
@@ -1924,7 +1964,7 @@
       id: "precision",
       label: "Precision",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/precision"
     },
@@ -1932,7 +1972,7 @@
       id: "precise-vehicle-orientation-gps",
       label: "Precision of vehicle's orientation",
       size: 15,
-      color: "#ceffce",
+      color: "#92ef80",
       qualityType: "requirement",
       page: "/requirements/precise-vehicle-orientation-gps"
     },
@@ -1940,7 +1980,7 @@
       id: "predictability",
       label: "Predictability",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/predictability"
     },
@@ -1948,7 +1988,7 @@
       id: "privacy",
       label: "Privacy",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/privacy"
     },
@@ -1956,7 +1996,7 @@
       id: "profitability",
       label: "Profitability",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/profitability"
     },
@@ -1964,15 +2004,23 @@
       id: "protect-data-by-security-procols",
       label: "Protect Data by Establishing Security Protocols",
       size: 15,
-      color: "#ceffce",
+      color: "#92ef80",
       qualityType: "requirement",
       page: "/requirements/protect-data-by-security-procols"
+    },
+    {
+      id: "provability",
+      label: "Provability",
+      size: 25,
+      color: "#00B8F5",
+      qualityType: "quality",
+      page: "/qualities/provability"
     },
     {
       id: "quick-unit-tests",
       label: "Quick unit tests",
       size: 15,
-      color: "#ceffce",
+      color: "#92ef80",
       qualityType: "requirement",
       page: "/requirements/quick-unit-tests"
     },
@@ -1980,7 +2028,7 @@
       id: "quickly-locate-bugs",
       label: "Quickly locate bugs",
       size: 15,
-      color: "#ceffce",
+      color: "#92ef80",
       qualityType: "requirement",
       page: "/requirements/quickly-locate-bugs"
     },
@@ -1988,7 +2036,7 @@
       id: "readability",
       label: "Readability",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/readability"
     },
@@ -1996,7 +2044,7 @@
       id: "recognize-assistive-technology",
       label: "Recognize Assistive Technologies",
       size: 15,
-      color: "#ceffce",
+      color: "#92ef80",
       qualityType: "requirement",
       page: "/requirements/recognize-assistive-technology"
     },
@@ -2004,7 +2052,7 @@
       id: "recoverability",
       label: "Recoverability",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/recoverability"
     },
@@ -2012,7 +2060,7 @@
       id: "recovery-time",
       label: "Recovery time",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/recovery-time"
     },
@@ -2020,15 +2068,23 @@
       id: "reduce-energy-consumption-with-new-version",
       label: "Reduce energy consumption with every new version",
       size: 15,
-      color: "#ceffce",
+      color: "#92ef80",
       qualityType: "requirement",
       page: "/requirements/reduce-energy-consumption-with-new-version"
+    },
+    {
+      id: "redundancy",
+      label: "Redundancy",
+      size: 25,
+      color: "#00B8F5",
+      qualityType: "quality",
+      page: "/qualities/redundancy"
     },
     {
       id: "releasability",
       label: "Releasability",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/releasability"
     },
@@ -2036,7 +2092,7 @@
       id: "reliability",
       label: "Reliability",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/reliability"
     },
@@ -2044,7 +2100,7 @@
       id: "reliable-backup-and-restore",
       label: "Reliable Backup and Restore",
       size: 15,
-      color: "#ceffce",
+      color: "#92ef80",
       qualityType: "requirement",
       page: "/requirements/reliable-backup-and-restore"
     },
@@ -2052,7 +2108,7 @@
       id: "reliable-erh-system",
       label: "Reliable ERH System",
       size: 15,
-      color: "#ceffce",
+      color: "#92ef80",
       qualityType: "requirement",
       page: "/requirements/reliable-erh-system"
     },
@@ -2060,7 +2116,7 @@
       id: "replaceability",
       label: "Replaceability",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/replaceability"
     },
@@ -2068,7 +2124,7 @@
       id: "reproducibility",
       label: "Reproducibility",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/reproducibility"
     },
@@ -2076,7 +2132,7 @@
       id: "resilience",
       label: "Resilience",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/resilience"
     },
@@ -2084,7 +2140,7 @@
       id: "resistance",
       label: "Resistance",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/resistance"
     },
@@ -2092,7 +2148,7 @@
       id: "resource-efficiency",
       label: "Resource efficiency",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/resource-efficiency"
     },
@@ -2100,7 +2156,7 @@
       id: "resource-utilization",
       label: "Resource utilization",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/resource-utilization"
     },
@@ -2108,7 +2164,7 @@
       id: "respond-to-15000-requests-per-workday",
       label: "Respond to 15000 requests per workday",
       size: 15,
-      color: "#ceffce",
+      color: "#92ef80",
       qualityType: "requirement",
       page: "/requirements/respond-to-15000-requests-per-workday"
     },
@@ -2116,7 +2172,7 @@
       id: "response-time",
       label: "Response Time",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/response-time"
     },
@@ -2124,7 +2180,7 @@
       id: "response-time-for-image-rendering",
       label: "Response time for image rendering",
       size: 15,
-      color: "#ceffce",
+      color: "#92ef80",
       qualityType: "requirement",
       page: "/requirements/response-time-for-image-rendering"
     },
@@ -2132,7 +2188,7 @@
       id: "responsiveness",
       label: "Responsiveness",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/responsiveness"
     },
@@ -2140,7 +2196,7 @@
       id: "restore-filter-after-log-in",
       label: "Restore Filter after Log In",
       size: 15,
-      color: "#ceffce",
+      color: "#92ef80",
       qualityType: "requirement",
       page: "/requirements/restore-filter-after-log-in"
     },
@@ -2148,7 +2204,7 @@
       id: "mttr-12h",
       label: "Restored to fully functional state 12h after complete failure",
       size: 15,
-      color: "#ceffce",
+      color: "#92ef80",
       qualityType: "requirement",
       page: "/requirements/mttr-12h"
     },
@@ -2156,7 +2212,7 @@
       id: "restricted-memory",
       label: "Restricted Memory",
       size: 15,
-      color: "#ceffce",
+      color: "#92ef80",
       qualityType: "requirement",
       page: "/requirements/restricted-memory"
     },
@@ -2164,7 +2220,7 @@
       id: "reusability",
       label: "Reusability",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/reusability"
     },
@@ -2172,7 +2228,7 @@
       id: "risk-identification",
       label: "Risk identification",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/risk-identification"
     },
@@ -2180,7 +2236,7 @@
       id: "robustness",
       label: "Robustness",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/robustness"
     },
@@ -2188,7 +2244,7 @@
       id: "rollout-new-feature",
       label: "Rollout of a new feature",
       size: 15,
-      color: "#ceffce",
+      color: "#92ef80",
       qualityType: "requirement",
       page: "/requirements/rollout-new-feature"
     },
@@ -2196,7 +2252,7 @@
       id: "safe-integration",
       label: "Safe integration",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/safe-integration"
     },
@@ -2204,7 +2260,7 @@
       id: "safety",
       label: "Safety",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/safety"
     },
@@ -2212,7 +2268,7 @@
       id: "carbon-efficiency-save",
       label: "Save at least 20% of carbon emissions with every new version",
       size: 15,
-      color: "#ceffce",
+      color: "#92ef80",
       qualityType: "requirement",
       page: "/requirements/carbon-efficiency-save"
     },
@@ -2220,7 +2276,7 @@
       id: "scalability",
       label: "Scalability",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/scalability"
     },
@@ -2228,7 +2284,7 @@
       id: "scale-up-in-2-minutes",
       label: "Scale up in 2 Minutes",
       size: 15,
-      color: "#ceffce",
+      color: "#92ef80",
       qualityType: "requirement",
       page: "/requirements/scale-up-in-2-minutes"
     },
@@ -2236,7 +2292,7 @@
       id: "securability",
       label: "Securability",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/securability"
     },
@@ -2244,7 +2300,7 @@
       id: "security",
       label: "Security",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/security"
     },
@@ -2252,7 +2308,7 @@
       id: "self-containedness",
       label: "Self-containedness",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/self-containedness"
     },
@@ -2260,7 +2316,7 @@
       id: "self-descriptiveness",
       label: "Self-descriptiveness",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/self-descriptiveness"
     },
@@ -2268,7 +2324,7 @@
       id: "server-fails-operation-without-downtime",
       label: "Server fails, system continues to operate without downtime",
       size: 15,
-      color: "#ceffce",
+      color: "#92ef80",
       qualityType: "requirement",
       page: "/requirements/server-fails-operation-without-downtime"
     },
@@ -2276,15 +2332,23 @@
       id: "shutdown-to-safe-state",
       label: "Severe errors are detected and the system shuts down into safe state",
       size: 15,
-      color: "#ceffce",
+      color: "#92ef80",
       qualityType: "requirement",
       page: "/requirements/shutdown-to-safe-state"
+    },
+    {
+      id: "shutdown-time",
+      label: "Shutdown Time",
+      size: 25,
+      color: "#00B8F5",
+      qualityType: "quality",
+      page: "/qualities/shutdown-time"
     },
     {
       id: "simplicity",
       label: "Simplicity",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/simplicity"
     },
@@ -2292,7 +2356,7 @@
       id: "speed",
       label: "Speed",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/speed"
     },
@@ -2300,7 +2364,7 @@
       id: "speed-to-market",
       label: "Speed to Market",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/speed-to-market"
     },
@@ -2308,7 +2372,7 @@
       id: "stability",
       label: "Stability",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/stability"
     },
@@ -2316,7 +2380,7 @@
       id: "standard-compliance",
       label: "Standard Compliance",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/standard-compliance"
     },
@@ -2324,7 +2388,7 @@
       id: "startup-time",
       label: "Startup Time",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/startup-time"
     },
@@ -2332,7 +2396,7 @@
       id: "suitability",
       label: "Suitability",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/suitability"
     },
@@ -2340,7 +2404,7 @@
       id: "sustainability",
       label: "Sustainability",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/sustainability"
     },
@@ -2348,7 +2412,7 @@
       id: "long-running-without-reboot",
       label: "System can run >12h without re-booting the operating system",
       size: 15,
-      color: "#ceffce",
+      color: "#92ef80",
       qualityType: "requirement",
       page: "/requirements/long-running-without-reboot"
     },
@@ -2356,7 +2420,7 @@
       id: "system-runs-offline",
       label: "System runs offline",
       size: 15,
-      color: "#ceffce",
+      color: "#92ef80",
       qualityType: "requirement",
       page: "/requirements/system-runs-offline"
     },
@@ -2364,7 +2428,7 @@
       id: "test-coverage",
       label: "Test Coverage",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/test-coverage"
     },
@@ -2372,7 +2436,7 @@
       id: "test-with-path-coverage-30min",
       label: "Test with path coverage in 30min",
       size: 15,
-      color: "#ceffce",
+      color: "#92ef80",
       qualityType: "requirement",
       page: "/requirements/test-with-path-coverage-30min"
     },
@@ -2380,7 +2444,7 @@
       id: "testability",
       label: "Testability",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/testability"
     },
@@ -2388,7 +2452,7 @@
       id: "throughput",
       label: "Throughput",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/throughput"
     },
@@ -2396,7 +2460,7 @@
       id: "time-behaviour",
       label: "Time behaviour",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/time-behaviour"
     },
@@ -2404,7 +2468,7 @@
       id: "time-to-market",
       label: "Time to Market",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/time-to-market"
     },
@@ -2412,7 +2476,7 @@
       id: "timeliness",
       label: "Timeliness",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/timeliness"
     },
@@ -2420,15 +2484,23 @@
       id: "traceability",
       label: "Traceability",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/traceability"
+    },
+    {
+      id: "transactionality",
+      label: "Transactionality",
+      size: 25,
+      color: "#00B8F5",
+      qualityType: "quality",
+      page: "/qualities/transactionality"
     },
     {
       id: "transparency",
       label: "Transparency",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/transparency"
     },
@@ -2436,7 +2508,7 @@
       id: "unavailability-max-2-minutes",
       label: "Unavailable for max 2 minutes",
       size: 15,
-      color: "#ceffce",
+      color: "#92ef80",
       qualityType: "requirement",
       page: "/requirements/unavailability-max-2-minutes"
     },
@@ -2444,7 +2516,7 @@
       id: "understandability",
       label: "Understandability",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/understandability"
     },
@@ -2452,7 +2524,7 @@
       id: "up-to-date-api",
       label: "Up to date API",
       size: 15,
-      color: "#ceffce",
+      color: "#92ef80",
       qualityType: "requirement",
       page: "/requirements/up-to-date-api"
     },
@@ -2460,7 +2532,7 @@
       id: "upgradeability",
       label: "Upgradeability",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/upgradeability"
     },
@@ -2468,7 +2540,7 @@
       id: "usability",
       label: "Usability",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/usability"
     },
@@ -2476,7 +2548,7 @@
       id: "usable-despite-color-blindness",
       label: "Usable Despite Color Blindness",
       size: 15,
-      color: "#ceffce",
+      color: "#92ef80",
       qualityType: "requirement",
       page: "/requirements/usable-despite-color-blindness"
     },
@@ -2484,7 +2556,7 @@
       id: "usable-on-factory-floor",
       label: "Usable on Factory Floor",
       size: 15,
-      color: "#ceffce",
+      color: "#92ef80",
       qualityType: "requirement",
       page: "/requirements/usable-on-factory-floor"
     },
@@ -2492,7 +2564,7 @@
       id: "usable-with-gloves",
       label: "Usable With Gloves",
       size: 15,
-      color: "#ceffce",
+      color: "#92ef80",
       qualityType: "requirement",
       page: "/requirements/usable-with-gloves"
     },
@@ -2500,7 +2572,7 @@
       id: "user-assistance",
       label: "User assistance",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/user-assistance"
     },
@@ -2508,7 +2580,7 @@
       id: "user-engagement",
       label: "User engagement",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/user-engagement"
     },
@@ -2516,7 +2588,7 @@
       id: "user-error-protection",
       label: "User error protection",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/user-error-protection"
     },
@@ -2524,7 +2596,7 @@
       id: "user-experience",
       label: "User experience",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/user-experience"
     },
@@ -2532,7 +2604,7 @@
       id: "user-interface-aesthetics",
       label: "User interface aesthetics",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/user-interface-aesthetics"
     },
@@ -2540,7 +2612,7 @@
       id: "user-interface-works-with-current-browsers",
       label: "User Interface can be used in Current Browsers",
       size: 15,
-      color: "#ceffce",
+      color: "#92ef80",
       qualityType: "requirement",
       page: "/requirements/user-interface-works-with-current-browsers"
     },
@@ -2548,7 +2620,7 @@
       id: "user-tries-primary-function",
       label: "User tries to achieve primary function",
       size: 15,
-      color: "#ceffce",
+      color: "#92ef80",
       qualityType: "requirement",
       page: "/requirements/user-tries-primary-function"
     },
@@ -2556,7 +2628,7 @@
       id: "accurate-vehicle-position-gps",
       label: "Vehicle's position validity influences accuracy",
       size: 15,
-      color: "#ceffce",
+      color: "#92ef80",
       qualityType: "requirement",
       page: "/requirements/accurate-vehicle-position-gps"
     },
@@ -2564,7 +2636,7 @@
       id: "versatility",
       label: "Versatility",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/versatility"
     },
@@ -2572,7 +2644,7 @@
       id: "vulnerability",
       label: "Vulnerability",
       size: 25,
-      color: "#dcf1ff",
+      color: "#00B8F5",
       qualityType: "quality",
       page: "/qualities/vulnerability"
     },
@@ -2580,7 +2652,7 @@
       id: "withstand-ddos-attack",
       label: "Withstand DDoS Attack",
       size: 15,
-      color: "#ceffce",
+      color: "#92ef80",
       qualityType: "requirement",
       page: "/requirements/withstand-ddos-attack"
     },
@@ -2588,7 +2660,7 @@
       id: "zero-knowledge-data-storage",
       label: "Zero-knowledge data storage",
       size: 15,
-      color: "#ceffce",
+      color: "#92ef80",
       qualityType: "requirement",
       page: "/requirements/zero-knowledge-data-storage"
     }
@@ -3079,6 +3151,26 @@
     {
       source: "autonomy",
       target: "suitable"
+    },
+    {
+      source: "autonomy",
+      target: "independence"
+    },
+    {
+      source: "autonomy",
+      target: "self-containedness"
+    },
+    {
+      source: "autonomy",
+      target: "controllability"
+    },
+    {
+      source: "autonomy",
+      target: "composability"
+    },
+    {
+      source: "autonomy",
+      target: "flexibility"
     },
     {
       source: "availability",
@@ -3781,6 +3873,10 @@
       target: "usability"
     },
     {
+      source: "controllability",
+      target: "autonomy"
+    },
+    {
       source: "convenience",
       target: "usable"
     },
@@ -4001,6 +4097,38 @@
       target: "capacity"
     },
     {
+      source: "debuggability",
+      target: "operable"
+    },
+    {
+      source: "debuggability",
+      target: "flexible"
+    },
+    {
+      source: "debuggability",
+      target: "analysability"
+    },
+    {
+      source: "debuggability",
+      target: "maintainability"
+    },
+    {
+      source: "debuggability",
+      target: "operability"
+    },
+    {
+      source: "debuggability",
+      target: "observability"
+    },
+    {
+      source: "debuggability",
+      target: "testability"
+    },
+    {
+      source: "debuggability",
+      target: "transparency"
+    },
+    {
       source: "dependability",
       target: "reliable"
     },
@@ -4133,6 +4261,26 @@
       target: "deployability"
     },
     {
+      source: "discoverability",
+      target: "usable"
+    },
+    {
+      source: "discoverability",
+      target: "findability"
+    },
+    {
+      source: "discoverability",
+      target: "learnability"
+    },
+    {
+      source: "discoverability",
+      target: "usability"
+    },
+    {
+      source: "discoverability",
+      target: "intuitiveness"
+    },
+    {
       source: "display-data-based-on-context",
       target: "adaptability"
     },
@@ -4159,6 +4307,26 @@
     {
       source: "DORA-metrics",
       target: "operability"
+    },
+    {
+      source: "durability",
+      target: "reliable"
+    },
+    {
+      source: "durability",
+      target: "reliability"
+    },
+    {
+      source: "durability",
+      target: "availability"
+    },
+    {
+      source: "durability",
+      target: "robustness"
+    },
+    {
+      source: "durability",
+      target: "data-integrity"
     },
     {
       source: "ease-of-use",
@@ -4337,6 +4505,30 @@
       target: "recoverability"
     },
     {
+      source: "evolvability",
+      target: "flexible"
+    },
+    {
+      source: "evolvability",
+      target: "adaptability"
+    },
+    {
+      source: "evolvability",
+      target: "maintainability"
+    },
+    {
+      source: "evolvability",
+      target: "extensibility"
+    },
+    {
+      source: "evolvability",
+      target: "scalability"
+    },
+    {
+      source: "evolvability",
+      target: "modularity"
+    },
+    {
       source: "expected-physical-environment",
       target: "suitable"
     },
@@ -4509,6 +4701,18 @@
       target: "speed-to-market"
     },
     {
+      source: "fast-shutdown-time",
+      target: "time-behaviour"
+    },
+    {
+      source: "fast-shutdown-time",
+      target: "speed"
+    },
+    {
+      source: "fast-shutdown-time",
+      target: "shutdown-time"
+    },
+    {
       source: "fast-startup-time",
       target: "time-behaviour"
     },
@@ -4671,6 +4875,10 @@
     {
       source: "flexibility",
       target: "agility"
+    },
+    {
+      source: "flexibility",
+      target: "autonomy"
     },
     {
       source: "flexible",
@@ -5083,6 +5291,10 @@
     {
       source: "independence",
       target: "flexibility"
+    },
+    {
+      source: "independence",
+      target: "autonomy"
     },
     {
       source: "independent-enhancement-of-subsystem",
@@ -6261,6 +6473,26 @@
       target: "patient-safety"
     },
     {
+      source: "provability",
+      target: "reliable"
+    },
+    {
+      source: "provability",
+      target: "safe"
+    },
+    {
+      source: "provability",
+      target: "explainability"
+    },
+    {
+      source: "provability",
+      target: "verifiability"
+    },
+    {
+      source: "provability",
+      target: "correctness"
+    },
+    {
       source: "query-execution-management",
       target: "efficiency"
     },
@@ -6901,6 +7133,10 @@
       target: "modularity"
     },
     {
+      source: "self-containedness",
+      target: "autonomy"
+    },
+    {
       source: "self-descriptiveness",
       target: "usable"
     },
@@ -6943,6 +7179,18 @@
     {
       source: "server-fails-operation-without-downtime",
       target: "stability"
+    },
+    {
+      source: "shutdown-time",
+      target: "efficient"
+    },
+    {
+      source: "shutdown-time",
+      target: "startup-time"
+    },
+    {
+      source: "shutdown-time",
+      target: "time-behaviour"
     },
     {
       source: "shutdown-to-safe-state",
@@ -7311,6 +7559,26 @@
     {
       source: "traceability",
       target: "testability"
+    },
+    {
+      source: "transactionality",
+      target: "reliable"
+    },
+    {
+      source: "transactionality",
+      target: "consistency"
+    },
+    {
+      source: "transactionality",
+      target: "durability"
+    },
+    {
+      source: "transactionality",
+      target: "data-integrity"
+    },
+    {
+      source: "transactionality",
+      target: "robustness"
     },
     {
       source: "transparency",
@@ -15943,7 +16211,7 @@
       this.nodes.filter((d) => connectedNodes.has(d.id)).classed("connected-highlighted", highlight);
       this.labels.filter((d) => d.id === nodeId).classed("highlighted", highlight);
       this.labels.filter((d) => connectedNodes.has(d.id)).classed("connected-highlighted", highlight);
-      this.links.filter((d) => d.source.id === nodeId || d.target.id === nodeId).classed("highlighted", highlight).attr("stroke", highlight ? "#941651" : "#E0E0E0").attr("stroke-width", highlight ? 2 : 1);
+      this.links.filter((d) => d.source.id === nodeId || d.target.id === nodeId).classed("highlighted", highlight).attr("stroke", highlight ? "#cb9fff" : "#e6daf2").attr("stroke-width", highlight ? 2 : 1);
     }
     /**
      * Center the view on the visible nodes

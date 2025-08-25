@@ -484,6 +484,26 @@
     "target": "suitable"
   },
   {
+    "source": "autonomy",
+    "target": "independence"
+  },
+  {
+    "source": "autonomy",
+    "target": "self-containedness"
+  },
+  {
+    "source": "autonomy",
+    "target": "controllability"
+  },
+  {
+    "source": "autonomy",
+    "target": "composability"
+  },
+  {
+    "source": "autonomy",
+    "target": "flexibility"
+  },
+  {
     "source": "availability",
     "target": "reliable"
   },
@@ -1184,6 +1204,10 @@
     "target": "usability"
   },
   {
+    "source": "controllability",
+    "target": "autonomy"
+  },
+  {
     "source": "convenience",
     "target": "usable"
   },
@@ -1404,6 +1428,38 @@
     "target": "capacity"
   },
   {
+    "source": "debuggability",
+    "target": "operable"
+  },
+  {
+    "source": "debuggability",
+    "target": "flexible"
+  },
+  {
+    "source": "debuggability",
+    "target": "analysability"
+  },
+  {
+    "source": "debuggability",
+    "target": "maintainability"
+  },
+  {
+    "source": "debuggability",
+    "target": "operability"
+  },
+  {
+    "source": "debuggability",
+    "target": "observability"
+  },
+  {
+    "source": "debuggability",
+    "target": "testability"
+  },
+  {
+    "source": "debuggability",
+    "target": "transparency"
+  },
+  {
     "source": "dependability",
     "target": "reliable"
   },
@@ -1536,6 +1592,26 @@
     "target": "deployability"
   },
   {
+    "source": "discoverability",
+    "target": "usable"
+  },
+  {
+    "source": "discoverability",
+    "target": "findability"
+  },
+  {
+    "source": "discoverability",
+    "target": "learnability"
+  },
+  {
+    "source": "discoverability",
+    "target": "usability"
+  },
+  {
+    "source": "discoverability",
+    "target": "intuitiveness"
+  },
+  {
     "source": "display-data-based-on-context",
     "target": "adaptability"
   },
@@ -1562,6 +1638,26 @@
   {
     "source": "DORA-metrics",
     "target": "operability"
+  },
+  {
+    "source": "durability",
+    "target": "reliable"
+  },
+  {
+    "source": "durability",
+    "target": "reliability"
+  },
+  {
+    "source": "durability",
+    "target": "availability"
+  },
+  {
+    "source": "durability",
+    "target": "robustness"
+  },
+  {
+    "source": "durability",
+    "target": "data-integrity"
   },
   {
     "source": "ease-of-use",
@@ -1740,6 +1836,30 @@
     "target": "recoverability"
   },
   {
+    "source": "evolvability",
+    "target": "flexible"
+  },
+  {
+    "source": "evolvability",
+    "target": "adaptability"
+  },
+  {
+    "source": "evolvability",
+    "target": "maintainability"
+  },
+  {
+    "source": "evolvability",
+    "target": "extensibility"
+  },
+  {
+    "source": "evolvability",
+    "target": "scalability"
+  },
+  {
+    "source": "evolvability",
+    "target": "modularity"
+  },
+  {
     "source": "expected-physical-environment",
     "target": "suitable"
   },
@@ -1912,6 +2032,18 @@
     "target": "speed-to-market"
   },
   {
+    "source": "fast-shutdown-time",
+    "target": "time-behaviour"
+  },
+  {
+    "source": "fast-shutdown-time",
+    "target": "speed"
+  },
+  {
+    "source": "fast-shutdown-time",
+    "target": "shutdown-time"
+  },
+  {
     "source": "fast-startup-time",
     "target": "time-behaviour"
   },
@@ -2074,6 +2206,10 @@
   {
     "source": "flexibility",
     "target": "agility"
+  },
+  {
+    "source": "flexibility",
+    "target": "autonomy"
   },
   {
     "source": "flexible",
@@ -2486,6 +2622,10 @@
   {
     "source": "independence",
     "target": "flexibility"
+  },
+  {
+    "source": "independence",
+    "target": "autonomy"
   },
   {
     "source": "independent-enhancement-of-subsystem",
@@ -3664,6 +3804,26 @@
     "target": "patient-safety"
   },
   {
+    "source": "provability",
+    "target": "reliable"
+  },
+  {
+    "source": "provability",
+    "target": "safe"
+  },
+  {
+    "source": "provability",
+    "target": "explainability"
+  },
+  {
+    "source": "provability",
+    "target": "verifiability"
+  },
+  {
+    "source": "provability",
+    "target": "correctness"
+  },
+  {
     "source": "query-execution-management",
     "target": "efficiency"
   },
@@ -4304,6 +4464,10 @@
     "target": "modularity"
   },
   {
+    "source": "self-containedness",
+    "target": "autonomy"
+  },
+  {
     "source": "self-descriptiveness",
     "target": "usable"
   },
@@ -4346,6 +4510,18 @@
   {
     "source": "server-fails-operation-without-downtime",
     "target": "stability"
+  },
+  {
+    "source": "shutdown-time",
+    "target": "efficient"
+  },
+  {
+    "source": "shutdown-time",
+    "target": "startup-time"
+  },
+  {
+    "source": "shutdown-time",
+    "target": "time-behaviour"
   },
   {
     "source": "shutdown-to-safe-state",
@@ -4714,6 +4890,26 @@
   {
     "source": "traceability",
     "target": "testability"
+  },
+  {
+    "source": "transactionality",
+    "target": "reliable"
+  },
+  {
+    "source": "transactionality",
+    "target": "consistency"
+  },
+  {
+    "source": "transactionality",
+    "target": "durability"
+  },
+  {
+    "source": "transactionality",
+    "target": "data-integrity"
+  },
+  {
+    "source": "transactionality",
+    "target": "robustness"
   },
   {
     "source": "transparency",

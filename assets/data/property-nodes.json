@@ -3,7 +3,7 @@
     "id": "efficient",
     "label": "Efficient",
     "size": 40,
-    "color": "#dcf1ff",
+    "color": "#00B8F5",
     "qualityType": "property",
     "page": "/tag-efficient"
   },
@@ -11,7 +11,7 @@
     "id": "flexible",
     "label": "Flexible",
     "size": 40,
-    "color": "#dcf1ff",
+    "color": "#00B8F5",
     "qualityType": "property",
     "page": "/tag-flexible"
   },
@@ -19,7 +19,7 @@
     "id": "operable",
     "label": "Operable",
     "size": 40,
-    "color": "#dcf1ff",
+    "color": "#00B8F5",
     "qualityType": "property",
     "page": "/tag-operable"
   },
@@ -27,7 +27,7 @@
     "id": "reliable",
     "label": "Reliable",
     "size": 40,
-    "color": "#dcf1ff",
+    "color": "#00B8F5",
     "qualityType": "property",
     "page": "/tag-reliable"
   },
@@ -35,7 +35,7 @@
     "id": "safe",
     "label": "Safe",
     "size": 40,
-    "color": "#dcf1ff",
+    "color": "#00B8F5",
     "qualityType": "property",
     "page": "/tag-safe"
   },
@@ -43,7 +43,7 @@
     "id": "secure",
     "label": "Secure",
     "size": 40,
-    "color": "#dcf1ff",
+    "color": "#00B8F5",
     "qualityType": "property",
     "page": "/tag-secure"
   },
@@ -51,7 +51,7 @@
     "id": "suitable",
     "label": "Suitable",
     "size": 40,
-    "color": "#dcf1ff",
+    "color": "#00B8F5",
     "qualityType": "property",
     "page": "/tag-suitable"
   },
@@ -59,7 +59,7 @@
     "id": "usable",
     "label": "Usable",
     "size": 40,
-    "color": "#dcf1ff",
+    "color": "#00B8F5",
     "qualityType": "property",
     "page": "/tag-usable"
   }
