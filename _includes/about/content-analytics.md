@@ -7,7 +7,7 @@ In the long run we aim at having everything well-connected:
 - Every quality has relations to other qualities (check: [Orphan Qualities](#orphanqualities))
 - Every quality has at least one specific requirement (check: [Qualities without Requirements](#qualitieswithoutrequirements))
 - The list of related qualities (`related:`) in the header of every quality file contains only existing qualities (check: [No orphan relations for qualties](#opphanrelations))
-- Every standard relates to one or multiple qualities (currently not checked)
+- Every standard relates to one or multiple qualities (check: [No Standard without Qualities](#nostandardwithoutqualities))
 
 ### Qualities without Tag (aka _property_)
 
@@ -116,7 +116,7 @@ The following {{ orphan_relations.size }} orphan relations were found (quality â
 {% endif %}
 
 
-### No standard without qualities
+### No standard without qualities {#nostandardwithoutqualities}
 
 >Every quality standard (like ISO-5055) shall have at least one or more qualities related to it.
 

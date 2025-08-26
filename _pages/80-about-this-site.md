@@ -21,6 +21,7 @@ order: 80
    - <small>[Orphan Qualities](#orphanqualities)</small>
    - <small>[Qualities without Requirements](#qualitieswithoutrequirements)</small>
    - <small>[Orphan Relations](#orphanrelations)</small>
+   - <small>[Standards without Qualities](#nostandardwithoutqualities)</small>
 - [Pageviews and Visitor Count](#site-statistics)
 
 ---
