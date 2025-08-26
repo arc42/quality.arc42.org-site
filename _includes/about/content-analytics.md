@@ -114,3 +114,33 @@ The following {{ orphan_relations.size }} orphan relations were found (quality â
 <i class="fa fa-bolt fa-xs as-bullet" style="color: var(--error-color);"></i>{{ orphan }}<br>
 {% endfor %}
 {% endif %}
+
+
+### No standard without qualities
+
+>Every quality standard (like ISO-5055) shall have at least one or more qualities related to it.
+
+{% assign standards_without_qualities = "" | split: "," %}
+{% for standard in site.standards %}
+  {% assign found_quality = false %}
+  {% for quality in site.qualities %}
+    {% if quality.standards contains standard.standard_id %}
+      {% assign found_quality = true %}
+      {% break %}
+    {% endif %}
+  {% endfor %}
+  {% unless found_quality %}
+    {% assign standards_without_qualities = standards_without_qualities | push: standard %}
+  {% endunless %}
+{% endfor %}
+
+{% if standards_without_qualities.size == 0 %}
+All standards have at least one quality related to them.
+{% else %}
+The following {{ standards_without_qualities.size }} standards have no qualities related to them:
+<ul>
+{% for standard in standards_without_qualities %}
+  <li><i class="fa fa-bolt fa-xs as-bullet" style="color: var(--error-color);"></i><a href="{{ standard.url }}">{{ standard.title }}</a></li>
+{% endfor %}
+</ul>
+{% endif %}
