@@ -53,7 +53,6 @@ The current standard is **PCI DSS v4.0.1** (June 2024), which introduced enhance
 | **[Compliance](/qualities/compliance)** | Demonstrable conformance through assessments (QSA, SAQ) and brand/acquirer validation programs |                     |
 | **[Non-repudiation](/qualities/non-repudiation)**  | Detailed audit trails to prevent denial of payment transactions and security events                     |
 | **[Vulnerability Management](/qualities/vulnerability-management)** | Regular vulnerability scanning and security testing requirements   |
-| **[Compliance](/qualities/compliance)**       | Adherence to standard is enforced through card brand rules and potential penalties                                    |
 
 ## References
 
