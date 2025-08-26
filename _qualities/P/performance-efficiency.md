@@ -2,7 +2,7 @@
 title: Performance Efficiency
 tags: efficient
 related: efficiency, resource-efficiency, speed, performance
-standards: iso25010
+standards: iso25010,iso5055
 permalink: /qualities/performance-efficiency
 ---
 
