@@ -1,5 +1,4 @@
 
-# Generic Prompt for Creating a New Quality Standard Page
 
 ## Instructions
 
