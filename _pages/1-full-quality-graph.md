@@ -28,7 +28,7 @@ hide: true
             <div class="legend-item">
                 <span class="color-box" style="background-color: #00B8F5;"></span>
                 <label class="toggle">
-                    <span class="toggle-label">Qualities</span>
+                    <span class="toggle-label legend-label">Qualities</span>
                     <input class="toggle-checkbox" type="checkbox" id="legend-toggle-qualities" checked>
                     <div class="toggle-switch"></div>
                 </label>
@@ -36,8 +36,8 @@ hide: true
 
             <div class="legend-item">
                 <span class="color-box" style="background-color: #92ef80;"></span>
-                     <label class="toggle">
-                    <span class="toggle-label">Requirements</span>
+                <label class="toggle">
+                    <span class="toggle-label legend-label">Requirements</span>
                     <input class="toggle-checkbox" type="checkbox" id="legend-toggle-requirements">
                     <div class="toggle-switch"></div>
                 </label>

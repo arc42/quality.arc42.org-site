@@ -28,12 +28,21 @@ export class GraphRenderer {
     }
 
     /**
+     * Validates if the given type is supported
+     * @param {('quality'|'requirement')} type
+     * @returns {boolean} true if type is valid and supported
+     */
+    isValidNodeType(type) {
+        return type in this.typeVisibility;
+    }
+
+    /**
      * Set visibility for a node type and apply it
      * @param {('quality'|'requirement')} type
      * @param {boolean} visible
      */
     setTypeVisibility(type, visible) {
-        if (!(type in this.typeVisibility)) return;
+        if (!this.isValidNodeType(type)) return;
         this.typeVisibility[type] = !!visible;
         this.applyTypeVisibility();
     }
