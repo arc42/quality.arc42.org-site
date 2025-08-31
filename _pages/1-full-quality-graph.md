@@ -22,14 +22,29 @@ hide: true
             </div>
             <div class="legend-item">
                 <span class="color-box" style="background-color: #00B8F5;"></span>
-                <span class="legend-label">Quality/Property Nodes</span>
+                <span class="legend-label">Property Nodes</span>
             </div>
+            <hr />
+            <div class="legend-item">
+                <span class="color-box" style="background-color: #00B8F5;"></span>
+                <label class="toggle">
+                    <span class="toggle-label legend-label">Qualities</span>
+                    <input class="toggle-checkbox" type="checkbox" id="legend-toggle-qualities" checked>
+                    <div class="toggle-switch"></div>
+                </label>
+            </div>
+
             <div class="legend-item">
                 <span class="color-box" style="background-color: #92ef80;"></span>
-                <span class="legend-label">Requirement Nodes</span>
+                <label class="toggle">
+                    <span class="toggle-label legend-label">Requirements</span>
+                    <input class="toggle-checkbox" type="checkbox" id="legend-toggle-requirements">
+                    <div class="toggle-switch"></div>
+                </label>
             </div>
         </div>
     </div>
+
 </div>
 
 <script src="{{ '/assets/js/fullpage/main.js' | prepend: site.baseurl }}"></script>
