@@ -5,6 +5,12 @@
 import { Graph } from "./Graph";
 
 export class FullGraph extends Graph {
+
+    #filterTypeState = {
+        quality: true,
+        requirement: false
+    };
+
     /**
      * @param {string} containerId - ID of the container element
      * @param {GraphDataProvider} dataProvider - Data provider instance
@@ -23,6 +29,38 @@ export class FullGraph extends Graph {
     initialize() {
         super.initialize();
         this.registerFilterControls();
+        this.registerLegendToggles();
+        return this;
+    }
+
+    /**
+     * Register legend toggles for qualities and requirements
+     */
+    registerLegendToggles() {
+        const qualToggle = document.getElementById("legend-toggle-qualities");
+        const reqToggle = document.getElementById("legend-toggle-requirements");
+
+        // Guard if legend not present
+        if (!qualToggle || !reqToggle) {
+            return this;
+        }
+
+        // Sync current renderer state to inputs
+        qualToggle.checked = this.renderer.typeVisibility.quality;
+        reqToggle.checked = this.renderer.typeVisibility.requirement;
+
+        // Listen for changes
+        qualToggle.addEventListener("change", (e) => {
+            this.#filterTypeState.quality = e.target.checked;
+            // Drive visibility via renderer to avoid resetting text filter
+            this.renderer.setTypeVisibility('quality', e.target.checked);
+        });
+        reqToggle.addEventListener("change", (e) => {
+            this.#filterTypeState.requirement = e.target.checked;
+            // Drive visibility via renderer to avoid resetting text filter
+            this.renderer.setTypeVisibility('requirement', e.target.checked);
+        });
+
         return this;
     }
 
@@ -76,6 +114,17 @@ export class FullGraph extends Graph {
      * Register default event handlers for the full graph
      * @returns {Graph} This graph instance for chaining
      */
+    // Override filter to be aware of legend toggles
+    filter(filterTerm) {
+        const termActive = !!filterTerm && filterTerm.trim() !== "";
+        if (this.renderer) this.renderer.isFiltering = termActive;
+        const qualitiesHidden = this.renderer?.typeVisibility?.quality === false;
+        const requirementsVisible = this.renderer?.typeVisibility?.requirement !== false;
+        this.dataProvider.filterByTerm(filterTerm, { qualitiesHidden, requirementsVisible });
+        this.renderFiltered();
+        return this;
+    }
+
     registerDefaultEventHandlers() {
         // Default double-click handler for navigation
         const nodeDoubleClick = (event, d) => {
