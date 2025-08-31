@@ -62,6 +62,92 @@ export class GraphRenderer {
             return (sh || th) ? "none" : null;
         });
 
+        // When qualities are hidden but requirements are visible, add virtual links between
+        // visible requirements and their connected properties (via hidden quality nodes)
+        const showVirtual = !typeVis.quality && typeVis.requirement;
+        if (showVirtual) {
+            // Build quick maps of nodes by id for type lookup
+            const nodeById = new Map();
+            this.nodes.each(function (d) {
+                nodeById.set(d.id, d);
+            });
+
+            // Build adjacency for existing links
+            const neighbors = new Map();
+
+            function addNeighbor(a, b) {
+                if (!neighbors.has(a)) neighbors.set(a, new Set());
+                neighbors.get(a).add(b);
+            }
+
+            this.links.each(function (d) {
+                addNeighbor(d.source.id, d.target.id);
+                addNeighbor(d.target.id, d.source.id);
+            });
+
+            // Collect virtual edges req -> property if there exists a path req->quality->property
+            const virtualEdges = [];
+            nodeById.forEach((node, id) => {
+                if (node.qualityType === 'requirement' && !node._legendHidden) {
+                    const nbs = neighbors.get(id) || new Set();
+                    nbs.forEach(qId => {
+                        const qNode = nodeById.get(qId);
+                        if (!qNode || qNode.qualityType !== 'quality') return;
+                        const qNbs = neighbors.get(qId) || new Set();
+                        qNbs.forEach(pId => {
+                            const pNode = nodeById.get(pId);
+                            if (!pNode || pNode.qualityType !== 'property') return;
+                            // Only create if property is visible (never hidden by legend)
+                            // and we don't already have a direct req<->property edge
+                            const hasDirect = neighbors.get(id)?.has(pId);
+                            if (!hasDirect) {
+                                virtualEdges.push({ source: node, target: pNode });
+                            }
+                        });
+                    });
+                }
+            });
+
+            // Bind virtual edges
+            this.virtualLinks = this.virtualLinksLayer
+                .selectAll('line')
+                .data(virtualEdges, d => d.source.id + '->' + d.target.id);
+
+            // Exit old
+            this.virtualLinks.exit().remove();
+
+            // Enter new
+            const enter = this.virtualLinks.enter().append('line')
+                .attr('stroke', '#E0E0E0')
+                .attr('stroke-width', 1)
+                .attr('opacity', 0.4)
+                .attr('stroke-dasharray', '3,3');
+
+            this.virtualLinks = enter.merge(this.virtualLinks);
+
+            // Immediately position virtual links so they are visible without requiring a tick/drag
+            if (this.virtualLinks) {
+                this.virtualLinks
+                    .attr("x1", d => d.source.x)
+                    .attr("y1", d => d.source.y)
+                    .attr("x2", d => d.target.x)
+                    .attr("y2", d => d.target.y);
+            }
+
+            // Lightly kick the simulation to ensure at least one tick runs
+            if (this.simulation) {
+                const prevAlphaTarget = this.simulation.alphaTarget();
+                this.simulation.alpha(0.3).alphaTarget(Math.max(prevAlphaTarget, 0.01)).restart();
+                // Cool down shortly after to avoid unintended motion
+                setTimeout(() => {
+                    if (this.simulation) this.simulation.alphaTarget(prevAlphaTarget || 0);
+                }, 100);
+            }
+        } else if (this.virtualLinksLayer) {
+            // Remove any virtual links when not in this mode
+            this.virtualLinksLayer.selectAll('line').remove();
+        }
+
         // Re-run the zoom-based visibility updaters with current scale so they respect legendHidden
         if (this.updateNodeVisibility) this.updateNodeVisibility(this.currentZoomScale);
         if (this.updateLabelVisibility) this.updateLabelVisibility(this.currentZoomScale);
@@ -135,6 +221,7 @@ export class GraphRenderer {
 
         // Create links
         this.links = this.svg.append("g")
+            .attr("class", "links")
             .selectAll("line")
             .data(graphData.links)
             .enter()
@@ -142,6 +229,10 @@ export class GraphRenderer {
             .attr("stroke", "#E0E0E0")
             .attr("stroke-width", 1)
             .attr("opacity", 0.6);
+
+        // Layer for virtual links (requirement <-> property) shown when qualities are hidden
+        this.virtualLinksLayer = this.svg.append("g").attr("class", "virtual-links");
+        this.virtualLinks = this.virtualLinksLayer.selectAll("line");
 
         // Create nodes
         this.nodes = this.svg.append("g")
@@ -260,6 +351,14 @@ export class GraphRenderer {
                     .attr("y2", d => d.target.y);
             }
 
+            if (this.virtualLinks) {
+                this.virtualLinks
+                    .attr("x1", d => d.source.x)
+                    .attr("y1", d => d.source.y)
+                    .attr("x2", d => d.target.x)
+                    .attr("y2", d => d.target.y);
+            }
+
             if (this.nodes) {
                 this.nodes
                     .attr("cx", d => d.x)
@@ -361,10 +460,21 @@ export class GraphRenderer {
         this.labels.filter(d => connectedNodes.has(d.id))
             .classed("connected-highlighted", highlight);
 
+        // Highlight normal edges connected to the node
         this.links.filter(d => d.source.id === nodeId || d.target.id === nodeId)
             .classed("highlighted", highlight)
             .attr("stroke", highlight ? "#cb9fff" : "#e6daf2")
             .attr("stroke-width", highlight ? 2 : 1);
+
+        // Apply same hover behavior to virtual edges (if present)
+        if (this.virtualLinks) {
+            this.virtualLinks.filter(d => d.source.id === nodeId || d.target.id === nodeId)
+                .classed("highlighted", highlight)
+                .attr("stroke", highlight ? "#cb9fff" : "#E0E0E0")
+                .attr("stroke-width", highlight ? 2 : 1)
+                .attr("opacity", highlight ? 0.8 : 0.4)
+                .attr("stroke-dasharray", "3,3");
+        }
     }
 
     /**
