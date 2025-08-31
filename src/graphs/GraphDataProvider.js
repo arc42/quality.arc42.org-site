@@ -1,7 +1,3 @@
-/**
- * GraphDataProvider class
- * Responsible for providing and filtering graph data
- */
 export class GraphDataProvider {
     /**
      * @param {Array} propertyNodes - Property nodes data

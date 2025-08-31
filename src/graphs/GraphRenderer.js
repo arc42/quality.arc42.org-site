@@ -20,6 +20,51 @@ export class GraphRenderer {
         this.updateLabelVisibility = null;
         this.updateNodeVisibility = null;
         this.currentZoomScale = 1;
+        // Legend-driven type visibility (properties and root are always visible)
+        this.typeVisibility = {
+            quality: true,
+            requirement: false
+        };
+    }
+
+    /**
+     * Set visibility for a node type and apply it
+     * @param {('quality'|'requirement')} type
+     * @param {boolean} visible
+     */
+    setTypeVisibility(type, visible) {
+        if (!(type in this.typeVisibility)) return;
+        this.typeVisibility[type] = !!visible;
+        this.applyTypeVisibility();
+    }
+
+    /**
+     * Apply current type visibility to nodes, labels, and links
+     */
+    applyTypeVisibility() {
+        if (!this.nodes || !this.labels || !this.links) return;
+        const typeVis = this.typeVisibility;
+
+        // Mark nodes with legendHidden flag used by updaters
+        this.nodes.each(function (d) {
+            const t = d.qualityType;
+            d._legendHidden = (t === 'quality' && !typeVis.quality) || (t === 'requirement' && !typeVis.requirement);
+        });
+
+        // Update node display immediately in case simulation/zoom updaters haven't run yet
+        this.nodes.style("display", d => d._legendHidden ? "none" : null);
+        this.labels.style("display", d => d._legendHidden ? "none" : null);
+
+        // Hide links connected to hidden nodes
+        this.links.style("display", d => {
+            const sh = d.source._legendHidden === true;
+            const th = d.target._legendHidden === true;
+            return (sh || th) ? "none" : null;
+        });
+
+        // Re-run the zoom-based visibility updaters with current scale so they respect legendHidden
+        if (this.updateNodeVisibility) this.updateNodeVisibility(this.currentZoomScale);
+        if (this.updateLabelVisibility) this.updateLabelVisibility(this.currentZoomScale);
     }
 
     /**
@@ -193,6 +238,9 @@ export class GraphRenderer {
 
         this.updateLabelVisibility();
         this.updateNodeVisibility();
+
+        // Apply legend-driven type visibility (requirements initially hidden by default)
+        this.applyTypeVisibility();
 
         return this;
     }
@@ -420,8 +468,13 @@ export class GraphRenderer {
         return (nodeData) => {
             // If nodeData is provided, we're checking visibility for a single node
             if (nodeData) {
-                // Always show root, property, and requirement nodes at full detail
-                if (nodeData.id === "quality-root" || nodeData.qualityType === "property" || nodeData.qualityType === "requirement") {
+                // If hidden by legend, hide regardless of zoom/highlight
+                if (nodeData._legendHidden) {
+                    return { visible: false };
+                }
+
+                // Always show root and property nodes at full detail
+                if (nodeData.id === "quality-root" || nodeData.qualityType === "property") {
                     return {
                         visible: true,
                         size: nodeData.size,
@@ -477,8 +530,15 @@ export class GraphRenderer {
                 node.each(function (d) {
                     const nodeElement = d3.select(this);
 
-                    // Always show root, property, and requirement nodes at full detail
-                    if (d.id === "quality-root" || d.qualityType === "property" || d.qualityType === "requirement") {
+                    // If hidden by legend, hide regardless
+                    if (d._legendHidden) {
+                        nodeElement.style("display", "none");
+                        nodeElement.attr("opacity", 0);
+                        return;
+                    }
+
+                    // Always show root and property nodes at full detail
+                    if (d.id === "quality-root" || d.qualityType === "property") {
                         nodeElement.style("display", null);
                         nodeElement.attr("opacity", 1);
                         nodeElement.attr("r", d.size);
@@ -540,7 +600,12 @@ export class GraphRenderer {
         return (nodeData) => {
             // If nodeData is provided, we're checking visibility for a single node
             if (nodeData) {
-                // Always show labels for root and property nodes as specified in the requirements
+                // If hidden by legend, hide label
+                if (nodeData._legendHidden) {
+                    return 0;
+                }
+
+                // Always show labels for root and property nodes
                 if (nodeData.id === "quality-root" || nodeData.qualityType === "property") {
                     return 1;
                 }
@@ -568,7 +633,14 @@ export class GraphRenderer {
                 label.each(function (d) {
                     const labelElement = d3.select(this);
 
-                    // Always show labels for root and property nodes as specified in the requirements
+                    // If hidden by legend, hide label
+                    if (d._legendHidden) {
+                        labelElement.attr("opacity", 0);
+                        labelElement.style("display", "none");
+                        return;
+                    }
+
+                    // Always show labels for root and property nodes
                     if (d.id === "quality-root" || d.qualityType === "property") {
                         labelElement.attr("opacity", 1);
                         // Make these labels more prominent

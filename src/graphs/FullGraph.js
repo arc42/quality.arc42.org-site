@@ -5,6 +5,12 @@
 import { Graph } from "./Graph";
 
 export class FullGraph extends Graph {
+
+    #filterTypeState = {
+        quality: true,
+        requirement: false
+    };
+
     /**
      * @param {string} containerId - ID of the container element
      * @param {GraphDataProvider} dataProvider - Data provider instance
@@ -23,6 +29,38 @@ export class FullGraph extends Graph {
     initialize() {
         super.initialize();
         this.registerFilterControls();
+        this.registerLegendToggles();
+        return this;
+    }
+
+    /**
+     * Register legend toggles for qualities and requirements
+     */
+    registerLegendToggles() {
+        const qualToggle = document.getElementById("legend-toggle-qualities");
+        const reqToggle = document.getElementById("legend-toggle-requirements");
+
+        // Guard if legend not present
+        if (!qualToggle || !reqToggle) {
+            return this;
+        }
+
+        // Sync current renderer state to inputs
+        qualToggle.checked = this.renderer.typeVisibility.quality;
+        reqToggle.checked = this.renderer.typeVisibility.requirement;
+
+        // Listen for changes
+        qualToggle.addEventListener("change", (e) => {
+            this.#filterTypeState.quality = e.target.checked;
+            // Drive visibility via renderer to avoid resetting text filter
+            this.renderer.setTypeVisibility('quality', e.target.checked);
+        });
+        reqToggle.addEventListener("change", (e) => {
+            this.#filterTypeState.requirement = e.target.checked;
+            // Drive visibility via renderer to avoid resetting text filter
+            this.renderer.setTypeVisibility('requirement', e.target.checked);
+        });
+
         return this;
     }
 
@@ -43,7 +81,7 @@ export class FullGraph extends Graph {
 
         // Apply filter immediately when button is clicked
         this.filterButton.addEventListener("click", () => {
-            this.filter(this.filterInput.value);
+            this.filterByTerm(this.filterInput.value);
         });
 
         // Apply debounced filter when typing
@@ -54,7 +92,7 @@ export class FullGraph extends Graph {
         // Also handle Enter key for immediate filtering
         this.filterInput.addEventListener("keyup", (e) => {
             if (e.key === "Enter" || e.keyCode === 13) {
-                this.filter(this.filterInput.value);
+                this.filterByTerm(this.filterInput.value);
             }
         });
 
@@ -68,7 +106,7 @@ export class FullGraph extends Graph {
     debounceFilter(value) {
         clearTimeout(this.debounceTimeout);
         this.debounceTimeout = setTimeout(() => {
-            this.filter(value);
+            this.filterByTerm(value);
         }, 300);
     }
 

@@ -513,7 +513,11 @@ export class Graph {
     filter(filterTerm) {
         // Filter the data
         this.dataProvider.filterByTerm(filterTerm);
+        this.renderFiltered();
+        return this;
+    }
 
+    renderFiltered() {
         // Rebuild the graph with filtered data
         this.graph = new MultiGraph();
         this.graph.setAttribute("name", this.name);
@@ -538,8 +542,6 @@ export class Graph {
                 this.renderer.centerView();
             }, 1000);
         }
-
-        return this;
     }
 
     /**

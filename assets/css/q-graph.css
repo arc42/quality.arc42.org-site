@@ -20,7 +20,7 @@
     position: absolute;
     top: 20px;
     left: 20px;
-    width: 200px;
+    width: 250px;
     max-height: 80%;
     background-color: rgba(255, 255, 255, 0.6);
     border: 1px solid #e0e0e0;
@@ -130,3 +130,4 @@
 #q-graph-container:hover #full-graph-toggle {
     display: block;
 }
+
