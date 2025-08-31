@@ -510,7 +510,9 @@ export class Graph {
      * @param {string} filterTerm - The search term to filter by
      * @returns {Graph} This graph instance for chaining
      */
-    filter(filterTerm) {
+    filter(filterTerm) { // NOTE: FullGraph may want legend-aware filtering in the future
+        // Mark renderer filtering state
+        if (this.renderer) this.renderer.isFiltering = !!filterTerm && filterTerm.trim() !== "";
         // Filter the data
         this.dataProvider.filterByTerm(filterTerm);
         this.renderFiltered();
@@ -549,6 +551,7 @@ export class Graph {
      * @returns {Graph} This graph instance for chaining
      */
     resetFilter() {
+        if (this.renderer) this.renderer.isFiltering = false;
         this.dataProvider.resetFilter();
 
         this.graph = new MultiGraph();

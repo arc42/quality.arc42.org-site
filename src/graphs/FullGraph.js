@@ -81,7 +81,7 @@ export class FullGraph extends Graph {
 
         // Apply filter immediately when button is clicked
         this.filterButton.addEventListener("click", () => {
-            this.filterByTerm(this.filterInput.value);
+            this.filter(this.filterInput.value);
         });
 
         // Apply debounced filter when typing
@@ -92,7 +92,7 @@ export class FullGraph extends Graph {
         // Also handle Enter key for immediate filtering
         this.filterInput.addEventListener("keyup", (e) => {
             if (e.key === "Enter" || e.keyCode === 13) {
-                this.filterByTerm(this.filterInput.value);
+                this.filter(this.filterInput.value);
             }
         });
 
@@ -106,7 +106,7 @@ export class FullGraph extends Graph {
     debounceFilter(value) {
         clearTimeout(this.debounceTimeout);
         this.debounceTimeout = setTimeout(() => {
-            this.filterByTerm(value);
+            this.filter(value);
         }, 300);
     }
 
@@ -114,6 +114,17 @@ export class FullGraph extends Graph {
      * Register default event handlers for the full graph
      * @returns {Graph} This graph instance for chaining
      */
+    // Override filter to be aware of legend toggles
+    filter(filterTerm) {
+        const termActive = !!filterTerm && filterTerm.trim() !== "";
+        if (this.renderer) this.renderer.isFiltering = termActive;
+        const qualitiesHidden = this.renderer?.typeVisibility?.quality === false;
+        const requirementsVisible = this.renderer?.typeVisibility?.requirement !== false;
+        this.dataProvider.filterByTerm(filterTerm, { qualitiesHidden, requirementsVisible });
+        this.renderFiltered();
+        return this;
+    }
+
     registerDefaultEventHandlers() {
         // Default double-click handler for navigation
         const nodeDoubleClick = (event, d) => {

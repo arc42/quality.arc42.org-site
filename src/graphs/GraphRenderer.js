@@ -6,6 +6,10 @@ import * as d3 from "d3";
 
 export class GraphRenderer {
     /**
+     * Indicates whether a term filter is currently active (affects property visibility rules)
+     * This is controlled by Graph/FullGraph when applying or resetting filters.
+     */
+    /**
      * @param {HTMLElement} container - The container element to render the graph in
      */
     constructor(container) {
@@ -20,6 +24,7 @@ export class GraphRenderer {
         this.updateLabelVisibility = null;
         this.updateNodeVisibility = null;
         this.currentZoomScale = 1;
+        this.isFiltering = false;
         // Legend-driven type visibility (properties and root are always visible)
         this.typeVisibility = {
             quality: true,
@@ -155,6 +160,72 @@ export class GraphRenderer {
         } else if (this.virtualLinksLayer) {
             // Remove any virtual links when not in this mode
             this.virtualLinksLayer.selectAll('line').remove();
+        }
+
+        // Re-run the zoom-based visibility updaters with current scale so they respect legendHidden
+        if (this.updateNodeVisibility) this.updateNodeVisibility(this.currentZoomScale);
+        if (this.updateLabelVisibility) this.updateLabelVisibility(this.currentZoomScale);
+
+        // After legend/type visibility, if a term filter is active, hide property nodes that have no visible neighbor (excluding root).
+        if (this.isFiltering) {
+            const nodeById = new Map();
+            this.nodes.each(function (d) {
+                nodeById.set(d.id, d);
+            });
+            const neighbors = new Map();
+
+            function addNb(a, b) {
+                if (!neighbors.has(a)) neighbors.set(a, new Set());
+                neighbors.get(a).add(b);
+            }
+
+            this.links.each(function (d) {
+                addNb(d.source.id, d.target.id);
+                addNb(d.target.id, d.source.id);
+            });
+
+            const considerVirtual = !typeVis.quality && typeVis.requirement;
+            const self = this;
+            this.nodes.each(function (d) {
+                if (d.qualityType !== 'property') return;
+                let hasVisibleNeighbor = false;
+                const nbs = neighbors.get(d.id) || new Set();
+                nbs.forEach(nbId => {
+                    if (hasVisibleNeighbor) return;
+                    const nb = nodeById.get(nbId);
+                    if (!nb) return;
+                    if ((nb.qualityType === 'quality' || nb.qualityType === 'requirement') && !nb._legendHidden) {
+                        hasVisibleNeighbor = true;
+                    }
+                });
+                if (!hasVisibleNeighbor && considerVirtual) {
+                    // Check via hidden quality for any visible requirement reaching this property
+                    nbs.forEach(qId => {
+                        if (hasVisibleNeighbor) return;
+                        const qNode = nodeById.get(qId);
+                        if (!qNode || qNode.qualityType !== 'quality') return;
+                        const qNbs = neighbors.get(qId) || new Set();
+                        qNbs.forEach(rId => {
+                            if (hasVisibleNeighbor) return;
+                            const rNode = nodeById.get(rId);
+                            if (rNode && rNode.qualityType === 'requirement' && !rNode._legendHidden) {
+                                hasVisibleNeighbor = true;
+                            }
+                        });
+                    });
+                }
+                const displayVal = hasVisibleNeighbor ? null : 'none';
+                d3.select(this).style('display', displayVal);
+                self.labels.filter(ld => ld.id === d.id).style('display', displayVal);
+            });
+            // Hide virtual links attached to hidden properties
+            if (this.virtualLinks) {
+                this.virtualLinks.style('display', vl => {
+                    const sHidden = d3.select(self.nodes.filter(nd => nd.id === vl.source.id).node()).style('display') === 'none';
+                    const tHidden = d3.select(self.nodes.filter(nd => nd.id === vl.target.id).node()).style('display') === 'none';
+                    return (sHidden || tHidden) ? 'none' : null;
+                });
+            }
         }
 
         // Re-run the zoom-based visibility updaters with current scale so they respect legendHidden

@@ -39,7 +39,7 @@ export class GraphDataProvider {
      * @param {string} filterTerm - The search term to filter by
      * @returns {Object} Object with filtered propertyNodes, nodes, and edges
      */
-    filterByTerm(filterTerm) {
+    filterByTerm(filterTerm, options = {}) {
         // If filter term is empty, reset filter
         if (!filterTerm || filterTerm.trim() === "") {
             this.resetFilter();
@@ -47,6 +47,9 @@ export class GraphDataProvider {
         }
 
         const lowerFilterTerm = filterTerm.toLowerCase();
+
+        const qualitiesHidden = options.qualitiesHidden === true;
+        const requirementsVisible = options.requirementsVisible !== false;
 
         // Filter nodes that match the search term
         const filteredNodes = this.nodes.filter(node =>
@@ -69,50 +72,69 @@ export class GraphDataProvider {
             }
         });
 
-        // Find requirement nodes that are connected to matching nodes (directly or via a hop)
+        // Determine requirement nodes to include
         const requirementNodeIds = new Set();
+        const allRequirementNodes = this.nodes.filter(node => node.qualityType === "requirement");
 
-        // First, identify all requirement nodes
-        const allRequirementNodes = this.nodes.filter(node =>
-            node.qualityType === "requirement"
-        );
+        if (qualitiesHidden && requirementsVisible) {
+            // Only include requirement nodes that match the term themselves
+            allRequirementNodes.forEach(reqNode => {
+                if (filteredNodeIds.has(reqNode.id)) {
+                    requirementNodeIds.add(reqNode.id);
+                }
+            });
+        } else {
+            // Original behavior: include requirements connected to matches (direct or via hop)
+            allRequirementNodes.forEach(reqNode => {
+                // Check direct connections
+                let isConnected = filteredNodeIds.has(reqNode.id) || connectedNodeIds.has(reqNode.id);
 
-        // For each requirement node, check if it's connected to a matching node
-        allRequirementNodes.forEach(reqNode => {
-            // Check direct connections
-            let isConnected = filteredNodeIds.has(reqNode.id) || connectedNodeIds.has(reqNode.id);
+                // If not directly connected, check connections via a hop
+                if (!isConnected) {
+                    const connectedToReq = new Set();
+                    this.edges.forEach(edge => {
+                        if (edge.source === reqNode.id) {
+                            connectedToReq.add(edge.target);
+                        }
+                        if (edge.target === reqNode.id) {
+                            connectedToReq.add(edge.source);
+                        }
+                    });
 
-            // If not directly connected, check connections via a hop
-            if (!isConnected) {
-                // Find all nodes connected to this requirement node
-                const connectedToReq = new Set();
-                this.edges.forEach(edge => {
-                    if (edge.source === reqNode.id) {
-                        connectedToReq.add(edge.target);
-                    }
-                    if (edge.target === reqNode.id) {
-                        connectedToReq.add(edge.source);
-                    }
-                });
+                    connectedToReq.forEach(nodeId => {
+                        if (filteredNodeIds.has(nodeId) || connectedNodeIds.has(nodeId)) {
+                            isConnected = true;
+                        }
+                    });
+                }
 
-                // Check if any of these nodes are connected to a matching node
-                connectedToReq.forEach(nodeId => {
-                    if (filteredNodeIds.has(nodeId) || connectedNodeIds.has(nodeId)) {
-                        isConnected = true;
-                    }
-                });
-            }
+                if (isConnected) {
+                    requirementNodeIds.add(reqNode.id);
+                }
+            });
+        }
 
-            // If connected, add to visible requirement nodes
-            if (isConnected) {
-                requirementNodeIds.add(reqNode.id);
-            }
-        });
+        // When qualities are hidden and requirements visible, do not include non-matching requirements via generic connectedNodeIds
+        let effectiveConnected = connectedNodeIds;
+        if (qualitiesHidden && requirementsVisible) {
+            effectiveConnected = new Set();
+            connectedNodeIds.forEach(id => {
+                const node = this.nodes.find(n => n.id === id);
+                if (!node) return;
+                if (node.qualityType === "requirement") {
+                    // include only if requirement itself matched
+                    if (filteredNodeIds.has(id)) effectiveConnected.add(id);
+                } else {
+                    // keep properties and root and qualities (qualities will be hidden by renderer anyway)
+                    effectiveConnected.add(id);
+                }
+            });
+        }
 
         // Combine filtered, connected, and requirement node IDs
         const allVisibleNodeIds = new Set([
             ...filteredNodeIds,
-            ...connectedNodeIds,
+            ...effectiveConnected,
             ...requirementNodeIds
         ]);
 
