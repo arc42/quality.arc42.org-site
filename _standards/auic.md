@@ -7,31 +7,32 @@ standard_id: aiuc1
 
 ## AIUC-1: The world's first AI agent standard
 
-AIUC-1 is presented as the first dedicated standard for AI agents, designed to unlock enterprise adoption by covering core enterprise concerns across safety, security, governance, and operations. It focuses on making autonomous and semi-autonomous AI agents trustworthy and deployable in real-world organizational settings, emphasizing responsible behavior, oversight, and alignment with business and regulatory expectations.
+AIUC-1 is the world's first AI agent standard, designed to facilitate enterprise adoption of AI. It provides a framework for addressing the risks associated with AI agents, similar to the role of SOC 2 for service organizations.
 
-{% capture site_tags %}{% for tag in site.tags %}{{ tag | first }}{% unless forloop.last %},{% endunless %}{% endfor %}{% endcapture %}
-{% assign tag_words = site_tags |  split:',' | sort %}
-{% assign tag_words_unique = tag_words | uniq %}
-{% assign site_tags = tag_words_unique | join: ',' %}
+## Core Principles
 
-{% for tag in tag_words_unique %}{{ tag }}, {% endfor %}
+The standard is built around six core principles:
 
-
-## Focus and Coverage
-
-| Area | Description |
+| Principle | Description |
 |:--- |:--- |
-| Agent Safety | Guardrails to avoid harmful actions and outcomes, risk controls, and safe failover/rollback mechanisms for autonomous behaviors. |
-| Security & Privacy | Controls for secure operation of agents, protection of credentials and data, least-privilege access, and privacy-aware data handling. |
-| Reliability & Robustness | Expectations for predictable behavior, error handling, recovery, and resilience in changing environments and tool contexts. |
-| Governance & Oversight | Human-in-the-loop controls, approval workflows, audit trails, activity logging, and accountability for actions taken by agents. |
-| Interoperability | Consistent interfaces and conventions for connecting tools, APIs, and services so agents can be integrated into existing stacks. |
-| Operations | Deployment, configuration, monitoring/observability, incident handling, and lifecycle management suitable for enterprise environments. |
-
+| **Data & Privacy** | Ensures the confidentiality, integrity, and privacy of data handled by AI agents. |
+| **Security** | Protects against vulnerabilities and unauthorized access, ensuring the agent operates securely. |
+| **Safety** | Prevents unintended and harmful actions, with robust controls and fail-safes. |
+| **Reliability** | Ensures agents behave predictably and consistently, with proper error handling and recovery. |
+| **Accountability** | Provides clear audit trails, logging, and human oversight for all agent actions. |
+| **Society** | Aligns agent behavior with broader societal norms, ethics, and regulatory requirements. |
 
 ## Relationship to Quality Attributes
 
-AIUC-1 addresses (directly or indirectly) attributes commonly required for dependable systems in enterprises, including security, safety, reliability, maintainability, flexibility/portability, compatibility/interoperability, performance efficiency, and effective user interaction and oversight.
+AIUC-1 directly addresses key quality attributes for enterprise systems, including:
+
+* **Security**: A core principle of the standard.
+* **Safety**: A core principle of the standard.
+* **Reliability**: A core principle of the standard.
+* **Accountability**: A core principle of the standard.
+* **Data & Privacy**: A core principle of the standard.
+
+It also indirectly influences other attributes like maintainability, portability, and interoperability by promoting a structured and well-governed approach to AI agent development and operation.
 
 
 ## References
