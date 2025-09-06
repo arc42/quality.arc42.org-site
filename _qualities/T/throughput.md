@@ -2,6 +2,7 @@
 title: Throughput
 tags: efficient
 related: performance, efficiency, speed
+standards: iso14756
 permalink: /qualities/throughput
 ---
 
