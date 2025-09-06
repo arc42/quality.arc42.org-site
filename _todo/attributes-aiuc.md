@@ -1,0 +1,17 @@
+Security
+Safety
+Reliability
+Maintainability
+Flexibility
+Compatibility
+Performance Efficiency
+Interaction Capability
+Interoperability
+Privacy
+Transparency
+Auditability
+Accountability
+Resilience
+Observability
+Compliance
+
