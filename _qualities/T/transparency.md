@@ -2,6 +2,7 @@
 title: Transparency
 tags: reliable 
 related: clarity, understandability, usability
+standards: iso42001
 permalink: /qualities/transparency
 ---
 
