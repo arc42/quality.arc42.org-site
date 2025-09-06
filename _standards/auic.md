@@ -5,9 +5,13 @@ permalink: /standards/aiuc-1
 standard_id: aiuc1
 ---
 
-## AIUC-1: The world's first AI agent standard
+## AIUC-1: (attempt of an) AI agent standard
 
-AIUC-1 is the world's first AI agent standard, designed to facilitate enterprise adoption of AI. It provides a framework for addressing the risks associated with AI agents, similar to the role of SOC 2 for service organizations.
+AIUC-1 tries to establish an AI agent standard, designed to facilitate enterprise adoption of AI. 
+It provides a framework for addressing the risks associated with AI agents, similar to the role of SOC 2 for service organizations.
+
+>Please note that AIUC is a commercial initiative, driven by a single (small) company.
+>I decided to include it on this site as AIUC-1 covers a current and imho important topic.
 
 ## Core Principles
 
@@ -37,5 +41,6 @@ It also indirectly influences other attributes like maintainability, portability
 
 ## References
 
-- AIUC-1 (official): https://aiuc-1.com/
+- [AIUC-1 (official): https://aiuc-1.com/](https://aiuc-1.com/)
+- related, and much more "official": [ISO-42001:2023](https://www.iso.org/standard/42001). Like most of the ISO documents, the details are hidden behind a paywall.
 
