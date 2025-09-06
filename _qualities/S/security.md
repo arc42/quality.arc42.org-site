@@ -2,7 +2,7 @@
 title: Security
 tags: secure reliable
 related: integrity, availability, non-repudiation, confidentiality, accountability, authenticity, resistance
-standards: iso25010,iso27001,iso26262, misra-c, nist80053,iso5055,pcidss,iso42001
+standards: iso25010,iso27001,iso26262, misra-c, nist80053,iso5055,pcidss,iso42001,aiuc1,iec-62304
 permalink: /qualities/security
 ---
 
