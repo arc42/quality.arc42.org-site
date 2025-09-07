@@ -5,6 +5,8 @@ related: fairness, explainability, transparency, accountability, ethics
 permalink: /qualities/bias-mitigation
 ---
 
+## Definitions
+
 >Bias mitigation refers to the systematic identification and reduction of unfair prejudice in algorithmic systems, particularly those using artificial intelligence and machine learning. 
 >It involves techniques and practices designed to prevent, detect, and address algorithmic biases that could lead to discriminatory outcomes against individuals or groups based on protected characteristics.
 >

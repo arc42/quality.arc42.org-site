@@ -6,6 +6,8 @@ standards: iso42001
 permalink: /qualities/data-quality
 ---
 
+## Definitions
+
 >Data quality refers to the state of qualitative or quantitative pieces of information. 
 >Data is generally considered high quality if it is "fit for [its] intended uses in operations, decision making and planning". 
 >Data is deemed of high quality if it correctly represents the real-world construct to which it refers.
