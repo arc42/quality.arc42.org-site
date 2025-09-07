@@ -21,7 +21,6 @@ The financial data processing system must ensure:
 * 99.99% accuracy of financial transaction data (maximum error rate of 1 in 10,000 transactions)
 * 100% completeness of mandatory fields for all financial records
 * Automated validation checks must flag at least 98% of data anomalies before data enters the reporting pipeline
-* Data reconciliation between source systems and the central data warehouse must be performed hourly with a maximum discrepancy tolerance of 0.01%
 * All data quality issues must be logged with severity levels and resolved within timeframes based on severity:
   * Critical: 1 hour
   * High: 4 hours
@@ -29,3 +28,14 @@ The financial data processing system must ensure:
   * Low: 72 hours
 
 </div><br>
+
+<div markdown="1" style="font-size: smaller;">
+This example was created with help from Anthropic-Claude-Sonnet-3.7 with the following prompt:
+
+```
+I want to add an example requirement (under _requirements) for data-quality. 
+It shall follow the pattern "Context/Background", "Source", "Metric/Acceptance Criteria" and contain precise metrics 
+for acceptance criteria.
+```
+
+</div>
