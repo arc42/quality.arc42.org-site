@@ -2,22 +2,27 @@
 title: Data Quality
 tags: reliable suitable usable
 related: accuracy, correctness, precision, integrity, consistency, completeness
+standards: iso42001
 permalink: /qualities/data-quality
 ---
 
->Data quality refers to the state of qualitative or quantitative pieces of information. Data is generally considered high quality if it is "fit for [its] intended uses in operations, decision making and planning". Data is deemed of high quality if it correctly represents the real-world construct to which it refers.
+>Data quality refers to the state of qualitative or quantitative pieces of information. 
+>Data is generally considered high quality if it is "fit for [its] intended uses in operations, decision making and planning". 
+>Data is deemed of high quality if it correctly represents the real-world construct to which it refers.
 >
 >[Wikipedia](https://en.wikipedia.org/wiki/Data_quality)
 
 <hr class="with-no-margin"/>
 
->The degree to which a set of inherent characteristics of data fulfills requirements. Data quality characteristics will be of varying importance and priority to different stakeholders.
+>The degree to which a set of inherent characteristics of data fulfills requirements. 
+>Data quality characteristics will be of varying importance and priority to different stakeholders.
 >
 >[ISO/IEC 25012:2008](https://www.iso.org/standard/35736.html)
 
 <hr class="with-no-margin"/>
 
->Data quality is the capability of data to satisfy stated business, system, and technical requirements of an enterprise. Data is considered high quality if it is fit for its intended uses in operations, decision-making, planning, and management.
+>Data quality is the capability of data to satisfy stated business, system, and technical requirements of an enterprise. 
+>Data is considered high quality if it is fit for its intended uses in operations, decision-making, planning, and management.
 >
 >[DAMA International](https://www.dama.org/cpages/home)
 
