@@ -5,19 +5,22 @@ related: fairness, explainability, transparency, accountability, ethics
 permalink: /qualities/bias-mitigation
 ---
 
->Bias mitigation refers to the systematic identification and reduction of unfair prejudice in algorithmic systems, particularly those using artificial intelligence and machine learning. It involves techniques and practices designed to prevent, detect, and address algorithmic biases that could lead to discriminatory outcomes against individuals or groups based on protected characteristics.
+>Bias mitigation refers to the systematic identification and reduction of unfair prejudice in algorithmic systems, particularly those using artificial intelligence and machine learning. 
+>It involves techniques and practices designed to prevent, detect, and address algorithmic biases that could lead to discriminatory outcomes against individuals or groups based on protected characteristics.
 >
 >[NIST AI Risk Management Framework](https://www.nist.gov/itl/ai-risk-management-framework)
 
 <hr class="with-no-margin"/>
 
->The process of implementing strategies or techniques to reduce the presence and impact of unwanted bias in machine learning and AI systems. Bias mitigation aims to ensure that algorithmic decisions do not discriminate against individuals or groups based on sensitive attributes such as race, gender, age, or disability.
+>The process of implementing strategies or techniques to reduce the presence and impact of unwanted bias in machine learning and AI systems. 
+>Bias mitigation aims to ensure that algorithmic decisions do not discriminate against individuals or groups based on sensitive attributes such as race, gender, age, or disability.
 >
 >[IEEE 7003-2024 Standard for Algorithmic Bias Considerations](https://standards.ieee.org/ieee/7003/10453/)
 
 <hr class="with-no-margin"/>
 
->A set of processes, tools, and techniques for identifying, measuring, and reducing harmful bias in AI systems. Bias mitigation strategies can be applied at various stages of the AI lifecycle, including data collection, algorithm design, model training, evaluation, deployment, and monitoring.
+>A set of processes, tools, and techniques for identifying, measuring, and reducing harmful bias in AI systems. 
+>Bias mitigation strategies can be applied at various stages of the AI lifecycle, including data collection, algorithm design, model training, evaluation, deployment, and monitoring.
 >
 >[AI Fairness 360 Toolkit, IBM Research](https://aif360.mybluemix.net/)
 
