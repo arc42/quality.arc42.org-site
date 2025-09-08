@@ -1,7 +1,7 @@
 ---
 title: Integrability
 tags: flexible operable
-related: interoperability, modularity, composability, compatibility
+related: interoperability, modularity, composability, compatibility, integrity
 permalink: /qualities/integrability
 ---
 
@@ -13,7 +13,8 @@ permalink: /qualities/integrability
 
 <hr class="with-no-margin"/>
 
-> In the ISO/IEC 25010 quality model, related characteristics such as Compatibility (Interoperability) and Modularity describe how components interact and compose; integrability focuses on the effort required to make those interactions work in a specific context with minimal change.
+> In the ISO/IEC 25010 quality model, related characteristics such as Compatibility (Interoperability) and Modularity describe how components interact and compose; 
+> integrability focuses on the effort required to make those interactions work in a specific context with minimal change.
 >
 >[ISO/IEC 25010 (overview)](https://en.wikipedia.org/wiki/ISO/IEC_25010) · See also: [/standards/iso-25010](/standards/iso-25010)
 
@@ -23,5 +24,5 @@ permalink: /qualities/integrability
 - Evidence: median time to integrate a new provider (e.g., ≤ 40h); contract‑test suite passes across supported versions; % of integrations requiring custom adapters kept low (e.g., ≤ 20%); interface compatibility tests green in CI.
 
 ### Notes
-- Interoperability: ability of systems to exchange/use information at runtime (ISO/IEC 25010 Compatibility).
+- [Interoperability](/qualities/interoperability): ability of systems to exchange/use information at runtime (ISO/IEC 25010 Compatibility).
 - Integrability: the work/effort to make such interactions operational in a given environment (adapters, mappings, contracts).
