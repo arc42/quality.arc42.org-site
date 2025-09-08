@@ -26,5 +26,17 @@ The credit scoring system must:
 * Run continuous disparity monitoring in production; alert when any fairness metric breaches threshold for >24h and trigger rollback or human review.
 * Keep an auditable log of model versions, features, thresholds, and mitigation settings for at least 24 months.
 
-</div><br>
+#### Terminology (brief)
 
+- True Positive Rate (TPR): share of actual positives correctly predicted as positive; also called recall/sensitivity.
+- Expected Calibration Error (ECE): weighted average gap between predicted probability (by bin) and observed outcome frequency; lower is better.
+
+#### Measurement & Verification
+
+- Use a held‑out, stratified evaluation set with sufficient support per group (e.g., ≥100 positives/negatives) and fixed data‑splits.
+- Compute per‑group metrics (selection rate, DI, parity diff, TPR/FPR, calibration curves) and confidence intervals (e.g., bootstrap 95% CI) each release.
+- Validate calibration via reliability diagrams and ECE/Brier; verify group‑wise parity against thresholds above.
+- Recommended tooling: scikit‑learn + Fairlearn or AIF360; archive notebooks/reports with data and code hashes.
+- In production, monitor the same metrics on fresh labeled samples; alert and trigger rollback/human review on sustained breaches.
+
+</div><br>
