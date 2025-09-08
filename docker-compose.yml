@@ -1,6 +1,7 @@
 services:
   esbuild:
     image: node:22-alpine
+    init: true
     volumes:
       - .:/site
       - /site/node_modules
