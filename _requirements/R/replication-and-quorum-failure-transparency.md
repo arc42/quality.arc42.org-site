@@ -8,7 +8,7 @@ permalink: /requirements/replication-and-quorum-failure-transparency
 <div class="quality-requirement" markdown="1">
 #### Context/Background
 
-The primary datastore must remain available and correct under node failures and network partitions within the defined consistency model.
+An online transactional application (e.g., order processing and account ledger) uses a replicated primary datastore for user‑facing reads and writes. The service is deployed across multiple availability zones and must tolerate single‑node failures and brief network partitions without violating durability or the declared consistency guarantees. Session‑bound clients require read‑your‑writes for critical flows (checkout, balance update), while background analytics can tolerate slightly stale reads.
 
 #### Metric/Acceptance Criteria
 
@@ -20,11 +20,7 @@ The primary datastore must remain available and correct under node failures and 
 * Support idempotent write semantics for at‑least‑once retries; include deduplication tokens to prevent duplicate side‑effects.
 * Validate via fault injection (node kill, network partition, disk pause) and demonstrate the SLOs above; include dashboards showing leader changes, commit index, quorum success rate.
 
-#### Techniques (examples)
 
-- Health checks: active readiness/liveness probes to gate traffic during elections and to remove unhealthy replicas from read pools.
-- Timeouts and jittered retries: per‑RPC timeouts and capped, exponential backoff to avoid thundering herds.
-- Bulkheads: isolate client pools and threads for read/write paths and per‑service consumers to prevent cross‑impact during partial outages.
 
 #### Acceptable vs. Unacceptable Transparency Loss
 
