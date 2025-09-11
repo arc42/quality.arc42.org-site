@@ -28,17 +28,17 @@ Health Level Seven International (HL7) is an ANSI‑accredited standards‑devel
 
 HL7 primarily targets interoperability, but its design and accompanying guidance affect several qualities relevant to healthcare systems:
 
-| Attribute | How HL7 addresses it |
-|:--- |:--- |
-| **[Interoperability](/qualities/interoperability)** | Core purpose: shared data models (resources, messages, documents), uniform encodings, and well‑defined interactions enable cross‑vendor, cross‑organization exchange. |
-| **[Compatibility](/qualities/compatibility)** | Profiles, constraints, and capability statements let systems co‑exist and negotiate supported features while sharing environments. |
-| **[Extensibility](/qualities/extensibility)** | FHIR’s extension mechanism and profiling allow safe, discoverable additions without breaking base conformance; CDA templates provide a similar pattern. |
-| **[Maintainability](/qualities/maintainability)** | Versioning, backward‑compatible patterns (e.g., FHIR’s lenient reads), and modular resources/profiles reduce effort to evolve interfaces. |
-| **[Portability](/qualities/portability)** / **[Flexibility](/qualities/flexibility)** | Resource‑based APIs and standardized terminologies ease migration between systems and regions; implementation guides tailor for locales without forking the base. |
+| Attribute                                                                                                                       | How HL7 addresses it                                                                                                                                                                                    |
+| :------------------------------------------------------------------------------------------------------------------------------ | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **[Interoperability](/qualities/interoperability)**                                                                             | Core purpose: shared data models (resources, messages, documents), uniform encodings, and well‑defined interactions enable cross‑vendor, cross‑organization exchange.                                   |
+| **[Compatibility](/qualities/compatibility)**                                                                                   | Profiles, constraints, and capability statements let systems co‑exist and negotiate supported features while sharing environments.                                                                      |
+| **[Extensibility](/qualities/extensibility)**                                                                                   | FHIR’s extension mechanism and profiling allow safe, discoverable additions without breaking base conformance; CDA templates provide a similar pattern.                                                 |
+| **[Maintainability](/qualities/maintainability)**                                                                               | Versioning, backward‑compatible patterns (e.g., FHIR’s lenient reads), and modular resources/profiles reduce effort to evolve interfaces.                                                               |
+| **[Portability](/qualities/portability)** / **[Flexibility](/qualities/flexibility)**                                           | Resource‑based APIs and standardized terminologies ease migration between systems and regions; implementation guides tailor for locales without forking the base.                                       |
 | **[Security](/qualities/security)** / **[Confidentiality](/qualities/confidentiality)** / **[Integrity](/qualities/integrity)** | Security considerations across HL7 (e.g., FHIR’s security pages) recommend authenticated, authorized access (often via SMART on FHIR/OAuth 2.0), data integrity safeguards, and least‑privilege access. |
-| **[Auditability](/qualities/auditability)** / **[Traceability](/qualities/traceability)** | AuditEvent and Provenance resources support recording access, disclosures, and lineage of clinical data for compliance and investigation. |
-| **[Data Quality](/qualities/data-quality)** | Strong typing, required elements, value set bindings, invariants, and terminology services improve accuracy, completeness, and consistency. |
-| **[Reliability](/qualities/reliability)** / **[Availability](/qualities/availability)** | Indirect: acknowledgement patterns (V2), idempotency guidance, error handling, and async/bulk operations support robust exchanges, but runtime SLOs remain implementer responsibilities. |
+| **[Auditability](/qualities/auditability)** / **[Traceability](/qualities/traceability)**                                       | AuditEvent and Provenance resources support recording access, disclosures, and lineage of clinical data for compliance and investigation.                                                               |
+| **[Data Quality](/qualities/data-quality)**                                                                                     | Strong typing, required elements, value set bindings, invariants, and terminology services improve accuracy, completeness, and consistency.                                                             |
+| **[Reliability](/qualities/reliability)** / **[Availability](/qualities/availability)**                                         | Indirect: acknowledgement patterns (V2), idempotency guidance, error handling, and async/bulk operations support robust exchanges, but runtime SLOs remain implementer responsibilities.                |
 
 ## Authoritative Sources
 
@@ -52,4 +52,3 @@ HL7 primarily targets interoperability, but its design and accompanying guidance
 - HL7 Terminology (THO): https://terminology.hl7.org/
 - US Core Implementation Guide (example of profiling): https://hl7.org/fhir/us/core/
 - SMART App Launch (HL7 IG): https://hl7.org/fhir/smart-app-launch/
-
