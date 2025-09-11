@@ -120,6 +120,9 @@ function extractId(permalink) {
  * @returns {string[]}
  */
 function parseList(value, separator) {
+    if (Array.isArray(value)) {
+        return value;
+    }
     return value ? value.split(separator).map(item => item.trim()) : [];
 }
 

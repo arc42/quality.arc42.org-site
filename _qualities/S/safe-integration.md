@@ -1,6 +1,6 @@
 ---
 title: Safe integration
-tags: safe reliable
+tags: [safe, reliable]
 related: safety, robustness 
 standards: [iso25010]
 permalink: /qualities/safe-integration

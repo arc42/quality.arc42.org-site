@@ -1,6 +1,6 @@
 ---
 title: Mean time to recovery
-tags: operable suitable
+tags: [operable, suitable]
 related: controllability, operability, testability, analysability, deployability, devops-metrics
 permalink: /qualities/mean-time-to-recovery
 ---

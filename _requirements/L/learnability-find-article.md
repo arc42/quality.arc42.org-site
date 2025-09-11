@@ -1,6 +1,6 @@
 ---
 title: New users learn to find articles on their own
-tags: usable
+tags: [usable]
 related: usability, user-experience
 permalink: /requirements/learnability-find-article
 ---

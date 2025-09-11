@@ -1,6 +1,6 @@
 ---
 title: "Severe errors are detected and the system shuts down into safe state"
-tags: operable safe reliable
+tags: [operable, safe, reliable]
 related: dependability, safety, operability, fail-safe, reliability
 permalink: /requirements/shutdown-to-safe-state
 ---

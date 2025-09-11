@@ -1,6 +1,6 @@
 ---
 title: "Protect Data by Establishing Security Protocols"
-tags: secure safe reliable
+tags: [secure, safe, reliable]
 related: safety, cyber-security, security, information-security, patient-safety
 permalink: /requirements/protect-data-by-security-procols
 ---

@@ -1,6 +1,6 @@
 ---
 title: "Facial Recognition Bias Mitigation"
-tags: reliable safe
+tags: [reliable, safe]
 related: bias-mitigation, fairness, accountability, transparency
 permalink: /requirements/facial-recognition-bias-mitigation
 ---

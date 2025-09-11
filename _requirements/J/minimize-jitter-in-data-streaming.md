@@ -1,6 +1,6 @@
 ---
 title: "Minimize jitter in real-time data streaming"
-tags: reliable
+tags: [reliable]
 related: jitter, predictability, latency
 permalink: /requirements/minimize-jitter
 ---

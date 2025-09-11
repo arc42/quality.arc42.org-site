@@ -1,6 +1,6 @@
 ---
 title: "Content Moderation Fairness"
-tags: reliable safe suitable
+tags: [reliable, safe, suitable]
 related: fairness, bias-mitigation, transparency, accountability
 permalink: /requirements/content-moderation-fairness
 ---

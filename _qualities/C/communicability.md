@@ -1,6 +1,6 @@
 ---
 title: Communicability
-tags: usable
+tags: [usable]
 related: usability, learnability, understandability, user-error-protection, ease-of-use
 permalink: /qualities/communicability
 ---

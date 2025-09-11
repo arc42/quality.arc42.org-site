@@ -1,6 +1,6 @@
 ---
 title: "Low-overhead query execution measurement"
-tags: efficient
+tags: [efficient]
 related: efficiency, time-behaviour, memory-usage, resource-efficiency, resource-utilization
 permalink: /requirements/query-execution-management
 ---

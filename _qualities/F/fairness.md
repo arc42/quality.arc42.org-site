@@ -1,6 +1,6 @@
 ---
 title: Fairness
-tags: reliable safe suitable
+tags: [reliable, safe, suitable]
 related: bias-mitigation, explainability, transparency, accountability
 standards: [iso42001]
 permalink: /qualities/fairness

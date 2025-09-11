@@ -1,6 +1,6 @@
 ---
 title: "Multilinguality Support"
-tags: usable
+tags: [usable]
 related: usability, inclusivity, accessibility, interaction-capability
 permalink: /requirements/multilinguality-support
 ---

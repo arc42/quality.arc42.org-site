@@ -1,6 +1,6 @@
 ---
 title: Agility
-tags: flexible
+tags: [flexible]
 related: flexibility, changeability, adaptability, modifiability, modularity
 permalink: /qualities/agility
 ---

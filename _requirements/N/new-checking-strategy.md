@@ -1,6 +1,6 @@
 ---
 title: "Maintainable checking strategies"
-tags: efficient
+tags: [efficient]
 related: efficiency, maintainability
 permalink: /requirements/maintainable-checking-strategy
 ---

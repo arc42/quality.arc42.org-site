@@ -1,6 +1,6 @@
 ---
 title: Appropriateness recognizability
-tags: usable operable
+tags: [usable, operable]
 related: usability, attractiveness, operability, user-error-protection, user-engagement
 standards: [iso25010]
 permalink: /qualities/appropriateness-recognizability

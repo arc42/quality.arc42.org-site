@@ -1,6 +1,6 @@
 ---
 title: Startup Time
-tags: efficient
+tags: [efficient]
 related: efficiency, performance, performance, time-behaviour  
 permalink: /qualities/startup-time
 ---

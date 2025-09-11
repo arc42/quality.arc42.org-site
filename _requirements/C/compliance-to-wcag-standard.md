@@ -1,6 +1,6 @@
 ---
 title: Compliance with WCAG accessibility guidelines
-tags: usable
+tags: [usable]
 related: accessibility, user-experience, user-assistance, interaction-capability
 permalink: /requirements/compliance-to-wcag
 ---

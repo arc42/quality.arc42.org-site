@@ -1,6 +1,6 @@
 ---
 title: "Consistent keyboard shortcuts"
-tags: usable efficient
+tags: [usable, efficient]
 related: usability, consistency, user-experience, user-assistance, interaction-capability
 permalink: /requirements/consistent-keyboard-shortcuts
 ---

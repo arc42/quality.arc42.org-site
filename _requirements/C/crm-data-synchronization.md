@@ -1,6 +1,6 @@
 ---
 title: "CRM System Data Synchronization"
-tags: flexible operable reliable
+tags: [flexible, operable, reliable]
 related: integrability, interoperability, data-quality, consistency
 permalink: /requirements/crm-data-synchronization
 ---

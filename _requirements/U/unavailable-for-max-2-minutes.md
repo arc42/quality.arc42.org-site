@@ -1,6 +1,6 @@
 ---
 title: "Unavailable for max 2 minutes"
-tags: reliable usable
+tags: [reliable, usable]
 related:  availability, reliability
 permalink: /requirements/unavailability-max-2-minutes
 ---

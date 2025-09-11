@@ -1,6 +1,6 @@
 ---
 title: Upgradeability
-tags: flexible operable
+tags: [flexible, operable]
 related: flexibility, operability, predictability, releasability, installability
 permalink: /qualities/upgradeability
 ---

@@ -1,6 +1,6 @@
 ---
 title: Code Readability
-tags: usable efficient
+tags: [usable, efficient]
 related: understandability, legibility, clarity, conciseness, consistency, readability
 permalink: /qualities/code-readability
 ---

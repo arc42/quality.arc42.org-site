@@ -1,6 +1,6 @@
 ---
 title: Timeliness
-tags: efficient
+tags: [efficient]
 related: efficiency, performance, response-time, speed
 permalink: /qualities/timeliness
 ---

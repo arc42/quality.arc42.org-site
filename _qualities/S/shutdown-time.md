@@ -1,6 +1,6 @@
 ---
 title: Shutdown Time
-tags: efficient
+tags: [efficient]
 related: startup-time, time-behaviour
 permalink: /qualities/shutdown-time
 ---

@@ -1,6 +1,6 @@
 ---
 title: "Cultural Sensitivity in Content"
-tags: usable
+tags: [usable]
 related: usability, inclusivity, internationalization, interaction-capability
 permalink: /requirements/cultural-sensitivity-in-content
 ---

@@ -1,6 +1,6 @@
 ---
 title: "Withstand DDoS Attack"
-tags: reliable
+tags: [reliable]
 related: resilience, reliability, availability, high-availability, recoverability, intrusion-detection, resistance
 permalink: /requirements/withstand-ddos-attack
 ---

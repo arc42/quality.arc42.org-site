@@ -1,6 +1,6 @@
 ---
 title: Resistance
-tags: secure
+tags: [secure]
 related: integrity, security, dependability, fault-tolerance, recoverability 
 standards: [iso25010]
 permalink: /qualities/resistance

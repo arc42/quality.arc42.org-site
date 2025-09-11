@@ -1,6 +1,6 @@
 ---
 title: Recoverability
-tags: reliable usable
+tags: [reliable, usable]
 related: robustness, reliability, usability, availability, faultlessness, fault-tolerance
 standards: [iso25010]
 permalink: /qualities/recoverability

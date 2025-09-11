@@ -1,6 +1,6 @@
 ---
 title: Controllability
-tags: usable operable
+tags: [usable, operable]
 related: usability, autonomy
 permalink: /qualities/controllability
 ---

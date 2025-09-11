@@ -1,6 +1,6 @@
 ---
 title: "Backup patient monitoring sensor takes over"
-tags: safe
+tags: [safe]
 related: safety, efficiency, reliability, patient-safety
 permalink: /requirements/backup-patient-monitoring-sensor
 ---

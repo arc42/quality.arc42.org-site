@@ -1,6 +1,6 @@
 ---
 title: "Up to date API"
-tags: reliable suitable
+tags: [reliable, suitable]
 related: reliability, accuracy, correctness
 permalink: /requirements/up-to-date-api
 ---

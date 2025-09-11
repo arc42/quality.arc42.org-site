@@ -1,6 +1,6 @@
 ---
 title: Recovery time
-tags: reliable
+tags: [reliable]
 related: recoverability, fault-tolerance, availability, resilience, high-availability
 permalink: /qualities/recovery-time
 ---

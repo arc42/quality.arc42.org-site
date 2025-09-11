@@ -1,6 +1,6 @@
 ---
 title: "Quickly locate bugs"
-tags: efficient
+tags: [efficient]
 related: efficiency, maintainability
 permalink: /requirements/quickly-locate-bugs
 ---

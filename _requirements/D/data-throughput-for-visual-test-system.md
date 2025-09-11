@@ -1,6 +1,6 @@
 ---
 title: "Data Throughput for Visual Test System"
-tags: efficient usable
+tags: [efficient, usable]
 related: throughput, efficiency, performance, capacity 
 permalink: /requirements/data-throughput-for-visual-test-system
 ---

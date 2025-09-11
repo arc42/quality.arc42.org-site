@@ -1,6 +1,6 @@
 ---
 title: Privacy
-tags: secure
+tags: [secure]
 related: security, confidentiality
 standards: [nist80053, aiuc1]
 permalink: /qualities/privacy

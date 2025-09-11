@@ -1,6 +1,6 @@
 ---
 title: Explainability
-tags: safe suitable
+tags: [safe, suitable]
 related: accountability, analysability, clarity
 standards: [iso42001]
 permalink: /qualities/explainability

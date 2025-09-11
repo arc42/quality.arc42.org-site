@@ -1,6 +1,6 @@
 ---
 title: Credibility
-tags: reliable
+tags: [reliable]
 related: accountability, usability, user-engagement
 permalink: /qualities/credibility
 ---

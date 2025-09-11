@@ -1,6 +1,6 @@
 ---
 title: "Rollout of a new feature"
-tags: operable suitable
+tags: [operable, suitable]
 related: agility, changeability, maintainability
 permalink: /requirements/rollout-new-feature
 ---

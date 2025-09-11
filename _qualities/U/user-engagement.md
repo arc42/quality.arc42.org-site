@@ -1,6 +1,6 @@
 ---
 title: User engagement
-tags: usable
+tags: [usable]
 related: usability
 standards: [iso25010]
 permalink: /qualities/user-engagement

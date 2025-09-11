@@ -1,6 +1,6 @@
 ---
 title: Assess impact of proposed change
-tags: suitable reliable
+tags: [suitable, reliable]
 related: analysability, reliability
 permalink: /requirements/assess-impact-of-proposed-change
 ---

@@ -1,6 +1,6 @@
 ---
 title: "Restricted Memory"
-tags: efficient
+tags: [efficient]
 related: efficiency, resource-efficiency, memory-usage
 permalink: /requirements/restricted-memory
 ---

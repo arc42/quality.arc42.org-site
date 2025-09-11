@@ -1,6 +1,6 @@
 ---
 title: Appearance
-tags: usable
+tags: [usable]
 related: ease-of-use, learnability, self-descriptiveness, user-interface-aesthetics, attractiveness
 permalink: /qualities/appearance
 ---

@@ -1,6 +1,6 @@
 ---
 title: "Fast shutdown time (less than 10 sec)"
-tags: efficient
+tags: [efficient]
 related: time-behaviour, speed, shutdown-time
 permalink: /requirements/fast-shutdown-time
 ---

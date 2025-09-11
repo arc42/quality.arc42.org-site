@@ -1,6 +1,6 @@
 ---
 title: Avoid common vulnerabilities
-tags: reliable secure
+tags: [reliable, secure]
 related: vulnerability
 stakeholder: management, product-owner
 permalink: /requirements/avoid-common-vulnerabilities

@@ -1,6 +1,6 @@
 ---
 title: "Inclusive User Testing"
-tags: usable
+tags: [usable]
 related: usability, inclusivity, interaction-capability
 permalink: /requirements/inclusive-user-testing
 ---

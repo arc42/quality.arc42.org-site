@@ -1,6 +1,6 @@
 ---
 title: Composability
-tags: flexible
+tags: [flexible]
 related: modularity, autonomy, reusability, interoperability
 permalink: /qualities/composability
 ---

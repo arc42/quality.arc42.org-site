@@ -1,6 +1,6 @@
 ---
 title: "Recognize Assistive Technologies"
-tags: usable
+tags: [usable]
 related: usability, inclusivity, accessibility, interaction-capability
 permalink: /requirements/recognize-assistive-technology
 ---

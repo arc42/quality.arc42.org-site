@@ -1,6 +1,6 @@
 ---
 title: Effectiveness
-tags: efficient
+tags: [efficient]
 related: efficiency
 permalink: /qualities/effectiveness
 ---

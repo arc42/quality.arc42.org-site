@@ -1,6 +1,6 @@
 ---
 title: Versatility 
-tags: flexible suitable
+tags: [flexible, suitable]
 related: flexibility, adaptability
 permalink: /qualities/versatility
 ---

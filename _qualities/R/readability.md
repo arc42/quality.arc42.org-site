@@ -1,6 +1,6 @@
 ---
 title: Readability
-tags: usable
+tags: [usable]
 related: usability, understandability, legibility, code-readability
 permalink: /qualities/readability
 ---

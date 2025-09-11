@@ -1,6 +1,6 @@
 ---
 title: "Patient Data Quality in Healthcare System"
-tags: reliable safe
+tags: [reliable, safe]
 related: data-quality, accuracy, completeness, timeliness, integrity
 permalink: /requirements/patient-data-quality
 ---

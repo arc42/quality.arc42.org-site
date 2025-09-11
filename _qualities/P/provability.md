@@ -1,6 +1,6 @@
 ---
 title: Provability
-tags: reliable safe
+tags: [reliable, safe]
 related: explainability, verifiability, correctness
 permalink: /qualities/provability
 ---

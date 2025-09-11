@@ -1,6 +1,6 @@
 ---
 title: User error protection
-tags: usable operable
+tags: [usable, operable]
 related: usability, operability, robustness
 standards: [iso25010]
 permalink: /qualities/user-error-protection

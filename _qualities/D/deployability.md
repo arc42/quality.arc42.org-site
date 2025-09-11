@@ -1,6 +1,6 @@
 ---
 title: Deployability
-tags: operable suitable
+tags: [operable, suitable]
 related: releasability, operability, testability, analysability, devops-metrics
 permalink: /qualities/deployability
 ---

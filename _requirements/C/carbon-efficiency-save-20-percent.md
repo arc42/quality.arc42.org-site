@@ -1,6 +1,6 @@
 ---
 title: Save at least 20% of carbon emissions with every new version
-tags: efficient
+tags: [efficient]
 related: efficiency, carbon-emission-efficiency, energy-efficiency
 permalink: /requirements/carbon-efficiency-save
 ---

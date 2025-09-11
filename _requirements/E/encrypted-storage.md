@@ -1,6 +1,6 @@
 ---
 title: "Encrypted storage"
-tags: secure
+tags: [secure]
 related: confidentiality, security, privacy
 permalink: /requirements/encrypted-storage
 ---

@@ -1,6 +1,6 @@
 ---
 title: "Portable Business Data Checker"
-tags: flexible operable
+tags: [flexible, operable]
 related: portability, adaptability, flexibility 
 permalink: /requirements/portable-business-data-checker
 ---

@@ -1,6 +1,6 @@
 ---
 title: Independence
-tags: flexible
+tags: [flexible]
 related: maintainability, modularity, adaptability, configurability, changeability, agility, flexibility, autonomy
 permalink: /qualities/independence
 ---

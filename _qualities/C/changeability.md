@@ -1,6 +1,6 @@
 ---
 title: Changeability
-tags: flexible
+tags: [flexible]
 related: flexibility, adaptability, modifiability, configurability, modularity
 permalink: /qualities/changeability
 ---

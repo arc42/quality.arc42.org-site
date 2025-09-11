@@ -1,6 +1,6 @@
 ---
 title: "Easily understandable generated code"
-tags: efficient usable suitable
+tags: [efficient, usable, suitable]
 related: legibility, code-readability, readability, maintainability, understandability, interaction-capability
 permalink: /requirements/understandable-generated-code
 ---

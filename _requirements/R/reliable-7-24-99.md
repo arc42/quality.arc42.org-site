@@ -1,6 +1,6 @@
 ---
 title: "Available 7x24 with 99% uptime"
-tags: operable usable reliable
+tags: [operable, usable, reliable]
 related: availability, high-availability, reliability, operability, user-error-protection, interaction-capability
 permalink: /requirements/available-7-24-99
 ---

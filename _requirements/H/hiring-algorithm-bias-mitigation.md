@@ -1,6 +1,6 @@
 ---
 title: "Hiring Algorithm Bias Mitigation"
-tags: reliable suitable
+tags: [reliable, suitable]
 related: bias-mitigation, fairness, transparency, accountability, explainability
 permalink: /requirements/hiring-algorithm-bias-mitigation
 ---

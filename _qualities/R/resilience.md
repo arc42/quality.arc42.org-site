@@ -1,6 +1,6 @@
 ---
 title: Resilience
-tags: reliable secure
+tags: [reliable, secure]
 related: availability
 permalink: /qualities/resilience
 ---

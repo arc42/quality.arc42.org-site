@@ -1,6 +1,6 @@
 ---
 title: "Low effort deployment"
-tags: operable
+tags: [operable]
 related: compatibility, interoperability, portability
 permalink: /requirements/low-effort-deployment
 ---

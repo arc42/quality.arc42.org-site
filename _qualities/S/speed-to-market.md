@@ -1,6 +1,6 @@
 ---
 title: Speed to Market
-tags: efficient
+tags: [efficient]
 related: flexibility, efficiency, deployment-frequency, extensibility, lead-time-for-changes, cycle-time
 permalink: /qualities/speed-to-market
 ---

@@ -1,6 +1,6 @@
 ---
 title: "Reliable ERH System"
-tags: safe
+tags: [safe]
 related: patient-safety, safety, reliability, efficiency, availability
 permalink: /requirements/reliable-erh-system
 ---

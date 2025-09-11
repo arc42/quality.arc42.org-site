@@ -1,6 +1,6 @@
 ---
 title: "User Interface can be used in Current Browsers"
-tags: flexible usable operable
+tags: [flexible, usable, operable]
 related: flexibility, portability, compatibility, interoperability, interaction-capability
 permalink: /requirements/user-interface-works-with-current-browsers
 ---

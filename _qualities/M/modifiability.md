@@ -1,6 +1,6 @@
 ---
 title: Modifiability
-tags: flexible
+tags: [flexible]
 related: flexibility, adaptability, changeability, configurability
 standards: [iso25010]
 permalink: /qualities/modifiability

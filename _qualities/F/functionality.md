@@ -1,6 +1,6 @@
 ---
 title: Functionality
-tags: usable reliable suitable
+tags: [usable, reliable, suitable]
 related: usability, functional-suitability, functional-correctness, functional-completeness
 permalink: /qualities/functionality
 ---

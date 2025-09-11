@@ -1,6 +1,6 @@
 ---
 title: Memory usage
-tags: efficient
+tags: [efficient]
 related: efficiency, capacity, time-behaviour, resource-utilization
 permalink: /qualities/memory-usage
 ---

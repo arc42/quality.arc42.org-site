@@ -1,6 +1,6 @@
 ---
 title: Graceful degradation
-tags: reliable usable
+tags: [reliable, usable]
 related: robustness, reliability, usability, availability, recoverability, faultlessness, fault-tolerance
 permalink: /qualities/graceful-degradation
 ---

@@ -1,6 +1,6 @@
 ---
 title: Stability
-tags: reliable
+tags: [reliable]
 related: reliability, adaptability, changeability
 permalink: /qualities/stability
 ---

@@ -1,6 +1,6 @@
 ---
 title: Interaction capability
-tags: usable operable
+tags: [usable, operable]
 related: usability, functionality, inclusivity, attractiveness, operability, user-error-protection, user-engagement, ease-of-use
 standards: [iso25010]
 permalink: /qualities/interaction-capability

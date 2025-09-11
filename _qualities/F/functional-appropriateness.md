@@ -1,6 +1,6 @@
 ---
 title: Functional Appropriateness
-tags: usable reliable suitable
+tags: [usable, reliable, suitable]
 related: usability, functionality, functional-suitability, suitability
 standards: [iso25010]
 permalink: /qualities/functional-appropriateness

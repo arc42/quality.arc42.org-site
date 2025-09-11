@@ -1,6 +1,6 @@
 ---
 title: Consistency
-tags: usable efficient
+tags: [usable, efficient]
 related: understandability, coherence
 permalink: /qualities/consistency
 ---

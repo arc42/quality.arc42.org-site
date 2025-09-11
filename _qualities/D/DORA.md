@@ -1,6 +1,6 @@
 ---
 title: DORA Metrics
-tags: operable
+tags: [operable]
 related: devops-metrics, deployability, deployment-frequency, operability
 permalink: /qualities/DORA-metrics
 ---

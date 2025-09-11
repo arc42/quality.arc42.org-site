@@ -1,6 +1,6 @@
 ---
 title: Accuracy
-tags: reliable usable
+tags: [reliable, usable]
 related: correctness, preciseness
 permalink: /qualities/accuracy
 ---

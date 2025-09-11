@@ -1,6 +1,6 @@
 ---
 title: "Access Control via SSO"
-tags: usable suitable secure
+tags: [usable, suitable, secure]
 related: access-control, auditability
 permalink: /requirements/access-control-via-sso
 ---

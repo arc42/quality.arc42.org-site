@@ -1,6 +1,6 @@
 ---
 title: Evolvability
-tags: flexible
+tags: [flexible]
 related: adaptability, maintainability, extensibility, scalability, modularity
 permalink: /qualities/evolvability
 ---

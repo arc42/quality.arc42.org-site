@@ -1,6 +1,6 @@
 ---
 title: Accurate estimate of insurance contract rate
-tags: usable suitable
+tags: [usable, suitable]
 related: accuracy, preciseness, precision, reliability, functional-correctness, interaction-capability
 permalink: /requirements/accurate-estimate-of-insurance-rate
 ---

@@ -1,6 +1,6 @@
 ---
 title: Personalization
-tags: flexible
+tags: [flexible]
 related: customizability
 permalink: /qualities/personalization
 ---

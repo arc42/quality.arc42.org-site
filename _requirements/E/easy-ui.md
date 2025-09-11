@@ -1,6 +1,6 @@
 ---
 title: "Easy UI"
-tags: usable
+tags: [usable]
 related: ease-of-use, user-experience, usability, interaction-capability
 permalink: /requirements/easy-ui
 ---

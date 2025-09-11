@@ -1,6 +1,6 @@
 ---
 title: Budget constraint
-tags: suitable efficient
+tags: [suitable, efficient]
 related: affordability, cost
 permalink: /qualities/budget-constraint
 ---

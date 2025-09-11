@@ -1,6 +1,6 @@
 ---
 title: "Display Data Based on Context"
-tags: usable suitable
+tags: [usable, suitable]
 related: adaptability, functional-appropriateness
 permalink: /requirements/display-data-based-on-context
 ---

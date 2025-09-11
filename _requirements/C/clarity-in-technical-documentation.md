@@ -1,6 +1,6 @@
 ---
 title: "Clarity in technical documentation"
-tags: usable reliable
+tags: [usable, reliable]
 related: clarity, coherence, understandability, legibility 
 permalink: /requirements/clarity-in-technical-documentation
 ---

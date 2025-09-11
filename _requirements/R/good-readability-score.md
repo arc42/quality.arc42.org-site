@@ -1,6 +1,6 @@
 ---
 title: "Good code readability score"
-tags: reliable
+tags: [reliable]
 related: readability, legibility, code-readability, code-complexity
 stakeholder: developer
 permalink: /requirements/good-code-readability-score

@@ -1,6 +1,6 @@
 ---
 title: "Near instant search results"
-tags: usable efficient
+tags: [usable, efficient]
 related: efficiency, performance, time-behaviour, speed, interaction-capability
 permalink: /requirements/near-instant-search-results
 ---

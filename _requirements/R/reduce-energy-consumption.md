@@ -1,6 +1,6 @@
 ---
 title: Reduce energy consumption with every new version
-tags: efficient
+tags: [efficient]
 related: sustainability, carbon-emission-efficiency, energy-efficiency
 permalink: /requirements/reduce-energy-consumption-with-new-version
 ---

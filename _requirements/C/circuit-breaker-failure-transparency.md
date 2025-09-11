@@ -1,6 +1,6 @@
 ---
 title: "Service Circuit Breakers and Graceful Degradation"
-tags: reliable safe
+tags: [reliable, safe]
 related: failure-transparency, availability, resilience, fault-tolerance
 permalink: /requirements/circuit-breaker-failure-transparency
 ---

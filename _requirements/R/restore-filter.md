@@ -1,6 +1,6 @@
 ---
 title: "Restore Filter after Log In"
-tags: usable suitable
+tags: [usable, suitable]
 related: functional-appropriateness
 permalink: /requirements/restore-filter-after-log-in
 ---

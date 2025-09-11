@@ -1,6 +1,6 @@
 ---
 title: Replaceability
-tags: operable flexible
+tags: [operable, flexible]
 related: installability, analysability, operability, deployability
 standards: [iso25010]
 permalink: /qualities/replaceability

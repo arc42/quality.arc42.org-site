@@ -1,6 +1,6 @@
 ---
 title: Availability
-tags: reliable usable
+tags: [reliable, usable]
 related: high-availability, robustness, reliability, usability, fault-tolerance, recoverability, dependability, faultlessness, recovery-time
 standards: [iso25010, iso27001, iso26262, pcidss, hl7]
 permalink: /qualities/availability

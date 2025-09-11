@@ -1,6 +1,6 @@
 ---
 title: Ease of Use
-tags: operable usable
+tags: [operable, usable]
 related: attractiveness, operability, user-error-protection, user-engagement, user-experience, user-interface-aesthetics, user-assistance, usability
 permalink: /qualities/ease-of-use
 ---

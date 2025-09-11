@@ -1,6 +1,6 @@
 ---
 title: Reusability
-tags: flexible
+tags: [flexible]
 related: flexibility, adaptability, changeability, configurability, maintainability, modifiability
 standards: [iso25010]
 permalink: /qualities/reusability

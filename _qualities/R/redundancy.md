@@ -1,6 +1,6 @@
 ---
 title: Redundancy
-tags: 
+tags: [] 
 related: 
 permalink: /qualities/redundancy
 ---

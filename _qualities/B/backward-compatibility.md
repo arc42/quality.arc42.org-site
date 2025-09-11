@@ -1,6 +1,6 @@
 ---
 title: Backward compatibility
-tags: usable operable reliable
+tags: [usable, operable, reliable]
 related: portability, flexibility, compatibility
 permalink: /qualities/backward-compatibility
 ---

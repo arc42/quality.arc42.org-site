@@ -1,6 +1,6 @@
 ---
 title: Durability
-tags: reliable
+tags: [reliable]
 related: reliability, availability, robustness, data-integrity
 permalink: /qualities/durability
 ---

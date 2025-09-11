@@ -1,6 +1,6 @@
 ---
 title: Cohesion
-tags: efficient flexible suitable
+tags: [efficient, flexible, suitable]
 related: coherence, modularity
 permalink: /qualities/cohesion
 ---

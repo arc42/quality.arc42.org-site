@@ -1,6 +1,6 @@
 ---
 title: Authenticity
-tags: secure
+tags: [secure]
 related: integrity, security, non-repudiation
 standards: [iso25010, iso27001, pcidss]
 permalink: /qualities/authenticity

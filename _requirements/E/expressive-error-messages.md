@@ -1,6 +1,6 @@
 ---
 title: "Expressive error messages"
-tags: usable
+tags: [usable]
 related: usability, user-experience, fault-isolation, graceful-degradation, hazard-warning, user-assistance, interaction-capability
 permalink: /requirements/expressive-error-messages
 ---

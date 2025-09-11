@@ -1,6 +1,6 @@
 ---
 title: "Order queue"
-tags: reliable 
+tags: [reliable] 
 related: fault-tolerance, recoverability
 permalink: /requirements/order-queue
 ---

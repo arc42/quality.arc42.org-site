@@ -1,6 +1,6 @@
 ---
 title: Intrusion Prevention
-tags: secure
+tags: [secure]
 related: intrusion-detection
 permalink: /qualities/intrusion-prevention
 ---

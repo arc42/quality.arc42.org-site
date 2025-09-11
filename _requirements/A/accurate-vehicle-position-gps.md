@@ -1,6 +1,6 @@
 ---
 title: Vehicle's position validity influences accuracy
-tags: reliable usable
+tags: [reliable, usable]
 related: preciseness, precision, reliability, functional-correctness
 permalink: /requirements/accurate-vehicle-position-gps
 ---

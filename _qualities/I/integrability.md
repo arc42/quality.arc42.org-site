@@ -1,6 +1,6 @@
 ---
 title: Integrability
-tags: flexible operable
+tags: [flexible, operable]
 related: interoperability, modularity, composability, compatibility, integrity
 permalink: /qualities/integrability
 ---

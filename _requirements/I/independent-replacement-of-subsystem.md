@@ -1,6 +1,6 @@
 ---
 title: "Independent replacement of subsystem"
-tags: flexible operable efficient
+tags: [flexible, operable, efficient]
 related: adaptability, agility, changeability, efficiency, maintainability
 permalink: /requirements/independent-replacement-of-subsystem
 ---

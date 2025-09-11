@@ -1,6 +1,6 @@
 ---
 title: Fault tolerance
-tags: reliable usable
+tags: [reliable, usable]
 related: robustness, reliability, usability, availability, recoverability, faultlessness, graceful-degradation
 standards: [iso25010, iso26262, iec61508]
 permalink: /qualities/fault-tolerance

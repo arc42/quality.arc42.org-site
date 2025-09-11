@@ -1,6 +1,6 @@
 ---
 title: Usability
-tags: usable operable
+tags: [usable, operable]
 related: functionality, attractiveness, operability, user-error-protection, user-engagement, ease-of-use, inclusivity
 standards: [iec-62304]
 permalink: /qualities/usability

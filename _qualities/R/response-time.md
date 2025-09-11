@@ -1,6 +1,6 @@
 ---
 title: Response Time
-tags: efficient
+tags: [efficient]
 related: performance, speed, time-behaviour
 permalink: /qualities/response-time
 ---

@@ -1,6 +1,6 @@
 ---
 title: "Zero-knowledge data storage"
-tags: secure
+tags: [secure]
 related: confidentiality, security, privacy
 permalink: /requirements/zero-knowledge-data-storage
 ---

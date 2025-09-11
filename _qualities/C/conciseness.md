@@ -1,6 +1,6 @@
 ---
 title: Conciseness
-tags: usable efficient
+tags: [usable, efficient]
 related: understandability
 permalink: /qualities/conciseness
 ---
