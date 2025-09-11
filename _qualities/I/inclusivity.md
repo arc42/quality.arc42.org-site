@@ -2,7 +2,7 @@
 title: Inclusivity
 tags: usable
 related: usability, functionality, attractiveness, user-error-protection,  ease-of-use
-standards: iso25010
+standards: [iso25010]
 permalink: /qualities/inclusivity
 ---
 

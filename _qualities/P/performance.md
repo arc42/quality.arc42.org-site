@@ -2,7 +2,7 @@
 title: Performance
 tags: efficient
 related: efficiency, resource-efficiency, speed,
-standards: iso14756
+standards: [iso14756]
 permalink: /qualities/performance
 ---
 

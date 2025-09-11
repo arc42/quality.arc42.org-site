@@ -2,7 +2,7 @@
 title: Predictability
 tags: reliable
 related: reliability, correctness
-standards: misra-c
+standards: [misra-c]
 permalink: /qualities/predictability
 ---
 

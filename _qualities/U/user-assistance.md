@@ -2,7 +2,7 @@
 title: User assistance
 tags: usable
 related: usability, user-error-protection, user-engagement
-standards: iso25010
+standards: [iso25010]
 permalink: /qualities/user-assistance
 ---
 
