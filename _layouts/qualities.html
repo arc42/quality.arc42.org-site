@@ -36,14 +36,20 @@ requirements ("related to this quality") - Related qualities {% endcomment %}
     <hr class="with-no-margin" />
 
     {% comment %} Find standards that reference this quality using the standards field in quality
-    front matter {% endcomment %} {% assign related_standards = "" | split: "" %} {% if
-    page.standards %} {% comment %}Handle both array format [item1, item2] and comma-separated
-    format item1,item2{% endcomment %} {% assign standards_raw = page.standards | join: ',' %} {%
-    assign standard_ids = standards_raw | split: ',' %} {% for standard_id in standard_ids %} {%
-    assign standard_id_trimmed = standard_id | strip %} {% for standard in site.standards %} {% if
-    standard.standard_id == standard_id_trimmed %} {% assign related_standards = related_standards |
-    push: standard %} {% break %} {% endif %} {% endfor %} {% endfor %} {% endif %} {% if
-    related_standards.size > 0 %}
+    front matter {% endcomment %}
+    {% assign related_standards = "" | split: "" %}
+    {% if page.standards %}
+    {% for standard_id in page.standards %}
+    {% assign standard_id_trimmed = standard_id | strip %}
+    {% for standard in site.standards %}
+    {% if standard.standard_id == standard_id_trimmed %}
+    {% assign related_standards = related_standards | push: standard %}
+    {% break %}
+    {% endif %}
+    {% endfor %}
+    {% endfor %}
+    {% endif %}
+    {% if related_standards.size > 0 %}
     <h2 class="section-heading standards">Related Standards</h2>
     <p>The following standards mention {{ page.title }}:</p>
     <ul class="posts">
