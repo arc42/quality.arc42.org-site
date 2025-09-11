@@ -176,6 +176,11 @@ h2.section-heading.qualities {
   color: var(--quality-text-color);
 }
 
+h2.section-heading.standards {
+  background-color: var(--standard-background-color);
+  color: var(--standard-text-color);
+}
+
 /* Page header colors for different collections */
 .panel.quality-header {
   background-color: var(--quality-background-color) !important;
