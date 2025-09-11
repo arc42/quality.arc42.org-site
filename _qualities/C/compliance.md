@@ -2,7 +2,7 @@
 title: Compliance 
 tags: secure safe usable reliable efficient suitable
 related: security, safety, usability, reliability, efficiency, testability
-standards: [[iso27001, iso26262, pcidss, hl7]]
+standards: [iso27001, iso26262, pcidss, hl7]
 permalink: /qualities/compliance
 ---
 
