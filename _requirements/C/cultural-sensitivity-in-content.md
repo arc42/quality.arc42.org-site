@@ -1,7 +1,7 @@
 ---
 title: "Cultural Sensitivity in Content"
 tags: [usable]
-related: [usability, inclusivity, internationalization, interaction-capability]
+related: [usability, inclusivity, internationalization, i18n, interaction-capability]
 permalink: /requirements/cultural-sensitivity-in-content
 ---
 

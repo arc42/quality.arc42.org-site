@@ -1,7 +1,7 @@
 ---
 title: Localizable to several languages
 tags: [flexible]
-related: [flexibility, maintainability, modifiability, adaptability, accessibility, localizability, internationalization]
+related: [flexibility, maintainability, modifiability, adaptability, accessibility, localizability, internationalization,i18n]
 permalink: /requirements/localizable-to-n-languages
 ---
 
