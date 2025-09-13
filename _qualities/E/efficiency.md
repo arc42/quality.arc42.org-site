@@ -1,7 +1,7 @@
 ---
 title: Efficiency
 tags: [efficient]
-related: performance, effectiveness
+related: [performance, effectiveness]
 standards: [misra-c]
 permalink: /qualities/efficiency
 ---

@@ -1,7 +1,7 @@
 ---
 title: Immunity
 tags: [secure, reliable]
-related: vulnerability, intrusion-detection, intrusion-prevention
+related: [vulnerability, intrusion-detection, intrusion-prevention]
 permalink: /qualities/immunity
 ---
 

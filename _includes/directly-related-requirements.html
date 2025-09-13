@@ -7,7 +7,7 @@
     {% assign number = 0 %}
     {% for requirement in requirements %}
       {% assign check_title = page.permalink | split: "/" | last | downcase %}
-      {% assign related = requirement.related | split: ", "%}
+      {% assign related_list = requirement.related %}
       {% if related contains check_title %}
          {% assign number = 1 %}
          <li><a class="reqs" href="{{requirement.permalink}}"><i class="fa fa-lightbulb fa-xs as-bullet" style="color: var(--req-text-color);"> </i> {{ requirement.title }}</a></li>

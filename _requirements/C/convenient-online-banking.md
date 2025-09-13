@@ -1,7 +1,7 @@
 ---
 title: Convenient online banking
 tags: [usable, suitable]
-related: user-experience, convenience, interaction-capability, clarity, ease-of-use
+related: [user-experience, convenience, interaction-capability, clarity, ease-of-use]
 permalink: /requirements/convenient-online-banking
 ---
 

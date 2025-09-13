@@ -1,7 +1,7 @@
 ---
 title: Speed
 tags: [efficient]
-related: efficiency, performance, performance, time-behaviour  
+related: [efficiency, performance, time-behaviour]  
 permalink: /qualities/speed
 ---
 

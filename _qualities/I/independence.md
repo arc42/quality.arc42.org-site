@@ -1,7 +1,7 @@
 ---
 title: Independence
 tags: [flexible]
-related: maintainability, modularity, adaptability, configurability, changeability, agility, flexibility, autonomy
+related: [maintainability, modularity, adaptability, configurability, changeability, agility, flexibility, autonomy]
 permalink: /qualities/independence
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: Reproducibility
 tags: [usable]
-related: consistency, understandability
+related: [consistency, understandability]
 permalink: /qualities/reproducibility
 ---
 

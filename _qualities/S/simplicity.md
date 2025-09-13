@@ -1,7 +1,7 @@
 ---
 title: Simplicity
 tags: [efficient, usable]
-related: efficiency, modularity 
+related: [efficiency, modularity] 
 permalink: /qualities/simplicity
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: Deployment frequency
 tags: [operable, suitable]
-related: controllability, operability, testability, analysability, deployability, devops-metrics, releasability
+related: [controllability, operability, testability, analysability, deployability, devops-metrics, releasability]
 permalink: /qualities/deployment-frequency
 ---
 

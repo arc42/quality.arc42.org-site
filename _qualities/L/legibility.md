@@ -1,7 +1,7 @@
 ---
 title: Legibility
 tags: [usable]
-related: usability, understandability
+related: [usability, understandability]
 permalink: /qualities/legibility
 ---
 

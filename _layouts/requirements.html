@@ -29,7 +29,7 @@ These requirements pages are structured as follows:
 
         {% assign all_qualities = site.qualities %}
 
-        {% assign related_qualities = page.related | split:', ' | sort %}
+        {% assign related_qualities = page.related | sort %}
 
         <ul class="posts">
             {% for quality in related_qualities %}
@@ -52,25 +52,25 @@ These requirements pages are structured as follows:
         
     <h2 class="section-heading requirements">Directly Related Quality Requirements</h2>
 
-        
-    {% assign page_tags = page.tags  | sort %}
-    
+    {% assign page_tags = page.tags | sort %}
 
     Related here means "having the same tags/properties ({{ page_tags | join: ", " }})".
 
-        
-        {% assign all_reqs = site.requirements %}
-        
-        <ul class="posts">
-        {% for req in all_reqs %}
-            {% assign req_tags = req.tags %}
-            {% if req.tags == this_tags and req.title != page.title %}
-                <li> <a class="reqs" href="{{req.permalink}}">{{req.title}}</a>
-                </li>
-            {% endif %}
-        
-        {% endfor %}
-        </ul>
+    {% assign all_reqs = site.requirements %}
+    {% assign found_related_reqs = false %}
+    <ul class="posts">
+    {% for req in all_reqs %}
+        {% assign common_tags = req.tags | intersection: page_tags %}
+        {% if common_tags.size > 0 and req.title != page.title %}
+            {% assign found_related_reqs = true %}
+            <li> <a class="reqs" href="{{req.permalink}}">{{req.title}}</a>
+            </li>
+        {% endif %}
+    {% endfor %}
+    {% if found_related_reqs == false %}
+        <li>No directly related quality requirements found.</li>
+    {% endif %}
+    </ul>
 
 <hr class="with-no-margin"/>
 

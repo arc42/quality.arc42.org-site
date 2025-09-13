@@ -1,7 +1,7 @@
 ---
 title: Detailed audit log
 tags: [secure, suitable]
-related: accountability  
+related: [accountability]  
 permalink: /requirements/detailed-audit-log
 ---
 

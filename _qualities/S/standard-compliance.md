@@ -1,7 +1,7 @@
 ---
 title: Standard Compliance
 tags: [secure, safe, usable, reliable, efficient, suitable]
-related: compliance
+related: [compliance]
 permalink: /qualities/standard-compliance
 ---
 

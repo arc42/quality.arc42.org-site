@@ -1,7 +1,7 @@
 ---
 title: Backward compatibility
 tags: [usable, operable, reliable]
-related: portability, flexibility, compatibility
+related: [portability, flexibility, compatibility]
 permalink: /qualities/backward-compatibility
 ---
 

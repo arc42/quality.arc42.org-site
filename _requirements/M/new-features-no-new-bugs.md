@@ -1,7 +1,7 @@
 ---
 title: "New Features Introduce No Bugs"
 tags: [reliable]
-related: predictability, reliability, changeability
+related: [predictability, reliability, changeability]
 stakeholder: management, product-owner, developer
 permalink: /requirements/new-features-introduct-no-bugs
 ---

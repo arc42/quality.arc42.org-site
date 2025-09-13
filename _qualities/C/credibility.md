@@ -1,7 +1,7 @@
 ---
 title: Credibility
 tags: [reliable]
-related: accountability, usability, user-engagement
+related: [accountability, usability, user-engagement]
 permalink: /qualities/credibility
 ---
 

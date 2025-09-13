@@ -1,7 +1,7 @@
 ---
 title: Longevity
 tags: [reliable, flexible]
-related: reliability, adaptability, modifiability 
+related: [reliability, adaptability, modifiability] 
 permalink: /qualities/longevity
 ---
 

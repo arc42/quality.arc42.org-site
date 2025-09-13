@@ -1,7 +1,7 @@
 ---
 title: Resource utilization
 tags: [efficient]
-related: efficiency, resource-efficiency, speed, performance, time-behaviour, memory-usage
+related: [efficiency, resource-efficiency, speed, performance, time-behaviour, memory-usage]
 standards: [iso25010, iso14756]
 permalink: /qualities/resource-utilization
 ---

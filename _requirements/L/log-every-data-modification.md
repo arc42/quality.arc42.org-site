@@ -1,7 +1,7 @@
 ---
 title: "Every data modification is logged"
 tags: [secure]
-related: security, privacy, traceability, recoverability
+related: [security, privacy, traceability, recoverability]
 permalink: /requirements/every-data-modification-is-logged
 ---
 

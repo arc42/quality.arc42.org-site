@@ -1,7 +1,7 @@
 ---
 title: Customizability
 tags: [flexible, usable]
-related: configurability, flexibility, adaptability, changeability
+related: [configurability, flexibility, adaptability, changeability]
 permalink: /qualities/customizability
 ---
 

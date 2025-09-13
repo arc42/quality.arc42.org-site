@@ -1,7 +1,7 @@
 ---
 title: "Restored to fully functional state 12h after complete failure"
 tags: [operable, usable, reliable]
-related: availability, high-availability, reliability, operability, mean-time-to-recovery, interaction-capability
+related: [availability, high-availability, reliability, operability, mean-time-to-recovery, interaction-capability]
 permalink: /requirements/mttr-12h
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: Information Security
 tags: [secure, reliable]
-related: integrity, availability, non-repudiation, confidentiality, accountability, authenticity, resistance, cyber-security
+related: [integrity, availability, non-repudiation, confidentiality, accountability, authenticity, resistance, cyber-security]
 standards: [iso27001]
 permalink: /qualities/information-security
 ---

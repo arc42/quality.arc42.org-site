@@ -1,7 +1,7 @@
 ---
 title: "Parallel Data Modification"
 tags: [usable, efficient, secure]
-related: performance 
+related: [performance] 
 permalink: /requirements/parallel-data-modification
 ---
 

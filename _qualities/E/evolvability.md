@@ -1,7 +1,7 @@
 ---
 title: Evolvability
 tags: [flexible]
-related: adaptability, maintainability, extensibility, scalability, modularity
+related: [adaptability, maintainability, extensibility, scalability, modularity]
 permalink: /qualities/evolvability
 ---
 

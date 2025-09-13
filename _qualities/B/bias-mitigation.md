@@ -1,7 +1,7 @@
 ---
 title: Bias Mitigation
 tags: [reliable, safe, suitable]
-related: fairness, explainability, transparency, accountability, ethics
+related: [fairness, explainability, transparency, accountability, ethics]
 permalink: /qualities/bias-mitigation
 ---
 

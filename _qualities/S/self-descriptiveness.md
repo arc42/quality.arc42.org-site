@@ -1,7 +1,7 @@
 ---
 title: Self-descriptiveness
 tags: [usable]
-related: usability, user-assistance, user-experience, learnability, conciseness
+related: [usability, user-assistance, user-experience, learnability, conciseness]
 standards: [iso25010]
 permalink: /qualities/self-descriptiveness
 ---

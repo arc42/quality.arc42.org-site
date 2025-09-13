@@ -1,7 +1,7 @@
 ---
 title: "Handle sudden increase in traffic"
 tags: [reliable]
-related: resilience, reliability, elasticity, scalability
+related: [resilience, reliability, elasticity, scalability]
 permalink: /requirements/handle-sudden-increase-in-traffic
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: "Interruptable backend process"
 tags: [usable]
-related: usability, user-experience, time-behaviour, interaction-capability
+related: [usability, user-experience, time-behaviour, interaction-capability]
 permalink: /requirements/interruptable-backend-process
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: "Test with path coverage in 30min"
 tags: [suitable]
-related: testability, risk-identification, cycle-time
+related: [testability, risk-identification, cycle-time]
 permalink: /requirements/test-with-path-coverage-30min
 ---
 

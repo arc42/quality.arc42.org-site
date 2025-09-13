@@ -1,7 +1,7 @@
 ---
 title: Conciseness
 tags: [usable, efficient]
-related: understandability
+related: [understandability]
 permalink: /qualities/conciseness
 ---
 

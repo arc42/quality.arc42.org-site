@@ -1,7 +1,7 @@
 ---
 title: Hazard warning
 tags: [safe, reliable]
-related: safety, robustness 
+related: [safety, robustness] 
 standards: [iso25010]
 permalink: /qualities/hazard-warning
 ---

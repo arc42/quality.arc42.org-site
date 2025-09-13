@@ -1,7 +1,7 @@
 ---
 title: "Financial Data Accuracy for Reporting"
 tags: [reliable, suitable]
-related: data-quality, accuracy, correctness, integrity
+related: [data-quality, accuracy, correctness, integrity]
 permalink: /requirements/financial-data-accuracy
 ---
 

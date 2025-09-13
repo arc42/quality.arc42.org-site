@@ -1,7 +1,7 @@
 ---
 title: Profitability
 tags: [efficient]
-related: time-to-market, budget-constraint, cost, affordability
+related: [time-to-market, budget-constraint, cost, affordability]
 permalink: /qualities/profitability
 ---
 

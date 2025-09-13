@@ -1,7 +1,7 @@
 ---
 title: Convenience 
 tags: [usable]
-related: usability, ease-of-use, user-assistance
+related: [usability, ease-of-use, user-assistance]
 permalink: /qualities/convenience
 ---
 

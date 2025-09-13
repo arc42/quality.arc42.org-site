@@ -1,7 +1,7 @@
 ---
 title: "Confidentiality by multi-tenancy"
 tags: [secure]
-related: confidentiality, security, privacy
+related: [confidentiality, security, privacy]
 permalink: /requirements/confidentiality-by-multitenance
 ---
 

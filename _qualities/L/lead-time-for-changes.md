@@ -1,7 +1,7 @@
 ---
 title: Lead time for changes
 tags: [operable] 
-related: controllability, operability, testability, deployability
+related: [controllability, operability, testability, deployability]
 permalink: /qualities/lead-time-for-changes
 ---
 

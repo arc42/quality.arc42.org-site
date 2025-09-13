@@ -1,7 +1,7 @@
 ---
 title: Authenticity of a digital document
 tags: [secure, suitable]
-related: authenticity, integrity  
+related: [authenticity, integrity]  
 permalink: /requirements/authenticity-of-digital-document
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: "Efficient change of business rules"
 tags: [flexible, efficient]
-related: flexibility, changeability, adaptability, configurability 
+related: [flexibility, changeability, adaptability, configurability] 
 permalink: /requirements/luggage-routing
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: Faultlessness
 tags: [reliable, usable, secure]
-related: dependability, reliability, availability
+related: [dependability, reliability, availability]
 standards: [iso25010]
 permalink: /qualities/faultlessness
 ---

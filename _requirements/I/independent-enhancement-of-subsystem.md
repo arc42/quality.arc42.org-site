@@ -1,7 +1,7 @@
 ---
 title: "Independent enhancement of subsystem"
 tags: [efficient, flexible]
-related: efficiency, maintainability, changeability, adaptability, agility 
+related: [efficiency, maintainability, changeability, adaptability, agility] 
 permalink: /requirements/independent-enhancement-of-subsystem
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: Interoperability
 tags: [usable, operable]
-related: co-existence, compatibility
+related: [co-existence, compatibility]
 standards: [iso25010, hl7]
 permalink: /qualities/interoperability
 ---

@@ -1,7 +1,7 @@
 ---
 title: Latency
 tags: [efficient, usable, operable]
-related: performance, time-behaviour
+related: [performance, time-behaviour]
 standards: [iso14756]
 permalink: /qualities/latency
 ---

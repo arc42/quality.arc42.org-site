@@ -1,7 +1,7 @@
 ---
 title: Releasability
 tags: [operable, efficient]
-related: operability, deployability, deployment-frequency
+related: [operability, deployability, deployment-frequency]
 permalink: /qualities/releasability
 ---
 

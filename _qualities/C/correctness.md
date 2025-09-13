@@ -1,7 +1,7 @@
 ---
 title: Correctness
 tags: [usable, reliable, suitable]
-related: usability, functionality, functional-suitability, functional-correctness
+related: [usability, functionality, functional-suitability, functional-correctness]
 permalink: /qualities/correctness
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: User experience
 tags: [usable]
-related: usability, user-interface-aesthetics, user-error-protection, accessibility
+related: [usability, user-interface-aesthetics, user-error-protection, accessibility]
 permalink: /qualities/user-experience
 ---
 

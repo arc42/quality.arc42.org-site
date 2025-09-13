@@ -1,7 +1,7 @@
 ---
 title: "Fast and accurate sensor"
 tags: [efficient, reliable]
-related: efficiency, preciseness, accuracy
+related: [efficiency, preciseness, accuracy]
 permalink: /requirements/fast-accurate-sensor
 ---
 

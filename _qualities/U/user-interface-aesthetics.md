@@ -1,7 +1,7 @@
 ---
 title: User interface aesthetics
 tags: [usable]
-related: usability
+related: [usability]
 permalink: /qualities/user-interface-aesthetics
 ---
 

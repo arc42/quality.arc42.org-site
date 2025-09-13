@@ -1,7 +1,7 @@
 ---
 title: Securability
 tags: [secure]
-related: security
+related: [security]
 permalink: /qualities/securability
 ---
 

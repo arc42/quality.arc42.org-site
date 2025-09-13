@@ -1,7 +1,7 @@
 ---
 title: Failure Transparency
 tags: [reliable, safe]
-related: availability, fault-tolerance, resilience, reliability
+related: [availability, fault-tolerance, resilience, reliability]
 permalink: /qualities/failure-transparency
 ---
 

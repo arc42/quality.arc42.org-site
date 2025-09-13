@@ -1,7 +1,7 @@
 ---
 title: Expected physical environment
 tags: [suitable, operable]
-related: anticipated-workplace-environment
+related: [anticipated-workplace-environment]
 permalink: /qualities/expected-physical-environment
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: Operational and Environment Requirements
 tags: [operable]
-related: expected-physical-environment, operational-constraint
+related: [expected-physical-environment, operational-constraint]
 permalink: /qualities/operational-environment-requirements
 ---
 

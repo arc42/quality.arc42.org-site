@@ -1,7 +1,7 @@
 ---
 title: "Configurable UI theme"
 tags: [flexible, usable]
-related: flexibility, changeability, adaptability, configurability, customizability 
+related: [flexibility, changeability, adaptability, configurability, customizability] 
 permalink: /requirements/configurable-ui-theme
 ---
 

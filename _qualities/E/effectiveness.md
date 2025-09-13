@@ -1,7 +1,7 @@
 ---
 title: Effectiveness
 tags: [efficient]
-related: efficiency
+related: [efficiency]
 permalink: /qualities/effectiveness
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: Sustainability 
 tags: [efficient, reliable]
-related: energy-efficiency, carbon-emission-efficiency
+related: [energy-efficiency, carbon-emission-efficiency]
 permalink: /qualities/sustainability
 ---
 

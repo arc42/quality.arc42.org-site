@@ -1,7 +1,7 @@
 ---
 title: Autonomy
 tags: [operable, suitable]
-related: independence, self-containedness, controllability, composability, flexibility
+related: [independence, self-containedness, controllability, composability, flexibility]
 permalink: /qualities/autonomy
 ---
 

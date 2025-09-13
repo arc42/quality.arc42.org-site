@@ -1,7 +1,7 @@
 ---
 title: Appearance of mobile UI
 tags: [usable]
-related: appearance, usability, consistency, user-interface-aesthetics, interaction-capability
+related: [appearance, usability, consistency, user-interface-aesthetics, interaction-capability]
 permalink: /requirements/appearance-requirements
 ---
 

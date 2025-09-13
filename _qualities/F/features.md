@@ -1,7 +1,7 @@
 ---
 title: Features
 tags: [usable]
-related: functionality, functional-completeness, usability, functional-suitability
+related: [functionality, functional-completeness, usability, functional-suitability]
 permalink: /qualities/features
 ---
 

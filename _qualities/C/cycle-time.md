@@ -1,7 +1,7 @@
 ---
 title: Cycle time
 tags: [operable, suitable, efficient]
-related: controllability, testability, deployability, devops-metrics, lead-time-for-changes
+related: [controllability, testability, deployability, devops-metrics, lead-time-for-changes]
 permalink: /qualities/cycle-time
 ---
 

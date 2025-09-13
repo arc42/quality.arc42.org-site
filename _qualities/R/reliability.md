@@ -1,7 +1,7 @@
 ---
 title: Reliability
 tags: [reliable]
-related: availability, robustness, fault-tolerance, dependability, resilience
+related: [availability, robustness, fault-tolerance, dependability, resilience]
 standards: [iso25010, iso27001, iso26262, misra-c, nist80053, iso5055, iso14756, aiuc1, iec-62304, iec61508, hl7]
 permalink: /qualities/reliability
 ---

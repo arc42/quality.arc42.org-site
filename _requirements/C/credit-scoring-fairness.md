@@ -1,7 +1,7 @@
 ---
 title: "Credit Scoring Fairness"
 tags: [reliable, safe, suitable]
-related: fairness, bias-mitigation, transparency, accountability
+related: [fairness, bias-mitigation, transparency, accountability]
 permalink: /requirements/credit-scoring-fairness
 ---
 

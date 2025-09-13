@@ -1,7 +1,7 @@
 ---
 title: "Employee attempts to modify pay rate"
 tags: [secure]
-related: security, privacy, traceability, integrity
+related: [security, privacy, traceability, integrity]
 permalink: /requirements/employee-attempts-to-modify-pay-rate
 ---
 

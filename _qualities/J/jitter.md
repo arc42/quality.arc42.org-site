@@ -1,7 +1,7 @@
 ---
 title: Jitter
 tags: [efficient]
-related: performance, latency, predictability
+related: [performance, latency, predictability]
 permalink: /qualities/jitter
 ---
 

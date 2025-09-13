@@ -1,7 +1,7 @@
 ---
 title: Local Explainability
 tags: [suitable, safe, reliable]
-related: explainability  
+related: [explainability]  
 permalink: /requirements/local-explainability
 ---
 

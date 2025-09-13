@@ -1,7 +1,7 @@
 ---
 title: "Scale up in 2 Minutes"
 tags: [efficient, reliable]
-related: elasticity, scalability, performance
+related: [elasticity, scalability, performance]
 permalink: /requirements/scale-up-in-2-minutes
 ---
 

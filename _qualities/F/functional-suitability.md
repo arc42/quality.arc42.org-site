@@ -1,7 +1,7 @@
 ---
 title: Functional suitability
 tags: [usable, reliable, suitable]
-related: usability, functionality, functional-completeness, suitability
+related: [usability, functionality, functional-completeness, suitability]
 standards: [iso25010]
 permalink: /qualities/functional-suitability
 ---

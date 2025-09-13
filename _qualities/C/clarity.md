@@ -1,7 +1,7 @@
 ---
 title: Clarity
 tags: [usable, reliable]
-related: coherence, transparency, understandability, legibility
+related: [coherence, transparency, understandability, legibility]
 permalink: /qualities/clarity
 ---
 

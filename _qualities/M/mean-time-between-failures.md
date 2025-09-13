@@ -1,7 +1,7 @@
 ---
 title: Mean time between failures
 tags: [operable] 
-related: controllability, operability, testability, analysability, devops-metrics, mean-time-to-recovery
+related: [controllability, operability, testability, analysability, devops-metrics, mean-time-to-recovery]
 permalink: /qualities/mean-time-between-failures
 ---
 

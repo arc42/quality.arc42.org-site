@@ -1,7 +1,7 @@
 ---
 title: Global Explainability
 tags: [suitable, safe, reliable]
-related: explainability  
+related: [explainability]  
 permalink: /requirements/global-explainability
 ---
 

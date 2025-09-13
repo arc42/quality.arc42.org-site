@@ -1,7 +1,7 @@
 ---
 title: Fault isolation
 tags: [safe, reliable]
-related: safety, fail-safe, fault-tolerance, faultlessness, risk-identification, hazard-warning
+related: [safety, fail-safe, fault-tolerance, faultlessness, risk-identification, hazard-warning]
 standards: [iso26262]
 permalink: /qualities/fault-isolation
 ---

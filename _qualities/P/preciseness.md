@@ -1,7 +1,7 @@
 ---
 title: Preciseness
 tags: [reliable, usable]
-related: correctness, accuracy
+related: [correctness, accuracy]
 permalink: /qualities/preciseness
 ---
 

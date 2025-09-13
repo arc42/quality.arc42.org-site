@@ -1,7 +1,7 @@
 ---
 title: Accessibility
 tags: [usable]
-related: usability, inclusivity, interaction-capability
+related: [usability, inclusivity, interaction-capability]
 permalink: /qualities/accessibility
 ---
 

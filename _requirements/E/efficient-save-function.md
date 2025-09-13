@@ -1,7 +1,7 @@
 ---
 title: "Efficient save function"
 tags: [efficient]
-related: efficiency, time-behaviour, capacity
+related: [efficiency, time-behaviour, capacity]
 permalink: /requirements/efficient-save-function
 ---
 

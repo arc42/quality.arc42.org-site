@@ -1,7 +1,7 @@
 ---
 title: "Accessible User Interface"
 tags: [usable]
-related: usability, inclusivity, compliance, accessibility, interaction-capability
+related: [usability, inclusivity, compliance, accessibility, interaction-capability]
 permalink: /requirements/accessible-user-interface
 ---
 

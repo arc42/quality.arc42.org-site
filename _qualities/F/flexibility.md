@@ -1,7 +1,7 @@
 ---
 title: Flexibility
 tags: [flexible]
-related: maintainability, modularity, adaptability, configurability, changeability, agility, autonomy
+related: [maintainability, modularity, adaptability, configurability, changeability, agility, autonomy]
 standards: [iso25010, misra-c, hl7]
 permalink: /qualities/flexibility
 ---

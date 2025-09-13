@@ -1,7 +1,7 @@
 ---
 title: Analysability
 tags: [flexible]
-related: flexibility, maintainability, modifiability, testability
+related: [flexibility, maintainability, modifiability, testability]
 standards: [iso25010, misra-c]
 permalink: /qualities/analysability
 ---

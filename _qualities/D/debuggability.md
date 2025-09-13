@@ -1,7 +1,7 @@
 ---
 title: Debuggability
 tags: [operable, flexible]
-related: analysability, maintainability, operability, observability, testability, transparency
+related: [analysability, maintainability, operability, observability, testability, transparency]
 permalink: /qualities/debuggability
 ---
 

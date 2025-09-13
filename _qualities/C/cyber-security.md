@@ -1,7 +1,7 @@
 ---
 title: Cyber Security
 tags: [secure]
-related: security, information-security, authenticity, confidentiality
+related: [security, information-security, authenticity, confidentiality]
 permalink: /qualities/cyber-security
 ---
 

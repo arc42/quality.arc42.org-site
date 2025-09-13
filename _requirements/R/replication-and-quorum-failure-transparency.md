@@ -1,7 +1,7 @@
 ---
 title: "Replication and Quorum Reads/Writes"
 tags: [reliable, safe]
-related: failure-transparency, availability, resilience, fault-tolerance
+related: [failure-transparency, availability, resilience, fault-tolerance]
 permalink: /requirements/replication-and-quorum-failure-transparency
 ---
 

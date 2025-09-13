@@ -1,7 +1,7 @@
 ---
 title: "Server fails, system continues to operate without downtime"
 tags: [reliable]
-related: reliability, availability, high-availability, fault-tolerance, stability
+related: [reliability, availability, high-availability, fault-tolerance, stability]
 permalink: /requirements/server-fails-operation-without-downtime
 ---
 

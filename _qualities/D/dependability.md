@@ -1,7 +1,7 @@
 ---
 title: Dependability
 tags: [reliable]
-related: availability, robustness, fault-tolerance, reliability
+related: [availability, robustness, fault-tolerance, reliability]
 standards: [iso26262]
 permalink: /qualities/dependability
 ---

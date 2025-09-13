@@ -1,7 +1,7 @@
 ---
 title: "Precise calculation of gamma coefficient"
 tags: [reliable]
-related: reliability, preciseness, accuracy, correctness
+related: [reliability, preciseness, accuracy, correctness]
 permalink: /requirements/high-precision-calculation
 ---
 

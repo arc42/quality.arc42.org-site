@@ -1,7 +1,7 @@
 ---
 title: Suitability
 tags: [usable, reliable, suitable]
-related: usability, functionality, functional-completeness
+related: [usability, functionality, functional-completeness]
 permalink: /qualities/suitability
 ---
 

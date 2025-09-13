@@ -1,7 +1,7 @@
 ---
 title: Personalization
 tags: [flexible]
-related: customizability
+related: [customizability]
 permalink: /qualities/personalization
 ---
 

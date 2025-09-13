@@ -1,7 +1,7 @@
 ---
 title: Observability
 tags: [operable]
-related: analysability, testability
+related: [analysability, testability]
 standards: [iso26262]
 permalink: /qualities/observability
 ---

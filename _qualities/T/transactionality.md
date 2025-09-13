@@ -1,7 +1,7 @@
 ---
 title: Transactionality
 tags: [reliable]
-related: consistency, durability, data-integrity, robustness
+related: [consistency, durability, data-integrity, robustness]
 permalink: /qualities/transactionality
 ---
 
