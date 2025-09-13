@@ -56,10 +56,8 @@ The following {{ orphan_qualities.size }} qualities have no directly related qua
 
 {% for requirement in site.requirements %}
 {% if requirement.related %}
-{% assign related_list = requirement.related | split: ", " %}
-{% for related_quality in related_list %}
-{% assign trimmed_quality = related_quality | strip %}
-{% if trimmed_quality == quality_slug %}
+{% for related_quality in requirement.related %}
+{% if related_quality == quality_slug %}
 {% assign found_reference = true %}
 {% break %}
 {% endif %}
@@ -94,11 +92,9 @@ The following {{ unreferenced_qualities.size }} qualities currently have no requ
 
 {% for quality in site.qualities %}
 {% if quality.related %}
-{% assign related_list = quality.related | split: ", " %}
-{% for related_quality in related_list %}
-{% assign trimmed_quality = related_quality | strip %}
-{% unless all_quality_slugs contains trimmed_quality %}
-{% assign orphan_entry = quality.title | append: " → " | append: trimmed_quality %}
+{% for related_quality in quality.related %}
+{% unless all_quality_slugs contains related_quality %}
+{% assign orphan_entry = quality.title | append: " → " | append: related_quality %}
 {% assign orphan_relations = orphan_relations | push: orphan_entry %}
 {% endunless %}
 {% endfor %}
