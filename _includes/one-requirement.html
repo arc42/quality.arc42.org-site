@@ -7,19 +7,18 @@ as these pages need to display all related requirements.
 {%- assign tag_to_find = include.tag -%}
 {%- if tag_to_find and tag_to_find != "" -%}
 
-<hr class="with-no-margin"/>
-
-## <span class="requirement-background">Requirements tagged with #{{ include.tag }}</span>
+<div class="panel requirements-header" style="margin-top: 1rem;">
+  <h2 style="margin: 0; padding: 1rem;">Requirements tagged with #{{ include.tag }}</h2>
+</div>
 <div id="search-results">
-
-<ul class="posts">
-    {%- for item in site.requirements -%}
-      {%- if item.tags contains tag_to_find -%}
-        <li><a class="reqs" href="{{item.permalink}}"><i class="fa fa-lightbulb fa-xs as-bullet requirement-text-color"> </i> {{ item.title }}</a></li>
-      {%- endif -%}
-    {%- endfor -%}
-  
-  </ul>
+  <ul class="posts">
+      {%- for item in site.requirements -%}
+        {%- if item.tags contains tag_to_find -%}
+          <li><a class="reqs" href="{{item.permalink}}"><i class="fa fa-lightbulb fa-xs as-bullet requirement-text-color"> </i> {{ item.title }}</a></li>
+        {%- endif -%}
+      {%- endfor -%}
+    
+    </ul>
 </div>
 
 {%- endif -%}
