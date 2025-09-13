@@ -6,8 +6,10 @@ as these pages need to display all related requirements.
 
 {%- assign tag_to_find = include.tag -%}
 {%- if tag_to_find and tag_to_find != "" -%}
-<div class="panel requirement-background" style="padding: 1rem; margin-top: 1rem; margin-bottom: 1rem;">
-## Requirements tagged with #{{ include.tag }}
+
+<hr class="with-no-margin"/>
+
+## <span class="requirement-background">Requirements tagged with #{{ include.tag }}</span>
 <div id="search-results">
 
 <ul class="posts">
@@ -19,7 +21,7 @@ as these pages need to display all related requirements.
   
   </ul>
 </div>
-</div>
+
 {%- endif -%}
 
  

@@ -7,9 +7,9 @@ as these pages need to display all related qualities/requirements.
 {%- assign tag_to_find = include.tag -%}
 {%- if tag_to_find and tag_to_find != "" -%}
 
-<div class="panel quality-background" style="padding: 1rem; margin-bottom: 0;">
-<h2 style="margin: 0;">Qualities tagged with #{{ include.tag }}</h2>
-</div>
+<hr class="with-no-margin"/>
+
+## <span class="quality-background">Qualities tagged with #{{ include.tag }}</span>
 <div id="search-results">
 
 <ul class="posts">
