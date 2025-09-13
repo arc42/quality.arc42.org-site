@@ -6,8 +6,10 @@ as these pages need to display all related qualities/requirements.
 
 {%- assign tag_to_find = include.tag -%}
 {%- if tag_to_find and tag_to_find != "" -%}
-<div class="panel quality-background" style="padding: 1rem; margin-top: 1rem; margin-bottom: 1rem;">
-<h2>Qualities tagged with #{{ include.tag }}</h2>
+
+<hr class="with-no-margin"/>
+
+## <span class="quality-background">Qualities tagged with #{{ include.tag }}</span>
 <div id="search-results">
 
 <ul class="posts">
@@ -19,7 +21,7 @@ as these pages need to display all related qualities/requirements.
   
   </ul>
 </div>
-</div>
+
 {%- endif -%}
 
  
