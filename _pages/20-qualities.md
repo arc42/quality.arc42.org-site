@@ -57,6 +57,16 @@ Listed below each quality, you find
         </article>
     </div>
     <hr class="with-no-margin"/>
-    {% endfor %}
+{% endfor %}
 </div>
 
+<style>
+  /* Use qualities color scheme for the top page header only on this page */
+  .site-content .article-wrapper > article > header > .panel.article-header {
+    background-color: var(--quality-background-color) !important;
+  }
+  .site-content .article-wrapper > article > header > .panel.article-header h1,
+  .site-content .article-wrapper > article > header > .panel.article-header h1 a {
+    color: var(--quality-text-color) !important;
+  }
+</style>
