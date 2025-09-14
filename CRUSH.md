@@ -4,8 +4,11 @@ Build/run
 - Node 22.x + npm 11 (Volta pinned), Ruby/Bundler for Jekyll; or use Docker Compose
 - Install: npm install; bundle install (or use docker compose up)
 - Dev (Docker, recommended): docker compose up
+- Dev debug (Docker, with debug pages): docker compose --profile debug up jekyll-debug
 - Dev (local): npm run data; npm run watch in one shell; bundle exec jekyll serve --incremental --watch in another
+- Dev debug (local): npm run data; npm run watch in one shell; bundle exec jekyll serve --incremental --watch --config _config.yml,_config_debug.yml in another
 - Prod build: npm run build; bundle exec jekyll build
+- Debug build: npm run build; bundle exec jekyll build --config _config.yml,_config_debug.yml
 - Data only: npm run data (generates assets/data)
 
 Lint/format/typecheck/tests

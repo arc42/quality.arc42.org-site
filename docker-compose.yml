@@ -20,3 +20,15 @@ services:
     ports:
       - "4000:4000"
     command: bundle exec jekyll serve --incremental --watch --host 0.0.0.0
+
+  jekyll-debug:
+    depends_on:
+      - esbuild
+    image: bretfisher/jekyll-serve
+    volumes:
+      - .:/site
+    ports:
+      - "4000:4000"
+    command: bundle exec jekyll serve --incremental --watch --host 0.0.0.0 --config _config.yml,_config_debug.yml
+    profiles:
+      - debug

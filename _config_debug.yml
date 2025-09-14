@@ -1,0 +1,50 @@
+# Debug configuration - extends _config.yml
+# This file includes debug pages and debug collection items
+
+# Include debug pages
+include:
+  - _pages
+  - _data/standard_tags.yaml
+  - _debug/
+
+# Override exclude to include debug collection items but exclude them from production
+exclude:
+  - originals/
+  - Dockerfile
+  - README.md
+  - AGENTS.md
+  - docs/*
+  - .vscode
+  - docker-compose.yml
+  - _manage*
+  - .sass-cache
+  - _scripts/
+  - .code-workspace
+  - vendor/bundle
+  - node_modules
+  - package.json
+  - package-lock.json
+  - build.js
+  - src/
+  - _todo/
+  - .prettierrc
+  # Note: _debug/ is NOT excluded in debug mode
+  # Note: aa-*.md debug files are NOT excluded in debug mode
+
+# Debug-specific settings
+debug_mode: true
+
+# Add debug collection
+collections:
+  debug:
+    output: true
+    hide: false
+    sort_by: title
+
+# Debug defaults
+defaults:
+  - scope:
+      type: "debug"
+    values:
+      layout: page
+      hide: false

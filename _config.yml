@@ -147,6 +147,10 @@ exclude:
   - src/
   - _todo/
   - .prettierrc
+  - _debug/
+  - _qualities/A/aa-quality.md
+  - _requirements/A/aa-requirement.md
+  - _standards/aa-standard.md
 
 watch_exclude:
   - assets/js/fullpage # handled by esbuild
