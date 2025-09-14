@@ -28,7 +28,7 @@ requirements ("related to this quality") - Related qualities {% endcomment %}
       assign check_title = whole_quality.title | downcase %} {% assign check_title_downcase =
       check_title | replace: "-", " " %} {% if check_title_downcase == quality_title %} {% assign
       number = 1 %}
-      <li><a href="{{whole_quality.permalink}}">{{whole_quality.title}}</a></li>
+      <li><a href="{{whole_quality.permalink}}"><i class="fa fa-gem fa-xs as-bullet" style="color: var(--quality-text-color);"> </i> {{whole_quality.title}}</a></li>
       {% break %} {% endif %} {% endfor %} {% endfor %} {% endif %} {% if number == 0 %} No related
       qualities found. {% endif %}
     </ul>

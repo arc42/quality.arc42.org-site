@@ -38,7 +38,7 @@ These requirements pages are structured as follows:
             {% assign check_title = whole_quality.title | downcase %}
             {% assign check_title_downcase = check_title | replace: "-", " " %}
             {% if check_title_downcase == quality_title %}
-            <li> <a href="{{whole_quality.permalink}}">{{whole_quality.title}}</a></li>
+            <li> <a href="{{whole_quality.permalink}}"><i class="fa fa-gem fa-xs as-bullet" style="color: var(--quality-text-color);"> </i> {{whole_quality.title}}</a></li>
             {% endif %}
             {% endfor %}
             {% endfor %}

@@ -14,7 +14,7 @@ as these pages need to display all related qualities/requirements.
   <ul class="posts">
       {%- for item in site.qualities -%}
         {%- if item.tags contains tag_to_find -%}
-          <li> <a href="{{ item.url }}">{{ item.title }}</a></li>
+          <li> <a href="{{ item.url }}"><i class="fa fa-gem fa-xs as-bullet" style="color: var(--quality-text-color);"> </i> {{ item.title }}</a></li>
         {%- endif -%}
       {%- endfor -%}
     
