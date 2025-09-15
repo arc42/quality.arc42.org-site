@@ -1,4 +1,5 @@
 ---
+layout: qualities
 title: AA Quality
 tags: [debug, test]
 related: [aa-requirement]

@@ -1,4 +1,5 @@
 ---
+layout: requirements
 title: AA Requirement
 tags: [debug, test]
 related: [aa-quality]
