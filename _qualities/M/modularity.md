@@ -2,7 +2,7 @@
 title: Modularity
 tags: [flexible]
 related: [flexibility, adaptability, changeability, configurability, maintainability, modifiability, composability]
-standards: [iso25010]
+standards: [iso25010, cra]
 permalink: /qualities/modularity
 ---
 

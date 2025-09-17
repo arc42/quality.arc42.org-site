@@ -2,6 +2,7 @@
 title: Resilience
 tags: [reliable, secure]
 related: [availability]
+standards: [cra]
 permalink: /qualities/resilience
 ---
 

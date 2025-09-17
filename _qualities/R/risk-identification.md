@@ -2,7 +2,7 @@
 title: Risk identification
 tags: [safe, reliable]
 related: [safety, analysability]
-standards: [iso25010]
+standards: [iso25010, cra]
 permalink: /qualities/risk-identification
 ---
 

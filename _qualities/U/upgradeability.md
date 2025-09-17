@@ -2,6 +2,7 @@
 title: Upgradeability
 tags: [flexible, operable]
 related: [flexibility, operability, predictability, releasability, installability]
+standards: [cra]
 permalink: /qualities/upgradeability
 ---
 

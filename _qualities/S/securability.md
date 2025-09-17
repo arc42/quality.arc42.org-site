@@ -2,6 +2,7 @@
 title: Securability
 tags: [secure]
 related: [security]
+standards: [cra]
 permalink: /qualities/securability
 ---
 
