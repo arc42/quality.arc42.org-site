@@ -8,11 +8,13 @@ Candidate attributes referenced or framed by the terminology in ISO/IEC 22989:20
 - Robustness
 - Resilience
 - Transparency
-- Explainability / Interpretability
+- Explainability  
+- Interpretability
 - Accountability
-- Fairness / Bias mitigation
+- Fairness  
+- Bias mitigation
 - Privacy
 - Data quality
-- Usability / Human factors (human oversight)
+- Usability 
 - Maintainability
 - Traceability

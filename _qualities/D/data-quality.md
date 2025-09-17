@@ -2,7 +2,7 @@
 title: Data Quality
 tags: [reliable, suitable, usable]
 related: [accuracy, correctness, precision, integrity, consistency, completeness]
-standards: [iso42001, hl7, iso-iec-22989]
+standards: [iso42001, hl7, isoiec22989]
 permalink: /qualities/data-quality
 ---
 
