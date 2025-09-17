@@ -2,7 +2,7 @@
 title: Safety
 tags: [safe, reliable, secure]
 related: [availability, robustness]
-standards: [iso25010, iso26262, misra-c, aiuc1, iec-62304, iec61508]
+standards: [iso25010, iso26262, misra-c, aiuc1, iec-62304, iec61508, iso-iec-22989]
 permalink: /qualities/safety
 ---
 

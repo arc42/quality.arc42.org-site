@@ -2,7 +2,7 @@
 title: Resilience
 tags: [reliable, secure]
 related: [availability]
-standards: [cra]
+standards: [cra, iso-iec-22989]
 permalink: /qualities/resilience
 ---
 
