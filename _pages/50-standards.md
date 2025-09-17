@@ -14,9 +14,9 @@ Overview of quality standards
 {% assign standards = site.standards %}
 
 
-<ul>
+<ul class="posts">
   {% for standard in standards %}
-   <li><a href="{{standard.url}}">{{standard.title}}</a></li>
+   <li><i class="fas fa-solid fa-certificate" style="color: var(--standard-text-color);"></i> <a href="{{standard.url}}">{{standard.title}}</a></li>
   {% endfor %}
 </ul>
 

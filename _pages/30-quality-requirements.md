@@ -6,11 +6,11 @@ order: 30
 ---
 
 Here you find <span style="color: var(--req-text-color)" markdown="1">
-<i class="fa fa-lightbulb"></i> _quality requirements_ </span>
+<i class="fa fa-bullseye"></i> _quality requirements_ </span>
 sorted by <span style="color: var(--blue-text-color)">
 <i class="fa fa-tags"></i> properties (tags) </span>. <br>
 
-Within the Software Engineering literature you might find the term "quality scenario" for such examples. 
+Within the Software Engineering literature you might find the term "quality scenario" for such examples.
 That term was coined by authors from the Software Engineering Institute (SEI), especially [Len Bass et al.](/references/#bass2021software)
 
 <hr class="with-no-margin"/>
@@ -21,9 +21,7 @@ Read more on the **[background of requirements](/articles/specify-quality-requir
 
 {% assign valid_tags = site.data.standard_tags.tags | sort%}
 
-
 ## Properties and Quality-Requirements
-
 
 <div id="tags">
   <ul class="tag-box inline">
@@ -37,7 +35,9 @@ Read more on the **[background of requirements](/articles/specify-quality-requir
 
        <a class="hov tags" href="/tag-{{ tag | cgi_escape }}"><b>{{ tag }}</b>
        <span>{{ req_count_for_tag }}</span></a>
-  {% endfor %}
+
+{% endfor %}
+
   </ul>
 </div>
 
@@ -45,16 +45,13 @@ Read more on the **[background of requirements](/articles/specify-quality-requir
 {% for tag in site.data.standard_tags.tags %}
   <h2>Quality Requirements tagged with {{ tag }}</h2>
   
-    <ul>
+    <ul class="posts no-bullets">
     {% for requirement in site.requirements %}
        {% if requirement.tags contains tag %}
-           <li><a class="reqs" href="{{requirement.permalink}}"><i class="fa fa-lightbulb fa-xs as-bullet" style="color: var(--req-text-color);"> </i> {{ requirement.title }}</a></li>
+           <li><a class="reqs" href="{{requirement.permalink}}"><i class="fa fa-bullseye fa-xs as-bullet" style="color: var(--req-text-color);"> </i> {{ requirement.title }}</a></li>
           
        {% endif %}
    {% endfor %}
    </ul>
  {% endfor %}
 </div>
-
-
-

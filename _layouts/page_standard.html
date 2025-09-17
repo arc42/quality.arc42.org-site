@@ -2,28 +2,27 @@
 layout: default
 ---
 
-{% assign qualities_for_standard = "" | split: "" %}
-{% for quality in site.qualities %}
-  {% if quality.standards contains page.standard_id %}
-    {% assign qualities_for_standard = qualities_for_standard | push: quality %}
-  {% endif %}
-{% endfor %}
+{% assign qualities_for_standard = "" | split: "" %} {% for quality in site.qualities %} {% if
+quality.standards contains page.standard_id %} {% assign qualities_for_standard =
+qualities_for_standard | push: quality %} {% endif %} {% endfor %}
 
 <div class="article-wrapper">
-    <article>
-        {% include standards-header.html page=page link=false share=page.share %}
-        <section class="post-content">
-            {{ content }}
-        </section>
-        {% include article-footer.html page=page share=page.share %}
-    </article>
+  <article>
+    {% include standards-header.html page=page link=false share=page.share %}
+    <section class="post-content">{{ content }}</section>
+    {% include article-footer.html page=page share=page.share %}
+  </article>
 </div>
-
 
 <h2 class="section-heading qualities">Related Qualities ({{ qualities_for_standard | size }})</h2>
 
-<ul class="posts">
-{% for quality in qualities_for_standard  %}
-        <li><a href="{{ quality.url | relative_url }}"><i class="fa fa-gem fa-xs as-bullet" style="color: var(--quality-text-color);"> </i> {{ quality.title }}</a></li>
-    {% endfor %}
+<ul class="posts no-bullets">
+  {% for quality in qualities_for_standard %}
+  <li>
+    <a href="{{ quality.url | relative_url }}"
+      ><i class="fa fa-gem fa-xs as-bullet" style="color: var(--quality-text-color)"> </i> {{
+      quality.title }}</a
+    >
+  </li>
+  {% endfor %}
 </ul>

@@ -1,21 +1,18 @@
 <h2 class="section-heading requirements">Directly Related Quality Requirements</h2>
 <p>A requirement that contains a "related" attribute to the quality.</p>
 
-
 {% assign requirements = site.requirements %}
 
 <ul class="posts no-bullets">
-    {% assign number = 0 %}
-    {% for requirement in requirements %}
-      {% assign check_title = page.permalink | split: "/" | last | downcase %}
-      {% assign related_list = requirement.related %}
-      {% if related_list contains check_title %}
-         {% assign number = 1 %}
-         <li><a class="reqs" href="{{requirement.permalink}}"><i class="fa fa-lightbulb fa-xs as-bullet" style="color: var(--req-text-color);"> </i> {{ requirement.title }}</a></li>
-      {% endif %}
-    {% endfor %}
-    
-    {% if number == 0 %}
-       No directly related quality requirements found.
-    {% endif %}
+  {% assign number = 0 %} {% for requirement in requirements %} {% assign check_title =
+  page.permalink | split: "/" | last | downcase %} {% assign related_list = requirement.related %}
+  {% if related_list contains check_title %} {% assign number = 1 %}
+  <li>
+    <a class="reqs" href="{{requirement.permalink}}"
+      ><i class="fa fa-bullseye fa-xs as-bullet" style="color: var(--req-text-color)"> </i> {{
+      requirement.title }}</a
+    >
+  </li>
+  {% endif %} {% endfor %} {% if number == 0 %} No directly related quality requirements found. {%
+  endif %}
 </ul>
