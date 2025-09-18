@@ -7,24 +7,52 @@ standard_id: cra
 
 ## Cyber Resilience Act (CRA)
 
-Horizontal EU regulation setting essential cybersecurity requirements for products with digital elements (hardware, software, and integrated remote data processing) across their entire lifecycle. It aims to reduce vulnerabilities at placing on the market, ensure secure-by-design and secure-by-default configurations, mandate vulnerability handling and security updates during a declared support period, and improve transparency for users. CRA entered into force on 10 Dec 2024; main obligations apply from 11 Dec 2027. Early reporting duties apply from 11 Sep 2026; notification of conformity assessment bodies from 11 Jun 2026.
+With the CRA, the European Union set essential cybersecurity requirements for products with digital elements (hardware, software, and integrated remote data processing) **across their entire lifecycle**. 
+It aims to reduce vulnerabilities at placing on the market, ensure secure-by-design and secure-by-default configurations, mandate vulnerability handling and security updates during a declared support period, and improve transparency for users. 
+CRA entered into force on 17 Dec 2024. Key milestones:
 
-- Scope: Any product with a direct or indirect logical or physical connection to a device or network, with sectoral exclusions where equivalent rules apply (e.g., MDR/IVDR, vehicle type-approval, EASA-certified aviation equipment). Open-source is covered only when supplied in a commercial activity; a tailored regime applies to open-source software stewards.
-- Core obligations for manufacturers:
-  - Risk assessment covering planning, design, development, production, delivery, and maintenance; due diligence for third-party components (incl. OSS); SBOM; secure configuration; protection of data and functions (availability, integrity, confidentiality, authenticity); input validation; identity and access control; logging; resilience to attacks; limiting attack surface; secure update mechanisms.
-  - Vulnerability handling during a declared support period (at least 5 years unless the product’s lifetime is shorter); coordinated vulnerability disclosure; single point of contact; timely security updates, preferably separated from feature updates; keep released security updates available for at least 10 years or the remainder of support period.
-  - Incident and vulnerability reporting via ENISA’s single reporting platform to the CSIRT designated as coordinator and ENISA: early warning within 24h, fuller notice within 72h, and final report (timelines vary for incidents vs. actively exploited vulnerabilities as set out in the regulation).
-  - Conformity assessment: internal control for most products; stricter procedures or third‑party assessment for important products (Class I/II) and critical products (potentially mandatory EU cybersecurity certification under EUCC or other schemes). CE marking is required to indicate CRA conformity.
-- Economic operators: importers and distributors must verify CRA conformity and cooperate with market surveillance; some obligations shift if they brand or substantially modify products.
-- Enforcement: market surveillance under Regulation (EU) 2019/1020, ADCO coordination, Union safeguard procedures, administrative fines, and potential Union-level corrective measures in exceptional cases.
-- Relationship to other EU laws: complements NIS2, the Cybersecurity Act (EU 2019/881), the AI Act for high-risk AI, the Machinery Regulation, and sectoral regimes; provides presumption of conformity via harmonised standards, common specifications, or European cybersecurity certification.
+- 17 Dec 2024: Regulation enters into force.
+- 17 Dec 2025: Member States must notify conformity assessment bodies to the European Commission so they can be designated.
+- 17 Sep 2026: Early reporting duties for actively exploited vulnerabilities and incidents start via ENISA’s single reporting platform.
+- 17 Dec 2027: Core cybersecurity requirements, CE marking obligations, and market placement rules apply.
+
+### Scope: 
+Any product with a direct or indirect logical or physical connection to a device or network, with sectoral exclusions where equivalent rules apply (e.g., MDR/IVDR, vehicle type-approval, EASA-certified aviation equipment). 
+Open-source is covered only when supplied in a commercial activity;
+
+### Core obligations for manufacturers
+
+- Secure design & development: run end-to-end cybersecurity risk assessments, manage third-party/OSS components with an SBOM, harden configurations, protect
+  data/functions, and provide secure update mechanisms.
+- Vulnerability handling: declare a support period (≥5 years unless shorter lifetime), operate a coordinated vulnerability disclosure process with a clear
+  contact point, deliver timely security fixes (ideally separate from feature updates), and keep released patches available.
+- Reporting & conformity: use [ENISA’s](https://www.enisa.europa.eu) platform for 24h early warnings, 72h follow-ups, and final reports; apply the appropriate conformity assessment
+  path (internal control for non-critical products, notified body/EU certification for Annex III important or critical products) and affix the CE mark once
+  compliant. (ENISA is the European Agency for Cybersecurity)
+  
 
 ## What does CRA mean for software and systems engineering?
 
-- Secure-by-design/default requirements shift assurance left: threat/risk analysis; secure architecture; dependency hygiene and SBOM; hardening and least privilege; defensive coding; attack surface minimisation; tamper protection; secure boot; cryptographic best practice; secure telemetry and logs.
-- Lifecycle duties: clearly declare support period; maintain vulnerability intake/triage, remediation SLAs, and update delivery; notify users and authorities about exploited vulnerabilities and severe incidents; keep security patches available long‑term.
-- Supply chain: due diligence for third‑party/OSS components; monitor known vulnerabilities; coordinate disclosure; share fixes upstream where applicable.
-- Assurance and evidence: technical documentation including cybersecurity risk assessment; apply harmonised standards/common specifications once available; use EU cybersecurity certification where appropriate; prepare for CE marking.
+- Secure-by-design/default requirements:
+  - run threat and risk analysis and define secure architecture.
+  - maintain dependency hygiene and an SBOM.
+  - harden configurations, enforce least privilege, and apply defensive coding that minimises attack surface.
+  - implement tamper protection, secure boot, and modern cryptography.
+  - capture trustworthy telemetry and security logs.
+- Lifecycle duties include:
+  - declaring the support period transparently.
+  - maintaining vulnerability intake, triage, remediation SLAs, and update delivery pipelines.
+  - notifying users and authorities about exploited vulnerabilities and severe incidents.
+  - keeping security patches available long-term.
+- Supply chain expectations:
+  - perform due diligence for third-party and OSS components.
+  - monitor known vulnerabilities and coordinate disclosure.
+  - share fixes upstream where applicable.
+- Assurance and evidence activities:
+  - compile technical documentation including cybersecurity risk assessment results.
+  - apply harmonised standards or common specifications once available.
+  - leverage EU cybersecurity certification where appropriate.
+  - prepare for CE marking.
 
 ## Related quality attributes impacted by CRA
 
