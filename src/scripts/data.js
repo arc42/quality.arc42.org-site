@@ -71,7 +71,7 @@ async function writeJsonToFile(jsonString, filename, assetsDir) {
  */
 
 const NODE_CONFIGS = {
-    requirement: { color: '#92ef80', size: 15, qualityType: 'requirement' },
+    requirement: { color: '#ffb3b3', size: 15, qualityType: 'requirement' },
     quality: { color: '#00B8F5', size: 25, qualityType: 'quality' },
     property: { color: '#00B8F5', size: 40, qualityType: 'property' }
 };

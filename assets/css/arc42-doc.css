@@ -3,10 +3,10 @@
 /* define colors for qualities and requirements */
 :root {
   --quality-background-color: #00b8f5;
-  --reqs-background-color: #92ef80;
+  --reqs-background-color: #ffb3b3;
   --standard-background-color: #ffc95c;
   --quality-text-color: #003366;
-  --req-text-color: #1b5e20;
+  --req-text-color: #8b0000;
   --standard-text-color: #2c3e50;
   --dark-blue-text-color: #ffffff;
   --blue-text-color: #003366;

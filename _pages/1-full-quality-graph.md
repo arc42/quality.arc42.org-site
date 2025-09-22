@@ -35,7 +35,7 @@ hide: true
             </div>
 
             <div class="legend-item">
-                <span class="color-box" style="background-color: #92ef80;"></span>
+                <span class="color-box" style="background-color: #ffb3b3;"></span>
                 <label class="toggle">
                     <span class="toggle-label legend-label">Requirements</span>
                     <input class="toggle-checkbox" type="checkbox" id="legend-toggle-requirements">
