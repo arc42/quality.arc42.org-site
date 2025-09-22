@@ -62,27 +62,23 @@ This site uses a simple color scheme to distinguish between the main content typ
 
 <div class="color-grid">
   <div class="color-grid-item q-bg">
-    <div class="color-name"><i class="fa-solid fa-gem q-ico"></i> Qualities</div>
+    <div class="color-name"><i class="fa fa-gem q-ico"></i> Qualities</div>
     <div class="color-codes">Background: #00B8F5<br>Text: #003366</div>
   </div>
   <div class="color-grid-item r-bg">
-    <div class="color-name"><i class="fa-solid fa-bullseye r-ico"></i> Requirements</div>
+    <div class="color-name"><i class="fa fa-bullseye r-ico"></i> Requirements</div>
     <div class="color-codes">Background: #ffb3b3<br>Text: #8b0000</div>
   </div>
   <div class="color-grid-item s-bg">
-    <div class="color-name"><i class="fa-solid fa-award s-ico"></i> Standards</div>
+    <div class="color-name"><i class="fa fa-award s-ico"></i> Standards</div>
     <div class="color-codes">Background: #FFC95C<br>Text: #2C3E50</div>
   </div>
   <div class="color-grid-item a-bg">
-    <div class="color-name"><i class="fa-solid fa-file-lines a-ico"></i> Articles</div>
+    <div class="color-name"><i class="fa fa-file-lines a-ico"></i> Articles</div>
     <div class="color-codes">Background: #E6DAF2<br>Text: #4A148C</div>
   </div>
-  <div class="color-grid-item p-bg" style="grid-column: 1;">
-    <div class="color-name"><i class="fa-solid fa-tag p-ico"></i> Properties</div>
-    <div class="color-codes">Background: #f8f9fa<br>Text: #495057</div>
-  </div>
-  <div class="color-grid-item ap-bg" style="grid-column: 2;">
-    <div class="color-name"><i class="fa-solid fa-puzzle-piece ap-ico"></i> Approaches</div>
+  <div class="color-grid-item ap-bg" style="grid-column: 1 / span 2;">
+    <div class="color-name"><i class="fa fa-puzzle-piece ap-ico"></i> Approaches</div>
     <div class="color-codes">Background: #92EF80<br>Text: #1B5E20<br>Practices, patterns, tactics, strategies to achieve and support the qualities.</div>
   </div>
 </div>
