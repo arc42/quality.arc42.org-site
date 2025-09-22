@@ -16,7 +16,7 @@ Overview of quality standards
 
 <ul class="posts">
   {% for standard in standards %}
-   <li><i class="fas fa-solid fa-certificate" style="color: var(--standard-text-color);"></i> <a href="{{standard.url}}">{{standard.title}}</a></li>
+   <li><i class="fas fa-solid fa-award" style="color: var(--standard-text-color);"></i> <a href="{{standard.url}}">{{standard.title}}</a></li>
   {% endfor %}
 </ul>
 
