@@ -43,13 +43,13 @@ Find out more in our **[introduction to the Q42 quality model](/articles/arc42-q
 
 {% assign qualities = site.qualities %}
 {% assign requirements = site.requirements %}
+{% assign standards = site.standards %}
 
 On this site you find:
 
-* <font style="background-color:var(--quality-background-color)">explanations to (currently {{ qualities | size }}) <i>
-  qualities</i> of software systems and -architectures, which are blueish in color.</font>
-* <font style="background-color:var(--reqs-background-color)">{{ requirements | size }} examples for specific quality <b>
-  requirements</b>, which are greenish in color.</font>
+* <font style="background-color:var(--quality-background-color)">explanations to (currently {{ qualities | size }}) <i> qualities</i> of software systems and -architectures, which have blueish background.</font>
+* <font style="background-color:var(--reqs-background-color)">{{ requirements | size }} examples for specific quality <b> requirements</b>, with reddish background.</font>
+* <font style="background-color:var(--standard-background-color)">{{ standards | size }} <b> standards </b> related to system and product quality, with yellowish background.</font>
 * several [articles with background information](/articles) on quality
 * a brief glossary of quality-related terms
 
