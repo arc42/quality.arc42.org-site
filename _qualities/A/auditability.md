@@ -2,7 +2,7 @@
 title: Auditability
 tags: [operable]
 related: [transparency, traceability, operability, observability, devops-metrics]
-standards: [iso26262, misra-c, hl7, iso15408, cra]
+standards: [iso26262, misra-c, hl7, iso15408, cra, iec62443]
 permalink: /qualities/auditability
 ---
 
