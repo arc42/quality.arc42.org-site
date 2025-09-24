@@ -2,6 +2,7 @@
 title: Timeliness
 tags: [efficient]
 related: [efficiency, performance, response-time, speed]
+standards: [iso25024]
 permalink: /qualities/timeliness
 ---
 
