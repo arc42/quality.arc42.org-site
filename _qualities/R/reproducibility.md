@@ -2,12 +2,13 @@
 title: Reproducibility
 tags: [usable]
 related: [consistency, understandability]
+standards: [do178c]
 permalink: /qualities/reproducibility
 ---
 
->Reproducibility, closely related to replicability and repeatability, is a major principle [where] any results should be documented by making all data and code available in such a way that the computations can be executed again with identical results
+> Reproducibility, closely related to replicability and repeatability, is a major principle [where] any results should be documented by making all data and code available in such a way that the computations can be executed again with identical results
 >
->[Wikipedia](https://en.wikipedia.org/wiki/Reproducibility)
+> [Wikipedia](https://en.wikipedia.org/wiki/Reproducibility)
 
 <hr class="with-no-margin"/>
 
@@ -17,8 +18,8 @@ permalink: /qualities/reproducibility
 
 <hr class="with-no-margin"/>
 
->Reproducibility is described as the repeatability of the process of
-establishing a fact, or of the conditions under which the same fact
-can
+> Reproducibility is described as the repeatability of the process of
+> establishing a fact, or of the conditions under which the same fact
+> can
 >
->[[Mockus+2010]](/references/#mockus2010experiences)
+> [[Mockus+2010]](/references/#mockus2010experiences)

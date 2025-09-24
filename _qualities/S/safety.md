@@ -2,7 +2,7 @@
 title: Safety
 tags: [safe, reliable, secure]
 related: [availability, robustness]
-standards: [iso25010, iso26262, misra-c, aiuc1, iec-62304, iec61508, isoiec22989]
+standards: [iso25010, iso26262, misra-c, aiuc1, iec-62304, iec61508, isoiec22989, do178c]
 permalink: /qualities/safety
 ---
 
@@ -18,11 +18,10 @@ Freedom from unacceptable risks.
 
 <hr class="with-no-margin"/>
 
-
->Capability of a product under defined conditions to avoid a state in which human life, health, property, or the environment is endangered.
+> Capability of a product under defined conditions to avoid a state in which human life, health, property, or the environment is endangered.
 >
->[ISO-25010:2023](/references/#iso-25010-2023)
+> [ISO-25010:2023](/references/#iso-25010-2023)
 
 <hr class="with-no-margin"/>
 
-* See [system safety](https://en.wikipedia.org/wiki/Software_system_safety)
+- See [system safety](https://en.wikipedia.org/wiki/Software_system_safety)
