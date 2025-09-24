@@ -2,6 +2,7 @@
 title: Precision
 tags: [reliable, usable]
 related: [correctness, accuracy, preciseness]
+standards: [iso25024]
 permalink: /qualities/precision
 ---
 

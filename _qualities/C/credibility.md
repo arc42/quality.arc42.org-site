@@ -2,6 +2,7 @@
 title: Credibility
 tags: [reliable]
 related: [accountability, usability, user-engagement]
+standards: [iso25024]
 permalink: /qualities/credibility
 ---
 

@@ -2,7 +2,7 @@
 title: Understandability
 tags: [usable, operable]
 related: [usability, self-descriptiveness, user-assistance, user-experience, learnability, conciseness]
-standards: [misra-c, iso26514]
+standards: [misra-c, iso26514, iso25024]
 permalink: /qualities/understandability
 ---
 
