@@ -1,5 +1,0 @@
-- Effectiveness
-- Efficiency
-- Satisfaction
-- Freedom from risk
-- Context Coverage

@@ -1,8 +1,0 @@
-- Usability
-- Clarity
-- Accessibility
-- Correctness
-- Consistency
-- Comprehensibility
-- Conciseness
-- Minimalism
