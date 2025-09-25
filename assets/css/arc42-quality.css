@@ -235,3 +235,12 @@ h2.section-heading.articles {
   background-color: var(--article-background-color);
   color: var(--blue-text-color);
 }
+
+/* Category headers for standards page */
+.category-header {
+  background-color: var(--standard-background-color) !important;
+  color: var(--standard-text-color) !important;
+  padding: 10px !important;
+  border-radius: 5px !important;
+  margin: 20px 0 10px 0 !important;
+}

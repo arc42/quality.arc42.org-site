@@ -12,34 +12,120 @@ Overview of quality standards
 {% assign standards = site.standards %}
 
 {::comment}
-Group standards by categories
+Group standards by categories  
 {:/comment}
-{% assign categories = "general,ai,safety,security,privacy,data,sector" | split: "," %}
-{% assign category_names = "General,AI,Safety,Security,Privacy,Data,Sector-Specific" | split: "," %}
 
-{% for i in (0..6) %}
-  {% assign category = categories[i] %}
-  {% assign category_name = category_names[i] %}
-  
-  {::comment}Filter standards for current category{:/comment}
-  {% assign category_standards = "" | split: "," %}
-  {% for standard in standards %}
-    {% if standard.categories contains category %}
-      {% assign category_standards = category_standards | push: standard %}
-    {% endif %}
-  {% endfor %}
-  
-  {% if category_standards.size > 0 %}
-## {{ category_name }}
-{: style="background-color: var(--standard-background-color); color: var(--standard-text-color); padding: 10px; border-radius: 5px; margin: 20px 0 10px 0;"}
+## General
+{: .category-header}
 
-<ul class="posts">
-    {% for standard in category_standards %}
-     <li><i class="fas fa-solid fa-award" style="color: var(--standard-text-color);"></i> <a href="{{standard.url}}">{{standard.title}}</a></li>
-    {% endfor %}
-</ul>
+{% assign general_standards = "" | split: "," %}
+{% for standard in standards %}
+  {% if standard.categories contains "general" %}
+    {% assign general_standards = general_standards | push: standard %}
   {% endif %}
 {% endfor %}
+
+<ul class="posts">
+{% for standard in general_standards %}
+ <li><i class="fas fa-solid fa-award" style="color: var(--standard-text-color);"></i> <a href="{{standard.url}}">{{standard.title}}</a></li>
+{% endfor %}
+</ul>
+
+## AI
+{: .category-header}
+
+{% assign ai_standards = "" | split: "," %}
+{% for standard in standards %}
+  {% if standard.categories contains "ai" %}
+    {% assign ai_standards = ai_standards | push: standard %}
+  {% endif %}
+{% endfor %}
+
+<ul class="posts">
+{% for standard in ai_standards %}
+ <li><i class="fas fa-solid fa-award" style="color: var(--standard-text-color);"></i> <a href="{{standard.url}}">{{standard.title}}</a></li>
+{% endfor %}
+</ul>
+
+## Safety
+{: .category-header}
+
+{% assign safety_standards = "" | split: "," %}
+{% for standard in standards %}
+  {% if standard.categories contains "safety" %}
+    {% assign safety_standards = safety_standards | push: standard %}
+  {% endif %}
+{% endfor %}
+
+<ul class="posts">
+{% for standard in safety_standards %}
+ <li><i class="fas fa-solid fa-award" style="color: var(--standard-text-color);"></i> <a href="{{standard.url}}">{{standard.title}}</a></li>
+{% endfor %}
+</ul>
+
+## Security
+{: .category-header}
+
+{% assign security_standards = "" | split: "," %}
+{% for standard in standards %}
+  {% if standard.categories contains "security" %}
+    {% assign security_standards = security_standards | push: standard %}
+  {% endif %}
+{% endfor %}
+
+<ul class="posts">
+{% for standard in security_standards %}
+ <li><i class="fas fa-solid fa-award" style="color: var(--standard-text-color);"></i> <a href="{{standard.url}}">{{standard.title}}</a></li>
+{% endfor %}
+</ul>
+
+## Privacy
+{: .category-header}
+
+{% assign privacy_standards = "" | split: "," %}
+{% for standard in standards %}
+  {% if standard.categories contains "privacy" %}
+    {% assign privacy_standards = privacy_standards | push: standard %}
+  {% endif %}
+{% endfor %}
+
+<ul class="posts">
+{% for standard in privacy_standards %}
+ <li><i class="fas fa-solid fa-award" style="color: var(--standard-text-color);"></i> <a href="{{standard.url}}">{{standard.title}}</a></li>
+{% endfor %}
+</ul>
+
+## Data
+{: .category-header}
+
+{% assign data_standards = "" | split: "," %}
+{% for standard in standards %}
+  {% if standard.categories contains "data" %}
+    {% assign data_standards = data_standards | push: standard %}
+  {% endif %}
+{% endfor %}
+
+<ul class="posts">
+{% for standard in data_standards %}
+ <li><i class="fas fa-solid fa-award" style="color: var(--standard-text-color);"></i> <a href="{{standard.url}}">{{standard.title}}</a></li>
+{% endfor %}
+</ul>
+
+## Sector-Specific
+{: .category-header}
+
+{% assign sector_standards = "" | split: "," %}
+{% for standard in standards %}
+  {% if standard.categories contains "sector" %}
+    {% assign sector_standards = sector_standards | push: standard %}
+  {% endif %}
+{% endfor %}
+
+<ul class="posts">
+{% for standard in sector_standards %}
+ <li><i class="fas fa-solid fa-award" style="color: var(--standard-text-color);"></i> <a href="{{standard.url}}">{{standard.title}}</a></li>
+{% endfor %}
+</ul>
 
 {::comment}
 Keep the current complete list as requested
