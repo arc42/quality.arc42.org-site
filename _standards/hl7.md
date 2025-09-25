@@ -3,6 +3,7 @@ layout: page_standard
 title: "HL7 — Health Level Seven International"
 permalink: /standards/hl7
 standard_id: hl7
+categories: [sector]
 ---
 
 ## HL7: Healthcare Interoperability Standards

@@ -3,6 +3,7 @@ layout: page_standard
 title: "PCI Data Security Standard (PCI DSS)"
 permalink: /standards/pci-dss
 standard_id: pcidss
+categories: [security, sector]
 ---
 
 ## PCI Data Security Standard (PCI DSS)

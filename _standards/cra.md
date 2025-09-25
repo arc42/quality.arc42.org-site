@@ -3,6 +3,7 @@ layout: page_standard
 title: "EU Cyber Resilience Act (CRA) — Regulation (EU) 2024/2847"
 permalink: /standards/cra
 standard_id: cra
+categories: [security]
 ---
 
 ## Cyber Resilience Act (CRA)

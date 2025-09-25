@@ -3,6 +3,7 @@ layout: page_standard
 title: "AIUC-1 – AI Agent Standard"
 permalink: /standards/aiuc-1
 standard_id: aiuc1
+categories: [ai]
 ---
 
 ## AIUC-1: (attempt of an) AI agent standard
