@@ -57,7 +57,7 @@ Open-source is covered only when supplied in a commercial activity;
 
 ## Related quality attributes impacted by CRA
 
-- Security, Securability, Integrity, Confidentiality, Availability, Authenticity, Accountability, Auditability, Dependability, Resilience, Recoverability, Maintainability, Maintainable Security, Updatability, Patchability, Observability/Logging, Traceability, Compliance, Risk Identification, Transparency.
+- Security, Securability, Integrity, Confidentiality, Availability, Authenticity, Accountability, Auditability, Dependability, Resilience, Recoverability, Maintainability, Maintainable Security, Updateability, Observability/Logging, Traceability, Compliance, Risk Identification, Transparency.
 
 ## References (authoritative sources)
 
