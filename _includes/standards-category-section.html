@@ -1,0 +1,32 @@
+{% comment %}
+Include for displaying a standards category section with category tags
+Parameters:
+- category: the category to filter by (e.g., "general", "safety", etc.)
+- title: the display title for the section (e.g., "General", "Safety", etc.)
+- standards: the collection of all standards
+{% endcomment %}
+
+## {{ include.title }}
+{: .category-header}
+
+{% assign filtered_standards = "" | split: "," %}
+{% for standard in include.standards %}
+  {% if standard.categories contains include.category %}
+    {% assign filtered_standards = filtered_standards | push: standard %}
+  {% endif %}
+{% endfor %}
+
+<ul class="posts">
+{% for standard in filtered_standards %}
+ <li><i class="fas fa-solid fa-award" style="color: var(--standard-text-color);"></i> <a href="{{standard.url}}">{{standard.title}}</a>
+   {% if standard.categories and standard.categories.size > 0 %}
+     <span class="standard-categories">
+       <i class="fa fa-tags" style="color: #1675b9;"></i>
+       {% for category in standard.categories %}
+         <span class="category">#{{ category }}</span>{% unless forloop.last %}, {% endunless %}
+       {% endfor %}
+     </span>
+   {% endif %}
+ </li>
+{% endfor %}
+</ul>
