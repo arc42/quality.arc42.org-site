@@ -14,10 +14,10 @@
 
         {% if standard.categories and standard.categories.size > 0 %}
         <ul class="tags">
-            <li><i class="fa fa-tags" style="color: #1675b9;"></i></li>
+            <li><i class="fa fa-tags" style="color: var(--blue-text-color);"></i></li>
             {% for category in standard.categories %}
             <li>
-                <span class="category">#{{ category }}</span>
+                <a class="tag" href="{{ '/tag-' | append: category | prepend: site.baseurl }}">#{{ category }}</a>
             </li>
             {% endfor %}
         </ul>

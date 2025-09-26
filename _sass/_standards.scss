@@ -1,24 +1,6 @@
 // Standards page specific styles
 
-// Category tags styling (similar to qualities tags)
-.standard-categories {
-  display: inline-block;
-  margin-left: 1em;
-  font-size: 0.9em;
-  color: #666;
-
-  .category {
-    color: #1675b9;
-    font-weight: normal;
-    margin-left: 0.3em;
-  }
-
-  .fa-tags {
-    margin-right: 0.3em;
-  }
-}
-
-// Standards list styling to match qualities page
+// Standards list styling to match qualities page layout
 .standards-list {
   .article-wrapper {
     margin-bottom: 1rem;
@@ -26,27 +8,38 @@
     article {
       header {
         .panel {
-          background-color: var(--standard-background-color, #f8f9fa);
+          // No background color - keep it clean like qualities
           border: 1px solid #e9ecef;
           border-radius: 4px;
           padding: 1rem;
+          background-color: transparent;
           
           h1 {
-            color: var(--standard-text-color);
+            // Bold dark-grey text, no background
+            color: #333;
+            font-weight: bold;
             margin-bottom: 0.5rem;
             font-size: 1.25rem;
             
             a {
-              color: var(--standard-text-color);
+              color: #333;
+              font-weight: bold;
               text-decoration: none;
               
               &:hover {
-                color: var(--standard-text-color);
+                color: #333;
                 text-decoration: underline;
               }
             }
+            
+            // Award icon styling
+            .fas.fa-award {
+              color: var(--standard-text-color, #666) !important;
+              margin-right: 0.5rem;
+            }
           }
           
+          // Tag styling - matches qualities page exactly
           .tags {
             list-style: none;
             padding: 0;
@@ -61,21 +54,32 @@
               align-items: center;
               margin: 0;
               
+              // Category tags with background (like qualities tags)
               .tag {
-                color: #1675b9;
+                color: #fff;
+                background-color: #1675b9;
                 text-decoration: none;
                 font-size: 0.9em;
+                padding: 0.25rem 0.5rem;
+                border-radius: 3px;
                 
                 &:hover {
-                  text-decoration: underline;
+                  background-color: #125a96;
+                  text-decoration: none;
                 }
               }
-              
-              .category {
-                color: #1675b9;
-                font-size: 0.9em;
-                margin: 0;
-              }
+            }
+          }
+          
+          // Meta information styling
+          .meta {
+            list-style: none;
+            padding: 0;
+            margin: 0.5rem 0 0 0;
+            
+            li {
+              color: #666;
+              font-size: 0.9em;
             }
           }
         }
