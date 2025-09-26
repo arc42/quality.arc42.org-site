@@ -32,6 +32,7 @@ These standards are categorized (aka _tagged_) as follows:
 Group standards by categories  
 {:/comment}
 
+<div class="standards-list">
 {% include standards-category-section.html category="general" title="General" standards=standards %}
 
 {% include standards-category-section.html category="ai" title="AI" standards=standards %}
@@ -47,22 +48,4 @@ Group standards by categories
 {% include standards-category-section.html category="sector" title="Sector-Specific" standards=standards %}
 
 {% include standards-category-section.html category="coding" title="Coding" standards=standards %}
-
-<style>
-.standard-categories {
-  display: inline-block;
-  margin-left: 1em;
-  font-size: 0.9em;
-  color: #666;
-}
-
-.standard-categories .category {
-  color: #1675b9;
-  font-weight: normal;
-  margin-left: 0.3em;
-}
-
-.standard-categories .fa-tags {
-  margin-right: 0.3em;
-}
-</style>
+</div>

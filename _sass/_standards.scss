@@ -1,0 +1,90 @@
+// Standards page specific styles
+
+// Category tags styling (similar to qualities tags)
+.standard-categories {
+  display: inline-block;
+  margin-left: 1em;
+  font-size: 0.9em;
+  color: #666;
+
+  .category {
+    color: #1675b9;
+    font-weight: normal;
+    margin-left: 0.3em;
+  }
+
+  .fa-tags {
+    margin-right: 0.3em;
+  }
+}
+
+// Standards list styling to match qualities page
+.standards-list {
+  .article-wrapper {
+    margin-bottom: 1rem;
+    
+    article {
+      header {
+        .panel {
+          background-color: var(--standard-background-color, #f8f9fa);
+          border: 1px solid #e9ecef;
+          border-radius: 4px;
+          padding: 1rem;
+          
+          h1 {
+            color: var(--standard-text-color);
+            margin-bottom: 0.5rem;
+            font-size: 1.25rem;
+            
+            a {
+              color: var(--standard-text-color);
+              text-decoration: none;
+              
+              &:hover {
+                color: var(--standard-text-color);
+                text-decoration: underline;
+              }
+            }
+          }
+          
+          .tags {
+            list-style: none;
+            padding: 0;
+            margin: 0.5rem 0 0 0;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 0.5rem;
+            
+            li {
+              display: inline-flex;
+              align-items: center;
+              margin: 0;
+              
+              .tag {
+                color: #1675b9;
+                text-decoration: none;
+                font-size: 0.9em;
+                
+                &:hover {
+                  text-decoration: underline;
+                }
+              }
+              
+              .category {
+                color: #1675b9;
+                font-size: 0.9em;
+                margin: 0;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  .with-no-margin {
+    margin: 0;
+    border-color: #e9ecef;
+  }
+}

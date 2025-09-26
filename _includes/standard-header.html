@@ -1,0 +1,37 @@
+{% assign standard = include.standard %}
+
+<header>
+    <div class="panel">
+        <h1>
+            {% if include.link %}
+            <i class="fas fa-solid fa-award" style="color: var(--standard-text-color);"></i>
+            <a class="post-link" href="{{ standard.url | prepend: site.baseurl }}">{{ standard.title }}</a>
+            {% else %}
+            <i class="fas fa-solid fa-award" style="color: var(--standard-text-color);"></i>
+            {{ standard.title }}
+            {% endif %}
+        </h1>
+
+        {% if standard.categories and standard.categories.size > 0 %}
+        <ul class="tags">
+            <li><i class="fa fa-tags" style="color: #1675b9;"></i></li>
+            {% for category in standard.categories %}
+            <li>
+                <span class="category">#{{ category }}</span>
+            </li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+
+        <div class="clearfix">
+            <ul class="meta">
+                {% if standard.standard_id %}
+                <li>
+                    <i class="fa fa-id-badge"></i>
+                    {{ standard.standard_id }}
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</header>
