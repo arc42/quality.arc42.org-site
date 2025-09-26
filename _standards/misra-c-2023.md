@@ -1,9 +1,9 @@
 ---
 layout: page_standard
 title: "MISRA C - Guidelines for the use of the C language in critical systems"
-permalink: /standards/misra-c
 standard_id: misra-c
-categories: [safety, sector]
+categories: [safety, sector,coding]
+permalink: /standards/misra-c
 ---
 
 MISRA C is a widely adopted set of guidelines (aka "standard") for developing software in the C language, especially for safety‑ and security‑related embedded systems. 

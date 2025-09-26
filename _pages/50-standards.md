@@ -9,6 +9,23 @@ order: 50
 Overview of quality standards
 {:/comment}
 
+Overview of standards related to quality.
+These standards are categorized (aka _tagged_) as follows:
+
+|Tag  | Explanation |
+|:--- | --- | 
+| **[General](#general)** | Broad quality/process standards | 
+| **[Safety](#safety)** | Functional safety where malfunctions can harm people/environment/assets | 
+| **[Security](#security)** | Information/cyber security, security management and controls | 
+| **[Privacy](#privacy)** | Personal data protection and privacy governance and controls; GDPR-compliance. Complements security |
+| **[AI](#ai)** | (_artificial intelligence_) AI/ML governance, risk, transparency across the AI lifecycle | 
+| **[Data](#data)** | Data quality and measurement characteristics | 
+| **[Sector](#sector)** | Sector/vertical-specific standards. |
+| **[Coding](#coding)** | Standards related to implementation or coding details.|
+
+
+
+
 {% assign standards = site.standards %}
 
 {::comment}
@@ -111,6 +128,7 @@ Group standards by categories
 {% endfor %}
 </ul>
 
+
 ## Sector-Specific
 {: .category-header}
 
@@ -127,13 +145,18 @@ Group standards by categories
 {% endfor %}
 </ul>
 
-{::comment}
-Keep the current complete list as requested
-{:/comment}
-## All Standards
+## Coding
+{: .category-header}
+
+{% assign coding_standards = "" | split: "," %}
+{% for standard in standards %}
+  {% if standard.categories contains "coding" %}
+    {% assign coding_standards = coding_standards | push: standard %}
+  {% endif %}
+{% endfor %}
 
 <ul class="posts">
-  {% for standard in standards %}
-   <li><i class="fas fa-solid fa-award" style="color: var(--standard-text-color);"></i> <a href="{{standard.url}}">{{standard.title}}</a></li>
-  {% endfor %}
+{% for standard in coding_standards %}
+ <li><i class="fas fa-solid fa-award" style="color: var(--standard-text-color);"></i> <a href="{{standard.url}}">{{standard.title}}</a></li>
+{% endfor %}
 </ul>
