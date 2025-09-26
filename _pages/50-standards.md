@@ -44,7 +44,16 @@ Group standards by categories
 
 <ul class="posts">
 {% for standard in general_standards %}
- <li><i class="fas fa-solid fa-award" style="color: var(--standard-text-color);"></i> <a href="{{standard.url}}">{{standard.title}}</a></li>
+ <li><i class="fas fa-solid fa-award" style="color: var(--standard-text-color);"></i> <a href="{{standard.url}}">{{standard.title}}</a>
+   {% if standard.categories and standard.categories.size > 0 %}
+     <span class="standard-categories">
+       <i class="fa fa-tags" style="color: #1675b9;"></i>
+       {% for category in standard.categories %}
+         <span class="category">#{{ category }}</span>{% unless forloop.last %}, {% endunless %}
+       {% endfor %}
+     </span>
+   {% endif %}
+ </li>
 {% endfor %}
 </ul>
 
@@ -60,7 +69,16 @@ Group standards by categories
 
 <ul class="posts">
 {% for standard in ai_standards %}
- <li><i class="fas fa-solid fa-award" style="color: var(--standard-text-color);"></i> <a href="{{standard.url}}">{{standard.title}}</a></li>
+ <li><i class="fas fa-solid fa-award" style="color: var(--standard-text-color);"></i> <a href="{{standard.url}}">{{standard.title}}</a>
+   {% if standard.categories and standard.categories.size > 0 %}
+     <span class="standard-categories">
+       <i class="fa fa-tags" style="color: #1675b9;"></i>
+       {% for category in standard.categories %}
+         <span class="category">#{{ category }}</span>{% unless forloop.last %}, {% endunless %}
+       {% endfor %}
+     </span>
+   {% endif %}
+ </li>
 {% endfor %}
 </ul>
 
@@ -76,7 +94,16 @@ Group standards by categories
 
 <ul class="posts">
 {% for standard in safety_standards %}
- <li><i class="fas fa-solid fa-award" style="color: var(--standard-text-color);"></i> <a href="{{standard.url}}">{{standard.title}}</a></li>
+ <li><i class="fas fa-solid fa-award" style="color: var(--standard-text-color);"></i> <a href="{{standard.url}}">{{standard.title}}</a>
+   {% if standard.categories and standard.categories.size > 0 %}
+     <span class="standard-categories">
+       <i class="fa fa-tags" style="color: #1675b9;"></i>
+       {% for category in standard.categories %}
+         <span class="category">#{{ category }}</span>{% unless forloop.last %}, {% endunless %}
+       {% endfor %}
+     </span>
+   {% endif %}
+ </li>
 {% endfor %}
 </ul>
 
@@ -92,7 +119,16 @@ Group standards by categories
 
 <ul class="posts">
 {% for standard in security_standards %}
- <li><i class="fas fa-solid fa-award" style="color: var(--standard-text-color);"></i> <a href="{{standard.url}}">{{standard.title}}</a></li>
+ <li><i class="fas fa-solid fa-award" style="color: var(--standard-text-color);"></i> <a href="{{standard.url}}">{{standard.title}}</a>
+   {% if standard.categories and standard.categories.size > 0 %}
+     <span class="standard-categories">
+       <i class="fa fa-tags" style="color: #1675b9;"></i>
+       {% for category in standard.categories %}
+         <span class="category">#{{ category }}</span>{% unless forloop.last %}, {% endunless %}
+       {% endfor %}
+     </span>
+   {% endif %}
+ </li>
 {% endfor %}
 </ul>
 
@@ -108,7 +144,16 @@ Group standards by categories
 
 <ul class="posts">
 {% for standard in privacy_standards %}
- <li><i class="fas fa-solid fa-award" style="color: var(--standard-text-color);"></i> <a href="{{standard.url}}">{{standard.title}}</a></li>
+ <li><i class="fas fa-solid fa-award" style="color: var(--standard-text-color);"></i> <a href="{{standard.url}}">{{standard.title}}</a>
+   {% if standard.categories and standard.categories.size > 0 %}
+     <span class="standard-categories">
+       <i class="fa fa-tags" style="color: #1675b9;"></i>
+       {% for category in standard.categories %}
+         <span class="category">#{{ category }}</span>{% unless forloop.last %}, {% endunless %}
+       {% endfor %}
+     </span>
+   {% endif %}
+ </li>
 {% endfor %}
 </ul>
 
@@ -124,7 +169,16 @@ Group standards by categories
 
 <ul class="posts">
 {% for standard in data_standards %}
- <li><i class="fas fa-solid fa-award" style="color: var(--standard-text-color);"></i> <a href="{{standard.url}}">{{standard.title}}</a></li>
+ <li><i class="fas fa-solid fa-award" style="color: var(--standard-text-color);"></i> <a href="{{standard.url}}">{{standard.title}}</a>
+   {% if standard.categories and standard.categories.size > 0 %}
+     <span class="standard-categories">
+       <i class="fa fa-tags" style="color: #1675b9;"></i>
+       {% for category in standard.categories %}
+         <span class="category">#{{ category }}</span>{% unless forloop.last %}, {% endunless %}
+       {% endfor %}
+     </span>
+   {% endif %}
+ </li>
 {% endfor %}
 </ul>
 
@@ -141,7 +195,16 @@ Group standards by categories
 
 <ul class="posts">
 {% for standard in sector_standards %}
- <li><i class="fas fa-solid fa-award" style="color: var(--standard-text-color);"></i> <a href="{{standard.url}}">{{standard.title}}</a></li>
+ <li><i class="fas fa-solid fa-award" style="color: var(--standard-text-color);"></i> <a href="{{standard.url}}">{{standard.title}}</a>
+   {% if standard.categories and standard.categories.size > 0 %}
+     <span class="standard-categories">
+       <i class="fa fa-tags" style="color: #1675b9;"></i>
+       {% for category in standard.categories %}
+         <span class="category">#{{ category }}</span>{% unless forloop.last %}, {% endunless %}
+       {% endfor %}
+     </span>
+   {% endif %}
+ </li>
 {% endfor %}
 </ul>
 
@@ -157,6 +220,34 @@ Group standards by categories
 
 <ul class="posts">
 {% for standard in coding_standards %}
- <li><i class="fas fa-solid fa-award" style="color: var(--standard-text-color);"></i> <a href="{{standard.url}}">{{standard.title}}</a></li>
+ <li><i class="fas fa-solid fa-award" style="color: var(--standard-text-color);"></i> <a href="{{standard.url}}">{{standard.title}}</a>
+   {% if standard.categories and standard.categories.size > 0 %}
+     <span class="standard-categories">
+       <i class="fa fa-tags" style="color: #1675b9;"></i>
+       {% for category in standard.categories %}
+         <span class="category">#{{ category }}</span>{% unless forloop.last %}, {% endunless %}
+       {% endfor %}
+     </span>
+   {% endif %}
+ </li>
 {% endfor %}
 </ul>
+
+<style>
+.standard-categories {
+  display: inline-block;
+  margin-left: 1em;
+  font-size: 0.9em;
+  color: #666;
+}
+
+.standard-categories .category {
+  color: #1675b9;
+  font-weight: normal;
+  margin-left: 0.3em;
+}
+
+.standard-categories .fa-tags {
+  margin-right: 0.3em;
+}
+</style>
