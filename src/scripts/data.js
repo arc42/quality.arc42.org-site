@@ -6,9 +6,10 @@ import process from "node:process";
 /**
  * @typedef {Object} FrontmatterData
  * @property {string} title - The page title
- * @property {string} tags - Space-separated string, listing system properties
- * @property {string} related - Comma-separated string, listing qualities
+ * @property {string|string[]} tags - Space-separated string or array, listing system properties
+ * @property {string|string[]} related - Comma-separated string or array, listing qualities
  * @property {string} permalink - The link to the page
+ * @property {string|string[]} [standards] - Comma-separated string or array, listing relevant standards
  * @property {string} [stakeholder] - Comma-separated string, listing stakeholders needing this requirement
  */
 
@@ -20,6 +21,7 @@ import process from "node:process";
  * @property {string} color - Node color
  * @property {string} qualityType - Node quality type
  * @property {string} page - Link to documentation
+ * @property {string[]} [standards] - Related standards (for quality nodes)
  */
 
 /**
@@ -216,7 +218,8 @@ function addMainNode(id, data, isRequirements, nodes) {
     // This ensures all qualities have the same size regardless of related nodes
     let nodeSize = config.size;
 
-    // For property nodes, we would calculate size based on connections, but this is handled in createPropertyNode
+    // Attach standards only for quality nodes
+    const standards = !isRequirements ? parseList(data.standards, ',') : [];
 
     nodes.add({
         id,
@@ -224,7 +227,8 @@ function addMainNode(id, data, isRequirements, nodes) {
         size: nodeSize,
         color: config.color,
         qualityType: config.qualityType,
-        page: data.permalink
+        page: data.permalink,
+        ...(standards.length ? { standards } : {})
     });
 }
 
@@ -300,13 +304,25 @@ async function generateData() {
     /** @type {Set<Q42Edge>} */
     const edges = new Set();
 
+    // Collect unique standards from qualities
+    const standardsSet = new Set();
+
+    // Pre-process quality data to aggregate standards
+    qualityData.forEach(q => {
+        const list = parseList(q.standards, ',');
+        list.forEach(s => { if (s) standardsSet.add(s); });
+    });
+
     createGraphData(qualityData, false, propertyNodes, nodes, edges);
     createGraphData(requirementsData, true, propertyNodes, nodes, edges);
+
+    const standards = Array.from(standardsSet).sort((a, b) => a.localeCompare(b));
 
     await Promise.all([
         writeJsonToFile(toSortedJSON(Array.from(propertyNodes.values()), "label"), "property-nodes.json", assetsDir),
         writeJsonToFile(toSortedJSON(Array.from(nodes), "label"), "nodes.json", assetsDir),
         writeJsonToFile(toSortedJSON(Array.from(edges), "source"), "edges.json", assetsDir),
+        writeJsonToFile(JSON.stringify(standards, null, 2), "standards.json", assetsDir),
     ]);
 }
 
