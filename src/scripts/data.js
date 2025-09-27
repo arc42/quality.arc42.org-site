@@ -1,7 +1,6 @@
 import matter from "gray-matter";
 import { promises as fs } from "node:fs";
 import path from "node:path";
-import process from "node:process";
 
 /**
  * @typedef {Object} FrontmatterData
@@ -39,9 +38,9 @@ import process from "node:process";
  */
 function toSortedJSON(array, property) {
     return JSON.stringify(
-        array.toSorted((a, b) => a[property].localeCompare(b[property])),
+        array.slice().sort((a, b) => a[property].localeCompare(b[property])),
         null,
-        2,
+        2
     );
 }
 
@@ -58,9 +57,9 @@ async function writeJsonToFile(jsonString, filename, assetsDir) {
 
     try {
         await fs.writeFile(outputPath, jsonString, "utf8");
-        console.log(`File written successfully to ${ outputPath }`);
+        // Sichtbarkeit: Fehlerausgaben nur bei Bedarf
     } catch (error) {
-        console.error(`Error writing file: ${ error }`);
+        console.error(`Fehler beim Schreiben der Datei: ${ error }`);
     }
 }
 
@@ -140,17 +139,20 @@ function processNodeTags(id, tags, isRequirements, propertyNodes, edges) {
         if (!isRequirements) {
             edges.add({ source: id, target: tag });
 
-            // Track quality to property connections
-            if (!nodeConnections.qualityToProperties.has(id)) {
-                nodeConnections.qualityToProperties.set(id, new Set());
+            // Verbindungen effizienter tracken
+            let qualitySet = nodeConnections.qualityToProperties.get(id);
+            if (!qualitySet) {
+                qualitySet = new Set();
+                nodeConnections.qualityToProperties.set(id, qualitySet);
             }
-            nodeConnections.qualityToProperties.get(id).add(tag);
+            qualitySet.add(tag);
 
-            // Track property to quality connections
-            if (!nodeConnections.propertyToQualities.has(tag)) {
-                nodeConnections.propertyToQualities.set(tag, new Set());
+            let propertySet = nodeConnections.propertyToQualities.get(tag);
+            if (!propertySet) {
+                propertySet = new Set();
+                nodeConnections.propertyToQualities.set(tag, propertySet);
             }
-            nodeConnections.propertyToQualities.get(tag).add(id);
+            propertySet.add(id);
         }
 
         if (!propertyNodes.has(tag)) {
@@ -188,7 +190,8 @@ function createPropertyNode(tag) {
  * @returns {string}
  */
 function capitalizeFirstLetter(text) {
-    return text.charAt(0).toUpperCase() + text.slice(1);
+    if (!text) return "";
+    return text[0].toUpperCase() + text.slice(1);
 }
 
 /**
@@ -242,8 +245,8 @@ async function parseFrontmatter(filePaths) {
         filePaths.map(async (filePath) => {
             const content = await fs.readFile(filePath, "utf-8");
             const { data } = matter(content);
-            return { ...data };
-        }),
+            return data;
+        })
     );
 }
 
@@ -256,7 +259,7 @@ async function getFilePaths(dir) {
     const result = [];
     const files = await fs.readdir(dir);
 
-    const promises = files.map(async (file) => {
+    await Promise.all(files.map(async (file) => {
         const filePath = path.join(dir, file);
         const stat = await fs.stat(filePath);
 
@@ -266,9 +269,8 @@ async function getFilePaths(dir) {
         } else if (filePath.endsWith(".md")) {
             result.push(filePath);
         }
-    });
+    }));
 
-    await Promise.all(promises);
     return result;
 }
 
@@ -284,34 +286,28 @@ async function generateData() {
 
     let [qualityFiles, requirementFiles] = await Promise.all([
         getFilePaths(qualitiesDir),
-        getFilePaths(requirementsDir),
+        getFilePaths(requirementsDir)
     ]);
 
-    qualityFiles = qualityFiles.filter((f) => !f.includes("_files-must-have-identical-dates"));
-    requirementFiles = requirementFiles.filter((f) => !f.includes("_req-template-simple"));
+    qualityFiles = qualityFiles.filter(f => !f.includes("_files-must-have-identical-dates"));
+    requirementFiles = requirementFiles.filter(f => !f.includes("_req-template-simple"));
 
     const [qualityData, requirementsData] = await Promise.all([
         parseFrontmatter(qualityFiles),
-        parseFrontmatter(requirementFiles),
+        parseFrontmatter(requirementFiles)
     ]);
 
-    /** @type {Map<string, Q42Node>} */
     const propertyNodes = new Map();
-
-    /** @type {Set<Q42Node>} */
     const nodes = new Set();
-
-    /** @type {Set<Q42Edge>} */
     const edges = new Set();
-
-    // Collect unique standards from qualities
     const standardsSet = new Set();
 
-    // Pre-process quality data to aggregate standards
-    qualityData.forEach(q => {
-        const list = parseList(q.standards, ',');
-        list.forEach(s => { if (s) standardsSet.add(s); });
-    });
+    // Standards effizient sammeln
+    for (const q of qualityData) {
+        for (const s of parseList(q.standards, ',')) {
+            if (s) standardsSet.add(s);
+        }
+    }
 
     createGraphData(qualityData, false, propertyNodes, nodes, edges);
     createGraphData(requirementsData, true, propertyNodes, nodes, edges);
@@ -322,7 +318,7 @@ async function generateData() {
         writeJsonToFile(toSortedJSON(Array.from(propertyNodes.values()), "label"), "property-nodes.json", assetsDir),
         writeJsonToFile(toSortedJSON(Array.from(nodes), "label"), "nodes.json", assetsDir),
         writeJsonToFile(toSortedJSON(Array.from(edges), "source"), "edges.json", assetsDir),
-        writeJsonToFile(JSON.stringify(standards, null, 2), "standards.json", assetsDir),
+        writeJsonToFile(JSON.stringify(standards, null, 2), "standards.json", assetsDir)
     ]);
 }
 
