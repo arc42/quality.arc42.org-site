@@ -50,9 +50,21 @@ export class GraphDataProvider {
 
         const qualitiesHidden = options.qualitiesHidden === true;
         const requirementsVisible = options.requirementsVisible !== false;
+        const baseSet = options.baseNodeIdSet instanceof Set ? options.baseNodeIdSet : null;
 
-        // Filter nodes that match the search term
-        const filteredNodes = this.nodes.filter(node =>
+        const propertyIds = new Set(this.propertyNodes.map(p => p.id));
+
+        // Limit the scope to a base set if provided
+        const nodesPool = baseSet ? this.nodes.filter(n => baseSet.has(n.id)) : this.nodes;
+        const edgesPool = baseSet ? this.edges.filter(e =>
+            // keep edges fully inside base set
+            (baseSet.has(e.source) && baseSet.has(e.target)) ||
+            // or property <-> base edges so we can attach properties
+            ((propertyIds.has(e.source) && baseSet.has(e.target)) || (propertyIds.has(e.target) && baseSet.has(e.source)))
+        ) : this.edges;
+
+        // Filter nodes that match the search term (within pool)
+        const filteredNodes = nodesPool.filter(node =>
             node.label.toLowerCase().includes(lowerFilterTerm)
         );
 
@@ -62,19 +74,19 @@ export class GraphDataProvider {
         // Find connected nodes
         const connectedNodeIds = new Set();
 
-        // Find all nodes connected to filtered nodes
-        this.edges.forEach(edge => {
+        // Find all nodes connected to filtered nodes (within pool)
+        edgesPool.forEach(edge => {
             if (filteredNodeIds.has(edge.source)) {
-                connectedNodeIds.add(edge.target);
+                if (!baseSet || baseSet.has(edge.target)) connectedNodeIds.add(edge.target);
             }
             if (filteredNodeIds.has(edge.target)) {
-                connectedNodeIds.add(edge.source);
+                if (!baseSet || baseSet.has(edge.source)) connectedNodeIds.add(edge.source);
             }
         });
 
         // Determine requirement nodes to include
         const requirementNodeIds = new Set();
-        const allRequirementNodes = this.nodes.filter(node => node.qualityType === "requirement");
+        const allRequirementNodes = nodesPool.filter(node => node.qualityType === "requirement");
 
         if (qualitiesHidden && requirementsVisible) {
             // Only include requirement nodes that match the term themselves
@@ -92,7 +104,7 @@ export class GraphDataProvider {
                 // If not directly connected, check connections via a hop
                 if (!isConnected) {
                     const connectedToReq = new Set();
-                    this.edges.forEach(edge => {
+                    edgesPool.forEach(edge => {
                         if (edge.source === reqNode.id) {
                             connectedToReq.add(edge.target);
                         }
@@ -119,7 +131,7 @@ export class GraphDataProvider {
         if (qualitiesHidden && requirementsVisible) {
             effectiveConnected = new Set();
             connectedNodeIds.forEach(id => {
-                const node = this.nodes.find(n => n.id === id);
+                const node = nodesPool.find(n => n.id === id);
                 if (!node) return;
                 if (node.qualityType === "requirement") {
                     // include only if requirement itself matched
@@ -141,6 +153,9 @@ export class GraphDataProvider {
         // Always include the root node
         allVisibleNodeIds.add("quality-root");
 
+        // If a base set is provided, restrict visibility to base set (plus properties later)
+        const restrictedVisible = baseSet ? new Set(Array.from(allVisibleNodeIds).filter(id => baseSet.has(id) || id === "quality-root")) : allVisibleNodeIds;
+
         // Find property nodes that have visible neighbors other than the root node
         const visiblePropertyNodeIds = new Set();
 
@@ -149,11 +164,11 @@ export class GraphDataProvider {
             let hasVisibleNeighbor = false;
 
             // Check if this property node is connected to any visible node other than the root
-            this.edges.forEach(edge => {
-                if (edge.source === propNode.id && edge.target !== "quality-root" && allVisibleNodeIds.has(edge.target)) {
+            edgesPool.forEach(edge => {
+                if (edge.source === propNode.id && edge.target !== "quality-root" && restrictedVisible.has(edge.target)) {
                     hasVisibleNeighbor = true;
                 }
-                if (edge.target === propNode.id && edge.source !== "quality-root" && allVisibleNodeIds.has(edge.source)) {
+                if (edge.target === propNode.id && edge.source !== "quality-root" && restrictedVisible.has(edge.source)) {
                     hasVisibleNeighbor = true;
                 }
             });
@@ -161,19 +176,19 @@ export class GraphDataProvider {
             // If it has visible neighbors, add it to the visible property nodes
             if (hasVisibleNeighbor) {
                 visiblePropertyNodeIds.add(propNode.id);
-                allVisibleNodeIds.add(propNode.id);
+                restrictedVisible.add(propNode.id);
             }
         });
 
         // Filter nodes to include only visible ones
-        this.filteredNodes = this.nodes.filter(node =>
-            allVisibleNodeIds.has(node.id)
+        this.filteredNodes = nodesPool.filter(node =>
+            restrictedVisible.has(node.id)
         );
 
         // Filter edges to include only those between visible nodes
-        this.filteredEdges = this.edges.filter(edge => {
+        this.filteredEdges = edgesPool.filter(edge => {
             // Include edges between visible nodes
-            return allVisibleNodeIds.has(edge.source) && allVisibleNodeIds.has(edge.target);
+            return restrictedVisible.has(edge.source) && restrictedVisible.has(edge.target);
         });
 
         // Only include property nodes that have visible neighbors
@@ -204,5 +219,65 @@ export class GraphDataProvider {
             nodes: homeNodes,
             edges: homeEdges
         };
+    }
+
+    /**
+     * Filter the data based on a selected standard
+     * @param {string} standard - Standard key to filter by (e.g., "iso25010"). If falsy or "all", resets filter.
+     * @returns {Object} Object with filtered propertyNodes, nodes, and edges
+     */
+    filterByStandard(standard) {
+        if (!standard || standard.toLowerCase() === "all") {
+            this.resetFilter();
+            return this.getData();
+        }
+
+        const std = standard.toLowerCase();
+
+        // 1) Start from quality nodes that include the standard
+        const matchedQualityNodes = this.nodes.filter(node =>
+            node.qualityType === "quality" && Array.isArray(node.standards) && node.standards.map(s => String(s).toLowerCase()).includes(std)
+        );
+        const matchedQualityIds = new Set(matchedQualityNodes.map(n => n.id));
+
+        // 2) From those qualities, collect connected requirements and any additional connected qualities (if edges exist)
+        const visibleNodeIds = new Set(matchedQualityIds);
+
+        this.edges.forEach(edge => {
+            if (matchedQualityIds.has(edge.source)) {
+                visibleNodeIds.add(edge.target);
+            }
+            if (matchedQualityIds.has(edge.target)) {
+                visibleNodeIds.add(edge.source);
+            }
+        });
+
+        // 3) Always include the root node
+        visibleNodeIds.add("quality-root");
+
+        // 4) Determine property nodes that have visible neighbors (other than root)
+        const visiblePropertyNodeIds = new Set();
+        this.propertyNodes.forEach(propNode => {
+            let hasVisibleNeighbor = false;
+            this.edges.forEach(edge => {
+                if (edge.source === propNode.id && edge.target !== "quality-root" && visibleNodeIds.has(edge.target)) {
+                    hasVisibleNeighbor = true;
+                }
+                if (edge.target === propNode.id && edge.source !== "quality-root" && visibleNodeIds.has(edge.source)) {
+                    hasVisibleNeighbor = true;
+                }
+            });
+            if (hasVisibleNeighbor) {
+                visiblePropertyNodeIds.add(propNode.id);
+                visibleNodeIds.add(propNode.id);
+            }
+        });
+
+        // 5) Apply filters
+        this.filteredNodes = this.nodes.filter(node => visibleNodeIds.has(node.id));
+        this.filteredEdges = this.edges.filter(edge => visibleNodeIds.has(edge.source) && visibleNodeIds.has(edge.target));
+        this.filteredPropertyNodes = this.propertyNodes.filter(node => visiblePropertyNodeIds.has(node.id));
+
+        return this.getData();
     }
 }

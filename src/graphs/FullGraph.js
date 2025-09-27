@@ -3,6 +3,7 @@
  * Specialized graph implementation for the full page graph with filtering
  */
 import { Graph } from "./Graph";
+import standardsList from "../../assets/data/standards.json";
 
 export class FullGraph extends Graph {
 
@@ -20,6 +21,9 @@ export class FullGraph extends Graph {
         this.filterInput = document.getElementById("full-q-graph-filter__input");
         this.filterButton = document.getElementById("full-q-graph-filter__btn");
         this.debounceTimeout = null;
+        // Persisted UI state
+        this.currentStandard = "All";
+        this.currentFilterTerm = "";
     }
 
     /**
@@ -30,6 +34,7 @@ export class FullGraph extends Graph {
         super.initialize();
         this.registerFilterControls();
         this.registerLegendToggles();
+        this.registerStandardsControl();
         return this;
     }
 
@@ -116,11 +121,82 @@ export class FullGraph extends Graph {
      */
     // Override filter to be aware of legend toggles
     filter(filterTerm) {
-        const termActive = !!filterTerm && filterTerm.trim() !== "";
-        if (this.renderer) this.renderer.isFiltering = termActive;
+        this.currentFilterTerm = filterTerm || "";
+        this.applyFiltersCombined();
+        return this;
+    }
+
+    /**
+     * Standards dropdown: populate a plain select and listen for changes
+     */
+    registerStandardsControl() {
+        const stdSelect = document.getElementById("full-q-graph-standard__select");
+        if (!stdSelect) {
+            // Controls not present on page
+            return this;
+        }
+
+        // Populate select using statically imported standards
+        try {
+            const allStandarOptions = ["All", ...standardsList];
+            stdSelect.innerHTML = "";
+            allStandarOptions.forEach(key => {
+                const opt = document.createElement("option");
+                opt.value = key;
+                opt.textContent = key;
+                stdSelect.appendChild(opt);
+            });
+            stdSelect.value = this.currentStandard || "All";
+        } catch (err) {
+            console.error("Failed to populate standards list", err);
+        }
+
+        // Handle change -> filter by standard
+        const onChange = () => {
+            const val = (stdSelect.value || "").trim();
+            this.filterByStandard(val);
+        };
+        stdSelect.addEventListener("change", onChange);
+
+        return this;
+    }
+
+    /**
+     * Apply standard filter using data provider, but keep term filter applied
+     * @param {string} standard
+     */
+    filterByStandard(standard) {
+        this.currentStandard = (standard || "").trim();
+        this.applyFiltersCombined();
+        return this;
+    }
+
+    /**
+     * Apply both standard and term filters together as needed
+     */
+    applyFiltersCombined() {
+        const term = (this.currentFilterTerm || "").trim();
+        const std = (this.currentStandard || "").trim();
+        const standardActive = std !== "" && std.toLowerCase() !== "all";
+        const termActive = term !== "";
+
         const qualitiesHidden = this.renderer?.typeVisibility?.quality === false;
         const requirementsVisible = this.renderer?.typeVisibility?.requirement !== false;
-        this.dataProvider.filterByTerm(filterTerm, { qualitiesHidden, requirementsVisible });
+
+        if (standardActive && termActive) {
+            // First apply standard to get a base set, then apply term within that set
+            this.dataProvider.filterByStandard(std);
+            const baseSet = new Set(this.dataProvider.filteredNodes.map(n => n.id));
+            this.dataProvider.filterByTerm(term, { qualitiesHidden, requirementsVisible, baseNodeIdSet: baseSet });
+        } else if (standardActive) {
+            this.dataProvider.filterByStandard(std);
+        } else if (termActive) {
+            this.dataProvider.filterByTerm(term, { qualitiesHidden, requirementsVisible });
+        } else {
+            this.dataProvider.resetFilter();
+        }
+
+        if (this.renderer) this.renderer.isFiltering = standardActive || termActive;
         this.renderFiltered();
         return this;
     }
