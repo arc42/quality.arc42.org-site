@@ -13,6 +13,9 @@ hide: true
             <label class="sr-only" for="full-q-graph-filter__input">Filter graph:</label>
             <input type="text" id="full-q-graph-filter__input" placeholder="Filter..." />
             <button id="full-q-graph-filter__btn" class="btn">Filter</button>
+            <hr />
+            <h3>Standards</h3>
+            <select id="full-q-graph-standard__select"></select>
         </div>
         <div id="full-q-graph-legend">
             <h3>Legend</h3>
