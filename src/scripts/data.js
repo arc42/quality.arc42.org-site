@@ -283,19 +283,38 @@ async function generateData() {
     const qualitiesDir = path.join(projectRoot, "_qualities");
     const requirementsDir = path.join(projectRoot, "_requirements");
     const assetsDir = path.join(projectRoot, "assets");
+    const standardsDir = path.join(projectRoot, "_standards");
 
-    let [qualityFiles, requirementFiles] = await Promise.all([
+    let [qualityFiles, requirementFiles, standardsFiles] = await Promise.all([
         getFilePaths(qualitiesDir),
-        getFilePaths(requirementsDir)
+        getFilePaths(requirementsDir),
+        getFilePaths(standardsDir)
     ]);
 
     qualityFiles = qualityFiles.filter(f => !f.includes("_files-must-have-identical-dates"));
     requirementFiles = requirementFiles.filter(f => !f.includes("_req-template-simple"));
 
-    const [qualityData, requirementsData] = await Promise.all([
+    const [qualityData, requirementsData, standardsMeta] = await Promise.all([
         parseFrontmatter(qualityFiles),
-        parseFrontmatter(requirementFiles)
+        parseFrontmatter(requirementFiles),
+        parseFrontmatter(standardsFiles)
     ]);
+
+    // Build a lookup from standard_id -> title (label)
+    const standardIdToLabel = new Map();
+    for (const s of standardsMeta) {
+        const id = (s.standard_id || "").toString().trim();
+        const title = (s.title || "").toString().trim();
+        if (id) standardIdToLabel.set(id.toLowerCase(), title || id.toUpperCase());
+    }
+
+    function defaultLabelFromId(id) {
+        if (!id) return "";
+        const fromStd = standardIdToLabel.get(id.toLowerCase());
+        if (fromStd) return fromStd;
+        // Fallback: upper-case and replace dashes/underscores with space
+        return id.replace(/[-_]+/g, ' ').toUpperCase();
+    }
 
     const propertyNodes = new Map();
     const nodes = new Set();
@@ -312,7 +331,9 @@ async function generateData() {
     createGraphData(qualityData, false, propertyNodes, nodes, edges);
     createGraphData(requirementsData, true, propertyNodes, nodes, edges);
 
-    const standards = Array.from(standardsSet).sort((a, b) => a.localeCompare(b));
+    const standards = Array.from(standardsSet)
+        .map(id => ({ value: id, label: defaultLabelFromId(id) }))
+        .sort((a, b) => a.label.localeCompare(b.label));
 
     await Promise.all([
         writeJsonToFile(toSortedJSON(Array.from(propertyNodes.values()), "label"), "property-nodes.json", assetsDir),

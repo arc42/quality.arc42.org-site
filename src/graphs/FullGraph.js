@@ -138,15 +138,34 @@ export class FullGraph extends Graph {
 
         // Populate select using statically imported standards
         try {
-            const allStandarOptions = ["All", ...standardsList];
+            // Support new structure: [{ value, label }]
             stdSelect.innerHTML = "";
-            allStandarOptions.forEach(key => {
-                const opt = document.createElement("option");
-                opt.value = key;
-                opt.textContent = key;
-                stdSelect.appendChild(opt);
-            });
-            stdSelect.value = this.currentStandard || "All";
+            const allOption = document.createElement("option");
+            allOption.value = "All";
+            allOption.textContent = "All";
+            stdSelect.appendChild(allOption);
+
+            if (Array.isArray(standardsList)) {
+                standardsList.forEach(item => {
+                    const opt = document.createElement("option");
+                    if (item && typeof item === 'object' && 'value' in item && 'label' in item) {
+                        opt.value = item.value;
+                        opt.textContent = item.label;
+                    } else {
+                        // Backward compatibility: if it's a string array
+                        opt.value = String(item);
+                        opt.textContent = String(item);
+                    }
+                    stdSelect.appendChild(opt);
+                });
+            }
+
+            // Restore persisted selection if available
+            if (this.currentStandard && Array.from(stdSelect.options).some(o => o.value === this.currentStandard)) {
+                stdSelect.value = this.currentStandard;
+            } else {
+                stdSelect.value = "All";
+            }
         } catch (err) {
             console.error("Failed to populate standards list", err);
         }
