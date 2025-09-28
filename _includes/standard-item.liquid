@@ -1,7 +1,7 @@
 {% assign standard = include.standard %}
 
 <div class="standard-item">
-    <h4 class="standard-title">
+    <h3 class="standard-title">
         {% if include.link %}
         <i class="fas fa-solid fa-award" style="color: var(--standard-text-color, #666);"></i>
         <a class="standard-link" href="{{ standard.url | prepend: site.baseurl }}">{{ standard.title }}</a>
@@ -9,7 +9,7 @@
         <i class="fas fa-solid fa-award" style="color: var(--standard-text-color, #666);"></i>
         {{ standard.title }}
         {% endif %}
-    </h4>
+    </h3>
 
     {% if standard.categories and standard.categories.size > 0 %}
     <div class="standard-tags">
