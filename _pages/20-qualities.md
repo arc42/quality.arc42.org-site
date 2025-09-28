@@ -7,9 +7,7 @@ order: 20
 
 Here you find a list of several _qualities_ (meaning: desirable, expected or required properties) of IT systems.  
 Listed below each quality, you find 
-*<i class="fa fa-tags" style="color: #1675b9;"></i> <span style="color: #1675b9;">related quality properties</span>*
- and 
-*<i class="fa fa-lightbulb" style="color: var(--req-text-color)"></i> <span style="color: var(--req-text-color);">related quality requirements</span>*.
+*<i class="fa fa-tags" style="color: #1675b9;"></i> <span style="color: #1675b9;">related quality properties</span>*.
 
 
 {% assign letter_string = "A" %}
@@ -39,7 +37,7 @@ Listed below each quality, you find
 </nobr>
 {% endfor %}
 
-<div id="search-results">
+<div id="search-results" class="qualities-list">
     <hr id="first-hr" class="with-no-margin"/>
     <h2 ID = "A"> &mdash; A &mdash; </h2>
     {% assign previous_first_letter = "A" %}
@@ -51,22 +49,18 @@ Listed below each quality, you find
     <h2 ID = {{current_first_letter}}> &mdash; {{current_first_letter}} &mdash; </h2>
     {% endif %}
     {% assign previous_first_letter = current_first_letter %}
-    <div class="article-wrapper">
-        <article>
-            {% include article-req-header.html page=post link=true share=false %}
-        </article>
-    </div>
+    {% include qualities-list.liquid page=post link=true share=false %}
     <hr class="with-no-margin"/>
 {% endfor %}
 </div>
 
 <style>
-  /* Use qualities color scheme for the top page header only on this page */
-  .site-content .article-wrapper > article > header > .panel.article-header {
+  /* Use qualities color scheme for the qualities headers */
+  .qualities-list header .panel {
     background-color: var(--quality-background-color) !important;
   }
-  .site-content .article-wrapper > article > header > .panel.article-header h1,
-  .site-content .article-wrapper > article > header > .panel.article-header h1 a {
+  .qualities-list header .panel h1,
+  .qualities-list header .panel h1 a {
     color: var(--quality-text-color) !important;
   }
 </style>

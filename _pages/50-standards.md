@@ -26,26 +26,43 @@ These standards are categorized (aka _tagged_) as follows:
 
 
 
-{% assign standards = site.standards %}
+{% assign allStandards = site.standards %}
 
 {::comment}
 Group standards by categories  
 {:/comment}
 
-<div class="standards-list">
-{% include standards-category-section.html category="general" title="General" standards=standards %}
+{% include standards-category-section.liquid category="general" title="General" standards=AllStandards %}
 
-{% include standards-category-section.html category="ai" title="AI" standards=standards %}
+{% include standards-category-section.liquid category="ai" title="AI" standards=AllStandards %}
 
-{% include standards-category-section.html category="safety" title="Safety" standards=standards %}
+{% include standards-category-section.liquid category="safety" title="Safety" standards=AllStandards %}
 
-{% include standards-category-section.html category="security" title="Security" standards=standards %}
+{% include standards-category-section.liquid category="security" title="Security" standards=AllStandards %}
 
-{% include standards-category-section.html category="privacy" title="Privacy" standards=standards %}
+{% include standards-category-section.liquid category="privacy" title="Privacy" standards=AllStandards %}
 
-{% include standards-category-section.html category="data" title="Data" standards=standards %}
+{% include standards-category-section.liquid category="data" title="Data" standards=AllStandards %}
 
-{% include standards-category-section.html category="sector" title="Sector-Specific" standards=standards %}
+{% include standards-category-section.liquid category="sector" title="Sector-Specific" standards=AllStandards %}
 
-{% include standards-category-section.html category="coding" title="Coding" standards=standards %}
-</div>
+{% include standards-category-section.liquid category="coding" title="Coding" standards=AllStandards %}
+
+<style>
+.standard-categories {
+  display: inline-block;
+  margin-left: 1em;
+  font-size: 0.9em;
+  color: #666;
+}
+
+.standard-categories .category {
+  color: #1675b9;
+  font-weight: normal;
+  margin-left: 0.3em;
+}
+
+.standard-categories .fa-tags {
+  margin-right: 0.3em;
+}
+</style>

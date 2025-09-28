@@ -1,8 +1,5 @@
 {% assign page = include.page %}
 
-{% assign requirements_unsorted = site.posts | where: "categories", "requirements" %}
-{% assign requirements = requirements_unsorted | sort %}
-
 <header>
     <div class="panel">
         <h1>
@@ -25,22 +22,8 @@
             {% endfor %}
         </ul>
 
-        <ul class="tags">
-            {% for requirement in requirements %}
-            {% assign check_title = page.title | downcase | replace: ' ', '-' %}
-            {% if requirement.related contains check_title %}
-            <li><i class="fa fa-lightbulb" style="color: var(--req-text-color)"></i></li>
-            <li>
-                <a class="reqs" href="{{ requirement.permalink | prepend: site.baseUrl }}">{{ requirement.title }}</a>
-            </li>
-            <br>
-            {% endif %}
-            {% endfor %}
-        </ul>
-
         <div class="clearfix">
             <ul class="meta">
-
                 {% if page.author %}
                 <li>
                     <a href="{{ '/search/?a=' | append: page.author | prepend: site.baseurl }}">
@@ -59,6 +42,4 @@
             </ul>
         </div>
     </div>
-
-
 </header>
