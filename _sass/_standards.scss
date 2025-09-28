@@ -1,92 +1,58 @@
 // Standards page specific styles
 
-// Standards list styling to match qualities page layout
+// Standards list styling - clean minimal design like qualities
 .standards-list {
-  .article-wrapper {
+  .standard-item {
     margin-bottom: 1rem;
+    padding: 0.5rem 0;
+  }
+  
+  .standard-title {
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin: 0 0 0.3rem 0;
+    color: #333;
     
-    article {
-      header {
-        .panel {
-          // No background color - keep it clean like qualities
-          border: 1px solid #e9ecef;
-          border-radius: 4px;
-          padding: 1rem;
-          background-color: transparent;
-          
-          h1 {
-            // Bold dark-grey text, no background
-            color: #333;
-            font-weight: bold;
-            margin-bottom: 0.5rem;
-            font-size: 1.25rem;
-            
-            a {
-              color: #333;
-              font-weight: bold;
-              text-decoration: none;
-              
-              &:hover {
-                color: #333;
-                text-decoration: underline;
-              }
-            }
-            
-            // Award icon styling
-            .fas.fa-award {
-              color: var(--standard-text-color, #666) !important;
-              margin-right: 0.5rem;
-            }
-          }
-          
-          // Tag styling - matches qualities page exactly
-          .tags {
-            list-style: none;
-            padding: 0;
-            margin: 0.5rem 0 0 0;
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            gap: 0.5rem;
-            
-            li {
-              display: inline-flex;
-              align-items: center;
-              margin: 0;
-              
-              // Category tags with background (like qualities tags)
-              .tag {
-                color: #fff;
-                background-color: #1675b9;
-                text-decoration: none;
-                font-size: 0.9em;
-                padding: 0.25rem 0.5rem;
-                border-radius: 3px;
-                
-                &:hover {
-                  background-color: #125a96;
-                  text-decoration: none;
-                }
-              }
-            }
-          }
-          
-          // Meta information styling
-          .meta {
-            list-style: none;
-            padding: 0;
-            margin: 0.5rem 0 0 0;
-            
-            li {
-              color: #666;
-              font-size: 0.9em;
-            }
-          }
-        }
-      }
+    .fas.fa-award {
+      color: var(--standard-text-color, #666) !important;
+      margin-right: 0.5rem;
+      font-size: 0.9rem;
     }
   }
   
+  .standard-link {
+    color: #333;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .standard-link:hover {
+    color: #333;
+    text-decoration: underline;
+  }
+  
+  .standard-tags {
+    font-size: 0.9rem;
+    color: #666;
+    margin-top: 0.3rem;
+  }
+  
+  .standard-tags .tag {
+    color: #1675b9;
+    background-color: #1675b9;
+    color: #fff;
+    text-decoration: none;
+    margin: 0 0.2rem 0 0;
+    padding: 0.2rem 0.4rem;
+    border-radius: 3px;
+    font-size: 0.8rem;
+  }
+  
+  .standard-tags .tag:hover {
+    background-color: #125a96;
+    text-decoration: none;
+  }
+
   .with-no-margin {
     margin: 0;
     border-color: #e9ecef;

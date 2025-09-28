@@ -32,21 +32,21 @@ These standards are categorized (aka _tagged_) as follows:
 Group standards by categories  
 {:/comment}
 
-{% include standards-category-section.liquid category="general" title="General" standards=AllStandards %}
+{% include standards-category-section.liquid category="general" title="General" standards=allStandards %}
 
-{% include standards-category-section.liquid category="ai" title="AI" standards=AllStandards %}
+{% include standards-category-section.liquid category="ai" title="AI" standards=allStandards %}
 
-{% include standards-category-section.liquid category="safety" title="Safety" standards=AllStandards %}
+{% include standards-category-section.liquid category="safety" title="Safety" standards=allStandards %}
 
-{% include standards-category-section.liquid category="security" title="Security" standards=AllStandards %}
+{% include standards-category-section.liquid category="security" title="Security" standards=allStandards %}
 
-{% include standards-category-section.liquid category="privacy" title="Privacy" standards=AllStandards %}
+{% include standards-category-section.liquid category="privacy" title="Privacy" standards=allStandards %}
 
-{% include standards-category-section.liquid category="data" title="Data" standards=AllStandards %}
+{% include standards-category-section.liquid category="data" title="Data" standards=allStandards %}
 
-{% include standards-category-section.liquid category="sector" title="Sector-Specific" standards=AllStandards %}
+{% include standards-category-section.liquid category="sector" title="Sector-Specific" standards=allStandards %}
 
-{% include standards-category-section.liquid category="coding" title="Coding" standards=AllStandards %}
+{% include standards-category-section.liquid category="coding" title="Coding" standards=allStandards %}
 
 <style>
 .standard-categories {

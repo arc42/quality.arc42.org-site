@@ -1,0 +1,22 @@
+{% assign standard = include.standard %}
+
+<div class="standard-item">
+    <h4 class="standard-title">
+        {% if include.link %}
+        <i class="fas fa-solid fa-award" style="color: var(--standard-text-color, #666);"></i>
+        <a class="standard-link" href="{{ standard.url | prepend: site.baseurl }}">{{ standard.title }}</a>
+        {% else %}
+        <i class="fas fa-solid fa-award" style="color: var(--standard-text-color, #666);"></i>
+        {{ standard.title }}
+        {% endif %}
+    </h4>
+
+    {% if standard.categories and standard.categories.size > 0 %}
+    <div class="standard-tags">
+        <i class="fa fa-tags" style="color: var(--blue-text-color);"></i>
+        {% for category in standard.categories %}
+        <a class="tag" href="{{ '/tag-' | append: category | prepend: site.baseurl }}">#{{ category }}</a>{% unless forloop.last %}, {% endunless %}
+        {% endfor %}
+    </div>
+    {% endif %}
+</div>
