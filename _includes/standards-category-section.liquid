@@ -1,0 +1,26 @@
+{% comment %}
+Include for displaying a standards category section with category tags
+Parameters:
+- category: the category to filter by (e.g., "general", "safety", etc.)
+- title: the display title for the section (e.g., "General", "Safety", etc.)
+- AllStandards: the collection of all standards
+{% endcomment %}
+
+## {{ include.title }}
+{: .category-header}
+
+{% assign filtered_standards = "" | split: "," %}
+{% for standard in include.AllStandards %}
+  {% if standard.categories contains include.category %}
+    {% assign filtered_standards = filtered_standards | push: standard %}
+  {% endif %}
+{% endfor %}
+
+{% for standard in filtered_standards %}
+    <div class="article-wrapper">
+        <article>
+            {% include standard-header.html standard=standard link=true %}
+        </article>
+    </div>
+    <hr class="with-no-margin"/>
+{% endfor %}
