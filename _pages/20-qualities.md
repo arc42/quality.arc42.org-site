@@ -55,12 +55,42 @@ Listed below each quality, you find
 </div>
 
 <style>
-  /* Use qualities color scheme for the qualities headers */
-  .qualities-list header .panel {
-    background-color: var(--quality-background-color) !important;
+  /* Clean, minimal styling for qualities list */
+  .qualities-list .quality-item {
+    margin-bottom: 1rem;
+    padding: 0.5rem 0;
   }
-  .qualities-list header .panel h1,
-  .qualities-list header .panel h1 a {
-    color: var(--quality-text-color) !important;
+  
+  .qualities-list .quality-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin: 0 0 0.3rem 0;
+    color: var(--quality-text-color, #1675b9);
+  }
+  
+  .qualities-list .quality-link {
+    color: var(--quality-text-color, #1675b9);
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .qualities-list .quality-link:hover {
+    text-decoration: underline;
+  }
+  
+  .qualities-list .quality-tags {
+    font-size: 0.9rem;
+    color: #666;
+    margin-top: 0.3rem;
+  }
+  
+  .qualities-list .quality-tags .tag {
+    color: #1675b9;
+    text-decoration: none;
+    margin: 0 0.2rem 0 0;
+  }
+  
+  .qualities-list .quality-tags .tag:hover {
+    text-decoration: underline;
   }
 </style>

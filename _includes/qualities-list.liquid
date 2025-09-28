@@ -1,45 +1,21 @@
 {% assign page = include.page %}
 
-<header>
-    <div class="panel">
-        <h1>
-            {% if include.link %}
-            <a class="post-link" href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>
-            {% else %}
-            {{ page.title }}
-            {% endif %}
-        </h1>
+<div class="quality-item">
+    <h3 class="quality-title">
+        {% if include.link %}
+        <a class="quality-link" href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>
+        {% else %}
+        {{ page.title }}
+        {% endif %}
+    </h3>
 
-        <ul class="tags">
-            {% assign tags_num = (page.tags | size) %}
-            {% if tags_num > 0 %}
-            <li><i class="fa fa-tags" style="color: var(--blue-text-color);"></i></li>
-            {% endif %}
-            {% for tag in page.tags %}
-            <li>
-                <a class="tag" href="{{ '/tag-' | append: tag | prepend: site.baseurl }}">#{{ tag }}</a>
-            </li>
-            {% endfor %}
-        </ul>
-
-        <div class="clearfix">
-            <ul class="meta">
-                {% if page.author %}
-                <li>
-                    <a href="{{ '/search/?a=' | append: page.author | prepend: site.baseurl }}">
-                        <i class="fa fa-user"></i>
-                        {{ page.author }}
-                    </a>
-                </li>
-                {% if page.icons %}
-                <li>
-                    <ul class="icons">
-                        {% include icons.html icons=page.icons %}
-                    </ul>
-                </li>
-                {% endif %}
-                {% endif %}
-            </ul>
-        </div>
+    {% assign tags_num = (page.tags | size) %}
+    {% if tags_num > 0 %}
+    <div class="quality-tags">
+        <i class="fa fa-tags" style="color: var(--blue-text-color);"></i>
+        {% for tag in page.tags %}
+        <a class="tag" href="{{ '/tag-' | append: tag | prepend: site.baseurl }}">#{{ tag }}</a>{% unless forloop.last %}, {% endunless %}
+        {% endfor %}
     </div>
-</header>
+    {% endif %}
+</div>
