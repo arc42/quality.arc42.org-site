@@ -8,7 +8,7 @@ qualities_for_standard | push: quality %} {% endif %} {% endfor %}
 
 <div class="article-wrapper">
   <article>
-    {% include standards-header.html page=page link=false share=page.share %}
+    {% include standards-header.liquid page=page link=false share=page.share %}
     <section class="post-content">{{ content }}</section>
     {% include article-footer.html page=page share=page.share %}
   </article>
