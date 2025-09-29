@@ -4,6 +4,8 @@ These focus on inner qualities such as maintainability, modifiability, understan
 
 | Standard | Why pick this one |
 |---|---|
+| ISO 14971 (Risk Management for medical devices) | | 
+| IEC 62366 (Usability Engineering) | |
 | ISO/IEC/IEEE 42010:2022 (Architecture description) | Establishes how to describe architectures with viewpoints and stakeholder concerns; improves understandability, consistency, and traceability—key drivers of maintainability and evolvability |
 | ISO/IEC/IEEE 42030:2019 (Architecture evaluation) | Guidance to evaluate architectures systematically; links design decisions to quality attributes (modifiability, performance, reliability) and supports early risk mitigation |
 
