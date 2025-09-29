@@ -22,6 +22,7 @@ These standards are categorized (aka _tagged_) as follows:
 | **[Data](#data)** | Data quality and measurement characteristics | 
 | **[Sector](#sector)** | Sector/vertical-specific standards. |
 | **[Coding](#coding)** | Standards related to implementation or coding details.|
+| **[Documentation](#documentation)** | Standards related to documentation of software or IT systems.|
 
 
 
@@ -47,6 +48,8 @@ Group standards by categories
 {% include standards-category-section.liquid category="sector" title="Sector-Specific" standards=allStandards %}
 
 {% include standards-category-section.liquid category="coding" title="Coding" standards=allStandards %}
+
+{% include standards-category-section.liquid category="documentation" title="Documentation" standards=allStandards %}
 
 <style>
 .standard-categories {

@@ -2,6 +2,7 @@
 title: Coherence
 tags: [usable, efficient]
 related: [consistency]
+standards: [iso42010]
 permalink: /qualities/coherence
 ---
 

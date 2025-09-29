@@ -2,6 +2,7 @@
 title: Communicability
 tags: [usable]
 related: [usability, learnability, understandability, user-error-protection, ease-of-use]
+standards: [iso42010]
 permalink: /qualities/communicability
 ---
 
