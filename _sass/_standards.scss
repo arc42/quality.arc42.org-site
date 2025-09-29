@@ -1,5 +1,38 @@
 // Standards page specific styles
 
+// Individual standard page header styling
+#standard-header {
+  background-color: var(--standard-background-color, #fff3cd) !important;
+  
+  .tags {
+    list-style: none;
+    padding: 0;
+    margin: 0.5rem 0 0 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.3rem;
+    
+    li {
+      display: inline-flex;
+      align-items: center;
+      margin: 0;
+      
+      .category {
+        color: #666;
+        font-size: 0.85rem;
+        font-weight: normal;
+        margin: 0 0.2rem 0 0;
+      }
+      
+      .fa-tags {
+        color: var(--blue-text-color, #1675b9);
+        font-size: 0.85rem;
+      }
+    }
+  }
+}
+
 // Standards list styling - clean minimal design like qualities
 .standards-list {
   .standard-item {
