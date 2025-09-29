@@ -1,6 +1,7 @@
 ---
 layout: page_standard
 title: "HL7 — Health Level Seven International"
+shortname: "HL7"
 permalink: /standards/hl7
 standard_id: hl7
 categories: [sector]

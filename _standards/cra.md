@@ -1,6 +1,7 @@
 ---
 layout: page_standard
-title: "EU Cyber Resilience Act (CRA) — Regulation (EU) 2024/2847"
+title: "EU Cyber Resilience Act (CRA) — Regulation 2024/2847"
+shortname: "CRA"
 permalink: /standards/cra
 standard_id: cra
 categories: [security]
@@ -10,7 +11,8 @@ categories: [security]
 
 With the CRA, the European Union set essential cybersecurity requirements for products with digital elements (hardware, software, and integrated remote data processing) **across their entire lifecycle**. 
 It aims to reduce vulnerabilities at placing on the market, ensure secure-by-design and secure-by-default configurations, mandate vulnerability handling and security updates during a declared support period, and improve transparency for users. 
-CRA entered into force on 17 Dec 2024. Key milestones:
+CRA entered into force on 17 Dec 2024. 
+Key milestones:
 
 - 17 Dec 2024: Regulation enters into force.
 - 17 Dec 2025: Member States must notify conformity assessment bodies to the European Commission so they can be designated.

@@ -1,9 +1,10 @@
 ---
 layout: page_standard
 title: "PCI Data Security Standard (PCI DSS)"
-permalink: /standards/pci-dss
 standard_id: pcidss
+shortname: "PCI DSS"
 categories: [security, sector]
+permalink: /standards/pci-dss
 ---
 
 ## PCI Data Security Standard (PCI DSS)

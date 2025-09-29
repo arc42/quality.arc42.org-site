@@ -1,6 +1,7 @@
 ---
 layout: page_standard
 title: "AIUC-1 – AI Agent Standard"
+shortname: "AIUC-1"
 permalink: /standards/aiuc-1
 standard_id: aiuc1
 categories: [ai]
