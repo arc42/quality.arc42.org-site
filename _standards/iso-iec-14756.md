@@ -1,6 +1,7 @@
 ---
 layout: page_standard
 title: "ISO/IEC 14756 - Measurement and Rating of Performance of Computer-Based Software Systems"
+shortname: "ISO/IEC 14756"
 permalink: /standards/iso-iec-14756
 standard_id: iso14756
 categories: [general]
