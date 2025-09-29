@@ -2,7 +2,6 @@
 title: Intuitiveness
 tags: [usable]
 related: [usability, learnability, user-experience, clarity, simplicity, self-descriptiveness, understandability]
-standards: [iso25010]
 permalink: /qualities/intuitiveness
 ---
 
@@ -48,6 +47,7 @@ See also [#usable](/tag-usable).
 - **[Ease of Use](/qualities/ease-of-use)**: Addresses operational simplicity vs. cognitive alignment
 - **[Clarity](/qualities/clarity)**: Ensures clear communication vs. natural comprehension
 - **[User Experience](/qualities/user-experience)**: Encompasses broader interaction vs. initial understanding
+
 
 ## Measurement Approaches
 

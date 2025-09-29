@@ -16,3 +16,6 @@ permalink: /qualities/discoverability
 > Further Reading:
 > * [Campos, P., & Nunes, N. J. (2007). "Towards a model of discoverability for interactive systems."](https://www.tandfonline.com/doi/abs/10.1080/01449290701425825)
 > * [Thudt, A., Hinrichs, U., & Carpendale, S. (2012). "The bohemian bookshelf: supporting serendipitous book discoveries through information visualization."](https://openaccess.city.ac.uk/id/eprint/1266/)
+
+
+Remark: "Findability" has deliberately been excluded from out list of qualities.

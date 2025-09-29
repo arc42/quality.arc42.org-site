@@ -6,7 +6,9 @@ These focus on inner qualities such as maintainability, modifiability, understan
 |---|---|
 | ISO 14971 (Risk Management for medical devices) | | 
 | IEC 62366 (Usability Engineering) | |
-| ISO/IEC/IEEE 42010:2022 (Architecture description) | Establishes how to describe architectures with viewpoints and stakeholder concerns; improves understandability, consistency, and traceability—key drivers of maintainability and evolvability |
+| **GDPR** | Data protection and accuracy requirements in EU |
+| **SOX** | Financial data accuracy and audit requirements|
+
 | ISO/IEC/IEEE 42030:2019 (Architecture evaluation) | Guidance to evaluate architectures systematically; links design decisions to quality attributes (modifiability, performance, reliability) and supports early risk mitigation |
 
 | ISO/SAE 21434 (Road vehicles — Cybersecurity engineering) | Highly demanded in automotive; directly links to security, risk, and assurance qualities; complements ISO 26262 by addressing cyber risks; rich set of artifacts (TARA, CSMS) that map well to requirements examples |
@@ -24,6 +26,7 @@ These focus on inner qualities such as maintainability, modifiability, understan
 
 |Standard|Why that|
 |---|---|
+| ISO/IEC/IEEE 42010:2022 | (Architecture description) |
 | PCI DSS (Payment Card Industry Data Security Standard) | |
 | ISO/IEC/IEEE 26514:2022 (User documentation for systems and software) |  |
 | ISO/IEC 25022:2016 (Measurement of quality in use) | |
