@@ -1,7 +1,7 @@
 ---
 title: Discoverability
 tags: [usable]
-related: [findability, learnability, usability, intuitiveness]
+related: [learnability, usability, intuitiveness]
 permalink: /qualities/discoverability
 ---
 
