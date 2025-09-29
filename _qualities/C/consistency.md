@@ -2,7 +2,7 @@
 title: Consistency
 tags: [usable, efficient]
 related: [understandability, coherence]
-standards: [iso26514, iso25024]
+standards: [iso26514, iso25024, iso42010]
 permalink: /qualities/consistency
 ---
 
