@@ -14,7 +14,10 @@
     {% if standard.categories and standard.categories.size > 0 %}
     <div class="standard-tags">
         <i class="fa fa-tags" style="color: var(--blue-text-color);"></i>
-        {% for category in standard.categories %}#{{ category }}{% unless forloop.last %}, {% endunless %}{% endfor %}
+        {% for category in standard.categories %}#{{ category }}
+           {% unless forloop.last %}, {% endunless %}
+        {% endfor %}
     </div>
+    <hr>
     {% endif %}
 </div>
