@@ -32,7 +32,7 @@ The standard directly addresses architecture evaluation across multiple quality 
 
 | Quality Attribute | Relevance in ISO/IEC/IEEE 42030 |
 |:--- |:--- |
-| **[Evaluability](/qualities/evaluability)** | Core focus on making architectures systematically assessable through defined evaluation processes and criteria. |
+| Evaluability | Core focus on making architectures systematically assessable through defined evaluation processes and criteria. This quality overlaps with [Testability](/qualities/testability), [Observability](/qualities/observability) and [Analysability](/qualities/analysability) |
 | **[Traceability](/qualities/traceability)** | Ensuring clear links between architectural decisions, quality requirements, and evaluation results. |
 | **[Transparency](/qualities/transparency)** | Making evaluation processes, criteria, and results visible and understandable to stakeholders. |
 | **[Accountability](/qualities/accountability)** | Providing systematic evidence and rationale for architecture quality assessments and decisions. |
