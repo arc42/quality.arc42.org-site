@@ -12,22 +12,22 @@ Overview of quality standards
 Overview of standards related to quality.
 These standards are categorized (aka _tagged_) as follows:
 
-|Tag  | Explanation |
-|:--- | --- | 
-| **[General](#general)** | Broad quality/process standards | 
-| **[Safety](#safety)** | Functional safety where malfunctions can harm people/environment/assets | 
-| **[Security](#security)** | Information/cyber security, security management and controls | 
-| **[Privacy](#privacy)** | Personal data protection and privacy governance and controls; GDPR-compliance. Complements security |
-| **[AI](#ai)** | (_artificial intelligence_) AI/ML governance, risk, transparency across the AI lifecycle | 
-| **[Data](#data)** | Data quality and measurement characteristics | 
-| **[Sector](#sector)** | Sector/vertical-specific standards. |
-| **[Coding](#coding)** | Standards related to implementation or coding details.|
-| **[Documentation](#documentation)** | Standards related to documentation of software or IT systems.|
-
-
-
-
 {% assign allStandards = site.standards %}
+
+|Tag  | Explanation | Standards |
+|:--- | --- | --- |
+| **[General](#general)** | Broad quality/process standards | {% assign general_stds = allStandards | where_exp: "std", "std.categories contains 'general'" %}{% for std in general_stds %}<span class="std-shortname">[{{ std.shortname }}]({{ std.url }})</span>{% unless forloop.last %} · {% endunless %}{% endfor %} |
+| **[Safety](#safety)** | Functional safety where malfunctions can harm people/environment/assets | {% assign safety_stds = allStandards | where_exp: "std", "std.categories contains 'safety'" %}{% for std in safety_stds %}<span class="std-shortname">[{{ std.shortname }}]({{ std.url }})</span>{% unless forloop.last %} · {% endunless %}{% endfor %} |
+| **[Security](#security)** | Information/cyber security, security management and controls | {% assign security_stds = allStandards | where_exp: "std", "std.categories contains 'security'" %}{% for std in security_stds %}<span class="std-shortname">[{{ std.shortname }}]({{ std.url }})</span>{% unless forloop.last %} · {% endunless %}{% endfor %} |
+| **[Privacy](#privacy)** | Personal data protection and privacy governance and controls; GDPR-compliance. Complements security | {% assign privacy_stds = allStandards | where_exp: "std", "std.categories contains 'privacy'" %}{% for std in privacy_stds %}<span class="std-shortname">[{{ std.shortname }}]({{ std.url }})</span>{% unless forloop.last %} · {% endunless %}{% endfor %} |
+| **[AI](#ai)** | (_artificial intelligence_) AI/ML governance, risk, transparency across the AI lifecycle | {% assign ai_stds = allStandards | where_exp: "std", "std.categories contains 'ai'" %}{% for std in ai_stds %}<span class="std-shortname">[{{ std.shortname }}]({{ std.url }})</span>{% unless forloop.last %} · {% endunless %}{% endfor %} |
+| **[Data](#data)** | Data quality and measurement characteristics | {% assign data_stds = allStandards | where_exp: "std", "std.categories contains 'data'" %}{% for std in data_stds %}<span class="std-shortname">[{{ std.shortname }}]({{ std.url }})</span>{% unless forloop.last %} · {% endunless %}{% endfor %} |
+| **[Sector](#sector)** | Sector/vertical-specific standards. | {% assign sector_stds = allStandards | where_exp: "std", "std.categories contains 'sector'" %}{% for std in sector_stds %}<span class="std-shortname">[{{ std.shortname }}]({{ std.url }})</span>{% unless forloop.last %} · {% endunless %}{% endfor %} |
+| **[Coding](#coding)** | Standards related to implementation or coding details.| {% assign coding_stds = allStandards | where_exp: "std", "std.categories contains 'coding'" %}{% for std in coding_stds %}<span class="std-shortname">[{{ std.shortname }}]({{ std.url }})</span>{% unless forloop.last %} · {% endunless %}{% endfor %} |
+| **[Documentation](#documentation)** | Standards related to documentation of software or IT systems.| {% assign doc_stds = allStandards | where_exp: "std", "std.categories contains 'documentation'" %}{% for std in doc_stds %}<span class="std-shortname">[{{ std.shortname }}]({{ std.url }})</span>{% unless forloop.last %} · {% endunless %}{% endfor %} |
+
+
+
 
 {::comment}
 Group standards by categories  
@@ -67,5 +67,10 @@ Group standards by categories
 
 .standard-categories .fa-tags {
   margin-right: 0.3em;
+}
+
+.std-shortname {
+  font-size: 0.75em;
+  white-space: nowrap;
 }
 </style>
