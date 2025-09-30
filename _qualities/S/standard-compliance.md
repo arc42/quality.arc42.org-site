@@ -2,7 +2,7 @@
 title: Standard Compliance
 tags: [secure, safe, usable, reliable, efficient, suitable]
 related: [compliance]
-standards: [iso42010]
+standards: [iso42010, iso42030]
 permalink: /qualities/standard-compliance
 ---
 

@@ -2,6 +2,7 @@
 title: Time to Market
 tags: [efficient]
 related: [flexibility, efficiency, deployment-frequency, extensibility, lead-time-for-changes, cycle-time]
+standards: [iso42030]
 permalink: /qualities/time-to-market
 ---
 

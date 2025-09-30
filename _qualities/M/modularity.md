@@ -11,7 +11,7 @@ related:
     modifiability,
     composability,
   ]
-standards: [iso25010, cra, do178c]
+standards: [iso25010, cra, do178c, iso42030]
 permalink: /qualities/modularity
 ---
 

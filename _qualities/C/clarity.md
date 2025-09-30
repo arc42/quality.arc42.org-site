@@ -2,7 +2,7 @@
 title: Clarity
 tags: [usable, reliable]
 related: [coherence, transparency, understandability, legibility]
-standards: [iso26514, iso42010]
+standards: [iso26514, iso42010, iso42030]
 permalink: /qualities/clarity
 ---
 

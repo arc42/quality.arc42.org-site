@@ -2,7 +2,7 @@
 title: Functional completeness
 tags: [usable, reliable, suitable]
 related: [usability, functionality, functional-suitability, correctness]
-standards: [iso25010, iso42010]
+standards: [iso25010, iso42010, iso42030]
 permalink: /qualities/functional-completeness
 ---
 
