@@ -49,7 +49,7 @@ Listed below each quality, you find
   
       {% if current_first_letter != previous_first_letter %}
     <div class="return-to-top">
-      <a href="#top" title="Return to top"><i class="fa fa-arrow-up"></i></a>
+      <a href="#top" title="Return to top"><i class="fa fa-arrow-up"></i> Return to top</a>
     </div>
     <h2 ID = {{current_first_letter}}> &mdash; {{current_first_letter}} &mdash; </h2>
     {% endif %}
@@ -58,7 +58,7 @@ Listed below each quality, you find
     <hr class="with-no-margin"/>
 {% endfor %}
     <div class="return-to-top">
-      <a href="#top" title="Return to top"><i class="fa fa-arrow-up"></i></a>
+      <a href="#top" title="Return to top"><i class="fa fa-arrow-up"></i>Return to top</a>
     </div>
 </div>
 
