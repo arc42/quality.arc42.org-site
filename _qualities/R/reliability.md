@@ -21,6 +21,7 @@ standards:
     iso25024,
     do178c,
     iso42030,
+    iso12207,
   ]
 permalink: /qualities/reliability
 ---
