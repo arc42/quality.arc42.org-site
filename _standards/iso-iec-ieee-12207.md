@@ -4,14 +4,17 @@ title: "ISO/IEC/IEEE 12207 - Software Life Cycle Processes"
 shortname: "ISO/IEC/IEEE 12207"
 standard_id: iso12207
 categories: [general, documentation]
-permalink: /standards/iso-iec-ieee-12207
+permalink: /standards/iso12207
 ---
 
 ## ISO/IEC/IEEE 12207:2017 - Systems and Software Engineering — Software Life Cycle Processes
 
-ISO/IEC/IEEE 12207 establishes a comprehensive framework for software life cycle processes, providing a common language and structure for software development, operation, and maintenance activities. The standard defines processes, activities, and tasks that apply during the acquisition, development, operation, maintenance, and disposal of software systems.
+ISO/IEC/IEEE 12207 establishes a comprehensive framework for software life cycle processes, providing a common language and structure for software development, operation, and maintenance activities. 
+This standard 
 
-This standard serves as the foundation for software process improvement, project management, and quality assurance across the software lifecycle. It provides a process architecture that supports various software development methodologies, from traditional waterfall to agile and iterative approaches, while ensuring systematic management of software quality attributes.
+* defines processes, activities, and tasks that apply during the acquisition, development, operation, maintenance, and disposal of software systems,
+* serves as the foundation for software process improvement, project management, and quality assurance across the software lifecycle 
+* provides a process architecture that supports various software development methodologies, from traditional waterfall to agile and iterative approaches, while ensuring systematic management of software quality attributes.
 
 ## Software Life Cycle Process Framework
 
@@ -30,16 +33,16 @@ The standard directly supports quality achievement through systematic process ma
 
 | Quality Attribute | Relevance in ISO/IEC/IEEE 12207 |
 |:--- |:--- |
-| **[Process Quality](/qualities/process-quality)** | Systematic framework for defining, implementing, and improving software lifecycle processes to ensure consistent quality outcomes. |
+| Process Quality | Systematic framework for defining, implementing, and improving software lifecycle processes to ensure consistent quality outcomes. |
 | **[Traceability](/qualities/traceability)** | Requirements for maintaining traceability between lifecycle artifacts, decisions, and deliverables throughout the software lifecycle. |
 | **[Maintainability](/qualities/maintainability)** | Explicit processes for software maintenance, including corrective, adaptive, perfective, and preventive maintenance activities. |
 | **[Reliability](/qualities/reliability)** | Verification and validation processes ensure software meets reliability requirements through systematic testing and quality assurance. |
-| **[Configuration Management](/qualities/configuration-management)** | Comprehensive configuration management processes for controlling changes and maintaining software integrity. |
-| **[Risk Management](/qualities/risk-management)** | Systematic risk management processes for identifying, analyzing, evaluating, and treating software project risks. |
-| **[Quality Assurance](/qualities/quality-assurance)** | Quality assurance processes embedded throughout the lifecycle to ensure adherence to standards and achievement of quality objectives. |
-| **[Documentation](/qualities/documentation)** | Systematic documentation processes ensuring comprehensive recording of decisions, designs, and deliverables. |
-| **[Verification](/qualities/verification)** | Systematic verification processes to confirm that software products meet their specified requirements. |
-| **[Validation](/qualities/validation)** | Validation processes to ensure software meets stakeholder needs and intended use in operational environment. |
+| Configuration Management | Comprehensive configuration management processes for controlling changes and maintaining software integrity. |
+| Risk Management | Systematic risk management processes for identifying, analyzing, evaluating, and treating software project risks. |
+| Quality Assurance| Quality assurance processes embedded throughout the lifecycle to ensure adherence to standards and achievement of quality objectives. |
+| Documentation | Systematic documentation processes ensuring comprehensive recording of decisions, designs, and deliverables. |
+| Verification | Systematic verification processes to confirm that software products meet their specified requirements. |
+| Validation | Validation processes to ensure software meets stakeholder needs and intended use in operational environment. |
 
 ## Process Architecture and Structure
 

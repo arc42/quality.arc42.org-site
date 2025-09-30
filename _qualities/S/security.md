@@ -31,6 +31,7 @@ standards:
     do178c,
     gdpr,
     iso42030,
+    iso12207,
   ]
 permalink: /qualities/security
 ---
