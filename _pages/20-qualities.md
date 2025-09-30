@@ -58,7 +58,7 @@ Listed below each quality, you find
     <hr class="with-no-margin"/>
 {% endfor %}
     <div class="return-to-top">
-      <a href="#top" title="Return to top"><i class="fa fa-arrow-up"></i>Return to top</a>
+      <a href="#top" title="Return to top"><i class="fa fa-arrow-up"></i> Return to top</a>
     </div>
 </div>
 
