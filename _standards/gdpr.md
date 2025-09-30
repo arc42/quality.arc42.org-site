@@ -13,6 +13,8 @@ The General Data Protection Regulation is a comprehensive data protection law in
 
 GDPR represents a paradigm shift from previous data protection approaches, emphasizing individual rights, accountability, and privacy by design. It applies to all organizations processing personal data of EU residents, regardless of where the organization is located.
 
+>In Germany, this standard is called "DSGVO" (Datenschutzgrundverordnung).
+
 ## Quality Attributes Required or Emphasized
 
 The regulation directly impacts software system design and implementation through specific quality requirements:
@@ -23,7 +25,7 @@ The regulation directly impacts software system design and implementation throug
 | **[Data Protection](/qualities/data-protection)** | Comprehensive framework for safeguarding personal data throughout its lifecycle, from collection to deletion. |
 | **[Transparency](/qualities/transparency)** | Mandatory clear communication about data processing purposes, legal basis, retention periods, and individual rights. |
 | **[Accountability](/qualities/accountability)** | Organizations must demonstrate compliance through documentation, impact assessments, and governance structures. |
-| **[Consent Management](/qualities/consent-management)** | Technical mechanisms for obtaining, recording, and managing valid consent for data processing activities. |
+| Consent Management | Technical mechanisms for obtaining, recording, and managing valid consent for data processing activities. |
 | **[Data Integrity](/qualities/data-integrity)** | Ensuring personal data accuracy, completeness, and protection against unauthorized alteration or destruction. |
 | **[Security](/qualities/security)** | Robust technical and organizational measures to protect personal data against breaches, loss, and unauthorized access. |
 | **[Auditability](/qualities/auditability)** | Systems must maintain comprehensive logs and records to demonstrate compliance and support data subject rights. |
