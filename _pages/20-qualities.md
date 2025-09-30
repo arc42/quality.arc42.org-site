@@ -5,6 +5,8 @@ permalink: /qualities/
 order: 20
 ---
 
+<div id="top"></div>
+
 Here you find a list of several _qualities_ (meaning: desirable, expected or required properties) of IT systems.  
 Listed below each quality, you find 
 *<i class="fa fa-tags" style="color: #1675b9;"></i> <span style="color: #1675b9;">related quality properties</span>*.
@@ -46,12 +48,18 @@ Listed below each quality, you find
       {% assign current_first_letter = current_first_letter | upcase %}
   
       {% if current_first_letter != previous_first_letter %}
+    <div class="return-to-top">
+      <a href="#top" title="Return to top"><i class="fa fa-arrow-up"></i></a>
+    </div>
     <h2 ID = {{current_first_letter}}> &mdash; {{current_first_letter}} &mdash; </h2>
     {% endif %}
     {% assign previous_first_letter = current_first_letter %}
     {% include qualities-list.liquid page=post link=true share=false %}
     <hr class="with-no-margin"/>
 {% endfor %}
+    <div class="return-to-top">
+      <a href="#top" title="Return to top"><i class="fa fa-arrow-up"></i></a>
+    </div>
 </div>
 
 <style>
@@ -92,5 +100,23 @@ Listed below each quality, you find
   
   .qualities-list .quality-tags .tag:hover {
     text-decoration: underline;
+  }
+  
+  .return-to-top {
+    text-align: center;
+    margin: 2rem 0 1rem 0;
+  }
+  
+  .return-to-top a {
+    display: inline-block;
+    font-size: 2.5rem;
+    color: var(--quality-text-color, #1675b9);
+    text-decoration: none;
+    transition: transform 0.2s ease;
+  }
+  
+  .return-to-top a:hover {
+    transform: translateY(-5px);
+    text-decoration: none;
   }
 </style>
