@@ -21,9 +21,9 @@ share: false
                 {% if post.collection == "requirements" %}
                 {% include search-req-header.html page=post link=true share=false %}
                 {% elsif post.collection == "qualities" %}
-                {% include quality-header.html page=post link=true share=false %}
+                {% include quality-header.liquid page=post link=true share=false %}
                 {% elsif post.collection == "standards" %}
-                {% include standards-header.html page=post link=true share=false %}
+                {% include standards-header.liquid page=post link=true share=false %}
                 {% else %}
                 {% include article-header.html page=post link=true share=false %}
                 {% endif %}

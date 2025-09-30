@@ -1,37 +1,29 @@
-{% assign standard = include.standard %}
+{% assign page = include.page %}
 
 <header>
-    <div class="panel">
-        <h1>
-            {% if include.link %}
-            <i class="fas fa-solid fa-award" style="color: var(--standard-text-color);"></i>
-            <a class="post-link" href="{{ standard.url | prepend: site.baseurl }}">{{ standard.title }}</a>
-            {% else %}
-            <i class="fas fa-solid fa-award" style="color: var(--standard-text-color);"></i>
-            {{ standard.title }}
-            {% endif %}
-        </h1>
+  <div class="panel standard-header" id="standard-header">
+    <h1>
+      {% if include.link %}
+         <a class="post-link" href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>
+      {% else %}
+         {{ page.title }}
+      {% endif %}
+    </h1>
 
-        {% if standard.categories and standard.categories.size > 0 %}
-        <ul class="tags">
-            <li><i class="fa fa-tags" style="color: var(--blue-text-color);"></i></li>
-            {% for category in standard.categories %}
-            <li>
-                <a class="tag" href="{{ '/tag-' | append: category | prepend: site.baseurl }}">#{{ category }}</a>
-            </li>
-            {% endfor %}
-        </ul>
-        {% endif %}
-
-        <div class="clearfix">
-            <ul class="meta">
-                {% if standard.standard_id %}
-                <li>
-                    <i class="fa fa-id-badge"></i>
-                    {{ standard.standard_id }}
-                </li>
-                {% endif %}
-            </ul>
-        </div>
+    <ul class="tags">
+      {% assign categories_num = (page.categories | size) %}
+      {% if categories_num > 0 %}
+         <li><i class="fa fa-tags" style="color: var(--standard-text-color);"> </i></li>
+      {% endif %}
+      {% for category in page.categories %}
+         <li>
+           <span class="category">#{{ category }}</span>
+          </li>
+      {% endfor %}
+    </ul>
+ 
+        <div class="clearfix"></div>
     </div>
+
+
 </header>
