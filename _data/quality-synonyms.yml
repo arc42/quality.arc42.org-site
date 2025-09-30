@@ -1,0 +1,145 @@
+# Quality Synonyms
+# Format: canonical_term: [list of synonyms]
+# Based on analysis of existing _qualities and common industry terminology
+
+# Performance and Efficiency Cluster
+performance:
+  - performance-efficiency
+  - speed
+responsiveness:
+  - response-time
+efficiency:
+  - resource-efficiency
+time-to-market:
+  - speed-to-market
+
+# Availability and Reliability Cluster  
+availability:
+  - high-availability
+reliability:
+  - dependability
+  - faultlessness
+robustness:
+  - resilience
+  - resistance
+recoverability:
+  - recovery-time
+
+# Security and Safety Cluster
+security:
+  - information-security
+  - cyber-security
+  - securability
+safety:
+  - patient-safety
+  - safe-integration
+
+# Maintainability and Change Cluster
+maintainability:
+  - serviceability
+changeability:
+  - mutability
+  - modifiability
+evolvability:
+  - adaptability
+flexibility:
+  - versatility
+
+# Usability and User Experience Cluster
+usability:
+  - ease-of-use
+  - user-friendliness
+understandability:
+  - comprehensibility
+  - readability
+  - legibility
+  - clarity
+learnability:
+  - trainability
+
+# Testing and Verification Cluster
+testability:
+  - verifiability
+debuggability:
+  - troubleshootability
+  - diagnosability
+observability:
+  - monitorability
+  - visibility
+
+# Quality Assurance and Process Cluster
+correctness:
+  - accuracy
+  - preciseness
+  - precision
+traceability:
+  - auditability
+compliance:
+  - standard-compliance
+  - conformance
+
+# Architectural and Design Cluster
+modularity:
+  - composability
+  - componentization
+interoperability:
+  - compatibility
+  - co-existence
+extensibility:
+  - expandability
+  - scalability
+portability:
+  - transferability
+  - replaceability
+
+# Operational and Deployment Cluster
+deployability:
+  - installability
+  - releasability
+configurability:
+  - customizability
+  - personalization
+operability:
+  - manageability
+controllability:
+  - governability
+
+# Efficiency and Resource Management Cluster  
+resource-utilization:
+  - resource-efficiency
+energy-efficiency:
+  - power-efficiency
+  - carbon-emission-efficiency
+memory-usage:
+  - memory-efficiency
+
+# Time and Performance Metrics Cluster
+timeliness:
+  - punctuality
+latency:
+  - response-time
+  - delay
+throughput:
+  - bandwidth
+  - capacity
+
+# User Interface and Interaction Cluster
+attractiveness:
+  - aesthetics
+  - appearance
+  - user-interface-aesthetics
+discoverability:
+  - findability
+  - searchability
+accessibility:
+  - inclusivity
+  - barrier-free-design
+
+# Business and Value Cluster
+profitability:
+  - cost-effectiveness
+  - economic-viability
+sustainability:
+  - longevity
+  - durability
+  - environmental-friendliness
