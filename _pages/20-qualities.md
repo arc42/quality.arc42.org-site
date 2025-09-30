@@ -103,20 +103,21 @@ Listed below each quality, you find
   }
   
   .return-to-top {
-    text-align: center;
-    margin: 2rem 0 1rem 0;
+    text-align: right;
+    margin: 1rem 0 0.5rem 0;
   }
   
   .return-to-top a {
     display: inline-block;
-    font-size: 2.5rem;
-    color: var(--quality-text-color, #1675b9);
+    font-size: 1.2rem;
+    color: #383838;
     text-decoration: none;
-    transition: transform 0.2s ease;
+    opacity: 0.5;
+    transition: opacity 0.2s ease;
   }
   
   .return-to-top a:hover {
-    transform: translateY(-5px);
+    opacity: 1;
     text-decoration: none;
   }
 </style>
