@@ -3,7 +3,7 @@ layout: page_standard
 title: "ISO/IEC/IEEE 42030 - Architecture Evaluation"
 shortname: "ISO/IEC/IEEE 42030"
 standard_id: iso42030
-categories: [architecture, evaluation]
+categories: [documentation, general]
 permalink: /standards/iso-iec-ieee-42030
 ---
 
