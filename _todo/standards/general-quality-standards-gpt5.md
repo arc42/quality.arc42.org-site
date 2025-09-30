@@ -6,10 +6,9 @@ These focus on inner qualities such as maintainability, modifiability, understan
 |---|---|
 | ISO 14971 (Risk Management for medical devices) | | 
 | IEC 62366 (Usability Engineering) | |
-| **GDPR** | Data protection and accuracy requirements in EU |
 | **SOX** | Financial data accuracy and audit requirements|
+- **IEEE 2857** - Privacy engineering guidelines
 
-| ISO/IEC/IEEE 42030:2019 (Architecture evaluation) | Guidance to evaluate architectures systematically; links design decisions to quality attributes (modifiability, performance, reliability) and supports early risk mitigation |
 
 | ISO/SAE 21434 (Road vehicles — Cybersecurity engineering) | Highly demanded in automotive; directly links to security, risk, and assurance qualities; complements ISO 26262 by addressing cyber risks; rich set of artifacts (TARA, CSMS) that map well to requirements examples |
 | IEC 62443 series (Industrial automation and control systems security) | Dominant in OT/ICS; strong relevance for resilience, availability, and defense-in-depth; growing adoption beyond classic industrial domains; complements ISO 27001 with sector-specific controls |
@@ -26,6 +25,9 @@ These focus on inner qualities such as maintainability, modifiability, understan
 
 |Standard|Why that|
 |---|---|
+| ISO/IEC 29100 | Privacy framework |
+| ISO/IEC/IEEE 42030:2019 (Architecture evaluation) | Guidance to evaluate architectures systematically|
+| GDPR | Data protection and accuracy requirements in EU |
 | ISO/IEC/IEEE 42010:2022 | (Architecture description) |
 | PCI DSS (Payment Card Industry Data Security Standard) | |
 | ISO/IEC/IEEE 26514:2022 (User documentation for systems and software) |  |
