@@ -63,19 +63,31 @@
     color: #333;
     text-decoration: underline;
   }
-  
-  .standard-tags {
-    font-size: 0.9rem;
-    color: #666;
-    margin-top: 0.3rem;
-  }
-  
-  .standard-tags {
-    color: #1675b9;
-  }
 
   .with-no-margin {
     margin: 0;
     border-color: #e9ecef;
   }
+}
+
+// Standard item styling - applies globally to all standard items
+.standard-item {
+  margin-bottom: 1rem;
+  padding: 0.5rem 0;
+  
+  .standard-tags {
+    font-size: 0.8rem;
+    color: #999;
+    margin-top: 0.3rem;
+    
+    .category-name {
+      color: #999;
+    }
+  }
+}
+
+// Shortname styling for standards table
+.std-shortname {
+  font-size: 0.75em;
+  white-space: nowrap;
 }
