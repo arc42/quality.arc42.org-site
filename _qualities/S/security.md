@@ -33,6 +33,7 @@ standards:
     iso42030,
     iso12207,
     sox,
+    ieee2857,
   ]
 permalink: /qualities/security
 ---

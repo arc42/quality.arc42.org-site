@@ -2,7 +2,7 @@
 title: Data Integrity
 tags: [reliable, secure]
 related: [integrity, data-quality, accuracy, correctness, consistency, authenticity, non-repudiation, transactionality]
-standards: [iso27001, iso25024, pcidss, hl7, nist80053, iso15408, gdpr, sox]
+standards: [iso27001, iso25024, pcidss, hl7, nist80053, iso15408, gdpr, sox, ieee2857]
 permalink: /qualities/data-integrity
 ---
 
