@@ -6,7 +6,6 @@ These focus on inner qualities such as maintainability, modifiability, understan
 |---|---|
 | ISO 14971 (Risk Management for medical devices) | | 
 | IEC 62366 (Usability Engineering) | |
-| **SOX** | Financial data accuracy and audit requirements|
 - **IEEE 2857** - Privacy engineering guidelines
 
 
@@ -25,6 +24,7 @@ These focus on inner qualities such as maintainability, modifiability, understan
 
 |Standard|Why that|
 |---|---|
+| SOX | Financial data accuracy and audit requirements|
 | ISO/IEC 29100 | Privacy framework |
 | ISO/IEC/IEEE 42030:2019 (Architecture evaluation) | Guidance to evaluate architectures systematically|
 | GDPR | Data protection and accuracy requirements in EU |

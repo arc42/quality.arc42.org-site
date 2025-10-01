@@ -75,14 +75,24 @@
   margin-bottom: 1rem;
   padding: 0.5rem 0;
   
+  .standard-title {
+    margin-top: 0;
+  }
+  
   .standard-tags {
     font-size: 0.8rem;
     color: #999;
     margin-top: 0.3rem;
+    margin-bottom: 0.5rem;
     
     .category-name {
       color: #999;
     }
+  }
+  
+  hr {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
   }
 }
 
