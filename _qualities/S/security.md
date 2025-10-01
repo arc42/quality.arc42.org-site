@@ -32,6 +32,7 @@ standards:
     gdpr,
     iso42030,
     iso12207,
+    sox,
   ]
 permalink: /qualities/security
 ---

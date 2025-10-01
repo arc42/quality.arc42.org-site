@@ -2,7 +2,7 @@
 title: Correctness
 tags: [usable, reliable, suitable]
 related: [usability, functionality, functional-suitability, functional-correctness]
-standards: [iso26514, iso12207]
+standards: [iso26514, iso12207, sox]
 permalink: /qualities/correctness
 ---
 

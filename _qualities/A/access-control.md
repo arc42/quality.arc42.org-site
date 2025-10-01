@@ -2,7 +2,7 @@
 title: Access Control
 tags: [secure]
 related: [security, accessibility, confidentiality, privacy, intrusion-detection, intrusion-prevention]
-standards: [pcidss, iec62443, gdpr]
+standards: [pcidss, iec62443, gdpr, sox]
 permalink: /qualities/access-control
 ---
 

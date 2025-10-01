@@ -22,6 +22,7 @@ standards:
     do178c,
     iso42030,
     iso12207,
+    sox,
   ]
 permalink: /qualities/reliability
 ---
