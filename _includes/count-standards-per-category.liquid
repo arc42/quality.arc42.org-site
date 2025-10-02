@@ -1,0 +1,1 @@
+{% assign filtered_standards = site.standards | where_exp: "std", "std.categories contains include.category" %}{{ filtered_standards | size }}
