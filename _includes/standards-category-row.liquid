@@ -1,8 +1,1 @@
-{% comment %}
-  Generates a row in the standards overview table.
-  - include.category: The category to filter by (e.g., "general")
-  - include.title: The display title for the category (e.g., "General")
-  - include.explanation: The explanation text for the category.
-{% endcomment %}
-{% assign filtered_standards = site.standards | where_exp: "std", "std.categories contains include.category" %}
-| **[{{ include.title }}](#{{ include.category }})** (**{{ filtered_standards | size }}**) | {{ include.explanation }} | {% for std in filtered_standards %}<span class="std-shortname">[{{ std.shortname }}]({{ std.url }})</span>{% unless forloop.last %} · {% endunless %}{% endfor %} |
+{% assign filtered_standards = site.standards | where_exp: "std", "std.categories contains include.category" %}| **[{{ include.title }}](#{{ include.category }})** (**{{ filtered_standards | size }}**) | {{ include.explanation }} | {% for std in filtered_standards %}<span class="std-shortname">[{{ std.shortname }}]({{ std.url }})</span>{% unless forloop.last %} · {% endunless %}{% endfor %} |
