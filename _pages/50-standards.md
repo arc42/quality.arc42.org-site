@@ -14,7 +14,8 @@ These standards are categorized (aka _tagged_) as follows:
 
 {% assign allStandards = site.standards %}
 
-|Tag  | Explanation | Standards |
+
+|Category  | Explanation | Standards |
 |:--- | --- | --- |
 {% include standards-category-row.liquid category="general" title="General" explanation="Broad quality/process standards" %}
 {% include standards-category-row.liquid category="safety" title="Safety" explanation="Functional safety where malfunctions can harm people/environment/assets" %}
