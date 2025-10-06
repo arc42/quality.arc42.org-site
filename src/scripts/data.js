@@ -74,7 +74,8 @@ async function writeJsonToFile(jsonString, filename, assetsDir) {
 const NODE_CONFIGS = {
     requirement: { color: '#ffb3b3', size: 15, qualityType: 'requirement' },
     quality: { color: '#00B8F5', size: 25, qualityType: 'quality' },
-    property: { color: '#00B8F5', size: 40, qualityType: 'property' }
+    property: { color: '#f8f9fa', size: 35, qualityType: 'property' },
+    standard: { color: '#FFC95C', size: 45, qualityType: 'standard' }
 };
 
 /**
@@ -300,12 +301,17 @@ async function generateData() {
         parseFrontmatter(standardsFiles)
     ]);
 
-    // Build a lookup from standard_id -> title (label)
+    // Build a lookup from standard_id -> title (label) and permalink
     const standardIdToLabel = new Map();
+    const standardIdToPermalink = new Map();
     for (const s of standardsMeta) {
         const id = (s.standard_id || "").toString().trim();
         const title = (s.title || "").toString().trim();
-        if (id) standardIdToLabel.set(id.toLowerCase(), title || id.toUpperCase());
+        const permalink = (s.permalink || "").toString().trim();
+        if (id) {
+            standardIdToLabel.set(id.toLowerCase(), title || id.toUpperCase());
+            if (permalink) standardIdToPermalink.set(id.toLowerCase(), permalink);
+        }
     }
 
     function defaultLabelFromId(id) {
@@ -331,9 +337,59 @@ async function generateData() {
     createGraphData(qualityData, false, propertyNodes, nodes, edges);
     createGraphData(requirementsData, true, propertyNodes, nodes, edges);
 
+    // Create standard nodes and edges (standard -> quality)
+    const standardNodes = new Map();
+    // Collect mapping: standard -> set of property ids connected via its qualities
+    const standardToProperties = new Map();
+    for (const q of qualityData) {
+        const qId = extractId(q.permalink);
+        const stds = parseList(q.standards, ',');
+        for (const s of stds) {
+            if (!s) continue;
+            const key = s.toLowerCase();
+            standardsSet.add(s);
+            if (!standardNodes.has(key)) {
+                const cfg = NODE_CONFIGS.standard;
+                const label = defaultLabelFromId(s);
+                const page = standardIdToPermalink.get(key) || `/standards/${ s }`;
+                standardNodes.set(key, {
+                    id: s,
+                    label: label,
+                    size: cfg.size,
+                    color: cfg.color,
+                    qualityType: cfg.qualityType,
+                    page
+                });
+            }
+            // Edge: standard -> quality
+            edges.add({ source: s, target: qId });
+            // Track properties for this standard (via the current quality)
+            const propsOfQuality = nodeConnections.qualityToProperties.get(qId);
+            if (propsOfQuality && propsOfQuality.size) {
+                let set = standardToProperties.get(key);
+                if (!set) {
+                    set = new Set();
+                    standardToProperties.set(key, set);
+                }
+                propsOfQuality.forEach(p => set.add(p));
+            }
+        }
+    }
+
+    // Add edges: standard -> property (direct connections derived from qualities)
+    standardToProperties.forEach((propSet, stdKey) => {
+        const stdId = standardNodes.get(stdKey)?.id || stdKey;
+        propSet.forEach(propId => {
+            edges.add({ source: stdId, target: propId });
+        });
+    });
+
     const standards = Array.from(standardsSet)
         .map(id => ({ value: id, label: defaultLabelFromId(id) }))
         .sort((a, b) => a.label.localeCompare(b.label));
+
+    // Merge standard nodes into nodes set
+    for (const n of standardNodes.values()) nodes.add(n);
 
     await Promise.all([
         writeJsonToFile(toSortedJSON(Array.from(propertyNodes.values()), "label"), "property-nodes.json", assetsDir),

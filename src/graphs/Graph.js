@@ -45,7 +45,7 @@ export class Graph {
         const { propertyNodes, nodes, edges } = this.dataProvider.getData();
 
         try {
-            this.createRootNode("Quality", 50, "#ebebeb");
+            this.createRootNode("Quality", 55, "#ebebeb");
             // Create nodes and edges
             this.createNodes(propertyNodes);
             this.createNodes(nodes);
@@ -263,6 +263,31 @@ export class Graph {
                     }));
                 });
             }
+        }
+
+        // Position standard nodes above qualities (top arc)
+        const standardNodes = [];
+        this.graph.forEachNode((nodeId, attrs) => {
+            if (attrs.qualityType === "standard") standardNodes.push(nodeId);
+        });
+        if (standardNodes.length > 0) {
+            const r = levelRadius * 2.2; // radius above qualities
+            const startAngle = -Math.PI * 0.9; // near top-left
+            const endAngle = -Math.PI * 0.1;   // near top-right
+            const angleStep = (endAngle - startAngle) / (standardNodes.length + 1);
+            // Compute approximate level to keep distance during overlap adjustment
+            const approxLevel = Math.max(3, Math.round(1 + (r / (30 * 3)))); // minDistance assumed 30
+            standardNodes.forEach((nodeId, i) => {
+                const angle = startAngle + angleStep * (i + 1);
+                const x = r * Math.cos(angle);
+                const y = r * Math.sin(angle);
+                this.graph.updateNodeAttributes(nodeId, (attr) => ({
+                    ...attr,
+                    x,
+                    y,
+                    hierarchyLevel: approxLevel,
+                }));
+            });
         }
 
         // STEP 5: Find requirement nodes (if not hidden)
@@ -489,7 +514,8 @@ export class Graph {
         this.renderer.render(
             graphData,
             this.eventHandlers.nodeHover,
-            this.eventHandlers.nodeDoubleClick
+            this.eventHandlers.nodeDoubleClick,
+            this.eventHandlers.nodeClick
         );
 
         return this;

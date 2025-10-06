@@ -13,9 +13,7 @@ hide: true
             <label class="sr-only" for="full-q-graph-filter__input">Filter graph:</label>
             <input type="text" id="full-q-graph-filter__input" placeholder="Filter..." />
             <button id="full-q-graph-filter__btn" class="btn">Filter</button>
-            <hr />
-            <h3>Standards</h3>
-            <select id="full-q-graph-standard__select"></select>
+            <hr />        
         </div>
         <div id="full-q-graph-legend">
             <h3>Legend</h3>
@@ -24,10 +22,18 @@ hide: true
                 <span class="legend-label">Root Node</span>
             </div>
             <div class="legend-item">
-                <span class="color-box" style="background-color: #00B8F5;"></span>
+                <span class="color-box" style="background-color: #f8f9fa;"></span>
                 <span class="legend-label">Property Nodes</span>
             </div>
             <hr />
+            <div class="legend-item">
+                <span class="color-box" style="background-color: #FFC95C;"></span>
+                <label class="toggle">
+                    <span class="toggle-label legend-label">Standards</span>
+                    <input class="toggle-checkbox" type="checkbox" id="legend-toggle-standards" checked>
+                    <div class="toggle-switch"></div>
+                </label>
+            </div>
             <div class="legend-item">
                 <span class="color-box" style="background-color: #00B8F5;"></span>
                 <label class="toggle">

@@ -3,7 +3,8 @@
  * Specialized graph implementation for the full page graph with filtering
  */
 import { Graph } from "./Graph";
-import standardsList from "../../assets/data/standards.json";
+
+// Standards dropdown removed in favor of a sidebar toggle
 
 export class FullGraph extends Graph {
 
@@ -34,16 +35,16 @@ export class FullGraph extends Graph {
         super.initialize();
         this.registerFilterControls();
         this.registerLegendToggles();
-        this.registerStandardsControl();
         return this;
     }
 
     /**
-     * Register legend toggles for qualities and requirements
+     * Register legend toggles for qualities, requirements, and standards
      */
     registerLegendToggles() {
         const qualToggle = document.getElementById("legend-toggle-qualities");
         const reqToggle = document.getElementById("legend-toggle-requirements");
+        const stdToggle = document.getElementById("legend-toggle-standards");
 
         // Guard if legend not present
         if (!qualToggle || !reqToggle) {
@@ -53,6 +54,7 @@ export class FullGraph extends Graph {
         // Sync current renderer state to inputs
         qualToggle.checked = this.renderer.typeVisibility.quality;
         reqToggle.checked = this.renderer.typeVisibility.requirement;
+        if (stdToggle) stdToggle.checked = this.renderer.typeVisibility.standard;
 
         // Listen for changes
         qualToggle.addEventListener("change", (e) => {
@@ -65,6 +67,11 @@ export class FullGraph extends Graph {
             // Drive visibility via renderer to avoid resetting text filter
             this.renderer.setTypeVisibility('requirement', e.target.checked);
         });
+        if (stdToggle) {
+            stdToggle.addEventListener("change", (e) => {
+                this.renderer.setTypeVisibility('standard', e.target.checked);
+            });
+        }
 
         return this;
     }
@@ -228,8 +235,9 @@ export class FullGraph extends Graph {
             }
         };
 
-        // Default click hover handler for highlighting
+        // Default hover handler for highlighting (non-persistent)
         const nodeHover = (event, d) => {
+            if (this.renderer.selectionActive) return; // Don't interfere with active selection
             // Toggle highlight state
             const isHighlighted = d.highlighted;
 
@@ -239,31 +247,151 @@ export class FullGraph extends Graph {
                 node.connectedHighlighted = false;
             });
 
-            const connectedNodes = new Set();
+            let connectedNodes = new Set();
             if (!isHighlighted) {
                 // Highlight this node and its connections
                 d.highlighted = true;
 
-                // Find connected nodes
-                this.renderer.links.each(function (link) {
-                    if (link.source.id === d.id) {
-                        connectedNodes.add(link.target.id);
-                        link.target.connectedHighlighted = true;
-                    }
-                    if (link.target.id === d.id) {
-                        connectedNodes.add(link.source.id);
-                        link.source.connectedHighlighted = true;
-                    }
-                });
+                if (d.qualityType === 'standard') {
+                    // Direct neighbors (qualities)
+                    const qualities = new Set();
+                    const props = new Set();
+                    // First collect direct neighbors
+                    this.renderer.links.each(function (link) {
+                        if (link.source.id === d.id) {
+                            qualities.add(link.target.id);
+                            link.target.connectedHighlighted = true;
+                        }
+                        if (link.target.id === d.id) {
+                            qualities.add(link.source.id);
+                            link.source.connectedHighlighted = true;
+                        }
+                    });
+                    // Then collect properties 2-hop via qualities
+                    const qualLookup = new Set(qualities);
+                    this.renderer.links.each(function (link) {
+                        if (qualLookup.has(link.source.id) && link.target.qualityType === 'property') {
+                            props.add(link.target.id);
+                            link.target.connectedHighlighted = true;
+                        }
+                        if (qualLookup.has(link.target.id) && link.source.qualityType === 'property') {
+                            props.add(link.source.id);
+                            link.source.connectedHighlighted = true;
+                        }
+                    });
+                    connectedNodes = new Set([...qualities, ...props]);
+                } else {
+                    // Default: 1-hop neighbors
+                    this.renderer.links.each(function (link) {
+                        if (link.source.id === d.id) {
+                            connectedNodes.add(link.target.id);
+                            link.target.connectedHighlighted = true;
+                        }
+                        if (link.target.id === d.id) {
+                            connectedNodes.add(link.source.id);
+                            link.source.connectedHighlighted = true;
+                        }
+                    });
+                }
             }
 
             // Update visual appearance
             this.renderer.highlightNode(d.id, !isHighlighted, connectedNodes);
         };
 
+        // Click handler: persistent selection for standards (dims unrelated)
+        const nodeClick = (event, d) => {
+            if (d.qualityType !== 'standard') return;
+
+            const isSameSelection = this.renderer.selectionActive && this.renderer.selection && this.renderer.selection.id === d.id;
+
+            // Clear all highlights first
+            this.renderer.nodes.each(function (node) {
+                node.highlighted = false;
+                node.connectedHighlighted = false;
+            });
+
+            if (isSameSelection) {
+                // Deselect
+                this.renderer.selectionActive = false;
+                this.renderer.setSelectionDimming(null, null, false);
+                this.renderer.highlightNode(d.id, false, null);
+                return;
+            }
+
+            // Compute related nodes: direct qualities, properties via those qualities, requirements attached to those qualities,
+            // and qualities connected to those qualities (quality↔quality)
+            const qualities = new Set();
+            const props = new Set();
+            const reqs = new Set();
+            const relatedQuals = new Set();
+            // First pass: collect direct neighbors (qualities)
+            this.renderer.links.each(function (link) {
+                if (link.source.id === d.id) {
+                    if (link.target.qualityType === 'quality') {
+                        qualities.add(link.target.id);
+                    }
+                    link.target.connectedHighlighted = true;
+                }
+                if (link.target.id === d.id) {
+                    if (link.source.qualityType === 'quality') {
+                        qualities.add(link.source.id);
+                    }
+                    link.source.connectedHighlighted = true;
+                }
+            });
+            // Build lookup for selected qualities
+            const qualLookup = new Set(qualities);
+            // Second pass: collect properties (2-hop), requirements, and related qualities attached to those qualities
+            this.renderer.links.each(function (link) {
+                const sId = link.source.id;
+                const tId = link.target.id;
+                const sType = link.source.qualityType;
+                const tType = link.target.qualityType;
+
+                // Properties connected to selected qualities
+                if (qualLookup.has(sId) && tType === 'property') {
+                    props.add(tId);
+                    link.target.connectedHighlighted = true;
+                }
+                if (qualLookup.has(tId) && sType === 'property') {
+                    props.add(sId);
+                    link.source.connectedHighlighted = true;
+                }
+
+                // Requirements connected to selected qualities (indirect relation to the standard)
+                if (qualLookup.has(sId) && tType === 'requirement') {
+                    reqs.add(tId);
+                    link.target.connectedHighlighted = true;
+                }
+                if (qualLookup.has(tId) && sType === 'requirement') {
+                    reqs.add(sId);
+                    link.source.connectedHighlighted = true;
+                }
+
+                // Qualities connected to the selected qualities (quality↔quality edges)
+                if (qualLookup.has(sId) && tType === 'quality') {
+                    relatedQuals.add(tId);
+                    link.target.connectedHighlighted = true;
+                }
+                if (qualLookup.has(tId) && sType === 'quality') {
+                    relatedQuals.add(sId);
+                    link.source.connectedHighlighted = true;
+                }
+            });
+            const connectedNodes = new Set([...qualities, ...props, ...reqs, ...relatedQuals]);
+
+            // Mark selected and apply visuals
+            d.highlighted = true;
+            this.renderer.selectionActive = true;
+            this.renderer.highlightNode(d.id, true, connectedNodes);
+            this.renderer.setSelectionDimming(d.id, connectedNodes, true);
+        };
+
         return this.registerEventHandlers({
             nodeHover,
-            nodeDoubleClick
+            nodeDoubleClick,
+            nodeClick
         });
     }
 }
