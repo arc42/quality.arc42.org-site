@@ -763,14 +763,17 @@ export class GraphRenderer {
             .classed("connected-highlighted", highlight);
 
         // Manage per-edge hover highlight flags for canvas rendering
-        const renderer = this;
         if (highlight) {
             // Clear previous hover highlights to avoid stale edges
-            this.links.each(function(l){ l._hoverHighlight = false; });
-            if (Array.isArray(this.virtualEdgesData)) this.virtualEdgesData.forEach(vl => { vl._hoverHighlight = false; });
+            this.links.each(function (l) {
+                l._hoverHighlight = false;
+            });
+            if (Array.isArray(this.virtualEdgesData)) this.virtualEdgesData.forEach(vl => {
+                vl._hoverHighlight = false;
+            });
         }
         // Set or clear hover highlight on edges connected to the node
-        this.links.each(function(l){
+        this.links.each(function (l) {
             if (!l || !l.source || !l.target) return;
             if (l.source.id === nodeId || l.target.id === nodeId) {
                 l._hoverHighlight = !!highlight;
@@ -1071,106 +1074,52 @@ export class GraphRenderer {
      * @returns {Function} Function to update label visibility
      */
     createLabelVisibilityUpdater(label, initialZoomScale) {
-        // Store the current zoom scale, initialized with the provided value
         let currentZoomScale = initialZoomScale;
+        const renderer = this;
 
-        // Return a function that can either update all labels or check a single node
         return (nodeData) => {
-            // If nodeData is provided as an object, we're checking visibility for a single node
+            // Einzelne Node-Überprüfung
             if (nodeData && typeof nodeData === 'object') {
-                // If hidden by legend, hide label
-                if (nodeData._legendHidden) {
-                    return 0;
-                }
+                if (nodeData._legendHidden) return 0;
+                if (renderer.selectionActive && renderer.selection?.isStandard && nodeData.qualityType === 'property' && nodeData._dimmed) return 0;
+                if (nodeData.id === "quality-root" || nodeData.qualityType === "property") return 1;
 
-                // If a standard is selected and a property node is dimmed, that property node is hidden -> keep label hidden
-                if (this.selectionActive && this.selection?.isStandard && nodeData.qualityType === 'property' && nodeData._dimmed) {
-                    return 0;
-                }
-
-                // Always show labels for root and property nodes when the node is displayed
-                if (nodeData.id === "quality-root" || nodeData.qualityType === "property") {
-                    return 1;
-                }
-
-                // Check if this node or a connected node is highlighted
                 const isHighlighted = nodeData.highlighted || nodeData.connectedHighlighted;
+                if (nodeData._dimmed && !isHighlighted) return 0;
 
-                // Hide labels for dimmed nodes (unless highlighted)
-                if (nodeData._dimmed && !isHighlighted) {
-                    return 0;
+                const threshold = (["quality", "requirement", "standard"].includes(nodeData.qualityType))
+                                  ? 1.2 / (nodeData.size / 10)
+                                  : 0.8 / (nodeData.size / 10);
+
+                return (isHighlighted || currentZoomScale > threshold) ? 1 : 0;
+            }
+            // Alle Labels aktualisieren
+            if (typeof arguments[0] === 'number') currentZoomScale = arguments[0];
+
+            label.each(function (d) {
+                const labelElement = d3.select(this);
+
+                if (d._legendHidden ||
+                    (renderer.selectionActive && renderer.selection?.isStandard && d.qualityType === 'property' && d._dimmed) ||
+                    (d._dimmed && !(d.highlighted || d.connectedHighlighted))) {
+                    labelElement.attr("opacity", 0).style("display", "none");
+                    return;
                 }
 
-                // For quality, requirement, and standard nodes, hide labels when zoom level is too low
-                const visibilityThreshold = (nodeData.qualityType === "quality" || nodeData.qualityType === "requirement" || nodeData.qualityType === "standard")
-                                            ? 1.2 / (nodeData.size / 10)
-                                            : 0.8 / (nodeData.size / 10);
-
-                // Show label if node is highlighted or zoom is sufficient
-                return (isHighlighted || currentZoomScale > visibilityThreshold) ? 1 : 0;
-            }
-            // Otherwise, update all labels with the current zoom scale
-            else {
-                // If a zoom scale is provided as the first argument, update the stored value
-                if (typeof arguments[0] === 'number') {
-                    currentZoomScale = arguments[0];
+                if (d.id === "quality-root" || d.qualityType === "property") {
+                    labelElement.attr("opacity", 1).attr("font-weight", "bold").style("display", null);
+                    return;
                 }
 
-                // Capture renderer via closure (do not bind and override d3's element context)
-                const renderer = this;
+                const isHighlighted = d.highlighted || d.connectedHighlighted;
+                const threshold = (["quality", "requirement", "standard"].includes(d.qualityType))
+                                  ? 1.2 / (d.size / 10)
+                                  : 0.8 / (d.size / 10);
 
-                // Update all labels based on their type and zoom level
-                label.each(function (d) {
-                    const labelElement = d3.select(this);
-
-                    // If hidden by legend, hide label
-                    if (d._legendHidden) {
-                        labelElement.attr("opacity", 0);
-                        labelElement.style("display", "none");
-                        return;
-                    }
-
-                    // If a standard is selected and a property node is dimmed, that property node is hidden -> keep label hidden
-                    if (renderer.selectionActive && renderer.selection?.isStandard && d.qualityType === 'property' && d._dimmed) {
-                        labelElement.attr("opacity", 0);
-                        labelElement.style("display", "none");
-                        return;
-                    }
-
-                    // Always show labels for root and property nodes when the node is displayed
-                    if (d.id === "quality-root" || d.qualityType === "property") {
-                        labelElement.attr("opacity", 1);
-                        labelElement.attr("font-weight", "bold");
-                        labelElement.style("display", null);
-                        return;
-                    }
-
-                    // Check if this node or a connected node is highlighted
-                    const isHighlighted = d.highlighted || d.connectedHighlighted;
-
-                    // Hide labels for dimmed nodes (unless highlighted)
-                    if (d._dimmed && !isHighlighted) {
-                        labelElement.attr("opacity", 0);
-                        labelElement.style("display", "none");
-                        return;
-                    }
-
-                    // For quality, requirement, and standard nodes, hide labels when zoom level is too low
-                    const visibilityThreshold = (d.qualityType === "quality" || d.qualityType === "requirement" || d.qualityType === "standard")
-                                                ? 1.2 / (d.size / 10)
-                                                : 0.8 / (d.size / 10);
-
-                    // Show label if node is highlighted or zoom is sufficient
-                    const opacity = (isHighlighted || currentZoomScale > visibilityThreshold) ? 1 : 0;
-                    labelElement.attr("opacity", opacity);
-
-                    if (opacity === 0 && !isHighlighted) {
-                        labelElement.style("display", "none");
-                    } else {
-                        labelElement.style("display", null);
-                    }
-                });
-            }
+                const opacity = (isHighlighted || currentZoomScale > threshold) ? 1 : 0;
+                labelElement.attr("opacity", opacity);
+                labelElement.style("display", (opacity === 0 && !isHighlighted) ? "none" : null);
+            });
         };
     }
 
