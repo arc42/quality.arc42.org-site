@@ -27,7 +27,7 @@ export class GraphRenderer {
             if (t === 'standard') return typeVis.standard === false;
             return false; // root & property never hidden by legend
         };
-        this._isStdSelectionActive = () => !!(this.selectionActive && this.selection && this.selection.isStandard);
+        this._isStdSelectionActive = () => !!(this.selectionActive && this.selection?.isStandard);
         this._nodeHighlighted = (d) => !!(d && (d.highlighted || d.connectedHighlighted));
         this._labelVisibilityThreshold = (d) => ((this._isQuality(d) || this._isRequirement(d) || this._isStandard(d)) ? 1.2 : 0.8) / (d.size / 10);
         this._nodeVisibilityThreshold = (d) => 0.4 / (d.size / 10);
@@ -526,6 +526,8 @@ export class GraphRenderer {
         this.links
             .attr("opacity", d => d._dimmed ? 0.05 : 0.6)
             .style("display", function (d) {
+                // Respect legend/type visibility: hide if either endpoint is legend-hidden (e.g., requirements hidden)
+                if (d.source._legendHidden || d.target._legendHidden) return 'none';
                 if (!selected.isStandard) return null;
                 // Hide links connected to dimmed property nodes when a standard is selected
                 if (renderer._hideIfDimmedPropertyUnderStd(d.source) || renderer._hideIfDimmedPropertyUnderStd(d.target)) return 'none';
@@ -534,6 +536,8 @@ export class GraphRenderer {
         if (this.virtualLinks) this.virtualLinks
             .attr("opacity", d => d._dimmed ? 0.05 : 0.4)
             .style("display", function (d) {
+                // Respect legend/type visibility as well for virtual links
+                if (d.source._legendHidden || d.target._legendHidden) return 'none';
                 if (!selected.isStandard) return null;
                 if (renderer._hideIfDimmedPropertyUnderStd(d.source) || renderer._hideIfDimmedPropertyUnderStd(d.target)) return 'none';
                 return null;
