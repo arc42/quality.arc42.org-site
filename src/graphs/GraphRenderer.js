@@ -665,7 +665,7 @@ export class GraphRenderer {
         // Draw normal links
         ctx.lineWidth = 1;
         linksData.forEach(l => {
-            if (!l || !l.source || !l.target) return;
+            if (!l?.source || !l?.target) return;
             // Respect legend hidden
             if (l.source._legendHidden || l.target._legendHidden) return;
             // Hide links connected to dimmed property nodes when a standard is selected
@@ -825,22 +825,9 @@ export class GraphRenderer {
         this.svg.transition()
             .duration(750)
             .call(d3.zoom().transform, transform);
-
-        // Update current zoom/transform for canvas as well
-        this.currentTransform = transform;
-        // Update current zoom scale
-        this.currentZoomScale = scale;
-
-        // Update label and node visibility with the new zoom scale
-        if (this.updateLabelVisibility) {
-            this.updateLabelVisibility(this.currentZoomScale);
-        }
-
-        if (this.updateNodeVisibility) {
-            this.updateNodeVisibility(this.currentZoomScale);
-        }
-        // Redraw canvas
-        this.drawCanvas();
+        // Do not set currentTransform/currentZoomScale here.
+        // The zoom behavior's 'zoom' event will update transforms progressively during the transition
+        // keeping the Canvas and SVG labels in sync.
     }
 
     /**
