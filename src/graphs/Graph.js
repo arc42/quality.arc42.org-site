@@ -67,6 +67,7 @@ export class Graph {
      * @param {string} color - Color of the root node
      */
     createRootNode(label, size, color) {
+        if (this.graph.hasNode("quality-root")) this.graph.dropNode("quality-root");
         this.graph.addNode("quality-root", {
             label,
             size,
@@ -81,14 +82,16 @@ export class Graph {
      * @param {{id: string, label: string, size: number, color: string, qualityType: string, page: string}[]} nodes - Array of node data
      */
     createNodes(nodes) {
-        nodes.forEach((node) =>
-            this.graph.addNode(node.id, {
-                label: node.label,
-                size: node.size,
-                color: node.color,
-                qualityType: node.qualityType,
-                page: node.page,
-            }),
+        nodes.forEach((node) => {
+                if (this.graph.hasNode(node.id)) this.graph.dropNode(node.id);
+                this.graph.addNode(node.id, {
+                    label: node.label,
+                    size: node.size,
+                    color: node.color,
+                    qualityType: node.qualityType,
+                    page: node.page,
+                });
+            }
         );
     }
 

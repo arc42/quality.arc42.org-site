@@ -43,8 +43,7 @@ export class GraphRenderer {
             const isRootAPropB = a.id === 'quality-root' && this._isProperty(b);
             const isRootBPropA = b.id === 'quality-root' && this._isProperty(a);
             if (isRootAPropB && (sel.connected.has(b.id) || sel.id === b.id)) return true;
-            if (isRootBPropA && (sel.connected.has(a.id) || sel.id === a.id)) return true;
-            return false;
+            return !!(isRootBPropA && (sel.connected.has(a.id) || sel.id === a.id));
         };
         this._hideIfDimmedPropertyUnderStd = (d) => this._isStdSelectionActive() && this._isProperty(d) && d._dimmed;
         this.container = container;
@@ -774,7 +773,7 @@ export class GraphRenderer {
         }
         // Set or clear hover highlight on edges connected to the node
         this.links.each(function (l) {
-            if (!l || !l.source || !l.target) return;
+            if (!l?.source || !l?.target) return;
             if (l.source.id === nodeId || l.target.id === nodeId) {
                 l._hoverHighlight = !!highlight;
             } else if (!highlight) {
@@ -784,7 +783,7 @@ export class GraphRenderer {
             }
         });
         if (Array.isArray(this.virtualEdgesData)) this.virtualEdgesData.forEach(vl => {
-            if (!vl || !vl.source || !vl.target) return;
+            if (!vl?.source || !vl?.target) return;
             if (vl.source.id === nodeId || vl.target.id === nodeId) {
                 vl._hoverHighlight = !!highlight;
             }
