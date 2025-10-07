@@ -1,6 +1,7 @@
 ---
 layout: page_standard
 title: "ISO/IEC 22989 - AI concepts and terminology"
+shortname: "ISO/IEC 22989"
 standard_id: isoiec22989
 permalink: /standards/iso-iec-22989
 categories: [ai]

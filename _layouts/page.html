@@ -5,7 +5,7 @@ layout: default
 <div class="article-wrapper">
     <article>
         {% if page.collection == 'qualities' or page.name contains 'tag-' or page.name == '22-properties.md' %}
-        {% include quality-header.html page=page link=false share=page.share %}
+        {% include quality-header.liquid page=page link=false share=page.share %}
         {% else %}
         {% include article-header.html page=page link=false share=page.share %}
         {% endif %}

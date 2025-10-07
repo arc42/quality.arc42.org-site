@@ -2,6 +2,7 @@
 layout: page_standard
 title: "MISRA C - Guidelines for the use of the C language in critical systems"
 standard_id: misra-c
+shortname: "MISRA-C"
 categories: [safety, sector,coding]
 permalink: /standards/misra-c
 ---

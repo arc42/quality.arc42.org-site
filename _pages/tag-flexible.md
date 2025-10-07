@@ -72,8 +72,8 @@ Typical acceptance criteria might include:
 
 
 <!-- include all qualities associated with this tag -->
-{% include one-quality.html tag="flexible"  %}
+{% include one-quality.liquid tag="flexible"  %}
 
 <!-- include all requirements associated with this tag -->
-{% include one-requirement.html tag="flexible"  %}
+{% include one-requirement.liquid tag="flexible"  %}
 

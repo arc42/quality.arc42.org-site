@@ -2,7 +2,7 @@
 title: Learnability
 tags: [usable, operable]
 related: [usability, user-error-protection, user-engagement, conciseness, understandability]
-standards: [iso25010]
+standards: [iso25010, ieee2857]
 permalink: /qualities/learnability
 ---
 

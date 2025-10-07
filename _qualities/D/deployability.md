@@ -2,6 +2,7 @@
 title: Deployability
 tags: [operable, suitable]
 related: [releasability, operability, testability, analysability, devops-metrics]
+standards: [iso12207]
 permalink: /qualities/deployability
 ---
 

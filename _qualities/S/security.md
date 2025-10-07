@@ -29,6 +29,11 @@ standards:
     isoiec22989,
     iec62443,
     do178c,
+    gdpr,
+    iso42030,
+    iso12207,
+    sox,
+    ieee2857,
   ]
 permalink: /qualities/security
 ---

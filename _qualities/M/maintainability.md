@@ -15,6 +15,10 @@ standards:
     cra,
     isoiec22989,
     do178c,
+    iso42010,
+    iso42030,
+    iso12207,
+    ieee2857,
   ]
 permalink: /qualities/maintainability
 ---

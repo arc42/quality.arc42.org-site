@@ -1,0 +1,21 @@
+{% assign page = include.page %}
+
+<div class="quality-item">
+    <h3 class="quality-title">
+        {% if include.link %}
+        <a class="quality-link" href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>
+        {% else %}
+        {{ page.title }}
+        {% endif %}
+    </h3>
+
+    {% assign tags_num = (page.tags | size) %}
+    {% if tags_num > 0 %}
+    <div class="quality-tags">
+        <i class="fa fa-tags" style="color: var(--blue-text-color);"></i>
+        {% for tag in page.tags %}
+        <a class="tag" href="{{ '/tag-' | append: tag | prepend: site.baseurl }}">#{{ tag }}</a>{% unless forloop.last %}, {% endunless %}
+        {% endfor %}
+    </div>
+    {% endif %}
+</div>

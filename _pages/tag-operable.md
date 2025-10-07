@@ -62,9 +62,9 @@ Bass et al. define [deployability](/qualities/deployability) as a property, and 
 | Others | -  |
 
 <!-- include all qualities associated with this tag -->
-{% include one-quality.html tag="operable"  %}
+{% include one-quality.liquid tag="operable"  %}
 
 <!-- include all requirements associated with this tag -->
-{% include one-requirement.html tag="operable"  %}
+{% include one-requirement.liquid tag="operable"  %}
 
 

@@ -158,6 +158,15 @@
                         margin-right: 0;
                     }
                 }
+                
+                &.standard-header {
+                    background-color: var(--standard-background-color);
+                    h1 {
+                        &, a {
+                            color: var(--standard-text-color);
+                        }
+                    }
+                }
             }
         }
         p:last-child {

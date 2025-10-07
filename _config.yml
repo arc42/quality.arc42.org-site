@@ -132,6 +132,7 @@ exclude:
   - Dockerfile
   - README.md
   - AGENTS.md
+  - CRUSH/
   - docs/*
   - .vscode
   - docker-compose.yml

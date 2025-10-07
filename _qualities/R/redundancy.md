@@ -1,7 +1,8 @@
 ---
 title: Redundancy
-tags: [] 
-related: [] 
+tags: [reliable, operable] 
+related: [fault-tolerance, availability, reliability, robustness, resilience,
+   recoverability]
 permalink: /qualities/redundancy
 ---
 

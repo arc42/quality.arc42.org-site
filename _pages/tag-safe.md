@@ -63,8 +63,8 @@ Quoted from [Wikipedia/Safety](https://en.wikipedia.org/wiki/Safety)
 | Others |Safety auditors, government agencies requiring compliance with safety standards, law  |
 
 <!-- include all qualities associated with this tag -->
-{% include one-quality.html tag="safe"  %}
+{% include one-quality.liquid tag="safe"  %}
 
 <!-- include all requirements associated with this tag -->
-{% include one-requirement.html tag="safe"  %}
+{% include one-requirement.liquid tag="safe"  %}
 

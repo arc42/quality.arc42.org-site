@@ -2,7 +2,7 @@
 title: Compatibility
 tags: [usable, operable, reliable]
 related: [portability, flexibility, backward-compatibility]
-standards: [iso25010, hl7]
+standards: [iso25010, hl7, iso42030, iso12207]
 permalink: /qualities/compatibility
 ---
 

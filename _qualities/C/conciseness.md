@@ -2,7 +2,7 @@
 title: Conciseness
 tags: [usable, efficient]
 related: [understandability]
-standards: [iso26514]
+standards: [iso26514, iso42010]
 permalink: /qualities/conciseness
 ---
 
