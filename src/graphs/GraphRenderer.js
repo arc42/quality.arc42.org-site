@@ -663,17 +663,20 @@ export class GraphRenderer {
         const virtualData = Array.isArray(this.virtualEdgesData) ? this.virtualEdgesData : [];
 
         // Draw normal links
-        ctx.lineWidth = 1;
         linksData.forEach(l => {
             if (!l?.source || !l?.target) return;
             // Respect legend hidden
             if (l.source._legendHidden || l.target._legendHidden) return;
             // Hide links connected to dimmed property nodes when a standard is selected
             if (this._isStdSelectionActive() && (this._hideIfDimmedPropertyUnderStd(l.source) || this._hideIfDimmedPropertyUnderStd(l.target))) return;
-            const opacity = l._dimmed ? 0.05 : 0.6;
+            // Determine style
+            const isHover = !!l._hoverHighlight;
+            const baseOpacity = l._dimmed ? 0.05 : 0.6;
+            const opacity = isHover ? 0.9 : baseOpacity;
             if (opacity <= 0) return;
             ctx.globalAlpha = opacity;
-            ctx.strokeStyle = '#E0E0E0';
+            ctx.strokeStyle = isHover ? '#cb9fff' : '#E0E0E0';
+            ctx.lineWidth = isHover ? 2 : 1;
             ctx.beginPath();
             ctx.moveTo(l.source.x, l.source.y);
             ctx.lineTo(l.target.x, l.target.y);
@@ -685,12 +688,14 @@ export class GraphRenderer {
             const s = vl.source, tNode = vl.target;
             if (!s || !tNode) return;
             if (s._legendHidden || tNode._legendHidden) return;
-            const opacity = vl._dimmed ? 0.05 : 0.4;
+            const isHover = !!vl._hoverHighlight;
+            const baseOpacity = vl._dimmed ? 0.05 : 0.4;
+            const opacity = isHover ? 0.85 : baseOpacity;
             if (opacity <= 0) return;
             ctx.globalAlpha = opacity;
-            ctx.strokeStyle = '#E0E0E0';
+            ctx.strokeStyle = isHover ? '#cb9fff' : '#E0E0E0';
             ctx.setLineDash([3, 3]);
-            ctx.lineWidth = 1;
+            ctx.lineWidth = isHover ? 2 : 1;
             ctx.beginPath();
             ctx.moveTo(s.x, s.y);
             ctx.lineTo(tNode.x, tNode.y);
@@ -757,26 +762,38 @@ export class GraphRenderer {
         this.labels.filter(d => connectedNodes.has(d.id))
             .classed("connected-highlighted", highlight);
 
-        // Highlight normal edges connected to the node
-        this.links.filter(d => d.source.id === nodeId || d.target.id === nodeId)
-            .classed("highlighted", highlight)
-            .attr("stroke", highlight ? "#cb9fff" : "#e6daf2")
-            .attr("stroke-width", highlight ? 2 : 1);
-
-        // Apply same hover behavior to virtual edges (if present)
-        if (this.virtualLinks) {
-            this.virtualLinks.filter(d => d.source.id === nodeId || d.target.id === nodeId)
-                .classed("highlighted", highlight)
-                .attr("stroke", highlight ? "#cb9fff" : "#E0E0E0")
-                .attr("stroke-width", highlight ? 2 : 1)
-                .attr("opacity", highlight ? 0.8 : 0.4)
-                .attr("stroke-dasharray", "3,3");
+        // Manage per-edge hover highlight flags for canvas rendering
+        const renderer = this;
+        if (highlight) {
+            // Clear previous hover highlights to avoid stale edges
+            this.links.each(function(l){ l._hoverHighlight = false; });
+            if (Array.isArray(this.virtualEdgesData)) this.virtualEdgesData.forEach(vl => { vl._hoverHighlight = false; });
         }
+        // Set or clear hover highlight on edges connected to the node
+        this.links.each(function(l){
+            if (!l || !l.source || !l.target) return;
+            if (l.source.id === nodeId || l.target.id === nodeId) {
+                l._hoverHighlight = !!highlight;
+            } else if (!highlight) {
+                // On unhighlight, only clear flags for edges incident to this node
+                // leave other edges (possibly highlighted by another node) intact
+                // but since we clear on new highlight above, this is sufficient
+            }
+        });
+        if (Array.isArray(this.virtualEdgesData)) this.virtualEdgesData.forEach(vl => {
+            if (!vl || !vl.source || !vl.target) return;
+            if (vl.source.id === nodeId || vl.target.id === nodeId) {
+                vl._hoverHighlight = !!highlight;
+            }
+        });
 
         // If selection is active (set externally), dim all unrelated nodes and links
         if (this.selectionActive) {
             this.setSelectionDimming(nodeId, connectedNodes, true);
         }
+
+        // Trigger a canvas redraw to reflect edge hover state
+        this.drawCanvas();
     }
 
     /**
