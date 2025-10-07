@@ -88,7 +88,7 @@ export class GraphRenderer {
 
     /**
      * Set visibility for a node type and apply it
-     * @param {('quality'|'requirement')} type
+     * @param {('quality'|'requirement'|'standard')} type
      * @param {boolean} visible
      */
     setTypeVisibility(type, visible) {
@@ -705,7 +705,7 @@ export class GraphRenderer {
             if (n._legendHidden) return;
             // When a standard is selected, hide dimmed property nodes entirely
             if (this._isStdSelectionActive() && this._isProperty(n) && n._dimmed) return;
-            const r = n._canvasR != null ? n._canvasR : n.size;
+            const r = n._canvasR == null ? n.size : n._canvasR;
             const opacity = n._canvasOpacity == null ? 1 : n._canvasOpacity;
             const strokeW = n._canvasStrokeWidth == null ? 1.5 : n._canvasStrokeWidth;
             if (r <= 0 || opacity <= 0) return;
@@ -878,7 +878,7 @@ export class GraphRenderer {
                 }
 
                 // When a standard is selected, hide dimmed property nodes entirely
-                if (renderer.selectionActive && renderer.selection && renderer.selection.isStandard && nodeData.qualityType === 'property' && nodeData._dimmed) {
+                if (renderer.selectionActive && renderer.selection?.isStandard && nodeData.qualityType === 'property' && nodeData._dimmed) {
                     return { visible: false };
                 }
 
@@ -965,7 +965,7 @@ export class GraphRenderer {
                     }
 
                     // When a standard is selected, hide dimmed property nodes entirely
-                    if (renderer.selectionActive && renderer.selection && renderer.selection.isStandard && d.qualityType === 'property' && d._dimmed) {
+                    if (renderer.selectionActive && renderer.selection?.isStandard && d.qualityType === 'property' && d._dimmed) {
                         nodeElement.style("display", "none");
                         nodeElement.attr("opacity", 0);
                         d._canvasR = 0;
@@ -1067,7 +1067,7 @@ export class GraphRenderer {
                 }
 
                 // If a standard is selected and a property node is dimmed, that property node is hidden -> keep label hidden
-                if (this.selectionActive && this.selection && this.selection.isStandard && nodeData.qualityType === 'property' && nodeData._dimmed) {
+                if (this.selectionActive && this.selection?.isStandard && nodeData.qualityType === 'property' && nodeData._dimmed) {
                     return 0;
                 }
 
