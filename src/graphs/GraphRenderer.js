@@ -716,7 +716,7 @@ export class GraphRenderer {
             ctx.fill();
             // Border
             ctx.lineWidth = strokeW;
-            ctx.strokeStyle = this._isProperty(n) ? '#dee2e6' : '#2C3E50';
+            ctx.strokeStyle = '#2C3E50';
             ctx.stroke();
         });
 
