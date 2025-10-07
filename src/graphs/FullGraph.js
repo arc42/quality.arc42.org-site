@@ -23,7 +23,6 @@ export class FullGraph extends Graph {
         this.filterButton = document.getElementById("full-q-graph-filter__btn");
         this.debounceTimeout = null;
         // Persisted UI state
-        this.currentStandard = "All";
         this.currentFilterTerm = "";
     }
 
@@ -134,95 +133,22 @@ export class FullGraph extends Graph {
     }
 
     /**
-     * Standards dropdown: populate a plain select and listen for changes
-     */
-    registerStandardsControl() {
-        const stdSelect = document.getElementById("full-q-graph-standard__select");
-        if (!stdSelect) {
-            // Controls not present on page
-            return this;
-        }
-
-        // Populate select using statically imported standards
-        try {
-            // Support new structure: [{ value, label }]
-            stdSelect.innerHTML = "";
-            const allOption = document.createElement("option");
-            allOption.value = "All";
-            allOption.textContent = "All";
-            stdSelect.appendChild(allOption);
-
-            if (Array.isArray(standardsList)) {
-                standardsList.forEach(item => {
-                    const opt = document.createElement("option");
-                    if (item && typeof item === 'object' && 'value' in item && 'label' in item) {
-                        opt.value = item.value;
-                        opt.textContent = item.label;
-                    } else {
-                        // Backward compatibility: if it's a string array
-                        opt.value = String(item);
-                        opt.textContent = String(item);
-                    }
-                    stdSelect.appendChild(opt);
-                });
-            }
-
-            // Restore persisted selection if available
-            if (this.currentStandard && Array.from(stdSelect.options).some(o => o.value === this.currentStandard)) {
-                stdSelect.value = this.currentStandard;
-            } else {
-                stdSelect.value = "All";
-            }
-        } catch (err) {
-            console.error("Failed to populate standards list", err);
-        }
-
-        // Handle change -> filter by standard
-        const onChange = () => {
-            const val = (stdSelect.value || "").trim();
-            this.filterByStandard(val);
-        };
-        stdSelect.addEventListener("change", onChange);
-
-        return this;
-    }
-
-    /**
-     * Apply standard filter using data provider, but keep term filter applied
-     * @param {string} standard
-     */
-    filterByStandard(standard) {
-        this.currentStandard = (standard || "").trim();
-        this.applyFiltersCombined();
-        return this;
-    }
-
-    /**
      * Apply both standard and term filters together as needed
      */
     applyFiltersCombined() {
         const term = (this.currentFilterTerm || "").trim();
-        const std = (this.currentStandard || "").trim();
-        const standardActive = std !== "" && std.toLowerCase() !== "all";
         const termActive = term !== "";
 
         const qualitiesHidden = this.renderer?.typeVisibility?.quality === false;
         const requirementsVisible = this.renderer?.typeVisibility?.requirement !== false;
 
-        if (standardActive && termActive) {
-            // First apply standard to get a base set, then apply term within that set
-            this.dataProvider.filterByStandard(std);
-            const baseSet = new Set(this.dataProvider.filteredNodes.map(n => n.id));
-            this.dataProvider.filterByTerm(term, { qualitiesHidden, requirementsVisible, baseNodeIdSet: baseSet });
-        } else if (standardActive) {
-            this.dataProvider.filterByStandard(std);
-        } else if (termActive) {
+        if (termActive) {
             this.dataProvider.filterByTerm(term, { qualitiesHidden, requirementsVisible });
         } else {
             this.dataProvider.resetFilter();
         }
 
-        if (this.renderer) this.renderer.isFiltering = standardActive || termActive;
+        if (this.renderer) this.renderer.isFiltering = termActive;
         this.renderFiltered();
         return this;
     }

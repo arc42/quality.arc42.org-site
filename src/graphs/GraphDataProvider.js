@@ -31,6 +31,14 @@ export class GraphDataProvider {
     }
 
     /**
+     * Returns the currently filtered snapshot (alias of getData for clarity)
+     * @returns {{propertyNodes:Array,nodes:Array,edges:Array}}
+     */
+    getFilteredData() {
+        return this.getData();
+    }
+
+    /**
      * Reset the filter to show all data
      */
     resetFilter() {

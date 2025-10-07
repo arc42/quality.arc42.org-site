@@ -546,7 +546,16 @@ export class Graph {
     }
 
     renderFiltered() {
-        // Rebuild the graph with filtered data
+        this._rebuildRenderAndCenter();
+    }
+
+    /**
+     * Internal helper to rebuild graph from current provider data, render, and center with simulation warm-up
+     * Keeps behavior identical across filter/reset paths and centralizes logic for maintainability
+     * @private
+     */
+    _rebuildRenderAndCenter() {
+        // Rebuild the graph with current provider data
         this.graph = new MultiGraph();
         this.graph.setAttribute("name", this.name);
         this.graph.setAttribute("qualityType", "q42");
@@ -580,29 +589,7 @@ export class Graph {
         if (this.renderer) this.renderer.isFiltering = false;
         this.dataProvider.resetFilter();
 
-        this.graph = new MultiGraph();
-        this.graph.setAttribute("name", this.name);
-        this.graph.setAttribute("qualityType", "q42");
-
-        this.buildGraph();
-        this.render();
-
-        // Heat up the simulation to ensure nodes spread out properly
-        if (this.renderer.simulation) {
-            // Run the simulation with a higher alpha target to ensure nodes spread out
-            this.renderer.simulation.alpha(1).alphaTarget(0.3).restart();
-
-            // Center the view on the filtered nodes
-            this.renderer.centerView();
-
-            // After a short time, cool down the simulation
-            setTimeout(() => {
-                this.renderer.simulation.alphaTarget(0);
-
-                // Center the view again after the simulation has settled
-                this.renderer.centerView();
-            }, 1000);
-        }
+        this._rebuildRenderAndCenter();
 
         return this;
     }

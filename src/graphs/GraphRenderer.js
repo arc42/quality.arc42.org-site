@@ -1,9 +1,9 @@
+import * as d3 from "d3";
+
 /**
  * GraphRenderer class
  * Responsible for rendering graph data using D3
  */
-import * as d3 from "d3";
-
 export class GraphRenderer {
     /**
      * Indicates whether a term filter is currently active (affects property visibility rules)
@@ -13,6 +13,40 @@ export class GraphRenderer {
      * @param {HTMLElement} container - The container element to render the graph in
      */
     constructor(container) {
+        // Bind lightweight helpers (kept internal to avoid new files and keep behavior)
+        this._isRoot = (d) => d && d.id === 'quality-root';
+        this._isProperty = (d) => d && d.qualityType === 'property';
+        this._isQuality = (d) => d && d.qualityType === 'quality';
+        this._isRequirement = (d) => d && d.qualityType === 'requirement';
+        this._isStandard = (d) => d && d.qualityType === 'standard';
+        this._legendHidden = (d, typeVis) => {
+            if (!d) return false;
+            const t = d.qualityType;
+            if (t === 'quality') return typeVis.quality === false;
+            if (t === 'requirement') return typeVis.requirement === false;
+            if (t === 'standard') return typeVis.standard === false;
+            return false; // root & property never hidden by legend
+        };
+        this._isStdSelectionActive = () => !!(this.selectionActive && this.selection && this.selection.isStandard);
+        this._nodeHighlighted = (d) => !!(d && (d.highlighted || d.connectedHighlighted));
+        this._labelVisibilityThreshold = (d) => ((this._isQuality(d) || this._isRequirement(d) || this._isStandard(d)) ? 1.2 : 0.8) / (d.size / 10);
+        this._nodeVisibilityThreshold = (d) => 0.4 / (d.size / 10);
+        this._edgeEndpointsRelated = (edge, sel) => {
+            const a = edge.source.id, b = edge.target.id;
+            const aRel = (a === sel.id) || sel.connected.has(a);
+            const bRel = (b === sel.id) || sel.connected.has(b);
+            return aRel && bRel;
+        };
+        this._edgeShouldShowDespiteRoot = (edge, sel) => {
+            if (!sel.isStandard) return false;
+            const a = edge.source, b = edge.target;
+            const isRootAPropB = a.id === 'quality-root' && this._isProperty(b);
+            const isRootBPropA = b.id === 'quality-root' && this._isProperty(a);
+            if (isRootAPropB && (sel.connected.has(b.id) || sel.id === b.id)) return true;
+            if (isRootBPropA && (sel.connected.has(a.id) || sel.id === a.id)) return true;
+            return false;
+        };
+        this._hideIfDimmedPropertyUnderStd = (d) => this._isStdSelectionActive() && this._isProperty(d) && d._dimmed;
         this.container = container;
         this.width = container.clientWidth;
         this.height = container.clientHeight;
@@ -189,7 +223,7 @@ export class GraphRenderer {
             });
 
             const considerVirtual = !typeVis.quality && typeVis.requirement;
-            const self = this;
+            const renderer = this;
             this.nodes.each(function (d) {
                 if (d.qualityType !== 'property') return;
                 let hasVisibleNeighbor = false;
@@ -220,13 +254,13 @@ export class GraphRenderer {
                 }
                 const displayVal = hasVisibleNeighbor ? null : 'none';
                 d3.select(this).style('display', displayVal);
-                self.labels.filter(ld => ld.id === d.id).style('display', displayVal);
+                renderer.labels.filter(ld => ld.id === d.id).style('display', displayVal);
             });
             // Hide virtual links attached to hidden properties
             if (this.virtualLinks) {
                 this.virtualLinks.style('display', vl => {
-                    const sHidden = d3.select(self.nodes.filter(nd => nd.id === vl.source.id).node()).style('display') === 'none';
-                    const tHidden = d3.select(self.nodes.filter(nd => nd.id === vl.target.id).node()).style('display') === 'none';
+                    const sHidden = d3.select(renderer.nodes.filter(nd => nd.id === vl.source.id).node()).style('display') === 'none';
+                    const tHidden = d3.select(renderer.nodes.filter(nd => nd.id === vl.target.id).node()).style('display') === 'none';
                     return (sHidden || tHidden) ? 'none' : null;
                 });
             }
@@ -470,33 +504,21 @@ export class GraphRenderer {
         });
         this.selection = { id: selectedId, connected: new Set(connectedSet || []), isStandard };
 
-        const self = this;
+        const renderer = this;
         const selected = this.selection;
         this.nodes.each(function (d) {
             const isRelated = d.id === selected.id || selected.connected.has(d.id);
             d._dimmed = !isRelated;
         });
+        // Compute dimming for all links using shared predicates
         this.links.each(function (l) {
-            const a = l.source.id, b = l.target.id;
-            const aRelated = (a === selected.id) || selected.connected.has(a);
-            const bRelated = (b === selected.id) || selected.connected.has(b);
-            let bothRelated = aRelated && bRelated;
-
-            // Special case: keep root→property edge undimmed when property is related during standard selection
-            if (selected.isStandard) {
-                const isRootAPropB = (a === 'quality-root' && l.target.qualityType === 'property');
-                const isRootBPropA = (b === 'quality-root' && l.source.qualityType === 'property');
-                if (isRootAPropB && bRelated) bothRelated = true;
-                if (isRootBPropA && aRelated) bothRelated = true;
-            }
-            l._dimmed = !bothRelated;
+            const endpointsRelated = renderer._edgeEndpointsRelated(l, selected);
+            const keepRootProp = renderer._edgeShouldShowDespiteRoot(l, selected);
+            l._dimmed = !(endpointsRelated || keepRootProp);
         });
         if (this.virtualLinks) this.virtualLinks.each(function (l) {
-            const a = l.source.id, b = l.target.id;
-            const aRelated = (a === selected.id) || selected.connected.has(a);
-            const bRelated = (b === selected.id) || selected.connected.has(b);
-            const bothRelated = aRelated && bRelated;
-            l._dimmed = !bothRelated;
+            const endpointsRelated = renderer._edgeEndpointsRelated(l, selected);
+            l._dimmed = !endpointsRelated;
         });
 
         // Apply visual dimming to links immediately
@@ -506,16 +528,14 @@ export class GraphRenderer {
             .style("display", function (d) {
                 if (!selected.isStandard) return null;
                 // Hide links connected to dimmed property nodes when a standard is selected
-                const propNode = d.source.qualityType === 'property' ? d.source : (d.target.qualityType === 'property' ? d.target : null);
-                if (propNode && propNode._dimmed) return 'none';
+                if (renderer._hideIfDimmedPropertyUnderStd(d.source) || renderer._hideIfDimmedPropertyUnderStd(d.target)) return 'none';
                 return null;
             });
         if (this.virtualLinks) this.virtualLinks
             .attr("opacity", d => d._dimmed ? 0.05 : 0.4)
             .style("display", function (d) {
                 if (!selected.isStandard) return null;
-                const propNode = d.source.qualityType === 'property' ? d.source : (d.target.qualityType === 'property' ? d.target : null);
-                if (propNode && propNode._dimmed) return 'none';
+                if (renderer._hideIfDimmedPropertyUnderStd(d.source) || renderer._hideIfDimmedPropertyUnderStd(d.target)) return 'none';
                 return null;
             });
 
@@ -766,7 +786,7 @@ export class GraphRenderer {
     createNodeVisibilityUpdater(node, initialZoomScale) {
         // Store the current zoom scale, initialized with the provided value
         let currentZoomScale = initialZoomScale;
-        const self = this;
+        const renderer = this;
 
         // Return a function that can either update all nodes or check a single node
         return (nodeData) => {
@@ -778,7 +798,7 @@ export class GraphRenderer {
                 }
 
                 // When a standard is selected, hide dimmed property nodes entirely
-                if (self.selectionActive && self.selection && self.selection.isStandard && nodeData.qualityType === 'property' && nodeData._dimmed) {
+                if (renderer.selectionActive && renderer.selection && renderer.selection.isStandard && nodeData.qualityType === 'property' && nodeData._dimmed) {
                     return { visible: false };
                 }
 
@@ -814,7 +834,7 @@ export class GraphRenderer {
                 if (isHighlighted) {
                     // When a standard is selected (persistent selection), keep size consistent with zoom
                     // i.e., do not grow nodes to full size, only raise opacity
-                    if (self.selectionActive) {
+                    if (renderer.selectionActive) {
                         const baseOpacity = 1; // highlighted should be fully opaque
                         return {
                             visible: true,
@@ -861,7 +881,7 @@ export class GraphRenderer {
                     }
 
                     // When a standard is selected, hide dimmed property nodes entirely
-                    if (self.selectionActive && self.selection && self.selection.isStandard && d.qualityType === 'property' && d._dimmed) {
+                    if (renderer.selectionActive && renderer.selection && renderer.selection.isStandard && d.qualityType === 'property' && d._dimmed) {
                         nodeElement.style("display", "none");
                         nodeElement.attr("opacity", 0);
                         return;
@@ -900,7 +920,7 @@ export class GraphRenderer {
                     if (isHighlighted) {
                         nodeElement.style("display", null);
                         nodeElement.attr("opacity", 1);
-                        if (self.selectionActive) {
+                        if (renderer.selectionActive) {
                             // Keep size consistent with zoom during selection
                             nodeElement.attr("r", d.size * sizeFactor);
                             nodeElement.attr("stroke-width", strokeWidth);
