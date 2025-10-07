@@ -137,8 +137,11 @@ export class GraphRenderer {
                 addNeighbor(d.target.id, d.source.id);
             });
 
-            // Collect virtual edges req -> property if there exists a path req->quality->property
+            // Collect virtual edges depending on standards visibility:
+            // - If standards are visible: req -> standard via path req->quality->standard
+            // - Otherwise: req -> property via path req->quality->property (existing behavior)
             const virtualEdges = [];
+            const standardsVisible = !!typeVis.standard;
             nodeById.forEach((node, id) => {
                 if (node.qualityType === 'requirement' && !node._legendHidden) {
                     const nbs = neighbors.get(id) || new Set();
@@ -146,16 +149,29 @@ export class GraphRenderer {
                         const qNode = nodeById.get(qId);
                         if (!qNode || qNode.qualityType !== 'quality') return;
                         const qNbs = neighbors.get(qId) || new Set();
-                        qNbs.forEach(pId => {
-                            const pNode = nodeById.get(pId);
-                            if (!pNode || pNode.qualityType !== 'property') return;
-                            // Only create if property is visible (never hidden by legend)
-                            // and we don't already have a direct req<->property edge
-                            const hasDirect = neighbors.get(id)?.has(pId);
-                            if (!hasDirect) {
-                                virtualEdges.push({ source: node, target: pNode });
-                            }
-                        });
+
+                        if (standardsVisible) {
+                            // Prefer virtual links to standards when the standards are shown
+                            qNbs.forEach(sId => {
+                                const sNode = nodeById.get(sId);
+                                if (!sNode || sNode.qualityType !== 'standard') return;
+                                if (sNode._legendHidden) return; // respect legend toggle for standards
+                                const hasDirect = neighbors.get(id)?.has(sId);
+                                if (!hasDirect) {
+                                    virtualEdges.push({ source: node, target: sNode });
+                                }
+                            });
+                        } else {
+                            // Fallback to properties (original behavior)
+                            qNbs.forEach(pId => {
+                                const pNode = nodeById.get(pId);
+                                if (!pNode || pNode.qualityType !== 'property') return;
+                                const hasDirect = neighbors.get(id)?.has(pId);
+                                if (!hasDirect) {
+                                    virtualEdges.push({ source: node, target: pNode });
+                                }
+                            });
+                        }
                     });
                 }
             });
@@ -1016,7 +1032,7 @@ export class GraphRenderer {
                     }
 
                     // If a standard is selected and a property node is dimmed, that property node is hidden -> keep label hidden
-                    if (renderer.selectionActive && renderer.selection && renderer.selection.isStandard && d.qualityType === 'property' && d._dimmed) {
+                    if (renderer.selectionActive && renderer.selection?.isStandard && d.qualityType === 'property' && d._dimmed) {
                         labelElement.attr("opacity", 0);
                         labelElement.style("display", "none");
                         return;
