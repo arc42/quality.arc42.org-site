@@ -1,9 +1,9 @@
-/**
- * GraphRenderer class
- * Responsible for rendering graph data using D3
- */
 import * as d3 from "d3";
 
+/**
+ * GraphRenderer class
+ * Responsible for rendering graph data using D3 (Canvas for nodes/links + SVG for labels/interactions)
+ */
 export class GraphRenderer {
     /**
      * Indicates whether a term filter is currently active (affects property visibility rules)
@@ -13,22 +13,66 @@ export class GraphRenderer {
      * @param {HTMLElement} container - The container element to render the graph in
      */
     constructor(container) {
+        // Bind lightweight helpers (kept internal to avoid new files and keep behavior)
+        this._isRoot = (d) => d && d.id === 'quality-root';
+        this._isProperty = (d) => d && d.qualityType === 'property';
+        this._isQuality = (d) => d && d.qualityType === 'quality';
+        this._isRequirement = (d) => d && d.qualityType === 'requirement';
+        this._isStandard = (d) => d && d.qualityType === 'standard';
+        this._legendHidden = (d, typeVis) => {
+            if (!d) return false;
+            const t = d.qualityType;
+            if (t === 'quality') return typeVis.quality === false;
+            if (t === 'requirement') return typeVis.requirement === false;
+            if (t === 'standard') return typeVis.standard === false;
+            return false; // root & property never hidden by legend
+        };
+        this._isStdSelectionActive = () => !!(this.selectionActive && this.selection?.isStandard);
+        this._nodeHighlighted = (d) => !!(d && (d.highlighted || d.connectedHighlighted));
+        this._labelVisibilityThreshold = (d) => ((this._isQuality(d) || this._isRequirement(d) || this._isStandard(d)) ? 1.2 : 0.8) / (d.size / 10);
+        this._nodeVisibilityThreshold = (d) => 0.4 / (d.size / 10);
+        this._edgeEndpointsRelated = (edge, sel) => {
+            const a = edge.source.id, b = edge.target.id;
+            const aRel = (a === sel.id) || sel.connected.has(a);
+            const bRel = (b === sel.id) || sel.connected.has(b);
+            return aRel && bRel;
+        };
+        this._edgeShouldShowDespiteRoot = (edge, sel) => {
+            if (!sel.isStandard) return false;
+            const a = edge.source, b = edge.target;
+            const isRootAPropB = a.id === 'quality-root' && this._isProperty(b);
+            const isRootBPropA = b.id === 'quality-root' && this._isProperty(a);
+            if (isRootAPropB && (sel.connected.has(b.id) || sel.id === b.id)) return true;
+            return !!(isRootBPropA && (sel.connected.has(a.id) || sel.id === a.id));
+        };
+        this._hideIfDimmedPropertyUnderStd = (d) => this._isStdSelectionActive() && this._isProperty(d) && d._dimmed;
         this.container = container;
         this.width = container.clientWidth;
         this.height = container.clientHeight;
+        // Canvas and SVG layers
+        this.canvas = null;
+        this.ctx = null;
         this.svg = null;
-        this.nodes = null;
-        this.links = null;
-        this.labels = null;
+        this.nodes = null; // invisible circles for hit testing
+        this.links = null; // hidden SVG lines retained for data adjacency
+        this.labels = null; // visible SVG text labels
+        this.virtualLinksLayer = null; // unused for rendering; kept for compatibility
+        this.virtualLinks = null; // selection, not rendered (hidden)
+        this.virtualEdgesData = [];
         this.simulation = null;
         this.updateLabelVisibility = null;
         this.updateNodeVisibility = null;
         this.currentZoomScale = 1;
+        this.currentTransform = d3.zoomIdentity;
         this.isFiltering = false;
+        // Persistent selection state (used to keep dimming active on click)
+        this.selectionActive = false;
+        this.selection = { id: null, connected: new Set() };
         // Legend-driven type visibility (properties and root are always visible)
         this.typeVisibility = {
             quality: true,
-            requirement: false
+            requirement: false,
+            standard: true
         };
     }
 
@@ -43,7 +87,7 @@ export class GraphRenderer {
 
     /**
      * Set visibility for a node type and apply it
-     * @param {('quality'|'requirement')} type
+     * @param {('quality'|'requirement'|'standard')} type
      * @param {boolean} visible
      */
     setTypeVisibility(type, visible) {
@@ -62,17 +106,18 @@ export class GraphRenderer {
         // Mark nodes with legendHidden flag used by updaters
         this.nodes.each(function (d) {
             const t = d.qualityType;
-            d._legendHidden = (t === 'quality' && !typeVis.quality) || (t === 'requirement' && !typeVis.requirement);
+            d._legendHidden = (t === 'quality' && !typeVis.quality) || (t === 'requirement' && !typeVis.requirement) || (t === 'standard' && !typeVis.standard);
         });
 
         // Update node display immediately in case simulation/zoom updaters haven't run yet
         this.nodes.style("display", d => d._legendHidden ? "none" : null);
         this.labels.style("display", d => d._legendHidden ? "none" : null);
 
-        // Hide links connected to hidden nodes
+        // Hide links connected to hidden nodes (store flag for canvas)
         this.links.style("display", d => {
             const sh = d.source._legendHidden === true;
             const th = d.target._legendHidden === true;
+            d._hiddenByLegendEdge = (sh || th);
             return (sh || th) ? "none" : null;
         });
 
@@ -99,8 +144,11 @@ export class GraphRenderer {
                 addNeighbor(d.target.id, d.source.id);
             });
 
-            // Collect virtual edges req -> property if there exists a path req->quality->property
+            // Collect virtual edges depending on standards visibility:
+            // - If standards are visible: req -> standard via path req->quality->standard
+            // - Otherwise: req -> property via path req->quality->property (existing behavior)
             const virtualEdges = [];
+            const standardsVisible = !!typeVis.standard;
             nodeById.forEach((node, id) => {
                 if (node.qualityType === 'requirement' && !node._legendHidden) {
                     const nbs = neighbors.get(id) || new Set();
@@ -108,45 +156,35 @@ export class GraphRenderer {
                         const qNode = nodeById.get(qId);
                         if (!qNode || qNode.qualityType !== 'quality') return;
                         const qNbs = neighbors.get(qId) || new Set();
-                        qNbs.forEach(pId => {
-                            const pNode = nodeById.get(pId);
-                            if (!pNode || pNode.qualityType !== 'property') return;
-                            // Only create if property is visible (never hidden by legend)
-                            // and we don't already have a direct req<->property edge
-                            const hasDirect = neighbors.get(id)?.has(pId);
-                            if (!hasDirect) {
-                                virtualEdges.push({ source: node, target: pNode });
-                            }
-                        });
+
+                        if (standardsVisible) {
+                            // Prefer virtual links to standards when the standards are shown
+                            qNbs.forEach(sId => {
+                                const sNode = nodeById.get(sId);
+                                if (!sNode || sNode.qualityType !== 'standard') return;
+                                if (sNode._legendHidden) return; // respect legend toggle for standards
+                                const hasDirect = neighbors.get(id)?.has(sId);
+                                if (!hasDirect) {
+                                    virtualEdges.push({ source: node, target: sNode });
+                                }
+                            });
+                        } else {
+                            // Fallback to properties (original behavior)
+                            qNbs.forEach(pId => {
+                                const pNode = nodeById.get(pId);
+                                if (!pNode || pNode.qualityType !== 'property') return;
+                                const hasDirect = neighbors.get(id)?.has(pId);
+                                if (!hasDirect) {
+                                    virtualEdges.push({ source: node, target: pNode });
+                                }
+                            });
+                        }
                     });
                 }
             });
 
-            // Bind virtual edges
-            this.virtualLinks = this.virtualLinksLayer
-                .selectAll('line')
-                .data(virtualEdges, d => d.source.id + '->' + d.target.id);
-
-            // Exit old
-            this.virtualLinks.exit().remove();
-
-            // Enter new
-            const enter = this.virtualLinks.enter().append('line')
-                .attr('stroke', '#E0E0E0')
-                .attr('stroke-width', 1)
-                .attr('opacity', 0.4)
-                .attr('stroke-dasharray', '3,3');
-
-            this.virtualLinks = enter.merge(this.virtualLinks);
-
-            // Immediately position virtual links so they are visible without requiring a tick/drag
-            if (this.virtualLinks) {
-                this.virtualLinks
-                    .attr("x1", d => d.source.x)
-                    .attr("y1", d => d.source.y)
-                    .attr("x2", d => d.target.x)
-                    .attr("y2", d => d.target.y);
-            }
+            // Store virtual edges for canvas rendering
+            this.virtualEdgesData = virtualEdges;
 
             // Lightly kick the simulation to ensure at least one tick runs
             if (this.simulation) {
@@ -157,9 +195,10 @@ export class GraphRenderer {
                     if (this.simulation) this.simulation.alphaTarget(prevAlphaTarget || 0);
                 }, 100);
             }
-        } else if (this.virtualLinksLayer) {
+        } else {
             // Remove any virtual links when not in this mode
-            this.virtualLinksLayer.selectAll('line').remove();
+            this.virtualEdgesData = [];
+            if (this.virtualLinksLayer) this.virtualLinksLayer.selectAll('line').remove();
         }
 
         // Re-run the zoom-based visibility updaters with current scale so they respect legendHidden
@@ -185,7 +224,7 @@ export class GraphRenderer {
             });
 
             const considerVirtual = !typeVis.quality && typeVis.requirement;
-            const self = this;
+            const renderer = this;
             this.nodes.each(function (d) {
                 if (d.qualityType !== 'property') return;
                 let hasVisibleNeighbor = false;
@@ -216,33 +255,42 @@ export class GraphRenderer {
                 }
                 const displayVal = hasVisibleNeighbor ? null : 'none';
                 d3.select(this).style('display', displayVal);
-                self.labels.filter(ld => ld.id === d.id).style('display', displayVal);
+                renderer.labels.filter(ld => ld.id === d.id).style('display', displayVal);
             });
-            // Hide virtual links attached to hidden properties
-            if (this.virtualLinks) {
-                this.virtualLinks.style('display', vl => {
-                    const sHidden = d3.select(self.nodes.filter(nd => nd.id === vl.source.id).node()).style('display') === 'none';
-                    const tHidden = d3.select(self.nodes.filter(nd => nd.id === vl.target.id).node()).style('display') === 'none';
-                    return (sHidden || tHidden) ? 'none' : null;
-                });
-            }
         }
 
         // Re-run the zoom-based visibility updaters with current scale so they respect legendHidden
         if (this.updateNodeVisibility) this.updateNodeVisibility(this.currentZoomScale);
         if (this.updateLabelVisibility) this.updateLabelVisibility(this.currentZoomScale);
+
+        // Redraw canvas to reflect visibility changes
+        this.drawCanvas();
     }
 
     /**
      * Initialize the renderer
      */
     initialize() {
-        // Create SVG if it doesn't exist
+        // Create Canvas if it doesn't exist (below SVG)
+        if (!this.canvas) {
+            this.canvas = document.createElement('canvas');
+            this.canvas.width = this.width;
+            this.canvas.height = this.height;
+            this.canvas.style.position = 'absolute';
+            this.canvas.style.top = '0';
+            this.canvas.style.left = '0';
+            this.container.appendChild(this.canvas);
+            this.ctx = this.canvas.getContext('2d');
+        }
+        // Create SVG overlay for labels and interaction if it doesn't exist
         if (!this.svg) {
             this.svg = d3.select(this.container)
                 .append("svg")
                 .attr("width", this.width)
-                .attr("height", this.height);
+                .attr("height", this.height)
+                .style("position", "absolute")
+                .style("top", 0)
+                .style("left", 0);
         }
 
         // Create force simulation
@@ -261,6 +309,10 @@ export class GraphRenderer {
         this.width = width;
         this.height = height;
 
+        if (this.canvas) {
+            this.canvas.width = this.width;
+            this.canvas.height = this.height;
+        }
         if (this.svg) {
             this.svg.attr("width", this.width).attr("height", this.height);
         }
@@ -271,6 +323,8 @@ export class GraphRenderer {
             this.simulation.force("center").x(centerX).y(this.height / 2);
             this.simulation.alpha(1).restart();
         }
+        // Re-draw on resize
+        this.drawCanvas();
     }
 
     /**
@@ -290,8 +344,10 @@ export class GraphRenderer {
      * @param {Object} graphData - Object with nodes and links arrays
      * @param {Function} onNodeHover - Function to call when a node is hovered
      * @param {Function} onNodeDoubleClick - Function to call when a node is double-clicked
+     * @param {Function} onNodeClick - Function to call when a node is clicked
+     * @returns {GraphRenderer} The current renderer instance
      */
-    render(graphData, onNodeHover, onNodeDoubleClick) {
+    render(graphData, onNodeHover, onNodeDoubleClick, onNodeClick) {
         // Clear existing elements
         if (this.svg) {
             this.svg.selectAll("g").remove();
@@ -299,34 +355,39 @@ export class GraphRenderer {
             this.initialize();
         }
 
-        // Create links
+        // Create links (hidden SVG, kept for data adjacency only)
         this.links = this.svg.append("g")
             .attr("class", "links")
+            .style("pointer-events", "none")
+            .style("display", "none")
             .selectAll("line")
             .data(graphData.links)
             .enter()
-            .append("line")
-            .attr("stroke", "#E0E0E0")
-            .attr("stroke-width", 1)
-            .attr("opacity", 0.6);
+            .append("line");
 
-        // Layer for virtual links (requirement <-> property) shown when qualities are hidden
-        this.virtualLinksLayer = this.svg.append("g").attr("class", "virtual-links");
+        // Prepare virtual links data container (no SVG lines rendered)
+        this.virtualLinksLayer = this.svg.append("g").attr("class", "virtual-links").style("display", "none");
         this.virtualLinks = this.virtualLinksLayer.selectAll("line");
+        this.virtualEdgesData = [];
 
-        // Create nodes
+        // Create invisible nodes for hit-testing (events enabled)
         this.nodes = this.svg.append("g")
+            .attr("class", "nodes")
+            .style("pointer-events", "all")
             .selectAll("circle")
             .data(graphData.nodes)
             .enter()
             .append("circle")
             .attr("r", d => d.size)
-            .attr("fill", d => d.color)
-            .attr("stroke", "#fff")
-            .attr("stroke-width", 1.5);
+            .attr("fill", "transparent")
+            .attr("stroke", "transparent")
+            .attr("opacity", 0)
+            .style("pointer-events", "all");
 
-        // Add labels
+        // Add labels (visible, re-enable pointer-events for labels we need)
         this.labels = this.svg.append("g")
+            .attr("class", "labels")
+            .style("pointer-events", "none")
             .selectAll("text")
             .data(graphData.nodes)
             .enter()
@@ -343,7 +404,8 @@ export class GraphRenderer {
                     return d.size + 5; // Node radius + 5px padding
                 }
             })
-            .attr("dy", d => (d.id === "quality-root" || d.qualityType === "property") ? 0 : 4);
+            .attr("dy", d => (d.id === "quality-root" || d.qualityType === "property") ? 0 : 4)
+            .style("pointer-events", (d) => (d.id === "quality-root" || d.qualityType === "property") ? "all" : "none");
 
         // Setup zoom
         this.setupZoom();
@@ -351,13 +413,14 @@ export class GraphRenderer {
         // Setup drag
         this.setupDrag();
 
-        // Setup node interactions
+        // Setup node interactions (on invisible hit circles and selected labels)
         if (onNodeHover) {
             // Add mouseenter event to highlight the node
             this.nodes.on("mouseenter", onNodeHover);
 
-            // Add mouseleave event to reset highlighting
+            // Add mouseleave event to reset highlighting (only if no active selection)
             this.nodes.on("mouseleave", (event, d) => {
+                if (this.selectionActive) return;
                 // Reset all highlights
                 this.nodes.each(function (node) {
                     node.highlighted = false;
@@ -376,6 +439,7 @@ export class GraphRenderer {
 
             // Add mouseleave event to reset highlighting
             internalLabels.on("mouseleave", (event, d) => {
+                if (this.selectionActive) return;
                 // Reset all highlights
                 this.nodes.each(function (node) {
                     node.highlighted = false;
@@ -389,6 +453,9 @@ export class GraphRenderer {
 
         if (onNodeDoubleClick) {
             this.nodes.on("dblclick", onNodeDoubleClick);
+        }
+        if (onNodeClick) {
+            this.nodes.on("click", onNodeClick);
         }
 
         // Update node positions based on graph layout
@@ -413,7 +480,82 @@ export class GraphRenderer {
         // Apply legend-driven type visibility (requirements initially hidden by default)
         this.applyTypeVisibility();
 
+        // Initial draw
+        this.drawCanvas();
+
         return this;
+    }
+
+    /**
+     * Set dimming for selection: dims nodes/links that are not selected or connected
+     * @param {string|null} selectedId
+     * @param {Set<string>|null} connectedSet
+     * @param {boolean} active
+     */
+    setSelectionDimming(selectedId, connectedSet, active) {
+        this.selectionActive = !!active;
+        if (!this.nodes || !this.links || !this.labels) return;
+
+        if (!active) {
+            // Clear flags
+            this.selection = { id: null, connected: new Set(), isStandard: false };
+            this.nodes.each(function (d) {
+                d._dimmed = false;
+            });
+            this.links.each(function (l) {
+                l._dimmed = false;
+                l._canvasHidden = false;
+            });
+            if (Array.isArray(this.virtualEdgesData)) this.virtualEdgesData.forEach(l => {
+                l._dimmed = false;
+            });
+
+            // Restore base link opacity & display (canvas redraw will use defaults)
+
+            // Re-apply zoom-based updaters
+            if (this.updateNodeVisibility) this.updateNodeVisibility(this.currentZoomScale);
+            if (this.updateLabelVisibility) this.updateLabelVisibility(this.currentZoomScale);
+            this.drawCanvas();
+            return;
+        }
+
+        // Activate selection dimming
+        // Detect if the selected node is a standard
+        let isStandard = false;
+        this.nodes.each(function (d) {
+            if (d.id === selectedId) {
+                isStandard = d.qualityType === 'standard';
+            }
+        });
+        this.selection = { id: selectedId, connected: new Set(connectedSet || []), isStandard };
+
+        const renderer = this;
+        const selected = this.selection;
+        this.nodes.each(function (d) {
+            const isRelated = d.id === selected.id || selected.connected.has(d.id);
+            d._dimmed = !isRelated;
+        });
+        // Compute dimming for all links using shared predicates
+        this.links.each(function (l) {
+            const endpointsRelated = renderer._edgeEndpointsRelated(l, selected);
+            const keepRootProp = renderer._edgeShouldShowDespiteRoot(l, selected);
+            l._dimmed = !(endpointsRelated || keepRootProp);
+            // canvas-specific hidden flag when std selection hides dimmed property links
+            if (selected.isStandard && (renderer._hideIfDimmedPropertyUnderStd(l.source) || renderer._hideIfDimmedPropertyUnderStd(l.target))) {
+                l._canvasHidden = true;
+            } else {
+                l._canvasHidden = false;
+            }
+        });
+        if (Array.isArray(this.virtualEdgesData)) this.virtualEdgesData.forEach(function (l) {
+            const endpointsRelated = renderer._edgeEndpointsRelated(l, selected);
+            l._dimmed = !endpointsRelated;
+        });
+
+        // Re-apply zoom-based updaters for nodes/labels to respect _dimmed and hiding rules
+        if (this.updateNodeVisibility) this.updateNodeVisibility(this.currentZoomScale);
+        if (this.updateLabelVisibility) this.updateLabelVisibility(this.currentZoomScale);
+        this.drawCanvas();
     }
 
     /**
@@ -422,23 +564,7 @@ export class GraphRenderer {
     handleTick() {
         // Use requestAnimationFrame for better performance
         requestAnimationFrame(() => {
-            // Batch DOM updates for better performance
-            if (this.links) {
-                this.links
-                    .attr("x1", d => d.source.x)
-                    .attr("y1", d => d.source.y)
-                    .attr("x2", d => d.target.x)
-                    .attr("y2", d => d.target.y);
-            }
-
-            if (this.virtualLinks) {
-                this.virtualLinks
-                    .attr("x1", d => d.source.x)
-                    .attr("y1", d => d.source.y)
-                    .attr("x2", d => d.target.x)
-                    .attr("y2", d => d.target.y);
-            }
-
+            // Only position invisible SVG for interactions and labels
             if (this.nodes) {
                 this.nodes
                     .attr("cx", d => d.x)
@@ -450,6 +576,9 @@ export class GraphRenderer {
                     .attr("x", d => d.x)
                     .attr("y", d => d.y);
             }
+
+            // Redraw canvas
+            this.drawCanvas();
         });
     }
 
@@ -459,8 +588,9 @@ export class GraphRenderer {
     setupZoom() {
         const zoom = d3.zoom()
             .on("zoom", (event) => {
-                this.svg.selectAll("g").attr("transform", event.transform);
-                this.currentZoomScale = event.transform.k;
+                this.currentTransform = event.transform;
+                this.svg.selectAll("g").attr("transform", this.currentTransform);
+                this.currentZoomScale = this.currentTransform.k;
 
                 // Update label and node visibility
                 if (this.updateLabelVisibility) {
@@ -470,6 +600,9 @@ export class GraphRenderer {
                 if (this.updateNodeVisibility) {
                     this.updateNodeVisibility(this.currentZoomScale);
                 }
+
+                // Redraw canvas with new transform
+                this.drawCanvas();
             });
 
         this.svg.call(zoom);
@@ -478,6 +611,7 @@ export class GraphRenderer {
         const sidebarWidth = 200;
         const initialTransform = d3.zoomIdentity.translate(sidebarWidth / 2, 0);
         this.svg.call(zoom.transform, initialTransform);
+        this.currentTransform = initialTransform;
     }
 
     /**
@@ -505,6 +639,93 @@ export class GraphRenderer {
         // Apply drag behavior to labels that are inside nodes (quality-root and property types)
         this.labels.filter(d => d.id === "quality-root" || d.qualityType === "property")
             .call(dragBehavior);
+    }
+
+    /**
+     * Draw graph on Canvas
+     */
+    drawCanvas() {
+        if (!this.ctx) return;
+        const ctx = this.ctx;
+        // Reset transform and clear
+        ctx.setTransform(1, 0, 0, 1, 0, 0);
+        ctx.clearRect(0, 0, this.width, this.height);
+        // Apply current zoom/pan transform
+        const t = this.currentTransform || d3.zoomIdentity;
+        ctx.setTransform(t.k, 0, 0, t.k, t.x, t.y);
+
+        // Helper to iterate selection data
+        const nodesData = [];
+        if (this.nodes) this.nodes.each(d => nodesData.push(d));
+        const linksData = [];
+        if (this.links) this.links.each(d => linksData.push(d));
+        const virtualData = Array.isArray(this.virtualEdgesData) ? this.virtualEdgesData : [];
+
+        // Draw normal links
+        linksData.forEach(l => {
+            if (!l?.source || !l?.target) return;
+            // Respect legend hidden
+            if (l.source._legendHidden || l.target._legendHidden) return;
+            // Hide links connected to dimmed property nodes when a standard is selected
+            if (this._isStdSelectionActive() && (this._hideIfDimmedPropertyUnderStd(l.source) || this._hideIfDimmedPropertyUnderStd(l.target))) return;
+            // Determine style
+            const isHover = !!l._hoverHighlight;
+            const baseOpacity = l._dimmed ? 0.05 : 0.6;
+            const opacity = isHover ? 0.9 : baseOpacity;
+            if (opacity <= 0) return;
+            ctx.globalAlpha = opacity;
+            ctx.strokeStyle = isHover ? '#cb9fff' : '#E0E0E0';
+            ctx.lineWidth = isHover ? 2 : 1;
+            ctx.beginPath();
+            ctx.moveTo(l.source.x, l.source.y);
+            ctx.lineTo(l.target.x, l.target.y);
+            ctx.stroke();
+        });
+
+        // Draw virtual links (dashed)
+        virtualData.forEach(vl => {
+            const s = vl.source, tNode = vl.target;
+            if (!s || !tNode) return;
+            if (s._legendHidden || tNode._legendHidden) return;
+            const isHover = !!vl._hoverHighlight;
+            const baseOpacity = vl._dimmed ? 0.05 : 0.4;
+            const opacity = isHover ? 0.85 : baseOpacity;
+            if (opacity <= 0) return;
+            ctx.globalAlpha = opacity;
+            ctx.strokeStyle = isHover ? '#cb9fff' : '#E0E0E0';
+            ctx.setLineDash([3, 3]);
+            ctx.lineWidth = isHover ? 2 : 1;
+            ctx.beginPath();
+            ctx.moveTo(s.x, s.y);
+            ctx.lineTo(tNode.x, tNode.y);
+            ctx.stroke();
+            ctx.setLineDash([]);
+        });
+
+        // Draw nodes
+        nodesData.forEach(n => {
+            if (!n) return;
+            // Hidden by legend
+            if (n._legendHidden) return;
+            // When a standard is selected, hide dimmed property nodes entirely
+            if (this._isStdSelectionActive() && this._isProperty(n) && n._dimmed) return;
+            const r = n._canvasR == null ? n.size : n._canvasR;
+            const opacity = n._canvasOpacity == null ? 1 : n._canvasOpacity;
+            const strokeW = n._canvasStrokeWidth == null ? 1.5 : n._canvasStrokeWidth;
+            if (r <= 0 || opacity <= 0) return;
+            ctx.globalAlpha = opacity;
+            ctx.fillStyle = n.color;
+            ctx.beginPath();
+            ctx.arc(n.x, n.y, r, 0, Math.PI * 2);
+            ctx.fill();
+            // Border
+            ctx.lineWidth = strokeW;
+            ctx.strokeStyle = '#2C3E50';
+            ctx.stroke();
+        });
+
+        // Reset alpha
+        ctx.globalAlpha = 1;
     }
 
     /**
@@ -540,21 +761,41 @@ export class GraphRenderer {
         this.labels.filter(d => connectedNodes.has(d.id))
             .classed("connected-highlighted", highlight);
 
-        // Highlight normal edges connected to the node
-        this.links.filter(d => d.source.id === nodeId || d.target.id === nodeId)
-            .classed("highlighted", highlight)
-            .attr("stroke", highlight ? "#cb9fff" : "#e6daf2")
-            .attr("stroke-width", highlight ? 2 : 1);
-
-        // Apply same hover behavior to virtual edges (if present)
-        if (this.virtualLinks) {
-            this.virtualLinks.filter(d => d.source.id === nodeId || d.target.id === nodeId)
-                .classed("highlighted", highlight)
-                .attr("stroke", highlight ? "#cb9fff" : "#E0E0E0")
-                .attr("stroke-width", highlight ? 2 : 1)
-                .attr("opacity", highlight ? 0.8 : 0.4)
-                .attr("stroke-dasharray", "3,3");
+        // Manage per-edge hover highlight flags for canvas rendering
+        if (highlight) {
+            // Clear previous hover highlights to avoid stale edges
+            this.links.each(function (l) {
+                l._hoverHighlight = false;
+            });
+            if (Array.isArray(this.virtualEdgesData)) this.virtualEdgesData.forEach(vl => {
+                vl._hoverHighlight = false;
+            });
         }
+        // Set or clear hover highlight on edges connected to the node
+        this.links.each(function (l) {
+            if (!l?.source || !l?.target) return;
+            if (l.source.id === nodeId || l.target.id === nodeId) {
+                l._hoverHighlight = !!highlight;
+            } else if (!highlight) {
+                // On unhighlight, only clear flags for edges incident to this node
+                // leave other edges (possibly highlighted by another node) intact
+                // but since we clear on new highlight above, this is sufficient
+            }
+        });
+        if (Array.isArray(this.virtualEdgesData)) this.virtualEdgesData.forEach(vl => {
+            if (!vl?.source || !vl?.target) return;
+            if (vl.source.id === nodeId || vl.target.id === nodeId) {
+                vl._hoverHighlight = !!highlight;
+            }
+        });
+
+        // If selection is active (set externally), dim all unrelated nodes and links
+        if (this.selectionActive) {
+            this.setSelectionDimming(nodeId, connectedNodes, true);
+        }
+
+        // Trigger a canvas redraw to reflect edge hover state
+        this.drawCanvas();
     }
 
     /**
@@ -603,18 +844,9 @@ export class GraphRenderer {
         this.svg.transition()
             .duration(750)
             .call(d3.zoom().transform, transform);
-
-        // Update current zoom scale
-        this.currentZoomScale = scale;
-
-        // Update label and node visibility with the new zoom scale
-        if (this.updateLabelVisibility) {
-            this.updateLabelVisibility(this.currentZoomScale);
-        }
-
-        if (this.updateNodeVisibility) {
-            this.updateNodeVisibility(this.currentZoomScale);
-        }
+        // Do not set currentTransform/currentZoomScale here.
+        // The zoom behavior's 'zoom' event will update transforms progressively during the transition
+        // keeping the Canvas and SVG labels in sync.
     }
 
     /**
@@ -653,13 +885,19 @@ export class GraphRenderer {
     createNodeVisibilityUpdater(node, initialZoomScale) {
         // Store the current zoom scale, initialized with the provided value
         let currentZoomScale = initialZoomScale;
+        const renderer = this;
 
         // Return a function that can either update all nodes or check a single node
         return (nodeData) => {
-            // If nodeData is provided, we're checking visibility for a single node
-            if (nodeData) {
+            // If nodeData is provided as an object, we're checking visibility for a single node
+            if (nodeData && typeof nodeData === 'object') {
                 // If hidden by legend, hide regardless of zoom/highlight
                 if (nodeData._legendHidden) {
+                    return { visible: false };
+                }
+
+                // When a standard is selected, hide dimmed property nodes entirely
+                if (renderer.selectionActive && renderer.selection?.isStandard && nodeData.qualityType === 'property' && nodeData._dimmed) {
                     return { visible: false };
                 }
 
@@ -691,8 +929,20 @@ export class GraphRenderer {
                 // Calculate stroke width - thinner strokes when zoomed out
                 const strokeWidth = Math.min(1.5, Math.max(0.5, currentZoomScale / 1.5));
 
-                // For highlighted nodes, always show at full detail
+                // For highlighted nodes, handle size depending on persistent selection state
                 if (isHighlighted) {
+                    // When a standard is selected (persistent selection), keep size consistent with zoom
+                    // i.e., do not grow nodes to full size, only raise opacity
+                    if (renderer.selectionActive) {
+                        const baseOpacity = 1; // highlighted should be fully opaque
+                        return {
+                            visible: true,
+                            size: nodeData.size * sizeFactor,
+                            opacity: baseOpacity,
+                            strokeWidth: strokeWidth
+                        };
+                    }
+                    // Hover highlight (no persistent selection): keep previous behavior (full size)
                     return {
                         visible: true,
                         size: nodeData.size,
@@ -702,10 +952,12 @@ export class GraphRenderer {
                 }
 
                 // For normal nodes, adjust detail based on zoom
+                const baseOpacity = Math.min(1, Math.max(0.6, currentZoomScale / 1.2));
+                const finalOpacity = nodeData._dimmed ? Math.min(baseOpacity, 0.15) : baseOpacity;
                 return {
                     visible: true,
                     size: nodeData.size * sizeFactor,
-                    opacity: Math.min(1, Math.max(0.6, currentZoomScale / 1.2)),
+                    opacity: finalOpacity,
                     strokeWidth: strokeWidth
                 };
             }
@@ -724,6 +976,20 @@ export class GraphRenderer {
                     if (d._legendHidden) {
                         nodeElement.style("display", "none");
                         nodeElement.attr("opacity", 0);
+                        // canvas props
+                        d._canvasR = 0;
+                        d._canvasOpacity = 0;
+                        d._canvasStrokeWidth = 1.5;
+                        return;
+                    }
+
+                    // When a standard is selected, hide dimmed property nodes entirely
+                    if (renderer.selectionActive && renderer.selection?.isStandard && d.qualityType === 'property' && d._dimmed) {
+                        nodeElement.style("display", "none");
+                        nodeElement.attr("opacity", 0);
+                        d._canvasR = 0;
+                        d._canvasOpacity = 0;
+                        d._canvasStrokeWidth = 1.5;
                         return;
                     }
 
@@ -733,6 +999,9 @@ export class GraphRenderer {
                         nodeElement.attr("opacity", 1);
                         nodeElement.attr("r", d.size);
                         nodeElement.attr("stroke-width", 1.5);
+                        d._canvasR = d.size;
+                        d._canvasOpacity = 1;
+                        d._canvasStrokeWidth = 1.5;
                         return;
                     }
 
@@ -747,6 +1016,9 @@ export class GraphRenderer {
                     if (!isHighlighted && currentZoomScale < visibilityThreshold) {
                         nodeElement.style("display", "none");
                         nodeElement.attr("opacity", 0);
+                        d._canvasR = 0;
+                        d._canvasOpacity = 0;
+                        d._canvasStrokeWidth = 1.5;
                         return;
                     }
 
@@ -756,20 +1028,38 @@ export class GraphRenderer {
                     // Calculate stroke width - thinner strokes when zoomed out
                     const strokeWidth = Math.min(1.5, Math.max(0.5, currentZoomScale / 1.5));
 
-                    // For highlighted nodes, always show at full detail
+                    // For highlighted nodes, handle size depending on persistent selection state
                     if (isHighlighted) {
                         nodeElement.style("display", null);
                         nodeElement.attr("opacity", 1);
-                        nodeElement.attr("r", d.size);
-                        nodeElement.attr("stroke-width", 1.5);
+                        if (renderer.selectionActive) {
+                            // Keep size consistent with zoom during selection
+                            nodeElement.attr("r", d.size * sizeFactor);
+                            nodeElement.attr("stroke-width", strokeWidth);
+                            d._canvasR = d.size * sizeFactor;
+                            d._canvasOpacity = 1;
+                            d._canvasStrokeWidth = strokeWidth;
+                        } else {
+                            // Hover highlight: show full size as before
+                            nodeElement.attr("r", d.size);
+                            nodeElement.attr("stroke-width", 1.5);
+                            d._canvasR = d.size;
+                            d._canvasOpacity = 1;
+                            d._canvasStrokeWidth = 1.5;
+                        }
                         return;
                     }
 
                     // For normal nodes, adjust detail based on zoom
                     nodeElement.style("display", null);
-                    nodeElement.attr("opacity", Math.min(1, Math.max(0.6, currentZoomScale / 1.2)));
+                    const baseOpacity = Math.min(1, Math.max(0.6, currentZoomScale / 1.2));
+                    const finalOpacity = d._dimmed ? Math.min(baseOpacity, 0.15) : baseOpacity;
+                    nodeElement.attr("opacity", finalOpacity);
                     nodeElement.attr("r", d.size * sizeFactor);
                     nodeElement.attr("stroke-width", strokeWidth);
+                    d._canvasR = d.size * sizeFactor;
+                    d._canvasOpacity = finalOpacity;
+                    d._canvasStrokeWidth = strokeWidth;
                 });
             }
         };
@@ -783,82 +1073,52 @@ export class GraphRenderer {
      * @returns {Function} Function to update label visibility
      */
     createLabelVisibilityUpdater(label, initialZoomScale) {
-        // Store the current zoom scale, initialized with the provided value
         let currentZoomScale = initialZoomScale;
+        const renderer = this;
 
-        // Return a function that can either update all labels or check a single node
         return (nodeData) => {
-            // If nodeData is provided, we're checking visibility for a single node
-            if (nodeData) {
-                // If hidden by legend, hide label
-                if (nodeData._legendHidden) {
-                    return 0;
-                }
+            // Einzelne Node-Überprüfung
+            if (nodeData && typeof nodeData === 'object') {
+                if (nodeData._legendHidden) return 0;
+                if (renderer.selectionActive && renderer.selection?.isStandard && nodeData.qualityType === 'property' && nodeData._dimmed) return 0;
+                if (nodeData.id === "quality-root" || nodeData.qualityType === "property") return 1;
 
-                // Always show labels for root and property nodes
-                if (nodeData.id === "quality-root" || nodeData.qualityType === "property") {
-                    return 1;
-                }
-
-                // For quality and requirement nodes, hide labels when zoom level is too low
-                // Higher threshold for quality and requirement nodes to hide their labels sooner when zooming out
-                const visibilityThreshold = nodeData.qualityType === "quality" || nodeData.qualityType === "requirement"
-                                            ? 1.2 / (nodeData.size / 10) // Higher threshold for quality and requirement nodes
-                                            : 0.8 / (nodeData.size / 10); // Original threshold for other nodes
-
-                // Check if this node or a connected node is highlighted
                 const isHighlighted = nodeData.highlighted || nodeData.connectedHighlighted;
+                if (nodeData._dimmed && !isHighlighted) return 0;
 
-                // Show label if node is highlighted or zoom is sufficient
-                return (isHighlighted || currentZoomScale > visibilityThreshold) ? 1 : 0;
+                const threshold = (["quality", "requirement", "standard"].includes(nodeData.qualityType))
+                                  ? 1.2 / (nodeData.size / 10)
+                                  : 0.8 / (nodeData.size / 10);
+
+                return (isHighlighted || currentZoomScale > threshold) ? 1 : 0;
             }
-            // Otherwise, update all labels with the current zoom scale
-            else {
-                // If a zoom scale is provided as the first argument, update the stored value
-                if (typeof arguments[0] === 'number') {
-                    currentZoomScale = arguments[0];
+            // Alle Labels aktualisieren
+            if (typeof arguments[0] === 'number') currentZoomScale = arguments[0];
+
+            label.each(function (d) {
+                const labelElement = d3.select(this);
+
+                if (d._legendHidden ||
+                    (renderer.selectionActive && renderer.selection?.isStandard && d.qualityType === 'property' && d._dimmed) ||
+                    (d._dimmed && !(d.highlighted || d.connectedHighlighted))) {
+                    labelElement.attr("opacity", 0).style("display", "none");
+                    return;
                 }
 
-                // Update all labels based on their type and zoom level
-                label.each(function (d) {
-                    const labelElement = d3.select(this);
+                if (d.id === "quality-root" || d.qualityType === "property") {
+                    labelElement.attr("opacity", 1).attr("font-weight", "bold").style("display", null);
+                    return;
+                }
 
-                    // If hidden by legend, hide label
-                    if (d._legendHidden) {
-                        labelElement.attr("opacity", 0);
-                        labelElement.style("display", "none");
-                        return;
-                    }
+                const isHighlighted = d.highlighted || d.connectedHighlighted;
+                const threshold = (["quality", "requirement", "standard"].includes(d.qualityType))
+                                  ? 1.2 / (d.size / 10)
+                                  : 0.8 / (d.size / 10);
 
-                    // Always show labels for root and property nodes
-                    if (d.id === "quality-root" || d.qualityType === "property") {
-                        labelElement.attr("opacity", 1);
-                        // Make these labels more prominent
-                        labelElement.attr("font-weight", "bold");
-                        return;
-                    }
-
-                    // For quality and requirement nodes, hide labels when zoom level is too low
-                    // Higher threshold for quality and requirement nodes to hide their labels sooner when zooming out
-                    const visibilityThreshold = d.qualityType === "quality" || d.qualityType === "requirement"
-                                                ? 1.2 / (d.size / 10) // Higher threshold for quality and requirement nodes
-                                                : 0.8 / (d.size / 10); // Original threshold for other nodes
-
-                    // Check if this node or a connected node is highlighted
-                    const isHighlighted = d.highlighted || d.connectedHighlighted;
-
-                    // Show label if node is highlighted or zoom is sufficient
-                    const opacity = (isHighlighted || currentZoomScale > visibilityThreshold) ? 1 : 0;
-                    labelElement.attr("opacity", opacity);
-
-                    // If the label is not visible, remove it from the DOM for better performance
-                    if (opacity === 0 && !isHighlighted) {
-                        labelElement.style("display", "none");
-                    } else {
-                        labelElement.style("display", "default");
-                    }
-                });
-            }
+                const opacity = (isHighlighted || currentZoomScale > threshold) ? 1 : 0;
+                labelElement.attr("opacity", opacity);
+                labelElement.style("display", (opacity === 0 && !isHighlighted) ? "none" : null);
+            });
         };
     }
 

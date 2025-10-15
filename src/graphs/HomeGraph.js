@@ -36,7 +36,7 @@ export class HomeGraph extends Graph {
         try {
             this.graph.clear();
 
-            this.createRootNode("Quality", 45, "#ebebeb");
+            this.createRootNode("Quality", 55, "#ebebeb");
             this.createNodes(homeData.propertyNodes);
             this.createEdges(homeData.edges);
 

@@ -45,7 +45,7 @@ export class Graph {
         const { propertyNodes, nodes, edges } = this.dataProvider.getData();
 
         try {
-            this.createRootNode("Quality", 50, "#ebebeb");
+            this.createRootNode("Quality", 55, "#ebebeb");
             // Create nodes and edges
             this.createNodes(propertyNodes);
             this.createNodes(nodes);
@@ -67,6 +67,7 @@ export class Graph {
      * @param {string} color - Color of the root node
      */
     createRootNode(label, size, color) {
+        if (this.graph.hasNode("quality-root")) this.graph.dropNode("quality-root");
         this.graph.addNode("quality-root", {
             label,
             size,
@@ -81,14 +82,16 @@ export class Graph {
      * @param {{id: string, label: string, size: number, color: string, qualityType: string, page: string}[]} nodes - Array of node data
      */
     createNodes(nodes) {
-        nodes.forEach((node) =>
-            this.graph.addNode(node.id, {
-                label: node.label,
-                size: node.size,
-                color: node.color,
-                qualityType: node.qualityType,
-                page: node.page,
-            }),
+        nodes.forEach((node) => {
+                if (this.graph.hasNode(node.id)) this.graph.dropNode(node.id);
+                this.graph.addNode(node.id, {
+                    label: node.label,
+                    size: node.size,
+                    color: node.color,
+                    qualityType: node.qualityType,
+                    page: node.page,
+                });
+            }
         );
     }
 
@@ -263,6 +266,31 @@ export class Graph {
                     }));
                 });
             }
+        }
+
+        // Position standard nodes above qualities (top arc)
+        const standardNodes = [];
+        this.graph.forEachNode((nodeId, attrs) => {
+            if (attrs.qualityType === "standard") standardNodes.push(nodeId);
+        });
+        if (standardNodes.length > 0) {
+            const r = levelRadius * 2.2; // radius above qualities
+            const startAngle = -Math.PI * 0.9; // near top-left
+            const endAngle = -Math.PI * 0.1;   // near top-right
+            const angleStep = (endAngle - startAngle) / (standardNodes.length + 1);
+            // Compute approximate level to keep distance during overlap adjustment
+            const approxLevel = Math.max(3, Math.round(1 + (r / (30 * 3)))); // minDistance assumed 30
+            standardNodes.forEach((nodeId, i) => {
+                const angle = startAngle + angleStep * (i + 1);
+                const x = r * Math.cos(angle);
+                const y = r * Math.sin(angle);
+                this.graph.updateNodeAttributes(nodeId, (attr) => ({
+                    ...attr,
+                    x,
+                    y,
+                    hierarchyLevel: approxLevel,
+                }));
+            });
         }
 
         // STEP 5: Find requirement nodes (if not hidden)
@@ -489,7 +517,8 @@ export class Graph {
         this.renderer.render(
             graphData,
             this.eventHandlers.nodeHover,
-            this.eventHandlers.nodeDoubleClick
+            this.eventHandlers.nodeDoubleClick,
+            this.eventHandlers.nodeClick
         );
 
         return this;
@@ -520,7 +549,16 @@ export class Graph {
     }
 
     renderFiltered() {
-        // Rebuild the graph with filtered data
+        this._rebuildRenderAndCenter();
+    }
+
+    /**
+     * Internal helper to rebuild graph from current provider data, render, and center with simulation warm-up
+     * Keeps behavior identical across filter/reset paths and centralizes logic for maintainability
+     * @private
+     */
+    _rebuildRenderAndCenter() {
+        // Rebuild the graph with current provider data
         this.graph = new MultiGraph();
         this.graph.setAttribute("name", this.name);
         this.graph.setAttribute("qualityType", "q42");
@@ -554,29 +592,7 @@ export class Graph {
         if (this.renderer) this.renderer.isFiltering = false;
         this.dataProvider.resetFilter();
 
-        this.graph = new MultiGraph();
-        this.graph.setAttribute("name", this.name);
-        this.graph.setAttribute("qualityType", "q42");
-
-        this.buildGraph();
-        this.render();
-
-        // Heat up the simulation to ensure nodes spread out properly
-        if (this.renderer.simulation) {
-            // Run the simulation with a higher alpha target to ensure nodes spread out
-            this.renderer.simulation.alpha(1).alphaTarget(0.3).restart();
-
-            // Center the view on the filtered nodes
-            this.renderer.centerView();
-
-            // After a short time, cool down the simulation
-            setTimeout(() => {
-                this.renderer.simulation.alphaTarget(0);
-
-                // Center the view again after the simulation has settled
-                this.renderer.centerView();
-            }, 1000);
-        }
+        this._rebuildRenderAndCenter();
 
         return this;
     }
