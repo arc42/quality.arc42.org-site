@@ -14,10 +14,10 @@ Please let us know - we're listening:
 <li><a href="xmxaxixlxtxo:ixnxfxox@xaxrxcx4x2x.xdxex" onmouseover="this.href=this.href.replace(/x/g,'');"><i class="fa fa-fw fa-envelope"></i> Email (our adress is spam-protected)</a></li>
 <li><a href="https://linkedin.com/in/gernotstarke"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i> LinkedIn</a></li>
 
-<li><a href="https://github.com/arc42/quality.arc42.org-site/issues"><i class="fab fa-fw fa-github" aria-hidden="true"></i>github issue tracker</a></li>
+<li><a href="https://github.com/arc42/quality.arc42.org-site/issues"><i class="fab fa-fw fa-github" aria-hidden="true"></i>GitHub issue tracker</a></li>
 <li>
-    <a href="https://stackoverflow.com/questions/tagged/arc42">
-        <i class="fab fa-fw fa-stack-overflow" aria-hidden="true"></i>Stackoverflow</a>
+    <a href="https://stackoverflow.com/questions/tagged/arc42"><i class="fab fa-fw fa-stack-overflow" aria-hidden="true"></i>Stack Overflow</a> and
+    <a href="https://softwareengineering.stackexchange.com/"><i class="fab fa-fw fa-stack-exchange" aria-hidden="true"></i>Software Engineering Stack Exchange</a>
 </li>
 </ul>
 
