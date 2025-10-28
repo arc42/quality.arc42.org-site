@@ -60,6 +60,7 @@ docker-compose.yml file are applied.
 
 Notes:
 - The esbuild service will run `npm run data` once on startup to generate graph data under `assets/data`.
+- The esbuild service will also run `npm run test:links` to validate all internal links.
 - If you add or change content that affects tags/related/permalinks, restart the stack (`docker compose down` then `docker compose up`) so data is regenerated.
 
 ## How to contribute
@@ -114,6 +115,42 @@ Defaults in `_config.yml` assign layouts automatically for collections; you usua
 Tag links render to `/tag-<tag>`. If you introduce a new tag value in front matter, create a matching page to avoid 404s:
 - Copy an existing tag page (`_pages/tag-efficient.md`) to `_pages/tag-<yourtag>.md`
 - Adjust the title/permalink and keep the include macros
+
+### Link Validation
+
+The site includes automated link validation to ensure all internal references are correct. The validator checks:
+
+- **Quality → Quality**: References in the `related` field of quality files
+- **Quality → Tag**: Tags used in qualities have corresponding tag pages
+- **Quality → Standard**: Standards referenced in the `standards` field exist
+- **Requirement → Quality**: Requirements reference existing qualities in their `related` field
+- **Requirement → Tag**: Tags used in requirements have corresponding tag pages
+
+#### Running Link Validation
+
+**Manual validation:**
+```bash
+npm run test:links          # Show warnings only
+npm run test:links:strict   # Exit with error code 1 if broken links found
+```
+
+**Automatic validation:**
+Link validation runs automatically when you start Docker (`docker compose up`). Broken links are displayed as warnings but don't stop the build.
+
+**Example output:**
+```
+═══════════════════════════════════════════════════════════
+  LINK VALIDATION REPORT
+═══════════════════════════════════════════════════════════
+
+REQUIREMENT→QUALITY (1 errors)
+───────────────────────────────────────────────────────────
+  ✗ Requirement "patient-data-quality" references non-existent quality "completeness"
+    Source: _requirements/P/patient-data-quality.md
+
+═══════════════════════════════════════════════════════════
+Total broken links: 1
+```
 
 # Technical details
 
