@@ -361,8 +361,9 @@ class LinkValidator {
 
     for (const type of typeOrder) {
       if (errorsByType[type]) {
+        const errorCount = errorsByType[type].length;
         console.log(
-          `${COLORS.yellow}${COLORS.bold}${type.toUpperCase()} (${errorsByType[type].length} errors)${COLORS.reset}`,
+          `${COLORS.yellow}${COLORS.bold}${type.toUpperCase()} (${errorCount} ${errorCount > 1 ? "errors" : "error"})${COLORS.reset}`,
         );
         console.log(`${COLORS.yellow}${subSeparator}${COLORS.reset}`);
 
