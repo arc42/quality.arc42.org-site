@@ -78,7 +78,6 @@ For each quality Q, evaluate its `related` array by checking:
    - Qualities with similar characteristics or sub-qualities
 
 2. **Structural Signals**:
-   - **Tag overlap**: Qualities sharing 1+ tags are often related
    - **Standard overlap**: Qualities sharing 2+ standards may be related
    - **Existing graph patterns**: Qualities related to the same qualities (transitive connections)
 
@@ -156,14 +155,16 @@ Structure:
 
 Use these signals to identify potential missing relations:
 
-#### 1. **Tag Overlap** (High Confidence)
-- Qualities sharing **2+ tags** → strongly consider relation
-- Qualities sharing **1 tag** → evaluate semantic similarity
+
+
+#### 1. **Semantic Similarity** (Medium Confidence)
+- Definitions reference similar concepts
+- One quality mentions the other in its content
+- Similar sub-characteristics or attributes
 
 **Example**:
-- Quality A has tags `[secure, reliable]`
-- Quality B has tags `[secure, suitable]`
-- → Likely related due to shared "secure" tag
+- "Availability" and "Reliability" both discuss system uptime
+- "Performance" and "Efficiency" both discuss resource usage
 
 #### 2. **Standard Overlap** (Medium-High Confidence)
 - Qualities sharing **3+ standards** → strongly consider relation
@@ -174,16 +175,7 @@ Use these signals to identify potential missing relations:
 - Quality B has standards `[iso25010, iso27001]`
 - → Likely related due to shared security/privacy standards
 
-#### 3. **Semantic Similarity** (Medium Confidence)
-- Definitions reference similar concepts
-- One quality mentions the other in its content
-- Similar sub-characteristics or attributes
-
-**Example**:
-- "Availability" and "Reliability" both discuss system uptime
-- "Performance" and "Efficiency" both discuss resource usage
-
-#### 4. **Transitive Relations** (Low-Medium Confidence)
+#### 3. **Transitive Relations** (Low-Medium Confidence)
 - Quality A relates to Quality C
 - Quality B relates to Quality C
 - A and B share tags/standards
