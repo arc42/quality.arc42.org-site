@@ -1,8 +1,8 @@
 # Quality Relations Improvement Recommendations
 
 **Generated**: 2025-11-23
-**Total Qualities Analyzed**: 75 / 180 (in progress)
-**Qualities with Suggestions**: 72
+**Total Qualities Analyzed**: 90 / 180 (in progress)
+**Qualities with Suggestions**: 86
 
 ---
 
@@ -13,13 +13,14 @@
 - ✅ Batch 3 (Qualities 31-45): Complete
 - ✅ Batch 4 (Qualities 46-60): Complete
 - ✅ Batch 5 (Qualities 61-75): Complete
-- ⏳ Batch 6-12 (Qualities 76-180): Pending
+- ✅ Batch 6 (Qualities 76-90): Complete
+- ⏳ Batch 7-12 (Qualities 91-180): Pending
 
 ---
 
 ## Summary Statistics (Current)
 
-- Total relations to add: 238 (141 high confidence, 97 medium confidence)
+- Total relations to add: 267 (158 high confidence, 109 medium confidence)
 - Total relations to remove: 2
 - Qualities with no current relations: 0
 - Qualities with >10 relations: 0
@@ -1648,5 +1649,319 @@
 - explainability: 3 additions (AI/ML transparency connections)
 - evolvability: 3 additions (completing flexibility cluster)
 - faultlessness: 3 additions (fault handling connections)
+
+---
+
+# Semantic Relationship Analysis: Qualities 76-90
+
+## Quality: functional-suitability
+
+**Current Relations**: 4 (`usability, functionality, functional-completeness, suitability`)
+**Tags**: `usable, reliable, suitable`
+**Standards**: `iso25010`
+
+### Relations to Add
+
+- **functional-appropriateness**: Sub-characteristic of functional suitability in ISO 25010
+  - *Signal*: tag-overlap (all 3 tags), standard-overlap (iso25010), transitive
+  - *Confidence*: high
+
+- **functional-correctness**: Sub-characteristic of functional suitability in ISO 25010
+  - *Signal*: tag-overlap (all 3 tags), standard-overlap (iso25010), transitive
+  - *Confidence*: high
+
+---
+
+## Quality: functionality
+
+**Current Relations**: 4 (`usability, functional-suitability, functional-correctness, functional-completeness`)
+**Tags**: `usable, reliable, suitable`
+**Standards**: none
+
+### Relations to Add
+
+- **correctness**: Functionality must be correct to fulfill its purpose
+  - *Signal*: tag-overlap (usable, reliable, suitable), semantic-similarity
+  - *Confidence*: medium
+
+- **features**: Features define what functionality a system provides
+  - *Signal*: tag-overlap (usable), semantic-similarity
+  - *Confidence*: medium
+
+---
+
+## Quality: graceful-degradation
+
+**Current Relations**: 7 (`robustness, reliability, usability, availability, recoverability, faultlessness, fault-tolerance`)
+**Tags**: `reliable, usable`
+**Standards**: none
+
+### Relations to Add
+
+- **resilience**: Resilience and graceful degradation both enable systems to continue functioning under stress
+  - *Signal*: tag-overlap (reliable), semantic-similarity
+  - *Confidence*: high
+
+- **fail-safe**: Content explicitly mentions "fail gracefully" as a form of fail-safe behavior
+  - *Signal*: semantic-similarity (content mentions failing gracefully)
+  - *Confidence*: high
+
+---
+
+## Quality: hazard-warning
+
+**Current Relations**: 2 (`safety, robustness`)
+**Tags**: `safe, reliable`
+**Standards**: `iso25010`
+
+### Relations to Add
+
+- **fail-safe**: Hazard warnings enable fail-safe operation by alerting before failures
+  - *Signal*: tag-overlap (safe, reliable), standard-overlap (iso25010), semantic-similarity
+  - *Confidence*: high
+
+- **fault-isolation**: Identifying hazards is related to isolating faults
+  - *Signal*: tag-overlap (safe, reliable), semantic-similarity
+  - *Confidence*: medium
+
+- **risk-identification**: Hazard warnings are a mechanism for risk identification
+  - *Signal*: tag-overlap (safe, reliable), semantic-similarity
+  - *Confidence*: high
+
+---
+
+## Quality: high-availability
+
+**Current Relations**: 9 (`availability, robustness, reliability, usability, fault-tolerance, recoverability, dependability, faultlessness, recovery-time`)
+**Tags**: `reliable, usable`
+**Standards**: none
+
+### Relations to Add
+
+- **redundancy**: Redundancy is a fundamental mechanism for achieving high availability
+  - *Signal*: semantic-similarity (common HA technique)
+  - *Confidence*: high
+
+- **resilience**: Resilience complements high availability through rapid recovery
+  - *Signal*: tag-overlap (reliable), semantic-similarity
+  - *Confidence*: high
+
+---
+
+## Quality: i18n
+
+**Current Relations**: 7 (`usability, adaptability, configurability, ease-of-use, modifiability, user-assistance, user-experience`)
+**Tags**: `usable`
+**Standards**: none
+
+### Relations to Add
+
+- **internationalization**: This is the same quality (synonym)
+  - *Signal*: semantic-similarity (identical concept)
+  - *Confidence*: high
+
+- **localizability**: i18n provides infrastructure that enables localizability
+  - *Signal*: tag-overlap (usable), semantic-similarity
+  - *Confidence*: high
+
+---
+
+## Quality: immunity
+
+**Current Relations**: 3 (`vulnerability, intrusion-detection, intrusion-prevention`)
+**Tags**: `secure, reliable`
+**Standards**: none
+
+### Relations to Add
+
+- **security**: Immunity is a specific aspect of overall security
+  - *Signal*: tag-overlap (secure, reliable), semantic-similarity
+  - *Confidence*: high
+
+- **resistance**: Resistance and immunity both protect against unwanted interference
+  - *Signal*: tag-overlap (secure, reliable), semantic-similarity
+  - *Confidence*: medium
+
+---
+
+## Quality: inclusivity
+
+**Current Relations**: 5 (`usability, functionality, attractiveness, user-error-protection, ease-of-use`)
+**Tags**: `usable`
+**Standards**: `iso25010`
+
+### Relations to Add
+
+- **accessibility**: Accessibility is a key mechanism for achieving inclusivity
+  - *Signal*: tag-overlap (usable), standard-overlap (iso25010), semantic-similarity
+  - *Confidence*: high
+
+- **i18n**: Content explicitly mentions inclusivity for various languages and cultures
+  - *Signal*: semantic-similarity (various languages mentioned in content)
+  - *Confidence*: high
+
+- **interaction-capability**: Inclusivity requires interaction capability for diverse users
+  - *Signal*: tag-overlap (usable), standard-overlap (iso25010), transitive
+  - *Confidence*: medium
+
+---
+
+## Quality: independence
+
+**Current Relations**: 8 (`maintainability, modularity, adaptability, configurability, changeability, agility, flexibility, autonomy`)
+**Tags**: `flexible`
+**Standards**: none
+
+### Relations to Add
+
+- **loose-coupling**: Content explicitly discusses low coupling for independence
+  - *Signal*: semantic-similarity (coupling mentioned in content)
+  - *Confidence*: high
+
+- **deployability**: Content explicitly mentions independent deployment
+  - *Signal*: semantic-similarity (independent deployment mentioned)
+  - *Confidence*: medium
+
+---
+
+## Quality: information-security
+
+**Current Relations**: 8 (`integrity, availability, non-repudiation, confidentiality, accountability, authenticity, resistance, cyber-security`)
+**Tags**: `secure, reliable`
+**Standards**: `iso27001`
+
+### Relations to Add
+
+- **security**: Information-security and security are synonymous concepts
+  - *Signal*: semantic-similarity (content calls it synonym)
+  - *Confidence*: high
+
+- **privacy**: Content explicitly mentions CIA triad includes confidentiality, closely related to privacy
+  - *Signal*: semantic-similarity (privacy part of info security)
+  - *Confidence*: medium
+
+---
+
+## Quality: installability
+
+**Current Relations**: 4 (`maintainability, analysability, operability, deployability`)
+**Tags**: `operable, flexible`
+**Standards**: `iso25010`
+
+### Relations to Add
+
+- **portability**: Installability across environments requires portability
+  - *Signal*: tag-overlap (operable, flexible), standard-overlap (iso25010), semantic-similarity
+  - *Confidence*: high
+
+- **replaceability**: Uninstallation/reinstallation relates to replaceability
+  - *Signal*: tag-overlap (operable, flexible), transitive
+  - *Confidence*: medium
+
+---
+
+## Quality: integrability
+
+**Current Relations**: 5 (`interoperability, modularity, composability, compatibility, integrity`)
+**Tags**: `flexible, operable`
+**Standards**: none
+
+### Relations to Add
+
+- **loose-coupling**: Content explicitly mentions loose coupling as integrability technique
+  - *Signal*: semantic-similarity (loose coupling mentioned in content)
+  - *Confidence*: high
+
+- **adaptability**: Integrability requires adapting to different integration contexts
+  - *Signal*: tag-overlap (flexible, operable), semantic-similarity
+  - *Confidence*: medium
+
+---
+
+## Quality: integrity
+
+**Current Relations**: 2 (`confidentiality, security`)
+**Tags**: `secure`
+**Standards**: `iso25010, iso27001, iso26262, misra-c, nist80053, pcidss, hl7, iso15408, cra, iec62443, iso25024, do178c, ieee2857`
+
+### Relations to Add
+
+- **authenticity**: Authenticity and integrity with confidentiality form CIA/AIC triad
+  - *Signal*: standard-overlap (8 standards), tag-overlap (secure), semantic-similarity
+  - *Confidence*: high
+
+- **availability**: Availability with confidentiality and integrity form CIA triad
+  - *Signal*: standard-overlap (11 standards), semantic-similarity
+  - *Confidence*: high
+
+- **data-integrity**: Data integrity is a specialized form of integrity
+  - *Signal*: standard-overlap (9 standards), semantic-similarity
+  - *Confidence*: high
+
+- **accountability**: Accountability ensures integrity through traceability
+  - *Signal*: standard-overlap (10 standards), tag-overlap (secure), semantic-similarity
+  - *Confidence*: medium
+
+- **non-repudiation**: Non-repudiation protects integrity by preventing denial
+  - *Signal*: standard-overlap (3 standards), tag-overlap (secure), semantic-similarity
+  - *Confidence*: medium
+
+---
+
+## Quality: interaction-capability
+
+**Current Relations**: 8 (`usability, functionality, inclusivity, attractiveness, operability, user-error-protection, user-engagement, ease-of-use`)
+**Tags**: `usable, operable`
+**Standards**: `iso25010`
+
+### Relations to Add
+
+- **controllability**: Controllability is essential for effective interaction
+  - *Signal*: tag-overlap (usable, operable), semantic-similarity
+  - *Confidence*: medium
+
+- **learnability**: Learnable interfaces enhance interaction capability
+  - *Signal*: tag-overlap (usable, operable), semantic-similarity
+  - *Confidence*: medium
+
+---
+
+## Quality: interchangeability
+
+**Current Relations**: 8 (`replaceability, modularity, compatibility, portability, standard-compliance, configurability, composability, flexibility`)
+**Tags**: `flexible, operable`
+**Standards**: none
+
+### Relations to Add
+
+- **independence**: Interchangeable components must be independent
+  - *Signal*: tag-overlap (flexible), semantic-similarity
+  - *Confidence*: medium
+
+---
+
+## Batch 6 Analysis Notes
+
+**Key patterns identified**:
+1. **Integrity severely under-connected**: Only 2 relations despite 13 standard overlaps (missing CIA triad connections)
+2. **Hazard-warning under-connected**: Only 2 relations despite safety-critical importance
+3. **Functional suitability cluster**: functional-suitability missing its ISO 25010 sub-characteristics
+4. **High-availability mechanisms**: Missing redundancy and resilience connections
+5. **Inclusivity/accessibility gap**: These closely related usability concepts need stronger connections
+
+**Critical gaps identified**:
+- integrity missing 5 critical relations with massive standard overlaps (authenticity: 8, availability: 11, data-integrity: 9)
+- hazard-warning only has 2 relations (needs fail-safe, fault-isolation, risk-identification)
+- functional-suitability missing functional-appropriateness and functional-correctness (ISO 25010 siblings)
+- i18n and inclusivity not connected despite semantic overlap (various cultures/languages)
+- graceful-degradation missing resilience and fail-safe connections
+
+**Qualities with most additions suggested**:
+- integrity: 5 additions (currently only 2 relations - severely under-connected despite 13 standards)
+- hazard-warning: 3 additions (safety-critical quality needs more connections)
+- functional-suitability: 2 additions (ISO 25010 structure)
+- high-availability: 2 additions (HA mechanisms)
+- i18n: 2 additions (completing localization cluster)
+- inclusivity: 3 additions (usability for diverse users)
 
 ---
