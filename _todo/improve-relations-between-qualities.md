@@ -1,8 +1,8 @@
 # Quality Relations Improvement Recommendations
 
 **Generated**: 2025-11-23
-**Total Qualities Analyzed**: 60 / 180 (in progress)
-**Qualities with Suggestions**: 57
+**Total Qualities Analyzed**: 75 / 180 (in progress)
+**Qualities with Suggestions**: 72
 
 ---
 
@@ -12,13 +12,14 @@
 - ✅ Batch 2 (Qualities 16-30): Complete
 - ✅ Batch 3 (Qualities 31-45): Complete
 - ✅ Batch 4 (Qualities 46-60): Complete
-- ⏳ Batch 5-12 (Qualities 61-180): Pending
+- ✅ Batch 5 (Qualities 61-75): Complete
+- ⏳ Batch 6-12 (Qualities 76-180): Pending
 
 ---
 
 ## Summary Statistics (Current)
 
-- Total relations to add: 203 (119 high confidence, 84 medium confidence)
+- Total relations to add: 238 (141 high confidence, 97 medium confidence)
 - Total relations to remove: 2
 - Qualities with no current relations: 0
 - Qualities with >10 relations: 0
@@ -1330,5 +1331,322 @@
 - DORA-metrics: 3 additions (missing 3 of 4 DORA metrics)
 - ease-of-use: 3 additions (enriching usability cluster)
 - energy-efficiency: 3 additions (connecting efficiency concepts)
+
+---
+
+# Semantic Relationship Analysis: Qualities 61-75
+
+## Quality: evolvability
+
+**Current Relations**: 5 (`adaptability, maintainability, extensibility, scalability, modularity`)
+**Tags**: `flexible`
+**Standards**: none
+
+### Relations to Add
+
+- **changeability**: Evolvability depends fundamentally on the ability to change the system
+  - *Signal*: tag-overlap (flexible), semantic-similarity
+  - *Confidence*: high
+
+- **flexibility**: Flexibility and evolvability are closely related adaptability concepts
+  - *Signal*: tag-overlap (flexible), semantic-similarity
+  - *Confidence*: high
+
+- **loose-coupling**: Content explicitly mentions loose coupling as a principle for evolvable systems
+  - *Signal*: semantic-similarity (explicitly mentioned in content)
+  - *Confidence*: medium
+
+---
+
+## Quality: expected-physical-environment
+
+**Current Relations**: 1 (`anticipated-workplace-environment`)
+**Tags**: `suitable, operable`
+**Standards**: none
+
+### Relations to Add
+
+- **operational-environment-requirements**: Both qualities specify environmental requirements for system operation
+  - *Signal*: tag-overlap (operable), semantic-similarity
+  - *Confidence*: high
+
+- **portability**: Portability requires understanding and adapting to different physical environments
+  - *Signal*: tag-overlap (operable), semantic-similarity
+  - *Confidence*: medium
+
+---
+
+## Quality: explainability
+
+**Current Relations**: 3 (`accountability, analysability, clarity`)
+**Tags**: `safe, suitable`
+**Standards**: `iso42001, isoiec22989`
+
+### Relations to Add
+
+- **transparency**: Transparency enables explainability by providing visibility into system behavior
+  - *Signal*: tag-overlap (suitable), semantic-similarity
+  - *Confidence*: high
+
+- **understandability**: Explainability directly enables user understanding of system decisions
+  - *Signal*: semantic-similarity (explainability enables understanding)
+  - *Confidence*: high
+
+- **fairness**: Content explicitly discusses explainability diagnosing fairness issues
+  - *Signal*: standard-overlap (2 standards: iso42001, isoiec22989), semantic-similarity
+  - *Confidence*: medium
+
+---
+
+## Quality: extensibility
+
+**Current Relations**: 4 (`adaptability, modifiability, changeability, flexibility`)
+**Tags**: `flexible`
+**Standards**: `hl7`
+
+### Relations to Add
+
+- **evolvability**: Extensibility enables system evolution through adding new features
+  - *Signal*: tag-overlap (flexible), semantic-similarity
+  - *Confidence*: high
+
+- **composability**: Plugin systems (mentioned in content) exemplify composability
+  - *Signal*: tag-overlap (flexible), semantic-similarity
+  - *Confidence*: high
+
+- **modularity**: Modular design enables extensibility through well-defined interfaces
+  - *Signal*: tag-overlap (flexible), semantic-similarity
+  - *Confidence*: high
+
+---
+
+## Quality: fail-safe
+
+**Current Relations**: 2 (`safety, robustness`)
+**Tags**: `safe, reliable`
+**Standards**: `iso25010`
+
+### Relations to Add
+
+- **fault-tolerance**: Both qualities handle failures, with fail-safe focusing on safe states
+  - *Signal*: tag-overlap (safe, reliable), semantic-similarity
+  - *Confidence*: high
+
+- **recoverability**: Content mentions reverting to safe condition, which is recovery
+  - *Signal*: tag-overlap (reliable), semantic-similarity
+  - *Confidence*: high
+
+- **reliability**: Fail-safe mechanisms enhance overall system reliability
+  - *Signal*: tag-overlap (reliable), standard-overlap (iso25010), semantic-similarity
+  - *Confidence*: medium
+
+- **hazard-warning**: Hazard warnings complement fail-safe by alerting before failures
+  - *Signal*: tag-overlap (safe), semantic-similarity
+  - *Confidence*: medium
+
+---
+
+## Quality: failure-transparency
+
+**Current Relations**: 4 (`availability, fault-tolerance, resilience, reliability`)
+**Tags**: `reliable, safe`
+**Standards**: none
+
+### Relations to Add
+
+- **graceful-degradation**: Failure transparency masks failures while providing degraded service
+  - *Signal*: tag-overlap (reliable), semantic-similarity
+  - *Confidence*: high
+
+- **redundancy**: Content explicitly mentions redundancy as a failure transparency technique
+  - *Signal*: semantic-similarity (redundancy mentioned in content)
+  - *Confidence*: high
+
+- **recoverability**: Masking failures often involves recovery mechanisms
+  - *Signal*: tag-overlap (reliable), semantic-similarity
+  - *Confidence*: medium
+
+---
+
+## Quality: fairness
+
+**Current Relations**: 4 (`bias-mitigation, explainability, transparency, accountability`)
+**Tags**: `reliable, safe, suitable`
+**Standards**: `iso42001, isoiec22989`
+
+### Relations to Add
+
+- **data-quality**: Content mentions fairness depends on identifying and mitigating bias in data
+  - *Signal*: semantic-similarity (data quality impacts fairness)
+  - *Confidence*: medium
+
+---
+
+## Quality: fault-isolation
+
+**Current Relations**: 6 (`safety, fail-safe, fault-tolerance, faultlessness, risk-identification, hazard-warning`)
+**Tags**: `safe, reliable`
+**Standards**: `iso26262, do178c`
+
+### Relations to Add
+
+- **debuggability**: Fault isolation is a key technique for debugging system failures
+  - *Signal*: tag-overlap (reliable), semantic-similarity
+  - *Confidence*: medium
+
+- **observability**: Content mentions monitoring and sensor readings for fault detection
+  - *Signal*: semantic-similarity (monitoring mentioned in content)
+  - *Confidence*: medium
+
+---
+
+## Quality: fault-tolerance
+
+**Current Relations**: 7 (`robustness, reliability, usability, availability, recoverability, faultlessness, graceful-degradation`)
+**Tags**: `reliable, usable`
+**Standards**: `iso25010, iso26262, iec61508`
+
+### Relations to Add
+
+- **resilience**: Resilience and fault-tolerance are closely related recovery concepts
+  - *Signal*: tag-overlap (reliable), semantic-similarity
+  - *Confidence*: high
+
+- **redundancy**: Redundancy is a fundamental mechanism for achieving fault tolerance
+  - *Signal*: semantic-similarity (common fault tolerance technique)
+  - *Confidence*: high
+
+---
+
+## Quality: faultlessness
+
+**Current Relations**: 3 (`dependability, reliability, availability`)
+**Tags**: `reliable, usable, secure`
+**Standards**: `iso25010`
+
+### Relations to Add
+
+- **fault-tolerance**: Complementary concepts - faultlessness prevents faults, fault-tolerance handles them
+  - *Signal*: tag-overlap (reliable, usable), standard-overlap (iso25010), semantic-similarity
+  - *Confidence*: high
+
+- **robustness**: Robust systems exhibit faultless operation under various conditions
+  - *Signal*: tag-overlap (reliable), semantic-similarity
+  - *Confidence*: high
+
+- **correctness**: Faultless operation implies correct operation
+  - *Signal*: semantic-similarity (performing without fault = correctness)
+  - *Confidence*: medium
+
+---
+
+## Quality: features
+
+**Current Relations**: 4 (`functionality, functional-completeness, usability, functional-suitability`)
+**Tags**: `usable`
+**Standards**: none
+
+### Relations to Add
+
+- **functional-appropriateness**: Appropriate features provide value without unwanted functionality
+  - *Signal*: transitive (both relate to functional-suitability), semantic-similarity
+  - *Confidence*: medium
+
+---
+
+## Quality: flexibility
+
+**Current Relations**: 7 (`maintainability, modularity, adaptability, configurability, changeability, agility, autonomy`)
+**Tags**: `flexible`
+**Standards**: `iso25010, misra-c, hl7, iso42030, iso12207, ieee2857`
+
+### Relations to Add
+
+- **portability**: Content explicitly mentions transferring to different environments as flexibility
+  - *Signal*: standard-overlap (4 standards), semantic-similarity (explicitly mentioned)
+  - *Confidence*: high
+
+- **evolvability**: Evolvability and flexibility both enable system adaptation
+  - *Signal*: tag-overlap (flexible), semantic-similarity
+  - *Confidence*: high
+
+---
+
+## Quality: functional-appropriateness
+
+**Current Relations**: 4 (`usability, functionality, functional-suitability, suitability`)
+**Tags**: `usable, reliable, suitable`
+**Standards**: `iso25010`
+
+### Relations to Add
+
+- **functional-completeness**: Both are sub-characteristics of functional suitability in ISO 25010
+  - *Signal*: tag-overlap (all 3 tags), standard-overlap (iso25010), transitive
+  - *Confidence*: high
+
+- **functional-correctness**: Both are sub-characteristics of functional suitability in ISO 25010
+  - *Signal*: tag-overlap (all 3 tags), standard-overlap (iso25010), transitive
+  - *Confidence*: high
+
+---
+
+## Quality: functional-completeness
+
+**Current Relations**: 4 (`usability, functionality, functional-suitability, correctness`)
+**Tags**: `usable, reliable, suitable`
+**Standards**: `iso25010, iso42010, iso42030, iso12207, sox`
+
+### Relations to Add
+
+- **functional-appropriateness**: Both are sub-characteristics of functional suitability in ISO 25010
+  - *Signal*: tag-overlap (all 3 tags), standard-overlap (iso25010), transitive
+  - *Confidence*: high
+
+- **functional-correctness**: Both are sub-characteristics of functional suitability in ISO 25010
+  - *Signal*: tag-overlap (all 3 tags), standard-overlap (2 standards: iso25010, iso42030), transitive
+  - *Confidence*: high
+
+---
+
+## Quality: functional-correctness
+
+**Current Relations**: 4 (`usability, functionality, functional-suitability, correctness`)
+**Tags**: `usable, reliable, suitable`
+**Standards**: `iso25010, iso42030`
+
+### Relations to Add
+
+- **functional-completeness**: Both are sub-characteristics of functional suitability in ISO 25010
+  - *Signal*: tag-overlap (all 3 tags), standard-overlap (2 standards), transitive
+  - *Confidence*: high
+
+- **functional-appropriateness**: Both are sub-characteristics of functional suitability in ISO 25010
+  - *Signal*: tag-overlap (all 3 tags), standard-overlap (iso25010), transitive
+  - *Confidence*: high
+
+---
+
+## Batch 5 Analysis Notes
+
+**Key patterns identified**:
+1. **Functional suitability triad**: functional-appropriateness, functional-completeness, functional-correctness are ISO 25010 siblings that should all interconnect
+2. **Fault handling cluster**: fail-safe, fault-tolerance, fault-isolation, faultlessness form a coherent group
+3. **Evolvability cluster**: evolvability, extensibility, flexibility, changeability need stronger connections
+4. **Environmental qualities**: expected-physical-environment severely under-connected (only 1 relation)
+5. **AI/ML qualities**: explainability and fairness have strong connections through shared standards
+
+**Critical gaps identified**:
+- expected-physical-environment only has 1 relation (needs operational-environment connections)
+- Functional suitability sub-characteristics (appropriateness, completeness, correctness) don't reference each other despite being ISO 25010 siblings
+- extensibility missing modularity connection despite semantic relationship
+- evolvability missing changeability and flexibility connections
+
+**Qualities with most additions suggested**:
+- extensibility: 3 additions (connecting to evolvability, composability, modularity)
+- fail-safe: 4 additions (enriching fault handling cluster)
+- failure-transparency: 3 additions (completing fault handling mechanisms)
+- explainability: 3 additions (AI/ML transparency connections)
+- evolvability: 3 additions (completing flexibility cluster)
+- faultlessness: 3 additions (fault handling connections)
 
 ---
