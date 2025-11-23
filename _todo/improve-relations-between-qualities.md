@@ -1,8 +1,9 @@
 # Quality Relations Improvement Recommendations
 
 **Generated**: 2025-11-23
-**Total Qualities Analyzed**: 90 / 180 (in progress)
-**Qualities with Suggestions**: 86
+**Total Qualities Analyzed**: 102 / 180 (in progress)
+**Qualities with Suggestions**: 97
+**Missing Files**: 3 (internationalization, legal-requirements, localizability - noted below)
 
 ---
 
@@ -14,16 +15,18 @@
 - ✅ Batch 4 (Qualities 46-60): Complete
 - ✅ Batch 5 (Qualities 61-75): Complete
 - ✅ Batch 6 (Qualities 76-90): Complete
-- ⏳ Batch 7-12 (Qualities 91-180): Pending
+- ✅ Batch 7 (Qualities 91-105): Complete (12 qualities, 3 files missing)
+- ⏳ Batch 8-12 (Qualities 106-180): Pending
 
 ---
 
 ## Summary Statistics (Current)
 
-- Total relations to add: 267 (158 high confidence, 109 medium confidence)
+- Total relations to add: 295 (174 high confidence, 121 medium confidence)
 - Total relations to remove: 2
 - Qualities with no current relations: 0
 - Qualities with >10 relations: 0
+- Missing quality files in repository: 3
 
 ---
 
@@ -1963,5 +1966,299 @@
 - high-availability: 2 additions (HA mechanisms)
 - i18n: 2 additions (completing localization cluster)
 - inclusivity: 3 additions (usability for diverse users)
+
+---
+
+# Semantic Relationship Analysis: Qualities 91-105
+
+**NOTE**: Batch 7 contains 3 missing files not found in repository:
+- **internationalization** (ID 91) - FILE MISSING (but i18n exists as synonym)
+- **legal-requirements** (ID 100) - FILE MISSING
+- **localizability** (ID 102) - FILE MISSING
+
+Analysis covers 12 available qualities from this batch.
+
+---
+
+## Quality: interoperability
+
+**Current Relations**: 2 (`co-existence, compatibility`)
+**Tags**: `usable, operable`
+**Standards**: `iso25010, hl7, cra, iso25024, iso42030, iso12207, ieee2857`
+
+### Relations to Add
+
+- **integrability**: Integrability focuses on effort to make interoperability work
+  - *Signal*: standard-overlap (7 standards), tag-overlap (operable), semantic-similarity
+  - *Confidence*: high
+
+- **modularity**: Modular systems enable better interoperability through defined interfaces
+  - *Signal*: standard-overlap (6 standards), tag-overlap (operable), semantic-similarity
+  - *Confidence*: medium
+
+- **standard-compliance**: Standards enable interoperability between systems
+  - *Signal*: standard-overlap (7 standards), semantic-similarity
+  - *Confidence*: high
+
+---
+
+## Quality: intrusion-detection
+
+**Current Relations**: 1 (`intrusion-prevention`)
+**Tags**: `secure`
+**Standards**: none
+
+### Relations to Add
+
+- **security**: Intrusion detection is a key security mechanism
+  - *Signal*: tag-overlap (secure), semantic-similarity
+  - *Confidence*: high
+
+- **observability**: Intrusion detection requires monitoring and observability
+  - *Signal*: semantic-similarity (content mentions monitoring)
+  - *Confidence*: high
+
+- **auditability**: Intrusion detection events must be auditable
+  - *Signal*: tag-overlap (secure), semantic-similarity
+  - *Confidence*: medium
+
+---
+
+## Quality: intrusion-prevention
+
+**Current Relations**: 1 (`intrusion-detection`)
+**Tags**: `secure`
+**Standards**: none
+
+### Relations to Add
+
+- **security**: Intrusion prevention is an active security mechanism
+  - *Signal*: tag-overlap (secure), semantic-similarity
+  - *Confidence*: high
+
+- **resistance**: Prevention mechanisms provide resistance to attacks
+  - *Signal*: tag-overlap (secure), semantic-similarity
+  - *Confidence*: high
+
+- **immunity**: Immunity and intrusion prevention both protect against unwanted interference
+  - *Signal*: tag-overlap (secure), semantic-similarity
+  - *Confidence*: medium
+
+---
+
+## Quality: intuitiveness
+
+**Current Relations**: 7 (`usability, learnability, user-experience, clarity, simplicity, self-descriptiveness, understandability`)
+**Tags**: `usable`
+**Standards**: none
+
+### Relations to Add
+
+- **ease-of-use**: Intuitive interfaces are inherently easier to use
+  - *Signal*: tag-overlap (usable), semantic-similarity (content discusses ease)
+  - *Confidence*: high
+
+- **discoverability**: Intuitiveness helps users discover features naturally
+  - *Signal*: tag-overlap (usable), semantic-similarity
+  - *Confidence*: medium
+
+---
+
+## Quality: jitter
+
+**Current Relations**: 3 (`performance, latency, predictability`)
+**Tags**: `efficient`
+**Standards**: none
+
+### Relations to Add
+
+- **time-behaviour**: Jitter is a specific aspect of time behaviour (variation)
+  - *Signal*: tag-overlap (efficient), semantic-similarity
+  - *Confidence*: high
+
+- **responsiveness**: Jitter affects perceived responsiveness
+  - *Signal*: tag-overlap (efficient), semantic-similarity
+  - *Confidence*: medium
+
+---
+
+## Quality: latency
+
+**Current Relations**: 2 (`performance, time-behaviour`)
+**Tags**: `efficient, usable, operable`
+**Standards**: `iso14756`
+
+### Relations to Add
+
+- **responsiveness**: Latency directly impacts system responsiveness
+  - *Signal*: tag-overlap (efficient, usable, operable), semantic-similarity
+  - *Confidence*: high
+
+- **jitter**: Jitter and latency are related time-delay concepts
+  - *Signal*: tag-overlap (efficient), semantic-similarity (jitter already relates to latency)
+  - *Confidence*: high
+
+---
+
+## Quality: lead-time-for-changes
+
+**Current Relations**: 4 (`controllability, operability, testability, deployability`)
+**Tags**: `operable`
+**Standards**: none
+
+### Relations to Add
+
+- **devops-metrics**: Explicitly one of the four key devops metrics
+  - *Signal*: semantic-similarity (content explicitly states it's a devops metric)
+  - *Confidence*: high
+
+- **DORA-metrics**: One of the four DORA metrics
+  - *Signal*: semantic-similarity (DORA metric)
+  - *Confidence*: high
+
+- **cycle-time**: Content explicitly distinguishes lead-time from cycle-time, indicating relationship
+  - *Signal*: semantic-similarity (content mentions cycle-time)
+  - *Confidence*: medium
+
+---
+
+## Quality: learnability
+
+**Current Relations**: 5 (`usability, user-error-protection, user-engagement, conciseness, understandability`)
+**Tags**: `usable, operable`
+**Standards**: `iso25010, ieee2857`
+
+### Relations to Add
+
+- **intuitiveness**: Content explicitly contrasts learnability with intuitiveness (related concepts)
+  - *Signal*: tag-overlap (usable), semantic-similarity (intuitiveness discusses learnability)
+  - *Confidence*: high
+
+- **ease-of-use**: Learnable systems are easier to use after initial learning
+  - *Signal*: tag-overlap (usable, operable), standard-overlap (iso25010), semantic-similarity
+  - *Confidence*: medium
+
+- **user-experience**: Learnability is a key component of overall user experience
+  - *Signal*: tag-overlap (usable, operable), semantic-similarity
+  - *Confidence*: medium
+
+---
+
+## Quality: legibility
+
+**Current Relations**: 2 (`usability, understandability`)
+**Tags**: `usable`
+**Standards**: none
+
+### Relations to Add
+
+- **clarity**: Clear presentation enhances legibility
+  - *Signal*: tag-overlap (usable), semantic-similarity
+  - *Confidence*: high
+
+- **readability**: Content mentions legibility and readability as synonyms for code
+  - *Signal*: semantic-similarity (content mentions readability)
+  - *Confidence*: high
+
+---
+
+## Quality: longevity
+
+**Current Relations**: 3 (`reliability, adaptability, modifiability`)
+**Tags**: `reliable, flexible`
+**Standards**: none
+
+### Relations to Add
+
+- **scalability**: Content explicitly discusses handling volume increases (growth/scalability)
+  - *Signal*: tag-overlap (flexible), semantic-similarity (content mentions capacity growth)
+  - *Confidence*: high
+
+- **durability**: Both qualities concern long-term system persistence
+  - *Signal*: tag-overlap (reliable), semantic-similarity
+  - *Confidence*: high
+
+- **evolvability**: Long-lived systems must evolve to remain useful
+  - *Signal*: tag-overlap (flexible), semantic-similarity
+  - *Confidence*: medium
+
+---
+
+## Quality: loose-coupling
+
+**Current Relations**: 3 (`coherence, modularity, cohesion`)
+**Tags**: `efficient, flexible, suitable`
+**Standards**: none
+
+### Relations to Add
+
+- **independence**: Loose coupling enables component independence
+  - *Signal*: tag-overlap (flexible, suitable), semantic-similarity
+  - *Confidence*: high
+
+- **maintainability**: Loosely coupled systems are easier to maintain
+  - *Signal*: tag-overlap (flexible), semantic-similarity
+  - *Confidence*: high
+
+- **testability**: Loose coupling improves testability through isolation
+  - *Signal*: tag-overlap (suitable), semantic-similarity
+  - *Confidence*: medium
+
+- **integrability**: Content mentions loose coupling as integration technique
+  - *Signal*: semantic-similarity (integrability content mentions loose coupling)
+  - *Confidence*: high
+
+---
+
+## Quality: maintainability
+
+**Current Relations**: 5 (`flexibility, adaptability, changeability, configurability, modularity`)
+**Tags**: `flexible`
+**Standards**: `iso25010, iso26262, misra-c, nist80053, iso5055, iec-62304, iec61508, hl7, cra, isoiec22989, do178c, iso42010, iso42030, iso12207, ieee2857`
+
+### Relations to Add
+
+- **analysability**: Analysability is a sub-characteristic of maintainability in ISO 25010
+  - *Signal*: tag-overlap (flexible), standard-overlap (15 standards), semantic-similarity
+  - *Confidence*: high
+
+- **modifiability**: Modifiability is core to maintainability
+  - *Signal*: tag-overlap (flexible), standard-overlap (14 standards), semantic-similarity
+  - *Confidence*: high
+
+- **testability**: Testable systems are more maintainable
+  - *Signal*: standard-overlap (14 standards), semantic-similarity
+  - *Confidence*: high
+
+---
+
+## Batch 7 Analysis Notes
+
+**Missing Files** (not in repository):
+1. **internationalization** (quality ID 91) - synonym i18n exists
+2. **legal-requirements** (quality ID 100)
+3. **localizability** (quality ID 102)
+
+**Key patterns identified**:
+1. **DevOps metrics completion**: lead-time-for-changes missing devops-metrics and DORA-metrics connections
+2. **Security monitoring under-connected**: intrusion-detection and intrusion-prevention each have only 1 relation
+3. **Maintainability sub-characteristics**: Missing ISO 25010 sub-characteristics (analysability, modifiability, testability)
+4. **Interoperability severely under-connected**: Only 2 relations despite 7 standard overlaps
+5. **Time-behaviour cluster**: latency, jitter, time-behaviour need stronger interconnections
+
+**Critical gaps identified**:
+- interoperability only has 2 relations despite 7 standards (missing integrability, modularity, standard-compliance)
+- intrusion-detection and intrusion-prevention isolated (only connect to each other, missing security connections)
+- lead-time-for-changes not connected to devops-metrics or DORA-metrics despite being explicitly one of the 4 metrics
+- maintainability missing its ISO 25010 sub-characteristics despite 15 standard overlaps
+- loose-coupling missing independence and maintainability connections
+
+**Qualities with most additions suggested**:
+- intrusion-detection: 3 additions (security monitoring)
+- intrusion-prevention: 3 additions (active security)
+- interoperability: 3 additions (7 standard overlaps)
+- loose-coupling: 4 additions (architectural quality)
+- maintainability: 3 additions (ISO 25010 structure)
+- longevity: 3 additions (long-term persistence)
 
 ---
