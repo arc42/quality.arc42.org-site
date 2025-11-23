@@ -1,0 +1,5963 @@
+{
+  "metadata": {
+    "generatedAt": "2025-11-23T08:20:23.063Z",
+    "totalFiles": 180,
+    "processedQualities": 180,
+    "skippedTemplates": 0
+  },
+  "statistics": {
+    "totalQualities": 180,
+    "withZeroRelations": 0,
+    "withMoreThan10Relations": 0,
+    "totalRelations": 716,
+    "tagFrequency": {
+      "secure": 23,
+      "usable": 65,
+      "reliable": 57,
+      "flexible": 37,
+      "suitable": 27,
+      "efficient": 39,
+      "operable": 39,
+      "safe": 15
+    },
+    "standardFrequency": {
+      "pcidss": 10,
+      "iec62443": 7,
+      "gdpr": 10,
+      "sox": 21,
+      "ieee2857": 21,
+      "iso26514": 7,
+      "iso25024": 17,
+      "iso25010": 50,
+      "iso27001": 11,
+      "iso42001": 6,
+      "aiuc1": 5,
+      "cra": 22,
+      "iso42030": 24,
+      "misra-c": 14,
+      "iso26262": 17,
+      "hl7": 16,
+      "iso15408": 11,
+      "do178c": 14,
+      "iso42010": 15,
+      "iso12207": 18,
+      "isoiec22989": 14,
+      "iso14756": 8,
+      "nist80053": 7,
+      "iso25022": 2,
+      "iec61508": 6,
+      "iso5055": 4,
+      "iec-62304": 7
+    },
+    "relatedFrequency": {
+      "security": 10,
+      "accessibility": 2,
+      "confidentiality": 6,
+      "privacy": 1,
+      "intrusion-detection": 3,
+      "intrusion-prevention": 3,
+      "usability": 41,
+      "inclusivity": 3,
+      "interaction-capability": 1,
+      "authenticity": 6,
+      "non-repudiation": 5,
+      "correctness": 10,
+      "preciseness": 2,
+      "changeability": 14,
+      "configurability": 14,
+      "maintainability": 16,
+      "flexibility": 27,
+      "scalability": 3,
+      "elasticity": 2,
+      "budget-constraint": 3,
+      "cost": 3,
+      "adaptability": 22,
+      "modifiability": 15,
+      "modularity": 13,
+      "testability": 15,
+      "functional-appropriateness": 1,
+      "ease-of-use": 7,
+      "learnability": 6,
+      "self-descriptiveness": 3,
+      "user-interface-aesthetics": 4,
+      "attractiveness": 6,
+      "operability": 20,
+      "user-error-protection": 10,
+      "user-engagement": 7,
+      "clarity": 6,
+      "user-experience": 7,
+      "user-assistance": 6,
+      "transparency": 5,
+      "traceability": 1,
+      "observability": 2,
+      "devops-metrics": 9,
+      "integrity": 9,
+      "independence": 1,
+      "self-containedness": 1,
+      "controllability": 9,
+      "composability": 4,
+      "high-availability": 2,
+      "robustness": 18,
+      "reliability": 16,
+      "fault-tolerance": 12,
+      "recoverability": 7,
+      "dependability": 6,
+      "faultlessness": 6,
+      "recovery-time": 2,
+      "portability": 4,
+      "compatibility": 6,
+      "fairness": 1,
+      "explainability": 3,
+      "accountability": 9,
+      "affordability": 3,
+      "efficiency": 16,
+      "resource-efficiency": 5,
+      "sustainability": 2,
+      "energy-efficiency": 2,
+      "analysability": 15,
+      "deployability": 10,
+      "coherence": 4,
+      "understandability": 12,
+      "legibility": 4,
+      "interoperability": 4,
+      "conciseness": 5,
+      "consistency": 7,
+      "readability": 2,
+      "backward-compatibility": 1,
+      "safety": 8,
+      "autonomy": 5,
+      "reusability": 1,
+      "versatility": 1,
+      "functionality": 10,
+      "functional-suitability": 6,
+      "functional-correctness": 2,
+      "information-security": 1,
+      "lead-time-for-changes": 3,
+      "data-quality": 1,
+      "accuracy": 4,
+      "transactionality": 1,
+      "precision": 1,
+      "data-integrity": 3,
+      "availability": 17,
+      "releasability": 3,
+      "intuitiveness": 1,
+      "deployment-frequency": 4,
+      "performance": 13,
+      "effectiveness": 1,
+      "carbon-emission-efficiency": 2,
+      "extensibility": 3,
+      "anticipated-workplace-environment": 1,
+      "resilience": 5,
+      "bias-mitigation": 1,
+      "fail-safe": 1,
+      "risk-identification": 1,
+      "hazard-warning": 1,
+      "graceful-degradation": 1,
+      "functional-completeness": 4,
+      "agility": 2,
+      "suitability": 2,
+      "vulnerability": 1,
+      "resistance": 2,
+      "cyber-security": 1,
+      "replaceability": 2,
+      "standard-compliance": 1,
+      "localizability": 2,
+      "internationalization": 2,
+      "co-existence": 1,
+      "simplicity": 1,
+      "latency": 1,
+      "predictability": 2,
+      "time-behaviour": 7,
+      "operational-constraint": 2,
+      "cohesion": 1,
+      "mean-time-to-recovery": 1,
+      "capacity": 1,
+      "resource-utilization": 2,
+      "expected-physical-environment": 1,
+      "speed": 7,
+      "customizability": 1,
+      "installability": 4,
+      "time-to-market": 1,
+      "verifiability": 1,
+      "code-readability": 1,
+      "interchangeability": 1,
+      "memory-usage": 1,
+      "response-time": 2,
+      "startup-time": 1,
+      "cycle-time": 2,
+      "compliance": 1,
+      "durability": 1,
+      "upgradeability": 1,
+      "securability": 1,
+      "immunity": 1
+    },
+    "averageRelationsPerQuality": 3.977777777777778,
+    "topTags": [
+      {
+        "tag": "usable",
+        "count": 65
+      },
+      {
+        "tag": "reliable",
+        "count": 57
+      },
+      {
+        "tag": "efficient",
+        "count": 39
+      },
+      {
+        "tag": "operable",
+        "count": 39
+      },
+      {
+        "tag": "flexible",
+        "count": 37
+      },
+      {
+        "tag": "suitable",
+        "count": 27
+      },
+      {
+        "tag": "secure",
+        "count": 23
+      },
+      {
+        "tag": "safe",
+        "count": 15
+      }
+    ],
+    "topStandards": [
+      {
+        "standard": "iso25010",
+        "count": 50
+      },
+      {
+        "standard": "iso42030",
+        "count": 24
+      },
+      {
+        "standard": "cra",
+        "count": 22
+      },
+      {
+        "standard": "sox",
+        "count": 21
+      },
+      {
+        "standard": "ieee2857",
+        "count": 21
+      },
+      {
+        "standard": "iso12207",
+        "count": 18
+      },
+      {
+        "standard": "iso25024",
+        "count": 17
+      },
+      {
+        "standard": "iso26262",
+        "count": 17
+      },
+      {
+        "standard": "hl7",
+        "count": 16
+      },
+      {
+        "standard": "iso42010",
+        "count": 15
+      },
+      {
+        "standard": "misra-c",
+        "count": 14
+      },
+      {
+        "standard": "do178c",
+        "count": 14
+      },
+      {
+        "standard": "isoiec22989",
+        "count": 14
+      },
+      {
+        "standard": "iso27001",
+        "count": 11
+      },
+      {
+        "standard": "iso15408",
+        "count": 11
+      }
+    ],
+    "mostReferencedQualities": [
+      {
+        "quality": "usability",
+        "count": 41
+      },
+      {
+        "quality": "flexibility",
+        "count": 27
+      },
+      {
+        "quality": "adaptability",
+        "count": 22
+      },
+      {
+        "quality": "operability",
+        "count": 20
+      },
+      {
+        "quality": "robustness",
+        "count": 18
+      },
+      {
+        "quality": "availability",
+        "count": 17
+      },
+      {
+        "quality": "maintainability",
+        "count": 16
+      },
+      {
+        "quality": "reliability",
+        "count": 16
+      },
+      {
+        "quality": "efficiency",
+        "count": 16
+      },
+      {
+        "quality": "modifiability",
+        "count": 15
+      },
+      {
+        "quality": "testability",
+        "count": 15
+      },
+      {
+        "quality": "analysability",
+        "count": 15
+      },
+      {
+        "quality": "changeability",
+        "count": 14
+      },
+      {
+        "quality": "configurability",
+        "count": 14
+      },
+      {
+        "quality": "modularity",
+        "count": 13
+      },
+      {
+        "quality": "performance",
+        "count": 13
+      },
+      {
+        "quality": "fault-tolerance",
+        "count": 12
+      },
+      {
+        "quality": "understandability",
+        "count": 12
+      },
+      {
+        "quality": "security",
+        "count": 10
+      },
+      {
+        "quality": "correctness",
+        "count": 10
+      }
+    ]
+  },
+  "qualitiesIndex": [
+    {
+      "id": "access-control",
+      "title": "Access Control",
+      "tags": [
+        "secure"
+      ],
+      "related": [
+        "security",
+        "accessibility",
+        "confidentiality",
+        "privacy",
+        "intrusion-detection",
+        "intrusion-prevention"
+      ],
+      "standards": [
+        "pcidss",
+        "iec62443",
+        "gdpr",
+        "sox",
+        "ieee2857"
+      ],
+      "relatedCount": 6,
+      "tagsCount": 1,
+      "standardsCount": 5,
+      "contentPreview": "Definition: >... who is authorized to access to the product (both functionality and data), under wha...",
+      "filePath": "_qualities/A/access-control.md"
+    },
+    {
+      "id": "accessibility",
+      "title": "Accessibility",
+      "tags": [
+        "usable"
+      ],
+      "related": [
+        "usability",
+        "inclusivity",
+        "interaction-capability"
+      ],
+      "standards": [
+        "iso26514",
+        "iso25024",
+        "ieee2857"
+      ],
+      "relatedCount": 3,
+      "tagsCount": 1,
+      "standardsCount": 3,
+      "contentPreview": "See also [#usable](/tag-usable). There is a [W3C standard on this topic](https://www.w3.org/TR/WCAG2...",
+      "filePath": "_qualities/A/accessibility.md"
+    },
+    {
+      "id": "accountability",
+      "title": "Accountability",
+      "tags": [
+        "secure"
+      ],
+      "related": [
+        "authenticity",
+        "security",
+        "non-repudiation"
+      ],
+      "standards": [
+        "iso25010",
+        "iso27001",
+        "pcidss",
+        "iso42001",
+        "aiuc1",
+        "cra",
+        "gdpr",
+        "iso42030",
+        "sox",
+        "ieee2857"
+      ],
+      "relatedCount": 3,
+      "tagsCount": 1,
+      "standardsCount": 10,
+      "contentPreview": "See [#secure](/tag-secure) ### Definitions: >Capability of a product to enable actions of an entity ...",
+      "filePath": "_qualities/A/accountability.md"
+    },
+    {
+      "id": "accuracy",
+      "title": "Accuracy",
+      "tags": [
+        "reliable",
+        "usable"
+      ],
+      "related": [
+        "correctness",
+        "preciseness"
+      ],
+      "standards": [
+        "iso25024",
+        "sox"
+      ],
+      "relatedCount": 2,
+      "tagsCount": 2,
+      "standardsCount": 2,
+      "contentPreview": ">The degree of conformity of a measured or calculated value to the true value, typically based on a ...",
+      "filePath": "_qualities/A/accuracy.md"
+    },
+    {
+      "id": "adaptability",
+      "title": "Adaptability",
+      "tags": [
+        "flexible",
+        "usable"
+      ],
+      "related": [
+        "changeability",
+        "configurability",
+        "maintainability",
+        "flexibility",
+        "usability",
+        "scalability",
+        "elasticity"
+      ],
+      "standards": [
+        "iso25010"
+      ],
+      "relatedCount": 7,
+      "tagsCount": 2,
+      "standardsCount": 1,
+      "contentPreview": ">Capability of a product to be effectively and efficiently adapted for or transferred to different h...",
+      "filePath": "_qualities/A/adaptability.md"
+    },
+    {
+      "id": "affordability",
+      "title": "Affordability",
+      "tags": [
+        "suitable",
+        "usable",
+        "efficient"
+      ],
+      "related": [
+        "budget-constraint",
+        "cost",
+        "changeability"
+      ],
+      "standards": [],
+      "relatedCount": 3,
+      "tagsCount": 3,
+      "standardsCount": 0,
+      "contentPreview": "Definition: >\"the state of being cheap enough for people to be able to buy.\" > >[Cambridge dictionar...",
+      "filePath": "_qualities/A/affordability.md"
+    },
+    {
+      "id": "agility",
+      "title": "Agility",
+      "tags": [
+        "flexible"
+      ],
+      "related": [
+        "flexibility",
+        "changeability",
+        "adaptability",
+        "modifiability",
+        "modularity"
+      ],
+      "standards": [],
+      "relatedCount": 5,
+      "tagsCount": 1,
+      "standardsCount": 0,
+      "contentPreview": "See especially [modifiability](/qualities/modifiability) and [changeability](/qualities/changeabilit...",
+      "filePath": "_qualities/A/agility.md"
+    },
+    {
+      "id": "analysability",
+      "title": "Analysability",
+      "tags": [
+        "reliable",
+        "flexible"
+      ],
+      "related": [
+        "flexibility",
+        "maintainability",
+        "modifiability",
+        "testability"
+      ],
+      "standards": [
+        "iso25010",
+        "misra-c"
+      ],
+      "relatedCount": 4,
+      "tagsCount": 2,
+      "standardsCount": 2,
+      "contentPreview": ">Capability of a product to be effectively and efficiently assessed regarding the impact of an inten...",
+      "filePath": "_qualities/A/analysability.md"
+    },
+    {
+      "id": "anticipated-workplace-environment",
+      "title": "Anticipated Workplace Environment",
+      "tags": [
+        "usable"
+      ],
+      "related": [
+        "functional-appropriateness"
+      ],
+      "standards": [],
+      "relatedCount": 1,
+      "tagsCount": 1,
+      "standardsCount": 0,
+      "contentPreview": "Definition: >This describes the workplace in which the users are to work and use the product. >It sh...",
+      "filePath": "_qualities/A/anticipated-workplace-environment.md"
+    },
+    {
+      "id": "appearance",
+      "title": "Appearance",
+      "tags": [
+        "usable"
+      ],
+      "related": [
+        "ease-of-use",
+        "learnability",
+        "self-descriptiveness",
+        "user-interface-aesthetics",
+        "attractiveness"
+      ],
+      "standards": [],
+      "relatedCount": 5,
+      "tagsCount": 1,
+      "standardsCount": 0,
+      "contentPreview": "### Definitions (related to the _spirit_ of the product/system): >Your client may have made particul...",
+      "filePath": "_qualities/A/appearance.md"
+    },
+    {
+      "id": "appropriateness-recognizability",
+      "title": "Appropriateness recognizability",
+      "tags": [
+        "usable",
+        "operable"
+      ],
+      "related": [
+        "usability",
+        "attractiveness",
+        "operability",
+        "user-error-protection",
+        "user-engagement"
+      ],
+      "standards": [
+        "iso25010"
+      ],
+      "relatedCount": 5,
+      "tagsCount": 2,
+      "standardsCount": 1,
+      "contentPreview": "See also [#usable](/tag-usable). Definitions: >Capability of a product to be recognized by users as ...",
+      "filePath": "_qualities/A/appropriateness-recognizability.md"
+    },
+    {
+      "id": "attractiveness",
+      "title": "Attractiveness",
+      "tags": [
+        "usable"
+      ],
+      "related": [
+        "usability",
+        "clarity",
+        "user-interface-aesthetics",
+        "user-experience",
+        "user-assistance"
+      ],
+      "standards": [],
+      "relatedCount": 5,
+      "tagsCount": 1,
+      "standardsCount": 0,
+      "contentPreview": ">Attractiveness summarizes properties that make software appealing to users and stakeholders. Attrac...",
+      "filePath": "_qualities/A/attractiveness.md"
+    },
+    {
+      "id": "auditability",
+      "title": "Auditability",
+      "tags": [
+        "operable"
+      ],
+      "related": [
+        "transparency",
+        "traceability",
+        "operability",
+        "observability",
+        "devops-metrics"
+      ],
+      "standards": [
+        "iso26262",
+        "misra-c",
+        "hl7",
+        "iso15408",
+        "cra",
+        "iec62443",
+        "do178c",
+        "iso42010",
+        "gdpr",
+        "iso42030",
+        "sox",
+        "ieee2857"
+      ],
+      "relatedCount": 5,
+      "tagsCount": 1,
+      "standardsCount": 12,
+      "contentPreview": "> ... what the product has to do (usually retain records) to permit the required audit checks. > > [...",
+      "filePath": "_qualities/A/auditability.md"
+    },
+    {
+      "id": "authenticity",
+      "title": "Authenticity",
+      "tags": [
+        "secure"
+      ],
+      "related": [
+        "integrity",
+        "security",
+        "non-repudiation"
+      ],
+      "standards": [
+        "iso25010",
+        "iso27001",
+        "pcidss",
+        "iso15408",
+        "cra",
+        "gdpr",
+        "sox",
+        "ieee2857"
+      ],
+      "relatedCount": 3,
+      "tagsCount": 1,
+      "standardsCount": 8,
+      "contentPreview": "See [#secure](/tag-secure) ### Definitions: >Capability of a product to prove that the identity of a...",
+      "filePath": "_qualities/A/authenticity.md"
+    },
+    {
+      "id": "autonomy",
+      "title": "Autonomy",
+      "tags": [
+        "operable",
+        "suitable"
+      ],
+      "related": [
+        "independence",
+        "self-containedness",
+        "controllability",
+        "composability",
+        "flexibility"
+      ],
+      "standards": [],
+      "relatedCount": 5,
+      "tagsCount": 2,
+      "standardsCount": 0,
+      "contentPreview": "Things that work independently from others. > Autonomy is the ability to make your own decisions abo...",
+      "filePath": "_qualities/A/autonomy.md"
+    },
+    {
+      "id": "availability",
+      "title": "Availability",
+      "tags": [
+        "reliable",
+        "usable"
+      ],
+      "related": [
+        "high-availability",
+        "robustness",
+        "reliability",
+        "usability",
+        "fault-tolerance",
+        "recoverability",
+        "dependability",
+        "faultlessness",
+        "recovery-time"
+      ],
+      "standards": [
+        "iso25010",
+        "iso27001",
+        "iso26262",
+        "pcidss",
+        "hl7",
+        "iso15408",
+        "cra",
+        "iec62443",
+        "iso25024",
+        "iso12207",
+        "sox"
+      ],
+      "relatedCount": 9,
+      "tagsCount": 2,
+      "standardsCount": 11,
+      "contentPreview": ">Capability of a product to be accessible and operational when required for use. > >[ISO-25010:2023]...",
+      "filePath": "_qualities/A/availability.md"
+    },
+    {
+      "id": "backward-compatibility",
+      "title": "Backward compatibility",
+      "tags": [
+        "usable",
+        "operable",
+        "reliable"
+      ],
+      "related": [
+        "portability",
+        "flexibility",
+        "compatibility"
+      ],
+      "standards": [],
+      "relatedCount": 3,
+      "tagsCount": 3,
+      "standardsCount": 0,
+      "contentPreview": "See [Compatibility](/qualities/compatibility). Definitions: >Backward compatibility is a property of...",
+      "filePath": "_qualities/B/backward-compatibility.md"
+    },
+    {
+      "id": "bias-mitigation",
+      "title": "Bias Mitigation",
+      "tags": [
+        "reliable",
+        "safe",
+        "suitable"
+      ],
+      "related": [
+        "fairness",
+        "explainability",
+        "transparency",
+        "accountability"
+      ],
+      "standards": [
+        "isoiec22989"
+      ],
+      "relatedCount": 4,
+      "tagsCount": 3,
+      "standardsCount": 1,
+      "contentPreview": "## Definitions >Bias mitigation refers to the systematic identification and reduction of unfair prej...",
+      "filePath": "_qualities/B/bias-mitigation.md"
+    },
+    {
+      "id": "budget-constraint",
+      "title": "Budget constraint",
+      "tags": [
+        "suitable",
+        "efficient"
+      ],
+      "related": [
+        "affordability",
+        "cost"
+      ],
+      "standards": [],
+      "relatedCount": 2,
+      "tagsCount": 2,
+      "standardsCount": 0,
+      "contentPreview": ">... the budget for the project, expressed in money or available resources. > >[Volere+2012, p. 22](...",
+      "filePath": "_qualities/B/budget-constraint.md"
+    },
+    {
+      "id": "capacity",
+      "title": "Capacity",
+      "tags": [
+        "efficient",
+        "reliable"
+      ],
+      "related": [
+        "efficiency",
+        "resource-efficiency"
+      ],
+      "standards": [
+        "iso25010",
+        "iso14756"
+      ],
+      "relatedCount": 2,
+      "tagsCount": 2,
+      "standardsCount": 2,
+      "contentPreview": "Definitions: >System meets requirements for the maximum limits of system parameter. > >(modified fro...",
+      "filePath": "_qualities/C/capacity.md"
+    },
+    {
+      "id": "carbon-emission-efficiency",
+      "title": "Carbon Emission Efficiency",
+      "tags": [
+        "efficient"
+      ],
+      "related": [
+        "sustainability",
+        "energy-efficiency"
+      ],
+      "standards": [],
+      "relatedCount": 2,
+      "tagsCount": 1,
+      "standardsCount": 0,
+      "contentPreview": ">... refers to the economic benefits generated by production activities that produce carbon emission...",
+      "filePath": "_qualities/C/carbon-emission-efficiency.md"
+    },
+    {
+      "id": "change-failure-rate",
+      "title": "Change failure rate",
+      "tags": [
+        "operable"
+      ],
+      "related": [
+        "controllability",
+        "operability",
+        "testability",
+        "analysability",
+        "deployability",
+        "devops-metrics"
+      ],
+      "standards": [],
+      "relatedCount": 6,
+      "tagsCount": 1,
+      "standardsCount": 0,
+      "contentPreview": "See also [deployability](/qualities/deployability) Belongs to the [key devops metrics](/qualities/de...",
+      "filePath": "_qualities/C/change-failure-rate.md"
+    },
+    {
+      "id": "changeability",
+      "title": "Changeability",
+      "tags": [
+        "flexible"
+      ],
+      "related": [
+        "flexibility",
+        "adaptability",
+        "modifiability",
+        "configurability",
+        "modularity"
+      ],
+      "standards": [],
+      "relatedCount": 5,
+      "tagsCount": 1,
+      "standardsCount": 0,
+      "contentPreview": "See especially [modifiability](/qualities/modifiability) Synonym: Mutability >One common theme poppi...",
+      "filePath": "_qualities/C/changeability.md"
+    },
+    {
+      "id": "clarity",
+      "title": "Clarity",
+      "tags": [
+        "usable",
+        "reliable"
+      ],
+      "related": [
+        "coherence",
+        "transparency",
+        "understandability",
+        "legibility"
+      ],
+      "standards": [
+        "iso26514",
+        "iso42010",
+        "iso42030",
+        "iso12207"
+      ],
+      "relatedCount": 4,
+      "tagsCount": 2,
+      "standardsCount": 4,
+      "contentPreview": ">The quality of being coherent and intelligible. > >Oxford Dictionary Free from ambiguity....",
+      "filePath": "_qualities/C/clarity.md"
+    },
+    {
+      "id": "co-existence",
+      "title": "Co-existence",
+      "tags": [
+        "flexible"
+      ],
+      "related": [
+        "compatibility",
+        "interoperability"
+      ],
+      "standards": [
+        "iso25010"
+      ],
+      "relatedCount": 2,
+      "tagsCount": 1,
+      "standardsCount": 1,
+      "contentPreview": "Definitions: >Capability of a product to perform its required functions efficiently while sharing a ...",
+      "filePath": "_qualities/C/co-existence.md"
+    },
+    {
+      "id": "code-complexity",
+      "title": "Code Complexity",
+      "tags": [
+        "efficient"
+      ],
+      "related": [
+        "understandability",
+        "legibility",
+        "clarity",
+        "conciseness",
+        "consistency",
+        "readability"
+      ],
+      "standards": [],
+      "relatedCount": 6,
+      "tagsCount": 1,
+      "standardsCount": 0,
+      "contentPreview": "Code complexity refers to the level of intricacy, difficulty, or sophistication in a software progra...",
+      "filePath": "_qualities/C/code-complexity.md"
+    },
+    {
+      "id": "code-readability",
+      "title": "Code Readability",
+      "tags": [
+        "usable",
+        "efficient"
+      ],
+      "related": [
+        "understandability",
+        "legibility",
+        "clarity",
+        "conciseness",
+        "consistency",
+        "readability"
+      ],
+      "standards": [],
+      "relatedCount": 6,
+      "tagsCount": 2,
+      "standardsCount": 0,
+      "contentPreview": ">Readability, to me, means that the code is easy to follow, logically. > >* Standards of indentation...",
+      "filePath": "_qualities/C/code-readability.md"
+    },
+    {
+      "id": "coherence",
+      "title": "Coherence",
+      "tags": [
+        "usable",
+        "efficient"
+      ],
+      "related": [
+        "consistency"
+      ],
+      "standards": [
+        "iso42010",
+        "iso42030",
+        "iso12207"
+      ],
+      "relatedCount": 1,
+      "tagsCount": 2,
+      "standardsCount": 3,
+      "contentPreview": ">Logically or aesthetically ordered or integrated > >[Merriam-Webster](https://www.merriam-webster.c...",
+      "filePath": "_qualities/C/coherence.md"
+    },
+    {
+      "id": "cohesion",
+      "title": "Cohesion",
+      "tags": [
+        "efficient",
+        "flexible",
+        "suitable"
+      ],
+      "related": [
+        "coherence",
+        "modularity"
+      ],
+      "standards": [],
+      "relatedCount": 2,
+      "tagsCount": 3,
+      "standardsCount": 0,
+      "contentPreview": ">In computer programming, cohesion refers to the degree to which the elements inside a module belong...",
+      "filePath": "_qualities/C/cohesion.md"
+    },
+    {
+      "id": "communicability",
+      "title": "Communicability",
+      "tags": [
+        "usable"
+      ],
+      "related": [
+        "usability",
+        "learnability",
+        "understandability",
+        "user-error-protection",
+        "ease-of-use"
+      ],
+      "standards": [
+        "iso42010",
+        "iso42030"
+      ],
+      "relatedCount": 5,
+      "tagsCount": 1,
+      "standardsCount": 2,
+      "contentPreview": "### Definitions: > Communicability in software systems refers to the clarity and effectiveness with ...",
+      "filePath": "_qualities/C/communicability.md"
+    },
+    {
+      "id": "compatibility",
+      "title": "Compatibility",
+      "tags": [
+        "usable",
+        "operable",
+        "reliable"
+      ],
+      "related": [
+        "portability",
+        "flexibility",
+        "backward-compatibility"
+      ],
+      "standards": [
+        "iso25010",
+        "hl7",
+        "iso42030",
+        "iso12207"
+      ],
+      "relatedCount": 3,
+      "tagsCount": 3,
+      "standardsCount": 4,
+      "contentPreview": "Definitions: >Capability of a product to exchange information with other products, and/or to perform...",
+      "filePath": "_qualities/C/compatibility.md"
+    },
+    {
+      "id": "compliance",
+      "title": "Compliance",
+      "tags": [
+        "secure",
+        "safe",
+        "usable",
+        "reliable",
+        "efficient",
+        "suitable"
+      ],
+      "related": [
+        "security",
+        "safety",
+        "usability",
+        "reliability",
+        "efficiency",
+        "testability"
+      ],
+      "standards": [
+        "iso27001",
+        "iso26262",
+        "pcidss",
+        "hl7",
+        "iso15408",
+        "cra",
+        "iso25024",
+        "do178c",
+        "sox",
+        "ieee2857"
+      ],
+      "relatedCount": 6,
+      "tagsCount": 6,
+      "standardsCount": 10,
+      "contentPreview": "How well does the system or product obeys the rules of a given standard. Some examples for standards...",
+      "filePath": "_qualities/C/compliance.md"
+    },
+    {
+      "id": "composability",
+      "title": "Composability",
+      "tags": [
+        "flexible"
+      ],
+      "related": [
+        "modularity",
+        "autonomy",
+        "reusability",
+        "interoperability"
+      ],
+      "standards": [],
+      "relatedCount": 4,
+      "tagsCount": 1,
+      "standardsCount": 0,
+      "contentPreview": "Definition: >Composability is a system design principle that deals with the inter-relationships of c...",
+      "filePath": "_qualities/C/composability.md"
+    },
+    {
+      "id": "conciseness",
+      "title": "Conciseness",
+      "tags": [
+        "usable",
+        "efficient"
+      ],
+      "related": [
+        "understandability"
+      ],
+      "standards": [
+        "iso26514",
+        "iso42010"
+      ],
+      "relatedCount": 1,
+      "tagsCount": 2,
+      "standardsCount": 2,
+      "contentPreview": ">Giving a lot of information clearly and in a few words; brief but comprehensive. > >Oxford Dictiona...",
+      "filePath": "_qualities/C/conciseness.md"
+    },
+    {
+      "id": "confidentiality",
+      "title": "Confidentiality",
+      "tags": [
+        "secure"
+      ],
+      "related": [
+        "integrity",
+        "accountability"
+      ],
+      "standards": [
+        "iso25010",
+        "iso27001",
+        "pcidss",
+        "hl7",
+        "iso15408",
+        "cra",
+        "iec62443",
+        "iso25024",
+        "gdpr",
+        "sox",
+        "ieee2857"
+      ],
+      "relatedCount": 2,
+      "tagsCount": 1,
+      "standardsCount": 11,
+      "contentPreview": "See [#secure](/tag-secure) ### Definitions: >Capability of a product to ensure that data are accessi...",
+      "filePath": "_qualities/C/confidentiality.md"
+    },
+    {
+      "id": "configurability",
+      "title": "Configurability",
+      "tags": [
+        "flexible",
+        "usable"
+      ],
+      "related": [
+        "flexibility",
+        "changeability",
+        "adaptability",
+        "modifiability",
+        "versatility"
+      ],
+      "standards": [
+        "iso26262",
+        "ieee2857"
+      ],
+      "relatedCount": 5,
+      "tagsCount": 2,
+      "standardsCount": 2,
+      "contentPreview": "# configurable, Configurability Configurability refers to the ability of a system, software applicat...",
+      "filePath": "_qualities/C/configurability.md"
+    },
+    {
+      "id": "consistency",
+      "title": "Consistency",
+      "tags": [
+        "usable",
+        "efficient"
+      ],
+      "related": [
+        "understandability",
+        "coherence"
+      ],
+      "standards": [
+        "iso26514",
+        "iso25024",
+        "iso42010",
+        "iso42030",
+        "iso12207",
+        "sox"
+      ],
+      "relatedCount": 2,
+      "tagsCount": 2,
+      "standardsCount": 6,
+      "contentPreview": ">Free from variation or contradiction > >[Merriam-Webster](https://www.merriam-webster.com/dictionar...",
+      "filePath": "_qualities/C/consistency.md"
+    },
+    {
+      "id": "controllability",
+      "title": "Controllability",
+      "tags": [
+        "usable",
+        "operable"
+      ],
+      "related": [
+        "usability",
+        "autonomy"
+      ],
+      "standards": [
+        "ieee2857"
+      ],
+      "relatedCount": 2,
+      "tagsCount": 2,
+      "standardsCount": 1,
+      "contentPreview": "### In context of Usability > The interface will allow the user to perceive that they are in control...",
+      "filePath": "_qualities/C/controllability.md"
+    },
+    {
+      "id": "convenience",
+      "title": "Convenience",
+      "tags": [
+        "usable"
+      ],
+      "related": [
+        "usability",
+        "ease-of-use",
+        "user-assistance"
+      ],
+      "standards": [],
+      "relatedCount": 3,
+      "tagsCount": 1,
+      "standardsCount": 0,
+      "contentPreview": ">... things the product shall do to simplify tasks, and to expedite and make the user/customer’s wor...",
+      "filePath": "_qualities/C/convenience.md"
+    },
+    {
+      "id": "correctness",
+      "title": "Correctness",
+      "tags": [
+        "usable",
+        "reliable",
+        "suitable"
+      ],
+      "related": [
+        "usability",
+        "functionality",
+        "functional-suitability",
+        "functional-correctness"
+      ],
+      "standards": [
+        "iso26514",
+        "iso12207",
+        "sox"
+      ],
+      "relatedCount": 4,
+      "tagsCount": 3,
+      "standardsCount": 3,
+      "contentPreview": "See also [functional-correctness](/qualities/functional-correctness) Definitions: >Provide accurate ...",
+      "filePath": "_qualities/C/correctness.md"
+    },
+    {
+      "id": "cost",
+      "title": "Cost",
+      "tags": [
+        "suitable",
+        "efficient"
+      ],
+      "related": [
+        "budget-constraint",
+        "affordability"
+      ],
+      "standards": [],
+      "relatedCount": 2,
+      "tagsCount": 2,
+      "standardsCount": 0,
+      "contentPreview": ">...the value of money that has been used up to produce something or deliver a service, and hence is...",
+      "filePath": "_qualities/C/cost.md"
+    },
+    {
+      "id": "credibility",
+      "title": "Credibility",
+      "tags": [
+        "reliable"
+      ],
+      "related": [
+        "accountability",
+        "usability",
+        "user-engagement"
+      ],
+      "standards": [
+        "iso25024"
+      ],
+      "relatedCount": 3,
+      "tagsCount": 1,
+      "standardsCount": 1,
+      "contentPreview": ">Credibility comprises the objective and subjective components of the believability of a source or m...",
+      "filePath": "_qualities/C/credibility.md"
+    },
+    {
+      "id": "customizability",
+      "title": "Customizability",
+      "tags": [
+        "flexible",
+        "usable"
+      ],
+      "related": [
+        "configurability",
+        "flexibility",
+        "adaptability",
+        "changeability"
+      ],
+      "standards": [],
+      "relatedCount": 4,
+      "tagsCount": 2,
+      "standardsCount": 0,
+      "contentPreview": "Change aspects or properties of a system based upon personal preferences. >The ability of software t...",
+      "filePath": "_qualities/C/customizability.md"
+    },
+    {
+      "id": "cyber-security",
+      "title": "Cyber Security",
+      "tags": [
+        "secure"
+      ],
+      "related": [
+        "security",
+        "information-security",
+        "authenticity",
+        "confidentiality"
+      ],
+      "standards": [],
+      "relatedCount": 4,
+      "tagsCount": 1,
+      "standardsCount": 0,
+      "contentPreview": "See also [information security](/qualities/information-security) and all other qualities tagged with...",
+      "filePath": "_qualities/C/cyber-security.md"
+    },
+    {
+      "id": "cycle-time",
+      "title": "Cycle time",
+      "tags": [
+        "operable",
+        "suitable",
+        "efficient"
+      ],
+      "related": [
+        "controllability",
+        "testability",
+        "deployability",
+        "devops-metrics",
+        "lead-time-for-changes"
+      ],
+      "standards": [],
+      "relatedCount": 5,
+      "tagsCount": 3,
+      "standardsCount": 0,
+      "contentPreview": "See also [deployability](/qualities/deployability) Belongs to the [key devops metrics](/qualities/de...",
+      "filePath": "_qualities/C/cycle-time.md"
+    },
+    {
+      "id": "data-integrity",
+      "title": "Data Integrity",
+      "tags": [
+        "reliable",
+        "secure"
+      ],
+      "related": [
+        "integrity",
+        "data-quality",
+        "accuracy",
+        "correctness",
+        "consistency",
+        "authenticity",
+        "non-repudiation",
+        "transactionality"
+      ],
+      "standards": [
+        "iso27001",
+        "iso25024",
+        "pcidss",
+        "hl7",
+        "nist80053",
+        "iso15408",
+        "gdpr",
+        "sox",
+        "ieee2857"
+      ],
+      "relatedCount": 8,
+      "tagsCount": 2,
+      "standardsCount": 9,
+      "contentPreview": "See also [#reliable](/tag-reliable) and [#secure](/tag-secure). ## Definitions >Data integrity refer...",
+      "filePath": "_qualities/D/data-integrity.md"
+    },
+    {
+      "id": "data-quality",
+      "title": "Data Quality",
+      "tags": [
+        "reliable",
+        "suitable",
+        "usable"
+      ],
+      "related": [
+        "accuracy",
+        "correctness",
+        "precision",
+        "integrity",
+        "consistency",
+        "data-integrity"
+      ],
+      "standards": [
+        "iso42001",
+        "hl7",
+        "isoiec22989",
+        "sox"
+      ],
+      "relatedCount": 6,
+      "tagsCount": 3,
+      "standardsCount": 4,
+      "contentPreview": "## Definitions >Data quality refers to the state of qualitative or quantitative pieces of informatio...",
+      "filePath": "_qualities/D/data-quality.md"
+    },
+    {
+      "id": "debuggability",
+      "title": "Debuggability",
+      "tags": [
+        "operable",
+        "flexible"
+      ],
+      "related": [
+        "analysability",
+        "maintainability",
+        "operability",
+        "observability",
+        "testability",
+        "transparency"
+      ],
+      "standards": [],
+      "relatedCount": 6,
+      "tagsCount": 2,
+      "standardsCount": 0,
+      "contentPreview": "> Ability of a system to make defects and undesired behaviors easy to diagnose and localize in devel...",
+      "filePath": "_qualities/D/debuggability.md"
+    },
+    {
+      "id": "dependability",
+      "title": "Dependability",
+      "tags": [
+        "reliable"
+      ],
+      "related": [
+        "availability",
+        "robustness",
+        "fault-tolerance",
+        "reliability"
+      ],
+      "standards": [
+        "iso26262",
+        "cra"
+      ],
+      "relatedCount": 4,
+      "tagsCount": 1,
+      "standardsCount": 2,
+      "contentPreview": "See [#reliable](/tag-reliable) Definitions: >Ability to perform as and when required. > >[IEC 60050-...",
+      "filePath": "_qualities/D/dependability.md"
+    },
+    {
+      "id": "deployability",
+      "title": "Deployability",
+      "tags": [
+        "operable",
+        "suitable"
+      ],
+      "related": [
+        "releasability",
+        "operability",
+        "testability",
+        "analysability",
+        "devops-metrics"
+      ],
+      "standards": [
+        "iso12207"
+      ],
+      "relatedCount": 5,
+      "tagsCount": 2,
+      "standardsCount": 1,
+      "contentPreview": "See also [#operable](/tag-operable). >Deployability refers to a property of software indicating that...",
+      "filePath": "_qualities/D/deployability.md"
+    },
+    {
+      "id": "deployment-frequency",
+      "title": "Deployment frequency",
+      "tags": [
+        "operable",
+        "suitable"
+      ],
+      "related": [
+        "controllability",
+        "operability",
+        "testability",
+        "analysability",
+        "deployability",
+        "devops-metrics",
+        "releasability"
+      ],
+      "standards": [],
+      "relatedCount": 7,
+      "tagsCount": 2,
+      "standardsCount": 0,
+      "contentPreview": "See also [deployability](/qualities/deployability) Belongs to the [key devops metrics](/qualities/de...",
+      "filePath": "_qualities/D/deployment-frequency.md"
+    },
+    {
+      "id": "devops-metrics",
+      "title": "Devops-Metrics",
+      "tags": [
+        "operable"
+      ],
+      "related": [
+        "controllability",
+        "operability",
+        "testability",
+        "analysability",
+        "deployability"
+      ],
+      "standards": [],
+      "relatedCount": 5,
+      "tagsCount": 1,
+      "standardsCount": 0,
+      "contentPreview": "See also [deployability](/qualities/deployability) [Four key devops metrics](https://www.atlassian.c...",
+      "filePath": "_qualities/D/devops-metrics.md"
+    },
+    {
+      "id": "discoverability",
+      "title": "Discoverability",
+      "tags": [
+        "usable"
+      ],
+      "related": [
+        "learnability",
+        "usability",
+        "intuitiveness"
+      ],
+      "standards": [],
+      "relatedCount": 3,
+      "tagsCount": 1,
+      "standardsCount": 0,
+      "contentPreview": "> The ease with which users can find new or unknown features, content, and functionalities within a ...",
+      "filePath": "_qualities/D/discoverability.md"
+    },
+    {
+      "id": "DORA-metrics",
+      "title": "DORA Metrics",
+      "tags": [
+        "operable"
+      ],
+      "related": [
+        "devops-metrics",
+        "deployability",
+        "deployment-frequency",
+        "operability"
+      ],
+      "standards": [],
+      "relatedCount": 4,
+      "tagsCount": 1,
+      "standardsCount": 0,
+      "contentPreview": "DORA stands for [DevOps Research and Assessment](https://cloud.google.com/blog/products/devops-sre/t...",
+      "filePath": "_qualities/D/DORA.md"
+    },
+    {
+      "id": "durability",
+      "title": "Durability",
+      "tags": [
+        "reliable"
+      ],
+      "related": [
+        "reliability",
+        "availability",
+        "robustness",
+        "data-integrity"
+      ],
+      "standards": [],
+      "relatedCount": 4,
+      "tagsCount": 1,
+      "standardsCount": 0,
+      "contentPreview": "> The ability of a software system to remain useful and meet user needs over a long period, particul...",
+      "filePath": "_qualities/D/durability.md"
+    },
+    {
+      "id": "ease-of-use",
+      "title": "Ease of Use",
+      "tags": [
+        "operable",
+        "usable"
+      ],
+      "related": [
+        "attractiveness",
+        "operability",
+        "user-error-protection",
+        "user-engagement",
+        "user-experience",
+        "user-interface-aesthetics",
+        "user-assistance",
+        "usability"
+      ],
+      "standards": [],
+      "relatedCount": 8,
+      "tagsCount": 2,
+      "standardsCount": 0,
+      "contentPreview": ">Ease of use is a basic concept that describes how easily users can use a product. >Design teams def...",
+      "filePath": "_qualities/E/ease-of-use.md"
+    },
+    {
+      "id": "effectiveness",
+      "title": "Effectiveness",
+      "tags": [
+        "efficient"
+      ],
+      "related": [
+        "efficiency"
+      ],
+      "standards": [
+        "iso25022"
+      ],
+      "relatedCount": 1,
+      "tagsCount": 1,
+      "standardsCount": 1,
+      "contentPreview": ">Effectiveness is the capability of producing a desired result or the ability to produce desired out...",
+      "filePath": "_qualities/E/effectiveness.md"
+    },
+    {
+      "id": "efficiency",
+      "title": "Efficiency",
+      "tags": [
+        "efficient"
+      ],
+      "related": [
+        "performance",
+        "effectiveness"
+      ],
+      "standards": [
+        "misra-c",
+        "iso25022"
+      ],
+      "relatedCount": 2,
+      "tagsCount": 1,
+      "standardsCount": 2,
+      "contentPreview": "See [tag efficient](/tag-efficient) ### Definitions >capable of producing desired results with littl...",
+      "filePath": "_qualities/E/efficiency.md"
+    },
+    {
+      "id": "elasticity",
+      "title": "Elasticity",
+      "tags": [
+        "flexible"
+      ],
+      "related": [
+        "adaptability",
+        "scalability",
+        "flexibility"
+      ],
+      "standards": [],
+      "relatedCount": 3,
+      "tagsCount": 1,
+      "standardsCount": 0,
+      "contentPreview": ">In distributed system and system resource, elasticity is defined as \"the degree to which a system i...",
+      "filePath": "_qualities/E/elasticity.md"
+    },
+    {
+      "id": "energy-efficiency",
+      "title": "Energy Efficiency",
+      "tags": [
+        "efficient"
+      ],
+      "related": [
+        "carbon-emission-efficiency",
+        "sustainability"
+      ],
+      "standards": [],
+      "relatedCount": 2,
+      "tagsCount": 1,
+      "standardsCount": 0,
+      "contentPreview": "Source: This explanation has been created with help from [ChatGPT](https://chat.openai.com) by using...",
+      "filePath": "_qualities/E/energy-efficiency.md"
+    },
+    {
+      "id": "evolvability",
+      "title": "Evolvability",
+      "tags": [
+        "flexible"
+      ],
+      "related": [
+        "adaptability",
+        "maintainability",
+        "extensibility",
+        "scalability",
+        "modularity"
+      ],
+      "standards": [],
+      "relatedCount": 5,
+      "tagsCount": 1,
+      "standardsCount": 0,
+      "contentPreview": "> The ability of a system to adapt to changes in its environment, requirements, and implementation t...",
+      "filePath": "_qualities/E/evolvability.md"
+    },
+    {
+      "id": "expected-physical-environment",
+      "title": "Expected physical environment",
+      "tags": [
+        "suitable",
+        "operable"
+      ],
+      "related": [
+        "anticipated-workplace-environment"
+      ],
+      "standards": [],
+      "relatedCount": 1,
+      "tagsCount": 2,
+      "standardsCount": 0,
+      "contentPreview": ">... specifies the physical environment in which the product will operate. > >[Volere+2012, p. 56](/...",
+      "filePath": "_qualities/E/expected-physical-environment.md"
+    },
+    {
+      "id": "explainability",
+      "title": "Explainability",
+      "tags": [
+        "safe",
+        "suitable"
+      ],
+      "related": [
+        "accountability",
+        "analysability",
+        "clarity"
+      ],
+      "standards": [
+        "iso42001",
+        "isoiec22989"
+      ],
+      "relatedCount": 3,
+      "tagsCount": 2,
+      "standardsCount": 2,
+      "contentPreview": "Explainability is a quality sometimes required in the context of Artificial Intelligence (AI). The E...",
+      "filePath": "_qualities/E/explainability.md"
+    },
+    {
+      "id": "extensibility",
+      "title": "Extensibility",
+      "tags": [
+        "flexible"
+      ],
+      "related": [
+        "adaptability",
+        "modifiability",
+        "changeability",
+        "flexibility"
+      ],
+      "standards": [
+        "hl7"
+      ],
+      "relatedCount": 4,
+      "tagsCount": 1,
+      "standardsCount": 1,
+      "contentPreview": "Ability to add new features or functions to a system. Example: The plugin system of modern IDEs, lik...",
+      "filePath": "_qualities/E/extensibility.md"
+    },
+    {
+      "id": "fail-safe",
+      "title": "Fail safe",
+      "tags": [
+        "safe",
+        "reliable"
+      ],
+      "related": [
+        "safety",
+        "robustness"
+      ],
+      "standards": [
+        "iso25010"
+      ],
+      "relatedCount": 2,
+      "tagsCount": 2,
+      "standardsCount": 1,
+      "contentPreview": ">Capability of a product to automatically place itself in a safe operating mode, or to revert to a s...",
+      "filePath": "_qualities/F/fail-safe.md"
+    },
+    {
+      "id": "failure-transparency",
+      "title": "Failure Transparency",
+      "tags": [
+        "reliable",
+        "safe"
+      ],
+      "related": [
+        "availability",
+        "fault-tolerance",
+        "resilience",
+        "reliability"
+      ],
+      "standards": [],
+      "relatedCount": 4,
+      "tagsCount": 2,
+      "standardsCount": 0,
+      "contentPreview": "### Definitions > Failure transparency hides faults and recovery from users and applications so that...",
+      "filePath": "_qualities/F/failure-transparency.md"
+    },
+    {
+      "id": "fairness",
+      "title": "Fairness",
+      "tags": [
+        "reliable",
+        "safe",
+        "suitable"
+      ],
+      "related": [
+        "bias-mitigation",
+        "explainability",
+        "transparency",
+        "accountability"
+      ],
+      "standards": [
+        "iso42001",
+        "isoiec22989"
+      ],
+      "relatedCount": 4,
+      "tagsCount": 3,
+      "standardsCount": 2,
+      "contentPreview": "### Definitions > In machine learning, fairness refers to the absence of any prejudice or favoritism...",
+      "filePath": "_qualities/F/fairness.md"
+    },
+    {
+      "id": "fault-isolation",
+      "title": "Fault isolation",
+      "tags": [
+        "safe",
+        "reliable"
+      ],
+      "related": [
+        "safety",
+        "fail-safe",
+        "fault-tolerance",
+        "faultlessness",
+        "risk-identification",
+        "hazard-warning"
+      ],
+      "standards": [
+        "iso26262",
+        "do178c"
+      ],
+      "relatedCount": 6,
+      "tagsCount": 2,
+      "standardsCount": 2,
+      "contentPreview": "An method that enables to identify which component or parameter of the system is responsible for a f...",
+      "filePath": "_qualities/F/fault-isolation.md"
+    },
+    {
+      "id": "fault-tolerance",
+      "title": "Fault tolerance",
+      "tags": [
+        "reliable",
+        "usable"
+      ],
+      "related": [
+        "robustness",
+        "reliability",
+        "usability",
+        "availability",
+        "recoverability",
+        "faultlessness",
+        "graceful-degradation"
+      ],
+      "standards": [
+        "iso25010",
+        "iso26262",
+        "iec61508"
+      ],
+      "relatedCount": 7,
+      "tagsCount": 2,
+      "standardsCount": 3,
+      "contentPreview": ">Capability of a product to operate as intended despite the presence of hardware or software faults....",
+      "filePath": "_qualities/F/fault-tolerance.md"
+    },
+    {
+      "id": "faultlessness",
+      "title": "Faultlessness",
+      "tags": [
+        "reliable",
+        "usable",
+        "secure"
+      ],
+      "related": [
+        "dependability",
+        "reliability",
+        "availability"
+      ],
+      "standards": [
+        "iso25010"
+      ],
+      "relatedCount": 3,
+      "tagsCount": 3,
+      "standardsCount": 1,
+      "contentPreview": "Definitions: >Capability of a product to perform specified functions without fault under normal oper...",
+      "filePath": "_qualities/F/faultlessness.md"
+    },
+    {
+      "id": "features",
+      "title": "Features",
+      "tags": [
+        "usable"
+      ],
+      "related": [
+        "functionality",
+        "functional-completeness",
+        "usability",
+        "functional-suitability"
+      ],
+      "standards": [],
+      "relatedCount": 4,
+      "tagsCount": 1,
+      "standardsCount": 0,
+      "contentPreview": "A **feature** is a unique characteristic that a product has or should have. In Scrum, a **feature** ...",
+      "filePath": "_qualities/F/features.md"
+    },
+    {
+      "id": "flexibility",
+      "title": "Flexibility",
+      "tags": [
+        "flexible"
+      ],
+      "related": [
+        "maintainability",
+        "modularity",
+        "adaptability",
+        "configurability",
+        "changeability",
+        "agility",
+        "autonomy"
+      ],
+      "standards": [
+        "iso25010",
+        "misra-c",
+        "hl7",
+        "iso42030",
+        "iso12207",
+        "ieee2857"
+      ],
+      "relatedCount": 7,
+      "tagsCount": 1,
+      "standardsCount": 6,
+      "contentPreview": "Applies to several _stages_ in the life of a system or product, for example: - at development or com...",
+      "filePath": "_qualities/F/flexibility.md"
+    },
+    {
+      "id": "functional-appropriateness",
+      "title": "Functional Appropriateness",
+      "tags": [
+        "usable",
+        "reliable",
+        "suitable"
+      ],
+      "related": [
+        "usability",
+        "functionality",
+        "functional-suitability",
+        "suitability"
+      ],
+      "standards": [
+        "iso25010"
+      ],
+      "relatedCount": 4,
+      "tagsCount": 3,
+      "standardsCount": 1,
+      "contentPreview": "Definitions: >Provide functions that avoid behaviours or interactions that are irrelevant to accompl...",
+      "filePath": "_qualities/F/functional-appropriateness.md"
+    },
+    {
+      "id": "functional-completeness",
+      "title": "Functional completeness",
+      "tags": [
+        "usable",
+        "reliable",
+        "suitable"
+      ],
+      "related": [
+        "usability",
+        "functionality",
+        "functional-suitability",
+        "correctness"
+      ],
+      "standards": [
+        "iso25010",
+        "iso42010",
+        "iso42030",
+        "iso12207",
+        "sox"
+      ],
+      "relatedCount": 4,
+      "tagsCount": 3,
+      "standardsCount": 5,
+      "contentPreview": "Definitions: >Provide a set of functions that covers **all** the specified tasks and intended users’...",
+      "filePath": "_qualities/F/functional-completeness.md"
+    },
+    {
+      "id": "functional-correctness",
+      "title": "Functional correctness",
+      "tags": [
+        "usable",
+        "reliable",
+        "suitable"
+      ],
+      "related": [
+        "usability",
+        "functionality",
+        "functional-suitability",
+        "correctness"
+      ],
+      "standards": [
+        "iso25010",
+        "iso42030"
+      ],
+      "relatedCount": 4,
+      "tagsCount": 3,
+      "standardsCount": 2,
+      "contentPreview": "See also [correctness](/qualities/correctness) Definitions: >Provide accurate results when used by i...",
+      "filePath": "_qualities/F/functional-correctness.md"
+    },
+    {
+      "id": "functional-suitability",
+      "title": "Functional suitability",
+      "tags": [
+        "usable",
+        "reliable",
+        "suitable"
+      ],
+      "related": [
+        "usability",
+        "functionality",
+        "functional-completeness",
+        "suitability"
+      ],
+      "standards": [
+        "iso25010"
+      ],
+      "relatedCount": 4,
+      "tagsCount": 3,
+      "standardsCount": 1,
+      "contentPreview": "See also [suitability](/qualities/suitability) Definitions: >Provide functions that meet stated and ...",
+      "filePath": "_qualities/F/functional-suitability.md"
+    },
+    {
+      "id": "functionality",
+      "title": "Functionality",
+      "tags": [
+        "usable",
+        "reliable",
+        "suitable"
+      ],
+      "related": [
+        "usability",
+        "functional-suitability",
+        "functional-correctness",
+        "functional-completeness"
+      ],
+      "standards": [],
+      "relatedCount": 4,
+      "tagsCount": 3,
+      "standardsCount": 0,
+      "contentPreview": "The main system or product features. >Functionality is the ability of the system to do the work for ...",
+      "filePath": "_qualities/F/functionality.md"
+    },
+    {
+      "id": "graceful-degradation",
+      "title": "Graceful degradation",
+      "tags": [
+        "reliable",
+        "usable"
+      ],
+      "related": [
+        "robustness",
+        "reliability",
+        "usability",
+        "availability",
+        "recoverability",
+        "faultlessness",
+        "fault-tolerance"
+      ],
+      "standards": [],
+      "relatedCount": 7,
+      "tagsCount": 2,
+      "standardsCount": 0,
+      "contentPreview": ">The ability of maintaining functionality when portions of a system break down. > >A system that is ...",
+      "filePath": "_qualities/G/graceful-degradation.md"
+    },
+    {
+      "id": "hazard-warning",
+      "title": "Hazard warning",
+      "tags": [
+        "safe",
+        "reliable"
+      ],
+      "related": [
+        "safety",
+        "robustness"
+      ],
+      "standards": [
+        "iso25010"
+      ],
+      "relatedCount": 2,
+      "tagsCount": 2,
+      "standardsCount": 1,
+      "contentPreview": ">A hazard is a potential source of harm. >Substances, events, or circumstances can constitute hazard...",
+      "filePath": "_qualities/H/hazard-warning.md"
+    },
+    {
+      "id": "high-availability",
+      "title": "High availability",
+      "tags": [
+        "reliable",
+        "usable"
+      ],
+      "related": [
+        "availability",
+        "robustness",
+        "reliability",
+        "usability",
+        "fault-tolerance",
+        "recoverability",
+        "dependability",
+        "faultlessness",
+        "recovery-time"
+      ],
+      "standards": [],
+      "relatedCount": 9,
+      "tagsCount": 2,
+      "standardsCount": 0,
+      "contentPreview": "Synonym for [availability](/qualities/availability)...",
+      "filePath": "_qualities/H/high-availability.md"
+    },
+    {
+      "id": "i18n",
+      "title": "i18n (Internationalization)",
+      "tags": [
+        "usable"
+      ],
+      "related": [
+        "usability",
+        "adaptability",
+        "configurability",
+        "ease-of-use",
+        "modifiability",
+        "user-assistance",
+        "user-experience"
+      ],
+      "standards": [],
+      "relatedCount": 7,
+      "tagsCount": 1,
+      "standardsCount": 0,
+      "contentPreview": "Internationalization (i18n) means designing and developing software so it can be adapted and used in...",
+      "filePath": "_qualities/I/i18n.md"
+    },
+    {
+      "id": "immunity",
+      "title": "Immunity",
+      "tags": [
+        "secure",
+        "reliable"
+      ],
+      "related": [
+        "vulnerability",
+        "intrusion-detection",
+        "intrusion-prevention"
+      ],
+      "standards": [],
+      "relatedCount": 3,
+      "tagsCount": 2,
+      "standardsCount": 0,
+      "contentPreview": ">... what the product has to do to protect itself from infection by unauthorized or undesirable soft...",
+      "filePath": "_qualities/I/immunity.md"
+    },
+    {
+      "id": "inclusivity",
+      "title": "Inclusivity",
+      "tags": [
+        "usable"
+      ],
+      "related": [
+        "usability",
+        "functionality",
+        "attractiveness",
+        "user-error-protection",
+        "ease-of-use"
+      ],
+      "standards": [
+        "iso25010"
+      ],
+      "relatedCount": 5,
+      "tagsCount": 1,
+      "standardsCount": 1,
+      "contentPreview": ">Capability of a product to be utilised by people of various backgrounds > >[ISO-25010-2023](/refere...",
+      "filePath": "_qualities/I/inclusivity.md"
+    },
+    {
+      "id": "independence",
+      "title": "Independence",
+      "tags": [
+        "flexible"
+      ],
+      "related": [
+        "maintainability",
+        "modularity",
+        "adaptability",
+        "configurability",
+        "changeability",
+        "agility",
+        "flexibility",
+        "autonomy"
+      ],
+      "standards": [],
+      "relatedCount": 8,
+      "tagsCount": 1,
+      "standardsCount": 0,
+      "contentPreview": "### Definitions: > Functional independence is achieved by developing functions that perform only one...",
+      "filePath": "_qualities/I/independence.md"
+    },
+    {
+      "id": "information-security",
+      "title": "Information Security",
+      "tags": [
+        "secure",
+        "reliable"
+      ],
+      "related": [
+        "integrity",
+        "availability",
+        "non-repudiation",
+        "confidentiality",
+        "accountability",
+        "authenticity",
+        "resistance",
+        "cyber-security"
+      ],
+      "standards": [
+        "iso27001"
+      ],
+      "relatedCount": 8,
+      "tagsCount": 2,
+      "standardsCount": 1,
+      "contentPreview": "See [#secure](/tag-secure) Similar / synonym to [security](/qualities/security). Definitions: Protec...",
+      "filePath": "_qualities/I/information-security.md"
+    },
+    {
+      "id": "installability",
+      "title": "Installability",
+      "tags": [
+        "operable",
+        "flexible"
+      ],
+      "related": [
+        "maintainability",
+        "analysability",
+        "operability",
+        "deployability"
+      ],
+      "standards": [
+        "iso25010"
+      ],
+      "relatedCount": 4,
+      "tagsCount": 2,
+      "standardsCount": 1,
+      "contentPreview": ">Capability of a product to be effectively and efficiently installed successfully and/or uninstalled...",
+      "filePath": "_qualities/I/installability.md"
+    },
+    {
+      "id": "integrability",
+      "title": "Integrability",
+      "tags": [
+        "flexible",
+        "operable"
+      ],
+      "related": [
+        "interoperability",
+        "modularity",
+        "composability",
+        "compatibility",
+        "integrity"
+      ],
+      "standards": [],
+      "relatedCount": 5,
+      "tagsCount": 2,
+      "standardsCount": 0,
+      "contentPreview": "### Definitions > Integrability is the ease with which a software component or system can be integra...",
+      "filePath": "_qualities/I/integrability.md"
+    },
+    {
+      "id": "integrity",
+      "title": "Integrity",
+      "tags": [
+        "secure"
+      ],
+      "related": [
+        "confidentiality",
+        "security"
+      ],
+      "standards": [
+        "iso25010",
+        "iso27001",
+        "iso26262",
+        "misra-c",
+        "nist80053",
+        "pcidss",
+        "hl7",
+        "iso15408",
+        "cra",
+        "iec62443",
+        "iso25024",
+        "do178c",
+        "ieee2857"
+      ],
+      "relatedCount": 2,
+      "tagsCount": 1,
+      "standardsCount": 13,
+      "contentPreview": "See [#secure](/tag-secure) ### Definitions: > Capability of a product to ensure that the state of it...",
+      "filePath": "_qualities/I/integrity.md"
+    },
+    {
+      "id": "interaction-capability",
+      "title": "Interaction capability",
+      "tags": [
+        "usable",
+        "operable"
+      ],
+      "related": [
+        "usability",
+        "functionality",
+        "inclusivity",
+        "attractiveness",
+        "operability",
+        "user-error-protection",
+        "user-engagement",
+        "ease-of-use"
+      ],
+      "standards": [
+        "iso25010"
+      ],
+      "relatedCount": 8,
+      "tagsCount": 2,
+      "standardsCount": 1,
+      "contentPreview": "See also [#usable](/tag-usable). The term previously used (esp. within the ISO-25010) was _usability...",
+      "filePath": "_qualities/I/interaction-capability.md"
+    },
+    {
+      "id": "interchangeability",
+      "title": "Interchangeability",
+      "tags": [
+        "flexible",
+        "operable"
+      ],
+      "related": [
+        "replaceability",
+        "modularity",
+        "compatibility",
+        "portability",
+        "standard-compliance",
+        "configurability",
+        "composability",
+        "flexibility"
+      ],
+      "standards": [],
+      "relatedCount": 8,
+      "tagsCount": 2,
+      "standardsCount": 0,
+      "contentPreview": "### Definitions > Interchangeability is the ability to substitute one component, part, or element wi...",
+      "filePath": "_qualities/I/interchangeability.md"
+    },
+    {
+      "id": "internationalization",
+      "title": "Internationalization",
+      "tags": [
+        "flexible",
+        "usable"
+      ],
+      "related": [
+        "localizability",
+        "adaptability",
+        "modifiability",
+        "maintainability",
+        "internationalization"
+      ],
+      "standards": [],
+      "relatedCount": 5,
+      "tagsCount": 2,
+      "standardsCount": 0,
+      "contentPreview": ">Developing information so that it is suitable for an international audience > >[ISO/IEC/IEEE 26514:...",
+      "filePath": "_qualities/I/internatlionalization.md"
+    },
+    {
+      "id": "interoperability",
+      "title": "Interoperability",
+      "tags": [
+        "usable",
+        "operable"
+      ],
+      "related": [
+        "co-existence",
+        "compatibility"
+      ],
+      "standards": [
+        "iso25010",
+        "hl7",
+        "cra",
+        "iso25024",
+        "iso42030",
+        "iso12207",
+        "ieee2857"
+      ],
+      "relatedCount": 2,
+      "tagsCount": 2,
+      "standardsCount": 7,
+      "contentPreview": "Definitions: Work (together) with other products or systems. >Capability of a product to exchange in...",
+      "filePath": "_qualities/I/interoperability.md"
+    },
+    {
+      "id": "intrusion-detection",
+      "title": "Intrusion Detection",
+      "tags": [
+        "secure"
+      ],
+      "related": [
+        "intrusion-prevention"
+      ],
+      "standards": [],
+      "relatedCount": 1,
+      "tagsCount": 1,
+      "standardsCount": 0,
+      "contentPreview": "See also [#secure](/tag-secure). Definitions: >Intrusion detection is the process of monitoring the ...",
+      "filePath": "_qualities/I/intrusion-detection.md"
+    },
+    {
+      "id": "intrusion-prevention",
+      "title": "Intrusion Prevention",
+      "tags": [
+        "secure"
+      ],
+      "related": [
+        "intrusion-detection"
+      ],
+      "standards": [],
+      "relatedCount": 1,
+      "tagsCount": 1,
+      "standardsCount": 0,
+      "contentPreview": "See also [#secure](/tag-secure). Definitions: >Intrusion prevention is the process of performing int...",
+      "filePath": "_qualities/I/intrusion-prevention.md"
+    },
+    {
+      "id": "intuitiveness",
+      "title": "Intuitiveness",
+      "tags": [
+        "usable"
+      ],
+      "related": [
+        "usability",
+        "learnability",
+        "user-experience",
+        "clarity",
+        "simplicity",
+        "self-descriptiveness",
+        "understandability"
+      ],
+      "standards": [],
+      "relatedCount": 7,
+      "tagsCount": 1,
+      "standardsCount": 0,
+      "contentPreview": "See also [#usable](/tag-usable). ## Definitions >The degree to which a system's interface, behavior,...",
+      "filePath": "_qualities/I/intuitiveness.md"
+    },
+    {
+      "id": "jitter",
+      "title": "Jitter",
+      "tags": [
+        "efficient"
+      ],
+      "related": [
+        "performance",
+        "latency",
+        "predictability"
+      ],
+      "standards": [],
+      "relatedCount": 3,
+      "tagsCount": 1,
+      "standardsCount": 0,
+      "contentPreview": "Variation in response time. >In electronics and telecommunications, jitter is the deviation from tru...",
+      "filePath": "_qualities/J/jitter.md"
+    },
+    {
+      "id": "latency",
+      "title": "Latency",
+      "tags": [
+        "efficient",
+        "usable",
+        "operable"
+      ],
+      "related": [
+        "performance",
+        "time-behaviour"
+      ],
+      "standards": [
+        "iso14756"
+      ],
+      "relatedCount": 2,
+      "tagsCount": 3,
+      "standardsCount": 1,
+      "contentPreview": "Latency in general is a _time delay_ between the cause and the effect of some change in a system....",
+      "filePath": "_qualities/L/latency.md"
+    },
+    {
+      "id": "lead-time-for-changes",
+      "title": "Lead time for changes",
+      "tags": [
+        "operable"
+      ],
+      "related": [
+        "controllability",
+        "operability",
+        "testability",
+        "deployability"
+      ],
+      "standards": [],
+      "relatedCount": 4,
+      "tagsCount": 1,
+      "standardsCount": 0,
+      "contentPreview": "See also [deployability](/qualities/deployability) One of the [four key devops metrics](/qualities/d...",
+      "filePath": "_qualities/L/lead-time-for-changes.md"
+    },
+    {
+      "id": "learnability",
+      "title": "Learnability",
+      "tags": [
+        "usable",
+        "operable"
+      ],
+      "related": [
+        "usability",
+        "user-error-protection",
+        "user-engagement",
+        "conciseness",
+        "understandability"
+      ],
+      "standards": [
+        "iso25010",
+        "ieee2857"
+      ],
+      "relatedCount": 5,
+      "tagsCount": 2,
+      "standardsCount": 2,
+      "contentPreview": "See also [#usable](/tag-usable). Definitions: >Capability of a product to have specified users learn...",
+      "filePath": "_qualities/L/learnability.md"
+    },
+    {
+      "id": "legal-requirements",
+      "title": "Legal Requirements",
+      "tags": [
+        "usable",
+        "operable"
+      ],
+      "related": [
+        "accountability",
+        "adaptability",
+        "operational-constraint",
+        "correctness"
+      ],
+      "standards": [],
+      "relatedCount": 4,
+      "tagsCount": 2,
+      "standardsCount": 0,
+      "contentPreview": ">Legal Requirement means any federal, state, local, municipal, foreign or other law, statute, consti...",
+      "filePath": "_qualities/L/legal.md"
+    },
+    {
+      "id": "legibility",
+      "title": "Legibility",
+      "tags": [
+        "usable"
+      ],
+      "related": [
+        "usability",
+        "understandability"
+      ],
+      "standards": [],
+      "relatedCount": 2,
+      "tagsCount": 1,
+      "standardsCount": 0,
+      "contentPreview": ">The fact of being easy to read, or the degree to which something is easy to read. > >The degree to ...",
+      "filePath": "_qualities/L/legibility.md"
+    },
+    {
+      "id": "localizability",
+      "title": "Localizability",
+      "tags": [
+        "flexible",
+        "usable"
+      ],
+      "related": [
+        "localizability",
+        "adaptability",
+        "modifiability",
+        "maintainability",
+        "internationalization"
+      ],
+      "standards": [],
+      "relatedCount": 5,
+      "tagsCount": 2,
+      "standardsCount": 0,
+      "contentPreview": ">In computing, internationalization and localization (American) or internationalisation and localisa...",
+      "filePath": "_qualities/L/localizabiity.md"
+    },
+    {
+      "id": "longevity",
+      "title": "Longevity",
+      "tags": [
+        "reliable",
+        "flexible"
+      ],
+      "related": [
+        "reliability",
+        "adaptability",
+        "modifiability"
+      ],
+      "standards": [],
+      "relatedCount": 3,
+      "tagsCount": 2,
+      "standardsCount": 0,
+      "contentPreview": ">This specifies the expected increases in size that the product must be able to handle. >As a busine...",
+      "filePath": "_qualities/L/longevity.md"
+    },
+    {
+      "id": "loose-coupling",
+      "title": "Loose Coupling",
+      "tags": [
+        "efficient",
+        "flexible",
+        "suitable"
+      ],
+      "related": [
+        "coherence",
+        "modularity",
+        "cohesion"
+      ],
+      "standards": [],
+      "relatedCount": 3,
+      "tagsCount": 3,
+      "standardsCount": 0,
+      "contentPreview": "Definitions: >In computing and systems design, a loosely coupled system is one > >- in which compone...",
+      "filePath": "_qualities/L/loose-coupling.md"
+    },
+    {
+      "id": "maintainability",
+      "title": "Maintainability",
+      "tags": [
+        "flexible"
+      ],
+      "related": [
+        "flexibility",
+        "adaptability",
+        "changeability",
+        "configurability",
+        "modularity"
+      ],
+      "standards": [
+        "iso25010",
+        "iso26262",
+        "misra-c",
+        "nist80053",
+        "iso5055",
+        "iec-62304",
+        "iec61508",
+        "hl7",
+        "cra",
+        "isoiec22989",
+        "do178c",
+        "iso42010",
+        "iso42030",
+        "iso12207",
+        "ieee2857"
+      ],
+      "relatedCount": 5,
+      "tagsCount": 1,
+      "standardsCount": 15,
+      "contentPreview": "[Kazman et al.](/references/#kazman-maintainability) is an extensive technical report covering many ...",
+      "filePath": "_qualities/M/maintainability.md"
+    },
+    {
+      "id": "mean-time-between-failures",
+      "title": "Mean time between failures",
+      "tags": [
+        "operable"
+      ],
+      "related": [
+        "controllability",
+        "operability",
+        "testability",
+        "analysability",
+        "devops-metrics",
+        "mean-time-to-recovery"
+      ],
+      "standards": [],
+      "relatedCount": 6,
+      "tagsCount": 1,
+      "standardsCount": 0,
+      "contentPreview": "See also [deployability](/qualities/deployability) In DevOps practics, time-between-failures is rega...",
+      "filePath": "_qualities/M/mean-time-between-failures.md"
+    },
+    {
+      "id": "mean-time-to-recovery",
+      "title": "Mean time to recovery",
+      "tags": [
+        "operable",
+        "suitable"
+      ],
+      "related": [
+        "controllability",
+        "operability",
+        "testability",
+        "analysability",
+        "deployability",
+        "devops-metrics"
+      ],
+      "standards": [],
+      "relatedCount": 6,
+      "tagsCount": 2,
+      "standardsCount": 0,
+      "contentPreview": "See also [deployability](/qualities/deployability) Belongs to the [key devops metrics](/qualities/de...",
+      "filePath": "_qualities/M/mean-time-to-recovery.md"
+    },
+    {
+      "id": "memory-usage",
+      "title": "Memory usage",
+      "tags": [
+        "efficient"
+      ],
+      "related": [
+        "efficiency",
+        "capacity",
+        "time-behaviour",
+        "resource-utilization"
+      ],
+      "standards": [],
+      "relatedCount": 4,
+      "tagsCount": 1,
+      "standardsCount": 0,
+      "contentPreview": "A special case of [resource utilization](/qualities/resource-utilization) and [resource-efficiency] ...",
+      "filePath": "_qualities/M/memory-usage.md"
+    },
+    {
+      "id": "modifiability",
+      "title": "Modifiability",
+      "tags": [
+        "flexible"
+      ],
+      "related": [
+        "flexibility",
+        "adaptability",
+        "changeability",
+        "configurability"
+      ],
+      "standards": [
+        "iso25010",
+        "iso42010"
+      ],
+      "relatedCount": 4,
+      "tagsCount": 1,
+      "standardsCount": 2,
+      "contentPreview": ">Capability of a system to be effectively and efficiently modified without introducing defects or de...",
+      "filePath": "_qualities/M/modifiability.md"
+    },
+    {
+      "id": "modularity",
+      "title": "Modularity",
+      "tags": [
+        "flexible"
+      ],
+      "related": [
+        "flexibility",
+        "adaptability",
+        "changeability",
+        "configurability",
+        "maintainability",
+        "modifiability",
+        "composability"
+      ],
+      "standards": [
+        "iso25010",
+        "cra",
+        "do178c",
+        "iso42030",
+        "iso12207",
+        "ieee2857"
+      ],
+      "relatedCount": 7,
+      "tagsCount": 1,
+      "standardsCount": 6,
+      "contentPreview": "> Capability of a product to limit changes to one component from affecting other components. > > Mod...",
+      "filePath": "_qualities/M/modularity.md"
+    },
+    {
+      "id": "non-repudiation",
+      "title": "Non-repudiation",
+      "tags": [
+        "secure"
+      ],
+      "related": [
+        "integrity",
+        "authenticity",
+        "security",
+        "accountability"
+      ],
+      "standards": [
+        "iso25010",
+        "iso27001",
+        "pcidss"
+      ],
+      "relatedCount": 4,
+      "tagsCount": 1,
+      "standardsCount": 3,
+      "contentPreview": "See [#secure](/tag-secure) ### Definitions: >Capability of a product to prove that actions or events...",
+      "filePath": "_qualities/N/non-repudiation.md"
+    },
+    {
+      "id": "observability",
+      "title": "Observability",
+      "tags": [
+        "operable"
+      ],
+      "related": [
+        "analysability",
+        "testability"
+      ],
+      "standards": [
+        "iso26262",
+        "cra",
+        "sox",
+        "ieee2857"
+      ],
+      "relatedCount": 2,
+      "tagsCount": 1,
+      "standardsCount": 4,
+      "contentPreview": ">Observability is a measure of how well internal states of a system can be inferred from knowledge o...",
+      "filePath": "_qualities/O/observability.md"
+    },
+    {
+      "id": "operability",
+      "title": "Operability",
+      "tags": [
+        "usable",
+        "operable"
+      ],
+      "related": [
+        "usability",
+        "user-error-protection",
+        "controllability",
+        "robustness"
+      ],
+      "standards": [
+        "iso25010",
+        "nist80053"
+      ],
+      "relatedCount": 4,
+      "tagsCount": 2,
+      "standardsCount": 2,
+      "contentPreview": "See also [#operable](/tag-operable). [ISO-25010:2023](/references/#iso-25010-2023) sorts it below [u...",
+      "filePath": "_qualities/O/operability.md"
+    },
+    {
+      "id": "operational-constraint",
+      "title": "Operational constraint",
+      "tags": [
+        "safe",
+        "reliable"
+      ],
+      "related": [
+        "availability",
+        "robustness",
+        "flexibility",
+        "safety"
+      ],
+      "standards": [
+        "iso25010"
+      ],
+      "relatedCount": 4,
+      "tagsCount": 2,
+      "standardsCount": 1,
+      "contentPreview": ">Capability of a product to constrain its operation to within safe parameters or states when encount...",
+      "filePath": "_qualities/O/operational-constraint.md"
+    },
+    {
+      "id": "operational-environment-requirements",
+      "title": "Operational and Environment Requirements",
+      "tags": [
+        "operable"
+      ],
+      "related": [
+        "expected-physical-environment",
+        "operational-constraint"
+      ],
+      "standards": [],
+      "relatedCount": 2,
+      "tagsCount": 1,
+      "standardsCount": 0,
+      "contentPreview": "> Requirements for Interfacing with Adjacent Systems, Productization Requirements, Release Requireme...",
+      "filePath": "_qualities/O/operational-environment-requirements.md"
+    },
+    {
+      "id": "patient-safety",
+      "title": "Patient Safety",
+      "tags": [
+        "safe",
+        "reliable",
+        "secure"
+      ],
+      "related": [
+        "safety",
+        "robustness"
+      ],
+      "standards": [],
+      "relatedCount": 2,
+      "tagsCount": 3,
+      "standardsCount": 0,
+      "contentPreview": "See [#safe](/tag-safe) Definitions: >\"The absence of preventable harm to a patient and reduction of ...",
+      "filePath": "_qualities/P/patient-safety.md"
+    },
+    {
+      "id": "performance",
+      "title": "Performance",
+      "tags": [
+        "efficient"
+      ],
+      "related": [
+        "efficiency",
+        "resource-efficiency",
+        "speed"
+      ],
+      "standards": [
+        "iso14756",
+        "iso42030",
+        "iso12207",
+        "sox"
+      ],
+      "relatedCount": 3,
+      "tagsCount": 1,
+      "standardsCount": 4,
+      "contentPreview": "Definition: >Perform its functions within specified time and throughput parameters and be efficient ...",
+      "filePath": "_qualities/P/performance.md"
+    },
+    {
+      "id": "performance-efficiency",
+      "title": "Performance Efficiency",
+      "tags": [
+        "efficient"
+      ],
+      "related": [
+        "efficiency",
+        "resource-efficiency",
+        "speed",
+        "performance"
+      ],
+      "standards": [
+        "iso25010",
+        "iso5055",
+        "iso14756"
+      ],
+      "relatedCount": 4,
+      "tagsCount": 1,
+      "standardsCount": 3,
+      "contentPreview": "(this is a duplicate (content-wise) to [performance](/qualities/performance)), but the ISO-25010 sta...",
+      "filePath": "_qualities/P/performance-efficiency.md"
+    },
+    {
+      "id": "personalization",
+      "title": "Personalization",
+      "tags": [
+        "flexible"
+      ],
+      "related": [
+        "customizability"
+      ],
+      "standards": [],
+      "relatedCount": 1,
+      "tagsCount": 1,
+      "standardsCount": 0,
+      "contentPreview": ">\"... the way in which the product can be altered or configured to take into account the user’s pers...",
+      "filePath": "_qualities/P/personalization.md"
+    },
+    {
+      "id": "portability",
+      "title": "Portability",
+      "tags": [
+        "flexible",
+        "operable"
+      ],
+      "related": [
+        "compatibility",
+        "flexibility",
+        "installability",
+        "interoperability",
+        "maintainability",
+        "configurability",
+        "replaceability"
+      ],
+      "standards": [
+        "iso26262",
+        "misra-c",
+        "hl7",
+        "iso25024"
+      ],
+      "relatedCount": 7,
+      "tagsCount": 2,
+      "standardsCount": 4,
+      "contentPreview": ">A computer program is said to be portable if there is low effort required to make it run on differe...",
+      "filePath": "_qualities/P/portability.md"
+    },
+    {
+      "id": "preciseness",
+      "title": "Preciseness",
+      "tags": [
+        "reliable",
+        "usable"
+      ],
+      "related": [
+        "correctness",
+        "accuracy"
+      ],
+      "standards": [],
+      "relatedCount": 2,
+      "tagsCount": 2,
+      "standardsCount": 0,
+      "contentPreview": "see [precision](/qualities/precision)...",
+      "filePath": "_qualities/P/preciseness.md"
+    },
+    {
+      "id": "precision",
+      "title": "Precision",
+      "tags": [
+        "reliable",
+        "usable"
+      ],
+      "related": [
+        "correctness",
+        "accuracy",
+        "preciseness"
+      ],
+      "standards": [
+        "iso25024"
+      ],
+      "relatedCount": 3,
+      "tagsCount": 2,
+      "standardsCount": 1,
+      "contentPreview": ">Refers to how closely individual measurements agree with each other. > >[NIST Glossary](https://csr...",
+      "filePath": "_qualities/P/precision.md"
+    },
+    {
+      "id": "predictability",
+      "title": "Predictability",
+      "tags": [
+        "reliable"
+      ],
+      "related": [
+        "reliability",
+        "correctness"
+      ],
+      "standards": [
+        "misra-c"
+      ],
+      "relatedCount": 2,
+      "tagsCount": 1,
+      "standardsCount": 1,
+      "contentPreview": ">Predictability is the degree to which a correct prediction or forecast of a system's state can be m...",
+      "filePath": "_qualities/P/predictability.md"
+    },
+    {
+      "id": "privacy",
+      "title": "Privacy",
+      "tags": [
+        "secure"
+      ],
+      "related": [
+        "security",
+        "confidentiality"
+      ],
+      "standards": [
+        "nist80053",
+        "aiuc1",
+        "isoiec22989",
+        "gdpr",
+        "ieee2857"
+      ],
+      "relatedCount": 2,
+      "tagsCount": 1,
+      "standardsCount": 5,
+      "contentPreview": ">Broadly speaking, privacy is the right to be let alone, or freedom from interference or intrusion. ...",
+      "filePath": "_qualities/P/privacy.md"
+    },
+    {
+      "id": "profitability",
+      "title": "Profitability",
+      "tags": [
+        "efficient"
+      ],
+      "related": [
+        "time-to-market",
+        "budget-constraint",
+        "cost",
+        "affordability"
+      ],
+      "standards": [],
+      "relatedCount": 4,
+      "tagsCount": 1,
+      "standardsCount": 0,
+      "contentPreview": ">In economics, profit is the difference between revenue that an economic entity has received from it...",
+      "filePath": "_qualities/P/profitability.md"
+    },
+    {
+      "id": "provability",
+      "title": "Provability",
+      "tags": [
+        "reliable",
+        "safe"
+      ],
+      "related": [
+        "explainability",
+        "verifiability",
+        "correctness"
+      ],
+      "standards": [],
+      "relatedCount": 3,
+      "tagsCount": 2,
+      "standardsCount": 0,
+      "contentPreview": "> The ability to demonstrate through rigorous, often mathematical, means that a piece of software me...",
+      "filePath": "_qualities/P/provability.md"
+    },
+    {
+      "id": "readability",
+      "title": "Readability",
+      "tags": [
+        "usable"
+      ],
+      "related": [
+        "usability",
+        "understandability",
+        "legibility",
+        "code-readability"
+      ],
+      "standards": [],
+      "relatedCount": 4,
+      "tagsCount": 1,
+      "standardsCount": 0,
+      "contentPreview": "See also: * [code readability](/qualities/code-readability). * [legibility](/qualities/legibility) >...",
+      "filePath": "_qualities/R/readability.md"
+    },
+    {
+      "id": "recoverability",
+      "title": "Recoverability",
+      "tags": [
+        "reliable",
+        "usable"
+      ],
+      "related": [
+        "robustness",
+        "reliability",
+        "usability",
+        "availability",
+        "faultlessness",
+        "fault-tolerance"
+      ],
+      "standards": [
+        "iso25010",
+        "cra",
+        "iso25024",
+        "sox"
+      ],
+      "relatedCount": 6,
+      "tagsCount": 2,
+      "standardsCount": 4,
+      "contentPreview": ">capability of a product in the event of an interruption or a failure to recover the data directly a...",
+      "filePath": "_qualities/R/recoverability.md"
+    },
+    {
+      "id": "recovery-time",
+      "title": "Recovery time",
+      "tags": [
+        "reliable"
+      ],
+      "related": [
+        "recoverability",
+        "fault-tolerance",
+        "availability",
+        "resilience",
+        "high-availability"
+      ],
+      "standards": [],
+      "relatedCount": 5,
+      "tagsCount": 1,
+      "standardsCount": 0,
+      "contentPreview": "see [recoverability](/qualities/recoverability). >Recoverability refers to the amount of time a syst...",
+      "filePath": "_qualities/R/recovery-time.md"
+    },
+    {
+      "id": "redundancy",
+      "title": "Redundancy",
+      "tags": [
+        "reliable",
+        "operable"
+      ],
+      "related": [
+        "fault-tolerance",
+        "availability",
+        "reliability",
+        "robustness",
+        "resilience",
+        "recoverability"
+      ],
+      "standards": [],
+      "relatedCount": 6,
+      "tagsCount": 2,
+      "standardsCount": 0,
+      "contentPreview": "The term can be interpreted in two different directions: The goal (_required quality_) can be twofol...",
+      "filePath": "_qualities/R/redundancy.md"
+    },
+    {
+      "id": "releasability",
+      "title": "Releasability",
+      "tags": [
+        "operable",
+        "efficient"
+      ],
+      "related": [
+        "operability",
+        "deployability",
+        "deployment-frequency"
+      ],
+      "standards": [],
+      "relatedCount": 3,
+      "tagsCount": 2,
+      "standardsCount": 0,
+      "contentPreview": ">...the intended release cycle for the product and the form that the release shall take. > >[Volere+...",
+      "filePath": "_qualities/R/releasability.md"
+    },
+    {
+      "id": "reliability",
+      "title": "Reliability",
+      "tags": [
+        "reliable"
+      ],
+      "related": [
+        "availability",
+        "robustness",
+        "fault-tolerance",
+        "dependability",
+        "resilience"
+      ],
+      "standards": [
+        "iso25010",
+        "iso27001",
+        "iso26262",
+        "misra-c",
+        "nist80053",
+        "iso5055",
+        "iso14756",
+        "aiuc1",
+        "iec-62304",
+        "iec61508",
+        "hl7",
+        "iso15408",
+        "cra",
+        "isoiec22989",
+        "iso25024",
+        "do178c",
+        "iso42030",
+        "iso12207",
+        "sox"
+      ],
+      "relatedCount": 5,
+      "tagsCount": 1,
+      "standardsCount": 19,
+      "contentPreview": "See [#reliable](/tag-reliable) Definition: > Capability of a product to perform specified functions ...",
+      "filePath": "_qualities/R/reliability.md"
+    },
+    {
+      "id": "replaceability",
+      "title": "Replaceability",
+      "tags": [
+        "operable",
+        "flexible"
+      ],
+      "related": [
+        "installability",
+        "analysability",
+        "operability",
+        "deployability",
+        "interchangeability"
+      ],
+      "standards": [
+        "iso25010"
+      ],
+      "relatedCount": 5,
+      "tagsCount": 2,
+      "standardsCount": 1,
+      "contentPreview": ">Capability of a product to replace another specified product for the same purpose in the same envir...",
+      "filePath": "_qualities/R/replaceability.md"
+    },
+    {
+      "id": "reproducibility",
+      "title": "Reproducibility",
+      "tags": [
+        "usable"
+      ],
+      "related": [
+        "consistency",
+        "understandability"
+      ],
+      "standards": [
+        "do178c"
+      ],
+      "relatedCount": 2,
+      "tagsCount": 1,
+      "standardsCount": 1,
+      "contentPreview": "> Reproducibility, closely related to replicability and repeatability, is a major principle [where] ...",
+      "filePath": "_qualities/R/reproducibility.md"
+    },
+    {
+      "id": "resilience",
+      "title": "Resilience",
+      "tags": [
+        "reliable",
+        "secure"
+      ],
+      "related": [
+        "availability"
+      ],
+      "standards": [
+        "cra",
+        "isoiec22989",
+        "iso42030"
+      ],
+      "relatedCount": 1,
+      "tagsCount": 2,
+      "standardsCount": 3,
+      "contentPreview": ">Resilience is the ability to \"provide and maintain an acceptable level of service in the face of fa...",
+      "filePath": "_qualities/R/resilience.md"
+    },
+    {
+      "id": "resistance",
+      "title": "Resistance",
+      "tags": [
+        "secure"
+      ],
+      "related": [
+        "integrity",
+        "security",
+        "dependability",
+        "fault-tolerance",
+        "recoverability"
+      ],
+      "standards": [
+        "iso25010"
+      ],
+      "relatedCount": 5,
+      "tagsCount": 1,
+      "standardsCount": 1,
+      "contentPreview": "See [#secure](/tag-secure) ### Definitions: >Capability of a product to sustain operations while und...",
+      "filePath": "_qualities/R/resistance.md"
+    },
+    {
+      "id": "resource-efficiency",
+      "title": "Resource efficiency",
+      "tags": [
+        "efficient"
+      ],
+      "related": [
+        "efficiency",
+        "resource-utilization",
+        "performance"
+      ],
+      "standards": [],
+      "relatedCount": 3,
+      "tagsCount": 1,
+      "standardsCount": 0,
+      "contentPreview": ">Resource efficiency is the maximising of the supply of money, materials, staff, and other assets th...",
+      "filePath": "_qualities/R/resource-efficiency.md"
+    },
+    {
+      "id": "resource-utilization",
+      "title": "Resource utilization",
+      "tags": [
+        "efficient"
+      ],
+      "related": [
+        "efficiency",
+        "resource-efficiency",
+        "speed",
+        "performance",
+        "time-behaviour",
+        "memory-usage"
+      ],
+      "standards": [
+        "iso25010",
+        "iso14756"
+      ],
+      "relatedCount": 6,
+      "tagsCount": 1,
+      "standardsCount": 2,
+      "contentPreview": "Definition: >Use no more than the specified amount of resources to perform its function under specif...",
+      "filePath": "_qualities/R/resource-utilization.md"
+    },
+    {
+      "id": "response-time",
+      "title": "Response Time",
+      "tags": [
+        "efficient"
+      ],
+      "related": [
+        "performance",
+        "speed",
+        "time-behaviour"
+      ],
+      "standards": [],
+      "relatedCount": 3,
+      "tagsCount": 1,
+      "standardsCount": 0,
+      "contentPreview": ">The time period between a terminal operator’s completion of an inquiry and the receipt of a respons...",
+      "filePath": "_qualities/R/response-time.md"
+    },
+    {
+      "id": "responsiveness",
+      "title": "Responsiveness",
+      "tags": [
+        "usable",
+        "efficient"
+      ],
+      "related": [
+        "response-time",
+        "usability",
+        "user-experience"
+      ],
+      "standards": [],
+      "relatedCount": 3,
+      "tagsCount": 2,
+      "standardsCount": 0,
+      "contentPreview": "... the quality of reacting quickly --- >Responsiveness as a concept of computer science refers to t...",
+      "filePath": "_qualities/R/responsiveness.md"
+    },
+    {
+      "id": "reusability",
+      "title": "Reusability",
+      "tags": [
+        "flexible"
+      ],
+      "related": [
+        "flexibility",
+        "adaptability",
+        "changeability",
+        "configurability",
+        "maintainability",
+        "modifiability"
+      ],
+      "standards": [
+        "iso25010"
+      ],
+      "relatedCount": 6,
+      "tagsCount": 1,
+      "standardsCount": 1,
+      "contentPreview": ">Capability of a product to be used as assets in more than one system, or in building other assets. ...",
+      "filePath": "_qualities/R/reusability.md"
+    },
+    {
+      "id": "risk-identification",
+      "title": "Risk identification",
+      "tags": [
+        "safe",
+        "reliable"
+      ],
+      "related": [
+        "safety",
+        "analysability"
+      ],
+      "standards": [
+        "iso25010",
+        "cra"
+      ],
+      "relatedCount": 2,
+      "tagsCount": 2,
+      "standardsCount": 2,
+      "contentPreview": ">Capability of a product to identify a course of events or operations that can expose life, property...",
+      "filePath": "_qualities/R/risk-identification.md"
+    },
+    {
+      "id": "robustness",
+      "title": "Robustness",
+      "tags": [
+        "reliable"
+      ],
+      "related": [
+        "resilience",
+        "dependability",
+        "reliability"
+      ],
+      "standards": [
+        "iso26262",
+        "misra-c",
+        "isoiec22989",
+        "iec62443",
+        "do178c"
+      ],
+      "relatedCount": 3,
+      "tagsCount": 1,
+      "standardsCount": 5,
+      "contentPreview": "> The ability of the product to continue to function under abnormal circumstances. > > [Volere+2012,...",
+      "filePath": "_qualities/R/robustness.md"
+    },
+    {
+      "id": "safe-integration",
+      "title": "Safe integration",
+      "tags": [
+        "safe",
+        "reliable"
+      ],
+      "related": [
+        "safety",
+        "robustness"
+      ],
+      "standards": [
+        "iso25010"
+      ],
+      "relatedCount": 2,
+      "tagsCount": 2,
+      "standardsCount": 1,
+      "contentPreview": ">Capability of a product to maintain safety during and after integration with one or more components...",
+      "filePath": "_qualities/S/safe-integration.md"
+    },
+    {
+      "id": "safety",
+      "title": "Safety",
+      "tags": [
+        "safe",
+        "reliable",
+        "secure"
+      ],
+      "related": [
+        "availability",
+        "robustness"
+      ],
+      "standards": [
+        "iso25010",
+        "iso26262",
+        "misra-c",
+        "aiuc1",
+        "iec-62304",
+        "iec61508",
+        "isoiec22989",
+        "do178c"
+      ],
+      "relatedCount": 2,
+      "tagsCount": 3,
+      "standardsCount": 8,
+      "contentPreview": "See [#safe](/tag-safe) Definitions: Freedom from unacceptable risks. > Capability of a product under...",
+      "filePath": "_qualities/S/safety.md"
+    },
+    {
+      "id": "scalability",
+      "title": "Scalability",
+      "tags": [
+        "flexible"
+      ],
+      "related": [
+        "adaptability",
+        "elasticity",
+        "performance"
+      ],
+      "standards": [
+        "iso25010",
+        "iso42030",
+        "iso12207",
+        "sox",
+        "ieee2857"
+      ],
+      "relatedCount": 3,
+      "tagsCount": 1,
+      "standardsCount": 5,
+      "contentPreview": ">Scalability is the property of a system to handle a growing amount of work by adding resources to t...",
+      "filePath": "_qualities/S/scalability.md"
+    },
+    {
+      "id": "securability",
+      "title": "Securability",
+      "tags": [
+        "secure"
+      ],
+      "related": [
+        "security"
+      ],
+      "standards": [
+        "cra"
+      ],
+      "relatedCount": 1,
+      "tagsCount": 1,
+      "standardsCount": 1,
+      "contentPreview": ">Ability of a system to provide different levels of secure access > >[Wikipedia](https://en.wiktiona...",
+      "filePath": "_qualities/S/securability.md"
+    },
+    {
+      "id": "security",
+      "title": "Security",
+      "tags": [
+        "secure",
+        "reliable"
+      ],
+      "related": [
+        "integrity",
+        "availability",
+        "non-repudiation",
+        "confidentiality",
+        "accountability",
+        "authenticity",
+        "resistance"
+      ],
+      "standards": [
+        "iso25010",
+        "iso27001",
+        "iso26262",
+        "misra-c",
+        "nist80053",
+        "iso5055",
+        "pcidss",
+        "iso42001",
+        "aiuc1",
+        "iec-62304",
+        "hl7",
+        "iso15408",
+        "cra",
+        "isoiec22989",
+        "iec62443",
+        "do178c",
+        "gdpr",
+        "iso42030",
+        "iso12207",
+        "sox",
+        "ieee2857"
+      ],
+      "relatedCount": 7,
+      "tagsCount": 2,
+      "standardsCount": 21,
+      "contentPreview": "See [#secure](/tag-secure) Definitions: Protect system against malicious attacks, so that the system...",
+      "filePath": "_qualities/S/security.md"
+    },
+    {
+      "id": "self-containedness",
+      "title": "Self-containedness",
+      "tags": [
+        "flexible"
+      ],
+      "related": [
+        "flexibility",
+        "adaptability",
+        "changeability",
+        "configurability",
+        "maintainability",
+        "modifiability",
+        "modularity",
+        "autonomy"
+      ],
+      "standards": [],
+      "relatedCount": 8,
+      "tagsCount": 1,
+      "standardsCount": 0,
+      "contentPreview": "### Definitions: A system is a self-contained system (SCS) if it has the following characteristics: ...",
+      "filePath": "_qualities/S/self-containedness.md"
+    },
+    {
+      "id": "self-descriptiveness",
+      "title": "Self-descriptiveness",
+      "tags": [
+        "usable"
+      ],
+      "related": [
+        "usability",
+        "user-assistance",
+        "user-experience",
+        "learnability",
+        "conciseness"
+      ],
+      "standards": [
+        "iso25010",
+        "iso42010"
+      ],
+      "relatedCount": 5,
+      "tagsCount": 1,
+      "standardsCount": 2,
+      "contentPreview": "See also [#usable](/tag-usable). Definitions: >Capability of a product to present appropriate inform...",
+      "filePath": "_qualities/S/self-descriptiveness.md"
+    },
+    {
+      "id": "shutdown-time",
+      "title": "Shutdown Time",
+      "tags": [
+        "efficient"
+      ],
+      "related": [
+        "startup-time",
+        "time-behaviour"
+      ],
+      "standards": [],
+      "relatedCount": 2,
+      "tagsCount": 1,
+      "standardsCount": 0,
+      "contentPreview": "Coloquially, the duration required for a system, application, service or hardware to get from fully ...",
+      "filePath": "_qualities/S/shutdown-time.md"
+    },
+    {
+      "id": "simplicity",
+      "title": "Simplicity",
+      "tags": [
+        "efficient",
+        "usable"
+      ],
+      "related": [
+        "efficiency",
+        "modularity"
+      ],
+      "standards": [],
+      "relatedCount": 2,
+      "tagsCount": 2,
+      "standardsCount": 0,
+      "contentPreview": ">For software, “simple” means easy to read, understand, and correctly modify. > >Complexity is stupi...",
+      "filePath": "_qualities/S/simplicity.md"
+    },
+    {
+      "id": "speed",
+      "title": "Speed",
+      "tags": [
+        "efficient"
+      ],
+      "related": [
+        "efficiency",
+        "performance",
+        "time-behaviour"
+      ],
+      "standards": [],
+      "relatedCount": 3,
+      "tagsCount": 1,
+      "standardsCount": 0,
+      "contentPreview": "Rate of motion or velocity. Coloquially, the time required for a system to execute specific function...",
+      "filePath": "_qualities/S/speed.md"
+    },
+    {
+      "id": "speed-to-market",
+      "title": "Speed to Market",
+      "tags": [
+        "efficient"
+      ],
+      "related": [
+        "flexibility",
+        "efficiency",
+        "deployment-frequency",
+        "extensibility",
+        "lead-time-for-changes",
+        "cycle-time"
+      ],
+      "standards": [],
+      "relatedCount": 6,
+      "tagsCount": 1,
+      "standardsCount": 0,
+      "contentPreview": "See the synonym: [Time-to-Market](/qualities/time-to-market)....",
+      "filePath": "_qualities/S/speed-to-market.md"
+    },
+    {
+      "id": "stability",
+      "title": "Stability",
+      "tags": [
+        "reliable"
+      ],
+      "related": [
+        "reliability",
+        "adaptability",
+        "changeability"
+      ],
+      "standards": [],
+      "relatedCount": 3,
+      "tagsCount": 1,
+      "standardsCount": 0,
+      "contentPreview": "Stability has two different meanings: 1. Stability at **runtime**: free from severe errors that caus...",
+      "filePath": "_qualities/S/stability.md"
+    },
+    {
+      "id": "standard-compliance",
+      "title": "Standard Compliance",
+      "tags": [
+        "secure",
+        "safe",
+        "usable",
+        "reliable",
+        "efficient",
+        "suitable"
+      ],
+      "related": [
+        "compliance"
+      ],
+      "standards": [
+        "iso42010",
+        "iso42030"
+      ],
+      "relatedCount": 1,
+      "tagsCount": 6,
+      "standardsCount": 2,
+      "contentPreview": "a.k.a. [compliance](/qualities/compliance)...",
+      "filePath": "_qualities/S/standard-compliance.md"
+    },
+    {
+      "id": "startup-time",
+      "title": "Startup Time",
+      "tags": [
+        "efficient"
+      ],
+      "related": [
+        "efficiency",
+        "performance",
+        "time-behaviour"
+      ],
+      "standards": [],
+      "relatedCount": 3,
+      "tagsCount": 1,
+      "standardsCount": 0,
+      "contentPreview": "Coloquially, the duration required for a system, application, or service to become fully operational...",
+      "filePath": "_qualities/S/startup-time.md"
+    },
+    {
+      "id": "suitability",
+      "title": "Suitability",
+      "tags": [
+        "usable",
+        "reliable",
+        "suitable"
+      ],
+      "related": [
+        "usability",
+        "functionality",
+        "functional-completeness"
+      ],
+      "standards": [],
+      "relatedCount": 3,
+      "tagsCount": 3,
+      "standardsCount": 0,
+      "contentPreview": "See also [functional-suitability](/qualities/functional-suitability) Definitions: >Provide functions...",
+      "filePath": "_qualities/S/suitability.md"
+    },
+    {
+      "id": "sustainability",
+      "title": "Sustainability",
+      "tags": [
+        "efficient",
+        "reliable"
+      ],
+      "related": [
+        "energy-efficiency",
+        "carbon-emission-efficiency"
+      ],
+      "standards": [
+        "iso42030"
+      ],
+      "relatedCount": 2,
+      "tagsCount": 2,
+      "standardsCount": 1,
+      "contentPreview": ">**Sustainability** refers to the ability of a system to meet the needs of the present without compr...",
+      "filePath": "_qualities/S/sustainability.md"
+    },
+    {
+      "id": "test-coverage",
+      "title": "Test Coverage",
+      "tags": [
+        "suitable",
+        "flexible"
+      ],
+      "related": [
+        "maintainability",
+        "flexibility",
+        "modifiability",
+        "analysability",
+        "testability"
+      ],
+      "standards": [],
+      "relatedCount": 5,
+      "tagsCount": 2,
+      "standardsCount": 0,
+      "contentPreview": "> The term test coverage used in the context of programming / software engineering, refers to measur...",
+      "filePath": "_qualities/T/test-coverage.md"
+    },
+    {
+      "id": "testability",
+      "title": "Testability",
+      "tags": [
+        "suitable",
+        "flexible"
+      ],
+      "related": [
+        "maintainability",
+        "flexibility",
+        "modifiability",
+        "analysability"
+      ],
+      "standards": [
+        "iso25010",
+        "iso26262",
+        "misra-c",
+        "iec61508",
+        "iso15408",
+        "do178c"
+      ],
+      "relatedCount": 4,
+      "tagsCount": 2,
+      "standardsCount": 6,
+      "contentPreview": "> Capability of a product to enable an objective and feasible test to be designed and performed to d...",
+      "filePath": "_qualities/T/testability.md"
+    },
+    {
+      "id": "throughput",
+      "title": "Throughput",
+      "tags": [
+        "efficient"
+      ],
+      "related": [
+        "performance",
+        "efficiency",
+        "speed"
+      ],
+      "standards": [
+        "iso14756"
+      ],
+      "relatedCount": 3,
+      "tagsCount": 1,
+      "standardsCount": 1,
+      "contentPreview": "### Network throughput >Network throughput (or just throughput, when in context) refers to the rate ...",
+      "filePath": "_qualities/T/throughput.md"
+    },
+    {
+      "id": "time-behaviour",
+      "title": "Time behaviour",
+      "tags": [
+        "efficient"
+      ],
+      "related": [
+        "efficiency",
+        "resource-efficiency",
+        "speed",
+        "performance"
+      ],
+      "standards": [
+        "iso25010",
+        "iso14756"
+      ],
+      "relatedCount": 4,
+      "tagsCount": 1,
+      "standardsCount": 2,
+      "contentPreview": "Definition: >Response and processing times and throughput rates of a product or system, when perform...",
+      "filePath": "_qualities/T/time-behaviour.md"
+    },
+    {
+      "id": "time-to-market",
+      "title": "Time to Market",
+      "tags": [
+        "efficient"
+      ],
+      "related": [
+        "flexibility",
+        "efficiency",
+        "deployment-frequency",
+        "extensibility",
+        "lead-time-for-changes",
+        "cycle-time"
+      ],
+      "standards": [
+        "iso42030"
+      ],
+      "relatedCount": 6,
+      "tagsCount": 1,
+      "standardsCount": 1,
+      "contentPreview": "Synonym: [Speed-to-Market](/qualities/time-to-market) Time to market is the length of time it takes ...",
+      "filePath": "_qualities/T/time-to-market.md"
+    },
+    {
+      "id": "timeliness",
+      "title": "Timeliness",
+      "tags": [
+        "efficient"
+      ],
+      "related": [
+        "efficiency",
+        "performance",
+        "response-time",
+        "speed"
+      ],
+      "standards": [
+        "iso25024"
+      ],
+      "relatedCount": 4,
+      "tagsCount": 1,
+      "standardsCount": 1,
+      "contentPreview": ">Degree to which the response and processing times and throughput rates of a product or system, when...",
+      "filePath": "_qualities/T/timeliness.md"
+    },
+    {
+      "id": "traceability",
+      "title": "Traceability",
+      "tags": [
+        "reliable",
+        "operable"
+      ],
+      "related": [
+        "devops-metrics",
+        "operability",
+        "testability"
+      ],
+      "standards": [
+        "iso26262",
+        "iec-62304",
+        "hl7",
+        "iso15408",
+        "cra",
+        "isoiec22989",
+        "iso25024",
+        "do178c",
+        "iso42010",
+        "gdpr",
+        "iso42030",
+        "iso12207",
+        "sox"
+      ],
+      "relatedCount": 3,
+      "tagsCount": 2,
+      "standardsCount": 13,
+      "contentPreview": "> **Traceability** is the ability to recover all of the artifacts that led to an element having a pr...",
+      "filePath": "_qualities/T/traceability.md"
+    },
+    {
+      "id": "transactionality",
+      "title": "Transactionality",
+      "tags": [
+        "reliable"
+      ],
+      "related": [
+        "consistency",
+        "durability",
+        "data-integrity",
+        "robustness"
+      ],
+      "standards": [],
+      "relatedCount": 4,
+      "tagsCount": 1,
+      "standardsCount": 0,
+      "contentPreview": "> A transaction is a sequence of operations performed as a single, logical unit of work. For a trans...",
+      "filePath": "_qualities/T/transactionality.md"
+    },
+    {
+      "id": "transparency",
+      "title": "Transparency",
+      "tags": [
+        "reliable"
+      ],
+      "related": [
+        "clarity",
+        "understandability",
+        "usability"
+      ],
+      "standards": [
+        "iso42001",
+        "cra",
+        "isoiec22989",
+        "iso42010",
+        "gdpr",
+        "iso42030",
+        "sox",
+        "ieee2857"
+      ],
+      "relatedCount": 3,
+      "tagsCount": 1,
+      "standardsCount": 8,
+      "contentPreview": ">**Transparency**: > >* the quality of being easy to see through. > >* a situation in which business...",
+      "filePath": "_qualities/T/transparency.md"
+    },
+    {
+      "id": "understandability",
+      "title": "Understandability",
+      "tags": [
+        "usable",
+        "operable"
+      ],
+      "related": [
+        "usability",
+        "self-descriptiveness",
+        "user-assistance",
+        "user-experience",
+        "learnability",
+        "conciseness"
+      ],
+      "standards": [
+        "misra-c",
+        "iso26514",
+        "iso25024",
+        "iso42010",
+        "iso42030"
+      ],
+      "relatedCount": 6,
+      "tagsCount": 2,
+      "standardsCount": 5,
+      "contentPreview": ">Understandability is the concept that a system should be presented so that (somebody) can easily co...",
+      "filePath": "_qualities/U/understandability.md"
+    },
+    {
+      "id": "updateability",
+      "title": "Updateability",
+      "tags": [
+        "flexible",
+        "operable"
+      ],
+      "related": [
+        "maintainability",
+        "upgradeability",
+        "installability",
+        "modifiability",
+        "flexibility",
+        "portability",
+        "configurability",
+        "securability"
+      ],
+      "standards": [
+        "cra",
+        "iso25010",
+        "iec-62304",
+        "iec61508"
+      ],
+      "relatedCount": 8,
+      "tagsCount": 2,
+      "standardsCount": 4,
+      "contentPreview": "> Updateability refers to the capability of a software system to efficiently receive, install, and i...",
+      "filePath": "_qualities/U/updateability.md"
+    },
+    {
+      "id": "upgradeability",
+      "title": "Upgradeability",
+      "tags": [
+        "flexible",
+        "operable"
+      ],
+      "related": [
+        "flexibility",
+        "operability",
+        "predictability",
+        "releasability",
+        "installability"
+      ],
+      "standards": [
+        "cra"
+      ],
+      "relatedCount": 5,
+      "tagsCount": 2,
+      "standardsCount": 1,
+      "contentPreview": "See also [installability](/qualities/installability) >Upgrading is the process of replacing a produc...",
+      "filePath": "_qualities/U/upgradeability.md"
+    },
+    {
+      "id": "usability",
+      "title": "Usability",
+      "tags": [
+        "usable",
+        "operable"
+      ],
+      "related": [
+        "functionality",
+        "attractiveness",
+        "operability",
+        "user-error-protection",
+        "user-engagement",
+        "ease-of-use",
+        "inclusivity"
+      ],
+      "standards": [
+        "iec-62304",
+        "isoiec22989",
+        "iso26514",
+        "iso12207"
+      ],
+      "relatedCount": 7,
+      "tagsCount": 2,
+      "standardsCount": 4,
+      "contentPreview": "See also * [#usable](/tag-usable). * [interaction-capability](/qualities/interaction-capability), a ...",
+      "filePath": "_qualities/U/usability.md"
+    },
+    {
+      "id": "user-assistance",
+      "title": "User assistance",
+      "tags": [
+        "usable"
+      ],
+      "related": [
+        "usability",
+        "user-error-protection",
+        "user-engagement"
+      ],
+      "standards": [
+        "iso25010"
+      ],
+      "relatedCount": 3,
+      "tagsCount": 1,
+      "standardsCount": 1,
+      "contentPreview": "See also [#usable](/tag-usable). Definitions: >Capability of a product to be used by people with the...",
+      "filePath": "_qualities/U/user-assistance.md"
+    },
+    {
+      "id": "user-engagement",
+      "title": "User engagement",
+      "tags": [
+        "usable"
+      ],
+      "related": [
+        "usability"
+      ],
+      "standards": [
+        "iso25010"
+      ],
+      "relatedCount": 1,
+      "tagsCount": 1,
+      "standardsCount": 1,
+      "contentPreview": "See also [#usable](/tag-usable). Definitions: >Capability of a product to present functions and info...",
+      "filePath": "_qualities/U/user-engagement.md"
+    },
+    {
+      "id": "user-error-protection",
+      "title": "User error protection",
+      "tags": [
+        "usable",
+        "operable"
+      ],
+      "related": [
+        "usability",
+        "operability",
+        "robustness"
+      ],
+      "standards": [
+        "iso25010"
+      ],
+      "relatedCount": 3,
+      "tagsCount": 2,
+      "standardsCount": 1,
+      "contentPreview": "See also [#operable](/tag-operable). [ISO-25010:2023](/references/#iso-25010-2023) sorts it below [u...",
+      "filePath": "_qualities/U/user-error-protection.md"
+    },
+    {
+      "id": "user-experience",
+      "title": "User experience",
+      "tags": [
+        "usable"
+      ],
+      "related": [
+        "usability",
+        "user-interface-aesthetics",
+        "user-error-protection",
+        "accessibility"
+      ],
+      "standards": [],
+      "relatedCount": 4,
+      "tagsCount": 1,
+      "standardsCount": 0,
+      "contentPreview": "See also [#usable](/tag-usable). Definitions: The user experience (UX) is how a user interacts with ...",
+      "filePath": "_qualities/U/user-experience.md"
+    },
+    {
+      "id": "user-interface-aesthetics",
+      "title": "User interface aesthetics",
+      "tags": [
+        "usable"
+      ],
+      "related": [
+        "usability"
+      ],
+      "standards": [],
+      "relatedCount": 1,
+      "tagsCount": 1,
+      "standardsCount": 0,
+      "contentPreview": "See also [#usable](/tag-usable). Definitions: >Capability of a user interface to enable pleasing and...",
+      "filePath": "_qualities/U/user-interface-aesthetics.md"
+    },
+    {
+      "id": "verifiability",
+      "title": "Verifiability",
+      "tags": [
+        "reliable",
+        "flexible"
+      ],
+      "related": [
+        "testability",
+        "analysability"
+      ],
+      "standards": [
+        "do178c",
+        "iso42010"
+      ],
+      "relatedCount": 2,
+      "tagsCount": 2,
+      "standardsCount": 2,
+      "contentPreview": "The capability of a product or system to be proven correct and complete, allowing for the checking o...",
+      "filePath": "_qualities/V/verifiability.md"
+    },
+    {
+      "id": "versatility",
+      "title": "Versatility",
+      "tags": [
+        "flexible",
+        "suitable"
+      ],
+      "related": [
+        "flexibility",
+        "adaptability"
+      ],
+      "standards": [],
+      "relatedCount": 2,
+      "tagsCount": 2,
+      "standardsCount": 0,
+      "contentPreview": "> able to change easily or to be used for different purposes > >[Cambridge Dictionary](https://dicti...",
+      "filePath": "_qualities/V/versatility.md"
+    },
+    {
+      "id": "vulnerability",
+      "title": "Vulnerability",
+      "tags": [
+        "secure",
+        "reliable"
+      ],
+      "related": [
+        "reliability",
+        "availability",
+        "fault-tolerance",
+        "immunity"
+      ],
+      "standards": [],
+      "relatedCount": 4,
+      "tagsCount": 2,
+      "standardsCount": 0,
+      "contentPreview": "Inability to resist a hazard or to respond when a disaster has occurred. Usually people will _requir...",
+      "filePath": "_qualities/V/vulnerability.md"
+    }
+  ],
+  "sampleDetailedEntries": [
+    {
+      "id": "access-control",
+      "title": "Access Control",
+      "tags": [
+        "secure"
+      ],
+      "related": [
+        "security",
+        "accessibility",
+        "confidentiality",
+        "privacy",
+        "intrusion-detection",
+        "intrusion-prevention"
+      ],
+      "standards": [
+        "pcidss",
+        "iec62443",
+        "gdpr",
+        "sox",
+        "ieee2857"
+      ],
+      "contentSummary": "Definition: >... who is authorized to access to the product (both functionality and data), under what circumstances that access is granted, and to which parts of the product access is allowed. > >[Volere+2012, p. 60](/references/#volere)",
+      "filePath": "_qualities/A/access-control.md",
+      "permalink": "/qualities/access-control"
+    },
+    {
+      "id": "accessibility",
+      "title": "Accessibility",
+      "tags": [
+        "usable"
+      ],
+      "related": [
+        "usability",
+        "inclusivity",
+        "interaction-capability"
+      ],
+      "standards": [
+        "iso26514",
+        "iso25024",
+        "ieee2857"
+      ],
+      "contentSummary": "See also [#usable](/tag-usable). There is a [W3C standard on this topic](https://www.w3.org/TR/WCAG21/) Definitions: >Capability of a product or system to be usable by people with the widest range of characteristics and capabilities to achieve a specified goal in a specified context of use. > >Note: The range of capabilities includes disabilities associated with age. > >Derived from [ISO-25010-2011](/references/#iso-25010-2011) >Accessibility is the design of products, devices, services, vehicles, or environments so as to be usable by people with disabilities. > >[Wikipedia/Accessibility](https://en.wikipedia.org/wiki/Accessibility) >Accessibility is the concept of whether a product or service can be used by everyone—however they encounter it. > >[InteractionDesignFoundation](https://www.interaction-design.org/literature/topics/accessibility)",
+      "filePath": "_qualities/A/accessibility.md",
+      "permalink": "/qualities/accessibility"
+    },
+    {
+      "id": "accountability",
+      "title": "Accountability",
+      "tags": [
+        "secure"
+      ],
+      "related": [
+        "authenticity",
+        "security",
+        "non-repudiation"
+      ],
+      "standards": [
+        "iso25010",
+        "iso27001",
+        "pcidss",
+        "iso42001",
+        "aiuc1",
+        "cra",
+        "gdpr",
+        "iso42030",
+        "sox",
+        "ieee2857"
+      ],
+      "contentSummary": "See [#secure](/tag-secure) ### Definitions: >Capability of a product to enable actions of an entity to be traced uniquely to the entity > >[ISO-25010:2023](/references/#iso-25010-2023) >* The security goal that generates the requirement for actions of an entity to be traced uniquely to that entity. This supports non-repudiation, deterrence, fault isolation, intrusion detection and prevention, and after-action recovery and legal action. >* A property that ensures that the actions of an entity may be traced uniquely to that entity. >* The property of being able to trace activities on a system to individuals who may then be held responsible for their actions. > >[Computer Security Resource Center](https://csrc.nist.gov/glossary/term/accountability)",
+      "filePath": "_qualities/A/accountability.md",
+      "permalink": "/qualities/accountability"
+    },
+    {
+      "id": "accuracy",
+      "title": "Accuracy",
+      "tags": [
+        "reliable",
+        "usable"
+      ],
+      "related": [
+        "correctness",
+        "preciseness"
+      ],
+      "standards": [
+        "iso25024",
+        "sox"
+      ],
+      "contentSummary": ">The degree of conformity of a measured or calculated value to the true value, typically based on a global reference system. > >[NIST Glossary](https://csrc.nist.gov/glossary/term/accuracy_absolute) >Accuracy and precision are two measures of observational error. Accuracy is how close a given set of measurements (observations or readings) are to their true value, while precision is how close the measurements are to each other. > >[Wikipedia](https://en.wikipedia.org/wiki/Accuracy_and_precision) >Accuracy is a description of only systematic errors, a measure of statistical bias of a given measure of central tendency; low accuracy causes a difference between a result and a true value; ISO calls this trueness. >Alternatively, accuracy means the combination of both types of observational error (random and systematic), so high accuracy requires both high precision and high trueness. > >[Wikipedia](https://en.wikipedia.org/wiki/Accuracy_and_precision)",
+      "filePath": "_qualities/A/accuracy.md",
+      "permalink": "/qualities/accuracy"
+    },
+    {
+      "id": "adaptability",
+      "title": "Adaptability",
+      "tags": [
+        "flexible",
+        "usable"
+      ],
+      "related": [
+        "changeability",
+        "configurability",
+        "maintainability",
+        "flexibility",
+        "usability",
+        "scalability",
+        "elasticity"
+      ],
+      "standards": [
+        "iso25010"
+      ],
+      "contentSummary": ">Capability of a product to be effectively and efficiently adapted for or transferred to different hardware, software or other operational or usage environments > >* Adaptations include those carried out by specialized support staff, and those carried out by business or operational staff, or end users. >*If the product is to be adapted by the end user, adaptability corresponds to suitability for individualization > >[ISO-25010:2023](/references/#iso-25010-2023)",
+      "filePath": "_qualities/A/adaptability.md",
+      "permalink": "/qualities/adaptability"
+    },
+    {
+      "id": "affordability",
+      "title": "Affordability",
+      "tags": [
+        "suitable",
+        "usable",
+        "efficient"
+      ],
+      "related": [
+        "budget-constraint",
+        "cost",
+        "changeability"
+      ],
+      "standards": [],
+      "contentSummary": "Definition: >\"the state of being cheap enough for people to be able to buy.\" > >[Cambridge dictionary](https://dictionary.cambridge.org/dictionary/english/affordability) In the context of software system quality and software engineering, \"affordability\" generally refers to the cost-effectiveness of developing, deploying, maintaining, or acquiring a software system. When a software system is described as \"affordable,\" it means that its total cost — considering both initial costs and ongoing costs — provides good value for the capabilities and benefits it offers. Affordability in software engineering can encompass several aspects: * Development Costs: This includes the expenses associated with the design, development, testing, and deployment of the software. It factors in costs such as developer wages, software tools, infrastructure, training, and other related overheads. * Maintenance Costs: After the initial development, software systems need regular updates, patches, and potentially upgrades. Affordability considers how cost-effective it is to maintain and support the software throughout its lifecycle. * Licensing Costs: If the software uses third-party components or platforms, there may be licensing fees. Affordability takes into account the cumulative cost of these licenses. * Training Costs: An affordable software system should not require excessive training costs for users to become proficient. * Operational Costs: This covers costs related to running the software, including hosting, server maintenance, data storage, and more. * Scalability Costs: As the system grows or needs to support more users or data, there might be costs associated with scaling the system up. An affordable system should scale cost-effectively. (This explanation was created with help from ChatGPT v 4.0)",
+      "filePath": "_qualities/A/affordability.md",
+      "permalink": "/qualities/affordability"
+    },
+    {
+      "id": "agility",
+      "title": "Agility",
+      "tags": [
+        "flexible"
+      ],
+      "related": [
+        "flexibility",
+        "changeability",
+        "adaptability",
+        "modifiability",
+        "modularity"
+      ],
+      "standards": [],
+      "contentSummary": "See especially [modifiability](/qualities/modifiability) and [changeability](/qualities/changeability) A system can **rapidly** be changed (as opposed to flexibility, which means that a system can _easily_ be changed.)",
+      "filePath": "_qualities/A/agility.md",
+      "permalink": "/qualities/agility"
+    },
+    {
+      "id": "analysability",
+      "title": "Analysability",
+      "tags": [
+        "reliable",
+        "flexible"
+      ],
+      "related": [
+        "flexibility",
+        "maintainability",
+        "modifiability",
+        "testability"
+      ],
+      "standards": [
+        "iso25010",
+        "misra-c"
+      ],
+      "contentSummary": ">Capability of a product to be effectively and efficiently assessed regarding the impact of an intended change to one or more of its parts, to diagnose it for deficiencies or causes of failures, or to identify parts to be modified. > >Implementation can include providing mechanisms for the product to analyse its own faults and provide reports prior to a failure or other event. > >from [ISO-25010:2023](/references/#iso-25010-2023)",
+      "filePath": "_qualities/A/analysability.md",
+      "permalink": "/qualities/analysability"
+    },
+    {
+      "id": "anticipated-workplace-environment",
+      "title": "Anticipated Workplace Environment",
+      "tags": [
+        "usable"
+      ],
+      "related": [
+        "functional-appropriateness"
+      ],
+      "standards": [],
+      "contentSummary": "Definition: >This describes the workplace in which the users are to work and use the product. >It should describe any features of the workplace that could have an effect on the design of the product, and the social and cultural aspects of the workplace. > >[Volere+2012, p. 20](/references/#volere)",
+      "filePath": "_qualities/A/anticipated-workplace-environment.md",
+      "permalink": "/qualities/anticipated-workplace-environment"
+    },
+    {
+      "id": "appearance",
+      "title": "Appearance",
+      "tags": [
+        "usable"
+      ],
+      "related": [
+        "ease-of-use",
+        "learnability",
+        "self-descriptiveness",
+        "user-interface-aesthetics",
+        "attractiveness"
+      ],
+      "standards": [],
+      "contentSummary": "### Definitions (related to the _spirit_ of the product/system): >Your client may have made particular demands for the product, such as corporate branding, colours to be used, and so on. > >[Volere+2012, p. 45](/references/#volere)",
+      "filePath": "_qualities/A/appearance.md",
+      "permalink": "/qualities/appearance"
+    }
+  ],
+  "insights": {
+    "qualitiesWithMostRelations": [
+      {
+        "id": "availability",
+        "title": "Availability",
+        "relatedCount": 9,
+        "related": [
+          "high-availability",
+          "robustness",
+          "reliability",
+          "usability",
+          "fault-tolerance",
+          "recoverability",
+          "dependability",
+          "faultlessness",
+          "recovery-time"
+        ]
+      },
+      {
+        "id": "high-availability",
+        "title": "High availability",
+        "relatedCount": 9,
+        "related": [
+          "availability",
+          "robustness",
+          "reliability",
+          "usability",
+          "fault-tolerance",
+          "recoverability",
+          "dependability",
+          "faultlessness",
+          "recovery-time"
+        ]
+      },
+      {
+        "id": "data-integrity",
+        "title": "Data Integrity",
+        "relatedCount": 8,
+        "related": [
+          "integrity",
+          "data-quality",
+          "accuracy",
+          "correctness",
+          "consistency",
+          "authenticity",
+          "non-repudiation",
+          "transactionality"
+        ]
+      },
+      {
+        "id": "ease-of-use",
+        "title": "Ease of Use",
+        "relatedCount": 8,
+        "related": [
+          "attractiveness",
+          "operability",
+          "user-error-protection",
+          "user-engagement",
+          "user-experience",
+          "user-interface-aesthetics",
+          "user-assistance",
+          "usability"
+        ]
+      },
+      {
+        "id": "independence",
+        "title": "Independence",
+        "relatedCount": 8,
+        "related": [
+          "maintainability",
+          "modularity",
+          "adaptability",
+          "configurability",
+          "changeability",
+          "agility",
+          "flexibility",
+          "autonomy"
+        ]
+      },
+      {
+        "id": "information-security",
+        "title": "Information Security",
+        "relatedCount": 8,
+        "related": [
+          "integrity",
+          "availability",
+          "non-repudiation",
+          "confidentiality",
+          "accountability",
+          "authenticity",
+          "resistance",
+          "cyber-security"
+        ]
+      },
+      {
+        "id": "interaction-capability",
+        "title": "Interaction capability",
+        "relatedCount": 8,
+        "related": [
+          "usability",
+          "functionality",
+          "inclusivity",
+          "attractiveness",
+          "operability",
+          "user-error-protection",
+          "user-engagement",
+          "ease-of-use"
+        ]
+      },
+      {
+        "id": "interchangeability",
+        "title": "Interchangeability",
+        "relatedCount": 8,
+        "related": [
+          "replaceability",
+          "modularity",
+          "compatibility",
+          "portability",
+          "standard-compliance",
+          "configurability",
+          "composability",
+          "flexibility"
+        ]
+      },
+      {
+        "id": "self-containedness",
+        "title": "Self-containedness",
+        "relatedCount": 8,
+        "related": [
+          "flexibility",
+          "adaptability",
+          "changeability",
+          "configurability",
+          "maintainability",
+          "modifiability",
+          "modularity",
+          "autonomy"
+        ]
+      },
+      {
+        "id": "updateability",
+        "title": "Updateability",
+        "relatedCount": 8,
+        "related": [
+          "maintainability",
+          "upgradeability",
+          "installability",
+          "modifiability",
+          "flexibility",
+          "portability",
+          "configurability",
+          "securability"
+        ]
+      },
+      {
+        "id": "adaptability",
+        "title": "Adaptability",
+        "relatedCount": 7,
+        "related": [
+          "changeability",
+          "configurability",
+          "maintainability",
+          "flexibility",
+          "usability",
+          "scalability",
+          "elasticity"
+        ]
+      },
+      {
+        "id": "deployment-frequency",
+        "title": "Deployment frequency",
+        "relatedCount": 7,
+        "related": [
+          "controllability",
+          "operability",
+          "testability",
+          "analysability",
+          "deployability",
+          "devops-metrics",
+          "releasability"
+        ]
+      },
+      {
+        "id": "fault-tolerance",
+        "title": "Fault tolerance",
+        "relatedCount": 7,
+        "related": [
+          "robustness",
+          "reliability",
+          "usability",
+          "availability",
+          "recoverability",
+          "faultlessness",
+          "graceful-degradation"
+        ]
+      },
+      {
+        "id": "flexibility",
+        "title": "Flexibility",
+        "relatedCount": 7,
+        "related": [
+          "maintainability",
+          "modularity",
+          "adaptability",
+          "configurability",
+          "changeability",
+          "agility",
+          "autonomy"
+        ]
+      },
+      {
+        "id": "graceful-degradation",
+        "title": "Graceful degradation",
+        "relatedCount": 7,
+        "related": [
+          "robustness",
+          "reliability",
+          "usability",
+          "availability",
+          "recoverability",
+          "faultlessness",
+          "fault-tolerance"
+        ]
+      },
+      {
+        "id": "i18n",
+        "title": "i18n (Internationalization)",
+        "relatedCount": 7,
+        "related": [
+          "usability",
+          "adaptability",
+          "configurability",
+          "ease-of-use",
+          "modifiability",
+          "user-assistance",
+          "user-experience"
+        ]
+      },
+      {
+        "id": "intuitiveness",
+        "title": "Intuitiveness",
+        "relatedCount": 7,
+        "related": [
+          "usability",
+          "learnability",
+          "user-experience",
+          "clarity",
+          "simplicity",
+          "self-descriptiveness",
+          "understandability"
+        ]
+      },
+      {
+        "id": "modularity",
+        "title": "Modularity",
+        "relatedCount": 7,
+        "related": [
+          "flexibility",
+          "adaptability",
+          "changeability",
+          "configurability",
+          "maintainability",
+          "modifiability",
+          "composability"
+        ]
+      },
+      {
+        "id": "portability",
+        "title": "Portability",
+        "relatedCount": 7,
+        "related": [
+          "compatibility",
+          "flexibility",
+          "installability",
+          "interoperability",
+          "maintainability",
+          "configurability",
+          "replaceability"
+        ]
+      },
+      {
+        "id": "security",
+        "title": "Security",
+        "relatedCount": 7,
+        "related": [
+          "integrity",
+          "availability",
+          "non-repudiation",
+          "confidentiality",
+          "accountability",
+          "authenticity",
+          "resistance"
+        ]
+      }
+    ],
+    "qualitiesWithMostStandards": [
+      {
+        "id": "security",
+        "title": "Security",
+        "standardsCount": 21,
+        "standards": [
+          "iso25010",
+          "iso27001",
+          "iso26262",
+          "misra-c",
+          "nist80053",
+          "iso5055",
+          "pcidss",
+          "iso42001",
+          "aiuc1",
+          "iec-62304",
+          "hl7",
+          "iso15408",
+          "cra",
+          "isoiec22989",
+          "iec62443",
+          "do178c",
+          "gdpr",
+          "iso42030",
+          "iso12207",
+          "sox",
+          "ieee2857"
+        ]
+      },
+      {
+        "id": "reliability",
+        "title": "Reliability",
+        "standardsCount": 19,
+        "standards": [
+          "iso25010",
+          "iso27001",
+          "iso26262",
+          "misra-c",
+          "nist80053",
+          "iso5055",
+          "iso14756",
+          "aiuc1",
+          "iec-62304",
+          "iec61508",
+          "hl7",
+          "iso15408",
+          "cra",
+          "isoiec22989",
+          "iso25024",
+          "do178c",
+          "iso42030",
+          "iso12207",
+          "sox"
+        ]
+      },
+      {
+        "id": "maintainability",
+        "title": "Maintainability",
+        "standardsCount": 15,
+        "standards": [
+          "iso25010",
+          "iso26262",
+          "misra-c",
+          "nist80053",
+          "iso5055",
+          "iec-62304",
+          "iec61508",
+          "hl7",
+          "cra",
+          "isoiec22989",
+          "do178c",
+          "iso42010",
+          "iso42030",
+          "iso12207",
+          "ieee2857"
+        ]
+      },
+      {
+        "id": "traceability",
+        "title": "Traceability",
+        "standardsCount": 13,
+        "standards": [
+          "iso26262",
+          "iec-62304",
+          "hl7",
+          "iso15408",
+          "cra",
+          "isoiec22989",
+          "iso25024",
+          "do178c",
+          "iso42010",
+          "gdpr",
+          "iso42030",
+          "iso12207",
+          "sox"
+        ]
+      },
+      {
+        "id": "integrity",
+        "title": "Integrity",
+        "standardsCount": 13,
+        "standards": [
+          "iso25010",
+          "iso27001",
+          "iso26262",
+          "misra-c",
+          "nist80053",
+          "pcidss",
+          "hl7",
+          "iso15408",
+          "cra",
+          "iec62443",
+          "iso25024",
+          "do178c",
+          "ieee2857"
+        ]
+      },
+      {
+        "id": "auditability",
+        "title": "Auditability",
+        "standardsCount": 12,
+        "standards": [
+          "iso26262",
+          "misra-c",
+          "hl7",
+          "iso15408",
+          "cra",
+          "iec62443",
+          "do178c",
+          "iso42010",
+          "gdpr",
+          "iso42030",
+          "sox",
+          "ieee2857"
+        ]
+      },
+      {
+        "id": "availability",
+        "title": "Availability",
+        "standardsCount": 11,
+        "standards": [
+          "iso25010",
+          "iso27001",
+          "iso26262",
+          "pcidss",
+          "hl7",
+          "iso15408",
+          "cra",
+          "iec62443",
+          "iso25024",
+          "iso12207",
+          "sox"
+        ]
+      },
+      {
+        "id": "confidentiality",
+        "title": "Confidentiality",
+        "standardsCount": 11,
+        "standards": [
+          "iso25010",
+          "iso27001",
+          "pcidss",
+          "hl7",
+          "iso15408",
+          "cra",
+          "iec62443",
+          "iso25024",
+          "gdpr",
+          "sox",
+          "ieee2857"
+        ]
+      },
+      {
+        "id": "compliance",
+        "title": "Compliance",
+        "standardsCount": 10,
+        "standards": [
+          "iso27001",
+          "iso26262",
+          "pcidss",
+          "hl7",
+          "iso15408",
+          "cra",
+          "iso25024",
+          "do178c",
+          "sox",
+          "ieee2857"
+        ]
+      },
+      {
+        "id": "accountability",
+        "title": "Accountability",
+        "standardsCount": 10,
+        "standards": [
+          "iso25010",
+          "iso27001",
+          "pcidss",
+          "iso42001",
+          "aiuc1",
+          "cra",
+          "gdpr",
+          "iso42030",
+          "sox",
+          "ieee2857"
+        ]
+      },
+      {
+        "id": "data-integrity",
+        "title": "Data Integrity",
+        "standardsCount": 9,
+        "standards": [
+          "iso27001",
+          "iso25024",
+          "pcidss",
+          "hl7",
+          "nist80053",
+          "iso15408",
+          "gdpr",
+          "sox",
+          "ieee2857"
+        ]
+      },
+      {
+        "id": "authenticity",
+        "title": "Authenticity",
+        "standardsCount": 8,
+        "standards": [
+          "iso25010",
+          "iso27001",
+          "pcidss",
+          "iso15408",
+          "cra",
+          "gdpr",
+          "sox",
+          "ieee2857"
+        ]
+      },
+      {
+        "id": "transparency",
+        "title": "Transparency",
+        "standardsCount": 8,
+        "standards": [
+          "iso42001",
+          "cra",
+          "isoiec22989",
+          "iso42010",
+          "gdpr",
+          "iso42030",
+          "sox",
+          "ieee2857"
+        ]
+      },
+      {
+        "id": "safety",
+        "title": "Safety",
+        "standardsCount": 8,
+        "standards": [
+          "iso25010",
+          "iso26262",
+          "misra-c",
+          "aiuc1",
+          "iec-62304",
+          "iec61508",
+          "isoiec22989",
+          "do178c"
+        ]
+      },
+      {
+        "id": "interoperability",
+        "title": "Interoperability",
+        "standardsCount": 7,
+        "standards": [
+          "iso25010",
+          "hl7",
+          "cra",
+          "iso25024",
+          "iso42030",
+          "iso12207",
+          "ieee2857"
+        ]
+      },
+      {
+        "id": "flexibility",
+        "title": "Flexibility",
+        "standardsCount": 6,
+        "standards": [
+          "iso25010",
+          "misra-c",
+          "hl7",
+          "iso42030",
+          "iso12207",
+          "ieee2857"
+        ]
+      },
+      {
+        "id": "modularity",
+        "title": "Modularity",
+        "standardsCount": 6,
+        "standards": [
+          "iso25010",
+          "cra",
+          "do178c",
+          "iso42030",
+          "iso12207",
+          "ieee2857"
+        ]
+      },
+      {
+        "id": "testability",
+        "title": "Testability",
+        "standardsCount": 6,
+        "standards": [
+          "iso25010",
+          "iso26262",
+          "misra-c",
+          "iec61508",
+          "iso15408",
+          "do178c"
+        ]
+      },
+      {
+        "id": "consistency",
+        "title": "Consistency",
+        "standardsCount": 6,
+        "standards": [
+          "iso26514",
+          "iso25024",
+          "iso42010",
+          "iso42030",
+          "iso12207",
+          "sox"
+        ]
+      },
+      {
+        "id": "access-control",
+        "title": "Access Control",
+        "standardsCount": 5,
+        "standards": [
+          "pcidss",
+          "iec62443",
+          "gdpr",
+          "sox",
+          "ieee2857"
+        ]
+      }
+    ],
+    "qualitiesByTag": {
+      "secure": [
+        "security",
+        "integrity",
+        "confidentiality",
+        "compliance",
+        "accountability",
+        "data-integrity",
+        "authenticity",
+        "safety",
+        "access-control",
+        "privacy",
+        "non-repudiation",
+        "resilience",
+        "standard-compliance",
+        "information-security",
+        "resistance",
+        "faultlessness",
+        "securability",
+        "cyber-security",
+        "vulnerability",
+        "immunity",
+        "patient-safety",
+        "intrusion-detection",
+        "intrusion-prevention"
+      ],
+      "reliable": [
+        "security",
+        "reliability",
+        "traceability",
+        "availability",
+        "compliance",
+        "data-integrity",
+        "transparency",
+        "safety",
+        "functional-completeness",
+        "robustness",
+        "data-quality",
+        "recoverability",
+        "clarity",
+        "compatibility",
+        "fault-tolerance",
+        "correctness",
+        "resilience",
+        "fault-isolation",
+        "analysability",
+        "dependability",
+        "fairness",
+        "functional-correctness",
+        "accuracy",
+        "capacity",
+        "risk-identification",
+        "verifiability",
+        "standard-compliance",
+        "information-security",
+        "bias-mitigation",
+        "functional-appropriateness",
+        "functional-suitability",
+        "operational-constraint",
+        "credibility",
+        "faultlessness",
+        "precision",
+        "fail-safe",
+        "hazard-warning",
+        "predictability",
+        "safe-integration",
+        "sustainability",
+        "high-availability",
+        "graceful-degradation",
+        "redundancy",
+        "recovery-time",
+        "durability",
+        "failure-transparency",
+        "functionality",
+        "transactionality",
+        "vulnerability",
+        "backward-compatibility",
+        "immunity",
+        "longevity",
+        "provability",
+        "stability",
+        "suitability",
+        "patient-safety",
+        "preciseness"
+      ],
+      "flexible": [
+        "maintainability",
+        "flexibility",
+        "modularity",
+        "testability",
+        "scalability",
+        "updateability",
+        "portability",
+        "configurability",
+        "analysability",
+        "modifiability",
+        "verifiability",
+        "adaptability",
+        "reusability",
+        "replaceability",
+        "upgradeability",
+        "extensibility",
+        "installability",
+        "co-existence",
+        "independence",
+        "interchangeability",
+        "self-containedness",
+        "debuggability",
+        "agility",
+        "changeability",
+        "evolvability",
+        "integrability",
+        "internationalization",
+        "localizability",
+        "test-coverage",
+        "composability",
+        "customizability",
+        "elasticity",
+        "longevity",
+        "loose-coupling",
+        "cohesion",
+        "versatility",
+        "personalization"
+      ],
+      "operable": [
+        "traceability",
+        "auditability",
+        "interoperability",
+        "understandability",
+        "updateability",
+        "portability",
+        "usability",
+        "compatibility",
+        "observability",
+        "learnability",
+        "operability",
+        "interaction-capability",
+        "appropriateness-recognizability",
+        "deployability",
+        "replaceability",
+        "upgradeability",
+        "installability",
+        "user-error-protection",
+        "controllability",
+        "latency",
+        "ease-of-use",
+        "interchangeability",
+        "deployment-frequency",
+        "change-failure-rate",
+        "debuggability",
+        "mean-time-between-failures",
+        "mean-time-to-recovery",
+        "redundancy",
+        "autonomy",
+        "cycle-time",
+        "devops-metrics",
+        "integrability",
+        "DORA-metrics",
+        "lead-time-for-changes",
+        "legal-requirements",
+        "backward-compatibility",
+        "releasability",
+        "operational-environment-requirements",
+        "expected-physical-environment"
+      ],
+      "usable": [
+        "availability",
+        "compliance",
+        "interoperability",
+        "consistency",
+        "understandability",
+        "functional-completeness",
+        "usability",
+        "data-quality",
+        "recoverability",
+        "clarity",
+        "compatibility",
+        "fault-tolerance",
+        "correctness",
+        "accessibility",
+        "coherence",
+        "communicability",
+        "configurability",
+        "learnability",
+        "self-descriptiveness",
+        "functional-correctness",
+        "operability",
+        "accuracy",
+        "conciseness",
+        "standard-compliance",
+        "interaction-capability",
+        "adaptability",
+        "appropriateness-recognizability",
+        "inclusivity",
+        "functional-appropriateness",
+        "functional-suitability",
+        "faultlessness",
+        "precision",
+        "user-assistance",
+        "user-error-protection",
+        "controllability",
+        "latency",
+        "reproducibility",
+        "user-engagement",
+        "high-availability",
+        "ease-of-use",
+        "graceful-degradation",
+        "i18n",
+        "intuitiveness",
+        "code-readability",
+        "appearance",
+        "attractiveness",
+        "internationalization",
+        "localizability",
+        "customizability",
+        "features",
+        "functionality",
+        "legal-requirements",
+        "readability",
+        "user-experience",
+        "affordability",
+        "backward-compatibility",
+        "convenience",
+        "discoverability",
+        "responsiveness",
+        "suitability",
+        "legibility",
+        "preciseness",
+        "simplicity",
+        "anticipated-workplace-environment",
+        "user-interface-aesthetics"
+      ],
+      "safe": [
+        "compliance",
+        "safety",
+        "fault-isolation",
+        "fairness",
+        "explainability",
+        "risk-identification",
+        "standard-compliance",
+        "bias-mitigation",
+        "operational-constraint",
+        "fail-safe",
+        "hazard-warning",
+        "safe-integration",
+        "failure-transparency",
+        "provability",
+        "patient-safety"
+      ],
+      "efficient": [
+        "compliance",
+        "consistency",
+        "performance",
+        "performance-efficiency",
+        "coherence",
+        "resource-utilization",
+        "time-behaviour",
+        "capacity",
+        "efficiency",
+        "conciseness",
+        "standard-compliance",
+        "time-to-market",
+        "timeliness",
+        "throughput",
+        "latency",
+        "sustainability",
+        "effectiveness",
+        "code-complexity",
+        "code-readability",
+        "speed-to-market",
+        "cycle-time",
+        "memory-usage",
+        "profitability",
+        "affordability",
+        "jitter",
+        "loose-coupling",
+        "releasability",
+        "resource-efficiency",
+        "response-time",
+        "responsiveness",
+        "speed",
+        "startup-time",
+        "budget-constraint",
+        "carbon-emission-efficiency",
+        "cohesion",
+        "cost",
+        "energy-efficiency",
+        "shutdown-time",
+        "simplicity"
+      ],
+      "suitable": [
+        "compliance",
+        "testability",
+        "functional-completeness",
+        "data-quality",
+        "correctness",
+        "fairness",
+        "functional-correctness",
+        "explainability",
+        "standard-compliance",
+        "deployability",
+        "bias-mitigation",
+        "functional-appropriateness",
+        "functional-suitability",
+        "deployment-frequency",
+        "mean-time-to-recovery",
+        "autonomy",
+        "cycle-time",
+        "test-coverage",
+        "functionality",
+        "affordability",
+        "loose-coupling",
+        "suitability",
+        "budget-constraint",
+        "cohesion",
+        "cost",
+        "versatility",
+        "expected-physical-environment"
+      ]
+    },
+    "qualitiesByStandard": {
+      "iso25010": [
+        "security",
+        "reliability",
+        "maintainability",
+        "integrity",
+        "availability",
+        "confidentiality",
+        "accountability",
+        "authenticity",
+        "safety",
+        "interoperability",
+        "flexibility",
+        "modularity",
+        "testability",
+        "functional-completeness",
+        "scalability",
+        "updateability",
+        "recoverability",
+        "compatibility",
+        "fault-tolerance",
+        "non-repudiation",
+        "performance-efficiency",
+        "resource-utilization",
+        "learnability",
+        "self-descriptiveness",
+        "analysability",
+        "functional-correctness",
+        "modifiability",
+        "operability",
+        "time-behaviour",
+        "capacity",
+        "risk-identification",
+        "interaction-capability",
+        "adaptability",
+        "reusability",
+        "appropriateness-recognizability",
+        "inclusivity",
+        "replaceability",
+        "resistance",
+        "functional-appropriateness",
+        "functional-suitability",
+        "installability",
+        "operational-constraint",
+        "faultlessness",
+        "user-assistance",
+        "user-error-protection",
+        "co-existence",
+        "fail-safe",
+        "hazard-warning",
+        "safe-integration",
+        "user-engagement"
+      ],
+      "iso27001": [
+        "security",
+        "reliability",
+        "integrity",
+        "availability",
+        "confidentiality",
+        "compliance",
+        "accountability",
+        "data-integrity",
+        "authenticity",
+        "non-repudiation",
+        "information-security"
+      ],
+      "iso26262": [
+        "security",
+        "reliability",
+        "maintainability",
+        "traceability",
+        "integrity",
+        "auditability",
+        "availability",
+        "compliance",
+        "safety",
+        "testability",
+        "robustness",
+        "portability",
+        "observability",
+        "fault-tolerance",
+        "fault-isolation",
+        "configurability",
+        "dependability"
+      ],
+      "misra-c": [
+        "security",
+        "reliability",
+        "maintainability",
+        "integrity",
+        "auditability",
+        "safety",
+        "flexibility",
+        "testability",
+        "understandability",
+        "robustness",
+        "portability",
+        "analysability",
+        "efficiency",
+        "predictability"
+      ],
+      "nist80053": [
+        "security",
+        "reliability",
+        "maintainability",
+        "integrity",
+        "data-integrity",
+        "privacy",
+        "operability"
+      ],
+      "iso5055": [
+        "security",
+        "reliability",
+        "maintainability",
+        "performance-efficiency"
+      ],
+      "pcidss": [
+        "security",
+        "integrity",
+        "availability",
+        "confidentiality",
+        "compliance",
+        "accountability",
+        "data-integrity",
+        "authenticity",
+        "access-control",
+        "non-repudiation"
+      ],
+      "iso42001": [
+        "security",
+        "accountability",
+        "transparency",
+        "data-quality",
+        "fairness",
+        "explainability"
+      ],
+      "aiuc1": [
+        "security",
+        "reliability",
+        "accountability",
+        "safety",
+        "privacy"
+      ],
+      "iec-62304": [
+        "security",
+        "reliability",
+        "maintainability",
+        "traceability",
+        "safety",
+        "updateability",
+        "usability"
+      ],
+      "hl7": [
+        "security",
+        "reliability",
+        "maintainability",
+        "traceability",
+        "integrity",
+        "auditability",
+        "availability",
+        "confidentiality",
+        "compliance",
+        "data-integrity",
+        "interoperability",
+        "flexibility",
+        "portability",
+        "data-quality",
+        "compatibility",
+        "extensibility"
+      ],
+      "iso15408": [
+        "security",
+        "reliability",
+        "traceability",
+        "integrity",
+        "auditability",
+        "availability",
+        "confidentiality",
+        "compliance",
+        "data-integrity",
+        "authenticity",
+        "testability"
+      ],
+      "cra": [
+        "security",
+        "reliability",
+        "maintainability",
+        "traceability",
+        "integrity",
+        "auditability",
+        "availability",
+        "confidentiality",
+        "compliance",
+        "accountability",
+        "authenticity",
+        "transparency",
+        "interoperability",
+        "modularity",
+        "updateability",
+        "recoverability",
+        "observability",
+        "resilience",
+        "dependability",
+        "risk-identification",
+        "upgradeability",
+        "securability"
+      ],
+      "isoiec22989": [
+        "security",
+        "reliability",
+        "maintainability",
+        "traceability",
+        "transparency",
+        "safety",
+        "robustness",
+        "privacy",
+        "usability",
+        "data-quality",
+        "resilience",
+        "fairness",
+        "explainability",
+        "bias-mitigation"
+      ],
+      "iec62443": [
+        "security",
+        "integrity",
+        "auditability",
+        "availability",
+        "confidentiality",
+        "access-control",
+        "robustness"
+      ],
+      "do178c": [
+        "security",
+        "reliability",
+        "maintainability",
+        "traceability",
+        "integrity",
+        "auditability",
+        "compliance",
+        "safety",
+        "modularity",
+        "testability",
+        "robustness",
+        "fault-isolation",
+        "verifiability",
+        "reproducibility"
+      ],
+      "gdpr": [
+        "security",
+        "traceability",
+        "auditability",
+        "confidentiality",
+        "accountability",
+        "data-integrity",
+        "authenticity",
+        "transparency",
+        "access-control",
+        "privacy"
+      ],
+      "iso42030": [
+        "security",
+        "reliability",
+        "maintainability",
+        "traceability",
+        "auditability",
+        "accountability",
+        "transparency",
+        "interoperability",
+        "flexibility",
+        "modularity",
+        "consistency",
+        "understandability",
+        "functional-completeness",
+        "scalability",
+        "clarity",
+        "compatibility",
+        "performance",
+        "coherence",
+        "resilience",
+        "communicability",
+        "functional-correctness",
+        "standard-compliance",
+        "time-to-market",
+        "sustainability"
+      ],
+      "iso12207": [
+        "security",
+        "reliability",
+        "maintainability",
+        "traceability",
+        "availability",
+        "interoperability",
+        "flexibility",
+        "modularity",
+        "consistency",
+        "functional-completeness",
+        "scalability",
+        "usability",
+        "clarity",
+        "compatibility",
+        "performance",
+        "correctness",
+        "coherence",
+        "deployability"
+      ],
+      "sox": [
+        "security",
+        "reliability",
+        "traceability",
+        "auditability",
+        "availability",
+        "confidentiality",
+        "compliance",
+        "accountability",
+        "data-integrity",
+        "authenticity",
+        "transparency",
+        "consistency",
+        "access-control",
+        "functional-completeness",
+        "scalability",
+        "data-quality",
+        "recoverability",
+        "performance",
+        "observability",
+        "correctness",
+        "accuracy"
+      ],
+      "ieee2857": [
+        "security",
+        "maintainability",
+        "integrity",
+        "auditability",
+        "confidentiality",
+        "compliance",
+        "accountability",
+        "data-integrity",
+        "authenticity",
+        "transparency",
+        "interoperability",
+        "flexibility",
+        "modularity",
+        "access-control",
+        "scalability",
+        "privacy",
+        "observability",
+        "accessibility",
+        "configurability",
+        "learnability",
+        "controllability"
+      ],
+      "iso14756": [
+        "reliability",
+        "performance",
+        "performance-efficiency",
+        "resource-utilization",
+        "time-behaviour",
+        "capacity",
+        "throughput",
+        "latency"
+      ],
+      "iec61508": [
+        "reliability",
+        "maintainability",
+        "safety",
+        "testability",
+        "updateability",
+        "fault-tolerance"
+      ],
+      "iso25024": [
+        "reliability",
+        "traceability",
+        "integrity",
+        "availability",
+        "confidentiality",
+        "compliance",
+        "data-integrity",
+        "interoperability",
+        "consistency",
+        "understandability",
+        "portability",
+        "recoverability",
+        "accessibility",
+        "accuracy",
+        "timeliness",
+        "credibility",
+        "precision"
+      ],
+      "iso42010": [
+        "maintainability",
+        "traceability",
+        "auditability",
+        "transparency",
+        "consistency",
+        "understandability",
+        "functional-completeness",
+        "clarity",
+        "coherence",
+        "communicability",
+        "self-descriptiveness",
+        "modifiability",
+        "verifiability",
+        "conciseness",
+        "standard-compliance"
+      ],
+      "iso26514": [
+        "consistency",
+        "understandability",
+        "usability",
+        "clarity",
+        "correctness",
+        "accessibility",
+        "conciseness"
+      ],
+      "iso25022": [
+        "efficiency",
+        "effectiveness"
+      ]
+    }
+  }
+}
