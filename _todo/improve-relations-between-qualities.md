@@ -3,7 +3,7 @@
 **Generated**: 2025-11-23
 **Total Qualities Analyzed**: 180 / 180 (COMPLETE ✅)
 **Qualities with Suggestions**: 172+ (95%+)
-**Missing Files**: 3 (internationalization, legal-requirements, localizability - noted in Batch 7)
+**Previously Missing Files**: 3 (now added: internationalization, i18n, legal-requirements, localizability)
 
 ---
 
@@ -26,12 +26,12 @@
 
 ## Summary Statistics (FINAL)
 
-- **Total qualities analyzed**: 180 (177 files exist, 3 missing)
+- **Total qualities analyzed**: 180 (all files exist, filename typos corrected)
 - **Total relations to ADD**: ~463 (290 high confidence, 171 medium confidence, 2 low)
 - **Total relations to REMOVE**: 2
 - **Qualities with suggestions**: 172+ (95%+)
 - **Most critical gaps**: security (21 standards), reliability (19 standards), traceability (13 standards)
-- **Missing quality files**: 3 (internationalization, legal-requirements, localizability)
+- **Filename typos corrected**: 2 (internationalization, localizability)
 
 ---
 
@@ -1886,6 +1886,55 @@
 
 ---
 
+---
+
+## Quality: i18n
+
+**Current Relations**: 7 (`usability, adaptability, configurability, ease-of-use, modifiability, user-assistance, user-experience`)
+**Tags**: `usable`
+**Standards**: none
+
+### Relations to Add
+
+- **internationalization**: i18n is the standard abbreviation for internationalization (parent concept)
+  - *Signal*: semantic-similarity (synonym/abbreviation relationship)
+  - *Confidence*: high
+
+- **localizability**: i18n enables localizability through infrastructure and flexibility
+  - *Signal*: tag-overlap (usable) + semantic-similarity (closely coupled concepts)
+  - *Confidence*: high
+
+- **portability**: i18n infrastructure enables portability across languages and regions
+  - *Signal*: tag-overlap (usable) + semantic-similarity
+  - *Confidence*: medium
+
+---
+
+## Quality: internationalization
+
+**Current Relations**: 5 (`localizability, adaptability, modifiability, maintainability, internationalization`)
+**Tags**: `flexible, usable`
+**Standards**: `iso26514`
+
+### Relations to Add
+
+- **i18n**: i18n is the standard abbreviation/synonym for internationalization
+  - *Signal*: semantic-similarity (synonym relationship)
+  - *Confidence*: high
+
+- **configurability**: Internationalization requires configuration mechanisms for different locales
+  - *Signal*: tag-overlap (flexible) + semantic-similarity
+  - *Confidence*: medium
+
+- **portability**: Internationalization enables portability across languages and cultural regions
+  - *Signal*: tag-overlap (flexible, usable) + semantic-similarity
+  - *Confidence*: medium
+
+### Relations to Remove
+
+- **internationalization**: Quality incorrectly references itself
+  - *Reason*: self-reference bug
+
 ## Quality: integrity
 
 **Current Relations**: 2 (`confidentiality, security`)
@@ -2214,6 +2263,70 @@ Analysis covers 12 available qualities from this batch.
   - *Confidence*: high
 
 ---
+
+---
+
+## Quality: legal-requirements
+
+**Current Relations**: 4 (`accountability, adaptability, operational-constraint, correctness`)
+**Tags**: `usable, operable`
+**Standards**: none (but relates to GDPR, compliance frameworks)
+
+### Relations to Add
+
+- **compliance**: Legal requirements drive the need for compliance with regulations
+  - *Signal*: semantic-similarity (legal requirements define what must be complied with)
+  - *Confidence*: high
+
+- **auditability**: Legal compliance requires comprehensive audit trails
+  - *Signal*: semantic-similarity (legal frameworks require auditability)
+  - *Confidence*: high
+
+- **privacy**: Data privacy laws impose legal requirements on systems
+  - *Signal*: semantic-similarity (major legal framework like GDPR)
+  - *Confidence*: high
+
+- **traceability**: Legal requirements often mandate traceability of actions and data
+  - *Signal*: semantic-similarity + tag-overlap (operable)
+  - *Confidence*: medium
+
+- **confidentiality**: Legal requirements around data confidentiality (e.g., GDPR)
+  - *Signal*: semantic-similarity
+  - *Confidence*: medium
+
+- **security**: Legal requirements often mandate security measures
+  - *Signal*: semantic-similarity
+  - *Confidence*: medium
+
+---
+
+## Quality: localizability
+
+**Current Relations**: 5 (`localizability, adaptability, modifiability, maintainability, internationalization`)
+**Tags**: `flexible, usable`
+**Standards**: none
+
+### Relations to Add
+
+- **i18n**: i18n (internationalization) is the infrastructure that enables localizability
+  - *Signal*: tag-overlap (usable) + semantic-similarity (complementary concepts)
+  - *Confidence*: high
+
+- **configurability**: Localization requires configuration for different locales/regions
+  - *Signal*: tag-overlap (flexible) + semantic-similarity
+  - *Confidence*: medium
+
+- **portability**: Localizability enables portability across different language/cultural contexts
+  - *Signal*: tag-overlap (flexible, usable) + semantic-similarity
+  - *Confidence*: medium
+
+### Relations to Remove
+
+- **localizability**: Quality incorrectly references itself
+  - *Reason*: self-reference bug
+
+---
+
 
 ## Quality: maintainability
 
