@@ -1,7 +1,7 @@
 ---
 title: Capacity
 tags: [efficient, reliable]
-related: [efficiency, resource-efficiency]
+related: [efficiency, resource-efficiency, scalability, performance, resource-utilization]
 standards: [iso25010, iso14756]
 permalink: /qualities/capacity
 ---
