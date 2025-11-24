@@ -1,7 +1,7 @@
 ---
 title: Confidentiality
 tags: [secure]
-related: [integrity, accountability]
+related: [integrity, accountability, privacy, access-control, authenticity]
 standards: [iso25010, iso27001, pcidss, hl7, iso15408, cra, iec62443, iso25024, gdpr, sox, ieee2857]
 permalink: /qualities/confidentiality
 ---
