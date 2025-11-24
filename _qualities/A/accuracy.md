@@ -1,7 +1,7 @@
 ---
 title: Accuracy
 tags: [reliable, usable]
-related: [correctness, preciseness]
+related: [correctness, preciseness, precision, data-quality]
 standards: [iso25024, sox]
 permalink: /qualities/accuracy
 ---
