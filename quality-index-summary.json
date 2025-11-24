@@ -1,0 +1,117 @@
+{
+  "total": 180,
+  "byTag": {
+    "secure": 23,
+    "reliable": 57,
+    "flexible": 37,
+    "operable": 39,
+    "usable": 65,
+    "safe": 15,
+    "efficient": 39,
+    "suitable": 27
+  },
+  "topConnected": [
+    {
+      "id": "availability",
+      "title": "Availability",
+      "relatedCount": 9
+    },
+    {
+      "id": "high-availability",
+      "title": "High availability",
+      "relatedCount": 9
+    },
+    {
+      "id": "data-integrity",
+      "title": "Data Integrity",
+      "relatedCount": 8
+    },
+    {
+      "id": "ease-of-use",
+      "title": "Ease of Use",
+      "relatedCount": 8
+    },
+    {
+      "id": "independence",
+      "title": "Independence",
+      "relatedCount": 8
+    },
+    {
+      "id": "information-security",
+      "title": "Information Security",
+      "relatedCount": 8
+    },
+    {
+      "id": "interaction-capability",
+      "title": "Interaction capability",
+      "relatedCount": 8
+    },
+    {
+      "id": "interchangeability",
+      "title": "Interchangeability",
+      "relatedCount": 8
+    },
+    {
+      "id": "self-containedness",
+      "title": "Self-containedness",
+      "relatedCount": 8
+    },
+    {
+      "id": "updateability",
+      "title": "Updateability",
+      "relatedCount": 8
+    }
+  ],
+  "topStandards": [
+    {
+      "id": "security",
+      "title": "Security",
+      "standardsCount": 21
+    },
+    {
+      "id": "reliability",
+      "title": "Reliability",
+      "standardsCount": 19
+    },
+    {
+      "id": "maintainability",
+      "title": "Maintainability",
+      "standardsCount": 15
+    },
+    {
+      "id": "traceability",
+      "title": "Traceability",
+      "standardsCount": 13
+    },
+    {
+      "id": "integrity",
+      "title": "Integrity",
+      "standardsCount": 13
+    },
+    {
+      "id": "auditability",
+      "title": "Auditability",
+      "standardsCount": 12
+    },
+    {
+      "id": "availability",
+      "title": "Availability",
+      "standardsCount": 11
+    },
+    {
+      "id": "confidentiality",
+      "title": "Confidentiality",
+      "standardsCount": 11
+    },
+    {
+      "id": "compliance",
+      "title": "Compliance",
+      "standardsCount": 10
+    },
+    {
+      "id": "accountability",
+      "title": "Accountability",
+      "standardsCount": 10
+    }
+  ]
+}
