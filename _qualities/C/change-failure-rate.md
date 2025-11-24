@@ -1,7 +1,7 @@
 ---
 title: Change failure rate
 tags: [operable] 
-related: [controllability, operability, testability, analysability, deployability, devops-metrics]
+related: [controllability, operability, testability, analysability, deployability, devops-metrics, reliability]
 permalink: /qualities/change-failure-rate
 ---
 
