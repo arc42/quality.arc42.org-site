@@ -1,7 +1,7 @@
 ---
 title: Localizability
 tags: [flexible, usable]
-related: [localizability, adaptability, modifiability, maintainability, internationalization]
+related: [adaptability, modifiability, maintainability, internationalization, i18n]
 permalink: /qualities/localizability
 ---
 
