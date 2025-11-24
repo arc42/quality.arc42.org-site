@@ -1,7 +1,7 @@
 ---
 title: Changeability
 tags: [flexible]
-related: [flexibility, adaptability, modifiability, configurability, modularity]
+related: [flexibility, adaptability, modifiability, configurability, modularity, evolvability, maintainability]
 permalink: /qualities/changeability
 ---
 
