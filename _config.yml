@@ -152,6 +152,8 @@ exclude:
   - build-quality-index.js
   - cheat-sheet.*
   - QUALITY-INDEX-REPORT.md
+  - INDEX-FILES-GUIDE.md
+  
 
 watch_exclude:
   - assets/js/fullpage # handled by esbuild
