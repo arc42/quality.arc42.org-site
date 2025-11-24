@@ -3,13 +3,15 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { createRequire } from "node:module";
 
-const require = createRequire(import.meta.url);
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const rootDir = path.join(__dirname, "..");
+
+// Create require from root directory to find node_modules
+const require = createRequire(path.join(rootDir, "package.json"));
 const matter = require("gray-matter");
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
-
 async function buildQualityIndex() {
-  const qualitiesDir = path.join(__dirname, "_qualities");
+  const qualitiesDir = path.join(rootDir, "_qualities");
   const index = [];
 
   async function processDirectory(dir) {
@@ -32,7 +34,7 @@ async function buildQualityIndex() {
             tags: Array.isArray(data.tags) ? data.tags : (data.tags || "").split(/[\s,]+/).filter(Boolean),
             relatedCount: Array.isArray(data.related) ? data.related.length : (data.related || "").split(",").filter(Boolean).length,
             standardsCount: Array.isArray(data.standards) ? data.standards.length : (data.standards || "").split(",").filter(Boolean).length,
-            filePath: path.relative(__dirname, fullPath),
+            filePath: path.relative(rootDir, fullPath),
           });
         }
       }

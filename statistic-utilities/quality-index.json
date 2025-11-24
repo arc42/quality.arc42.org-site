@@ -5,7 +5,7 @@
     "tags": [
       "secure"
     ],
-    "relatedCount": 6,
+    "relatedCount": 7,
     "standardsCount": 5,
     "filePath": "_qualities/A/access-control.md"
   },
@@ -15,7 +15,7 @@
     "tags": [
       "usable"
     ],
-    "relatedCount": 3,
+    "relatedCount": 4,
     "standardsCount": 3,
     "filePath": "_qualities/A/accessibility.md"
   },
@@ -25,7 +25,7 @@
     "tags": [
       "secure"
     ],
-    "relatedCount": 3,
+    "relatedCount": 5,
     "standardsCount": 10,
     "filePath": "_qualities/A/accountability.md"
   },
@@ -36,7 +36,7 @@
       "reliable",
       "usable"
     ],
-    "relatedCount": 2,
+    "relatedCount": 4,
     "standardsCount": 2,
     "filePath": "_qualities/A/accuracy.md"
   },
@@ -59,7 +59,7 @@
       "usable",
       "efficient"
     ],
-    "relatedCount": 3,
+    "relatedCount": 2,
     "standardsCount": 0,
     "filePath": "_qualities/A/affordability.md"
   },
@@ -80,7 +80,7 @@
       "reliable",
       "flexible"
     ],
-    "relatedCount": 4,
+    "relatedCount": 5,
     "standardsCount": 2,
     "filePath": "_qualities/A/analysability.md"
   },
@@ -90,7 +90,7 @@
     "tags": [
       "usable"
     ],
-    "relatedCount": 1,
+    "relatedCount": 2,
     "standardsCount": 0,
     "filePath": "_qualities/A/anticipated-workplace-environment.md"
   },
@@ -111,7 +111,7 @@
       "usable",
       "operable"
     ],
-    "relatedCount": 5,
+    "relatedCount": 7,
     "standardsCount": 1,
     "filePath": "_qualities/A/appropriateness-recognizability.md"
   },
@@ -121,7 +121,7 @@
     "tags": [
       "usable"
     ],
-    "relatedCount": 5,
+    "relatedCount": 6,
     "standardsCount": 0,
     "filePath": "_qualities/A/attractiveness.md"
   },
@@ -131,7 +131,7 @@
     "tags": [
       "operable"
     ],
-    "relatedCount": 5,
+    "relatedCount": 6,
     "standardsCount": 12,
     "filePath": "_qualities/A/auditability.md"
   },
@@ -141,7 +141,7 @@
     "tags": [
       "secure"
     ],
-    "relatedCount": 3,
+    "relatedCount": 5,
     "standardsCount": 8,
     "filePath": "_qualities/A/authenticity.md"
   },
@@ -163,7 +163,7 @@
       "reliable",
       "usable"
     ],
-    "relatedCount": 9,
+    "relatedCount": 11,
     "standardsCount": 11,
     "filePath": "_qualities/A/availability.md"
   },
@@ -175,7 +175,7 @@
       "operable",
       "reliable"
     ],
-    "relatedCount": 3,
+    "relatedCount": 5,
     "standardsCount": 0,
     "filePath": "_qualities/B/backward-compatibility.md"
   },
@@ -187,7 +187,7 @@
       "safe",
       "suitable"
     ],
-    "relatedCount": 4,
+    "relatedCount": 6,
     "standardsCount": 1,
     "filePath": "_qualities/B/bias-mitigation.md"
   },
@@ -209,7 +209,7 @@
       "efficient",
       "reliable"
     ],
-    "relatedCount": 2,
+    "relatedCount": 5,
     "standardsCount": 2,
     "filePath": "_qualities/C/capacity.md"
   },
@@ -229,7 +229,7 @@
     "tags": [
       "operable"
     ],
-    "relatedCount": 6,
+    "relatedCount": 7,
     "standardsCount": 0,
     "filePath": "_qualities/C/change-failure-rate.md"
   },
@@ -239,7 +239,7 @@
     "tags": [
       "flexible"
     ],
-    "relatedCount": 5,
+    "relatedCount": 7,
     "standardsCount": 0,
     "filePath": "_qualities/C/changeability.md"
   },
@@ -250,7 +250,7 @@
       "usable",
       "reliable"
     ],
-    "relatedCount": 4,
+    "relatedCount": 5,
     "standardsCount": 4,
     "filePath": "_qualities/C/clarity.md"
   },
@@ -260,7 +260,7 @@
     "tags": [
       "flexible"
     ],
-    "relatedCount": 2,
+    "relatedCount": 3,
     "standardsCount": 1,
     "filePath": "_qualities/C/co-existence.md"
   },
@@ -270,7 +270,7 @@
     "tags": [
       "efficient"
     ],
-    "relatedCount": 6,
+    "relatedCount": 7,
     "standardsCount": 0,
     "filePath": "_qualities/C/code-complexity.md"
   },
@@ -341,7 +341,7 @@
       "efficient",
       "suitable"
     ],
-    "relatedCount": 6,
+    "relatedCount": 9,
     "standardsCount": 10,
     "filePath": "_qualities/C/compliance.md"
   },
@@ -351,7 +351,7 @@
     "tags": [
       "flexible"
     ],
-    "relatedCount": 4,
+    "relatedCount": 5,
     "standardsCount": 0,
     "filePath": "_qualities/C/composability.md"
   },
@@ -362,7 +362,7 @@
       "usable",
       "efficient"
     ],
-    "relatedCount": 1,
+    "relatedCount": 3,
     "standardsCount": 2,
     "filePath": "_qualities/C/conciseness.md"
   },
@@ -372,7 +372,7 @@
     "tags": [
       "secure"
     ],
-    "relatedCount": 2,
+    "relatedCount": 5,
     "standardsCount": 11,
     "filePath": "_qualities/C/confidentiality.md"
   },
@@ -383,7 +383,7 @@
       "flexible",
       "usable"
     ],
-    "relatedCount": 5,
+    "relatedCount": 6,
     "standardsCount": 2,
     "filePath": "_qualities/C/configurability.md"
   },
@@ -405,7 +405,7 @@
       "usable",
       "operable"
     ],
-    "relatedCount": 2,
+    "relatedCount": 4,
     "standardsCount": 1,
     "filePath": "_qualities/C/controllability.md"
   },
@@ -427,7 +427,7 @@
       "reliable",
       "suitable"
     ],
-    "relatedCount": 4,
+    "relatedCount": 7,
     "standardsCount": 3,
     "filePath": "_qualities/C/correctness.md"
   },
@@ -871,7 +871,7 @@
     "tags": [
       "usable"
     ],
-    "relatedCount": 7,
+    "relatedCount": 10,
     "standardsCount": 0,
     "filePath": "_qualities/I/i18n.md"
   },
@@ -980,7 +980,7 @@
     ],
     "relatedCount": 5,
     "standardsCount": 0,
-    "filePath": "_qualities/I/internatlionalization.md"
+    "filePath": "_qualities/I/internationalization.md"
   },
   {
     "id": "interoperability",
@@ -1073,7 +1073,7 @@
       "usable",
       "operable"
     ],
-    "relatedCount": 4,
+    "relatedCount": 7,
     "standardsCount": 0,
     "filePath": "_qualities/L/legal.md"
   },
@@ -1096,7 +1096,7 @@
     ],
     "relatedCount": 5,
     "standardsCount": 0,
-    "filePath": "_qualities/L/localizabiity.md"
+    "filePath": "_qualities/L/localizability.md"
   },
   {
     "id": "longevity",

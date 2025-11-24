@@ -149,10 +149,10 @@ exclude:
   - _todo/
   - .prettierrc
   - CLAUDE.md
-  - build-quality-index.js
   - cheat-sheet.*
   - QUALITY-INDEX-REPORT.md
   - INDEX-FILES-GUIDE.md
+  - statistic-utilities/
   
 
 watch_exclude:
