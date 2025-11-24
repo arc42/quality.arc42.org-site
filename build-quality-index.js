@@ -1,7 +1,10 @@
-import matter from "gray-matter";
 import { promises as fs } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { createRequire } from "node:module";
+
+const require = createRequire(import.meta.url);
+const matter = require("gray-matter");
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
