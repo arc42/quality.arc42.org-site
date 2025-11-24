@@ -1,40 +1,32 @@
-import fs from 'fs';
+import { promises as fs } from "node:fs";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 
-const data = JSON.parse(fs.readFileSync('quality-index.json', 'utf8'));
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-console.log('=== ALL 180 QUALITIES INDEXED ===\n');
+async function listAllQualities() {
+  const indexPath = path.join(__dirname, "quality-index.json");
 
-// Group by first letter
-const byLetter = {};
-data.qualities.forEach(q => {
-  const letter = q.id[0].toUpperCase();
-  if (!byLetter[letter]) byLetter[letter] = [];
-  byLetter[letter].push(q);
-});
+  try {
+    const indexData = JSON.parse(await fs.readFile(indexPath, "utf-8"));
 
-Object.keys(byLetter).sort().forEach(letter => {
-  console.log(`\n--- ${letter} (${byLetter[letter].length} qualities) ---`);
-  byLetter[letter].forEach(q => {
-    const tags = q.tags.join(', ');
-    const relCount = q.related.length;
-    const stdCount = q.standards.length;
-    console.log(`  ${q.id.padEnd(35)} | Tags: ${tags.substring(0, 30).padEnd(30)} | Rel: ${String(relCount).padStart(2)} | Std: ${String(stdCount).padStart(2)}`);
-  });
-});
+    console.log(`\n📋 All Qualities (${indexData.length} total)\n`);
+    console.log("=" .repeat(80));
 
-console.log(`\n\n=== SUMMARY ===`);
-console.log(`Total: ${data.qualities.length} qualities`);
-console.log(`Letters covered: ${Object.keys(byLetter).length}`);
+    indexData.forEach((quality, index) => {
+      console.log(`${(index + 1).toString().padStart(3)}. ${quality.title.padEnd(40)} (${quality.id})`);
+      console.log(`     Tags: [${quality.tags.join(", ")}]`);
+      console.log(`     Relations: ${quality.relatedCount}, Standards: ${quality.standardsCount}`);
+      console.log(`     File: ${quality.filePath}`);
+      console.log();
+    });
 
-// Write compact JSON
-const compactList = data.qualities.map(q => ({
-  id: q.id,
-  title: q.title,
-  tags: q.tags,
-  relatedCount: q.related.length,
-  standardsCount: q.standards.length,
-  filePath: q.filePath
-}));
+    console.log("=" .repeat(80));
+    console.log(`\nTotal: ${indexData.length} qualities\n`);
+  } catch (error) {
+    console.error("❌ Error: quality-index.json not found. Run build-quality-index.js first.");
+    process.exit(1);
+  }
+}
 
-fs.writeFileSync('all-qualities-compact.json', JSON.stringify(compactList, null, 2));
-console.log('\n✓ Compact list saved to: all-qualities-compact.json');
+listAllQualities().catch(console.error);
