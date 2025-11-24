@@ -1,7 +1,7 @@
 ---
 title: Controllability
 tags: [usable, operable]
-related: [usability, autonomy]
+related: [usability, autonomy, operability, interaction-capability]
 standards: [ieee2857]
 permalink: /qualities/controllability
 ---
