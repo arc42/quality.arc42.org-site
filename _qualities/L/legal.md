@@ -1,7 +1,7 @@
 ---
 title: Legal Requirements
 tags: [usable, operable]
-related: [accountability, adaptability, operational-constraint, correctness] 
+related: [accountability, adaptability, operational-constraint, correctness, compliance, auditability, privacy] 
 permalink: /qualities/legal-requirements
 ---
 
