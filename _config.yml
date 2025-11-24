@@ -150,8 +150,6 @@ exclude:
   - .prettierrc
   - CLAUDE.md
   - cheat-sheet.*
-  - QUALITY-INDEX-REPORT.md
-  - INDEX-FILES-GUIDE.md
   - statistic-utilities/
   
 
