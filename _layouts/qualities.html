@@ -8,6 +8,17 @@ requirements ("related to this quality") - Related qualities {% endcomment %}
 <div class="article-wrapper">
   <article>
     {% include quality-header.liquid page=page link=false share=page.share %}
+
+    {% comment %} Show "Also known as" section for synonyms {% endcomment %}
+    {% if page.aka and page.aka.size > 0 %}
+    <div class="also-known-as">
+      <strong>Also known as:</strong>
+      {% for synonym in page.aka %}
+        <span class="synonym-badge">{{ synonym }}</span>{% unless forloop.last %}, {% endunless %}
+      {% endfor %}
+    </div>
+    {% endif %}
+
     <section class="post-content">{{ content }}</section>
 
     <hr class="with-no-margin" />

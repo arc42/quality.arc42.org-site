@@ -1,10 +1,7 @@
 ---
-title: High availability
-tags: [reliable, usable]
-related: [availability, robustness, reliability, usability, fault-tolerance, recoverability, dependability, faultlessness, recovery-time]
+title: High Availability
+alias_of: availability
+redirect_to: /qualities/availability
+layout: redirect
 permalink: /qualities/high-availability
 ---
-
-
-Synonym for [availability](/qualities/availability)
-
