@@ -1,7 +1,7 @@
 ---
 title: Bias Mitigation
 tags: [reliable, safe, suitable]
-related: [fairness, explainability, transparency, accountability]
+related: [fairness, explainability, transparency, accountability, safety, data-quality]
 standards: [isoiec22989]
 permalink: /qualities/bias-mitigation
 ---
