@@ -1,7 +1,7 @@
 ---
 title: Configurability
 tags: [flexible, usable]
-related: [flexibility, changeability, adaptability, modifiability, versatility]
+related: [flexibility, changeability, adaptability, modifiability, versatility, customizability]
 standards: [iso26262, ieee2857]
 permalink: /qualities/configurability
 ---
