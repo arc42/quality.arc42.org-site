@@ -148,6 +148,10 @@ exclude:
   - src/
   - _todo/
   - .prettierrc
+  - CLAUDE.md
+  - build-quality-index.js
+  - cheat-sheet.*
+  - QUALITY-INDEX-REPORT.md
 
 watch_exclude:
   - assets/js/fullpage # handled by esbuild
