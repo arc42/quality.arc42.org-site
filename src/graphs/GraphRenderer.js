@@ -74,6 +74,70 @@ export class GraphRenderer {
             requirement: false,
             standard: true
         };
+        // Tooltip for synonym display
+        this.tooltip = null;
+        this._createTooltip();
+    }
+
+    /**
+     * Create tooltip element for displaying synonym information
+     * @private
+     */
+    _createTooltip() {
+        // Remove existing tooltip if any
+        d3.select(this.container).select('.graph-tooltip').remove();
+
+        // Create new tooltip
+        this.tooltip = d3.select(this.container)
+            .append('div')
+            .attr('class', 'graph-tooltip')
+            .style('position', 'absolute')
+            .style('visibility', 'hidden')
+            .style('background-color', 'rgba(0, 0, 0, 0.85)')
+            .style('color', '#fff')
+            .style('padding', '8px 12px')
+            .style('border-radius', '4px')
+            .style('font-size', '13px')
+            .style('pointer-events', 'none')
+            .style('z-index', '1000')
+            .style('box-shadow', '0 2px 8px rgba(0,0,0,0.3)')
+            .style('max-width', '250px')
+            .style('line-height', '1.4');
+    }
+
+    /**
+     * Show tooltip with node information
+     * @param {Object} node - The node data
+     * @param {MouseEvent} event - The mouse event
+     * @private
+     */
+    _showTooltip(node, event) {
+        if (!this.tooltip || !node) return;
+
+        let content = `<strong>${node.label}</strong>`;
+
+        // Add synonym information if available
+        if (node.labels && node.labels.length > 1) {
+            const synonyms = node.labels.slice(1); // All labels except the first (canonical)
+            content += `<br><span style="color: #aaa; font-size: 11px;">Also known as:</span><br>`;
+            content += `<span style="color: #00B8F5;">${synonyms.join(', ')}</span>`;
+        }
+
+        this.tooltip
+            .html(content)
+            .style('visibility', 'visible')
+            .style('left', (event.pageX + 10) + 'px')
+            .style('top', (event.pageY - 28) + 'px');
+    }
+
+    /**
+     * Hide tooltip
+     * @private
+     */
+    _hideTooltip() {
+        if (this.tooltip) {
+            this.tooltip.style('visibility', 'hidden');
+        }
     }
 
     /**
@@ -415,11 +479,19 @@ export class GraphRenderer {
 
         // Setup node interactions (on invisible hit circles and selected labels)
         if (onNodeHover) {
-            // Add mouseenter event to highlight the node
-            this.nodes.on("mouseenter", onNodeHover);
+            // Add mouseenter event to highlight the node and show tooltip
+            this.nodes.on("mouseenter", (event, d) => {
+                // Show tooltip
+                this._showTooltip(d, event);
+                // Call original hover handler
+                if (onNodeHover) onNodeHover(event, d);
+            });
 
-            // Add mouseleave event to reset highlighting (only if no active selection)
+            // Add mouseleave event to reset highlighting and hide tooltip (only if no active selection)
             this.nodes.on("mouseleave", (event, d) => {
+                // Hide tooltip
+                this._hideTooltip();
+
                 if (this.selectionActive) return;
                 // Reset all highlights
                 this.nodes.each(function (node) {
@@ -434,11 +506,19 @@ export class GraphRenderer {
             // Add hover events to labels that are inside nodes (quality-root and property types)
             const internalLabels = this.labels.filter(d => d.id === "quality-root" || d.qualityType === "property");
 
-            // Add mouseenter event to highlight the node
-            internalLabels.on("mouseenter", onNodeHover);
+            // Add mouseenter event to highlight the node and show tooltip
+            internalLabels.on("mouseenter", (event, d) => {
+                // Show tooltip
+                this._showTooltip(d, event);
+                // Call original hover handler
+                if (onNodeHover) onNodeHover(event, d);
+            });
 
-            // Add mouseleave event to reset highlighting
+            // Add mouseleave event to reset highlighting and hide tooltip
             internalLabels.on("mouseleave", (event, d) => {
+                // Hide tooltip
+                this._hideTooltip();
+
                 if (this.selectionActive) return;
                 // Reset all highlights
                 this.nodes.each(function (node) {

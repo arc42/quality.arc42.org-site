@@ -110,6 +110,76 @@ standard_id: iso25010
 ```
 Defaults in `_config.yml` assign layouts automatically for collections; you usually do not need to set `layout`.
 
+### Synonyms
+
+The site supports synonym handling for quality attributes. Some quality terms are synonymous (e.g., "Performance" and "Performance Efficiency"), and the system provides a clean way to handle these:
+
+#### How Synonyms Work
+
+1. **One canonical page** - Only one quality page contains the full definition
+2. **Redirect stubs** - Synonym terms redirect to the canonical page
+3. **Visual indicators** - Canonical pages show "Also known as" badges
+4. **Graph consolidation** - Graph shows single node per concept with tooltip showing all synonym labels
+
+#### Synonym Configuration
+
+Synonyms are defined in `_data/quality-synonyms.yml`:
+
+```yaml
+# Format: canonical-slug: [synonym1, synonym2, ...]
+performance:
+  - performance-efficiency
+availability:
+  - high-availability
+changeability:
+  - mutability
+time-to-market:
+  - speed-to-market
+```
+
+#### Creating a Synonym
+
+**Step 1:** Add to `_data/quality-synonyms.yml`
+```yaml
+your-canonical-term:
+  - your-synonym-term
+```
+
+**Step 2:** Add `aka` field to canonical quality (`_qualities/<LETTER>/your-canonical-term.md`):
+```yaml
+---
+title: Your Canonical Term
+aka: [Your Synonym Term]
+tags: relevant
+related: other-qualities
+permalink: /qualities/your-canonical-term
+---
+```
+
+**Step 3:** Create redirect stub (`_qualities/<LETTER>/your-synonym-term.md`):
+```yaml
+---
+title: Your Synonym Term
+alias_of: your-canonical-term
+redirect_to: /qualities/your-canonical-term
+layout: redirect
+permalink: /qualities/your-synonym-term
+---
+```
+
+**Step 4:** Rebuild the site
+```bash
+docker compose down
+docker compose up
+```
+
+#### Result
+
+- ✅ `/qualities/your-canonical-term` - Shows full definition with "Also known as: Your Synonym Term" badge
+- ✅ `/qualities/your-synonym-term` - Redirects instantly to canonical page
+- ✅ Graph shows single node with tooltip displaying all synonym labels on hover
+- ✅ No 404 errors for synonym URLs
+
 ### Tags
 
 Tag links render to `/tag-<tag>`. If you introduce a new tag value in front matter, create a matching page to avoid 404s:
