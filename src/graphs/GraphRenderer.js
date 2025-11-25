@@ -93,6 +93,12 @@ export class GraphRenderer {
     setTypeVisibility(type, visible) {
         if (!this.isValidNodeType(type)) return;
         this.typeVisibility[type] = !!visible;
+        // If standards are being hidden, clear any active standard selection
+        if (type === 'standard' && !visible) {
+            if (this.selectionActive && this.selection?.isStandard) {
+                this.setSelectionDimming(null, null, false);
+            }
+        }
         this.applyTypeVisibility();
     }
 
