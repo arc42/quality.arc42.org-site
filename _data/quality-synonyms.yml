@@ -1,145 +1,30 @@
-# Quality Synonyms
-# Format: canonical_term: [list of synonyms]
-# Based on analysis of existing _qualities and common industry terminology
+# Quality Synonyms Mapping - Phase 1 (High Confidence Only)
+#
+# Maps canonical quality slugs to their synonym terms
+# Used for redirect generation and graph data consolidation
+#
+# Format: canonical-slug: [synonym1-slug, synonym2-slug, ...]
+#
+# PHASE 1: Only includes synonyms with explicit mentions in existing quality files
+# - time-to-market: "Synonym: Speed-to-Market" in time-to-market.md
+# - performance: "this is a duplicate" in performance-efficiency.md
+# - availability: "Synonym for availability" in high-availability.md
+# - changeability: "Synonym: Mutability" in changeability.md
+#
+# Future phases may add more synonyms after validation and user feedback.
 
-# Performance and Efficiency Cluster
-performance:
-  - performance-efficiency
-  - speed
-responsiveness:
-  - response-time
-efficiency:
-  - resource-efficiency
+# Time-related (both files explicitly call each other synonyms)
 time-to-market:
   - speed-to-market
 
-# Availability and Reliability Cluster  
+# Performance (performance-efficiency file says it's a duplicate)
+performance:
+  - performance-efficiency
+
+# Availability (high-availability file says "synonym for availability")
 availability:
   - high-availability
-reliability:
-  - dependability
-  - faultlessness
-robustness:
-  - resilience
-  - resistance
-recoverability:
-  - recovery-time
 
-# Security and Safety Cluster
-security:
-  - information-security
-  - cyber-security
-  - securability
-safety:
-  - patient-safety
-  - safe-integration
-
-# Maintainability and Change Cluster
-maintainability:
-  - serviceability
+# Changeability (changeability file says "Synonym: Mutability")
 changeability:
   - mutability
-  - modifiability
-evolvability:
-  - adaptability
-flexibility:
-  - versatility
-
-# Usability and User Experience Cluster
-usability:
-  - ease-of-use
-  - user-friendliness
-understandability:
-  - comprehensibility
-  - readability
-  - legibility
-  - clarity
-learnability:
-  - trainability
-
-# Testing and Verification Cluster
-testability:
-  - verifiability
-debuggability:
-  - troubleshootability
-  - diagnosability
-observability:
-  - monitorability
-  - visibility
-
-# Quality Assurance and Process Cluster
-correctness:
-  - accuracy
-  - preciseness
-  - precision
-traceability:
-  - auditability
-compliance:
-  - standard-compliance
-  - conformance
-
-# Architectural and Design Cluster
-modularity:
-  - composability
-  - componentization
-interoperability:
-  - compatibility
-  - co-existence
-extensibility:
-  - expandability
-  - scalability
-portability:
-  - transferability
-  - replaceability
-
-# Operational and Deployment Cluster
-deployability:
-  - installability
-  - releasability
-configurability:
-  - customizability
-  - personalization
-operability:
-  - manageability
-controllability:
-  - governability
-
-# Efficiency and Resource Management Cluster  
-resource-utilization:
-  - resource-efficiency
-energy-efficiency:
-  - power-efficiency
-  - carbon-emission-efficiency
-memory-usage:
-  - memory-efficiency
-
-# Time and Performance Metrics Cluster
-timeliness:
-  - punctuality
-latency:
-  - response-time
-  - delay
-throughput:
-  - bandwidth
-  - capacity
-
-# User Interface and Interaction Cluster
-attractiveness:
-  - aesthetics
-  - appearance
-  - user-interface-aesthetics
-discoverability:
-  - findability
-  - searchability
-accessibility:
-  - inclusivity
-  - barrier-free-design
-
-# Business and Value Cluster
-profitability:
-  - cost-effectiveness
-  - economic-viability
-sustainability:
-  - longevity
-  - durability
-  - environmental-friendliness

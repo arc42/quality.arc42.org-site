@@ -1,6 +1,7 @@
 import matter from "gray-matter";
 import { promises as fs } from "node:fs";
 import path from "node:path";
+import yaml from "js-yaml";
 
 /**
  * @typedef {Object} FrontmatterData
@@ -29,6 +30,61 @@ import path from "node:path";
  * @property {string} target - Edge target
  */
 
+/**
+ * Load quality synonyms mapping from _data/quality-synonyms.yml
+ * @returns {Promise<Object>} Synonym mapping (canonical -> [synonyms])
+ */
+async function loadQualitySynonyms() {
+    try {
+        const projectRoot = process.cwd();
+        const synonymsPath = path.join(projectRoot, "_data", "quality-synonyms.yml");
+        const content = await fs.readFile(synonymsPath, "utf8");
+        return yaml.load(content) || {};
+    } catch (error) {
+        console.warn("⚠️  No quality-synonyms.yml found - synonym mapping disabled");
+        return {};
+    }
+}
+
+/**
+ * Resolve a quality slug to its canonical form
+ * @param {string} slug - Quality slug (may be synonym)
+ * @param {Object} synonymMap - Synonym mapping from loadQualitySynonyms()
+ * @returns {string} Canonical slug
+ */
+function resolveCanonical(slug, synonymMap) {
+    // Check if this slug is a synonym of something
+    for (const [canonical, synonyms] of Object.entries(synonymMap)) {
+        if (synonyms.includes(slug)) {
+            return canonical;
+        }
+    }
+    // Not a synonym, return as-is
+    return slug;
+}
+
+/**
+ * Get all label variants for a quality (canonical + synonyms)
+ * @param {string} canonicalId - Canonical quality ID
+ * @param {string} canonicalTitle - Canonical quality title
+ * @param {Object} synonymMap - Synonym mapping
+ * @returns {string[]} Array of labels [canonical, ...synonyms]
+ */
+function getLabelVariants(canonicalId, canonicalTitle, synonymMap) {
+    const labels = [canonicalTitle];
+    const synonymSlugs = synonymMap[canonicalId] || [];
+
+    // Convert slugs to display names (capitalize and replace hyphens)
+    for (const slug of synonymSlugs) {
+        const displayName = slug
+            .split('-')
+            .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+            .join(' ');
+        labels.push(displayName);
+    }
+
+    return labels;
+}
 
 /**
  * Stringify data sorted by given label
@@ -95,16 +151,25 @@ const nodeConnections = {
  * @param {Map<string, Q42Node>} propertyNodes
  * @param {Set<Q42Node>} nodes
  * @param {Set<Q42Edge>} edges
+ * @param {Object} synonymMap - Synonym mapping for canonical resolution
  */
-function createGraphData(frontmatterData, isRequirements = false, propertyNodes, nodes, edges) {
+function createGraphData(frontmatterData, isRequirements = false, propertyNodes, nodes, edges, synonymMap = {}) {
     for (const data of frontmatterData) {
-        const id = extractId(data.permalink);
+        // Skip synonym stub files (they have alias_of field)
+        if (data.alias_of) {
+            continue;
+        }
+
+        let id = extractId(data.permalink);
         const tags = parseList(data.tags, ' ');
         const relatedIds = parseList(data.related, ',');
 
-        processNodeTags(id, tags, isRequirements, propertyNodes, edges);
-        processRelatedNodes(id, relatedIds, edges);
-        addMainNode(id, data, isRequirements, nodes);
+        // Resolve to canonical ID (shouldn't happen for canonical files, but defensive)
+        id = resolveCanonical(id, synonymMap);
+
+        processNodeTags(id, tags, isRequirements, propertyNodes, edges, synonymMap);
+        processRelatedNodes(id, relatedIds, edges, synonymMap);
+        addMainNode(id, data, isRequirements, nodes, synonymMap);
     }
 }
 
@@ -134,8 +199,9 @@ function parseList(value, separator) {
  * @param {boolean} isRequirements
  * @param {Map<string, Q42Node>} propertyNodes
  * @param {Set<Q42Edge>} edges
+ * @param {Object} synonymMap - Synonym mapping
  */
-function processNodeTags(id, tags, isRequirements, propertyNodes, edges) {
+function processNodeTags(id, tags, isRequirements, propertyNodes, edges, synonymMap = {}) {
     for (const tag of tags) {
         if (!isRequirements) {
             edges.add({ source: id, target: tag });
@@ -199,9 +265,13 @@ function capitalizeFirstLetter(text) {
  * @param {string} id
  * @param {string[]} relatedIds
  * @param {Set<Q42Edge>} edges
+ * @param {Object} synonymMap - Synonym mapping
  */
-function processRelatedNodes(id, relatedIds, edges) {
-    for (const relatedId of relatedIds) {
+function processRelatedNodes(id, relatedIds, edges, synonymMap = {}) {
+    for (let relatedId of relatedIds) {
+        // Resolve synonym to canonical BEFORE creating edge
+        relatedId = resolveCanonical(relatedId, synonymMap);
+
         edges.add({ source: id, target: relatedId });
 
         // If this is a quality node connecting to another quality node, we don't need to track it
@@ -214,8 +284,9 @@ function processRelatedNodes(id, relatedIds, edges) {
  * @param {FrontmatterData} data
  * @param {boolean} isRequirements
  * @param {Set<Q42Node>} nodes
+ * @param {Object} synonymMap - Synonym mapping
  */
-function addMainNode(id, data, isRequirements, nodes) {
+function addMainNode(id, data, isRequirements, nodes, synonymMap = {}) {
     const config = NODE_CONFIGS[isRequirements ? 'requirement' : 'quality'];
 
     // For quality nodes, use fixed size as specified in NODE_CONFIGS
@@ -225,9 +296,15 @@ function addMainNode(id, data, isRequirements, nodes) {
     // Attach standards only for quality nodes
     const standards = !isRequirements ? parseList(data.standards, ',') : [];
 
+    // Get all label variants (canonical + synonyms) for quality nodes
+    const labels = !isRequirements
+        ? getLabelVariants(id, data.title, synonymMap)
+        : [data.title];
+
     nodes.add({
         id,
         label: data.title,
+        labels, // Array of all labels including synonyms
         size: nodeSize,
         color: config.color,
         qualityType: config.qualityType,
@@ -286,6 +363,10 @@ async function generateData() {
     const assetsDir = path.join(projectRoot, "assets");
     const standardsDir = path.join(projectRoot, "_standards");
 
+    // Load synonym mappings
+    const synonymMap = await loadQualitySynonyms();
+    console.log(`✓ Loaded ${Object.keys(synonymMap).length} synonym mappings`);
+
     let [qualityFiles, requirementFiles, standardsFiles] = await Promise.all([
         getFilePaths(qualitiesDir),
         getFilePaths(requirementsDir),
@@ -334,8 +415,8 @@ async function generateData() {
         }
     }
 
-    createGraphData(qualityData, false, propertyNodes, nodes, edges);
-    createGraphData(requirementsData, true, propertyNodes, nodes, edges);
+    createGraphData(qualityData, false, propertyNodes, nodes, edges, synonymMap);
+    createGraphData(requirementsData, true, propertyNodes, nodes, edges, synonymMap);
 
     // Create standard nodes and edges (standard -> quality)
     const standardNodes = new Map();
