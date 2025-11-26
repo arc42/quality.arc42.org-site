@@ -1,9 +1,7 @@
 ---
 title: Standard Compliance
-tags: [secure, safe, usable, reliable, efficient, suitable]
-related: [compliance]
-standards: [iso42010, iso42030]
+alias_of: compliance
+redirect_to: /qualities/compliance
+layout: redirect
 permalink: /qualities/standard-compliance
 ---
-
-a.k.a. [compliance](/qualities/compliance)

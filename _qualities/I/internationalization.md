@@ -1,5 +1,6 @@
 ---
 title: Internationalization
+aka: [i18n]
 tags: [flexible, usable]
 related: [localizability, adaptability, modifiability, maintainability, i18n]
 permalink: /qualities/internationalization

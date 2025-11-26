@@ -1,5 +1,6 @@
 ---
 title: Security
+aka: [Information Security]
 tags: [secure, reliable]
 related:
   [

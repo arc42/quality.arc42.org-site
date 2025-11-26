@@ -1,6 +1,7 @@
 ---
 title: Devops-Metrics
-tags: [operable] 
+aka: [DORA]
+tags: [operable]
 related: [controllability, operability, testability, analysability, deployability]
 permalink: /qualities/devops-metrics
 ---
