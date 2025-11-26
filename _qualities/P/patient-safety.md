@@ -1,7 +1,7 @@
 ---
 title: Patient Safety
 tags: [safe, reliable, secure]
-related: [safety, robustness]
+related: [safety, robustness, data-quality, completeness, accuracy, integrity]
 permalink: /qualities/patient-safety
 ---
 
