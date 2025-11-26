@@ -1,5 +1,6 @@
 ---
 title: Precision
+aka: [Preciseness]
 tags: [reliable, usable]
 related: [correctness, accuracy, preciseness]
 standards: [iso25024]

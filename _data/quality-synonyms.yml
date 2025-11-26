@@ -1,17 +1,19 @@
-# Quality Synonyms Mapping - Phase 1 (High Confidence Only)
+# Quality Synonyms Mapping - Confirmed High-Confidence Pairs
 #
 # Maps canonical quality slugs to their synonym terms
 # Used for redirect generation and graph data consolidation
 #
 # Format: canonical-slug: [synonym1-slug, synonym2-slug, ...]
 #
-# PHASE 1: Only includes synonyms with explicit mentions in existing quality files
-# - time-to-market: "Synonym: Speed-to-Market" in time-to-market.md
-# - performance: "this is a duplicate" in performance-efficiency.md
-# - availability: "Synonym for availability" in high-availability.md
-# - changeability: "Synonym: Mutability" in changeability.md
+# PHASE 1: Initial 4 pairs (implemented 2025-11-23)
+# PHASE 2A: Additional 5 pairs (implemented 2025-11-26)
 #
+# Only includes synonyms with explicit mentions or very high confidence.
 # Future phases may add more synonyms after validation and user feedback.
+
+# ============================================================================
+# PHASE 1 - Implemented 2025-11-23
+# ============================================================================
 
 # Time-related (both files explicitly call each other synonyms)
 time-to-market:
@@ -28,3 +30,27 @@ availability:
 # Changeability (changeability file says "Synonym: Mutability")
 changeability:
   - mutability
+
+# ============================================================================
+# PHASE 2A - Implemented 2025-11-26 (High Confidence)
+# ============================================================================
+
+# Precision (preciseness file says "see [precision]" only)
+precision:
+  - preciseness
+
+# Internationalization (i18n is standard abbreviation: i + 18 letters + n)
+internationalization:
+  - i18n
+
+# Compliance (standard-compliance file says "a.k.a. [compliance]")
+compliance:
+  - standard-compliance
+
+# DevOps Metrics (DORA is acronym: DevOps Research and Assessment)
+devops-metrics:
+  - DORA
+
+# Security (information-security file says "Similar / synonym to [security]")
+security:
+  - information-security
