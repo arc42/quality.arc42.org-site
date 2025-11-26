@@ -9,7 +9,7 @@ standards:
     misra-c,
     nist80053,
     iso5055,
-    iec-62304,
+    iec62304,
     iec61508,
     hl7,
     cra,

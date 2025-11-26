@@ -2,7 +2,7 @@
 title: Updateability
 tags: [flexible, operable]
 related: [maintainability, upgradeability, installability, modifiability, flexibility, portability, configurability, securability]
-standards: [cra, iso25010, iec-62304, iec61508]
+standards: [cra, iso25010, iec62304, iec61508]
 permalink: /qualities/updateability
 ---
 

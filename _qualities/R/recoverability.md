@@ -1,5 +1,6 @@
 ---
 title: Recoverability
+aka: [Recovery Time]
 tags: [reliable, usable]
 related: [robustness, reliability, usability, availability, faultlessness, fault-tolerance]
 standards: [iso25010, cra, iso25024, sox]

@@ -5,15 +5,6 @@
 #
 # Format: canonical-slug: [synonym1-slug, synonym2-slug, ...]
 #
-# PHASE 1: Initial 4 pairs (implemented 2025-11-23)
-# PHASE 2A: Additional 5 pairs (implemented 2025-11-26)
-#
-# Only includes synonyms with explicit mentions or very high confidence.
-# Future phases may add more synonyms after validation and user feedback.
-
-# ============================================================================
-# PHASE 1 - Implemented 2025-11-23
-# ============================================================================
 
 # Time-related (both files explicitly call each other synonyms)
 time-to-market:
@@ -31,9 +22,6 @@ availability:
 changeability:
   - mutability
 
-# ============================================================================
-# PHASE 2A - Implemented 2025-11-26 (High Confidence)
-# ============================================================================
 
 # Precision (preciseness file says "see [precision]" only)
 precision:
@@ -54,3 +42,11 @@ devops-metrics:
 # Security (information-security file says "Similar / synonym to [security]")
 security:
   - information-security
+
+# Correctness (functional-correctness is ISO 25010 sub-characteristic)
+correctness:
+  - functional-correctness
+
+# Recoverability (recovery-time measures recoverability)
+recoverability:
+  - recovery-time
