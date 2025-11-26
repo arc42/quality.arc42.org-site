@@ -9,6 +9,23 @@ In the long run we aim at having everything well-connected:
 - The list of related qualities (`related:`) in the header of every quality file contains only existing qualities (check: [No orphan relations for qualties](#opphanrelations))
 - Every standard relates to one or multiple qualities (check: [No Standard without Qualities](#nostandardwithoutqualities))
 
+### Synonyms {#synonyms}
+
+We maintain a list of quality attribute synonyms where multiple terms refer to the same concept. This helps consolidate duplicate content and provides clear redirects for alternative terminology.
+
+{% assign synonym_data = site.data.quality-synonyms %}
+{% assign synonym_count = synonym_data | size %}
+
+**Total synonym pairs:** {{ synonym_count }}
+
+The synonym system ensures:
+- Canonical terms have comprehensive content and definitions
+- Alternative terms redirect to their canonical equivalents
+- Graph visualization shows single nodes with multiple labels
+- "Also known as" badges display on canonical quality pages
+
+See [quality-synonyms.yml](https://github.com/arc42/quality.arc42.org-site/blob/main/_data/quality-synonyms.yml) for the complete mapping.
+
 ### Qualities without Tag (aka _property_)
 
 {% assign notag_qualities = "" | split: "," %}
