@@ -1,5 +1,6 @@
 ---
 title: Time to Market
+aka: [Speed to Market]
 tags: [efficient]
 related: [flexibility, efficiency, deployment-frequency, extensibility, lead-time-for-changes, cycle-time]
 standards: [iso42030]
