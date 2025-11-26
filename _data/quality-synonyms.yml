@@ -54,3 +54,15 @@ devops-metrics:
 # Security (information-security file says "Similar / synonym to [security]")
 security:
   - information-security
+
+# ============================================================================
+# PHASE 2B - Implemented 2025-11-26 (Additional Pairs)
+# ============================================================================
+
+# Correctness (functional-correctness is ISO 25010 sub-characteristic)
+correctness:
+  - functional-correctness
+
+# Recoverability (recovery-time measures recoverability)
+recoverability:
+  - recovery-time
