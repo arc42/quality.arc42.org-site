@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Redirecting to {{ page.title }}</title>
+  <link rel="canonical" href="{{ page.redirect_to | absolute_url }}">
+  <meta http-equiv="refresh" content="0; url={{ page.redirect_to | absolute_url }}">
+  <script>
+    window.location.href = "{{ page.redirect_to | absolute_url }}";
+  </script>
+</head>
+<body>
+  <div class="redirect-message" style="font-family: sans-serif; max-width: 600px; margin: 100px auto; padding: 20px; text-align: center;">
+    <p><strong>{{ page.title }}</strong> is a synonym.</p>
+    <p>Redirecting to <a href="{{ page.redirect_to | absolute_url }}">{{ page.alias_of }}</a>...</p>
+    <p style="margin-top: 20px; color: #666;">If you are not redirected automatically, <a href="{{ page.redirect_to | absolute_url }}">click here</a>.</p>
+  </div>
+</body>
+</html>
