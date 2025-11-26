@@ -2158,7 +2158,7 @@ Analysis covers 12 available qualities from this batch.
 
 **Current Relations**: 5 (`flexibility, adaptability, changeability, configurability, modularity`)
 **Tags**: `flexible`
-**Standards**: `iso25010, iso26262, misra-c, nist80053, iso5055, iec-62304, iec61508, hl7, cra, isoiec22989, do178c, iso42010, iso42030, iso12207, ieee2857`
+**Standards**: `iso25010, iso26262, misra-c, nist80053, iso5055, iec62304, iec61508, hl7, cra, isoiec22989, do178c, iso42010, iso42030, iso12207, ieee2857`
 
 ### Relations to Add
 

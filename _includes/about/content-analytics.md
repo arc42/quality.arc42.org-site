@@ -5,28 +5,13 @@ In the long run we aim at having everything well-connected:
 
 - Every quality is associated with at least one (high-level) property (check: [Qualities without Tag](#qualitieswithouttag))
 - Every quality has relations to other qualities (check: [Orphan Qualities](#orphanqualities))
+- We have a method for [synonyms](#synonyms) in place.
 - Every quality has at least one specific requirement (check: [Qualities without Requirements](#qualitieswithoutrequirements))
 - The list of related qualities (`related:`) in the header of every quality file contains only existing qualities (check: [No orphan relations for qualties](#opphanrelations))
 - Every standard relates to one or multiple qualities (check: [No Standard without Qualities](#nostandardwithoutqualities))
 
-### Synonyms {#synonyms}
 
-We maintain a list of quality attribute synonyms where multiple terms refer to the same concept. This helps consolidate duplicate content and provides clear redirects for alternative terminology.
-
-{% assign synonym_data = site.data.quality-synonyms %}
-{% assign synonym_count = synonym_data | size %}
-
-**Total synonym pairs:** {{ synonym_count }}
-
-The synonym system ensures:
-- Canonical terms have comprehensive content and definitions
-- Alternative terms redirect to their canonical equivalents
-- Graph visualization shows single nodes with multiple labels
-- "Also known as" badges display on canonical quality pages
-
-See [quality-synonyms.yml](https://github.com/arc42/quality.arc42.org-site/blob/main/_data/quality-synonyms.yml) for the complete mapping.
-
-### Qualities without Tag (aka _property_)
+### Qualities without Tag (aka _property_) {#qualitieswithouttag}
 
 {% assign notag_qualities = "" | split: "," %}
 {% for quality in site.qualities %}
@@ -42,7 +27,7 @@ All qualities in this site have at least one tag defined.
 The following {{ notag_qualities.size }} qualities have no tag defined:
 
 {% for quality in notag_qualities %}
-<a href="{{quality.permalink}}"><i class="fa fa-bolt fa-xs as-bullet" style="color: var(--error-color);"></i>{{ quality.title }}</a> <br>
+<a href="{{quality.permalink}}"><i class="fa fa-bolt fa-xs as-bullet" style="color: var(--error-color);"></i>{{ quality.title }}</a>
 {% endfor %}
 {% endif %}
 
@@ -63,6 +48,21 @@ The following {{ orphan_qualities.size }} qualities have no directly related qua
 {% for quality in orphan_qualities %}
 <a href="{{quality.permalink}}"><i class="fa fa-bolt fa-xs as-bullet" style="color: var(--error-color);"></i>{{ quality.title }}</a><br>{% endfor %}
 {% endif %}
+
+### Synonyms {#synonyms}
+
+We maintain a list of quality attribute synonyms where multiple terms refer to the same concept. 
+This helps consolidate duplicate content and provides clear redirects for alternative terminology.
+
+{% assign synonym_data = site.data.quality-synonyms %}
+{% assign synonym_count = synonym_data | size %}
+
+**Total synonym pairs:** {{ synonym_count }}
+
+The synonym system ensures:
+- Canonical terms have comprehensive content and definitions
+- Graph visualization shows single nodes with multiple labels
+
 
 ### Qualities without Requirements {#qualitieswithoutrequirements}
 
@@ -127,6 +127,7 @@ The following {{ orphan_relations.size }} orphan relations were found (quality â
 <i class="fa fa-bolt fa-xs as-bullet" style="color: var(--error-color);"></i>{{ orphan }}<br>
 {% endfor %}
 {% endif %}
+
 
 
 ### No standard without qualities {#nostandardwithoutqualities}

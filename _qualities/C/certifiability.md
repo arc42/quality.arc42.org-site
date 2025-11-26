@@ -1,7 +1,7 @@
 ---
 title: Certifiability
 tags: [suitable, reliable, safe]
-related: [compliance, testability, auditability, traceability, documentation, verifiability, safety, analyzability]
+related: [compliance, testability, auditability, traceability, verifiability, safety, analysability]
 standards: [iso26262, do178c, iec62304, iec61508]
 permalink: /qualities/certifiability
 ---
