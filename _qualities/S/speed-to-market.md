@@ -1,9 +1,7 @@
 ---
 title: Speed to Market
-tags: [efficient]
-related: [flexibility, efficiency, deployment-frequency, extensibility, lead-time-for-changes, cycle-time]
+alias_of: time-to-market
+redirect_to: /qualities/time-to-market
+layout: redirect
 permalink: /qualities/speed-to-market
 ---
-
-See the synonym: [Time-to-Market](/qualities/time-to-market).
-
