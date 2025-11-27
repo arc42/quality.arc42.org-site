@@ -78,6 +78,21 @@ export class FullGraph extends Graph {
             stdToggle.addEventListener("change", (e) => {
                 this.renderer.setTypeVisibility('standard', e.target.checked);
                 this._writeUrlState({ showStandards: e.target.checked });
+                // When standards are hidden, clear any active standard selection
+                if (!e.target.checked) {
+                    // Clear persistent selection state and any highlight flags
+                    if (this.renderer?.selectionActive) {
+                        this.renderer.setSelectionDimming(null, null, false);
+                    }
+                    if (this.renderer?.nodes) {
+                        this.renderer.nodes.each(function (node) {
+                            node.highlighted = false;
+                            node.connectedHighlighted = false;
+                        });
+                    }
+                    // Remove selected standard from URL state
+                    this._writeUrlState({ selectedStandard: null });
+                }
             });
         }
 

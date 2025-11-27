@@ -157,6 +157,12 @@ export class GraphRenderer {
     setTypeVisibility(type, visible) {
         if (!this.isValidNodeType(type)) return;
         this.typeVisibility[type] = !!visible;
+        // If standards are being hidden, clear any active standard selection
+        if (type === 'standard' && !visible) {
+            if (this.selectionActive && this.selection?.isStandard) {
+                this.setSelectionDimming(null, null, false);
+            }
+        }
         this.applyTypeVisibility();
     }
 
@@ -621,11 +627,7 @@ export class GraphRenderer {
             const keepRootProp = renderer._edgeShouldShowDespiteRoot(l, selected);
             l._dimmed = !(endpointsRelated || keepRootProp);
             // canvas-specific hidden flag when std selection hides dimmed property links
-            if (selected.isStandard && (renderer._hideIfDimmedPropertyUnderStd(l.source) || renderer._hideIfDimmedPropertyUnderStd(l.target))) {
-                l._canvasHidden = true;
-            } else {
-                l._canvasHidden = false;
-            }
+            l._canvasHidden = !!(selected.isStandard && (renderer._hideIfDimmedPropertyUnderStd(l.source) || renderer._hideIfDimmedPropertyUnderStd(l.target)));
         });
         if (Array.isArray(this.virtualEdgesData)) this.virtualEdgesData.forEach(function (l) {
             const endpointsRelated = renderer._edgeEndpointsRelated(l, selected);
@@ -1159,9 +1161,11 @@ export class GraphRenderer {
         return (nodeData) => {
             // Einzelne Node-Überprüfung
             if (nodeData && typeof nodeData === 'object') {
+                // Root label must always be visible (even when dimmed/selection active)
+                if (nodeData.id === "quality-root") return 1;
                 if (nodeData._legendHidden) return 0;
                 if (renderer.selectionActive && renderer.selection?.isStandard && nodeData.qualityType === 'property' && nodeData._dimmed) return 0;
-                if (nodeData.id === "quality-root" || nodeData.qualityType === "property") return 1;
+                if (nodeData.qualityType === "property") return 1;
 
                 const isHighlighted = nodeData.highlighted || nodeData.connectedHighlighted;
                 if (nodeData._dimmed && !isHighlighted) return 0;
@@ -1178,6 +1182,12 @@ export class GraphRenderer {
             label.each(function (d) {
                 const labelElement = d3.select(this);
 
+                // Root label must always be visible (even when dimmed/selection active)
+                if (d.id === "quality-root") {
+                    labelElement.attr("opacity", 1).attr("font-weight", "bold").style("display", null);
+                    return;
+                }
+
                 if (d._legendHidden ||
                     (renderer.selectionActive && renderer.selection?.isStandard && d.qualityType === 'property' && d._dimmed) ||
                     (d._dimmed && !(d.highlighted || d.connectedHighlighted))) {
@@ -1185,7 +1195,7 @@ export class GraphRenderer {
                     return;
                 }
 
-                if (d.id === "quality-root" || d.qualityType === "property") {
+                if (d.qualityType === "property") {
                     labelElement.attr("opacity", 1).attr("font-weight", "bold").style("display", null);
                     return;
                 }
