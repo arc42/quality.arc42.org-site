@@ -50,3 +50,11 @@ correctness:
 # Recoverability (recovery-time measures recoverability)
 recoverability:
   - recovery-time
+
+# Configurability (tailorability means adapting to specific needs)
+configurability:
+  - tailorability
+
+# Analysability (inspectability is about examining/reviewing code and behavior)
+analysability:
+  - inspectability
