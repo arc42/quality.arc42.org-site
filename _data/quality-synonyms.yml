@@ -62,3 +62,7 @@ analysability:
 # Maintainability (supportability is legacy FURPS term, ISO 25010 uses maintainability)
 maintainability:
   - supportability
+
+# Timeliness (currentness is ISO 25024 data quality dimension synonym)
+timeliness:
+  - currentness
