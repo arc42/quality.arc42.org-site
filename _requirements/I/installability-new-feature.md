@@ -7,22 +7,19 @@ permalink: /requirements/rollout-new-feature
 
 <div class="quality-requirement" markdown="1">
 
-#### Stimulus
+#### Context
 
-The product team provides a new feature.
+Software may be provided via install kit (requiring OS-specific installers) or as web-based system (retrieving logic over network). This requirement does not dictate solution but specifies what must be fulfilled.
 
-#### Reaction
+#### Trigger
 
-The system updates itself in a way that the new feature can be used.
+Product team provides a new feature.
 
-#### Metric
+#### Acceptance Criteria
 
-There is no action required from the user to be able to use the new feature, i.e. the new feature just becomes available.
-
-#### Background
-
-If software is provided via an install kit, it may need to be provided for different operating systems and users will have to run an update installer to access new features. 
-In contrast, web-based systems retrieve their logic over the network, so no action from the user site is needed. 
-Since a requirement, like the one above, is not dictating a solution, but what needs to be fulfilled other solutions than a web-based system that avoids installation were also valid.
+- System updates itself so new feature can be used
+- No action required from user to access new feature
+- New feature just becomes available automatically
+- Zero manual installation steps for end users
 
 </div><br>

@@ -7,21 +7,20 @@ permalink: /requirements/fast-rollout-of-changes
 
 <div class="quality-requirement" markdown="1">
 
-#### Background
+#### Context
 
-More than 1000 devices running our system are distributed _in the field_ in customer sites on various locations.
+More than 1000 devices running our system are distributed in the field in customer sites on various locations.
 
-#### Stimulus
+#### Trigger
 
-The operating system we use gets a security update which needs to be rolled out to every one of these devices 
+Operating system gets a security update which needs to be rolled out to every one of these devices.
 
-#### Reaction
+#### Acceptance Criteria
 
-An OS update or patch is created.
+- OS update or patch is created
+- Distribution and installation takes less than 4 weeks on all devices
+- 100% of devices receive update within 4-week window
 
-#### Metric
-
-It takes less than 4 weeks to distribute and install this update or patch on all of these devices.
 </div><br>
 
 
