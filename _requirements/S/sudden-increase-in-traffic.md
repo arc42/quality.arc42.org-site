@@ -7,23 +7,24 @@ permalink: /requirements/handle-sudden-increase-in-traffic
 
 <div class="quality-requirement" markdown="1">
 
-#### Stimulus
+#### Context
 
-A sudden increase in traffic due to unexpected popularity or a temporary spike in user activity.
+Web application running in cloud-based environment with multiple servers and data centers.
 
-#### Environment
+#### Trigger
 
-The web application is running in a cloud-based environment with multiple servers and data centers.
+Sudden increase in traffic due to unexpected popularity or temporary spike in user activity.
 
-#### Response
+#### Acceptance Criteria
 
-The web application should gracefully handle the traffic surge without service disruption.
-Performance degradation shall remain below 25% reduced response time.
-
-It should automatically scale its resources to accommodate the increased load, distribute traffic evenly among servers, and ensure data consistency. 
-In the event of server failures, it should seamlessly redirect traffic to healthy servers and recover lost data if necessary. 
-Additionally, it should log and report any anomalies or failures for further analysis and improvement.
-
+- Web application gracefully handles traffic surge without service disruption
+- Performance degradation remains below 25% reduced response time
+- System automatically scales resources to accommodate increased load
+- Traffic distributed evenly among servers
+- Data consistency ensured during traffic surge
+- In event of server failures, traffic seamlessly redirected to healthy servers
+- Lost data recovered if necessary during server failures
+- Anomalies and failures logged and reported for further analysis and improvement
 
 </div><br>
 
