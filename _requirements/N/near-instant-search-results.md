@@ -7,17 +7,16 @@ permalink: /requirements/near-instant-search-results
 
 <div class="quality-requirement" markdown="1">
 
-#### Stimulus
+#### Context
+The travel portal forwards flight search queries to multiple airlines and booking agencies, requiring fast response times to maintain user engagement.
 
-A user searches for available flights for a given departure and arrival date and location via the graphical user interface. 
+#### Trigger
+A user searches for available flights by entering departure and arrival dates and locations via the graphical user interface.
 
-#### Metric
+#### Acceptance Criteria
+- First search result displayed within 500 milliseconds
+- Additional results loaded progressively without blocking UI
 
-The system shows/displays the first result within 500 msec. Additional results might be added later.
-
-#### Background
-
-Our travel portal forwards such queries to several airlines and booking agencies.
 </div><br>
 
 
