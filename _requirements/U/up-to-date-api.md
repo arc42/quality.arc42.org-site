@@ -7,25 +7,19 @@ permalink: /requirements/up-to-date-api
 
 <div class="quality-requirement" markdown="1">
 
-#### Background
+#### Context
 
-API provides configuration data from multiple sources. These configurations can be changed and the API should always provide up to date information.
+API provides configuration data from multiple sources. These configurations can be changed and the API should always provide up-to-date information.
 
-#### Source
+#### Trigger
 
-Consumer of the API
+Consumer of the API requests configuration data.
 
-#### Stimulus
+#### Acceptance Criteria
 
-Requests data
-
-#### Reaction
-
-Configuration returned is up to date
-
-#### Metric
-
-If the configuration is changed, only in 5% of the requests after 30 seconds, the data returned is still the previous configuration.
+- Configuration returned is up to date
+- After configuration is changed, at most 5% of requests after 30 seconds may still return previous configuration
+- 95% of requests return updated configuration within 30 seconds of change
 
 
 </div><br>
