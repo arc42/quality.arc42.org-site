@@ -7,7 +7,16 @@ permalink: /requirements/restricted-memory
 
 <div class="quality-requirement" markdown="1">
 
-Total (random-access) memory consumption must not exceed 512 MByte.
+#### Requirement
+
+The system must operate within strict memory constraints.
+
+#### Acceptance Criteria
+
+- Total RAM consumption does not exceed 512 MB
+- Memory limit enforced at all times during system operation
+- No memory consumption spikes above 512 MB threshold
+
 </div><br>
 
 
