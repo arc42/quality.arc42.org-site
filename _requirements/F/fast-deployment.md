@@ -7,26 +7,13 @@ permalink: /requirements/fast-deployment
 
 <div class="quality-requirement" markdown="1">
 
-#### Background
+#### Requirement
+Application deployments to production must be fast to enable frequent releases with minimal downtime.
 
-Developer deploys a new version of the application to production
-
-#### Source
-
-Developer
-
-#### Stimulus
-
-Deploys a new version of the application
-
-#### Reaction
-
-Application is fully rolled out in under 2 hours
-
-#### Metric
-
-Deployment of a new version of the application to production does not take longer than 2 hours
-
+#### Acceptance Criteria
+- Deployment of new version to production completes in less than 2 hours
+- Application is fully rolled out to all production servers
+- Deployment process is initiated by authorized developers
 
 </div><br>
 
