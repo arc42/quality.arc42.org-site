@@ -7,16 +7,17 @@ permalink: /requirements/access-control-via-sso
 
 <div class="quality-requirement" markdown="1">
 
-#### Context/Background
+#### Context
 
 Employees in companies often have a central username/password pair or certificate used to log in via a Single Sign On (SSO) solution, such that they do not have to maintain different credentials per system. If a new system is added to the company's portfolio, it should make use of the centralized authentication system.
 
-#### Source
+#### Trigger
 
 User authenticates using their SSO credentials on the expert system.
 
-#### Metric/Acceptance Criteria
+#### Acceptance Criteria
 
-System performs transparently the login via SSO in less than 3 seconds. The user has their correct role and rights after login.
+- SSO login completes transparently in less than 3 seconds
+- User receives correct role and rights assignments after successful authentication
 
 </div><br>
