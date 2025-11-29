@@ -6,21 +6,22 @@ permalink: /requirements/carbon-efficiency-save
 ---
 
 <div class="quality-requirement" markdown="1">
-#### Stimulus
 
-The system processes a high volume of data and performs resource-intensive computations.
+#### Context
 
-#### Environment
+Data center powered by non-renewable energy sources processes high volume of data and performs resource-intensive computations.
 
-Data center powered by non-renewable energy sources.
+#### Trigger
 
-#### Response
+System processes data and executes computations during normal operations.
 
-The system should minimize its carbon footprint by optimizing energy usage and resource allocation, aiming to reduce energy consumption by at least 20% compared to previous versions.
+#### Acceptance Criteria
 
+- System minimizes carbon footprint by optimizing energy usage and resource allocation
+- Energy consumption reduced by at least 20% compared to previous versions
+- Optimization targets both computational efficiency and resource allocation strategies
 
 </div><br>
-
 
 Source: This scenario has been created with help from [ChatGPT](https://chat.openai.com) by using the prompt `create a quality scenario to describe a carbon-efficiency requirement`.
 
