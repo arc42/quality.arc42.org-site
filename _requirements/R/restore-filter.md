@@ -7,16 +7,18 @@ permalink: /requirements/restore-filter-after-log-in
 
 <div class="quality-requirement" markdown="1">
 
-#### Context/Background
+#### Context
 
 In a multi-tenant web based system within a factory, each user may need to have their work environment with their settings restored after successful log in.
 
-#### Source
+#### Trigger
 
-User logins to start their shift and accesses a website with a table with data.
+User logs in to start their shift and accesses a website with a table with data.
 
-#### Metric/Acceptance Criteria
+#### Acceptance Criteria
 
-The website displays the table filtered by the filter as it was configured by the logged-in user before their last log off.
+- Website displays table filtered by filter configuration from user's last session
+- Filter settings automatically restored upon login
+- User's work environment preferences persisted between sessions
 
 </div><br>
