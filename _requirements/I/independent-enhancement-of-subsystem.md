@@ -7,28 +7,21 @@ permalink: /requirements/independent-enhancement-of-subsystem
 
 <div class="quality-requirement" markdown="1">
 
-#### Background
+#### Context
 
 Extensions or changes to a subsystem should be possible independently of all other subsystems.
 
-#### Source
+#### Trigger
 
-Development team
+Development team changes code or configuration within a subsystem or component.
 
-#### Stimulus
+#### Acceptance Criteria
 
-Changes code or configuration within a subsystem or component
-
-#### Reaction
-
-No other subsystem needs to be changed
-
-#### Metric
-
-The following applies to all other subsystems:
-* The source code remains identical
-* Compile, build and test processes remain identical
-* Deployment, installation and configuration remain identical
+- No other subsystem needs to be changed
+- For all other subsystems, the following remains identical:
+  - Source code
+  - Compile, build and test processes
+  - Deployment, installation and configuration
 
 
 </div><br>
