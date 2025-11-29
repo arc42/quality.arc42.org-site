@@ -2,7 +2,7 @@
 title: Fairness
 tags: [reliable, safe, suitable]
 related: [bias-mitigation, explainability, transparency, accountability]
-standards: [iso42001, isoiec22989]
+standards: [iso42001, isoiec22989, iso24028]
 permalink: /qualities/fairness
 ---
 
