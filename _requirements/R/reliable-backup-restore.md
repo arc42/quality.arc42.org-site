@@ -6,18 +6,19 @@ permalink: /requirements/reliable-backup-and-restore
 ---
 
 <div class="quality-requirement" markdown="1">
-#### Context/Background
+#### Context
 
-An Electronic Health Records (EHR) system needs to ensure accurate and timely documentation of patient information.
+An Electronic Health Records (EHR) system needs to ensure accurate and timely documentation of patient information. Data loss must be avoided.
 
-Data loss must be avoided.
+#### Trigger
 
-#### Metric/Acceptance Criteria
+Data loss incident occurs or backup process is executed.
 
-Data recovery should be 
+#### Acceptance Criteria
 
-* achievable within 4 hours of any data loss incident, and 
-* backups should be performed daily without any data corruption
+- Data recovery achievable within 4 hours of any data loss incident
+- Backups performed daily without any data corruption
+- 100% data integrity maintained in all backup operations
 
 </div><br>
 
