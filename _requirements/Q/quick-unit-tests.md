@@ -7,8 +7,12 @@ permalink: /requirements/quick-unit-tests
 
 <div class="quality-requirement" markdown="1">
 
-It takes less than 180 seconds to run all automated unit-tests for a subsystem or component.
+#### Requirement
+All automated unit tests for a subsystem must execute quickly to enable rapid feedback during development.
 
+#### Acceptance Criteria
+- All unit tests for a subsystem complete in less than 180 seconds
+- Test execution time is measured on standard CI/CD infrastructure
 
 </div><br>
 
