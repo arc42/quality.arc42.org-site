@@ -7,9 +7,18 @@ permalink: /requirements/server-fails-operation-without-downtime
 
 <div class="quality-requirement" markdown="1">
 
->A server in a server farm fails during normal operation, and the system informs the operator and continues to operate with no downtime.
->
->[Len Bass et al., 2021, p. 76](/references/#bass2021software)
+#### Requirement
+
+The system must maintain continuous operation despite server failures in a server farm.
+
+#### Acceptance Criteria
+
+- System continues to operate with no downtime when a server fails during normal operation
+- Operator is informed of server failure
+- Zero downtime during server farm node failures
+- Automatic failover to redundant servers
+
+>Source: [Len Bass et al., 2021, p. 76](/references/#bass2021software)
 
 </div>
 
