@@ -7,22 +7,21 @@ permalink: /requirements/expressive-error-messages
 
 <div class="quality-requirement" markdown="1">
 
-#### Stimulus
+#### Context
 
-An error / exceptional situation occurs in the technical infrastructure (memory overflow, out-of-memory, hardware error, virtual-machine-issue, container-related-issue).
+When error situations occur, they must be displayed to user in expressive, meaningful messages.
 
-#### Reaction
+#### Trigger
 
-The system detects the error, reports (as far as possible) to the user and shuts down in a controlled manner. The message shall contain specific explanations and instructions on possible reactions. 
+Error or exceptional situation occurs in technical infrastructure (memory overflow, out-of-memory, hardware error, virtual-machine-issue, container-related-issue).
 
-#### Metric
+#### Acceptance Criteria
 
-Error detection occurs within 15 seconds, message to user (if still possible) within 1 second, shutdown within 15 seconds.
-
-
-#### Background
-
-If an error situation occurs, this is displayed to the user in expressive, meaningful messages. 
+- System detects error, reports (as far as possible) to user and shuts down in controlled manner
+- Message contains specific explanations and instructions on possible reactions
+- Error detection occurs within 15 seconds
+- Message to user (if still possible) within 1 second
+- Shutdown within 15 seconds
 
 </div><br>
 
