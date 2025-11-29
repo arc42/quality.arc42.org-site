@@ -20,6 +20,7 @@ standards:
     iso42030,
     iso12207,
     ieee2857,
+    iso24028,
   ]
 permalink: /qualities/maintainability
 ---

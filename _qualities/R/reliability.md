@@ -23,6 +23,7 @@ standards:
     iso42030,
     iso12207,
     sox,
+    iso24028,
   ]
 permalink: /qualities/reliability
 ---

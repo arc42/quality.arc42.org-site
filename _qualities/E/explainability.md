@@ -2,7 +2,7 @@
 title: Explainability
 tags: [safe, suitable]
 related: [accountability, analysability, clarity]
-standards: [iso42001, isoiec22989]
+standards: [iso42001, isoiec22989, iso24028]
 permalink: /qualities/explainability
 ---
 Explainability is a quality sometimes required in the context of Artificial Intelligence (AI). The European's proposed AI Act will probably contain obligations for some AI systems to provide explanations about decisions that impact user rights.
