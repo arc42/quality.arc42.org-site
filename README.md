@@ -100,6 +100,48 @@ permalink: /requirements/unavailable-for-max-2-minutes
 ---
 ```
 
+#### Requirements Structure
+
+Requirements use a **two-tier approach** for maximum clarity and usefulness as acceptance criteria:
+
+**Tier 1** - Simple requirements (1-3 criteria, self-explanatory):
+```markdown
+<div class="quality-requirement" markdown="1">
+
+#### Requirement
+All automated unit tests must execute quickly to enable rapid feedback.
+
+#### Acceptance Criteria
+- All unit tests complete in less than 180 seconds
+- Measured on standard CI/CD infrastructure
+
+</div>
+```
+
+**Tier 2** - Complex requirements (4+ criteria, needs context):
+```markdown
+<div class="quality-requirement" markdown="1">
+
+#### Context
+Healthcare system manages patient data where poor quality could lead to medication errors.
+
+#### Trigger
+Patient data is entered, updated, or accessed throughout care journey.
+
+#### Acceptance Criteria
+- Patient duplicate detection rate ≥ 99.9%
+- Critical fields 100% complete for active patients
+- Lab results available within 5 minutes
+- Data validation prevents 100% of impossible values
+
+</div>
+```
+
+**Key principles:**
+- Use specific metrics with units (percentages, milliseconds, hours)
+- Make all criteria testable and measurable
+- See [REQUIREMENTS_TEMPLATE.md](REQUIREMENTS_TEMPLATE.md) for detailed guidance
+
 Standards (add under `_standards/your-standard.md`):
 ```yaml
 ---
