@@ -7,28 +7,21 @@ permalink: /requirements/independent-replacement-of-subsystem
 
 <div class="quality-requirement" markdown="1">
 
-#### Background
+#### Context
 
 The system will use an external payment provider. If a different payment provider is chosen, the system needs to be able to quickly adapt to the new payment provider.
 
-#### Source
+#### Trigger
 
-Development team
+Development team needs to integrate a new payment provider.
 
-#### Stimulus
+#### Acceptance Criteria
 
-New payment provider needs to be integrated
-
-#### Reaction
-
-Integration can be done without changing any other subsystem or component
-
-#### Metric
-
-The following applies to all other subsystems:
-* The source code remains identical
-* Compile, build and test processes remain identical
-* Deployment, installation and configuration remain identical
+- Integration can be done without changing any other subsystem or component
+- For all other subsystems, the following remains identical:
+  - Source code
+  - Compile, build and test processes
+  - Deployment, installation and configuration
 
 
 </div><br>
