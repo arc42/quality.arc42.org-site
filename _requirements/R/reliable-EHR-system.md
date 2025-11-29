@@ -6,16 +6,18 @@ permalink: /requirements/reliable-erh-system
 ---
 
 <div class="quality-requirement" markdown="1">
-#### Context/Background
+#### Context
 
 An Electronic Health Records (EHR) system needs to ensure accurate and timely documentation of patient information.
 
-#### Metric/Acceptance Criteria
+#### Trigger
 
-The EHR system should:
+Healthcare provider performs clinical interaction requiring patient record documentation.
 
-* achieve 99.9% uptime, and
-* patient records should be updated within 5 minutes of any clinical interaction
+#### Acceptance Criteria
+
+- System achieves 99.9% uptime
+- Patient records updated within 5 minutes of any clinical interaction
 
 </div><br>
 
