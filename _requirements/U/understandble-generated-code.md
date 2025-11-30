@@ -7,21 +7,19 @@ permalink: /requirements/understandable-generated-code
 
 <div class="quality-requirement" markdown="1">
 
-#### Stimulus
+#### Context
 
-A developer has created a new test case in xml.
+Test cases for a system are described in (semi-)formal xml-based language and automatically converted into Java, Kotlin or Groovy source code. This code is later adjusted or enhanced by developers or testers.
 
-#### Reaction
+#### Trigger
 
-The code generator creates a source code file.
+Developer has created new test case in xml and code generator creates source code file.
 
-#### Metric
+#### Acceptance Criteria
 
-A human tester can understand the generated test and enhance it with additional tests or test-data within max 30 minutes. 
-
-#### Background
-
-Test cases for a system are described in a (semi-)formal xml-based language and automatically converted into Java, Kotlin or Groovy source code. This code is later adjusted or enhanced by developers or testers.
+- Human tester can understand generated test
+- Tester can enhance test with additional tests or test-data
+- Understanding and enhancement completed within maximum 30 minutes
 
 </div><br>
 
