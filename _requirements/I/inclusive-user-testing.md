@@ -8,12 +8,13 @@ permalink: /requirements/inclusive-user-testing
 <div class="quality-requirement" markdown="1">
 
 #### Requirement
+
 Conduct user testing with diverse groups to ensure the software meets various needs.
 
-#### Metric/Acceptance Criteria
+#### Acceptance Criteria
 
-* Diverse Test Group Representation: Include participants from at least 5 different demographic groups in user testing sessions.
-* Usability Scores: Achieve an average usability score of 85/100 across all demographic groups.
+- Include participants from at least 5 different demographic groups in user testing sessions
+- Achieve an average usability score of 85/100 across all demographic groups
 
 </div><br>
 
