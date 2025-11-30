@@ -7,26 +7,20 @@ permalink: /requirements/maintainable-checking-strategy
 
 <div class="quality-requirement" markdown="1">
 
-#### Stimulus
+#### Context
 
-A user needs a specific kind of check currently not available in HtmlSC
+[HTMLSanityChecker](https://github.com/aim42/htmlSanityCheck) (short: HtmlSC) is an open-source checker for HTML files. It can check multiple types of problems, but sometimes users need specific additional checks (like grammar, use of certain vocabulary, use of certain stylesheets etc). Such changes are usually **not** integrated in the main branch, but will remain in user-specific forks.
 
-#### Reaction
+#### Trigger
 
-The new checking algorithm is implemented and integrated in (a fork of) HtmlSC.
+A user needs a specific kind of check currently not available in HtmlSC.
 
-#### Metric
+#### Acceptance Criteria
 
-* The integration of the new check into HtmlSC takes less than 15 min for a developer knowledgeable in HtmlSC
-* Purely structural checks (like checking the availability of referenced external URLs) shall be implemented in less than 1person-day of effort
-* The effort and duration for implementing such checks in general cannot be constrained in advance. For example, checks needing artificial intelligence algorithms might need significant time to be implemented and tested.
-
-#### Background
-
-[HTMLSanityChecker](https://github.com/aim42/htmlSanityCheck) (short: HtmlSC) is an open-source checker for HTML files.
-It can check multiple types of problems, but sometimes users need specific additional checks (like grammar, use of certain vocabulary, use of certain stylesheets etc)
-
-Such changes are usually **not** integrated in the main branch, but will remain in user-specific forks.
+- New checking algorithm is implemented and integrated in (a fork of) HtmlSC
+- Integration of new check into HtmlSC takes less than 15 minutes for a developer knowledgeable in HtmlSC
+- Purely structural checks (like checking availability of referenced external URLs) are implemented in less than 1 person-day of effort
+- Effort and duration for implementing complex checks (e.g., those needing AI algorithms) cannot be constrained in advance
 
 </div><br>
 
