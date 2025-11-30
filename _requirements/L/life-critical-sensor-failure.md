@@ -11,22 +11,18 @@ Idea: [Bass et al., 2021](/references/#bass2021software)
 
 #### Context
 
-The system monitors patients several health and vitality parameters (e.g. heartbeat frequency and amplitude, blood flow in coronary artery etc)
+The system monitors patients several health and vitality parameters (e.g. heartbeat frequency and amplitude, blood flow in coronary artery etc).
 
-#### Stimulus
+#### Trigger
 
-A sensor in the patient monitoring system fails to report a life-critical value after 100 ms. 
+A sensor in the patient monitoring system fails to report a life-critical value after 100 ms.
 
-#### Reaction
+#### Acceptance Criteria
 
-
-The failure is logged, a warning light is illuminated on the console, and a backup (lower-fidelity) sensor is engaged. 
-
-#### Metric
-
-
-The system monitors the patient using the backup sensor after no more than 300 ms.
-
+- Failure is logged
+- Warning light is illuminated on the console
+- Backup (lower-fidelity) sensor is engaged
+- System monitors patient using backup sensor after no more than 300 ms
 
 </div><br>
 
