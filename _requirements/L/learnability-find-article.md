@@ -7,24 +7,18 @@ permalink: /requirements/learnability-find-article
 
 <div class="quality-requirement" markdown="1">
 
-#### Scenario
+#### Context
 
-A user who has never used the system before, but other IT systems in general
+Navigation and search page must be built in a way that users who use other IT-systems learn the usage of the given system without having to read a manual or need to ask someone.
 
-#### Stimulus
+#### Trigger
 
-has to find a specific article.
+User who has never used the system before (but uses other IT systems in general) has to find a specific article.
 
-#### Reaction
+#### Acceptance Criteria
 
-The system's search page displays the article as a search result if asked for it.
-
-#### Metric
-
-95% of the users find the search page and then the article in less than two minutes.
-
-#### Background
-
-The navigation and search page must be built in a way that users who use other IT-systems learn the usage of the given system without having to read a manual or the need to ask someone.
+- System's search page displays article as search result when asked for it
+- 95% of users find search page and then the article in less than two minutes
+- No manual reading or assistance required for first-time users
 
 </div><br>
