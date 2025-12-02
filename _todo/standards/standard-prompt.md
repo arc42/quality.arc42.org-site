@@ -2,10 +2,10 @@
 
 ## Instructions
 
-The quality standard relevant here (abbreviated by {{standard}}) is WCAG.
+The quality standard relevant here (abbreviated by {{standard}}) is "ISO/IEC 24028".
 
 I have already described several quality standards (e.g., ISO 25010, ISO 26262, ISO 27001). Please help me to also cover **{{standard}}**,
-
+Be about as detailed/brief as in the descripton of "EN 301 549" - which I consider a perfect mix of preciceness and accuracy and understandability.
 
 Please thoroughly search the web for other reliable and accurate sources and summarize them into a concise, one-page overview (similar in structure and tone to the existing standard pages).
 
