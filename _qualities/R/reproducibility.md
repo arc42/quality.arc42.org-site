@@ -1,5 +1,6 @@
 ---
 title: Reproducibility
+aka: [Repeatability]
 tags: [usable]
 related: [consistency, understandability]
 standards: [do178c]
