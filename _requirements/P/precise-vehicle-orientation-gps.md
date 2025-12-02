@@ -7,20 +7,14 @@ permalink: /requirements/precise-vehicle-orientation-gps
 
 <div class="quality-requirement" markdown="1">
 
-#### Scenario
+#### Trigger
 
-The orientation of the vehicle
+The orientation of the vehicle is measured twice for the same orientation.
 
-#### Stimulus
+#### Acceptance Criteria
 
-is measured twice for the same orientation.
-
-#### Reaction
-
-The orientation is displayed in the gps software.
-
-#### Metric
-
-The orientation precision is better than ± 3°
+- Orientation is displayed in GPS software
+- Orientation precision is better than ± 3°
+- Repeated measurements for same orientation show consistency within precision bounds
 
 </div><br>
