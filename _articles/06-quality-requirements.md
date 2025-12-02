@@ -4,7 +4,7 @@ title: "How to specify quality requirements"
 permalink: /articles/specify-quality-requirements
 ---
 
-{% assign requirement_posts = site.posts | where: "categories", "requirements" %}
+{% assign requirement_posts = site.requirements %}
 
 **Quality** is such a vague and broad term that it needs clarification for system development projects.
 
