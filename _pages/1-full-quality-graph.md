@@ -31,7 +31,7 @@ hide: true
                 <label class="toggle">
                     <span class="toggle-label legend-label">Standards</span>
                     <input class="toggle-checkbox" type="checkbox" id="legend-toggle-standards" checked>
-                    <div class="toggle-switch"></div>
+                    <div class="toggle-switch" aria-hidden="true"></div>
                 </label>
             </div>
             <div class="legend-item">
@@ -39,7 +39,7 @@ hide: true
                 <label class="toggle">
                     <span class="toggle-label legend-label">Qualities</span>
                     <input class="toggle-checkbox" type="checkbox" id="legend-toggle-qualities" checked>
-                    <div class="toggle-switch"></div>
+                    <div class="toggle-switch" aria-hidden="true"></div>
                 </label>
             </div>
 
@@ -48,7 +48,7 @@ hide: true
                 <label class="toggle">
                     <span class="toggle-label legend-label">Requirements</span>
                     <input class="toggle-checkbox" type="checkbox" id="legend-toggle-requirements">
-                    <div class="toggle-switch"></div>
+                    <div class="toggle-switch" aria-hidden="true"></div>
                 </label>
             </div>
         </div>
