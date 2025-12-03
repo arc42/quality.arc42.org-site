@@ -125,90 +125,178 @@ This overloading creates confusion.
 
 ---
 
-## Recommendation
+## Reconsidering "Quality Targets"
 
-I recommend **Option 1: "Quality Targets"** for the following reasons:
+**Critical Issue Identified:** The term "target" is problematic because:
+- In real life, a target is **specific and measurable** (e.g., "99.9% uptime", "response time < 200ms")
+- You know definitively when you've **reached a target**
+- But "secure", "flexible", "reliable" are **not measurable endpoints**
+- They're ongoing concerns - you never fully "achieve secure" and declare it done
 
-### 1. **Narrative Clarity**
-The phrasing improves significantly:
-- ✅ "To achieve our quality targets of security and reliability, we focus on qualities like immunity, access-control, and fault-tolerance"
-- ✅ "Our quality targets are: secure, flexible, and efficient systems"
-
-### 2. **Stakeholder Alignment**
-Business stakeholders naturally think in terms of targets and goals. This terminology bridges technical and business conversations.
-
-### 3. **Hierarchical Clarity**
-```
-Quality Targets (8 broad categories)
-  ↓ achieved through
-Qualities (~220 specific attributes)
-  ↓ verified by
-Requirements (~140 testable scenarios with acceptance criteria)
-```
-
-### 4. **Practical Usage**
-Compare these phrasings:
-
-| Current ("Property") | Proposed ("Quality Target") |
-|---|---|
-| "The secure property contains..." | "The security quality target includes..." |
-| "Top-level properties like secure..." | "Quality targets like security..." |
-| "Which properties matter for your system?" | "Which quality targets matter for your system?" |
-
-The target-based language is consistently clearer.
+**This makes "quality targets" misleading and inappropriate.**
 
 ---
 
-## Implementation Suggestion
+## Revised Analysis of Alternatives
 
-### Phase 1: Core Documentation (High Priority)
-1. Update homepage and main overview
-2. Update articles explaining Q42 model
-3. Update graph legends ("Quality Target" instead of "Property")
-4. Update tag pages with new terminology
+What we're really naming here are:
+- **Broad, non-measurable categories** for organizing specific qualities
+- **Ongoing concerns** (not endpoints to be reached)
+- **Organizing principles** or **dimensions** of quality
+- **Tags/labels** in the technical implementation
 
-### Phase 2: Technical Refinement (Medium Priority)
-5. Update code comments and variable names (can use deprecation approach)
-6. Update CLAUDE.md and developer documentation
-7. Update README
+### Revised Option 1: "Quality Categories"
+- **Pro**: Accurate, neutral, clearly indicates grouping/classification
+- **Pro**: No confusion with measurable targets or endpoints
+- **Pro**: Simple and accessible
+- **Con**: Somewhat bureaucratic/boring
+- **Con**: "Category" doesn't emphasize that these ARE system characteristics
+- **Example**: "Security is a quality category containing qualities like immunity and access-control"
 
-### Phase 3: Polish (Low Priority)
-8. Consider adding "aka" or "formerly called" notes for transition period
-9. Update any video transcripts or presentation materials
+### Revised Option 2: "Quality Dimensions"
+- **Pro**: Suggests different facets or perspectives on quality
+- **Pro**: Architectural, professional terminology
+- **Pro**: Implies that quality is multi-faceted (you can be strong in some dimensions, weak in others)
+- **Con**: Slightly abstract/academic
+- **Example**: "Security is a quality dimension encompassing qualities like immunity and access-control"
 
-### Backward Compatibility Note
-Keep "property" as an internal/technical term where needed for backward compatibility, but use "quality target" in all user-facing text.
+### Revised Option 3: "Quality Aspects"
+- **Pro**: Simple, clear, appropriate
+- **Pro**: Neutral term that doesn't imply measurement
+- **Pro**: Natural phrasing: "security aspects", "performance aspects"
+- **Con**: Might be too generic
+- **Example**: "Security is a quality aspect realized through qualities like immunity and access-control"
+
+### Revised Option 4: "Quality Areas"
+- **Pro**: Very simple and accessible
+- **Pro**: Clear grouping/organizational concept
+- **Con**: Might feel too simplistic
+- **Example**: "Security is a quality area that includes qualities like immunity and access-control"
+
+### Revised Option 5: "Quality Characteristics" (ISO 25010)
+- **Pro**: Standards-aligned (ISO 25010 uses "characteristics" and "sub-characteristics")
+- **Pro**: Established terminology in quality community
+- **Con**: Long and somewhat formal
+- **Con**: We already use "quality attribute" for the ~220 specific items
+- **Example**: "Security is a quality characteristic with sub-characteristics like immunity and access-control"
+
+### Revised Option 6: Keep "Quality Properties" but Improve Usage
+- **Pro**: No breaking change, familiar to existing users
+- **Pro**: "Property" is technically accurate - these ARE properties of the system
+- **Con**: Original issue remains - "top-level property" is awkward
+- **Solution**: Change phrasing, not the term
+  - ❌ "Top-level properties like secure..."
+  - ✅ "System properties like security..."
+  - ✅ "Quality properties: secure, flexible, reliable..."
+- **Example**: "Security is a system property demonstrated through qualities like immunity and access-control"
 
 ---
 
-## Alternative: Hybrid Approach
+## Revised Recommendation
 
-If we're concerned about breaking familiarity, we could use **both** terms during a transition:
+After reconsidering the "target" terminology issue, I recommend **Option 2: "Quality Dimensions"** with **Option 6: Improved Property phrasing** as an acceptable alternative.
 
-- "Quality Targets (also called Properties)"
-- After 6-12 months, drop the parenthetical
+### Primary Recommendation: "Quality Dimensions"
 
-This provides continuity while improving clarity.
+**Rationale:**
+
+1. **Accurate Semantics**: These ARE dimensions of quality - different facets or perspectives. A system can be strong in some dimensions (security), weak in others (performance).
+
+2. **Professional and Accessible**: The term "dimension" is used in architecture, data modeling, and analytics - it's familiar to technical audiences without being overly academic.
+
+3. **Narrative Improvement**:
+   - ✅ "Our system prioritizes the security and reliability dimensions"
+   - ✅ "These qualities contribute to the security dimension of our system"
+   - ✅ "Which quality dimensions are most important for your project?"
+
+4. **Visual Alignment**: Works well with the graph visualization - dimensions create a multi-dimensional quality space.
+
+5. **Avoids Confusion**:
+   - Not measurable like "targets"
+   - Not bureaucratic like "categories"
+   - More specific than "aspects"
+
+### Alternative: Improve "Property" Usage
+
+If changing terminology is deemed too disruptive, simply **improve how we use "property"**:
+
+**Changes needed:**
+- ❌ Remove: "top-level property"
+- ✅ Use: "quality property" or "system property"
+- ✅ Example: "Security is a fundamental system property"
+
+**This is a minimal-change approach** that addresses the awkward phrasing without requiring terminology migration.
+
+---
+
+## Comparison Table
+
+| Scenario | Current (Awkward) | Option: Dimensions | Option: Improved Properties |
+|----------|-------------------|-------------------|----------------------------|
+| Explaining hierarchy | "Top-level properties contain qualities" | "Quality dimensions contain qualities" | "System properties demonstrated by qualities" |
+| User question | "Which properties matter?" | "Which dimensions matter?" | "Which properties matter?" |
+| Graph legend | "Property nodes" | "Dimension nodes" | "Property nodes" |
+| Tag pages | "Qualities with this property" | "Qualities in this dimension" | "Qualities with this property" |
+
+---
+
+## Implementation Path
+
+### If Adopting "Quality Dimensions":
+
+**Phase 1: User-Facing Text**
+1. Homepage and overview pages
+2. Articles explaining Q42 model
+3. Graph legends and tooltips
+4. Tag page descriptions
+
+**Phase 2: Technical Updates**
+5. Code comments (deprecate "property", introduce "dimension")
+6. Documentation (CLAUDE.md, README)
+7. CSS classes can remain `.property-node` for backward compatibility
+
+**Phase 3: Complete Migration**
+8. Variable names in scripts (optional, for clarity)
+
+### If Improving "Property" Usage:
+
+**Single Phase: Text Refinement**
+1. Find/replace "top-level property" → "quality property" or "system property"
+2. Ensure consistent phrasing across documentation
+3. Add clarifying text where "property" is first introduced
+
+**Minimal effort, addresses the core issue.**
 
 ---
 
 ## Conclusion
 
-**The issue raised is valid.** The term "property" is indeed confusing and makes the Q42 model harder to explain.
+**The issue is valid.** The phrasing "top-level property" is awkward and confusing when explaining Q42.
 
-**Recommendation:** Adopt "quality targets" as the primary user-facing terminology for the eight top-level categories (secure, flexible, reliable, usable, efficient, suitable, operable, safe).
+**Recommended Solution:**
+- **Best:** Adopt "quality dimensions" - accurate, professional, improves narrative
+- **Acceptable:** Keep "property" but eliminate "top-level" and improve phrasing
 
-**Rationale:**
-- Clearer communication with stakeholders
-- Better narrative flow in explanations
-- Maintains the hierarchical structure (targets → qualities → requirements)
-- Minimal technical breaking changes
+**Hierarchy clarification:**
+```
+Quality Dimensions (8 broad aspects: secure, flexible, reliable...)
+  ↓ contain
+Qualities (~220 specific attributes: immunity, scalability...)
+  ↓ verified by
+Requirements (~140 measurable scenarios with acceptance criteria)
+```
 
 **Next Step:**
-Discuss with the arc42 team whether this change aligns with their vision and whether "quality targets" resonates with the intended audience.
+Discuss with arc42 team:
+1. Does "quality dimensions" resonate?
+2. Or should we simply fix the "top-level property" phrasing?
+3. Consider user feedback and terminology preference
 
 ---
 
 **Author:** Claude Code
 **Date:** 2025-12-02
-**Status:** Analysis - Awaiting decision
+**Updated:** 2025-12-02 (reconsidered "target" terminology based on feedback)
+**Status:** Revised Analysis - Awaiting decision
+
+**Key Insight:** "Targets" are specific and measurable - not appropriate for broad, ongoing quality concerns. Recommend "Quality Dimensions" or improving "Property" phrasing instead.
