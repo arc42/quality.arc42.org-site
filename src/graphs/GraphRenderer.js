@@ -1,4 +1,6 @@
 import * as d3 from "d3";
+import { QUALITY_ROOT_ID, NODE_TYPES } from './constants';
+import { isRoot, isProperty, isQuality, isRequirement, isStandard } from './nodeUtils';
 
 /**
  * GraphRenderer class
@@ -13,18 +15,18 @@ export class GraphRenderer {
      * @param {HTMLElement} container - The container element to render the graph in
      */
     constructor(container) {
-        // Bind lightweight helpers (kept internal to avoid new files and keep behavior)
-        this._isRoot = (d) => d && d.id === 'quality-root';
-        this._isProperty = (d) => d && d.qualityType === 'property';
-        this._isQuality = (d) => d && d.qualityType === 'quality';
-        this._isRequirement = (d) => d && d.qualityType === 'requirement';
-        this._isStandard = (d) => d && d.qualityType === 'standard';
+        // Centralized helpers
+        this._isRoot = (d) => isRoot(d);
+        this._isProperty = (d) => isProperty(d);
+        this._isQuality = (d) => isQuality(d);
+        this._isRequirement = (d) => isRequirement(d);
+        this._isStandard = (d) => isStandard(d);
         this._legendHidden = (d, typeVis) => {
             if (!d) return false;
             const t = d.qualityType;
-            if (t === 'quality') return typeVis.quality === false;
-            if (t === 'requirement') return typeVis.requirement === false;
-            if (t === 'standard') return typeVis.standard === false;
+            if (t === NODE_TYPES.QUALITY) return typeVis.quality === false;
+            if (t === NODE_TYPES.REQUIREMENT) return typeVis.requirement === false;
+            if (t === NODE_TYPES.STANDARD) return typeVis.standard === false;
             return false; // root & property never hidden by legend
         };
         this._isStdSelectionActive = () => !!(this.selectionActive && this.selection?.isStandard);
@@ -40,8 +42,8 @@ export class GraphRenderer {
         this._edgeShouldShowDespiteRoot = (edge, sel) => {
             if (!sel.isStandard) return false;
             const a = edge.source, b = edge.target;
-            const isRootAPropB = a.id === 'quality-root' && this._isProperty(b);
-            const isRootBPropA = b.id === 'quality-root' && this._isProperty(a);
+            const isRootAPropB = this._isRoot(a) && this._isProperty(b);
+            const isRootBPropA = this._isRoot(b) && this._isProperty(a);
             if (isRootAPropB && (sel.connected.has(b.id) || sel.id === b.id)) return true;
             return !!(isRootBPropA && (sel.connected.has(a.id) || sel.id === a.id));
         };
@@ -170,7 +172,7 @@ export class GraphRenderer {
         // Mark nodes with legendHidden flag used by updaters
         this.nodes.each(function (d) {
             const t = d.qualityType;
-            d._legendHidden = (t === 'quality' && !typeVis.quality) || (t === 'requirement' && !typeVis.requirement) || (t === 'standard' && !typeVis.standard);
+            d._legendHidden = (t === NODE_TYPES.QUALITY && !typeVis.quality) || (t === NODE_TYPES.REQUIREMENT && !typeVis.requirement) || (t === NODE_TYPES.STANDARD && !typeVis.standard);
         });
 
         // Update node display immediately in case simulation/zoom updaters haven't run yet
@@ -214,18 +216,18 @@ export class GraphRenderer {
             const virtualEdges = [];
             const standardsVisible = !!typeVis.standard;
             nodeById.forEach((node, id) => {
-                if (node.qualityType === 'requirement' && !node._legendHidden) {
+                if (node.qualityType === NODE_TYPES.REQUIREMENT && !node._legendHidden) {
                     const nbs = neighbors.get(id) || new Set();
                     nbs.forEach(qId => {
                         const qNode = nodeById.get(qId);
-                        if (!qNode || qNode.qualityType !== 'quality') return;
+                        if (!qNode || qNode.qualityType !== NODE_TYPES.QUALITY) return;
                         const qNbs = neighbors.get(qId) || new Set();
 
                         if (standardsVisible) {
                             // Prefer virtual links to standards when the standards are shown
                             qNbs.forEach(sId => {
                                 const sNode = nodeById.get(sId);
-                                if (!sNode || sNode.qualityType !== 'standard') return;
+                                if (!sNode || sNode.qualityType !== NODE_TYPES.STANDARD) return;
                                 if (sNode._legendHidden) return; // respect legend toggle for standards
                                 const hasDirect = neighbors.get(id)?.has(sId);
                                 if (!hasDirect) {
@@ -236,7 +238,7 @@ export class GraphRenderer {
                             // Fallback to properties (original behavior)
                             qNbs.forEach(pId => {
                                 const pNode = nodeById.get(pId);
-                                if (!pNode || pNode.qualityType !== 'property') return;
+                                if (!pNode || pNode.qualityType !== NODE_TYPES.PROPERTY) return;
                                 const hasDirect = neighbors.get(id)?.has(pId);
                                 if (!hasDirect) {
                                     virtualEdges.push({ source: node, target: pNode });
@@ -457,19 +459,19 @@ export class GraphRenderer {
             .enter()
             .append("text")
             .text(d => d.label)
-            .attr("font-size", d => (d.qualityType === "property" || d.id === "quality-root") ? Math.max(10, d.size * 0.45) : 10)
-            .attr("text-anchor", d => (d.id === "quality-root" || d.qualityType === "property") ? "middle" : "start")
-            .attr("dominant-baseline", d => (d.id === "quality-root" || d.qualityType === "property") ? "middle" : "auto")
+            .attr("font-size", d => (this._isProperty(d) || this._isRoot(d)) ? Math.max(10, d.size * 0.45) : 10)
+            .attr("text-anchor", d => (this._isRoot(d) || this._isProperty(d)) ? "middle" : "start")
+            .attr("dominant-baseline", d => (this._isRoot(d) || this._isProperty(d)) ? "middle" : "auto")
             .attr("dx", d => {
-                if (d.id === "quality-root" || d.qualityType === "property") {
+                if (this._isRoot(d) || this._isProperty(d)) {
                     return 0;
                 } else {
                     // For requirements and qualities, position labels outside the node
                     return d.size + 5; // Node radius + 5px padding
                 }
             })
-            .attr("dy", d => (d.id === "quality-root" || d.qualityType === "property") ? 0 : 4)
-            .style("pointer-events", (d) => (d.id === "quality-root" || d.qualityType === "property") ? "all" : "none");
+            .attr("dy", d => (this._isRoot(d) || this._isProperty(d)) ? 0 : 4)
+            .style("pointer-events", (d) => (this._isRoot(d) || this._isProperty(d)) ? "all" : "none");
 
         // Setup zoom
         this.setupZoom();
@@ -503,8 +505,8 @@ export class GraphRenderer {
                 this.highlightNode(d.id, false, null);
             });
 
-            // Add hover events to labels that are inside nodes (quality-root and property types)
-            const internalLabels = this.labels.filter(d => d.id === "quality-root" || d.qualityType === "property");
+            // Add hover events to labels that are inside nodes (root and property types)
+            const internalLabels = this.labels.filter(d => this._isRoot(d) || this._isProperty(d));
 
             // Add mouseenter event to highlight the node and show tooltip
             internalLabels.on("mouseenter", (event, d) => {
@@ -716,8 +718,8 @@ export class GraphRenderer {
         // Apply drag behavior to nodes
         this.nodes.call(dragBehavior);
 
-        // Apply drag behavior to labels that are inside nodes (quality-root and property types)
-        this.labels.filter(d => d.id === "quality-root" || d.qualityType === "property")
+        // Apply drag behavior to labels that are inside nodes (root and property types)
+        this.labels.filter(d => this._isRoot(d) || this._isProperty(d))
             .call(dragBehavior);
     }
 
@@ -977,12 +979,12 @@ export class GraphRenderer {
                 }
 
                 // When a standard is selected, hide dimmed property nodes entirely
-                if (renderer.selectionActive && renderer.selection?.isStandard && nodeData.qualityType === 'property' && nodeData._dimmed) {
+                if (renderer.selectionActive && renderer.selection?.isStandard && isProperty(nodeData) && nodeData._dimmed) {
                     return { visible: false };
                 }
 
                 // Always show root and property nodes at full detail
-                if (nodeData.id === "quality-root" || nodeData.qualityType === "property") {
+                if (isRoot(nodeData) || isProperty(nodeData)) {
                     return {
                         visible: true,
                         size: nodeData.size,
@@ -1064,7 +1066,7 @@ export class GraphRenderer {
                     }
 
                     // When a standard is selected, hide dimmed property nodes entirely
-                    if (renderer.selectionActive && renderer.selection?.isStandard && d.qualityType === 'property' && d._dimmed) {
+                    if (renderer.selectionActive && renderer.selection?.isStandard && isProperty(d) && d._dimmed) {
                         nodeElement.style("display", "none");
                         nodeElement.attr("opacity", 0);
                         d._canvasR = 0;
@@ -1074,7 +1076,7 @@ export class GraphRenderer {
                     }
 
                     // Always show root and property nodes at full detail
-                    if (d.id === "quality-root" || d.qualityType === "property") {
+                    if (isRoot(d) || isProperty(d)) {
                         nodeElement.style("display", null);
                         nodeElement.attr("opacity", 1);
                         nodeElement.attr("r", d.size);
@@ -1160,15 +1162,15 @@ export class GraphRenderer {
             // Einzelne Node-Überprüfung
             if (nodeData && typeof nodeData === 'object') {
                 if (nodeData._legendHidden) return 0;
-                if (renderer.selectionActive && renderer.selection?.isStandard && nodeData.qualityType === 'property' && nodeData._dimmed) return 0;
-                if (nodeData.id === "quality-root" || nodeData.qualityType === "property") return 1;
+                if (renderer.selectionActive && renderer.selection?.isStandard && isProperty(nodeData) && nodeData._dimmed) return 0;
+                if (isRoot(nodeData) || isProperty(nodeData)) return 1;
 
                 const isHighlighted = nodeData.highlighted || nodeData.connectedHighlighted;
                 if (nodeData._dimmed && !isHighlighted) return 0;
 
-                const threshold = (["quality", "requirement", "standard"].includes(nodeData.qualityType))
-                                  ? 1.2 / (nodeData.size / 10)
-                                  : 0.8 / (nodeData.size / 10);
+                const threshold = ((isQuality(nodeData) || isRequirement(nodeData) || isStandard(nodeData))
+                                  ? 1.2
+                                  : 0.8) / (nodeData.size / 10);
 
                 return (isHighlighted || currentZoomScale > threshold) ? 1 : 0;
             }
@@ -1179,21 +1181,21 @@ export class GraphRenderer {
                 const labelElement = d3.select(this);
 
                 if (d._legendHidden ||
-                    (renderer.selectionActive && renderer.selection?.isStandard && d.qualityType === 'property' && d._dimmed) ||
+                    (renderer.selectionActive && renderer.selection?.isStandard && isProperty(d) && d._dimmed) ||
                     (d._dimmed && !(d.highlighted || d.connectedHighlighted))) {
                     labelElement.attr("opacity", 0).style("display", "none");
                     return;
                 }
 
-                if (d.id === "quality-root" || d.qualityType === "property") {
+                if (isRoot(d) || isProperty(d)) {
                     labelElement.attr("opacity", 1).attr("font-weight", "bold").style("display", null);
                     return;
                 }
 
                 const isHighlighted = d.highlighted || d.connectedHighlighted;
-                const threshold = (["quality", "requirement", "standard"].includes(d.qualityType))
-                                  ? 1.2 / (d.size / 10)
-                                  : 0.8 / (d.size / 10);
+                const threshold = ((isQuality(d) || isRequirement(d) || isStandard(d))
+                                  ? 1.2
+                                  : 0.8) / (d.size / 10);
 
                 const opacity = (isHighlighted || currentZoomScale > threshold) ? 1 : 0;
                 labelElement.attr("opacity", opacity);

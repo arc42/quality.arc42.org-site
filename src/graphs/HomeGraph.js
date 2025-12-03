@@ -3,6 +3,8 @@
  * Specialized graph implementation for the homepage
  */
 import { Graph } from "./Graph";
+import { QUALITY_ROOT_ID } from "./constants";
+import { isRootId } from "./nodeUtils";
 
 export class HomeGraph extends Graph {
     /**
@@ -40,7 +42,7 @@ export class HomeGraph extends Graph {
             this.createNodes(homeData.propertyNodes);
             this.createEdges(homeData.edges);
 
-            this.applyEnhancedRadialLayout("quality-root", 250);
+            this.applyEnhancedRadialLayout(QUALITY_ROOT_ID, 250);
         } catch (error) {
             console.error("Could not build home graph", { cause: error });
         }
@@ -78,7 +80,7 @@ export class HomeGraph extends Graph {
     registerDefaultEventHandlers() {
         // Default double-click handler for navigation
         const nodeDoubleClick = (event, d) => {
-            if (d.id !== "quality-root") {
+            if (!isRootId(d.id)) {
                 window.location.href = this.graph.getNodeAttribute(d.id, "page");
             }
         };

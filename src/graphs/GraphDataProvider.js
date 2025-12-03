@@ -1,4 +1,4 @@
-import { MAX_FILTER_TERMS } from './constants';
+import { MAX_FILTER_TERMS, QUALITY_ROOT_ID, NODE_TYPES } from './constants';
 
 export class GraphDataProvider {
     #propertyNodes;
@@ -104,7 +104,7 @@ export class GraphDataProvider {
         });
 
         const requirementNodeIds = new Set();
-        const allRequirementNodes = nodesPool.filter(node => node.qualityType === "requirement");
+        const allRequirementNodes = nodesPool.filter(node => node.qualityType === NODE_TYPES.REQUIREMENT);
 
         if (qualitiesHidden && requirementsVisible) {
             allRequirementNodes.forEach(reqNode => {
@@ -139,7 +139,7 @@ export class GraphDataProvider {
             connectedNodeIds.forEach(id => {
                 const node = nodesPool.find(n => n.id === id);
                 if (!node) return;
-                if (node.qualityType === "requirement") {
+                if (node.qualityType === NODE_TYPES.REQUIREMENT) {
                     if (filteredNodeIds.has(id)) effectiveConnected.add(id);
                 } else {
                     effectiveConnected.add(id);
@@ -152,20 +152,20 @@ export class GraphDataProvider {
             ...effectiveConnected,
             ...requirementNodeIds
         ]);
-        allVisibleNodeIds.add("quality-root");
+        allVisibleNodeIds.add(QUALITY_ROOT_ID);
 
         const restrictedVisible = baseSet
-                                  ? new Set(Array.from(allVisibleNodeIds).filter(id => baseSet.has(id) || id === "quality-root"))
+                                  ? new Set(Array.from(allVisibleNodeIds).filter(id => baseSet.has(id) || id === QUALITY_ROOT_ID))
                                   : allVisibleNodeIds;
 
         const visiblePropertyNodeIds = new Set();
         this.#propertyNodes.forEach(propNode => {
             let hasVisibleNeighbor = false;
             edgesPool.forEach(edge => {
-                if (edge.source === propNode.id && edge.target !== "quality-root" && restrictedVisible.has(edge.target)) {
+                if (edge.source === propNode.id && edge.target !== QUALITY_ROOT_ID && restrictedVisible.has(edge.target)) {
                     hasVisibleNeighbor = true;
                 }
-                if (edge.target === propNode.id && edge.source !== "quality-root" && restrictedVisible.has(edge.source)) {
+                if (edge.target === propNode.id && edge.source !== QUALITY_ROOT_ID && restrictedVisible.has(edge.source)) {
                     hasVisibleNeighbor = true;
                 }
             });
@@ -193,11 +193,11 @@ export class GraphDataProvider {
      * @returns {Object} Object with prepared propertyNodes, nodes, and edges
      */
     prepareHomeGraphData() {
-        const rootNode = this.#nodes.find(node => node.id === "quality-root");
+        const rootNode = this.#nodes.find(node => node.id === QUALITY_ROOT_ID);
         const homeNodes = rootNode ? [rootNode] : [];
         const homeEdges = this.#edges.filter(edge => {
-            return (edge.source === "quality-root" && this.#propertyNodes.some(node => node.id === edge.target)) ||
-                (edge.target === "quality-root" && this.#propertyNodes.some(node => node.id === edge.source));
+            return (edge.source === QUALITY_ROOT_ID && this.#propertyNodes.some(node => node.id === edge.target)) ||
+                (edge.target === QUALITY_ROOT_ID && this.#propertyNodes.some(node => node.id === edge.source));
         });
         return {
             propertyNodes: this.#propertyNodes,
@@ -219,7 +219,7 @@ export class GraphDataProvider {
 
         const std = standard.toLowerCase();
         const matchedQualityNodes = this.#nodes.filter(node =>
-            node.qualityType === "quality" && Array.isArray(node.standards) && node.standards.map(s => String(s).toLowerCase()).includes(std)
+            node.qualityType === NODE_TYPES.QUALITY && Array.isArray(node.standards) && node.standards.map(s => String(s).toLowerCase()).includes(std)
         );
         const matchedQualityIds = new Set(matchedQualityNodes.map(n => n.id));
 
@@ -229,16 +229,16 @@ export class GraphDataProvider {
             if (matchedQualityIds.has(edge.target)) visibleNodeIds.add(edge.source);
         });
 
-        visibleNodeIds.add("quality-root");
+        visibleNodeIds.add(QUALITY_ROOT_ID);
 
         const visiblePropertyNodeIds = new Set();
         this.#propertyNodes.forEach(propNode => {
             let hasVisibleNeighbor = false;
             this.#edges.forEach(edge => {
-                if (edge.source === propNode.id && edge.target !== "quality-root" && visibleNodeIds.has(edge.target)) {
+                if (edge.source === propNode.id && edge.target !== QUALITY_ROOT_ID && visibleNodeIds.has(edge.target)) {
                     hasVisibleNeighbor = true;
                 }
-                if (edge.target === propNode.id && edge.source !== "quality-root" && visibleNodeIds.has(edge.source)) {
+                if (edge.target === propNode.id && edge.source !== QUALITY_ROOT_ID && visibleNodeIds.has(edge.source)) {
                     hasVisibleNeighbor = true;
                 }
             });

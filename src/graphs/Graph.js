@@ -3,6 +3,7 @@
  * Responsible for managing graph data and rendering
  */
 import { MultiGraph } from "graphology";
+import { QUALITY_ROOT_ID, NODE_TYPES } from "./constants";
 import { GraphDataProvider } from "./GraphDataProvider";
 import { GraphRenderer } from "./GraphRenderer";
 
@@ -52,7 +53,7 @@ export class Graph {
             this.createEdges(edges);
 
             // Apply layout
-            this.applyEnhancedRadialLayout("quality-root", 250);
+            this.applyEnhancedRadialLayout(QUALITY_ROOT_ID, 250);
         } catch (error) {
             console.error("Could not build graph", { cause: error });
         }
@@ -67,8 +68,8 @@ export class Graph {
      * @param {string} color - Color of the root node
      */
     createRootNode(label, size, color) {
-        if (this.graph.hasNode("quality-root")) this.graph.dropNode("quality-root");
-        this.graph.addNode("quality-root", {
+        if (this.graph.hasNode(QUALITY_ROOT_ID)) this.graph.dropNode(QUALITY_ROOT_ID);
+        this.graph.addNode(QUALITY_ROOT_ID, {
             label,
             size,
             x: 0,
@@ -135,7 +136,7 @@ export class Graph {
         // STEP 1: Position property nodes (Level 2) in a circle around root
         const propertyNodes = this.graph
             .inNeighbors(rootId)
-            .filter((n) => this.graph.getNodeAttribute(n, "qualityType") === "property");
+            .filter((n) => this.graph.getNodeAttribute(n, "qualityType") === NODE_TYPES.PROPERTY);
 
         // If there are no property nodes (e.g., after filtering), skip radial placement for properties
         if (propertyNodes.length === 0) {
@@ -368,7 +369,7 @@ export class Graph {
             this.graph.forEachNode((nodeId, attrs) => {
                 const qualityType = attrs.qualityType;
                 let nodeDist = minDistance;
-                if (qualityType === "quality") {
+                if (qualityType === NODE_TYPES.QUALITY) {
                     nodeDist = minDistance * 1.5;
                 }
                 nodePositions.push({
@@ -376,7 +377,7 @@ export class Graph {
                     x: attrs.x,
                     y: attrs.y,
                     level: attrs.hierarchyLevel || 1,
-                    fixed: nodeId === "quality-root",
+                    fixed: nodeId === QUALITY_ROOT_ID,
                     qualityType: qualityType,
                     minDist: nodeDist,
                 });
@@ -442,7 +443,7 @@ export class Graph {
         const effectiveMinDist = Math.max(nodeA.minDist, nodeB.minDist);
 
         if (distance > 0 && distance < effectiveMinDist) {
-            let forceMultiplier = nodeA.qualityType === "quality" ? 0.15 : 0.1;
+            let forceMultiplier = nodeA.qualityType === NODE_TYPES.QUALITY ? 0.15 : 0.1;
             const force = (effectiveMinDist - distance) / distance;
             return {
                 dx: xDiff * force * forceMultiplier,

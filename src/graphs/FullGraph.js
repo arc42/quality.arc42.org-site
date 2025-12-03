@@ -3,7 +3,8 @@
  * Specialized graph implementation for the full page graph with filtering
  */
 import { Graph } from "./Graph";
-import { MAX_FILTER_TERMS } from "./constants";
+import { MAX_FILTER_TERMS, QUALITY_ROOT_ID } from "./constants";
+import { isRootId, isStandard, isProperty, isQuality } from "./nodeUtils";
 
 // Standards dropdown removed in favor of a sidebar toggle
 
@@ -399,7 +400,7 @@ export class FullGraph extends Graph {
     registerDefaultEventHandlers() {
         // Default double-click handler for navigation
         const nodeDoubleClick = (event, d) => {
-            if (d.id !== "quality-root") {
+            if (!isRootId(d.id)) {
                 globalThis.location.href = this.graph.getNodeAttribute(d.id, "page");
             }
         };
@@ -421,7 +422,7 @@ export class FullGraph extends Graph {
                 // Highlight this node and its connections
                 d.highlighted = true;
 
-                if (d.qualityType === 'standard') {
+                if (isStandard(d)) {
                     // Direct neighbors (qualities)
                     const qualities = new Set();
                     const props = new Set();
@@ -439,11 +440,11 @@ export class FullGraph extends Graph {
                     // Then collect properties 2-hop via qualities
                     const qualLookup = new Set(qualities);
                     this.renderer.links.each(function (link) {
-                        if (qualLookup.has(link.source.id) && link.target.qualityType === 'property') {
+                        if (qualLookup.has(link.source.id) && isProperty(link.target)) {
                             props.add(link.target.id);
                             link.target.connectedHighlighted = true;
                         }
-                        if (qualLookup.has(link.target.id) && link.source.qualityType === 'property') {
+                        if (qualLookup.has(link.target.id) && isProperty(link.source)) {
                             props.add(link.source.id);
                             link.source.connectedHighlighted = true;
                         }
@@ -470,7 +471,7 @@ export class FullGraph extends Graph {
 
         // Click handler: persistent selection for standards (dims unrelated)
         const nodeClick = (event, d) => {
-            if (d.qualityType !== 'standard') return;
+            if (!isStandard(d)) return;
 
             const isSameSelection = this.renderer.selectionActive && this.renderer.selection && this.renderer.selection.id === d.id;
 
@@ -498,13 +499,13 @@ export class FullGraph extends Graph {
             // First pass: collect direct neighbors (qualities)
             this.renderer.links.each(function (link) {
                 if (link.source.id === d.id) {
-                    if (link.target.qualityType === 'quality') {
+                    if (isQuality(link.target)) {
                         qualities.add(link.target.id);
                     }
                     link.target.connectedHighlighted = true;
                 }
                 if (link.target.id === d.id) {
-                    if (link.source.qualityType === 'quality') {
+                    if (isQuality(link.source)) {
                         qualities.add(link.source.id);
                     }
                     link.source.connectedHighlighted = true;
