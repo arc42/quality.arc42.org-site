@@ -1,3 +1,5 @@
+import { MAX_FILTER_TERMS } from './constants';
+
 export class GraphDataProvider {
     #propertyNodes;
     #nodes;
@@ -48,17 +50,35 @@ export class GraphDataProvider {
     }
 
     /**
-     * Filter the data based on a search term
-     * @param {string} filterTerm - The search term to filter by
+     * Filter the data based on one or more search terms
+     * @param {string|string[]} filterTerm - The search term or list of terms to filter by
+     * @param {Object} options - Additional options
      * @returns {Object} Object with filtered propertyNodes, nodes, and edges
      */
     filterByTerm(filterTerm, options = {}) {
-        if (!filterTerm || filterTerm.trim() === "") {
+        // Normalize terms → array of up to MAX_FILTER_TERMS non-empty strings
+        let terms = [];
+        if (Array.isArray(filterTerm)) {
+            terms = filterTerm
+                .map(t => String(t).trim())
+                .filter(t => t.length > 0)
+                .slice(0, MAX_FILTER_TERMS);
+        } else if (typeof filterTerm === 'string') {
+            const v = filterTerm.trim();
+            if (v !== '') terms = [v];
+        }
+
+        if (terms.length === 0) {
             this.resetFilter();
             return this.getData();
         }
 
-        const lowerFilterTerm = filterTerm.toLowerCase();
+        const lowerTerms = terms.map(t => t.toLowerCase());
+        const matches = (label) => {
+            const l = label.toLowerCase();
+            // OR semantics: match if any term is included
+            return lowerTerms.some(t => l.includes(t));
+        };
         const qualitiesHidden = options.qualitiesHidden === true;
         const requirementsVisible = options.requirementsVisible !== false;
         const baseSet = options.baseNodeIdSet instanceof Set ? options.baseNodeIdSet : null;
@@ -70,9 +90,7 @@ export class GraphDataProvider {
             ((propertyIds.has(e.source) && baseSet.has(e.target)) || (propertyIds.has(e.target) && baseSet.has(e.source)))
         ) : this.#edges;
 
-        const filteredNodes = nodesPool.filter(node =>
-            node.label.toLowerCase().includes(lowerFilterTerm)
-        );
+        const filteredNodes = nodesPool.filter(node => matches(node.label));
         const filteredNodeIds = new Set(filteredNodes.map(node => node.id));
 
         const connectedNodeIds = new Set();

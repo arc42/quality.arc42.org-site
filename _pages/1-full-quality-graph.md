@@ -10,8 +10,8 @@ hide: true
     <div id="full-q-graph-sidebar">
         <div id="full-q-graph-controls-container">
             <h3>Filter Graph</h3>
-            <label class="sr-only" for="full-q-graph-filter__input">Filter graph:</label>
-            <input type="text" id="full-q-graph-filter__input" placeholder="Filter..." />
+            <label class="sr-only" for="full-q-graph-filter__input">Filter graph with comma separated values:</label>
+            <input type="text" id="full-q-graph-filter__input" placeholder="Usability, ISO..." />
             <button id="full-q-graph-filter__btn" class="btn">Filter</button>
             <hr />        
         </div>

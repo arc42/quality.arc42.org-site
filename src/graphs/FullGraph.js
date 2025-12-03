@@ -3,6 +3,7 @@
  * Specialized graph implementation for the full page graph with filtering
  */
 import { Graph } from "./Graph";
+import { MAX_FILTER_TERMS } from "./constants";
 
 // Standards dropdown removed in favor of a sidebar toggle
 
@@ -26,7 +27,10 @@ export class FullGraph extends Graph {
         this.filterButton = document.getElementById("full-q-graph-filter__btn");
         this.debounceTimeout = null;
         // Persisted UI state
-        this.currentFilterTerm = "";
+        this.currentFilterTerm = ""; // raw input string (for URL/input)
+        this.currentFilterTerms = []; // parsed terms (array, max 5) — kept for backward compatibility
+        this.finalizedTerms = []; // chips terms (array, max 5)
+        this.filterChipsContainer = null; // container element for chips
     }
 
     /**
@@ -99,20 +103,34 @@ export class FullGraph extends Graph {
             return this;
         }
 
+        // Ensure chips container exists just below the input
+        this._ensureChipsContainer();
+
         // Apply filter immediately when button is clicked
         this.filterButton.addEventListener("click", () => {
-            this.filter(this.filterInput.value);
+            // Finalize any pending input (treat whole input as terms, comma-separated)
+            this._finalizeInputIntoChips(this.filterInput.value, true);
+            this.filterInput.value = "";
+            this.filter("");
         });
 
-        // Apply debounced filter when typing
+        // Handle typing: when a comma appears, finalize preceding token(s) into chips
         this.filterInput.addEventListener("input", (e) => {
+            this._handleTypingForChips(e.target);
+            // Also perform debounced live filtering using pending input (without creating chips)
             this.debounceFilter(e.target.value);
         });
 
         // Also handle Enter key for immediate filtering
         this.filterInput.addEventListener("keyup", (e) => {
             if (e.key === "Enter" || e.keyCode === 13) {
-                this.filter(this.filterInput.value);
+                // Finalize pending token on Enter
+                const val = this.filterInput.value.trim();
+                if (val) {
+                    this._finalizeInputIntoChips(val, false);
+                    this.filterInput.value = "";
+                }
+                this.filter("");
             }
         });
 
@@ -120,25 +138,71 @@ export class FullGraph extends Graph {
     }
 
     /**
-     * Debounce filter function with 300ms delay
-     * @param {string} value - Filter value
+     * Debounce live preview filtering with 300ms delay.
+     * While typing, apply filtering using finalized chip terms plus the pending input
+     * without changing chips or URL. Chips are only created on comma/Enter.
+     * @param {string} value - Current input value (pending token)
      */
     debounceFilter(value) {
         clearTimeout(this.debounceTimeout);
         this.debounceTimeout = setTimeout(() => {
-            this.filter(value);
+            this._applyFiltersPreview(value);
         }, 300);
+    }
+
+    /**
+     * Apply filters for live preview combining finalized terms and an optional pending term.
+     * Does NOT update URL or chips; purely affects current rendered filter state.
+     * @param {string} pendingValue
+     */
+    _applyFiltersPreview(pendingValue) {
+        // If input is disabled due to reaching the cap, ignore pending text
+        const inputDisabled = !!this.filterInput && this.filterInput.disabled;
+        const pending = inputDisabled ? "" : String(pendingValue || "").trim();
+
+        // Compose terms: finalized chips + one pending token (if any)
+        const terms = [];
+        const seen = new Set();
+        for (const t of (this.finalizedTerms || [])) {
+            const k = this._termKey(t);
+            if (!seen.has(k)) {
+                seen.add(k);
+                terms.push(t);
+            }
+        }
+        if (pending) {
+            const pk = this._termKey(pending);
+            if (!seen.has(pk) && terms.length < MAX_FILTER_TERMS) {
+                terms.push(pending);
+            }
+        }
+
+        const termActive = terms.length > 0;
+        const qualitiesHidden = this.renderer?.typeVisibility?.quality === false;
+        const requirementsVisible = this.renderer?.typeVisibility?.requirement !== false;
+
+        if (termActive) {
+            this.dataProvider.filterByTerm(terms, { qualitiesHidden, requirementsVisible });
+        } else {
+            this.dataProvider.resetFilter();
+        }
+        if (this.renderer) this.renderer.isFiltering = termActive;
+        this.renderFiltered();
     }
 
     /**
      * Register default event handlers for the full graph
      * @returns {Graph} This graph instance for chaining
      */
-    // Override filter to be aware of legend toggles
+    // Override filter to be aware of legend toggles and support multiple terms
     filter(filterTerm) {
-        this.currentFilterTerm = filterTerm || "";
+        // In the new UX, filtering is driven by finalized chip terms only.
+        // Maintain currentFilterTerms for downstream compatibility.
+        this.currentFilterTerm = this.finalizedTerms.join(", ");
+        this.currentFilterTerms = [...this.finalizedTerms];
         this.applyFiltersCombined();
         this._writeUrlState({ filter: this.currentFilterTerm });
+        this._renderFilterChips();
         return this;
     }
 
@@ -146,21 +210,190 @@ export class FullGraph extends Graph {
      * Apply both standard and term filters together as needed
      */
     applyFiltersCombined() {
-        const term = (this.currentFilterTerm || "").trim();
-        const termActive = term !== "";
+        // Always use finalized (chip) terms for filtering
+        const terms = Array.isArray(this.finalizedTerms) ? this.finalizedTerms : [];
+        const termActive = terms.length > 0;
 
         const qualitiesHidden = this.renderer?.typeVisibility?.quality === false;
         const requirementsVisible = this.renderer?.typeVisibility?.requirement !== false;
 
         if (termActive) {
-            this.dataProvider.filterByTerm(term, { qualitiesHidden, requirementsVisible });
+            this.dataProvider.filterByTerm(terms, { qualitiesHidden, requirementsVisible });
         } else {
             this.dataProvider.resetFilter();
         }
 
         if (this.renderer) this.renderer.isFiltering = termActive;
         this.renderFiltered();
+        // Update chips after render/filter state change
+        this._renderFilterChips();
         return this;
+    }
+
+    // ---------------- Helpers ----------------
+    _parseTerms(value) {
+        const v = (value || "").trim();
+        if (v === "") return [];
+        // Split by commas or whitespace, collapse multiples, dedupe, limit to 5
+        const parts = v
+            .split(/[\s,]+/)
+            .map(s => s.trim())
+            .filter(s => s.length > 0);
+        const seen = new Set();
+        const out = [];
+        for (const p of parts) {
+            const key = p.toLowerCase();
+            if (!seen.has(key)) {
+                seen.add(key);
+                out.push(p);
+                if (out.length >= MAX_FILTER_TERMS) break;
+            }
+        }
+        return out;
+    }
+
+    _normalizeTerm(t) {
+        const s = String(t || "").trim();
+        return s;
+    }
+
+    _termKey(t) {
+        return String(t).toLowerCase();
+    }
+
+    _addFinalizedTerms(tokens) {
+        if (!Array.isArray(tokens)) tokens = [tokens];
+        for (let raw of tokens) {
+            const term = this._normalizeTerm(raw);
+            if (!term) continue;
+            const key = this._termKey(term);
+            const existingKeys = new Set(this.finalizedTerms.map(x => this._termKey(x)));
+            if (existingKeys.has(key)) continue;
+            if (this.finalizedTerms.length >= MAX_FILTER_TERMS) break;
+            this.finalizedTerms.push(term);
+        }
+        // Keep compatibility arrays in sync
+        this.currentFilterTerms = [...this.finalizedTerms];
+        this.currentFilterTerm = this.finalizedTerms.join(", ");
+    }
+
+    _removeFinalizedTerm(term) {
+        const key = this._termKey(term);
+        this.finalizedTerms = this.finalizedTerms.filter(t => this._termKey(t) !== key);
+        this.currentFilterTerms = [...this.finalizedTerms];
+        this.currentFilterTerm = this.finalizedTerms.join(", ");
+    }
+
+    _finalizeInputIntoChips(inputValue, allowMultiple) {
+        const val = String(inputValue || "");
+        if (!val) return;
+        if (allowMultiple) {
+            // Split by commas; only commas finalize chips in this UX
+            let parts = val.split(",").map(s => s.trim()).filter(Boolean);
+            const remaining = Math.max(0, MAX_FILTER_TERMS - this.finalizedTerms.length);
+            if (remaining <= 0) {
+                // Already at cap, just clear input
+                if (this.filterInput) this.filterInput.value = "";
+            } else if (parts.length) {
+                if (parts.length > remaining) parts = parts.slice(0, remaining);
+                this._addFinalizedTerms(parts);
+            }
+        } else {
+            const term = val.trim();
+            if (term) this._addFinalizedTerms([term]);
+        }
+        // After adding, apply filter and update URL/chips
+        this.applyFiltersCombined();
+        this._writeUrlState({ filter: this.currentFilterTerm });
+        this._renderFilterChips();
+    }
+
+    _handleTypingForChips(inputEl) {
+        // When a comma is typed, finalize the segment(s) before the last comma
+        const value = inputEl.value;
+        const lastComma = value.lastIndexOf(",");
+        if (lastComma !== -1) {
+            const before = value.slice(0, lastComma);
+            const after = value.slice(lastComma + 1);
+            let tokens = before.split(",").map(s => s.trim()).filter(Boolean);
+            if (tokens.length > 0) {
+                const remaining = Math.max(0, MAX_FILTER_TERMS - this.finalizedTerms.length);
+                if (remaining > 0) {
+                    if (tokens.length > remaining) tokens = tokens.slice(0, remaining);
+                    this._addFinalizedTerms(tokens);
+                }
+                // Clear the finalized part, keep pending remainder in input
+                inputEl.value = remaining > 0 ? after.trimStart() : "";
+                this.applyFiltersCombined();
+                this._writeUrlState({ filter: this.currentFilterTerm });
+                this._renderFilterChips();
+            }
+        }
+    }
+
+    // Ensure the chips container exists below the filter input
+    _ensureChipsContainer() {
+        if (this.filterChipsContainer && document.body.contains(this.filterChipsContainer)) return;
+        if (!this.filterInput) return;
+        let container = document.getElementById('full-q-graph-filter__chips');
+        if (!container) {
+            container = document.createElement('div');
+            container.id = 'full-q-graph-filter__chips';
+            // Insert right after the input element
+            if (this.filterInput.nextSibling) {
+                this.filterInput.parentNode.insertBefore(container, this.filterInput.nextSibling);
+            } else {
+                this.filterInput.parentNode.appendChild(container);
+            }
+        }
+        this.filterChipsContainer = container;
+    }
+
+    // Render the current filter terms as chips below the input
+    _renderFilterChips() {
+        this._ensureChipsContainer();
+        const container = this.filterChipsContainer;
+        if (!container) return;
+        // Clear previous
+        container.innerHTML = '';
+        const terms = Array.isArray(this.finalizedTerms) ? this.finalizedTerms : [];
+        if (!terms.length) {
+            container.style.display = 'none';
+            if (this.filterInput) this.filterInput.disabled = false;
+            return;
+        }
+        container.style.display = '';
+        terms.forEach(term => {
+            const chip = document.createElement('span');
+            chip.className = 'q-chip';
+
+            const label = document.createElement('span');
+            label.className = 'q-chip__label';
+            label.textContent = term;
+
+            const btn = document.createElement('button');
+            btn.className = 'q-chip__close';
+            btn.type = 'button';
+            btn.setAttribute('aria-label', `Remove ${term}`);
+            btn.innerHTML = '&times;';
+            btn.addEventListener('click', () => {
+                this._removeFinalizedTerm(term);
+                this.applyFiltersCombined();
+                this._writeUrlState({ filter: this.currentFilterTerm });
+                this._renderFilterChips();
+            });
+
+            chip.appendChild(label);
+            chip.appendChild(btn);
+            container.appendChild(chip);
+        });
+
+        // Disable input if at cap; re-enable otherwise
+        if (this.filterInput) {
+            const atCap = terms.length >= MAX_FILTER_TERMS;
+            this.filterInput.disabled = atCap;
+            if (atCap) this.filterInput.value = '';
+        }
     }
 
     registerDefaultEventHandlers() {
@@ -405,9 +638,15 @@ export class FullGraph extends Graph {
         }
         // Apply filter term if present
         if (typeof state.filter === 'string' && this.filterInput) {
-            this.filterInput.value = state.filter;
+            // Parse URL filter into finalized chips; leave input empty
             this.currentFilterTerm = state.filter;
+            // Support both comma and whitespace separated for backward compatibility
+            const parsed = this._parseTerms(this.currentFilterTerm);
+            this.finalizedTerms = parsed.slice(0, MAX_FILTER_TERMS);
+            this.currentFilterTerms = [...this.finalizedTerms];
+            this.filterInput.value = '';
             this.applyFiltersCombined();
+            this._renderFilterChips();
         }
         // Apply selection after render is available
         if (state.selectedStandard) {

@@ -536,12 +536,20 @@ export class Graph {
 
     /**
      * Filter the graph data and re-render
-     * @param {string} filterTerm - The search term to filter by
+     * @param {string|string[]} filterTerm - The search term(s) to filter by
      * @returns {Graph} This graph instance for chaining
      */
     filter(filterTerm) { // NOTE: FullGraph may want legend-aware filtering in the future
+        // Determine if any filter terms are active
+        let active = false;
+        if (Array.isArray(filterTerm)) {
+            active = filterTerm.some(t => !!t && String(t).trim() !== "");
+        } else {
+            active = !!filterTerm && String(filterTerm).trim() !== "";
+        }
+
         // Mark renderer filtering state
-        if (this.renderer) this.renderer.isFiltering = !!filterTerm && filterTerm.trim() !== "";
+        if (this.renderer) this.renderer.isFiltering = active;
         // Filter the data
         this.dataProvider.filterByTerm(filterTerm);
         this.renderFiltered();
