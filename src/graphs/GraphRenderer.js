@@ -16,11 +16,6 @@ export class GraphRenderer {
      */
     constructor(container) {
         // Centralized helpers
-        this._isRoot = (d) => isRoot(d);
-        this._isProperty = (d) => isProperty(d);
-        this._isQuality = (d) => isQuality(d);
-        this._isRequirement = (d) => isRequirement(d);
-        this._isStandard = (d) => isStandard(d);
         this._legendHidden = (d, typeVis) => {
             if (!d) return false;
             const t = d.qualityType;
@@ -31,7 +26,7 @@ export class GraphRenderer {
         };
         this._isStdSelectionActive = () => !!(this.selectionActive && this.selection?.isStandard);
         this._nodeHighlighted = (d) => !!(d && (d.highlighted || d.connectedHighlighted));
-        this._labelVisibilityThreshold = (d) => ((this._isQuality(d) || this._isRequirement(d) || this._isStandard(d)) ? 1.2 : 0.8) / (d.size / 10);
+        this._labelVisibilityThreshold = (d) => ((isQuality(d) || isRequirement(d) || isStandard(d)) ? 1.2 : 0.8) / (d.size / 10);
         this._nodeVisibilityThreshold = (d) => 0.4 / (d.size / 10);
         this._edgeEndpointsRelated = (edge, sel) => {
             const a = edge.source.id, b = edge.target.id;
@@ -42,12 +37,12 @@ export class GraphRenderer {
         this._edgeShouldShowDespiteRoot = (edge, sel) => {
             if (!sel.isStandard) return false;
             const a = edge.source, b = edge.target;
-            const isRootAPropB = this._isRoot(a) && this._isProperty(b);
-            const isRootBPropA = this._isRoot(b) && this._isProperty(a);
+            const isRootAPropB = isRoot(a) && isProperty(b);
+            const isRootBPropA = isRoot(b) && isProperty(a);
             if (isRootAPropB && (sel.connected.has(b.id) || sel.id === b.id)) return true;
             return !!(isRootBPropA && (sel.connected.has(a.id) || sel.id === a.id));
         };
-        this._hideIfDimmedPropertyUnderStd = (d) => this._isStdSelectionActive() && this._isProperty(d) && d._dimmed;
+        this._hideIfDimmedPropertyUnderStd = (d) => this._isStdSelectionActive() && isProperty(d) && d._dimmed;
         this.container = container;
         this.width = container.clientWidth;
         this.height = container.clientHeight;
@@ -459,19 +454,19 @@ export class GraphRenderer {
             .enter()
             .append("text")
             .text(d => d.label)
-            .attr("font-size", d => (this._isProperty(d) || this._isRoot(d)) ? Math.max(10, d.size * 0.45) : 10)
-            .attr("text-anchor", d => (this._isRoot(d) || this._isProperty(d)) ? "middle" : "start")
-            .attr("dominant-baseline", d => (this._isRoot(d) || this._isProperty(d)) ? "middle" : "auto")
+            .attr("font-size", d => (isProperty(d) || isRoot(d)) ? Math.max(10, d.size * 0.45) : 10)
+            .attr("text-anchor", d => (isRoot(d) || isProperty(d)) ? "middle" : "start")
+            .attr("dominant-baseline", d => (isRoot(d) || isProperty(d)) ? "middle" : "auto")
             .attr("dx", d => {
-                if (this._isRoot(d) || this._isProperty(d)) {
+                if (isRoot(d) || isProperty(d)) {
                     return 0;
                 } else {
                     // For requirements and qualities, position labels outside the node
                     return d.size + 5; // Node radius + 5px padding
                 }
             })
-            .attr("dy", d => (this._isRoot(d) || this._isProperty(d)) ? 0 : 4)
-            .style("pointer-events", (d) => (this._isRoot(d) || this._isProperty(d)) ? "all" : "none");
+            .attr("dy", d => (isRoot(d) || isProperty(d)) ? 0 : 4)
+            .style("pointer-events", (d) => (isRoot(d) || isProperty(d)) ? "all" : "none");
 
         // Setup zoom
         this.setupZoom();
@@ -506,7 +501,7 @@ export class GraphRenderer {
             });
 
             // Add hover events to labels that are inside nodes (root and property types)
-            const internalLabels = this.labels.filter(d => this._isRoot(d) || this._isProperty(d));
+            const internalLabels = this.labels.filter(d => isRoot(d) || isProperty(d));
 
             // Add mouseenter event to highlight the node and show tooltip
             internalLabels.on("mouseenter", (event, d) => {
@@ -719,7 +714,7 @@ export class GraphRenderer {
         this.nodes.call(dragBehavior);
 
         // Apply drag behavior to labels that are inside nodes (root and property types)
-        this.labels.filter(d => this._isRoot(d) || this._isProperty(d))
+        this.labels.filter(d => isRoot(d) || isProperty(d))
             .call(dragBehavior);
     }
 
@@ -790,7 +785,7 @@ export class GraphRenderer {
             // Hidden by legend
             if (n._legendHidden) return;
             // When a standard is selected, hide dimmed property nodes entirely
-            if (this._isStdSelectionActive() && this._isProperty(n) && n._dimmed) return;
+            if (this._isStdSelectionActive() && isProperty(n) && n._dimmed) return;
             const r = n._canvasR == null ? n.size : n._canvasR;
             const opacity = n._canvasOpacity == null ? 1 : n._canvasOpacity;
             const strokeW = n._canvasStrokeWidth == null ? 1.5 : n._canvasStrokeWidth;
