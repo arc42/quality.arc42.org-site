@@ -1,16 +1,13 @@
 import * as d3 from "d3";
-import { QUALITY_ROOT_ID, NODE_TYPES } from './constants';
-import { isRoot, isProperty, isQuality, isRequirement, isStandard } from './nodeUtils';
+import { NODE_TYPES } from './constants';
+import { isProperty, isQuality, isRequirement, isRoot, isStandard } from './nodeUtils';
 
 /**
  * GraphRenderer class
  * Responsible for rendering graph data using D3 (Canvas for nodes/links + SVG for labels/interactions)
  */
 export class GraphRenderer {
-    /**
-     * Indicates whether a term filter is currently active (affects property visibility rules)
-     * This is controlled by Graph/FullGraph when applying or resetting filters.
-     */
+
     /**
      * @param {HTMLElement} container - The container element to render the graph in
      */
@@ -111,20 +108,29 @@ export class GraphRenderer {
     _showTooltip(node, event) {
         if (!this.tooltip || !node) return;
 
-        let content = `<strong>${node.label}</strong>`;
+        let content = `<strong>${ node.label }</strong>`;
 
         // Add synonym information if available
         if (node.labels && node.labels.length > 1) {
             const synonyms = node.labels.slice(1); // All labels except the first (canonical)
             content += `<br><span style="color: #aaa; font-size: 11px;">Also known as:</span><br>`;
-            content += `<span style="color: #00B8F5;">${synonyms.join(', ')}</span>`;
+            content += `<span style="color: #00B8F5;">${ synonyms.join(', ') }</span>`;
         }
 
         this.tooltip
             .html(content)
             .style('visibility', 'visible')
-            .style('left', (event.pageX + 10) + 'px')
-            .style('top', (event.pageY - 28) + 'px');
+            // Position tooltip exactly at current mouse location relative to the container
+            .style('left', (() => {
+                const rect = this.container.getBoundingClientRect();
+                const scrollLeft = (this.container.scrollLeft || 0);
+                return (event.clientX - rect.left + scrollLeft) + 'px';
+            })())
+            .style('top', (() => {
+                const rect = this.container.getBoundingClientRect();
+                const scrollTop = (this.container.scrollTop || 0);
+                return (event.clientY - rect.top + scrollTop) + 'px';
+            })());
     }
 
     /**
@@ -1168,8 +1174,8 @@ export class GraphRenderer {
                 if (nodeData._dimmed && !isHighlighted) return 0;
 
                 const threshold = ((isQuality(nodeData) || isRequirement(nodeData) || isStandard(nodeData))
-                                  ? 1.2
-                                  : 0.8) / (nodeData.size / 10);
+                                   ? 1.2
+                                   : 0.8) / (nodeData.size / 10);
 
                 return (isHighlighted || currentZoomScale > threshold) ? 1 : 0;
             }
@@ -1199,8 +1205,8 @@ export class GraphRenderer {
 
                 const isHighlighted = d.highlighted || d.connectedHighlighted;
                 const threshold = ((isQuality(d) || isRequirement(d) || isStandard(d))
-                                  ? 1.2
-                                  : 0.8) / (d.size / 10);
+                                   ? 1.2
+                                   : 0.8) / (d.size / 10);
 
                 const opacity = (isHighlighted || currentZoomScale > threshold) ? 1 : 0;
                 labelElement.attr("opacity", opacity);
