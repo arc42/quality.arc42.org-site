@@ -117,20 +117,16 @@ export class GraphRenderer {
             content += `<span style="color: #00B8F5;">${ synonyms.join(', ') }</span>`;
         }
 
+        // Compute position once to reduce repeated work
+        const rect = this.container.getBoundingClientRect();
+        const scrollLeft = (this.container.scrollLeft || 0);
+        const scrollTop = (this.container.scrollTop || 0);
+
         this.tooltip
             .html(content)
             .style('visibility', 'visible')
-            // Position tooltip exactly at current mouse location relative to the container
-            .style('left', (() => {
-                const rect = this.container.getBoundingClientRect();
-                const scrollLeft = (this.container.scrollLeft || 0);
-                return (event.clientX - rect.left + scrollLeft) + 'px';
-            })())
-            .style('top', (() => {
-                const rect = this.container.getBoundingClientRect();
-                const scrollTop = (this.container.scrollTop || 0);
-                return (event.clientY - rect.top + scrollTop) + 'px';
-            })());
+            .style('left', (event.clientX - rect.left + scrollLeft) + 'px')
+            .style('top', (event.clientY - rect.top + scrollTop) + 'px');
     }
 
     /**
@@ -141,6 +137,55 @@ export class GraphRenderer {
         if (this.tooltip) {
             this.tooltip.style('visibility', 'hidden');
         }
+    }
+
+    // Label layout helpers to keep render() concise
+    _labelFontSize(d) {
+        return (isProperty(d) || isRoot(d)) ? Math.max(10, d.size * 0.45) : 10;
+    }
+    _labelTextAnchor(d) {
+        return (isRoot(d) || isProperty(d)) ? "middle" : "start";
+    }
+    _labelDominantBaseline(d) {
+        return (isRoot(d) || isProperty(d)) ? "middle" : "auto";
+    }
+    _labelDx(d) {
+        if (isRoot(d) || isProperty(d)) return 0;
+        // For requirements and qualities, position labels outside the node
+        return d.size + 5; // Node radius + 5px padding
+    }
+    _labelDy(d) {
+        return (isRoot(d) || isProperty(d)) ? 0 : 4;
+    }
+
+    /**
+     * Bind common hover handlers to a D3 selection (nodes or labels inside nodes)
+     * Keeps logic centralized and reduces duplication.
+     * @param {d3.Selection} selection
+     * @param {(event: any, d: any) => void} onNodeHover
+     * @private
+     */
+    _bindHoverHandlers(selection, onNodeHover) {
+        if (!selection) return;
+        // mouseenter
+        selection.on("mouseenter", (event, d) => {
+            this._showTooltip(d, event);
+            if (onNodeHover) onNodeHover(event, d);
+        });
+        // mouseleave
+        selection.on("mouseleave", (event, d) => {
+            this._hideTooltip();
+            if (this.selectionActive) return;
+            // Reset all highlight flags on nodes
+            if (this.nodes) {
+                this.nodes.each(function (node) {
+                    node.highlighted = false;
+                    node.connectedHighlighted = false;
+                });
+            }
+            // Reset visual appearance for the node we left
+            this.highlightNode(d.id, false, null);
+        });
     }
 
     /**
@@ -466,18 +511,11 @@ export class GraphRenderer {
             .enter()
             .append("text")
             .text(d => d.label)
-            .attr("font-size", d => (isProperty(d) || isRoot(d)) ? Math.max(10, d.size * 0.45) : 10)
-            .attr("text-anchor", d => (isRoot(d) || isProperty(d)) ? "middle" : "start")
-            .attr("dominant-baseline", d => (isRoot(d) || isProperty(d)) ? "middle" : "auto")
-            .attr("dx", d => {
-                if (isRoot(d) || isProperty(d)) {
-                    return 0;
-                } else {
-                    // For requirements and qualities, position labels outside the node
-                    return d.size + 5; // Node radius + 5px padding
-                }
-            })
-            .attr("dy", d => (isRoot(d) || isProperty(d)) ? 0 : 4)
+            .attr("font-size", d => this._labelFontSize(d))
+            .attr("text-anchor", d => this._labelTextAnchor(d))
+            .attr("dominant-baseline", d => this._labelDominantBaseline(d))
+            .attr("dx", d => this._labelDx(d))
+            .attr("dy", d => this._labelDy(d))
             .style("pointer-events", (d) => (isRoot(d) || isProperty(d)) ? "all" : "none");
 
         // Setup zoom
@@ -488,56 +526,10 @@ export class GraphRenderer {
 
         // Setup node interactions (on invisible hit circles and selected labels)
         if (onNodeHover) {
-            // Add mouseenter event to highlight the node and show tooltip
-            this.nodes.on("mouseenter", (event, d) => {
-                // Show tooltip
-                this._showTooltip(d, event);
-                // Call original hover handler
-                if (onNodeHover) onNodeHover(event, d);
-            });
-
-            // Add mouseleave event to reset highlighting and hide tooltip (only if no active selection)
-            this.nodes.on("mouseleave", (event, d) => {
-                // Hide tooltip
-                this._hideTooltip();
-
-                if (this.selectionActive) return;
-                // Reset all highlights
-                this.nodes.each(function (node) {
-                    node.highlighted = false;
-                    node.connectedHighlighted = false;
-                });
-
-                // Reset visual appearance
-                this.highlightNode(d.id, false, null);
-            });
-
-            // Add hover events to labels that are inside nodes (root and property types)
+            // Bind identical hover behavior to both node hit-circles and internal labels
+            this._bindHoverHandlers(this.nodes, onNodeHover);
             const internalLabels = this.labels.filter(d => isRoot(d) || isProperty(d));
-
-            // Add mouseenter event to highlight the node and show tooltip
-            internalLabels.on("mouseenter", (event, d) => {
-                // Show tooltip
-                this._showTooltip(d, event);
-                // Call original hover handler
-                if (onNodeHover) onNodeHover(event, d);
-            });
-
-            // Add mouseleave event to reset highlighting and hide tooltip
-            internalLabels.on("mouseleave", (event, d) => {
-                // Hide tooltip
-                this._hideTooltip();
-
-                if (this.selectionActive) return;
-                // Reset all highlights
-                this.nodes.each(function (node) {
-                    node.highlighted = false;
-                    node.connectedHighlighted = false;
-                });
-
-                // Reset visual appearance
-                this.highlightNode(d.id, false, null);
-            });
+            this._bindHoverHandlers(internalLabels, onNodeHover);
         }
 
         if (onNodeDoubleClick) {
@@ -746,14 +738,23 @@ export class GraphRenderer {
         if (this.links) this.links.each(d => linksData.push(d));
         const virtualData = Array.isArray(this.virtualEdgesData) ? this.virtualEdgesData : [];
 
-        // Draw normal links
+        this._drawNormalLinks(ctx, linksData);
+        this._drawVirtualLinks(ctx, virtualData);
+        this._drawNodes(ctx, nodesData);
+
+        // Reset alpha
+        ctx.globalAlpha = 1;
+    }
+
+    /**
+     * Draw straight links on canvas
+     * @private
+     */
+    _drawNormalLinks(ctx, linksData) {
         linksData.forEach(l => {
             if (!l?.source || !l?.target) return;
-            // Respect legend hidden
             if (l.source._legendHidden || l.target._legendHidden) return;
-            // Hide links connected to dimmed property nodes when a standard is selected
             if (this._isStdSelectionActive() && (this._hideIfDimmedPropertyUnderStd(l.source) || this._hideIfDimmedPropertyUnderStd(l.target))) return;
-            // Determine style
             const isHover = !!l._hoverHighlight;
             const baseOpacity = l._dimmed ? 0.05 : 0.6;
             const opacity = isHover ? 0.9 : baseOpacity;
@@ -766,8 +767,13 @@ export class GraphRenderer {
             ctx.lineTo(l.target.x, l.target.y);
             ctx.stroke();
         });
+    }
 
-        // Draw virtual links (dashed)
+    /**
+     * Draw virtual (dashed) links on canvas
+     * @private
+     */
+    _drawVirtualLinks(ctx, virtualData) {
         virtualData.forEach(vl => {
             const s = vl.source, tNode = vl.target;
             if (!s || !tNode) return;
@@ -786,13 +792,16 @@ export class GraphRenderer {
             ctx.stroke();
             ctx.setLineDash([]);
         });
+    }
 
-        // Draw nodes
+    /**
+     * Draw nodes on canvas
+     * @private
+     */
+    _drawNodes(ctx, nodesData) {
         nodesData.forEach(n => {
             if (!n) return;
-            // Hidden by legend
             if (n._legendHidden) return;
-            // When a standard is selected, hide dimmed property nodes entirely
             if (this._isStdSelectionActive() && isProperty(n) && n._dimmed) return;
             const r = n._canvasR == null ? n.size : n._canvasR;
             const opacity = n._canvasOpacity == null ? 1 : n._canvasOpacity;
@@ -803,14 +812,10 @@ export class GraphRenderer {
             ctx.beginPath();
             ctx.arc(n.x, n.y, r, 0, Math.PI * 2);
             ctx.fill();
-            // Border
             ctx.lineWidth = strokeW;
             ctx.strokeStyle = '#2C3E50';
             ctx.stroke();
         });
-
-        // Reset alpha
-        ctx.globalAlpha = 1;
     }
 
     /**
@@ -1173,9 +1178,7 @@ export class GraphRenderer {
                 const isHighlighted = nodeData.highlighted || nodeData.connectedHighlighted;
                 if (nodeData._dimmed && !isHighlighted) return 0;
 
-                const threshold = ((isQuality(nodeData) || isRequirement(nodeData) || isStandard(nodeData))
-                                   ? 1.2
-                                   : 0.8) / (nodeData.size / 10);
+                const threshold = this._labelVisibilityThreshold(nodeData);
 
                 return (isHighlighted || currentZoomScale > threshold) ? 1 : 0;
             }
@@ -1204,9 +1207,7 @@ export class GraphRenderer {
                 }
 
                 const isHighlighted = d.highlighted || d.connectedHighlighted;
-                const threshold = ((isQuality(d) || isRequirement(d) || isStandard(d))
-                                   ? 1.2
-                                   : 0.8) / (d.size / 10);
+                const threshold = renderer._labelVisibilityThreshold(d);
 
                 const opacity = (isHighlighted || currentZoomScale > threshold) ? 1 : 0;
                 labelElement.attr("opacity", opacity);
