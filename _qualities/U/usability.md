@@ -2,7 +2,7 @@
 title: Usability
 tags: [usable, operable]
 related: [functionality, attractiveness, operability, user-error-protection, user-engagement, ease-of-use, inclusivity]
-standards: [iec-62304, isoiec22989, iso26514, iso12207]
+standards: [iec62304, isoiec22989, iso26514, iso12207, wcag22, en301549]
 permalink: /qualities/usability
 ---
 

@@ -2,7 +2,7 @@
 title: Privacy
 tags: [secure]
 related: [security, confidentiality]
-standards: [nist80053, aiuc1, isoiec22989, gdpr, ieee2857]
+standards: [nist80053, aiuc1, isoiec22989, gdpr, ieee2857, iso24028]
 permalink: /qualities/privacy
 ---
 

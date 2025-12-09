@@ -131,7 +131,7 @@ permalink: /qualities/accessibility
 
 #### 2. **Requirements** (`_requirements/`)
 
-Specific quality requirements with metrics and acceptance criteria.
+Specific quality requirements with metrics and acceptance criteria, designed to be directly usable as acceptance criteria in software development projects.
 
 **File Structure**: `_requirements/<LETTER>/<requirement-name>.md`
 
@@ -145,21 +145,54 @@ permalink: /requirements/access-control-is-enforced
 ---
 ```
 
-**Content Structure**:
+**Content Structure - Two Tiers**:
+
+The repository uses a flexible two-tier approach documented in [REQUIREMENTS_TEMPLATE.md](REQUIREMENTS_TEMPLATE.md):
+
+**Tier 1** - For simple, self-explanatory requirements (1-3 criteria):
 ```markdown
 <div class="quality-requirement" markdown="1">
 
-#### Context/Background
-[Context description]
+#### Requirement
+[One clear statement of what must be achieved]
 
-#### Source
-[Trigger or initiating event]
-
-#### Metric/Acceptance Criteria
-[Specific, measurable criteria]
+#### Acceptance Criteria
+- [Specific, measurable criterion with numeric threshold]
+- [Additional criteria if needed]
 
 </div>
 ```
+
+**Tier 2** - For complex requirements needing context (4+ criteria, compliance/security):
+```markdown
+<div class="quality-requirement" markdown="1">
+
+#### Context
+[1-3 sentences explaining system, business constraint, or why this matters]
+
+#### Trigger
+[Who or what initiates this requirement]
+
+#### Acceptance Criteria
+- [Specific, measurable criterion with numeric threshold]
+- [Additional criteria with sub-bullets when needed]
+  - [Sub-criterion]
+
+</div>
+```
+
+**Optional Enhancement** - For complex measurement scenarios:
+```markdown
+#### Measurement & Verification
+- [Specific tooling or calculation methods]
+- [Testing approach or monitoring requirements]
+```
+
+**Key Principles**:
+- All acceptance criteria must be **specific, measurable, and testable**
+- Use concrete metrics: percentages, timeframes, thresholds with units
+- Focus on "what must be achieved" rather than "how to achieve it"
+- See REQUIREMENTS_TEMPLATE.md for detailed guidance and examples
 
 #### 3. **Standards** (`_standards/`)
 
@@ -721,22 +754,50 @@ bundle exec jekyll build
    permalink: /requirements/your-requirement-name
    ---
    ```
-3. **Add structured content**:
+3. **Choose tier** and add structured content:
+
+   **For simple requirements** (Tier 1):
    ```markdown
    <div class="quality-requirement" markdown="1">
 
-   #### Context/Background
-   [Description]
+   #### Requirement
+   [Clear statement of what must be achieved]
 
-   #### Source
-   [Trigger]
-
-   #### Metric/Acceptance Criteria
-   [Criteria]
+   #### Acceptance Criteria
+   - [Specific, measurable criterion with units]
+   - [Additional criteria if needed]
 
    </div>
    ```
-4. **Test** (same as quality)
+
+   **For complex requirements** (Tier 2):
+   ```markdown
+   <div class="quality-requirement" markdown="1">
+
+   #### Context
+   [System/business context - why this matters]
+
+   #### Trigger
+   [Who/what initiates this requirement]
+
+   #### Acceptance Criteria
+   - [Specific, measurable criterion with threshold]
+   - [Additional criteria as bullet points]
+
+   </div>
+   ```
+
+4. **Follow best practices**:
+   - Use specific metrics with units (percentages, milliseconds, hours)
+   - Make all criteria testable and measurable
+   - Reference REQUIREMENTS_TEMPLATE.md for detailed guidance
+
+5. **Test**:
+   ```bash
+   npm run data              # Regenerate graph data
+   npm run test:links        # Validate references
+   docker compose up         # Verify rendering
+   ```
 
 ### Adding a New Standard
 

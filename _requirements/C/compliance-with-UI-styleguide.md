@@ -7,23 +7,19 @@ permalink: /requirements/compliance-with-ui-styleguide
 
 <div class="quality-requirement" markdown="1">
 
-#### Stimulus
+#### Context
 
-The user interface and interactive components of the system are to be redesigned and implemented.
+Operating systems like Windows(tm) or MacOS(tm) have strict human-interaction-guidelines that must be followed.
 
+#### Trigger
 
-#### Reaction
+User interface and interactive components of the system are redesigned and implemented.
 
-A manual audit/inspection by a user-interface specialist is performed and/or automated style tests are in place.
+#### Acceptance Criteria
 
-
-#### Metric
-
-No deviation from the user interface guidelines are detected.
-
-#### Background
-
-Operating systems like Windows(tm) or MacOS(tm) have strict human-interaction-guidelines.
+- Manual audit/inspection by user-interface specialist is performed and/or automated style tests are in place
+- No deviation from user interface guidelines are detected
+- 100% compliance with OS-specific human-interaction-guidelines
 
 </div><br>
 

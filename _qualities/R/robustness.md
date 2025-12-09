@@ -2,7 +2,7 @@
 title: Robustness
 tags: [reliable]
 related: [resilience, dependability, reliability]
-standards: [iso26262, misra-c, isoiec22989, iec62443, do178c]
+standards: [iso26262, misra-c, isoiec22989, iec62443, do178c, wcag22, en301549, iso24028]
 permalink: /qualities/robustness
 ---
 

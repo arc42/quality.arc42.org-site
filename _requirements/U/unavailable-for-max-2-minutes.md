@@ -7,16 +7,18 @@ permalink: /requirements/unavailability-max-2-minutes
 
 <div class="quality-requirement" markdown="1">
 
-#### Context/Background
+#### Context
 
 If an expert system becomes unavailable, the employer has to pay the employees even though they cannot work. This is especially a problem in countries with high labour costs.
 
-#### Source
+#### Trigger
 
 User intends to perform any operation within the expert system.
 
-#### Metric/Acceptance Criteria
+#### Acceptance Criteria
 
-The user is never blocked longer than for 2 minutes at any time due to any unavailability of the system.
+- User never blocked longer than 2 minutes at any time due to system unavailability
+- Maximum system downtime per incident: 2 minutes
+- Applies to all system operations and features
 
 </div><br>

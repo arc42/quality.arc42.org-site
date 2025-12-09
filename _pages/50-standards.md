@@ -18,6 +18,8 @@ These standards are categorized (aka _tagged_) as follows:
 |Category  | Explanation | Standards |
 |:--- | --- | --- |
 {% include standards-category-row.liquid category="general" title="General" explanation="Broad quality/process standards" %}
+{% include standards-category-row.liquid category="accessibility" title="Accessibility" explanation="Making digital content and systems accessible to people with disabilities; removing barriers to perception, operation, and understanding" %}
+{% include standards-category-row.liquid category="usability" title="Usability" explanation="Ease of use, learnability, and user satisfaction; interaction capability and user experience" %}
 {% include standards-category-row.liquid category="safety" title="Safety" explanation="Functional safety where malfunctions can harm people/environment/assets" %}
 {% include standards-category-row.liquid category="security" title="Security" explanation="Information/cyber security, security management and controls" %}
 {% include standards-category-row.liquid category="privacy" title="Privacy" explanation="Personal data protection and privacy governance and controls; GDPR-compliance. Complements security" %}
@@ -35,6 +37,10 @@ Group standards by categories
 {:/comment}
 
 {% include standards-category-section.liquid category="general" title="General" standards=allStandards %}
+
+{% include standards-category-section.liquid category="accessibility" title="Accessibility" standards=allStandards %}
+
+{% include standards-category-section.liquid category="usability" title="Usability" standards=allStandards %}
 
 {% include standards-category-section.liquid category="ai" title="AI" standards=allStandards %}
 

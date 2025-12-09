@@ -7,8 +7,15 @@ permalink: /requirements/long-running-without-reboot
 
 <div class="quality-requirement" markdown="1">
 
-Even when the system runs for >12 hours, the operating system does not need to be re-booted.
+#### Requirement
 
+The system must run continuously without requiring operating system reboots.
+
+#### Acceptance Criteria
+
+- System operates continuously for more than 12 hours without OS reboot
+- No OS reboot required during extended operation periods
+- System stability maintained during continuous operation
 
 </div><br>
 

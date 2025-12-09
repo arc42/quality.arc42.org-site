@@ -1,8 +1,7 @@
 ---
 title: Preciseness
-tags: [reliable, usable]
-related: [correctness, accuracy]
+alias_of: precision
+redirect_to: /qualities/precision
+layout: redirect
 permalink: /qualities/preciseness
 ---
-
-see [precision](/qualities/precision)

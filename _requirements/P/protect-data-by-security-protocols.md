@@ -7,16 +7,18 @@ permalink: /requirements/protect-data-by-security-procols
 
 <div class="quality-requirement" markdown="1">
 
-#### Context/Background
+#### Context
 
-We have a medical system containing sensitive patient health-related data.
+The medical system contains sensitive patient health-related data requiring comprehensive cybersecurity protocols to protect from unauthorized access and cyber threats.
 
-#### Source
+#### Trigger
 
-Establish comprehensive cybersecurity protocols to protect patient data from unauthorized access and cyber threats.
+Security team establishes and maintains cybersecurity protocols to protect patient data.
 
-#### Metric/Acceptance Criteria
+#### Acceptance Criteria
 
-Conduct regular security audits and penetration tests, with no critical vulnerabilities found, and ensure compliance with relevant regulations (e.g., HIPAA, GDPR).
+- Regular security audits and penetration tests conducted
+- Zero critical vulnerabilities found in security assessments
+- Full compliance with relevant regulations (HIPAA, GDPR)
 
 </div><br>

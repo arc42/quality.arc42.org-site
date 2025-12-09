@@ -6,25 +6,21 @@ permalink: /requirements/clarity-in-technical-documentation
 ---
 <div class="quality-requirement" markdown="1">
 
-#### Background
+#### Context
 
-The system is fairly large, and maintained/developed by an internationally distributed and highly heterogeneous, diverse and volatile development team. 
+The system is fairly large, and maintained/developed by an internationally distributed and highly heterogeneous, diverse and volatile development team.
 
-#### Stimulus
+#### Trigger
 
-Users refer to the documentation to understand technical details or troubleshoot issues.
+Users refer to technical documentation to understand technical details or troubleshoot issues.
 
-#### Artifact
-Technical Documentation
+#### Acceptance Criteria
 
-#### Response
+- Documentation provides coherent and intelligible explanations and instructions
+- At least 90% of system-specific terms used in documentation are defined in glossary section accessible within same document or via direct links
+- Readability score of documentation, as measured by Flesch-Kincaid Readability Test, is between 60 to 70 (8th to 9th-grade reading level)
+- Documentation is easily understandable by average dev-team member
 
-The documentation provides coherent and intelligible explanations and instructions.
-
-#### Response Measure
-
-* At least 90% of the system-specific terms used in the documentation are defined in a glossary section accessible within the same document or via direct links.
-* The readability score of the documentation, as measured by the Flesch-Kincaid Readability Test, should be between 60 to 70, which corresponds to a 8th to 9th-grade reading level, ensuring it is easily understandable by the average dev-team member.
 </div><br>
 
 

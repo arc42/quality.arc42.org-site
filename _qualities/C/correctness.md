@@ -1,5 +1,6 @@
 ---
 title: Correctness
+aka: [Functional Correctness]
 tags: [usable, reliable, suitable]
 related: [usability, functionality, functional-suitability, functional-correctness, accuracy, precision, functional-appropriateness]
 standards: [iso26514, iso12207, sox]

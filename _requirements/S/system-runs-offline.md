@@ -7,25 +7,19 @@ permalink: /requirements/system-runs-offline
 
 <div class="quality-requirement" markdown="1">
 
-#### Background
+#### Context
 
-Conductor in a train uses device to validate a ticket without any network connection being available. During validation only 5% false-negatives are allowed
+Conductor in a train uses device to validate tickets without any network connection being available. During validation only 5% false-negatives are allowed.
 
-#### Source
+#### Trigger
 
-Conductor
+Conductor validates ticket using device while offline.
 
-#### Stimulus
+#### Acceptance Criteria
 
-Validates ticket using device
-
-#### Reaction
-
-Ticket is validated using certificate information on the device
-
-#### Metric
-
-When the device is offline, the validation accuracy should not drop below 95%
+- Ticket is validated using certificate information stored on the device
+- Validation accuracy does not drop below 95% when device is offline
+- Maximum false-negative rate: 5%
 
 
 </div><br>

@@ -7,9 +7,15 @@ permalink: /requirements/encrypted-storage
 
 <div class="quality-requirement" markdown="1">
 
-Data-at-rest (specifically data in databases and in backups) shall be encrypted using state-of-the-art encryption algorithms from a proven vendor or open-source project - such as AES-256 at the time of writing.
+#### Requirement
 
+Data-at-rest must be encrypted using state-of-the-art encryption algorithms.
 
+#### Acceptance Criteria
+
+- All data in databases and backups is encrypted
+- Encryption uses proven algorithms from established vendors or open-source projects
+- Minimum encryption standard: AES-256 or equivalent current best practice
 
 </div><br>
 

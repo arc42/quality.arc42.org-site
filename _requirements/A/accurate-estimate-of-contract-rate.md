@@ -7,25 +7,21 @@ permalink: /requirements/accurate-estimate-of-insurance-rate
 
 <div class="quality-requirement" markdown="1">
 
-#### Context/Background
+#### Context
 
-The system is an online application for configuring health insurance contracts.
-The final price of the insurance rate needs to be determined by the backoffice employees of the insurance company due to legal and organizational reasons.
-This constraint cannot currently be relaxed.
+The system is an online application for configuring health insurance contracts. The final price of the insurance rate needs to be determined by backoffice employees due to legal and organizational reasons. This constraint cannot currently be relaxed.
 
-#### Source
+#### Trigger
 
-User interaction: A user configures a health insurance contract in the online app.
+A user configures a health insurance contract in the online app.
 
-#### Metric/Acceptance Criteria
+#### Acceptance Criteria
 
-The system must calculate a price estimate based on the currently available information.
-This estimate must be within a ±15% margin relative to the final price.
-This can be measured by:
-* Comparing the system-generated estimate to the final price determined by backoffice employees
-* Calculating the percentage difference between the estimate and final price
-* Ensuring that at least 95% of estimates fall within the ±15% margin
-* Regularly auditing a sample of contracts to verify compliance with this metric
+- System calculates price estimate based on currently available information
+- Estimate falls within ±15% margin relative to the final price
+- At least 95% of estimates meet the ±15% margin requirement
+- Regular audits performed on contract samples to verify compliance
+
 </div><br>
 
 

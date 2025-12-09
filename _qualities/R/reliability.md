@@ -12,7 +12,7 @@ standards:
     iso5055,
     iso14756,
     aiuc1,
-    iec-62304,
+    iec62304,
     iec61508,
     hl7,
     iso15408,
@@ -23,6 +23,7 @@ standards:
     iso42030,
     iso12207,
     sox,
+    iso24028,
   ]
 permalink: /qualities/reliability
 ---

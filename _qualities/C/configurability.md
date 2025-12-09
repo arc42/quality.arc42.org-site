@@ -1,5 +1,6 @@
 ---
 title: Configurability
+aka: [Tailorability]
 tags: [flexible, usable]
 related: [flexibility, changeability, adaptability, modifiability, versatility, customizability]
 standards: [iso26262, ieee2857]

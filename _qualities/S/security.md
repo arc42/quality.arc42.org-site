@@ -1,5 +1,6 @@
 ---
 title: Security
+aka: [Information Security]
 tags: [secure, reliable]
 related:
   [
@@ -22,7 +23,7 @@ standards:
     pcidss,
     iso42001,
     aiuc1,
-    iec-62304,
+    iec62304,
     hl7,
     iso15408,
     cra,
@@ -34,6 +35,7 @@ standards:
     iso12207,
     sox,
     ieee2857,
+    iso24028,
   ]
 permalink: /qualities/security
 ---

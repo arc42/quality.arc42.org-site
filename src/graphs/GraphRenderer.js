@@ -154,6 +154,12 @@ export class GraphRenderer {
     setTypeVisibility(type, visible) {
         if (!this.isValidNodeType(type)) return;
         this.typeVisibility[type] = !!visible;
+        // If standards are being hidden, clear any active standard selection
+        if (type === 'standard' && !visible) {
+            if (this.selectionActive && this.selection?.isStandard) {
+                this.setSelectionDimming(null, null, false);
+            }
+        }
         this.applyTypeVisibility();
     }
 
@@ -618,11 +624,7 @@ export class GraphRenderer {
             const keepRootProp = renderer._edgeShouldShowDespiteRoot(l, selected);
             l._dimmed = !(endpointsRelated || keepRootProp);
             // canvas-specific hidden flag when std selection hides dimmed property links
-            if (selected.isStandard && (renderer._hideIfDimmedPropertyUnderStd(l.source) || renderer._hideIfDimmedPropertyUnderStd(l.target))) {
-                l._canvasHidden = true;
-            } else {
-                l._canvasHidden = false;
-            }
+            l._canvasHidden = !!(selected.isStandard && (renderer._hideIfDimmedPropertyUnderStd(l.source) || renderer._hideIfDimmedPropertyUnderStd(l.target)));
         });
         if (Array.isArray(this.virtualEdgesData)) this.virtualEdgesData.forEach(function (l) {
             const endpointsRelated = renderer._edgeEndpointsRelated(l, selected);
@@ -1156,6 +1158,8 @@ export class GraphRenderer {
         return (nodeData) => {
             // Einzelne Node-Überprüfung
             if (nodeData && typeof nodeData === 'object') {
+                // Root label must always be visible (even when dimmed/selection active)
+                if (nodeData.id === "quality-root") return 1;
                 if (nodeData._legendHidden) return 0;
                 if (renderer.selectionActive && renderer.selection?.isStandard && isProperty(nodeData) && nodeData._dimmed) return 0;
                 if (isRoot(nodeData) || isProperty(nodeData)) return 1;
@@ -1174,6 +1178,12 @@ export class GraphRenderer {
 
             label.each(function (d) {
                 const labelElement = d3.select(this);
+
+                // Root label must always be visible (even when dimmed/selection active)
+                if (d.id === "quality-root") {
+                    labelElement.attr("opacity", 1).attr("font-weight", "bold").style("display", null);
+                    return;
+                }
 
                 if (d._legendHidden ||
                     (renderer.selectionActive && renderer.selection?.isStandard && isProperty(d) && d._dimmed) ||

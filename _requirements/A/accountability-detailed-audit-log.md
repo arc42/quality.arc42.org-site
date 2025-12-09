@@ -7,31 +7,27 @@ permalink: /requirements/detailed-audit-log
 
 <div class="quality-requirement" markdown="1">
 
+#### Context
 
-#### Context/Background
+The system stores personal data and operates in compliance with privacy and data protection regulations. Detailed audit logs of all user actions are crucial for ensuring accountability, transparency, and compliance, as well as facilitating the identification and investigation of any unauthorized or suspicious activities.
 
-The system stores personal data and operates in compliance with privacy and data protection regulations.
-The system maintains detailed audit logs of all user actions related to personal data.
-These logs are crucial for ensuring accountability, transparency, and compliance with regulations.
-The logs facilitate the identification and investigation of any unauthorized or suspicious activities related to personal data.
-
-#### Source
+#### Trigger
 
 User submits a request to access personal data stored in the system.
 
-#### Metric/Acceptance Criteria
+#### Acceptance Criteria
 
-The system must maintain a detailed audit log of all user actions, including data access, modification, and deletion.
-The audit log must meet the following criteria:
-* Include associated timestamps and user identifiers for each action
-* Be tamper-proof to prevent unauthorized modifications
-* Be accessible only to authorized personnel
-* Be retained for a minimum of five years
-* Capture 100% of user actions related to personal data
-* Be searchable and retrievable within 24 hours of a request by authorized personnel
-* Undergo regular integrity checks to ensure no tampering has occurred
-* Be backed up securely to prevent data loss
-* Comply with all relevant privacy and data protection regulations
+- System maintains detailed audit log of all user actions (data access, modification, deletion)
+- 100% of user actions related to personal data are captured
+- Each log entry includes timestamps and user identifiers
+- Audit logs are tamper-proof to prevent unauthorized modifications
+- Access restricted to authorized personnel only
+- Logs retained for minimum of 5 years
+- Logs searchable and retrievable within 24 hours of authorized request
+- Regular integrity checks performed to ensure no tampering
+- Secure backups maintained to prevent data loss
+- Full compliance with relevant privacy and data protection regulations
+
 </div><br>
 
 >This "requirement" describes a solution approach to accountability.

@@ -7,17 +7,15 @@ permalink: /requirements/quickly-locate-bugs
 
 <div class="quality-requirement" markdown="1">
 
-#### Stimulus
+#### Trigger
 
-Developers, testers or the build system execute automatic test cases (unit or integration tests). 
+Developers, testers or build system execute automatic test cases (unit or integration tests) and a test fails.
 
-#### Reaction
+#### Acceptance Criteria
 
-In that process, a test fails.
-
-#### Metric
-
-Based upon the error and/or log messages, a developer can locate the cause of the error in less than 10 minutes on average
+- Developer can locate cause of error in less than 10 minutes on average based on error and/or log messages
+- Error messages provide sufficient information for quick diagnosis
+- Log messages include context needed to identify failure root cause
 
 </div><br>
 

@@ -7,25 +7,19 @@ permalink: /requirements/low-impact-diagnosis
 
 <div class="quality-requirement" markdown="1">
 
-#### Stimulus
+#### Context
 
-A tester needs a large set of test data for system xyz.
+Diagnostics subsystem must have minimal impact on system performance.
 
+#### Trigger
 
-#### Reaction
+Diagnostics subsystem is running during normal system operation.
 
-A specific generator creates 1GByte of test data for system xyz.
+#### Acceptance Criteria
 
-
-#### Metric
-
-The data is created in less than 60 minutes
-
-#### Background
-
-Diagnosis has little effect on execution time
-The diagnostics subsystem has only a minor impact on the execution time of system functions and transactions 
-
+- Diagnostics subsystem has only minor impact on execution time of system functions and transactions
+- Performance degradation due to diagnostics is measurable but minimal
+- System functions execute with negligible overhead when diagnostics enabled
 
 </div><br>
 

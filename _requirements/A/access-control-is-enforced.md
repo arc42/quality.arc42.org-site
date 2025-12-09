@@ -7,20 +7,15 @@ permalink: /requirements/access-control-is-enforced
 
 <div class="quality-requirement" markdown="1">
 
-#### Context/Background
+#### Context
 
-The system operates in a multi-user environment with varying levels of user roles and permissions.
+The system operates in a multi-user environment with varying levels of user roles and permissions. Sensitive features and confidential information require role-based access control (RBAC) and audit trails to maintain data security and privacy.
 
-* Sensitive features and confidential information are present within the system.
-* Access control is crucial to maintain data security and privacy.
-* The system employs role-based access control (RBAC) to manage user permissions.
-* An audit trail is maintained for all access attempts to sensitive data.
-
-#### Source
+#### Trigger
 
 A user attempts to access a sensitive feature or confidential information within the system.
 
-#### Metric/Acceptance Criteria
+#### Acceptance Criteria
 
 The system must enforce appropriate access controls based on the user's role and permissions.
 
