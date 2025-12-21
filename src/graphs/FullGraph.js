@@ -378,8 +378,7 @@ export class FullGraph extends Graph {
     }
 
     _normalizeTerm(t) {
-        const s = String(t || "").trim();
-        return s;
+        return String(t || "").trim();
     }
 
     _termKey(t) {
