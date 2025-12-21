@@ -1,4 +1,4 @@
-import { MAX_FILTER_TERMS, QUALITY_ROOT_ID, NODE_TYPES } from './constants';
+import { MAX_FILTER_TERMS, NODE_TYPES, QUALITY_ROOT_ID } from './constants';
 
 export class GraphDataProvider {
     #propertyNodes;
@@ -60,46 +60,76 @@ export class GraphDataProvider {
      * @returns {Object} Object with filtered propertyNodes, nodes, and edges
      */
     filterByTerm(filterTerm, options = {}) {
-        // Normalize terms → array of up to MAX_FILTER_TERMS non-empty strings
-        let terms = [];
-        if (Array.isArray(filterTerm)) {
-            terms = filterTerm
-                .map(t => String(t).trim())
-                .filter(t => t.length > 0)
-                .slice(0, MAX_FILTER_TERMS);
-        } else if (typeof filterTerm === 'string') {
-            const v = filterTerm.trim();
-            if (v !== '') terms = [v];
-        }
-
+        const terms = this._normalizeFilterTerms(filterTerm);
         if (terms.length === 0) {
             this.resetFilter();
             return this.getData();
         }
 
-        const lowerTerms = terms.map(t => t.toLowerCase());
-        const matches = (label) => {
-            const l = label.toLowerCase();
-            // OR semantics: match if any term is included
-            return lowerTerms.some(t => l.includes(t));
-        };
+        const baseSet = options.baseNodeIdSet instanceof Set ? options.baseNodeIdSet : null;
+        const nodesPool = baseSet ? this.#nodes.filter(n => baseSet.has(n.id)) : this.#nodes;
+        const propertyIds = new Set(this.#propertyNodes.map(p => p.id));
+        const edgesPool = this._getEdgesPool(baseSet, propertyIds);
+
+        const filteredNodeIds = this._getFilteredNodeIds(nodesPool, terms);
+        const connectedNodeIds = this._getConnectedNodeIds(edgesPool, filteredNodeIds, baseSet);
+
         const qualitiesHidden = options.qualitiesHidden === true;
         const requirementsVisible = options.requirementsVisible !== false;
-        const baseSet = options.baseNodeIdSet instanceof Set ? options.baseNodeIdSet : null;
+        const requirementNodeIds = this._getRequirementNodeIds(nodesPool, edgesPool, filteredNodeIds, connectedNodeIds, qualitiesHidden, requirementsVisible);
 
-        const propertyIds = new Set(this.#propertyNodes.map(p => p.id));
-        const forceInclude = options.forceInclude
-            ? (options.forceInclude instanceof Set ? options.forceInclude : new Set(options.forceInclude))
-            : new Set();
-        const nodesPool = baseSet ? this.#nodes.filter(n => baseSet.has(n.id)) : this.#nodes;
-        const edgesPool = baseSet ? this.#edges.filter(e =>
+        const effectiveConnected = this._getEffectiveConnected(nodesPool, connectedNodeIds, filteredNodeIds, qualitiesHidden, requirementsVisible);
+
+        const forceInclude = options.forceInclude instanceof Set
+                             ? options.forceInclude
+                             : new Set(options.forceInclude || []);
+
+        const allVisibleNodeIds = new Set([...filteredNodeIds, ...effectiveConnected, ...requirementNodeIds, QUALITY_ROOT_ID, ...forceInclude]);
+
+        const restrictedVisible = baseSet
+                                  ? new Set(Array.from(allVisibleNodeIds).filter(id => baseSet.has(id) || id === QUALITY_ROOT_ID))
+                                  : allVisibleNodeIds;
+
+        const visiblePropertyNodeIds = this._getVisiblePropertyNodeIds(edgesPool, restrictedVisible);
+        visiblePropertyNodeIds.forEach(id => restrictedVisible.add(id));
+
+        this.#filteredNodes = nodesPool.filter(node => restrictedVisible.has(node.id));
+        this.#filteredEdges = edgesPool.filter(edge => restrictedVisible.has(edge.source) && restrictedVisible.has(edge.target));
+        this.#filteredPropertyNodes = this.#propertyNodes.filter(node => visiblePropertyNodeIds.has(node.id));
+
+        return this.getData();
+    }
+
+    _normalizeFilterTerms(filterTerm) {
+        if (Array.isArray(filterTerm)) {
+            return filterTerm
+                .map(t => String(t || "").trim())
+                .filter(t => t.length > 0)
+                .slice(0, MAX_FILTER_TERMS);
+        }
+
+        const v = String(filterTerm || "").trim();
+        return v === '' ? [] : [v];
+    }
+
+    _getEdgesPool(baseSet, propertyIds) {
+        if (!baseSet) return this.#edges;
+        return this.#edges.filter(e =>
             (baseSet.has(e.source) && baseSet.has(e.target)) ||
             ((propertyIds.has(e.source) && baseSet.has(e.target)) || (propertyIds.has(e.target) && baseSet.has(e.source)))
-        ) : this.#edges;
+        );
+    }
 
-        const filteredNodes = nodesPool.filter(node => matches(node.label));
-        const filteredNodeIds = new Set(filteredNodes.map(node => node.id));
+    _getFilteredNodeIds(nodesPool, terms) {
+        const lowerTerms = terms.map(t => t.toLowerCase());
+        const filteredNodes = nodesPool.filter(node => {
+            const l = node.label.toLowerCase();
+            return lowerTerms.some(t => l.includes(t));
+        });
+        return new Set(filteredNodes.map(node => node.id));
+    }
 
+    _getConnectedNodeIds(edgesPool, filteredNodeIds, baseSet) {
         const connectedNodeIds = new Set();
         edgesPool.forEach(edge => {
             if (filteredNodeIds.has(edge.source)) {
@@ -109,7 +139,10 @@ export class GraphDataProvider {
                 if (!baseSet || baseSet.has(edge.source)) connectedNodeIds.add(edge.source);
             }
         });
+        return connectedNodeIds;
+    }
 
+    _getRequirementNodeIds(nodesPool, edgesPool, filteredNodeIds, connectedNodeIds, qualitiesHidden, requirementsVisible) {
         const requirementNodeIds = new Set();
         const allRequirementNodes = nodesPool.filter(node => node.qualityType === NODE_TYPES.REQUIREMENT);
 
@@ -139,35 +172,26 @@ export class GraphDataProvider {
                 }
             });
         }
+        return requirementNodeIds;
+    }
 
-        let effectiveConnected = connectedNodeIds;
-        if (qualitiesHidden && requirementsVisible) {
-            effectiveConnected = new Set();
-            connectedNodeIds.forEach(id => {
-                const node = nodesPool.find(n => n.id === id);
-                if (!node) return;
-                if (node.qualityType === NODE_TYPES.REQUIREMENT) {
-                    if (filteredNodeIds.has(id)) effectiveConnected.add(id);
-                } else {
-                    effectiveConnected.add(id);
-                }
-            });
-        }
+    _getEffectiveConnected(nodesPool, connectedNodeIds, filteredNodeIds, qualitiesHidden, requirementsVisible) {
+        if (!(qualitiesHidden && requirementsVisible)) return connectedNodeIds;
 
-        const allVisibleNodeIds = new Set([
-            ...filteredNodeIds,
-            ...effectiveConnected,
-            ...requirementNodeIds
-        ]);
-        allVisibleNodeIds.add(QUALITY_ROOT_ID);
+        const effectiveConnected = new Set();
+        connectedNodeIds.forEach(id => {
+            const node = nodesPool.find(n => n.id === id);
+            if (!node) return;
+            if (node.qualityType === NODE_TYPES.REQUIREMENT) {
+                if (filteredNodeIds.has(id)) effectiveConnected.add(id);
+            } else {
+                effectiveConnected.add(id);
+            }
+        });
+        return effectiveConnected;
+    }
 
-        // Ensure externally forced node ids are included regardless of text matches
-        forceInclude.forEach(id => allVisibleNodeIds.add(id));
-
-        const restrictedVisible = baseSet
-                                  ? new Set(Array.from(allVisibleNodeIds).filter(id => baseSet.has(id) || id === QUALITY_ROOT_ID))
-                                  : allVisibleNodeIds;
-
+    _getVisiblePropertyNodeIds(edgesPool, restrictedVisible) {
         const visiblePropertyNodeIds = new Set();
         this.#propertyNodes.forEach(propNode => {
             let hasVisibleNeighbor = false;
@@ -181,21 +205,9 @@ export class GraphDataProvider {
             });
             if (hasVisibleNeighbor) {
                 visiblePropertyNodeIds.add(propNode.id);
-                restrictedVisible.add(propNode.id);
             }
         });
-
-        this.#filteredNodes = nodesPool.filter(node =>
-            restrictedVisible.has(node.id)
-        );
-        this.#filteredEdges = edgesPool.filter(edge =>
-            restrictedVisible.has(edge.source) && restrictedVisible.has(edge.target)
-        );
-        this.#filteredPropertyNodes = this.#propertyNodes.filter(node =>
-            visiblePropertyNodeIds.has(node.id)
-        );
-
-        return this.getData();
+        return visiblePropertyNodeIds;
     }
 
     /**
@@ -241,22 +253,8 @@ export class GraphDataProvider {
 
         visibleNodeIds.add(QUALITY_ROOT_ID);
 
-        const visiblePropertyNodeIds = new Set();
-        this.#propertyNodes.forEach(propNode => {
-            let hasVisibleNeighbor = false;
-            this.#edges.forEach(edge => {
-                if (edge.source === propNode.id && edge.target !== QUALITY_ROOT_ID && visibleNodeIds.has(edge.target)) {
-                    hasVisibleNeighbor = true;
-                }
-                if (edge.target === propNode.id && edge.source !== QUALITY_ROOT_ID && visibleNodeIds.has(edge.source)) {
-                    hasVisibleNeighbor = true;
-                }
-            });
-            if (hasVisibleNeighbor) {
-                visiblePropertyNodeIds.add(propNode.id);
-                visibleNodeIds.add(propNode.id);
-            }
-        });
+        const visiblePropertyNodeIds = this._getVisiblePropertyNodeIds(this.#edges, visibleNodeIds);
+        visiblePropertyNodeIds.forEach(id => visibleNodeIds.add(id));
 
         this.#filteredNodes = this.#nodes.filter(node => visibleNodeIds.has(node.id));
         this.#filteredEdges = this.#edges.filter(edge => visibleNodeIds.has(edge.source) && visibleNodeIds.has(edge.target));

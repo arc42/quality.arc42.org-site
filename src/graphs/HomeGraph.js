@@ -58,7 +58,11 @@ export class HomeGraph extends Graph {
         // Create the button element
         this.fullGraphToggle = document.createElement('button');
         this.fullGraphToggle.id = 'full-graph-toggle';
-        this.fullGraphToggle.innerHTML = '<i class="fas fa-expand"></i>';
+
+        const icon = document.createElement('i');
+        icon.className = 'fas fa-expand';
+        this.fullGraphToggle.appendChild(icon);
+
         this.fullGraphToggle.setAttribute('aria-label', 'Open full graph');
         this.fullGraphToggle.title = 'Open full graph';
 
@@ -91,7 +95,7 @@ export class HomeGraph extends Graph {
             const isHighlighted = d.highlighted;
 
             // Clear all highlights first
-            this.renderer.nodes.each(function (node) {
+            this.renderer.nodes?.each(function (node) {
                 node.highlighted = false;
                 node.connectedHighlighted = false;
             });
@@ -102,7 +106,7 @@ export class HomeGraph extends Graph {
                 d.highlighted = true;
 
                 // Find connected nodes
-                this.renderer.links.each(function (link) {
+                this.renderer.links?.each(function (link) {
                     if (link.source.id === d.id) {
                         connectedNodes.add(link.target.id);
                         link.target.connectedHighlighted = true;

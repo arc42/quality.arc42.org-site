@@ -56,6 +56,7 @@ export class FullGraph extends Graph {
     _reapplySelectedStandardIfAny() {
         const state = this._readUrlState();
         const stdId = state.selectedStandard;
+
         if (stdId) {
             // Ensure standards are visible when enforcing a specific selection
             const stdToggleEl = document.getElementById('legend-toggle-standards');
@@ -65,8 +66,8 @@ export class FullGraph extends Graph {
                 this._writeUrlState({ showStandards: true });
             }
             // Avoid redundant re-application if already applied and still active
-            const needsApply = this._lastAppliedStdId !== stdId || !this.renderer?.selectionActive;
-            if (needsApply) {
+            const isCurrentlySelected = this._lastAppliedStdId === stdId && this.renderer?.selectionActive;
+            if (!isCurrentlySelected) {
                 const applyOnce = () => {
                     const applied = this._selectStandardById(stdId);
                     if (applied) {
@@ -122,35 +123,48 @@ export class FullGraph extends Graph {
         const reqToggle = document.getElementById("legend-toggle-requirements");
         const stdToggle = document.getElementById("legend-toggle-standards");
 
-        // Guard if legend not present
-        if (!qualToggle || !reqToggle) {
-            return this;
+        // Sync current renderer state to inputs
+        if (qualToggle) {
+            qualToggle.checked = this.renderer.typeVisibility.quality;
+            qualToggle.addEventListener("change", (e) => {
+                const isChecked = e.target.checked;
+                this.#filterTypeState.quality = isChecked;
+                // Drive visibility via renderer to avoid resetting text filter
+                this.renderer.setTypeVisibility('quality', isChecked);
+                this._writeUrlState({ showQualities: isChecked });
+            });
         }
 
-        // Sync current renderer state to inputs
-        qualToggle.checked = this.renderer.typeVisibility.quality;
-        reqToggle.checked = this.renderer.typeVisibility.requirement;
-        if (stdToggle) stdToggle.checked = this.renderer.typeVisibility.standard;
+        if (reqToggle) {
+            reqToggle.checked = this.renderer.typeVisibility.requirement;
+            reqToggle.addEventListener("change", (e) => {
+                const isChecked = e.target.checked;
+                this.#filterTypeState.requirement = isChecked;
+                // Drive visibility via renderer to avoid resetting text filter
+                this.renderer.setTypeVisibility('requirement', isChecked);
+                this._writeUrlState({ showRequirements: isChecked });
+            });
+        }
 
-        // Listen for changes
-        qualToggle.addEventListener("change", (e) => {
-            this.#filterTypeState.quality = e.target.checked;
-            // Drive visibility via renderer to avoid resetting text filter
-            this.renderer.setTypeVisibility('quality', e.target.checked);
-            this._writeUrlState({ showQualities: e.target.checked });
-        });
-        reqToggle.addEventListener("change", (e) => {
-            this.#filterTypeState.requirement = e.target.checked;
-            // Drive visibility via renderer to avoid resetting text filter
-            this.renderer.setTypeVisibility('requirement', e.target.checked);
-            this._writeUrlState({ showRequirements: e.target.checked });
-        });
         if (stdToggle) {
+            stdToggle.checked = this.renderer.typeVisibility.standard;
             stdToggle.addEventListener("change", (e) => {
-                this.renderer.setTypeVisibility('standard', e.target.checked);
-                this._writeUrlState({ showStandards: e.target.checked });
+                const isChecked = e.target.checked;
+                this.renderer.setTypeVisibility('standard', isChecked);
+                this._writeUrlState({ showStandards: isChecked });
                 // When standards are hidden, clear any active standard selection
-                if (!e.target.checked) {
+                if (isChecked) {
+                    // Standards turned ON: if a selectedStandard exists in URL, re-apply it immediately
+                    const stdId = this._readUrlState().selectedStandard;
+                    if (stdId) {
+                        this._waitForRenderThen(() => {
+                            const applied = this._selectStandardById(stdId);
+                            if (applied) {
+                                this._lastAppliedStdId = stdId;
+                            }
+                        });
+                    }
+                } else {
                     // Clear persistent selection state and any highlight flags
                     if (this.renderer?.selectionActive) {
                         this.renderer.setSelectionDimming(null, null, false);
@@ -163,18 +177,6 @@ export class FullGraph extends Graph {
                     }
                     // Remove selected standard from URL state
                     this._writeUrlState({ selectedStandard: null });
-                } else {
-                    // Standards turned ON: if a selectedStandard exists in URL, re-apply it immediately
-                    const state = this._readUrlState();
-                    const stdId = state.selectedStandard;
-                    if (stdId) {
-                        this._waitForRenderThen(() => {
-                            const applied = this._selectStandardById(stdId);
-                            if (applied) {
-                                this._lastAppliedStdId = stdId;
-                            }
-                        });
-                    }
                 }
             });
         }
@@ -187,46 +189,41 @@ export class FullGraph extends Graph {
      * @returns {FullGraph} This graph instance for chaining
      */
     registerFilterControls() {
-        if (!this.filterInput) {
-            console.error("Filter input element not found");
-            return this;
-        }
+        if (this.filterInput && this.filterButton) {
+            // Ensure chips container exists just below the input
+            this._ensureChipsContainer();
 
-        if (!this.filterButton) {
-            console.error("Filter button element not found");
-            return this;
-        }
-
-        // Ensure chips container exists just below the input
-        this._ensureChipsContainer();
-
-        // Apply filter immediately when button is clicked
-        this.filterButton.addEventListener("click", () => {
-            // Finalize any pending input (treat whole input as terms, comma-separated)
-            this._finalizeInputIntoChips(this.filterInput.value, true);
-            this.filterInput.value = "";
-            this.filter("");
-        });
-
-        // Handle typing: when a comma appears, finalize preceding token(s) into chips
-        this.filterInput.addEventListener("input", (e) => {
-            this._handleTypingForChips(e.target);
-            // Also perform debounced live filtering using pending input (without creating chips)
-            this.debounceFilter(e.target.value);
-        });
-
-        // Also handle Enter key for immediate filtering
-        this.filterInput.addEventListener("keyup", (e) => {
-            if (e.key === "Enter" || e.keyCode === 13) {
-                // Finalize pending token on Enter
-                const val = this.filterInput.value.trim();
-                if (val) {
-                    this._finalizeInputIntoChips(val, false);
-                    this.filterInput.value = "";
-                }
+            // Apply filter immediately when button is clicked
+            this.filterButton.addEventListener("click", () => {
+                // Finalize any pending input (treat whole input as terms, comma-separated)
+                this._finalizeInputIntoChips(this.filterInput.value, true);
+                this.filterInput.value = "";
                 this.filter("");
-            }
-        });
+            });
+
+            // Handle typing: when a comma appears, finalize preceding token(s) into chips
+            this.filterInput.addEventListener("input", (e) => {
+                this._handleTypingForChips(e.target);
+                // Also perform debounced live filtering using pending input (without creating chips)
+                this.debounceFilter(e.target.value);
+            });
+
+            // Also handle Enter key for immediate filtering
+            this.filterInput.addEventListener("keyup", (e) => {
+                const isEnter = e.key === "Enter" || e.keyCode === 13;
+                if (isEnter) {
+                    // Finalize pending token on Enter
+                    const val = this.filterInput.value.trim();
+                    if (val) {
+                        this._finalizeInputIntoChips(val, false);
+                        this.filterInput.value = "";
+                    }
+                    this.filter("");
+                }
+            });
+        } else {
+            console.error("Filter input or button element not found");
+        }
 
         return this;
     }
@@ -251,8 +248,7 @@ export class FullGraph extends Graph {
      */
     _applyFiltersPreview(pendingValue) {
         // If input is disabled due to reaching the cap, ignore pending text
-        const inputDisabled = !!this.filterInput && this.filterInput.disabled;
-        const pending = inputDisabled ? "" : String(pendingValue || "").trim();
+        const pending = this.filterInput?.disabled ? "" : String(pendingValue || "").trim();
 
         // Compose terms: finalized chips + one pending token (if any)
         const terms = [];
@@ -283,8 +279,8 @@ export class FullGraph extends Graph {
 
         // Preview: only visually show if selection would be lost. 
         // We do not update URL state here as it is a preview.
-        if (this.renderer?.selectionActive && this.renderer?.selection?.id) {
-            const selId = this.renderer.selection.id;
+        const selId = this.renderer?.selection?.id;
+        if (this.renderer?.selectionActive && selId) {
             const filteredData = this.dataProvider.getFilteredData();
             const stillVisible = (filteredData.nodes || []).some(n => n.id === selId);
             if (!stillVisible) {
@@ -415,26 +411,27 @@ export class FullGraph extends Graph {
 
     _finalizeInputIntoChips(inputValue, allowMultiple) {
         const val = String(inputValue || "");
-        if (!val) return;
-        if (allowMultiple) {
-            // Split by commas; only commas finalize chips in this UX
-            let parts = val.split(",").map(s => s.trim()).filter(Boolean);
-            const remaining = Math.max(0, MAX_FILTER_TERMS - this.finalizedTerms.length);
-            if (remaining <= 0) {
-                // Already at cap, just clear input
-                if (this.filterInput) this.filterInput.value = "";
-            } else if (parts.length) {
-                if (parts.length > remaining) parts = parts.slice(0, remaining);
-                this._addFinalizedTerms(parts);
+        if (val) {
+            if (allowMultiple) {
+                // Split by commas; only commas finalize chips in this UX
+                let parts = val.split(",").map(s => s.trim()).filter(Boolean);
+                const remaining = Math.max(0, MAX_FILTER_TERMS - this.finalizedTerms.length);
+                if (remaining > 0) {
+                    if (parts.length > remaining) parts = parts.slice(0, remaining);
+                    this._addFinalizedTerms(parts);
+                } else if (this.filterInput) {
+                    this.filterInput.value = "";
+                }
+
+            } else {
+                const term = val.trim();
+                if (term) this._addFinalizedTerms([term]);
             }
-        } else {
-            const term = val.trim();
-            if (term) this._addFinalizedTerms([term]);
+            // After adding, apply filter and update URL/chips
+            this.applyFiltersCombined();
+            this._writeUrlState({ filter: this.currentFilterTerm });
+            this._renderFilterChips();
         }
-        // After adding, apply filter and update URL/chips
-        this.applyFiltersCombined();
-        this._writeUrlState({ filter: this.currentFilterTerm });
-        this._renderFilterChips();
     }
 
     _handleTypingForChips(inputEl) {
@@ -462,8 +459,10 @@ export class FullGraph extends Graph {
 
     // Ensure the chips container exists below the filter input
     _ensureChipsContainer() {
-        if (this.filterChipsContainer && document.body.contains(this.filterChipsContainer)) return;
         if (!this.filterInput) return;
+        const exists = this.filterChipsContainer && document.body.contains(this.filterChipsContainer);
+        if (exists) return;
+
         let container = document.getElementById('full-q-graph-filter__chips');
         if (!container) {
             container = document.createElement('div');
@@ -484,7 +483,7 @@ export class FullGraph extends Graph {
         const container = this.filterChipsContainer;
         if (!container) return;
         // Clear previous
-        container.innerHTML = '';
+        container.textContent = '';
         const terms = Array.isArray(this.finalizedTerms) ? this.finalizedTerms : [];
         if (!terms.length) {
             container.style.display = 'none';
@@ -504,7 +503,7 @@ export class FullGraph extends Graph {
             btn.className = 'q-chip__close';
             btn.type = 'button';
             btn.setAttribute('aria-label', `Remove ${ term }`);
-            btn.innerHTML = '&times;';
+            btn.textContent = '×';
             btn.addEventListener('click', () => {
                 this._removeFinalizedTerm(term);
                 this.applyFiltersCombined();
@@ -636,11 +635,9 @@ export class FullGraph extends Graph {
      */
     _buildNodeByIdMap() {
         const map = new Map();
-        if (this.renderer?.nodes) {
-            this.renderer.nodes.each(function (n) {
-                map.set(n.id, n);
-            });
-        }
+        this.renderer?.nodes?.each(function (n) {
+            map.set(n.id, n);
+        });
         return map;
     }
 
@@ -702,38 +699,72 @@ export class FullGraph extends Graph {
     _applyStandardSelectionInternal(stdId, toggleIfSame = false) {
         if (!this.renderer?.nodes) return false;
 
-        // Ensure the standard id exists in current data
-        let found = false;
-        this.renderer.nodes.each(function (n) {
-            if (n.qualityType === 'standard' && n.id === stdId) found = true;
-        });
-        if (!found) {
-            // Invalid id: clear URL param if coming from URL flow
+        if (!this._isStandardValid(stdId)) {
             this._writeUrlState({ selectedStandard: null });
             return false;
         }
 
-        const isSame = this.renderer.selectionActive && this.renderer.selection && this.renderer.selection.id === stdId;
+        const isSame = this.renderer?.selection?.id === stdId;
+        this._clearAllHighlights();
 
-        // Clear transient highlight flags
-        this.renderer.nodes.each(function (node) {
+        if (isSame && toggleIfSame) {
+            this._deactivateSelection(stdId);
+            return false;
+        }
+
+        const connectedNodes = this._collectConnectedForStandard(stdId);
+        this._activateSelection(stdId, connectedNodes);
+        return true;
+    }
+
+    /**
+     * Check if a standard ID exists in the current data.
+     * @param {string} stdId
+     * @returns {boolean}
+     * @private
+     */
+    _isStandardValid(stdId) {
+        let found = false;
+        this.renderer?.nodes?.each(function (n) {
+            if (n.qualityType === 'standard' && n.id === stdId) found = true;
+        });
+        return found;
+    }
+
+    /**
+     * Clear all highlight and connected-highlight flags from nodes.
+     * @private
+     */
+    _clearAllHighlights() {
+        this.renderer?.nodes?.each(function (node) {
             node.highlighted = false;
             node.connectedHighlighted = false;
         });
+    }
 
-        if (isSame && toggleIfSame) {
-            // Deselect
-            this.renderer.selectionActive = false;
-            this.renderer.setSelectionDimming(null, null, false);
-            this.renderer.highlightNode(stdId, false, null);
-            this._writeUrlState({ selectedStandard: null });
-            return false;
-        }
+    /**
+     * Deactivate current selection and update UI/URL.
+     * @param {string} stdId
+     * @private
+     */
+    _deactivateSelection(stdId) {
+        if (!this.renderer) return;
+        this.renderer.selectionActive = false;
+        this.renderer.setSelectionDimming(null, null, false);
+        this.renderer.highlightNode(stdId, false, null);
+        this._writeUrlState({ selectedStandard: null });
+    }
 
-        // Compute connected sets and apply
-        const connectedNodes = this._collectConnectedForStandard(stdId);
-        // Mark connected flags for label visibility logic
+    /**
+     * Activate selection for a standard and its connections.
+     * @param {string} stdId
+     * @param {Set<string>} connectedNodes
+     * @private
+     */
+    _activateSelection(stdId, connectedNodes) {
+        if (!this.renderer) return;
         const nodeById = this._buildNodeByIdMap();
+
         connectedNodes.forEach(id => {
             const n = nodeById.get(id);
             if (n) n.connectedHighlighted = true;
@@ -746,13 +777,11 @@ export class FullGraph extends Graph {
         this.renderer.highlightNode(stdId, true, connectedNodes);
         this.renderer.setSelectionDimming(stdId, connectedNodes, true);
 
-        // Force an immediate redraw and visibility update to ensure changes are visible
         this.renderer.drawCanvas();
-        if (this.renderer.updateNodeVisibility) this.renderer.updateNodeVisibility(this.renderer.currentZoomScale);
-        if (this.renderer.updateLabelVisibility) this.renderer.updateLabelVisibility(this.renderer.currentZoomScale);
+        this.renderer.updateNodeVisibility?.(this.renderer.currentZoomScale);
+        this.renderer.updateLabelVisibility?.(this.renderer.currentZoomScale);
 
         this._writeUrlState({ selectedStandard: stdId });
-        return true;
     }
 
     // ---------------- URL State Helpers ----------------
@@ -774,7 +803,8 @@ export class FullGraph extends Graph {
         const p = new URLSearchParams(globalThis.location.search);
         const setOrDel = (key, val) => {
             if (val === undefined) return; // leave as-is
-            if (val === null || val === '' || (typeof val === 'boolean' && val === this._defaultFor(key))) {
+            const isDefault = typeof val === 'boolean' && val === this._defaultFor(key);
+            if (!val || isDefault) {
                 p.delete(key);
             } else {
                 p.set(key, typeof val === 'boolean' ? (val ? '1' : '0') : String(val));
@@ -809,23 +839,34 @@ export class FullGraph extends Graph {
 
     _applyStateFromUrl(initial = false) {
         const state = this._readUrlState();
-        // Apply toggles if present
+        this._applyTogglesFromUrl(state);
+        this._applyFilterFromUrl(state);
+        this._applySelectionFromUrl(state, initial);
+    }
+
+    _applyTogglesFromUrl(state) {
         const qualToggle = document.getElementById('legend-toggle-qualities');
         const reqToggle = document.getElementById('legend-toggle-requirements');
         const stdToggle = document.getElementById('legend-toggle-standards');
+
         if (state.showQualities !== undefined && qualToggle) {
-            qualToggle.checked = !!state.showQualities;
-            this.renderer.setTypeVisibility('quality', !!state.showQualities);
+            const isVisible = !!state.showQualities;
+            qualToggle.checked = isVisible;
+            this.renderer.setTypeVisibility('quality', isVisible);
         }
         if (state.showRequirements !== undefined && reqToggle) {
-            reqToggle.checked = !!state.showRequirements;
-            this.renderer.setTypeVisibility('requirement', !!state.showRequirements);
+            const isVisible = !!state.showRequirements;
+            reqToggle.checked = isVisible;
+            this.renderer.setTypeVisibility('requirement', isVisible);
         }
         if (state.showStandards !== undefined && stdToggle) {
-            stdToggle.checked = !!state.showStandards;
-            this.renderer.setTypeVisibility('standard', !!state.showStandards);
+            const isVisible = !!state.showStandards;
+            stdToggle.checked = isVisible;
+            this.renderer.setTypeVisibility('standard', isVisible);
         }
-        // Apply filter term if present
+    }
+
+    _applyFilterFromUrl(state) {
         if (typeof state.filter === 'string' && this.filterInput) {
             // Parse URL filter into finalized chips; leave input empty
             this.currentFilterTerm = state.filter;
@@ -837,7 +878,9 @@ export class FullGraph extends Graph {
             this.applyFiltersCombined();
             this._renderFilterChips();
         }
-        // Apply selection after render is available
+    }
+
+    _applySelectionFromUrl(state, initial) {
         if (state.selectedStandard) {
             // Ensure standards are visible when a specific standard is selected via URL
             const stdToggleEl = document.getElementById('legend-toggle-standards');
@@ -864,8 +907,8 @@ export class FullGraph extends Graph {
     }
 
     _waitForRenderThen(fn, tries = 0) {
-        const ready = this.renderer?.links && this.renderer?.nodes && this.renderer?.labels;
-        if (ready) {
+        const isReady = this.renderer?.links && this.renderer?.nodes && this.renderer?.labels;
+        if (isReady) {
             fn();
         } else if (tries < 100) {
             setTimeout(() => this._waitForRenderThen(fn, tries + 1), 50);
