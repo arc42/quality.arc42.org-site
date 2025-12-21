@@ -49,6 +49,7 @@ export class GraphRenderer {
         this.canvas = null;
         this.ctx = null;
         this.svg = null;
+        this.zoom = null;
         this.nodes = null; // invisible circles for hit testing
         this.links = null; // hidden SVG lines retained for data adjacency
         this.labels = null; // visible SVG text labels
@@ -758,7 +759,7 @@ export class GraphRenderer {
      * Setup zoom behavior
      */
     setupZoom() {
-        const zoom = d3.zoom()
+        this.zoom = d3.zoom()
             .on("zoom", (event) => {
                 this.currentTransform = event.transform;
                 this.svg.selectAll("g").attr("transform", this.currentTransform);
@@ -777,12 +778,12 @@ export class GraphRenderer {
                 this.drawCanvas();
             });
 
-        this.svg.call(zoom);
+        this.svg.call(this.zoom);
 
         // Set initial transform to account for sidebar width
         const sidebarWidth = 200;
         const initialTransform = d3.zoomIdentity.translate(sidebarWidth / 2, 0);
-        this.svg.call(zoom.transform, initialTransform);
+        this.svg.call(this.zoom.transform, initialTransform);
         this.currentTransform = initialTransform;
     }
 
@@ -982,7 +983,7 @@ export class GraphRenderer {
      * Center the view on the visible nodes
      */
     centerView() {
-        if (!this.svg || !this.nodes || this.nodes.size() === 0) return;
+        if (!this.svg || !this.nodes || this.nodes.size() === 0 || !this.zoom) return;
 
         // Calculate the bounding box of all visible nodes
         let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
@@ -1002,6 +1003,9 @@ export class GraphRenderer {
         // Calculate center and scale
         const width = this.width;
         const height = this.height;
+        const sidebarWidth = 200;
+        const availableWidth = width - sidebarWidth;
+
         const graphWidth = maxX - minX;
         const graphHeight = maxY - minY;
         const centerX = minX + graphWidth / 2;
@@ -1010,20 +1014,20 @@ export class GraphRenderer {
         // Calculate scale to fit the graph with some padding
         const padding = 50;
         const scale = Math.min(
-            0.9 * width / (graphWidth + padding),
+            0.9 * availableWidth / (graphWidth + padding),
             0.9 * height / (graphHeight + padding),
             3 // Maximum zoom level
         );
 
         // Apply the transform
         const transform = d3.zoomIdentity
-            .translate(width / 2, height / 2)
+            .translate(sidebarWidth + availableWidth / 2, height / 2)
             .scale(scale)
             .translate(-centerX, -centerY);
 
         this.svg.transition()
             .duration(750)
-            .call(d3.zoom().transform, transform);
+            .call(this.zoom.transform, transform);
         // Do not set currentTransform/currentZoomScale here.
         // The zoom behavior's 'zoom' event will update transforms progressively during the transition
         // keeping the Canvas and SVG labels in sync.

@@ -75,6 +75,29 @@
     background-color: #cb9fff;
 }
 
+#full-q-graph-center__btn {
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    padding: 0;
+    transition: all 0.2s ease-in-out;
+    color: #333;
+    margin-left: 10px;
+    margin-bottom: 8px;
+}
+
+#full-q-graph-center__btn:hover {
+    border-color: #cb9fff;
+    background-color: rgba(203, 159, 255, 0.1);
+    color: #414288;
+}
+
 #full-q-graph-filter__chips {
     display: flex;
     flex-wrap: wrap;

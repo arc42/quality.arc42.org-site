@@ -24,6 +24,7 @@ export class FullGraph extends Graph {
         super(containerId, "fullpage", dataProvider);
         this.filterInput = document.getElementById("full-q-graph-filter__input");
         this.filterButton = document.getElementById("full-q-graph-filter__btn");
+        this.centerButton = document.getElementById("full-q-graph-center__btn");
         this.debounceTimeout = null;
         // Persisted UI state
         this.currentFilterTerm = ""; // raw input string (for URL/input)
@@ -192,6 +193,14 @@ export class FullGraph extends Graph {
         if (this.filterInput && this.filterButton) {
             // Ensure chips container exists just below the input
             this._ensureChipsContainer();
+
+            // Center view button
+            if (this.centerButton) {
+                this.centerButton.addEventListener("click", () => {
+                    console.warn("Centering view...");
+                    this.renderer.centerView();
+                });
+            }
 
             // Apply filter immediately when button is clicked
             this.filterButton.addEventListener("click", () => {
