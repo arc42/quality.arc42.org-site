@@ -3,10 +3,8 @@
  * Specialized graph implementation for the full page graph with filtering
  */
 import { Graph } from "./Graph";
-import { MAX_FILTER_TERMS, QUALITY_ROOT_ID } from "./constants";
-import { isRootId, isStandard, isProperty, isQuality } from "./nodeUtils";
-
-// Standards dropdown removed in favor of a sidebar toggle
+import { MAX_FILTER_TERMS } from "./constants";
+import { isProperty, isRootId, isStandard } from "./nodeUtils";
 
 export class FullGraph extends Graph {
 
@@ -32,6 +30,8 @@ export class FullGraph extends Graph {
         this.currentFilterTerms = []; // parsed terms (array, max 5) — kept for backward compatibility
         this.finalizedTerms = []; // chips terms (array, max 5)
         this.filterChipsContainer = null; // container element for chips
+        // Track last-applied URL-selected standard to avoid redundant re-application
+        this._lastAppliedStdId = null;
     }
 
     /**
@@ -46,6 +46,72 @@ export class FullGraph extends Graph {
         this._applyStateFromUrl(true);
         globalThis.addEventListener('popstate', () => this._applyStateFromUrl(false));
         return this;
+    }
+
+    /**
+     * Re-apply URL-driven selected standard after each render/rebuild.
+     * Ensures selection persists across filtering and other re-renders.
+     * @private
+     */
+    _reapplySelectedStandardIfAny() {
+        const state = this._readUrlState();
+        const stdId = state.selectedStandard;
+        if (stdId) {
+            // Ensure standards are visible when enforcing a specific selection
+            const stdToggleEl = document.getElementById('legend-toggle-standards');
+            if (stdToggleEl && !stdToggleEl.checked) stdToggleEl.checked = true;
+            if (this.renderer?.typeVisibility?.standard === false) {
+                this.renderer.setTypeVisibility('standard', true);
+                this._writeUrlState({ showStandards: true });
+            }
+            // Avoid redundant re-application if already applied and still active
+            const needsApply = this._lastAppliedStdId !== stdId || !this.renderer?.selectionActive;
+            if (needsApply) {
+                const applyOnce = () => {
+                    const applied = this._selectStandardById(stdId);
+                    if (applied) {
+                        this._lastAppliedStdId = stdId;
+                    }
+                    return applied;
+                };
+
+                // Apply as soon as render is ready
+                this._waitForRenderThen(() => {
+                    applyOnce();
+
+                    // The graph often undergoes simulation stabilization and center-view transitions
+                    // during the first ~2 seconds of load or filter. These can clear transient DOM classes.
+                    // We perform multiple re-applications to ensure the selection "sticks".
+                    const retryDelays = [300, 800, 1500, 2500];
+                    retryDelays.forEach(delay => {
+                        setTimeout(() => {
+                            const stillSelectedInUrl = this._readUrlState().selectedStandard === stdId;
+                            const selectionOk = this.renderer?.selectionActive === true &&
+                                this.renderer?.selection?.id === stdId &&
+                                this.renderer?.nodes?.filter(".highlighted").size() > 0;
+
+                            if (stillSelectedInUrl && !selectionOk) {
+                                applyOnce();
+                            }
+                        }, delay);
+                    });
+                });
+            }
+        } else {
+            // Clear cache when no selection is present in URL
+            this._lastAppliedStdId = null;
+        }
+    }
+
+    /**
+     * Override base render to re-apply URL-driven selection after rendering.
+     * Keeps public API unchanged.
+     */
+    render() {
+        const result = super.render();
+        // After the renderer is (re)created and data bound, re-apply selection from URL if any
+        this._reapplySelectedStandardIfAny();
+        return result;
     }
 
     /**
@@ -97,6 +163,18 @@ export class FullGraph extends Graph {
                     }
                     // Remove selected standard from URL state
                     this._writeUrlState({ selectedStandard: null });
+                } else {
+                    // Standards turned ON: if a selectedStandard exists in URL, re-apply it immediately
+                    const state = this._readUrlState();
+                    const stdId = state.selectedStandard;
+                    if (stdId) {
+                        this._waitForRenderThen(() => {
+                            const applied = this._selectStandardById(stdId);
+                            if (applied) {
+                                this._lastAppliedStdId = stdId;
+                            }
+                        });
+                    }
                 }
             });
         }
@@ -202,6 +280,22 @@ export class FullGraph extends Graph {
         } else {
             this.dataProvider.resetFilter();
         }
+
+        // Preview: only visually show if selection would be lost. 
+        // We do not update URL state here as it is a preview.
+        if (this.renderer?.selectionActive && this.renderer?.selection?.id) {
+            const selId = this.renderer.selection.id;
+            const filteredData = this.dataProvider.getFilteredData();
+            const stillVisible = (filteredData.nodes || []).some(n => n.id === selId);
+            if (!stillVisible) {
+                // Clear highlight flags for preview (this.renderer.render will be called next)
+                this.renderer.nodes.each(function (node) {
+                    node.highlighted = false;
+                    node.connectedHighlighted = false;
+                });
+            }
+        }
+
         if (this.renderer) this.renderer.isFiltering = termActive;
         this.renderFiltered();
     }
@@ -237,6 +331,25 @@ export class FullGraph extends Graph {
             this.dataProvider.filterByTerm(terms, { qualitiesHidden, requirementsVisible });
         } else {
             this.dataProvider.resetFilter();
+        }
+
+        // Validate selection: if a selected standard is now hidden by the text filter, remove it
+        const urlStd = this._readUrlState()?.selectedStandard;
+        if (urlStd) {
+            const filteredData = this.dataProvider.getFilteredData();
+            const stillVisible = (filteredData.nodes || []).some(n => n.id === urlStd);
+            if (!stillVisible) {
+                // Clear selection state
+                if (this.renderer?.selectionActive) {
+                    this.renderer.setSelectionDimming(null, null, false);
+                }
+                this.renderer.nodes.each(function (node) {
+                    node.highlighted = false;
+                    node.connectedHighlighted = false;
+                });
+                this._writeUrlState({ selectedStandard: null });
+                this._lastAppliedStdId = null;
+            }
         }
 
         if (this.renderer) this.renderer.isFiltering = termActive;
@@ -390,7 +503,7 @@ export class FullGraph extends Graph {
             const btn = document.createElement('button');
             btn.className = 'q-chip__close';
             btn.type = 'button';
-            btn.setAttribute('aria-label', `Remove ${term}`);
+            btn.setAttribute('aria-label', `Remove ${ term }`);
             btn.innerHTML = '&times;';
             btn.addEventListener('click', () => {
                 this._removeFinalizedTerm(term);
@@ -487,92 +600,7 @@ export class FullGraph extends Graph {
         // Click handler: persistent selection for standards (dims unrelated)
         const nodeClick = (event, d) => {
             if (!isStandard(d)) return;
-
-            const isSameSelection = this.renderer.selectionActive && this.renderer.selection && this.renderer.selection.id === d.id;
-
-            // Clear all highlights first
-            this.renderer.nodes.each(function (node) {
-                node.highlighted = false;
-                node.connectedHighlighted = false;
-            });
-
-            if (isSameSelection) {
-                // Deselect
-                this.renderer.selectionActive = false;
-                this.renderer.setSelectionDimming(null, null, false);
-                this.renderer.highlightNode(d.id, false, null);
-                this._writeUrlState({ selectedStandard: null });
-                return;
-            }
-
-            // Compute related nodes: direct qualities, properties via those qualities, requirements attached to those qualities,
-            // and qualities connected to those qualities (quality↔quality)
-            const qualities = new Set();
-            const props = new Set();
-            const reqs = new Set();
-            const relatedQuals = new Set();
-            // First pass: collect direct neighbors (qualities)
-            this.renderer.links.each(function (link) {
-                if (link.source.id === d.id) {
-                    if (isQuality(link.target)) {
-                        qualities.add(link.target.id);
-                    }
-                    link.target.connectedHighlighted = true;
-                }
-                if (link.target.id === d.id) {
-                    if (isQuality(link.source)) {
-                        qualities.add(link.source.id);
-                    }
-                    link.source.connectedHighlighted = true;
-                }
-            });
-            // Build lookup for selected qualities
-            const qualLookup = new Set(qualities);
-            // Second pass: collect properties (2-hop), requirements, and related qualities attached to those qualities
-            this.renderer.links.each(function (link) {
-                const sId = link.source.id;
-                const tId = link.target.id;
-                const sType = link.source.qualityType;
-                const tType = link.target.qualityType;
-
-                // Properties connected to selected qualities
-                if (qualLookup.has(sId) && tType === 'property') {
-                    props.add(tId);
-                    link.target.connectedHighlighted = true;
-                }
-                if (qualLookup.has(tId) && sType === 'property') {
-                    props.add(sId);
-                    link.source.connectedHighlighted = true;
-                }
-
-                // Requirements connected to selected qualities (indirect relation to the standard)
-                if (qualLookup.has(sId) && tType === 'requirement') {
-                    reqs.add(tId);
-                    link.target.connectedHighlighted = true;
-                }
-                if (qualLookup.has(tId) && sType === 'requirement') {
-                    reqs.add(sId);
-                    link.source.connectedHighlighted = true;
-                }
-
-                // Qualities connected to the selected qualities (quality↔quality edges)
-                if (qualLookup.has(sId) && tType === 'quality') {
-                    relatedQuals.add(tId);
-                    link.target.connectedHighlighted = true;
-                }
-                if (qualLookup.has(tId) && sType === 'quality') {
-                    relatedQuals.add(sId);
-                    link.source.connectedHighlighted = true;
-                }
-            });
-            const connectedNodes = new Set([...qualities, ...props, ...reqs, ...relatedQuals]);
-
-            // Mark selected and apply visuals
-            d.highlighted = true;
-            this.renderer.selectionActive = true;
-            this.renderer.highlightNode(d.id, true, connectedNodes);
-            this.renderer.setSelectionDimming(d.id, connectedNodes, true);
-            this._writeUrlState({ selectedStandard: d.id });
+            this._applyStandardSelectionInternal(d.id, true);
         };
 
         return this.registerEventHandlers({
@@ -580,6 +608,151 @@ export class FullGraph extends Graph {
             nodeDoubleClick,
             nodeClick
         });
+    }
+
+    // ---------------- Selection helpers (centralized) ----------------
+    /**
+     * Normalize an endpoint to id.
+     * @private
+     */
+    _endpointId(x) {
+        return (x && typeof x === 'object') ? x.id : x;
+    }
+
+    /**
+     * Resolve endpoint type robustly using node map if needed.
+     * @private
+     */
+    _endpointType(x, nodeById) {
+        if (x && typeof x === 'object') return x.qualityType;
+        const nid = this._endpointId(x);
+        const n = nodeById.get(nid);
+        return n ? n.qualityType : undefined;
+    }
+
+    /**
+     * Build a fast lookup map of current nodes by id.
+     * @private
+     */
+    _buildNodeByIdMap() {
+        const map = new Map();
+        if (this.renderer?.nodes) {
+            this.renderer.nodes.each(function (n) {
+                map.set(n.id, n);
+            });
+        }
+        return map;
+    }
+
+    /**
+     * Compute connected node ids for a given standard id (qualities, properties, requirements, related qualities).
+     * Robust to varying link endpoint shapes.
+     * @param {string} stdId
+     * @returns {Set<string>} connected node ids
+     * @private
+     */
+    _collectConnectedForStandard(stdId) {
+        const connectedQuals = new Set();
+        const props = new Set();
+        const reqs = new Set();
+
+        if (!this.renderer?.links) return new Set();
+
+        const nodeById = this._buildNodeByIdMap();
+        const endpointType = (x) => this._endpointType(x, nodeById);
+        const getId = (x) => this._endpointId(x);
+
+        // First pass: collect direct neighbor qualities
+        this.renderer.links.each(function (link) {
+            const sId = getId(link.source);
+            const tId = getId(link.target);
+            const sType = endpointType(link.source);
+            const tType = endpointType(link.target);
+            if (sId === stdId && tType === 'quality') connectedQuals.add(tId);
+            if (tId === stdId && sType === 'quality') connectedQuals.add(sId);
+        });
+
+        const qualLookup = new Set(connectedQuals);
+        // Second pass: find properties and requirements attached to those qualities
+        this.renderer.links.each(function (link) {
+            const sId = getId(link.source);
+            const tId = getId(link.target);
+            const sType = endpointType(link.source);
+            const tType = endpointType(link.target);
+            if (qualLookup.has(sId) && tType === 'property') props.add(tId);
+            if (qualLookup.has(tId) && sType === 'property') props.add(sId);
+            if (qualLookup.has(sId) && tType === 'requirement') reqs.add(tId);
+            if (qualLookup.has(tId) && sType === 'requirement') reqs.add(sId);
+        });
+
+        // Intentionally exclude "related qualities" from the selection-connected set.
+        // Keeping only direct qualities and their properties/requirements makes dimming
+        // visually meaningful (otherwise too much stays undimmed and dimming appears ineffective).
+        return new Set([...connectedQuals, ...props, ...reqs]);
+    }
+
+    /**
+     * Apply standard selection and dim unrelated nodes using centralized logic.
+     * Optionally toggles off if the same selection is active.
+     * @param {string} stdId
+     * @param {boolean} toggleIfSame
+     * @returns {boolean} true if selection applied, false if cleared or failed
+     * @private
+     */
+    _applyStandardSelectionInternal(stdId, toggleIfSame = false) {
+        if (!this.renderer?.nodes) return false;
+
+        // Ensure the standard id exists in current data
+        let found = false;
+        this.renderer.nodes.each(function (n) {
+            if (n.qualityType === 'standard' && n.id === stdId) found = true;
+        });
+        if (!found) {
+            // Invalid id: clear URL param if coming from URL flow
+            this._writeUrlState({ selectedStandard: null });
+            return false;
+        }
+
+        const isSame = this.renderer.selectionActive && this.renderer.selection && this.renderer.selection.id === stdId;
+
+        // Clear transient highlight flags
+        this.renderer.nodes.each(function (node) {
+            node.highlighted = false;
+            node.connectedHighlighted = false;
+        });
+
+        if (isSame && toggleIfSame) {
+            // Deselect
+            this.renderer.selectionActive = false;
+            this.renderer.setSelectionDimming(null, null, false);
+            this.renderer.highlightNode(stdId, false, null);
+            this._writeUrlState({ selectedStandard: null });
+            return false;
+        }
+
+        // Compute connected sets and apply
+        const connectedNodes = this._collectConnectedForStandard(stdId);
+        // Mark connected flags for label visibility logic
+        const nodeById = this._buildNodeByIdMap();
+        connectedNodes.forEach(id => {
+            const n = nodeById.get(id);
+            if (n) n.connectedHighlighted = true;
+        });
+
+        const stdNode = nodeById.get(stdId);
+        if (stdNode) stdNode.highlighted = true;
+
+        this.renderer.selectionActive = true;
+        this.renderer.highlightNode(stdId, true, connectedNodes);
+        this.renderer.setSelectionDimming(stdId, connectedNodes, true);
+
+        // Force an immediate redraw and visibility update to ensure changes are visible
+        this.renderer.drawCanvas();
+        if (this.renderer.updateNodeVisibility) this.renderer.updateNodeVisibility(this.renderer.currentZoomScale);
+        if (this.renderer.updateLabelVisibility) this.renderer.updateLabelVisibility(this.renderer.currentZoomScale);
+
+        this._writeUrlState({ selectedStandard: stdId });
+        return true;
     }
 
     // ---------------- URL State Helpers ----------------
@@ -666,7 +839,22 @@ export class FullGraph extends Graph {
         }
         // Apply selection after render is available
         if (state.selectedStandard) {
-            this._waitForRenderThen(() => this._selectStandardById(state.selectedStandard));
+            // Ensure standards are visible when a specific standard is selected via URL
+            const stdToggleEl = document.getElementById('legend-toggle-standards');
+            if (stdToggleEl && !stdToggleEl.checked) {
+                stdToggleEl.checked = true;
+            }
+            if (this.renderer?.typeVisibility?.standard === false) {
+                this.renderer.setTypeVisibility('standard', true);
+                // Reflect enforced visibility in URL state to avoid confusion when navigating
+                this._writeUrlState({ showStandards: true });
+            }
+            this._waitForRenderThen(() => {
+                const applied = this._selectStandardById(state.selectedStandard);
+                if (applied) {
+                    this._lastAppliedStdId = state.selectedStandard;
+                }
+            });
         } else if (!initial) {
             // If cleared, ensure no selection
             if (this.renderer?.selectionActive) {
@@ -685,53 +873,7 @@ export class FullGraph extends Graph {
     }
 
     _selectStandardById(stdId) {
-        if (!this.renderer?.links) return;
-        // Find standard node exists
-        let found = false;
-        this.renderer.nodes.each(function (n) {
-            if (n.qualityType === 'standard' && n.id === stdId) found = true;
-        });
-        if (!found) return;
-
-        // Compute same connected set as in click handler
-        const d = { id: stdId, qualityType: 'standard' };
-        const qualities = new Set();
-        const props = new Set();
-        const reqs = new Set();
-        const relatedQuals = new Set();
-        this.renderer.links.each(function (link) {
-            if (link.source.id === d.id) {
-                if (link.target.qualityType === 'quality') {
-                    qualities.add(link.target.id);
-                }
-            }
-            if (link.target.id === d.id) {
-                if (link.source.qualityType === 'quality') {
-                    qualities.add(link.source.id);
-                }
-            }
-        });
-        const qualLookup = new Set(qualities);
-        this.renderer.links.each(function (link) {
-            const sId = link.source.id;
-            const tId = link.target.id;
-            const sType = link.source.qualityType;
-            const tType = link.target.qualityType;
-            if (qualLookup.has(sId) && tType === 'property') props.add(tId);
-            if (qualLookup.has(tId) && sType === 'property') props.add(sId);
-            if (qualLookup.has(sId) && tType === 'requirement') reqs.add(tId);
-            if (qualLookup.has(tId) && sType === 'requirement') reqs.add(sId);
-            if (qualLookup.has(sId) && tType === 'quality') relatedQuals.add(tId);
-            if (qualLookup.has(tId) && sType === 'quality') relatedQuals.add(sId);
-        });
-        const connectedNodes = new Set([...qualities, ...props, ...reqs, ...relatedQuals]);
-        // Apply selection
-        this.renderer.nodes.each(function (node) {
-            node.highlighted = false;
-            node.connectedHighlighted = false;
-        });
-        this.renderer.selectionActive = true;
-        this.renderer.highlightNode(stdId, true, connectedNodes);
-        this.renderer.setSelectionDimming(stdId, connectedNodes, true);
+        // Delegate to centralized helper; do not toggle off when coming from URL
+        return this._applyStandardSelectionInternal(stdId, false);
     }
 }

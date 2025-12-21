@@ -15,10 +15,9 @@ export class GraphRenderer {
         // Centralized helpers
         this._legendHidden = (d, typeVis) => {
             if (!d) return false;
-            const t = d.qualityType;
-            if (t === NODE_TYPES.QUALITY) return typeVis.quality === false;
-            if (t === NODE_TYPES.REQUIREMENT) return typeVis.requirement === false;
-            if (t === NODE_TYPES.STANDARD) return typeVis.standard === false;
+            if (isQuality(d)) return typeVis.quality === false;
+            if (isRequirement(d)) return typeVis.requirement === false;
+            if (isStandard(d)) return typeVis.standard === false;
             return false; // root & property never hidden by legend
         };
         this._isStdSelectionActive = () => !!(this.selectionActive && this.selection?.isStandard);
@@ -143,17 +142,21 @@ export class GraphRenderer {
     _labelFontSize(d) {
         return (isProperty(d) || isRoot(d)) ? Math.max(10, d.size * 0.45) : 10;
     }
+
     _labelTextAnchor(d) {
         return (isRoot(d) || isProperty(d)) ? "middle" : "start";
     }
+
     _labelDominantBaseline(d) {
         return (isRoot(d) || isProperty(d)) ? "middle" : "auto";
     }
+
     _labelDx(d) {
         if (isRoot(d) || isProperty(d)) return 0;
         // For requirements and qualities, position labels outside the node
         return d.size + 5; // Node radius + 5px padding
     }
+
     _labelDy(d) {
         return (isRoot(d) || isProperty(d)) ? 0 : 4;
     }
@@ -177,15 +180,68 @@ export class GraphRenderer {
             this._hideTooltip();
             if (this.selectionActive) return;
             // Reset all highlight flags on nodes
-            if (this.nodes) {
-                this.nodes.each(function (node) {
-                    node.highlighted = false;
-                    node.connectedHighlighted = false;
-                });
-            }
+            this._resetNodeHighlightFlags();
             // Reset visual appearance for the node we left
             this.highlightNode(d.id, false, null);
         });
+    }
+
+    /**
+     * Reset per-node in-memory highlight flags (no DOM mutations)
+     * Keeps behavior centralized for reuse across handlers.
+     * @private
+     */
+    _resetNodeHighlightFlags() {
+        if (!this.nodes) return;
+        this.nodes.each(function (node) {
+            node.highlighted = false;
+            node.connectedHighlighted = false;
+        });
+    }
+
+    /**
+     * Clear per-edge hover highlight flags on real and virtual edges.
+     * @private
+     */
+    _clearEdgeHoverFlags() {
+        if (this.links) this.links.each(function (l) {
+            l._hoverHighlight = false;
+        });
+        if (Array.isArray(this.virtualEdgesData)) this.virtualEdgesData.forEach(vl => {
+            vl._hoverHighlight = false;
+        });
+    }
+
+    /**
+     * Clear node/label highlight classes and reset related in-memory flags.
+     * Does not affect selection state by itself.
+     * @private
+     */
+    _clearNodeLabelHighlightStates() {
+        if (this.nodes) {
+            this.nodes
+                .classed("highlighted", false)
+                .classed("connected-highlighted", false)
+                .each(function (n) {
+                    n.highlighted = false;
+                    n.connectedHighlighted = false;
+                });
+        }
+        if (this.labels) {
+            this.labels
+                .classed("highlighted", false)
+                .classed("connected-highlighted", false);
+        }
+    }
+
+    /**
+     * Convenience: clear all hover/highlight visual states and redraw canvas.
+     * @private
+     */
+    _clearAllHoverAndHighlights() {
+        this._clearEdgeHoverFlags();
+        this._clearNodeLabelHighlightStates();
+        this.drawCanvas();
     }
 
     /**
@@ -210,7 +266,11 @@ export class GraphRenderer {
             if (this.selectionActive && this.selection?.isStandard) {
                 this.setSelectionDimming(null, null, false);
             }
+            // Clear any hover/highlight flags and classes, then redraw
+            this._clearAllHoverAndHighlights();
         }
+        // IMPORTANT: Do NOT clear highlights when turning standards back on.
+        // Users may have an active selection (e.g., from URL state) that must persist.
         this.applyTypeVisibility();
     }
 
@@ -243,66 +303,8 @@ export class GraphRenderer {
         // visible requirements and their connected properties (via hidden quality nodes)
         const showVirtual = !typeVis.quality && typeVis.requirement;
         if (showVirtual) {
-            // Build quick maps of nodes by id for type lookup
-            const nodeById = new Map();
-            this.nodes.each(function (d) {
-                nodeById.set(d.id, d);
-            });
-
-            // Build adjacency for existing links
-            const neighbors = new Map();
-
-            function addNeighbor(a, b) {
-                if (!neighbors.has(a)) neighbors.set(a, new Set());
-                neighbors.get(a).add(b);
-            }
-
-            this.links.each(function (d) {
-                addNeighbor(d.source.id, d.target.id);
-                addNeighbor(d.target.id, d.source.id);
-            });
-
-            // Collect virtual edges depending on standards visibility:
-            // - If standards are visible: req -> standard via path req->quality->standard
-            // - Otherwise: req -> property via path req->quality->property (existing behavior)
-            const virtualEdges = [];
-            const standardsVisible = !!typeVis.standard;
-            nodeById.forEach((node, id) => {
-                if (node.qualityType === NODE_TYPES.REQUIREMENT && !node._legendHidden) {
-                    const nbs = neighbors.get(id) || new Set();
-                    nbs.forEach(qId => {
-                        const qNode = nodeById.get(qId);
-                        if (!qNode || qNode.qualityType !== NODE_TYPES.QUALITY) return;
-                        const qNbs = neighbors.get(qId) || new Set();
-
-                        if (standardsVisible) {
-                            // Prefer virtual links to standards when the standards are shown
-                            qNbs.forEach(sId => {
-                                const sNode = nodeById.get(sId);
-                                if (!sNode || sNode.qualityType !== NODE_TYPES.STANDARD) return;
-                                if (sNode._legendHidden) return; // respect legend toggle for standards
-                                const hasDirect = neighbors.get(id)?.has(sId);
-                                if (!hasDirect) {
-                                    virtualEdges.push({ source: node, target: sNode });
-                                }
-                            });
-                        } else {
-                            // Fallback to properties (original behavior)
-                            qNbs.forEach(pId => {
-                                const pNode = nodeById.get(pId);
-                                if (!pNode || pNode.qualityType !== NODE_TYPES.PROPERTY) return;
-                                const hasDirect = neighbors.get(id)?.has(pId);
-                                if (!hasDirect) {
-                                    virtualEdges.push({ source: node, target: pNode });
-                                }
-                            });
-                        }
-                    });
-                }
-            });
-
-            // Store virtual edges for canvas rendering
-            this.virtualEdgesData = virtualEdges;
+            // Compute and store virtual edges for canvas rendering
+            this.virtualEdgesData = this._computeVirtualEdges(typeVis);
 
             // Lightly kick the simulation to ensure at least one tick runs
             if (this.simulation) {
@@ -383,6 +385,70 @@ export class GraphRenderer {
 
         // Redraw canvas to reflect visibility changes
         this.drawCanvas();
+    }
+
+    /**
+     * Compute virtual edges for current data given type visibility settings.
+     * Keeps logic isolated to reduce complexity of applyTypeVisibility.
+     * @param {*} typeVis
+     * @returns {Array<{source:any,target:any}>}
+     * @private
+     */
+    _computeVirtualEdges(typeVis) {
+        const virtualEdges = [];
+        // Build quick maps of nodes by id for type lookup
+        const nodeById = new Map();
+        this.nodes.each(function (d) {
+            nodeById.set(d.id, d);
+        });
+
+        // Build adjacency for existing links
+        const neighbors = new Map();
+        function addNeighbor(a, b) {
+            if (!neighbors.has(a)) neighbors.set(a, new Set());
+            neighbors.get(a).add(b);
+        }
+        this.links.each(function (d) {
+            addNeighbor(d.source.id, d.target.id);
+            addNeighbor(d.target.id, d.source.id);
+        });
+
+        const standardsVisible = !!typeVis.standard;
+        nodeById.forEach((node, id) => {
+            if (node.qualityType === NODE_TYPES.REQUIREMENT && !node._legendHidden) {
+                const nbs = neighbors.get(id) || new Set();
+                nbs.forEach(qId => {
+                    const qNode = nodeById.get(qId);
+                    if (!qNode || qNode.qualityType !== NODE_TYPES.QUALITY) return;
+                    const qNbs = neighbors.get(qId) || new Set();
+
+                    if (standardsVisible) {
+                        // Prefer virtual links to standards when the standards are shown
+                        qNbs.forEach(sId => {
+                            const sNode = nodeById.get(sId);
+                            if (!sNode || sNode.qualityType !== NODE_TYPES.STANDARD) return;
+                            if (sNode._legendHidden) return; // respect legend toggle for standards
+                            const hasDirect = neighbors.get(id)?.has(sId);
+                            if (!hasDirect) {
+                                virtualEdges.push({ source: node, target: sNode });
+                            }
+                        });
+                    } else {
+                        // Fallback to properties (original behavior)
+                        qNbs.forEach(pId => {
+                            const pNode = nodeById.get(pId);
+                            if (!pNode || pNode.qualityType !== NODE_TYPES.PROPERTY) return;
+                            const hasDirect = neighbors.get(id)?.has(pId);
+                            if (!hasDirect) {
+                                virtualEdges.push({ source: node, target: pNode });
+                            }
+                        });
+                    }
+                });
+            }
+        });
+
+        return virtualEdges;
     }
 
     /**
@@ -854,12 +920,7 @@ export class GraphRenderer {
         // Manage per-edge hover highlight flags for canvas rendering
         if (highlight) {
             // Clear previous hover highlights to avoid stale edges
-            this.links.each(function (l) {
-                l._hoverHighlight = false;
-            });
-            if (Array.isArray(this.virtualEdgesData)) this.virtualEdgesData.forEach(vl => {
-                vl._hoverHighlight = false;
-            });
+            this._clearEdgeHoverFlags();
         }
         // Set or clear hover highlight on edges connected to the node
         this.links.each(function (l) {

@@ -53,6 +53,10 @@ export class GraphDataProvider {
      * Filter the data based on one or more search terms
      * @param {string|string[]} filterTerm - The search term or list of terms to filter by
      * @param {Object} options - Additional options
+     * @param {boolean} [options.qualitiesHidden] - Whether qualities are hidden via legend
+     * @param {boolean} [options.requirementsVisible] - Whether requirements are visible via legend
+     * @param {Set<string>|string[]|null} [options.baseNodeIdSet] - Optional base restriction set for nodes
+     * @param {Set<string>|string[]|null} [options.forceInclude] - Node ids to force-include in the filtered output regardless of text matches
      * @returns {Object} Object with filtered propertyNodes, nodes, and edges
      */
     filterByTerm(filterTerm, options = {}) {
@@ -84,6 +88,9 @@ export class GraphDataProvider {
         const baseSet = options.baseNodeIdSet instanceof Set ? options.baseNodeIdSet : null;
 
         const propertyIds = new Set(this.#propertyNodes.map(p => p.id));
+        const forceInclude = options.forceInclude
+            ? (options.forceInclude instanceof Set ? options.forceInclude : new Set(options.forceInclude))
+            : new Set();
         const nodesPool = baseSet ? this.#nodes.filter(n => baseSet.has(n.id)) : this.#nodes;
         const edgesPool = baseSet ? this.#edges.filter(e =>
             (baseSet.has(e.source) && baseSet.has(e.target)) ||
@@ -153,6 +160,9 @@ export class GraphDataProvider {
             ...requirementNodeIds
         ]);
         allVisibleNodeIds.add(QUALITY_ROOT_ID);
+
+        // Ensure externally forced node ids are included regardless of text matches
+        forceInclude.forEach(id => allVisibleNodeIds.add(id));
 
         const restrictedVisible = baseSet
                                   ? new Set(Array.from(allVisibleNodeIds).filter(id => baseSet.has(id) || id === QUALITY_ROOT_ID))
