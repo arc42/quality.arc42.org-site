@@ -1,6 +1,8 @@
 .toggle {
     cursor: pointer;
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    position: relative; /* allow absolutely positioned input overlay */
 }
 
 .toggle-switch {
@@ -45,11 +47,25 @@
 }
 
 .toggle-checkbox {
+    /* Keep the native checkbox focusable for keyboard users */
     position: absolute;
-    visibility: hidden;
+    top: 0;
+    right: 0; /* place over the visual switch at the end of the label */
+    width: 40px; /* match visual switch size */
+    height: 22px;
+    margin: 0;
+    opacity: 0; /* hide visually but keep in accessibility tree and tab order */
+    cursor: pointer;
+}
+
+/* Visible focus indicator for keyboard users */
+.toggle-checkbox:focus-visible + .toggle-switch {
+    outline: 2px solid #003366;
+    outline-offset: 2px;
 }
 
 .toggle-label {
     margin-left: 5px;
+    margin-right: 10px;
     top: 2px;
 }

@@ -9,9 +9,14 @@ hide: true
 <div id="full-q-graph-container">
     <div id="full-q-graph-sidebar">
         <div id="full-q-graph-controls-container">
-            <h3>Filter Graph</h3>
-            <label class="sr-only" for="full-q-graph-filter__input">Filter graph:</label>
-            <input type="text" id="full-q-graph-filter__input" placeholder="Filter..." />
+            <div style="display: flex; align-items: center; justify-content: space-between;">
+                <h3>Filter Graph</h3>
+                <button id="full-q-graph-center__btn" class="btn" title="Center View" aria-label="Center Graph View">
+                    <i class="fas fa-crosshairs"></i>
+                </button>
+            </div>
+            <label class="sr-only" for="full-q-graph-filter__input">Filter graph with comma separated values:</label>
+            <input type="text" id="full-q-graph-filter__input" placeholder="Usability, ISO..." />
             <button id="full-q-graph-filter__btn" class="btn">Filter</button>
             <hr />        
         </div>
@@ -31,7 +36,7 @@ hide: true
                 <label class="toggle">
                     <span class="toggle-label legend-label">Standards</span>
                     <input class="toggle-checkbox" type="checkbox" id="legend-toggle-standards" checked>
-                    <div class="toggle-switch"></div>
+                    <div class="toggle-switch" aria-hidden="true"></div>
                 </label>
             </div>
             <div class="legend-item">
@@ -39,7 +44,7 @@ hide: true
                 <label class="toggle">
                     <span class="toggle-label legend-label">Qualities</span>
                     <input class="toggle-checkbox" type="checkbox" id="legend-toggle-qualities" checked>
-                    <div class="toggle-switch"></div>
+                    <div class="toggle-switch" aria-hidden="true"></div>
                 </label>
             </div>
 
@@ -48,7 +53,7 @@ hide: true
                 <label class="toggle">
                     <span class="toggle-label legend-label">Requirements</span>
                     <input class="toggle-checkbox" type="checkbox" id="legend-toggle-requirements">
-                    <div class="toggle-switch"></div>
+                    <div class="toggle-switch" aria-hidden="true"></div>
                 </label>
             </div>
         </div>

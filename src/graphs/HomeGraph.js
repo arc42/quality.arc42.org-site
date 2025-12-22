@@ -3,6 +3,8 @@
  * Specialized graph implementation for the homepage
  */
 import { Graph } from "./Graph";
+import { QUALITY_ROOT_ID } from "./constants";
+import { isRootId } from "./nodeUtils";
 
 export class HomeGraph extends Graph {
     /**
@@ -40,7 +42,7 @@ export class HomeGraph extends Graph {
             this.createNodes(homeData.propertyNodes);
             this.createEdges(homeData.edges);
 
-            this.applyEnhancedRadialLayout("quality-root", 250);
+            this.applyEnhancedRadialLayout(QUALITY_ROOT_ID, 250);
         } catch (error) {
             console.error("Could not build home graph", { cause: error });
         }
@@ -56,7 +58,11 @@ export class HomeGraph extends Graph {
         // Create the button element
         this.fullGraphToggle = document.createElement('button');
         this.fullGraphToggle.id = 'full-graph-toggle';
-        this.fullGraphToggle.innerHTML = '<i class="fas fa-expand"></i>';
+
+        const icon = document.createElement('i');
+        icon.className = 'fas fa-expand';
+        this.fullGraphToggle.appendChild(icon);
+
         this.fullGraphToggle.setAttribute('aria-label', 'Open full graph');
         this.fullGraphToggle.title = 'Open full graph';
 
@@ -78,7 +84,7 @@ export class HomeGraph extends Graph {
     registerDefaultEventHandlers() {
         // Default double-click handler for navigation
         const nodeDoubleClick = (event, d) => {
-            if (d.id !== "quality-root") {
+            if (!isRootId(d.id)) {
                 window.location.href = this.graph.getNodeAttribute(d.id, "page");
             }
         };
@@ -89,7 +95,7 @@ export class HomeGraph extends Graph {
             const isHighlighted = d.highlighted;
 
             // Clear all highlights first
-            this.renderer.nodes.each(function (node) {
+            this.renderer.nodes?.each(function (node) {
                 node.highlighted = false;
                 node.connectedHighlighted = false;
             });
@@ -100,7 +106,7 @@ export class HomeGraph extends Graph {
                 d.highlighted = true;
 
                 // Find connected nodes
-                this.renderer.links.each(function (link) {
+                this.renderer.links?.each(function (link) {
                     if (link.source.id === d.id) {
                         connectedNodes.add(link.target.id);
                         link.target.connectedHighlighted = true;

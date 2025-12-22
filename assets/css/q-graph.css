@@ -56,6 +56,11 @@
     border-radius: 4px;
 }
 
+#full-q-graph-filter__input::placeholder {
+    opacity: 0.5;
+    font-style: italic;
+}
+
 #full-q-graph-filter__btn {
     width: 100%;
     padding: 0.5rem;
@@ -68,6 +73,79 @@
 
 #full-q-graph-filter__btn:hover {
     background-color: #cb9fff;
+}
+
+#full-q-graph-center__btn {
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    padding: 0;
+    transition: all 0.2s ease-in-out;
+    color: #333;
+    margin-left: 10px;
+    margin-bottom: 8px;
+}
+
+#full-q-graph-center__btn:hover {
+    border-color: #cb9fff;
+    background-color: rgba(203, 159, 255, 0.1);
+    color: #414288;
+}
+
+#full-q-graph-filter__chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 0.25rem;
+    margin-bottom: 1rem;
+    max-width: 100%;
+}
+
+.q-chip {
+    display: inline-flex;
+    align-items: center;
+    padding: 2px 4px 2px 8px;
+    font-size: 0.75rem;
+    line-height: 1.4;
+    background-color: #ebebeb;
+    border: 1px solid #414288;
+    color: #414288;
+    border-radius: 12px;
+    white-space: nowrap;
+}
+
+.q-chip__label {
+    line-height: 1.4;
+    margin-right: 6px;
+    margin-top: 1px;
+    text-align: center;
+}
+
+.q-chip__close {
+    appearance: none;
+    border: none;
+    background: transparent;
+    color: #414288;
+    width: 18px;
+    height: 18px;
+    line-height: 1.4;
+    border-radius: 50%;
+    text-align: center;
+    cursor: pointer;
+    padding: 0;
+}
+
+.q-chip__close:hover,
+.q-chip__close:focus {
+    background-color: #414288;
+    color: #ebebeb;
+    outline: none;
 }
 
 #full-q-graph-legend {
