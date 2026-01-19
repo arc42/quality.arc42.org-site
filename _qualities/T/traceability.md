@@ -1,7 +1,7 @@
 ---
 title: Traceability
 tags: [reliable, operable]
-related: [devops-metrics, operability, testability,certifiability]
+related: [devops-metrics, operability, testability,certifiability, accountability]
 standards: [iso26262, iec62304, hl7, iso15408, cra, isoiec22989, iso25024, do178c, iso42010, gdpr, iso42030, iso12207, sox, etsien304223]
 permalink: /qualities/traceability
 ---
