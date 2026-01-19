@@ -36,6 +36,7 @@ standards:
     sox,
     ieee2857,
     iso24028,
+    etsien304223,
   ]
 permalink: /qualities/security
 ---

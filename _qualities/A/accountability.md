@@ -2,7 +2,7 @@
 title: Accountability
 tags: [secure]
 related: [authenticity, security, non-repudiation, auditability, access-control]
-standards: [iso25010, iso27001, pcidss, iso42001, aiuc1, cra, gdpr, iso42030, sox, ieee2857, iso24028]
+standards: [iso25010, iso27001, pcidss, iso42001, aiuc1, cra, gdpr, iso42030, sox, ieee2857, iso24028, etsien304223]
 permalink: /qualities/accountability
 ---
 
