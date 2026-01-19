@@ -15,16 +15,18 @@ In the long run we aim at having everything well-connected:
 
 {% assign notag_qualities = "" | split: "," %}
 {% for quality in site.qualities %}
+{% unless quality.alias_of %}
 {% assign tags_num = (quality.tags | size) %}
 {% if tags_num <= 0 %}
-{% assign notag_qualities = notag_qualities | push: quality %}  
- {% endif %}
+{% assign notag_qualities = notag_qualities | push: quality %}
+{% endif %}
+{% endunless %}
 {% endfor %}
 
 {% if notag_qualities.size == 0 %}
-All qualities in this site have at least one tag defined.
+All qualities in this site have at least one tag defined (excluding synonyms, which inherit tags from their canonical entry).
 {% else %}
-The following {{ notag_qualities.size }} qualities have no tag defined:
+The following {{ notag_qualities.size }} qualities have no tag defined (excluding synonyms):
 
 {% for quality in notag_qualities %}
 <a href="{{quality.permalink}}"><i class="fa fa-bolt fa-xs as-bullet" style="color: var(--error-color);"></i>{{ quality.title }}</a>
@@ -35,15 +37,18 @@ The following {{ notag_qualities.size }} qualities have no tag defined:
 
 
 {% assign orphan_qualities = "" | split: "," %}
-{% for quality in site.qualities %} {% unless quality.related %}
+{% for quality in site.qualities %}
+{% unless quality.alias_of %}
+{% unless quality.related %}
 {% assign orphan_qualities = orphan_qualities | push: quality %}
+{% endunless %}
 {% endunless %}
 {% endfor %}
 
 {% if orphan_qualities.size == 0 %}
-All qualities in this site have at least one directly related quality defined, so there are currently no orphan qualities.
+All qualities in this site have at least one directly related quality defined (excluding synonyms, which inherit relations from their canonical entry).
 {% else %}
-The following {{ orphan_qualities.size }} qualities have no directly related qualities defined:
+The following {{ orphan_qualities.size }} qualities have no directly related qualities defined (excluding synonyms):
 
 {% for quality in orphan_qualities %}
 <a href="{{quality.permalink}}"><i class="fa fa-bolt fa-xs as-bullet" style="color: var(--error-color);"></i>{{ quality.title }}</a><br>{% endfor %}
@@ -68,6 +73,7 @@ The synonym system ensures:
 
 {% assign unreferenced_qualities = "" | split: "," %}
 {% for quality in site.qualities %}
+{% unless quality.alias_of %}
 {% assign quality_slug = quality.permalink | split: "/" | last %}
 {% assign found_reference = false %}
 
@@ -88,9 +94,10 @@ The synonym system ensures:
 {% unless found_reference %}
 {% assign unreferenced_qualities = unreferenced_qualities | push: quality %}
 {% endunless %}
+{% endunless %}
 {% endfor %}
 
-The following {{ unreferenced_qualities.size }} qualities currently have no requirements directly related to them:
+The following {{ unreferenced_qualities.size }} qualities currently have no requirements directly related to them (excluding synonyms):
 
 {% for quality in unreferenced_qualities %}[{{ quality.title }}]({{ quality.permalink }}), {% endfor %}
 
