@@ -4,8 +4,8 @@ title: "arc42 Quality Model"
 permalink: /articles/arc42-quality-model
 ---
 
-{% assign quality_posts = site.posts | where: "categories", "qualities" %}
-{% assign requirement_posts = site.posts | where: "categories", "requirements" %}
+{% assign quality_posts = site.qualities %}
+{% assign requirement_posts = site.requirements %}
 
 The arc42 quality model Q42 (pronounced "Kju-Fortytwo" or "Kju-Four-Two") is a simple, pragmatic yet effective approach to product and system quality.
 It starts with **stakeholders' expectations and requirements**.
