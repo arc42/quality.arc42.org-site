@@ -1,0 +1,18 @@
+<h2 class="section-heading approaches"><i class="fa fa-puzzle-piece"></i> Related Approaches</h2>
+<p>Solution approaches (architectural tactics or patterns) that support this quality.</p>
+
+{% assign approaches = site.approaches %}
+
+<ul class="posts no-bullets">
+  {% assign number = 0 %} {% for approach in approaches %} {% assign check_title =
+  include.item.permalink | split: "/" | last | downcase %} {% assign supported_list = approach.supported_qualities %}
+  {% if supported_list contains check_title %} {% assign number = 1 %}
+  <li>
+    <a href="{{ approach.permalink }}"
+      ><i class="fa fa-puzzle-piece fa-xs as-bullet" style="color: var(--approaches-text-color)"> </i> {{
+      approach.title }}</a
+    >
+  </li>
+  {% endif %} {% endfor %} {% if number == 0 %} No related approaches found. {%
+  endif %}
+</ul>

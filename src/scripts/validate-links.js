@@ -24,6 +24,7 @@ class LinkValidator {
     this.qualities = new Map();
     this.requirements = new Map();
     this.standards = new Map();
+    this.approaches = new Map();
     this.tagPages = new Set();
     this.errors = [];
   }
@@ -117,22 +118,25 @@ class LinkValidator {
     const qualitiesDir = path.join(projectRoot, "_qualities");
     const requirementsDir = path.join(projectRoot, "_requirements");
     const standardsDir = path.join(projectRoot, "_standards");
+    const approachesDir = path.join(projectRoot, "_approaches");
     const pagesDir = path.join(projectRoot, "_pages");
 
     console.log(`${COLORS.cyan}Building index of all content...${COLORS.reset}\n`);
 
-    const [qualityFiles, requirementFiles, standardFiles, pageFiles] = await Promise.all([
-      this.getMarkdownFiles(qualitiesDir),
-      this.getMarkdownFiles(requirementsDir),
-      this.getMarkdownFiles(standardsDir),
-      this.getMarkdownFiles(pagesDir),
-    ]);
+    const [qualityFiles, requirementFiles, standardFiles, approachFiles, pageFiles] =
+      await Promise.all([
+        this.getMarkdownFiles(qualitiesDir),
+        this.getMarkdownFiles(requirementsDir),
+        this.getMarkdownFiles(standardsDir),
+        this.getMarkdownFiles(approachesDir),
+        this.getMarkdownFiles(pagesDir),
+      ]);
 
     const isNotTemplate = (f) => !TEMPLATE_FILES.some((template) => f.includes(template));
     const filteredQualityFiles = qualityFiles.filter(isNotTemplate);
     const filteredRequirementFiles = requirementFiles.filter(isNotTemplate);
 
-    [this.qualities, this.requirements, this.standards] = await Promise.all([
+    [this.qualities, this.requirements, this.standards, this.approaches] = await Promise.all([
       this.indexFiles(filteredQualityFiles, (data, file) => {
         const id = this.extractId(data.permalink);
         if (!id) return null;
@@ -180,6 +184,23 @@ class LinkValidator {
           },
         };
       }),
+
+      this.indexFiles(approachFiles, (data, file) => {
+        const id = this.extractId(data.permalink);
+        if (!id) return null;
+
+        return {
+          key: id,
+          value: {
+            file,
+            title: data.title,
+            permalink: data.permalink,
+            tags: this.parseList(data.tags, SEPARATORS.tags),
+            supported_qualities: this.parseList(data.supported_qualities, SEPARATORS.related),
+            tradeoffs: this.parseList(data.tradeoffs, SEPARATORS.related),
+          },
+        };
+      }),
     ]);
 
     for (const file of pageFiles) {
@@ -194,6 +215,7 @@ class LinkValidator {
     console.log(`    - ${this.qualities.size} qualities`);
     console.log(`    - ${this.requirements.size} requirements`);
     console.log(`    - ${this.standards.size} standards`);
+    console.log(`    - ${this.approaches.size} approaches`);
     console.log(`    - ${this.tagPages.size} tag pages\n`);
   }
 
@@ -312,6 +334,49 @@ class LinkValidator {
   }
 
   /**
+   * Validate a single approach's links
+   * @param {string} id - Approach ID
+   * @param {Object} approach - Approach data
+   */
+  validateApproach(id, approach) {
+    const { file, supported_qualities, tradeoffs, tags } = approach;
+
+    // Validate supported qualities
+    this.validateReferences({
+      id,
+      file,
+      references: supported_qualities,
+      validTargets: this.qualities,
+      linkType: "approach→quality",
+      sourceType: "Approach",
+    });
+
+    // Validate tradeoff qualities
+    this.validateReferences({
+      id,
+      file,
+      references: tradeoffs,
+      validTargets: this.qualities,
+      linkType: "approach→quality",
+      sourceType: "Approach",
+      messageTemplate: (id, ref) =>
+        `Approach "${id}" references non-existent tradeoff quality "${ref}"`,
+    });
+
+    // Validate tags
+    this.validateReferences({
+      id,
+      file,
+      references: tags,
+      validTargets: this.tagPages,
+      linkType: "approach→tag",
+      sourceType: "Approach",
+      messageTemplate: (id, tag) =>
+        `Approach "${id}" uses tag "${tag}" but tag page "_pages/tag-${tag}.md" doesn't exist`,
+    });
+  }
+
+  /**
    * Validate all links
    */
   async validate() {
@@ -323,6 +388,10 @@ class LinkValidator {
 
     for (const [id, requirement] of this.requirements) {
       this.validateRequirement(id, requirement);
+    }
+
+    for (const [id, approach] of this.approaches) {
+      this.validateApproach(id, approach);
     }
   }
 
@@ -357,6 +426,8 @@ class LinkValidator {
       "quality→standard",
       "requirement→quality",
       "requirement→tag",
+      "approach→quality",
+      "approach→tag",
     ];
 
     for (const type of typeOrder) {

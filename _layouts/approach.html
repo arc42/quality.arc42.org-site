@@ -1,0 +1,88 @@
+---
+layout: default
+---
+
+{% comment %} Approach pages are structured as follows: - Header with tags - Intent/Mechanism/Applicability
+from frontmatter - Content body - Supported qualities (cross-linked) - Trade-off qualities (cross-linked) {% endcomment %}
+
+<div class="article-wrapper">
+  <article>
+    {% include approach-header.liquid page=page link=false share=page.share %}
+
+    {% if page.intent %}
+    <div class="approach-meta">
+      <h3>Intent</h3>
+      <p>{{ page.intent }}</p>
+    </div>
+    {% endif %}
+
+    {% if page.mechanism %}
+    <div class="approach-meta">
+      <h3>Mechanism</h3>
+      <p>{{ page.mechanism }}</p>
+    </div>
+    {% endif %}
+
+    {% if page.applicability %}
+    <div class="approach-meta">
+      <h3>Applicability</h3>
+      <p>{{ page.applicability }}</p>
+    </div>
+    {% endif %}
+
+    <section class="post-content">{{ content }}</section>
+
+    <hr class="with-no-margin" />
+
+    {% comment %} Supported qualities - cross-linked from supported_qualities frontmatter {% endcomment %}
+    <h2 class="section-heading qualities"><i class="fa fa-gem"></i> Supported Qualities</h2>
+
+    {% assign all_qualities = site.qualities %}
+    <ul class="posts no-bullets">
+      {% assign found_supported = false %}
+      {% if page.supported_qualities %}
+        {% for sq in page.supported_qualities %}
+          {% assign sq_trimmed = sq | strip %}
+          {% for quality in all_qualities %}
+            {% assign quality_id = quality.permalink | split: "/" | last %}
+            {% if quality_id == sq_trimmed %}
+              {% assign found_supported = true %}
+              <li>
+                <a href="{{ quality.permalink }}"><i class="fa fa-gem fa-xs as-bullet" style="color: var(--quality-text-color)"> </i> {{ quality.title }}</a>
+              </li>
+              {% break %}
+            {% endif %}
+          {% endfor %}
+        {% endfor %}
+      {% endif %}
+      {% unless found_supported %}
+        <li>No supported qualities specified.</li>
+      {% endunless %}
+    </ul>
+
+    {% comment %} Trade-off qualities - cross-linked from tradeoffs frontmatter {% endcomment %}
+    {% if page.tradeoffs and page.tradeoffs.size > 0 %}
+    <hr class="with-no-margin" />
+
+    <h2 class="section-heading qualities"><i class="fa fa-balance-scale"></i> Trade-offs</h2>
+    <p>This approach may negatively affect the following qualities:</p>
+
+    <ul class="posts no-bullets">
+      {% for tq in page.tradeoffs %}
+        {% assign tq_trimmed = tq | strip %}
+        {% for quality in all_qualities %}
+          {% assign quality_id = quality.permalink | split: "/" | last %}
+          {% if quality_id == tq_trimmed %}
+            <li>
+              <a href="{{ quality.permalink }}"><i class="fa fa-gem fa-xs as-bullet" style="color: var(--quality-text-color)"> </i> {{ quality.title }}</a>
+            </li>
+            {% break %}
+          {% endif %}
+        {% endfor %}
+      {% endfor %}
+    </ul>
+    {% endif %}
+
+    {% include article-footer.html page=page share=page.share %}
+  </article>
+</div>

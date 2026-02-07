@@ -182,6 +182,11 @@ h2.section-heading.standards {
   color: var(--standard-text-color);
 }
 
+h2.section-heading.approaches {
+  background-color: var(--approaches-background-color);
+  color: var(--approaches-text-color);
+}
+
 /* Page header colors for different collections */
 .panel.quality-header {
   background-color: var(--quality-background-color) !important;
@@ -208,6 +213,15 @@ h2.section-heading.standards {
 .panel.standards-header h1,
 .panel.standards-header h1 a {
   color: var(--standard-text-color) !important;
+}
+
+.panel.approaches-header {
+  background-color: var(--approaches-background-color) !important;
+}
+
+.panel.approaches-header h1,
+.panel.approaches-header h1 a {
+  color: var(--approaches-text-color) !important;
 }
 
 .panel.article-header {

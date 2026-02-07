@@ -27,49 +27,17 @@ requirements ("related to this quality") - Related qualities {% endcomment %}
 
     <hr class="with-no-margin" />
 
-    {% assign related_qualities = page.related | sort %}
-
-    <h2 class="section-heading qualities"><i class="fa fa-gem"></i> Related Qualities</h2>
-
-    {% assign all_qualities = site.qualities %}
-
-    <ul class="posts no-bullets">
-      {% assign number = 0 %} {% if page.related %} {% for quality in related_qualities %} {% assign
-      quality_title = quality | replace: "-", " " %} {% for whole_quality in all_qualities %} {%
-      assign check_title = whole_quality.title | downcase %} {% assign check_title_downcase =
-      check_title | replace: "-", " " %} {% if check_title_downcase == quality_title %} {% assign
-      number = 1 %}
-      <li>
-        <a href="{{whole_quality.permalink}}"
-          ><i class="fa fa-gem fa-xs as-bullet" style="color: var(--quality-text-color)"> </i>
-          {{whole_quality.title}}</a
-        >
-      </li>
-      {% break %} {% endif %} {% endfor %} {% endfor %} {% endif %} {% if number == 0 %} No related
-      qualities found. {% endif %}
-    </ul>
+    {% include directly-related-qualities.html item=page %}
 
     <hr class="with-no-margin" />
 
-    {% comment %} Find standards that reference this quality using the standards field in quality
-    front matter {% endcomment %} {% assign related_standards = "" | split: "" %} {% if
-    page.standards %} {% for standard_id in page.standards %} {% assign standard_id_trimmed =
-    standard_id | strip %} {% for standard in site.standards %} {% if standard.standard_id ==
-    standard_id_trimmed %} {% assign related_standards = related_standards | push: standard %} {%
-    break %} {% endif %} {% endfor %} {% endfor %} {% endif %} {% if related_standards.size > 0 %}
-    <h2 class="section-heading standards"><i class="fa fa-award"></i> Related Standards</h2>
-    <p>The following standards mention {{ page.title }}:</p>
-    <ul class="posts no-bullets">
-      {% for standard in related_standards %}
-      <li>
-        <a href="{{ standard.url | relative_url }}"
-          ><i class="fa fa-award fa-xs as-bullet" style="color: var(--standard-text-color)">
-          </i
-          >{{ standard.title }}</a
-        >
-      </li>
-      {% endfor %}
-    </ul>
-    {% endif %} {% include article-footer.html page=page share=page.share %}
+    {% include directly-related-approaches.html item=page %}
+
+    <hr class="with-no-margin" />
+
+    {% include directly-related-standards.html item=page %}
+
+
+    {% include article-footer.html page=page share=page.share %}
   </article>
 </div>

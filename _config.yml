@@ -86,6 +86,11 @@ collections:
     output: true
     hide: true
 
+## solution approaches (architectural tactics and patterns)
+  approaches:
+    output: true
+    hide: true
+    sort_by: title
 
 #
 # with this default, all files under /_qualities, _requirements etc
@@ -106,6 +111,11 @@ defaults:
       type: "standards"
     values:
       layout: standards
+      hide: "true"
+  - scope:
+      type: "approaches"
+    values:
+      layout: approach
       hide: "true"
 
 #

@@ -1,0 +1,31 @@
+{% assign related_qualities = include.item.related | sort %}
+
+<h2 class="section-heading qualities"><i class="fa fa-gem"></i> Related Qualities</h2>
+
+{% assign all_qualities = site.qualities %}
+
+<ul class="posts no-bullets">
+  {% assign number = 0 %}
+  {% if include.item.related %}
+    {% for quality in related_qualities %}
+      {% assign quality_title = quality | replace: "-", " " %}
+      {% for whole_quality in all_qualities %}
+        {% assign check_title = whole_quality.title | downcase %}
+        {% assign check_title_downcase = check_title | replace: "-", " " %}
+        {% if check_title_downcase == quality_title %}
+          {% assign number = 1 %}
+          <li>
+            <a href="{{ whole_quality.permalink }}">
+              <i class="fa fa-gem fa-xs as-bullet" style="color: var(--quality-text-color)"> </i>
+              {{ whole_quality.title }}
+            </a>
+          </li>
+          {% break %}
+        {% endif %}
+      {% endfor %}
+    {% endfor %}
+  {% endif %}
+  {% if number == 0 %}
+    No related qualities found.
+  {% endif %}
+</ul>
