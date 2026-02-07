@@ -2,7 +2,7 @@
 title: Effectiveness
 tags: [efficient]
 related: [efficiency]
-standards: [iso25022]
+standards: [iso25022, iso25019]
 permalink: /qualities/effectiveness
 ---
 

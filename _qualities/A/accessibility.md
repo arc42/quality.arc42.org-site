@@ -2,7 +2,7 @@
 title: Accessibility
 tags: [usable]
 related: [usability, inclusivity, interaction-capability, ease-of-use]
-standards: [iso26514, iso25024, ieee2857, wcag22, en301549]
+standards: [iso26514, iso25024, ieee2857, wcag22, en301549, iso25019]
 permalink: /qualities/accessibility
 ---
 

@@ -2,6 +2,7 @@
 title: Suitability
 tags: [usable, reliable, suitable]
 related: [usability, functionality, functional-completeness]
+standards: [iso25019]
 permalink: /qualities/suitability
 ---
 

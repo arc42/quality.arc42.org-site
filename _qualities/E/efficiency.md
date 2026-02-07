@@ -2,7 +2,7 @@
 title: Efficiency
 tags: [efficient]
 related: [performance, effectiveness]
-standards: [misra-c, iso25022]
+standards: [misra-c, iso25022, iso25019]
 permalink: /qualities/efficiency
 ---
 
