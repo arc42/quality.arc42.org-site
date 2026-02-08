@@ -50,6 +50,20 @@ a.hov.tags.req {
   margin-right: 1px;
 }
 
+a.hov.tags.approach {
+  line-height: 1.2;
+  background-color: var(--approaches-background-color);
+  color: var(--approaches-text-color);
+  border-radius: 11px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin-top: 3px;
+  margin-bottom: 3px;
+  margin-left: 10px;
+  margin-right: 1px;
+}
+
 a.hov.tags.standard {
   line-height: 1.2;
   background-color: var(--standard-background-color);

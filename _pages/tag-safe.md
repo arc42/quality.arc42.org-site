@@ -68,3 +68,9 @@ Quoted from [Wikipedia/Safety](https://en.wikipedia.org/wiki/Safety)
 <!-- include all requirements associated with this tag -->
 {% include one-requirement.liquid tag="safe"  %}
 
+<!-- include all approaches associated with this tag -->
+{% include one-approach.liquid tag="safe"  %}
+
+<!-- include all standards associated with this tag -->
+{% include one-standard.liquid tag="safe"  %}
+

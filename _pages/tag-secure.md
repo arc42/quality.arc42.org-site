@@ -56,3 +56,9 @@ permalink: /tag-secure/
 <!-- include all requirements associated with this tag -->
 {% include one-requirement.liquid tag="secure"  %}
 
+<!-- include all approaches associated with this tag -->
+{% include one-approach.liquid tag="secure"  %}
+
+<!-- include all standards associated with this tag -->
+{% include one-standard.liquid tag="secure"  %}
+

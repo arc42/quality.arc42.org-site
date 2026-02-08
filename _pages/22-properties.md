@@ -83,3 +83,39 @@ Consider an excerpt of our metamodel:
   {% endfor %}
   </ul>
 </div>
+
+### Properties and Approaches
+
+
+{% assign all_tags = "" | split: "" %}
+{% for approach in site.approaches %}
+  {% for tag in approach.tags %}
+    {% assign all_tags = all_tags | push: tag %}
+  {% endfor %}
+{% endfor %}
+
+
+{% assign tag_words_unique = all_tags | uniq | sort %}
+
+<div id="tags">
+  <ul class="tag-box inline">
+  {% for tag in tag_words_unique %}
+    {% assign approaches_count_for_tag = 0 %}
+    {% for approach in site.approaches %}
+      {% if approach.tags contains tag %}
+        {% assign approaches_count_for_tag = approaches_count_for_tag | plus: 1 %}
+      {% endif %}
+    {% endfor %}
+
+    {% if tag == "reliable" or tag == "flexible" or tag=="efficient" or tag == "usable" or tag == "safe" or tag == "secure" or tag == "suitable" or tag == "operable" %}
+    <a class="hov tags approach" href="/tag-{{ tag | cgi_escape }}"><b>{{ tag }}</b>
+       <span>{{ approaches_count_for_tag }}</span></a>
+
+    {% else %}
+        <!-- other tags in different color  -->
+        <li><a class="hov tags approach" href="#{{ tag | cgi_escape }}">{{ tag }}
+        <span>{{ approaches_count_for_tag }}</span></a></li>
+    {% endif %}
+  {% endfor %}
+  </ul>
+</div>

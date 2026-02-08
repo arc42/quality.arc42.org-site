@@ -81,3 +81,9 @@ The main idea of _usability_ is that a system shall be designed with (generalize
 <!-- include all requirements associated with this tag -->
 {% include one-requirement.liquid tag="usable"  %}
 
+<!-- include all approaches associated with this tag -->
+{% include one-approach.liquid tag="usable"  %}
+
+<!-- include all standards associated with this tag -->
+{% include one-standard.liquid tag="usable"  %}
+

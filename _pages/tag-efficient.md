@@ -81,3 +81,9 @@ Efficient, as we saw above, can mean several different things:
 <!-- include all requirements associated with this tag -->
 {% include one-requirement.liquid tag="efficient"  %}
 
+<!-- include all approaches associated with this tag -->
+{% include one-approach.liquid tag="efficient"  %}
+
+<!-- include all standards associated with this tag -->
+{% include one-standard.liquid tag="efficient"  %}
+

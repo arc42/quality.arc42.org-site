@@ -61,3 +61,9 @@ Being trustworthy or performing consistently well.
 <!-- include all requirements associated with this tag -->
 {% include one-requirement.liquid tag="reliable"  %}
 
+<!-- include all approaches associated with this tag -->
+{% include one-approach.liquid tag="reliable"  %}
+
+<!-- include all standards associated with this tag -->
+{% include one-standard.liquid tag="reliable"  %}
+

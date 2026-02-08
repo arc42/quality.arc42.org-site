@@ -1,0 +1,39 @@
+{% comment %}
+This file is "included" from each of the tag-efficient.md, tag-flexible.md etc files,
+as these pages need to display all related standards.
+{% endcomment %}
+
+{%- assign tag_to_find = include.tag -%}
+{%- if tag_to_find and tag_to_find != "" -%}
+
+{% assign category_to_find = tag_to_find %}
+{% case tag_to_find %}
+  {% when "safe" %}
+    {% assign category_to_find = "safety" %}
+  {% when "secure" %}
+    {% assign category_to_find = "security" %}
+  {% when "usable" %}
+    {% assign category_to_find = "usability" %}
+{% endcase %}
+
+<div class="panel standards-header" style="margin-top: 1rem">
+  <h2 style="margin: 0; padding: 1rem; color: var(--standard-text-color)">Standards related to #{{ include.tag }}</h2>
+</div>
+<div id="search-results">
+  {% assign filtered_standards = "" | split: "," %}
+  {% for standard in site.standards %}
+    {% if standard.categories contains category_to_find %}
+      {% assign filtered_standards = filtered_standards | push: standard %}
+    {% endif %}
+  {% endfor %}
+
+  {% if filtered_standards.size > 0 %}
+    {% for standard in filtered_standards %}
+      {% include standard-item.liquid standard=standard link=true %}
+    {% endfor %}
+  {% else %}
+    <p>No standards categorized under #{{ category_to_find }} yet.</p>
+  {% endif %}
+</div>
+
+{%- endif -%}
