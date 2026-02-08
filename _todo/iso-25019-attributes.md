@@ -1,3 +1,0 @@
-- Beneficialness
-- Freedom from Risk
-- Acceptability
