@@ -1,15 +1,15 @@
 ---
 layout: page
-title: Qualities by Name
+title: Quality Characteristics
 permalink: /qualities/
 order: 20
 ---
 
 <div id="top"></div>
 
-Here you find a list of several _qualities_ (meaning: desirable, expected or required properties) of IT systems.  
+Here you find a list of several quality characteristics (desirable, expected or required qualities) of IT systems.  
 Listed below each quality, you find 
-*<i class="fa fa-tags" style="color: #1675b9;"></i> <span style="color: #1675b9;">related quality properties</span>*.
+*<i class="fa fa-tags" style="color: #1675b9;"></i> <span style="color: #1675b9;">related quality dimensions (tags)</span>*.
 
 
 {% assign letter_string = "A" %}

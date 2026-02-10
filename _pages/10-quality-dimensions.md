@@ -1,19 +1,20 @@
 ---
 layout: page
-title: Quality Properties
-permalink: /properties/
-order: 22
+title: Quality Dimensions
+permalink: /dimensions/
+order: 10
 ---
 
-Properties (also known as _tags_ or _labels_) are used to structure the fairly large set of _qualities_.
+Dimensions (also known as _tags_ or _labels_) are used to structure the fairly large set of quality characteristics.
+The eight top-level dimensions overlap by design and are not orthogonal.
 
 Consider an excerpt of our metamodel:
 
 
-![Properties and qualities](/images/Q42-properties-tags.webp)
+![Dimensions and quality characteristics](/images/Q42-properties-tags.webp)
 
 
-### Properties and Qualities
+### Dimensions and Quality Characteristics
 
 {% assign all_tags = "" | split: "" %}
 {% for quality in site.qualities %}
@@ -48,7 +49,7 @@ Consider an excerpt of our metamodel:
   </ul>
 </div>
 
-### Properties and Quality-Requirements
+### Dimensions and Quality Requirements
 
 
 {% assign all_tags = "" | split: "" %}
@@ -84,7 +85,7 @@ Consider an excerpt of our metamodel:
   </ul>
 </div>
 
-### Properties and Approaches
+### Dimensions and Approaches
 
 
 {% assign all_tags = "" | split: "" %}

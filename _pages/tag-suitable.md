@@ -5,7 +5,7 @@ hide: true
 permalink: /tag-suitable/
 ---
 
-_Suitable_ might be the most generic term within the Q42 properties.
+_Suitable_ might be the most generic term within the Q42 dimensions.
 
 <div class="arc42-help" markdown="1">
 
@@ -63,4 +63,3 @@ That is, from our perspective, a matter of taste.
 
 <!-- include all standards associated with this tag -->
 {% include one-standard.liquid tag="suitable"  %}
-

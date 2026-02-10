@@ -40,7 +40,7 @@ Typical acceptance criteria might include:
 
 * Effort or number/types of changed artifacts to handle changes 
 * Time or money spent for such changes 
-* Side-effects on other system properties
+* Side-effects on other system dimensions
 
 
 ### Scenario Response Measures from [Bass et al.]
@@ -82,4 +82,3 @@ Typical acceptance criteria might include:
 
 <!-- include all standards associated with this tag -->
 {% include one-standard.liquid tag="flexible"  %}
-

@@ -2,7 +2,7 @@
 layout: page
 title: References
 permalink: /references/
-order: 70
+order: 85
 ---
 
 <a id="astrotech"></a>
@@ -190,4 +190,3 @@ G. Starke and A. Lorz, Software Architecture Foundation: CPSA Foundation® Exam 
 S. Robertson and J. Robertson, Volere Requirements Specification Template
 
 Available [online](https://www.cin.ufpe.br/~in1020/docs/publicacoes/Volere_template16.pdf)
-

@@ -40,7 +40,7 @@ class Legend {
         // Filter legend items based on node types present in the dataset
         const legendItemsData = [
             { type: "central", label: "Central Node" },
-            { type: "property", label: "Properties" },
+            { type: "property", label: "Dimensions" },
             { type: "quality", label: "Qualities" },
             { type: "example", label: "Examples" }
         ].filter(item => this.nodeTypes.includes(item.type));

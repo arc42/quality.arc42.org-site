@@ -10,15 +10,15 @@ permalink: /articles/arc42-quality-model
 The arc42 quality model Q42 (pronounced "Kju-Fortytwo" or "Kju-Four-Two") is a simple, pragmatic yet effective approach to product and system quality.
 It starts with **stakeholders' expectations and requirements**.
 
-Based upon typical stakeholder needs, Q42 consists of just 8 key system properties, which are sufficient to cover most, if not all, required, desirable or expected of the more than 100 [_traditional_ qualities](/qualities).
+Based upon typical stakeholder needs, Q42 consists of just 8 key system dimensions, which are sufficient to cover most, if not all, required, desirable or expected of the more than 100 [_traditional_ qualities](/qualities).
 
 ![arc42 quality model](/images/arc42-system-qualities-overview.svg)
 
 But let's start at the beginning:
 ### Goals for Q42
 
-* minimal, yet covering most of the traditional product and system quality properties
-* simple and understandable explanations of our top-level properties
+* minimal, yet covering most of the traditional product and system quality dimensions
+* simple and understandable explanations of our top-level dimensions
 * supported by extensive and free (online) documentation
 * free and open-source, maintained in a public repository
 * technology- and vendor-neutral 
@@ -27,16 +27,16 @@ But let's start at the beginning:
 ### Fresh Approach
 Existing models like ISO-25010 propagated a fixed hierarchy (like a tree) of system qualities.
 Within this _tree_, it is often difficult or impossible to determine to which of the top-level characteristics a particular and specific quality requirement belongs. 
-Therefore, Q42 breaks new ground by proposing only 8 adjectives (like _flexible_) as core quality properties.
+Therefore, Q42 breaks new ground by proposing only 8 adjectives (like _flexible_) as core quality dimensions.
 
 It uses adjectives instead of nouns (like _flexibility_), which better reflects stakeholder expectations like _"I need XYZ to be flexible"_.
-These core properties (like reliable, flexible, usable, efficient etc) are used like labels or tags:
+These core dimensions (like reliable, flexible, usable, efficient etc) are used like labels or tags:
 Specific quality requirements might have several of such labels or tags.
 
 It has been unclear to me for years that those responsible for ISO and other quality models write about "quality attributes", but fail to use that type of words in their respective models.
 But that is a minor thing, despite being immediately visible.
 
-To facilitate stakeholder communication and understanding, Q42 contains definitions and explanations for more than 100 different _traditional_ system or product qualities, all labelled or tagged with one or several of the 8 key properties.
+To facilitate stakeholder communication and understanding, Q42 contains definitions and explanations for more than 100 different _traditional_ system or product qualities, all labelled or tagged with one or several of the 8 key dimensions.
 
 #### Example Quality Requirements
 
@@ -47,7 +47,7 @@ You can use these examples as a starting point to find and describe quality requ
 All terms and example-requirements are cross-referenced (_hyperlinked_). 
 That enables different _access patterns_ to this website:
 
-1. Start with the eight [fundamental and generic **properties**](/properties), and dive into details from these.
+1. Start with the eight [fundamental and generic **dimensions**](/dimensions), and dive into details from these.
 2. Start with any specific quality, and navigate to the appropriate example(s) from there. Look through the extensive list of {{ quality_posts | size }} of these [**specific qualities**](/qualities). 
 3. Start with asking your stakeholders for their generic or specific requirements - and then continue with 1. or 2.
 4. Finally, you might read through the list of [**example requirements**](/requirements).
@@ -83,7 +83,7 @@ These tags should be almost self-explanatory, but I'll try to clarify them with 
 | `#efficient`| fast, responsive, efficient in terms of memory, CPU, threads, network and other resources, efficiently maintainable and operable |
 | `#usable`| easy and pleasurable to use, attractive, aesthetic|
 | `#operable`| easy to install, operate, monitor and administer, adequate operational costs|
-| `#suitable`| providing suitable properties and responsibilities or functions |
+| `#suitable`| providing suitable characteristics and responsibilities or functions |
 | `#secure`| consistent, accountable, confidential, integrous |
 | `#safe`| fail-safe, isolating faults, warns of hazards early, identifies risks early |
 

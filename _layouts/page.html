@@ -4,9 +4,9 @@ layout: default
 
 <div class="article-wrapper">
     <article>
-        {% if page.collection == 'qualities' or page.name contains 'tag-' or page.name == '22-properties.md' or page.name == '20-qualities.md' %}
+        {% if page.collection == 'qualities' or page.name contains 'tag-' or page.name == '10-quality-dimensions.md' or page.name == '20-quality-characteristics.md' %}
         {% include quality-header.liquid page=page link=false share=page.share %}
-        {% elsif page.collection == 'approaches' or page.name == '36-approaches.md' %}
+        {% elsif page.collection == 'approaches' or page.name == '70-solution-approaches.md' %}
         {% include approach-header.liquid page=page link=false share=page.share %}
         {% else %}
         {% include article-header.html page=page link=false share=page.share %}
