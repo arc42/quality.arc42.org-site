@@ -1,6 +1,6 @@
 ---
 title: Code Complexity
-tags: [efficient]
+tags: [efficient, usable]
 related: [understandability, legibility, clarity, conciseness, consistency, readability, maintainability]
 permalink: /qualities/code-complexity
 ---
