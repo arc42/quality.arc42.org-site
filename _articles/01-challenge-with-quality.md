@@ -8,7 +8,7 @@ permalink: /articles/challenge-with-quality
 Quality is one of the central topics of development teams. 
 Approaches such as _Domain-Driven Design_, help us to get our systems well-structured, but performance, robustness, flexibility, security and other important properties are left out. 
 Therefore, I propose _Quality-Driven Software Architecture_ as a complement:
-A practical approach to achieve essential quality properties.
+A practical approach to achieve essential quality characteristics.
 
 
 </div><br>
@@ -126,6 +126,5 @@ You have to clarify two dimensions when you want to have specific information on
 
 1. What properties are important (e.g. performance, flexibility, security, safety...)
 2. What level of these properties is required, desired or expected from the system, its development or operation?
-
 
 

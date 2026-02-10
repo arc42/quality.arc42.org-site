@@ -65,7 +65,7 @@ export class GraphRenderer {
         // Persistent selection state (used to keep dimming active on click)
         this.selectionActive = false;
         this.selection = { id: null, connected: new Set() };
-        // Legend-driven type visibility (properties and root are always visible)
+        // Legend-driven type visibility (dimensions and root are always visible)
         this.typeVisibility = {
             quality: true,
             requirement: false,
@@ -470,7 +470,7 @@ export class GraphRenderer {
                             }
                         });
                     } else {
-                        // Fallback to properties (original behavior)
+                        // Fallback to dimensions (original behavior)
                         qNbs.forEach(pId => {
                             const pNode = nodeById.get(pId);
                             if (!pNode || pNode.qualityType !== NODE_TYPES.PROPERTY) return;

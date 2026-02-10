@@ -572,7 +572,7 @@ export class FullGraph extends Graph {
                             link.source.connectedHighlighted = true;
                         }
                     });
-                    // Then collect properties 2-hop via qualities
+                    // Then collect dimensions 2-hop via qualities
                     const qualLookup = new Set(qualities);
                     this.renderer.links.each(function (link) {
                         if (qualLookup.has(link.source.id) && isProperty(link.target)) {
@@ -650,7 +650,7 @@ export class FullGraph extends Graph {
     }
 
     /**
-     * Compute connected node ids for a given standard id (qualities, properties, requirements, related qualities).
+     * Compute connected node ids for a given standard id (qualities, dimensions, requirements, related qualities).
      * Robust to varying link endpoint shapes.
      * @param {string} stdId
      * @returns {Set<string>} connected node ids
@@ -678,7 +678,7 @@ export class FullGraph extends Graph {
         });
 
         const qualLookup = new Set(connectedQuals);
-        // Second pass: find properties and requirements attached to those qualities
+        // Second pass: find dimensions and requirements attached to those qualities
         this.renderer.links.each(function (link) {
             const sId = getId(link.source);
             const tId = getId(link.target);
@@ -691,7 +691,7 @@ export class FullGraph extends Graph {
         });
 
         // Intentionally exclude "related qualities" from the selection-connected set.
-        // Keeping only direct qualities and their properties/requirements makes dimming
+        // Keeping only direct qualities and their dimensions/requirements makes dimming
         // visually meaningful (otherwise too much stays undimmed and dimming appears ineffective).
         return new Set([...connectedQuals, ...props, ...reqs]);
     }

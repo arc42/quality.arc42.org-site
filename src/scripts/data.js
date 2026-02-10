@@ -6,7 +6,7 @@ import yaml from "js-yaml";
 /**
  * @typedef {Object} FrontmatterData
  * @property {string} title - The page title
- * @property {string|string[]} tags - Space-separated string or array, listing system properties
+ * @property {string|string[]} tags - Space-separated string or array, listing system dimensions
  * @property {string|string[]} related - Comma-separated string or array, listing qualities
  * @property {string} permalink - The link to the page
  * @property {string|string[]} [standards] - Comma-separated string or array, listing relevant standards
@@ -444,7 +444,7 @@ async function generateData() {
             }
             // Edge: standard -> quality
             edges.add({ source: s, target: qId });
-            // Track properties for this standard (via the current quality)
+            // Track dimensions for this standard (via the current quality)
             const propsOfQuality = nodeConnections.qualityToProperties.get(qId);
             if (propsOfQuality && propsOfQuality.size) {
                 let set = standardToProperties.get(key);

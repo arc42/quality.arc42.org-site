@@ -8,7 +8,7 @@ order: 30
 Here you find <span style="color: var(--req-text-color)" markdown="1">
 <i class="fa fa-bullseye"></i> _quality requirements_ </span>
 sorted by <span style="color: var(--blue-text-color)">
-<i class="fa fa-tags"></i> properties (tags) </span>. <br>
+<i class="fa fa-tags"></i> dimensions (tags) </span>. <br>
 
 Within the Software Engineering literature you might find the term "quality scenario" for such examples.
 That term was coined by authors from the Software Engineering Institute (SEI), especially [Len Bass et al.](/references/#bass2021software)
@@ -21,7 +21,7 @@ Read more on the **[background of requirements](/articles/specify-quality-requir
 
 {% assign valid_tags = site.data.standard_tags.tags | sort%}
 
-## Properties and Quality-Requirements
+## Dimensions and Quality Requirements
 
 <div id="tags">
   <ul class="tag-box inline">

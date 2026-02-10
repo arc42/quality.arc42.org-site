@@ -28,7 +28,7 @@ Now let's consider the terms in more detail:
 
 | Term | Icon | Explanation          |
 | :--- | :--  | :--- |
-| **Dimension**|  <i class="fa fa-tag"/>| Our top-level dimensions (#flexible, #efficient, #reliable etc.). Find the full list plus the mapping to qualities [**here**](/properties). These terms are abstract, and will be interpreted individually by different stakeholders. They can be used as starting points, but need to be detailed. Q42 relates each of these dimensions to 10-30+ different specific quality characteristics. The dimensions intentionally overlap and are not orthogonal. |
+| **Dimension**|  <i class="fa fa-tag"/>| Our top-level dimensions (#flexible, #efficient, #reliable etc.). Find the full list plus the mapping to qualities [**here**](/dimensions). These terms are abstract, and will be interpreted individually by different stakeholders. They can be used as starting points, but need to be detailed. Q42 relates each of these dimensions to 10-30+ different specific quality characteristics. The dimensions intentionally overlap and are not orthogonal. |
 | Specific **Quality Characteristic**|  <i class="fa fa-gem" style="color: var(--quality-background-color);"/>| The detailed and specific terms, like  accessibility, accountability, accuracy etc. Currently, Q42 collects more than 180 such terms under [**Quality Characteristics**](/qualities). These terms are usually well-defined, but need examples or acceptance criteria  to really help in developing systems. Q42 contains examples for many (hopefully all, at some day in the future) |
 | **Stakeholder** | | People, roles or organizations that need, want or require certain quality [**requirements**](/requirements/) for their systems. |
 | **Examples**  | <i class="fa fa-bullseye" style="color: var(--req-text-color);"/>  | These are the specific requirements stakeholders have for a system or product, often expressed in the form of quality scenarios. They should facilitate stakeholder communication by enabling a common understanding of the _good enough_. Q42 provides >50 of these [**examples**](/requirements/) |
@@ -57,7 +57,7 @@ Now let's consider the terms in more detail:
 
 You can approach in several ways:
 
-1. Inside-out, starting with the top-level [**dimensions**](/properties) 
+1. Inside-out, starting with the top-level [**dimensions**](/dimensions) 
 2. Outside-in, by reading through the [extensive list of **quality characteristics**](/qualities/).
 3. By asking your stakeholders for terms (either dimensions or specific quality characteristics) they consider important, and then continue with steps 1 or 2.
 4. By reading the [**examples** of quality requirements](/requirements).
@@ -71,7 +71,7 @@ All these approaches are described below.
 Let's assume that your stakeholders want a "flexible" system. 
 This is completely unsuitable as a requirement because it is too unspecific. 
 
-You could search under the term "#flexible" (to be found under "[Quality Dimensions](/properties/)").
+You could search under the term "#flexible" (to be found under "[Quality Dimensions](/dimensions/)").
 There you find a collection of related terms ("Qualities tagged with #flexible"), and also a collection of exemplary quality requirements of this generic term.
 
 

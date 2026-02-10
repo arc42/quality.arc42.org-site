@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Quality Dimensions
-permalink: /properties/
+permalink: /dimensions/
 order: 22
 ---
 
