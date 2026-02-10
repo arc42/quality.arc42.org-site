@@ -99,7 +99,7 @@ These dimensions can overlap; they are intentionally not orthogonal.
 | [**#usable**](/tag-usable/) ({{ tags_usable_count }}) | Enable users to perform their tasks safely, effectively and efficiently while enjoying the experience |
 | [**#safe**](/tag-safe/) ({{ tags_safe_count }}) | Avoid states in which human life, health, property or the environment is endangered, detects and warns of risks and hazards.|
 | [**#secure**](/tag-secure/) ({{ tags_secure_count }}) | Protect information and data so that persons or other products have only access to an extend appropriate to their types and levels, and to defend against attack patterns by malicious actors |
-| [**#suitable**](/tag-suitable/) ({{ tags_suitable_count }}) | An abstract property, applicable to various objects. Provide properties that meet stated and implied needs of intended stakeholders. |
+| [**#suitable**](/tag-suitable/) ({{ tags_suitable_count }}) | An abstract dimension, applicable to various objects. It addresses characteristics that meet stated and implied needs of intended stakeholders. |
 | [**#operable**](/tag-operable/) ({{ tags_operable_count }}) | Easy to deploy, operate, monitor and control |
 
 <small>The numbers at the tags denote the qualities plus the requirements that carry that tag.</small>
