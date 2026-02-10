@@ -28,7 +28,7 @@ Now let's consider the terms in more detail:
 
 | Term | Icon | Explanation          |
 | :--- | :--  | :--- |
-| **Dimension**|  <i class="fa fa-tag"/>| Our 8 top-level dimensions (#flexible, #efficient, #reliable etc.). Find the full list plus the mapping to qualities [**here**](/properties). These terms are highly abstract, and will be interpreted individually by different stakeholders. They can be used as starting points, but need to be detailed. Q42 relates each of these dimensions to 10-30+ different specific quality characteristics. |
+| **Dimension**|  <i class="fa fa-tag"/>| Our 8 top-level dimensions (#flexible, #efficient, #reliable etc.). Find the full list plus the mapping to qualities [**here**](/properties). These terms are highly abstract, and will be interpreted individually by different stakeholders. They can be used as starting points, but need to be detailed. Q42 relates each of these dimensions to 10-30+ different specific quality characteristics. The dimensions intentionally overlap and are not orthogonal. |
 | Specific **Quality Characteristic**|  <i class="fa fa-gem" style="color: var(--quality-background-color);"/>| The detailed and specific terms, like  accessibility, accountability, accuracy etc. Currently, Q42 collects more than 180 such terms under [**Quality Characteristics**](/qualities). These terms are usually well-defined, but need examples or acceptance criteria  to really help in developing systems. Q42 contains examples for many (hopefully all, at some day in the future) |
 | **Stakeholder** | | People, roles or organizations that need, want or require certain quality [**requirements**](/requirements/) for their systems. |
 | **Examples**  | <i class="fa fa-bullseye" style="color: var(--req-text-color);"/>  | These are the specific requirements stakeholders have for a system or product, often expressed in the form of quality scenarios. They should facilitate stakeholder communication by enabling a common understanding of the _good enough_. Q42 provides >50 of these [**examples**](/requirements/) |
@@ -37,17 +37,17 @@ Now let's consider the terms in more detail:
 | **Standard**  | <i class="fa fa-award" style="color: var(--standard-background-color);"/>| Numerous international standards describe/prescribe/care about certain aspects of quality. Important ones are ISO-25000:2023, ISO-27001 or MISRA.  |
 
 
-## Three Aspects of Quality
+## Three Axis of Quality
 
-![3 Aspects of Quality](/images/articles/metamodel/terms-3-dimensions.svg )
+![3 Axis of Quality](/images/articles/metamodel/terms-3-axis.webp )
 
 <dl>
-  <dt><strong>Aspect 1: Dimensions & Characteristics</strong></dt>
-  <dd>What characteristics, attributes or properties are relevant (like availability, latency, speed or maintainability). On this site, we use the color blue to denote quality dimensions and characteristics.</dd>
-  <dt><strong>Aspect 2: Acceptance Criteria</strong></dt>
-  <dd>What amount, size or extent of any characteristic (like 99% availability...). We use the colour red for these criteria or examples.</dd>
-  <dt><strong>Aspect 3: Stakeholder</strong></dt>
-  <dd>For whom or what roles/organizations is this quality/property relevant?</dd>
+  <dt><strong>Axis 1: Dimensions & Characteristics</strong></dt>
+  <dd>What characteristics, attributes or dimensions are relevant (like availability, latency, speed or maintainability). On this site, we use the color blue to denote quality dimensions and characteristics.</dd>
+  <dt><strong>Axis 2: Acceptance Criteria</strong></dt>
+  <dd>What amount, size or extent of any characteristic (like 99% availability...). We use the colour red for these criteria, metrics, acceptance criteria or examples.</dd>
+  <dt><strong>Axis 3: Stakeholder</strong></dt>
+  <dd>For whom or what roles/organizations is this quality or requirement relevant?</dd>
 </dl>
 
 

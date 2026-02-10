@@ -32,7 +32,7 @@ View the full interactive quality graph **[here](/full-quality-graph)**.
 The arc42 quality model Q42 (pronounced "Kju-Fortytwo" or "Kju-Four-Two") is a simple, pragmatic yet effective approach
 to product and system quality.
 It starts with stakeholders' expectations and requirements.
-From these, it derives 8 important system properties, which are sufficient to cover most, if not all, required,
+From these, it derives 8 important system dimensions (tags), which are sufficient to cover most, if not all, required,
 desirable or expected of the more than 100 _traditional_ qualities.
 
 Find out more in our **[introduction to the Q42 quality model](/articles/arc42-quality-model)**
@@ -53,8 +53,9 @@ On this site you find:
 * several [articles with background information](/articles) on quality
 * a brief glossary of quality-related terms
 
-Qualities and example-requirements are organized along the following top-level properties (attributes or _tags_), and cross-referenced.
-A single quality attribute (like "availability") might have multiple properties (#reliable, #usable and #safe, in this case).
+Qualities and example-requirements are organized along the following top-level dimensions (attributes or _tags_), and cross-referenced.
+A single quality attribute (like "availability") might belong to multiple dimensions (#reliable, #usable and #safe, in this case).
+These dimensions can overlap; they are intentionally not orthogonal.
 
 {% comment %}Count tags from both qualities and requirements collections{% endcomment %}
 
@@ -90,7 +91,7 @@ A single quality attribute (like "availability") might have multiple properties 
 {% assign tags_operable_requirements = site.requirements | where_exp: "item", "item.tags contains 'operable'" %}
 {% assign tags_operable_count = tags_operable_qualities.size | plus: tags_operable_requirements.size %}
 
-| Top-level property                                   | Explanation                  |
+| Top-level dimension                                  | Explanation                  |
 |:-----------------------------------------------------|:-----------------------------|
 | [**#reliable**](/tag-reliable/) ({{ tags_reliable_count }}) | Perform specified functions under specified conditions without interruptions or failures |
 | [**#flexible**](/tag-flexible/) ({{ tags_flexible_count }}) | Serve a different or expanded set of requirements, the ease with which the product can be adapted to changes in its requirements, contexts of use, or system environment. Synonyms: modifiable, adjustable, changeable, versatile |
