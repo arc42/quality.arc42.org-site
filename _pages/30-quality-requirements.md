@@ -1,6 +1,6 @@
 ---
 layout: page_requirements
-title: Examples of Quality Requirements
+title: Quality Requirements
 permalink: /requirements/
 order: 30
 ---

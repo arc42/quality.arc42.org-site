@@ -1,8 +1,8 @@
 ---
 layout: page_standards
-title: Standards
+title: Quality Standards
 permalink: /standards/
-order: 50
+order: 40
 ---
 
 {::comment}

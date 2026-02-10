@@ -15,7 +15,7 @@ baseurl:
 # basic settings
 #
 title: arc42 Quality Model
-description: quality attributes, explained.
+description: quality characteristics, explained.
 avatar: /assets/img/arc42logosquare.webp
 favicon: /assets/img/arc42logosquare.webp
 language: en
@@ -156,7 +156,7 @@ exclude:
   - package-lock.json
   - build.js
   - src/
-  - _todo/
+  - TODO/
   - .prettierrc
   - CLAUDE.md
   - cheat-sheet.*

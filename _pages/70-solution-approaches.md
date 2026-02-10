@@ -2,7 +2,7 @@
 layout: page
 title: Solution Approaches
 permalink: /approaches/
-order: 36
+order: 70
 ---
 
 Solution approaches are **architectural tactics and patterns** that help achieve specific quality attributes. They describe *how* to implement qualities, bridging the gap from quality requirements to concrete solutions.

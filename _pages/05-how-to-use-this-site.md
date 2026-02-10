@@ -2,7 +2,7 @@
 layout: page
 title: How to Use this Site
 permalink: /how-to-use-this-site/
-order: 10
+order: 5
 ---
 
 This site supports you in defining specific quality requirements for your system.
@@ -84,5 +84,5 @@ Again, you will find related qualities and examples on the detail-pages
 
 ### Start with Examples
 
-The third option starts with the [examples of quality requirements](/requirements).
-These are automatically mapped to the dimensions and low-level quality characteristics.
+The third option starts with the [examples of specific requirements](/requirements).
+These are automatically mapped to the dimensions and quality characteristics.
