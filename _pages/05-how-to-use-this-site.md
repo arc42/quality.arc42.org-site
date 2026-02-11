@@ -11,7 +11,7 @@ To make the best use, you should become familiar with our terminology.
 
 ## Our _Domain Language_
 
-![Q42 explanatory **model**](/images/articles/metamodel/q42-metamodel-new.webp)
+![Q42 domain language](/images/articles/metamodel/q42-metamodel-new.webp)
 
 Let's explain some terms, starting with an example:
 

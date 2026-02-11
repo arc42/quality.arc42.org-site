@@ -58,6 +58,13 @@ This will build the site and start a web server on port 4000.
 In case you already had the environment spun up, run `docker compose down` to stop the server so that changes in the
 docker-compose.yml file are applied.
 
+Alternatively, use the provided Makefile targets:
+
+| Command | Description |
+|---------|-------------|
+| `make dev` | Start the development environment (`docker compose up`) |
+| `make clean` | Remove the generated `_site` directory |
+
 Notes:
 - The esbuild service will run `npm run data` once on startup to generate graph data under `assets/data`.
 - The esbuild service will also run `npm run test:links` to validate all internal links.
