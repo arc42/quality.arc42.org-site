@@ -9,10 +9,11 @@ permalink: /tag-flexible/
 
 Easy to:
 
-* change to new or modified requirements
-* bring into a new or modified execution environment (e.g. new hardware, operating system or cloud provider)
-* handle changed workload
-  
+* adapt to changed contexts of use and environments
+* run in new or modified execution environments (hardware, OS, cloud provider, region)
+* handle changed workload profiles
+* configure or tailor behavior without invasive redesign
+
 
 </div>
 
@@ -31,16 +32,22 @@ Easy to:
 
 Flexible, as we saw above, means "_adaptable to change_".
 
-When defining what exactly _#flexible_ shall mean for a specific system and specific stakeholders, we need to consider the following questions:
+For Q42, _#flexible_ focuses on adaptation to external context and runtime/operational variability.
+Developer-focused changeability concerns (e.g. analyzability, modifiability, testability) belong primarily to [#maintainable](/tag-maintainable).
 
-* what type of change (e.g. changed functionality, changed quality requirements, changed workload, changed infrastructure) 
-* when does this change occur or when do people want to respond to the changes: at development-, compile/build-, installation-, startup- or runtime?
+When defining what exactly _#flexible_ shall mean for a specific system and stakeholders, we should consider:
+
+* Which external changes are expected (infrastructure, workload, integrations, locales, user/task context)?
+* At which point adaptation is needed (installation, deployment, startup, runtime)?
+* Which adaptations must be configuration-driven vs requiring rollout/redeployment?
 
 Typical acceptance criteria might include:
 
-* Effort or number/types of changed artifacts to handle changes 
-* Time or money spent for such changes 
-* Side-effects on other system dimensions
+* Time/effort to deploy to a new environment (e.g. cloud provider/region/OS)
+* Time/effort to reconfigure behavior for a new context of use
+* Performance/SLA impact while scaling up or down
+* Number of integration endpoints/protocol variants supported without redesign
+* Side-effects on reliability, security, usability, and operability
 
 
 ### Scenario Response Measures from [Bass et al.]
@@ -61,14 +68,14 @@ Typical acceptance criteria might include:
 
 | Stakeholder | (potential) Expectation for _flexible_ |
 |:--- |:--- |
-| User ||
-| Product-Owner | |
-| Management |  |
-| Developer |  |
-| Tester | |
-| Admin |   |
-| Domain-Expert |  |
-| Others |   |
+| User | behavior can be tailored to usage context, language, and channel |
+| Product-Owner | product can support adjacent use cases/markets without re-architecture |
+| Management | low business risk and cost when market/context shifts require adaptation |
+| Developer | extension points and configuration options support context adaptation (internal maintainability is covered by [#maintainable](/tag-maintainable)) |
+| Tester | adaptations can be validated across supported environment/context variants |
+| Admin | easy environment migration, scaling, and runtime configuration |
+| Domain-Expert | business rules can be parameterized for variant contexts |
+| Others | partner/integration interfaces can evolve with controlled impact |
 
 
 <!-- include all qualities associated with this tag -->
