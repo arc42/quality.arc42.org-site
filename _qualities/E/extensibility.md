@@ -1,6 +1,6 @@
 ---
 title: Extensibility
-tags: [flexible]
+tags: [flexible, maintainable]
 related: [adaptability, modifiability, changeability, flexibility]
 standards: [hl7]
 permalink: /qualities/extensibility

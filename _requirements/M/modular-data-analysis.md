@@ -1,6 +1,6 @@
 ---
 title: "Modular System for Data Analysis"
-tags: [efficient, flexible]
+tags: [efficient, flexible, maintainable]
 related: [composability, modularity, stability]
 permalink: /requirements/modular-system-for-data-analysis
 ---

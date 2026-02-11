@@ -1,6 +1,6 @@
 ---
 title: "Efficient update of annual accounting report"
-tags: [efficient, flexible]
+tags: [efficient, flexible, maintainable]
 related: [efficiency, maintainability, changeability]
 permalink: /requirements/annual-tax-update
 ---

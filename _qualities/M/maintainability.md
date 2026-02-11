@@ -1,7 +1,7 @@
 ---
 title: Maintainability
 aka: [Supportability]
-tags: [flexible]
+tags: [maintainable]
 related: [flexibility, adaptability, changeability, configurability, modularity]
 standards:
   [
