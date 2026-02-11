@@ -2,7 +2,7 @@
 
 ## Goal
 Rename the Q42 terminology to:
-- **Dimensions** = the 8 top-level tags/pillars (formerly “properties”).
+- **Dimensions** = the 9 top-level tags/pillars (formerly “properties”).
 - **Quality characteristics** (short: characteristics) = the 189+ specific qualities.
 - **Facets** = the former “three dimensions of quality” model.
 
@@ -14,9 +14,9 @@ Graphics will be updated manually by Gernot (no file changes for images).
 
 ## Ground Rules
 - **Permalinks will change** where we rename `/properties/` and `tag-<abc>` pages. Provide redirects where possible.
-- Avoid global search/replace. Change only when “property/properties” refers to the 8 pillars.
+- Avoid global search/replace. Change only when “property/properties” refers to the 9 pillars.
 - Use “quality characteristics” on first mention, then “characteristics” where clear.
-- The eight **Dimensions** overlap; explicitly avoid implying orthogonality.
+- The nine **Dimensions** overlap; explicitly avoid implying orthogonality.
 
 ## Change Plan (Detailed)
 1. **Core vocabulary + meta model pages**
@@ -24,7 +24,7 @@ Graphics will be updated manually by Gernot (no file changes for images).
      - `/Users/gernotstarke/projects/arc42/quality.arc42.org-site/_pages/10-how-to-use-this-site.md`
      - `/Users/gernotstarke/projects/arc42/quality.arc42.org-site/_pages/1-home.md`
      - `/Users/gernotstarke/projects/arc42/quality.arc42.org-site/_pages/22-properties.md` (title + body; **permalink will change**)
-   - Replace “Property/Properties” (8 pillars) → “Dimension/Dimensions (tags)”.
+   - Replace “Property/Properties” (9 pillars) → “Dimension/Dimensions (tags)”.
    - Replace “qualities” (189 list) → “quality characteristics” where it refers to the list.
    - Rename “Three Dimensions of Quality” → “Three Facets of Quality”.
    - Add a short note near metamodel diagram: “In the diagram, ‘property’ corresponds to what we now call a dimension (tag).”
@@ -79,7 +79,7 @@ Graphics will be updated manually by Gernot (no file changes for images).
    - Update only where it aligns with the new taxonomy.
 
 9. **QA checklist**
-   - Verify that the 8 dimensions are still shown as tags in `/properties` (renamed to “dimensions”).
+   - Verify that the 9 dimensions are still shown as tags in `/properties` (renamed to “dimensions”).
    - Verify that “Three Facets of Quality” reads consistently.
    - Spot-check a few pages for mixed usage (e.g., “property” in old sense).
    - No broken links due to title changes.
@@ -92,7 +92,7 @@ Graphics will be updated manually by Gernot (no file changes for images).
 **Title**: Refactor metamodel terminology: Dimensions + Quality Characteristics + Facets
 
 **Context**
-We will rename the eight top-level “properties/tags” to **Dimensions**, the 189+ “qualities” to **Quality Characteristics**, and the old “Three Dimensions of Quality” model to **Three Facets of Quality**. Graphics will be updated separately by Gernot.
+We will rename the nine top-level “properties/tags” to **Dimensions**, the 189+ “qualities” to **Quality Characteristics**, and the old “Three Dimensions of Quality” model to **Three Facets of Quality**. Graphics will be updated separately by Gernot.
 
 **Why**
 - Reduce confusion about “property” vs. quality attribute.
@@ -100,14 +100,14 @@ We will rename the eight top-level “properties/tags” to **Dimensions**, the 
 - Make stakeholder communication clearer and more consistent.
 
 **Decisions**
-- 8 pillars = **Dimensions** (tags, overlapping, not orthogonal).
+- 9 pillars = **Dimensions** (tags, overlapping, not orthogonal).
 - 189+ items = **Quality Characteristics** (short: characteristics).
 - “Three Dimensions of Quality” → **Three Facets of Quality**.
 - Rename `/properties/` path to `/dimensions/` (or agreed final path).
 - Rename `tag-<abc>` pages to new dimension pages (naming scheme to be chosen).
 
 **Acceptance Criteria**
-- No “property/properties” refers to the 8 pillars in user-facing text.
+- No “property/properties” refers to the 9 pillars in user-facing text.
 - “Quality characteristics” is used for the 189+ list where appropriate.
 - “Facets” replaces “dimensions” in the 3‑facet model.
 - Navigation labels align with new terminology.

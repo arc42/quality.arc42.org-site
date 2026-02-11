@@ -171,11 +171,6 @@ E. Aroms, ‘NIST special publication 800-94 guide to intrusion detection and pr
 
 Available [online](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-94.pdf)
 
-<a id="robertson2012mastering"></a>
-### Robertson: Mastering the Requirements Process 
-
-S. Robertson and J. Robertson, Mastering the requirements process: Getting requirements right. Addison-wesley, 2012.
-
 <a id="swebok"></a>
 ### SWEBOK (IEEE): Guide to the Software Engineering Body of Knowledge
 
