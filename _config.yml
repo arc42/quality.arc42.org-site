@@ -138,7 +138,8 @@ include:
   - _data/standard_tags.yaml
 
 exclude:
-  - originals/
+  - "*.drawio"
+  - "*.graffle"
   - Dockerfile
   - README.md
   - AGENTS.md
