@@ -176,6 +176,13 @@ Available [online](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublic
 
 S. Robertson and J. Robertson, Mastering the requirements process: Getting requirements right. Addison-wesley, 2012.
 
+<a id="swebok"></a>
+### SWEBOK (IEEE): Guide to the Software Engineering Body of Knowledge
+
+H. Washizaki et al. (eds.), Guide to the Software Engineering Body of Knowledge (SWEBOK), Version 4.0. IEEE Computer Society, 2024.
+
+Available [online](https://www.swebok.org/)
+
 <a id="starke2021software"></a>
 ### Starke/Lorz: Software Architecture Foundations 
 
