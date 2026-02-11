@@ -29,7 +29,15 @@ Easy to:
 
 > Maintainability is the ease with which software can be maintained, enhanced, adapted, or corrected to satisfy specified requirements.
 >
-> [SWEBOK (IEEE), citing IEEE 610.12](https://www.rose-hulman.edu/class/cs/csse490/cs490-const-and-evol/swebok100.pdf)
+> [SWEBOK (IEEE), citing IEEE 610.12](/references/#swebok)
+
+<hr class="with-no-margin"/>
+
+> Maintainability is concerned with modifications after the software baseline is established.
+>
+> We measure maintainability as the amount of work required to modify, test, and maintain our software base in response to changes in environmental elements.
+>
+> [Kazman et al., p.5](/references/#kazman-maintainability)
 
 
 
