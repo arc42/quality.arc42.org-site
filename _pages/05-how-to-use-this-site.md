@@ -11,7 +11,7 @@ To make the best use, you should become familiar with our terminology.
 
 ## Our _Domain Language_
 
-![Q42 domain language](/images/articles/metamodel/q42-metamodel-new.webp)
+![Q42 domain language](/images/domain-language/q42-metamodel-new.webp)
 
 Let's explain some terms, starting with an example:
 
@@ -28,7 +28,7 @@ Now let's consider the terms in more detail:
 
 | Term | Icon | Explanation          |
 | :--- | :--  | :--- |
-| **Dimension**|  <i class="fa fa-tag"/>| Our top-level dimensions (#flexible, #efficient, #reliable etc.). Find the full list plus the mapping to qualities [**here**](/dimensions). These terms are abstract, and will be interpreted individually by different stakeholders. They can be used as starting points, but need to be detailed. Q42 relates each of these dimensions to 10-30+ different specific quality characteristics. The dimensions intentionally overlap and are not orthogonal. |
+| **Dimension**|  <i class="fa fa-tag"/>| Our top-level dimensions (#flexible, #maintainable, #efficient, #reliable etc.). Find the full list plus the mapping to qualities [**here**](/dimensions). These terms are abstract, and will be interpreted individually by different stakeholders. They can be used as starting points, but need to be detailed. Q42 relates each of these dimensions to 10-30+ different specific quality characteristics. The dimensions intentionally overlap and are not orthogonal. |
 | Specific **Quality Characteristic**|  <i class="fa fa-gem" style="color: var(--quality-background-color);"/>| The detailed and specific terms, like  accessibility, accountability, accuracy etc. Currently, Q42 collects more than 180 such terms under [**Quality Characteristics**](/qualities). These terms are usually well-defined, but need examples or acceptance criteria  to really help in developing systems. Q42 contains examples for many (hopefully all, at some day in the future) |
 | **Stakeholder** | | People, roles or organizations that need, want or require certain quality [**requirements**](/requirements/) for their systems. |
 | **Examples**  | <i class="fa fa-bullseye" style="color: var(--req-text-color);"/>  | These are the specific requirements stakeholders have for a system or product, often expressed in the form of quality scenarios. They should facilitate stakeholder communication by enabling a common understanding of the _good enough_. Q42 provides >50 of these [**examples**](/requirements/) |
@@ -39,7 +39,7 @@ Now let's consider the terms in more detail:
 
 ## Three Axis of Quality
 
-![3 Axis of Quality](/images/articles/metamodel/terms-3-axis.webp )
+![3 Axis of Quality](/images/domain-language/terms-3-axis.drawio.webp)
 
 <dl>
   <dt><strong>Axis 1: Dimensions & Characteristics</strong></dt>

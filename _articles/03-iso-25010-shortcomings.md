@@ -170,7 +170,7 @@ Ignoring code quality and component structure as quality requirements is simply 
 
 ### Practical Use?
 Although one can use the ISO 25010 standard as a checklist for specific quality requirements, a smaller but well-chosen selection of terms would be sufficient for this.
-For example, the arc42 quality model (Q42) consists of just eight key dimensions, instead of the 35 terms from ISO 25010.
+For example, the arc42 quality model (Q42) consists of just nine key dimensions, instead of the 35 terms from ISO 25010.
 
 
 Maybe the most serious disadvantage of ISO 25010 is the complete lack of specific examples of how to apply the model to practical, real-world systems. That leaves development teams and other system stakeholders out in the cold. [Bass+2021](/references/#bass2021software) have proven in their book that such examples can be systematic and useful. [arc42](https://quality.arc42.org) followed suit, providing numerous tagged and cross-referenced examples of quality requirements.
@@ -209,7 +209,6 @@ You can find a brief overview of their work in [another article](/articles/sei-q
 
 ### Acknowledgements
 Thanx to “m” , Anja Kammer, Daniel Lauxtermann, Joachim Praetorius and Ben Wolf for bug fixing and dramatically improving the quality of this post. Thanx to Eberhard Wolff for encouragements.
-
 
 
 

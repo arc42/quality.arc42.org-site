@@ -32,7 +32,7 @@ View the full interactive quality graph **[here](/full-quality-graph)**.
 The arc42 quality model Q42 (pronounced "Kju-Fortytwo" or "Kju-Four-Two") is a simple, pragmatic yet effective approach
 to product and system quality.
 It starts with stakeholders' expectations and requirements.
-From these, it derives 8 important system dimensions (tags), which are sufficient to cover most, if not all, required,
+From these, it derives 9 important system dimensions (tags), which are sufficient to cover most, if not all, required,
 desirable or expected of the more than 100 _traditional_ qualities.
 
 Find out more in our **[introduction to the Q42 quality model](/articles/arc42-quality-model)**
@@ -67,6 +67,10 @@ These dimensions can overlap; they are intentionally not orthogonal.
 {% assign tags_flexible_requirements = site.requirements | where_exp: "item", "item.tags contains 'flexible'" %}
 {% assign tags_flexible_count = tags_flexible_qualities.size | plus: tags_flexible_requirements.size %}
 
+{% assign tags_maintainable_qualities = site.qualities | where_exp: "item", "item.tags contains 'maintainable'" %}
+{% assign tags_maintainable_requirements = site.requirements | where_exp: "item", "item.tags contains 'maintainable'" %}
+{% assign tags_maintainable_count = tags_maintainable_qualities.size | plus: tags_maintainable_requirements.size %}
+
 {% assign tags_efficient_qualities = site.qualities | where_exp: "item", "item.tags contains 'efficient'" %}
 {% assign tags_efficient_requirements = site.requirements | where_exp: "item", "item.tags contains 'efficient'" %}
 {% assign tags_efficient_count = tags_efficient_qualities.size | plus: tags_efficient_requirements.size %}
@@ -95,6 +99,7 @@ These dimensions can overlap; they are intentionally not orthogonal.
 |:-----------------------------------------------------|:-----------------------------|
 | [**#reliable**](/tag-reliable/) ({{ tags_reliable_count }}) | Perform specified functions under specified conditions without interruptions or failures |
 | [**#flexible**](/tag-flexible/) ({{ tags_flexible_count }}) | Serve a different or expanded set of requirements, the ease with which the product can be adapted to changes in its requirements, contexts of use, or system environment. Synonyms: modifiable, adjustable, changeable, versatile |
+| [**#maintainable**](/tag-maintainable/) ({{ tags_maintainable_count }}) | Easy to analyze, modify, test, update, and evolve with predictable effort and risk over time |
 | [**#efficient**](/tag-efficient/) ({{ tags_efficient_count }}) | Perform functions within specified time, capacity and throughput parameters, using appropriate resources (like memory, network bandwith, threads) |
 | [**#usable**](/tag-usable/) ({{ tags_usable_count }}) | Enable users to perform their tasks safely, effectively and efficiently while enjoying the experience |
 | [**#safe**](/tag-safe/) ({{ tags_safe_count }}) | Avoid states in which human life, health, property or the environment is endangered, detects and warns of risks and hazards.|

@@ -11,7 +11,7 @@ The top-level dimensions overlap by design and are not orthogonal.
 Consider an excerpt of our metamodel:
 
 
-![Dimensions and quality characteristics](/images/articles/metamodel//Q42-dimensions-qualities-requirements.webp)
+![Dimensions and quality characteristics](/images/domain-language/Q42-dimensions-qualities-requirements.webp)
 
 
 ### Dimensions and Quality Characteristics
@@ -37,7 +37,7 @@ Consider an excerpt of our metamodel:
     {% endfor %}
 
     <!-- make the tags of the arc42-quality-model stand out -->
-    {% if tag == "reliable" or tag == "flexible" or tag=="efficient" or tag == "usable" or tag == "safe" or tag == "secure" or tag == "suitable" or tag == "operable" %}
+    {% if tag == "reliable" or tag == "flexible" or tag == "maintainable" or tag=="efficient" or tag == "usable" or tag == "safe" or tag == "secure" or tag == "suitable" or tag == "operable" %}
     <a class="hov tags" href="/tag-{{ tag | cgi_escape }}"><b>{{ tag }}</b>
        <span>{{ qualities_count_for_tag }}</span></a>
     {% else %}
@@ -72,7 +72,7 @@ Consider an excerpt of our metamodel:
       {% endif %}
     {% endfor %}
 
-    {% if tag == "reliable" or tag == "flexible" or tag=="efficient" or tag == "usable" or tag == "safe" or tag == "secure" or tag == "suitable" or tag == "operable" %}
+    {% if tag == "reliable" or tag == "flexible" or tag == "maintainable" or tag=="efficient" or tag == "usable" or tag == "safe" or tag == "secure" or tag == "suitable" or tag == "operable" %}
     <a class="hov tags req" href="/tag-{{ tag | cgi_escape }}"><b>{{ tag }}</b>
        <span>{{ req_count_for_tag }}</span></a>
    
@@ -108,7 +108,7 @@ Consider an excerpt of our metamodel:
       {% endif %}
     {% endfor %}
 
-    {% if tag == "reliable" or tag == "flexible" or tag=="efficient" or tag == "usable" or tag == "safe" or tag == "secure" or tag == "suitable" or tag == "operable" %}
+    {% if tag == "reliable" or tag == "flexible" or tag == "maintainable" or tag=="efficient" or tag == "usable" or tag == "safe" or tag == "secure" or tag == "suitable" or tag == "operable" %}
     <a class="hov tags approach" href="/tag-{{ tag | cgi_escape }}"><b>{{ tag }}</b>
        <span>{{ approaches_count_for_tag }}</span></a>
 
