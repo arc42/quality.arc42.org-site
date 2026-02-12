@@ -1,6 +1,6 @@
 ---
 title: Test Coverage
-tags: [suitable, flexible, maintainable]
+tags: [suitable, maintainable]
 related: [maintainability, flexibility, modifiability, analysability, testability]
 permalink: /qualities/test-coverage
 ---
