@@ -1,6 +1,6 @@
 ---
 title: Loose Coupling
-tags: [efficient, flexible, suitable, maintainable]
+tags: [efficient, suitable, maintainable]
 related: [coherence, modularity, cohesion]
 permalink: /qualities/loose-coupling
 ---
