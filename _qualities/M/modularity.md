@@ -1,6 +1,6 @@
 ---
 title: Modularity
-tags: [flexible, maintainable]
+tags: [maintainable]
 related:
   [
     flexibility,
