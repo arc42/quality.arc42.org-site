@@ -8,10 +8,10 @@ order: 10
 Dimensions (also known as _tags_ or _labels_) are used to structure the fairly large set of quality characteristics.
 The top-level dimensions overlap by design and are not orthogonal.
 
-Consider an excerpt of our metamodel:
+Consider an excerpt of our domain language (aka _metamodel_):
 
 
-![Dimensions and quality characteristics](/images/domain-language/Q42-dimensions-qualities-requirements.webp)
+![Dimensions and quality characteristics](/images/domain-language/q42-dimensions-qualities-requirements.webp)
 
 
 ### Dimensions and Quality Characteristics
