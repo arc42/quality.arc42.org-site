@@ -1,7 +1,7 @@
 ---
 title: Energy Efficiency
 tags: [efficient]
-related: [carbon-emission-efficiency, sustainability]
+related: [carbon-emission-efficiency, sustainability, energy-proportionality]
 permalink: /qualities/energy-efficiency
 ---
 Source: This explanation has been created with help from [ChatGPT](https://chat.openai.com) by using the prompt `explain "energy efficiency" in context of software engineering`.

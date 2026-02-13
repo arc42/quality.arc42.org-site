@@ -1,5 +1,6 @@
 ---
 title: Carbon Emission Efficiency
+aka: [Carbon Efficiency]
 tags: [efficient]
 related: [sustainability, energy-efficiency]
 permalink: /qualities/carbon-emission-efficiency

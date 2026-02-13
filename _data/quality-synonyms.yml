@@ -66,3 +66,10 @@ maintainability:
 # Timeliness (currentness is ISO 25024 data quality dimension synonym)
 timeliness:
   - currentness
+
+carbon-emission-efficiency:
+  - carbon-efficiency
+
+data-sovereignty:
+  - data-residency
+  - data-localization
