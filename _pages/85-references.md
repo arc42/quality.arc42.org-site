@@ -23,6 +23,13 @@ L. Bass, P. Clements, and R. Kazman, Software architecture in practice, 4th ed. 
 
 bbv (a Swiss consulting and software company) have published a visual map of [software development quality](https://quality.bbv.ch/).
 
+<a id="brad-frost-theming"></a>
+### Brad Frost: The Many Faces of Themeable Design Systems
+
+B. Frost, ‘The Many Faces of Themeable Design Systems’, 2023.
+
+Available [online](https://bradfrost.com/blog/post/the-many-faces-of-themeable-design-systems/)
+
 
 
 <a id="boehm1976quantitative"></a>
@@ -192,3 +199,17 @@ G. Starke and A. Lorz, Software Architecture Foundation: CPSA Foundation® Exam 
 S. Robertson and J. Robertson, Volere Requirements Specification Template
 
 Available [online](https://www.cin.ufpe.br/~in1020/docs/publicacoes/Volere_template16.pdf)
+
+<a id="w3c-design-tokens"></a>
+### W3C Design Tokens Community Group
+
+Design Tokens Community Group, ‘Design Tokens Format Module’, 2024.
+
+Available [online](https://www.w3.org/community/design-tokens/)
+
+<a id="wikipedia-theming"></a>
+### Wikipedia: Theming (Computing)
+
+Wikipedia contributors, ‘Theming (computing)’, Wikipedia, The Free Encyclopedia.
+
+Available [online](https://en.wikipedia.org/wiki/Theming_(computing))
