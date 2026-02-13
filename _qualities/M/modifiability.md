@@ -1,6 +1,6 @@
 ---
 title: Modifiability
-tags: [maintainable]
+tags: [maintainable, flexible]
 related: [flexibility, adaptability, changeability, configurability]
 standards: [iso25010, iso42010]
 permalink: /qualities/modifiability
@@ -21,3 +21,4 @@ permalink: /qualities/modifiability
 >Modifiability is a combination of changeability and stability.
 >
 >from [ISO-25010:2023](/references/#iso-25010-2023)
+
