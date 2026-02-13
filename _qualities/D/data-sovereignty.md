@@ -1,27 +1,25 @@
 ---
 title: Data Sovereignty
-aka: [Data Residency, Data Localization]
 tags: [secure, suitable]
-related: [privacy, security, compliance, data-protection, data-integrity]
+related: [privacy, security, compliance, data-protection, data-residency, data-localization]
 permalink: /qualities/data-sovereignty
 ---
 
-> Data sovereignty is the ability of a natural or legal person to exclusive self-determination with regard to their data.
+> Data sovereignty is the concept that data is subject to the laws and governance structures within the nation it is collected or processed.
 >
 > [International Data Spaces Association (IDSA)](https://internationaldataspaces.org/why-data-sovereignty/)
 
 <hr>
 
+Data sovereignty (DS) is a key concern in modern distributed systems, especially when processing personal or sensitive information across international borders. It ensures that the data controller maintains self-determination over the data and adheres to the legal requirements of the relevant jurisdictions.
+
 ### Key Aspects
 
-*   **Data Residency**: The physical or geographic location of where an organization's data or information is stored.
-*   **Data Localization**: The requirement that data about a nation's citizens or residents be collected, processed, and/or stored inside the country.
-*   **Jurisdiction**: The legal authority under which data is governed, often determined by the physical location of the data or the location of the data controller.
+*   **Legal Jurisdiction**: Data is subject to the legal protections (and requirements) of the country where it is stored or processed.
+*   **Self-Determination**: The ability of an entity to maintain control over its own data.
+*   **Compliance**: Meeting requirements of regulations like GDPR, CCPA, or regional data laws.
 
-### Why it matters
+### Related Concepts
 
-Data sovereignty is crucial for:
-*   **Compliance** with regional regulations like GDPR (EU), CCPA (California), or LGPD (Brazil).
-*   **Security** against unauthorized access by foreign governments or entities.
-*   **Trust** between service providers and their customers regarding the handling of sensitive information.
-*   **Digital Sovereignty**: The broader concept of a state's ability to act independently in the digital world.
+*   **[Data Residency](/qualities/data-residency)**: The physical location of the data.
+*   **[Data Localization](/qualities/data-localization)**: The legal requirement to keep data within a specific country.
