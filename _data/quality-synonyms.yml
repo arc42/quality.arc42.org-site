@@ -63,8 +63,9 @@ analysability:
 maintainability:
   - supportability
 
-localizability:
-  - data-localizability
+# Consistency model (redirect alias to canonical consistency)
+consistency:
+  - eventual-consistency
 
 # Timeliness (currentness is ISO 25024 data quality dimension synonym)
 timeliness:

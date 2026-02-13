@@ -1,6 +1,5 @@
 ---
 title: Localizability
-aka: [Data Localizability]
 tags: [flexible, usable]
 related: [adaptability, modifiability, maintainability, internationalization, i18n]
 permalink: /qualities/localizability
@@ -9,7 +8,7 @@ permalink: /qualities/localizability
 
 >In computing, internationalization and localization (American) or internationalisation and localisation (British English), often abbreviated i18n and L10n, are means of adapting computer software to different languages, regional peculiarities and technical requirements of a target locale.
 
-Localizability (sometimes referred to as **Data Localizability**) ensures that data formats, units, and values can be adapted to specific regional or cultural requirements.
+Localizability ensures that data formats, units, and values can be adapted to specific regional or cultural requirements.
 
 >[_Internationalization_](/qualities/localizability) is the process of designing a software application so that it can be adapted to various languages and regions without engineering changes. 
 >
@@ -18,5 +17,4 @@ Localizability (sometimes referred to as **Data Localizability**) ensures that d
 >Localization (which is potentially performed multiple times, for different locales) uses the infrastructure or flexibility provided by internationalization (which is ideally performed only once before localization, or as an integral part of ongoing development).
 >
 >[Wikipedia](https://en.wikipedia.org/wiki/Internationalization_and_localization)
-
 
