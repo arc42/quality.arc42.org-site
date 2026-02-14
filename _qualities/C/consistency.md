@@ -1,7 +1,7 @@
 ---
 title: Consistency
 tags: [usable, efficient]
-related: [atomicity, durability, transactionality, understandability, coherence]
+related: [determinism, atomicity, durability, transactionality, understandability, coherence]
 standards: [iso26514, iso25024, iso42010, iso42030, iso12207, sox, wcag22, en301549]
 permalink: /qualities/consistency
 ---

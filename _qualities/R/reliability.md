@@ -1,7 +1,7 @@
 ---
 title: Reliability
 tags: [reliable]
-related: [availability, robustness, fault-tolerance, dependability, resilience]
+related: [determinism, availability, robustness, fault-tolerance, dependability, resilience]
 standards:
   [
     iso25010,
