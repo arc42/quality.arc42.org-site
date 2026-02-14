@@ -1,7 +1,7 @@
 ---
 title: Consistency
 tags: [usable, efficient]
-related: [understandability, coherence]
+related: [atomicity, durability, transactionality, understandability, coherence]
 standards: [iso26514, iso25024, iso42010, iso42030, iso12207, sox, wcag22, en301549]
 permalink: /qualities/consistency
 ---
@@ -18,3 +18,7 @@ Eventual consistency is a weaker consistency model: after an update, reads may t
 
 1. Werner Vogels, *Eventually Consistent*, Communications of the ACM (2009): https://cacm.acm.org/practice/eventually-consistent/
 2. DeCandia et al., *Dynamo: Amazon's Highly Available Key-Value Store*, SOSP (2007): https://dl.acm.org/doi/10.1145/1294261.1294281
+
+### Relation To ACID
+
+In transactional systems, consistency is not standalone: [Atomicity](/qualities/atomicity) prevents partial updates, [Durability](/qualities/durability) preserves committed state, and isolation avoids interference between concurrent transactions.

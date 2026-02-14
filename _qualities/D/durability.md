@@ -1,7 +1,7 @@
 ---
 title: Durability
 tags: [reliable]
-related: [reliability, availability, robustness, data-integrity]
+related: [atomicity, consistency, transactionality, reliability, availability, robustness, data-integrity]
 permalink: /qualities/durability
 ---
 
@@ -11,3 +11,5 @@ permalink: /qualities/durability
 
 > In the context of database systems, durability is one of the four ACID (Atomicity, Consistency, Isolation, Durability) properties. 
 > It guarantees that once a transaction has been committed, it will remain committed even in the event of a system crash, power failure, or other errors.
+
+Durability depends on successful commit semantics from [Atomicity](/qualities/atomicity), and together with [Consistency](/qualities/consistency) and isolation it forms ACID transaction guarantees.

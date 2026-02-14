@@ -18,6 +18,10 @@ performance:
 availability:
   - high-availability
 
+# Autonomicity (autonomic-computing term, treated as alias of autonomy)
+autonomy:
+  - autonomicity
+
 # Changeability (changeability file says "Synonym: Mutability")
 changeability:
   - mutability

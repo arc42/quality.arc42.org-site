@@ -1,7 +1,7 @@
 ---
 title: Transactionality
 tags: [reliable]
-related: [consistency, durability, data-integrity, robustness]
+related: [atomicity, consistency, durability, data-integrity, robustness]
 permalink: /qualities/transactionality
 ---
 
@@ -12,16 +12,17 @@ permalink: /qualities/transactionality
 <hr class="with-no-margin"/>
 
 > Transactions are most commonly discussed in the context of databases and are defined by the **ACID properties**:
-> *   **Atomicity:** Guarantees that all operations within a transaction are treated as a single, indivisible unit.
-> *   **Consistency:** Ensures that a transaction brings the database from one valid state to another, upholding all predefined rules.
+> *   **[Atomicity](/qualities/atomicity):** Guarantees that all operations within a transaction are treated as a single, indivisible unit.
+> *   **[Consistency](/qualities/consistency):** Ensures that a transaction brings the database from one valid state to another, upholding all predefined rules.
 > *   **Isolation:** Ensures that concurrent transactions do not interfere with each other.
-> *   **Durability:** Guarantees that once a transaction is committed, it will remain so, even in the event of a system failure.
+> *   **[Durability](/qualities/durability):** Guarantees that once a transaction is committed, it will remain so, even in the event of a system failure.
 > 
 > Source: [Härder, T., Reuter, A. "Principles of transaction-oriented database recovery.", 1983](https://dl.acm.org/doi/10.1145/357389.357413)
 >
 
 ## Related Topics
 
-- atomicity
+- [atomicity](/qualities/atomicity)
+- [consistency](/qualities/consistency)
 - isolation
 - [durability](/qualities/durability)
