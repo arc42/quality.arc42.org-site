@@ -1,0 +1,26 @@
+{% assign category = include.category %}
+{% assign standards = include.standards | sort: 'shortname' %}
+{% capture category_title %}{% include standards-category-title.liquid category=category %}{% endcapture %}
+{% capture category_description %}{% include standards-category-description.liquid category=category %}{% endcapture %}
+
+<article class="standards-category-card">
+  <div class="standards-category-card-head">
+    <h3 class="standards-category-title">{{ category_title | strip }}</h3>
+    <span class="standards-category-count" aria-label="{{ standards | size }} standards">{{ standards | size }}</span>
+  </div>
+
+  <p class="standards-category-description">{{ category_description | strip }}</p>
+
+  <div class="standards-chip-list">
+    {% for std in standards %}
+      {% assign summary = std.summary | default: std.excerpt | strip_html | strip_newlines | normalize_whitespace | truncate: 165 %}
+      {% if summary == "" %}
+        {% assign summary = "Open standard detail page." %}
+      {% endif %}
+      <a class="standards-chip" href="{{ std.url | prepend: site.baseurl }}">
+        <span class="standards-chip-label">{{ std.shortname }}</span>
+        <span class="standards-chip-tooltip">{{ summary }}</span>
+      </a>
+    {% endfor %}
+  </div>
+</article>

@@ -5,55 +5,44 @@ permalink: /standards/
 order: 40
 ---
 
-{::comment}
-Overview of quality standards
-{:/comment}
-
-Overview of standards related to quality.
-These standards are categorized (aka _tagged_) as follows:
-
 {% assign allStandards = site.standards %}
+{% assign category_order = "general,accessibility,usability,ai,trustworthiness,safety,security,privacy,data,governance,sector,coding,documentation" | split: "," %}
 
+<div class="standards-page standards-overview">
+  <div class="standards-view-switch">
+    <a class="standards-view-switch-btn" href="{{ '/standards/explorer/' | prepend: site.baseurl }}">
+      switch-to-standards-explorer
+    </a>
+  </div>
 
-|Category  | Explanation | Standards |
-|:--- | --- | --- |
-{% include standards-category-row.liquid category="general" title="General" explanation="Broad quality/process standards" %}
-{% include standards-category-row.liquid category="accessibility" title="Accessibility" explanation="Making digital content and systems accessible to people with disabilities; removing barriers to perception, operation, and understanding" %}
-{% include standards-category-row.liquid category="usability" title="Usability" explanation="Ease of use, learnability, and user satisfaction; interaction capability and user experience" %}
-{% include standards-category-row.liquid category="safety" title="Safety" explanation="Functional safety where malfunctions can harm people/environment/assets" %}
-{% include standards-category-row.liquid category="security" title="Security" explanation="Information/cyber security, security management and controls" %}
-{% include standards-category-row.liquid category="privacy" title="Privacy" explanation="Personal data protection and privacy governance and controls; GDPR-compliance. Complements security" %}
-{% include standards-category-row.liquid category="ai" title="AI" explanation="(_artificial intelligence_) AI/ML governance, risk, transparency across the AI lifecycle" %}
-{% include standards-category-row.liquid category="data" title="Data" explanation="Data quality and measurement characteristics" %}
-{% include standards-category-row.liquid category="sector" title="Sector" explanation="Sector/vertical-specific standards." %}
-{% include standards-category-row.liquid category="coding" title="Coding" explanation="Standards related to implementation or coding details." %}
-{% include standards-category-row.liquid category="documentation" title="Documentation" explanation="Standards related to documentation of software or IT systems." %}
+  <p class="standards-intro">
+    Browse quality standards by category first, then jump to the detailed standard pages.
+    Hover a standard chip to get a one-sentence orientation before clicking.
+  </p>
 
+  <div class="standards-category-card-grid">
+    {% for category in category_order %}
+      {% assign filtered_standards = allStandards | where_exp: "std", "std.categories contains category" %}
+      {% if filtered_standards.size > 0 %}
+        {% include standards-category-card.liquid category=category standards=filtered_standards %}
+      {% endif %}
+    {% endfor %}
+  </div>
 
+  <hr class="with-no-margin" />
 
+  <p class="standards-intro standards-intro-secondary">
+    Full standards list grouped by category:
+  </p>
 
-{::comment}
-Group standards by categories  
-{:/comment}
-
-{% include standards-category-section.liquid category="general" title="General" standards=allStandards %}
-
-{% include standards-category-section.liquid category="accessibility" title="Accessibility" standards=allStandards %}
-
-{% include standards-category-section.liquid category="usability" title="Usability" standards=allStandards %}
-
-{% include standards-category-section.liquid category="ai" title="AI" standards=allStandards %}
-
-{% include standards-category-section.liquid category="safety" title="Safety" standards=allStandards %}
-
-{% include standards-category-section.liquid category="security" title="Security" standards=allStandards %}
-
-{% include standards-category-section.liquid category="privacy" title="Privacy" standards=allStandards %}
-
-{% include standards-category-section.liquid category="data" title="Data" standards=allStandards %}
-
-{% include standards-category-section.liquid category="sector" title="Sector-Specific" standards=allStandards %}
-
-{% include standards-category-section.liquid category="coding" title="Coding" standards=allStandards %}
-
-{% include standards-category-section.liquid category="documentation" title="Documentation" standards=allStandards %}
+  <div class="standards-categories-list">
+    {% for category in category_order %}
+      {% assign filtered_standards = allStandards | where_exp: "std", "std.categories contains category" %}
+      {% if filtered_standards.size > 0 %}
+        {% capture section_title %}{% include standards-category-title.liquid category=category %}{% endcapture %}
+        {% assign section_title = section_title | strip %}
+        {% include standards-category-section.liquid category=category title=section_title standards=allStandards %}
+      {% endif %}
+    {% endfor %}
+  </div>
+</div>

@@ -1,0 +1,17 @@
+{% assign category = include.category %}
+{% case category %}
+{% when 'general' %}Broad software and systems quality/process standards.
+{% when 'accessibility' %}Making digital systems accessible to people with disabilities.
+{% when 'usability' %}Ease of use, learnability, and overall interaction quality.
+{% when 'safety' %}Functional safety where failure can cause harm to people, assets, or environment.
+{% when 'security' %}Information/cyber security, controls, and resilience practices.
+{% when 'privacy' %}Personal data protection, privacy engineering, and governance controls.
+{% when 'ai' %}AI/ML lifecycle governance, risk, transparency, and operational control.
+{% when 'trustworthiness' %}Cross-cutting trustworthiness concerns for AI-enabled systems.
+{% when 'data' %}Data quality concepts and measurable data characteristics.
+{% when 'governance' %}Organizational direction and control of IT and architecture decisions.
+{% when 'sector' %}Vertical or industry-specific standards and regulations.
+{% when 'coding' %}Implementation-level and code-focused guidance and constraints.
+{% when 'documentation' %}Architecture, user, and lifecycle documentation standards.
+{% else %}Standards in this category.
+{% endcase %}

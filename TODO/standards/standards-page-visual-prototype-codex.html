@@ -1,0 +1,803 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Standards Page Prototypes</title>
+    <style>
+      :root {
+        --ink-900: #0b2c44;
+        --ink-700: #1f4e6b;
+        --ink-500: #2f708e;
+        --sky-600: #008fc9;
+        --sky-500: #00a8e8;
+        --sky-200: #bfe7fb;
+        --sky-100: #eaf7ff;
+        --paper: #f6fbff;
+        --white: #ffffff;
+        --line: #c5e6f6;
+        --ok: #147a4b;
+        --radius: 14px;
+        --shadow-a: 0 7px 24px rgba(11, 44, 68, 0.1);
+        --shadow-b: 0 3px 8px rgba(11, 44, 68, 0.08);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        color: var(--ink-900);
+        background:
+          radial-gradient(circle at 12% 6%, rgba(0, 168, 232, 0.1), transparent 42%),
+          radial-gradient(circle at 86% 4%, rgba(0, 143, 201, 0.12), transparent 45%),
+          var(--paper);
+        font: 16px/1.45 "IBM Plex Sans", "Avenir Next", "Segoe UI", sans-serif;
+      }
+
+      .shell {
+        width: min(1200px, 95vw);
+        margin: 1.4rem auto 2.4rem;
+      }
+
+      .hero {
+        background:
+          linear-gradient(120deg, rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.95)),
+          linear-gradient(90deg, rgba(0, 143, 201, 0.14), rgba(0, 168, 232, 0.05));
+        border: 1px solid var(--line);
+        border-radius: calc(var(--radius) + 4px);
+        padding: 1rem 1.2rem 1.05rem;
+        box-shadow: var(--shadow-a);
+      }
+
+      h1 {
+        margin: 0;
+        color: #006b98;
+        font: 700 1.55rem/1.2 "IBM Plex Sans", "Avenir Next", sans-serif;
+        letter-spacing: 0.01em;
+      }
+
+      .sub {
+        margin: 0.55rem 0 0;
+        max-width: 88ch;
+        color: var(--ink-700);
+      }
+
+      .tabs {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.45rem;
+        margin-top: 1rem;
+      }
+
+      .tab {
+        border: 1px solid var(--line);
+        background: var(--white);
+        color: var(--ink-700);
+        border-radius: 999px;
+        padding: 0.38rem 0.9rem;
+        font: 600 0.92rem/1.1 "IBM Plex Sans", "Avenir Next", sans-serif;
+        cursor: pointer;
+      }
+
+      .tab[aria-selected="true"] {
+        background: linear-gradient(120deg, var(--sky-500), var(--sky-600));
+        border-color: transparent;
+        color: #fff;
+        box-shadow: 0 4px 12px rgba(0, 143, 201, 0.34);
+      }
+
+      .panel {
+        display: none;
+        margin-top: 1rem;
+        border: 1px solid var(--line);
+        border-radius: calc(var(--radius) + 2px);
+        background: var(--white);
+        padding: 1rem;
+        box-shadow: var(--shadow-a);
+      }
+
+      .panel.active {
+        display: block;
+      }
+
+      .hint {
+        margin: 0 0 0.8rem;
+        color: var(--ink-700);
+        font-size: 0.94rem;
+      }
+
+      .category-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 0.8rem;
+      }
+
+      .category-card {
+        border: 1px solid var(--line);
+        border-left: 4px solid var(--sky-600);
+        border-radius: var(--radius);
+        background: var(--sky-100);
+        padding: 0.75rem 0.78rem 0.84rem;
+        box-shadow: var(--shadow-b);
+      }
+
+      .category-title-row {
+        display: flex;
+        justify-content: space-between;
+        gap: 0.5rem;
+        align-items: baseline;
+      }
+
+      .category-title {
+        margin: 0;
+        color: #046e9c;
+        font: 700 1.04rem/1.2 "IBM Plex Sans", "Avenir Next", sans-serif;
+      }
+
+      .count-badge {
+        background: #fff;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        padding: 0.1rem 0.55rem;
+        font-size: 0.77rem;
+        color: var(--ink-500);
+      }
+
+      .category-explanation {
+        margin: 0.42rem 0 0.62rem;
+        color: var(--ink-700);
+        font-size: 0.88rem;
+      }
+
+      .chip-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.38rem;
+      }
+
+      .std-chip {
+        position: relative;
+        border: 1px solid var(--line);
+        background: #fff;
+        border-radius: 999px;
+        padding: 0.23rem 0.56rem;
+        color: var(--ink-700);
+        text-decoration: none;
+        font-size: 0.83rem;
+        cursor: default;
+      }
+
+      .std-chip:focus-visible {
+        outline: 2px solid var(--sky-500);
+        outline-offset: 1px;
+      }
+
+      .std-chip:hover::after,
+      .std-chip:focus-visible::after {
+        content: attr(data-summary);
+        position: absolute;
+        left: 0;
+        top: 120%;
+        z-index: 10;
+        width: min(330px, 72vw);
+        padding: 0.48rem 0.55rem;
+        border-radius: 9px;
+        border: 1px solid #a9def7;
+        background: #f5fcff;
+        color: #18425b;
+        font-size: 0.8rem;
+        line-height: 1.3;
+        box-shadow: 0 8px 24px rgba(0, 73, 105, 0.16);
+      }
+
+      .category-section {
+        margin-bottom: 1.2rem;
+      }
+
+      .section-title {
+        margin: 0 0 0.56rem;
+        color: #046e9c;
+        font: 700 1.14rem/1.2 "IBM Plex Sans", "Avenir Next", sans-serif;
+      }
+
+      .standard-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 0.8rem;
+      }
+
+      .standard-card {
+        position: relative;
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        background: #fff;
+        padding: 0.75rem;
+        min-height: 156px;
+        box-shadow: var(--shadow-b);
+        overflow: hidden;
+      }
+
+      .standard-shortname {
+        color: #0073a4;
+        font-weight: 700;
+        letter-spacing: 0.01em;
+      }
+
+      .standard-title {
+        margin: 0.35rem 0 0.55rem;
+        color: var(--ink-900);
+        font-size: 0.92rem;
+      }
+
+      .meta-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.3rem;
+      }
+
+      .meta-tag {
+        background: #eef9ff;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        padding: 0.1rem 0.45rem;
+        color: #1d5875;
+        font-size: 0.77rem;
+      }
+
+      .quick-view {
+        position: absolute;
+        inset: auto 0 0 0;
+        transform: translateY(100%);
+        transition: transform 0.2s ease;
+        padding: 0.65rem 0.75rem 0.75rem;
+        background: linear-gradient(180deg, rgba(0, 143, 201, 0.95), rgba(0, 110, 156, 0.95));
+        color: #fff;
+        font-size: 0.82rem;
+        min-height: 82px;
+      }
+
+      .standard-card:hover .quick-view,
+      .standard-card:focus-within .quick-view {
+        transform: translateY(0);
+      }
+
+      .quick-actions {
+        display: flex;
+        gap: 0.34rem;
+        margin-top: 0.45rem;
+      }
+
+      .quick-actions span {
+        border: 1px solid rgba(255, 255, 255, 0.45);
+        border-radius: 999px;
+        padding: 0.08rem 0.43rem;
+        font-size: 0.72rem;
+      }
+
+      .explorer-toolbar {
+        display: grid;
+        grid-template-columns: 1.2fr auto auto;
+        gap: 0.6rem;
+        margin-bottom: 0.7rem;
+      }
+
+      .input,
+      .select {
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        padding: 0.45rem 0.55rem;
+        font: 500 0.9rem/1.2 "IBM Plex Sans", "Avenir Next", sans-serif;
+        color: var(--ink-900);
+        background: #fff;
+      }
+
+      .facet-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.36rem;
+        margin: 0.4rem 0 0.75rem;
+      }
+
+      .facet-btn {
+        border: 1px solid var(--line);
+        background: #fff;
+        color: var(--ink-700);
+        border-radius: 999px;
+        padding: 0.2rem 0.62rem;
+        font-size: 0.8rem;
+        cursor: pointer;
+      }
+
+      .facet-btn.active {
+        color: #fff;
+        border-color: transparent;
+        background: linear-gradient(120deg, var(--sky-500), var(--sky-600));
+      }
+
+      .result-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 0.3rem 0 0.55rem;
+      }
+
+      .result-count {
+        color: var(--ink-700);
+        font-size: 0.88rem;
+      }
+
+      .result-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 0.6rem;
+      }
+
+      .result-card {
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        background: #fff;
+        padding: 0.62rem 0.66rem;
+        box-shadow: var(--shadow-b);
+      }
+
+      .result-top {
+        display: flex;
+        justify-content: space-between;
+        gap: 0.4rem;
+      }
+
+      .pub {
+        color: var(--ink-500);
+        font-size: 0.75rem;
+      }
+
+      .summary {
+        margin: 0.32rem 0 0;
+        color: var(--ink-700);
+        font-size: 0.82rem;
+      }
+
+      .empty {
+        border: 1px dashed var(--line);
+        border-radius: 10px;
+        padding: 1rem;
+        color: var(--ink-700);
+        background: var(--sky-100);
+      }
+
+      .ok {
+        color: var(--ok);
+        font-weight: 600;
+      }
+
+      @media (max-width: 920px) {
+        .explorer-toolbar {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="shell">
+      <header class="hero">
+        <h1>Standards Entry Page: Visual Prototypes</h1>
+        <p class="sub">
+          Three alternative layouts for `/standards/` that prioritize scanability for readers who do not know
+          standard numbers by heart. Each variant includes one-line standard explanations.
+        </p>
+        <div class="tabs" role="tablist" aria-label="Prototype variants">
+          <button class="tab" id="tab-a" role="tab" aria-selected="true" data-panel="panel-a">
+            Proposal A: Category Cards
+          </button>
+          <button class="tab" id="tab-b" role="tab" aria-selected="false" data-panel="panel-b">
+            Proposal B: Standard Cards
+          </button>
+          <button class="tab" id="tab-c" role="tab" aria-selected="false" data-panel="panel-c">
+            Proposal C: Explorer
+          </button>
+        </div>
+      </header>
+
+      <section id="panel-a" class="panel active" role="tabpanel" aria-labelledby="tab-a">
+        <p class="hint">
+          <strong>Prototype A</strong> replaces the table with category cards and shortname chips. Hover or focus a chip to
+          see a one-sentence explainer.
+        </p>
+        <div id="category-grid" class="category-grid"></div>
+      </section>
+
+      <section id="panel-b" class="panel" role="tabpanel" aria-labelledby="tab-b">
+        <p class="hint">
+          <strong>Prototype B</strong> uses one card per standard. Hover reveals a quick summary and contextual actions.
+        </p>
+        <div id="standard-sections"></div>
+      </section>
+
+      <section id="panel-c" class="panel" role="tabpanel" aria-labelledby="tab-c">
+        <p class="hint">
+          <strong>Prototype C</strong> is a faceted explorer for power users: search + category filters + sort.
+        </p>
+        <div class="explorer-toolbar">
+          <input id="search" class="input" type="search" placeholder="Search standard, number, title, or summary..." />
+          <select id="sort" class="select">
+            <option value="shortname">Sort: Shortname (A-Z)</option>
+            <option value="title">Sort: Title (A-Z)</option>
+            <option value="categoryCount">Sort: Narrow scope first</option>
+          </select>
+          <button id="reset" class="tab" aria-label="Reset filters">Reset</button>
+        </div>
+        <div id="facet-list" class="facet-list"></div>
+        <div class="result-head">
+          <div id="result-count" class="result-count"></div>
+          <div class="result-count"><span class="ok">Hover</span> card for the one-line "why this matters".</div>
+        </div>
+        <div id="result-grid" class="result-grid"></div>
+      </section>
+    </main>
+
+    <script>
+      const categoryMeta = {
+        general: {
+          title: "General",
+          explanation: "Broad software and architecture quality/process standards."
+        },
+        accessibility: {
+          title: "Accessibility",
+          explanation: "Inclusive access for people with disabilities across channels."
+        },
+        usability: {
+          title: "Usability",
+          explanation: "Interaction quality, ease of use, learnability, and experience."
+        },
+        safety: {
+          title: "Safety",
+          explanation: "Functional safety where failure can harm people or assets."
+        },
+        security: {
+          title: "Security",
+          explanation: "Security controls, resilience, and vulnerability management."
+        },
+        privacy: {
+          title: "Privacy",
+          explanation: "Personal data protection and privacy engineering practices."
+        },
+        ai: {
+          title: "AI",
+          explanation: "AI lifecycle governance, trustworthiness, and risk controls."
+        },
+        data: {
+          title: "Data",
+          explanation: "Data quality models and measurement standards."
+        },
+        sector: {
+          title: "Sector",
+          explanation: "Domain-specific standards (healthcare, aviation, finance, etc.)."
+        },
+        coding: {
+          title: "Coding",
+          explanation: "Code-level implementation and language use guidance."
+        },
+        documentation: {
+          title: "Documentation",
+          explanation: "Documentation quality, architecture description, and user information."
+        },
+        governance: {
+          title: "Governance",
+          explanation: "Organizational control and direction for IT and architecture."
+        }
+      };
+
+      const standards = [
+        {
+          shortname: "ISO/IEC 25010",
+          title: "Systems and Software Quality",
+          categories: ["general", "usability"],
+          publisher: "ISO/IEC",
+          summary: "Defines the product quality model and core quality characteristics."
+        },
+        {
+          shortname: "ISO/IEC 27001",
+          title: "Information Security Management",
+          categories: ["security"],
+          publisher: "ISO/IEC",
+          summary: "Specifies requirements for building and operating an ISMS."
+        },
+        {
+          shortname: "NIST SP 800-53",
+          title: "Security and Privacy Controls",
+          categories: ["security", "privacy"],
+          publisher: "NIST",
+          summary: "Catalog of baseline security and privacy controls for systems and organizations."
+        },
+        {
+          shortname: "WCAG 2.2",
+          title: "Web Content Accessibility Guidelines",
+          categories: ["accessibility", "usability"],
+          publisher: "W3C",
+          summary: "Accessibility criteria for perceivable, operable, understandable, robust web content."
+        },
+        {
+          shortname: "EN 301 549",
+          title: "Accessibility Requirements for ICT",
+          categories: ["accessibility", "usability"],
+          publisher: "CEN/CENELEC/ETSI",
+          summary: "Accessibility requirements beyond web pages, including software and hardware."
+        },
+        {
+          shortname: "ISO/IEC 42001",
+          title: "AI Management System",
+          categories: ["ai", "governance"],
+          publisher: "ISO/IEC",
+          summary: "Requirements for governing AI systems responsibly in organizations."
+        },
+        {
+          shortname: "ISO/IEC TR 24028",
+          title: "AI Trustworthiness Overview",
+          categories: ["ai", "security"],
+          publisher: "ISO/IEC",
+          summary: "Trustworthiness guidance for AI across technical and governance dimensions."
+        },
+        {
+          shortname: "ISO/IEC 25024",
+          title: "Measurement of Data Quality",
+          categories: ["data"],
+          publisher: "ISO/IEC",
+          summary: "Measures and indicators for evaluating data quality characteristics."
+        },
+        {
+          shortname: "ISO/IEC 38500",
+          title: "Governance of IT for the Organization",
+          categories: ["governance"],
+          publisher: "ISO/IEC",
+          summary: "Principles for directing and controlling current and future use of IT."
+        },
+        {
+          shortname: "ISO/IEC/IEEE 42010",
+          title: "Architecture Description",
+          categories: ["documentation", "general"],
+          publisher: "ISO/IEC/IEEE",
+          summary: "Framework for architecture descriptions, stakeholders, and viewpoints."
+        },
+        {
+          shortname: "ISO/IEC/IEEE 42030",
+          title: "Architecture Evaluation",
+          categories: ["documentation", "general"],
+          publisher: "ISO/IEC/IEEE",
+          summary: "Systematic evaluation framework for architecture quality and tradeoffs."
+        },
+        {
+          shortname: "DO-178C",
+          title: "Airborne Software Certification",
+          categories: ["safety", "sector"],
+          publisher: "RTCA/EUROCAE",
+          summary: "Certification objectives for safety-critical airborne software lifecycle."
+        },
+        {
+          shortname: "IEC 62304",
+          title: "Medical Device Software Lifecycle",
+          categories: ["safety", "sector"],
+          publisher: "IEC",
+          summary: "Software lifecycle process requirements for medical device software."
+        },
+        {
+          shortname: "HL7",
+          title: "Health Interoperability Standards",
+          categories: ["sector", "data"],
+          publisher: "HL7",
+          summary: "Interoperability models and APIs for healthcare data exchange."
+        },
+        {
+          shortname: "MISRA-C",
+          title: "C Guidelines for Critical Systems",
+          categories: ["coding", "safety", "sector"],
+          publisher: "MISRA",
+          summary: "Rules and directives for safer, predictable C in critical domains."
+        },
+        {
+          shortname: "PCI DSS",
+          title: "Payment Card Security Standard",
+          categories: ["security", "sector"],
+          publisher: "PCI SSC",
+          summary: "Control requirements for protecting cardholder data environments."
+        }
+      ];
+
+      const tabs = Array.from(document.querySelectorAll(".tab"));
+      const panels = Array.from(document.querySelectorAll(".panel"));
+
+      function activatePanel(panelId) {
+        tabs.forEach((tab) => {
+          const selected = tab.dataset.panel === panelId;
+          tab.setAttribute("aria-selected", selected ? "true" : "false");
+        });
+        panels.forEach((panel) => panel.classList.toggle("active", panel.id === panelId));
+      }
+
+      tabs.forEach((tab) => {
+        tab.addEventListener("click", () => activatePanel(tab.dataset.panel));
+      });
+
+      function standardsByCategory() {
+        const map = {};
+        Object.keys(categoryMeta).forEach((category) => {
+          map[category] = standards
+            .filter((std) => std.categories.includes(category))
+            .sort((a, b) => a.shortname.localeCompare(b.shortname));
+        });
+        return map;
+      }
+
+      function renderProposalA() {
+        const root = document.getElementById("category-grid");
+        const byCategory = standardsByCategory();
+        const cards = Object.keys(categoryMeta)
+          .filter((category) => byCategory[category].length)
+          .map((category) => {
+            const standardsForCategory = byCategory[category];
+            return `
+              <article class="category-card">
+                <div class="category-title-row">
+                  <h3 class="category-title">${categoryMeta[category].title}</h3>
+                  <span class="count-badge">${standardsForCategory.length}</span>
+                </div>
+                <p class="category-explanation">${categoryMeta[category].explanation}</p>
+                <div class="chip-list">
+                  ${standardsForCategory
+                    .map(
+                      (std) =>
+                        `<button class="std-chip" type="button" data-summary="${std.summary.replace(/"/g, "&quot;")}">${std.shortname}</button>`
+                    )
+                    .join("")}
+                </div>
+              </article>
+            `;
+          })
+          .join("");
+        root.innerHTML = cards;
+      }
+
+      function renderProposalB() {
+        const root = document.getElementById("standard-sections");
+        const byCategory = standardsByCategory();
+        const sections = Object.keys(categoryMeta)
+          .filter((category) => byCategory[category].length)
+          .map((category) => {
+            const cards = byCategory[category]
+              .map(
+                (std) => `
+                <article class="standard-card" tabindex="0">
+                  <div class="standard-shortname">${std.shortname}</div>
+                  <p class="standard-title">${std.title}</p>
+                  <div class="meta-tags">
+                    ${std.categories.map((tag) => `<span class="meta-tag">#${tag}</span>`).join("")}
+                  </div>
+                  <div class="quick-view">
+                    ${std.summary}
+                    <div class="quick-actions">
+                      <span>Open details</span>
+                      <span>Related qualities</span>
+                    </div>
+                  </div>
+                </article>
+              `
+              )
+              .join("");
+            return `
+              <section class="category-section">
+                <h3 class="section-title">${categoryMeta[category].title}</h3>
+                <div class="standard-grid">${cards}</div>
+              </section>
+            `;
+          })
+          .join("");
+        root.innerHTML = sections;
+      }
+
+      const searchEl = document.getElementById("search");
+      const sortEl = document.getElementById("sort");
+      const resetEl = document.getElementById("reset");
+      const facetListEl = document.getElementById("facet-list");
+      const resultCountEl = document.getElementById("result-count");
+      const resultGridEl = document.getElementById("result-grid");
+      const activeFacets = new Set();
+
+      function renderFacets() {
+        const categories = Object.keys(categoryMeta).filter((category) =>
+          standards.some((std) => std.categories.includes(category))
+        );
+        facetListEl.innerHTML = categories
+          .map(
+            (category) =>
+              `<button class="facet-btn${activeFacets.has(category) ? " active" : ""}" type="button" data-facet="${category}">
+                #${category}
+              </button>`
+          )
+          .join("");
+        facetListEl.querySelectorAll(".facet-btn").forEach((btn) => {
+          btn.addEventListener("click", () => {
+            const facet = btn.dataset.facet;
+            if (activeFacets.has(facet)) activeFacets.delete(facet);
+            else activeFacets.add(facet);
+            renderFacets();
+            renderResults();
+          });
+        });
+      }
+
+      function scoreCategoryCount(std) {
+        return std.categories.length;
+      }
+
+      function sortStandards(list) {
+        const mode = sortEl.value;
+        const copy = [...list];
+        if (mode === "title") copy.sort((a, b) => a.title.localeCompare(b.title));
+        else if (mode === "categoryCount") copy.sort((a, b) => scoreCategoryCount(a) - scoreCategoryCount(b));
+        else copy.sort((a, b) => a.shortname.localeCompare(b.shortname));
+        return copy;
+      }
+
+      function matchesSearch(std, term) {
+        if (!term) return true;
+        const haystack = [std.shortname, std.title, std.summary, std.publisher, std.categories.join(" ")].join(" ").toLowerCase();
+        return haystack.includes(term);
+      }
+
+      function matchesFacet(std) {
+        if (!activeFacets.size) return true;
+        return [...activeFacets].every((facet) => std.categories.includes(facet));
+      }
+
+      function renderResults() {
+        const term = searchEl.value.trim().toLowerCase();
+        const filtered = standards.filter((std) => matchesSearch(std, term) && matchesFacet(std));
+        const sorted = sortStandards(filtered);
+        resultCountEl.textContent = `${sorted.length} standard(s) shown`;
+        if (!sorted.length) {
+          resultGridEl.innerHTML = `<div class="empty">No standards match current filters. Try fewer facets or broader search terms.</div>`;
+          return;
+        }
+        resultGridEl.innerHTML = sorted
+          .map(
+            (std) => `
+            <article class="result-card standard-card">
+              <div class="result-top">
+                <div class="standard-shortname">${std.shortname}</div>
+                <div class="pub">${std.publisher}</div>
+              </div>
+              <p class="standard-title">${std.title}</p>
+              <div class="meta-tags">
+                ${std.categories.map((tag) => `<span class="meta-tag">#${tag}</span>`).join("")}
+              </div>
+              <div class="quick-view">
+                ${std.summary}
+                <div class="quick-actions">
+                  <span>Open details</span>
+                  <span>Category page</span>
+                </div>
+              </div>
+            </article>
+          `
+          )
+          .join("");
+      }
+
+      searchEl.addEventListener("input", renderResults);
+      sortEl.addEventListener("change", renderResults);
+      resetEl.addEventListener("click", () => {
+        searchEl.value = "";
+        sortEl.value = "shortname";
+        activeFacets.clear();
+        renderFacets();
+        renderResults();
+      });
+
+      renderProposalA();
+      renderProposalB();
+      renderFacets();
+      renderResults();
+    </script>
+  </body>
+</html>

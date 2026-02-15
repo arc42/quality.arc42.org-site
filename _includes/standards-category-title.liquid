@@ -1,0 +1,17 @@
+{% assign category = include.category %}
+{% case category %}
+{% when 'general' %}General
+{% when 'accessibility' %}Accessibility
+{% when 'usability' %}Usability
+{% when 'safety' %}Safety
+{% when 'security' %}Security
+{% when 'privacy' %}Privacy
+{% when 'ai' %}AI
+{% when 'trustworthiness' %}Trustworthiness
+{% when 'data' %}Data
+{% when 'governance' %}Governance
+{% when 'sector' %}Sector
+{% when 'coding' %}Coding
+{% when 'documentation' %}Documentation
+{% else %}{{ category | replace: '-', ' ' | capitalize }}
+{% endcase %}
