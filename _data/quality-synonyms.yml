@@ -71,6 +71,10 @@ analysability:
 maintainability:
   - supportability
 
+# Understandability (comprehensibility is used in several standards as synonym)
+understandability:
+  - comprehensibility
+
 # Consistency model (redirect alias to canonical consistency)
 consistency:
   - eventual-consistency
