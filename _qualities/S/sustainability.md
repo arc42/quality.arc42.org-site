@@ -2,7 +2,7 @@
 title: Sustainability 
 tags: [efficient, reliable]
 related: [energy-efficiency, carbon-emission-efficiency]
-standards: [iso42030]
+standards: [iso38500, iso42030]
 permalink: /qualities/sustainability
 ---
 

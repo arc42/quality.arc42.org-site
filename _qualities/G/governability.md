@@ -2,7 +2,7 @@
 title: Governability
 tags: [operable, secure]
 related: [compliance, accountability, auditability, controllability, operability, traceability, security]
-standards: [iso42001, iso42030, iso27001, nist80053]
+standards: [iso38500, iso42001, iso42030, iso27001, nist80053]
 permalink: /qualities/governability
 ---
 
