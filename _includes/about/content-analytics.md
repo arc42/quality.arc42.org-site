@@ -59,6 +59,8 @@ The following {{ orphan_qualities.size }} qualities have no directly related qua
 We maintain a list of quality attribute synonyms where multiple terms refer to the same concept. 
 This helps consolidate duplicate content and provides clear redirects for alternative terminology.
 
+See our complete [Quality Aliases and Synonyms mapping](/aliases/) for details.
+
 {% assign synonym_data = site.data.quality-synonyms %}
 {% assign synonym_count = synonym_data | size %}
 
