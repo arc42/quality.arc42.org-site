@@ -1,0 +1,201 @@
+// Quality aliases page styles
+.aliases-page {
+  --aliases-blue: #00b8f5;
+  --aliases-blue-dark: #0077ad;
+  --aliases-blue-soft: #f2faff;
+
+  .aliases-hero {
+    position: relative;
+    margin: 0 0 1.5rem;
+    padding: 1.25rem 1.25rem 1.1rem;
+    border-radius: 12px;
+    border: 1px solid rgba(0, 184, 245, 0.25);
+    background:
+      radial-gradient(circle at 0% 0%, rgba(0, 184, 245, 0.16), transparent 52%),
+      radial-gradient(circle at 100% 100%, rgba(0, 119, 173, 0.14), transparent 56%),
+      #f8fcff;
+    overflow: hidden;
+  }
+
+  .aliases-hero::after {
+    content: "";
+    position: absolute;
+    top: -28%;
+    right: -10%;
+    width: 44%;
+    height: 190%;
+    transform: rotate(12deg);
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.38) 0%,
+      rgba(255, 255, 255, 0.04) 70%,
+      rgba(255, 255, 255, 0) 100%
+    );
+    pointer-events: none;
+  }
+
+  .aliases-hero-title {
+    margin: 0 0 0.4rem;
+    color: var(--aliases-blue-dark);
+    font-size: 1.45rem;
+    line-height: 1.2;
+  }
+
+  .aliases-hero-text {
+    margin: 0;
+    color: #245269;
+    max-width: 76ch;
+  }
+
+  .aliases-stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.7rem;
+    margin-top: 0.95rem;
+  }
+
+  .aliases-stat {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.4rem;
+    padding: 0.35rem 0.7rem;
+    border: 1px solid rgba(0, 184, 245, 0.35);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.84);
+  }
+
+  .aliases-stat-value {
+    color: var(--aliases-blue-dark);
+    font-weight: 700;
+    font-size: 1rem;
+  }
+
+  .aliases-stat-label {
+    color: #35677d;
+    font-size: 0.86rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+  }
+
+  .synonym-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+  }
+
+  .synonym-card {
+    position: relative;
+    background: var(--aliases-blue-soft);
+    border: 1px solid rgba(0, 184, 245, 0.25);
+    border-left: 4px solid var(--aliases-blue);
+    border-radius: 10px;
+    padding: 18px;
+    box-shadow: 0 2px 8px rgba(0, 61, 91, 0.06);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .synonym-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 61, 91, 0.14);
+    border-color: rgba(0, 119, 173, 0.45);
+  }
+
+  .synonym-canonical {
+    font-weight: 700;
+    font-size: 1.15rem;
+    margin-bottom: 0.55rem;
+    color: var(--aliases-blue-dark);
+    border-bottom: 1px solid rgba(0, 184, 245, 0.18);
+    padding-bottom: 0.4rem;
+  }
+
+  .synonym-canonical a {
+    color: var(--aliases-blue-dark);
+    text-decoration: none;
+  }
+
+  .synonym-canonical a:hover {
+    text-decoration: underline;
+  }
+
+  .synonym-tags {
+    list-style: none;
+    margin: 0 0 0.65rem;
+    padding: 0;
+  }
+
+  .synonym-tags li {
+    display: inline-block;
+    margin-right: 0.38rem;
+    font-size: 0.88rem;
+  }
+
+  .synonym-tags li:last-child {
+    margin-right: 0;
+  }
+
+  .synonym-tags a.tag {
+    color: #005f8f;
+    text-decoration: none;
+  }
+
+  .synonym-tags a.tag:hover {
+    text-decoration: underline;
+  }
+
+  .synonym-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    flex-grow: 1;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+    align-items: flex-start;
+    align-content: flex-start;
+  }
+
+  .synonym-item {
+    flex: 0 0 auto;
+    margin: 0;
+    padding: 0.25rem 0.55rem;
+    border-radius: 999px;
+    background: #ffffff;
+    border: 1px solid rgba(0, 184, 245, 0.2);
+    color: #355f73;
+    font-size: 0.88rem;
+    line-height: 1.25;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.34rem;
+  }
+
+  .synonym-prefix {
+    color: #5b7786;
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: lowercase;
+    letter-spacing: 0.01em;
+  }
+
+  .synonym-item a {
+    color: #355f73;
+    text-decoration: none;
+  }
+
+  .synonym-item a:hover {
+    border-color: rgba(0, 119, 173, 0.42);
+    background: #f0f9ff;
+  }
+
+  .synonym-footer {
+    margin-top: 0.85rem;
+    font-size: 0.82rem;
+    color: #51788b;
+    font-style: italic;
+  }
+}
