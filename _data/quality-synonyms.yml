@@ -71,6 +71,10 @@ analysability:
 maintainability:
   - supportability
 
+# Governability (policy-enforcement is a commonly used narrower term)
+governability:
+  - policy-enforcement
+
 # Understandability (comprehensibility is used in several standards as synonym)
 understandability:
   - comprehensibility
