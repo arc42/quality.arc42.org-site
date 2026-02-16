@@ -1,14 +1,7 @@
 ---
-title: Budget constraint
-tags: [suitable, efficient]
-related: [affordability, cost]
+title: Budget Constraint
+alias_of: affordability
+redirect_to: /qualities/affordability
+layout: redirect
 permalink: /qualities/budget-constraint
 ---
-
->... the budget for the project, expressed in money or available resources.
->
->[Volere+2012, p. 22](/references/#volere)
-
-
-
-

@@ -87,5 +87,9 @@ consistency:
 timeliness:
   - currentness
 
+# Affordability (budget constraint is a project-level expression of affordability)
+affordability:
+  - budget-constraint
+
 carbon-emission-efficiency:
   - carbon-efficiency

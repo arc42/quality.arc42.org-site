@@ -1,0 +1,54 @@
+{% assign standards_count = include.standards | size %}
+{% assign standards_category_count = 0 %}
+{% for category in include.category_order %}
+  {% assign standards_in_category = include.standards | where_exp: "std", "std.categories contains category" %}
+  {% if standards_in_category.size > 0 %}
+    {% assign standards_category_count = standards_category_count | plus: 1 %}
+  {% endif %}
+{% endfor %}
+
+<section class="standards-hero">
+  <h2 class="standards-hero-title">
+    <i class="fa fa-award" aria-hidden="true"></i>
+    Quality Standards: Category View + Explorer
+  </h2>
+
+  <p class="standards-hero-text">
+    Numerous organizations like ISO and IEEE have published standards across various categories domains. We collected a few of these for your convenience.
+    
+    This section provides two ways to explore them:
+
+    Use <strong>by-category</strong> to scan standards grouped by domain or category.
+    Use <strong>by-explorer</strong> to search by keyword and filter across categories.
+  </p>
+
+  <div class="standards-hero-modes" aria-label="Standards browsing modes">
+    <a
+      class="standards-hero-mode standards-hero-mode-link{% if include.active_mode == 'category' %} is-active{% endif %}"
+      href="{{ include.category_href }}"
+      {% if include.active_mode == 'category' %}aria-current="page"{% endif %}
+    >
+      <span class="standards-hero-mode-name">by-category</span>
+      <span class="standards-hero-mode-desc">Browse standards by categories.</span>
+    </a>
+    <a
+      class="standards-hero-mode standards-hero-mode-link{% if include.active_mode == 'explorer' %} is-active{% endif %}"
+      href="{{ include.explorer_href }}"
+      {% if include.active_mode == 'explorer' %}aria-current="page"{% endif %}
+    >
+      <span class="standards-hero-mode-name">by-explorer</span>
+      <span class="standards-hero-mode-desc">Search + filter to narrow standards quickly.</span>
+    </a>
+  </div>
+
+  <div class="standards-hero-footer">
+    <div class="standards-hero-stat">
+      <span class="standards-hero-stat-value">{{ standards_count }}</span>
+      <span class="standards-hero-stat-label">Standards</span>
+    </div>
+    <div class="standards-hero-stat">
+      <span class="standards-hero-stat-value">{{ standards_category_count }}</span>
+      <span class="standards-hero-stat-label">Categories</span>
+    </div>
+  </div>
+</section>

@@ -1,7 +1,7 @@
 ---
 title: Budget constrained library update
 tags: [efficient, suitable]
-related: [affordability, cost, budget-constraint, time-to-market]
+related: [affordability, cost, time-to-market]
 permalink: /requirements/budget-constraint-library-update
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: Cost
 tags: [suitable, efficient]
-related: [budget-constraint, affordability]
+related: [affordability, profitability]
 permalink: /qualities/cost
 ---
 
