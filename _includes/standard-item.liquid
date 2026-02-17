@@ -3,10 +3,10 @@
 <div class="standard-item">
     <h3 class="standard-title">
         {% if include.link %}
-        <i class="fas fa-solid fa-award" style="color: var(--standard-text-color, #666);"></i>
+        <i class="fa fa-award standards-award-icon" aria-hidden="true"></i>
         <a class="standard-link" href="{{ standard.url | prepend: site.baseurl }}">{{ standard.title }}</a>
         {% else %}
-        <i class="fas fa-solid fa-award" style="color: var(--standard-text-color, #666);"></i>
+        <i class="fa fa-award standards-award-icon" aria-hidden="true"></i>
         {{ standard.title }}
         {% endif %}
     </h3>

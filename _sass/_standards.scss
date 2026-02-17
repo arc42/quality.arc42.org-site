@@ -51,6 +51,124 @@
   color: var(--std-text);
 }
 
+.standards-hero {
+  position: relative;
+  margin: 0 0 1rem;
+  padding: 1.05rem 1.05rem 0.95rem;
+  border-radius: 12px;
+  border: 1px solid rgba(201, 157, 52, 0.38);
+  background:
+    radial-gradient(circle at 0% 0%, rgba(238, 200, 102, 0.24), transparent 54%),
+    radial-gradient(circle at 100% 100%, rgba(214, 166, 58, 0.2), transparent 58%),
+    #fff9e8;
+  overflow: hidden;
+}
+
+.standards-hero::after {
+  content: "";
+  position: absolute;
+  top: -24%;
+  right: -9%;
+  width: 42%;
+  height: 180%;
+  transform: rotate(12deg);
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.34) 0%,
+    rgba(255, 255, 255, 0.08) 70%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  pointer-events: none;
+}
+
+.standards-hero-title {
+  margin: 0 0 0.38rem;
+  color: #8a6314;
+  font-size: 1.38rem;
+  line-height: 1.2;
+}
+
+.standards-hero-title .fa-award {
+  margin-right: 0.42rem;
+  font-size: 0.88em;
+  color: #a67818;
+}
+
+.standards-hero-text {
+  margin: 0;
+  color: #61573c;
+  max-width: 78ch;
+}
+
+.standards-hero-modes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 0.55rem;
+  margin-top: 0.8rem;
+}
+
+.standards-hero-mode {
+  display: flex;
+  flex-direction: column;
+  gap: 0.12rem;
+  padding: 0.52rem 0.62rem;
+  border-radius: 10px;
+  border: 1px solid rgba(208, 164, 66, 0.3);
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.standards-hero-mode.is-active {
+  border-color: rgba(179, 136, 39, 0.56);
+  background: linear-gradient(180deg, rgba(255, 247, 222, 0.95), rgba(255, 239, 191, 0.92));
+  box-shadow: inset 0 0 0 1px rgba(208, 159, 55, 0.18);
+}
+
+.standards-hero-mode-name {
+  font-size: 0.83rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: #8d6513;
+}
+
+.standards-hero-mode-desc {
+  font-size: 0.85rem;
+  color: #665c42;
+  line-height: 1.3;
+}
+
+.standards-hero-footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.52rem;
+  margin-top: 0.78rem;
+}
+
+.standards-hero-stat {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.35rem;
+  padding: 0.29rem 0.68rem;
+  border-radius: 999px;
+  border: 1px solid rgba(208, 164, 66, 0.38);
+  background: rgba(255, 255, 255, 0.86);
+}
+
+.standards-hero-stat-value {
+  color: #8f6611;
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.standards-hero-stat-label {
+  color: #6c6045;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+}
+
 .standards-intro {
   margin: 0.35rem 0 1rem;
   max-width: 78ch;
@@ -60,27 +178,28 @@
   margin-top: 1rem;
 }
 
-.standards-view-switch {
-  margin-bottom: 0.8rem;
+.standards-hero-mode-link {
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease, background 0.18s ease;
 }
 
-.standards-view-switch-btn {
-  display: inline-flex;
-  align-items: center;
-  padding: 0.4rem 0.8rem;
-  border-radius: 999px;
-  border: 1px solid var(--std-border-strong);
-  background: linear-gradient(180deg, #fff2ca 0%, #ffe6a8 100%);
-  color: #6e4d10;
+.standards-hero-mode-link:hover,
+.standards-hero-mode-link:focus-visible {
   text-decoration: none;
-  font-size: 0.85rem;
-  font-weight: 600;
+  border-color: rgba(179, 136, 39, 0.62);
+  background: linear-gradient(180deg, rgba(255, 249, 230, 0.95), rgba(255, 238, 191, 0.92));
+  box-shadow: 0 4px 10px rgba(112, 79, 17, 0.12);
+  transform: translateY(-1px);
 }
 
-.standards-view-switch-btn:hover,
-.standards-view-switch-btn:focus-visible {
-  background: linear-gradient(180deg, #ffecbd 0%, #ffdc92 100%);
-  text-decoration: none;
+.standards-hero-mode-link:focus-visible {
+  outline: 2px solid rgba(164, 122, 30, 0.55);
+  outline-offset: 2px;
+}
+
+.standards-hero-mode-link.is-active {
+  cursor: default;
 }
 
 .standards-category-card-grid {
@@ -187,8 +306,42 @@
 }
 
 .standards-categories-list .category-header {
+  margin-top: 1.15rem;
+}
+
+.site-content .standards-page h2.standards-section-header {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin: 1.15rem 0 0.55rem;
+  padding: 0.45rem 0.7rem;
+  border: 1px solid var(--std-border);
+  border-left: 4px solid var(--std-border-strong);
+  border-radius: 10px;
+  background: linear-gradient(180deg, #fff6de 0%, #fff2cd 100%);
   color: var(--std-heading);
-  margin-top: 1.2rem;
+  font-size: 1.07rem;
+  line-height: 1.25;
+}
+
+.standards-section-header-icon {
+  color: #9f751b;
+  font-size: 0.86rem;
+}
+
+.standards-section-header-count {
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.9rem;
+  padding: 0.08rem 0.48rem;
+  border-radius: 999px;
+  border: 1px solid var(--std-border);
+  background: #fff;
+  color: #766136;
+  font-size: 0.77rem;
+  font-weight: 700;
 }
 
 .standards-categories-list .standard-item {
@@ -197,21 +350,23 @@
 
 // Explorer page
 .standards-explorer-controls {
-  display: grid;
-  grid-template-columns: auto minmax(180px, 1fr) auto auto;
+  display: flex;
+  flex-wrap: wrap;
   gap: 0.48rem;
   align-items: center;
   margin-bottom: 0.75rem;
 }
 
 .standards-search-label {
+  flex: 0 0 100%;
   font-size: 0.86rem;
   font-weight: 600;
   color: #655329;
 }
 
 .standards-search-input {
-  width: 100%;
+  flex: 1 1 240px;
+  min-width: 180px;
   border: 1px solid var(--std-border);
   border-radius: 10px;
   padding: 0.45rem 0.52rem;
@@ -231,6 +386,7 @@
 }
 
 .standards-result-counter {
+  flex: 0 1 auto;
   color: #705924;
   font-size: 0.82rem;
   font-weight: 600;
@@ -358,8 +514,11 @@
 
 @media (max-width: 900px) {
   .standards-explorer-controls {
-    grid-template-columns: 1fr;
     align-items: stretch;
+  }
+
+  .standards-search-input {
+    min-width: 0;
   }
 
   .standards-result-counter {
@@ -379,12 +538,6 @@
     font-weight: bold;
     margin: 0 0 0.3rem 0;
     color: #4c5860;
-
-    .fas.fa-award {
-      color: #8c7d5a !important;
-      margin-right: 0.5rem;
-      font-size: 0.9rem;
-    }
   }
 
   .standard-link {
@@ -428,6 +581,12 @@
     margin-top: 0.5rem;
     margin-bottom: 0.5rem;
   }
+}
+
+.standards-award-icon {
+  color: #9f751b;
+  margin-right: 0.45rem;
+  font-size: 0.86rem;
 }
 
 // Shortname styling for standards table (legacy pages)

@@ -8,17 +8,17 @@ hide: true
 
 {% assign allStandards = site.standards | sort: "shortname" %}
 {% assign category_order = "general,accessibility,usability,ai,trustworthiness,safety,security,privacy,data,governance,sector,coding,documentation" | split: "," %}
+{% assign overview_href = '/standards/' | prepend: site.baseurl %}
+{% assign explorer_href = '/standards/explorer/' | prepend: site.baseurl %}
 
 <div class="standards-page standards-explorer-view">
-  <div class="standards-view-switch">
-    <a class="standards-view-switch-btn" href="{{ '/standards/' | prepend: site.baseurl }}">
-      switch-to-standards-overview
-    </a>
-  </div>
-
-  <p class="standards-intro">
-    Explore standards by search and category facets. Hover cards to get a short explanation before opening details.
-  </p>
+  {% include standards-hero.liquid
+    standards=allStandards
+    category_order=category_order
+    active_mode="explorer"
+    category_href=overview_href
+    explorer_href=explorer_href
+  %}
 
   <div class="standards-explorer-controls">
     <label class="standards-search-label" for="standards-search">Search standards</label>

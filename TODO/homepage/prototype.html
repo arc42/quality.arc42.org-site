@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Homepage Layout Proposals — arc42 Quality Model</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+  /* ─── Reset & Base ─── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: #f4f5f7;
+    color: #2c3e50;
+    line-height: 1.5;
+    padding: 2rem;
+  }
+  .proposal-label {
+    display: inline-block;
+    margin: 3rem 0 1rem;
+    padding: 0.4rem 1.2rem;
+    background: #2c3e50;
+    color: #fff;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .page-frame {
+    max-width: 880px;
+    margin: 0 auto 3rem;
+    background: #fff;
+    border-radius: 14px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+    padding: 1.5rem;
+    overflow: hidden;
+  }
+  hr.sep {
+    border: none;
+    border-top: 2px dashed #ddd;
+    margin: 2.5rem 0;
+  }
+
+  /* ─── Shared Hero Styles ─── */
+  .q-hero {
+    position: relative;
+    padding: 1.2rem 1.3rem 1.1rem;
+    border-radius: 12px;
+    border: 1px solid rgba(0, 145, 200, 0.22);
+    background:
+      radial-gradient(circle at 0% 0%, rgba(0, 184, 245, 0.13), transparent 52%),
+      radial-gradient(circle at 100% 100%, rgba(255, 201, 92, 0.10), transparent 56%),
+      #f6faff;
+    overflow: hidden;
+  }
+  .q-hero::after {
+    content: "";
+    position: absolute;
+    top: -24%;
+    right: -9%;
+    width: 42%;
+    height: 180%;
+    transform: rotate(12deg);
+    background: linear-gradient(180deg, rgba(255,255,255,0.36) 0%, rgba(255,255,255,0.06) 70%, transparent 100%);
+    pointer-events: none;
+  }
+  .q-hero-icon {
+    display: inline-block;
+    width: 28px; height: 28px;
+    background: linear-gradient(135deg, #00b8f5, #0091c8);
+    border-radius: 7px;
+    text-align: center;
+    line-height: 28px;
+    color: #fff;
+    font-size: 14px;
+    margin-right: 0.45rem;
+    vertical-align: middle;
+    box-shadow: 0 2px 6px rgba(0,145,200,0.25);
+  }
+  .q-hero-title {
+    margin: 0 0 0.35rem;
+    color: #005f80;
+    font-size: 1.4rem;
+    line-height: 1.25;
+  }
+  .q-hero-text {
+    margin: 0 0 0.2rem;
+    color: #2a5567;
+    max-width: 72ch;
+    font-size: 0.92rem;
+  }
+
+  /* ─── Mode Cards (shared) ─── */
+  .q-hero-modes {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 0.55rem;
+    margin-top: 0.85rem;
+    position: relative;
+    z-index: 1;
+  }
+  .q-hero-mode {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    padding: 0.55rem 0.65rem;
+    border-radius: 10px;
+    border: 1px solid rgba(0, 145, 200, 0.22);
+    background: rgba(255,255,255,0.72);
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+    cursor: pointer;
+  }
+  .q-hero-mode:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 14px rgba(0,91,130,0.10);
+    border-color: rgba(0,145,200,0.40);
+  }
+  .q-hero-mode.is-active {
+    border-color: rgba(0,119,173,0.50);
+    background: linear-gradient(180deg, rgba(230,246,255,0.95), rgba(210,238,255,0.92));
+    box-shadow: inset 0 0 0 1px rgba(0,145,200,0.12), 0 2px 8px rgba(0,91,130,0.08);
+  }
+  .q-hero-mode-icon {
+    font-size: 1.1rem;
+    margin-bottom: 0.1rem;
+  }
+  .q-hero-mode-name {
+    font-weight: 700;
+    font-size: 0.88rem;
+    color: #005f80;
+  }
+  .q-hero-mode-desc {
+    font-size: 0.78rem;
+    color: #456b7d;
+    line-height: 1.35;
+  }
+
+  /* Mode accent borders */
+  .q-hero-mode--graph  { border-left: 3px solid #00b8f5; }
+  .q-hero-mode--full   { border-left: 3px solid #ffc95c; }
+  .q-hero-mode--table  { border-left: 3px solid #b0bec5; }
+
+  /* ─── Stats ─── */
+  .q-hero-stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.8rem;
+    position: relative;
+    z-index: 1;
+  }
+  .q-hero-stat {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.32rem;
+    padding: 0.28rem 0.65rem;
+    border-radius: 999px;
+    border: 1px solid rgba(0,145,200,0.25);
+    background: rgba(255,255,255,0.85);
+    text-decoration: none;
+    color: inherit;
+    transition: background 0.15s ease;
+  }
+  .q-hero-stat:hover {
+    background: rgba(255,255,255,1);
+  }
+  .q-hero-stat-value {
+    font-weight: 700;
+    font-size: 0.92rem;
+  }
+  .q-hero-stat-value--blue  { color: #0088b8; }
+  .q-hero-stat-value--red   { color: #c0525e; }
+  .q-hero-stat-value--gold  { color: #9a7010; }
+  .q-hero-stat-value--teal  { color: #1a8a6e; }
+  .q-hero-stat-label {
+    color: #5a7080;
+    font-size: 0.76rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.01em;
+  }
+
+  /* ─── Graph Placeholder ─── */
+  .graph-placeholder {
+    margin: 1.2rem 0;
+    padding: 3rem 1.5rem;
+    border-radius: 12px;
+    border: 2px dashed #c8dce5;
+    background: linear-gradient(180deg, #f8fbfd, #eef4f7);
+    text-align: center;
+    color: #6a8fa0;
+  }
+  .graph-placeholder-icon {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    opacity: 0.5;
+  }
+  .graph-placeholder-label {
+    font-size: 0.9rem;
+    font-weight: 600;
+  }
+  .graph-placeholder-sub {
+    font-size: 0.8rem;
+    margin-top: 0.25rem;
+    opacity: 0.7;
+  }
+
+  /* ─── Dimensions Table ─── */
+  .dim-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin: 1rem 0;
+    font-size: 0.88rem;
+  }
+  .dim-table th {
+    text-align: left;
+    padding: 0.5rem 0.7rem;
+    border-bottom: 2px solid #dce6eb;
+    color: #456b7d;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+  .dim-table td {
+    padding: 0.55rem 0.7rem;
+    border-bottom: 1px solid #eef2f5;
+    vertical-align: top;
+  }
+  .dim-table tr:last-child td { border-bottom: none; }
+  .dim-tag {
+    display: inline-block;
+    padding: 0.15rem 0.5rem;
+    border-radius: 4px;
+    background: #e8f4fa;
+    color: #005f80;
+    font-weight: 700;
+    font-size: 0.82rem;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .dim-count {
+    color: #7a9aaa;
+    font-size: 0.78rem;
+    margin-left: 0.3rem;
+  }
+
+  /* ─── Proposal B: Content switching ─── */
+  .content-area { display: none; }
+  .content-area.is-visible { display: block; }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<span class="proposal-label">Proposal A — "Gateway Cards"</span>
+<p style="color:#666; margin-bottom:1rem; font-size:0.9rem;">
+  Graph stays prominent. Three navigation cards sit inside the hero. Everything visible on one scroll.
+</p>
+
+<div class="page-frame">
+
+  <!-- Hero -->
+  <section class="q-hero">
+    <h2 class="q-hero-title">
+      <span class="q-hero-icon"><i class="fas fa-gem"></i></span>
+      Quality Model Q42
+    </h2>
+    <p class="q-hero-text">
+      System and product quality, made easy. A pragmatic, actionable alternative to ISO 25010 —
+      explore qualities, requirements, and standards through interactive graphs or structured navigation.
+    </p>
+
+    <div class="q-hero-modes">
+      <a class="q-hero-mode q-hero-mode--graph is-active" href="#graph-a">
+        <span class="q-hero-mode-icon">🔵</span>
+        <span class="q-hero-mode-name">Explore</span>
+        <span class="q-hero-mode-desc">Interactive overview graph — click any node to dive in.</span>
+      </a>
+      <a class="q-hero-mode q-hero-mode--full" href="/full-quality-graph">
+        <span class="q-hero-mode-icon">🟡</span>
+        <span class="q-hero-mode-name">Full Graph</span>
+        <span class="q-hero-mode-desc">Complete network with all qualities, requirements and standards.</span>
+      </a>
+      <a class="q-hero-mode q-hero-mode--table" href="#dims-a">
+        <span class="q-hero-mode-icon">📋</span>
+        <span class="q-hero-mode-name">Browse by Dimension</span>
+        <span class="q-hero-mode-desc">Navigate the 9 quality dimensions as a structured table.</span>
+      </a>
+    </div>
+
+    <div class="q-hero-stats">
+      <a class="q-hero-stat" href="/qualities">
+        <span class="q-hero-stat-value q-hero-stat-value--blue">208</span>
+        <span class="q-hero-stat-label">Qualities</span>
+      </a>
+      <a class="q-hero-stat" href="/requirements">
+        <span class="q-hero-stat-value q-hero-stat-value--red">115</span>
+        <span class="q-hero-stat-label">Requirements</span>
+      </a>
+      <a class="q-hero-stat" href="/standards">
+        <span class="q-hero-stat-value q-hero-stat-value--gold">34</span>
+        <span class="q-hero-stat-label">Standards</span>
+      </a>
+      <a class="q-hero-stat" href="/aliases">
+        <span class="q-hero-stat-value q-hero-stat-value--teal">22</span>
+        <span class="q-hero-stat-label">Aliases</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- Graph (placeholder) -->
+  <div id="graph-a" class="graph-placeholder">
+    <div class="graph-placeholder-icon"><i class="fas fa-project-diagram"></i></div>
+    <div class="graph-placeholder-label">Interactive Overview Graph</div>
+    <div class="graph-placeholder-sub">Double-click a node to view its definition, related qualities and requirements.</div>
+  </div>
+
+  <!-- Dimensions Table -->
+  <div id="dims-a">
+    <h3 style="color:#005f80; margin-bottom:0.5rem; font-size:1.1rem;">
+      <i class="fas fa-layer-group" style="margin-right:0.4rem; opacity:0.6;"></i>
+      Quality Dimensions
+    </h3>
+    <table class="dim-table">
+      <thead>
+        <tr><th>Dimension</th><th>What it covers</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><a class="dim-tag" href="/tag-reliable">#reliable</a> <span class="dim-count">42</span></td><td>Perform specified functions without interruptions or failures</td></tr>
+        <tr><td><a class="dim-tag" href="/tag-flexible">#flexible</a> <span class="dim-count">38</span></td><td>Adapt to changes in requirements, contexts, or system environment</td></tr>
+        <tr><td><a class="dim-tag" href="/tag-efficient">#efficient</a> <span class="dim-count">34</span></td><td>Perform within time, capacity and resource parameters</td></tr>
+        <tr><td><a class="dim-tag" href="/tag-usable">#usable</a> <span class="dim-count">52</span></td><td>Enable users to work safely, effectively and efficiently</td></tr>
+        <tr><td><a class="dim-tag" href="/tag-secure">#secure</a> <span class="dim-count">41</span></td><td>Protect data and defend against attack patterns</td></tr>
+        <tr><td><a class="dim-tag" href="/tag-safe">#safe</a> <span class="dim-count">18</span></td><td>Avoid states endangering life, health, or environment</td></tr>
+        <tr><td><a class="dim-tag" href="/tag-maintainable">#maintainable</a> <span class="dim-count">29</span></td><td>Analyze, modify, test and evolve with predictable effort</td></tr>
+        <tr><td><a class="dim-tag" href="/tag-suitable">#suitable</a> <span class="dim-count">46</span></td><td>Meet stated and implied needs of stakeholders</td></tr>
+        <tr><td><a class="dim-tag" href="/tag-operable">#operable</a> <span class="dim-count">33</span></td><td>Easy to deploy, operate, monitor and control</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<hr class="sep">
+
+<span class="proposal-label">Proposal B — "Mode Switcher"</span>
+<p style="color:#666; margin-bottom:1rem; font-size:0.9rem;">
+  Hero acts as a mode selector (like standards page). Content area toggles between graph and table. Cleaner, more focused.
+</p>
+
+<div class="page-frame">
+
+  <!-- Hero -->
+  <section class="q-hero">
+    <h2 class="q-hero-title">
+      <span class="q-hero-icon"><i class="fas fa-gem"></i></span>
+      Quality Model Q42
+    </h2>
+    <p class="q-hero-text">
+      A pragmatic, actionable alternative to ISO 25010.
+      Explore qualities, requirements, and standards — choose your preferred navigation below.
+    </p>
+
+    <div class="q-hero-modes">
+      <a class="q-hero-mode q-hero-mode--graph is-active" onclick="switchMode('graph')" id="mode-graph">
+        <span class="q-hero-mode-icon"><i class="fas fa-circle-nodes" style="color:#00b8f5"></i></span>
+        <span class="q-hero-mode-name">Overview Graph</span>
+        <span class="q-hero-mode-desc">Interactive visualization of the 9 core dimensions. Click any node to explore.</span>
+      </a>
+      <a class="q-hero-mode q-hero-mode--full" onclick="window.location='/full-quality-graph'" id="mode-full">
+        <span class="q-hero-mode-icon"><i class="fas fa-diagram-project" style="color:#c49a2c"></i></span>
+        <span class="q-hero-mode-name">Full Graph</span>
+        <span class="q-hero-mode-desc">Complete network — all qualities, requirements and standards in one view.</span>
+      </a>
+      <a class="q-hero-mode q-hero-mode--table" onclick="switchMode('table')" id="mode-table">
+        <span class="q-hero-mode-icon"><i class="fas fa-table-list" style="color:#78909c"></i></span>
+        <span class="q-hero-mode-name">Dimensions</span>
+        <span class="q-hero-mode-desc">Browse the 9 quality dimensions with counts and descriptions.</span>
+      </a>
+    </div>
+
+    <div class="q-hero-stats">
+      <a class="q-hero-stat" href="/qualities">
+        <span class="q-hero-stat-value q-hero-stat-value--blue">208</span>
+        <span class="q-hero-stat-label">Qualities</span>
+      </a>
+      <a class="q-hero-stat" href="/requirements">
+        <span class="q-hero-stat-value q-hero-stat-value--red">115</span>
+        <span class="q-hero-stat-label">Requirements</span>
+      </a>
+      <a class="q-hero-stat" href="/standards">
+        <span class="q-hero-stat-value q-hero-stat-value--gold">34</span>
+        <span class="q-hero-stat-label">Standards</span>
+      </a>
+      <a class="q-hero-stat" href="/aliases">
+        <span class="q-hero-stat-value q-hero-stat-value--teal">22</span>
+        <span class="q-hero-stat-label">Aliases</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- Content: Graph Mode -->
+  <div id="content-graph" class="content-area is-visible">
+    <div class="graph-placeholder">
+      <div class="graph-placeholder-icon"><i class="fas fa-project-diagram"></i></div>
+      <div class="graph-placeholder-label">Interactive Overview Graph</div>
+      <div class="graph-placeholder-sub">Double-click a node to view its definition, related qualities and requirements.</div>
+    </div>
+  </div>
+
+  <!-- Content: Table Mode -->
+  <div id="content-table" class="content-area">
+    <div style="margin-top:1.2rem;">
+      <h3 style="color:#005f80; margin-bottom:0.5rem; font-size:1.1rem;">
+        <i class="fas fa-layer-group" style="margin-right:0.4rem; opacity:0.6;"></i>
+        Quality Dimensions
+      </h3>
+      <p style="color:#456b7d; font-size:0.85rem; margin-bottom:0.8rem;">
+        Qualities and requirements are organized along 9 top-level dimensions.
+        A single quality can belong to multiple dimensions — they are intentionally not orthogonal.
+      </p>
+      <table class="dim-table">
+        <thead>
+          <tr><th>Dimension</th><th>What it covers</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><a class="dim-tag" href="/tag-reliable">#reliable</a> <span class="dim-count">42</span></td><td>Perform specified functions without interruptions or failures</td></tr>
+          <tr><td><a class="dim-tag" href="/tag-flexible">#flexible</a> <span class="dim-count">38</span></td><td>Adapt to changes in requirements, contexts, or system environment</td></tr>
+          <tr><td><a class="dim-tag" href="/tag-efficient">#efficient</a> <span class="dim-count">34</span></td><td>Perform within time, capacity and resource parameters</td></tr>
+          <tr><td><a class="dim-tag" href="/tag-usable">#usable</a> <span class="dim-count">52</span></td><td>Enable users to work safely, effectively and efficiently</td></tr>
+          <tr><td><a class="dim-tag" href="/tag-secure">#secure</a> <span class="dim-count">41</span></td><td>Protect data and defend against attack patterns</td></tr>
+          <tr><td><a class="dim-tag" href="/tag-safe">#safe</a> <span class="dim-count">18</span></td><td>Avoid states endangering life, health, or environment</td></tr>
+          <tr><td><a class="dim-tag" href="/tag-maintainable">#maintainable</a> <span class="dim-count">29</span></td><td>Analyze, modify, test and evolve with predictable effort</td></tr>
+          <tr><td><a class="dim-tag" href="/tag-suitable">#suitable</a> <span class="dim-count">46</span></td><td>Meet stated and implied needs of stakeholders</td></tr>
+          <tr><td><a class="dim-tag" href="/tag-operable">#operable</a> <span class="dim-count">33</span></td><td>Easy to deploy, operate, monitor and control</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>
+
+<script>
+function switchMode(mode) {
+  // Toggle content
+  document.getElementById('content-graph').classList.toggle('is-visible', mode === 'graph');
+  document.getElementById('content-table').classList.toggle('is-visible', mode === 'table');
+  // Toggle active mode button
+  document.getElementById('mode-graph').classList.toggle('is-active', mode === 'graph');
+  document.getElementById('mode-table').classList.toggle('is-active', mode === 'table');
+  document.getElementById('mode-full').classList.remove('is-active');
+}
+</script>
+
+</body>
+</html>
