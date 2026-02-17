@@ -75,6 +75,29 @@
     background-color: #cb9fff;
 }
 
+#full-q-graph-home__btn {
+    margin-top: 0.45rem;
+    width: 100%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    padding: 0.5rem;
+    border: 1px solid #b7d9ed;
+    border-radius: 4px;
+    background: #ecf8ff;
+    color: #1e5f84;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+#full-q-graph-home__btn:hover,
+#full-q-graph-home__btn:focus-visible {
+    text-decoration: none;
+    background: #def2ff;
+    border-color: #8fc4e5;
+}
+
 #full-q-graph-center__btn {
     background: transparent;
     border: 1px solid transparent;
@@ -208,4 +231,3 @@
 #q-graph-container:hover #full-graph-toggle {
     display: block;
 }
-

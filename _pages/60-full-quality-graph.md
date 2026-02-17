@@ -18,6 +18,10 @@ hide: true
             <label class="sr-only" for="full-q-graph-filter__input">Filter graph with comma separated values:</label>
             <input type="text" id="full-q-graph-filter__input" placeholder="Usability, ISO..." />
             <button id="full-q-graph-filter__btn" class="btn">Filter</button>
+            <a id="full-q-graph-home__btn" href="{{ '/' | prepend: site.baseurl }}">
+                <i class="fa fa-home" aria-hidden="true"></i>
+                back-to-home
+            </a>
             <hr />        
         </div>
         <div id="full-q-graph-legend">
@@ -28,7 +32,7 @@ hide: true
             </div>
             <div class="legend-item">
                 <span class="color-box" style="background-color: #f8f9fa;"></span>
-                <span class="legend-label">Property Nodes</span>
+                <span class="legend-label">Dimensions</span>
             </div>
             <hr />
             <div class="legend-item">
