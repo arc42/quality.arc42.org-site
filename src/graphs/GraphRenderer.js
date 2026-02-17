@@ -852,7 +852,8 @@ export class GraphRenderer {
             if (l.source._legendHidden || l.target._legendHidden) return;
             if (this._isStdSelectionActive() && (this._hideIfDimmedPropertyUnderStd(l.source) || this._hideIfDimmedPropertyUnderStd(l.target))) return;
             const isHover = !!l._hoverHighlight;
-            const baseOpacity = l._dimmed ? 0.05 : 0.6;
+            const isFilterRelated = this.isFiltering && !(l.source?.filterMatched || l.target?.filterMatched);
+            const baseOpacity = l._dimmed ? 0.05 : (isFilterRelated ? 0.22 : 0.6);
             const opacity = isHover ? 0.9 : baseOpacity;
             if (opacity <= 0) return;
             ctx.globalAlpha = opacity;
@@ -875,7 +876,8 @@ export class GraphRenderer {
             if (!s || !tNode) return;
             if (s._legendHidden || tNode._legendHidden) return;
             const isHover = !!vl._hoverHighlight;
-            const baseOpacity = vl._dimmed ? 0.05 : 0.4;
+            const isFilterRelated = this.isFiltering && !(s?.filterMatched || tNode?.filterMatched);
+            const baseOpacity = vl._dimmed ? 0.05 : (isFilterRelated ? 0.16 : 0.4);
             const opacity = isHover ? 0.85 : baseOpacity;
             if (opacity <= 0) return;
             ctx.globalAlpha = opacity;
@@ -902,6 +904,7 @@ export class GraphRenderer {
             const r = n._canvasR == null ? n.size : n._canvasR;
             const opacity = n._canvasOpacity == null ? 1 : n._canvasOpacity;
             const strokeW = n._canvasStrokeWidth == null ? 1.5 : n._canvasStrokeWidth;
+            const strokeColor = n._canvasStrokeColor || '#2C3E50';
             if (r <= 0 || opacity <= 0) return;
             ctx.globalAlpha = opacity;
             ctx.fillStyle = n.color;
@@ -909,8 +912,17 @@ export class GraphRenderer {
             ctx.arc(n.x, n.y, r, 0, Math.PI * 2);
             ctx.fill();
             ctx.lineWidth = strokeW;
-            ctx.strokeStyle = '#2C3E50';
+            ctx.strokeStyle = strokeColor;
             ctx.stroke();
+
+            if (n._canvasOuterRing) {
+                ctx.globalAlpha = Math.min(1, opacity + 0.05);
+                ctx.lineWidth = n._canvasOuterRingWidth || 2.2;
+                ctx.strokeStyle = n._canvasOuterRingColor || '#F97316';
+                ctx.beginPath();
+                ctx.arc(n.x, n.y, r + 2.8, 0, Math.PI * 2);
+                ctx.stroke();
+            }
         });
     }
 
@@ -1070,37 +1082,64 @@ export class GraphRenderer {
         if (!d || d._legendHidden) return { visible: false };
 
         const isProp = isProperty(d);
+        const isFilterMatch = this.isFiltering && !!d.filterMatched;
+        const isFilterRelated = this.isFiltering && !isFilterMatch && !!d.filterRelated;
         const isDimmedPropUnderStd = this._isStdSelectionActive() && isProp && d._dimmed;
         if (isDimmedPropUnderStd) return { visible: false };
 
         if (isRoot(d) || isProp) {
-            return { visible: true, size: d.size, opacity: 1, strokeWidth: 1.5 };
+            return {
+                visible: true,
+                size: d.size,
+                opacity: (isProp && isFilterRelated) ? 0.72 : 1,
+                strokeWidth: isFilterMatch ? 2.8 : 1.5,
+                strokeColor: isFilterMatch ? "#0F172A" : "#2C3E50",
+                outerRing: isFilterMatch,
+                outerRingColor: "#F97316",
+                outerRingWidth: 2.2
+            };
         }
 
         const visibilityThreshold = this._nodeVisibilityThreshold(d);
         const isHighlighted = this._nodeHighlighted(d);
 
-        if (!isHighlighted && zoom < visibilityThreshold) {
+        if (!isHighlighted && !isFilterMatch && zoom < visibilityThreshold) {
             return { visible: false };
         }
 
         const sizeFactor = Math.min(1, Math.max(0.5, zoom / 1.5));
         const strokeWidth = Math.min(1.5, Math.max(0.5, zoom / 1.5));
+        const strokeColor = isFilterMatch ? "#0F172A" : "#2C3E50";
 
         if (isHighlighted) {
             const size = this.selectionActive ? d.size * sizeFactor : d.size;
             const sw = this.selectionActive ? strokeWidth : 1.5;
-            return { visible: true, size, opacity: 1, strokeWidth: sw };
+            return {
+                visible: true,
+                size,
+                opacity: 1,
+                strokeWidth: isFilterMatch ? Math.max(sw, 2.8) : sw,
+                strokeColor,
+                outerRing: isFilterMatch,
+                outerRingColor: "#F97316",
+                outerRingWidth: 2.2
+            };
         }
 
         const baseOpacity = Math.min(1, Math.max(0.6, zoom / 1.2));
-        const finalOpacity = d._dimmed ? Math.min(baseOpacity, 0.15) : baseOpacity;
+        const dimmedOpacity = d._dimmed ? Math.min(baseOpacity, 0.15) : baseOpacity;
+        const relatedOpacity = isFilterRelated ? Math.min(dimmedOpacity, 0.45) : dimmedOpacity;
+        const finalOpacity = isFilterMatch ? 1 : relatedOpacity;
 
         return {
             visible: true,
             size: d.size * sizeFactor,
             opacity: finalOpacity,
-            strokeWidth: strokeWidth
+            strokeWidth: isFilterMatch ? Math.max(strokeWidth, 2.8) : strokeWidth,
+            strokeColor,
+            outerRing: isFilterMatch,
+            outerRingColor: "#F97316",
+            outerRingWidth: 2.2
         };
     }
 
@@ -1117,11 +1156,19 @@ export class GraphRenderer {
             d._canvasR = state.size;
             d._canvasOpacity = state.opacity;
             d._canvasStrokeWidth = state.strokeWidth;
+            d._canvasStrokeColor = state.strokeColor || "#2C3E50";
+            d._canvasOuterRing = !!state.outerRing;
+            d._canvasOuterRingColor = state.outerRingColor || "#F97316";
+            d._canvasOuterRingWidth = state.outerRingWidth || 2.2;
         } else {
             element.style("display", "none").attr("opacity", 0);
             d._canvasR = 0;
             d._canvasOpacity = 0;
             d._canvasStrokeWidth = 1.5;
+            d._canvasStrokeColor = "#2C3E50";
+            d._canvasOuterRing = false;
+            d._canvasOuterRingColor = "#F97316";
+            d._canvasOuterRingWidth = 2.2;
         }
     }
 
@@ -1177,7 +1224,10 @@ export class GraphRenderer {
         if (d._dimmed && !isHighlighted) return 0;
 
         const threshold = this._labelVisibilityThreshold(d);
-        return (isHighlighted || zoom > threshold) ? 1 : 0;
+        const visible = (isHighlighted || zoom > threshold);
+        if (!visible) return 0;
+        if (this.isFiltering && !d.filterMatched && d.filterRelated && !isHighlighted) return 0.55;
+        return 1;
     }
 
     /**

@@ -7,6 +7,8 @@ export class GraphDataProvider {
     #filteredPropertyNodes;
     #filteredNodes;
     #filteredEdges;
+    #filterMatchedNodeIds;
+    #filterRelatedNodeIds;
 
     /**
      * @param {Array} propertyNodes - Property nodes data
@@ -47,6 +49,21 @@ export class GraphDataProvider {
         this.#filteredPropertyNodes = this.#propertyNodes;
         this.#filteredNodes = this.#nodes;
         this.#filteredEdges = this.#edges;
+        this.#filterMatchedNodeIds = new Set();
+        this.#filterRelatedNodeIds = new Set();
+    }
+
+    /**
+     * Get node id sets used for filter-match highlighting in the renderer.
+     * - matchedNodeIds: nodes whose labels directly matched active filter terms
+     * - relatedNodeIds: visible context nodes brought in by graph connectivity
+     * @returns {{matchedNodeIds: Set<string>, relatedNodeIds: Set<string>}}
+     */
+    getFilterHighlightSets() {
+        return {
+            matchedNodeIds: new Set(this.#filterMatchedNodeIds || []),
+            relatedNodeIds: new Set(this.#filterRelatedNodeIds || [])
+        };
     }
 
     /**
@@ -96,6 +113,13 @@ export class GraphDataProvider {
         this.#filteredNodes = nodesPool.filter(node => restrictedVisible.has(node.id));
         this.#filteredEdges = edgesPool.filter(edge => restrictedVisible.has(edge.source) && restrictedVisible.has(edge.target));
         this.#filteredPropertyNodes = this.#propertyNodes.filter(node => visiblePropertyNodeIds.has(node.id));
+
+        // Keep explicit sets for visual distinction:
+        // 1) direct term matches vs 2) related context nodes.
+        this.#filterMatchedNodeIds = new Set(Array.from(filteredNodeIds).filter(id => restrictedVisible.has(id)));
+        this.#filterRelatedNodeIds = new Set(
+            Array.from(restrictedVisible).filter(id => !this.#filterMatchedNodeIds.has(id))
+        );
 
         return this.getData();
     }
@@ -259,6 +283,8 @@ export class GraphDataProvider {
         this.#filteredNodes = this.#nodes.filter(node => visibleNodeIds.has(node.id));
         this.#filteredEdges = this.#edges.filter(edge => visibleNodeIds.has(edge.source) && visibleNodeIds.has(edge.target));
         this.#filteredPropertyNodes = this.#propertyNodes.filter(node => visiblePropertyNodeIds.has(node.id));
+        this.#filterMatchedNodeIds = new Set();
+        this.#filterRelatedNodeIds = new Set();
 
         return this.getData();
     }

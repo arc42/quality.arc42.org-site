@@ -44,12 +44,16 @@ export class Graph {
      */
     buildGraph() {
         const { propertyNodes, nodes, edges } = this.dataProvider.getData();
+        const filterHighlights = this.dataProvider.getFilterHighlightSets?.() || {
+            matchedNodeIds: new Set(),
+            relatedNodeIds: new Set()
+        };
 
         try {
             this.createRootNode("Quality", 55, "#ebebeb");
             // Create nodes and edges
-            this.createNodes(propertyNodes);
-            this.createNodes(nodes);
+            this.createNodes(propertyNodes, filterHighlights);
+            this.createNodes(nodes, filterHighlights);
             this.createEdges(edges);
 
             // Apply layout
@@ -77,6 +81,8 @@ export class Graph {
             x: 0,
             y: 0,
             color,
+            filterMatched: false,
+            filterRelated: false,
         });
     }
 
@@ -84,7 +90,9 @@ export class Graph {
      * Creates node elements
      * @param {{id: string, label: string, size: number, color: string, qualityType: string, page: string}[]} nodes - Array of node data
      */
-    createNodes(nodes) {
+    createNodes(nodes, filterHighlights = null) {
+        const matchedNodeIds = filterHighlights?.matchedNodeIds || new Set();
+        const relatedNodeIds = filterHighlights?.relatedNodeIds || new Set();
         nodes.forEach((node) => {
             if (this.graph.hasNode(node.id)) {
                 this.graph.dropNode(node.id);
@@ -95,6 +103,8 @@ export class Graph {
                 color: node.color,
                 qualityType: node.qualityType,
                 page: node.page,
+                filterMatched: matchedNodeIds.has(node.id),
+                filterRelated: relatedNodeIds.has(node.id),
             });
         });
     }
