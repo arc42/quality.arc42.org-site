@@ -55,10 +55,18 @@ order: 1
     </div>
 
     <div class="home-new-stats">
-      <span class="home-new-stat home-new-stat--quality"><strong>{{ qualities | size }}</strong> qualities</span>
-      <span class="home-new-stat home-new-stat--requirement"><strong>{{ requirements | size }}</strong> requirements</span>
-      <span class="home-new-stat home-new-stat--standard"><strong>{{ standards | size }}</strong> standards</span>
-      <span class="home-new-stat home-new-stat--approach"><strong>{{ approaches | size }}</strong> approaches</span>
+      <a class="home-new-stat home-new-stat--quality" href="{{ '/qualities/' | prepend: site.baseurl }}">
+        <strong>{{ qualities | size }}</strong> qualities
+      </a>
+      <a class="home-new-stat home-new-stat--requirement" href="{{ '/requirements/' | prepend: site.baseurl }}">
+        <strong>{{ requirements | size }}</strong> requirements
+      </a>
+      <a class="home-new-stat home-new-stat--standard" href="{{ '/standards/' | prepend: site.baseurl }}">
+        <strong>{{ standards | size }}</strong> standards
+      </a>
+      <a class="home-new-stat home-new-stat--approach" href="{{ '/approaches/' | prepend: site.baseurl }}">
+        <strong>{{ approaches | size }}</strong> approaches
+      </a>
     </div>
   </section>
 

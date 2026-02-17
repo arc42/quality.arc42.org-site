@@ -6,9 +6,18 @@ hide: true
 share: false
 ---
 
+<img src="{{ '/assets/img/q42-404.webp' | prepend: site.baseurl }}"/>
+
 <h1 style="color:#fe5a83">Sorry...</h1>
 
 Oops - the page you requested wasn't found.
+
+<p>
+  <a class="cta-home" href="{{ '/' | prepend: site.baseurl }}">
+    <i class="fa fa-home" aria-hidden="true"></i>
+    Back to Home
+  </a>
+</p>
 
 Please let us know what you did, by
 
@@ -21,4 +30,25 @@ Please let us know what you did, by
     </li>
 </ul>
 
-<img src="{{ '/assets/img/q42-404.png' | prepend: site.baseurl }}"/>
+
+<style>
+  .cta-home {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.4rem 0.8rem;
+    border-radius: 999px;
+    border: 1px solid #b8d8ea;
+    background: #eaf7ff;
+    color: #1f5f84;
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  .cta-home:hover,
+  .cta-home:focus-visible {
+    text-decoration: none;
+    background: #dff2ff;
+    border-color: #9ecde8;
+  }
+</style>
