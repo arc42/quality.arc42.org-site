@@ -2,7 +2,7 @@
 title: Authenticity
 tags: [secure]
 related: [integrity, security, non-repudiation, accountability, access-control]
-standards: [iso25010, iso27001, pcidss, iso15408, cra, gdpr, sox, ieee2857]
+standards: [iso25010, iso27001, pcidss, iso15408, cra, gdpr, sox, ieee2857, owaspasvs]
 permalink: /qualities/authenticity
 ---
 

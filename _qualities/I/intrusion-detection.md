@@ -2,6 +2,7 @@
 title: Intrusion Detection
 tags: [secure]
 related: [intrusion-prevention]
+standards: [owaspasvs]
 permalink: /qualities/intrusion-detection
 ---
 

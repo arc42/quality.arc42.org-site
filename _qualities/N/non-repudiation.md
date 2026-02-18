@@ -2,7 +2,7 @@
 title: Non-repudiation
 tags: [secure]
 related: [integrity, authenticity, security, accountability]
-standards: [iso25010, iso27001, pcidss]
+standards: [iso25010, iso27001, pcidss, owaspasvs]
 permalink: /qualities/non-repudiation
 ---
 
