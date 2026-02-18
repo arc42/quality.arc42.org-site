@@ -17,10 +17,10 @@ A team changes one service (internal model, API, or event schema) to implement a
 
 #### Acceptance Criteria
 
-- CI architecture tests report **0** imports from another service's internal code/packages.
-- Cross-service direct database access is **0**; communication is only via API/event contracts.
+- Over a rolling 90-day window, architecture/compliance checks report **0** direct dependencies on another service's internal implementation artifacts (for example internal packages, private libraries, or shared source).
+- Cross-service direct database access is **0**; communication is only via explicit API/event contracts.
 - Over a rolling 90-day window, at least **85%** of production changes affect **one service only**, and **0%** affect more than **2 services**.
-- A planned API/schema change in one service requires code changes in at most **2 downstream consumers**.
-- Any single service can be deployed or rolled back in **<= 15 minutes** without redeploying other services.
+- For contract changes introduced in a rolling 90-day window, required code changes are limited to at most **2 downstream consumers** at the **95th percentile**.
+- In production, at the **95th percentile** over a rolling 90-day window, a single service can be deployed or rolled back in **<= 15 minutes** without coordinated redeployment of other services.
 
 </div><br>
