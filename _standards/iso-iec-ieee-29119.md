@@ -66,10 +66,3 @@ The series is process- and evidence-oriented: it does not define product quality
 ### Guidance Extensions
 - [ISO/IEC TR 29119-6:2021 (Using ISO/IEC/IEEE 29119 in agile development)](https://www.iso.org/standard/81293.html)
 - [ISO/IEC TR 29119-11:2020 (Guidelines on testing AI-based systems)](https://www.iso.org/standard/79016.html)
-
-### Related Bodies and Complementary Sources
-- [IEEE Standards Association: IEEE 29119-2](https://standards.ieee.org/ieee/29119-2/6318/)
-- [ISO/IEC 20246 (Work product reviews in systems and software engineering)](https://www.iso.org/standard/43545.html)
-- [ISO/IEC JTC 1/SC 7 committee page](https://www.iso.org/committee/45086.html)
-- [IEC catalogue entry for ISO/IEC/IEEE 29119-5:2024](https://webstore.iec.ch/en/publication/81152)
-
