@@ -10,8 +10,8 @@ permalink: /standards/owasp-asvs
 ## OWASP Application Security Verification Standard (ASVS)
 
 The OWASP Application Security Verification Standard (ASVS) is an open framework of security requirements for designing, developing, and testing modern web applications and APIs.
-Maintained by the Open Worldwide Application Security Project (OWASP) as a Flagship Project and licensed under Creative Commons CC BY-SA 4.0, version 5.0.0 was released in May 2025.
-ASVS fills a gap that general security standards (such as [ISO/IEC 27001](/standards/iso-27001)) leave open: instead of organisational controls, it provides concrete, requirement-level guidance that development teams can use directly in code reviews, testing, and procurement.
+Maintained by the Open Worldwide Application Security Project (OWASP) as a Flagship Project and licensed under Creative Commons CC BY-SA 4.0. Version 5.0.0 was released in May 2025.
+ASVS fills a gap that general security standards (such as [ISO/IEC 27001](/standards/iso-27001)) leave open: instead of organizational controls, it provides concrete, requirement-level guidance that development teams can use directly in code reviews, testing, and procurement.
 
 ### Version History
 
@@ -26,7 +26,7 @@ Requirements are identified in the format `<chapter>.<section>.<requirement>` an
 
 ### Verification Levels
 
-ASVS defines three cumulative security levels to let organisations calibrate depth of verification to risk:
+ASVS defines three cumulative security levels to let organizations calibrate depth of verification to risk:
 
 | Level | Share of Requirements | Intent |
 |:------|:---------------------|:-------|
@@ -38,7 +38,7 @@ Levels are cumulative: L2 includes all L1 requirements, L3 includes all L2 requi
 
 ## Chapter Structure
 
-ASVS 5.0.0 organises its requirements across 17 chapters:
+ASVS 5.0.0 organizes its requirements across 17 chapters:
 
 | Chapter | Topic |
 |:--------|:------|
@@ -72,7 +72,7 @@ ASVS is designed to serve multiple audiences with the same artefact:
 
 ASVS is complementary to, not a replacement for, broader frameworks:
 
-- **[ISO/IEC 27001](/standards/iso-27001)**: Defines organisational information security management; ASVS provides the application-level technical requirements that ISO 27001 does not specify.
+- **[ISO/IEC 27001](/standards/iso-27001)**: Defines organizational information security management; ASVS provides the application-level technical requirements that ISO 27001 does not specify.
 - **[PCI DSS](/standards/pci-dss)**: ASVS L2 covers a substantial portion of PCI DSS web application requirements (Requirement 6); teams can cite ASVS compliance as evidence within PCI DSS assessments.
 - **[ISO/IEC 15408 (Common Criteria)](/standards/iso-15408)**: Both focus on assurance; ASVS is faster to adopt for web contexts, while Common Criteria is used for formal product certification.
 
