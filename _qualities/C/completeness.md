@@ -2,7 +2,7 @@
 title: Completeness
 tags: [reliable, suitable]
 related: [data-quality, accuracy, consistency, integrity, correctness]
-standards: [iso25024]
+standards: [iso25024, iso8000]
 permalink: /qualities/completeness
 ---
 
