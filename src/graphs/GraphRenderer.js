@@ -780,9 +780,10 @@ export class GraphRenderer {
 
         this.svg.call(this.zoom);
 
-        // Set initial transform to account for sidebar width
-        const sidebarWidth = 200;
-        const initialTransform = d3.zoomIdentity.translate(sidebarWidth / 2, 0);
+        // Apply an initial pan only for the full graph view (it has a left sidebar).
+        // Home graph should start centered with no extra horizontal offset.
+        const initialOffsetX = this.container?.id === "full-q-graph-container" ? 100 : 0;
+        const initialTransform = d3.zoomIdentity.translate(initialOffsetX, 0);
         this.svg.call(this.zoom.transform, initialTransform);
         this.currentTransform = initialTransform;
     }
