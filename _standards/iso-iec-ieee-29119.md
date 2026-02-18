@@ -7,7 +7,6 @@ categories: [general, documentation]
 permalink: /standards/iso-iec-ieee-29119
 ---
 
-## ISO/IEC/IEEE 29119: Software Testing
 
 ISO/IEC/IEEE 29119 is the international software testing standard series. It provides a common vocabulary, a process framework, standardized test work products, and test-technique guidance that can be tailored from small projects to regulated environments.
 
@@ -56,13 +55,17 @@ The series is process- and evidence-oriented: it does not define product quality
 ## References and Authoritative Sources
 
 ### Core Standard Series (ISO)
-- [ISO/IEC/IEEE 29119 overview (ISO SC7 flagship page)](https://committee.iso.org/home/jtc1sc7/flagship-standards/iso-29119-software-and-systems-engineering-software-testing.html)
-- [ISO/IEC/IEEE 29119-1:2022 (Concepts and definitions)](https://www.iso.org/standard/45142.html)
-- [ISO/IEC/IEEE 29119-2:2021 (Test processes)](https://www.iso.org/standard/45143.html)
-- [ISO/IEC/IEEE 29119-3:2021 (Test documentation)](https://www.iso.org/standard/45144.html)
-- [ISO/IEC/IEEE 29119-4:2021 (Test techniques)](https://www.iso.org/standard/45145.html)
-- [ISO/IEC/IEEE 29119-5:2024 (Keyword-driven testing)](https://www.iso.org/standard/80884.html)
+- [ISO/IEC/IEEE 29119 series overview (ISO/IEC JTC 1/SC 7)](https://committee.iso.org/sites/jtc1sc7/home/projects/flagship-standards/isoiecieee-29119-series.html)
+- [ISO/IEC/IEEE 29119-1:2022 (General concepts)](https://www.iso.org/standard/81291.html)
+- [ISO/IEC/IEEE 29119-2:2021 (Test processes)](https://www.iso.org/standard/79428.html)
+- [ISO/IEC/IEEE 29119-3:2021 (Test documentation)](https://www.iso.org/standard/79429.html)
+- [ISO/IEC/IEEE 29119-4:2021 (Test techniques)](https://www.iso.org/standard/79430.html)
+- [ISO/IEC/IEEE 29119-5:2024 (Keyword-driven testing)](https://www.iso.org/standard/87233.html)
+
 
 ### Guidance Extensions
 - [ISO/IEC TR 29119-6:2021 (Using ISO/IEC/IEEE 29119 in agile development)](https://www.iso.org/standard/81293.html)
 - [ISO/IEC TR 29119-11:2020 (Guidelines on testing AI-based systems)](https://www.iso.org/standard/79016.html)
+
+### Related ISO Standards
+- [ISO/IEC 20246:2017 (Work product reviews)](https://www.iso.org/standard/67407.html)
