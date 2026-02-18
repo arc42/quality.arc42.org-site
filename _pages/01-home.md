@@ -6,6 +6,11 @@ order: 1
 ---
 
 {% assign qualities = site.qualities %}
+{% assign synonym_map = site.data.quality-synonyms %}
+{% assign synonyms = 0 %}
+{% for entry in synonym_map %}
+  {% assign synonyms = synonyms | plus: entry[1].size %}
+{% endfor %}
 {% assign requirements = site.requirements %}
 {% assign standards = site.standards %}
 {% assign approaches = site.approaches %}
@@ -57,6 +62,9 @@ order: 1
     <div class="home-new-stats">
       <a class="home-new-stat home-new-stat--quality" href="{{ '/qualities/' | prepend: site.baseurl }}">
         <strong>{{ qualities | size }}</strong> qualities
+      </a>
+      <a class="home-new-stat home-new-stat--synonym" href="{{ '/aliases/' | prepend: site.baseurl }}">
+        <strong>{{ synonyms }}</strong> synonyms
       </a>
       <a class="home-new-stat home-new-stat--requirement" href="{{ '/requirements/' | prepend: site.baseurl }}">
         <strong>{{ requirements | size }}</strong> requirements

@@ -146,6 +146,14 @@
       var(--quality-background-color);
   }
 
+  .home-new-stat--synonym {
+    border-color: #89cde9;
+    color: #1f6287;
+    background:
+      linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)),
+      #cfeafb;
+  }
+
   .home-new-stat--requirement {
     border-color: var(--reqs-background-color);
     color: var(--req-text-color);
