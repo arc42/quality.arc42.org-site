@@ -16,7 +16,7 @@ body_class: graph-compact-header
     var isCoarsePointer = window.matchMedia("(pointer: coarse)").matches;
     if (!isMobileViewport && !isCoarsePointer) return;
 
-    var mobilePath = "{{ '/mobile/' | prepend: site.baseurl }}";
+    var mobilePath = "{{ '/mobile' | prepend: site.baseurl }}";
     var target = mobilePath + window.location.search + window.location.hash;
     window.location.replace(target);
   })();
