@@ -780,9 +780,12 @@ export class GraphRenderer {
 
         this.svg.call(this.zoom);
 
-        // Apply an initial pan only for the full graph view (it has a left sidebar).
-        // Home graph should start centered with no extra horizontal offset.
-        const initialOffsetX = this.container?.id === "full-q-graph-container" ? 100 : 0;
+        // Apply an initial pan for the desktop full graph view (it has a left sidebar).
+        // Mobile graph page uses a bottom sheet and should start centered.
+        const isDesktopFullGraph =
+            this.container?.id === "full-q-graph-container" &&
+            !this.container?.closest?.(".mobile-graph-page");
+        const initialOffsetX = isDesktopFullGraph ? 100 : 0;
         const initialTransform = d3.zoomIdentity.translate(initialOffsetX, 0);
         this.svg.call(this.zoom.transform, initialTransform);
         this.currentTransform = initialTransform;

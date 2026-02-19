@@ -75,6 +75,44 @@
     background-color: #cb9fff;
 }
 
+.full-quick-filter-wrap {
+    margin-top: 0.55rem;
+    margin-bottom: 0.5rem;
+}
+
+.full-quick-filter-label {
+    margin: 0 0 0.32rem;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: #566f84;
+}
+
+.full-quick-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.36rem;
+}
+
+.full-quick-filter {
+    border: 1px solid #9ecbe3;
+    background: #eef8ff;
+    color: #1f5f82;
+    border-radius: 999px;
+    padding: 0.2rem 0.52rem;
+    font-size: 0.73rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.full-quick-filter:hover,
+.full-quick-filter:focus-visible {
+    background: #dff1ff;
+    border-color: #73b1d4;
+    outline: none;
+}
+
 #full-q-graph-home__btn {
     margin-top: 0.45rem;
     width: 100%;

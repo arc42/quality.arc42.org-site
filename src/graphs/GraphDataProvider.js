@@ -127,12 +127,12 @@ export class GraphDataProvider {
     _normalizeFilterTerms(filterTerm) {
         if (Array.isArray(filterTerm)) {
             return filterTerm
-                .map(t => String(t || "").trim())
+                .map(t => String(t || "").trim().replace(/^#/, ""))
                 .filter(t => t.length > 0)
                 .slice(0, MAX_FILTER_TERMS);
         }
 
-        const v = String(filterTerm || "").trim();
+        const v = String(filterTerm || "").trim().replace(/^#/, "");
         return v === '' ? [] : [v];
     }
 
@@ -146,11 +146,27 @@ export class GraphDataProvider {
 
     _getFilteredNodeIds(nodesPool, terms) {
         const lowerTerms = terms.map(t => t.toLowerCase());
-        const filteredNodes = nodesPool.filter(node => {
-            const l = node.label.toLowerCase();
-            return lowerTerms.some(t => l.includes(t));
+        const filteredNodeIds = new Set();
+
+        // Match regular nodes (qualities, requirements, standards)
+        nodesPool.forEach(node => {
+            const label = String(node.label || "").toLowerCase();
+            const id = String(node.id || "").toLowerCase();
+            if (lowerTerms.some(t => label.includes(t) || id.includes(t))) {
+                filteredNodeIds.add(node.id);
+            }
         });
-        return new Set(filteredNodes.map(node => node.id));
+
+        // Match dimension/property nodes as first-class filter targets
+        this.#propertyNodes.forEach(node => {
+            const label = String(node.label || "").toLowerCase();
+            const id = String(node.id || "").toLowerCase();
+            if (lowerTerms.some(t => label.includes(t) || id.includes(t))) {
+                filteredNodeIds.add(node.id);
+            }
+        });
+
+        return filteredNodeIds;
     }
 
     _getConnectedNodeIds(edgesPool, filteredNodeIds, baseSet) {

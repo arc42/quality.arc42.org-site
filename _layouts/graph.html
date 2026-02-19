@@ -38,7 +38,7 @@
     <script defer data-domain="quality.arc42.org" src="https://plausible.io/js/script.js"></script>
 </head>
 
-<body>
+<body{% if page.body_class %} class="{{ page.body_class }}"{% endif %}>
 <header class="site-header">
     <div class="inner clearfix">
         <button class="fa fa-fw fa-bars nav-toggle" data-target=".site-aside"></button>

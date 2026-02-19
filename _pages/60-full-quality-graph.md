@@ -4,7 +4,23 @@ title: Quality Graph
 permalink: /full-quality-graph
 order: 60
 hide: true
+body_class: graph-compact-header
 ---
+
+<script>
+  (function () {
+    var params = new URLSearchParams(window.location.search);
+    if (params.get("view") === "full") return;
+
+    var isMobileViewport = window.matchMedia("(max-width: 900px)").matches;
+    var isCoarsePointer = window.matchMedia("(pointer: coarse)").matches;
+    if (!isMobileViewport && !isCoarsePointer) return;
+
+    var mobilePath = "{{ '/mobile/' | prepend: site.baseurl }}";
+    var target = mobilePath + window.location.search + window.location.hash;
+    window.location.replace(target);
+  })();
+</script>
 
 <div id="full-q-graph-container">
     <div id="full-q-graph-sidebar">
@@ -18,6 +34,17 @@ hide: true
             <label class="sr-only" for="full-q-graph-filter__input">Filter graph with comma separated values:</label>
             <input type="text" id="full-q-graph-filter__input" placeholder="Usability, ISO..." />
             <button id="full-q-graph-filter__btn" class="btn">Filter</button>
+            <div class="full-quick-filter-wrap">
+                <p class="full-quick-filter-label">Quick filters</p>
+                <div class="full-quick-filters">
+                    <button class="full-quick-filter" type="button" data-term="secure">#secure</button>
+                    <button class="full-quick-filter" type="button" data-term="reliable">#reliable</button>
+                    <button class="full-quick-filter" type="button" data-term="maintainable">#maintainable</button>
+                    <button class="full-quick-filter" type="button" data-term="safety">safety</button>
+                    <button class="full-quick-filter" type="button" data-term="privacy">privacy</button>
+                    <button class="full-quick-filter" type="button" data-term="ai" data-show-standards="true">ai + standards</button>
+                </div>
+            </div>
             <a id="full-q-graph-home__btn" href="{{ '/' | prepend: site.baseurl }}">
                 <i class="fa fa-home" aria-hidden="true"></i>
                 back-to-home
@@ -66,3 +93,4 @@ hide: true
 </div>
 
 <script src="{{ '/assets/js/fullpage/main.js' | prepend: site.baseurl }}"></script>
+<script src="{{ '/assets/js/full-graph-page.js' | prepend: site.baseurl }}"></script>
