@@ -2,7 +2,7 @@
 title: Resilience
 tags: [reliable, secure]
 related: [availability, autonomy]
-standards: [cra, isoiec22989, iso42030, etsien304223]
+standards: [cra, isoiec22989, iso42030, etsien304223, nistairmf]
 permalink: /qualities/resilience
 ---
 

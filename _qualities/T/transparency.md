@@ -2,7 +2,7 @@
 title: Transparency
 tags: [reliable] 
 related: [clarity, understandability, usability]
-standards: [iso38500, iso42001, cra, isoiec22989, iso42010, gdpr, iso42030, sox, ieee2857, iso24028, etsien304223]
+standards: [iso38500, iso42001, cra, isoiec22989, iso42010, gdpr, iso42030, sox, ieee2857, iso24028, etsien304223, nistairmf]
 permalink: /qualities/transparency
 ---
 

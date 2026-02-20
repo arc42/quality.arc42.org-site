@@ -1,7 +1,7 @@
 ---
 title: Determinism
 tags: [reliable, efficient]
-related: [reproducibility, consistency, testability, reliability, time-behaviour, transactionality]
+related: [reproducibility, consistency, testability, reliability, time-behaviour, transactionality, explainability]
 permalink: /qualities/determinism
 ---
 
@@ -17,6 +17,8 @@ This is foundational for reproducible testing, debugging, formal reasoning, and 
 ## Notes For AI-Enabled Systems
 
 Determinism can be engineered at system level even when model internals are probabilistic, for example by controlling prompts, tool orchestration, model/version pinning, and runtime configuration.
+
+Lack of determinism (indeterminism) complicates **[explainability](/qualities/explainability)**, as non-reproducible behavior makes it difficult to trace outputs back to consistent causes or features.
 
 ## References
 

@@ -1,8 +1,8 @@
 ---
 title: Explainability
 tags: [safe, suitable]
-related: [accountability, analysability, clarity]
-standards: [iso42001, isoiec22989, iso24028]
+related: [accountability, analysability, clarity, determinism]
+standards: [iso42001, isoiec22989, iso24028, nistairmf]
 permalink: /qualities/explainability
 ---
 Explainability is a quality sometimes required in the context of Artificial Intelligence (AI). The European's proposed AI Act will probably contain obligations for some AI systems to provide explanations about decisions that impact user rights.
@@ -25,3 +25,7 @@ Explainability is a quality sometimes required in the context of Artificial Inte
 > 
 > We consider an ML engineer to have access to global model explainability if across all predictions they are able to attribute which features contributed the most to the model’s decisions.
 > [Towards Datascience](https://towardsdatascience.com/a-look-into-global-cohort-and-local-model-explainability-973bd449969f)
+
+### Relationship to Determinism
+
+**[Determinism](/qualities/determinism)** is a key factor for explainability. If a system's behavior is non-deterministic (indeterministic), it becomes significantly harder to attribute specific outputs to their causes, undermining the trust and clarity that explanations are intended to provide. Non-reproducible outputs often lack a consistent "why."
