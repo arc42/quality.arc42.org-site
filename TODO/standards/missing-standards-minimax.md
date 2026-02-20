@@ -9,6 +9,7 @@ Based on review of the current 33 standards on quality.arc42.org, this document 
 ## Priority 1: Critical Standards (Widely Used, Foundational)
 
 ### 1. ISO/IEC/IEEE 29119 — Software Testing
+> under way
 
 - **Reference**: https://www.iso.org/standard/79429.html
 - **Alternative**: https://softwaretestingstandard.org/
