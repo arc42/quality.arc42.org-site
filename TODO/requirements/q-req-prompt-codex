@@ -1,0 +1,99 @@
+# LLM Prompt Template — Near-Perfect Quality Requirement (Merged v2)
+
+Use this prompt to generate a single, production-ready quality requirement scenario.
+Fill in the bracketed placeholders before submitting.
+
+---
+
+## Prompt
+
+You are a software quality engineer with deep experience in requirements engineering.
+Write one quality requirement scenario for the arc42 quality model, following ALL rules below.
+
+**Input**
+
+- Quality attribute: `[e.g., deployability]`
+- Domain / system type: `[e.g., multi-tenant SaaS platform]`
+- Primary stakeholder: `[e.g., platform operations engineer]`
+
+---
+
+**Output format** (use exactly this structure):
+
+```md
+#### Context
+[2–4 sentences. Name the domain, system type, stakeholder, and why this quality matters here.
+Be specific — "a system" is not a context.]
+
+#### Trigger
+[One sentence. Who or what initiates the scenario?]
+
+#### Acceptance Criteria
+- [criterion 1]
+- [criterion 2]
+- ...
+
+#### Monitoring Artifact
+[One line naming where compliance is observed: test suite, dashboard, audit job/report, or SLO monitor.]
+```
+
+---
+
+**Rules — follow every one, no exceptions**
+
+**Framing**
+1. Cover exactly one quality attribute (two at most only if inseparable and explicitly named).
+2. Write 4–7 acceptance criteria — no fewer, no more.
+3. Each bullet contains one primary testable claim. If a second claim is needed, split into another bullet.
+
+**Measurability**
+4. Every criterion must contain at least one concrete numeric threshold with a unit (time, percentage, count, size, score).
+5. Every criterion must state measurement scope: load level, data volume, user count, and/or time window where relevant.
+6. Every criterion must name the measurement source (telemetry, test harness, audit log, report, etc.).
+7. Every criterion must define an evaluation horizon (e.g., p95 over 60s windows, rolling 30/90 days, per release).
+8. Calibrate numbers to benchmark/regulation/user research if known. If unknown, add `Assumption:` and choose conservative, team-verifiable thresholds.
+
+**Solution neutrality**
+9. Name no specific technology, product, algorithm, or vendor. Use capability categories.
+10. Do not prescribe implementation patterns (e.g., do not say "use saga"; state the required outcome and timing).
+
+**Failure coverage**
+11. At least one criterion must define behavior when a threshold is breached (rollback, rejection, fallback, alert) and a response/notification time.
+
+**Logical hygiene**
+12. Each criterion must be independently falsifiable — failing one must not automatically imply failing another.
+13. No tautologies. Banned phrases: "100% reliable", "always correct", "zero errors at all times", "fully secure".
+14. No boilerplate restatement of context/trigger.
+15. Avoid silent quality conflicts; if a criterion can degrade another critical quality, state the trade-off boundary explicitly.
+
+---
+
+**Anti-patterns — produce none of these**
+
+| Anti-pattern | Why it fails |
+|:-------------|:-------------|
+| "The system shall be highly available." | Not measurable. |
+| "Response time must be acceptable." | No threshold, no scope. |
+| "Use JWT tokens for authentication." | Solution-prescriptive. |
+| "All data must be correct at all times." | Tautology — unfalsifiable. |
+| "The system must be secure and performant." | Multiple attributes in one requirement. |
+| "Errors are handled gracefully." | No metric, no failure path. |
+
+---
+
+**Self-check before returning the result**
+
+Answer each question. If any answer is "no", revise before returning.
+
+- [ ] Are there 4–7 acceptance criteria?
+- [ ] Does every criterion contain metric + unit + threshold?
+- [ ] Is scope stated (load/volume/window) where relevant?
+- [ ] Is a measurement source stated for every criterion?
+- [ ] Is an evaluation horizon/time window stated for every criterion?
+- [ ] Is at least one failure-path outcome specified with response timing?
+- [ ] Is the text free of product, vendor, algorithm, and pattern mandates?
+- [ ] Are all criteria independently falsifiable?
+- [ ] Are potential quality trade-offs bounded explicitly (if applicable)?
+- [ ] If no external benchmark is known, is an `Assumption:` declared?
+- [ ] Does the context name a specific domain, system type, and stakeholder?
+
