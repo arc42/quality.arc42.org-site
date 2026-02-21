@@ -2,7 +2,7 @@
 title: Completeness
 tags: [reliable, suitable]
 related: [data-quality, accuracy, consistency, integrity, correctness]
-standards: [iso25024, iso8000]
+standards: [iso25024, iso8000, iso25012]
 permalink: /qualities/completeness
 ---
 
@@ -26,7 +26,7 @@ permalink: /qualities/completeness
 >- **Column completeness**: Percentage of non-null values in required fields
 >- **Population completeness**: All expected entities are represented in the dataset
 >
->[Adapted from ISO/IEC 25012 and data quality literature]
+>[Adapted from [ISO/IEC 25012](/standards/iso-25012) and data quality literature]
 
 <hr class="with-no-margin"/>
 
