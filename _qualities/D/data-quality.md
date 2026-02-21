@@ -2,7 +2,7 @@
 title: Data Quality
 tags: [reliable, suitable, usable]
 related: [accuracy, correctness, precision, integrity, consistency, data-integrity]
-standards: [iso42001, hl7, isoiec22989, sox, iso8000]
+standards: [iso42001, hl7, isoiec22989, sox, iso8000, iso25012]
 permalink: /qualities/data-quality
 ---
 
@@ -16,10 +16,10 @@ permalink: /qualities/data-quality
 
 <hr class="with-no-margin"/>
 
->The degree to which a set of inherent characteristics of data fulfills requirements. 
->Data quality characteristics will be of varying importance and priority to different stakeholders.
+>[The degree to which a set of inherent characteristics of data fulfills requirements. 
+>Data quality characteristics will be of varying importance and priority to different stakeholders.](https://www.iso.org/standard/35736.html)
 >
->[ISO/IEC 25012:2008](https://www.iso.org/standard/35736.html)
+>[ISO/IEC 25012](/standards/iso-25012)
 
 <hr class="with-no-margin"/>
 
