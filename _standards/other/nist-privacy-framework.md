@@ -18,7 +18,7 @@ Unlike [GDPR](/standards/gdpr), the Privacy Framework is not a compliance regula
 ### Brief History
 
 - **January 2020**: Privacy Framework Version 1.0 published — [NIST.CSWP.01162020](https://doi.org/10.6028/NIST.CSWP.01162020)
-- **2020–2024**: Crosswalk documents published mapping the PF to GDPR, ISO/IEC 29100, and NIST SP 800-53
+- **2020–2024**: Crosswalk documents published mapping the PF to [GDPR](/standards/gdpr), [ISO/IEC 29100](/standards/iso-iec-29100), and [NIST SP 800-53](/standards/nist-800-53)
 - **2024**: Privacy Framework Version 1.1 Initial Public Draft released, aligning more closely with the updated CSF 2.0
 
 ## The Five Core Functions
@@ -39,7 +39,7 @@ GOVERN-P is the cross-cutting function: governance structures inform and shape d
 
 **Privacy risk** in the framework's terms: the likelihood that the processing of personal information could cause *problematic data actions*, resulting in adverse consequences for individuals — such as embarrassment, discrimination, economic harm, or loss of autonomy.
 
-**Data processing ecosystem**: the framework explicitly addresses not just an organization's internal processing but the full ecosystem of vendors, processors, and partners involved in handling personal data. This aligns with the controller/processor distinction in GDPR and supply chain risk management in NIST SP 800-53.
+**Data processing ecosystem**: the framework explicitly addresses not just an organization's internal processing but the full ecosystem of vendors, processors, and partners involved in handling personal data. This aligns with the controller/processor distinction in [GDPR](/standards/gdpr) and supply chain risk management in [NIST SP 800-53](/standards/nist-800-53).
 
 **Profiles and Tiers**: Like the CSF, the PF uses *Profiles* (current vs. target state) and *Implementation Tiers* (from partial/ad-hoc to adaptive) to help organizations assess maturity and prioritize improvements.
 
@@ -49,7 +49,7 @@ GOVERN-P is the cross-cutting function: governance structures inform and shape d
 |:--- |:--- |
 | **[Privacy](/qualities/privacy)** | The central focus of the framework: structured risk management for the entire personal data lifecycle, from collection through deletion. |
 | **[Confidentiality](/qualities/confidentiality)** | PROTECT-P requires safeguards to prevent unauthorized access or disclosure of personal information throughout processing. |
-| **[Compliance](/qualities/compliance)** | GOVERN-P addresses legal bases for processing and alignment with applicable privacy regulations; crosswalks map the PF directly to GDPR and ISO 29100. |
+| **[Compliance](/qualities/compliance)** | GOVERN-P addresses legal bases for processing and alignment with applicable privacy regulations; crosswalks map the PF directly to [GDPR](/standards/gdpr) and [ISO 29100](/standards/iso-iec-29100). |
 | **[Transparency](/qualities/transparency)** | COMMUNICATE-P requires organizations to disclose data practices reliably and enable informed engagement from individuals. |
 | **[Accountability](/qualities/accountability)** | GOVERN-P establishes clear ownership of privacy responsibilities; accountability for processing decisions is a core governance requirement. |
 | **[Traceability](/qualities/traceability)** | IDENTIFY-P requires data inventory and mapping — understanding what data is collected, where it flows, who processes it, and for what purpose. |
@@ -63,11 +63,11 @@ GOVERN-P is the cross-cutting function: governance structures inform and shape d
 | **[GDPR](/standards/gdpr)** | GDPR is a binding regulation; the Privacy Framework is a voluntary risk management tool. NIST publishes an official crosswalk mapping PF categories to GDPR articles. Organizations use the PF to operationalize GDPR compliance systematically rather than treating it as a pure checklist. |
 | **[ISO/IEC 29100](/standards/iso-iec-29100)** | ISO 29100 provides privacy principles and a terminology framework; the NIST PF provides the operational risk management structure. The two are complementary — ISO 29100 defines *what* privacy means, the PF defines *how* to manage it as an organizational risk. |
 | **[NIST SP 800-53](/standards/nist-800-53)** | NIST publishes an official crosswalk between the Privacy Framework and the SP 800-53 privacy controls (the `PT` control family and others). Organizations already using SP 800-53 can extend it with PF profiles to address privacy risk beyond compliance controls. |
-| **ISO/IEC 27001** | ISO 27001 focuses on information security management; PROTECT-P draws on the same safeguarding principles. The PF is broader: it addresses privacy risks arising from legitimate data processing, not just security incidents. |
+| **[ISO/IEC 27001](/standards/iso-27001)** | ISO 27001 focuses on information security management; PROTECT-P draws on the same safeguarding principles. The PF is broader: it addresses privacy risks arising from legitimate data processing, not just security incidents. |
 
 ## What is NIST?
 
-NIST stands for the _National Institute of Standards and Technology_. It is a non-regulatory agency of the US Department of Commerce responsible for developing standards, guidelines, and voluntary frameworks. NIST frameworks (CSF, AI RMF, Privacy Framework) are widely adopted in US federal agencies, critical infrastructure, and commercial organizations globally.
+NIST stands for the _National Institute of Standards and Technology_. It is a non-regulatory agency of the US Department of Commerce responsible for developing standards, guidelines, and voluntary frameworks. NIST frameworks (CSF, [AI RMF](/standards/nist-ai-rmf), Privacy Framework) are widely adopted in US federal agencies, critical infrastructure, and commercial organizations globally.
 
 ## References
 
