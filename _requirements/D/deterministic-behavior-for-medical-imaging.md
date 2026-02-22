@@ -1,5 +1,6 @@
 ---
 title: Deterministic behavior for medical imaging
+permalink: /requirements/deterministic-behavior-for-medical-imaging
 tags: [reliable, safe]
 related: [determinism, explainability, reproducibility]
 ---
