@@ -64,10 +64,12 @@ Alternatively, use the provided Makefile targets:
 |---------|-------------|
 | `make dev` | Start the development environment (`docker compose up`) |
 | `make clean` | Remove the generated `_site` directory |
+| `make test` | Run Playwright UI tests in Docker and print report/artifact locations |
 
 Notes:
 - The esbuild service will run `npm run data` once on startup to generate graph data under `assets/data`.
 - The esbuild service will also run `npm run test:links` to validate all internal links.
+- `make test` automatically starts the local stack (`docker compose up -d`) and waits for `http://localhost:4000` before executing Playwright.
 - If you add or change content that affects tags/related/permalinks, restart the stack (`docker compose down` then `docker compose up`) so data is regenerated.
 
 ## How to contribute
@@ -270,6 +272,44 @@ REQUIREMENT→QUALITY (1 errors)
 ═══════════════════════════════════════════════════════════
 Total broken links: 1
 ```
+
+### UI Testing (Playwright)
+
+Playwright-based UI automation is available for browser interaction checks.
+
+#### Docker-first setup
+
+No local Playwright installation is required.
+
+Start the site in one terminal (recommended):
+```bash
+make dev
+```
+
+Run UI tests from another terminal (tests run inside a Playwright Docker image):
+```bash
+npm run test:ui
+```
+
+Optional modes:
+```bash
+npm run test:ui:headed   # headed run via xvfb in container
+npm run test:ui:debug    # Playwright debug mode in container
+```
+
+Note: test scripts use `UI_BASE_URL=http://host.docker.internal:4000` by default to access the locally running site from the container. They mount the active branch root via `git rev-parse --show-toplevel`, so the same commands work in worktrees and regular branches.
+
+#### CI behavior and artifacts
+
+- CI uses Chromium with one retry.
+- On failure/retry, Playwright stores:
+  - trace files
+  - screenshots
+  - videos
+- Artifact folders:
+  - `test-results/ui/`
+  - `playwright-report/`
+
 
 # Technical details
 
