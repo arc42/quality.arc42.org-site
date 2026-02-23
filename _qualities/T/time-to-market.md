@@ -7,17 +7,19 @@ standards: [iso42030]
 permalink: /qualities/time-to-market
 ---
 
-Synonym: [Speed-to-Market](/qualities/time-to-market)
+>**Time to market (TTM)** is the length of time it takes from a product being conceived until it is available for sale.
+>
+>[Investopedia](https://www.investopedia.com/terms/t/timetosmarket.asp)
 
+<hr class="with-no-margin"/>
 
-<div class="arc42-help" markdown="1">
+>**Time-to-market**: the time needed to design a product and start selling it.
+>
+>[Cambridge Business English Dictionary](https://dictionary.cambridge.org/dictionary/english/time-to-market)
 
-Time to market is the length of time it takes to bring a product or product-feature  from conception to production. 
+<hr class="with-no-margin"/>
 
-<hr>
-Time to market" in software engineering refers to the duration it takes to develop, test, and release a software product or feature from its initial conception. 
-It measures how quickly a software project can go from ideation to being available for users.
+In software, TTM spans from initial concept or feature request through design, development, testing, and release to end users.
+It is closely related to — but broader than — [cycle time](/qualities/cycle-time) and [lead time for changes](/qualities/lead-time-for-changes), which measure specific sub-intervals within the delivery pipeline.
 
-A small or low time-to-market allows organizations to respond rapidly to market demands, gain a competitive edge, and deliver value to customers sooner.
-
-</div>
+A shorter TTM allows organizations to respond faster to market opportunities, reduce the cost of delay, and deliver value to customers sooner.
