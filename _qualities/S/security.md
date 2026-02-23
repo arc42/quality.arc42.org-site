@@ -31,6 +31,7 @@ standards:
     iec62443,
     do178c,
     gdpr,
+    iso29100,
     iso42030,
     iso12207,
     sox,

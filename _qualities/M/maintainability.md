@@ -19,6 +19,7 @@ standards:
     iso42010,
     iso42030,
     iso12207,
+    iso29119,
     ieee2857,
     iso24028,
     etsien304223,

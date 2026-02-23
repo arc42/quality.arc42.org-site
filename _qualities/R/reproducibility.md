@@ -3,7 +3,7 @@ title: Reproducibility
 aka: [Repeatability]
 tags: [usable]
 related: [determinism, consistency, understandability]
-standards: [do178c]
+standards: [do178c, iso29119]
 permalink: /qualities/reproducibility
 ---
 

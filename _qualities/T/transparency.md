@@ -2,7 +2,7 @@
 title: Transparency
 tags: [reliable] 
 related: [clarity, understandability, usability]
-standards: [iso38500, iso42001, cra, isoiec22989, iso42010, gdpr, iso42030, sox, ieee2857, iso24028, etsien304223]
+standards: [iso38500, iso42001, cra, isoiec22989, iso42010, gdpr, iso42030, sox, ieee2857, iso24028, etsien304223, iso29100]
 permalink: /qualities/transparency
 ---
 
@@ -15,4 +15,3 @@ permalink: /qualities/transparency
 >[Cambridge Dictionary](https://dictionary.cambridge.org/dictionary/english/transparency)
 
 <hr class="with-no-margin"/>
-

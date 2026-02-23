@@ -2,7 +2,7 @@
 title: Verifiability
 related: [testability, analysability, certifiability]
 tags: [reliable, maintainable]
-standards: [do178c, iso42010]
+standards: [do178c, iso42010, iso29119]
 permalink: /qualities/verifiability
 ---
 
