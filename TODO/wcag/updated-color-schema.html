@@ -1,0 +1,507 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>WCAG Contrast Proposals - q42 color schema</title>
+  <style>
+    :root {
+      --bg: #f4f8fc;
+      --surface: #ffffff;
+      --text: #243646;
+      --muted: #4b5f6f;
+      --border: #d5e2ed;
+      --blue: #0f7dbd;
+      --good: #1f7a3a;
+      --bad: #a12626;
+      --warn: #8f6b14;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Tahoma, Arial, sans-serif;
+      background: radial-gradient(circle at 0% 0%, #e5f2ff 0%, var(--bg) 45%);
+      color: var(--text);
+      line-height: 1.45;
+    }
+
+    main {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 1.1rem;
+    }
+
+    .hero {
+      border: 1px solid #a6cae5;
+      border-radius: 14px;
+      background: linear-gradient(135deg, rgba(190, 229, 255, 0.42), rgba(255, 255, 255, 0.88));
+      padding: 1rem 1.1rem;
+      margin-bottom: 1rem;
+    }
+
+    .hero h1 {
+      margin: 0 0 0.35rem;
+      color: #0d628f;
+      font-size: 1.65rem;
+    }
+
+    .hero p {
+      margin: 0;
+      color: #345b74;
+      max-width: 92ch;
+    }
+
+    .meta {
+      display: inline-block;
+      margin-top: 0.65rem;
+      padding: 0.22rem 0.62rem;
+      border: 1px solid #a6cae5;
+      border-radius: 999px;
+      background: #f6fbff;
+      color: #3c6480;
+      font-size: 0.84rem;
+      font-weight: 600;
+    }
+
+    .section {
+      margin: 0 0 1rem;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: var(--surface);
+      padding: 0.9rem;
+    }
+
+    .section h2 {
+      margin: 0 0 0.65rem;
+      color: #1f4f6c;
+      font-size: 1.25rem;
+    }
+
+    .section p {
+      margin: 0 0 0.65rem;
+      color: var(--muted);
+    }
+
+    .pair-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 0.7rem;
+    }
+
+    .pair {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: #fcfeff;
+      overflow: hidden;
+    }
+
+    .pair-head {
+      padding: 0.42rem 0.62rem;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .pair-name {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: #2e5369;
+    }
+
+    .ratio {
+      font-size: 0.78rem;
+      font-weight: 700;
+      border-radius: 999px;
+      padding: 0.14rem 0.46rem;
+      border: 1px solid;
+      white-space: nowrap;
+    }
+
+    .ratio.fail {
+      color: var(--bad);
+      background: #fde7e7;
+      border-color: #efb0b0;
+    }
+
+    .ratio.pass {
+      color: var(--good);
+      background: #e7f7ec;
+      border-color: #adddc0;
+    }
+
+    .pair-sample {
+      padding: 0.52rem 0.62rem;
+      font-size: 0.89rem;
+      font-weight: 700;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .pair-codes {
+      padding: 0.42rem 0.62rem;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+      font-size: 0.76rem;
+      color: #496072;
+      display: grid;
+      gap: 0.2rem;
+    }
+
+    .proposal-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 0.8rem;
+    }
+
+    .proposal {
+      border: 1px solid var(--border);
+      border-left: 4px solid #7eb6da;
+      border-radius: 10px;
+      padding: 0.7rem;
+      background: #fdfeff;
+    }
+
+    .proposal.recommended {
+      border-left-color: var(--good);
+      background: linear-gradient(180deg, #f6fff9 0%, #ffffff 34%);
+    }
+
+    .proposal h3 {
+      margin: 0 0 0.4rem;
+      color: #234a61;
+      font-size: 1.04rem;
+    }
+
+    .proposal .goal {
+      margin: 0 0 0.52rem;
+      color: #4a6272;
+      font-size: 0.9rem;
+    }
+
+    .token-list {
+      margin: 0;
+      padding-left: 1.1rem;
+      color: #345164;
+      font-size: 0.9rem;
+    }
+
+    .token-list li { margin-bottom: 0.2rem; }
+
+    .mini-swatches {
+      margin-top: 0.58rem;
+      display: grid;
+      gap: 0.45rem;
+    }
+
+    .swatch {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .swatch .sample {
+      font-weight: 700;
+      font-size: 0.9rem;
+      padding: 0.35rem 0.52rem;
+    }
+
+    .swatch .meta-line {
+      padding: 0.28rem 0.52rem;
+      font-size: 0.74rem;
+      color: #4e6575;
+      border-top: 1px solid rgba(0,0,0,0.06);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+      background: #fff;
+    }
+
+    .recommend {
+      margin-top: 0.72rem;
+      border-radius: 10px;
+      border: 1px solid #c1dfcd;
+      background: #f2fbf6;
+      padding: 0.64rem 0.74rem;
+      color: #24543a;
+      font-size: 0.92rem;
+    }
+
+    .footer-note {
+      margin: 0.8rem 0 0.2rem;
+      color: #577185;
+      font-size: 0.85rem;
+      text-align: center;
+    }
+
+    code {
+      background: #edf4fb;
+      border: 1px solid #d0deeb;
+      border-radius: 4px;
+      padding: 0.05rem 0.28rem;
+      color: #2f5870;
+      font-size: 0.85em;
+    }
+
+    @media (max-width: 740px) {
+      .hero h1 { font-size: 1.35rem; }
+      .section h2 { font-size: 1.1rem; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="hero">
+      <h1>WCAG Contrast Proposals for q42</h1>
+      <p>This page is the visual version of <code>updated-color-schema.md</code>. It keeps the current brand colors and proposes luminance-safe adjustments for text and secondary UI elements.</p>
+      <span class="meta">Source: key-page axe scan (wcag2a, wcag2aa, wcag21a, wcag21aa)</span>
+    </section>
+
+    <section class="section">
+      <h2>Current Contrast Issues</h2>
+      <p>The dominant failures come from a small set of repeated color pairs. In the current key-page scan, <code>/standards/</code> has the biggest contrast load, <code>/requirements/</code> has a smaller but non-zero load, and <code>/approaches/</code> is not yet scanned.</p>
+      <div class="pair-grid">
+        <article class="pair">
+          <div class="pair-head">
+            <span class="pair-name">Header title on green hero</span>
+            <span class="ratio fail">2.02 FAIL</span>
+          </div>
+          <div class="pair-sample" style="background:#5fb49c;color:#deefb7;">arc42 Quality Model</div>
+          <div class="pair-codes">
+            <div>fg: #deefb7</div>
+            <div>bg: #5fb49c</div>
+            <div>target: &gt;=3.0 (large text)</div>
+          </div>
+        </article>
+
+        <article class="pair">
+          <div class="pair-head">
+            <span class="pair-name">Tag text on quality chip</span>
+            <span class="ratio fail">2.14 FAIL</span>
+          </div>
+          <div class="pair-sample" style="background:#00b8f5;color:#1675b9;">#reliable</div>
+          <div class="pair-codes">
+            <div>fg: #1675b9</div>
+            <div>bg: #00b8f5</div>
+            <div>target: &gt;=4.5</div>
+          </div>
+        </article>
+
+        <article class="pair">
+          <div class="pair-head">
+            <span class="pair-name">Synonym badge</span>
+            <span class="ratio fail">1.89 FAIL</span>
+          </div>
+          <div class="pair-sample" style="background:#c7f0fd;color:#00b8f5;">alias: Time-to-Market</div>
+          <div class="pair-codes">
+            <div>fg: #00b8f5</div>
+            <div>bg: #c7f0fd</div>
+            <div>target: &gt;=4.5</div>
+          </div>
+        </article>
+
+        <article class="pair">
+          <div class="pair-head">
+            <span class="pair-name">Secondary muted text on white</span>
+            <span class="ratio fail">3.38-4.48 FAIL</span>
+          </div>
+          <div class="pair-sample" style="background:#ffffff;color:#777777;">metadata / helper labels / counters</div>
+          <div class="pair-codes">
+            <div>examples: #777777, #858585, #8a8986</div>
+            <div>bg: #ffffff</div>
+            <div>target: &gt;=4.5</div>
+          </div>
+        </article>
+
+        <article class="pair">
+          <div class="pair-head">
+            <span class="pair-name">Standards category metadata</span>
+            <span class="ratio fail">3.50 FAIL</span>
+          </div>
+          <div class="pair-sample" style="background:#ffffff;color:#8a8986;">#quality-model, #process, #testing</div>
+          <div class="pair-codes">
+            <div>fg: #8a8986</div>
+            <div>bg: #ffffff</div>
+            <div>target: &gt;=4.5</div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Proposals</h2>
+      <div class="proposal-grid">
+        <article class="proposal recommended">
+          <h3>Proposal A (Recommended): Text-first hardening</h3>
+          <p class="goal">Keep all core background colors and make text tokens WCAG-safe.</p>
+          <ul class="token-list">
+            <li>Header text: <code>#deefb7</code> -> <code>#123f4e</code> (4.60 on current green hero)</li>
+            <li>Quality chip text: use <code>#003366</code> on <code>#00b8f5</code> (5.51)</li>
+            <li>Synonym badge text: <code>#005987</code> on <code>#c7f0fd</code> (6.23)</li>
+            <li>Requirements strong/soft: <code>#ffb3b3/#8b0000</code> (5.89), <code>#ffe0e0/#8b0000</code> (8.10)</li>
+            <li>Standards strong/soft: <code>#ffc95c/#2c3e50</code> (7.20), <code>#ffefc8/#2c3e50</code> (9.64)</li>
+            <li>Approaches strong/soft: <code>#92ef80/#1b5e20</code> (5.58), <code>#d9f7d3/#1b5e20</code> (6.82)</li>
+            <li>Muted ramp on white: <code>#6f6f6f</code>, <code>#6b6b6b</code>, <code>#5e5e5e</code>, <code>#4d6f84</code></li>
+          </ul>
+          <div class="mini-swatches">
+            <div class="swatch">
+              <div class="sample" style="background:#5fb49c;color:#123f4e;">arc42 Quality Model</div>
+              <div class="meta-line">#123f4e on #5fb49c, ratio 4.60</div>
+            </div>
+            <div class="swatch">
+              <div class="sample" style="background:#00b8f5;color:#003366;">#maintainable</div>
+              <div class="meta-line">#003366 on #00b8f5, ratio 5.51</div>
+            </div>
+            <div class="swatch">
+              <div class="sample" style="background:#c7f0fd;color:#005987;">alias: Autonomicity</div>
+              <div class="meta-line">#005987 on #c7f0fd, ratio 6.23</div>
+            </div>
+            <div class="swatch">
+              <div class="sample" style="background:#ffefc8;color:#2c3e50;">standard metadata (soft)</div>
+              <div class="meta-line">#2c3e50 on #ffefc8, ratio 9.64</div>
+            </div>
+            <div class="swatch">
+              <div class="sample" style="background:#ffe0e0;color:#8b0000;">requirement badge (soft)</div>
+              <div class="meta-line">#8b0000 on #ffe0e0, ratio 8.10</div>
+            </div>
+            <div class="swatch">
+              <div class="sample" style="background:#d9f7d3;color:#1b5e20;">approach badge (soft)</div>
+              <div class="meta-line">#1b5e20 on #d9f7d3, ratio 6.82</div>
+            </div>
+          </div>
+        </article>
+
+        <article class="proposal">
+          <h3>Proposal B: Keep light header text</h3>
+          <p class="goal">Preserve the current light-on-green header look by darkening only the header background.</p>
+          <ul class="token-list">
+            <li>Header background: <code>#5fb49c</code> -> <code>#357360</code></li>
+            <li>Keep header text <code>#deefb7</code> (new ratio 4.54)</li>
+            <li>Add soft chip pairs for all domains:
+              quality <code>#dff4fd/#0f6ba8</code>,
+              requirement <code>#ffe0e0/#8b0000</code>,
+              standard <code>#ffefc8/#2c3e50</code>,
+              approach <code>#d9f7d3/#1b5e20</code></li>
+            <li>Use same muted text ramp as Proposal A</li>
+          </ul>
+          <div class="mini-swatches">
+            <div class="swatch">
+              <div class="sample" style="background:#357360;color:#deefb7;">arc42 Quality Model</div>
+              <div class="meta-line">#deefb7 on #357360, ratio 4.54</div>
+            </div>
+            <div class="swatch">
+              <div class="sample" style="background:#dff4fd;color:#0f6ba8;">#secure</div>
+              <div class="meta-line">#0f6ba8 on #dff4fd, ratio 5.01</div>
+            </div>
+            <div class="swatch">
+              <div class="sample" style="background:#ffe0e0;color:#8b0000;">requirement chip</div>
+              <div class="meta-line">#8b0000 on #ffe0e0, ratio 8.10</div>
+            </div>
+          </div>
+        </article>
+
+        <article class="proposal">
+          <h3>Proposal C: Two-level semantic tokens</h3>
+          <p class="goal">Introduce a maintainable token model: strong tokens for large surfaces, soft tokens for chips/metadata.</p>
+          <ul class="token-list">
+            <li>Per domain: <code>*-strong-bg/text</code> and <code>*-soft-bg/text</code></li>
+            <li>Large headers/section bars -> strong</li>
+            <li>Chips, badges, counters, helper labels -> soft</li>
+            <li>Prevents repeated regressions on tiny text</li>
+          </ul>
+          <div class="mini-swatches">
+            <div class="swatch">
+              <div class="sample" style="background:#00b8f5;color:#003366;">quality strong</div>
+              <div class="meta-line">strong pair for section headers</div>
+            </div>
+            <div class="swatch">
+              <div class="sample" style="background:#dff4fd;color:#0f6ba8;">quality soft</div>
+              <div class="meta-line">soft pair for chips + metadata</div>
+            </div>
+            <div class="swatch">
+              <div class="sample" style="background:#ffb3b3;color:#8b0000;">requirement strong</div>
+              <div class="meta-line">#ffb3b3 / #8b0000</div>
+            </div>
+            <div class="swatch">
+              <div class="sample" style="background:#ffc95c;color:#2c3e50;">standard strong</div>
+              <div class="meta-line">#ffc95c / #2c3e50</div>
+            </div>
+            <div class="swatch">
+              <div class="sample" style="background:#92ef80;color:#1b5e20;">approach strong</div>
+              <div class="meta-line">#92ef80 / #1b5e20</div>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="recommend">
+        Recommended sequence: implement Proposal A first for fast reduction of violations with minimal visual churn. Later, migrate to Proposal C if you want stricter long-term token governance.
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Type-Specific Token Map (Extended)</h2>
+      <p>Use this as the concrete mapping for requirements, standards, and approaches, in addition to quality tokens.</p>
+      <div class="proposal-grid">
+        <article class="proposal">
+          <h3>Requirements</h3>
+          <ul class="token-list">
+            <li><strong>strong:</strong> <code>bg #ffb3b3 / text #8b0000</code> (5.89)</li>
+            <li><strong>soft:</strong> <code>bg #ffe0e0 / text #8b0000</code> (8.10)</li>
+            <li>Use soft for helper labels, badge text, tiny counters</li>
+          </ul>
+          <div class="mini-swatches">
+            <div class="swatch">
+              <div class="sample" style="background:#ffb3b3;color:#8b0000;">Quality Requirements</div>
+              <div class="meta-line">header / section heading</div>
+            </div>
+            <div class="swatch">
+              <div class="sample" style="background:#ffe0e0;color:#8b0000;">#reliable 23</div>
+              <div class="meta-line">small button / counter</div>
+            </div>
+          </div>
+        </article>
+
+        <article class="proposal">
+          <h3>Standards</h3>
+          <ul class="token-list">
+            <li><strong>strong:</strong> <code>bg #ffc95c / text #2c3e50</code> (7.20)</li>
+            <li><strong>soft:</strong> <code>bg #ffefc8 / text #2c3e50</code> (9.64)</li>
+            <li>Move low-contrast category/meta labels to soft + muted text</li>
+          </ul>
+          <div class="mini-swatches">
+            <div class="swatch">
+              <div class="sample" style="background:#ffc95c;color:#2c3e50;">ISO/IEC 25010</div>
+              <div class="meta-line">primary chip / section banner</div>
+            </div>
+            <div class="swatch">
+              <div class="sample" style="background:#ffefc8;color:#2c3e50;">#security #testing #general</div>
+              <div class="meta-line">category metadata</div>
+            </div>
+          </div>
+        </article>
+
+        <article class="proposal">
+          <h3>Approaches</h3>
+          <ul class="token-list">
+            <li><strong>strong:</strong> <code>bg #92ef80 / text #1b5e20</code> (5.58)</li>
+            <li><strong>soft:</strong> <code>bg #d9f7d3 / text #1b5e20</code> (6.82)</li>
+            <li>Approaches are not in the current scan route set; add <code>/approaches/</code> next</li>
+          </ul>
+          <div class="mini-swatches">
+            <div class="swatch">
+              <div class="sample" style="background:#92ef80;color:#1b5e20;">Circuit Breaker</div>
+              <div class="meta-line">approach heading</div>
+            </div>
+            <div class="swatch">
+              <div class="sample" style="background:#d9f7d3;color:#1b5e20;">supports #resilience</div>
+              <div class="meta-line">small badges / helper tags</div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <p class="footer-note">File: TODO/wcag/updated-color-schema.html</p>
+  </main>
+</body>
+</html>
