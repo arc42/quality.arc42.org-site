@@ -16,3 +16,7 @@ assets/data
 # Local Crush agent artifacts
 .crush
 *.bkp
+
+# Playwright artifacts
+playwright-report/
+test-results/

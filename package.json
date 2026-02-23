@@ -16,7 +16,10 @@
     "watch": "node build.js --watch",
     "data": "rimraf \"./assets/data\" && node src/scripts/data.js",
     "test:links": "node src/scripts/validate-links.js",
-    "test:links:strict": "node src/scripts/validate-links.js --strict"
+    "test:links:strict": "node src/scripts/validate-links.js --strict",
+    "test:ui": "docker run --rm --add-host=host.docker.internal:host-gateway -e UI_BASE_URL=http://host.docker.internal:4000 -v \"$(git rev-parse --show-toplevel):/work\" -w /work mcr.microsoft.com/playwright:v1.51.1-jammy sh -lc \"npm ci && npx playwright test\"",
+    "test:ui:headed": "docker run --rm --add-host=host.docker.internal:host-gateway -e UI_BASE_URL=http://host.docker.internal:4000 -v \"$(git rev-parse --show-toplevel):/work\" -w /work mcr.microsoft.com/playwright:v1.51.1-jammy sh -lc \"npm ci && xvfb-run -a npx playwright test --headed\"",
+    "test:ui:debug": "docker run --rm --add-host=host.docker.internal:host-gateway -e UI_BASE_URL=http://host.docker.internal:4000 -v \"$(git rev-parse --show-toplevel):/work\" -w /work mcr.microsoft.com/playwright:v1.51.1-jammy -e PWDEBUG=1 sh -lc \"npm ci && npx playwright test --debug\""
   },
   "dependencies": {
     "d3": "^7.8.5",
@@ -28,7 +31,8 @@
     "esbuild": "^0.25.0",
     "gray-matter": "^4.0.3",
     "prettier": "^3.4.2",
-    "rimraf": "^6.0.1"
+    "rimraf": "^6.0.1",
+    "@playwright/test": "1.51.1"
   },
   "volta": {
     "node": "22.13.1",

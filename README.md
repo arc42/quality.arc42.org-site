@@ -288,16 +288,18 @@ make dev
 
 Run UI tests from another terminal (tests run inside a Playwright Docker image):
 ```bash
-npm run test:ui
+make test
 ```
+
+After tests complete, `make test` can optionally start an HTML report viewer in Docker at `http://localhost:9323` (`y/N` prompt).
 
 Optional modes:
 ```bash
-npm run test:ui:headed   # headed run via xvfb in container
-npm run test:ui:debug    # Playwright debug mode in container
+docker compose run --rm -e UI_BASE_URL=http://jekyll:4000 playwright sh -lc "npm ci && xvfb-run -a npx playwright test --headed"
+docker compose run --rm -e UI_BASE_URL=http://jekyll:4000 playwright sh -lc "npm ci && npx playwright test --debug"
 ```
 
-Note: test scripts use `UI_BASE_URL=http://host.docker.internal:4000` by default to access the locally running site from the container. They mount the active branch root via `git rev-parse --show-toplevel`, so the same commands work in worktrees and regular branches.
+Note: the Playwright container uses `UI_BASE_URL=http://jekyll:4000` to reach the Jekyll service over Docker Compose networking.
 
 #### CI behavior and artifacts
 
@@ -307,8 +309,8 @@ Note: test scripts use `UI_BASE_URL=http://host.docker.internal:4000` by default
   - screenshots
   - videos
 - Artifact folders:
-  - `test-results/ui/`
   - `playwright-report/`
+  - `test-results/ui/`
 
 
 # Technical details
