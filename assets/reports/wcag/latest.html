@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>WCAG Accessibility Report</title>
+  <style>
+    :root {
+      --ok: #2e7d32;
+      --warn: #b26a00;
+      --bad: #8b0000;
+      --bg: #f8fbff;
+      --card: #ffffff;
+      --text: #1f2d3d;
+      --blue: #00b8f5;
+    }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+    }
+    main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1.2rem;
+    }
+    h1 {
+      margin: 0;
+      color: #003366;
+    }
+    .meta {
+      margin: 0.4rem 0 1rem 0;
+      color: #4a5c6b;
+    }
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 0.8rem;
+      margin-bottom: 1rem;
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid #d8e3ef;
+      border-radius: 10px;
+      padding: 0.75rem;
+    }
+    .card .label {
+      font-size: 0.85rem;
+      color: #486175;
+    }
+    .card .value {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #003366;
+    }
+    .score-global {
+      background: linear-gradient(90deg, #d9f6e0 0%, #fdf3cf 50%, #fbd5d5 100%);
+      border: 1px solid #d8e3ef;
+      border-radius: 10px;
+      padding: 0.75rem;
+      margin-bottom: 1rem;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--card);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    th, td {
+      border-bottom: 1px solid #e9eef5;
+      text-align: left;
+      padding: 0.55rem;
+      vertical-align: top;
+      font-size: 0.93rem;
+    }
+    th {
+      background: #eaf6ff;
+      color: #003366;
+      font-weight: 700;
+    }
+    tr.pass td:first-child { border-left: 4px solid var(--ok); }
+    tr.fail td:first-child { border-left: 4px solid var(--bad); }
+    .score-wrap {
+      width: 100%;
+      min-width: 110px;
+      background: #e8eef5;
+      border-radius: 999px;
+      height: 20px;
+      position: relative;
+      overflow: hidden;
+    }
+    .score-bar {
+      height: 100%;
+      background: linear-gradient(90deg, #24a148 0%, #00b8f5 100%);
+    }
+    .score-value {
+      position: absolute;
+      right: 8px;
+      top: 1px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #0f2942;
+    }
+    details {
+      margin: 0;
+    }
+    .no-issues {
+      color: var(--ok);
+      font-weight: 600;
+    }
+    code {
+      background: #eef4fb;
+      border-radius: 4px;
+      padding: 0.05rem 0.3rem;
+    }
+    ul {
+      margin: 0.35rem 0 0.2rem 1rem;
+      padding: 0;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>WCAG Accessibility Report</h1>
+    <p class="meta">Generated: 2026-02-23T16:20:54.850Z<br/>Rulesets: wcag2a, wcag2aa, wcag21a, wcag21aa</p>
+    <section class="cards">
+      <div class="card"><div class="label">Pages Scanned</div><div class="value">7</div></div>
+      <div class="card"><div class="label">Violations</div><div class="value">28</div></div>
+      <div class="card"><div class="label">Incomplete</div><div class="value">4</div></div>
+      <div class="card"><div class="label">Pass Checks</div><div class="value">125</div></div>
+      <div class="card"><div class="label">Average Score</div><div class="value">60</div></div>
+    </section>
+    <div class="score-global"><strong>Score heuristic:</strong> 100 - (10 x violations per page), clamped to 0..100.</div>
+    <table>
+      <thead>
+        <tr>
+          <th>Route</th>
+          <th>Title</th>
+          <th>Violations</th>
+          <th>Incomplete</th>
+          <th>Passes</th>
+          <th>Score</th>
+          <th>Details</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="fail">
+        <td><a href="/">/</a></td>
+        <td>Home | arc42 Quality Model</td>
+        <td>3</td>
+        <td>2</td>
+        <td>23</td>
+        <td>
+          <div class="score-wrap">
+            <div class="score-bar" style="width:70%"></div>
+            <span class="score-value">70</span>
+          </div>
+        </td>
+        <td><details><summary>3 violation rule(s)</summary>
+             <ul><li><code>color-contrast</code> [serious] - Elements must meet minimum color contrast ratio thresholds (13 node(s)) - <a href="https://dequeuniversity.com/rules/axe/4.11/color-contrast?application=playwright" target="_blank" rel="noopener noreferrer">guidance</a></li><li><code>image-alt</code> [critical] - Images must have alternative text (1 node(s)) - <a href="https://dequeuniversity.com/rules/axe/4.11/image-alt?application=playwright" target="_blank" rel="noopener noreferrer">guidance</a></li><li><code>link-name</code> [serious] - Links must have discernible text (9 node(s)) - <a href="https://dequeuniversity.com/rules/axe/4.11/link-name?application=playwright" target="_blank" rel="noopener noreferrer">guidance</a></li></ul>
+           </details></td>
+      </tr>
+<tr class="fail">
+        <td><a href="/dimensions/">/dimensions/</a></td>
+        <td>Quality Dimensions | arc42 Quality Model</td>
+        <td>4</td>
+        <td>0</td>
+        <td>16</td>
+        <td>
+          <div class="score-wrap">
+            <div class="score-bar" style="width:60%"></div>
+            <span class="score-value">60</span>
+          </div>
+        </td>
+        <td><details><summary>4 violation rule(s)</summary>
+             <ul><li><code>color-contrast</code> [serious] - Elements must meet minimum color contrast ratio thresholds (4 node(s)) - <a href="https://dequeuniversity.com/rules/axe/4.11/color-contrast?application=playwright" target="_blank" rel="noopener noreferrer">guidance</a></li><li><code>image-alt</code> [critical] - Images must have alternative text (1 node(s)) - <a href="https://dequeuniversity.com/rules/axe/4.11/image-alt?application=playwright" target="_blank" rel="noopener noreferrer">guidance</a></li><li><code>link-name</code> [serious] - Links must have discernible text (9 node(s)) - <a href="https://dequeuniversity.com/rules/axe/4.11/link-name?application=playwright" target="_blank" rel="noopener noreferrer">guidance</a></li><li><code>list</code> [serious] - &lt;ul&gt; and &lt;ol&gt; must only directly contain &lt;li&gt;, &lt;script&gt; or &lt;template&gt; elements (3 node(s)) - <a href="https://dequeuniversity.com/rules/axe/4.11/list?application=playwright" target="_blank" rel="noopener noreferrer">guidance</a></li></ul>
+           </details></td>
+      </tr>
+<tr class="fail">
+        <td><a href="/qualities/">/qualities/</a></td>
+        <td>Quality Characteristics | arc42 Quality Model</td>
+        <td>3</td>
+        <td>0</td>
+        <td>16</td>
+        <td>
+          <div class="score-wrap">
+            <div class="score-bar" style="width:70%"></div>
+            <span class="score-value">70</span>
+          </div>
+        </td>
+        <td><details><summary>3 violation rule(s)</summary>
+             <ul><li><code>color-contrast</code> [serious] - Elements must meet minimum color contrast ratio thresholds (24 node(s)) - <a href="https://dequeuniversity.com/rules/axe/4.11/color-contrast?application=playwright" target="_blank" rel="noopener noreferrer">guidance</a></li><li><code>image-alt</code> [critical] - Images must have alternative text (1 node(s)) - <a href="https://dequeuniversity.com/rules/axe/4.11/image-alt?application=playwright" target="_blank" rel="noopener noreferrer">guidance</a></li><li><code>link-name</code> [serious] - Links must have discernible text (9 node(s)) - <a href="https://dequeuniversity.com/rules/axe/4.11/link-name?application=playwright" target="_blank" rel="noopener noreferrer">guidance</a></li></ul>
+           </details></td>
+      </tr>
+<tr class="fail">
+        <td><a href="/requirements/">/requirements/</a></td>
+        <td>Quality Requirements | arc42 Quality Model</td>
+        <td>5</td>
+        <td>0</td>
+        <td>17</td>
+        <td>
+          <div class="score-wrap">
+            <div class="score-bar" style="width:50%"></div>
+            <span class="score-value">50</span>
+          </div>
+        </td>
+        <td><details><summary>5 violation rule(s)</summary>
+             <ul><li><code>color-contrast</code> [serious] - Elements must meet minimum color contrast ratio thresholds (4 node(s)) - <a href="https://dequeuniversity.com/rules/axe/4.11/color-contrast?application=playwright" target="_blank" rel="noopener noreferrer">guidance</a></li><li><code>image-alt</code> [critical] - Images must have alternative text (1 node(s)) - <a href="https://dequeuniversity.com/rules/axe/4.11/image-alt?application=playwright" target="_blank" rel="noopener noreferrer">guidance</a></li><li><code>link-in-text-block</code> [serious] - Links must be distinguishable without relying on color (1 node(s)) - <a href="https://dequeuniversity.com/rules/axe/4.11/link-in-text-block?application=playwright" target="_blank" rel="noopener noreferrer">guidance</a></li><li><code>link-name</code> [serious] - Links must have discernible text (9 node(s)) - <a href="https://dequeuniversity.com/rules/axe/4.11/link-name?application=playwright" target="_blank" rel="noopener noreferrer">guidance</a></li><li><code>list</code> [serious] - &lt;ul&gt; and &lt;ol&gt; must only directly contain &lt;li&gt;, &lt;script&gt; or &lt;template&gt; elements (1 node(s)) - <a href="https://dequeuniversity.com/rules/axe/4.11/list?application=playwright" target="_blank" rel="noopener noreferrer">guidance</a></li></ul>
+           </details></td>
+      </tr>
+<tr class="fail">
+        <td><a href="/standards/">/standards/</a></td>
+        <td>Quality Standards | arc42 Quality Model</td>
+        <td>3</td>
+        <td>2</td>
+        <td>21</td>
+        <td>
+          <div class="score-wrap">
+            <div class="score-bar" style="width:70%"></div>
+            <span class="score-value">70</span>
+          </div>
+        </td>
+        <td><details><summary>3 violation rule(s)</summary>
+             <ul><li><code>color-contrast</code> [serious] - Elements must meet minimum color contrast ratio thresholds (147 node(s)) - <a href="https://dequeuniversity.com/rules/axe/4.11/color-contrast?application=playwright" target="_blank" rel="noopener noreferrer">guidance</a></li><li><code>image-alt</code> [critical] - Images must have alternative text (1 node(s)) - <a href="https://dequeuniversity.com/rules/axe/4.11/image-alt?application=playwright" target="_blank" rel="noopener noreferrer">guidance</a></li><li><code>link-name</code> [serious] - Links must have discernible text (9 node(s)) - <a href="https://dequeuniversity.com/rules/axe/4.11/link-name?application=playwright" target="_blank" rel="noopener noreferrer">guidance</a></li></ul>
+           </details></td>
+      </tr>
+<tr class="fail">
+        <td><a href="/qualities/accessibility">/qualities/accessibility</a></td>
+        <td>Accessibility | arc42 Quality Model</td>
+        <td>5</td>
+        <td>0</td>
+        <td>16</td>
+        <td>
+          <div class="score-wrap">
+            <div class="score-bar" style="width:50%"></div>
+            <span class="score-value">50</span>
+          </div>
+        </td>
+        <td><details><summary>5 violation rule(s)</summary>
+             <ul><li><code>color-contrast</code> [serious] - Elements must meet minimum color contrast ratio thresholds (10 node(s)) - <a href="https://dequeuniversity.com/rules/axe/4.11/color-contrast?application=playwright" target="_blank" rel="noopener noreferrer">guidance</a></li><li><code>image-alt</code> [critical] - Images must have alternative text (1 node(s)) - <a href="https://dequeuniversity.com/rules/axe/4.11/image-alt?application=playwright" target="_blank" rel="noopener noreferrer">guidance</a></li><li><code>link-in-text-block</code> [serious] - Links must be distinguishable without relying on color (1 node(s)) - <a href="https://dequeuniversity.com/rules/axe/4.11/link-in-text-block?application=playwright" target="_blank" rel="noopener noreferrer">guidance</a></li><li><code>link-name</code> [serious] - Links must have discernible text (9 node(s)) - <a href="https://dequeuniversity.com/rules/axe/4.11/link-name?application=playwright" target="_blank" rel="noopener noreferrer">guidance</a></li><li><code>list</code> [serious] - &lt;ul&gt; and &lt;ol&gt; must only directly contain &lt;li&gt;, &lt;script&gt; or &lt;template&gt; elements (1 node(s)) - <a href="https://dequeuniversity.com/rules/axe/4.11/list?application=playwright" target="_blank" rel="noopener noreferrer">guidance</a></li></ul>
+           </details></td>
+      </tr>
+<tr class="fail">
+        <td><a href="/qualities/time-to-market">/qualities/time-to-market</a></td>
+        <td>Time to Market | arc42 Quality Model</td>
+        <td>5</td>
+        <td>0</td>
+        <td>16</td>
+        <td>
+          <div class="score-wrap">
+            <div class="score-bar" style="width:50%"></div>
+            <span class="score-value">50</span>
+          </div>
+        </td>
+        <td><details><summary>5 violation rule(s)</summary>
+             <ul><li><code>color-contrast</code> [serious] - Elements must meet minimum color contrast ratio thresholds (10 node(s)) - <a href="https://dequeuniversity.com/rules/axe/4.11/color-contrast?application=playwright" target="_blank" rel="noopener noreferrer">guidance</a></li><li><code>image-alt</code> [critical] - Images must have alternative text (1 node(s)) - <a href="https://dequeuniversity.com/rules/axe/4.11/image-alt?application=playwright" target="_blank" rel="noopener noreferrer">guidance</a></li><li><code>link-in-text-block</code> [serious] - Links must be distinguishable without relying on color (2 node(s)) - <a href="https://dequeuniversity.com/rules/axe/4.11/link-in-text-block?application=playwright" target="_blank" rel="noopener noreferrer">guidance</a></li><li><code>link-name</code> [serious] - Links must have discernible text (9 node(s)) - <a href="https://dequeuniversity.com/rules/axe/4.11/link-name?application=playwright" target="_blank" rel="noopener noreferrer">guidance</a></li><li><code>list</code> [serious] - &lt;ul&gt; and &lt;ol&gt; must only directly contain &lt;li&gt;, &lt;script&gt; or &lt;template&gt; elements (1 node(s)) - <a href="https://dequeuniversity.com/rules/axe/4.11/list?application=playwright" target="_blank" rel="noopener noreferrer">guidance</a></li></ul>
+           </details></td>
+      </tr>
+      </tbody>
+    </table>
+  </main>
+</body>
+</html>

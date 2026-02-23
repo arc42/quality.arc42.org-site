@@ -28,6 +28,7 @@
     "graphology-layout-forceatlas2": "^0.10.1"
   },
   "devDependencies": {
+    "@axe-core/playwright": "^4.10.2",
     "esbuild": "^0.25.0",
     "gray-matter": "^4.0.3",
     "prettier": "^3.4.2",

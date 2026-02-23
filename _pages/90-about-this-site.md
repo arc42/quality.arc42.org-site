@@ -17,6 +17,7 @@ order: 90
 - [Acknowledgements](#acknowledgements)
 - [Color Scheme](#colors)
 - [Tooling and Build](#tooling)
+- [WCAG Accessibility Report](/about/wcag-report/)
 - [Content Analytics](#analytics) 
    - <small>[Orphan Qualities](#orphanqualities)</small>
    - <small>[Qualities without Requirements](#qualitieswithoutrequirements)</small>

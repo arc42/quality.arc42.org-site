@@ -1,4 +1,4 @@
-.PHONY: help clean dev test
+.PHONY: help clean dev test wcag-test wcag-test-strict
 
 help:
 	@printf "Available targets:\n"
@@ -6,6 +6,8 @@ help:
 	@printf "  make dev    Start development environment (docker compose up).\n"
 	@printf "  make clean  Remove generated _site directory.\n"
 	@printf "  make test   Ensure local site is up, run Playwright UI tests in Docker, optionally serve HTML report.\n"
+	@printf "  make wcag-test  Run axe-based WCAG scan in Docker and generate report assets (informative, non-blocking).\n"
+	@printf "  make wcag-test-strict  Run the same WCAG scan but fail on any violation.\n"
 
 clean:
 	rm -rf _site
@@ -56,4 +58,70 @@ test:
 				;; \
 		esac; \
 	fi; \
+	exit $$status
+
+wcag-test:
+	@printf "\n[wcag-test] Ensuring local site is running (docker compose up -d esbuild jekyll)...\n"
+	@docker compose up -d esbuild jekyll >/dev/null
+	@printf "[wcag-test] Waiting for http://localhost:4000 to become ready"
+	@ready=0; i=0; \
+	while [ $$i -lt 60 ]; do \
+		if curl -fsS http://localhost:4000 >/dev/null 2>&1; then \
+			ready=1; \
+			break; \
+		fi; \
+		printf "."; \
+		i=$$((i+1)); \
+		sleep 2; \
+	done; \
+	printf "\n"; \
+	if [ $$ready -ne 1 ]; then \
+		printf "❌ Timed out waiting for site on http://localhost:4000\n"; \
+		printf "Try: docker compose logs --tail=120 jekyll esbuild\n\n"; \
+		exit 1; \
+	fi
+	@printf "[wcag-test] Running WCAG (wcag2a/wcag2aa/wcag21a/wcag21aa) scan in Docker (informative mode)...\n"
+	@/bin/bash -lc 'set -o pipefail; docker compose run --rm -e UI_BASE_URL=http://jekyll:4000 -e WCAG_STRICT=0 playwright sh -lc "npm ci && npx playwright test tests/ui/wcag.spec.ts" 2>&1 | sed "/^To open last HTML report run:/,+3d"; exit $${PIPESTATUS[0]}'; status=$$?; \
+	printf "\n"; \
+	if [ $$status -eq 0 ]; then \
+		printf "✅ WCAG scan completed.\n"; \
+	else \
+		printf "❌ WCAG scan found issues (exit %s).\n" "$$status"; \
+	fi; \
+	printf "Graphical report: assets/reports/wcag/latest.html\n"; \
+	printf "Raw data: assets/reports/wcag/latest.json\n"; \
+	printf "Site page: /about/wcag-report/\n\n"; \
+	exit $$status
+
+wcag-test-strict:
+	@printf "\n[wcag-test-strict] Ensuring local site is running (docker compose up -d esbuild jekyll)...\n"
+	@docker compose up -d esbuild jekyll >/dev/null
+	@printf "[wcag-test-strict] Waiting for http://localhost:4000 to become ready"
+	@ready=0; i=0; \
+	while [ $$i -lt 60 ]; do \
+		if curl -fsS http://localhost:4000 >/dev/null 2>&1; then \
+			ready=1; \
+			break; \
+		fi; \
+		printf "."; \
+		i=$$((i+1)); \
+		sleep 2; \
+	done; \
+	printf "\n"; \
+	if [ $$ready -ne 1 ]; then \
+		printf "❌ Timed out waiting for site on http://localhost:4000\n"; \
+		printf "Try: docker compose logs --tail=120 jekyll esbuild\n\n"; \
+		exit 1; \
+	fi
+	@printf "[wcag-test-strict] Running strict WCAG scan (fails on violations)...\n"
+	@/bin/bash -lc 'set -o pipefail; docker compose run --rm -e UI_BASE_URL=http://jekyll:4000 -e WCAG_STRICT=1 playwright sh -lc "npm ci && npx playwright test tests/ui/wcag.spec.ts" 2>&1 | sed "/^To open last HTML report run:/,+3d"; exit $${PIPESTATUS[0]}'; status=$$?; \
+	printf "\n"; \
+	if [ $$status -eq 0 ]; then \
+		printf "✅ Strict WCAG scan passed (zero violations).\n"; \
+	else \
+		printf "❌ Strict WCAG scan failed (violations detected).\n"; \
+	fi; \
+	printf "Graphical report: assets/reports/wcag/latest.html\n"; \
+	printf "Raw data: assets/reports/wcag/latest.json\n"; \
+	printf "Site page: /about/wcag-report/\n\n"; \
 	exit $$status
