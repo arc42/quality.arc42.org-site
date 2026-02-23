@@ -17,6 +17,7 @@ performance:
 # Availability (high-availability file says "synonym for availability")
 availability:
   - high-availability
+  - uptime
 
 # Autonomicity and self-* properties (autonomic computing terms, treated as aliases of autonomy)
 autonomy:
@@ -54,6 +55,7 @@ security:
 # Correctness (functional-correctness is ISO 25010 sub-characteristic)
 correctness:
   - functional-correctness
+  - truthfulness
 
 # Recoverability (recovery-time measures recoverability)
 recoverability:
@@ -90,6 +92,11 @@ timeliness:
 # Affordability (budget constraint is a project-level expression of affordability)
 affordability:
   - budget-constraint
+  - value-for-money
 
 carbon-emission-efficiency:
   - carbon-efficiency
+
+# Accuracy (exactness is common in scientific and engineering contexts)
+accuracy:
+  - exactness
