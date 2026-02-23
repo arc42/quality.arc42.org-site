@@ -85,6 +85,11 @@ iframe, img, embed, object, video {
   text-decoration: none;
 }
 
+.tag-box a.req {
+  background-color: var(--reqs-background-color, #ffb3b3);
+  color: var(--req-text-color, #8b0000);
+}
+
 .tag-box a span {
   vertical-align: super;
   font-size: 12px;

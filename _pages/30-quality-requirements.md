@@ -33,7 +33,7 @@ Read more on the **[background of requirements](/articles/specify-quality-requir
       {% endif %}
     {% endfor %}
 
-       <a class="hov tags" href="/tag-{{ tag | cgi_escape }}"><b>{{ tag }}</b>
+       <a class="hov tags req" href="/tag-{{ tag | cgi_escape }}"><b>{{ tag }}</b>
        <span>{{ req_count_for_tag }}</span></a>
 
 {% endfor %}
@@ -43,7 +43,7 @@ Read more on the **[background of requirements](/articles/specify-quality-requir
 
 <div>
 {% for tag in site.data.standard_tags.tags %}
-  <h2>Quality Requirements tagged with {{ tag }}</h2>
+  <h2 class="section-heading requirements">Quality Requirements tagged with {{ tag }}</h2>
   
     <ul class="posts no-bullets">
     {% for requirement in site.requirements %}
