@@ -1,7 +1,7 @@
 ---
 title: Determinism
 tags: [reliable, efficient]
-related: [reproducibility, consistency, testability, reliability, time-behaviour, transactionality]
+related: [reproducibility, consistency, testability, reliability, time-behaviour, transactionality, explainability]
 permalink: /qualities/determinism
 ---
 
