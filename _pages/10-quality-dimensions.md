@@ -38,12 +38,18 @@ Consider an excerpt of our domain language (aka _metamodel_):
 
     <!-- make the tags of the arc42-quality-model stand out -->
     {% if tag == "reliable" or tag == "flexible" or tag == "maintainable" or tag=="efficient" or tag == "usable" or tag == "safe" or tag == "secure" or tag == "suitable" or tag == "operable" %}
-    <a class="hov tags" href="/tag-{{ tag | cgi_escape }}"><b>{{ tag }}</b>
-       <span>{{ qualities_count_for_tag }}</span></a>
+      <li>
+        <a class="hov tags" href="/tag-{{ tag | cgi_escape }}"><b>{{ tag }}</b>
+          <span>{{ qualities_count_for_tag }}</span>
+        </a>
+      </li>
     {% else %}
-        <!-- other tags in different color  -->
-        <li><a class="hov tags" href="#{{ tag | cgi_escape }}">{{ tag }}
-        <span>{{ qualities_count_for_tag }}</span></a></li>
+      <!-- other tags in different color  -->
+      <li>
+        <a class="hov tags" href="#{{ tag | cgi_escape }}">{{ tag }}
+          <span>{{ qualities_count_for_tag }}</span>
+        </a>
+      </li>
     {% endif %}
   {% endfor %}
   </ul>
@@ -73,13 +79,18 @@ Consider an excerpt of our domain language (aka _metamodel_):
     {% endfor %}
 
     {% if tag == "reliable" or tag == "flexible" or tag == "maintainable" or tag=="efficient" or tag == "usable" or tag == "safe" or tag == "secure" or tag == "suitable" or tag == "operable" %}
-    <a class="hov tags req" href="/tag-{{ tag | cgi_escape }}"><b>{{ tag }}</b>
-       <span>{{ req_count_for_tag }}</span></a>
-   
+      <li>
+        <a class="hov tags req" href="/tag-{{ tag | cgi_escape }}"><b>{{ tag }}</b>
+          <span>{{ req_count_for_tag }}</span>
+        </a>
+      </li>
     {% else %}
-        <!-- other tags in different color  -->
-        <li><a class="hov tags" href="#{{ tag | cgi_escape }}">{{ tag }}
-        <span>{{ req_count_for_tag }}</span></a></li>
+      <!-- other tags in different color  -->
+      <li>
+        <a class="hov tags" href="#{{ tag | cgi_escape }}">{{ tag }}
+          <span>{{ req_count_for_tag }}</span>
+        </a>
+      </li>
     {% endif %}
   {% endfor %}
   </ul>
@@ -109,13 +120,18 @@ Consider an excerpt of our domain language (aka _metamodel_):
     {% endfor %}
 
     {% if tag == "reliable" or tag == "flexible" or tag == "maintainable" or tag=="efficient" or tag == "usable" or tag == "safe" or tag == "secure" or tag == "suitable" or tag == "operable" %}
-    <a class="hov tags approach" href="/tag-{{ tag | cgi_escape }}"><b>{{ tag }}</b>
-       <span>{{ approaches_count_for_tag }}</span></a>
-
+      <li>
+        <a class="hov tags approach" href="/tag-{{ tag | cgi_escape }}"><b>{{ tag }}</b>
+          <span>{{ approaches_count_for_tag }}</span>
+        </a>
+      </li>
     {% else %}
-        <!-- other tags in different color  -->
-        <li><a class="hov tags approach" href="#{{ tag | cgi_escape }}">{{ tag }}
-        <span>{{ approaches_count_for_tag }}</span></a></li>
+      <!-- other tags in different color  -->
+      <li>
+        <a class="hov tags approach" href="#{{ tag | cgi_escape }}">{{ tag }}
+          <span>{{ approaches_count_for_tag }}</span>
+        </a>
+      </li>
     {% endif %}
   {% endfor %}
   </ul>

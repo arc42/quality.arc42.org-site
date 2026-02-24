@@ -110,14 +110,14 @@ Listed below each quality, you find
   .return-to-top a {
     display: inline-block;
     font-size: 1.2rem;
-    color: #383838;
+    color: var(--muted-text-3, #5e5e5e);
     text-decoration: none;
-    opacity: 0.5;
-    transition: opacity 0.2s ease;
+    opacity: 1;
+    transition: color 0.2s ease;
   }
   
   .return-to-top a:hover {
-    opacity: 1;
+    color: #3f5564;
     text-decoration: none;
   }
 </style>

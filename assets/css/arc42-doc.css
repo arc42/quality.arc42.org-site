@@ -4,7 +4,9 @@
 :root {
   --quality-background-color: #00b8f5;
   --reqs-background-color: #ffb3b3;
+  --reqs-soft-background-color: #ffe0e0;
   --standard-background-color: #ffc95c;
+  --standard-soft-background-color: #ffefc8;
   --quality-text-color: #003366;
   --req-text-color: #8b0000;
   --standard-text-color: #2c3e50;
@@ -13,7 +15,13 @@
   --error-color: #ec645b;
   --article-background-color: #e6daf2;
   --approaches-background-color: #92EF80;
+  --approaches-soft-background-color: #d9f7d3;
   --approaches-text-color: #1B5E20;
+  --synonym-text-color: #005987;
+  --muted-text-1: #6f6f6f;
+  --muted-text-2: #6b6b6b;
+  --muted-text-3: #5e5e5e;
+  --muted-blue-text: #4d6f84;
 }
 
 p {

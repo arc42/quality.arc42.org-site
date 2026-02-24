@@ -568,12 +568,12 @@
 
   .standard-tags {
     font-size: 0.8rem;
-    color: #8a8986;
+    color: var(--muted-text-2, #6b6b6b);
     margin-top: 0.3rem;
     margin-bottom: 0.5rem;
 
     .category-name {
-      color: #8a8986;
+      color: var(--muted-text-2, #6b6b6b);
     }
   }
 

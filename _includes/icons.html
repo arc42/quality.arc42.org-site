@@ -1,12 +1,12 @@
 {% assign icons = include.icons %}
 
 <li>
-    <a href="xmxaxixlxtxo:ixnxfxox@xaxrxcx4x2x.xdxe" onmouseover="this.href=this.href.replace(/x/g,'');">
+    <a href="xmxaxixlxtxo:ixnxfxox@xaxrxcx4x2x.xdxe" onmouseover="this.href=this.href.replace(/x/g,'');" aria-label="Send email to arc42 maintainers">
         <i class="fa fa-fw fa-envelope" aria-hidden="true"></i>
     </a>
 </li>
 
-<li><a href="https://linkedin.com/in/gernotstarke">
+<li><a href="https://linkedin.com/in/gernotstarke" aria-label="Open Gernot Starke on LinkedIn">
       <i class="fab fa-fw fa-linkedin" aria-hidden="true"></i>
     </a>
 </li>
@@ -14,7 +14,7 @@
 
 {% if icons.github %}
 <li>
-    <a href="https://github.com/{{ icons.github }}" target="_blank">
+    <a href="https://github.com/{{ icons.github }}" target="_blank" rel="noopener noreferrer" aria-label="Open arc42 on GitHub">
         <i class="fab fa-fw fa-github" aria-hidden="true"></i>
     </a>
 </li>
@@ -24,7 +24,7 @@
 
 {% if icons.stack_overflow %}
 <li>
-    <a href="https://stackoverflow.com/tags/{{ icons.stack_overflow }}" target="_blank">
+    <a href="https://stackoverflow.com/tags/{{ icons.stack_overflow }}" target="_blank" rel="noopener noreferrer" aria-label="Open arc42 tag on Stack Overflow">
         <i class="fab fa-fw fa-stack-overflow" aria-hidden="true"></i>
     </a>
 </li>
@@ -33,21 +33,20 @@
 
 {% if icons.youtube %}
 <li>
-    <a href="https://youtube.com/{{ icons.youtube }}" target="_blank">
+    <a href="https://youtube.com/{{ icons.youtube }}" target="_blank" rel="noopener noreferrer" aria-label="Open arc42 videos on YouTube">
         <i class="fab fa-fw fa-youtube" aria-hidden="true"></i>
     </a>
 </li>
 {% endif %}
 
 {% if icons.dev_to %}
-<li><a href="https://dev.to/gernotstarke/" target="_blank">
+<li><a href="https://dev.to/gernotstarke/" target="_blank" rel="noopener noreferrer" aria-label="Open Gernot Starke on DEV">
   <i class="fab fa-dev" aria-hidden="true"></i> </a>
 </li>
 {% endif %}
 
-<li><a href="https://www.innoq.com/de/staff/gernot-starke/" target="_blank">
-  <i class="fas fa-heart fa-fw" style="color:#ff9c66;"></i> </a>
+<li><a href="https://www.innoq.com/de/staff/gernot-starke/" target="_blank" rel="noopener noreferrer" aria-label="Open Gernot Starke profile on INNOQ">
+  <i class="fas fa-heart fa-fw" style="color:#ff9c66;" aria-hidden="true"></i> </a>
 </li>
-
 
 

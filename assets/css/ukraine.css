@@ -20,6 +20,15 @@ div.ua-background {
     background-color: #e7ddd8;
 }
 
+div.ua-background blockquote {
+    color: #5e5e5e;
+}
+
+div.ua-background blockquote a {
+    color: #0d5f93;
+    text-decoration: underline;
+}
+
 .parent {
     white-space: nowrap;
 }
