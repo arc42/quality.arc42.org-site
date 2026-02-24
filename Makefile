@@ -16,6 +16,7 @@ dev:
 	docker compose up esbuild jekyll
 
 test:
+	@docker compose pull
 	@printf "\n[ui-test] Ensuring local site is running (docker compose up -d esbuild jekyll)...\n"
 	@docker compose up -d esbuild jekyll >/dev/null
 	@printf "[ui-test] Waiting for http://localhost:4000 to become ready"
@@ -61,6 +62,7 @@ test:
 	exit $$status
 
 wcag-test:
+	@docker compose pull
 	@printf "\n[wcag-test] Ensuring local site is running (docker compose up -d esbuild jekyll)...\n"
 	@docker compose up -d esbuild jekyll >/dev/null
 	@printf "[wcag-test] Waiting for http://localhost:4000 to become ready"
@@ -94,6 +96,7 @@ wcag-test:
 	exit $$status
 
 wcag-test-strict:
+	@docker compose pull
 	@printf "\n[wcag-test-strict] Ensuring local site is running (docker compose up -d esbuild jekyll)...\n"
 	@docker compose up -d esbuild jekyll >/dev/null
 	@printf "[wcag-test-strict] Waiting for http://localhost:4000 to become ready"
