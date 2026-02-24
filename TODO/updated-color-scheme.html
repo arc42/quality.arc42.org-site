@@ -1,322 +1,251 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Updated Color Scheme - quality.arc42.org</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 30px 20px;
-            background-color: #f8f9fa;
-            line-height: 1.6;
-        }
-        
-        .header {
-            text-align: center;
-            margin-bottom: 40px;
-            padding: 25px;
-            background: linear-gradient(135deg, #00B8F5, #0066cc);
-            color: white;
-            border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(0,184,245,0.3);
-        }
-        
-        .header h1 {
-            margin: 0 0 10px 0;
-            font-size: 2.5em;
-            color: white;
-        }
-        
-        .header p {
-            margin: 0;
-            opacity: 0.9;
-            font-size: 1.1em;
-        }
-        
-        .subtitle {
-            text-align: center;
-            font-size: 1.1em;
-            color: #666;
-            margin-bottom: 30px;
-        }
-        
-        .color-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-            margin-bottom: 40px;
-        }
-        
-        .color-card {
-            border-radius: 15px;
-            padding: 25px;
-            text-align: center;
-            box-shadow: 0 6px 20px rgba(0,0,0,0.1);
-            border: 3px solid rgba(255,255,255,0.3);
-            transition: transform 0.3s ease;
-        }
-        
-        .color-card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .color-card i {
-            font-size: 3.5em;
-            margin-bottom: 15px;
-            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
-        }
-        
-        .card-title {
-            font-size: 1.8em;
-            font-weight: bold;
-            margin-bottom: 8px;
-        }
-        
-        .card-subtitle {
-            font-size: 1em;
-            margin-bottom: 15px;
-            opacity: 0.8;
-        }
-        
-        .color-info {
-            background: rgba(255,255,255,0.9);
-            border-radius: 8px;
-            padding: 12px;
-            margin-top: 15px;
-            font-family: 'Courier New', monospace;
-            font-size: 0.85em;
-            text-align: left;
-            color: #333;
-            box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
-        }
-        
-        .color-info div {
-            margin-bottom: 4px;
-        }
-        
-        /* Color-specific styles */
-        .qualities {
-            background: #00B8F5;
-            color: #003366;
-        }
-        
-        .qualities i {
-            color: #003366;
-        }
-        
-        .requirements {
-            background: #ffb3b3;
-            color: #8b0000;
-        }
-        
-        .requirements i {
-            color: #8b0000;
-        }
-        
-        .standards {
-            background: #ffc95c;
-            color: #2C3E50;
-        }
-        
-        .standards i {
-            color: #2C3E50;
-        }
-        
-        .approaches {
-            background: #92ef80;
-            color: #1B5E20;
-        }
-        
-        .approaches i {
-            color: #1B5E20;
-        }
-        
-        .articles {
-            background: #e6daf2;
-            color: #4A148C;
-        }
-        
-        .articles i {
-            color: #4A148C;
-        }
-        
-        .properties {
-            background: #f8f9fa;
-            color: #495057;
-            border: 3px solid #dee2e6;
-        }
-        
-        .properties i {
-            color: #495057;
-        }
-        
-        .css-variables {
-            background: white;
-            border-radius: 15px;
-            padding: 30px;
-            box-shadow: 0 6px 20px rgba(0,0,0,0.1);
-            margin-top: 30px;
-        }
-        
-        .css-variables h3 {
-            color: #2c3e50;
-            margin-bottom: 20px;
-            font-size: 1.5em;
-            text-align: center;
-        }
-        
-        .css-code {
-            background: #f8f9fa;
-            border: 2px solid #e9ecef;
-            border-radius: 8px;
-            padding: 20px;
-            font-family: 'Courier New', monospace;
-            font-size: 0.9em;
-            color: #495057;
-            line-height: 1.6;
-        }
-        
-        .css-code .comment {
-            color: #6c757d;
-            font-style: italic;
-        }
-        
-        .css-code .new {
-            background: #d4edda;
-            padding: 2px 4px;
-            border-radius: 3px;
-            font-weight: bold;
-        }
-        
-        .changes-note {
-            background: #fff3cd;
-            border: 2px solid #ffc107;
-            border-radius: 10px;
-            padding: 20px;
-            margin-bottom: 30px;
-            color: #856404;
-        }
-        
-        .changes-note h4 {
-            margin-top: 0;
-            color: #856404;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Current Color Scheme - quality.arc42.org</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+  <style>
+    :root {
+      --header-bg: #357360;
+      --header-text: #deefb7;
+      --header-counter: #ffad80;
+      --quality-bg: #00b8f5;
+      --quality-text: #003366;
+      --req-bg: #ffb3b3;
+      --req-text: #8b0000;
+      --standard-bg: #ffc95c;
+      --standard-text: #2c3e50;
+      --article-bg: #e6daf2;
+      --article-text: #4a148c;
+      --approach-bg: #92ef80;
+      --approach-text: #1b5e20;
+      --page-bg: #f7f8fa;
+      --panel-border: #d8dce1;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      padding: 28px 20px;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.5;
+      background: var(--page-bg);
+      color: #1f2933;
+      max-width: 1100px;
+      margin-inline: auto;
+    }
+
+    h1 {
+      margin: 0 0 6px;
+      font-size: 2rem;
+    }
+
+    .lead {
+      margin: 0 0 18px;
+      color: #5f6b77;
+    }
+
+    .meta {
+      margin: 0 0 24px;
+      padding: 12px 14px;
+      border: 1px solid var(--panel-border);
+      border-radius: 8px;
+      background: #fff;
+      font-size: 0.95rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .card {
+      border-radius: 12px;
+      padding: 18px;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+    }
+
+    .card-title {
+      margin: 0 0 8px;
+      font-weight: 700;
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .codes {
+      margin: 0;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+      font-size: 0.9rem;
+      background: rgba(255, 255, 255, 0.82);
+      border-radius: 8px;
+      padding: 10px;
+      color: #1f2933;
+    }
+
+    .qualities { background: var(--quality-bg); color: var(--quality-text); }
+    .requirements { background: var(--req-bg); color: var(--req-text); }
+    .standards { background: var(--standard-bg); color: var(--standard-text); }
+    .articles { background: var(--article-bg); color: var(--article-text); }
+    .approaches { background: var(--approach-bg); color: var(--approach-text); }
+
+    .header-card {
+      grid-column: 1 / -1;
+      background: var(--header-bg);
+      color: var(--header-text);
+    }
+
+    .header-preview {
+      margin-top: 12px;
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      background: rgba(0, 0, 0, 0.1);
+      max-width: 620px;
+    }
+
+    .header-preview .title {
+      font-size: 1.35rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+      color: var(--header-text);
+    }
+
+    .header-preview .desc {
+      margin: 2px 0;
+      font-size: 1.05rem;
+      color: var(--header-text);
+    }
+
+    .header-preview .counter {
+      color: var(--header-counter);
+      font-weight: 800;
+    }
+
+    .section {
+      margin-top: 24px;
+      background: #fff;
+      border: 1px solid var(--panel-border);
+      border-radius: 10px;
+      padding: 16px 18px;
+    }
+
+    .section h2 {
+      margin: 0 0 10px;
+      font-size: 1.2rem;
+    }
+
+    .section code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+      background: #f0f3f7;
+      padding: 2px 5px;
+      border-radius: 4px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 8px;
+      font-size: 0.95rem;
+    }
+
+    th, td {
+      border: 1px solid #d5dbe2;
+      padding: 8px 10px;
+      text-align: left;
+    }
+
+    th {
+      background: #f3f6f9;
+    }
+  </style>
 </head>
 <body>
-    <div class="header">
-        <h1>Color Scheme</h1>
-        <p>Enhanced visual identity for quality.arc42.org content types</p>
-    </div>
+  <h1>Current Color Scheme</h1>
+  <p class="lead">Reference for the current, WCAG-improved palette used on quality.arc42.org.</p>
 
-    <div class="subtitle">
-        This site uses a simple color scheme to distinguish between the main content types.
-    </div>
+  <p class="meta">
+    Source alignment target: <code>assets/css/arc42-doc.css</code>, <code>_sass/_header.scss</code>, and <code>_includes/about/color-scheme.md</code>.
+  </p>
 
-    <div class="changes-note">
-        <h4>🔄 Key Changes</h4>
-        <ul style="margin: 0;">
-            <li><strong>NEW:</strong> Added "Approaches" for patterns, practices, and tactics</li>
-            <li><strong>CHANGED:</strong> Requirements moved from green to light red for better distinction</li>
-            <li><strong>IMPROVED:</strong> Color harmony and accessibility across all content types</li>
-        </ul>
-    </div>
+  <div class="grid">
+    <section class="card qualities">
+      <h2 class="card-title"><i class="fa-solid fa-gem"></i> Qualities</h2>
+      <pre class="codes">Background: #00B8F5
+Text:       #003366</pre>
+    </section>
 
-    <div class="color-grid">
-        <div class="color-card qualities">
-            <i class="fa-solid fa-gem"></i>
-            <div class="card-title">Qualities</div>
-            <div class="card-subtitle">Quality Attributes</div>
-            <div class="color-info">
-                <div>Background: #00B8F5</div>
-                <div>Text: #003366</div>
-                <div>Icon: fa-solid fa-gem</div>
-            </div>
-        </div>
+    <section class="card requirements">
+      <h2 class="card-title"><i class="fa-solid fa-bullseye"></i> Requirements</h2>
+      <pre class="codes">Background: #FFB3B3
+Text:       #8B0000</pre>
+    </section>
 
-        <div class="color-card requirements">
-            <i class="fa-solid fa-bullseye"></i>
-            <div class="card-title">Requirements</div>
-            <div class="card-subtitle">Quality Scenarios</div>
-            <div class="color-info">
-                <div>Background: #ffb3b3</div>
-                <div>Text: #8b0000</div>
-                <div>Icon: fa-solid fa-bullseye</div>
-            </div>
-        </div>
+    <section class="card standards">
+      <h2 class="card-title"><i class="fa-solid fa-award"></i> Standards</h2>
+      <pre class="codes">Background: #FFC95C
+Text:       #2C3E50</pre>
+    </section>
 
-        <div class="color-card standards">
-            <i class="fa-solid fa-award"></i>
-            <div class="card-title">Standards</div>
-            <div class="card-subtitle">Quality Standards</div>
-            <div class="color-info">
-                <div>Background: #FFC95C</div>
-                <div>Text: #2C3E50</div>
-                <div>Icon: fa-solid fa-award</div>
-            </div>
-        </div>
+    <section class="card articles">
+      <h2 class="card-title"><i class="fa-solid fa-file-lines"></i> Articles</h2>
+      <pre class="codes">Background: #E6DAF2
+Text:       #4A148C</pre>
+    </section>
 
-        <div class="color-card approaches">
-            <i class="fa-solid fa-puzzle-piece"></i>
-            <div class="card-title">Approaches</div>
-            <div class="card-subtitle">Patterns & Practices</div>
-            <div class="color-info">
-                <div>Background: #92EF80</div>
-                <div>Text: #1B5E20</div>
-                <div>Icon: fa-solid fa-puzzle-piece</div>
-            </div>
-        </div>
+    <section class="card approaches">
+      <h2 class="card-title"><i class="fa-solid fa-puzzle-piece"></i> Approaches</h2>
+      <pre class="codes">Background: #92EF80
+Text:       #1B5E20</pre>
+    </section>
 
-        <div class="color-card articles">
-            <i class="fa-solid fa-file-lines"></i>
-            <div class="card-title">Articles</div>
-            <div class="card-subtitle">Generic Pages</div>
-            <div class="color-info">
-                <div>Background: #E6DAF2</div>
-                <div>Text: #4A148C</div>
-                <div>Icon: fa-solid fa-file-lines</div>
-            </div>
-        </div>
+    <section class="card header-card">
+      <h2 class="card-title"><i class="fa-solid fa-heading"></i> Header (current)</h2>
+      <pre class="codes">Background:    #357360
+Primary text:  #DEEFB7
+Counter text:  #FFAD80</pre>
 
-        <div class="color-card properties">
-            <i class="fa-solid fa-tag"></i>
-            <div class="card-title">Dimensions (Tags)</div>
-            <div class="card-subtitle">Tags/Labels</div>
-            <div class="color-info">
-                <div>Background: #f8f9fa</div>
-                <div>Text: #495057</div>
-                <div>Icon: fa-solid fa-tag</div>
-            </div>
-        </div>
-    </div>
+      <div class="header-preview">
+        <div class="title">arc42 Quality Model</div>
+        <div class="desc"><span class="counter">216</span> quality characteristics, explained.</div>
+        <div class="desc"><span class="counter">133</span> examples of specific requirements.</div>
+      </div>
+    </section>
+  </div>
 
-    <div class="css-variables">
-        <h3>Updated CSS Variables</h3>
-        <div class="css-code">
-<span class="comment">/* Updated color scheme for quality.arc42.org */</span>
+  <section class="section">
+    <h2>Header Contrast Snapshot</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Pair</th>
+          <th>Contrast</th>
+          <th>Interpretation</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>#DEEFB7 on #357360</td>
+          <td>4.54:1</td>
+          <td>AA pass (normal text)</td>
+        </tr>
+        <tr>
+          <td>#FFAD80 on #357360</td>
+          <td>3.06:1</td>
+          <td>AA pass (large text counters)</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
 
-<span class="comment">/* Existing variables (unchanged) */</span>
---quality-background-color: #00B8F5;
---standard-background-color: #FFC95C;
---article-background-color: #E6DAF2;
-
-<span class="comment">/* Updated variables */</span>
-<span class="new">--requirements-background-color: #ffb3b3;</span>  <span class="comment">/* Changed: softer red */</span>
-<span class="new">--approaches-background-color: #92EF80;</span>     <span class="comment">/* New: moved green here */</span>
-
-<span class="comment">/* Text colors for optimal contrast */</span>
---quality-text-color: #003366;
---requirements-text-color: #8b0000;
---standard-text-color: #2C3E50;
---approaches-text-color: #1B5E20;
---article-text-color: #4A148C;
---properties-text-color: #495057;
---properties-background-color: #f8f9fa;
-        </div>
-    </div>
+  <section class="section">
+    <h2>Related Verification</h2>
+    Latest automated report is published at <code>/about/wcag-report/</code>.
+  </section>
 </body>
 </html>

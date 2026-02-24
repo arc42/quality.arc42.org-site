@@ -1,35 +1,34 @@
 # Q42 Color Scheme Documentation
 
-This folder contains the final deliverables for the Q42 color scheme transformation project.
+This folder contains reference documentation for the **current** site palette.
 
-## 📊 Color Comparison
+## Current Interactive Docs
 
-**File:** `q42-color-comparison-final.png`
+- `color-scheme-overview.html`
+- `color-scheme-simple.html`
 
-A comprehensive visual comparison showing the transformation from the old washed-out colors to the new vibrant, professional colors:
+Both documents are aligned with current production colors and include the updated site header palette.
 
-- **Quality Blue**: `#dbf0fe` → `#00B8F5` with dark text `#003366` 
-- **Requirements Green**: `#DEEFB7` → `#92EF80` with dark text `#1B5E20`
-- **Standards Sunglow**: `#E6D7F0` → `#FFC95C` with dark text `#2C3E50`
+## Current Palette
 
-Interactive version available in `color-comparison-final.html`
+- Qualities: background `#00B8F5`, text `#003366`
+- Requirements: background `#FFB3B3`, text `#8B0000`
+- Standards: background `#FFC95C`, text `#2C3E50`
+- Articles: background `#E6DAF2`, text `#4A148C`
+- Approaches: background `#92EF80`, text `#1B5E20`
+- Header: background `#357360`, primary text `#DEEFB7`, counters `#FFAD80`
 
-## ♿ Accessibility Report
+## Contrast Snapshot (WCAG 2.x)
 
-**File:** `q42-accessibility-report.png`
+- Qualities: `5.51:1` (AA normal text pass)
+- Requirements: `5.89:1` (AA normal text pass)
+- Standards: `7.20:1` (AAA normal text pass)
+- Articles: `8.86:1` (AAA normal text pass)
+- Approaches: `5.58:1` (AA normal text pass)
+- Header primary text: `4.54:1` (AA normal text pass)
+- Header counters: `3.06:1` (AA large text pass)
 
-WCAG accessibility compliance analysis showing all color combinations achieve AAA standards:
+## Notes
 
-- **Quality**: 8.2:1 contrast ratio (AAA compliant)
-- **Requirements**: 6.8:1 contrast ratio (AAA compliant)  
-- **Standards**: 7.1:1 contrast ratio (AAA compliant)
-
-Interactive version available in `accessibility-report.html`
-
-## 🎯 Key Benefits
-
-- All colors exceed WCAG AAA standards (7:1 minimum)
-- Enhanced visual hierarchy and professional appearance
-- Better accessibility for users with visual impairments
-- Consistent branding across quality, requirements, and standards pages
-- Production-ready with international compliance (ADA, Section 508, EN 301 549)
+- Do not claim "all combinations AAA" anymore; that is no longer accurate for the current palette.
+- Header counters are intentionally optimized for emphasis and pass large-text AA.
