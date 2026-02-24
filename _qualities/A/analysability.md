@@ -1,9 +1,9 @@
 ---
 title: Analysability
-aka: [Inspectability]
+aka: [Inspectability, Evaluability]
 related: [flexibility, maintainability, modifiability, testability, debuggability]
 tags: [reliable, maintainable]
-standards: [iso25010, misra-c]
+standards: [iso25010, misra-c, iso42030]
 permalink: /qualities/analysability
 ---
 

@@ -210,6 +210,9 @@ h2.section-heading.approaches {
 .panel.quality-header h1 a {
   color: var(--quality-text-color) !important;
 }
+.panel.quality-header ul.tags a.tag {
+  color: var(--quality-text-color) !important;
+}
 
 .panel.requirements-header {
   background-color: var(--reqs-background-color) !important;
@@ -217,6 +220,9 @@ h2.section-heading.approaches {
 
 .panel.requirements-header h1,
 .panel.requirements-header h1 a {
+  color: var(--req-text-color) !important;
+}
+.panel.requirements-header ul.tags a.tag {
   color: var(--req-text-color) !important;
 }
 
@@ -228,6 +234,10 @@ h2.section-heading.approaches {
 .panel.standards-header h1 a {
   color: var(--standard-text-color) !important;
 }
+.panel.standards-header ul.tags a.tag,
+.panel.standards-header ul.tags .category {
+  color: var(--standard-text-color) !important;
+}
 
 .panel.approaches-header {
   background-color: var(--approaches-background-color) !important;
@@ -235,6 +245,9 @@ h2.section-heading.approaches {
 
 .panel.approaches-header h1,
 .panel.approaches-header h1 a {
+  color: var(--approaches-text-color) !important;
+}
+.panel.approaches-header ul.tags a.tag {
   color: var(--approaches-text-color) !important;
 }
 

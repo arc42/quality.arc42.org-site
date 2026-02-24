@@ -32,9 +32,11 @@ Read more on the **[background of requirements](/articles/specify-quality-requir
         {% assign req_count_for_tag = req_count_for_tag | plus: 1 %}
       {% endif %}
     {% endfor %}
-
-       <a class="hov tags req" href="/tag-{{ tag | cgi_escape }}"><b>{{ tag }}</b>
-       <span>{{ req_count_for_tag }}</span></a>
+    <li>
+      <a class="hov tags req" href="/tag-{{ tag | cgi_escape }}"><b>{{ tag }}</b>
+        <span>{{ req_count_for_tag }}</span>
+      </a>
+    </li>
 
 {% endfor %}
 

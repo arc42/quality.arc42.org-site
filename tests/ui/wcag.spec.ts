@@ -1,6 +1,6 @@
 import AxeBuilder from "@axe-core/playwright";
 import { expect, test } from "@playwright/test";
-import { mkdir, writeFile } from "node:fs/promises";
+import { mkdir, readdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 
 type ViolationSummary = {
@@ -37,19 +37,136 @@ type WcagReport = {
 };
 
 const WCAG_TAGS = ["wcag2a", "wcag2aa", "wcag21a", "wcag21aa"];
-const ROUTES = [
+const ENTRY_ROUTES = [
   "/",
   "/dimensions/",
   "/qualities/",
   "/requirements/",
   "/standards/",
+  "/standards/explorer/",
+  "/approaches/",
+  "/aliases/",
+  "/full-quality-graph/",
+  "/aboutthissite/",
   "/qualities/accessibility",
   "/qualities/time-to-market",
 ];
+const QUALITY_SAMPLE_COUNT = 5;
+const REQUIREMENT_SAMPLE_COUNT = 5;
+const STANDARD_SAMPLE_COUNT = 5;
 
 const REPORT_DIR = path.join("assets", "reports", "wcag");
 const JSON_REPORT = path.join(REPORT_DIR, "latest.json");
 const HTML_REPORT = path.join(REPORT_DIR, "latest.html");
+
+type FrontMatterMap = Record<string, string>;
+
+function normalizeRoute(route: string): string {
+  if (!route) return route;
+  return route.startsWith("/") ? route : `/${route}`;
+}
+
+function parseFrontMatter(content: string): FrontMatterMap {
+  const match = content.match(/^---\s*\n([\s\S]*?)\n---/);
+  if (!match) return {};
+  const map: FrontMatterMap = {};
+  for (const rawLine of match[1].split("\n")) {
+    const line = rawLine.trim();
+    if (!line || line.startsWith("#")) continue;
+    const idx = line.indexOf(":");
+    if (idx < 0) continue;
+    const key = line.slice(0, idx).trim();
+    const value = line
+      .slice(idx + 1)
+      .trim()
+      .replace(/^['"]/, "")
+      .replace(/['"]$/, "");
+    map[key] = value;
+  }
+  return map;
+}
+
+async function walkFiles(dir: string): Promise<string[]> {
+  const entries = await readdir(dir, { withFileTypes: true });
+  const files: string[] = [];
+  for (const entry of entries) {
+    const fullPath = path.join(dir, entry.name);
+    if (entry.isDirectory()) {
+      files.push(...(await walkFiles(fullPath)));
+      continue;
+    }
+    if (entry.isFile() && /\.(md|markdown|html)$/i.test(entry.name)) {
+      files.push(fullPath);
+    }
+  }
+  return files;
+}
+
+async function getPermalinkFromFile(filePath: string): Promise<string | null> {
+  const content = await readFile(filePath, "utf8");
+  const frontMatter = parseFrontMatter(content);
+  const permalink = frontMatter.permalink;
+  if (!permalink || permalink.endsWith(".json")) return null;
+  return normalizeRoute(permalink);
+}
+
+async function collectCollectionPermalinks(dir: string): Promise<string[]> {
+  const files = await walkFiles(dir);
+  const routes: string[] = [];
+  for (const filePath of files) {
+    const permalink = await getPermalinkFromFile(filePath);
+    if (permalink) routes.push(permalink);
+  }
+  return routes.sort((a, b) => a.localeCompare(b));
+}
+
+async function collectMainMenuRoutes(): Promise<string[]> {
+  const files = await walkFiles("_pages");
+  const routes: string[] = [];
+
+  for (const filePath of files) {
+    const content = await readFile(filePath, "utf8");
+    const frontMatter = parseFrontMatter(content);
+    const title = frontMatter.title;
+    const order = Number(frontMatter.order);
+    const hide = (frontMatter.hide || "").toLowerCase();
+    const permalink = frontMatter.permalink
+      ? normalizeRoute(frontMatter.permalink)
+      : null;
+
+    if (!title) continue;
+    if (!Number.isFinite(order)) continue;
+    if (hide === "true") continue;
+    if (!permalink || permalink.endsWith(".json")) continue;
+    routes.push(permalink);
+  }
+
+  return routes.sort((a, b) => a.localeCompare(b));
+}
+
+async function collectRoutes(): Promise<string[]> {
+  const routeSet = new Set<string>(ENTRY_ROUTES.map(normalizeRoute));
+
+  const [menuRoutes, articleRoutes, qualityRoutes, requirementRoutes, standardRoutes] =
+    await Promise.all([
+      collectMainMenuRoutes(),
+      collectCollectionPermalinks("_articles"),
+      collectCollectionPermalinks("_qualities"),
+      collectCollectionPermalinks("_requirements"),
+      collectCollectionPermalinks("_standards"),
+    ]);
+
+  for (const route of menuRoutes) routeSet.add(route);
+  for (const route of articleRoutes) routeSet.add(route);
+  for (const route of qualityRoutes.slice(0, QUALITY_SAMPLE_COUNT))
+    routeSet.add(route);
+  for (const route of requirementRoutes.slice(0, REQUIREMENT_SAMPLE_COUNT))
+    routeSet.add(route);
+  for (const route of standardRoutes.slice(0, STANDARD_SAMPLE_COUNT))
+    routeSet.add(route);
+
+  return [...routeSet];
+}
 
 function scoreFor(violationsCount: number): number {
   return Math.max(0, 100 - violationsCount * 10);
@@ -254,9 +371,10 @@ function renderHtml(report: WcagReport): string {
 }
 
 test("wcag scan for key pages", async ({ page }) => {
+  const routes = await collectRoutes();
   const pageSummaries: PageSummary[] = [];
 
-  for (const route of ROUTES) {
+  for (const route of routes) {
     await page.goto(route, { waitUntil: "domcontentloaded" });
 
     const analysis = await new AxeBuilder({ page }).withTags(WCAG_TAGS).analyze();
@@ -317,7 +435,7 @@ test("wcag scan for key pages", async ({ page }) => {
     process.env.WCAG_STRICT === "TRUE";
 
   // Always verify report generation covered the configured route set.
-  expect(pageSummaries.length).toBe(ROUTES.length);
+  expect(pageSummaries.length).toBe(routes.length);
 
   if (!strict && totalViolations > 0) {
     // Informative mode (default for make wcag-test): report findings but do not fail.

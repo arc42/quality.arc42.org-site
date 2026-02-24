@@ -3,7 +3,7 @@
 help:
 	@printf "Available targets:\n"
 	@printf "  make help   Show this help.\n"
-	@printf "  make dev    Start development environment (docker compose up).\n"
+	@printf "  make dev    Start development environment (docker compose up esbuild jekyll).\n"
 	@printf "  make clean  Remove generated _site directory.\n"
 	@printf "  make test   Ensure local site is up, run Playwright UI tests in Docker, optionally serve HTML report.\n"
 	@printf "  make wcag-test  Run axe-based WCAG scan in Docker and generate report assets (informative, non-blocking).\n"
@@ -13,7 +13,7 @@ clean:
 	rm -rf _site
 
 dev:
-	docker compose up
+	docker compose up esbuild jekyll
 
 test:
 	@printf "\n[ui-test] Ensuring local site is running (docker compose up -d esbuild jekyll)...\n"

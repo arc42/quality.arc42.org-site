@@ -1,7 +1,7 @@
 .site-header {
     font-size: 2.7em;
     padding: 0.7em 0;
-    background-color: $brand-color;
+    background-color: #357360;
     border-top: 3px solid $border-contrast-color;
     border-bottom: 3px solid $border-contrast-color;
     @media screen and (max-width: $mobile-width) {
@@ -49,9 +49,12 @@
         font-size: 1em;
         line-height: 1em;
         margin: 0;
+        .accent-color {
+            color: #dff4fd;
+        }
         .title {
             display: inline-block;
-            color: $site-title-color;
+            color: #deefb7;
             font-weight: bold;
             margin-top: 0.5em;
             &.slim {
@@ -68,7 +71,7 @@
             margin-top: 0.5em;
             /* original: color: lighten($site-title-color, 20%);
             */
-            color: $site-title-color;
+            color: #deefb7;
         }
     }
 }

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-02-23T16:20:54.850Z",
+  "generatedAt": "2026-02-24T06:24:00.120Z",
   "tags": [
     "wcag2a",
     "wcag2aa",
@@ -7,185 +7,71 @@
     "wcag21aa"
   ],
   "totals": {
-    "pagesScanned": 7,
-    "violations": 28,
-    "incomplete": 4,
-    "passes": 125,
-    "avgScore": 60
+    "pagesScanned": 39,
+    "violations": 10,
+    "incomplete": 9,
+    "passes": 868,
+    "avgScore": 97
   },
   "pages": [
     {
       "route": "/",
       "title": "Home | arc42 Quality Model",
       "url": "http://jekyll:4000/",
-      "violationsCount": 3,
+      "violationsCount": 0,
       "incompleteCount": 2,
       "passesCount": 23,
-      "score": 70,
-      "violations": [
-        {
-          "id": "color-contrast",
-          "impact": "serious",
-          "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
-          "help": "Elements must meet minimum color contrast ratio thresholds",
-          "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/color-contrast?application=playwright",
-          "nodes": 13
-        },
-        {
-          "id": "image-alt",
-          "impact": "critical",
-          "description": "Ensure <img> elements have alternative text or a role of none or presentation",
-          "help": "Images must have alternative text",
-          "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/image-alt?application=playwright",
-          "nodes": 1
-        },
-        {
-          "id": "link-name",
-          "impact": "serious",
-          "description": "Ensure links have discernible text",
-          "help": "Links must have discernible text",
-          "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/link-name?application=playwright",
-          "nodes": 9
-        }
-      ]
+      "score": 100,
+      "violations": []
     },
     {
       "route": "/dimensions/",
       "title": "Quality Dimensions | arc42 Quality Model",
       "url": "http://jekyll:4000/dimensions/",
-      "violationsCount": 4,
+      "violationsCount": 0,
       "incompleteCount": 0,
-      "passesCount": 16,
-      "score": 60,
-      "violations": [
-        {
-          "id": "color-contrast",
-          "impact": "serious",
-          "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
-          "help": "Elements must meet minimum color contrast ratio thresholds",
-          "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/color-contrast?application=playwright",
-          "nodes": 4
-        },
-        {
-          "id": "image-alt",
-          "impact": "critical",
-          "description": "Ensure <img> elements have alternative text or a role of none or presentation",
-          "help": "Images must have alternative text",
-          "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/image-alt?application=playwright",
-          "nodes": 1
-        },
-        {
-          "id": "link-name",
-          "impact": "serious",
-          "description": "Ensure links have discernible text",
-          "help": "Links must have discernible text",
-          "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/link-name?application=playwright",
-          "nodes": 9
-        },
-        {
-          "id": "list",
-          "impact": "serious",
-          "description": "Ensure that lists are structured correctly",
-          "help": "<ul> and <ol> must only directly contain <li>, <script> or <template> elements",
-          "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/list?application=playwright",
-          "nodes": 3
-        }
-      ]
+      "passesCount": 21,
+      "score": 100,
+      "violations": []
     },
     {
       "route": "/qualities/",
       "title": "Quality Characteristics | arc42 Quality Model",
       "url": "http://jekyll:4000/qualities/",
-      "violationsCount": 3,
+      "violationsCount": 0,
       "incompleteCount": 0,
-      "passesCount": 16,
-      "score": 70,
-      "violations": [
-        {
-          "id": "color-contrast",
-          "impact": "serious",
-          "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
-          "help": "Elements must meet minimum color contrast ratio thresholds",
-          "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/color-contrast?application=playwright",
-          "nodes": 24
-        },
-        {
-          "id": "image-alt",
-          "impact": "critical",
-          "description": "Ensure <img> elements have alternative text or a role of none or presentation",
-          "help": "Images must have alternative text",
-          "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/image-alt?application=playwright",
-          "nodes": 1
-        },
-        {
-          "id": "link-name",
-          "impact": "serious",
-          "description": "Ensure links have discernible text",
-          "help": "Links must have discernible text",
-          "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/link-name?application=playwright",
-          "nodes": 9
-        }
-      ]
+      "passesCount": 21,
+      "score": 100,
+      "violations": []
     },
     {
       "route": "/requirements/",
       "title": "Quality Requirements | arc42 Quality Model",
       "url": "http://jekyll:4000/requirements/",
-      "violationsCount": 5,
+      "violationsCount": 0,
       "incompleteCount": 0,
-      "passesCount": 17,
-      "score": 50,
-      "violations": [
-        {
-          "id": "color-contrast",
-          "impact": "serious",
-          "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
-          "help": "Elements must meet minimum color contrast ratio thresholds",
-          "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/color-contrast?application=playwright",
-          "nodes": 4
-        },
-        {
-          "id": "image-alt",
-          "impact": "critical",
-          "description": "Ensure <img> elements have alternative text or a role of none or presentation",
-          "help": "Images must have alternative text",
-          "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/image-alt?application=playwright",
-          "nodes": 1
-        },
-        {
-          "id": "link-in-text-block",
-          "impact": "serious",
-          "description": "Ensure links are distinguished from surrounding text in a way that does not rely on color",
-          "help": "Links must be distinguishable without relying on color",
-          "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/link-in-text-block?application=playwright",
-          "nodes": 1
-        },
-        {
-          "id": "link-name",
-          "impact": "serious",
-          "description": "Ensure links have discernible text",
-          "help": "Links must have discernible text",
-          "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/link-name?application=playwright",
-          "nodes": 9
-        },
-        {
-          "id": "list",
-          "impact": "serious",
-          "description": "Ensure that lists are structured correctly",
-          "help": "<ul> and <ol> must only directly contain <li>, <script> or <template> elements",
-          "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/list?application=playwright",
-          "nodes": 1
-        }
-      ]
+      "passesCount": 22,
+      "score": 100,
+      "violations": []
     },
     {
       "route": "/standards/",
       "title": "Quality Standards | arc42 Quality Model",
       "url": "http://jekyll:4000/standards/",
-      "violationsCount": 3,
+      "violationsCount": 0,
       "incompleteCount": 2,
       "passesCount": 21,
-      "score": 70,
+      "score": 100,
+      "violations": []
+    },
+    {
+      "route": "/standards/explorer/",
+      "title": "Standards Explorer | arc42 Quality Model",
+      "url": "http://jekyll:4000/standards/explorer/",
+      "violationsCount": 1,
+      "incompleteCount": 2,
+      "passesCount": 25,
+      "score": 90,
       "violations": [
         {
           "id": "color-contrast",
@@ -193,85 +79,177 @@
           "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
           "help": "Elements must meet minimum color contrast ratio thresholds",
           "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/color-contrast?application=playwright",
-          "nodes": 147
-        },
-        {
-          "id": "image-alt",
-          "impact": "critical",
-          "description": "Ensure <img> elements have alternative text or a role of none or presentation",
-          "help": "Images must have alternative text",
-          "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/image-alt?application=playwright",
-          "nodes": 1
-        },
-        {
-          "id": "link-name",
-          "impact": "serious",
-          "description": "Ensure links have discernible text",
-          "help": "Links must have discernible text",
-          "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/link-name?application=playwright",
           "nodes": 9
         }
       ]
+    },
+    {
+      "route": "/approaches/",
+      "title": "Solution Approaches | arc42 Quality Model",
+      "url": "http://jekyll:4000/approaches/",
+      "violationsCount": 0,
+      "incompleteCount": 0,
+      "passesCount": 21,
+      "score": 100,
+      "violations": []
+    },
+    {
+      "route": "/aliases/",
+      "title": "Quality Aliases and Synonyms | arc42 Quality Model",
+      "url": "http://jekyll:4000/aliases/",
+      "violationsCount": 0,
+      "incompleteCount": 1,
+      "passesCount": 21,
+      "score": 100,
+      "violations": []
+    },
+    {
+      "route": "/full-quality-graph/",
+      "title": "Quality Graph | arc42 Quality Model",
+      "url": "http://jekyll:4000/full-quality-graph/",
+      "violationsCount": 0,
+      "incompleteCount": 1,
+      "passesCount": 22,
+      "score": 100,
+      "violations": []
+    },
+    {
+      "route": "/aboutthissite/",
+      "title": "About this Site | arc42 Quality Model",
+      "url": "http://jekyll:4000/aboutthissite/",
+      "violationsCount": 0,
+      "incompleteCount": 0,
+      "passesCount": 24,
+      "score": 100,
+      "violations": []
     },
     {
       "route": "/qualities/accessibility",
       "title": "Accessibility | arc42 Quality Model",
       "url": "http://jekyll:4000/qualities/accessibility",
-      "violationsCount": 5,
+      "violationsCount": 0,
       "incompleteCount": 0,
-      "passesCount": 16,
-      "score": 50,
-      "violations": [
-        {
-          "id": "color-contrast",
-          "impact": "serious",
-          "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
-          "help": "Elements must meet minimum color contrast ratio thresholds",
-          "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/color-contrast?application=playwright",
-          "nodes": 10
-        },
-        {
-          "id": "image-alt",
-          "impact": "critical",
-          "description": "Ensure <img> elements have alternative text or a role of none or presentation",
-          "help": "Images must have alternative text",
-          "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/image-alt?application=playwright",
-          "nodes": 1
-        },
-        {
-          "id": "link-in-text-block",
-          "impact": "serious",
-          "description": "Ensure links are distinguished from surrounding text in a way that does not rely on color",
-          "help": "Links must be distinguishable without relying on color",
-          "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/link-in-text-block?application=playwright",
-          "nodes": 1
-        },
-        {
-          "id": "link-name",
-          "impact": "serious",
-          "description": "Ensure links have discernible text",
-          "help": "Links must have discernible text",
-          "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/link-name?application=playwright",
-          "nodes": 9
-        },
-        {
-          "id": "list",
-          "impact": "serious",
-          "description": "Ensure that lists are structured correctly",
-          "help": "<ul> and <ol> must only directly contain <li>, <script> or <template> elements",
-          "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/list?application=playwright",
-          "nodes": 1
-        }
-      ]
+      "passesCount": 22,
+      "score": 100,
+      "violations": []
     },
     {
       "route": "/qualities/time-to-market",
       "title": "Time to Market | arc42 Quality Model",
       "url": "http://jekyll:4000/qualities/time-to-market",
-      "violationsCount": 5,
+      "violationsCount": 0,
       "incompleteCount": 0,
-      "passesCount": 16,
-      "score": 50,
+      "passesCount": 22,
+      "score": 100,
+      "violations": []
+    },
+    {
+      "route": "/articles/",
+      "title": "Background on “Quality” | arc42 Quality Model",
+      "url": "http://jekyll:4000/articles/",
+      "violationsCount": 0,
+      "incompleteCount": 0,
+      "passesCount": 20,
+      "score": 100,
+      "violations": []
+    },
+    {
+      "route": "/contact/",
+      "title": "Contact | arc42 Quality Model",
+      "url": "http://jekyll:4000/contact/",
+      "violationsCount": 0,
+      "incompleteCount": 0,
+      "passesCount": 20,
+      "score": 100,
+      "violations": []
+    },
+    {
+      "route": "/how-to-use-this-site/",
+      "title": "How to Use this Site | arc42 Quality Model",
+      "url": "http://jekyll:4000/how-to-use-this-site/",
+      "violationsCount": 0,
+      "incompleteCount": 0,
+      "passesCount": 26,
+      "score": 100,
+      "violations": []
+    },
+    {
+      "route": "/q42-for-iso-users/",
+      "title": "Q42 for ISO-25010 Users | arc42 Quality Model",
+      "url": "http://jekyll:4000/q42-for-iso-users/",
+      "violationsCount": 0,
+      "incompleteCount": 1,
+      "passesCount": 25,
+      "score": 100,
+      "violations": []
+    },
+    {
+      "route": "/references/",
+      "title": "References | arc42 Quality Model",
+      "url": "http://jekyll:4000/references/",
+      "violationsCount": 0,
+      "incompleteCount": 0,
+      "passesCount": 21,
+      "score": 100,
+      "violations": []
+    },
+    {
+      "route": "/articles/arc42-quality-model",
+      "title": "arc42 Quality Model | quality characteristics, explained.",
+      "url": "http://jekyll:4000/articles/arc42-quality-model",
+      "violationsCount": 0,
+      "incompleteCount": 0,
+      "passesCount": 24,
+      "score": 100,
+      "violations": []
+    },
+    {
+      "route": "/articles/challenge-with-quality",
+      "title": "Challenges with Quality | arc42 Quality Model",
+      "url": "http://jekyll:4000/articles/challenge-with-quality",
+      "violationsCount": 0,
+      "incompleteCount": 0,
+      "passesCount": 22,
+      "score": 100,
+      "violations": []
+    },
+    {
+      "route": "/articles/iso-25010-shortcomings",
+      "title": "Shortcomings of ISO 25010 | arc42 Quality Model",
+      "url": "http://jekyll:4000/articles/iso-25010-shortcomings",
+      "violationsCount": 1,
+      "incompleteCount": 0,
+      "passesCount": 25,
+      "score": 90,
+      "violations": [
+        {
+          "id": "aria-deprecated-role",
+          "impact": "minor",
+          "description": "Ensure elements do not use deprecated roles",
+          "help": "Deprecated ARIA roles must not be used",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/aria-deprecated-role?application=playwright",
+          "nodes": 2
+        }
+      ]
+    },
+    {
+      "route": "/articles/iso-25010-update-2023",
+      "title": "Update on ISO 25010, version 2023 | arc42 Quality Model",
+      "url": "http://jekyll:4000/articles/iso-25010-update-2023",
+      "violationsCount": 0,
+      "incompleteCount": 0,
+      "passesCount": 22,
+      "score": 100,
+      "violations": []
+    },
+    {
+      "route": "/articles/quality-models",
+      "title": "Quality Models | arc42 Quality Model",
+      "url": "http://jekyll:4000/articles/quality-models",
+      "violationsCount": 1,
+      "incompleteCount": 0,
+      "passesCount": 24,
+      "score": 90,
       "violations": [
         {
           "id": "color-contrast",
@@ -279,39 +257,240 @@
           "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
           "help": "Elements must meet minimum color contrast ratio thresholds",
           "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/color-contrast?application=playwright",
-          "nodes": 10
-        },
-        {
-          "id": "image-alt",
-          "impact": "critical",
-          "description": "Ensure <img> elements have alternative text or a role of none or presentation",
-          "help": "Images must have alternative text",
-          "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/image-alt?application=playwright",
           "nodes": 1
-        },
+        }
+      ]
+    },
+    {
+      "route": "/articles/sei-quality-model",
+      "title": "SEI Quality Model | arc42 Quality Model",
+      "url": "http://jekyll:4000/articles/sei-quality-model",
+      "violationsCount": 1,
+      "incompleteCount": 0,
+      "passesCount": 22,
+      "score": 90,
+      "violations": [
         {
-          "id": "link-in-text-block",
+          "id": "color-contrast",
           "impact": "serious",
-          "description": "Ensure links are distinguished from surrounding text in a way that does not rely on color",
-          "help": "Links must be distinguishable without relying on color",
-          "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/link-in-text-block?application=playwright",
+          "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/color-contrast?application=playwright",
+          "nodes": 1
+        }
+      ]
+    },
+    {
+      "route": "/articles/specify-quality-requirements",
+      "title": "How to specify quality requirements | arc42 Quality Model",
+      "url": "http://jekyll:4000/articles/specify-quality-requirements",
+      "violationsCount": 1,
+      "incompleteCount": 0,
+      "passesCount": 22,
+      "score": 90,
+      "violations": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/color-contrast?application=playwright",
+          "nodes": 5
+        }
+      ]
+    },
+    {
+      "route": "/articles/sum-of-all-iso",
+      "title": "The Sum of All ISO | arc42 Quality Model",
+      "url": "http://jekyll:4000/articles/sum-of-all-iso",
+      "violationsCount": 0,
+      "incompleteCount": 0,
+      "passesCount": 24,
+      "score": 100,
+      "violations": []
+    },
+    {
+      "route": "/qualities/access-control",
+      "title": "Access Control | arc42 Quality Model",
+      "url": "http://jekyll:4000/qualities/access-control",
+      "violationsCount": 0,
+      "incompleteCount": 0,
+      "passesCount": 21,
+      "score": 100,
+      "violations": []
+    },
+    {
+      "route": "/qualities/accountability",
+      "title": "Accountability | arc42 Quality Model",
+      "url": "http://jekyll:4000/qualities/accountability",
+      "violationsCount": 0,
+      "incompleteCount": 0,
+      "passesCount": 21,
+      "score": 100,
+      "violations": []
+    },
+    {
+      "route": "/qualities/accuracy",
+      "title": "Accuracy | arc42 Quality Model",
+      "url": "http://jekyll:4000/qualities/accuracy",
+      "violationsCount": 0,
+      "incompleteCount": 0,
+      "passesCount": 21,
+      "score": 100,
+      "violations": []
+    },
+    {
+      "route": "/qualities/adaptability",
+      "title": "Adaptability | arc42 Quality Model",
+      "url": "http://jekyll:4000/qualities/adaptability",
+      "violationsCount": 0,
+      "incompleteCount": 0,
+      "passesCount": 21,
+      "score": 100,
+      "violations": []
+    },
+    {
+      "route": "/requirements/access-control-is-enforced",
+      "title": "Access control is enforced | arc42 Quality Model",
+      "url": "http://jekyll:4000/requirements/access-control-is-enforced",
+      "violationsCount": 0,
+      "incompleteCount": 0,
+      "passesCount": 22,
+      "score": 100,
+      "violations": []
+    },
+    {
+      "route": "/requirements/access-control-via-sso",
+      "title": "Access Control via SSO | arc42 Quality Model",
+      "url": "http://jekyll:4000/requirements/access-control-via-sso",
+      "violationsCount": 0,
+      "incompleteCount": 0,
+      "passesCount": 21,
+      "score": 100,
+      "violations": []
+    },
+    {
+      "route": "/requirements/access-find-function-quickly",
+      "title": "Access find function in three seconds | arc42 Quality Model",
+      "url": "http://jekyll:4000/requirements/access-find-function-quickly",
+      "violationsCount": 0,
+      "incompleteCount": 0,
+      "passesCount": 21,
+      "score": 100,
+      "violations": []
+    },
+    {
+      "route": "/requirements/accessible-user-interface",
+      "title": "Accessible User Interface | arc42 Quality Model",
+      "url": "http://jekyll:4000/requirements/accessible-user-interface",
+      "violationsCount": 0,
+      "incompleteCount": 0,
+      "passesCount": 21,
+      "score": 100,
+      "violations": []
+    },
+    {
+      "route": "/requirements/accurate-estimate-of-insurance-rate",
+      "title": "Accurate estimate of insurance contract rate | arc42 Quality Model",
+      "url": "http://jekyll:4000/requirements/accurate-estimate-of-insurance-rate",
+      "violationsCount": 0,
+      "incompleteCount": 0,
+      "passesCount": 21,
+      "score": 100,
+      "violations": []
+    },
+    {
+      "route": "/standards/aiuc-1",
+      "title": "AIUC-1 – AI Agent Standard | arc42 Quality Model",
+      "url": "http://jekyll:4000/standards/aiuc-1",
+      "violationsCount": 1,
+      "incompleteCount": 0,
+      "passesCount": 24,
+      "score": 90,
+      "violations": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/color-contrast?application=playwright",
+          "nodes": 1
+        }
+      ]
+    },
+    {
+      "route": "/standards/cra",
+      "title": "EU Cyber Resilience Act (CRA) — Regulation 2024/2847 | arc42 Quality Model",
+      "url": "http://jekyll:4000/standards/cra",
+      "violationsCount": 1,
+      "incompleteCount": 0,
+      "passesCount": 22,
+      "score": 90,
+      "violations": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/color-contrast?application=playwright",
+          "nodes": 1
+        }
+      ]
+    },
+    {
+      "route": "/standards/do-178c",
+      "title": "DO-178C - Software Considerations in Airborne Systems and Equipment Certification | arc42 Quality Model",
+      "url": "http://jekyll:4000/standards/do-178c",
+      "violationsCount": 1,
+      "incompleteCount": 0,
+      "passesCount": 23,
+      "score": 90,
+      "violations": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/color-contrast?application=playwright",
           "nodes": 2
-        },
+        }
+      ]
+    },
+    {
+      "route": "/standards/en-301-549",
+      "title": "EN 301 549 - Accessibility requirements for ICT products and services | arc42 Quality Model",
+      "url": "http://jekyll:4000/standards/en-301-549",
+      "violationsCount": 1,
+      "incompleteCount": 0,
+      "passesCount": 24,
+      "score": 90,
+      "violations": [
         {
-          "id": "link-name",
+          "id": "color-contrast",
           "impact": "serious",
-          "description": "Ensure links have discernible text",
-          "help": "Links must have discernible text",
-          "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/link-name?application=playwright",
-          "nodes": 9
-        },
+          "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/color-contrast?application=playwright",
+          "nodes": 2
+        }
+      ]
+    },
+    {
+      "route": "/standards/etsi-en-304-223",
+      "title": "ETSI EN 304 223 - AI Cybersecurity Baseline Requirements | arc42 Quality Model",
+      "url": "http://jekyll:4000/standards/etsi-en-304-223",
+      "violationsCount": 1,
+      "incompleteCount": 0,
+      "passesCount": 23,
+      "score": 90,
+      "violations": [
         {
-          "id": "list",
+          "id": "color-contrast",
           "impact": "serious",
-          "description": "Ensure that lists are structured correctly",
-          "help": "<ul> and <ol> must only directly contain <li>, <script> or <template> elements",
-          "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/list?application=playwright",
-          "nodes": 1
+          "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/color-contrast?application=playwright",
+          "nodes": 2
         }
       ]
     }

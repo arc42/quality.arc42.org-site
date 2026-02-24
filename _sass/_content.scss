@@ -50,6 +50,11 @@
         margin: 1.5em 0;
     }
 
+    // WCAG 1.4.1: links in text blocks must be distinguishable without relying on color alone
+    p a, li a, blockquote a, td a, th a {
+        text-decoration: underline;
+    }
+
     ul, ol {
         padding-left: 1em;
         ul, ol {
@@ -231,12 +236,11 @@
             padding: 0.2rem 0.6rem;
             margin: 0.1rem 0.25rem;
             background-color: rgba(0, 184, 245, 0.15);
-            color: #00B8F5;
+            color: var(--synonym-text-color, #005987);
             border-radius: 3px;
             font-size: 0.9rem;
             font-weight: 500;
         }
     }
 }
-
 

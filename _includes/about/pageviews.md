@@ -3,6 +3,7 @@
 <iframe
   plausible-embed
   src="https://plausible.io/share/quality.arc42.org?auth=cjoKlapPdw3czFugGy6jM&embed=true&theme=light"
+  title="Plausible Analytics pageviews for quality.arc42.org"
   scrolling="no"
   frameborder="0"
   loading="lazy"
