@@ -102,6 +102,9 @@
                 <img alt="GitHub closed PRs"
                      src="https://img.shields.io/github/issues-pr-closed-raw/arc42/quality.arc42.org-site?style=social">
             </a>
+            <div class="wcag-nav-metric">
+                {% include wcag-score-pill.html %}
+            </div>
             <hr class="with-no-margin margin-bottom"/>
         </div>
     </aside>
@@ -132,6 +135,7 @@
 <script src="{{ '/assets/jquery/jquery-3.7.1-min.js' | prepend: site.baseurl }}"></script>
 <script src="{{ '/assets/lib/garand-sticky/jquery.sticky.js' | prepend: site.baseurl }}"></script>
 <script src="{{ '/assets/js/script.js' | prepend: site.baseurl }}"></script>
+<script src="{{ '/assets/js/wcag-score.js' | prepend: site.baseurl }}"></script>
 
 {% if page.id %}
 <script src="{{ '/assets/js/header-link.js' | prepend: site.baseurl }}"></script>

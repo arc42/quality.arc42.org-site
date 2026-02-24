@@ -9,6 +9,8 @@ permalink: /standards/wcag-2-2
 
 ## WCAG 2.2: Web Content Accessibility Guidelines
 
+> We drink our own champagne: this site publishes its own automated WCAG scan at [WCAG Accessibility Report](/about/wcag-report/), and the header badge shows the latest score from that report.
+
 The Web Content Accessibility Guidelines (WCAG) 2.2 is the international standard for web accessibility, defining how to make web content accessible to people with disabilities. Published by the World Wide Web Consortium (W3C) as a W3C Recommendation on 5 October 2023 (updated 12 December 2024), and approved by ISO/IEC as **ISO/IEC 40500:2025** on 21 October 2025, WCAG 2.2 represents the current best practice for digital accessibility.
 
 WCAG 2.2 addresses accessibility barriers affecting people with a wide range of disabilities, including visual, auditory, physical, speech, cognitive, language, learning, and neurological disabilities. The guidelines also benefit older users with age-related limitations and improve the overall user experience for everyone, particularly on mobile devices.
