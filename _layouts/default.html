@@ -47,7 +47,7 @@
     {% endif %}
 
 </head>
-<body>
+<body{% if page.name contains 'tag-' %} class="dimension-tag-page"{% endif %}>
 
 <header class="site-header">
     <div class="inner clearfix">

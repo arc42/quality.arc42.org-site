@@ -218,6 +218,21 @@ h2.section-heading.approaches {
   background-color: var(--reqs-background-color) !important;
 }
 
+/* Dimension/tag pages: render intro explanations as plain body text */
+.dimension-tag-page .arc42-help {
+  color: inherit;
+  padding: 0;
+  background: transparent;
+  border-radius: 0;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+
+.dimension-tag-page .arc42-help::before {
+  display: none;
+}
+
 .panel.requirements-header h1,
 .panel.requirements-header h1 a {
   color: var(--req-text-color) !important;
