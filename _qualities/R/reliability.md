@@ -22,6 +22,7 @@ standards:
     do178c,
     iso42030,
     iso12207,
+    iso29119,
     sox,
     nistairmf,
     iso24028,

@@ -2,6 +2,7 @@
 title: Data Protection
 tags: [secure]
 related: [privacy, security, compliance, data-integrity, data-sovereignty]
+standards: [gdpr, ieee2857, iso29100]
 permalink: /qualities/data-protection
 ---
 

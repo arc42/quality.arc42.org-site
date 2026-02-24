@@ -2,7 +2,7 @@
 title: Testability
 tags: [suitable, maintainable]
 related: [determinism, maintainability, flexibility, modifiability, analysability]
-standards: [iso25010, iso26262, misra-c, iec61508, iso15408, do178c, iso24028]
+standards: [iso25010, iso26262, misra-c, iec61508, iso15408, do178c, iso24028, iso29119]
 permalink: /qualities/testability
 ---
 
