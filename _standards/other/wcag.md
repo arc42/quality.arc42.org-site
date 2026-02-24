@@ -7,7 +7,6 @@ categories: [accessibility, usability]
 permalink: /standards/wcag-2-2
 ---
 
-## WCAG 2.2: Web Content Accessibility Guidelines
 
 > We drink our own champagne: this site publishes its own automated WCAG scan at [WCAG Accessibility Report](/about/wcag-report/), and the header badge shows the latest score from that report.
 
