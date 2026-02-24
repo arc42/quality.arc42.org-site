@@ -19,6 +19,10 @@ availability:
   - high-availability
   - uptime
 
+# Backward compatibility (legacy support is common industry phrasing)
+backward-compatibility:
+  - legacy-support
+
 # Autonomicity and self-* properties (autonomic computing terms, treated as aliases of autonomy)
 autonomy:
   - autonomicity
@@ -88,6 +92,10 @@ consistency:
 # Timeliness (currentness is ISO 25024 data quality dimension synonym)
 timeliness:
   - currentness
+
+# Effectiveness (efficacy is commonly used as equivalent in quality discussions)
+effectiveness:
+  - efficacy
 
 # Affordability (budget constraint is a project-level expression of affordability)
 affordability:
