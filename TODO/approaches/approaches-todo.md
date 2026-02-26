@@ -1,16 +1,23 @@
 # Top 10 Proposed Solution Approaches
 
-This list proposes the next 10 architectural tactics/patterns to document, prioritizing high-impact approaches that cover a broad range of quality attributes.
+This backlog is normalized to the canonical schema in `TODO/approaches/TEMPLATE.md`.
+All `supported_qualities` and `tradeoffs` values are plain quality slug candidates.
 
-| Name | Useful For (Supported Qualities) | Trade-offs (Negative Impact) |
-| :--- | :--- | :--- |
-| **Circuit Breaker** | **Reliability** (Availability, Fault Tolerance), **Operability** (Recoverability) | **Complexity** (State management), **Consistency** (If fallbacks return stale data/defaults), **Usability** (Partial functionality). |
-| **Rate Limiting** | **Reliability** (Availability), **Security** (DoS Protection) | **Usability** (Legitimate users blocked), **Complexity** (Distributed state management for limits). |
-| **Bulkheads** | **Reliability** (Fault Tolerance, Fault Isolation) | **Efficiency** (Resource underutilization due to reserved capacity), **Complexity** (Configuration tuning). |
-| **CQRS** (Command Query Responsibility Segregation) | **Efficiency** (Performance, Scalability), **Security** (Granular access control) | **Complexity** (High implementation effort), **Consistency** (Eventual consistency lag), **Operability** (More moving parts). |
-| **API Gateway** | **Usability** (Client simplicity), **Security** (Centralized auth/monitoring), **Operability** (Observability) | **Reliability** (Single point of failure), **Efficiency** (Added latency hop), **Complexity** (Routing logic maintenance). |
-| **Blue/Green Deployment** | **Reliability** (Availability during updates), **Operability** (Deployability, Recoverability) | **Efficiency** (Cost - requires double infrastructure), **Complexity** (Database schema migration/compatibility). |
-| **Immutable Infrastructure** | **Operability** (Stability, Reproducibility), **Security** (Integrity) | **Efficiency** (Build/Deploy time latency), **Flexibility** (Cannot hot-patch live systems). |
-| **Least Privilege** | **Security** (Confidentiality, Integrity) | **Usability** (Friction for users/devs), **Operability** (High administrative overhead for permission management). |
-| **Asynchronous Messaging** | **Efficiency** (Scalability), **Reliability** (Decoupling) | **Consistency** (Eventual consistency), **Operability** (Debugging/tracing difficulty), **Complexity** (Error handling/dead-letter queues). |
-| **Database Sharding** | **Efficiency** (Scalability, Performance) | **Flexibility** (Re-sharding is hard), **Operability** (Backup/restore complexity), **Functionality** (Cross-shard joins difficult/impossible). |
+| Priority | Approach | Permalink | Tags (9 dimensions only) | supported_qualities (slug candidates) | tradeoffs (slug candidates) |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| P1 | Circuit Breaker | `/approaches/circuit-breaker` | `reliable`, `operable` | `availability`, `fault-tolerance`, `resilience`, `recoverability` | `code-complexity`, `consistency`, `cost` |
+| P1 | Rate Limiting | `/approaches/rate-limiting` | `secure`, `reliable` | `availability`, `security`, `information-security`, `resilience` | `usability`, `code-complexity` |
+| P1 | Bulkheads | `/approaches/bulkheads` | `reliable`, `operable` | `fault-tolerance`, `resilience`, `availability` | `resource-utilization`, `cost`, `code-complexity` |
+| P1 | Graceful Degradation | `/approaches/graceful-degradation` | `reliable`, `usable` | `availability`, `resilience`, `recoverability` | `usability`, `consistency`, `code-complexity` |
+| P2 | API Gateway | `/approaches/api-gateway` | `secure`, `operable`, `usable` | `security`, `usability`, `observability`, `operability` | `availability`, `latency`, `code-complexity` |
+| P2 | Asynchronous Messaging | `/approaches/asynchronous-messaging` | `efficient`, `reliable`, `flexible` | `scalability`, `throughput`, `availability`, `resilience` | `eventual-consistency`, `observability`, `code-complexity` |
+| P2 | Blue-Green Deployment | `/approaches/blue-green-deployment` | `operable`, `reliable` | `availability`, `deployability`, `releasability`, `recoverability` | `cost`, `code-complexity` |
+| P2 | Least Privilege | `/approaches/least-privilege` | `secure`, `safe` | `security`, `confidentiality`, `integrity` | `usability`, `operability` |
+| P3 | CQRS | `/approaches/cqrs` | `efficient`, `flexible`, `maintainable` | `scalability`, `performance`, `extensibility` | `eventual-consistency`, `code-complexity`, `operability` |
+| P3 | Database Sharding | `/approaches/database-sharding` | `efficient`, `reliable` | `scalability`, `performance`, `capacity`, `availability` | `code-complexity`, `operability`, `consistency` |
+
+## Notes for Execution
+
+- Confirm each slug exists in `/qualities/<slug>` before final page merge.
+- Keep page body structure concise (max 4 `##` headings).
+- Deliver in batches of 2-3 approaches per PR.

@@ -1,99 +1,117 @@
 # Action Plan: Integrating Solution Approaches into quality.arc42.org
 
-This document outlines the plan for adding "solution approaches" (architectural tactics and patterns) to the site. The goal is to bridge the gap from "what" (quality requirements) to "how" (implementation ideas).
+This plan defines how to scale the approaches section to 100+ entries with stable quality and low editorial drift.
 
-## Status and Progress (Iteration 2)
+## Foundation Decisions (Locked)
 
-We have successfully established the initial technical foundation and created two pilot approaches.
+1. **Entity definition**
+   - An approach is an architectural tactic or pattern.
+   - It is not a product, library, or vendor tutorial.
 
-- **[x] Define "Approach" Entity:** Architectural tactics or patterns.
-- **[x] Create Jekyll Structure:** `_approaches` collection, `_layouts/approach.html`, `_includes/directly-related-approaches.html`, and initial cross-linking.
-- **[x] Establish Content Template:** See `TODO/approaches/TEMPLATE.md` (authoring reference, not published).
-- **[x] Pilot Approach 1:** `_approaches/C/caching.md` is complete.
-- **[x] Pilot Approach 2:** `_approaches/C/circuit-breaker.md` is complete (including Mermaid state diagram).
-- **[x] Enhance Trade-off Visibility:** Quality pages now show approaches with potential negative impact via `_includes/directly-related-tradeoffs.html`.
-- **[x] Automated Cross-linking:** Quality pages now automatically list related approaches (supported and trade-offs).
+2. **Scope**
+   - Approaches are tagged against **9 top-level dimensions**:
+     - `suitable`, `usable`, `secure`, `reliable`, `operable`, `efficient`, `flexible`, `safe`, `maintainable`
 
-## Definition of Done for an Approach
+3. **Canonical template**
+   - Single source of truth: `TODO/approaches/TEMPLATE.md`.
+   - Every new approach page must conform to that template.
 
-An approach is considered **done** when it:
+4. **Schema constraints**
+   - `supported_qualities` uses existing quality slugs only.
+   - `tradeoffs` stays an array of simple quality slug strings.
+   - Required page-level metadata includes `tags` and `permalink`.
 
-- Has complete frontmatter: `title`, `tags`, `supported_qualities`, `tradeoffs`, `intent`, `mechanism`, `applicability`, `permalink`
-- Includes a "How It Works" section with at least one Mermaid diagram (where a flow or state diagram is natural)
-- Lists at least two concrete **Failure Modes**
-- Lists at least two **Verification Ideas** (measurable, tool-specific where possible)
-- Links at least one **Related Requirement** from `_requirements/`
-- Lists at least one **Variant**
-- All `supported_qualities` and `tradeoffs` reference valid quality IDs (verified by `npm run test:links`)
+## Content Model (Required Fields)
 
----
+Each approach page in `_approaches/` must contain:
 
-## Phase 1: Technical Refinement
+- `layout: approach`
+- `title`
+- `tags` (1-3 values from the 9 dimensions)
+- `supported_qualities` (array of existing quality slugs)
+- `tradeoffs` (array of existing quality slugs)
+- `intent` (single sentence)
+- `mechanism` (single paragraph)
+- `applicability` (single paragraph)
+- `permalink` (unique, kebab-case)
 
-1. **[x] Mermaid.js in Approach Layouts:**
-   - Circuit Breaker pilot already uses a Mermaid state diagram successfully.
-   - The `approach.html` layout renders Mermaid blocks via the standard Jekyll pipeline.
-   - **Remaining:** Verify Mermaid is loaded site-wide (not just on approach pages) and document the expected diagram types in `TEMPLATE.md`.
+Body expectations:
 
-2. **[ ] Quality-Approach Matrix Page:**
-   - **Action:** Create `_pages/72-approaches-matrix.md` at permalink `/approaches/matrix/`.
-   - **Content:** A table with the 9 top-level quality dimensions as columns and all published approaches as rows. Cells indicate "supports" (✓) or "trade-off" (⚠).
-   - **Implementation:** Use a Liquid loop over `site.approaches` reading `tags` and `tradeoffs` frontmatter to build the matrix dynamically — no hardcoding.
-   - **Acceptance:** Matrix renders without manual maintenance as new approaches are added.
+- 1-2 short overview paragraphs.
+- Max 4 `##` headings to avoid header-heavy pages.
+- Verification content must include measurable checks.
 
-3. **[ ] Extend `_includes/directly-related-approaches.html`:**
-   - **Action:** Also show approaches on **requirement** pages (not just quality pages), since requirements are the direct "customer" of approaches.
-   - **Acceptance:** A requirement page like `/requirements/cache-response-time` shows linked approaches automatically.
+## Phased Delivery
 
----
+### Phase 1: Baseline Alignment
 
-## Phase 2: Content Backlog
+- Create and lock the canonical template.
+- Align generation prompt and backlog documents to the same schema.
+- Confirm all contributors use the same field rules.
 
-The focus is the **9 top-level quality properties**: Suitable, Usable, Secure, Reliable, Operable, Efficient, Flexible, Safe, and Maintainable.
+Exit criteria:
 
-**MVP milestone:** At least **2 approaches per dimension** = 18 approaches total.
+- `TEMPLATE.md`, `approaches-prompt.md`, and `approaches-todo.md` are schema-consistent.
 
-### Priority Approaches
+### Phase 2: Pilot Set
 
-| Dimension | Tactic / Pattern | File | Status |
-| :--- | :--- | :--- | :--- |
-| **Efficient** | Caching | `_approaches/C/caching.md` | [x] |
-| **Efficient** | Database Indexing | `_approaches/D/database-indexing.md` | [ ] |
-| **Reliable** | Circuit Breaker | `_approaches/C/circuit-breaker.md` | [x] |
-| **Reliable** | Redundancy / Replication | `_approaches/R/redundancy.md` | [ ] |
-| **Reliable** | Health Check / Heartbeat | `_approaches/H/health-check.md` | [ ] |
-| **Secure** | Principle of Least Privilege | `_approaches/P/least-privilege.md` | [ ] |
-| **Secure** | Input Validation / Sanitization | `_approaches/I/input-validation.md` | [ ] |
-| **Operable** | Centralized Logging | `_approaches/C/centralized-logging.md` | [ ] |
-| **Operable** | Structured Observability | `_approaches/S/structured-observability.md` | [ ] |
-| **Flexible** | Plugin Architecture | `_approaches/P/plugin-architecture.md` | [ ] |
-| **Flexible** | Feature Toggles | `_approaches/F/feature-toggles.md` | [ ] |
-| **Maintainable** | Dependency Injection | `_approaches/D/dependency-injection.md` | [ ] |
-| **Maintainable** | Strangler Fig | `_approaches/S/strangler-fig.md` | [ ] |
-| **Safe** | Fail-safe Defaults | `_approaches/F/fail-safe-defaults.md` | [ ] |
-| **Safe** | Watchdog / Supervisor | `_approaches/W/watchdog.md` | [ ] |
-| **Usable** | Progressive Disclosure | `_approaches/P/progressive-disclosure.md` | [ ] |
-| **Usable** | Responsive Design | `_approaches/R/responsive-design.md` | [ ] |
-| **Suitable** | Domain-Driven Design | `_approaches/D/domain-driven-design.md` | [ ] |
-| **Suitable** | Event Sourcing | `_approaches/E/event-sourcing.md` | [ ] |
+- Implement 6-10 approaches across high-impact areas (for example reliability and efficiency).
+- Validate rendering quality and cross-link usefulness.
 
----
+Exit criteria:
 
-## Phase 3: Content Creation Workflow
+- Pilot pages pass maintainer review for clarity, trade-offs, and verification depth.
 
-Every new approach file must follow this checklist:
+### Phase 3: Scale-Out
 
-1. **Start from the template:** Copy `TODO/approaches/TEMPLATE.md` to the appropriate alphabetical subdirectory under `_approaches/`.
-2. **Fill all frontmatter fields** — especially `supported_qualities` and `tradeoffs` using valid quality IDs (check `_qualities/` for permalinks).
-3. **Link to requirements:** Find at least one example in `_requirements/` and add a `## Related Requirements` section.
-4. **Add a diagram:** Prefer Mermaid `stateDiagram-v2` for state machines, `graph TD` for flows, `sequenceDiagram` for interactions.
-5. **Validate references:** Run `npm run test:links` before committing.
+- Expand incrementally to all 9 dimensions.
+- Keep pages concise and consistent with the template.
+- Review in small PR batches (max 3 approaches per PR).
 
----
+Exit criteria:
 
-## Phase 4: Long-term Evolution
+- Stable quality across batches; no schema drift.
 
-1. **[ ] External Standard Mapping:** Link approaches to ISO/IEC 25010/25012 categories where applicable (add `standards` frontmatter field, same pattern as qualities).
-2. **[ ] "Suggest an Approach" CTA:** Add a GitHub issue link on the main `/approaches/` page to invite community contributions.
-3. **[ ] Case Studies / ADR Links:** Link approaches to real-world architectural decision records (ADRs) or case study blog posts where available.
-4. **[ ] Graph Integration:** Explore adding approach nodes to the D3.js graph (as a new node type, distinct color) to make the quality→approach relationship navigable visually.
+## Technical Integration
+
+- Keep `_approaches` collection and `_layouts/approach.html` as rendering baseline.
+- Ensure `supported_qualities` and `tradeoffs` values resolve to existing `/qualities/<slug>`.
+- Maintain bidirectional navigation:
+  - quality pages -> related approaches
+  - approach pages -> supported qualities and trade-offs
+
+## Quality Gates
+
+For every new approach page:
+
+- Conforms to `TODO/approaches/TEMPLATE.md`.
+- Uses only valid quality slugs in `supported_qualities` and `tradeoffs`.
+- Uses only the 9 allowed dimension tags.
+- Provides non-generic trade-offs.
+- Provides at least 3 measurable verification ideas.
+- Contains no broken internal links.
+
+Repository-level checks:
+
+- `npm run build` succeeds.
+- `npm run test:links` reports no approach link errors.
+- No permalink collisions.
+
+## Risks and Mitigations
+
+- Risk: inconsistent metadata at scale.
+  - Mitigation: enforce single canonical template.
+- Risk: header-heavy, hard-to-scan pages.
+  - Mitigation: cap heading count and use concise section structure.
+- Risk: generic, low-value content.
+  - Mitigation: verification/trade-off quality gate and maintainer review.
+- Risk: too-large PRs reduce review quality.
+  - Mitigation: small batched PRs.
+
+## Definition of Done
+
+The initiative is successful when:
+
+- Approach pages are consistent, concise, and practically useful for architecture decisions.
+- Cross-linking from qualities to approaches is reliable.
+- The workflow can sustain 100+ entries without schema drift.
