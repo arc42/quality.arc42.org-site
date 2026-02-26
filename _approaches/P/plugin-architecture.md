@@ -13,7 +13,7 @@ permalink: /approaches/plugin-architecture
 
 The core application defines one or more **extension points** — typically interfaces or abstract base classes. Plugins implement those interfaces and are discovered by the host either at startup (static loading from a known directory) or at runtime (dynamic loading, e.g. via a service registry or an event bus).
 
-```mermaid
+<div class="mermaid">
 graph TD
     subgraph Core
         EP[Extension Point / Plugin API]
@@ -31,7 +31,7 @@ graph TD
     EP -- delegates to --> P1
     EP -- delegates to --> P2
     EP -- delegates to --> P3
-```
+</div>
 
 ### Common Loading Strategies
 

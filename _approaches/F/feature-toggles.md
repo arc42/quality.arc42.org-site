@@ -13,7 +13,7 @@ permalink: /approaches/feature-toggles
 
 Every toggle is a named boolean (or multi-variant) condition evaluated at runtime. The application checks the toggle store and takes the appropriate code path. Toggle state is managed outside the codebase — enabling or disabling a feature requires no redeployment.
 
-```mermaid
+<div class="mermaid">
 sequenceDiagram
     participant App as Application
     participant TS as Toggle Store
@@ -28,7 +28,7 @@ sequenceDiagram
         TS-->>App: false
         App-->>User: Existing checkout flow
     end
-```
+</div>
 
 ### Toggle Lifecycle
 

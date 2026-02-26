@@ -13,7 +13,7 @@ permalink: /approaches/progressive-disclosure
 
 Progressive disclosure structures an interface into levels of detail. The first level shows only the most common or essential elements. Users who need more can "go deeper" through explicit actions, knowing the interface will not overwhelm them on first contact.
 
-```mermaid
+<div class="mermaid">
 graph TD
     A[User opens screen] --> B[Level 1: primary actions only]
     B --> C{Needs more?}
@@ -24,7 +24,7 @@ graph TD
     G -- No --> D
     G -- Yes --> H[Level 3: expert / raw settings]
     H --> D
-```
+</div>
 
 ### Common Patterns
 
