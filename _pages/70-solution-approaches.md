@@ -13,13 +13,15 @@ Each approach documents:
 - **Supported qualities** -- which qualities it helps
 - **Trade-offs** -- which qualities it may negatively affect
 
-{% assign approaches = site.approaches | sort: 'title' %}
+{% assign approaches = site.approaches %}
 
 <ul class="posts no-bullets">
 {% for approach in approaches %}
+  {% if approach.title %}
   <li>
     <a href="{{ approach.permalink }}"><i class="fa fa-puzzle-piece fa-xs as-bullet" style="color: var(--approaches-text-color);"> </i> {{ approach.title }}</a>
     {% if approach.intent %}<br><small>{{ approach.intent }}</small>{% endif %}
   </li>
+  {% endif %}
 {% endfor %}
 </ul>
