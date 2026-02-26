@@ -87,7 +87,6 @@ collections:
   approaches:
     output: true
     hide: true
-    sort_by: title
 
 #
 # with this default, all files under /_qualities, _requirements etc
@@ -114,6 +113,7 @@ defaults:
     values:
       layout: approach
       hide: "true"
+      mermaid: true
 
 #
 # !! Danger zone !!
