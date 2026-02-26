@@ -1,0 +1,1052 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Solution Approaches – Visual Proposal</title>
+<style>
+  /* ── Base / Reset ─────────────────────────────────────────── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: system-ui, -apple-system, sans-serif;
+    font-size: 15px;
+    line-height: 1.5;
+    color: #3a4248;
+    background: #f5f7f9;
+  }
+
+  /* ── Brand tokens (mirrors site variables) ──────────────── */
+  :root {
+    --brand:        #5FB49C;
+    --brand-blue:   #00B8F5;
+    --apr-bg:       #92EF80;
+    --apr-text:     #1B5E20;
+    --apr-dark:     #155B12;
+    --apr-light:    #e8fce4;
+    --apr-border:   #74cf63;
+    --apr-chip:     #d4f7cd;
+    --apr-chip-hover: #bef3b5;
+    --apr-accent:   #2e7d32;
+    --std-amber:    #fff3cd;
+    --quality-blue: #d0f0fd;
+    --muted:        #667580;
+    --border:       #dde3e8;
+    --surface:      #ffffff;
+    --radius:       10px;
+    --radius-lg:    14px;
+  }
+
+  /* ── Layout helpers ─────────────────────────────────────── */
+  .proposal-header {
+    background: #1B5E20;
+    color: #fff;
+    padding: 1.4rem 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .proposal-header h1 { font-size: 1.15rem; font-weight: 700; }
+  .proposal-header p  { font-size: 0.85rem; opacity: 0.8; margin-top: 0.2rem; }
+  .badge {
+    display: inline-block;
+    background: var(--apr-bg);
+    color: var(--apr-dark);
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 0.18rem 0.55rem;
+    border-radius: 999px;
+  }
+
+  .alt-wrapper {
+    max-width: 980px;
+    margin: 2rem auto;
+    padding: 0 1.2rem;
+  }
+  .alt-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    margin-bottom: 0.5rem;
+  }
+  .alt-title {
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--apr-dark);
+    margin-bottom: 0.3rem;
+  }
+  .alt-rationale {
+    font-size: 0.88rem;
+    color: var(--muted);
+    margin-bottom: 1.5rem;
+    max-width: 680px;
+  }
+  hr.divider {
+    border: none;
+    border-top: 3px solid var(--apr-border);
+    margin: 3rem 0;
+    opacity: 0.4;
+  }
+
+  /* ══════════════════════════════════════════════════════════
+     SHARED: Hero / mode-selector
+  ══════════════════════════════════════════════════════════ */
+  .apr-hero {
+    background:
+      radial-gradient(circle at 5% 10%, rgba(146,239,128,0.28), transparent 50%),
+      radial-gradient(circle at 95% 90%, rgba(95,180,156,0.18), transparent 55%),
+      #f0fdf0;
+    border: 1px solid rgba(116,207,99,0.4);
+    border-radius: var(--radius-lg);
+    padding: 1.1rem 1.25rem 0.9rem;
+    margin-bottom: 1.2rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .apr-hero::after {
+    content: "";
+    position: absolute;
+    top: -30%; right: -8%;
+    width: 38%; height: 180%;
+    transform: rotate(12deg);
+    background: linear-gradient(180deg,rgba(255,255,255,0.28) 0%,rgba(255,255,255,0) 100%);
+    pointer-events: none;
+  }
+  .apr-hero-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--apr-dark);
+    margin-bottom: 0.4rem;
+  }
+  .apr-hero-title i { margin-right: 0.4rem; }
+  .apr-hero-text {
+    font-size: 0.85rem;
+    color: #3a5c3b;
+    max-width: 600px;
+    margin-bottom: 0.9rem;
+  }
+
+  /* mode switcher (mirrors .standards-hero-modes) */
+  .apr-modes {
+    display: flex;
+    gap: 0.55rem;
+    flex-wrap: wrap;
+    margin-bottom: 0.85rem;
+  }
+  .apr-mode {
+    display: flex;
+    flex-direction: column;
+    border: 1.5px solid rgba(116,207,99,0.5);
+    border-radius: var(--radius);
+    padding: 0.5rem 0.85rem;
+    background: rgba(255,255,255,0.7);
+    text-decoration: none;
+    color: var(--apr-text);
+    min-width: 140px;
+    cursor: pointer;
+    transition: border-color 0.15s, background 0.15s;
+  }
+  .apr-mode.is-active {
+    border-color: var(--apr-border);
+    background: linear-gradient(160deg,#e0fad8,#c8f5be);
+    box-shadow: 0 2px 8px rgba(27,94,32,0.12);
+  }
+  .apr-mode-name {
+    font-weight: 700;
+    font-size: 0.88rem;
+  }
+  .apr-mode-desc {
+    font-size: 0.76rem;
+    color: #4a7a4b;
+    margin-top: 0.12rem;
+  }
+
+  /* stats row */
+  .apr-hero-footer {
+    display: flex;
+    gap: 1.5rem;
+  }
+  .apr-stat-value {
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: var(--apr-accent);
+  }
+  .apr-stat-label {
+    font-size: 0.72rem;
+    color: #4a7a4b;
+    display: block;
+  }
+
+  /* ══════════════════════════════════════════════════════════
+     ALTERNATIVE A  –  by-dimension cards  +  by-explorer
+  ══════════════════════════════════════════════════════════ */
+
+  /* Dimension cards grid */
+  .dim-card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 0.75rem;
+    margin-bottom: 1.2rem;
+  }
+  .dim-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--apr-border);
+    border-radius: var(--radius);
+    padding: 0.8rem 0.9rem;
+    box-shadow: 0 2px 6px rgba(27,94,32,0.06);
+  }
+  .dim-card-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 0.3rem;
+  }
+  .dim-card-title {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--apr-dark);
+  }
+  .dim-card-count {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--apr-accent);
+    background: var(--apr-light);
+    border-radius: 999px;
+    padding: 0.1rem 0.45rem;
+  }
+  .dim-card-desc {
+    font-size: 0.78rem;
+    color: var(--muted);
+    margin-bottom: 0.55rem;
+    line-height: 1.35;
+  }
+  .chip-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+  }
+  .chip {
+    display: inline-block;
+    background: var(--apr-chip);
+    border: 1px solid var(--apr-border);
+    color: var(--apr-dark);
+    font-size: 0.74rem;
+    font-weight: 600;
+    padding: 0.18rem 0.5rem;
+    border-radius: 999px;
+    text-decoration: none;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: background 0.12s;
+  }
+  .chip:hover { background: var(--apr-chip-hover); }
+  .chip.placeholder {
+    background: #f0f0f0;
+    border-color: #ccc;
+    color: #999;
+    font-style: italic;
+  }
+
+  /* Explorer (Alternative A, mode 2) */
+  .explorer-controls {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+    margin-bottom: 0.8rem;
+  }
+  .search-input {
+    flex: 1;
+    min-width: 200px;
+    border: 1.5px solid var(--apr-border);
+    border-radius: 999px;
+    padding: 0.38rem 0.9rem;
+    font-size: 0.88rem;
+    background: #fff;
+    color: #333;
+    outline: none;
+  }
+  .facet-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-bottom: 0.85rem;
+  }
+  .facet-btn {
+    border: 1px solid var(--apr-border);
+    border-radius: 999px;
+    background: #fff;
+    color: #4a6b4b;
+    font-size: 0.77rem;
+    font-weight: 600;
+    padding: 0.22rem 0.55rem;
+    cursor: pointer;
+  }
+  .facet-btn.is-active {
+    background: linear-gradient(180deg,#74d463,var(--apr-accent));
+    border-color: transparent;
+    color: #fff;
+  }
+  .facet-count {
+    margin-left: 0.2rem;
+    font-size: 0.72rem;
+    opacity: 0.8;
+  }
+
+  .explorer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 0.65rem;
+  }
+  .explorer-card {
+    position: relative;
+    background: #fafffa;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 0.65rem 0.75rem;
+    min-height: 150px;
+    box-shadow: 0 2px 7px rgba(27,94,32,0.07);
+    overflow: hidden;
+  }
+  .explorer-card-tag {
+    font-size: 0.73rem;
+    font-weight: 700;
+    color: var(--apr-accent);
+    text-decoration: none;
+    display: inline-block;
+    margin-bottom: 0.2rem;
+  }
+  .explorer-card-title {
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: #3a4a3c;
+    margin-bottom: 0.45rem;
+    line-height: 1.25;
+  }
+  .explorer-card-title a { color: inherit; text-decoration: none; }
+  .explorer-card-title a:hover { text-decoration: underline; }
+  .explorer-card-intent {
+    font-size: 0.78rem;
+    color: var(--muted);
+    line-height: 1.35;
+  }
+  .explorer-hover {
+    position: absolute;
+    left: 0; right: 0; bottom: 0;
+    transform: translateY(100%);
+    transition: transform 0.18s ease;
+    background: linear-gradient(180deg,rgba(27,94,32,0.96),rgba(17,60,20,0.96));
+    color: #e8fce4;
+    padding: 0.55rem 0.75rem;
+    font-size: 0.78rem;
+    line-height: 1.3;
+  }
+  .explorer-card:hover .explorer-hover { transform: translateY(0); }
+
+  /* ══════════════════════════════════════════════════════════
+     ALTERNATIVE B  –  Dimension-section page  +  sidebar nav
+  ══════════════════════════════════════════════════════════ */
+  .alt-b-layout {
+    display: grid;
+    grid-template-columns: 190px 1fr;
+    gap: 1.2rem;
+    align-items: start;
+  }
+  /* sidebar */
+  .dim-sidebar {
+    position: sticky;
+    top: 1rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 0.6rem 0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  }
+  .dim-sidebar-head {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: var(--muted);
+    padding: 0 0.8rem 0.4rem;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 0.3rem;
+  }
+  .dim-sidebar-search {
+    display: block;
+    width: calc(100% - 1rem);
+    margin: 0.4rem 0.5rem 0.5rem;
+    border: 1px solid var(--apr-border);
+    border-radius: 999px;
+    padding: 0.28rem 0.65rem;
+    font-size: 0.78rem;
+    background: #f5fff5;
+    color: #333;
+    outline: none;
+  }
+  .dim-nav-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.3rem 0.8rem;
+    font-size: 0.82rem;
+    color: var(--apr-text);
+    text-decoration: none;
+    border-left: 3px solid transparent;
+    cursor: pointer;
+  }
+  .dim-nav-item:hover { background: var(--apr-light); }
+  .dim-nav-item.is-active {
+    border-left-color: var(--apr-accent);
+    background: var(--apr-light);
+    font-weight: 700;
+    color: var(--apr-dark);
+  }
+  .dim-nav-count {
+    font-size: 0.7rem;
+    background: var(--apr-chip);
+    border-radius: 999px;
+    padding: 0.05rem 0.38rem;
+    color: var(--apr-accent);
+    font-weight: 700;
+  }
+
+  /* Main content: dimension sections */
+  .dim-sections { display: flex; flex-direction: column; gap: 1.1rem; }
+  .dim-section {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+  .dim-section-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.7rem 0.9rem;
+    background: linear-gradient(90deg, var(--apr-light), #f5fff5);
+    border-bottom: 1px solid var(--border);
+    cursor: pointer;
+  }
+  .dim-section-head-left { display: flex; align-items: center; gap: 0.5rem; }
+  .dim-section-icon { font-size: 1rem; }
+  .dim-section-name {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--apr-dark);
+  }
+  .dim-section-badge {
+    font-size: 0.72rem;
+    font-weight: 700;
+    background: var(--apr-chip);
+    color: var(--apr-accent);
+    border-radius: 999px;
+    padding: 0.1rem 0.42rem;
+  }
+  .dim-section-chevron { color: var(--muted); font-size: 0.8rem; }
+  .dim-section-body { padding: 0.75rem 0.9rem; }
+  .dim-section-desc {
+    font-size: 0.82rem;
+    color: var(--muted);
+    margin-bottom: 0.65rem;
+    font-style: italic;
+  }
+
+  .approach-row-list { display: flex; flex-direction: column; gap: 0.45rem; }
+  .approach-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    padding: 0.45rem 0.6rem;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: #fafffa;
+    text-decoration: none;
+    color: inherit;
+    transition: border-color 0.12s, background 0.12s;
+  }
+  .approach-row:hover { border-color: var(--apr-border); background: var(--apr-light); }
+  .approach-row-icon { color: var(--apr-accent); font-size: 0.85rem; margin-top: 0.1rem; flex-shrink: 0; }
+  .approach-row-name {
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: var(--apr-dark);
+    line-height: 1.2;
+  }
+  .approach-row-intent {
+    font-size: 0.78rem;
+    color: var(--muted);
+    line-height: 1.3;
+  }
+  .approach-row-more {
+    display: inline-block;
+    font-size: 0.74rem;
+    color: var(--muted);
+    font-style: italic;
+    padding: 0.25rem 0.5rem;
+    background: #f3f6f3;
+    border-radius: 6px;
+    border: 1px dashed #c8d9c8;
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+
+<div class="proposal-header">
+  <div>
+    <div style="display:flex;align-items:center;gap:0.7rem;">
+      <h1>&#x1F9E9; Solution Approaches — Visual Proposal</h1>
+      <span class="badge">2 alternatives</span>
+    </div>
+    <p>Static mockup for the /approaches/ entry page redesign &nbsp;|&nbsp; arc42 Quality Model</p>
+  </div>
+</div>
+
+<div class="alt-wrapper">
+
+  <!-- ═══════════════════════════════════════════════════════
+       ALTERNATIVE A
+  ════════════════════════════════════════════════════════ -->
+  <p class="alt-label">Alternative A</p>
+  <h2 class="alt-title">Standards twin — two-mode page (by-dimension / by-explorer)</h2>
+  <p class="alt-rationale">
+    Mirrors the proven <code>/standards/</code> pattern. Two sibling pages share a hero with
+    a mode switcher: the <em>by-dimension</em> view groups approaches into quality-dimension
+    cards (like the standards category cards); the <em>by-explorer</em> view gives a
+    searchable, facet-filtered card grid. Lowest learning curve for users already familiar
+    with the standards section.
+  </p>
+
+  <!-- ── Hero ───────────────────────────────────────── -->
+  <div class="apr-hero">
+    <div class="apr-hero-title">&#x1F9E9; Solution Approaches: by-dimension + explorer</div>
+    <p class="apr-hero-text">
+      Architectural tactics and patterns that help achieve specific quality attributes —
+      bridging the gap from <em>what</em> (quality requirements) to <em>how</em> (implementation ideas).
+      Browse <strong>by quality dimension</strong> or <strong>search the full catalogue</strong>.
+    </p>
+
+    <div class="apr-modes">
+      <a class="apr-mode is-active" href="#">
+        <span class="apr-mode-name">&#x25A6; by-dimension</span>
+        <span class="apr-mode-desc">Browse approaches grouped by quality dimension.</span>
+      </a>
+      <a class="apr-mode" href="#">
+        <span class="apr-mode-name">&#x1F50D; by-explorer</span>
+        <span class="apr-mode-desc">Search + filter across all approaches.</span>
+      </a>
+    </div>
+
+    <div class="apr-hero-footer">
+      <div>
+        <span class="apr-stat-value">100+</span>
+        <span class="apr-stat-label">Approaches</span>
+      </div>
+      <div>
+        <span class="apr-stat-value">9</span>
+        <span class="apr-stat-label">Dimensions</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── A: by-dimension card grid ─────────────────── -->
+  <p style="font-size:0.8rem;color:var(--muted);margin-bottom:0.7rem;font-style:italic;">
+    ↓ Mode: by-dimension (active tab) — one card per quality dimension
+  </p>
+  <div class="dim-card-grid">
+
+    <div class="dim-card">
+      <div class="dim-card-head">
+        <span class="dim-card-title">⚡ Efficient</span>
+        <span class="dim-card-count">12</span>
+      </div>
+      <p class="dim-card-desc">Optimising resource use: time, memory, energy, cost.</p>
+      <div class="chip-list">
+        <a class="chip" href="#">Caching</a>
+        <a class="chip" href="#">Database Indexing</a>
+        <a class="chip" href="#">Connection Pooling</a>
+        <a class="chip" href="#">Lazy Loading</a>
+        <a class="chip" href="#">Async Processing</a>
+        <a class="chip placeholder" href="#">+ 7 more</a>
+      </div>
+    </div>
+
+    <div class="dim-card">
+      <div class="dim-card-head">
+        <span class="dim-card-title">🛡 Reliable</span>
+        <span class="dim-card-count">9</span>
+      </div>
+      <p class="dim-card-desc">Keeping the system available and correct under stress or failure.</p>
+      <div class="chip-list">
+        <a class="chip" href="#">Circuit Breaker</a>
+        <a class="chip" href="#">Redundancy</a>
+        <a class="chip" href="#">Health Check</a>
+        <a class="chip" href="#">Retry with Backoff</a>
+        <a class="chip placeholder" href="#">+ 5 more</a>
+      </div>
+    </div>
+
+    <div class="dim-card">
+      <div class="dim-card-head">
+        <span class="dim-card-title">🔒 Secure</span>
+        <span class="dim-card-count">14</span>
+      </div>
+      <p class="dim-card-desc">Protecting data, preventing unauthorised access and attacks.</p>
+      <div class="chip-list">
+        <a class="chip" href="#">Least Privilege</a>
+        <a class="chip" href="#">Input Validation</a>
+        <a class="chip" href="#">Secrets Management</a>
+        <a class="chip" href="#">mTLS</a>
+        <a class="chip placeholder" href="#">+ 10 more</a>
+      </div>
+    </div>
+
+    <div class="dim-card">
+      <div class="dim-card-head">
+        <span class="dim-card-title">🖥 Operable</span>
+        <span class="dim-card-count">8</span>
+      </div>
+      <p class="dim-card-desc">Making systems easy to deploy, monitor, and operate.</p>
+      <div class="chip-list">
+        <a class="chip" href="#">Centralized Logging</a>
+        <a class="chip" href="#">Structured Observability</a>
+        <a class="chip" href="#">Blue/Green Deploy</a>
+        <a class="chip placeholder" href="#">+ 5 more</a>
+      </div>
+    </div>
+
+    <div class="dim-card">
+      <div class="dim-card-head">
+        <span class="dim-card-title">🔀 Flexible</span>
+        <span class="dim-card-count">11</span>
+      </div>
+      <p class="dim-card-desc">Adapting and extending without major rework.</p>
+      <div class="chip-list">
+        <a class="chip" href="#">Plugin Architecture</a>
+        <a class="chip" href="#">Feature Toggles</a>
+        <a class="chip" href="#">Strangler Fig</a>
+        <a class="chip" href="#">Ports &amp; Adapters</a>
+        <a class="chip placeholder" href="#">+ 7 more</a>
+      </div>
+    </div>
+
+    <div class="dim-card">
+      <div class="dim-card-head">
+        <span class="dim-card-title">🔧 Maintainable</span>
+        <span class="dim-card-count">10</span>
+      </div>
+      <p class="dim-card-desc">Keeping the codebase understandable and easy to change.</p>
+      <div class="chip-list">
+        <a class="chip" href="#">Dependency Injection</a>
+        <a class="chip" href="#">Strangler Fig</a>
+        <a class="chip" href="#">ADR</a>
+        <a class="chip placeholder" href="#">+ 7 more</a>
+      </div>
+    </div>
+
+    <div class="dim-card">
+      <div class="dim-card-head">
+        <span class="dim-card-title">👤 Usable</span>
+        <span class="dim-card-count">7</span>
+      </div>
+      <p class="dim-card-desc">Enabling users to accomplish goals efficiently and with satisfaction.</p>
+      <div class="chip-list">
+        <a class="chip" href="#">Progressive Disclosure</a>
+        <a class="chip" href="#">Responsive Design</a>
+        <a class="chip" href="#">Error Prevention</a>
+        <a class="chip placeholder" href="#">+ 4 more</a>
+      </div>
+    </div>
+
+    <div class="dim-card">
+      <div class="dim-card-head">
+        <span class="dim-card-title">⚠️ Safe</span>
+        <span class="dim-card-count">6</span>
+      </div>
+      <p class="dim-card-desc">Preventing and mitigating harm to people and environment.</p>
+      <div class="chip-list">
+        <a class="chip" href="#">Fail-safe Defaults</a>
+        <a class="chip" href="#">Watchdog</a>
+        <a class="chip" href="#">Redundant Actuation</a>
+        <a class="chip placeholder" href="#">+ 3 more</a>
+      </div>
+    </div>
+
+    <div class="dim-card">
+      <div class="dim-card-head">
+        <span class="dim-card-title">✅ Suitable</span>
+        <span class="dim-card-count">8</span>
+      </div>
+      <p class="dim-card-desc">Ensuring the system actually solves the right problem.</p>
+      <div class="chip-list">
+        <a class="chip" href="#">Domain-Driven Design</a>
+        <a class="chip" href="#">Event Sourcing</a>
+        <a class="chip" href="#">CQRS</a>
+        <a class="chip placeholder" href="#">+ 5 more</a>
+      </div>
+    </div>
+
+  </div><!-- /dim-card-grid -->
+
+  <!-- ── A: explorer mode ───────────────────────────── -->
+  <p style="font-size:0.8rem;color:var(--muted);margin:1.5rem 0 0.7rem;font-style:italic;">
+    ↓ Mode: by-explorer (alternate tab) — full searchable &amp; filterable catalogue
+  </p>
+
+  <div class="explorer-controls">
+    <input class="search-input" type="search" placeholder="Search approaches… e.g. cache, retry, deploy" />
+    <span style="font-size:0.8rem;color:var(--muted);">85 approaches</span>
+  </div>
+
+  <div class="facet-list">
+    <button class="facet-btn is-active">All <span class="facet-count">85</span></button>
+    <button class="facet-btn">⚡ Efficient <span class="facet-count">12</span></button>
+    <button class="facet-btn">🛡 Reliable <span class="facet-count">9</span></button>
+    <button class="facet-btn">🔒 Secure <span class="facet-count">14</span></button>
+    <button class="facet-btn">🖥 Operable <span class="facet-count">8</span></button>
+    <button class="facet-btn">🔀 Flexible <span class="facet-count">11</span></button>
+    <button class="facet-btn">🔧 Maintainable <span class="facet-count">10</span></button>
+    <button class="facet-btn">👤 Usable <span class="facet-count">7</span></button>
+    <button class="facet-btn">⚠️ Safe <span class="facet-count">6</span></button>
+    <button class="facet-btn">✅ Suitable <span class="facet-count">8</span></button>
+  </div>
+
+  <div class="explorer-grid">
+
+    <div class="explorer-card">
+      <a class="explorer-card-tag" href="#">⚡ efficient</a>
+      <div class="explorer-card-title"><a href="#">Caching</a></div>
+      <div class="explorer-card-intent">Store frequently accessed data closer to the consumer to reduce latency and load on backend systems.</div>
+      <div class="explorer-hover">Trades off consistency and availability. Relevant: performance, scalability, responsiveness.</div>
+    </div>
+
+    <div class="explorer-card">
+      <a class="explorer-card-tag" href="#">🛡 reliable</a>
+      <div class="explorer-card-title"><a href="#">Circuit Breaker</a></div>
+      <div class="explorer-card-intent">Prevent a failure in one service from cascading by failing fast when a dependency is struggling.</div>
+      <div class="explorer-hover">Trades off latency and maintainability. Relevant: resilience, stability, fault-tolerance.</div>
+    </div>
+
+    <div class="explorer-card">
+      <a class="explorer-card-tag" href="#">👤 usable</a>
+      <div class="explorer-card-title"><a href="#">Progressive Disclosure</a></div>
+      <div class="explorer-card-intent">Present only what a user needs right now, revealing complexity on demand.</div>
+      <div class="explorer-hover">Trades off completeness and functionality. Relevant: usability, learnability, accessibility.</div>
+    </div>
+
+    <div class="explorer-card">
+      <a class="explorer-card-tag" href="#">🔀 flexible</a>
+      <div class="explorer-card-title"><a href="#">Feature Toggles</a></div>
+      <div class="explorer-card-intent">Decouple code deployment from feature release using runtime-configurable flags.</div>
+      <div class="explorer-hover">Trades off maintainability and code complexity. Relevant: deployability, testability, changeability.</div>
+    </div>
+
+    <div class="explorer-card">
+      <a class="explorer-card-tag" href="#">🔀 flexible</a>
+      <div class="explorer-card-title"><a href="#">Plugin Architecture</a></div>
+      <div class="explorer-card-intent">Enable extension of system behaviour without modifying the core.</div>
+      <div class="explorer-hover">Trades off security and performance. Relevant: extensibility, modifiability, reusability.</div>
+    </div>
+
+    <div class="explorer-card">
+      <a class="explorer-card-tag" href="#">👤 usable</a>
+      <div class="explorer-card-title"><a href="#">Responsive Design</a></div>
+      <div class="explorer-card-intent">Ensure a single codebase renders correctly across all screen sizes and input methods.</div>
+      <div class="explorer-hover">Trades off performance and maintainability. Relevant: usability, accessibility, adaptability.</div>
+    </div>
+
+  </div><!-- /explorer-grid -->
+
+  <hr class="divider">
+
+  <!-- ═══════════════════════════════════════════════════════
+       ALTERNATIVE B
+  ════════════════════════════════════════════════════════ -->
+  <p class="alt-label">Alternative B</p>
+  <h2 class="alt-title">Dimension deep-dive — sticky sidebar + scrollable dimension sections</h2>
+  <p class="alt-rationale">
+    A single page: a sticky sidebar lists all 9 dimensions for quick navigation; the main
+    area shows each dimension as an expandable section (like the tag pages — <em>reliable</em>,
+    <em>secure</em>, etc.) with a short description and a compact row-list of its approaches.
+    A search input in the sidebar filters approach names inline. No page navigation needed —
+    great for discovery and comparison across dimensions.
+  </p>
+
+  <!-- ── B: Hero (single mode — no switcher needed) ─── -->
+  <div class="apr-hero" style="margin-bottom:1.2rem;">
+    <div class="apr-hero-title">&#x1F9E9; Solution Approaches</div>
+    <p class="apr-hero-text">
+      Architectural tactics and patterns that help achieve specific quality attributes.
+      Browse by quality dimension below, or type in the sidebar search to filter by name.
+    </p>
+    <div class="apr-hero-footer">
+      <div>
+        <span class="apr-stat-value">100+</span>
+        <span class="apr-stat-label">Approaches</span>
+      </div>
+      <div>
+        <span class="apr-stat-value">9</span>
+        <span class="apr-stat-label">Dimensions</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── B: Sidebar + main content ─────────────────── -->
+  <div class="alt-b-layout">
+
+    <!-- Sidebar -->
+    <nav class="dim-sidebar" aria-label="Quality dimensions">
+      <div class="dim-sidebar-head">Quality Dimensions</div>
+      <input class="dim-sidebar-search" type="search" placeholder="&#x1F50D; filter approaches…" />
+      <a class="dim-nav-item is-active" href="#">⚡ Efficient <span class="dim-nav-count">12</span></a>
+      <a class="dim-nav-item" href="#">🛡 Reliable <span class="dim-nav-count">9</span></a>
+      <a class="dim-nav-item" href="#">🔒 Secure <span class="dim-nav-count">14</span></a>
+      <a class="dim-nav-item" href="#">🖥 Operable <span class="dim-nav-count">8</span></a>
+      <a class="dim-nav-item" href="#">🔀 Flexible <span class="dim-nav-count">11</span></a>
+      <a class="dim-nav-item" href="#">🔧 Maintainable <span class="dim-nav-count">10</span></a>
+      <a class="dim-nav-item" href="#">👤 Usable <span class="dim-nav-count">7</span></a>
+      <a class="dim-nav-item" href="#">⚠️ Safe <span class="dim-nav-count">6</span></a>
+      <a class="dim-nav-item" href="#">✅ Suitable <span class="dim-nav-count">8</span></a>
+    </nav>
+
+    <!-- Dimension sections -->
+    <div class="dim-sections">
+
+      <div class="dim-section">
+        <div class="dim-section-head">
+          <div class="dim-section-head-left">
+            <span class="dim-section-icon">⚡</span>
+            <span class="dim-section-name">Efficient</span>
+            <span class="dim-section-badge">12 approaches</span>
+          </div>
+          <span class="dim-section-chevron">▼</span>
+        </div>
+        <div class="dim-section-body">
+          <p class="dim-section-desc">Optimise use of time, memory, energy, and cost — doing more with less.</p>
+          <div class="approach-row-list">
+            <a class="approach-row" href="#">
+              <span class="approach-row-icon">&#x1F9E9;</span>
+              <div>
+                <div class="approach-row-name">Caching</div>
+                <div class="approach-row-intent">Store frequently accessed data closer to the consumer to reduce latency and backend load.</div>
+              </div>
+            </a>
+            <a class="approach-row" href="#">
+              <span class="approach-row-icon">&#x1F9E9;</span>
+              <div>
+                <div class="approach-row-name">Database Indexing</div>
+                <div class="approach-row-intent">Accelerate data retrieval by maintaining auxiliary data structures on frequently queried columns.</div>
+              </div>
+            </a>
+            <a class="approach-row" href="#">
+              <span class="approach-row-icon">&#x1F9E9;</span>
+              <div>
+                <div class="approach-row-name">Async / Non-blocking Processing</div>
+                <div class="approach-row-intent">Decouple work submission from result retrieval to maximise throughput under load.</div>
+              </div>
+            </a>
+            <span class="approach-row-more">+ 9 more approaches in this dimension →</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="dim-section">
+        <div class="dim-section-head">
+          <div class="dim-section-head-left">
+            <span class="dim-section-icon">🛡</span>
+            <span class="dim-section-name">Reliable</span>
+            <span class="dim-section-badge">9 approaches</span>
+          </div>
+          <span class="dim-section-chevron">▼</span>
+        </div>
+        <div class="dim-section-body">
+          <p class="dim-section-desc">Keep the system available, correct, and recoverable under load, faults, and partial failures.</p>
+          <div class="approach-row-list">
+            <a class="approach-row" href="#">
+              <span class="approach-row-icon">&#x1F9E9;</span>
+              <div>
+                <div class="approach-row-name">Circuit Breaker</div>
+                <div class="approach-row-intent">Prevent cascading failures by failing fast when a downstream service is struggling.</div>
+              </div>
+            </a>
+            <a class="approach-row" href="#">
+              <span class="approach-row-icon">&#x1F9E9;</span>
+              <div>
+                <div class="approach-row-name">Redundancy / Replication</div>
+                <div class="approach-row-intent">Eliminate single points of failure by running multiple independent instances of critical components.</div>
+              </div>
+            </a>
+            <span class="approach-row-more">+ 7 more approaches in this dimension →</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="dim-section">
+        <div class="dim-section-head">
+          <div class="dim-section-head-left">
+            <span class="dim-section-icon">🔀</span>
+            <span class="dim-section-name">Flexible</span>
+            <span class="dim-section-badge">11 approaches</span>
+          </div>
+          <span class="dim-section-chevron">▼</span>
+        </div>
+        <div class="dim-section-body">
+          <p class="dim-section-desc">Design for change — adapt, extend, or replace parts without major rework.</p>
+          <div class="approach-row-list">
+            <a class="approach-row" href="#">
+              <span class="approach-row-icon">&#x1F9E9;</span>
+              <div>
+                <div class="approach-row-name">Plugin Architecture</div>
+                <div class="approach-row-intent">Enable third parties to extend system behaviour without modifying or redeploying the core.</div>
+              </div>
+            </a>
+            <a class="approach-row" href="#">
+              <span class="approach-row-icon">&#x1F9E9;</span>
+              <div>
+                <div class="approach-row-name">Feature Toggles</div>
+                <div class="approach-row-intent">Decouple code deployment from feature release using runtime-configurable flags.</div>
+              </div>
+            </a>
+            <span class="approach-row-more">+ 9 more approaches in this dimension →</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="dim-section">
+        <div class="dim-section-head">
+          <div class="dim-section-head-left">
+            <span class="dim-section-icon">👤</span>
+            <span class="dim-section-name">Usable</span>
+            <span class="dim-section-badge">7 approaches</span>
+          </div>
+          <span class="dim-section-chevron">▼</span>
+        </div>
+        <div class="dim-section-body">
+          <p class="dim-section-desc">Help users accomplish their goals efficiently, with confidence and satisfaction.</p>
+          <div class="approach-row-list">
+            <a class="approach-row" href="#">
+              <span class="approach-row-icon">&#x1F9E9;</span>
+              <div>
+                <div class="approach-row-name">Progressive Disclosure</div>
+                <div class="approach-row-intent">Show only what users need right now; reveal complexity on demand through explicit actions.</div>
+              </div>
+            </a>
+            <a class="approach-row" href="#">
+              <span class="approach-row-icon">&#x1F9E9;</span>
+              <div>
+                <div class="approach-row-name">Responsive Design</div>
+                <div class="approach-row-intent">Ensure a single codebase renders correctly across all screen sizes and input methods.</div>
+              </div>
+            </a>
+            <span class="approach-row-more">+ 5 more approaches in this dimension →</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="dim-section" style="opacity:0.5;">
+        <div class="dim-section-head">
+          <div class="dim-section-head-left">
+            <span class="dim-section-icon">🔒</span>
+            <span class="dim-section-name">Secure</span>
+            <span class="dim-section-badge">14 approaches</span>
+          </div>
+          <span class="dim-section-chevron">▶</span>
+        </div>
+        <!-- collapsed -->
+      </div>
+
+      <div class="dim-section" style="opacity:0.5;">
+        <div class="dim-section-head">
+          <div class="dim-section-head-left">
+            <span class="dim-section-icon">🖥</span>
+            <span class="dim-section-name">Operable</span>
+            <span class="dim-section-badge">8 approaches</span>
+          </div>
+          <span class="dim-section-chevron">▶</span>
+        </div>
+      </div>
+
+      <div class="dim-section" style="opacity:0.5;">
+        <div class="dim-section-head">
+          <div class="dim-section-head-left">
+            <span class="dim-section-icon">🔧</span>
+            <span class="dim-section-name">Maintainable</span>
+            <span class="dim-section-badge">10 approaches</span>
+          </div>
+          <span class="dim-section-chevron">▶</span>
+        </div>
+      </div>
+
+      <div class="dim-section" style="opacity:0.5;">
+        <div class="dim-section-head">
+          <div class="dim-section-head-left">
+            <span class="dim-section-icon">⚠️</span>
+            <span class="dim-section-name">Safe</span>
+            <span class="dim-section-badge">6 approaches</span>
+          </div>
+          <span class="dim-section-chevron">▶</span>
+        </div>
+      </div>
+
+      <div class="dim-section" style="opacity:0.5;">
+        <div class="dim-section-head">
+          <div class="dim-section-head-left">
+            <span class="dim-section-icon">✅</span>
+            <span class="dim-section-name">Suitable</span>
+            <span class="dim-section-badge">8 approaches</span>
+          </div>
+          <span class="dim-section-chevron">▶</span>
+        </div>
+      </div>
+
+    </div><!-- /dim-sections -->
+  </div><!-- /alt-b-layout -->
+
+  <!-- ── Comparison summary ─────────────────────────── -->
+  <hr class="divider">
+  <div style="background:#f0fdf0;border:1px solid var(--apr-border);border-radius:var(--radius-lg);padding:1.1rem 1.3rem;margin-bottom:2rem;">
+    <h3 style="color:var(--apr-dark);font-size:1rem;margin-bottom:0.7rem;">Which alternative fits better?</h3>
+    <table style="width:100%;border-collapse:collapse;font-size:0.83rem;">
+      <thead>
+        <tr style="border-bottom:2px solid var(--apr-border);">
+          <th style="text-align:left;padding:0.4rem 0.6rem;color:var(--muted);">Criterion</th>
+          <th style="text-align:left;padding:0.4rem 0.6rem;color:var(--apr-dark);">A — Two-mode page</th>
+          <th style="text-align:left;padding:0.4rem 0.6rem;color:var(--apr-dark);">B — Sidebar + sections</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="border-bottom:1px solid var(--border);">
+          <td style="padding:0.4rem 0.6rem;color:var(--muted);">Familiarity (mirrors existing site)</td>
+          <td style="padding:0.4rem 0.6rem;">✅ Matches /standards/ exactly</td>
+          <td style="padding:0.4rem 0.6rem;">🆕 New pattern, mirrors tag pages</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--border);">
+          <td style="padding:0.4rem 0.6rem;color:var(--muted);">Dimension-level description + context</td>
+          <td style="padding:0.4rem 0.6rem;">⚠️ Only short card description</td>
+          <td style="padding:0.4rem 0.6rem;">✅ Full section with description</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--border);">
+          <td style="padding:0.4rem 0.6rem;color:var(--muted);">Cross-dimension browsing</td>
+          <td style="padding:0.4rem 0.6rem;">✅ Explorer tab searches all</td>
+          <td style="padding:0.4rem 0.6rem;">✅ Sidebar search + scroll</td>
+        </tr>
+        <tr style="border-bottom:1px solid var(--border);">
+          <td style="padding:0.4rem 0.6rem;color:var(--muted);">Implementation effort</td>
+          <td style="padding:0.4rem 0.6rem;">✅ Low — reuse standards components</td>
+          <td style="padding:0.4rem 0.6rem;">⚠️ Medium — new layout + JS collapse</td>
+        </tr>
+        <tr>
+          <td style="padding:0.4rem 0.6rem;color:var(--muted);">Scales to 100+ approaches</td>
+          <td style="padding:0.4rem 0.6rem;">✅ Explorer grid + chips on card</td>
+          <td style="padding:0.4rem 0.6rem;">✅ Collapsed sections keep it scannable</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div><!-- /alt-wrapper -->
+</body>
+</html>
