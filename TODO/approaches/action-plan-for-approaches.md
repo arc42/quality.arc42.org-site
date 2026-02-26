@@ -1,73 +1,99 @@
 # Action Plan: Integrating Solution Approaches into quality.arc42.org
 
-This document outlines the plan for adding "solution approaches" (architectural tactics and patterns) to the site, based on feedback from multiple AI assistants. The goal is to bridge the gap from "what" (quality requirements) to "how" (implementation ideas).
+This document outlines the plan for adding "solution approaches" (architectural tactics and patterns) to the site. The goal is to bridge the gap from "what" (quality requirements) to "how" (implementation ideas).
 
-## Summary of External Feedback
+## Status and Progress (Iteration 2)
 
-All three provided answers (from GPT, Kimi, and Claude) strongly endorsed the idea as feasible and valuable. A remarkable consensus emerged on the core strategy:
+We have successfully established the initial technical foundation and created two pilot approaches.
 
-*   **Scope is critical:** Focus on curated, vendor-agnostic **architectural tactics/patterns**, not specific tools or comprehensive lists.
-*   **Curation over completion:** An opinionated, high-quality set is better than an exhaustive encyclopedia.
-*   **Cross-referencing is key:** The value lies in linking approaches to qualities, requirements, and especially **trade-offs**.
-*   **Start small:** Begin with a limited set to validate the concept before expanding.
+- **[x] Define "Approach" Entity:** Architectural tactics or patterns.
+- **[x] Create Jekyll Structure:** `_approaches` collection, `_layouts/approach.html`, `_includes/directly-related-approaches.html`, and initial cross-linking.
+- **[x] Establish Content Template:** See `TODO/approaches/TEMPLATE.md` (authoring reference, not published).
+- **[x] Pilot Approach 1:** `_approaches/C/caching.md` is complete.
+- **[x] Pilot Approach 2:** `_approaches/C/circuit-breaker.md` is complete (including Mermaid state diagram).
+- **[x] Enhance Trade-off Visibility:** Quality pages now show approaches with potential negative impact via `_includes/directly-related-tradeoffs.html`.
+- **[x] Automated Cross-linking:** Quality pages now automatically list related approaches (supported and trade-offs).
 
-### Key Contributions by Source
+## Definition of Done for an Approach
 
-*   **Answer 1 (GPT):** Provided a comprehensive and structured **content template** for an approach page (Intent, Mechanism, Trade-offs, Failure Modes, Verification, etc.). This is invaluable for ensuring consistency and quality.
-*   **Answer 2 (Kimi):** Emphasized the "knowledge graph" concept and suggested useful **contextual tags** (e.g., System Type, Effort, Maturity) and a hierarchical organization for long-term evolution.
-*   **Answer 3 (Claude):** Offered the most pragmatic starting point: scope the initial effort to the **8 top-level quality properties**. Crucially, it highlighted that documenting **trade-offs and *negatively* affected qualities** is a unique and powerful value proposition that other resources lack.
+An approach is considered **done** when it:
 
-There were no significant omissions; the answers were complementary and collectively provided a solid strategic foundation.
+- Has complete frontmatter: `title`, `tags`, `supported_qualities`, `tradeoffs`, `intent`, `mechanism`, `applicability`, `permalink`
+- Includes a "How It Works" section with at least one Mermaid diagram (where a flow or state diagram is natural)
+- Lists at least two concrete **Failure Modes**
+- Lists at least two **Verification Ideas** (measurable, tool-specific where possible)
+- Links at least one **Related Requirement** from `_requirements/`
+- Lists at least one **Variant**
+- All `supported_qualities` and `tradeoffs` reference valid quality IDs (verified by `npm run test:links`)
 
-## Action Plan
+---
 
-### Phase 1: Foundation and Scoping
+## Phase 1: Technical Refinement
 
-1.  **[ ] Define "Approach" Entity:**
-    *   An approach is an **architectural tactic or pattern**. It is not a specific tool, library, or product.
-    *   The initial scope will be limited to approaches related to the **8 top-level quality properties** (Suitable, Usable, Secure, Reliable, Operable, Efficient, Flexible, Safe).
+1. **[x] Mermaid.js in Approach Layouts:**
+   - Circuit Breaker pilot already uses a Mermaid state diagram successfully.
+   - The `approach.html` layout renders Mermaid blocks via the standard Jekyll pipeline.
+   - **Remaining:** Verify Mermaid is loaded site-wide (not just on approach pages) and document the expected diagram types in `TEMPLATE.md`.
 
-2.  **[ ] Create the Content Model:**
-    *   Establish a firm template for each approach file, based on GPT's suggestion. This is the "definition of done" for a single approach.
-    *   **Required Fields:**
-        *   `title`: The name of the tactic (e.g., "Circuit Breaker").
-        *   `intent`: A one-sentence summary of the goal.
-        *   `mechanism`: A concise explanation of how it works.
-        *   `applicability`: When to use it and when not to.
-        *   `supported_qualities`: List of quality IDs it primarily supports.
-        *   `tradeoffs` (or `negatively_affected_qualities`): List of quality IDs it may negatively impact, with explanations. This is a critical field.
-        *   `failure_modes`: How this pattern can fail or be misused.
-        *   `verification_hooks`: Ideas on how to test or measure its effectiveness.
-        *   `related_requirements`: (Optional) Links to specific requirement examples.
-        *   `variants_and_implementations`: (Optional) Brief mention of common variations or example tools.
+2. **[ ] Quality-Approach Matrix Page:**
+   - **Action:** Create `_pages/72-approaches-matrix.md` at permalink `/approaches/matrix/`.
+   - **Content:** A table with the 9 top-level quality dimensions as columns and all published approaches as rows. Cells indicate "supports" (✓) or "trade-off" (⚠).
+   - **Implementation:** Use a Liquid loop over `site.approaches` reading `tags` and `tradeoffs` frontmatter to build the matrix dynamically — no hardcoding.
+   - **Acceptance:** Matrix renders without manual maintenance as new approaches are added.
 
-### Phase 2: Technical Implementation
+3. **[ ] Extend `_includes/directly-related-approaches.html`:**
+   - **Action:** Also show approaches on **requirement** pages (not just quality pages), since requirements are the direct "customer" of approaches.
+   - **Acceptance:** A requirement page like `/requirements/cache-response-time` shows linked approaches automatically.
 
-3.  **[ ] Set up Jekyll Structure:**
-    *   Create a new collection named `_approaches`.
-    *   Create a new layout file `_layouts/approach.html` to render a single approach page.
-    *   Design and implement `_includes` to display the cross-referenced lists (supported qualities, tradeoffs, etc.).
+---
 
-4.  **[ ] Implement Cross-Linking:**
-    *   Update the `_layouts/qualities.html` (or its includes) to query and display a list of "Related Approaches".
-    *   Ensure links are bidirectional where possible.
+## Phase 2: Content Backlog
 
-### Phase 3: Content Creation (Pilot)
+The focus is the **9 top-level quality properties**: Suitable, Usable, Secure, Reliable, Operable, Efficient, Flexible, Safe, and Maintainable.
 
-5.  **[ ] Populate a Pilot Set:**
-    *   Choose **two** top-level properties to start with (e.g., Reliability and Efficiency).
-    *   For each, identify and create 3-5 core approaches using the full content model.
-    *   This pilot set (~6-10 approaches) will be used to test the technical implementation and content strategy.
+**MVP milestone:** At least **2 approaches per dimension** = 18 approaches total.
 
-6.  **[ ] Review and Refine:**
-    *   Review the pilot content internally. Is the level of detail correct? Is the cross-linking effective?
-    *   Adjust the content model and layouts based on the pilot.
+### Priority Approaches
 
-### Phase 4: Expansion
+| Dimension | Tactic / Pattern | File | Status |
+| :--- | :--- | :--- | :--- |
+| **Efficient** | Caching | `_approaches/C/caching.md` | [x] |
+| **Efficient** | Database Indexing | `_approaches/D/database-indexing.md` | [ ] |
+| **Reliable** | Circuit Breaker | `_approaches/C/circuit-breaker.md` | [x] |
+| **Reliable** | Redundancy / Replication | `_approaches/R/redundancy.md` | [ ] |
+| **Reliable** | Health Check / Heartbeat | `_approaches/H/health-check.md` | [ ] |
+| **Secure** | Principle of Least Privilege | `_approaches/P/least-privilege.md` | [ ] |
+| **Secure** | Input Validation / Sanitization | `_approaches/I/input-validation.md` | [ ] |
+| **Operable** | Centralized Logging | `_approaches/C/centralized-logging.md` | [ ] |
+| **Operable** | Structured Observability | `_approaches/S/structured-observability.md` | [ ] |
+| **Flexible** | Plugin Architecture | `_approaches/P/plugin-architecture.md` | [ ] |
+| **Flexible** | Feature Toggles | `_approaches/F/feature-toggles.md` | [ ] |
+| **Maintainable** | Dependency Injection | `_approaches/D/dependency-injection.md` | [ ] |
+| **Maintainable** | Strangler Fig | `_approaches/S/strangler-fig.md` | [ ] |
+| **Safe** | Fail-safe Defaults | `_approaches/F/fail-safe-defaults.md` | [ ] |
+| **Safe** | Watchdog / Supervisor | `_approaches/W/watchdog.md` | [ ] |
+| **Usable** | Progressive Disclosure | `_approaches/P/progressive-disclosure.md` | [ ] |
+| **Usable** | Responsive Design | `_approaches/R/responsive-design.md` | [ ] |
+| **Suitable** | Domain-Driven Design | `_approaches/D/domain-driven-design.md` | [ ] |
+| **Suitable** | Event Sourcing | `_approaches/E/event-sourcing.md` | [ ] |
 
-7.  **[ ] Expand Content:**
-    *   Incrementally add approaches for the remaining top-level properties.
-    *   Aim to have 5-10 approaches for each of the 8 properties.
+---
 
-8.  **[ ] Solicit Community Feedback:**
-    *   Once a substantial set is available, announce the new feature and ask for community input and contributions.
+## Phase 3: Content Creation Workflow
+
+Every new approach file must follow this checklist:
+
+1. **Start from the template:** Copy `TODO/approaches/TEMPLATE.md` to the appropriate alphabetical subdirectory under `_approaches/`.
+2. **Fill all frontmatter fields** — especially `supported_qualities` and `tradeoffs` using valid quality IDs (check `_qualities/` for permalinks).
+3. **Link to requirements:** Find at least one example in `_requirements/` and add a `## Related Requirements` section.
+4. **Add a diagram:** Prefer Mermaid `stateDiagram-v2` for state machines, `graph TD` for flows, `sequenceDiagram` for interactions.
+5. **Validate references:** Run `npm run test:links` before committing.
+
+---
+
+## Phase 4: Long-term Evolution
+
+1. **[ ] External Standard Mapping:** Link approaches to ISO/IEC 25010/25012 categories where applicable (add `standards` frontmatter field, same pattern as qualities).
+2. **[ ] "Suggest an Approach" CTA:** Add a GitHub issue link on the main `/approaches/` page to invite community contributions.
+3. **[ ] Case Studies / ADR Links:** Link approaches to real-world architectural decision records (ADRs) or case study blog posts where available.
+4. **[ ] Graph Integration:** Explore adding approach nodes to the D3.js graph (as a new node type, distinct color) to make the quality→approach relationship navigable visually.
