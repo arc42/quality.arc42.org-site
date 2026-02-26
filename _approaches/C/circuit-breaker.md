@@ -17,14 +17,7 @@ A circuit breaker wraps a protected function call in a state machine with three 
 - **Open**: The threshold was exceeded. Requests fail immediately with an error (fail-fast).
 - **Half-Open**: After a timeout, a limited number of test requests are allowed through to see if the service has recovered.
 
-<div class="mermaid">
-stateDiagram-v2
-    [*] --> Closed
-    Closed --> Open : Failure threshold reached
-    Open --> HalfOpen : Reset timeout passed
-    HalfOpen --> Open : Call fails
-    HalfOpen --> Closed : Call succeeds
-</div>
+The circuit starts **Closed**. Once failures exceed the configured threshold it trips to **Open**, rejecting all calls instantly. After a reset timeout it moves to **Half-Open** and lets a small number of test calls through. One success closes the circuit again; one failure reopens it.
 
 ## Failure Modes
 

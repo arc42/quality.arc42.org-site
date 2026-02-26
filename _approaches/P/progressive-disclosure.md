@@ -13,18 +13,9 @@ permalink: /approaches/progressive-disclosure
 
 Progressive disclosure structures an interface into levels of detail. The first level shows only the most common or essential elements. Users who need more can "go deeper" through explicit actions, knowing the interface will not overwhelm them on first contact.
 
-<div class="mermaid">
-graph TD
-    A[User opens screen] --> B[Level 1: primary actions only]
-    B --> C{Needs more?}
-    C -- No --> D[Task done]
-    C -- Yes --> E[User expands / clicks 'Advanced']
-    E --> F[Level 2: secondary options revealed]
-    F --> G{Needs even more?}
-    G -- No --> D
-    G -- Yes --> H[Level 3: expert / raw settings]
-    H --> D
-</div>
+1. The user arrives at **Level 1** — only the most common actions and content are visible. Most users complete their task here.
+2. An explicit action (expand, "Advanced", drill-down link) reveals **Level 2** — secondary options and additional detail for users who need them.
+3. A further action surfaces **Level 3** — raw settings, full data, or expert controls. Most users never reach this layer.
 
 ### Common Patterns
 

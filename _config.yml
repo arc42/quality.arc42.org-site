@@ -113,7 +113,6 @@ defaults:
     values:
       layout: approach
       hide: "true"
-      mermaid: true
 
 #
 # !! Danger zone !!

@@ -13,25 +13,9 @@ permalink: /approaches/plugin-architecture
 
 The core application defines one or more **extension points** — typically interfaces or abstract base classes. Plugins implement those interfaces and are discovered by the host either at startup (static loading from a known directory) or at runtime (dynamic loading, e.g. via a service registry or an event bus).
 
-<div class="mermaid">
-graph TD
-    subgraph Core
-        EP[Extension Point / Plugin API]
-        Host[Host Application]
-        Registry[Plugin Registry]
-    end
-    subgraph Plugins
-        P1[Plugin A]
-        P2[Plugin B]
-        P3[Plugin C]
-    end
-    P1 & P2 & P3 -- register --> Registry
-    Host -- discovers --> Registry
-    Host -- invokes via contract --> EP
-    EP -- delegates to --> P1
-    EP -- delegates to --> P2
-    EP -- delegates to --> P3
-</div>
+1. At startup (or on demand), each plugin **registers** itself with the host's plugin registry, declaring which extension point it implements.
+2. The host **discovers** available plugins by querying the registry — without knowing any concrete plugin types.
+3. When behaviour is needed, the host **invokes** the extension point contract, which delegates the call to all registered plugins in turn.
 
 ### Common Loading Strategies
 

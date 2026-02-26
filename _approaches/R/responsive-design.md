@@ -17,14 +17,7 @@ Responsive design rests on three CSS techniques working together:
 2. **Flexible media:** Images and video are constrained with `max-width: 100%` so they never overflow their container.
 3. **Media queries:** CSS rules apply only when the viewport meets specific conditions (width, orientation, resolution), allowing entirely different layouts for each breakpoint.
 
-<div class="mermaid">
-graph TD
-    A[Browser renders page] --> B{Viewport width?}
-    B -- "> 1024px" --> C[Desktop layout: multi-column, full nav]
-    B -- "600 to 1024px" --> D[Tablet layout: condensed nav, 2 cols]
-    B -- "< 600px" --> E[Mobile layout: single col, hamburger nav]
-    C & D & E --> F[Same HTML, different CSS rules applied]
-</div>
+At page load the browser evaluates each media query against the current viewport width. The matching CSS rules activate — switching column counts, resizing images, collapsing navigation into a menu — while the HTML remains identical across all devices.
 
 ### Key Design Decisions
 

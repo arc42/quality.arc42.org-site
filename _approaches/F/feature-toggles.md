@@ -13,22 +13,9 @@ permalink: /approaches/feature-toggles
 
 Every toggle is a named boolean (or multi-variant) condition evaluated at runtime. The application checks the toggle store and takes the appropriate code path. Toggle state is managed outside the codebase — enabling or disabling a feature requires no redeployment.
 
-<div class="mermaid">
-sequenceDiagram
-    participant App as Application
-    participant TS as Toggle Store
-    participant User
-
-    User->>App: Request
-    App->>TS: isEnabled("new-checkout-flow", user)
-    alt Toggle ON
-        TS-->>App: true
-        App-->>User: New checkout flow
-    else Toggle OFF
-        TS-->>App: false
-        App-->>User: Existing checkout flow
-    end
-</div>
+1. A request arrives. The application **checks the toggle store** for the named flag, passing the current user context if targeting rules apply.
+2. If the flag is **ON**, the new code path executes. If **OFF**, the existing path runs. The caller sees no difference in the interface.
+3. An operator can **flip the flag** in the toggle store at any time — no code change, no deployment required.
 
 ### Toggle Lifecycle
 
