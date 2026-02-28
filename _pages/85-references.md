@@ -86,6 +86,8 @@ A practical guide to eliciting, categorising, and documenting architectural requ
 
 R. B. Grady, Practical software metrics for project management and process improvement. Prentice-Hall, Inc., 1992.
 
+A hands-on guide to selecting, collecting, and interpreting software metrics in real projects, based on experience at Hewlett-Packard. Bridges the gap between quality theory and measurement practice — showing how to turn quality goals into trackable indicators.
+
 <a id="harrer-quality-tactics"></a>
 ### Harrer: Quality Tactics
 
