@@ -207,6 +207,8 @@ H. Washizaki et al. (eds.), Guide to the Software Engineering Body of Knowledge 
 
 Available [online](https://www.swebok.org/)
 
+The IEEE's comprehensive reference for the discipline of software engineering. Version 4.0 (2024) includes a dedicated knowledge area on software quality, covering quality models, measurement, and assurance processes — useful as a baseline when defining what "quality" means in a project context.
+
 <a id="starke2021software"></a>
 ### Starke/Lorz: Software Architecture Foundations 
 
