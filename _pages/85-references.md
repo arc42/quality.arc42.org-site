@@ -252,6 +252,8 @@ S. Robertson and J. Robertson, Volere Requirements Specification Template
 
 Available [online](https://www.cin.ufpe.br/~in1020/docs/publicacoes/Volere_template16.pdf)
 
+A structured template for capturing both functional and non-functional (quality) requirements, including fit criteria — measurable conditions that determine whether a requirement has been satisfied. The fit-criterion concept directly mirrors the acceptance-criteria approach used throughout this site.
+
 <a id="w3c-design-tokens"></a>
 ### W3C Design Tokens Community Group
 
