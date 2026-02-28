@@ -2,7 +2,20 @@
 title: Feature Toggles
 tags: [flexible, operable]
 supported_qualities: [deployability, flexibility, testability, changeability]
+supported_qualities_notes:
+  deployability: Allows code deployment independently from feature release timing.
+  flexibility: Enables runtime control by cohort, environment, or rollout percentage.
+  testability: Supports safe experiments and canary rollout validation in production.
+  changeability: Decouples implementation changes from immediate user exposure.
 tradeoffs: [maintainability, code-complexity, reliability]
+tradeoff_notes:
+  maintainability: Long-lived toggles create technical debt and dead paths.
+  code-complexity: Branching logic multiplies execution paths and test effort.
+  reliability: Inconsistent flag evaluation can produce incoherent behavior.
+related_requirements: [fast-deployment, fast-rollout-of-changes]
+related_requirements_notes:
+  fast-deployment: Supports shipping code quickly while keeping risky behavior disabled.
+  fast-rollout-of-changes: Enables gradual rollout and rapid rollback without redeploy.
 intent: Decouple the deployment of code from the release of features by wrapping new behaviour behind a runtime-configurable flag.
 mechanism: Wrap new or risky code paths in a conditional check against a toggle store (configuration file, database, or feature-flag service). The toggle can be switched on or off per environment, user cohort, or percentage rollout — without a code deployment.
 applicability: Use when you need to merge incomplete features to the main branch without exposing them to users (trunk-based development), when you want to do canary releases or A/B tests, or when you need a fast kill switch for risky changes. Avoid retaining toggles permanently — treat them as technical debt with an explicit expiry.
@@ -47,11 +60,6 @@ Every toggle is a named boolean (or multi-variant) condition evaluated at runtim
 - **Test matrix:** For critical toggles, run the test suite with the toggle both ON and OFF in CI.
 - **Rollout monitoring:** After each increment of a canary rollout, monitor error rate, p95 latency, and key business metrics for at least 30 minutes before proceeding.
 - **Kill-switch drill:** Periodically verify that an ops toggle can be flipped to OFF within the SLA recovery window (e.g. ≤ 5 minutes) without a code deploy.
-
-## Related Requirements
-
-- [fast-deployment](/requirements/fast-deployment)
-- [fast-rollout-of-changes](/requirements/fast-rollout-of-changes)
 
 ## Variants
 

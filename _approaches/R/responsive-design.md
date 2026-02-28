@@ -2,7 +2,19 @@
 title: Responsive Design
 tags: [usable]
 supported_qualities: [usability, accessibility, adaptability]
+supported_qualities_notes:
+  usability: Preserves task flow across desktop, tablet, and mobile viewports.
+  accessibility: Supports readable layouts and touch-friendly controls on all devices.
+  adaptability: Adjusts presentation to differing screen sizes and capabilities.
 tradeoffs: [performance, maintainability]
+tradeoff_notes:
+  performance: Adaptive layouts can still ship heavy assets without careful optimization.
+  maintainability: Breakpoints and cross-device testing increase styling complexity.
+related_requirements: [usable-on-latest-browsers, usable-on-factory-floor, usable-with-gloves]
+related_requirements_notes:
+  usable-on-latest-browsers: Helps ensure consistent behavior across current browser engines.
+  usable-on-factory-floor: Supports constrained devices and harsh operating environments.
+  usable-with-gloves: Encourages larger touch targets and simplified interaction patterns.
 intent: Ensure a single codebase renders correctly and usably across the full range of screen sizes, input methods, and device capabilities.
 mechanism: Use fluid grids, flexible images, and CSS media queries to adapt layout and content presentation to the available viewport, rather than serving separate sites per device class.
 applicability: Use for any web application or content site where users access it from more than one class of device. Avoid when the use case is strictly single-device (e.g. a kiosk application with a fixed screen), or when a native app provides a clearly better experience than a responsive web app.
@@ -41,12 +53,6 @@ At page load the browser evaluates each media query against the current viewport
 - **WCAG 2.5.5 audit:** Verify all interactive controls meet minimum 44 × 44 px target size on touch screens.
 - **Load time on 4G:** Measure Time to Interactive on a simulated 4G connection; target ≤ 3 s for primary user journeys.
 - **Automated visual regression:** Tools like Percy or Chromatic can diff layouts across breakpoints in CI.
-
-## Related Requirements
-
-- [usable-on-latest-browsers](/requirements/usable-on-latest-browsers)
-- [usable-on-factory-floor](/requirements/usable-on-factory-floor)
-- [usable-with-gloves](/requirements/usable-with-gloves)
 
 ## Variants
 

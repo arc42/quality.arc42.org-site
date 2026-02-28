@@ -3,7 +3,16 @@ layout: approach
 title: Caching
 tags: [efficient, reliable]
 supported_qualities: [performance, scalability, responsiveness]
+supported_qualities_notes:
+  performance: Reduces repeated expensive operations and lowers response time.
+  scalability: Offloads backend services to handle higher concurrent demand.
+  responsiveness: Returns frequent queries faster from near-memory storage.
 tradeoffs: [consistency, code-complexity, memory-usage]
+tradeoff_notes:
+  consistency: Cached values can become stale between updates and invalidation.
+  code-complexity: Cache invalidation and eviction policies add implementation overhead.
+  memory-usage: Large or unbounded caches can consume significant memory.
+related_requirements: []
 intent: Store frequently accessed data closer to the consumer to reduce latency and load on backend systems.
 mechanism: Intercept data requests and serve previously computed or fetched results from a fast-access store, avoiding repeated expensive operations.
 applicability: Use when data is read more often than written, when slight staleness is acceptable, and when backend latency or load is a concern. Avoid when data must always be real-time consistent or when the working set exceeds available cache memory.

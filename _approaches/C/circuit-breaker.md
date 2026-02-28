@@ -2,7 +2,15 @@
 title: Circuit Breaker
 tags: [reliable, operable]
 supported_qualities: [resilience, stability, fault-tolerance]
+supported_qualities_notes:
+  resilience: Improves uptime by containing dependency failures.
+  stability: Prevents cascading errors across service boundaries.
+  fault-tolerance: Enables controlled degradation under partial failures.
 tradeoffs: [maintainability, latency]
+tradeoff_notes:
+  maintainability: Adds threshold and fallback logic that must be maintained.
+  latency: Can introduce additional checks and timeout handling per request.
+related_requirements: []
 intent: Prevent a failure in one part of the system from cascading to others by failing fast when a remote service is struggling.
 mechanism: Monitor remote calls and, if failures exceed a threshold, "trip" the circuit to immediately return an error for subsequent calls, allowing the remote service time to recover.
 applicability: Use when making remote calls (API, DB, etc.) that can fail or become slow. Avoid for local calls or when a failure must be immediately retried without delay.
@@ -30,10 +38,6 @@ The circuit starts **Closed**. Once failures exceed the configured threshold it 
 - Chaos engineering: Inject latency or failures into the remote service and verify the circuit trips.
 - Monitor state transitions and "Open" duration in production.
 - Verify fallback behavior (e.g., does it return a cached value or a helpful error message?).
-
-## Related Requirements
-
-- [Link to /requirements/R/resilience-requirement]
 
 ## Variants
 

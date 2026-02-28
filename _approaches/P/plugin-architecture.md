@@ -2,7 +2,18 @@
 title: Plugin Architecture
 tags: [flexible]
 supported_qualities: [extensibility, modifiability, reusability]
+supported_qualities_notes:
+  extensibility: Allows new capabilities to be added without core code changes.
+  modifiability: Localizes many behavior changes to plugin modules and contracts.
+  reusability: Shared plugin APIs can be reused across products and deployments.
 tradeoffs: [security, performance, maintainability]
+tradeoff_notes:
+  security: Untrusted plugins can execute harmful behavior without strict isolation.
+  performance: Indirection and plugin boundaries can increase invocation overhead.
+  maintainability: Versioning plugin contracts and compatibility adds ongoing effort.
+related_requirements: [fast-rollout-of-changes]
+related_requirements_notes:
+  fast-rollout-of-changes: Enables targeted capability rollout by enabling plugins incrementally.
 intent: Enable third parties — or independent teams — to extend system behaviour without modifying or redeploying its core.
 mechanism: Define a stable extension point (API, interface, or event bus) in the core. Plugins are self-contained units that register themselves against that extension point at startup or at runtime, and are loaded and invoked by the host through a shared contract.
 applicability: Use when you need to support a varying or unknown set of capabilities that cannot all be built into the core, or when different customers or environments need different feature combinations. Avoid when the extension set is fully known and fixed, or when the overhead of maintaining a plugin API is greater than the benefit.
@@ -47,10 +58,6 @@ The core application defines one or more **extension points** — typically inte
 - **Fault injection:** Force individual plugins to throw exceptions and verify the host continues running with remaining plugins active.
 - **Load testing with plugins disabled/enabled:** Measure the overhead of plugin invocation under production-level load; target < 5 % latency increase over a no-plugin baseline.
 - **Security scan:** If plugins come from external sources, scan each artifact (SAST, dependency vulnerability check) before allowing installation.
-
-## Related Requirements
-
-- [fast-rollout-of-changes](/requirements/fast-rollout-of-changes)
 
 ## Variants
 
