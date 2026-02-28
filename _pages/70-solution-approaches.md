@@ -5,20 +5,61 @@ permalink: /approaches/
 order: 70
 ---
 
-Solution approaches are **architectural tactics and patterns** that help achieve specific quality attributes.
-They bridge the gap from quality requirements to concrete implementation decisions.
-
-Each approach documents intent, mechanism, supported qualities, and trade-offs.
-
 {% assign valid_tags = site.data.standard_tags.tags | sort %}
 {% assign approaches_sorted = site.approaches | sort: "title" %}
+{% assign dimensions_with_approaches = 0 %}
+{% for tag in valid_tags %}
+  {% assign approaches_count_for_tag = 0 %}
+  {% for approach in approaches_sorted %}
+    {% if approach.tags contains tag %}
+      {% assign approaches_count_for_tag = approaches_count_for_tag | plus: 1 %}
+    {% endif %}
+  {% endfor %}
+  {% if approaches_count_for_tag > 0 %}
+    {% assign dimensions_with_approaches = dimensions_with_approaches | plus: 1 %}
+  {% endif %}
+{% endfor %}
 
 <div class="approach-entry">
-  <div class="approach-entry-mode-switch">
-    <button class="approach-entry-mode-btn active" type="button" data-target="explorer">Dimension Explorer (default)</button>
-    <button class="approach-entry-mode-btn" type="button" data-target="dimlist">Dimension List</button>
-    <button class="approach-entry-mode-btn" type="button" data-target="search">Keyword Search</button>
-  </div>
+  <section class="approach-entry-hero">
+    <h2 class="approach-entry-hero-title">
+      <i class="fa fa-puzzle-piece" aria-hidden="true"></i>
+      Solution Approaches: Dimension Views + Search
+    </h2>
+
+    <p class="approach-entry-hero-text">
+      Solution approaches are <strong>architectural tactics and patterns</strong> that help achieve specific quality attributes.
+      They bridge the gap from quality requirements to concrete implementation decisions.
+      Use <strong>dimension explorer</strong> for guided filtering, <strong>dimension list</strong> for full grouped browsing, and
+      <strong>keyword search</strong> for quick text-based lookup.
+    </p>
+
+    <div class="approach-entry-mode-switch" aria-label="Approach browsing modes">
+      <button class="approach-entry-mode-btn active" type="button" data-target="explorer">
+        <span class="approach-entry-mode-name">Dimension Explorer (default)</span>
+        <span class="approach-entry-mode-desc">Filter by dimension and browse matching approaches.</span>
+      </button>
+      <button class="approach-entry-mode-btn" type="button" data-target="dimlist">
+        <span class="approach-entry-mode-name">Dimension List</span>
+        <span class="approach-entry-mode-desc">See all approaches under each dimension.</span>
+      </button>
+      <button class="approach-entry-mode-btn" type="button" data-target="search">
+        <span class="approach-entry-mode-name">Keyword Search</span>
+        <span class="approach-entry-mode-desc">Search by name, tags, qualities, and trade-offs.</span>
+      </button>
+    </div>
+
+    <div class="approach-entry-hero-footer">
+      <div class="approach-entry-hero-stat">
+        <span class="approach-entry-hero-stat-value">{{ approaches_sorted | size }}</span>
+        <span class="approach-entry-hero-stat-label">Approaches</span>
+      </div>
+      <div class="approach-entry-hero-stat">
+        <span class="approach-entry-hero-stat-value">{{ dimensions_with_approaches }}</span>
+        <span class="approach-entry-hero-stat-label">Dimensions</span>
+      </div>
+    </div>
+  </section>
 
   <section id="approach-entry-panel-explorer" class="approach-entry-panel active">
     <div class="approach-entry-explorer">
@@ -166,42 +207,161 @@ Each approach documents intent, mechanism, supported qualities, and trade-offs.
 
 <style>
   .approach-entry {
-    margin-top: 0.8rem;
+    margin-top: 0.7rem;
+    --app-border: rgba(56, 133, 50, 0.34);
+    --app-border-strong: rgba(34, 104, 29, 0.5);
+    --app-surface: #f8fff5;
+    --app-surface-strong: #f2fde9;
+    --app-text-soft: #496346;
+  }
+
+  .approach-entry-hero {
+    position: relative;
+    margin: 0 0 1rem;
+    padding: 1.05rem 1.05rem 0.95rem;
+    border-radius: 12px;
+    border: 1px solid var(--app-border);
+    background:
+      radial-gradient(circle at 0% 0%, rgba(146, 239, 128, 0.24), transparent 54%),
+      radial-gradient(circle at 100% 100%, rgba(94, 197, 82, 0.18), transparent 58%),
+      var(--app-surface);
+    overflow: hidden;
+  }
+
+  .approach-entry-hero::after {
+    content: "";
+    position: absolute;
+    top: -24%;
+    right: -9%;
+    width: 42%;
+    height: 180%;
+    transform: rotate(12deg);
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.34) 0%,
+      rgba(255, 255, 255, 0.08) 70%,
+      rgba(255, 255, 255, 0) 100%
+    );
+    pointer-events: none;
+  }
+
+  .approach-entry-hero-title {
+    margin: 0 0 0.38rem;
+    color: var(--approaches-text-color) !important;
+    font-size: 1.38rem;
+    line-height: 1.2;
+  }
+
+  .approach-entry-hero-title .fa-puzzle-piece {
+    margin-right: 0.42rem;
+    font-size: 0.88em;
+    color: #2a7c26;
+  }
+
+  .approach-entry-hero-text {
+    margin: 0;
+    color: var(--app-text-soft);
+    max-width: 78ch;
   }
 
   .approach-entry-mode-switch {
-    display: inline-flex;
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 0.42rem;
-    flex-wrap: wrap;
-    border: 1px solid var(--approaches-soft-background-color);
-    border-radius: 999px;
-    padding: 0.35rem;
-    background: #f8fff7;
-    margin-bottom: 0.9rem;
+    margin-top: 0.8rem;
   }
 
   .approach-entry-mode-btn {
-    border: 1px solid rgba(27, 94, 32, 0.35);
-    border-radius: 999px;
-    background: #ffffff;
+    display: flex;
+    flex-direction: column;
+    gap: 0.12rem;
+    align-items: flex-start;
+    text-align: left;
+    width: 100%;
+    font: inherit;
+    border: 1px solid var(--app-border);
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.72);
     color: var(--approaches-text-color);
-    font-size: 0.86rem;
-    font-weight: 700;
-    padding: 0.36rem 0.78rem;
+    padding: 0.52rem 0.62rem;
     cursor: pointer;
+    transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease, background 0.18s ease;
   }
 
   .approach-entry-mode-btn.active {
-    border-color: transparent;
-    background: var(--approaches-background-color);
+    border-color: var(--app-border-strong);
+    background: linear-gradient(180deg, rgba(237, 255, 232, 0.95), rgba(219, 249, 209, 0.92));
+    box-shadow: inset 0 0 0 1px rgba(60, 141, 53, 0.18);
     color: var(--approaches-text-color);
+  }
+
+  .approach-entry-mode-btn:hover,
+  .approach-entry-mode-btn:focus-visible {
+    border-color: var(--app-border-strong);
+    background: linear-gradient(180deg, rgba(244, 255, 240, 0.95), rgba(225, 250, 216, 0.92));
+    box-shadow: 0 4px 10px rgba(21, 56, 18, 0.12);
+    transform: translateY(-1px);
+  }
+
+  .approach-entry-mode-btn:focus-visible {
+    outline: 2px solid rgba(44, 120, 38, 0.48);
+    outline-offset: 2px;
+  }
+
+  .approach-entry-mode-name {
+    font-size: 0.83rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: var(--approaches-text-color);
+  }
+
+  .approach-entry-mode-desc {
+    font-size: 0.85rem;
+    color: var(--app-text-soft);
+    line-height: 1.3;
+    font-weight: 500;
+  }
+
+  .approach-entry-hero-footer {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.52rem;
+    margin-top: 0.78rem;
+  }
+
+  .approach-entry-hero-stat {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.35rem;
+    padding: 0.29rem 0.68rem;
+    border-radius: 999px;
+    border: 1px solid var(--app-border);
+    background: rgba(255, 255, 255, 0.86);
+  }
+
+  .approach-entry-hero-stat-value {
+    color: #2f7727;
+    font-size: 0.95rem;
+    font-weight: 700;
+  }
+
+  .approach-entry-hero-stat-label {
+    color: var(--app-text-soft);
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.01em;
   }
 
   .approach-entry-panel {
     display: none;
-    border: 1px solid var(--line-soft, #e9f0f6);
+    border: 1px solid var(--app-border);
     border-radius: 12px;
-    background: #ffffff;
+    background: #fbfffa;
     padding: 0.85rem;
   }
 
@@ -216,10 +376,10 @@ Each approach documents intent, mechanism, supported qualities, and trade-offs.
   }
 
   .approach-entry-dim-nav {
-    border: 1px solid var(--line-soft, #e9f0f6);
+    border: 1px solid var(--app-border);
     border-radius: 10px;
     padding: 0.7rem;
-    background: #fbfefb;
+    background: #f7fdf4;
   }
 
   .approach-entry-dim-nav h3 {
@@ -256,9 +416,10 @@ Each approach documents intent, mechanism, supported qualities, and trade-offs.
   }
 
   .approach-entry-results-pane {
-    border: 1px solid var(--line-soft, #e9f0f6);
+    border: 1px solid var(--app-border);
     border-radius: 10px;
     padding: 0.7rem;
+    background: #ffffff;
   }
 
   .approach-entry-results-block {
@@ -295,7 +456,7 @@ Each approach documents intent, mechanism, supported qualities, and trade-offs.
   }
 
   .approach-entry-approach-list li {
-    border-bottom: 1px solid var(--line-soft, #e9f0f6);
+    border-bottom: 1px solid rgba(56, 133, 50, 0.2);
     padding: 0.5rem 0.2rem 0.55rem;
     margin: 0;
   }
@@ -448,10 +609,10 @@ Each approach documents intent, mechanism, supported qualities, and trade-offs.
   }
 
   .approach-entry-search-card {
-    border: 1px solid var(--line-soft, #e9f0f6);
+    border: 1px solid rgba(56, 133, 50, 0.24);
     border-radius: 10px;
     padding: 0.62rem;
-    background: #fff;
+    background: #fdfffc;
   }
 
   .approach-entry-search-card h4 {
