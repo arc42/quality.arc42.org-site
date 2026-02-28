@@ -261,6 +261,8 @@ Design Tokens Community Group, ‘Design Tokens Format Module’, 2024.
 
 Available [online](https://www.w3.org/community/design-tokens/)
 
+A W3C community specification defining a vendor-neutral file format for encoding design decisions (colours, typography, spacing) as shareable tokens. Enables a single source of design truth to generate platform-specific code for web, iOS, Android, and Flutter — a key enabler of visual consistency and portability across products.
+
 <a id="wikipedia-theming"></a>
 ### Wikipedia: Theming (Computing)
 
