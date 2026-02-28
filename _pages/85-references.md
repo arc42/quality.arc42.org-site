@@ -120,6 +120,8 @@ ISO/IEC DIS 25010(en): Systems and software engineering — Systems and software
 
 Available [online](https://www.iso.org/obp/ui/#iso:std:iso-iec:25010:dis:ed-2:v1:en)
 
+The widely cited 2011 edition of the SQuaRE product quality model, defining eight top-level quality characteristics (functional suitability, reliability, performance efficiency, usability, security, maintainability, compatibility, portability). Still the version most practitioners and tools reference, though superseded by the 2023 revision.
+
 <a id="iso-25010-2022"></a>
 <a id="iso-25010-2023"></a>
 ### ISO 25010 (updated version 2023)
