@@ -5,7 +5,7 @@ permalink: /references/
 order: 85
 ---
 
-[Aroms/NIST](#nist-idps) · [Bass et al.](#bass2021software) · [bbv](#bbvquality) · [Boehm 1976](#boehm1976quantitative) · [Boehm 1978](#boehm1978characteristics) · [Cavano/McCall](#mccall) · [Crosby](#crosby-quality) · [Eeles](#eeles2005capturing) · [Frost](#brad-frost-theming) · [Grady](#grady1992practical) · [Harasymczuk](#astrotech) · [Harrer](#harrer-quality-tactics) · [Hohpe/Woolf](#hohpe2004enterprise) · [ISO 9241](#iso-9241-110) · [ISO 25010 (2011)](#iso-25010-2011) · [ISO 25010 (2023)](#iso-25010-2022) · [Jamwal et al.](#jamwal) · [Kazman et al.](#kazman-maintainability) · [Martin](#martin-clean-architecture) · [McCabe](#mccabe1976complexity) · [McCall/Matsumoto](#mccall1980software) · [McCall/Walters](#mccall1977factors) · [Mockus et al.](#mockus2010experiences) · [Robertson/Robertson](#volere) · [Starke/Lorz](#starke2021software) · [SWEBOK](#swebok) · [W3C](#w3c-design-tokens) · [Wikipedia](#wikipedia-theming)
+[Aroms/NIST](#nist-idps) · [Bass et al.](#bass2021software) · [bbv](#bbvquality) · [Boehm 1976](#boehm1976quantitative) · [Boehm 1978](#boehm1978characteristics) · [Cavano/McCall](#mccall) · [Crosby](#crosby-quality) · [Eeles](#eeles2005capturing) · [Frost](#brad-frost-theming) · [Forsgren/Humble/Kim](#forsgren-accelerate) · [Grady](#grady1992practical) · [Harasymczuk](#astrotech) · [Harrer](#harrer-quality-tactics) · [Hohpe/Woolf](#hohpe2004enterprise) · [ISO 9241](#iso-9241-110) · [ISO 25010 (2011)](#iso-25010-2011) · [ISO 25010 (2023)](#iso-25010-2022) · [Jamwal et al.](#jamwal) · [Kazman et al.](#kazman-maintainability) · [Martin](#martin-clean-architecture) · [McCabe](#mccabe1976complexity) · [McCall/Matsumoto](#mccall1980software) · [McCall/Walters](#mccall1977factors) · [Mockus et al.](#mockus2010experiences) · [Robertson/Robertson](#volere) · [Starke/Lorz](#starke2021software) · [SWEBOK](#swebok) · [W3C](#w3c-design-tokens) · [Wikipedia](#wikipedia-theming)
 
 ---
 
@@ -81,6 +81,15 @@ Also by this author: [Non-functional Requirements](https://pdfs.semanticscholar.
 
 A practical guide to eliciting, categorising, and documenting architectural requirements — including non-functional requirements, constraints, and principles. Directly applicable to writing quality requirements that architects can actually act on.
 
+<a id="forsgren-accelerate"></a>
+### Forsgren, Humble & Kim: Accelerate
+
+N. Forsgren, J. Humble, and G. Kim, _Accelerate: The Science of Lean Software and DevOps_. IT Revolution Press, 2018.
+
+Available [online](https://itrevolution.com/product/accelerate/)
+
+Presents four years of rigorous research establishing the four key software delivery metrics — deployment frequency, lead time for changes, change failure rate, and time to restore — as empirically validated predictors of organisational performance. Provides a research-backed foundation for writing measurable deployability and reliability quality requirements.
+
 <a id="grady1992practical"></a>
 ### B. Grady, Practical software metrics for project management and process improvement
 
@@ -132,6 +141,8 @@ Systems and software engineering — Systems and software Quality Requirements a
 Available [online](https://www.iso.org/obp/ui/#iso:std:iso-iec:25010:ed-2:v1:en)
 
 The authoritative international standard defining the product quality model used as the backbone of this site. The 2023 revision restructures the eight top-level quality characteristics and refines sub-characteristics, superseding the 2011 edition for most practical purposes.
+
+However, as discussed in [Shortcomings of ISO 25010](/articles/iso-25010-shortcomings), the standard remains problematic for practitioners. Its abstract terminology, overlapping definitions, and rigid hierarchy often lack pragmatism, while essential aspects like code quality and operational concerns are largely ignored. The paywall further limits its practical accessibility for many development teams.
 
 <a id="jamwal"></a>
 ### Jamwal et al.: Comparative Analysis of Different Software Quality Models
