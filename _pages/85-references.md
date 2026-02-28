@@ -111,6 +111,8 @@ I. O. for Standardization, ISO 9241-110: Ergonomics of human-system interaction 
 
 Available [online](https://www.iso.org/obp/ui/#iso:std:iso:9241:-110:ed-2:v1:en)
 
+Defines seven dialogue principles for interactive systems — task-suitability, self-descriptiveness, conformity with user expectations, learnability, controllability, error tolerance, and user engagement. The normative foundation for usability and accessibility quality requirements in user-facing software.
+
 <a id="iso-25010-2011"></a>
 ### ISO 25010 (v. 2011-2017)
 
