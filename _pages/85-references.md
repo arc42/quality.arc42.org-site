@@ -269,3 +269,5 @@ A W3C community specification defining a vendor-neutral file format for encoding
 Wikipedia contributors, ‘Theming (computing)’, Wikipedia, The Free Encyclopedia.
 
 Available [online](https://en.wikipedia.org/wiki/Theming_(computing))
+
+Overview of theming as a computing concept — the mechanism by which a user interface’s visual appearance (colours, fonts, icons, layout) can be swapped without changing underlying functionality. Useful context for understanding visual flexibility as a quality characteristic in UI-heavy systems.
