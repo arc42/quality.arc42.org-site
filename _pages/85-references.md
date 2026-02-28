@@ -62,6 +62,8 @@ B. Barry, ‘Characteristics of Software Quality, TRW Series of Software Technol
 
 Philip B. Crosby: Quality is Free: The Art of Making Quality Certain. McGraw Hill Books, 1994.
 
+A management classic arguing that the cost of poor quality always exceeds the cost of preventing it. Introduced the notion of "zero defects" and the idea that quality is defined as conformance to requirements — a framing that still resonates when writing acceptance criteria.
+
 <a id="eeles2005capturing"></a>
 ### Eeles: Capturing Architectural Requirements
 
