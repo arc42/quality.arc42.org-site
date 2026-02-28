@@ -129,6 +129,8 @@ R. Kazman, P. Bianco, J. Ivers, and J. Klein, ‘Maintainability’, 2020.
 
 Available [online](https://resources.sei.cmu.edu/asset_files/TechnicalReport/2020_005_001_650490.pdf)
 
+A SEI technical report providing a rigorous definition of maintainability and its sub-characteristics (modularity, reusability, analysability, modifiability, testability). Particularly useful for operationalising maintainability requirements with concrete, measurable criteria.
+
 <a id="martin-clean-architecture"></a>
 ### Martin et al.: Clean Architecture
 
