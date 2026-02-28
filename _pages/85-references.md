@@ -215,6 +215,8 @@ A. Mockus, B. Anda, and D. I. K. Sjøberg, ‘Experiences from replicating a cas
 
 Available [online](https://www.academia.edu/download/48902272/Experiences_from_replicating_a_case_stud20160917-12517-1j07fpz.pdf)
 
+Reports on attempts to replicate software development experiments across independent teams, highlighting how difficult it is to reproduce results — and therefore why reproducibility needs to be treated as an explicit quality requirement. Relevant background for quality requirements around reliability of processes, not just products.
+
 <a id="nist-idps"></a>
 ### Aroms: NIST Intrusion Detection and Prevention Systems (IDPS)
 
