@@ -5,6 +5,10 @@ permalink: /references/
 order: 85
 ---
 
+[Aroms/NIST](#nist-idps) · [Bass et al.](#bass2021software) · [bbv](#bbvquality) · [Boehm 1976](#boehm1976quantitative) · [Boehm 1978](#boehm1978characteristics) · [Cavano/McCall](#mccall) · [Crosby](#crosby-quality) · [Eeles](#eeles2005capturing) · [Frost](#brad-frost-theming) · [Grady](#grady1992practical) · [Harasymczuk](#astrotech) · [Harrer](#harrer-quality-tactics) · [Hohpe/Woolf](#hohpe2004enterprise) · [ISO 9241](#iso-9241-110) · [ISO 25010 (2011)](#iso-25010-2011) · [ISO 25010 (2023)](#iso-25010-2022) · [Jamwal et al.](#jamwal) · [Kazman et al.](#kazman-maintainability) · [Martin](#martin-clean-architecture) · [McCabe](#mccabe1976complexity) · [McCall/Matsumoto](#mccall1980software) · [McCall/Walters](#mccall1977factors) · [Mockus et al.](#mockus2010experiences) · [Robertson/Robertson](#volere) · [Starke/Lorz](#starke2021software) · [SWEBOK](#swebok) · [W3C](#w3c-design-tokens) · [Wikipedia](#wikipedia-theming)
+
+---
+
 <a id="astrotech"></a>
 ### astrotech.io: Quality Models
 
@@ -69,6 +73,15 @@ Also by this author: [Non-functional Requirements](https://pdfs.semanticscholar.
 ### B. Grady, Practical software metrics for project management and process improvement
 
 R. B. Grady, Practical software metrics for project management and process improvement. Prentice-Hall, Inc., 1992.
+
+<a id="harrer-quality-tactics"></a>
+### Harrer: Quality Tactics
+
+M. Harrer, _Quality Tactics: Developing Quality-Driven Solution Strategies for Software Architectures_. Leanpub, 2025.
+
+Available [online](https://leanpub.com/qualitytactics)
+
+A practical reference for software architects covering hundreds of proven tactics across eight quality dimensions (functional suitability, usability, reliability, performance efficiency, security, maintainability, compatibility, portability). Originally published in German as _Qualitätstaktiken_.
 
 <a id="hohpe2004enterprise"></a>
 ### G. Hohpe and B. Woolf, Enterprise integration patterns
