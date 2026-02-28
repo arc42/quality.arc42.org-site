@@ -67,9 +67,11 @@ Philip B. Crosby: Quality is Free: The Art of Making Quality Certain. McGraw Hil
 
 P. Eeles, ‘Capturing architectural requirements’, IBM Rational developer works, 2005.
 
-Available [online](https://web.archive.org/web/20201112020231/http://www.ibm.com/developerworks/rational/library/4706.html#N100A7) 
+Available [online](https://web.archive.org/web/20201112020231/http://www.ibm.com/developerworks/rational/library/4706.html#N100A7)
 
 Also by this author: [Non-functional Requirements](https://pdfs.semanticscholar.org/f3bb/91080c4573f6f78f30bc5b48bda3ef252bf2.pdf)
+
+A practical guide to eliciting, categorising, and documenting architectural requirements — including non-functional requirements, constraints, and principles. Directly applicable to writing quality requirements that architects can actually act on.
 
 <a id="grady1992practical"></a>
 ### B. Grady, Practical software metrics for project management and process improvement
