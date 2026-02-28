@@ -40,7 +40,7 @@ B. Frost, ‘The Many Faces of Themeable Design Systems’, 2023.
 
 Available [online](https://bradfrost.com/blog/post/the-many-faces-of-themeable-design-systems/)
 
-
+Argues that a three-tiered design token architecture allows a single component library to serve multiple brands, white-label products, and dark/light modes by flowing different aesthetic themes through shared components. Directly relevant to the flexibility and portability quality characteristics in UI-heavy systems.
 
 <a id="boehm1976quantitative"></a>
 ### Boehm et al.: Quantitative Evaluation of Software Quality
