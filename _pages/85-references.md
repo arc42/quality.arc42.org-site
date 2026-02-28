@@ -216,6 +216,8 @@ G. Starke and A. Lorz, Software Architecture Foundation: CPSA Foundation® Exam 
 
 >Remark: Since May 2023 a second edition of this book is available, containing several bugfixes.
 
+Covers the core concepts of the iSAQB® CPSA Foundation curriculum, including a chapter on quality requirements and their role in architectural decisions. A concise introduction for readers new to the relationship between architecture and quality.
+
 
 <a id="volere"></a>
 ### Robertson/Robertson: Volere Requirements Specification Template
