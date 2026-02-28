@@ -113,6 +113,7 @@ Systems and software engineering — Systems and software Quality Requirements a
 
 Available [online](https://www.iso.org/obp/ui/#iso:std:iso-iec:25010:ed-2:v1:en)
 
+The authoritative international standard defining the product quality model used as the backbone of this site. The 2023 revision restructures the eight top-level quality characteristics and refines sub-characteristics, superseding the 2011 edition for most practical purposes.
 
 <a id="jamwal"></a>
 ### Jamwal et al.: Comparative Analysis of Different Software Quality Models
