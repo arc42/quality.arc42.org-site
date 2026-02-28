@@ -159,9 +159,11 @@ Nice statement:
 <a id="mccabe1976complexity"></a>
 ### McCabe: A complexity measure
 
-T. J. McCabe, ‘A complexity measure’, IEEE Transactions on software Engineering, no. 4, pp. 308–320, 1976. 
+T. J. McCabe, ‘A complexity measure’, IEEE Transactions on software Engineering, no. 4, pp. 308–320, 1976.
 
 Available [online](https://www.cs.mtsu.edu/~untch/6050/private/McCabe1976.pdf)
+
+The paper that introduced _cyclomatic complexity_ — a graph-theoretic metric counting the number of linearly independent paths through source code. Remains the most widely used proxy for maintainability and testability in static analysis tooling today.
 
 <a id="mccall1980software"></a>
 ### McCall/Matsumuto: Software Quality Measurement Manual 
