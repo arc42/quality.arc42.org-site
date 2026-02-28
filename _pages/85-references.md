@@ -31,6 +31,8 @@ The standard reference for software architecture practitioners, covering archite
 
 bbv (a Swiss consulting and software company) have published a visual map of [software development quality](https://quality.bbv.ch/).
 
+An interactive visual overview that clusters software quality topics into areas such as process quality, product quality, and organisational quality. Helpful for teams who want a fast, diagram-driven introduction to how the different aspects of quality relate to each other.
+
 <a id="brad-frost-theming"></a>
 ### Brad Frost: The Many Faces of Themeable Design Systems
 
