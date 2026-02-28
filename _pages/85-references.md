@@ -22,6 +22,8 @@ Available [online](https://dev.astrotech.io/sonarqube/quality-models.html)
 
 L. Bass, P. Clements, and R. Kazman, Software architecture in practice, 4th ed. Addison-Wesley Professional, 2021.
 
+The standard reference for software architecture practitioners, covering architectural patterns, quality attribute tactics, and the relationship between architectural decisions and system quality. Chapters on availability, performance, security, and modifiability are directly relevant to defining quality requirements.
+
 <a id="bbvquality"></a>
 ### bbv Software Development Quality Map
 
