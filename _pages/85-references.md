@@ -224,6 +224,8 @@ E. Aroms, ‘NIST special publication 800-94 guide to intrusion detection and pr
 
 Available [online](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-94.pdf)
 
+The NIST reference guide for classifying and deploying intrusion detection and prevention systems, covering network-based, host-based, and wireless variants. Relevant background when specifying security monitoring quality requirements such as detection rate, false-positive thresholds, and response time.
+
 <a id="swebok"></a>
 ### SWEBOK (IEEE): Guide to the Software Engineering Body of Knowledge
 
