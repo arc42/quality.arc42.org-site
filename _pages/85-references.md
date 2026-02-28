@@ -140,6 +140,8 @@ R. S. Jamwal, D. Jamwal, and D. Padha, ‘Comparative analysis of different soft
 
 Available [online](https://docplayer.net/15320992-Comparative-analysis-of-different-software-quality-models.html)
 
+Side-by-side comparison of the McCall, Boehm, FURPS, Dromey, and ISO 9126 quality models, examining how each defines and organises quality characteristics. A useful starting point for understanding why the models differ and which aspects each one emphasises.
+
 <a id="kazman-maintainability"></a>
 ### Kazman et al.: Maintainability
 
