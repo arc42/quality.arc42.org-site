@@ -12,9 +12,11 @@ order: 85
 <a id="astrotech"></a>
 ### astrotech.io: Quality Models
 
-M. Harasymczuk "Quality - The Software Engineering." astrotech.io. 
+M. Harasymczuk "Quality - The Software Engineering." astrotech.io.
 
 Available [online](https://dev.astrotech.io/sonarqube/quality-models.html)
+
+A concise online overview of the major software quality models (McCall, Boehm, ISO 25010 and others), explaining their historical evolution and comparing how each model structures quality characteristics. Useful as a quick orientation before diving into the primary sources.
 
 <a id="bass2021software"></a>
 
