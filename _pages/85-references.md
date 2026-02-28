@@ -102,6 +102,8 @@ A practical reference for software architects covering hundreds of proven tactic
 
 G. Hohpe and B. Woolf, Enterprise integration patterns: Designing, building, and deploying messaging solutions. Addison-Wesley Professional, 2004.
 
+The definitive catalogue of 65 messaging patterns for integrating enterprise systems, each described with intent, motivation, and implementation guidance. A key reference for reliability, interoperability, and performance quality requirements in distributed or event-driven architectures.
+
 <a id="iso-9241-110"></a>
 ### ISO 9241 (v. 2006-2020)
 
