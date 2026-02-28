@@ -1,73 +1,117 @@
 # Action Plan: Integrating Solution Approaches into quality.arc42.org
 
-This document outlines the plan for adding "solution approaches" (architectural tactics and patterns) to the site, based on feedback from multiple AI assistants. The goal is to bridge the gap from "what" (quality requirements) to "how" (implementation ideas).
+This plan defines how to scale the approaches section to 100+ entries with stable quality and low editorial drift.
 
-## Summary of External Feedback
+## Foundation Decisions (Locked)
 
-All three provided answers (from GPT, Kimi, and Claude) strongly endorsed the idea as feasible and valuable. A remarkable consensus emerged on the core strategy:
+1. **Entity definition**
+   - An approach is an architectural tactic or pattern.
+   - It is not a product, library, or vendor tutorial.
 
-*   **Scope is critical:** Focus on curated, vendor-agnostic **architectural tactics/patterns**, not specific tools or comprehensive lists.
-*   **Curation over completion:** An opinionated, high-quality set is better than an exhaustive encyclopedia.
-*   **Cross-referencing is key:** The value lies in linking approaches to qualities, requirements, and especially **trade-offs**.
-*   **Start small:** Begin with a limited set to validate the concept before expanding.
+2. **Scope**
+   - Approaches are tagged against **9 top-level dimensions**:
+     - `suitable`, `usable`, `secure`, `reliable`, `operable`, `efficient`, `flexible`, `safe`, `maintainable`
 
-### Key Contributions by Source
+3. **Canonical template**
+   - Single source of truth: `TODO/approaches/TEMPLATE.md`.
+   - Every new approach page must conform to that template.
 
-*   **Answer 1 (GPT):** Provided a comprehensive and structured **content template** for an approach page (Intent, Mechanism, Trade-offs, Failure Modes, Verification, etc.). This is invaluable for ensuring consistency and quality.
-*   **Answer 2 (Kimi):** Emphasized the "knowledge graph" concept and suggested useful **contextual tags** (e.g., System Type, Effort, Maturity) and a hierarchical organization for long-term evolution.
-*   **Answer 3 (Claude):** Offered the most pragmatic starting point: scope the initial effort to the **8 top-level quality properties**. Crucially, it highlighted that documenting **trade-offs and *negatively* affected qualities** is a unique and powerful value proposition that other resources lack.
+4. **Schema constraints**
+   - `supported_qualities` uses existing quality slugs only.
+   - `tradeoffs` stays an array of simple quality slug strings.
+   - Required page-level metadata includes `tags` and `permalink`.
 
-There were no significant omissions; the answers were complementary and collectively provided a solid strategic foundation.
+## Content Model (Required Fields)
 
-## Action Plan
+Each approach page in `_approaches/` must contain:
 
-### Phase 1: Foundation and Scoping
+- `layout: approach`
+- `title`
+- `tags` (1-3 values from the 9 dimensions)
+- `supported_qualities` (array of existing quality slugs)
+- `tradeoffs` (array of existing quality slugs)
+- `intent` (single sentence)
+- `mechanism` (single paragraph)
+- `applicability` (single paragraph)
+- `permalink` (unique, kebab-case)
 
-1.  **[ ] Define "Approach" Entity:**
-    *   An approach is an **architectural tactic or pattern**. It is not a specific tool, library, or product.
-    *   The initial scope will be limited to approaches related to the **8 top-level quality properties** (Suitable, Usable, Secure, Reliable, Operable, Efficient, Flexible, Safe).
+Body expectations:
 
-2.  **[ ] Create the Content Model:**
-    *   Establish a firm template for each approach file, based on GPT's suggestion. This is the "definition of done" for a single approach.
-    *   **Required Fields:**
-        *   `title`: The name of the tactic (e.g., "Circuit Breaker").
-        *   `intent`: A one-sentence summary of the goal.
-        *   `mechanism`: A concise explanation of how it works.
-        *   `applicability`: When to use it and when not to.
-        *   `supported_qualities`: List of quality IDs it primarily supports.
-        *   `tradeoffs` (or `negatively_affected_qualities`): List of quality IDs it may negatively impact, with explanations. This is a critical field.
-        *   `failure_modes`: How this pattern can fail or be misused.
-        *   `verification_hooks`: Ideas on how to test or measure its effectiveness.
-        *   `related_requirements`: (Optional) Links to specific requirement examples.
-        *   `variants_and_implementations`: (Optional) Brief mention of common variations or example tools.
+- 1-2 short overview paragraphs.
+- Max 4 `##` headings to avoid header-heavy pages.
+- Verification content must include measurable checks.
 
-### Phase 2: Technical Implementation
+## Phased Delivery
 
-3.  **[ ] Set up Jekyll Structure:**
-    *   Create a new collection named `_approaches`.
-    *   Create a new layout file `_layouts/approach.html` to render a single approach page.
-    *   Design and implement `_includes` to display the cross-referenced lists (supported qualities, tradeoffs, etc.).
+### Phase 1: Baseline Alignment
 
-4.  **[ ] Implement Cross-Linking:**
-    *   Update the `_layouts/qualities.html` (or its includes) to query and display a list of "Related Approaches".
-    *   Ensure links are bidirectional where possible.
+- Create and lock the canonical template.
+- Align generation prompt and backlog documents to the same schema.
+- Confirm all contributors use the same field rules.
 
-### Phase 3: Content Creation (Pilot)
+Exit criteria:
 
-5.  **[ ] Populate a Pilot Set:**
-    *   Choose **two** top-level properties to start with (e.g., Reliability and Efficiency).
-    *   For each, identify and create 3-5 core approaches using the full content model.
-    *   This pilot set (~6-10 approaches) will be used to test the technical implementation and content strategy.
+- `TEMPLATE.md`, `approaches-prompt.md`, and `approaches-todo.md` are schema-consistent.
 
-6.  **[ ] Review and Refine:**
-    *   Review the pilot content internally. Is the level of detail correct? Is the cross-linking effective?
-    *   Adjust the content model and layouts based on the pilot.
+### Phase 2: Pilot Set
 
-### Phase 4: Expansion
+- Implement 6-10 approaches across high-impact areas (for example reliability and efficiency).
+- Validate rendering quality and cross-link usefulness.
 
-7.  **[ ] Expand Content:**
-    *   Incrementally add approaches for the remaining top-level properties.
-    *   Aim to have 5-10 approaches for each of the 8 properties.
+Exit criteria:
 
-8.  **[ ] Solicit Community Feedback:**
-    *   Once a substantial set is available, announce the new feature and ask for community input and contributions.
+- Pilot pages pass maintainer review for clarity, trade-offs, and verification depth.
+
+### Phase 3: Scale-Out
+
+- Expand incrementally to all 9 dimensions.
+- Keep pages concise and consistent with the template.
+- Review in small PR batches (max 3 approaches per PR).
+
+Exit criteria:
+
+- Stable quality across batches; no schema drift.
+
+## Technical Integration
+
+- Keep `_approaches` collection and `_layouts/approach.html` as rendering baseline.
+- Ensure `supported_qualities` and `tradeoffs` values resolve to existing `/qualities/<slug>`.
+- Maintain bidirectional navigation:
+  - quality pages -> related approaches
+  - approach pages -> supported qualities and trade-offs
+
+## Quality Gates
+
+For every new approach page:
+
+- Conforms to `TODO/approaches/TEMPLATE.md`.
+- Uses only valid quality slugs in `supported_qualities` and `tradeoffs`.
+- Uses only the 9 allowed dimension tags.
+- Provides non-generic trade-offs.
+- Provides at least 3 measurable verification ideas.
+- Contains no broken internal links.
+
+Repository-level checks:
+
+- `npm run build` succeeds.
+- `npm run test:links` reports no approach link errors.
+- No permalink collisions.
+
+## Risks and Mitigations
+
+- Risk: inconsistent metadata at scale.
+  - Mitigation: enforce single canonical template.
+- Risk: header-heavy, hard-to-scan pages.
+  - Mitigation: cap heading count and use concise section structure.
+- Risk: generic, low-value content.
+  - Mitigation: verification/trade-off quality gate and maintainer review.
+- Risk: too-large PRs reduce review quality.
+  - Mitigation: small batched PRs.
+
+## Definition of Done
+
+The initiative is successful when:
+
+- Approach pages are consistent, concise, and practically useful for architecture decisions.
+- Cross-linking from qualities to approaches is reliable.
+- The workflow can sustain 100+ entries without schema drift.

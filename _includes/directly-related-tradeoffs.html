@@ -1,0 +1,25 @@
+<h2 class="section-heading tradeoffs"><i class="fa fa-balance-scale"></i> Approaches with Potential Negative Impact</h2>
+<p>Solution approaches that may negatively affect this quality (trade-offs).</p>
+
+{% assign approaches = site.approaches %}
+
+<ul class="posts no-bullets">
+  {% assign found_any = false %}
+  {% assign check_title = include.item.permalink | split: "/" | last | downcase %}
+  
+  {% for approach in approaches %}
+    {% if approach.tradeoffs contains check_title %}
+      {% assign found_any = true %}
+      <li>
+        <a href="{{ approach.permalink }}">
+          <i class="fa fa-puzzle-piece fa-xs as-bullet" style="color: var(--approaches-text-color)"> </i> 
+          {{ approach.title }}
+        </a>
+      </li>
+    {% endif %}
+  {% endfor %}
+
+  {% if found_any == false %}
+    <li>No related trade-offs identified yet.</li>
+  {% endif %}
+</ul>

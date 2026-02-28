@@ -20,6 +20,10 @@
       --article-text: #4a148c;
       --approach-bg: #92ef80;
       --approach-text: #1b5e20;
+      --tradeoff-bg: #fbe9e3;
+      --tradeoff-text: #a04323;
+      --tradeoff-muted: #6b6b6b;
+      --tradeoff-link: #003366;
       --page-bg: #f7f8fa;
       --panel-border: #d8dce1;
     }
@@ -93,6 +97,7 @@
     .standards { background: var(--standard-bg); color: var(--standard-text); }
     .articles { background: var(--article-bg); color: var(--article-text); }
     .approaches { background: var(--approach-bg); color: var(--approach-text); }
+    .tradeoffs { background: var(--tradeoff-bg); color: var(--tradeoff-text); }
 
     .header-card {
       grid-column: 1 / -1;
@@ -163,6 +168,30 @@
     th {
       background: #f3f6f9;
     }
+
+    .tradeoff-preview {
+      margin-top: 10px;
+      background: var(--tradeoff-bg);
+      border-radius: 8px;
+      padding: 10px;
+    }
+
+    .tradeoff-preview .item {
+      margin: 6px 0;
+      color: var(--tradeoff-link);
+      font-weight: 700;
+    }
+
+    .tradeoff-preview .item i {
+      color: var(--tradeoff-text);
+      margin-right: 8px;
+    }
+
+    .tradeoff-preview .muted {
+      color: var(--tradeoff-muted);
+      font-weight: 400;
+      margin-left: 6px;
+    }
   </style>
 </head>
 <body>
@@ -204,6 +233,18 @@ Text:       #4A148C</pre>
 Text:       #1B5E20</pre>
     </section>
 
+    <section class="card tradeoffs">
+      <h2 class="card-title"><i class="fa-solid fa-scale-balanced"></i> Trade-offs (proposal, V1.A)</h2>
+      <pre class="codes">Background: #FBE9E3
+Text/Icon:  #A04323
+Muted text: #6B6B6B
+Links:      #003366</pre>
+      <div class="tradeoff-preview">
+        <div class="item"><i class="fa-solid fa-arrow-trend-down"></i>Maintainability <span class="muted">extra policy and tuning rules</span></div>
+        <div class="item"><i class="fa-solid fa-arrow-trend-down"></i>Latency <span class="muted">can add queueing or circuit checks</span></div>
+      </div>
+    </section>
+
     <section class="card header-card">
       <h2 class="card-title"><i class="fa-solid fa-heading"></i> Header (current)</h2>
       <pre class="codes">Background:    #357360
@@ -238,6 +279,37 @@ Counter text:  #FFAD80</pre>
           <td>#FFAD80 on #357360</td>
           <td>3.06:1</td>
           <td>AA pass (large text counters)</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="section">
+    <h2>Trade-off Proposal Snapshot (V1.A)</h2>
+    <p>This keeps green reserved for approaches. Trade-offs use a rust-on-soft-rust background-only treatment (no border) with muted per-item explanations.</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Pair</th>
+          <th>Contrast</th>
+          <th>Interpretation</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>#A04323 on #FBE9E3</td>
+          <td>5.38:1</td>
+          <td>AA pass (normal text)</td>
+        </tr>
+        <tr>
+          <td>#6B6B6B on #FBE9E3</td>
+          <td>4.53:1</td>
+          <td>AA pass (normal text, muted descriptions)</td>
+        </tr>
+        <tr>
+          <td>#003366 on #FBE9E3</td>
+          <td>10.73:1</td>
+          <td>AA/AAA pass (quality links)</td>
         </tr>
       </tbody>
     </table>

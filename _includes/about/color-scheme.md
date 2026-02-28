@@ -69,6 +69,9 @@
 /* Approaches */
 .ap-bg { background-color: #92ef80; color: #1b5e20; }
 .ap-ico { color: #1b5e20; }
+/* Trade-offs (relation on approach pages) */
+.t-bg { background-color: #fbe9e3; color: #a04323; }
+.t-ico { color: #a04323; }
 /* Header */
 .h-bg { background-color: #357360; color: #deefb7; }
 .h-ico { color: #deefb7; }
@@ -99,6 +102,10 @@ This site uses color coding to distinguish content types and a WCAG-improved hea
     <div class="color-name"><i class="fa fa-puzzle-piece ap-ico"></i> Approaches</div>
     <div class="color-codes">Background: #92EF80<br>Text: #1B5E20</div>
   </div>
+  <div class="color-grid-item t-bg">
+    <div class="color-name"><i class="fa fa-balance-scale t-ico"></i> Trade-offs (Approach relation)</div>
+    <div class="color-codes">Background: #FBE9E3<br>Text/Icon: #A04323<br>Muted: #6B6B6B</div>
+  </div>
   <div class="color-grid-item h-bg">
     <div class="color-name"><i class="fa fa-heading h-ico"></i> Header (current)</div>
     <div class="color-codes">
@@ -114,4 +121,5 @@ This site uses color coding to distinguish content types and a WCAG-improved hea
   </div>
 </div>
 
+<p><small>Trade-off note: this rust palette is used for negative influence relations on approach pages (not as a new content collection color).</small></p>
 <p><small>Accessibility note: current header colors were tuned for better readability; see <a href="/about/wcag-report/">WCAG Accessibility Report</a>.</small></p>
