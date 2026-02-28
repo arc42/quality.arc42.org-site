@@ -190,6 +190,8 @@ From this document:
 
 J. McCall and G. Walters, ‘Factors in Software Quality. National Technical Information Service (NTIS)’, Springfield, VA, USA, 1977.
 
+The original McCall quality model, organising eleven quality factors (correctness, reliability, efficiency, integrity, usability, maintainability, testability, flexibility, portability, reusability, interoperability) into three usage perspectives. One of the first systematic attempts to make software quality measurable and directly influenced the ISO 25010 lineage.
+
 <a id="mockus2010experiences"></a>
 ### Mockus et al.: Experiences from replicating a case study to investigate reproducibility of software development
 
