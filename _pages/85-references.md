@@ -137,6 +137,8 @@ A SEI technical report providing a rigorous definition of maintainability and it
 R. C. Martin, J. Grenning, and S. Brown, Clean architecture.
 Prentice Hall, 2018.
 
+Argues that good architecture maximises the number of decisions _not_ yet made, preserving flexibility by separating high-level policy from low-level detail. Foundational reading for understanding how structural decisions trade off against maintainability, testability, and deployability.
+
 <a id="mccall"></a>
 ### McCall/Cavano: A framework for the measurement of software quality 
 
