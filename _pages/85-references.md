@@ -61,6 +61,8 @@ Please note: Boehm's quality model is often (wrongly) dated to a 1978 publicatio
 
 B. Barry, ‘Characteristics of Software Quality, TRW Series of Software Technology’. New York: American Elsevier, 1978.
 
+The full monograph expanding the 1976 conference paper into a complete quality model with three top-level factors (product operation, product revision, product transition) and fifteen quality characteristics mapped to metrics. Together with the 1976 paper, this forms the "Boehm quality model" that influenced every subsequent quality standard.
+
 <a id="crosby-quality"></a>
 ### Crosby: Quality is Free
 
