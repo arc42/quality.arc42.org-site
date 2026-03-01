@@ -24,7 +24,7 @@ order: 70
   <section class="approach-entry-hero">
     <h2 class="approach-entry-hero-title">
       <i class="fa fa-puzzle-piece" aria-hidden="true"></i>
-      Solution Approaches: Dimension Views + Search
+      Dimension Views + Search
     </h2>
 
     <p class="approach-entry-hero-text">
