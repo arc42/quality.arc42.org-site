@@ -22,11 +22,6 @@ order: 70
 
 <div class="approach-entry">
   <section class="approach-entry-hero">
-    <h2 class="approach-entry-hero-title">
-      <i class="fa fa-puzzle-piece" aria-hidden="true"></i>
-      Dimension Views + Search
-    </h2>
-
     <p class="approach-entry-hero-text">
       Solution approaches are <strong>architectural tactics and patterns</strong> that help achieve specific quality attributes.
       They bridge the gap from quality requirements to concrete implementation decisions.
@@ -36,11 +31,11 @@ order: 70
 
     <div class="approach-entry-mode-switch" aria-label="Approach browsing modes">
       <button class="approach-entry-mode-btn active" type="button" data-target="explorer">
-        <span class="approach-entry-mode-name">Dimension Explorer (default)</span>
+        <span class="approach-entry-mode-name">Dimension Explorer</span>
         <span class="approach-entry-mode-desc">Filter by dimension and browse matching approaches.</span>
       </button>
       <button class="approach-entry-mode-btn" type="button" data-target="dimlist">
-        <span class="approach-entry-mode-name">Dimension List</span>
+        <span class="approach-entry-mode-name">Sorted by Dimension</span>
         <span class="approach-entry-mode-desc">See all approaches under each dimension.</span>
       </button>
       <button class="approach-entry-mode-btn" type="button" data-target="search">
@@ -50,14 +45,10 @@ order: 70
     </div>
 
     <div class="approach-entry-hero-footer">
-      <div class="approach-entry-hero-stat">
-        <span class="approach-entry-hero-stat-value">{{ approaches_sorted | size }}</span>
-        <span class="approach-entry-hero-stat-label">Approaches</span>
-      </div>
-      <div class="approach-entry-hero-stat">
-        <span class="approach-entry-hero-stat-value">{{ dimensions_with_approaches }}</span>
-        <span class="approach-entry-hero-stat-label">Dimensions</span>
-      </div>
+      <p class="approach-entry-hero-summary">
+        We currently explain <strong>{{ approaches_sorted | size }}</strong> such approaches, covering
+        <strong>{{ dimensions_with_approaches }}</strong> dimensions.
+      </p>
     </div>
   </section>
 
@@ -123,18 +114,20 @@ order: 70
 
     <div class="approach-entry-tag-pills">
       {% for tag in valid_tags %}
+        {% assign tag_id = tag | slugify %}
         {% assign approaches_count_for_tag = 0 %}
         {% for approach in approaches_sorted %}
           {% if approach.tags contains tag %}
             {% assign approaches_count_for_tag = approaches_count_for_tag | plus: 1 %}
           {% endif %}
         {% endfor %}
-        <span class="approach-entry-tag-pill">{{ tag }} <small>{{ approaches_count_for_tag }}</small></span>
+        <a class="approach-entry-tag-pill" href="#approach-dimension-{{ tag_id }}">{{ tag }} <small>{{ approaches_count_for_tag }}</small></a>
       {% endfor %}
     </div>
 
     <div class="approach-entry-dimlist-sections">
       {% for tag in valid_tags %}
+        {% assign tag_id = tag | slugify %}
         {% assign approaches_count_for_tag = 0 %}
         {% for approach in approaches_sorted %}
           {% if approach.tags contains tag %}
@@ -142,7 +135,7 @@ order: 70
           {% endif %}
         {% endfor %}
         <article class="approach-entry-dimlist-section">
-          <h3 class="approach-entry-dimlist-title">Approaches tagged with {{ tag }}</h3>
+          <h3 id="approach-dimension-{{ tag_id }}" class="approach-entry-dimlist-title">Approaches tagged with {{ tag }}</h3>
           {% if approaches_count_for_tag > 0 %}
             <ul class="posts no-bullets approach-entry-approach-list">
               {% for approach in approaches_sorted %}
@@ -251,19 +244,6 @@ order: 70
     z-index: 1;
   }
 
-  .approach-entry-hero-title {
-    margin: 0 0 0.38rem;
-    color: var(--approaches-text-color) !important;
-    font-size: 1.38rem;
-    line-height: 1.2;
-  }
-
-  .approach-entry-hero-title .fa-puzzle-piece {
-    margin-right: 0.42rem;
-    font-size: 0.88em;
-    color: #2a7c26;
-  }
-
   .approach-entry-hero-text {
     margin: 0;
     color: var(--app-text-soft);
@@ -339,28 +319,16 @@ order: 70
     margin-top: 0.78rem;
   }
 
-  .approach-entry-hero-stat {
-    display: inline-flex;
-    align-items: baseline;
-    gap: 0.35rem;
-    padding: 0.29rem 0.68rem;
-    border-radius: 999px;
-    border: 1px solid var(--app-border);
-    background: rgba(255, 255, 255, 0.86);
-  }
-
-  .approach-entry-hero-stat-value {
-    color: #2f7727;
-    font-size: 0.95rem;
-    font-weight: 700;
-  }
-
-  .approach-entry-hero-stat-label {
+  .approach-entry-hero-summary {
+    margin: 0;
     color: var(--app-text-soft);
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.01em;
+    line-height: 1.4;
+  }
+
+  .approach-entry-hero-summary strong {
+    color: #2f7727;
   }
 
   .approach-entry-panel {
@@ -510,6 +478,7 @@ order: 70
   }
 
   .approach-entry-tag-pill {
+    display: inline-block;
     border-radius: 20px;
     background: var(--approaches-background-color);
     color: var(--approaches-text-color);
@@ -518,6 +487,23 @@ order: 70
     padding: 0.28rem 0.82rem;
     border: 1px solid rgba(27, 94, 32, 0.16);
     text-transform: lowercase;
+    text-decoration: none;
+    transition: transform 0.14s ease, box-shadow 0.14s ease;
+  }
+
+  .approach-entry-tag-pill:visited {
+    color: var(--approaches-text-color);
+  }
+
+  .approach-entry-tag-pill:hover,
+  .approach-entry-tag-pill:focus-visible {
+    transform: translateY(-1px);
+    box-shadow: 0 3px 8px rgba(21, 56, 18, 0.14);
+  }
+
+  .approach-entry-tag-pill:focus-visible {
+    outline: 2px solid rgba(44, 120, 38, 0.45);
+    outline-offset: 2px;
   }
 
   .approach-entry-tag-pill small {
@@ -537,6 +523,7 @@ order: 70
     padding: 0.6rem 0.82rem;
     font-size: 1.03rem;
     text-transform: lowercase;
+    scroll-margin-top: 0.8rem;
   }
 
   .approach-entry-search-head {

@@ -32,23 +32,31 @@ hide: true
     <div id="standards-result-counter" class="standards-result-counter" aria-live="polite"></div>
   </div>
 
-  <div class="standards-facet-list" role="toolbar" aria-label="Filter by standard category">
-    {% for category in category_order %}
-      {% assign filtered_standards = allStandards | where_exp: "std", "std.categories contains category" %}
-      {% if filtered_standards.size > 0 %}
-        {% capture category_title %}{% include standards-category-title.liquid category=category %}{% endcapture %}
-        {% assign category_title = category_title | strip %}
-        <button
-          type="button"
-          class="standards-facet-btn"
-          data-category="{{ category }}"
-          aria-pressed="false"
-        >
-          #{{ category_title }}
-          <span class="standards-facet-count">{{ filtered_standards.size }}</span>
-        </button>
-      {% endif %}
-    {% endfor %}
+  <div class="standards-facet-group">
+    <p class="standards-facet-group-label">Category</p>
+    <div class="standards-facet-list" role="toolbar" aria-label="Filter by standard category">
+      {% for category in category_order %}
+        {% assign filtered_standards = allStandards | where_exp: "std", "std.categories contains category" %}
+        {% if filtered_standards.size > 0 %}
+          {% capture category_title %}{% include standards-category-title.liquid category=category %}{% endcapture %}
+          {% assign category_title = category_title | strip %}
+          <button
+            type="button"
+            class="standards-facet-btn"
+            data-category="{{ category }}"
+            aria-pressed="false"
+          >
+            #{{ category_title }}
+            <span class="standards-facet-count">{{ filtered_standards.size }}</span>
+          </button>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="standards-facet-group">
+    <p class="standards-facet-group-label">Organization</p>
+    <div id="standards-org-facet-list" class="standards-facet-list" role="toolbar" aria-label="Filter by standard organization"></div>
   </div>
 
   <div id="standards-explorer-grid" class="standards-explorer-grid">
@@ -64,6 +72,7 @@ hide: true
       <article
         class="standards-explorer-card"
         tabindex="0"
+        data-shortname="{{ std.shortname | escape }}"
         data-categories="{{ std.categories | join: ' ' }}"
         data-search="{{ searchable | strip_html | strip_newlines | normalize_whitespace | downcase | escape }}"
       >
