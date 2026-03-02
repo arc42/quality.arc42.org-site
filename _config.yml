@@ -141,6 +141,7 @@ exclude:
   - AGENTS.md
   - CRUSH/
   - docs/*
+  - docs/index.html
   - .vscode
   - docker-compose.yml
   - _manage*

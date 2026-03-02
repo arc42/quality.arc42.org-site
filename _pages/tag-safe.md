@@ -59,7 +59,7 @@ Quoted from [Wikipedia/Safety](https://en.wikipedia.org/wiki/Safety)
 | Developer |development processes comply with appropriate safety standards and regulations, e.g. SPICE  |
 | Tester | - |
 | Admin | - |
-| Domain-Expert |the system and its implementation comply with all required safety standards, like [ISO-26262](https://www.iso.org/standard/51362.html)|
+| Domain-Expert |the system and its implementation comply with all required safety standards, like [ISO-26262](https://www.iso.org/standard/68388.html)|
 | Others |Safety auditors, government agencies requiring compliance with safety standards, law  |
 
 <!-- include all qualities associated with this tag -->
