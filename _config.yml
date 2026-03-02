@@ -159,6 +159,7 @@ exclude:
   - CLAUDE.md
   - cheat-sheet.*
   - statistic-utilities/
+  - narratives*
   
 
 watch_exclude:
