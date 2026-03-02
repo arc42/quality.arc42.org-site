@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arc42 Color Scheme - Simple Overview</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background: #f5f5f5;
+    }
+
+    .container {
+      max-width: 760px;
+      margin: 0 auto;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      padding: 26px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+      margin: 0 0 22px;
+      font-weight: 350;
+    }
+
+    .color-rectangle {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 76px;
+      margin: 14px 0;
+      border-radius: 8px;
+      font-size: 1.2em;
+      font-weight: 650;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      position: relative;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      padding: 10px 12px;
+    }
+
+    .color-info {
+      background: #f8f9fa;
+      padding: 10px 14px;
+      border-radius: 4px;
+      margin-top: 5px;
+      font-size: 0.85em;
+      color: #59626d;
+      text-align: center;
+    }
+
+    .contrast-badge {
+      position: absolute;
+      top: 6px;
+      right: 10px;
+      background: rgba(255, 255, 255, 0.92);
+      color: #333;
+      padding: 3px 8px;
+      border-radius: 12px;
+      font-size: 0.72em;
+      font-weight: 600;
+    }
+
+    .quality { background: #00b8f5; color: #003366; }
+    .requirements { background: #ffb3b3; color: #8b0000; }
+    .standards { background: #ffc95c; color: #2c3e50; }
+    .articles { background: #e6daf2; color: #4a148c; }
+    .approaches { background: #92ef80; color: #1b5e20; }
+    .header { background: #357360; color: #deefb7; }
+
+    .header .counter {
+      color: #ffad80;
+      font-weight: 800;
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 26px;
+      padding-top: 16px;
+      border-top: 1px solid #e8ebef;
+      color: #666;
+      font-size: 0.9em;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Arc42 Quality Site - Color Scheme</h1>
+
+    <div class="color-rectangle quality">
+      <span>Qualities</span>
+      <div class="contrast-badge">5.51:1 AA</div>
+    </div>
+    <div class="color-info">Background: #00B8F5 - Text: #003366</div>
+
+    <div class="color-rectangle requirements">
+      <span>Requirements</span>
+      <div class="contrast-badge">5.89:1 AA</div>
+    </div>
+    <div class="color-info">Background: #FFB3B3 - Text: #8B0000</div>
+
+    <div class="color-rectangle standards">
+      <span>Standards</span>
+      <div class="contrast-badge">7.20:1 AAA</div>
+    </div>
+    <div class="color-info">Background: #FFC95C - Text: #2C3E50</div>
+
+    <div class="color-rectangle articles">
+      <span>Articles & General Pages</span>
+      <div class="contrast-badge">8.86:1 AAA</div>
+    </div>
+    <div class="color-info">Background: #E6DAF2 - Text: #4A148C</div>
+
+    <div class="color-rectangle approaches">
+      <span>Approaches</span>
+      <div class="contrast-badge">5.58:1 AA</div>
+    </div>
+    <div class="color-info">Background: #92EF80 - Text: #1B5E20</div>
+
+    <div class="color-rectangle header">
+      <span>Header: <span class="counter">216</span> / <span class="counter">133</span></span>
+      <div class="contrast-badge">Counters 3.06:1 (AA large)</div>
+    </div>
+    <div class="color-info">Background: #357360 - Primary text: #DEEFB7 - Counters: #FFAD80</div>
+
+    <div class="footer">
+      Palette is aligned with the current site. Header counters intentionally target large-text AA contrast.
+    </div>
+  </div>
+</body>
+</html>
