@@ -10,9 +10,9 @@ permalink: /articles/arc42-quality-model
 The arc42 quality model Q42 (pronounced "Kju-Fortytwo" or "Kju-Four-Two") is a simple, pragmatic yet effective approach to product and system quality.
 It starts with **stakeholders' expectations and requirements**.
 
-Based upon typical stakeholder needs, Q42 consists of just 9 key system dimensions, which are sufficient to cover most, if not all, required, desirable or expected of the more than 100 [_traditional_ qualities](/qualities).
+Based upon typical stakeholder needs, Q42 consists of just 9 key system dimensions, which are sufficient to cover most, if not all, required, desirable or expected of the more than 200 [_traditional_ qualities](/qualities).
 
-![arc42 quality model](/images/arc42-system-qualities-overview.svg)
+![arc42 quality model](/images/how2use/nine-dimensions.webp))
 
 But let's start at the beginning:
 ### Goals for Q42
@@ -72,8 +72,8 @@ Based upon the importance of stakeholders for project success, we centered our a
 | Admin| operable and reliable in terms of easily operating and administering the system, secure and reliable when integrating with other systems, flexible in terms of execution environments, safe and secure |
 | Others|  |
 
-### Just Nine, not 35
-Q42 proposes 9 "tags", which suffice to cover most (hopefully all) of the traditional qualities.
+### Just Nine
+Q42 proposes 9 "tags" (we call them _dimensions_), which suffice to cover most (hopefully all) of the traditional qualities.
 These tags should be almost self-explanatory, but I'll try to clarify them with examples:
 
 | Tag | Meaning(s)  |
