@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-02-24T09:25:03.497Z",
+  "generatedAt": "2026-03-02T16:18:01.237Z",
   "tags": [
     "wcag2a",
     "wcag2aa",
@@ -8,9 +8,9 @@
   ],
   "totals": {
     "pagesScanned": 39,
-    "violations": 10,
-    "incomplete": 9,
-    "passes": 868,
+    "violations": 12,
+    "incomplete": 12,
+    "passes": 869,
     "avgScore": 97
   },
   "pages": [
@@ -38,11 +38,20 @@
       "route": "/qualities/",
       "title": "Quality Characteristics | arc42 Quality Model",
       "url": "http://jekyll:4000/qualities/",
-      "violationsCount": 0,
-      "incompleteCount": 0,
+      "violationsCount": 1,
+      "incompleteCount": 1,
       "passesCount": 21,
-      "score": 100,
-      "violations": []
+      "score": 90,
+      "violations": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/color-contrast?application=playwright",
+          "nodes": 84
+        }
+      ]
     },
     {
       "route": "/requirements/",
@@ -79,7 +88,7 @@
           "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
           "help": "Elements must meet minimum color contrast ratio thresholds",
           "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/color-contrast?application=playwright",
-          "nodes": 9
+          "nodes": 12
         }
       ]
     },
@@ -88,8 +97,8 @@
       "title": "Solution Approaches | arc42 Quality Model",
       "url": "http://jekyll:4000/approaches/",
       "violationsCount": 0,
-      "incompleteCount": 0,
-      "passesCount": 21,
+      "incompleteCount": 2,
+      "passesCount": 22,
       "score": 100,
       "violations": []
     },
@@ -117,11 +126,20 @@
       "route": "/aboutthissite/",
       "title": "About this Site | arc42 Quality Model",
       "url": "http://jekyll:4000/aboutthissite/",
-      "violationsCount": 0,
+      "violationsCount": 1,
       "incompleteCount": 0,
       "passesCount": 24,
-      "score": 100,
-      "violations": []
+      "score": 90,
+      "violations": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.11/color-contrast?application=playwright",
+          "nodes": 2
+        }
+      ]
     },
     {
       "route": "/qualities/accessibility",

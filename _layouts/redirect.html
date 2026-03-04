@@ -2,12 +2,13 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
+  {% assign redirect_href = page.redirect_to | relative_url %}
   <title>Redirecting to {{ page.title }}</title>
-  <link rel="canonical" href="{{ page.redirect_to | absolute_url }}">
-  <meta http-equiv="refresh" content="0; url={{ page.redirect_to | absolute_url }}">
+  <link rel="canonical" href="{{ redirect_href }}">
+  <meta http-equiv="refresh" content="0; url={{ redirect_href }}">
   <meta name="robots" content="noindex, follow">
   <script>
-    window.location.href = "{{ page.redirect_to | absolute_url }}";
+    window.location.href = "{{ redirect_href }}";
   </script>
   <style>
     body {
@@ -53,10 +54,10 @@
       <strong>{{ page.title }}</strong> is a synonym.
     </p>
     <p>
-      Redirecting to <a href="{{ page.redirect_to | absolute_url }}">{{ page.alias_of | capitalize | replace: "-", " " }}</a>...
+      Redirecting to <a href="{{ redirect_href }}">{{ page.alias_of | capitalize | replace: "-", " " }}</a>...
     </p>
     <p>
-      <small>If you are not redirected automatically, <a href="{{ page.redirect_to | absolute_url }}">click here</a>.</small>
+      <small>If you are not redirected automatically, <a href="{{ redirect_href }}">click here</a>.</small>
     </p>
   </div>
 </body>
