@@ -94,13 +94,5 @@ ASVS is complementary to, not a replacement for, broader frameworks:
 
 ## References
 
-### Official Sources
-
 - [OWASP ASVS Project Page](https://owasp.org/www-project-application-security-verification-standard/) — project overview, downloads, and translations
 - [OWASP ASVS GitHub Repository](https://github.com/OWASP/ASVS) — full source, version history, and issue tracker
-- [ASVS 5.0.0 Release — GitHub](https://github.com/OWASP/ASVS/releases/tag/v5.0.0) — release notes for the current version
-
-### Related Standards and Guidance
-
-- [OWASP Testing Guide (OTG)](https://owasp.org/www-project-web-security-testing-guide/) — companion testing methodology; ASVS requirements map to OTG test cases
-- [OWASP Top 10](https://owasp.org/www-project-top-ten/) — risk-ranked list of the most critical web vulnerabilities; ASVS L1 addresses all Top 10 categories
