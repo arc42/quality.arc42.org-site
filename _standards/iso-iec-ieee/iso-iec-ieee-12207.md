@@ -113,27 +113,5 @@ The standard directly supports quality achievement through systematic process ma
 
 ## References
 
-### Official Standards Sources
-- [ISO/IEC/IEEE 12207:2017](https://www.iso.org/standard/63712.html) - Systems and software engineering — Software life cycle processes
-- [IEEE Std 12207-2008](https://standards.ieee.org/ieee/12207/3835/) - IEEE Standard for Systems and Software Engineering — Software Life Cycle Processes
-- [ISO/IEC JTC 1/SC 7 Software and Systems Engineering](https://www.iso.org/committee/45086.html) - Technical committee responsible for software engineering standards
-
-### Related Standards and Framework Integration
-- [ISO/IEC 15504 (SPICE)](https://www.iso.org/standard/38932.html) - Process assessment model based on ISO/IEC/IEEE 12207
-- [ISO/IEC 25010:2011](https://www.iso.org/standard/35733.html) - Systems and software quality models (quality attribute framework)
-- [CMMI for Development](https://cmmiinstitute.com/) - Capability maturity model integration based on process frameworks
-
-### Implementation Guidance and Best Practices
-- [Software Engineering Institute (SEI) Process Resources](https://www.sei.cmu.edu/our-work/software-engineering/) - Implementation guidance and case studies
-- [IEEE Computer Society Software Engineering Standards](https://www.computer.org/education/standards) - Complementary software engineering standards
-- [Project Management Institute (PMI) Software Extension](https://www.pmi.org/pmbok-guide-standards/extensions/software) - Project management practices for software development
-
-### Academic and Industry Research
-- [Journal of Systems and Software](https://www.journals.elsevier.com/journal-of-systems-and-software) - Research on software lifecycle processes and improvement
-- [IEEE Software Magazine](https://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=52) - Practical applications and lessons learned
-- [Software Process Improvement Networks](https://www.spin.org/) - Community resources and best practices sharing
-
-### Tools and Assessment Frameworks
-- [SPICE Assessment Tools](https://www.intacs.info/) - Process assessment based on ISO/IEC/IEEE 12207 framework
-- [CMMI Appraisal Methods](https://cmmiinstitute.com/cmmi/appraisal) - Maturity assessment aligned with lifecycle processes
-- [Lifecycle Management Tools](https://www.ibm.com/products/engineering-lifecycle-management) - Tool support for lifecycle process implementation
+- [ISO/IEC/IEEE 12207:2017](https://www.iso.org/standard/63712.html) - Systems and software engineering — Software life cycle processes (official standard)
+- [ISO/IEC JTC 1/SC 7 Software and Systems Engineering](https://www.iso.org/committee/45086.html) - Technical committee responsible for this standard
