@@ -163,33 +163,9 @@ WCAG 2.2 Level AA serves as the foundation for accessibility legislation worldwi
 - [**ISO/IEC 25010**](/standards/iso-25010): Product quality model including interaction capability
 - [**ISO 26514**](/standards/iso-26514): Requirements for designers and developers of user documentation
 
-## References and Resources
+## References
 
-### Official W3C Standards and Documentation
 - [WCAG 2.2 W3C Recommendation](https://www.w3.org/TR/WCAG22/) - Official technical specification (5 October 2023, updated 12 December 2024)
-- [ISO/IEC 40500:2025](https://www.iso.org/standard/91029.html) - WCAG 2.2 as ISO/IEC international standard (free access)
-- [WCAG 2 Overview](https://www.w3.org/WAI/standards-guidelines/wcag/) - Introduction to WCAG versions, supporting documents, and translations
-- [What's New in WCAG 2.2](https://www.w3.org/WAI/standards-guidelines/wcag/new-in-22/) - Summary of new and removed success criteria
-- [Understanding WCAG 2.2](https://www.w3.org/WAI/WCAG22/Understanding/) - Detailed guidance for each guideline and success criterion
-- [How to Meet WCAG 2.2 (Quick Reference)](https://www.w3.org/WAI/WCAG22/quickref/) - Customizable checklist with techniques and support information
-- [Techniques for WCAG 2.2](https://www.w3.org/WAI/WCAG22/Techniques/) - Sufficient and advisory techniques, and documented failures
-
-### Implementation and Testing Resources
-- [W3C Web Accessibility Initiative (WAI)](https://www.w3.org/WAI/) - Central resource hub for web accessibility guidance, tools, and support
-- [WebAIM WCAG 2.2 Checklist](https://webaim.org/standards/wcag/checklist) - Practical checklist for designers and developers
-- [Deque University WCAG 2.2 Resources](https://dequeuniversity.com/resources/wcag-2.2/) - Training materials and code examples for WCAG 2.2
-- [TPGi WCAG 2.2 Resources](https://www.tpgi.com/new-success-criteria-in-wcag22/) - Analysis of new success criteria and implementation guidance
-
-### Legal and Regulatory Information
-- [Section 508 Official Site](https://www.section508.gov/) - US federal accessibility requirements and guidance
-- [EN 301 549 Resources](https://www.wcag.com/compliance/en-301-549/) - European accessibility standard information and compliance guidance
-- [European Accessibility Act](https://ec.europa.eu/social/main.jsp?catId=1202) - EU legislation requiring accessibility for products and services
-- [ADA Accessibility Resources](https://www.ada.gov/) - Americans with Disabilities Act information and guidance
-
-### Press Releases and Announcements
-- [W3C Press Release: WCAG 2.2 Approved as ISO/IEC Standard](https://www.w3.org/press-releases/2025/wcag22-iso-pas/) - October 2025 announcement
-- [WAI News: WCAG 2.2 ISO Approval](https://www.w3.org/WAI/news/2025-10-21/wcag22-iso/) - October 21, 2025
-
-### Historical Context
-- [ISO/IEC 40500:2012](https://www.iso.org/standard/58625.html) - WCAG 2.0 as ISO/IEC international standard (first edition)
-- [WCAG 2.1 W3C Recommendation](https://www.w3.org/TR/WCAG21/) - Previous version (June 2018)
+- [ISO/IEC 40500:2025](https://www.iso.org/standard/91029.html) - WCAG 2.2 as ISO/IEC international standard (freely available)
+- [Understanding WCAG 2.2](https://www.w3.org/WAI/WCAG22/Understanding/) - W3C's detailed guidance on the intent and application of each success criterion
+- [How to Meet WCAG 2.2 (Quick Reference)](https://www.w3.org/WAI/WCAG22/quickref/) - Customizable checklist of success criteria, techniques, and failures
