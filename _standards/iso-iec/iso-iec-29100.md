@@ -7,11 +7,10 @@ categories: [privacy, general]
 permalink: /standards/iso-iec-29100
 ---
 
-## ISO/IEC 29100:2011 - Information Technology — Security Techniques — Privacy Framework
+## ISO/IEC 29100:2024 - Information Technology — Privacy Techniques — Privacy Framework
 
-ISO/IEC 29100 provides a privacy framework that establishes a common privacy terminology, defines the actors involved in processing personally identifiable information (PII), and describes privacy safeguarding considerations. It serves as a foundational standard for privacy engineering and management in information systems.
-
-The standard provides guidance for specifying and procuring privacy-enhancing services and products, and serves as a reference for developing other privacy standards. It focuses on the privacy of individuals whose PII is processed in information and communication systems, establishing principles and requirements that apply across different domains and technologies.
+ISO/IEC 29100 provides a privacy framework that establishes a common privacy terminology, defines the actors involved in processing personally identifiable information (PII), and describes privacy safeguarding considerations. It serves as a foundational standard for privacy engineering and management in information systems. 
+The 2024 edition is the current version, replacing the original 2011 release.
 
 ## Privacy Framework Components
 
@@ -87,32 +86,10 @@ The standard directly addresses privacy protection through multiple quality dime
 - Access control and authentication systems for PII protection
 - Audit logging and monitoring systems for privacy compliance
 
-## Standards Ecosystem Integration
-
-### **Relationship with Other Standards**
-- **ISO/IEC 27001**: Information security management systems foundation
-- **ISO/IEC 27002**: Security controls implementation guidance
-- **ISO/IEC 27701**: Privacy information management systems (extends 27001)
-- **ISO/IEC 29101**: Privacy architecture framework (companion standard)
-- **ISO/IEC 29134**: Privacy impact assessment guidelines
 
 ## References
 
-### Official Standards Sources
-- [ISO/IEC 29100:2011](https://www.iso.org/standard/45123.html) - Information technology — Security techniques — Privacy framework
-- [ISO/IEC JTC 1/SC 27 Security Techniques](https://www.iso.org/committee/45306.html) - Technical committee responsible for privacy standards
+- [ISO/IEC 29100:2024](https://www.iso.org/standard/85938.html) - Information technology — Privacy techniques — Privacy framework
 
-### Related ISO Privacy Standards
-- [ISO/IEC 29101:2013](https://www.iso.org/standard/53017.html) - Privacy architecture framework
-- [ISO/IEC 29134:2017](https://www.iso.org/standard/62289.html) - Guidelines for privacy impact assessment
-- [ISO/IEC 27701:2019](https://www.iso.org/standard/71670.html) - Extension to ISO/IEC 27001 and ISO/IEC 27002 for privacy information management
-
-### Implementation Guidance and Research
-- [NIST Privacy Framework](https://www.nist.gov/privacy-framework) - U.S. framework for privacy risk management
-- [ENISA Privacy by Design Guidelines](https://www.enisa.europa.eu/publications/privacy-and-data-protection-by-design) - European privacy engineering guidance
 - [Future of Privacy Forum](https://fpf.org/) - Privacy research and best practices
 
-### Academic and Industry Resources
-- [IEEE Security & Privacy Magazine](https://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=8013) - Privacy engineering research and case studies
-- [Privacy Engineering Research](https://www.privacyengineering.org/) - Academic research on privacy frameworks and implementation
-- [International Association of Privacy Professionals (IAPP)](https://iapp.org/) - Professional community and resources for privacy practitioners
