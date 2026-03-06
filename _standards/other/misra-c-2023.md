@@ -44,16 +44,5 @@ The guidelines enforce a safer subset of C and structured practices that directl
 
 ## References
 
-### Official
-- MISRA C:2023 announcement (overview): https://misra.org.uk/misra-c2023-released/
-- MISRA Publications (free guidance and addenda): https://misra.org.uk/publications/
-- MISRA Compliance:2020 (free PDF): https://misra.org.uk/app/uploads/2021/06/MISRA-Compliance-2020.pdf
-- MISRA FAQs: https://misra.org.uk/faqs/
-
-### Related standards and guidance
-- [ISO 26262 - Road vehicles — Functional safety](/standards/iso-26262)
-- [IEC 62304 - Medical device software](/standards/iec-62304)
-- ISO/IEC 9899 — Programming Languages — C (language standard)
-
-### Additional overview
-- Wikipedia: MISRA C — https://en.wikipedia.org/wiki/MISRA_C
+- MISRA Publications — official hub for all MISRA C documents, free guidance, and addenda: https://misra.org.uk/publications/
+- MISRA Compliance:2020 — authoritative compliance process guidance (free PDF): https://misra.org.uk/app/uploads/2021/06/MISRA-Compliance-2020.pdf
