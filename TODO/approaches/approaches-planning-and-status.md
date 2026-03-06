@@ -45,7 +45,7 @@ Consolidated from three independent plans (Gemini, GPT-5.3, Opus 4.6), Bass et a
 |:----:|----------|----------------------|:------:|
 | ✅ | Feature Toggles | Decouple deployment from release via runtime switches | G·P·O·B+ |
 | ✅ | Plugin Architecture | Stable extension points for third-party capabilities | G·P·O |
-| 📋 | Asynchronous Messaging | Decouple services in time and space via queues/topics | P·O |
+| ✅ | Asynchronous Messaging | Decouple services in time and space via queues/topics | P·O |
 | 📋 | CQRS | Separate read and write models for independent scaling | O |
 | | Event-Driven Architecture | Connect components via async events, add consumers without changing producers | G·P·O |
 | | Backward-Compatible API Versioning | Evolve public contracts without breaking existing consumers | P·O |
@@ -101,7 +101,7 @@ Consolidated from three independent plans (Gemini, GPT-5.3, Opus 4.6), Bass et a
 | Done | Approach | One-line description | Source |
 |:----:|----------|----------------------|:------:|
 | ✅ | Caching | Serve frequent reads from faster storage layers | G·P·O·B+ |
-| 📋 | Asynchronous Messaging | Move long-running work off the request path | G·P·O |
+| ✅ | Asynchronous Messaging | Move long-running work off the request path | G·P·O |
 | 📋 | CQRS | Optimise read and write paths independently | O |
 | 📋 | Database Sharding | Partition data across nodes for horizontal scale | O |
 | | Connection Pooling | Reuse expensive connections (DB, HTTP, gRPC) across requests | G·P·O |
@@ -249,14 +249,14 @@ Consolidated from three independent plans (Gemini, GPT-5.3, Opus 4.6), Bass et a
 | Dimension | ✅ | 📋 | New | Total |
 |-----------|:--:|:--:|:---:|:-----:|
 | reliable | 2 | 3 | 17 | **22** |
-| flexible | 2 | 2 | 12 | **16** |
+| flexible | 3 | 1 | 12 | **16** |
 | maintainable | 0 | 0 | 25 | **25** |
-| efficient | 1 | 3 | 16 | **20** |
+| efficient | 2 | 2 | 16 | **20** |
 | usable | 2 | 0 | 14 | **16** |
 | safe | 0 | 0 | 15 | **15** |
 | secure | 0 | 3 | 19 | **22** |
 | suitable | 0 | 0 | 10 | **10** |
 | operable | 0 | 2 | 15 | **17** |
-| **Total** | **7** | **13** | **143** | **163** |
+| **Total** | **9** | **11** | **143** | **163** |
 
 Note: Some approaches appear in multiple dimensions (e.g. Caching in reliable+efficient, Rate Limiting in reliable+secure). The unique approach count is lower than 163.

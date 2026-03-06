@@ -48,7 +48,7 @@ Recommended sections:
 3. `## Verification`
 4. `## Variants and Related Tactics` (optional)
 
-`## References` can be added when needed, but keep pages concise.
+`## References` can be added when needed, but keep pages concise. When a source also appears on the site's [References](/references/) page, link to the anchor there via `([full citation](/references/#anchor))`.
 
 ## Body Skeleton
 
@@ -74,8 +74,8 @@ Optional second overview paragraph with boundary conditions.
 - Variant or adjacent tactic with one-line boundary note
 
 ## References
-- Authoritative source 1
-- Authoritative source 2
+- [Source Title](https://example.com) — Author(s) ([full citation](/references/#anchor))
+- [Source Title](https://example.com)
 ```
 
 ## Definition of Done (Single Page)
