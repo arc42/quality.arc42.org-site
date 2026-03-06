@@ -52,20 +52,7 @@ The series is process- and evidence-oriented: it does not define product quality
 | **[Maintainability](/qualities/maintainability)** | Structured regression testing assets and clearer test documentation support safer change and evolution. |
 | **[Compliance](/qualities/compliance)** | Consistent test records and reports provide evidence needed in contractual and regulated delivery contexts. |
 
-## References and Authoritative Sources
+## References
 
-### Core Standard Series (ISO)
-- [ISO/IEC/IEEE 29119 series overview (ISO/IEC JTC 1/SC 7)](https://committee.iso.org/sites/jtc1sc7/home/projects/flagship-standards/isoiecieee-29119-series.html)
-- [ISO/IEC/IEEE 29119-1:2022 (General concepts)](https://www.iso.org/standard/81291.html)
-- [ISO/IEC/IEEE 29119-2:2021 (Test processes)](https://www.iso.org/standard/79428.html)
-- [ISO/IEC/IEEE 29119-3:2021 (Test documentation)](https://www.iso.org/standard/79429.html)
-- [ISO/IEC/IEEE 29119-4:2021 (Test techniques)](https://www.iso.org/standard/79430.html)
-- [ISO/IEC/IEEE 29119-5:2024 (Keyword-driven testing)](https://www.iso.org/standard/87233.html)
-
-
-### Guidance Extensions
-- [ISO/IEC TR 29119-6:2021 (Using ISO/IEC/IEEE 29119 in agile development)](https://www.iso.org/standard/81293.html)
-- [ISO/IEC TR 29119-11:2020 (Guidelines on testing AI-based systems)](https://www.iso.org/standard/79016.html)
-
-### Related ISO Standards
-- [ISO/IEC 20246:2017 (Work product reviews)](https://www.iso.org/standard/67407.html)
+- [ISO/IEC/IEEE 29119 series overview — ISO/IEC JTC 1/SC 7](https://committee.iso.org/sites/jtc1sc7/home/projects/flagship-standards/isoiecieee-29119-series.html)
+- [ISO/IEC/IEEE 29119-1:2022 — Concepts and definitions (ISO catalog)](https://www.iso.org/standard/81291.html)
