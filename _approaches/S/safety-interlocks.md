@@ -29,6 +29,8 @@ Safety interlocks place explicit gates in front of hazardous operations. Each ga
 
 The key property is that the interlock defaults to blocking. If a precondition cannot be evaluated — a sensor is offline, a confirmation times out, a state check returns an error — the operation does not proceed. This fail-safe default distinguishes interlocks from advisory warnings, which inform but do not prevent.
 
+Whether "safe" means fail-closed or fail-open depends on the primary hazard. A firewall interlock fails closed — all traffic blocked — because the hazard is unauthorized access. A fire-exit interlock fails open — door unlocked — because the hazard is people trapped inside. The interlock designer must derive the correct default from the hazard analysis, not assume one direction fits all cases.
+
 ## How It Works
 
 - Identify every operation that can cause harm if executed under wrong conditions, and for each, define the preconditions that must hold before execution is safe.
@@ -64,4 +66,5 @@ The key property is that the interlock defaults to blocking. If a precondition c
 
 - [Leveson: Engineering a Safer World (MIT Press, 2011)](https://mitpress.mit.edu/9780262533690/engineering-a-safer-world/) — systems-theoretic approach to safety constraints and control structures, including interlocks as enforcement mechanisms
 - [IEC 61508: Functional Safety of E/E/PE Systems](https://www.iec.ch/functional-safety) — the foundational standard for safety integrity levels and safety-instrumented systems
+- [ISO 26262: Road Vehicles — Functional Safety](https://www.iso.org/standard/68383.html) — sector-specific adaptation of IEC 61508 for automotive systems, widely cited for safety-critical interlock design
 - [Software Architecture in Practice](https://www.sei.cmu.edu/library/software-architecture-in-practice-fourth-edition/) — Bass, Clements & Kazman ([full citation](/references/#bass2021software))
