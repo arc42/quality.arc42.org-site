@@ -46,7 +46,7 @@ Consolidated from three independent plans (Gemini, GPT-5.3, Opus 4.6), Bass et a
 | ✅ | Feature Toggles | Decouple deployment from release via runtime switches | G·P·O·B+ |
 | ✅ | Plugin Architecture | Stable extension points for third-party capabilities | G·P·O |
 | ✅ | Asynchronous Messaging | Decouple services in time and space via queues/topics | P·O |
-| 📋 | CQRS | Separate read and write models for independent scaling | O |
+| ✅  | CQRS | Separate read and write models for independent scaling | O |
 | | Event-Driven Architecture | Connect components via async events, add consumers without changing producers | G·P·O |
 | | Backward-Compatible API Versioning | Evolve public contracts without breaking existing consumers | P·O |
 | | Externalized Configuration | Move thresholds, rules, and switches out of compiled code | P·O·B+ |
@@ -102,7 +102,7 @@ Consolidated from three independent plans (Gemini, GPT-5.3, Opus 4.6), Bass et a
 |:----:|----------|----------------------|:------:|
 | ✅ | Caching | Serve frequent reads from faster storage layers | G·P·O·B+ |
 | ✅ | Asynchronous Messaging | Move long-running work off the request path | G·P·O |
-| 📋 | CQRS | Optimise read and write paths independently | O |
+| ✅  | CQRS | Optimise read and write paths independently | O |
 | 📋 | Database Sharding | Partition data across nodes for horizontal scale | O |
 | | Connection Pooling | Reuse expensive connections (DB, HTTP, gRPC) across requests | G·P·O |
 | | Content Delivery Network (CDN) | Serve static content from edge locations near users | P·O |
@@ -152,7 +152,7 @@ Consolidated from three independent plans (Gemini, GPT-5.3, Opus 4.6), Bass et a
 
 | Done | Approach | One-line description | Source |
 |:----:|----------|----------------------|:------:|
-| | Fail-Safe Defaults | Transition to predefined safe state on unexpected conditions | G·P·O·B+ |
+|✅  | Fail-Safe Defaults | Transition to predefined safe state on unexpected conditions | G·P·O·B+ |
 | | Safety Interlocks | Enforce preconditions before allowing hazardous operations | G·P·O·B+ |
 | | Watchdog Supervision | Independent monitor detects hangs, triggers safe restart | G·P·O·B+ |
 | | N-Modular Redundancy + Voting | Run N independent paths, majority vote masks single failures | P·O·B+ |
