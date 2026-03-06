@@ -71,10 +71,5 @@ NIST stands for the _National Institute of Standards and Technology_. It is a no
 
 ## References
 
-### Official NIST Sources
-
-- [NIST Privacy Framework — main overview page](https://www.nist.gov/privacy-framework)
+- [NIST Privacy Framework — official overview](https://www.nist.gov/privacy-framework)
 - [Privacy Framework Version 1.0 (PDF)](https://doi.org/10.6028/NIST.CSWP.01162020) — the primary framework document
-- [Privacy Framework Version 1.1 Initial Public Draft](https://doi.org/10.6028/NIST.CSWP.40.ipd) — latest draft, aligned with CSF 2.0
-- [Crosswalk: Privacy Framework to GDPR](https://www.nist.gov/system/files/documents/2020/01/16/NIST%20Privacy%20Framework%20and%20GDPR%20Crosswalk.pdf)
-- [Crosswalk: Privacy Framework to NIST SP 800-53 Rev. 5](https://www.nist.gov/system/files/documents/2021/01/08/NIST%20Privacy%20Framework%20and%20Cybersecurity%20Framework%20to%20SP%20800-53%20Crosswalk.pdf)
