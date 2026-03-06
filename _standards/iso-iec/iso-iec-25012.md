@@ -49,13 +49,7 @@ The standard directly or indirectly addresses these q42 quality characteristics:
 | **[Compliance](/qualities/compliance)** | Data handling should conform to regulatory and organizational constraints. |
 | **[Traceability](/qualities/traceability)** | Data lineage/provenance should be understandable and auditable. |
 
-## References and Resources
+## References
 
-### Authoritative Sources
 - [ISO/IEC 25012:2008 — Data quality model (official ISO catalog)](https://www.iso.org/standard/35736.html)
-- [ISO/IEC 25024:2015 — Measurement of data quality (official ISO catalog)](https://www.iso.org/standard/35749.html)
 - [ISO/IEC 25000:2014 — SQuaRE guide (official ISO catalog)](https://www.iso.org/standard/64764.html)
-- [ISO 8000-8:2015 — Data quality concepts and measuring (official ISO catalog)](https://www.iso.org/standard/60805.html)
-
-### Notes on Currency
-- The ISO catalog entry for ISO/IEC 25012 indicates the standard is still current and was most recently confirmed in **2025**.
