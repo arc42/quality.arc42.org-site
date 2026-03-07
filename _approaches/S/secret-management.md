@@ -28,7 +28,7 @@ permalink: /approaches/secret-management
 
 Secrets — database passwords, API keys, TLS certificates, encryption keys, OAuth client secrets — are the "keys to the kingdom." When secrets are scattered across config files, CI/CD pipelines, and source repositories (secret sprawl), they are impossible to inventory, rotate, or revoke. A single leaked credential can escalate into a full breach.
 
-Secret management centralizes the entire credential lifecycle — creation, storage, distribution, rotation, and revocation — in a hardened vault. Services obtain credentials at runtime through authenticated, audited calls rather than reading static config. The vault enforces [Least Privilege](/approaches/least-privilege) by ensuring each service identity receives only the secrets it needs, scoped to its role, with a short time-to-live.
+Secret management centralizes the entire credential lifecycle — creation, storage, distribution, rotation, and revocation — in a hardened vault. Services obtain credentials at runtime through authenticated, audited calls rather than reading static config. The vault enforces [Least Privilege](/approaches/least-privilege) by ensuring each service identity receives only the secrets it needs, scoped to its role, with a short time-to-live. It also provides the master keys that [Encryption at Rest + in Transit](/approaches/encryption-at-rest-and-in-transit) depends on for envelope encryption, and uses [Strong Authentication](/approaches/strong-authentication) mechanisms (OIDC, IAM) to solve the vault's own bootstrap problem.
 
 ## How It Works
 
@@ -64,6 +64,7 @@ Secret management centralizes the entire credential lifecycle — creation, stor
 - **Kubernetes External Secrets**: Operators that sync vault secrets into native K8s Secrets for legacy applications.
 - [Encryption at Rest + in Transit](/approaches/encryption-at-rest-and-in-transit) depends on secret management for the "master keys" used in envelope encryption.
 - [Least Privilege](/approaches/least-privilege) is applied here at the credential layer via path-based scoping.
+- [Strong Authentication (MFA / OIDC)](/approaches/strong-authentication) provides the identity foundation used to solve the vault's own bootstrap problem.
 - **Hardware Security Modules (HSM)**: Providing a physical "root of trust" for the vault's master keys.
 
 ## References
