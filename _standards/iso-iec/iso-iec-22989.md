@@ -47,20 +47,8 @@ ISO/IEC 22989:2022 establishes a common vocabulary for artificial intelligence (
 
 ## References
 
-### Official standard and committee
-- ISO/IEC 22989:2022 — Information technology — Artificial intelligence — Artificial intelligence concepts and terminology: https://www.iso.org/standard/74296.html
-- ISO Online Browsing Platform (sample/preview of terms): https://www.iso.org/obp/ui/#iso:std:iso-iec:22989:ed-1:v1:en
+- ISO/IEC 22989:2022 — Artificial intelligence concepts and terminology: https://www.iso.org/standard/74296.html
+- ISO Online Browsing Platform (standard preview): https://www.iso.org/obp/ui/#iso:std:iso-iec:22989:ed-1:v1:en
 - ISO/IEC JTC 1/SC 42 (Artificial intelligence) committee: https://www.iso.org/committee/6794475.html
-
-### Related standards (using/aligning with 22989 terminology)
-- ISO/IEC 23894:2023 — Artificial intelligence — Risk management: https://www.iso.org/standard/77304.html
-- ISO/IEC 23053:2022 — Framework for AI systems using machine learning: https://www.iso.org/standard/74296.html?browse=tc
 - ISO/IEC 42001:2023 — Artificial Intelligence Management System (AIMS): https://www.iso.org/standard/81230.html
-- ISO/IEC 24028:2020 — Artificial intelligence — Overview of trustworthiness: https://www.iso.org/standard/77608.html
-- ISO/IEC/IEEE 29119-11:2022 — Software testing — Part 11: Testing of AI-based systems: https://www.iso.org/standard/82074.html
-- ISO/IEC 5259 series — Data quality for analytics and ML: https://www.iso.org/committee/7943743/x/catalogue/p/0/u/1/w/0/d/0
-
-### National adoptions and authoritative summaries
-- BSI (UK): BS ISO/IEC 22989:2022 — Artificial intelligence — Concepts and terminology: https://shop.bsigroup.com/products/artificial-intelligence-concepts-and-terminology/standard
-- INCITS/ANSI (US) adoption: https://www.incits.org/standards/iso-iec-22989-2022
-- NIST AI RMF Crosswalks (alignment with ISO/IEC standards incl. 22989): https://www.nist.gov/itl/ai-risk-management-framework/ai-rmf-crosswalks
+- NIST AI RMF Crosswalks (alignment with ISO/IEC standards): https://www.nist.gov/itl/ai-risk-management-framework/ai-rmf-crosswalks

@@ -74,21 +74,8 @@ The regulation directly impacts software system design and implementation throug
 
 ## References
 
-### Official Sources
 - [Regulation (EU) 2016/679 - Official Journal of the European Union](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A32016R0679)
 - [European Data Protection Board (EDPB) Guidelines](https://edpb.europa.eu/our-work-tools/general-guidance/gdpr-guidelines-recommendations-best-practices_en)
 - [European Commission GDPR Information](https://commission.europa.eu/law/law-topic/data-protection_en)
-
-### Implementation Guidance
-- [ICO (UK) Guide to GDPR](https://ico.org.uk/for-organisations/guide-to-data-protection/guide-to-the-general-data-protection-regulation-gdpr/)
-- [CNIL (France) GDPR Guide](https://www.cnil.fr/en/data-protection-around-the-world/europe/general-data-protection-regulation-gdpr)
-- [NIST Privacy Framework](https://www.nist.gov/privacy-framework) - Complementary privacy risk management guidance
-
-### Technical Implementation Resources
 - [EDPB Guidelines on Data Protection by Design and by Default](https://edpb.europa.eu/sites/default/files/consultation/edpb_draft_guidelines_on_data_protection_by_design_and_by_default_v2.0_en.pdf)
-- [ISO/IEC 27701:2019 Privacy Information Management](https://www.iso.org/standard/71670.html) - Extension to ISO 27001 for privacy
-- [ENISA Privacy and Data Protection by Design Guidelines](https://www.enisa.europa.eu/publications/privacy-and-data-protection-by-design)
-
-### Academic and Industry Research
-- [Future of Privacy Forum - GDPR Implementation Studies](https://fpf.org/gdpr/)
-- [Centre for Information Policy Leadership - GDPR Resources](https://www.informationpolicycentre.com/areas-of-focus/eu-general-data-protection-regulation/)
+- [ISO/IEC 27701:2019 Privacy Information Management](https://www.iso.org/standard/71670.html)
