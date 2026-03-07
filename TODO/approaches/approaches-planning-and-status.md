@@ -16,9 +16,9 @@ Consolidated from three independent plans (Gemini, GPT-5.3, Opus 4.6), Bass et a
 |:----:|----------|----------------------|:------:|
 | ✅ | Circuit Breaker | Stop calls to failing dependency, probe recovery after timeout | G·P·O |
 | ✅ | Caching | Reduce load and latency via fast-access data copies (secondary) | O |
-| 📋 | Bulkheads | Isolate resource pools so one failure path can't exhaust all | P·O |
+| ✅ | Bulkheads | Isolate resource pools so one failure path can't exhaust all | P·O |
 | 📋 | Graceful Degradation | Disable non-essential features to preserve core function | G·O·B+ |
-| 📋 | Rate Limiting | Cap request volume to protect availability under load | P·O |
+| ✅ | Rate Limiting | Cap request volume to protect availability under load | P·O |
 | | Retry with Exponential Backoff | Retry transient failures with increasing, jittered delays | G·P·O·B+ |
 | | Idempotent Operations | Make writes safely repeatable to enable retries and replay | G·O |
 | | Health Checks + Auto-Healing | Liveness/readiness probes trigger restart or rerouting | G·P·B+ |
@@ -64,15 +64,12 @@ Consolidated from three independent plans (Gemini, GPT-5.3, Opus 4.6), Bass et a
 
 ## `#maintainable` — Analyse, modify, test, evolve with predictable effort
 
-**Zero published approaches — highest priority dimension.**
-
 | Done | Approach | One-line description | Source |
 |:----:|----------|----------------------|:------:|
 | | Hexagonal Architecture (Ports & Adapters) | Isolate domain logic from infrastructure behind abstract ports | P·O |
 | | Modular Architecture / Bounded Contexts | Split codebase into cohesive, low-coupling modules | G·P·B+ |
 | | Automated Test Pyramid | Unit, integration, contract tests as change safety nets | G·P·B+ |
 | | Static Analysis + Quality Gates | Block merges when complexity, duplication, or style thresholds are violated | P·O |
-| | Architecture Decision Records (ADRs) | Numbered, immutable records of why decisions were made | P·O |
 | | Strangler Fig Pattern | Incrementally replace legacy via routing facade | O |
 | | Layered Architecture | Horizontal layers with strict top-down dependency rules | G |
 | | Specialized Test Interfaces | Expose controlled inspection/control points to observe and steer system state in tests | ★·B+ |
@@ -88,11 +85,7 @@ Consolidated from three independent plans (Gemini, GPT-5.3, Opus 4.6), Bass et a
 | | Intermediary Pattern (Facade/Broker) | Route dependencies through intermediaries to decouple direct links | ★·B+ |
 | | Restrict Dependencies | Enforce allowed dependency directions and bounded contexts | ★·B+ |
 | | Defer Binding (Config/Resources/Polymorphism) | Bind implementation choices late via configuration, resource files, or polymorphism | ★·B+ |
-| | Component Replacement | Design components for plug-compatible substitution with minimal ripple effects | ★·B+ |
-| | Abstract Common Services | Extract repeated cross-cutting capabilities into shared services/contracts | ★·B+ |
-| | Dependency Update Automation | Automated PRs for library updates (Dependabot, Renovate) | ★ |
-| | Continuous Refactoring Discipline | Systematic small improvements (boy-scout rule) embedded in daily work | ★ |
-| | API Documentation as Code | Generate and version API docs from source (OpenAPI, AsyncAPI) | ★ |
+
 
 ---
 
@@ -103,7 +96,7 @@ Consolidated from three independent plans (Gemini, GPT-5.3, Opus 4.6), Bass et a
 | ✅ | Caching | Serve frequent reads from faster storage layers | G·P·O·B+ |
 | ✅ | Asynchronous Messaging | Move long-running work off the request path | G·P·O |
 | ✅  | CQRS | Optimise read and write paths independently | O |
-| 📋 | Database Sharding | Partition data across nodes for horizontal scale | O |
+| ✅ | Database Sharding | Partition data across nodes for horizontal scale | O |
 | | Connection Pooling | Reuse expensive connections (DB, HTTP, gRPC) across requests | G·P·O |
 | | Content Delivery Network (CDN) | Serve static content from edge locations near users | P·O |
 | | Lazy Loading | Defer initialisation until actually needed | O |
@@ -148,13 +141,11 @@ Consolidated from three independent plans (Gemini, GPT-5.3, Opus 4.6), Bass et a
 
 ## `#safe` — Avoid states endangering life, health, or environment
 
-**Zero published approaches — high priority dimension.**
-
 | Done | Approach | One-line description | Source |
 |:----:|----------|----------------------|:------:|
-|✅  | Fail-Safe Defaults | Transition to predefined safe state on unexpected conditions | G·P·O·B+ |
-| | Safety Interlocks | Enforce preconditions before allowing hazardous operations | G·P·O·B+ |
-| | Watchdog Supervision | Independent monitor detects hangs, triggers safe restart | G·P·O·B+ |
+| ✅ | Fail-Safe Defaults | Transition to predefined safe state on unexpected conditions | G·P·O·B+ |
+| ✅ | Safety Interlocks | Enforce preconditions before allowing hazardous operations | G·P·O·B+ |
+| ✅ | Watchdog Supervision | Independent monitor detects hangs, triggers safe restart | G·P·O·B+ |
 | | N-Modular Redundancy + Voting | Run N independent paths, majority vote masks single failures | P·O·B+ |
 | | Hazard Analysis (FMEA / STPA) | Systematic derivation of safety constraints from identified hazards | P |
 | | Graceful Degradation (safety-focused) | Shed non-essential functions to protect safety-critical core | G·B+ |
@@ -172,19 +163,18 @@ Consolidated from three independent plans (Gemini, GPT-5.3, Opus 4.6), Bass et a
 
 ## `#secure` — Protect data and defend against attack patterns
 
-**Zero published approaches — high priority dimension.**
 
 | Done | Approach | One-line description | Source |
 |:----:|----------|----------------------|:------:|
-| 📋 | Least Privilege | Grant only minimum permissions required per actor/process | G·P·O·B+ |
-| 📋 | Rate Limiting | Throttle requests to limit brute-force and DoS exposure (secondary) | P·O·B+ |
+| ✅ | Least Privilege | Grant only minimum permissions required per actor/process | G·P·O·B+ |
+| ✅ | Rate Limiting | Throttle requests to limit brute-force and DoS exposure (secondary) | P·O·B+ |
 | 📋 | API Gateway | Centralise auth, throttling, and input validation at the edge (secondary) | P·O |
-| | Encryption at Rest + in Transit | Cryptographic protection of stored and transmitted data with key rotation | G·P·O·B+ |
-| | Secret Management | Vault-based credential storage with rotation and short-lived tokens | P·O |
+| ✅ | Encryption at Rest + in Transit | Cryptographic protection of stored and transmitted data with key rotation | G·P·O·B+ |
+| ✅ | Secret Management | Vault-based credential storage with rotation and short-lived tokens | P·O |
 | | Defense in Depth | Layer independent controls so no single failure yields a breach | O |
-| | Input Sanitization / Output Encoding | Neutralise untrusted data to prevent injection and XSS | G·P·B+ |
-| | Strong Authentication (MFA / OIDC) | Multi-factor or phishing-resistant identity verification | G·P·B+ |
-| | Fine-Grained Authorization (RBAC/ABAC) | Authorize actors per action/resource with policy-based access control | ★·B+ |
+| ✅ | Input Sanitization / Output Encoding | Neutralise untrusted data to prevent injection and XSS | G·P·B+ |
+| ✅ | Strong Authentication (MFA / OIDC) | Multi-factor or phishing-resistant identity verification | G·P·B+ |
+| ✅ | Fine-Grained Authorization (RBAC/ABAC) | Authorize actors per action/resource with policy-based access control | ★·B+ |
 | | Intrusion Detection | Detect indicators of compromise and raise actionable security alerts | ★·B+ |
 | | Service Denial Detection | Detect denial-of-service conditions early via traffic and saturation signals | ★·B+ |
 | | Message Integrity Verification | Verify message integrity/authenticity to detect tampering in transit | ★·B+ |
@@ -248,15 +238,15 @@ Consolidated from three independent plans (Gemini, GPT-5.3, Opus 4.6), Bass et a
 
 | Dimension | ✅ | 📋 | New | Total |
 |-----------|:--:|:--:|:---:|:-----:|
-| reliable | 2 | 3 | 17 | **22** |
+| reliable | 4 | 1 | 17 | **22** |
 | flexible | 3 | 1 | 12 | **16** |
 | maintainable | 0 | 0 | 25 | **25** |
-| efficient | 2 | 2 | 16 | **20** |
+| efficient | 4 | 1 | 15 | **20** |
 | usable | 2 | 0 | 14 | **16** |
-| safe | 0 | 0 | 15 | **15** |
-| secure | 0 | 3 | 19 | **22** |
+| safe | 3 | 0 | 12 | **15** |
+| secure | 7 | 1 | 14 | **22** |
 | suitable | 0 | 0 | 10 | **10** |
 | operable | 0 | 2 | 15 | **17** |
-| **Total** | **9** | **11** | **143** | **163** |
+| **Total** | **23** | **6** | **134** | **163** |
 
 Note: Some approaches appear in multiple dimensions (e.g. Caching in reliable+efficient, Rate Limiting in reliable+secure). The unique approach count is lower than 163.
