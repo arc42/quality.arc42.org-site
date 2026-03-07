@@ -394,6 +394,8 @@ order: 70
     border-radius: 10px;
     padding: 0.7rem;
     background: #ffffff;
+    min-width: 0;
+    overflow: hidden;
   }
 
   .approach-entry-results-block {
@@ -406,6 +408,7 @@ order: 70
 
   .approach-entry-results-head {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: baseline;
     gap: 0.4rem;
@@ -417,11 +420,14 @@ order: 70
     color: var(--approaches-text-color);
     font-size: 1.05rem;
     text-transform: lowercase;
+    min-width: 0;
   }
 
   .approach-entry-results-head span {
     color: var(--muted-text-2);
     font-size: 0.84rem;
+    min-width: 0;
+    overflow-wrap: anywhere;
   }
 
   .approach-entry-approach-list {
@@ -433,6 +439,7 @@ order: 70
     border-bottom: 1px solid rgba(56, 133, 50, 0.2);
     padding: 0.5rem 0.2rem 0.55rem;
     margin: 0;
+    min-width: 0;
   }
 
   .approach-entry-approach-list li:last-child {
@@ -443,19 +450,29 @@ order: 70
     color: var(--quality-text-color);
     text-decoration: none;
     font-weight: 700;
+    display: inline-flex;
+    align-items: flex-start;
+    gap: 0.35rem;
+    max-width: 100%;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    word-break: break-word;
   }
 
   .approach-entry-approach-list a .as-bullet {
     color: var(--approaches-text-color);
+    flex: 0 0 auto;
+    margin-top: 0.15rem;
   }
 
   .approach-entry-inline {
     color: var(--muted-text-2);
     font-size: 0.83rem;
     margin-top: 0.18rem;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    max-width: 100%;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    word-break: break-word;
   }
 
   .approach-entry-empty {
