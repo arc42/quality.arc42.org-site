@@ -5,7 +5,7 @@ permalink: /references/
 order: 85
 ---
 
-[Aroms/NIST](#nist-idps) · [Bass et al.](#bass2021software) · [bbv](#bbvquality) · [Boehm 1976](#boehm1976quantitative) · [Boehm 1978](#boehm1978characteristics) · [Cavano/McCall](#mccall) · [Crosby](#crosby-quality) · [Eeles](#eeles2005capturing) · [Frost](#brad-frost-theming) · [Forsgren/Humble/Kim](#forsgren-accelerate) · [Grady](#grady1992practical) · [Harasymczuk](#astrotech) · [Harrer](#harrer-quality-tactics) · [Hohpe/Woolf](#hohpe2004enterprise) · [ISO 9241](#iso-9241-110) · [ISO 25010 (2011)](#iso-25010-2011) · [ISO 25010 (2023)](#iso-25010-2022) · [Jamwal et al.](#jamwal) · [Kazman et al.](#kazman-maintainability) · [Martin](#martin-clean-architecture) · [McCabe](#mccabe1976complexity) · [McCall/Matsumoto](#mccall1980software) · [McCall/Walters](#mccall1977factors) · [Mockus et al.](#mockus2010experiences) · [Robertson/Robertson](#volere) · [SEI/QAW](#sei-qaw) · [Starke/Lorz](#starke2021software) · [SWEBOK](#swebok) · [W3C](#w3c-design-tokens) · [Wikipedia](#wikipedia-theming)
+[Aroms/NIST](#nist-idps) · [Bass et al.](#bass2021software) · [bbv](#bbvquality) · [Boehm 1976](#boehm1976quantitative) · [Boehm 1978](#boehm1978characteristics) · [Cavano/McCall](#mccall) · [Crosby](#crosby-quality) · [Eeles](#eeles2005capturing) · [Frost](#brad-frost-theming) · [Forsgren/Humble/Kim](#forsgren-accelerate) · [Grady](#grady1992practical) · [Harasymczuk](#astrotech) · [Harrer](#harrer-quality-tactics) · [Hohpe/Woolf](#hohpe2004enterprise) · [ISO 9241](#iso-9241-110) · [ISO 25010 (2011)](#iso-25010-2011) · [ISO 25010 (2023)](#iso-25010-2022) · [Jamwal et al.](#jamwal) · [Kazman et al.](#kazman-maintainability) · [Martin](#martin-clean-architecture) · [Nygard](#nygard2018release) · [McCabe](#mccabe1976complexity) · [McCall/Matsumoto](#mccall1980software) · [McCall/Walters](#mccall1977factors) · [Mockus et al.](#mockus2010experiences) · [Robertson/Robertson](#volere) · [SEI/QAW](#sei-qaw) · [Starke/Lorz](#starke2021software) · [SWEBOK](#swebok) · [W3C](#w3c-design-tokens) · [Wikipedia](#wikipedia-theming)
 
 ---
 
@@ -182,6 +182,16 @@ Nice statement:
 >One problem ... is the absence of a widely accepted definition of software quality.
 >
 >Cavano/McCall, p 133.
+
+<a id="nygard2018release"></a>
+
+### Nygard: Release It!
+
+M. T. Nygard, _Release It! Design and Deploy Production-Ready Software_, 2nd ed. Pragmatic Bookshelf, 2018.
+
+Available [online](https://pragprog.com/titles/mnee2/release-it-second-edition/)
+
+The essential field guide to building production-ready systems, covering stability patterns (circuit breakers, bulkheads, timeouts, fail-fast), capacity anti-patterns, and networking failure modes drawn from real-world postmortems. Directly relevant to reliability, availability, and resilience quality requirements in distributed systems.
 
 <a id="mccabe1976complexity"></a>
 ### McCabe: A complexity measure
