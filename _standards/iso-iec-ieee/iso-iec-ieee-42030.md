@@ -92,24 +92,5 @@ The standard directly addresses architecture evaluation across multiple quality 
 
 ## References
 
-### Official Standards Sources
 - [ISO/IEC/IEEE 42030:2019](https://www.iso.org/standard/68490.html) - Software, systems and enterprise architecture evaluation framework
-- [ISO/IEC/IEEE 42010:2011](https://www.iso.org/standard/50508.html) - Systems and software engineering — Architecture description (complementary standard)
-
-### IEEE and ISO Resources
 - [IEEE Standards Association - 42030](https://standards.ieee.org/ieee/42030/5536/) - Official IEEE standard page
-- [ISO/IEC JTC 1/SC 7 Software and Systems Engineering](https://www.iso.org/committee/45086.html) - Technical committee responsible for the standard
-
-### Implementation Guidance and Research
-- [Software Engineering Institute (SEI) - Architecture Evaluation Methods](https://www.sei.cmu.edu/architecture/tools/evaluate/) - Practical guidance on architecture evaluation
-- [ATAM (Architecture Tradeoff Analysis Method)](https://resources.sei.cmu.edu/library/asset-view.cfm?assetid=5177) - SEI's influential architecture evaluation method
-- [CBAM (Cost Benefit Analysis Method)](https://resources.sei.cmu.edu/library/asset-view.cfm?assetid=5240) - Economic analysis framework for architecture decisions
-
-### Academic and Industry Research
-- [Journal of Systems and Software - Architecture Evaluation Special Issues](https://www.journals.elsevier.com/journal-of-systems-and-software) - Peer-reviewed research on evaluation methods
-- [IEEE Software Magazine - Architecture Evaluation Articles](https://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=52) - Practical case studies and lessons learned
-- [Software Architecture Knowledge Community](https://www.sei.cmu.edu/architecture/) - Community resources and best practices
-
-### Tools and Frameworks
-- [ArchE - Architecture Expert](https://www.sei.cmu.edu/architecture/tools/arche/) - SEI tool supporting quality-driven architecture design
-- [SAVE (Software Architecture inVisible Evaluator)](https://link.springer.com/chapter/10.1007/978-3-540-88030-1_19) - Research prototype for architecture evaluation
