@@ -38,13 +38,4 @@ The standard introduces several important concepts:
 
 ## References
 
-### Official Standards Documents
 - [ISO/IEC 14756:1999](https://www.iso.org/standard/25505.html) - Measurement and rating of performance of computer-based software systems
-
-### Related Standards
-- ISO/IEC 25010 - Systems and software Quality Requirements and Evaluation (SQuaRE)
-- ISO/IEC 25023 - Systems and software Quality Requirements and Evaluation (SQuaRE) — Measurement of system and software product quality
-
-### Additional Resources
-- Smith, C. U., & Williams, L. G. (2002). Performance Solutions: A Practical Guide to Creating Responsive, Scalable Software. Addison-Wesley.
-- Jain, R. (1991). The Art of Computer Systems Performance Analysis: Techniques for Experimental Design, Measurement, Simulation, and Modeling. Wiley.
