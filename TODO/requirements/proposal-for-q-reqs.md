@@ -1,74 +1,116 @@
-# LLM Prompt Guideline — The "Near-Perfect" Quality Requirement
+# LLM Prompt Guideline — Concise Quality Requirements
 
-Use this guideline to prompt an LLM to generate a single, high-quality, and architecturally sound quality requirement.
+Use this guideline to generate one short, falsifiable, and architecturally useful quality requirement for the arc42 quality model.
+
+Core principle:
+Prefer the shortest requirement that remains measurable and useful for architectural decisions.
 
 ---
 
-## The Prompt
+## Prompt
 
-**Role**: You are a Software Quality Engineer and Requirements Specialist. Your task is to write exactly one quality requirement scenario for the arc42 quality model.
+**Role**: You are a Software Quality Engineer and Requirements Specialist.
+
+**Task**: Write exactly one concise quality requirement for the arc42 quality model.
 
 **Input**:
 - **Quality Attribute**: `[e.g., Observability]`
 - **Domain / System Type**: `[e.g., High-frequency Trading Platform]`
-- **Primary Stakeholder**: `[e.g., SRE / Site Reliability Engineer]`
+- **Mode**: `[Scenario | Quality Gate]`
+- **Critical Asset / Flow** (optional): `[e.g., payment authorization, citizen records, login endpoint]`
+- **Primary Stakeholder** (optional): `[e.g., SRE, Data Protection Officer, Engineering Lead]`
+
+Use `Scenario` for runtime, operational, or user-facing qualities.  
+Use `Quality Gate` for engineering, code, process, or maintainability-oriented qualities.
 
 ---
 
-**Output Structure (Strict Markdown)**:
+## Output Structure
+
+Choose exactly one mode.
+
+### Mode A — Scenario
 
 ```md
 #### Context
-[2–4 sentences defining the specific domain, system scale, and why this quality is critical for the named stakeholder.]
+[1-2 sentences max. Name the domain and why the quality matters.]
 
 #### Trigger
-[One sentence. Define the event, user action, or system state change that initiates this scenario.]
+[1 sentence.]
 
 #### Acceptance Criteria
-- [Criterion 1: metric + unit + threshold + source]
-- [Criterion 2: ...]
-- ... (4 to 7 criteria total)
+- [Criterion name]: [threshold + unit/count] under [scope, if needed]; source: [artifact]; horizon: [window, if needed].
+- [Criterion name]: ...
+- [Criterion name]: ...
 
-#### Monitoring Artifact
-[One-line description of where/how compliance is observed: e.g., CI/CD logs, Prometheus dashboard, SOC2 Audit report.]
+#### Evidence
+[Optional. Short noun phrase only, if a shared report, dashboard, or gate is genuinely helpful.]
+```
+
+### Mode B — Quality Gate
+
+```md
+#### Requirement
+[1 sentence.]
+
+#### Acceptance Criteria
+- [Criterion name]: [threshold + unit/count] under [scope, if needed]; source: [artifact]; horizon: [window, if needed].
+- [Criterion name]: ...
+- [Criterion name]: ...
+
+#### Evidence
+[Optional. Short noun phrase only, if a shared report, dashboard, or gate is genuinely helpful.]
 ```
 
 ---
 
-**Fundamental Rules (No Exceptions)**:
+## Rules
 
-1.  **Atomicity**: Address exactly one quality attribute. Use 4–7 acceptance criteria.
-2.  **Quantification**: Every criterion must contain a **numeric threshold** with a **unit** (e.g., "99.9%", "≤ 250ms", "≥ 80%"). Qualitative terms like "fast" or "secure" are banned.
-3.  **Measurement Stack**: Every criterion must specify:
-    *   **Scope**: Load level, data volume, or user count (e.g., "at 10k requests/sec").
-    *   **Source**: Where the data comes from (e.g., "distributed traces", "static analysis report").
-    *   **Horizon**: The time window or frequency (e.g., "p95 over 5-minute rolling window").
-4.  **Tech-Neutrality**: Use **capability categories**, not products. Say "a cryptographically strong asymmetric algorithm," not "RSA-4096." Say "a container orchestration platform," not "Kubernetes."
-5.  **Failure Path**: At least one criterion must define the **system behavior upon breach** (e.g., automated rollback, circuit-breaker activation, or immediate notification with a specific latency).
-6.  **Logical Hygiene**:
-    *   Criteria must be **independently falsifiable** (failing one doesn't mean failing all).
-    *   No tautologies: Replace "100% secure" with specific attack-mitigation metrics.
-    *   No boilerplate: Don't restate the trigger or context inside the criteria.
-7.  **Uncertainty**: If an industry benchmark is unavailable, use `Assumption:` to declare a team-verifiable threshold.
-
----
-
-**Anti-Patterns to Avoid**:
-
-| Anti-pattern | Why it fails |
-|:-------------|:-------------|
-| "The system shall be highly available." | Not measurable. |
-| "Response time must be acceptable." | No threshold, no scope. |
-| "Use OAuth2 with JWT." | Solution-prescriptive (not tech-neutral). |
-| "All data must be correct at all times." | Tautology; impossible to falsify. |
-| "Errors are handled gracefully." | No metric, no failure path defined. |
+1. **Atomicity**: Address exactly one quality attribute.
+2. **Brevity**: Use **2-4** criteria. Default to **3**. Use 4 only when the requirement would otherwise miss an important control or failure/gate behavior.
+3. **One obligation per bullet**: Do not pack several unrelated primary metrics into one criterion.
+4. **Quantification**: Every criterion must contain a measurable threshold with a unit, percentage, count, or duration.
+5. **Evidence**: Every criterion must name a measurement source. Add scope and horizon when they materially affect interpretation.
+6. **Optional evidence section**: Add `#### Evidence` only when a shared dashboard, report, test gate, or audit artifact adds clarity. Do not invent one just to fill the template.
+7. **Tech-neutrality by default**: Avoid unnecessary product or vendor names. Named standards, protocols, formats, browsers, or legal frameworks are allowed when externally required or when the requirement is explicitly about them.
+8. **Failure or gate behavior**:
+   - In `Scenario` mode, include failure-path behavior when the quality is operational/runtime.
+   - In `Quality Gate` mode, include gate or escalation behavior when thresholds are missed.
+9. **Logical hygiene**:
+   - Criteria must be independently falsifiable.
+   - Do not restate the context or trigger inside the criteria.
+   - Avoid tautologies such as "highly available" or "secure enough".
+10. **Assumptions**: If no credible benchmark exists, use `Assumption:` once and keep it short.
 
 ---
 
-**LLM Self-Check (Pre-output)**:
-- [ ] Are there 4–7 criteria?
-- [ ] Does every criterion have a metric, unit, threshold, source, and scope?
-- [ ] Is there a failure path with a response time?
-- [ ] Is it 100% free of specific vendor or product names?
-- [ ] Does the "Monitoring Artifact" provide a realistic way to verify the requirement?
-- [ ] Are potential trade-offs (e.g., security vs. latency) explicitly bounded?
+## Anti-Patterns
+
+- "The system shall be highly available."  
+  Too vague.
+
+- "Response time must be acceptable."  
+  No threshold.
+
+- "Use OAuth2 with JWT."  
+  Too solution-prescriptive unless the requirement is explicitly about that protocol.
+
+- One bullet containing coverage, latency, error rate, and auditability together.  
+  Too many obligations in one criterion.
+
+- A long context paragraph explaining the business domain in detail.  
+  The requirement becomes narrative instead of testable.
+
+- A made-up "Monitoring Artifact" added only because the template asked for one.  
+  If the criteria already name the evidence sources, omit the extra section.
+
+---
+
+## Minimal Self-Check
+
+- [ ] Did I choose the correct mode?
+- [ ] Are there 2-4 criteria, preferably 3?
+- [ ] Does each criterion express one measurable obligation?
+- [ ] Does each criterion state a threshold and a source?
+- [ ] If `Evidence` is included, does it add value instead of repeating the criteria?
+- [ ] Is the output the shortest useful version?

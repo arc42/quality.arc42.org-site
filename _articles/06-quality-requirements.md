@@ -18,7 +18,9 @@ Consider the following examples of quality requirements:
 >
 >[Starke+2021, p. 141](/references/#starke2021software)
 
-These sentences, in natural language, describe requirements or expectations of stakeholders in a quite specific and measurable manner. Formulating requirements this way allows a development team to know what needs to be achieved and what is _good enough_.
+These sentences, in natural language, describe requirements or expectations of stakeholders in a specific and measurable manner. 
+Formulating requirements this way allows a development team to know what needs to be achieved and what is _good enough_. 
+Some of these examples could be sharpened further — for instance, "available 7x24h 99%" still lacks preciseness and can be improved easily (by adding a measurement window and an SLO boundary, see the sections below show how to add such precision systematically).
 
 >You find {{ requirement_posts | size }} examples of such quality requirements on this site (see [examples](/requirements)).
 
@@ -78,7 +80,7 @@ Use this structure for straightforward requirements where context is obvious or 
 - [Use concrete metrics: percentages, timeframes, thresholds]
 ```
 
-**Example: Quick Unit Tests**
+**Example: Quick Unit Tests** (see also [full requirement](/requirements/quick-unit-tests))
 
 <div class="quality-requirement" markdown="1">
 
@@ -117,24 +119,25 @@ Use this structure when business or technical context is essential to understand
 - [Additional criteria...]
 ```
 
-**Example: Access Control Enforcement**
+**Example: Access Control Enforcement** (see also [full requirement](/requirements/access-control-is-enforced))
 
 <div class="quality-requirement" markdown="1">
 
 #### Context
-The system operates in a multi-user environment with varying levels of user roles and permissions. Sensitive features and confidential information require role-based access control (RBAC) and audit trails to maintain data security and privacy.
+The system operates in a multi-user environment where sensitive features and confidential data require role-based access control and audit trails. 
+Unauthorized access would violate regulatory obligations and compromise customer trust.
 
 #### Trigger
 A user attempts to access a sensitive feature or confidential information within the system.
 
 #### Acceptance Criteria
-- 100% of access attempts must be authenticated before granting access to sensitive data
-- Multi-factor authentication (MFA) is implemented for highly sensitive data
-- User roles are precisely defined with least-privilege access
-- 100% of access attempts are logged in a tamper-proof audit trail including user identity, timestamp, accessed data, and outcome
-- Access permissions can be revoked immediately with changes effective within 60 seconds
-- User sessions automatically timeout after 30 minutes of inactivity
-- Access control violations are logged and reported within 5 minutes
+
+- 100% of requests to sensitive endpoints are rejected unless accompanied by a valid, non-expired authentication token; measured by automated penetration tests against every registered route
+- Highly sensitive operations require a second authentication factor; bypass attempts are rejected with a 403 response within ≤ 200 ms
+- 100% of access attempts (granted and denied) are recorded in a tamper-proof audit log including user identity, timestamp, resource, and outcome; log completeness verified by weekly reconciliation against the request log
+- Permission revocation takes effect within ≤ 60 seconds across all active sessions; verified by automated revocation drill
+- Sessions expire after ≤ 30 minutes of inactivity; the expired session token is rejected on next use
+- Access control violations trigger an alert to the security operations dashboard within ≤ 5 minutes of occurrence
 
 </div><br>
 
@@ -164,6 +167,15 @@ Regardless of which tier you use, acceptance criteria should follow these best p
 - ✅ "100% of failed login attempts are logged within 5 seconds"
 - ❌ "Failed logins are tracked appropriately"
 
+**6. State the Scope** - Define the load, data volume, or user count under which the threshold applies
+- ✅ "p95 response time < 250 ms at 10 000 concurrent users"
+- ❌ "p95 response time < 250 ms" *(under what load?)*
+
+**7. Define the Failure Path** - At least one criterion should specify what the system does when a threshold is breached
+- ✅ "If error rate exceeds 5% over a 1-minute window, the circuit breaker opens and traffic is shed within ≤ 3 seconds"
+- ❌ "Error rate must stay below 5%" *(what happens if it doesn't?)*
+
+
 ### Common Metrics to Include
 
 - **Percentages**: "95% of users", "99.9% accuracy", "100% compliance"
@@ -171,12 +183,13 @@ Regardless of which tier you use, acceptance criteria should follow these best p
 - **Thresholds**: "±10% margin", "20% reduction", "≤ 0.05 difference"
 - **Counts**: "zero critical vulnerabilities", "fewer than 2 issues per page"
 - **Uptime**: "99.99% availability", "SLA of 99.9%"
-
+- **Error rates / failure budgets**: "≤ 0.5% 5xx responses over any 10-minute window", "≤ 0.0001% idempotency violations" 
+  
 ---
 
 ## Examples by Domain
 
-### Performance Requirements (Usually Tier 1)
+### Performance Requirements (Usually Tier 1) — see also [Near-Instant Search Results](/requirements/near-instant-search-results)
 
 <div class="quality-requirement" markdown="1">
 
@@ -190,7 +203,7 @@ Search results must be displayed near-instantly to maintain user engagement.
 
 </div><br>
 
-### Data Quality Requirements (Usually Tier 2)
+### Data Quality Requirements (Usually Tier 2) — see also [Patient Data Quality](/requirements/patient-data-quality)
 
 <div class="quality-requirement" markdown="1">
 
@@ -209,7 +222,7 @@ Patient data is entered, updated, or accessed throughout the care journey.
 
 </div><br>
 
-### Accessibility Requirements (Often Tier 2)
+### Accessibility Requirements (Often Tier 2) — see also [WCAG Compliance](/requirements/compliance-to-wcag)
 
 <div class="quality-requirement" markdown="1">
 
@@ -261,7 +274,8 @@ Acceptance Criteria:
 - Rollback capability available within 5 minutes if issues detected
 ```
 
-The pragmatic version consolidates the six SEI elements into three focused sections, eliminating redundancy while maintaining all essential information.
+The pragmatic version consolidates the six SEI elements into three focused sections, eliminating redundancy while maintaining all essential information. 
+Notice how the structured format naturally invites additional acceptance criteria (zero downtime, rollback capability) that the flat SEI template left implicit — this enrichment is a feature of the approach, not an accident.
 
 ---
 
@@ -278,7 +292,8 @@ The **two-tier Q42 approach** offers:
 
 We recommend starting with Tier 1 for most requirements and upgrading to Tier 2 only when context genuinely adds value. This keeps your quality requirements lean, clear, and actionable.
 
-Try the pragmatic Q42-Quality-Scenario approach in your own projects—it strikes the right balance between rigor and practicality.
+
+Try this pragmatic two-tier approach (we like to call it _Q42-quality-scenario_) in your own projects, it strikes the right balance between rigor and practicality.
 
 ---
 
@@ -286,3 +301,9 @@ Try the pragmatic Q42-Quality-Scenario approach in your own projects—it strike
 - [WCAG Guidelines](https://www.w3.org/TR/WCAG21/)
 - [ISO 25010 Quality Model](/standards/iso-25010)
 - [Bass et al., 2021 - Software Architecture in Practice](/references/#bass2021software)
+
+
+##### Changelog
+
+- Originally written December 2023.
+- revised March 2026
