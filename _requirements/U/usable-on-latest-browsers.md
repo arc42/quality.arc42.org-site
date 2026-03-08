@@ -6,20 +6,19 @@ permalink: /requirements/user-interface-works-with-current-browsers
 ---
 
 <div class="quality-requirement" markdown="1">
-#### Background
 
-The system offers an HTML/web based user interfaces.
+#### Context
+The system provides a responsive HTML5 user interface accessible via public internet.
 
-The user interface works seamlessly without restrictions in the five latest versions of the major browsers.
+#### Trigger
+A user accesses any application page using a desktop or mobile browser.
 
-This compatibility requirements holds for the following browsers:
+#### Acceptance Criteria
+- Browser compatibility: **100%** pass rate for critical user journeys in the **two latest stable versions** of Chrome, Firefox, Edge, and Safari; source: Automated end-to-end test suite.
+- Visual consistency: **0** critical layout regressions (overlapping elements or broken navigation) across supported browsers; source: Visual regression testing reports.
+- Failure-path behavior: **100%** of users on unsupported browsers (older than 3 years) receive a compatibility warning within **2 seconds** of page load; source: Client-side monitoring logs.
 
-* Chrome starting from version 107
-* Edge starting with version 107
-* Firefox starting from version 107
-* Safari starting from version 14
-* Opera starting with version 94 
-</div><br>
+#### Monitoring Artifact
+Cross-browser compatibility dashboard
 
-
-
+</div>
