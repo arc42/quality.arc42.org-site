@@ -7,18 +7,18 @@ permalink: /requirements/fast-shutdown-time
 
 <div class="quality-requirement" markdown="1">
 
-#### Background
+#### Context
 
-Within a large corporation with many thousands of employees, the credentials (e.g. password, API-key) for the central employee database containing all personal information (e.g. salaries, health-issues etc) become compromised (e.g. stolen by a former employee or outside hacker).
+The central employee database contains highly sensitive personal data. If credentials are suspected to be compromised, the system must isolate that database quickly enough to reduce the window for data exfiltration.
 
-#### 
-#### Metric
+#### Trigger
 
-To avoid a data breach this employee database shall be taken offline (aka _shutdown_) in less than 10 seconds from the moment the shutdown command was issued.
+An authorized emergency shutdown command for the employee database is issued during a suspected credential-compromise incident.
 
+#### Acceptance Criteria
 
-</div>
+- Isolation latency: the database rejects all new application read and write connections within **<= 10 s** after the shutdown command is issued; source: database connection log and incident timeline; horizon: every shutdown drill and incident.
+- Session cutoff: **100%** of active privileged application sessions against the database are terminated or blocked within **<= 20 s** after the shutdown command; source: session-management log and drill report; horizon: every shutdown drill and incident.
+- Failure-path behavior: if either threshold is missed, network-level isolation is activated within **<= 60 s** and the incident is escalated automatically; source: network-control log and alert record; horizon: every missed shutdown target.
 
-
-
-
+</div><br>
