@@ -7,27 +7,18 @@ permalink: /requirements/convenient-online-banking
 
 <div class="quality-requirement" markdown="1">
 
-#### Background
+#### Context
 
-* Product Description: A browser-based online banking application.
-* Intended User Base: Banking customers who manage their accounts primarily online.
-* Features include account balance viewing, funds transfer, bill payments, account statements, and customer support access.
+A browser-based online banking application lets retail customers manage accounts, add payees, and make payments without branch or phone support. The add-payee-plus-first-payment flow must be fast and low-friction because it is both frequent and error-sensitive.
 
-#### Event
-A user wants to make a bill payment to a new payee, which involves adding the payee's details (like account number, e.g. European IBAN), setting up the payment amount, and confirming the transaction via any second-factor authentication.
+#### Trigger
 
-#### Reaction
+An authenticated customer adds a new payee and submits the first bill payment to that payee.
 
-* Task Streamlining: The application should guide the user through a simplified process of adding a new payee and completing the payment.
-* User Interface Optimization: The interface should be intuitive, minimizing the need for user input and reducing the likelihood of errors.
-* Transaction Efficiency and Convenience: The process should be quicker and more convenient compared to traditional methods (e.g., branch visits, phone calls).
+#### Acceptance Criteria
 
-#### Metrics
+- Task completion: in a usability test with **>= 20** representative customers, **>= 90%** complete the end-to-end flow without assistance within **<= 2 min** including second-factor confirmation; source: moderated usability test log; horizon: each major release affecting the payment flow.
+- Correction rate: across the same test, the percentage of attempts requiring user correction of payee data, amount, or scheduling details before confirmation stays **<= 5%**; source: session recordings and task-observation protocol; horizon: each major release affecting the payment flow.
+- Gate behavior: if either threshold is missed, release of the changed payment flow is blocked; source: release gate log; horizon: every qualifying release.
 
-* Step Reduction: The number of user interactions (clicks and data entries) required to add a new payee and complete a payment shall be below 6 keyboard interactions.
-* Completion Time: The average time taken by users to complete the bill payment process from login to confirmation should require less than 2 minutes.
-* Error Rate: Percentage of transactions that result in errors or user-initiated corrections needs to be lower than 2%.
- 
 </div><br>
-
-
