@@ -1,34 +1,20 @@
 ---
 title: "Modular System for Data Analysis"
 tags: [efficient, flexible, maintainable]
-related: [composability, modularity, stability]
+related: [composability, modularity, extensibility, stability]
 permalink: /requirements/modular-system-for-data-analysis
 ---
 
 <div class="quality-requirement" markdown="1">
 
-#### Context
+#### Requirement
 
-A modular software application designed for data analysis, consisting of independent modules for data import, processing, visualization, and export.
-    The system currently handles structured data formats and is used primarily for financial data analysis.
+The data-analysis platform must allow a new analysis module, such as an NLP step for unstructured social-media data, to be added through defined extension points without broad changes to existing import, visualization, or export modules.
 
-#### Event
-As a new requirement, social media data needs to be analyzed. 
-That data is unstructured and requires natural language processing (NLP) capabilities.
+#### Acceptance Criteria
 
-#### Reaction
-The system should allow the integration of a new NLP module without requiring significant changes to existing modules.
+- Integration effort and blast radius: in a module-integration exercise, a new analysis module that uses the standard module interfaces is connected end-to-end within **<= 4 h** of engineering effort, while requiring code changes in **<= 2** existing modules outside the extension itself; source: exercise report and pull-request diff review; horizon: each major release.
+- Compatibility and stability: after integration, **>= 95%** of the top **20** representative analysis flows using the new module complete successfully, and analysis flows that do not use the new module show **<= 2%** increase in error rate and **<= 5%** increase in p95 runtime; source: automated integration suite and benchmark report; horizon: each module-integration exercise.
+- User activation and gate: a trained analyst enables the new module in a standard workflow within **<= 30 min** using product documentation only; if any threshold above is missed, release of the changed extension mechanism is blocked within **<= 1 business day**; source: usability exercise log and release gate record; horizon: each module-integration exercise.
 
-* Module Compatibility: The new NLP module should seamlessly integrate with the existing data import and visualization modules.
-* User Configuration: Users should be able to configure the system to include the NLP module in their data analysis workflow.
-
-#### Metric/Acceptance Criteria
-
-* Integration Time: The time taken from the initiation of integrating the new NLP module to the point where it is fully functional is less than 4 hours.
-* Component Compatibility Success Rate: The percentage of successful data flows between the new NLP module and existing modules is >= 95% (in other words: 5% of queries concerning the new NLP module are allowed to fail).
-* User Configuration Time: The time users need to configure the new module into their workflow is less than 30 minutes for an experienced user.
-* System Stability Post-Integration: The system should not experience more than a 5% increase in error rate or performance degradation after the integration of the NLP module.
- 
 </div><br>
-
-
