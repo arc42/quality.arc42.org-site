@@ -7,28 +7,14 @@ permalink: /requirements/scale-up-in-2-minutes
 
 <div class="quality-requirement" markdown="1">
 
+#### Requirement
 
-#### Background
+The cloud-based web application must scale out automatically fast enough to absorb a sharp traffic increase without manual intervention and without disproportionate cost growth.
 
-A cloud-based web application, with a sudden increase in user traffic, such as during a promotional event or a major product launch. 
-Auto-scaling features are available and configured.
+#### Acceptance Criteria
 
-
-#### Response
-
-The system automatically detects the increase in load and provisions additional resources to handle the increased traffic, without human intervention.
-
-#### Metric
-
-
-* Time to Scale: The system should begin scaling up additional resources within 2 minutes of detecting a 50% increase in traffic load.
-* Resource Utilization: After scaling, CPU and memory utilization should stabilize at approximately 70%, ensuring that resources are neither underutilized (wasteful) nor overburdened (which could degrade performance).
-* Performance Maintenance: The response time of the web application should not exceed 3 seconds for 95% of the requests, even during peak traffic.
-Cost Efficiency: The cost of scaled resources should not exceed a 150% increase despite a 200% increase in traffic, emphasizing cost-effective scaling.
+- Scale-out completion: when sustained incoming traffic rises to **150%** of the established baseline for **5 min**, the platform adds enough healthy serving capacity within **<= 2 min** after threshold breach; source: load-test report plus autoscaling and health-check events; horizon: each quarterly elasticity test.
+- Post-scale stability: during the first **10 min** after scale-out, request latency stays at **p95 <= 3 s** and average CPU utilization of serving instances stays at **<= 70%** under a traffic level of **200%** of baseline; source: APM dashboard and infrastructure metrics; horizon: each quarterly elasticity test.
+- Cost bound and gate: under the same **200%** traffic test, hourly compute cost rises by **<= 150%** over the baseline hour; if any threshold is missed, rollout of the changed autoscaling configuration is blocked within **<= 1 business day**; source: cost report and release gate log; horizon: each quarterly elasticity test.
 
 </div><br>
-
-This requirement was created with help from [ChatGPT](https://chat.openai.com) by using the prompt `create a quality attribute scenario to describe a elasticity requirement for a web application`.
-
-
-
