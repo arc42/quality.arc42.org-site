@@ -7,21 +7,14 @@ permalink: /requirements/fast-startup-time
 
 <div class="quality-requirement" markdown="1">
 
-#### Background
+#### Requirement
 
-Imagine a mobile phone or a navigation system in your car. 
-Such systems are sometimes in _power-off_ state (aka turned-off).
-When users power-on (turn on, power-up, start) the system, they want them to be operational (aka usable) in a relatively short time.
+The system must reach a defined ready-for-use state quickly after a cold start from the fully powered-off state.
 
-This also holds for systems that are automatically managed, e.g. services deployed in the cloud.
+#### Acceptance Criteria
 
-#### Metric
-
-The system must be able to start from _power-off_ to _operational_ state in less than 90 seconds.
-
+- Startup latency: on supported production hardware or runtime profiles, the system reaches ready state within **<= 90 s at p95** after the start command; source: startup timing report; horizon: each release affecting startup or deployment.
+- Ready-state completeness: the startup success rate is **>= 99%** for cold starts, where ready state means that all mandatory services are initialized and the first health check or representative user transaction succeeds; source: startup test report; horizon: each release affecting startup or deployment.
+- Gate behavior: if either threshold is missed, release of startup-affecting changes is blocked; source: release gate log; horizon: every qualifying release.
 
 </div><br>
-
-
-
-
