@@ -1,23 +1,20 @@
 ---
 title: "Only authenticated users can access data"
 tags: [secure]
-related: [confidentiality, security, privacy]
+related: [access-control, confidentiality, security, privacy]
 permalink: /requirements/only-authenticated-users-can-access
 ---
 
 <div class="quality-requirement" markdown="1">
-#### Background
 
-Prior to using the system, users must authenticate themselves, either by using SSO or entering unique credentials (username/password).
+#### Requirement
 
-After authentication, the system determines this users' authorization level (which function these users are allowed to use and which data they are allowed to see and/or modify)
+Access to protected data and business functions requires successful authentication and an authorization decision for the requested action and resource.
 
-#### Scenario
+#### Acceptance Criteria
 
-Users are allowed to use only those system functions and see only the data they are authorized for.
-
+- Unauthenticated denial: in automated security tests covering **100%** of protected API routes and primary UI entry points, **100%** of requests without a valid session are denied or redirected to login within **<= 1 s**; source: security regression test report; horizon: every pull request.
+- Unauthorized access denial: in release-candidate tests with **>= 20** representative cross-role and cross-tenant access attempts, **100%** of out-of-scope reads, writes, and admin actions are denied and written to the audit log within **<= 30 s**; source: authorization test report and audit-log review; horizon: every release candidate.
+- Gate behavior: if either threshold is missed, release of the affected authentication or authorization change is blocked within **<= 10 min** after the test report is available; source: CI/CD gate log; horizon: every pull request and release candidate.
 
 </div><br>
-
-
-
