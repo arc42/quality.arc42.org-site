@@ -1,27 +1,20 @@
 ---
 title: "Portable Business Data Checker"
 tags: [flexible, operable]
-related: [portability, adaptability, flexibility] 
+related: [portability, adaptability, flexibility]
 permalink: /requirements/portable-business-data-checker
 ---
 
 <div class="quality-requirement" markdown="1">
-#### Scenario
 
-The BuDIC tool needs to be compatible with the latest versions of MySQL, PostgreSQL, Oracle and DB2.<br>
-If an update or new version of one of these databases is released by the respective vendor, BuDIC can be updated to be compliant with the new version within 2 person-days of development and test effort.
+#### Requirement
 
-#### Background
+The business-data checker must remain portable across the supported relational database engines so that vendor version changes do not require major redesign or long support gaps.
 
-Business data is stored in different databases (MySQL, PostgreSQL, Oracle, DB2).
-Integrity and consistency of certain data types need to be checked across these databases.
-An integrity checking tool (BuDIC) has been developed, that is able to access several datas ources in parallel.
+#### Acceptance Criteria
+
+- Version support readiness: for each supported engine family, the latest generally available major version of MySQL, PostgreSQL, Oracle Database, and Db2 passes **100%** of connector smoke tests and **>= 95%** of the top **20** integrity-check scenarios within **<= 10 business days** after vendor release; source: compatibility matrix and CI test report; horizon: each relevant major database release.
+- Adaptation effort: enabling support for one new major database version requires **<= 2 person-days** of development and regression-test effort for the existing checker scope; source: engineering work log and release ticket; horizon: each relevant major database release.
+- Gate behavior: if either threshold is missed, that database version is marked unsupported in product documentation and blocked from production rollout within **<= 1 business day** after the failed validation; source: release note and support-status log; horizon: each compatibility validation.
 
 </div><br>
-
-
-
-
-
-
-
