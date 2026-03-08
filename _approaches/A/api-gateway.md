@@ -33,6 +33,8 @@ An API gateway is a reverse-proxy layer that sits between external clients and b
 
 The pattern becomes especially valuable once a system grows beyond a handful of services. Without a gateway, every team reimplements token validation, rate limiting, and logging with subtle inconsistencies; with a gateway, those policies are defined once and enforced uniformly. The risk is that a poorly governed gateway accumulates business logic and becomes the bottleneck it was supposed to prevent.
 
+![API Gateway Diagram](/assets/img/approaches/api-gateway.svg)
+
 ## How It Works
 
 - **TLS Termination and Re-encryption**: The gateway terminates client-facing TLS, inspects and validates the request, then forwards it to the backend over internal TLS (or mTLS). This concentrates certificate management and cipher-suite policy in one fleet. See [Encryption at Rest + in Transit](/approaches/encryption-at-rest-and-in-transit) for the underlying principles.

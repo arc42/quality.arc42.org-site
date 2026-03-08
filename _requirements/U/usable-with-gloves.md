@@ -17,8 +17,5 @@ All interactive functions required during normal operation must remain usable wh
 - Across the same test, the interaction error rate stays **<= 3%** for taps, selections, and confirmations on those tasks.
 - If either threshold is missed, the release is not approved for glove-required workplaces.
 
-#### Monitoring Artifact
-
-Glove-usage usability test report and release gate.
 
 </div><br>
