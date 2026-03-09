@@ -71,6 +71,4 @@ If Mode = `Quality Gate`, output:
 - [Criterion name]: ...
 - [Criterion name]: ...
 
-#### Evidence
-[Optional short noun phrase]
 ```
