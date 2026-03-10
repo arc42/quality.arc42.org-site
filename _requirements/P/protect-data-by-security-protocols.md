@@ -9,16 +9,16 @@ permalink: /requirements/protect-data-by-security-procols
 
 #### Context
 
-The medical system contains sensitive patient health-related data requiring comprehensive cybersecurity protocols to protect from unauthorized access and cyber threats.
+A medical system stores, transmits, and administers patient data. Regulatory and ethical obligations require enforceable security controls.
 
 #### Trigger
 
-Security team establishes and maintains cybersecurity protocols to protect patient data.
+A release candidate is prepared, or a scheduled security review is due.
 
 #### Acceptance Criteria
 
-- Regular security audits and penetration tests conducted
-- Zero critical vulnerabilities found in security assessments
-- Full compliance with relevant regulations (HIPAA, GDPR)
+- Zero unresolved critical and ≤ 5 unresolved high vulnerabilities older than 30 days on patient-data systems (authenticated vulnerability scan, weekly + every release).
+- Penetration test at least once per 12 months and after each major architecture change; critical findings remediated within 14 days; releases with open critical findings are blocked (pen-test report and remediation tracker).
+- 100% of privileged access to patient records is logged (identity, timestamp, action, target); audit queries for any 24 h window complete within 60 s (audit-log validation report, every release).
 
 </div><br>

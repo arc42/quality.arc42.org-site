@@ -9,17 +9,17 @@ permalink: /requirements/compatible-with-5-battery-providers
 
 #### Context
 
-The system's energy is supplied by a rechargeable onboard battery mechanically attached to a circuit board. The current board version fits only batteries from one specific supplier.
+The system's energy is supplied by a rechargeable onboard battery mechanically attached to a circuit board (PCB). 
+The current board version fits only batteries from _one specific_ supplier.
 
-#### Trigger
 
-Product management decides to reduce supplier dependency and modify the circuit board.
+#### Metric / Acceptance Criteria
 
-#### Acceptance Criteria
+The circuit-board revision must support approved battery models from _five preferred suppliers_ without PCB redesign or supplier-specific firmware.
 
-- Circuit board compatible with battery models from five preferred battery suppliers
-- System operates successfully with all five suppliers' battery models without hardware modifications
-- System passes functional tests with each battery model under standard operating conditions
-- Battery life performance varies by less than 10% across different battery models
+- ≥ 1 approved battery model from each of 5 preferred suppliers works with zero PCB changes, adapters, or firmware forks (hardware compatibility matrix, every board revision).
+- 100% of critical functional tests pass per approved model under the reference operating profile and environmental test setup (hardware + system test report, every board revision).
+
+- Battery-life variation across approved models ≤ 10% under the same load profile; any supplier missing a threshold is de-listed for that revision (endurance test report).
 
 </div><br>

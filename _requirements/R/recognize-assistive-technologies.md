@@ -9,20 +9,16 @@ permalink: /requirements/recognize-assistive-technology
 
 #### Context
 
-The software recognizes the use of assistive technologies and adapts its user interface to improve accessibility. This includes providing alt text for images, ensuring keyboard navigability, offering voice navigation, and maintaining high contrast for users with visual impairments.
+Users with visual or motor impairments interact through screen readers, keyboard navigation, and custom accessibility preferences. The interface must expose correct semantics.
 
 #### Trigger
 
-User with disabilities accesses the system using assistive technologies (screen readers, keyboard-only navigation, or other accessibility tools).
+A release candidate is built, or a quarterly accessibility review is due.
 
 #### Acceptance Criteria
 
-- 95% of the content must be accurately read out by screen readers without user confusion over navigation or actions
-- All interactive elements must be accessible with a keyboard alone, and users should be able to complete all forms and transactions using keyboard shortcuts, aiming for task completion within 120% of the time taken using a mouse
-- Website must maintain a minimum contrast ratio of 7:1 for normal text and 4.5:1 for large text
-- Error rate for users utilizing assistive technologies should not exceed 5% higher than for users not using these technologies
+- ≥ 95% of interactive elements on the top 20 screens expose correct accessible name, role, and state; zero critical workflow controls lack announcements (accessibility test report, every release).
+- Keyboard-only task success ≥ 90% and median completion time ≤ 120% of mouse baseline for the top 10 user tasks (comparative usability study, quarterly).
+- Text contrast ≥ 4.5 : 1 (normal) and ≥ 3 : 1 (large) on the top 20 journeys; persisted accessibility preferences restored in 100% of returning-user sessions (automated contrast audit + session-restoration test, every release).
 
 </div><br>
-
-This requirement has been crafted with help from ChatGPT 4.0.
-

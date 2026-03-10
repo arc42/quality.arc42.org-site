@@ -8,14 +8,18 @@ permalink: /requirements/interoperable-with-java-12
 
 <div class="quality-requirement" markdown="1">
 
-#### Background
+#### Context
 
 The system has been implemented on the Java(tm) virtual machine.
 
-The system shall work on Java virtual machines supporting Java-12 and later versions.
- 
+#### Requirement
+
+The application must run on supported Java runtime baselines (12, 17, 21) from a single build artifact.
+
+#### Acceptance Criteria
+
+- 100% of smoke tests pass on reference runtimes for Java 12, 17, and 21 (CI compatibility matrix, every release).
+- Zero source-code forks or runtime-specific packaging branches required (build-config review, every release).
+- If any baseline fails, that runtime is removed from the supported-platform list and its distribution is blocked within 1 business day (release gate log).
+
 </div><br>
-
-
-
-

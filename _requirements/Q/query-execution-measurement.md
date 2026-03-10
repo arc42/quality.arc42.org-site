@@ -7,21 +7,18 @@ permalink: /requirements/query-execution-management
 
 <div class="quality-requirement" markdown="1">
 
-* Query diagnosis must not add more than 1% or 2msec runtime overhead to the queries, whichever is larger. For example:  
-   * a query which takes 200msec to complete must not take more than 202msec with diagnosis, 
-   * a 100msec query not more than 102msec.
+#### Context
 
-* Query diagnosis must not add more than 1MB memory footprint to system execution.
+The system runs CPU- and memory-intensive database queries. A diagnostic component can measure execution times when `query-diagnosis` is enabled.
 
-#### Background
+#### Trigger
 
-We execute a large number of CPU- and memory-intensive database queries within our system. 
-A diagnostic component can measure the execution time of these queries, if `query-diagnosis` configuration is turned on.
+Query diagnosis is enabled in production or a staging environment.
+
+#### Acceptance Criteria
+
+- p95 runtime overhead ≤ 1% for queries with baseline ≥ 200 ms, and ≤ 2 ms absolute for faster queries, across the top-50 benchmark suite (benchmark report, each diagnostic-component release).
+- Peak resident-memory increase ≤ 1 MB vs. baseline under the same benchmark (profiler report, each diagnostic-component release).
+- If either threshold is missed, diagnosis stays disabled by default and the component release is blocked within 1 business day (release gate log).
+
 </div><br>
-
-
-
-
-
-
-

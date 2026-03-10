@@ -9,21 +9,16 @@ permalink: /requirements/accessible-user-interface
 
 #### Context
 
-Software UI must be accessible to users with various disabilities. System aims to comply with WCAG 2.1 AA and be compatible with leading screen readers.
+Users who rely on keyboard navigation and assistive technologies must be able to complete core product journeys without barriers.
 
 #### Trigger
 
-Development team implementing and maintaining the software UI with accessibility focus.
+A release candidate is built, or a quarterly accessibility review is due.
 
 #### Acceptance Criteria
 
-- Achieve and maintain WCAG 2.1 AA compliance for all user interfaces
-  - 100% pass rate on automated WCAG 2.1 AA tests
-- Ensure 100% compatibility with leading screen readers (e.g., JAWS, NVDA, VoiceOver)
-  - All UI elements properly labeled and described
-  - Full keyboard navigation possible
-  - Dynamic content changes appropriately announced
+- 100% of pages in the top 20 user journeys are scanned in CI with zero critical WCAG 2.1 AA violations and ≤ 5 serious violations per release candidate (automated accessibility scan report).
+- Quarterly manual audit of the top 10 journeys using keyboard-only plus ≥ 2 mainstream screen readers completes all critical journeys with zero critical blockers (manual audit report).
+- Any open critical accessibility violation on a critical journey blocks release within 10 min (release gate log).
 
 </div><br>
-
-

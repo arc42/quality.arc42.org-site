@@ -9,15 +9,16 @@ permalink: /requirements/access-control-via-sso
 
 #### Context
 
-Employees in companies often have a central username/password pair or certificate used to log in via a Single Sign On (SSO) solution, such that they do not have to maintain different credentials per system. If a new system is added to the company's portfolio, it should make use of the centralized authentication system.
+Employees authenticate through the corporate SSO system and must receive correct application roles immediately after login.
 
 #### Trigger
 
-User authenticates using their SSO credentials on the expert system.
+An employee initiates SSO login.
 
 #### Acceptance Criteria
 
-- SSO login completes transparently in less than 3 seconds
-- User receives correct role and rights assignments after successful authentication
+- SSO login completes at p95 ≤ 3 s with ≥ 99.5% success rate across the top 5 user roles, excluding declared IdP outage windows (authentication telemetry, rolling 30-day window).
+- In release-candidate tests with ≥ 20 representative identities, 100% receive correct roles and rights immediately after login (SSO integration test report, every release candidate).
+- If the IdP is unavailable or the assertion is invalid, access is denied in 100% of tested attempts and an audit-log entry is written within 30 s (failure-injection report, quarterly).
 
 </div><br>

@@ -7,18 +7,18 @@ permalink: /requirements/shutdown-to-safe-state
 
 <div class="quality-requirement" markdown="1">
 
-#### Requirement
+#### Context
 
-The system must detect severe errors and shut down gracefully into a safe state.
+The system controls physical processes where undetected severe faults can cause hazardous conditions or data corruption.
+
+#### Trigger
+
+A documented severe fault condition occurs during operation.
 
 #### Acceptance Criteria
 
-- All severe errors are detected by the system
-- System shuts down gracefully (not abruptly) when severe errors occur
-- System transitions to a safe state during shutdown
-- Safe state prevents hazardous conditions or data corruption
+- In fault-injection tests covering 100% of documented severe fault classes, shutdown starts within 1 s for ≥ 99% of injected faults (safety test report, every release).
+- System reaches the documented safe state within 5 s of shutdown start, accepts zero new commands/transactions, and post-test integrity checks find zero data-corruption incidents (integration + safety test report, every release).
+- Release is blocked within 10 min if either threshold is missed (release gate log).
 
 </div><br>
-
-
-

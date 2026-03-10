@@ -9,26 +9,16 @@ permalink: /requirements/handle-sudden-increase-in-traffic
 
 #### Context
 
-Web application running in cloud-based environment with multiple servers and data centers.
+The web application runs in a cloud-based environment with multiple servers. It must remain serviceable during sudden traffic surges and tolerate single-node failure.
 
 #### Trigger
 
-Sudden increase in traffic due to unexpected popularity or temporary spike in user activity.
+A quarterly resilience drill simulates traffic at 300% of baseline within 5 min, sustained for 15 min.
 
 #### Acceptance Criteria
 
-- Web application gracefully handles traffic surge without service disruption
-- Performance degradation remains below 25% reduced response time
-- System automatically scales resources to accommodate increased load
-- Traffic distributed evenly among servers
-- Data consistency ensured during traffic surge
-- In event of server failures, traffic seamlessly redirected to healthy servers
-- Lost data recovered if necessary during server failures
-- Anomalies and failures logged and reported for further analysis and improvement
+- Successful response rate ≥ 99% and p95 end-user latency ≤ 4 s during the surge (load-test + APM report, quarterly).
+- Loss of one serving node during the surge causes zero accepted-request loss; traffic redistributes to healthy nodes within 60 s (load-balancer metrics, quarterly).
+- If either threshold is missed, rollout of the affected scaling/traffic-management change is blocked within 1 business day (release gate log).
 
 </div><br>
-
-This requirement was created with help from [ChatGPT](https://chat.openai.com) by using the prompt `create a quality attribute scenario to describe a resilience requirement for a web application`.
-
-
-
