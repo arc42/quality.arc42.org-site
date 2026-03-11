@@ -86,11 +86,5 @@ The Security category is organized into nine Common Criteria (CC) groups, aligne
 | **[Non-Repudiation](/qualities/non-repudiation)** | CC7 logging requirements mandate that actions are attributable to authenticated identities, creating an immutable record for dispute resolution. |
 ## References
 
-### Official AICPA Sources
-
 - [SOC 2 — SOC for Service Organizations: Trust Services Criteria](https://www.aicpa-cima.com/topic/audit-assurance/audit-and-assurance-greater-than-soc-2) — AICPA official overview page
 - [2017 Trust Services Criteria (With Revised Points of Focus — 2022)](https://www.aicpa-cima.com/resources/download/2017-trust-services-criteria-with-revised-points-of-focus-2022) — the current authoritative criteria document (free download, requires registration)
-
-### Related Guidance
-
-- [AICPA Trust Services Criteria crosswalk with NIST SP 800-53](https://www.nist.gov/itl/applied-cybersecurity/privacy-engineering/american-institute-certified-public-accountants-aicpa) — official NIST-hosted mapping between TSC and NIST controls
