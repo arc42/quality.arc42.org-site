@@ -10,17 +10,25 @@
       {% endif %}
     </h1>
 
-    <ul class="tags">
-      {% assign categories_num = (page.categories | size) %}
-      {% if categories_num > 0 %}
-         <li><i class="fa fa-tags" style="color: var(--standard-text-color);"> </i></li>
-      {% endif %}
-      {% for category in page.categories %}
-         <li>
-           <span class="category">#{{ category }}</span>
-          </li>
-      {% endfor %}
-    </ul>
+    <div class="header-taxonomy-row">
+      <ul class="tags">
+        {% assign categories_num = (page.categories | size) %}
+        {% if categories_num > 0 %}
+           <li><i class="fa fa-tags" style="color: var(--standard-text-color);"> </i></li>
+        {% endif %}
+        {% for category in page.categories %}
+           <li>
+             <span class="category">#{{ category }}</span>
+            </li>
+        {% endfor %}
+      </ul>
+
+      {% include header-category-link.liquid
+        href='/standards/'
+        value='Standard'
+        icon='fa-sitemap'
+      %}
+    </div>
  
         <div class="clearfix"></div>
     </div>

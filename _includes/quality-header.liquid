@@ -10,17 +10,27 @@
             {% endif %}
         </h1>
 
-        <ul class="tags">
-            {% assign tags_num = (page.tags | size) %}
-            {% if tags_num > 0 %}
-            <li><i class="fa fa-tags" style="color: var(--blue-text-color);"></i></li>
-            {% endif %}
-            {% for tag in page.tags %}
-            <li>
-                <a class="tag" href="{{ '/tag-' | append: tag | prepend: site.baseurl }}">#{{ tag }}</a>
-            </li>
-            {% endfor %}
-        </ul>
+        <div class="header-taxonomy-row">
+            <ul class="tags">
+                {% assign tags_num = (page.tags | size) %}
+                {% if tags_num > 0 %}
+                <li><i class="fa fa-tags" style="color: var(--blue-text-color);"></i></li>
+                {% endif %}
+                {% for tag in page.tags %}
+                <li>
+                    <a class="tag" href="{{ '/tag-' | append: tag | prepend: site.baseurl }}">#{{ tag }}</a>
+                </li>
+                {% endfor %}
+            </ul>
+
+            {% unless include.show_category_link == false %}
+            {% include header-category-link.liquid
+              href='/qualities/'
+              value='Characteristic'
+              icon='fa-sitemap'
+            %}
+            {% endunless %}
+        </div>
 
         <div class="clearfix">
         </div>

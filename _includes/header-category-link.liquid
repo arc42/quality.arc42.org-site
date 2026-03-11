@@ -1,0 +1,12 @@
+<a
+  class="header-category-link{% if include.class %} {{ include.class }}{% endif %}"
+  href="{{ include.href | relative_url }}"
+  aria-label="Open {{ include.value | downcase }} overview page"
+  title="Open {{ include.value | downcase }} overview page"
+>
+  <i class="fa {% if include.icon %}{{ include.icon }}{% else %}fa-sitemap{% endif %}" aria-hidden="true"></i>
+  {% if include.label %}
+  <span class="header-category-link-label">{{ include.label }}</span>
+  {% endif %}
+  <span class="header-category-link-value">{{ include.value }}</span>
+</a>

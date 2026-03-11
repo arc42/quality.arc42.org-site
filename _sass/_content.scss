@@ -156,6 +156,75 @@
                 ul.meta {
                     float: right;
                 }
+                .header-taxonomy-row {
+                    display: flex;
+                    flex-wrap: wrap;
+                    align-items: center;
+                    justify-content: space-between;
+                    gap: 0.6rem 1rem;
+                    margin-top: 0.35rem;
+
+                    ul.tags {
+                        flex: 1 1 auto;
+                        min-width: 0;
+                    }
+                }
+                .header-category-link {
+                    display: inline-flex;
+                    align-items: center;
+                    gap: 0.45rem;
+                    margin-left: auto;
+                    padding: 0.38rem 0.74rem;
+                    border-radius: 999px;
+                    border: 1px solid rgba(0, 0, 0, 0.12);
+                    background: rgba(255, 255, 255, 0.34);
+                    color: inherit;
+                    font-size: 0.95em;
+                    line-height: 1;
+                    text-decoration: none;
+                    transition: background-color 0.18s ease, border-color 0.18s ease, transform 0.18s ease;
+
+                    .header-category-link-label {
+                        opacity: 0.72;
+                        font-weight: 600;
+                    }
+
+                    .header-category-link-value {
+                        font-weight: 700;
+                    }
+
+                    &:hover,
+                    &:focus-visible {
+                        background: rgba(255, 255, 255, 0.5);
+                        border-color: rgba(0, 0, 0, 0.18);
+                        text-decoration: none;
+                        transform: translateY(-1px);
+                    }
+                }
+                &.approaches-header {
+                    .header-category-link {
+                        color: var(--approaches-text-color);
+                        border-color: rgba(27, 94, 32, 0.24);
+                    }
+                }
+                &.requirements-header {
+                    .header-category-link {
+                        color: var(--req-text-color);
+                        border-color: rgba(0, 89, 135, 0.24);
+                    }
+                }
+                &.quality-header {
+                    .header-category-link {
+                        color: var(--blue-text-color);
+                        border-color: rgba(22, 117, 185, 0.24);
+                    }
+                }
+                &.standard-header {
+                    .header-category-link {
+                        color: var(--standard-text-color);
+                        border-color: rgba(175, 132, 31, 0.28);
+                    }
+                }
                 ul.icons {
                     margin: 0;
                     padding: 0;
@@ -243,4 +312,3 @@
         }
     }
 }
-
