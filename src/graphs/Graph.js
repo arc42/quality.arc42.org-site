@@ -56,8 +56,13 @@ export class Graph {
             this.createNodes(nodes, filterHighlights);
             this.createEdges(edges);
 
-            // Apply layout
-            this.applyEnhancedRadialLayout(QUALITY_ROOT_ID, 250);
+            // Choose layout: focused when filtering, radial otherwise
+            const isFiltering = filterHighlights.matchedNodeIds.size > 0;
+            if (isFiltering) {
+                this.applyFilterFocusedLayout(filterHighlights);
+            } else {
+                this.applyEnhancedRadialLayout(QUALITY_ROOT_ID, 250);
+            }
         } catch (error) {
             console.error("Could not build graph", { cause: error });
         }
@@ -167,6 +172,75 @@ export class Graph {
             // STEP 7: Adjust nodes to avoid overlaps
             this._adjustNodeOverlaps(30); // 30 = minimum distance between nodes
         }
+    }
+
+    /**
+     * Filter-aware layout: places matched nodes near the center, related nodes
+     * in a surrounding ring, and context nodes (properties, standards) in an
+     * outer ring.  The D3 simulation then refines positions via link forces.
+     *
+     * @param {Object} filterHighlights - { matchedNodeIds: Set, relatedNodeIds: Set }
+     */
+    applyFilterFocusedLayout(filterHighlights) {
+        const { matchedNodeIds, relatedNodeIds } = filterHighlights;
+
+        // Classify every node
+        const matched = [];
+        const related = [];
+        const context = []; // properties, standards, root
+
+        this.graph.forEachNode((id, attrs) => {
+            if (id === QUALITY_ROOT_ID) return; // positioned separately
+            if (matchedNodeIds.has(id)) {
+                matched.push(id);
+            } else if (relatedNodeIds.has(id)) {
+                related.push(id);
+            } else {
+                context.push(id);
+            }
+        });
+
+        // --- Radii ---
+        const matchedRadius = Math.max(60, matched.length * 18);
+        const relatedRadius = matchedRadius + Math.max(120, related.length * 10);
+        const contextRadius = relatedRadius + 140;
+
+        // Root at center
+        this.graph.updateNodeAttributes(QUALITY_ROOT_ID, (a) => ({
+            ...a, x: 0, y: 0, hierarchyLevel: 1,
+        }));
+
+        // Place matched nodes in a small circle
+        this._placeInCircle(matched, matchedRadius, 2);
+
+        // Place related nodes around the matched cluster
+        this._placeInCircle(related, relatedRadius, 3);
+
+        // Place context nodes (properties, standards) in the outer ring
+        this._placeInCircle(context, contextRadius, 4);
+
+        // Overlap adjustment (same as radial layout)
+        this._adjustNodeOverlaps(30);
+    }
+
+    /**
+     * Distribute node IDs evenly on a circle of the given radius.
+     * @private
+     */
+    _placeInCircle(nodeIds, radius, hierarchyLevel) {
+        if (nodeIds.length === 0) return;
+        const step = (2 * Math.PI) / nodeIds.length;
+        // Start at top (-π/2) so a single node sits above center
+        const offset = -Math.PI / 2;
+        nodeIds.forEach((id, i) => {
+            const angle = offset + i * step;
+            this.graph.updateNodeAttributes(id, (attr) => ({
+                ...attr,
+                x: radius * Math.cos(angle),
+                y: radius * Math.sin(angle),
+                hierarchyLevel,
+            }));
+        });
     }
 
     _positionPropertyNodes(rootId, levelRadius) {
@@ -580,19 +654,24 @@ export class Graph {
 
         // Heat up the simulation to ensure nodes spread out properly
         if (this.renderer.simulation) {
-            // Run the simulation with a higher alpha target to ensure nodes spread out
-            this.renderer.simulation.alpha(1).alphaTarget(0.3).restart();
+            const isFiltering = !!this.renderer.isFiltering;
+            // Use higher energy + longer warm-up when filtering so the
+            // focused layout settles into a tight, readable cluster
+            const alphaTarget = isFiltering ? 0.35 : 0.3;
+            const cooldownMs = isFiltering ? 1500 : 1000;
+
+            this.renderer.simulation.alpha(1).alphaTarget(alphaTarget).restart();
 
             // Center the view on the filtered nodes
             this.renderer.centerView();
 
-            // After a short time, cool down the simulation
+            // After warm-up, cool down the simulation
             setTimeout(() => {
                 this.renderer.simulation.alphaTarget(0);
 
                 // Center the view again after the simulation has settled
                 this.renderer.centerView();
-            }, 1000);
+            }, cooldownMs);
         }
     }
 
