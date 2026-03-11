@@ -115,10 +115,5 @@ GOVERN is the cross-cutting function: its policies and accountability structures
 
 ## References
 
-### Official NIST Sources
-
-- [AI Risk Management Framework — NIST overview page](https://www.nist.gov/itl/ai-risk-management-framework)
 - [NIST AI 100-1: Artificial Intelligence Risk Management Framework (AI RMF 1.0)](https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.100-1.pdf) — the primary framework document (January 2023)
-- [NIST AI Resource Center (AIRC)](https://airc.nist.gov/) — implementation resources, playbook, and crosswalk documents
-- [NIST AI 600-1: Generative AI Profile](https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.600-1.pdf) — companion document addressing generative AI risk (July 2024)
-- [AI RMF Playbook](https://www.nist.gov/itl/ai-risk-management-framework/nist-ai-rmf-playbook) — suggested actions for each AI RMF subcategory
+- [AI Risk Management Framework — NIST overview page](https://www.nist.gov/itl/ai-risk-management-framework) — includes playbook, crosswalk documents, and implementation resources
