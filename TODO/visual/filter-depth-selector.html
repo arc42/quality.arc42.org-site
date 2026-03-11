@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Filter Depth Selector — UI Preview</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+  /* ─── Reset ─── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: #f4f4f6;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2.5rem;
+    padding: 2rem 1rem 4rem;
+  }
+  h1 { font-size: 1.3rem; color: #333; }
+  h2 { font-size: 0.95rem; color: #566f84; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 0.5rem; }
+  .note { font-size: 0.82rem; color: #888; max-width: 600px; text-align: center; line-height: 1.5; }
+
+  /* ─── Sidebar replica (250 px wide, matches q-graph.css) ─── */
+  .sidebar {
+    width: 270px;
+    background: rgba(255,255,255,0.95);
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    padding: 1rem;
+  }
+  .sidebar h3 {
+    margin: 0 0 1rem;
+    font-size: 1.2rem;
+    color: #333;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .center-btn {
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: 50%;
+    width: 32px; height: 32px;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; color: #333;
+    transition: all 0.2s;
+  }
+  .center-btn:hover {
+    border-color: #cb9fff;
+    background: rgba(203,159,255,0.1);
+    color: #414288;
+  }
+
+  /* Filter input */
+  .filter-input {
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 0.9rem;
+  }
+  .filter-input::placeholder { opacity: 0.5; font-style: italic; }
+  .filter-btn {
+    width: 100%;
+    padding: 0.5rem;
+    background: #e6daf2;
+    color: #003366;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+  }
+  .filter-btn:hover { background: #cb9fff; }
+
+  /* Chips */
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 0.5rem 0 0.75rem; }
+  .chip {
+    display: inline-flex; align-items: center;
+    padding: 2px 4px 2px 8px;
+    font-size: 0.75rem; line-height: 1.4;
+    background: #ebebeb; border: 1px solid #414288;
+    color: #414288; border-radius: 12px; white-space: nowrap;
+  }
+  .chip-close {
+    appearance: none; border: none; background: transparent;
+    color: #414288; width: 18px; height: 18px;
+    border-radius: 50%; text-align: center;
+    cursor: pointer; padding: 0; font-size: 0.72rem;
+  }
+  .chip-close:hover { background: #414288; color: #ebebeb; }
+
+  /* Quick filters */
+  .quick-wrap { margin: 0.55rem 0 0.5rem; }
+  .quick-label {
+    margin: 0 0 0.32rem;
+    font-size: 0.72rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.04em;
+    color: #566f84;
+  }
+  .quick-filters { display: flex; flex-wrap: wrap; gap: 0.36rem; }
+  .quick-filter {
+    border: 1px solid #9ecbe3; background: #eef8ff;
+    color: #1f5f82; border-radius: 999px;
+    padding: 0.2rem 0.52rem;
+    font-size: 0.73rem; font-weight: 600; cursor: pointer;
+  }
+  .quick-filter:hover { background: #dff1ff; border-color: #73b1d4; }
+
+  /* ─── NEW: Depth selector ─── */
+  .depth-selector-wrap {
+    margin: 0.6rem 0 0.35rem;
+    /* hidden when no filter is active; shown via JS */
+  }
+  .depth-selector-wrap.hidden { display: none; }
+  .depth-label {
+    margin: 0 0 0.38rem;
+    font-size: 0.72rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.04em;
+    color: #566f84;
+  }
+  .depth-selector {
+    display: flex;
+    border: 1px solid #b7c8d6;
+    border-radius: 6px;
+    overflow: hidden;
+    background: #f0f4f8;
+  }
+  .depth-option {
+    flex: 1;
+    padding: 0.38rem 0.25rem;
+    font-size: 0.68rem;
+    font-weight: 600;
+    text-align: center;
+    cursor: pointer;
+    border: none;
+    background: transparent;
+    color: #4a6a82;
+    transition: all 0.18s ease;
+    border-right: 1px solid #b7c8d6;
+    line-height: 1.35;
+  }
+  .depth-option:last-child { border-right: none; }
+  .depth-option:hover:not(.active) {
+    background: #e2ecf3;
+  }
+  .depth-option.active {
+    background: #e6daf2;
+    color: #003366;
+    box-shadow: inset 0 -2px 0 #9b7fcf;
+  }
+
+  /* ─── Home link ─── */
+  .home-link {
+    margin-top: 0.45rem;
+    width: 100%;
+    display: inline-flex; align-items: center; justify-content: center; gap: 0.4rem;
+    padding: 0.5rem;
+    border: 1px solid #b7d9ed; border-radius: 4px;
+    background: #ecf8ff; color: #1e5f84;
+    font-weight: 700; text-decoration: none; font-size: 0.85rem;
+  }
+  .home-link:hover { background: #def2ff; border-color: #8fc4e5; }
+  hr { border: none; border-top: 1px solid #e0e0e0; margin: 0.8rem 0; }
+
+  /* ─── Legend (existing toggles) ─── */
+  .legend-item { display: flex; align-items: center; margin-bottom: 0.5rem; }
+  .color-box {
+    display: inline-block; width: 20px; height: 20px;
+    margin-right: 10px; border: 1px solid #ccc; border-radius: 3px;
+  }
+  .legend-label { font-size: 0.7rem; }
+  .toggle {
+    cursor: pointer; display: inline-flex; align-items: center; position: relative;
+  }
+  .toggle-switch {
+    display: inline-block; background: #ccc; border-radius: 16px;
+    width: 40px; height: 22px; position: relative;
+    vertical-align: middle; transition: background 0.25s;
+  }
+  .toggle-switch::before {
+    content: "";
+    display: block; background: linear-gradient(to bottom, #fff, #eee);
+    border-radius: 50%; box-shadow: 0 0 0 1px rgba(0,0,0,0.25);
+    width: 14px; height: 14px;
+    position: absolute; top: 4px; left: 4px; transition: left 0.25s;
+  }
+  .toggle-checkbox:checked + .toggle-switch { background: #e6daf2; }
+  .toggle-checkbox:checked + .toggle-switch::before { left: 22px; }
+  .toggle-checkbox {
+    position: absolute; top: 0; right: 0;
+    width: 40px; height: 22px; margin: 0;
+    opacity: 0; cursor: pointer;
+  }
+  .toggle-label { margin-left: 5px; margin-right: 10px; }
+
+  /* ─── Mini graph preview (right panel) ─── */
+  .preview-area {
+    display: flex; gap: 2rem; align-items: flex-start; flex-wrap: wrap; justify-content: center;
+  }
+  .graph-preview {
+    width: 420px; height: 340px;
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    position: relative; overflow: hidden;
+  }
+  .graph-preview svg { width: 100%; height: 100%; }
+
+  /* Annotations */
+  .annotation {
+    position: absolute;
+    font-size: 0.62rem; font-weight: 600;
+    color: #9b7fcf;
+    pointer-events: none;
+  }
+
+  /* Descriptions below graph */
+  .depth-descriptions {
+    width: 420px;
+    display: flex; flex-direction: column; gap: 0.6rem;
+  }
+  .depth-desc {
+    padding: 0.5rem 0.7rem;
+    border-radius: 6px;
+    font-size: 0.78rem;
+    line-height: 1.5;
+    border-left: 3px solid transparent;
+    transition: all 0.2s;
+  }
+  .depth-desc.active {
+    background: #f5f0fa;
+    border-left-color: #9b7fcf;
+  }
+  .depth-desc strong { color: #003366; }
+  .depth-desc .shortcut {
+    display: inline-block;
+    background: #eef0f3; padding: 1px 5px;
+    border-radius: 3px; font-size: 0.68rem;
+    font-family: monospace; color: #555;
+  }
+</style>
+</head>
+<body>
+
+<h1>Filter Depth Selector — Interactive Preview</h1>
+<p class="note">
+  This mockup shows where the depth control sits inside the existing sidebar.
+  Click the three depth buttons to see how the mini-graph reacts.
+</p>
+
+<div class="preview-area">
+
+  <!-- ─── Sidebar ─── -->
+  <div class="sidebar" id="sidebar">
+    <h3>
+      Filter Graph
+      <button class="center-btn" title="Center View"><i class="fas fa-crosshairs"></i></button>
+    </h3>
+
+    <input class="filter-input" type="text" value="security" placeholder="Usability, ISO..." readonly />
+
+    <div class="chips">
+      <span class="chip">
+        <span>security</span>
+        <button class="chip-close">&times;</button>
+      </span>
+    </div>
+
+    <button class="filter-btn">Filter</button>
+
+    <!-- ★ NEW: Depth selector (only visible when filter is active) -->
+    <div class="depth-selector-wrap" id="depth-wrap">
+      <p class="depth-label">Relationship depth</p>
+      <div class="depth-selector" role="group" aria-label="Filter relationship depth">
+        <button class="depth-option" data-depth="matched" title="Show only direct filter matches">
+          Matched<br>only
+        </button>
+        <button class="depth-option active" data-depth="neighbors" title="Matched + directly connected nodes">
+          + Neigh&shy;bors
+        </button>
+        <button class="depth-option" data-depth="extended" title="Full context including transitive connections">
+          + Exten&shy;ded
+        </button>
+      </div>
+    </div>
+
+    <div class="quick-wrap">
+      <p class="quick-label">Quick filters</p>
+      <div class="quick-filters">
+        <button class="quick-filter">#secure</button>
+        <button class="quick-filter">#reliable</button>
+        <button class="quick-filter">#maintainable</button>
+        <button class="quick-filter">safety</button>
+      </div>
+    </div>
+
+    <a class="home-link" href="#">
+      <i class="fa fa-home"></i> back-to-home
+    </a>
+    <hr>
+
+    <div>
+      <h3>Legend</h3>
+      <div class="legend-item">
+        <span class="color-box" style="background:#ebebeb;"></span>
+        <span class="legend-label">Root Node</span>
+      </div>
+      <div class="legend-item">
+        <span class="color-box" style="background:#f8f9fa;"></span>
+        <span class="legend-label">Dimensions</span>
+      </div>
+      <hr>
+      <div class="legend-item">
+        <span class="color-box" style="background:#FFC95C;"></span>
+        <label class="toggle">
+          <span class="toggle-label legend-label">Standards</span>
+          <input class="toggle-checkbox" type="checkbox" checked>
+          <div class="toggle-switch"></div>
+        </label>
+      </div>
+      <div class="legend-item">
+        <span class="color-box" style="background:#00B8F5;"></span>
+        <label class="toggle">
+          <span class="toggle-label legend-label">Qualities</span>
+          <input class="toggle-checkbox" type="checkbox" checked>
+          <div class="toggle-switch"></div>
+        </label>
+      </div>
+      <div class="legend-item">
+        <span class="color-box" style="background:#ffb3b3;"></span>
+        <label class="toggle">
+          <span class="toggle-label legend-label">Requirements</span>
+          <input class="toggle-checkbox" type="checkbox">
+          <div class="toggle-switch"></div>
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── Right column: graph + descriptions ─── -->
+  <div style="display:flex; flex-direction:column; gap:1.2rem;">
+    <div class="graph-preview" id="graph-preview">
+      <svg id="mini-graph" viewBox="0 0 420 340"></svg>
+    </div>
+
+    <div class="depth-descriptions" id="depth-descriptions">
+      <div class="depth-desc" data-depth="matched">
+        <strong>Matched only</strong> — Show only direct filter hits (orange-ringed nodes).
+        Minimal, most focused view. Useful when you know what you're looking for.
+      </div>
+      <div class="depth-desc active" data-depth="neighbors">
+        <strong>+ Neighbors</strong> <span class="shortcut">default</span> — Matched nodes
+        plus their direct (1-hop) connections: related qualities, parent properties,
+        and linked standards. The sweet spot for exploring a quality's immediate context.
+      </div>
+      <div class="depth-desc" data-depth="extended">
+        <strong>+ Extended</strong> — Full context including 2-hop requirements, transitive
+        standards, and property context. For when you want the complete picture.
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+// ─── Mini-graph data ───
+// Simulates "security" filter result at three depth levels
+
+const nodes = {
+  // Matched (always visible)
+  security:        { x: 210, y: 130, r: 14, color: '#00B8F5', label: 'Security',           ring: true,  tier: 'matched' },
+  'info-security': { x: 160, y: 175, r: 11, color: '#00B8F5', label: 'Info Security',      ring: true,  tier: 'matched' },
+  'cyber-security':{ x: 265, y: 175, r: 11, color: '#00B8F5', label: 'Cyber Security',     ring: true,  tier: 'matched' },
+
+  // Neighbors (1-hop)
+  secure:          { x: 210, y: 55,  r: 18, color: '#f8f9fa', label: 'secure',             ring: false, tier: 'neighbors' },
+  'access-ctrl':   { x: 100, y: 105, r: 10, color: '#00B8F5', label: 'Access Control',     ring: false, tier: 'neighbors' },
+  confidentiality: { x: 320, y: 105, r: 10, color: '#00B8F5', label: 'Confidentiality',    ring: false, tier: 'neighbors' },
+  integrity:       { x: 320, y: 195, r: 10, color: '#00B8F5', label: 'Integrity',           ring: false, tier: 'neighbors' },
+  iso27001:        { x: 90,  y: 200, r: 18, color: '#FFC95C', label: 'ISO 27001',          ring: false, tier: 'neighbors' },
+
+  // Extended (2-hop / transitive)
+  'acc-enforced':  { x: 60,  y: 60,  r: 7,  color: '#ffb3b3', label: 'Access enforced',    ring: false, tier: 'extended' },
+  encryption:      { x: 360, y: 60,  r: 9,  color: '#00B8F5', label: 'Encryption',         ring: false, tier: 'extended' },
+  gdpr:            { x: 55,  y: 270, r: 16, color: '#FFC95C', label: 'GDPR',               ring: false, tier: 'extended' },
+  reliable:        { x: 340, y: 270, r: 18, color: '#f8f9fa', label: 'reliable',           ring: false, tier: 'extended' },
+  auditability:    { x: 185, y: 270, r: 9,  color: '#00B8F5', label: 'Auditability',       ring: false, tier: 'extended' },
+  'pen-test':      { x: 260, y: 275, r: 7,  color: '#ffb3b3', label: 'Pen-test req.',      ring: false, tier: 'extended' },
+};
+
+const edges = [
+  ['security', 'secure'],
+  ['info-security', 'secure'],
+  ['cyber-security', 'secure'],
+  ['security', 'access-ctrl'],
+  ['security', 'confidentiality'],
+  ['security', 'integrity'],
+  ['security', 'iso27001'],
+  ['info-security', 'iso27001'],
+  ['access-ctrl', 'acc-enforced'],
+  ['confidentiality', 'encryption'],
+  ['iso27001', 'gdpr'],
+  ['integrity', 'reliable'],
+  ['security', 'auditability'],
+  ['auditability', 'pen-test'],
+];
+
+const tiers = ['matched', 'neighbors', 'extended'];
+
+function tierIndex(tier) { return tiers.indexOf(tier); }
+
+function draw(activeDepth) {
+  const svg = document.getElementById('mini-graph');
+  svg.innerHTML = '';
+  const depthIdx = tierIndex(activeDepth);
+
+  // Edges
+  edges.forEach(([a, b]) => {
+    const na = nodes[a], nb = nodes[b];
+    if (!na || !nb) return;
+    const aTier = tierIndex(na.tier), bTier = tierIndex(nb.tier);
+    if (aTier > depthIdx || bTier > depthIdx) return;
+
+    const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+    line.setAttribute('x1', na.x); line.setAttribute('y1', na.y);
+    line.setAttribute('x2', nb.x); line.setAttribute('y2', nb.y);
+
+    const maxTier = Math.max(aTier, bTier);
+    const opacity = maxTier === 0 ? 0.6 : maxTier === 1 ? 0.35 : 0.18;
+    line.setAttribute('stroke', '#E0E0E0');
+    line.setAttribute('stroke-width', maxTier === 0 ? '2' : '1');
+    line.setAttribute('opacity', opacity);
+    svg.appendChild(line);
+  });
+
+  // Nodes
+  Object.entries(nodes).forEach(([id, n]) => {
+    if (tierIndex(n.tier) > depthIdx) return;
+
+    const g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+
+    // Orange ring for matched nodes
+    if (n.ring) {
+      const ring = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+      ring.setAttribute('cx', n.x); ring.setAttribute('cy', n.y);
+      ring.setAttribute('r', n.r + 3);
+      ring.setAttribute('fill', 'none');
+      ring.setAttribute('stroke', '#F97316');
+      ring.setAttribute('stroke-width', '2.2');
+      g.appendChild(ring);
+    }
+
+    const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+    circle.setAttribute('cx', n.x); circle.setAttribute('cy', n.y);
+    circle.setAttribute('r', n.r);
+    circle.setAttribute('fill', n.color);
+    circle.setAttribute('stroke', n.ring ? '#0F172A' : '#2C3E50');
+    circle.setAttribute('stroke-width', n.ring ? '2' : '1.2');
+
+    const tier = tierIndex(n.tier);
+    const opacity = tier === 0 ? 1 : tier === 1 ? 0.75 : 0.45;
+    circle.setAttribute('opacity', opacity);
+    g.appendChild(circle);
+
+    // Label
+    const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+    text.setAttribute('x', n.x);
+    text.setAttribute('y', n.y + n.r + 12);
+    text.setAttribute('text-anchor', 'middle');
+    text.setAttribute('font-size', n.r >= 16 ? '9' : '7.5');
+    text.setAttribute('fill', '#333');
+    text.setAttribute('opacity', tier === 0 ? 1 : tier === 1 ? 0.7 : 0.45);
+    text.textContent = n.label;
+    g.appendChild(text);
+
+    svg.appendChild(g);
+  });
+
+  // Root node (always shown)
+  const root = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+  root.setAttribute('cx', 210); root.setAttribute('cy', 15);
+  root.setAttribute('r', 10);
+  root.setAttribute('fill', '#ebebeb');
+  root.setAttribute('stroke', '#2C3E50');
+  root.setAttribute('stroke-width', '1.2');
+  root.setAttribute('opacity', '0.5');
+  svg.appendChild(root);
+}
+
+// ─── Interaction ───
+const buttons = document.querySelectorAll('.depth-option');
+const descriptions = document.querySelectorAll('.depth-desc');
+
+function activate(depth) {
+  buttons.forEach(b => b.classList.toggle('active', b.dataset.depth === depth));
+  descriptions.forEach(d => d.classList.toggle('active', d.dataset.depth === depth));
+  draw(depth);
+}
+
+buttons.forEach(btn => {
+  btn.addEventListener('click', () => activate(btn.dataset.depth));
+});
+
+// Initial draw
+activate('neighbors');
+</script>
+</body>
+</html>
