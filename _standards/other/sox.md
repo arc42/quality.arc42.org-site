@@ -96,7 +96,6 @@ SOX requirements directly translate to specific software quality attributes for 
 
 ## References
 
-### Official SOX Resources
 - [Sarbanes-Oxley Act of 2002 (Public Law 107-204)](https://www.congress.gov/bill/107th-congress/house-bill/3763) - Full text of the original legislation
 - [SEC SOX Implementation Rules](https://www.sec.gov/spotlight/sarbanes-oxley) - Securities and Exchange Commission implementation guidance
 
