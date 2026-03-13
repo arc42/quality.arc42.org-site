@@ -9,5 +9,6 @@ export const NODE_TYPES = Object.freeze({
   QUALITY: 'quality',
   REQUIREMENT: 'requirement',
   STANDARD: 'standard',
-  PROPERTY: 'property'
+  PROPERTY: 'property',    // kept for backward compat
+  DIMENSION: 'dimension'
 });

@@ -225,6 +225,12 @@
                         border-color: rgba(175, 132, 31, 0.28);
                     }
                 }
+                &.dimension-header {
+                    .header-category-link {
+                        color: var(--dimension-text-color);
+                        border-color: rgba(200, 230, 245, 0.35);
+                    }
+                }
                 ul.icons {
                     margin: 0;
                     padding: 0;
@@ -238,6 +244,14 @@
                     h1 {
                         &, a {
                             color: var(--standard-text-color);
+                        }
+                    }
+                }
+                &.dimension-header {
+                    background-color: var(--dimension-background-color);
+                    h1 {
+                        &, a {
+                            color: var(--dimension-text-color);
                         }
                     }
                 }

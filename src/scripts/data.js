@@ -129,9 +129,10 @@ async function writeJsonToFile(jsonString, filename, assetsDir) {
 
 const NODE_CONFIGS = {
     requirement: { color: '#ffb3b3', size: 15, qualityType: 'requirement' },
-    quality: { color: '#00B8F5', size: 25, qualityType: 'quality' },
-    property: { color: '#f8f9fa', size: 35, qualityType: 'property' },
-    standard: { color: '#FFC95C', size: 45, qualityType: 'standard' }
+    quality:     { color: '#00B8F5', size: 25, qualityType: 'quality' },
+    dimension:   { color: '#1a3a5c', textColor: '#c8e6f5', size: 35, qualityType: 'dimension' },
+    property:    { color: '#f8f9fa', size: 35, qualityType: 'property' },  // kept for backward compat
+    standard:    { color: '#FFC95C', size: 45, qualityType: 'standard' }
 };
 
 /**
@@ -234,7 +235,7 @@ function processNodeTags(id, tags, isRequirements, propertyNodes, edges, synonym
  * @returns {Q42Node}
  */
 function createPropertyNode(tag) {
-    const config = NODE_CONFIGS.property;
+    const config = NODE_CONFIGS.dimension;
 
     // Calculate size based on number of connected quality nodes
     // If no connections yet, use the default size
@@ -247,6 +248,7 @@ function createPropertyNode(tag) {
         label: capitalizeFirstLetter(tag),
         size: nodeSize,
         color: config.color,
+        textColor: config.textColor,
         qualityType: config.qualityType,
         page: `/tag-${ tag }`
     };

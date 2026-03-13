@@ -4,7 +4,7 @@ import { QUALITY_ROOT_ID, NODE_TYPES } from './constants';
 /**
  * @typedef {Object} QNode
  * @property {string} id
- * @property {string} [qualityType] - one of 'quality' | 'requirement' | 'standard' | 'property'
+ * @property {string} [qualityType] - one of 'quality' | 'requirement' | 'standard' | 'property' | 'dimension'
  */
 
 export const isRootId = (id) => id === QUALITY_ROOT_ID;
@@ -16,3 +16,4 @@ export const isQuality = (node) => getNodeType(node) === NODE_TYPES.QUALITY;
 export const isRequirement = (node) => getNodeType(node) === NODE_TYPES.REQUIREMENT;
 export const isStandard = (node) => getNodeType(node) === NODE_TYPES.STANDARD;
 export const isProperty = (node) => getNodeType(node) === NODE_TYPES.PROPERTY;
+export const isDimension = (node) => getNodeType(node) === NODE_TYPES.DIMENSION;
