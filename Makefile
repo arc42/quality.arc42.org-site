@@ -36,6 +36,8 @@ test:
 		printf "Try: docker compose logs --tail=120 jekyll esbuild\n\n"; \
 		exit 1; \
 	fi
+	@printf "[ui-test] Running CSS lint checks...\n"
+	@npm run test:css || { printf "❌ CSS lint failed.\n"; exit 1; }
 	@printf "[ui-test] Running Playwright UI tests in Docker...\n"
 	@/bin/bash -lc 'set -o pipefail; docker compose run --rm -e UI_BASE_URL=http://jekyll:4000 playwright 2>&1 | sed "/^To open last HTML report run:/,+3d"; exit $${PIPESTATUS[0]}'; status=$$?; \
 	printf "\n"; \
