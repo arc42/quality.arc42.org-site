@@ -28,7 +28,8 @@ We implemented several enhancements over the original theme (e.g. responsive nav
 
 The site uses the following color scheme for visual consistency across all content:
 
-![Color Scheme](docs/color-scheme/q42-color-scheme.png)
+The canonical source lives in [`_includes/about/color-scheme.md`](_includes/about/color-scheme.md).
+A standalone preview is generated at [`docs/color-scheme.html`](docs/color-scheme.html) so it can be reviewed directly from Git.
 
 These colors are defined in the following css variables:
 
