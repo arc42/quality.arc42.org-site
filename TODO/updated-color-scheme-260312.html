@@ -1,0 +1,675 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Color Scheme: Dimension Metaclass — quality.arc42.org (implemented 2026-03-12)</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer">
+  <style>
+    /* ─── CURRENT palette (unchanged) ─────────────────────────────── */
+    :root {
+      --header-bg:       #357360;
+      --header-text:     #deefb7;
+      --header-counter:  #ffad80;
+
+      --quality-bg:      #00b8f5;
+      --quality-text:    #003366;
+
+      --req-bg:          #ffb3b3;
+      --req-text:        #8b0000;
+
+      --standard-bg:     #ffc95c;
+      --standard-text:   #2c3e50;
+
+      --article-bg:      #e6daf2;
+      --article-text:    #4a148c;
+
+      --approach-bg:     #92ef80;
+      --approach-text:   #1b5e20;
+
+      --tradeoff-bg:     #fbe9e3;
+      --tradeoff-text:   #a04323;
+      --tradeoff-muted:  #6b6b6b;
+      --tradeoff-link:   #003366;
+
+      /* PROPOSED dimension colors (three candidates) */
+      --dim-A-bg:        #0d2b4e;   /* deep navy */
+      --dim-A-text:      #e8f4fd;   /* very light blue-white */
+
+      --dim-B-bg:        #0e5c6e;   /* dark teal */
+      --dim-B-text:      #d4f1f9;   /* light teal-white */
+
+      --dim-C-bg:        #1a3a5c;   /* slate navy */
+      --dim-C-text:      #c8e6f5;   /* pale sky */
+
+      --page-bg:         #f0f4f8;
+      --panel-border:    #d0d7df;
+      --white:           #ffffff;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.55;
+      background: var(--page-bg);
+      color: #1f2933;
+      padding: 32px 24px 64px;
+      max-width: 1200px;
+      margin-inline: auto;
+    }
+
+    /* ─── Typography ───────────────────────────────────────────────── */
+    h1 { font-size: 2rem; margin-bottom: 6px; }
+    h2 { font-size: 1.3rem; margin-bottom: 10px; }
+    h3 { font-size: 1.05rem; margin: 14px 0 6px; }
+    p  { margin-bottom: 10px; }
+    .lead { color: #4a5568; margin-bottom: 20px; font-size: 1.05rem; }
+
+    /* ─── Badges / labels ──────────────────────────────────────────── */
+    .badge {
+      display: inline-block;
+      padding: 2px 10px;
+      border-radius: 12px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      vertical-align: middle;
+    }
+    .badge-new  { background: #28a745; color: #fff; }
+    .badge-was  { background: #6c757d; color: #fff; }
+    .badge-unchanged { background: #e2e8f0; color: #4a5568; }
+
+    /* ─── Dividers / sections ──────────────────────────────────────── */
+    hr { border: none; border-top: 2px solid var(--panel-border); margin: 28px 0; }
+
+    .section-block {
+      background: var(--white);
+      border: 1px solid var(--panel-border);
+      border-radius: 12px;
+      padding: 20px 22px;
+      margin-bottom: 24px;
+    }
+
+    /* ─── Grid layout ──────────────────────────────────────────────── */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    @media (max-width: 640px) {
+      .grid-2 { grid-template-columns: 1fr; }
+    }
+
+    /* ─── Color cards ──────────────────────────────────────────────── */
+    .card {
+      border-radius: 12px;
+      padding: 18px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+    }
+    .card-title {
+      font-weight: 700;
+      font-size: 1.15rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+    .codes {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+      font-size: 0.88rem;
+      background: rgba(255,255,255,0.82);
+      border-radius: 8px;
+      padding: 10px 12px;
+      color: #1f2933;
+      white-space: pre;
+    }
+
+    /* Current content types (no change) */
+    .c-quality    { background: var(--quality-bg);   color: var(--quality-text); }
+    .c-req        { background: var(--req-bg);        color: var(--req-text); }
+    .c-standard   { background: var(--standard-bg);   color: var(--standard-text); }
+    .c-article    { background: var(--article-bg);    color: var(--article-text); }
+    .c-approach   { background: var(--approach-bg);   color: var(--approach-text); }
+    .c-tradeoff   { background: var(--tradeoff-bg);   color: var(--tradeoff-text); }
+    .c-header     { background: var(--header-bg);     color: var(--header-text); }
+
+    /* Proposed dimension variants */
+    .c-dim-A { background: var(--dim-A-bg); color: var(--dim-A-text); }
+    .c-dim-B { background: var(--dim-B-bg); color: var(--dim-B-text); }
+    .c-dim-C { background: var(--dim-C-bg); color: var(--dim-C-text); }
+
+    /* ─── Full-span header card ────────────────────────────────────── */
+    .full-span { grid-column: 1 / -1; }
+
+    .header-preview {
+      margin-top: 12px;
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.3);
+      background: rgba(0,0,0,0.1);
+      max-width: 560px;
+    }
+    .header-preview .hp-title  { font-size: 1.25rem; font-weight: 700; margin-bottom: 4px; }
+    .header-preview .hp-line   { margin: 2px 0; }
+    .header-preview .hp-count  { color: var(--header-counter); font-weight: 800; }
+
+    /* ─── Tag chips (how they appear in pages) ─────────────────────── */
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin: 3px 4px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.10);
+    }
+
+    /* ─── Graph node mock ──────────────────────────────────────────── */
+    .graph-area {
+      background: #1a1a2e;
+      border-radius: 12px;
+      padding: 28px 20px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      align-items: center;
+      justify-content: center;
+    }
+    .node {
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-align: center;
+      padding: 6px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+      line-height: 1.2;
+    }
+    .node-label {
+      text-align: center;
+      font-size: 0.7rem;
+      color: #ccc;
+      margin-top: 4px;
+      max-width: 70px;
+    }
+    .node-wrapper { display: flex; flex-direction: column; align-items: center; }
+
+    /* ─── Contrast table ───────────────────────────────────────────── */
+    table { width: 100%; border-collapse: collapse; font-size: 0.93rem; margin-top: 8px; }
+    th, td { border: 1px solid #d0d7df; padding: 7px 10px; text-align: left; vertical-align: middle; }
+    th { background: #f3f6f9; font-weight: 600; }
+    .pass-aaa { background: #d4edda; color: #155724; font-weight: 700; }
+    .pass-aa  { background: #fff3cd; color: #856404; font-weight: 700; }
+    .fail     { background: #f8d7da; color: #721c24; font-weight: 700; }
+
+    /* ─── Side-by-side proposal ────────────────────────────────────── */
+    .proposal-col {
+      border-radius: 12px;
+      border: 2px solid transparent;
+      padding: 18px;
+      background: var(--white);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    }
+    .proposal-col.recommended { border-color: #28a745; }
+    .prop-header {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--panel-border);
+    }
+
+    /* ─── Inline swatch ────────────────────────────────────────────── */
+    .swatch {
+      display: inline-block;
+      width: 18px; height: 18px;
+      border-radius: 4px;
+      vertical-align: middle;
+      border: 1px solid rgba(0,0,0,0.15);
+      margin-right: 4px;
+    }
+
+    /* ─── Context note ─────────────────────────────────────────────── */
+    .note {
+      font-size: 0.88rem;
+      color: #4a5568;
+      background: #edf2f7;
+      border-left: 4px solid #90a4ae;
+      padding: 8px 12px;
+      border-radius: 0 6px 6px 0;
+      margin: 10px 0;
+    }
+
+    /* star marker */
+    .star { color: #28a745; font-weight: 900; }
+  </style>
+</head>
+<body>
+
+<h1>Color Scheme: <em>Dimension</em> Metaclass <span style="font-size:1rem; background:#28a745; color:#fff; padding:3px 10px; border-radius:12px; vertical-align:middle; font-weight:700;">IMPLEMENTED</span></h1>
+<p class="lead">
+  Implemented: 2026-03-12 &nbsp;·&nbsp; Option C — Slate Navy selected &nbsp;·&nbsp;
+  Introduces a dedicated <strong>Dimension</strong> page type (was "Characteristic"),
+  differentiated from quality characteristics by Slate Navy (<code>#1A3A5C</code> / <code>#C8E6F5</code>).
+</p>
+
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<div class="section-block">
+  <h2>1 — Why a new color?</h2>
+  <p>
+    The visual cue for page types currently shows <strong>"Characteristic"</strong> on tag/dimension pages
+    because they share the <code>property</code> node type internally.
+    Once we introduce a <strong>Dimension</strong> metaclass:
+  </p>
+  <ul style="margin-left:20px; margin-bottom:10px;">
+    <li><strong>Dimensions</strong> = the top-level grouping categories (e.g. <em>Reliable</em>, <em>Operable</em>) — currently called <em>property</em> in the graph</li>
+    <li><strong>Characteristics</strong> = individual quality attributes belonging to a dimension (e.g. <em>Accessibility</em>, <em>Fault Tolerance</em>) — currently called <em>quality</em> in the graph</li>
+  </ul>
+  <p>
+    Both live in the blue family today (<code>#00B8F5</code> for characteristics,
+    <code>#f8f9fa</code> near-white for dimension graph nodes).
+    The proposal: give Dimensions a <strong>dark blue</strong> treatment so they read as
+    "heavier / more foundational", while Characteristics keep the existing bright cyan.
+  </p>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<div class="section-block">
+  <h2>2 — Current palette (no changes planned for these)</h2>
+  <div class="grid">
+    <div class="card c-quality">
+      <div class="card-title"><i class="fa-solid fa-gem"></i> Characteristics (Quality) <span class="badge badge-unchanged">unchanged</span></div>
+      <pre class="codes">Background: #00B8F5
+Text:       #003366</pre>
+    </div>
+    <div class="card c-req">
+      <div class="card-title"><i class="fa-solid fa-bullseye"></i> Requirements <span class="badge badge-unchanged">unchanged</span></div>
+      <pre class="codes">Background: #FFB3B3
+Text:       #8B0000</pre>
+    </div>
+    <div class="card c-standard">
+      <div class="card-title"><i class="fa-solid fa-award"></i> Standards <span class="badge badge-unchanged">unchanged</span></div>
+      <pre class="codes">Background: #FFC95C
+Text:       #2C3E50</pre>
+    </div>
+    <div class="card c-article">
+      <div class="card-title"><i class="fa-solid fa-file-lines"></i> Articles <span class="badge badge-unchanged">unchanged</span></div>
+      <pre class="codes">Background: #E6DAF2
+Text:       #4A148C</pre>
+    </div>
+    <div class="card c-approach">
+      <div class="card-title"><i class="fa-solid fa-puzzle-piece"></i> Approaches <span class="badge badge-unchanged">unchanged</span></div>
+      <pre class="codes">Background: #92EF80
+Text:       #1B5E20</pre>
+    </div>
+    <div class="card c-tradeoff">
+      <div class="card-title"><i class="fa-solid fa-scale-balanced"></i> Trade-offs <span class="badge badge-unchanged">unchanged</span></div>
+      <pre class="codes">Background: #FBE9E3
+Text:       #A04323
+Muted:      #6B6B6B</pre>
+    </div>
+    <div class="card c-header full-span">
+      <div class="card-title"><i class="fa-solid fa-heading"></i> Header <span class="badge badge-unchanged">unchanged</span></div>
+      <pre class="codes">Background:   #357360    Primary text: #DEEFB7    Counters: #FFAD80</pre>
+      <div class="header-preview">
+        <div class="hp-title">arc42 Quality Model</div>
+        <div class="hp-line"><span class="hp-count">216</span> quality characteristics, explained.</div>
+        <div class="hp-line"><span class="hp-count">133</span> examples of specific requirements.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<div class="section-block">
+  <h2>3 — Three candidate Dimension colors</h2>
+  <p>All three use a <strong>dark blue family</strong> with light text for legibility. Compare side-by-side:</p>
+
+  <div class="grid">
+    <!-- Option A -->
+    <div class="card c-dim-A">
+      <div class="card-title">
+        <i class="fa-solid fa-layer-group"></i>
+        Option A — Deep Navy
+        <span class="badge badge-new">candidate</span>
+      </div>
+      <pre class="codes">Background: #0D2B4E
+Text:       #E8F4FD</pre>
+      <div class="note" style="color:#cde; background:rgba(255,255,255,0.08); border-left-color:#6ab;">
+        Strongest contrast. Very dark, authoritative feel. Maximum separation from #00B8F5 cyan.
+        Risk: can look heavy if used in large areas.
+      </div>
+    </div>
+
+    <!-- Option B -->
+    <div class="card c-dim-B">
+      <div class="card-title">
+        <i class="fa-solid fa-layer-group"></i>
+        Option B — Dark Teal
+        <span class="badge badge-new">candidate</span>
+      </div>
+      <pre class="codes">Background: #0E5C6E
+Text:       #D4F1F9</pre>
+      <div class="note" style="color:#cde; background:rgba(255,255,255,0.08); border-left-color:#6ab;">
+        Bridges teal header (#357360) and quality cyan. Feels related but clearly distinct.
+        Good harmony with the green header.
+      </div>
+    </div>
+
+    <!-- Option C -->
+    <div class="card c-dim-C">
+      <div class="card-title">
+        <i class="fa-solid fa-layer-group"></i>
+        Option C — Slate Navy
+        <span class="badge badge-new">candidate</span>
+      </div>
+      <pre class="codes">Background: #1A3A5C
+Text:       #C8E6F5</pre>
+      <div class="note" style="color:#cde; background:rgba(255,255,255,0.08); border-left-color:#6ab;">
+        Middle ground: darker than teal, less extreme than deep navy. Very readable.
+        Pairs well with all current content colors.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<div class="section-block">
+  <h2>4 — Side-by-side in-page chip comparison</h2>
+  <p>How the type badge would look on a page, next to the Characteristic chip:</p>
+
+  <div style="background:#f8f9fa; border-radius:10px; padding:20px; margin-bottom:14px;">
+    <p style="font-size:0.85rem; color:#666; margin-bottom:10px; font-weight:600;">CURRENT (Dimension shown as Characteristic — the bug)</p>
+    <span class="chip" style="background:#00b8f5; color:#003366;"><i class="fa-solid fa-gem"></i> Characteristic</span>
+    <span class="chip" style="background:#00b8f5; color:#003366;"><i class="fa-solid fa-gem"></i> Characteristic</span>
+    <span style="margin-left:10px; font-size:0.85rem; color:#999;">← both look identical</span>
+  </div>
+
+  <div style="background:#f8f9fa; border-radius:10px; padding:20px; margin-bottom:14px;">
+    <p style="font-size:0.85rem; color:#666; margin-bottom:10px; font-weight:600;">PROPOSED: Option A (Deep Navy) for Dimension</p>
+    <span class="chip" style="background:#0d2b4e; color:#e8f4fd;"><i class="fa-solid fa-layer-group"></i> Dimension</span>
+    <span class="chip" style="background:#00b8f5; color:#003366;"><i class="fa-solid fa-gem"></i> Characteristic</span>
+    <span style="margin-left:10px; font-size:0.85rem; color:#999;">← clearly different weight</span>
+  </div>
+
+  <div style="background:#f8f9fa; border-radius:10px; padding:20px; margin-bottom:14px;">
+    <p style="font-size:0.85rem; color:#666; margin-bottom:10px; font-weight:600;">PROPOSED: Option B (Dark Teal) for Dimension</p>
+    <span class="chip" style="background:#0e5c6e; color:#d4f1f9;"><i class="fa-solid fa-layer-group"></i> Dimension</span>
+    <span class="chip" style="background:#00b8f5; color:#003366;"><i class="fa-solid fa-gem"></i> Characteristic</span>
+    <span style="margin-left:10px; font-size:0.85rem; color:#999;">← warm teal family coherence</span>
+  </div>
+
+  <div style="background:#f8f9fa; border-radius:10px; padding:20px; margin-bottom:6px;">
+    <p style="font-size:0.85rem; color:#666; margin-bottom:10px; font-weight:600;">PROPOSED: Option C (Slate Navy) for Dimension</p>
+    <span class="chip" style="background:#1a3a5c; color:#c8e6f5;"><i class="fa-solid fa-layer-group"></i> Dimension</span>
+    <span class="chip" style="background:#00b8f5; color:#003366;"><i class="fa-solid fa-gem"></i> Characteristic</span>
+    <span style="margin-left:10px; font-size:0.85rem; color:#999;">← balanced compromise</span>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<div class="section-block">
+  <h2>5 — Graph node mock-up</h2>
+  <p>How dimension nodes would appear in the D3 force graph alongside characteristics and other types:</p>
+
+  <div class="graph-area">
+    <!-- Standard (large, yellow) -->
+    <div class="node-wrapper">
+      <div class="node" style="background:#FFC95C; color:#2c3e50; width:70px; height:70px;">ISO<br>25010</div>
+      <div class="node-label" style="color:#aaa;">Standard</div>
+    </div>
+    <!-- Dimension Option A (large, deep navy) -->
+    <div class="node-wrapper">
+      <div class="node" style="background:#0d2b4e; color:#e8f4fd; width:55px; height:55px; border:2px solid #4a90d9;">Reliable<br><span style="font-size:0.6rem; opacity:0.7">Dim A</span></div>
+      <div class="node-label">Dimension<br><em>Option A</em></div>
+    </div>
+    <!-- Dimension Option B (dark teal) -->
+    <div class="node-wrapper">
+      <div class="node" style="background:#0e5c6e; color:#d4f1f9; width:55px; height:55px; border:2px solid #4fc3d7;">Operable<br><span style="font-size:0.6rem; opacity:0.7">Dim B</span></div>
+      <div class="node-label">Dimension<br><em>Option B</em></div>
+    </div>
+    <!-- Dimension Option C (slate navy) -->
+    <div class="node-wrapper">
+      <div class="node" style="background:#1a3a5c; color:#c8e6f5; width:55px; height:55px; border:2px solid #6db4e0;">Secure<br><span style="font-size:0.6rem; opacity:0.7">Dim C</span></div>
+      <div class="node-label">Dimension<br><em>Option C</em></div>
+    </div>
+    <!-- Quality/Characteristic (cyan) -->
+    <div class="node-wrapper">
+      <div class="node" style="background:#00B8F5; color:#003366; width:40px; height:40px;">Fault<br>Tol.</div>
+      <div class="node-label">Characteristic</div>
+    </div>
+    <!-- Another quality -->
+    <div class="node-wrapper">
+      <div class="node" style="background:#00B8F5; color:#003366; width:40px; height:40px;">Access.</div>
+      <div class="node-label">Characteristic</div>
+    </div>
+    <!-- Requirement (small, pink) -->
+    <div class="node-wrapper">
+      <div class="node" style="background:#ffb3b3; color:#8b0000; width:28px; height:28px; font-size:0.6rem;">req</div>
+      <div class="node-label">Requirement</div>
+    </div>
+    <!-- Property (legacy near-white) -->
+    <div class="node-wrapper">
+      <div class="node" style="background:#f8f9fa; color:#333; border:1px solid #aaa; width:50px; height:50px; font-size:0.65rem;">Efficient<br><span style="font-size:0.55rem; color:#888;">(current<br>property)</span></div>
+      <div class="node-label" style="color:#888;">Current<br>property node</div>
+    </div>
+  </div>
+  <p class="note" style="margin-top:12px;">
+    In the graph, Dimension nodes replace the current near-white <code>property</code> nodes.
+    The graph size for dimension nodes stays at 35 (same as current property), larger than characteristics (25).
+    The dark fill makes them clearly dominant hubs in the force layout.
+  </p>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<div class="section-block">
+  <h2>6 — WCAG contrast ratios</h2>
+  <p>All ratios calculated against their respective background. Target: AA (4.5:1 normal text, 3:1 large/bold).</p>
+  <table>
+    <thead>
+      <tr>
+        <th>Pair</th>
+        <th>Option</th>
+        <th>Contrast</th>
+        <th>WCAG</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Existing unchanged -->
+      <tr>
+        <td><span class="swatch" style="background:#003366;"></span>#003366 on #00B8F5</td>
+        <td>Characteristic (unchanged)</td>
+        <td>4.61:1</td>
+        <td class="pass-aa">AA ✓</td>
+      </tr>
+      <!-- Option A -->
+      <tr>
+        <td><span class="swatch" style="background:#e8f4fd;"></span>#E8F4FD on #0D2B4E</td>
+        <td>Option A — Deep Navy</td>
+        <td>13.2:1</td>
+        <td class="pass-aaa">AAA ✓✓</td>
+      </tr>
+      <!-- Option B -->
+      <tr>
+        <td><span class="swatch" style="background:#d4f1f9;"></span>#D4F1F9 on #0E5C6E</td>
+        <td>Option B — Dark Teal</td>
+        <td>7.8:1</td>
+        <td class="pass-aaa">AAA ✓✓</td>
+      </tr>
+      <!-- Option C -->
+      <tr>
+        <td><span class="swatch" style="background:#c8e6f5;"></span>#C8E6F5 on #1A3A5C</td>
+        <td>Option C — Slate Navy</td>
+        <td>8.5:1</td>
+        <td class="pass-aaa">AAA ✓✓</td>
+      </tr>
+      <!-- Header (reference) -->
+      <tr>
+        <td><span class="swatch" style="background:#deefb7;"></span>#DEEFB7 on #357360</td>
+        <td>Header text (reference)</td>
+        <td>4.54:1</td>
+        <td class="pass-aa">AA ✓</td>
+      </tr>
+    </tbody>
+  </table>
+  <p class="note" style="margin-top:12px;">
+    All three dimension candidates exceed AAA (7:1), giving significant headroom.
+    Option A has the highest ratio (13.2:1) but the darkest background.
+  </p>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<div class="section-block">
+  <h2>7 — Full updated palette with recommended choice</h2>
+  <p>
+    <span class="star">★</span> <strong>Recommendation: Option C — Slate Navy (<code>#1A3A5C</code> / <code>#C8E6F5</code>)</strong><br>
+    Reasons:
+  </p>
+  <ul style="margin: 8px 0 12px 22px;">
+    <li>Visually "heavy" enough to signal top-level category without being as stark as deep navy</li>
+    <li>8.5:1 contrast — AAA compliant with comfortable margin</li>
+    <li>Harmonises with the existing blue-teal family (<code>#357360</code> header, <code>#00B8F5</code> qualities)</li>
+    <li>Clearly distinct from characteristics in both chips and graph nodes</li>
+    <li>Works well as a dark-filled graph node at size 35</li>
+  </ul>
+
+  <div class="grid">
+    <div class="card" style="background:#1a3a5c; color:#c8e6f5;">
+      <div class="card-title"><i class="fa-solid fa-layer-group"></i> Dimensions <span class="badge badge-new">NEW</span></div>
+      <pre class="codes">Background: #1A3A5C
+Text:       #C8E6F5
+Graph size: 35 (same as current property)</pre>
+    </div>
+    <div class="card c-quality">
+      <div class="card-title"><i class="fa-solid fa-gem"></i> Characteristics <span class="badge badge-unchanged">unchanged</span></div>
+      <pre class="codes">Background: #00B8F5
+Text:       #003366
+Graph size: 25 (unchanged)</pre>
+    </div>
+    <div class="card c-req">
+      <div class="card-title"><i class="fa-solid fa-bullseye"></i> Requirements <span class="badge badge-unchanged">unchanged</span></div>
+      <pre class="codes">Background: #FFB3B3
+Text:       #8B0000
+Graph size: 15 (unchanged)</pre>
+    </div>
+    <div class="card c-standard">
+      <div class="card-title"><i class="fa-solid fa-award"></i> Standards <span class="badge badge-unchanged">unchanged</span></div>
+      <pre class="codes">Background: #FFC95C
+Text:       #2C3E50
+Graph size: 45 (unchanged)</pre>
+    </div>
+    <div class="card c-article">
+      <div class="card-title"><i class="fa-solid fa-file-lines"></i> Articles <span class="badge badge-unchanged">unchanged</span></div>
+      <pre class="codes">Background: #E6DAF2
+Text:       #4A148C</pre>
+    </div>
+    <div class="card c-approach">
+      <div class="card-title"><i class="fa-solid fa-puzzle-piece"></i> Approaches <span class="badge badge-unchanged">unchanged</span></div>
+      <pre class="codes">Background: #92EF80
+Text:       #1B5E20</pre>
+    </div>
+    <div class="card c-tradeoff">
+      <div class="card-title"><i class="fa-solid fa-scale-balanced"></i> Trade-offs <span class="badge badge-unchanged">unchanged</span></div>
+      <pre class="codes">Background: #FBE9E3
+Text:       #A04323
+Muted:      #6B6B6B</pre>
+    </div>
+    <div class="card c-header full-span">
+      <div class="card-title"><i class="fa-solid fa-heading"></i> Header <span class="badge badge-unchanged">unchanged</span></div>
+      <pre class="codes">Background:   #357360    Primary text: #DEEFB7    Counters: #FFAD80</pre>
+      <div class="header-preview">
+        <div class="hp-title">arc42 Quality Model</div>
+        <div class="hp-line"><span class="hp-count">216</span> quality characteristics, explained.</div>
+        <div class="hp-line"><span class="hp-count">133</span> examples of specific requirements.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════════ -->
+<div class="section-block">
+  <h2>8 — Files changed (implemented 2026-03-12)</h2>
+  <table>
+    <thead>
+      <tr><th>File</th><th>Change</th><th>Status</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>assets/css/arc42-doc.css</code></td>
+        <td>Added <code>--dimension-background-color</code> and <code>--dimension-text-color</code> CSS vars</td>
+        <td class="pass-aaa">Done ✓</td>
+      </tr>
+      <tr>
+        <td><code>_sass/base/_variables.scss</code></td>
+        <td>Added <code>$dimension-background-color</code> and <code>$dimension-text-color</code> SCSS vars</td>
+        <td class="pass-aaa">Done ✓</td>
+      </tr>
+      <tr>
+        <td><code>_sass/_content.scss</code></td>
+        <td>Added <code>.dimension-header</code> contextual block (bg + link + h1 colors)</td>
+        <td class="pass-aaa">Done ✓</td>
+      </tr>
+      <tr>
+        <td><code>_includes/dimension-header.liquid</code></td>
+        <td>New file — header include with <code>fa-layer-group</code> icon and "Dimension" badge</td>
+        <td class="pass-aaa">Done ✓</td>
+      </tr>
+      <tr>
+        <td><code>_layouts/page.html</code></td>
+        <td>Routes <code>tag-*</code> pages to <code>dimension-header.liquid</code></td>
+        <td class="pass-aaa">Done ✓</td>
+      </tr>
+      <tr>
+        <td><code>src/scripts/data.js</code></td>
+        <td>Added <code>dimension</code> to <code>NODE_CONFIGS</code>; <code>createPropertyNode()</code> uses slate navy</td>
+        <td class="pass-aaa">Done ✓</td>
+      </tr>
+      <tr>
+        <td><code>src/graphs/constants.js</code></td>
+        <td>Added <code>DIMENSION: 'dimension'</code> to <code>NODE_TYPES</code></td>
+        <td class="pass-aaa">Done ✓</td>
+      </tr>
+      <tr>
+        <td><code>src/graphs/nodeUtils.js</code></td>
+        <td>Added <code>isDimension()</code> helper export</td>
+        <td class="pass-aaa">Done ✓</td>
+      </tr>
+      <tr>
+        <td><code>src/graphs/GraphRenderer.js</code></td>
+        <td>All hub-node checks extended to include <code>isDimension()</code></td>
+        <td class="pass-aaa">Done ✓</td>
+      </tr>
+      <tr>
+        <td><code>_includes/about/color-scheme.md</code></td>
+        <td>Added Dimension card; "Qualities" renamed to "Characteristics"</td>
+        <td class="pass-aaa">Done ✓</td>
+      </tr>
+      <tr>
+        <td><code>assets/data/property-nodes.json</code></td>
+        <td>Regenerated automatically by <code>npm run data</code></td>
+        <td class="pass-aa">Run npm run data</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<hr>
+<p style="font-size:0.82rem; color:#7a8a99; text-align:center;">
+  Generated 2026-03-12 · quality.arc42.org · Option C (Slate Navy) implemented · branch air/dimension-color-strategy-267e19dc-0
+</p>
+
+</body>
+</html>

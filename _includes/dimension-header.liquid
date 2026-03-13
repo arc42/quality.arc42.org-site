@@ -1,0 +1,26 @@
+{% assign page = include.page %}
+
+<header>
+    <div class="panel dimension-header">
+        <h1>
+            <i class="fa fa-layer-group"></i>
+            {% if include.link %}
+            <a class="post-link" href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>
+            {% else %}
+            {{ page.title }}
+            {% endif %}
+        </h1>
+
+        <div class="header-taxonomy-row">
+            {% unless include.show_category_link == false %}
+            {% include header-category-link.liquid
+              href='/qualities/'
+              value='Dimension'
+              icon='fa-layer-group'
+            %}
+            {% endunless %}
+        </div>
+
+        <div class="clearfix"></div>
+    </div>
+</header>

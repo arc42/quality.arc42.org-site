@@ -316,6 +316,18 @@ h2.section-heading.tradeoffs {
   color: var(--standard-text-color) !important;
 }
 
+.panel.dimension-header {
+  background-color: var(--dimension-background-color) !important;
+}
+
+.panel.dimension-header h1,
+.panel.dimension-header h1 a {
+  color: var(--dimension-text-color) !important;
+}
+.panel.dimension-header ul.tags a.tag {
+  color: var(--dimension-text-color) !important;
+}
+
 .panel.approaches-header {
   background-color: var(--approaches-background-color) !important;
 }

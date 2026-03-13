@@ -1,6 +1,6 @@
 import * as d3 from "d3";
 import { NODE_TYPES } from './constants';
-import { isProperty, isQuality, isRequirement, isRoot, isStandard } from './nodeUtils';
+import { isDimension, isProperty, isQuality, isRequirement, isRoot, isStandard } from './nodeUtils';
 
 /**
  * GraphRenderer class
@@ -19,7 +19,7 @@ export class GraphRenderer {
                 if (isRequirement(d)) return typeVis.requirement === false;
                 if (isStandard(d)) return typeVis.standard === false;
             }
-            return false; // root & property never hidden by legend
+            return false; // root, property & dimension never hidden by legend
         };
         this._isStdSelectionActive = () => !!(this.selectionActive && this.selection?.isStandard);
         this._nodeHighlighted = (d) => !!(d?.highlighted || d?.connectedHighlighted);
@@ -34,14 +34,14 @@ export class GraphRenderer {
         this._edgeShouldShowDespiteRoot = (edge, sel) => {
             if (sel.isStandard) {
                 const a = edge.source, b = edge.target;
-                const isRootAPropB = isRoot(a) && isProperty(b);
-                const isRootBPropA = isRoot(b) && isProperty(a);
+                const isRootAPropB = isRoot(a) && (isProperty(b) || isDimension(b));
+                const isRootBPropA = isRoot(b) && (isProperty(a) || isDimension(a));
                 if (isRootAPropB && (sel.connected.has(b.id) || sel.id === b.id)) return true;
                 if (isRootBPropA && (sel.connected.has(a.id) || sel.id === a.id)) return true;
             }
             return false;
         };
-        this._hideIfDimmedPropertyUnderStd = (d) => this._isStdSelectionActive() && isProperty(d) && d._dimmed;
+        this._hideIfDimmedPropertyUnderStd = (d) => this._isStdSelectionActive() && (isProperty(d) || isDimension(d)) && d._dimmed;
         this.container = container;
         this.width = container.clientWidth;
         this.height = container.clientHeight;
@@ -144,29 +144,29 @@ export class GraphRenderer {
 
     // Label layout helpers to keep render() concise
     _labelFontSize(d) {
-        const isInternal = isProperty(d) || isRoot(d);
+        const isInternal = isProperty(d) || isDimension(d) || isRoot(d);
         return isInternal ? Math.max(10, d.size * 0.45) : 10;
     }
 
     _labelTextAnchor(d) {
-        const isInternal = isRoot(d) || isProperty(d);
+        const isInternal = isRoot(d) || isProperty(d) || isDimension(d);
         return isInternal ? "middle" : "start";
     }
 
     _labelDominantBaseline(d) {
-        const isInternal = isRoot(d) || isProperty(d);
+        const isInternal = isRoot(d) || isProperty(d) || isDimension(d);
         return isInternal ? "middle" : "auto";
     }
 
     _labelDx(d) {
-        const isInternal = isRoot(d) || isProperty(d);
+        const isInternal = isRoot(d) || isProperty(d) || isDimension(d);
         if (isInternal) return 0;
         // For requirements and qualities, position labels outside the node
         return d.size + 5; // Node radius + 5px padding
     }
 
     _labelDy(d) {
-        const isInternal = isRoot(d) || isProperty(d);
+        const isInternal = isRoot(d) || isProperty(d) || isDimension(d);
         return isInternal ? 0 : 4;
     }
 
@@ -367,7 +367,7 @@ export class GraphRenderer {
         const renderer = this;
 
         this.nodes?.each(function (d) {
-            if (d.qualityType !== 'property') return;
+            if (d.qualityType !== 'property' && d.qualityType !== 'dimension') return;
 
             let hasVisibleNeighbor = false;
             const nbs = neighbors.get(d.id) || new Set();
@@ -470,10 +470,10 @@ export class GraphRenderer {
                             }
                         });
                     } else {
-                        // Fallback to dimensions (original behavior)
+                        // Fallback to dimensions/properties
                         qNbs.forEach(pId => {
                             const pNode = nodeById.get(pId);
-                            if (!pNode || pNode.qualityType !== NODE_TYPES.PROPERTY) return;
+                            if (!pNode || (pNode.qualityType !== NODE_TYPES.PROPERTY && pNode.qualityType !== NODE_TYPES.DIMENSION)) return;
                             const hasDirect = neighbors.get(id)?.has(pId);
                             if (!hasDirect) {
                                 virtualEdges.push({ source: node, target: pNode });
@@ -613,12 +613,18 @@ export class GraphRenderer {
             .enter()
             .append("text")
             .text(d => d.label)
+            .attr("fill", d => (isDimension(d) || isProperty(d)) ? "#ffffff" : null)
             .attr("font-size", d => this._labelFontSize(d))
+            .attr("font-weight", d => (isDimension(d) || isProperty(d)) ? 700 : null)
             .attr("text-anchor", d => this._labelTextAnchor(d))
             .attr("dominant-baseline", d => this._labelDominantBaseline(d))
             .attr("dx", d => this._labelDx(d))
             .attr("dy", d => this._labelDy(d))
-            .style("pointer-events", (d) => (isRoot(d) || isProperty(d)) ? "all" : "none");
+            .style("paint-order", d => (isDimension(d) || isProperty(d)) ? "stroke" : null)
+            .attr("stroke", d => (isDimension(d) || isProperty(d)) ? "#1a3a5c" : null)
+            .attr("stroke-width", d => (isDimension(d) || isProperty(d)) ? 4 : null)
+            .attr("stroke-linejoin", d => (isDimension(d) || isProperty(d)) ? "round" : null)
+            .style("pointer-events", (d) => (isRoot(d) || isProperty(d) || isDimension(d)) ? "all" : "none");
 
         // Setup zoom
         this.setupZoom();
@@ -630,7 +636,7 @@ export class GraphRenderer {
         if (onNodeHover) {
             // Bind identical hover behavior to both node hit-circles and internal labels
             this._bindHoverHandlers(this.nodes, onNodeHover);
-            const internalLabels = this.labels.filter(d => isRoot(d) || isProperty(d));
+            const internalLabels = this.labels.filter(d => isRoot(d) || isProperty(d) || isDimension(d));
             this._bindHoverHandlers(internalLabels, onNodeHover);
         }
 
@@ -813,8 +819,8 @@ export class GraphRenderer {
         // Apply drag behavior to nodes
         this.nodes.call(dragBehavior);
 
-        // Apply drag behavior to labels that are inside nodes (root and property types)
-        this.labels.filter(d => isRoot(d) || isProperty(d))
+        // Apply drag behavior to labels that are inside nodes (root, property and dimension types)
+        this.labels.filter(d => isRoot(d) || isProperty(d) || isDimension(d))
             .call(dragBehavior);
     }
 
@@ -904,7 +910,7 @@ export class GraphRenderer {
         nodesData.forEach(n => {
             if (!n) return;
             if (n._legendHidden) return;
-            if (this._isStdSelectionActive() && isProperty(n) && n._dimmed) return;
+            if (this._isStdSelectionActive() && (isProperty(n) || isDimension(n)) && n._dimmed) return;
             const r = n._canvasR == null ? n.size : n._canvasR;
             const opacity = n._canvasOpacity == null ? 1 : n._canvasOpacity;
             const strokeW = n._canvasStrokeWidth == null ? 1.5 : n._canvasStrokeWidth;
@@ -1085,7 +1091,7 @@ export class GraphRenderer {
     _getNodeVisibilityState(d, zoom) {
         if (!d || d._legendHidden) return { visible: false };
 
-        const isProp = isProperty(d);
+        const isProp = isProperty(d) || isDimension(d);
         const isFilterMatch = this.isFiltering && !!d.filterMatched;
         const isFilterRelated = this.isFiltering && !isFilterMatch && !!d.filterRelated;
         const isDimmedPropUnderStd = this._isStdSelectionActive() && isProp && d._dimmed;
@@ -1218,7 +1224,7 @@ export class GraphRenderer {
         if (d.id === "quality-root") return 1;
         if (d._legendHidden) return 0;
 
-        const isProp = isProperty(d);
+        const isProp = isProperty(d) || isDimension(d);
         const isDimmedPropUnderStd = this._isStdSelectionActive() && isProp && d._dimmed;
         if (isDimmedPropUnderStd) return 0;
 
@@ -1243,7 +1249,7 @@ export class GraphRenderer {
      */
     _applyLabelVisibilityState(element, d, opacity) {
         const isHighlighted = this._nodeHighlighted(d);
-        const isBold = d.id === "quality-root" || isRoot(d) || isProperty(d);
+        const isBold = d.id === "quality-root" || isRoot(d) || isProperty(d) || isDimension(d);
 
         element.attr("opacity", opacity);
         if (isBold) element.attr("font-weight", "bold");
