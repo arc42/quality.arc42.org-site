@@ -16,8 +16,7 @@
     padding: 1rem;
     border-radius: 12px;
     border: 1px solid var(--home-blue-border);
-    background:
-      radial-gradient(circle at 0% 0%, rgba(15, 125, 189, 0.15), transparent 52%),
+    background: radial-gradient(circle at 0% 0%, rgba(15, 125, 189, 0.15), transparent 52%),
       radial-gradient(circle at 100% 100%, rgba(11, 93, 143, 0.12), transparent 58%),
       var(--home-blue-soft);
     overflow: hidden;
@@ -59,7 +58,10 @@
     padding: 0.65rem 0.72rem;
     color: var(--home-text);
     text-decoration: none;
-    transition: transform 0.16s ease, box-shadow 0.16s ease, border-color 0.16s ease;
+    transition:
+      transform 0.16s ease,
+      box-shadow 0.16s ease,
+      border-color 0.16s ease;
   }
 
   .home-new-mode:hover,
@@ -118,7 +120,9 @@
     padding: 0.24rem 0.6rem;
     white-space: nowrap;
     text-decoration: none;
-    transition: transform 0.14s ease, box-shadow 0.14s ease;
+    transition:
+      transform 0.14s ease,
+      box-shadow 0.14s ease;
   }
 
   .home-new-stat:hover,
@@ -141,40 +145,34 @@
   .home-new-stat--quality {
     border-color: var(--quality-background-color);
     color: var(--quality-text-color);
-    background:
-      linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)),
+    background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)),
       var(--quality-background-color);
   }
 
   .home-new-stat--synonym {
     border-color: #89cde9;
     color: #1f6287;
-    background:
-      linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)),
-      #cfeafb;
+    background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), #cfeafb;
   }
 
   .home-new-stat--requirement {
     border-color: var(--reqs-background-color);
     color: var(--req-text-color);
-    background:
-      linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)),
+    background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)),
       var(--reqs-background-color);
   }
 
   .home-new-stat--standard {
     border-color: var(--standard-background-color);
     color: var(--standard-text-color);
-    background:
-      linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)),
+    background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)),
       var(--standard-background-color);
   }
 
   .home-new-stat--approach {
     border-color: var(--approaches-background-color);
     color: var(--approaches-text-color);
-    background:
-      linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)),
+    background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)),
       var(--approaches-background-color);
   }
 

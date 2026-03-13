@@ -1,77 +1,77 @@
 .site-header {
-    font-size: 2.7em;
-    padding: 0.7em 0;
-    background-color: #357360;
-    border-top: 3px solid $border-contrast-color;
-    border-bottom: 3px solid $border-contrast-color;
+  font-size: 2.7em;
+  padding: 0.7em 0;
+  background-color: #357360;
+  border-top: 3px solid $border-contrast-color;
+  border-bottom: 3px solid $border-contrast-color;
+  @media screen and (max-width: $mobile-width) {
+    position: relative;
+    text-align: center;
+  }
+
+  .nav-toggle {
+    display: none;
+
+    background-color: transparent;
+    border: 0;
+
     @media screen and (max-width: $mobile-width) {
-        position: relative;
-        text-align: center;
-    }
+      .js & {
+        display: inline;
 
-    .nav-toggle {
-      display: none;
+        position: absolute;
+        top: $side-padding;
+        right: $side-padding;
 
-      background-color: transparent;
-      border: 0;
+        outline: none;
 
-      @media screen and (max-width: $mobile-width) {
-        .js & {
-          display: inline;
-
-          position: absolute;
-          top: $side-padding;
-          right: $side-padding;
-
-          outline: none;
-
-          &.active {
-            color: #fff;
-          }
+        &.active {
+          color: #fff;
         }
       }
     }
+  }
 
-    .avatar {
-        height: 3em;
-        width: 3em;
-        border: 3px solid rgba(#fff, .7);
-        border-radius: 1.5em;
-        margin-right: 0.8em;
-        float: left;
-        @media screen and (max-width: $mobile-width) {
-            float: none;
-            margin-right: 0;
-        }
+  .avatar {
+    height: 3em;
+    width: 3em;
+    border: 3px solid rgba(#fff, 0.7);
+    border-radius: 1.5em;
+    margin-right: 0.8em;
+    float: left;
+    @media screen and (max-width: $mobile-width) {
+      float: none;
+      margin-right: 0;
     }
+  }
 
-    h1 {
-        font-size: 1em;
-        line-height: 1em;
-        margin: 0;
-        .accent-color {
-            color: #ffad80;
-        }
-        .title {
-            display: inline-block;
-            color: #deefb7;
-            font-weight: bold;
-            margin-top: 0.5em;
-            &.slim {
-                margin-top: 0;
-            }
-            @media screen and (max-width: $mobile-width) {
-                margin-top: 0;
-            }
-        }
-        .description {
-            margin: 0;
-            font-size: 0.6em;
-            line-height: 1em;
-            margin-top: 0.5em;
-            /* original: color: lighten($site-title-color, 20%);
+  h1 {
+    font-size: 1em;
+    line-height: 1em;
+    margin: 0;
+    .accent-color {
+      color: #ffad80;
+    }
+    .title {
+      display: inline-block;
+      color: #deefb7;
+      font-weight: bold;
+      margin-top: 0.5em;
+      &.slim {
+        margin-top: 0;
+      }
+      @media screen and (max-width: $mobile-width) {
+        margin-top: 0;
+      }
+    }
+    .description {
+      margin: 0;
+      font-size: 0.6em;
+      line-height: 1em;
+      margin-top: 0.5em;
+      /* original: color: lighten($site-title-color, 20%);
             */
-            color: #deefb7;
-        }
+      color: #deefb7;
     }
+  }
 }

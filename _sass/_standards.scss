@@ -57,10 +57,8 @@
   padding: 1.05rem 1.05rem 0.95rem;
   border-radius: 12px;
   border: 1px solid rgba(201, 157, 52, 0.38);
-  background:
-    radial-gradient(circle at 0% 0%, rgba(238, 200, 102, 0.24), transparent 54%),
-    radial-gradient(circle at 100% 100%, rgba(214, 166, 58, 0.2), transparent 58%),
-    #fff9e8;
+  background: radial-gradient(circle at 0% 0%, rgba(238, 200, 102, 0.24), transparent 54%),
+    radial-gradient(circle at 100% 100%, rgba(214, 166, 58, 0.2), transparent 58%), #fff9e8;
   overflow: hidden;
 }
 
@@ -168,7 +166,11 @@
 .standards-hero-mode-link {
   text-decoration: none;
   color: inherit;
-  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease, background 0.18s ease;
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease,
+    border-color 0.18s ease,
+    background 0.18s ease;
 }
 
 .standards-hero-mode-link:hover,
@@ -283,7 +285,9 @@
   opacity: 0;
   transform: translateY(4px);
   pointer-events: none;
-  transition: opacity 0.15s ease, transform 0.15s ease;
+  transition:
+    opacity 0.15s ease,
+    transform 0.15s ease;
 }
 
 .standards-chip:hover .standards-chip-tooltip,

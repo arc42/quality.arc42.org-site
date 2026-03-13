@@ -1,328 +1,360 @@
 .site-content {
-    h1, h2, h3, h4, h5, h6 {
-        line-height: 1.3;
-        margin: 1em 0;
-        a {
-            color: $text-color;
-        }
-        .header-link {
-            margin-left: 0.2em;
-            color: $link-color;
-            opacity: 0;
-        }
-        &:hover .header-link {
-            opacity: 1;
-        }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    line-height: 1.3;
+    margin: 1em 0;
+    a {
+      color: $text-color;
     }
-
-    h1 {
-        font-size: 2.3em;
+    .header-link {
+      margin-left: 0.2em;
+      color: $link-color;
+      opacity: 0;
     }
-
-    h2 {
-        font-size: 1.8em;
-        color: $link-color
+    &:hover .header-link {
+      opacity: 1;
     }
+  }
 
-    blockquote {
-        border-left: 5px solid #ddd;
-        color: $blockquote-color;
-        padding: 0.5em 1em;
-        p:first-child {
-            margin-top: 0;
-        }
-        p:last-child {
-            margin-bottom: 0;
-        }
+  h1 {
+    font-size: 2.3em;
+  }
+
+  h2 {
+    font-size: 1.8em;
+    color: $link-color;
+  }
+
+  blockquote {
+    border-left: 5px solid #ddd;
+    color: $blockquote-color;
+    padding: 0.5em 1em;
+    p:first-child {
+      margin-top: 0;
     }
-
-    table {
-        width: 100%;
-        border-collapse: collapse;
-        td, th {
-            padding: 0.5em 1em;
-            border: 1px solid $border-color;
-            text-align: left;
-        }
+    p:last-child {
+      margin-bottom: 0;
     }
+  }
 
-    p, ol, ul, dl, table, blockquote, kbd, pre, samp {
-        margin: 1.5em 0;
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    td,
+    th {
+      padding: 0.5em 1em;
+      border: 1px solid $border-color;
+      text-align: left;
     }
+  }
 
-    // WCAG 1.4.1: links in text blocks must be distinguishable without relying on color alone
-    p a, li a, blockquote a, td a, th a {
-        text-decoration: underline;
+  p,
+  ol,
+  ul,
+  dl,
+  table,
+  blockquote,
+  kbd,
+  pre,
+  samp {
+    margin: 1.5em 0;
+  }
+
+  // WCAG 1.4.1: links in text blocks must be distinguishable without relying on color alone
+  p a,
+  li a,
+  blockquote a,
+  td a,
+  th a {
+    text-decoration: underline;
+  }
+
+  ul,
+  ol {
+    padding-left: 1em;
+    ul,
+    ol {
+      margin: 0;
     }
+  }
 
-    ul, ol {
-        padding-left: 1em;
-        ul, ol {
-            margin: 0;
-        }
-    }
-
-    ul, ol {
-        &.inline {
-            @extend .clearfix;
-            list-style: none;
-            padding-left: 0;
-            li {
-                float: left;
-                margin-right: 1em;
-                &:last-child {
-                    margin-right: 0;
-                }
-            }
-        }
-    }
-
-    dt {
-        font-weight: bold;
-    }
-
-    dd {
-        margin-left: 2em;
-    }
-
-    p, ol, ul, dl {
-        line-height: 1.5;
-    }
-
-    ol, ul {
-        list-style-position: outside;
-    }
-
-    code {
-        font-family: $code-font-family;
-        font-size: $code-font-size;
-        margin: 0 2px;
-        padding: 0 5px;
-        border: 1px solid #ddd;
-        background-color: rgba(#ddd, .1);
-        border-radius: 3px;
-    }
-
-    pre {
-        border: 1px solid #ccc;
-        background-color: rgba(#ddd, .1);
-        overflow: auto;
-        padding: 10px 15px;
-        line-height: 1em;
-        border-radius: 3px;
-        code {
-            margin: 0;
-            padding: 0;
-            word-wrap: normal;
-            white-space: pre;
-            border: none;
-            background: transparent;
-        }
-    }
-
-    .article-wrapper {
-        @extend .clearfix;
-        margin: $margin 0;
-    }
-
-    article {
-        width: 100%;
+  ul,
+  ol {
+    &.inline {
+      @extend .clearfix;
+      list-style: none;
+      padding-left: 0;
+      li {
         float: left;
-        header {
-            margin-bottom: $margin;
-            .panel {
-                padding: 1em 1.5em;
-                background-color: rgba($page-title-color, .2);
-                h1 {
-                    margin: 0;
-                    &, a {
-                        color: $page-title-color;
-                    }
-                }
-                ul.meta, ul.tags {
-                    list-style: none;
-                    margin: 0;
-                    padding: 0;
-                    li {
-                        display: inline-block;
-                        color: rgba($text-color, .5);
-                        font-size: 0.95em;
-                        margin-right: 0.5em;
-                        &:last-child {
-                            margin-right: 0;
-                        }
-                    }
-                }
-                ul.meta {
-                    float: right;
-                }
-                .header-taxonomy-row {
-                    display: flex;
-                    flex-wrap: wrap;
-                    align-items: center;
-                    justify-content: space-between;
-                    gap: 0.6rem 1rem;
-                    margin-top: 0.35rem;
-
-                    ul.tags {
-                        flex: 1 1 auto;
-                        min-width: 0;
-                    }
-                }
-                .header-category-link {
-                    display: inline-flex;
-                    align-items: center;
-                    gap: 0.45rem;
-                    margin-left: auto;
-                    padding: 0.38rem 0.74rem;
-                    border-radius: 999px;
-                    border: 1px solid rgba(0, 0, 0, 0.12);
-                    background: rgba(255, 255, 255, 0.34);
-                    color: inherit;
-                    font-size: 0.95em;
-                    line-height: 1;
-                    text-decoration: none;
-                    transition: background-color 0.18s ease, border-color 0.18s ease, transform 0.18s ease;
-
-                    .header-category-link-label {
-                        opacity: 0.72;
-                        font-weight: 600;
-                    }
-
-                    .header-category-link-value {
-                        font-weight: 700;
-                    }
-
-                    &:hover,
-                    &:focus-visible {
-                        background: rgba(255, 255, 255, 0.5);
-                        border-color: rgba(0, 0, 0, 0.18);
-                        text-decoration: none;
-                        transform: translateY(-1px);
-                    }
-                }
-                &.approaches-header {
-                    .header-category-link {
-                        color: var(--approaches-text-color);
-                        border-color: rgba(27, 94, 32, 0.24);
-                    }
-                }
-                &.requirements-header {
-                    .header-category-link {
-                        color: var(--req-text-color);
-                        border-color: rgba(0, 89, 135, 0.24);
-                    }
-                }
-                &.quality-header {
-                    .header-category-link {
-                        color: var(--blue-text-color);
-                        border-color: rgba(22, 117, 185, 0.24);
-                    }
-                }
-                &.standard-header {
-                    .header-category-link {
-                        color: var(--standard-text-color);
-                        border-color: rgba(175, 132, 31, 0.28);
-                    }
-                }
-                &.dimension-header {
-                    .header-category-link {
-                        color: var(--dimension-text-color);
-                        border-color: rgba(200, 230, 245, 0.35);
-                    }
-                }
-                ul.icons {
-                    margin: 0;
-                    padding: 0;
-                    li {
-                        margin-right: 0;
-                    }
-                }
-                
-                &.standard-header {
-                    background-color: var(--standard-background-color);
-                    h1 {
-                        &, a {
-                            color: var(--standard-text-color);
-                        }
-                    }
-                }
-                &.dimension-header {
-                    background-color: var(--dimension-background-color);
-                    h1 {
-                        &, a {
-                            color: var(--dimension-text-color);
-                        }
-                    }
-                }
-            }
+        margin-right: 1em;
+        &:last-child {
+          margin-right: 0;
         }
-        p:last-child {
-            margin-bottom: 0;
-        }
-        footer {
-            margin-top: $margin;
-        }
-        .footnotes {
-            font-size: 0.9em;
-        }
+      }
     }
+  }
 
-    .comments {
-        margin-bottom: $margin;
+  dt {
+    font-weight: bold;
+  }
+
+  dd {
+    margin-left: 2em;
+  }
+
+  p,
+  ol,
+  ul,
+  dl {
+    line-height: 1.5;
+  }
+
+  ol,
+  ul {
+    list-style-position: outside;
+  }
+
+  code {
+    font-family: $code-font-family;
+    font-size: $code-font-size;
+    margin: 0 2px;
+    padding: 0 5px;
+    border: 1px solid #ddd;
+    background-color: rgba(#ddd, 0.1);
+    border-radius: 3px;
+  }
+
+  pre {
+    border: 1px solid #ccc;
+    background-color: rgba(#ddd, 0.1);
+    overflow: auto;
+    padding: 10px 15px;
+    line-height: 1em;
+    border-radius: 3px;
+    code {
+      margin: 0;
+      padding: 0;
+      word-wrap: normal;
+      white-space: pre;
+      border: none;
+      background: transparent;
     }
+  }
 
-    .pagination {
-        margin: $margin 0;
-        padding: 0 10%;
-        text-align: center;
-        .btn:first-child {
-            margin-right: 1em;
+  .article-wrapper {
+    @extend .clearfix;
+    margin: $margin 0;
+  }
+
+  article {
+    width: 100%;
+    float: left;
+    header {
+      margin-bottom: $margin;
+      .panel {
+        padding: 1em 1.5em;
+        background-color: rgba($page-title-color, 0.2);
+        h1 {
+          margin: 0;
+          &,
+          a {
+            color: $page-title-color;
+          }
         }
-    }
-
-    #search-results {
-        .article-wrapper {
-            margin: 1em 0;
-        }
-        article header {
-            margin-bottom: 0;
-            .panel {
-                padding: 0;
-                background-color: $background-color;
-                h1 {
-                    font-size: 1.3em;
-                    a.tag {
-                        font-size: 0.7em;
-                    }
-                }
-            }
-        }
-    }
-
-    // Synonym "Also known as" section styling
-    .also-known-as {
-        padding: 0.75rem 1rem;
-        margin-bottom: 1.5rem;
-        background-color: rgba(0, 184, 245, 0.08); // Light blue tint
-        border-left: 4px solid #00B8F5; // Quality color
-        border-radius: 4px;
-        font-size: 0.95rem;
-
-        strong {
-            color: $text-color;
-            font-weight: 600;
-        }
-
-        .synonym-badge {
+        ul.meta,
+        ul.tags {
+          list-style: none;
+          margin: 0;
+          padding: 0;
+          li {
             display: inline-block;
-            padding: 0.2rem 0.6rem;
-            margin: 0.1rem 0.25rem;
-            background-color: rgba(0, 184, 245, 0.15);
-            color: var(--synonym-text-color, #005987);
-            border-radius: 3px;
-            font-size: 0.9rem;
-            font-weight: 500;
+            color: rgba($text-color, 0.5);
+            font-size: 0.95em;
+            margin-right: 0.5em;
+            &:last-child {
+              margin-right: 0;
+            }
+          }
         }
+        ul.meta {
+          float: right;
+        }
+        .header-taxonomy-row {
+          display: flex;
+          flex-wrap: wrap;
+          align-items: center;
+          justify-content: space-between;
+          gap: 0.6rem 1rem;
+          margin-top: 0.35rem;
+
+          ul.tags {
+            flex: 1 1 auto;
+            min-width: 0;
+          }
+        }
+        .header-category-link {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.45rem;
+          margin-left: auto;
+          padding: 0.38rem 0.74rem;
+          border-radius: 999px;
+          border: 1px solid rgba(0, 0, 0, 0.12);
+          background: rgba(255, 255, 255, 0.34);
+          color: inherit;
+          font-size: 0.95em;
+          line-height: 1;
+          text-decoration: none;
+          transition:
+            background-color 0.18s ease,
+            border-color 0.18s ease,
+            transform 0.18s ease;
+
+          .header-category-link-label {
+            opacity: 0.72;
+            font-weight: 600;
+          }
+
+          .header-category-link-value {
+            font-weight: 700;
+          }
+
+          &:hover,
+          &:focus-visible {
+            background: rgba(255, 255, 255, 0.5);
+            border-color: rgba(0, 0, 0, 0.18);
+            text-decoration: none;
+            transform: translateY(-1px);
+          }
+        }
+        &.approaches-header {
+          .header-category-link {
+            color: var(--approaches-text-color);
+            border-color: rgba(27, 94, 32, 0.24);
+          }
+        }
+        &.requirements-header {
+          .header-category-link {
+            color: var(--req-text-color);
+            border-color: rgba(0, 89, 135, 0.24);
+          }
+        }
+        &.quality-header {
+          .header-category-link {
+            color: var(--blue-text-color);
+            border-color: rgba(22, 117, 185, 0.24);
+          }
+        }
+        &.standard-header {
+          .header-category-link {
+            color: var(--standard-text-color);
+            border-color: rgba(175, 132, 31, 0.28);
+          }
+        }
+        &.dimension-header {
+          .header-category-link {
+            color: var(--dimension-text-color);
+            border-color: rgba(200, 230, 245, 0.35);
+          }
+        }
+        ul.icons {
+          margin: 0;
+          padding: 0;
+          li {
+            margin-right: 0;
+          }
+        }
+
+        &.standard-header {
+          background-color: var(--standard-background-color);
+          h1 {
+            &,
+            a {
+              color: var(--standard-text-color);
+            }
+          }
+        }
+        &.dimension-header {
+          background-color: var(--dimension-background-color);
+          h1 {
+            &,
+            a {
+              color: var(--dimension-text-color);
+            }
+          }
+        }
+      }
     }
+    p:last-child {
+      margin-bottom: 0;
+    }
+    footer {
+      margin-top: $margin;
+    }
+    .footnotes {
+      font-size: 0.9em;
+    }
+  }
+
+  .comments {
+    margin-bottom: $margin;
+  }
+
+  .pagination {
+    margin: $margin 0;
+    padding: 0 10%;
+    text-align: center;
+    .btn:first-child {
+      margin-right: 1em;
+    }
+  }
+
+  #search-results {
+    .article-wrapper {
+      margin: 1em 0;
+    }
+    article header {
+      margin-bottom: 0;
+      .panel {
+        padding: 0;
+        background-color: $background-color;
+        h1 {
+          font-size: 1.3em;
+          a.tag {
+            font-size: 0.7em;
+          }
+        }
+      }
+    }
+  }
+
+  // Synonym "Also known as" section styling
+  .also-known-as {
+    padding: 0.75rem 1rem;
+    margin-bottom: 1.5rem;
+    background-color: rgba(0, 184, 245, 0.08); // Light blue tint
+    border-left: 4px solid #00b8f5; // Quality color
+    border-radius: 4px;
+    font-size: 0.95rem;
+
+    strong {
+      color: $text-color;
+      font-weight: 600;
+    }
+
+    .synonym-badge {
+      display: inline-block;
+      padding: 0.2rem 0.6rem;
+      margin: 0.1rem 0.25rem;
+      background-color: rgba(0, 184, 245, 0.15);
+      color: var(--synonym-text-color, #005987);
+      border-radius: 3px;
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+  }
 }

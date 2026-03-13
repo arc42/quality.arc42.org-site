@@ -10,10 +10,8 @@
     padding: 1.25rem 1.25rem 1.1rem;
     border-radius: 12px;
     border: 1px solid rgba(0, 184, 245, 0.25);
-    background:
-      radial-gradient(circle at 0% 0%, rgba(0, 184, 245, 0.16), transparent 52%),
-      radial-gradient(circle at 100% 100%, rgba(0, 119, 173, 0.14), transparent 56%),
-      #f8fcff;
+    background: radial-gradient(circle at 0% 0%, rgba(0, 184, 245, 0.16), transparent 52%),
+      radial-gradient(circle at 100% 100%, rgba(0, 119, 173, 0.14), transparent 56%), #f8fcff;
     overflow: hidden;
   }
 
@@ -93,7 +91,10 @@
     border-radius: 10px;
     padding: 18px;
     box-shadow: 0 2px 8px rgba(0, 61, 91, 0.06);
-    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    transition:
+      transform 0.2s ease,
+      box-shadow 0.2s ease,
+      border-color 0.2s ease;
     display: flex;
     flex-direction: column;
   }

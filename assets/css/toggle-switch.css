@@ -1,71 +1,72 @@
 .toggle {
-    cursor: pointer;
-    display: inline-flex;
-    align-items: center;
-    position: relative; /* allow absolutely positioned input overlay */
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  position: relative; /* allow absolutely positioned input overlay */
 }
 
 .toggle-switch {
-    display: inline-block;
-    background: #ccc;
-    border-radius: 16px;
-    width: 40px;
-    height: 22px;
-    position: relative;
-    vertical-align: middle;
-    transition: background 0.25s;
+  display: inline-block;
+  background: #ccc;
+  border-radius: 16px;
+  width: 40px;
+  height: 22px;
+  position: relative;
+  vertical-align: middle;
+  transition: background 0.25s;
 }
 
-.toggle-switch:before, .toggle-switch:after {
-    content: "";
+.toggle-switch:before,
+.toggle-switch:after {
+  content: "";
 }
 
 .toggle-switch:before {
-    display: block;
-    background: linear-gradient(to bottom, #fff 0%, #eee 100%);
-    border-radius: 50%;
-    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.25);
-    width: 14px;
-    height: 14px;
-    position: absolute;
-    top: 4px;
-    left: 4px;
-    transition: left 0.25s;
+  display: block;
+  background: linear-gradient(to bottom, #fff 0%, #eee 100%);
+  border-radius: 50%;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.25);
+  width: 14px;
+  height: 14px;
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  transition: left 0.25s;
 }
 
 .toggle:hover .toggle-switch:before {
-    background: linear-gradient(to bottom, #fff 0%, #fff 100%);
-    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.5);
+  background: linear-gradient(to bottom, #fff 0%, #fff 100%);
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.5);
 }
 
 .toggle-checkbox:checked + .toggle-switch {
-    background: #e6daf2;
+  background: #e6daf2;
 }
 
 .toggle-checkbox:checked + .toggle-switch:before {
-    left: 22px;
+  left: 22px;
 }
 
 .toggle-checkbox {
-    /* Keep the native checkbox focusable for keyboard users */
-    position: absolute;
-    top: 0;
-    right: 0; /* place over the visual switch at the end of the label */
-    width: 40px; /* match visual switch size */
-    height: 22px;
-    margin: 0;
-    opacity: 0; /* hide visually but keep in accessibility tree and tab order */
-    cursor: pointer;
+  /* Keep the native checkbox focusable for keyboard users */
+  position: absolute;
+  top: 0;
+  right: 0; /* place over the visual switch at the end of the label */
+  width: 40px; /* match visual switch size */
+  height: 22px;
+  margin: 0;
+  opacity: 0; /* hide visually but keep in accessibility tree and tab order */
+  cursor: pointer;
 }
 
 /* Visible focus indicator for keyboard users */
 .toggle-checkbox:focus-visible + .toggle-switch {
-    outline: 2px solid #003366;
-    outline-offset: 2px;
+  outline: 2px solid #003366;
+  outline-offset: 2px;
 }
 
 .toggle-label {
-    margin-left: 5px;
-    margin-right: 10px;
-    top: 2px;
+  margin-left: 5px;
+  margin-right: 10px;
+  top: 2px;
 }
