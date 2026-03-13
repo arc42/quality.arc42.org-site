@@ -2,7 +2,7 @@
 layout: page
 title: Solution Approaches
 permalink: /approaches/
-order: 70
+order: 35
 ---
 
 {% assign valid_tags = site.data.standard_tags.tags | sort %}
