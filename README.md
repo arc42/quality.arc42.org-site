@@ -64,6 +64,7 @@ Alternatively, use the provided Makefile targets:
 | Command | Description |
 |---------|-------------|
 | `make dev` | Start the development environment (`docker compose up`) |
+| `make doctor` | Verify local dev readiness (Docker + site startup + key route checks, including alias redirects) |
 | `make clean` | Remove the generated `_site` directory |
 | `make test` | Run Playwright UI tests in Docker and print report/artifact locations |
 | `make wcag-test` | Run Docker-based axe WCAG scan and generate graphical report assets (informative, non-blocking) |
@@ -72,9 +73,11 @@ Alternatively, use the provided Makefile targets:
 Notes:
 - The esbuild service will run `npm run data` once on startup to generate graph data under `assets/data`.
 - The esbuild service will also run `npm run test:links` to validate all internal links.
+- `make doctor` is the quickest local sanity check before/after `make dev`; it verifies that `http://localhost:4000` is reachable and probes key routes such as `/qualities/autonomy/` and `/qualities/autonomicity/`.
 - `make test` automatically starts the local stack (`docker compose up -d`) and waits for `http://localhost:4000` before executing Playwright.
 - `make wcag-test` also starts the local stack if needed and writes report files to `assets/reports/wcag/` (displayed at `/about/wcag-report/`).
 - `make wcag-test` is informative (does not fail on existing violations). Use `make wcag-test-strict` for gating.
+- For browser access, prefer `http://localhost:4000` (or `http://127.0.0.1:4000`) over `http://0.0.0.0:4000`.
 - If you add or change content that affects tags/related/permalinks, restart the stack (`docker compose down` then `docker compose up`) so data is regenerated.
 
 ## How to contribute

@@ -1,9 +1,10 @@
-.PHONY: help clean dev test wcag-test wcag-test-strict
+.PHONY: help clean dev doctor test wcag-test wcag-test-strict
 
 help:
 	@printf "Available targets:\n"
 	@printf "  make help   Show this help.\n"
 	@printf "  make dev    Start development environment (docker compose up esbuild jekyll).\n"
+	@printf "  make doctor Check local dev setup and key URLs (including alias redirects).\n"
 	@printf "  make clean  Remove generated _site directory.\n"
 	@printf "  make test   Ensure local site is up, run Playwright UI tests in Docker, optionally serve HTML report.\n"
 	@printf "  make wcag-test  Run axe-based WCAG scan in Docker and generate report assets (informative, non-blocking).\n"
@@ -14,6 +15,57 @@ clean:
 
 dev:
 	docker compose up esbuild jekyll
+
+doctor:
+	@printf "\n[doctor] Checking local prerequisites...\n"
+	@if ! command -v docker >/dev/null 2>&1; then \
+		printf "❌ docker not found in PATH.\n"; \
+		exit 1; \
+	fi
+	@if ! docker compose version >/dev/null 2>&1; then \
+		printf "❌ docker compose is not available.\n"; \
+		exit 1; \
+	fi
+	@printf "[doctor] Ensuring dev services are running (docker compose up -d esbuild jekyll)...\n"
+	@docker compose up -d esbuild jekyll >/dev/null
+	@printf "[doctor] Waiting for http://localhost:4000 to become ready"
+	@ready=0; i=0; \
+	while [ $$i -lt 45 ]; do \
+		if curl -fsS http://localhost:4000 >/dev/null 2>&1; then \
+			ready=1; \
+			break; \
+		fi; \
+		printf "."; \
+		i=$$((i+1)); \
+		sleep 2; \
+	done; \
+	printf "\n"; \
+	if [ $$ready -ne 1 ]; then \
+		printf "❌ Site did not become ready on http://localhost:4000\n"; \
+		printf "Run: docker compose logs --tail=120 jekyll esbuild\n"; \
+		printf "Also verify no other process is using port 4000.\n"; \
+		exit 1; \
+	fi
+	@printf "[doctor] Probing key routes...\n"
+	@fail=0; \
+	for path in "/" "/qualities/autonomy/" "/qualities/autonomicity/" ; do \
+		url="http://localhost:4000$$path"; \
+		code=$$(curl -s -o /dev/null -w "%{http_code}" "$$url" || true); \
+		if [ "$$code" = "200" ] || [ "$$code" = "301" ] || [ "$$code" = "302" ]; then \
+			printf "  [ok]   %s -> HTTP %s\n" "$$path" "$$code"; \
+		else \
+			printf "  [fail] %s -> HTTP %s\n" "$$path" "$$code"; \
+			fail=1; \
+		fi; \
+	done; \
+	if [ $$fail -ne 0 ]; then \
+		printf "\n❌ Route check failed.\n"; \
+		printf "Run: docker compose logs --tail=120 jekyll esbuild\n"; \
+		exit 1; \
+	fi
+	@printf "[doctor] Hostname tip: use http://localhost:4000 or http://127.0.0.1:4000 in browser.\n"
+	@printf "[doctor] 0.0.0.0 is a bind address and may fail as a browser URL on some systems.\n"
+	@printf "✅ doctor passed.\n\n"
 
 test:
 	@docker compose pull
