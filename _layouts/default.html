@@ -81,12 +81,19 @@
                 </form>
             </div>
             <ul>
+                {% assign navigation_items = site.data.navigation.main %}
+                {% if navigation_items %}
+                {% for navigation_item in navigation_items %}
+                <li><a class="page-link" href="{{ navigation_item.url | prepend: site.baseurl }}">{{ navigation_item.title }}</a></li>
+                {% endfor %}
+                {% else %}
                 {% assign pages = site.pages | sort: 'order' %}
                 {% for page in pages %}
                 {% if page.title and page.hide != true %}
                 <li><a class="page-link" href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a></li>
                 {% endif %}
                 {% endfor %}
+                {% endif %}
             </ul>
             <ul class="icons">
                 {% include icons.html icons=site.icons %}
