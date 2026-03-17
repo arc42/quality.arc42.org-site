@@ -1,0 +1,27 @@
+main:
+  - title: Home
+    url: /
+  - title: How to Use this Site
+    url: /how-to-use-this-site/
+  - title: Quality Dimensions
+    url: /dimensions/
+  - title: Quality Characteristics
+    url: /qualities/
+  - title: Quality Requirements
+    url: /requirements/
+  - title: Solution Approaches
+    url: /approaches/
+  - title: Quality Standards
+    url: /standards/
+  - title: Quality Aliases and Synonyms
+    url: /aliases/
+  - title: Q42 for ISO-25010 Users
+    url: /q42-for-iso-users/
+  - title: Background on "Quality"
+    url: /articles/
+  - title: References
+    url: /references/
+  - title: About this Site
+    url: /aboutthissite/
+  - title: Contact
+    url: /contact/
