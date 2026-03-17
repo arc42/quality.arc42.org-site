@@ -2,7 +2,6 @@
 layout: graph
 title: Quality Graph
 permalink: /full-quality-graph
-order: 60
 hide: true
 body_class: graph-compact-header
 ---

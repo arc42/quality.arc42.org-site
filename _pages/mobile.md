@@ -2,7 +2,6 @@
 layout: graph
 title: Mobile Graph Explorer
 permalink: /mobile
-order: 61
 hide: true
 body_class: mobile-graph-layout graph-compact-header
 ---

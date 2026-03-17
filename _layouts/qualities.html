@@ -1,56 +1,54 @@
 ---
-layout: default
+layout: mm-single
 ---
 
 {% comment %} These qualities pages are structured as follows: - Header - Content section - Related
 requirements ("related to this quality") - Related qualities {% endcomment %}
 
 <div class="article-wrapper">
-  <article>
-    {% include quality-header.liquid page=page link=false share=page.share %}
+  {% include quality-header.liquid page=page link=false share=page.share %}
 
-    {% comment %} Show "Also known as" section for synonyms from aka + alias_of redirect stubs {% endcomment %}
-    {% assign canonical_slug = page.permalink | remove: "/qualities/" | replace: "/", "" %}
-    {% assign all_aliases = "" | split: "" %}
-    {% if page.aka and page.aka.size > 0 %}
-      {% for synonym in page.aka %}
-        {% assign all_aliases = all_aliases | push: synonym %}
-      {% endfor %}
-    {% endif %}
-    {% assign redirect_alias_pages = site.qualities | where: "alias_of", canonical_slug %}
-    {% for alias_page in redirect_alias_pages %}
-      {% assign all_aliases = all_aliases | push: alias_page.title %}
+  {% comment %} Show "Also known as" section for synonyms from aka + alias_of redirect stubs {% endcomment %}
+  {% assign canonical_slug = page.permalink | remove: "/qualities/" | replace: "/", "" %}
+  {% assign all_aliases = "" | split: "" %}
+  {% if page.aka and page.aka.size > 0 %}
+    {% for synonym in page.aka %}
+      {% assign all_aliases = all_aliases | push: synonym %}
     {% endfor %}
-    {% assign all_aliases = all_aliases | uniq | sort_natural %}
+  {% endif %}
+  {% assign redirect_alias_pages = site.qualities | where: "alias_of", canonical_slug %}
+  {% for alias_page in redirect_alias_pages %}
+    {% assign all_aliases = all_aliases | push: alias_page.title %}
+  {% endfor %}
+  {% assign all_aliases = all_aliases | uniq | sort_natural %}
 
-    {% if all_aliases.size > 0 %}
-    <div class="also-known-as">
-      <strong>Also known as:</strong>
-      {% for synonym in all_aliases %}
-        <span class="synonym-badge">{{ synonym }}</span>{% unless forloop.last %}, {% endunless %}
-      {% endfor %}
-    </div>
-    {% endif %}
+  {% if all_aliases.size > 0 %}
+  <div class="also-known-as">
+    <strong>Also known as:</strong>
+    {% for synonym in all_aliases %}
+      <span class="synonym-badge">{{ synonym }}</span>{% unless forloop.last %}, {% endunless %}
+    {% endfor %}
+  </div>
+  {% endif %}
 
-    <section class="post-content">{{ content }}</section>
+  <section class="post-content">{{ content }}</section>
 
-    <hr class="with-no-margin" />
+  <hr class="with-no-margin" />
 
-    {% include directly-related-requirements.html %}
+  {% include directly-related-requirements.html %}
 
-    <hr class="with-no-margin" />
+  <hr class="with-no-margin" />
 
-    {% include directly-related-qualities.html item=page %}
+  {% include directly-related-qualities.html item=page %}
 
-    <hr class="with-no-margin" />
+  <hr class="with-no-margin" />
 
-    {% include directly-related-approaches.html item=page %}
+  {% include directly-related-approaches.html item=page %}
 
-    <hr class="with-no-margin" />
+  <hr class="with-no-margin" />
 
-    {% include directly-related-standards.html item=page %}
+  {% include directly-related-standards.html item=page %}
 
 
-    {% include article-footer.html page=page share=page.share %}
-  </article>
+  {% include article-footer.html page=page share=page.share %}
 </div>

@@ -112,25 +112,48 @@ collections:
 #
 defaults:
   - scope:
+      path: "_pages"
+    values:
+      sidebar:
+        nav: "main"
+  - scope:
+      type: "articles"
+    values:
+      layout: page
+      hide: "true"
+      toc: true
+      sidebar:
+        nav: "main"
+  - scope:
       type: "qualities"
     values:
       layout: qualities
       hide: "true"
+      sidebar:
+        nav: "main"
   - scope:
       type: "requirements"
     values:
       layout: requirements
       hide: "true"
+      sidebar:
+        nav: "main"
   - scope:
       type: "standards"
     values:
       layout: standards
       hide: "true"
+      toc: true
+      sidebar:
+        nav: "main"
   - scope:
       type: "approaches"
     values:
       layout: approach
       hide: "true"
+      toc: true
+      sidebar:
+        nav: "main"
 
 #
 # !! Danger zone !!

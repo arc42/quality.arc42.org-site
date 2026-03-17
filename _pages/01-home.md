@@ -1,8 +1,7 @@
 ---
-layout: default
+layout: legacy-default
 title: Home
 permalink: /
-order: 1
 ---
 
 {% assign qualities = site.qualities %}

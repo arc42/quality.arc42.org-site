@@ -3,7 +3,6 @@ layout: page
 title: Qualities by Stakeholder
 permalink: /stakeholders/
 hide: true
-order: 75
 ---
 
 Here you find a list of typical stakeholders, plus a list of qualities these roles or persons typically require, need or want from a system.

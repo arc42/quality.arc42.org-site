@@ -6,6 +6,9 @@ Gemfile.lock
 .idea
 vendor
 node_modules
+.env
+.new
+.junie/
 
 # Build artifacts - JavaScript and source maps
 assets/js/**/*.js.map

@@ -2,7 +2,6 @@
 layout: page
 title: How to Use this Site
 permalink: /how-to-use-this-site/
-order: 5
 ---
 
 This site supports you in defining specific quality requirements for your system.

@@ -2,7 +2,6 @@
 layout: page
 title: Quality Dimensions
 permalink: /dimensions/
-order: 10
 ---
 
 Dimensions (also known as _tags_ or _labels_) are used to structure the fairly large set of quality characteristics.

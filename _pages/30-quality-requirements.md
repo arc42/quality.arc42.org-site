@@ -2,7 +2,6 @@
 layout: page_requirements
 title: Quality Requirements
 permalink: /requirements/
-order: 30
 ---
 
 Here you find <span style="color: var(--req-text-color)" markdown="1">

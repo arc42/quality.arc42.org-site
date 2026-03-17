@@ -2,7 +2,6 @@
 layout: wcag-report
 title: WCAG Accessibility Report
 permalink: /about/wcag-report/
-order: 91
 hide: true
 ---
 

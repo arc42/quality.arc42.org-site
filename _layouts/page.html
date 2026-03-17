@@ -1,23 +1,21 @@
 ---
-layout: default
+layout: mm-single
 ---
 
 <div class="article-wrapper">
-    <article>
-        {% if page.url contains '/tag-' %}
-        {% include dimension-header.liquid page=page link=false share=page.share %}
-        {% elsif page.url == '/dimensions/' %}
-        {% include dimension-header.liquid page=page link=false share=page.share show_category_link=false %}
-        {% elsif page.url == '/qualities/' %}
-        {% include quality-header.liquid page=page link=false share=page.share %}
-        {% elsif page.url == '/approaches/' %}
-        {% include approach-header.liquid page=page link=false share=page.share %}
-        {% else %}
-        {% include article-header.html page=page link=false share=page.share %}
-        {% endif %}
-        <section class="post-content">
-            {{ content }}
-        </section>
-        {% include article-footer.html page=page share=page.share %}
-    </article>
+    {% if page.url contains '/tag-' %}
+    {% include dimension-header.liquid page=page link=false share=page.share %}
+    {% elsif page.url == '/dimensions/' %}
+    {% include dimension-header.liquid page=page link=false share=page.share show_category_link=false %}
+    {% elsif page.url == '/qualities/' %}
+    {% include quality-header.liquid page=page link=false share=page.share %}
+    {% elsif page.url == '/approaches/' %}
+    {% include approach-header.liquid page=page link=false share=page.share %}
+    {% else %}
+    {% include article-header.html page=page link=false share=page.share %}
+    {% endif %}
+    <section class="post-content">
+        {{ content }}
+    </section>
+    {% include article-footer.html page=page share=page.share %}
 </div>

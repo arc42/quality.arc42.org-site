@@ -2,7 +2,6 @@
 layout: page_standards
 title: Standards Explorer
 permalink: /standards/explorer/
-order: 41
 hide: true
 ---
 

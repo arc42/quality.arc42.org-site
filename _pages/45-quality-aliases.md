@@ -2,7 +2,6 @@
 layout: page
 title: Quality Aliases and Synonyms
 permalink: /aliases/
-order: 45
 ---
 
 {% assign synonym_map = site.data.quality-synonyms %}

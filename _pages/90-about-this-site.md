@@ -2,7 +2,6 @@
 layout: page
 title: About this Site
 permalink: /aboutthissite/
-order: 90
 ---
 <div class="ua-background" markdown="1">
 

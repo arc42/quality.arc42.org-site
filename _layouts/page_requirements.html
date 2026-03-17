@@ -1,14 +1,11 @@
 ---
-layout: default
+layout: mm-single
 ---
 
 <div class="article-wrapper">
-    <article>
-        {% include requirements-header.liquid page=page link=false share=page.share %}
-        <section class="post-content">
-            {{ content }}
-        </section>
-        {% include article-footer.html page=page share=page.share %}
-    </article>
+    {% include requirements-header.liquid page=page link=false share=page.share %}
+    <section class="post-content">
+        {{ content }}
+    </section>
+    {% include article-footer.html page=page share=page.share %}
 </div>
-

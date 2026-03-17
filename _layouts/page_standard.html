@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: mm-single
 ---
 
 {% assign qualities_for_standard = "" | split: "" %} {% for quality in site.qualities %} {% if
@@ -7,11 +7,9 @@ quality.standards contains page.standard_id %} {% assign qualities_for_standard 
 qualities_for_standard | push: quality %} {% endif %} {% endfor %}
 
 <div class="article-wrapper">
-  <article>
-    {% include standards-header.liquid page=page link=false share=page.share %}
-    <section class="post-content">{{ content }}</section>
-    {% include article-footer.html page=page share=page.share %}
-  </article>
+  {% include standards-header.liquid page=page link=false share=page.share %}
+  <section class="post-content">{{ content }}</section>
+  {% include article-footer.html page=page share=page.share %}
 </div>
 
 <h2 class="section-heading qualities">Related Qualities ({{ qualities_for_standard | size }})</h2>
