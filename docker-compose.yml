@@ -19,7 +19,7 @@ services:
       - .:/site
     ports:
       - "4000:4000"
-    command: bundle exec jekyll serve --incremental --watch --host 0.0.0.0
+    command: sh -lc "bundle check || bundle install && bundle exec jekyll serve --incremental --watch --host 0.0.0.0"
 
   playwright:
     image: mcr.microsoft.com/playwright:v1.58.2-jammy

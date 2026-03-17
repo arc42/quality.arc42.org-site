@@ -18,8 +18,25 @@ title: arc42 Quality Model
 description: quality characteristics, explained.
 avatar: /assets/img/arc42logosquare.webp
 favicon: /assets/img/arc42logosquare.webp
+logo: /assets/img/arc42logosquare.webp
 language: en
+locale: en-US
 repository: arc42/quality.arc42.org-site
+theme: minimal-mistakes-jekyll
+minimal_mistakes_skin: default
+masthead_title: arc42 Quality Model
+search: false
+search_full_content: true
+breadcrumbs: false
+
+footer:
+  links:
+    - label: GitHub
+      icon: fab fa-fw fa-github
+      url: https://github.com/arc42/quality.arc42.org-site
+    - label: Status
+      icon: fas fa-fw fa-chart-bar
+      url: https://status.arc42.org
 
 #
 # Icons and Social-Media accounts
@@ -53,6 +70,7 @@ plugins:
   - jemoji
   - jekyll-paginate
   - jekyll-github-metadata
+  - jekyll-include-cache
 
 #
 # tags, collections etc -
