@@ -3,6 +3,7 @@ layout: page
 title: Q42 for ISO-25010 Users
 permalink: /q42-for-iso-users/
 order: 50
+hide: true
 mermaid: true
 ---
 
@@ -132,7 +133,6 @@ Clicking a node leads to the corresponding Q42 description.
     click hazwarn "/qualities/hazard-warning"
     click safeint "/qualities/safe-integration"
 </div>
-
 
 
 

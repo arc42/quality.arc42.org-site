@@ -1,0 +1,35 @@
+<footer class="site-footer">
+  <div class="inner">
+    <div class="footer-sponsor">
+      <a href="https://www.innoq.com" target="_blank" rel="noopener noreferrer nofollow" aria-label="Supported by INNOQ">
+        <img
+          class="supported-by-innoq"
+          alt="Supported by INNOQ"
+          src="{{ '/images/supported-by-innoq--petrol-apricot.svg' | prepend: site.baseurl }}">
+      </a>
+    </div>
+
+    <p class="footer-icons">
+      <a href="{{ '/contact/' | prepend: site.baseurl }}" aria-label="Contact">
+        <i class="fa fa-envelope fa-fw" aria-hidden="true"></i>Contact
+      </a>
+      <a href="https://status.arc42.org" aria-label="Site status">
+        <i class="fa fa-chart-bar fa-fw status-ok-color" aria-hidden="true"></i>Status
+      </a>
+      <span class="footer-privacy-link">
+        <i class="fa fa-user-secret" aria-hidden="true"></i>
+        <a href="{{ '/imprint/' | prepend: site.baseurl }}" aria-label="Imprint and privacy policy">Imprint + Privacy</a>
+      </span>
+      <span class="footer-wcag-item">
+        {% include wcag-score-pill.html %}
+      </span>
+    </p>
+
+    <span>
+      Maintained by <a target="_blank" rel="noopener noreferrer nofollow" href="https://gernotstarke.de">Gernot Starke</a>,
+      supported by <a target="_blank" rel="noopener noreferrer nofollow" href="https://perstarke-webdev.de">Per Starke Web Development</a>
+    </span>
+  </div>
+</footer>
+
+<script src="{{ '/assets/js/wcag-score.js' | prepend: site.baseurl }}"></script>
