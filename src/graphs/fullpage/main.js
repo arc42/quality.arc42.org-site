@@ -3,6 +3,7 @@ import nodes from "../../../assets/data/nodes.json";
 import edges from "../../../assets/data/edges.json";
 import { GraphDataProvider } from "../GraphDataProvider";
 import { FullGraph } from "../FullGraph";
+import { GraphPageController } from "../GraphPageController.js";
 
 // Initialize data provider
 const dataProvider = new GraphDataProvider(propertyNodes, nodes, edges);
@@ -14,3 +15,6 @@ fullGraph
     .buildGraph()
     .registerDefaultEventHandlers()
     .render();
+
+// Initialize page UI controller (mobile sheet, quick filters, reset)
+new GraphPageController(fullGraph).initialize();

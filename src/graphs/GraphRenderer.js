@@ -530,21 +530,23 @@ export class GraphRenderer {
         this.height = height;
 
         if (this.canvas) {
-            this.canvas.width = this.width;
-            this.canvas.height = this.height;
+            this.canvas.width = width;
+            this.canvas.height = height;
         }
         if (this.svg) {
-            this.svg.attr("width", this.width).attr("height", this.height);
+            this.svg.attr("width", width).attr("height", height);
         }
-
+        if (this.zoom) {
+            this.zoom.translateExtent([[-width * 2, -height * 2], [width * 3, height * 3]]);
+        }
         if (this.simulation) {
-            const centerX = this.width / 2;
-
-            this.simulation.force("center").x(centerX).y(this.height / 2);
-            this.simulation.alpha(1).restart();
+            this.simulation.force("center").x(width / 2).y(height / 2);
         }
-        // Re-draw on resize
         this.drawCanvas();
+
+        // Re-center view after resize settles (debounced)
+        clearTimeout(this._resizeCenterTimer);
+        this._resizeCenterTimer = setTimeout(() => this.centerView(), 200);
     }
 
     /**
@@ -766,6 +768,7 @@ export class GraphRenderer {
      */
     setupZoom() {
         this.zoom = d3.zoom()
+            .translateExtent([[-this.width * 2, -this.height * 2], [this.width * 3, this.height * 3]])
             .on("zoom", (event) => {
                 this.currentTransform = event.transform;
                 this.svg.selectAll("g").attr("transform", this.currentTransform);
@@ -786,12 +789,10 @@ export class GraphRenderer {
 
         this.svg.call(this.zoom);
 
-        // Apply an initial pan for the desktop full graph view (it has a left sidebar).
-        // Mobile graph page uses a bottom sheet and should start centered.
-        const isDesktopFullGraph =
-            this.container?.id === "full-q-graph-container" &&
-            !this.container?.closest?.(".mobile-graph-page");
-        const initialOffsetX = isDesktopFullGraph ? 100 : 0;
+        // Apply an initial pan offset for desktop full graph view (sidebar takes ~250px on the left).
+        // On mobile, the sidebar is a bottom sheet — no horizontal offset needed.
+        const isMobileViewport = typeof matchMedia !== "undefined" && matchMedia("(max-width: 900px)").matches;
+        const initialOffsetX = (this.container?.id === "full-q-graph-container" && !isMobileViewport) ? 100 : 0;
         const initialTransform = d3.zoomIdentity.translate(initialOffsetX, 0);
         this.svg.call(this.zoom.transform, initialTransform);
         this.currentTransform = initialTransform;
