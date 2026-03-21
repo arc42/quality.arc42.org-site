@@ -77,11 +77,13 @@ export class GraphPageController {
     #setMobileDefaults() {
         if (!this.#media.matches) {
             // Desktop: sidebar is always visible — make sure it is reachable
+            document.body.classList.remove("graph-compact-header");
             this.#sidebar?.removeAttribute("inert");
             this.#sidebar?.removeAttribute("aria-hidden");
             this.#closeSheet();
             return;
         }
+        document.body.classList.add("graph-compact-header");
         this.#applyToggle(this.#qualityToggle, true);
         this.#applyToggle(this.#requirementsToggle, false);
         this.#applyToggle(this.#standardsToggle, false);
