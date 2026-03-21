@@ -24,3 +24,5 @@ test-results/
 # Deciduous database (local)
 .deciduous/
 .junie
+.agents
+.claude
