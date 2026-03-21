@@ -26,3 +26,4 @@ test-results/
 .junie
 .agents
 .claude
+skills-lock.json
