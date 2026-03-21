@@ -108,3 +108,7 @@ carbon-emission-efficiency:
 # Accuracy (exactness is common in scientific and engineering contexts)
 accuracy:
   - exactness
+
+# Testability (unit-testability emphasizes fast developer-facing automated tests)
+testability:
+  - unit-testability

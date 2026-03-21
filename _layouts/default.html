@@ -88,25 +88,6 @@
                 {% endif %}
                 {% endfor %}
             </ul>
-            <ul class="icons">
-                {% include icons.html icons=site.icons %}
-            </ul>
-            <hr class="with-no-margin margin-bottom"/>
-            <a href="https://github.com/arc42/quality.arc42.org-site/issues">
-                <img alt="GitHub issues"
-                     src="https://img.shields.io/github/issues-raw/arc42/quality.arc42.org-site?style=social">
-                <img alt="GitHub closed issues"
-                     src="https://img.shields.io/github/issues-closed-raw/arc42/quality.arc42.org-site?style=social">
-            </a>
-            <br>
-            <a href="https://github.com/arc42/quality.arc42.org-site/pulls?q=is%3Apr+is%3Aclosed">
-                <img alt="GitHub closed PRs"
-                     src="https://img.shields.io/github/issues-pr-closed-raw/arc42/quality.arc42.org-site?style=social">
-            </a>
-            <div class="wcag-nav-metric">
-                {% include wcag-score-pill.html %}
-            </div>
-            <hr class="with-no-margin margin-bottom"/>
         </div>
     </aside>
 
@@ -115,28 +96,12 @@
     </div>
 </div>
 
-<footer class="site-footer">
-    <div class="inner">
-        <p class="footer-icons"><a href="https://www.innoq.com" target="_blank" rel="noopener noreferrer nofollow"><img
-                class="supported-by-innoq"
-                alt="Supported by INNOQ"
-                src="{{ '/images/supported-by-innoq--petrol-apricot.svg' | prepend: site.baseurl }}"></a><br>
-            <a href="https://status.arc42.org">
-                <i class="fa fa-chart-bar fa-fw status-ok-color"></i>Status</a><i>&nbsp;&nbsp;</i>
-            <i class="fa fa-user-secret" aria-hidden="true"></i>
-            <a href="{{ site.baseurl }}/imprint">
-                Imprint + Privacy</a></p>
-        <span>Maintained by <a target="_blank" rel="noopener noreferrer nofollow" href="https://gernotstarke.de">Gernot Starke</a>,
-          supported by <a target="_blank" rel="noopener noreferrer nofollow" href="https://perstarke-webdev.de">Per Starke Web Development</a>
-        </span>
-    </div>
-</footer>
+{% include footer.html %}
 
 
 <script src="{{ '/assets/jquery/jquery-3.7.1-min.js' | prepend: site.baseurl }}"></script>
 <script src="{{ '/assets/lib/garand-sticky/jquery.sticky.js' | prepend: site.baseurl }}"></script>
 <script src="{{ '/assets/js/script.js' | prepend: site.baseurl }}"></script>
-<script src="{{ '/assets/js/wcag-score.js' | prepend: site.baseurl }}"></script>
 
 {% if page.id %}
 <script src="{{ '/assets/js/header-link.js' | prepend: site.baseurl }}"></script>
