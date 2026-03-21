@@ -9,6 +9,10 @@ This section collects background material, crosswalks, references, and site meta
 
 <ul>
   <li>
+    <a href="{{ '/how-to-use-this-site/' | prepend: site.baseurl }}">How to Use this Site</a><br>
+    A quick orientation for navigating pages, graphs, and relationships.
+  </li>
+  <li>
     <a href="{{ '/aliases/' | prepend: site.baseurl }}">Quality Aliases and Synonyms</a><br>
     Canonical names and alternative terms for quality characteristics.
   </li>
