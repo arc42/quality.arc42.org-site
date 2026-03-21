@@ -306,6 +306,20 @@ export class FullGraph extends Graph {
     }
 
     /**
+     * Clear all active filter terms, chips, and URL state, then rebuild the graph.
+     * @returns {FullGraph} This graph instance for chaining
+     */
+    resetFilter() {
+        this.finalizedTerms = [];
+        this.currentFilterTerms = [];
+        this.currentFilterTerm = "";
+        if (this.filterInput) this.filterInput.value = "";
+        this._renderFilterChips();
+        this._writeUrlState({ filter: null });
+        return super.resetFilter();
+    }
+
+    /**
      * Register default event handlers for the full graph
      * @returns {Graph} This graph instance for chaining
      */
@@ -811,8 +825,12 @@ export class FullGraph extends Graph {
         const p = new URLSearchParams(globalThis.location.search);
         const setOrDel = (key, val) => {
             if (val === undefined) return; // leave as-is
+            if (val === null || val === '') {
+                p.delete(key);
+                return;
+            }
             const isDefault = typeof val === 'boolean' && val === this._defaultFor(key);
-            if (!val || isDefault) {
+            if (isDefault) {
                 p.delete(key);
             } else {
                 p.set(key, typeof val === 'boolean' ? (val ? '1' : '0') : String(val));
