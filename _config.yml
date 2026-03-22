@@ -139,6 +139,11 @@ exclude:
   - Dockerfile
   - README.md
   - AGENTS.md
+  - .agents
+  - .claude
+  - .junie
+  - .deciduous
+  - .bundle
   - CRUSH/
   - docs/*
   - docs/index.html
@@ -150,6 +155,8 @@ exclude:
   - .code-workspace
   - vendor/bundle
   - node_modules
+  - playwright-report
+  - test-results
   - package.json
   - package-lock.json
   - build.js
@@ -163,6 +170,13 @@ exclude:
   
 
 watch_exclude:
+  - .agents
+  - .claude
+  - .junie
+  - .deciduous
+  - .bundle
+  - playwright-report
+  - test-results
   - assets/js/fullpage # handled by esbuild
   - assets/js/homepage # handled by esbuild
 
