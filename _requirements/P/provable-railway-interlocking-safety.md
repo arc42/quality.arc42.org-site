@@ -23,7 +23,7 @@ The formal safety model of the interlocking logic is submitted for mathematical 
 
 #### Reliable Resources
 - [EN 50128: Formal Methods for Railway Safety](https://www.railengineer.co.uk/formal-methods-for-railway-safety/)
-- [The B-Method in Railway Industry (ClearSy)](https://www.clearsy.com/en/our-expertise/formal-methods/)
+- [The B-Method in Railway Industry (ClearSy)](https://link.springer.com/chapter/10.1007/978-3-032-12484-5_4)
 - [Case Study: METEOR Paris Metro Line 14 (Formal Methods Europe)](https://fmeurope.org/success-stories/meteor/)
 
 </div>
