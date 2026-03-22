@@ -3,7 +3,7 @@ layout: null
 permalink: /search.json
 ---
 [
-{% assign all_items = site.qualities | concat: site.requirements | concat: site.standards %}
+{% assign all_items = site.qualities | concat: site.requirements | concat: site.standards | concat: site.approaches %}
 {% for item in all_items %}
 {
     "id": {{ item.id | replace: '/', '-' | jsonify }},

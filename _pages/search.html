@@ -24,6 +24,8 @@ share: false
                 {% include quality-header.liquid page=post link=true share=false %}
                 {% elsif post.collection == "standards" %}
                 {% include standards-header.liquid page=post link=true share=false %}
+                {% elsif post.collection == "approaches" %}
+                {% include approach-header.liquid page=post link=true share=false %}
                 {% else %}
                 {% include article-header.html page=post link=true share=false %}
                 {% endif %}
