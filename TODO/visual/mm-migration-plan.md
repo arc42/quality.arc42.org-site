@@ -31,7 +31,8 @@ remote_theme: mmistakes/minimal-mistakes-jekyll@4.28.0
 
 masthead_title: " "          # suppress title text; logo only
 logo: /assets/img/arc42logosquare.webp
-search: false                # disable MM's built-in Lunr search (Q42 has its own)
+search: true                 # enable MM's Lunr.js search (see §13 for segmented results)
+search_full_content: true    # index full page text, not just excerpts
 breadcrumbs: false
 
 minimal_mistakes_skin: "default"

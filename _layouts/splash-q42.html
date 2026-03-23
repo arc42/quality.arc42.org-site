@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="{{ site.language }}">
+<head>
+    {% capture title %}{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}{% endcapture %}
+    {% include page-url-resolver.html page=page %}
+    {% if page.excerpt %}
+    {% assign description = page.excerpt | strip_html | strip_newlines | truncate: 160 %}
+    {% else %}
+    {% assign description = site.description %}
+    {% endif %}
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    {% seo %}
+
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ '/apple-touch-icon.png' | prepend: site.baseurl }}">
+    <link rel="icon" type="image/png" href="{{ '/favicon-32x32.png' | prepend: site.baseurl }}" sizes="32x32">
+    <link rel="icon" type="image/png" href="{{ '/favicon-16x16.png' | prepend: site.baseurl }}" sizes="16x16">
+    <link rel="manifest" href="{{ '/manifest.json' | prepend: site.baseurl }}">
+    <link rel="mask-icon" href="{{ '/safari-pinned-tab.svg' | prepend: site.baseurl }}" color="#5bbad5">
+    <meta name="theme-color" content="#1a2332">
+    <meta name="description" content="{{ description }}">
+    <link rel="shortcut icon" href="{{ site.favicon | prepend: site.baseurl }}" type="image/x-icon">
+
+    <!-- Q42 Splash stylesheet (self-contained, does not load base theme) -->
+    <link href="{{ '/assets/css/q42-splash.css' | prepend: site.baseurl }}" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link href="{{ '/assets/css/all.css' | prepend: site.baseurl }}" rel="stylesheet">
+    <!-- Graph CSS -->
+    <link href="{{ '/assets/css/q-graph.css' | prepend: site.baseurl }}" rel="stylesheet">
+
+    <script defer data-domain="quality.arc42.org" src="https://plausible.io/js/script.js"></script>
+</head>
+<body class="q42-body">
+
+{% include q42/masthead.html %}
+
+<!-- ===== SPLASH HERO ===== -->
+<section class="q42-splash">
+  <div class="q42-splash__title">
+    <h1>{{ page.hero_title | default: page.title }}</h1>
+    <p class="q42-splash__lead">{{ page.excerpt }}</p>
+  </div>
+
+  {% if page.feature_row %}
+  <div class="q42-entry-grid">
+    {% for card in page.feature_row %}
+      <a class="q42-entry-card {{ card.card_class }}" href="{{ card.url | prepend: site.baseurl }}">
+        <span class="q42-arrow"><i class="fa fa-arrow-right"></i></span>
+        <div class="q42-ec-top">
+          <div class="q42-ec-icon"><i class="fa {{ card.icon }}"></i></div>
+          {% if card.intent %}
+            <span class="q42-intent">{{ card.intent }}</span>
+          {% endif %}
+        </div>
+        <h2>{{ card.title }}</h2>
+        <p>{{ card.excerpt }}</p>
+        {% if card.count_collection %}
+          {% assign collection_items = site[card.count_collection] %}
+          <span class="q42-count">{{ collection_items | size }} {{ card.count_label | default: card.count_collection }}</span>
+        {% elsif card.count %}
+          <span class="q42-count">{{ card.count }}</span>
+        {% endif %}
+      </a>
+    {% endfor %}
+  </div>
+  {% endif %}
+</section>
+
+<!-- ===== DIMENSION PINS ===== -->
+{% include q42/dimension-pins.html %}
+
+<!-- ===== HOMEPAGE GRAPH ===== -->
+{% include q42/homepage-graph.html %}
+
+<!-- ===== BOTTOM ROW ===== -->
+{% include q42/bottom-row.html %}
+
+<!-- ===== FOOTER ===== -->
+<footer class="q42-footer">
+  <p>arc42 Quality Model · CC-BY-SA-4.0 · Maintained by Gernot Starke · Supported by INNOQ</p>
+</footer>
+
+<!-- Graph JS (deferred, non-blocking) -->
+<script src="{{ '/assets/js/homepage/main.js' | prepend: site.baseurl }}" defer></script>
+<!-- Mega-menu + overlay interaction JS -->
+<script src="{{ '/assets/js/mega-menu.js' | prepend: site.baseurl }}" defer></script>
+
+</body>
+</html>

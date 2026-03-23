@@ -1,0 +1,47 @@
+<!-- Q42 Homepage Graph Section — toolbar + D3 canvas -->
+{% assign qualities_count = site.qualities | size %}
+{% assign requirements_count = site.requirements | size %}
+{% assign standards_count = site.standards | size %}
+{% assign approaches_count = site.approaches | size %}
+{% assign themes_count = "reliable,flexible,efficient,usable,secure,safe,maintainable,suitable,operable" | split: "," | size %}
+
+<section class="q42-graph-section" aria-label="Quality graph preview">
+  <div class="q42-graph-toolbar">
+    <div class="q42-gt-left">
+      <span class="q42-label">Quality Graph</span>
+      <span class="q42-node-count">{{ themes_count }} themes in preview</span>
+    </div>
+    <div class="q42-layer-toggles">
+      <span class="q42-show-label">Browse:</span>
+      <a class="q42-layer-toggle" href="{{ '/qualities/' | prepend: site.baseurl }}">
+        <span class="q42-dot q"></span> {{ qualities_count }} qualities
+      </a>
+      <a class="q42-layer-toggle" href="{{ '/requirements/' | prepend: site.baseurl }}">
+        <span class="q42-dot r"></span> {{ requirements_count }} requirements
+      </a>
+      <a class="q42-layer-toggle" href="{{ '/standards/' | prepend: site.baseurl }}">
+        <span class="q42-dot s"></span> {{ standards_count }} standards
+      </a>
+      <a class="q42-layer-toggle" href="{{ '/approaches/' | prepend: site.baseurl }}">
+        <span class="q42-dot a"></span> {{ approaches_count }} approaches
+      </a>
+    </div>
+    <div class="q42-gt-right">
+      <a class="q42-expand-btn" href="{{ '/full-quality-graph' | prepend: site.baseurl }}" aria-label="Open full quality graph">
+        <i class="fa fa-expand"></i> Fullscreen
+      </a>
+    </div>
+  </div>
+
+  <div class="q42-graph-canvas-home" id="q-graph-container">
+    <!-- D3 graph renders here via homepage/main.js -->
+  </div>
+  <span class="q42-graph-hint"><i class="fa fa-info-circle"></i> Scroll to zoom · Drag to pan · Double-click to open</span>
+
+  <div class="q42-legend">
+    <span class="q42-legend-item"><span class="q42-legend-dot d"></span> Theme</span>
+    <span class="q42-legend-item"><span class="q42-legend-dot q"></span> Quality</span>
+    <span class="q42-legend-item"><span class="q42-legend-dot r"></span> Requirement</span>
+    <span class="q42-legend-item"><span class="q42-legend-dot s"></span> Standard</span>
+  </div>
+</section>

@@ -1,0 +1,9 @@
+main:
+  - title: "Home"
+    url: /
+  - title: "Qualities"
+    url: /qualities/
+  - title: "Dimensions"
+    url: /dimensions/
+  - title: "Requirements"
+    url: /requirements/

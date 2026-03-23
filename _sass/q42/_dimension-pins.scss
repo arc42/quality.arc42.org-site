@@ -1,0 +1,126 @@
+// Q42 Dimension Pins — theme filter pills (Sketch F)
+
+.q42-dim-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 16px 24px;
+  flex-wrap: wrap;
+  background: var(--q42-bg);
+  border-bottom: 1px solid var(--q42-border);
+}
+
+.q42-dim-bar .q42-dim-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--q42-text-3);
+  margin-right: 6px;
+  white-space: nowrap;
+}
+
+.q42-dim-pin {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: var(--q42-mono);
+  font-size: 14px;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 20px;
+  cursor: pointer;
+  border: 1.5px solid;
+  transition: all 0.15s;
+  background: transparent;
+  text-decoration: none;
+}
+
+.q42-dim-pin:hover {
+  opacity: 0.75;
+  text-decoration: none;
+}
+
+.q42-dim-pin .q42-dim-cnt {
+  font-size: 12px;
+  font-weight: 400;
+  opacity: 0.6;
+}
+
+// Per-dimension colours
+.q42-dim-pin[data-d="reliable"] {
+  color: var(--q42-dim-reliable);
+  border-color: var(--q42-dim-reliable);
+}
+.q42-dim-pin[data-d="flexible"] {
+  color: var(--q42-dim-flexible);
+  border-color: var(--q42-dim-flexible);
+}
+.q42-dim-pin[data-d="efficient"] {
+  color: var(--q42-dim-efficient);
+  border-color: var(--q42-dim-efficient);
+}
+.q42-dim-pin[data-d="usable"] {
+  color: var(--q42-dim-usable);
+  border-color: var(--q42-dim-usable);
+}
+.q42-dim-pin[data-d="secure"] {
+  color: var(--q42-dim-secure);
+  border-color: var(--q42-dim-secure);
+}
+.q42-dim-pin[data-d="safe"] {
+  color: var(--q42-dim-safe);
+  border-color: var(--q42-dim-safe);
+}
+.q42-dim-pin[data-d="maintainable"] {
+  color: var(--q42-dim-maintainable);
+  border-color: var(--q42-dim-maintainable);
+}
+.q42-dim-pin[data-d="suitable"] {
+  color: var(--q42-dim-suitable);
+  border-color: var(--q42-dim-suitable);
+}
+.q42-dim-pin[data-d="operable"] {
+  color: var(--q42-dim-operable);
+  border-color: var(--q42-dim-operable);
+}
+
+// Active state: filled background
+.q42-dim-pin.active {
+  color: #fff;
+}
+.q42-dim-pin.active[data-d="reliable"] {
+  background: var(--q42-dim-reliable);
+}
+.q42-dim-pin.active[data-d="flexible"] {
+  background: var(--q42-dim-flexible);
+}
+.q42-dim-pin.active[data-d="efficient"] {
+  background: var(--q42-dim-efficient);
+}
+.q42-dim-pin.active[data-d="usable"] {
+  background: var(--q42-dim-usable);
+}
+.q42-dim-pin.active[data-d="secure"] {
+  background: var(--q42-dim-secure);
+}
+.q42-dim-pin.active[data-d="safe"] {
+  background: var(--q42-dim-safe);
+}
+.q42-dim-pin.active[data-d="maintainable"] {
+  background: var(--q42-dim-maintainable);
+}
+.q42-dim-pin.active[data-d="suitable"] {
+  background: var(--q42-dim-suitable);
+}
+.q42-dim-pin.active[data-d="operable"] {
+  background: var(--q42-dim-operable);
+}
+
+@media (max-width: 800px) {
+  .q42-dim-bar {
+    justify-content: flex-start;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    padding: 12px 16px;
+  }
+}

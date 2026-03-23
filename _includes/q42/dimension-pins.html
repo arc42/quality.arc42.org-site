@@ -1,0 +1,11 @@
+<!-- Q42 Dimension Pins — 9 quality themes with live counts -->
+{% assign dims = "reliable,flexible,efficient,usable,secure,safe,maintainable,suitable,operable" | split: "," %}
+<div class="q42-dim-bar" role="toolbar" aria-label="Filter by quality theme">
+  <span class="q42-dim-label">Themes</span>
+  {% for dim in dims %}
+    {% assign count = site.qualities | where_exp: "q", "q.tags contains dim" | size %}
+    <a class="q42-dim-pin" data-d="{{ dim }}" href="{{ '/tag-' | append: dim | append: '/' | prepend: site.baseurl }}">
+      #{{ dim }} <span class="q42-dim-cnt">{{ count }}</span>
+    </a>
+  {% endfor %}
+</div>
