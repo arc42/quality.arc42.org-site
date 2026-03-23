@@ -67,7 +67,7 @@ const ALLOWED_IDS = {
     "#standard-header",
     "#about-author",
   ]),
-  "assets/css/q-graph.css": new Set([
+  "_sass/_q-graph.scss": new Set([
     "#q-graph-container",
     "#q-graph-home",
     "#graph-site",
@@ -94,7 +94,7 @@ const ALLOWED_IMPORTANT_COUNTS = {
   "_sass/_standards.scss": 1,
   "assets/css/arc42-doc.css": 1,
   "assets/css/arc42-quality.css": 24,
-  "assets/css/q-graph.css": 2,
+  "_sass/_q-graph.scss": 2,
 };
 
 /**
@@ -113,7 +113,7 @@ const ALLOWED_LEGACY_BREAKPOINTS = {
   "_sass/_standards.scss": new Set(["900px"]),
   "assets/css/arc42-doc.css": new Set(["900px", "600px"]),
   "assets/css/arc42-quality.css": new Set(["900px", "768px", "600px"]),
-  "assets/css/q-graph.css": new Set(["768px"]),
+  "_sass/_q-graph.scss": new Set(["768px"]),
 };
 
 /**
@@ -131,6 +131,7 @@ const ALLOWED_COLOR_FILES = new Set([
   "_sass/_footer.scss",
   "_sass/_header.scss",
   "_sass/_mobile-graph.scss",
+  "_sass/_q-graph.scss",
   "_sass/_standards.scss",
   "_sass/q42/_bottom-row.scss",
   "_sass/q42/_dimension-pins.scss",
@@ -139,7 +140,6 @@ const ALLOWED_COLOR_FILES = new Set([
   "_sass/q42/_mega-menu.scss",
   "_sass/q42/_splash.scss",
   "assets/css/arc42-quality.css",
-  "assets/css/q-graph.css",
   "assets/css/ukraine.css",
   "assets/css/toggle-switch.css",
 ]);
