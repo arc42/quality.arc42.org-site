@@ -74,6 +74,9 @@
 <!-- ===== HOMEPAGE GRAPH ===== -->
 {% include q42/homepage-graph.html %}
 
+<!-- ===== GRAPH OVERLAY ===== -->
+{% include q42/graph-overlay.html %}
+
 <!-- ===== BOTTOM ROW ===== -->
 {% include q42/bottom-row.html %}
 
@@ -82,8 +85,6 @@
   <p>arc42 Quality Model · CC-BY-SA-4.0 · Maintained by Gernot Starke · Supported by INNOQ</p>
 </footer>
 
-<!-- Graph JS (deferred, non-blocking) -->
-<script src="{{ '/assets/js/homepage/main.js' | prepend: site.baseurl }}" defer></script>
 <!-- Mega-menu + overlay interaction JS -->
 <script src="{{ '/assets/js/mega-menu.js' | prepend: site.baseurl }}" defer></script>
 

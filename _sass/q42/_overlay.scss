@@ -1,0 +1,94 @@
+.q42-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1200;
+  background: rgba(26, 35, 50, 0.48);
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 0.18s ease,
+    visibility 0.18s ease;
+}
+
+.q42-overlay.is-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.q42-overlay-shell {
+  position: absolute;
+  inset: 18px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 18px;
+  overflow: hidden;
+  background: var(--q42-bg);
+  border: 1px solid var(--q42-border);
+  box-shadow: 0 28px 80px rgba(14, 20, 29, 0.28);
+}
+
+.q42-overlay-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 18px;
+  gap: 12px;
+  flex-wrap: wrap;
+  border-bottom: 1px solid var(--q42-border);
+  background: var(--q42-bg);
+}
+
+.q42-overlay-dims {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 18px;
+  flex-wrap: wrap;
+  border-bottom: 1px solid var(--q42-border);
+  background: var(--q42-bg-2);
+}
+
+.q42-overlay-canvas {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  background: var(--q42-bg);
+}
+
+.q42-close-btn {
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 7px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  border: 1px solid var(--q42-border);
+  background: var(--q42-bg);
+  color: var(--q42-text-1);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.15s;
+}
+
+.q42-close-btn:hover,
+.q42-close-btn:focus-visible {
+  background: var(--q42-bg-2);
+  text-decoration: none;
+}
+
+.q42-close-btn:focus-visible {
+  outline: 2px solid rgba(0, 119, 204, 0.28);
+  outline-offset: 2px;
+}
+
+@media (max-width: 800px) {
+  .q42-overlay-shell {
+    inset: 8px;
+  }
+
+  .q42-overlay-toolbar,
+  .q42-overlay-dims {
+    padding: 12px;
+  }
+}

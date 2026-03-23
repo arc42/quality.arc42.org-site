@@ -16,19 +16,31 @@ test("home page renders splash hero, graph preview, and theme links", async ({
   await expect(page.getByRole("link", { name: /Example Requirements/i })).toBeVisible();
   await expect(page.getByRole("link", { name: /Quality Dimensions/i })).toBeVisible();
 
-  await expect(page.getByRole("link", { name: /Dimensions/i })).toBeVisible();
-  await expect(page.getByRole("link", { name: /Graph/i })).toBeVisible();
+  await expect(page.locator(".q42-nav-graph")).toBeVisible();
 
-  await expect(page.locator("#q-graph-container")).toBeVisible();
+  await expect(page.locator("#q-graph-home")).toBeVisible();
 
-  await expect(page.getByText("9 themes in preview")).toBeVisible();
-  await expect(page.getByRole("link", { name: /\d+\s+qualities/i })).toBeVisible();
-  await expect(page.getByRole("link", { name: /\d+\s+requirements/i })).toBeVisible();
+  await expect(
+    page.getByText("Open the overlay to explore without leaving the page")
+  ).toBeVisible();
+  await expect(page.getByRole("button", { name: /Qualities/i })).toBeVisible();
+  await expect(page.getByRole("button", { name: /Requirements/i })).toBeVisible();
+  await expect(page.getByRole("button", { name: /Standards/i })).toBeVisible();
+  await expect(page.getByRole("button", { name: /Fullscreen/i })).toBeVisible();
 
   const themeBar = page.locator(".q42-dim-bar");
   await expect(themeBar).toBeVisible();
-  await expect(themeBar.getByRole("link", { name: /#reliable/i })).toBeVisible();
-  await expect(themeBar.getByRole("link", { name: /#maintainable/i })).toBeVisible();
+  await expect(themeBar.getByRole("button", { name: /#reliable/i })).toBeVisible();
+  await expect(themeBar.getByRole("button", { name: /#maintainable/i })).toBeVisible();
+
+  await page.getByRole("button", { name: /Fullscreen/i }).click();
+
+  const overlay = page.locator("#q42-graph-overlay");
+  await expect(overlay).toBeVisible();
+  await expect(overlay).not.toHaveAttribute("hidden", "");
+  await expect(
+    overlay.getByRole("button", { name: /Close graph overlay/i })
+  ).toBeVisible();
 
   const hasHorizontalOverflow = await page.evaluate(() => {
     return document.documentElement.scrollWidth > window.innerWidth + 1;

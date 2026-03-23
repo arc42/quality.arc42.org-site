@@ -63,7 +63,6 @@ const ALLOWED_IDS = {
     "#full-q-graph-filter__chips",
   ]),
   "_sass/_homenew.scss": new Set(["#q-graph-container", "#full-graph-toggle"]),
-  "_sass/q42/_graph.scss": new Set(["#full-graph-toggle"]),
   "assets/css/arc42-quality.css": new Set([
     "#scenario-header",
     "#standard-header",
@@ -71,6 +70,7 @@ const ALLOWED_IDS = {
   ]),
   "assets/css/q-graph.css": new Set([
     "#q-graph-container",
+    "#q-graph-home",
     "#graph-site",
     "#full-q-graph-container",
     "#full-q-graph-sidebar",

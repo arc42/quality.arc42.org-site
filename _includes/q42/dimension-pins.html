@@ -4,8 +4,8 @@
   <span class="q42-dim-label">Themes</span>
   {% for dim in dims %}
     {% assign count = site.qualities | where_exp: "q", "q.tags contains dim" | size %}
-    <a class="q42-dim-pin" data-d="{{ dim }}" href="{{ '/tag-' | append: dim | append: '/' | prepend: site.baseurl }}">
+    <button class="q42-dim-pin" type="button" data-d="{{ dim }}" aria-pressed="false">
       #{{ dim }} <span class="q42-dim-cnt">{{ count }}</span>
-    </a>
+    </button>
   {% endfor %}
 </div>

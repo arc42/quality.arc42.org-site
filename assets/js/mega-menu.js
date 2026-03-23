@@ -27,6 +27,9 @@
     if (e.key === "Escape") {
       megaWrap?.classList.remove("open");
       megaTrigger?.setAttribute("aria-expanded", "false");
+      if (typeof window.closeGraphOverlay === "function") {
+        window.closeGraphOverlay();
+      }
     }
 
     // "/" focuses the search input (unless already typing in a field)

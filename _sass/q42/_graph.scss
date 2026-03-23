@@ -75,8 +75,14 @@
 .q42-layer-toggle:hover {
   border-color: var(--q42-text-3);
 }
-.q42-layer-toggle:hover {
+.q42-layer-toggle:hover,
+.q42-layer-toggle:focus-visible {
   text-decoration: none;
+}
+
+.q42-layer-toggle:focus-visible {
+  outline: 2px solid rgba(0, 119, 204, 0.28);
+  outline-offset: 2px;
 }
 
 .q42-layer-toggle .q42-dot {
@@ -103,6 +109,12 @@
   border-color: var(--q42-text-1);
   background: var(--q42-text-1);
   color: #fff;
+}
+
+.q42-layer-toggle.is-disabled,
+.q42-layer-toggle:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
 }
 
 .q42-gt-right {
@@ -134,7 +146,7 @@
 
 // Graph canvas
 .q42-graph-canvas-home {
-  min-height: 440px;
+  min-height: 520px;
   position: relative;
   display: flex;
   align-items: center;
@@ -144,11 +156,6 @@
 
 .q42-graph-canvas-home:hover {
   background: rgba(0, 0, 0, 0.015);
-}
-
-// Hide the built-in full-graph toggle button from HomeGraph.js
-.q42-graph-canvas-home #full-graph-toggle {
-  display: none;
 }
 
 .q42-graph-hint {
@@ -202,5 +209,9 @@
 @media (max-width: 800px) {
   .q42-graph-section {
     margin: 12px 12px 0;
+  }
+
+  .q42-graph-canvas-home {
+    min-height: 440px;
   }
 }

@@ -13,9 +13,9 @@
 
     {% include q42/mega-menu.html %}
 
-    <a class="q42-nav-graph" href="{{ '/full-quality-graph' | prepend: site.baseurl }}" aria-label="Open full quality graph">
+    <button class="q42-nav-graph" type="button" onclick="openGraphOverlay()" aria-label="Open quality graph overlay">
       <i class="fa fa-circle-nodes"></i> Graph
-    </a>
+    </button>
   </nav>
 
   <form class="q42-masthead__search" action="{{ '/search/' | prepend: site.baseurl }}" method="get" role="search" aria-label="Search qualities">

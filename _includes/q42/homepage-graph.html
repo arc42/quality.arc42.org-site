@@ -1,39 +1,35 @@
 <!-- Q42 Homepage Graph Section — toolbar + D3 canvas -->
-{% assign qualities_count = site.qualities | size %}
-{% assign requirements_count = site.requirements | size %}
-{% assign standards_count = site.standards | size %}
 {% assign approaches_count = site.approaches | size %}
-{% assign themes_count = "reliable,flexible,efficient,usable,secure,safe,maintainable,suitable,operable" | split: "," | size %}
 
 <section class="q42-graph-section" aria-label="Quality graph preview">
   <div class="q42-graph-toolbar">
     <div class="q42-gt-left">
       <span class="q42-label">Quality Graph</span>
-      <span class="q42-node-count">{{ themes_count }} themes in preview</span>
+      <span class="q42-node-count">Open the overlay to explore without leaving the page</span>
     </div>
-    <div class="q42-layer-toggles">
-      <span class="q42-show-label">Browse:</span>
-      <a class="q42-layer-toggle" href="{{ '/qualities/' | prepend: site.baseurl }}">
-        <span class="q42-dot q"></span> {{ qualities_count }} qualities
-      </a>
-      <a class="q42-layer-toggle" href="{{ '/requirements/' | prepend: site.baseurl }}">
-        <span class="q42-dot r"></span> {{ requirements_count }} requirements
-      </a>
-      <a class="q42-layer-toggle" href="{{ '/standards/' | prepend: site.baseurl }}">
-        <span class="q42-dot s"></span> {{ standards_count }} standards
-      </a>
-      <a class="q42-layer-toggle" href="{{ '/approaches/' | prepend: site.baseurl }}">
-        <span class="q42-dot a"></span> {{ approaches_count }} approaches
-      </a>
+    <div class="q42-layer-toggles" aria-label="Graph layers">
+      <span class="q42-show-label">Show:</span>
+      <button class="q42-layer-toggle on" type="button" data-layer="q" aria-pressed="true">
+        <span class="q42-dot q"></span> Qualities
+      </button>
+      <button class="q42-layer-toggle" type="button" data-layer="r" aria-pressed="false">
+        <span class="q42-dot r"></span> Requirements
+      </button>
+      <button class="q42-layer-toggle" type="button" data-layer="s" aria-pressed="false">
+        <span class="q42-dot s"></span> Standards
+      </button>
+      <button class="q42-layer-toggle is-disabled" type="button" data-layer="a" aria-pressed="false" disabled title="{{ approaches_count }} approaches exist on the site, but the graph data does not include approach nodes yet.">
+        <span class="q42-dot a"></span> Approaches
+      </button>
     </div>
     <div class="q42-gt-right">
-      <a class="q42-expand-btn" href="{{ '/full-quality-graph' | prepend: site.baseurl }}" aria-label="Open full quality graph">
+      <button class="q42-expand-btn" type="button" onclick="openGraphOverlay()" aria-label="Open quality graph overlay">
         <i class="fa fa-expand"></i> Fullscreen
-      </a>
+      </button>
     </div>
   </div>
 
-  <div class="q42-graph-canvas-home" id="q-graph-container">
+  <div class="q42-graph-canvas-home" id="q-graph-home">
     <!-- D3 graph renders here via homepage/main.js -->
   </div>
   <span class="q42-graph-hint"><i class="fa fa-info-circle"></i> Scroll to zoom · Drag to pan · Double-click to open</span>
@@ -44,4 +40,6 @@
     <span class="q42-legend-item"><span class="q42-legend-dot r"></span> Requirement</span>
     <span class="q42-legend-item"><span class="q42-legend-dot s"></span> Standard</span>
   </div>
+
+  <script src="{{ '/assets/js/homepage/main.js' | prepend: site.baseurl }}" defer></script>
 </section>
