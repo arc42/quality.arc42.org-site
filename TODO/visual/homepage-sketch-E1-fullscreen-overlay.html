@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Q42 Homepage Sketch E1 — Fullscreen Graph Overlay + WCAG Fonts</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+/* ============================================================
+   SKETCH E1
+   Changes from D1:
+   - WCAG AA compliant font sizes (min 16px body, 14px small)
+   - Logo-only header (no "Q42 Quality Model" text)
+   - Nav consolidation: Qualities | Profiles | Requirements |
+     Reference (dropdown: Standards, Approaches) | Learn | Graph
+   - Clicking graph expand → fullscreen overlay with controls
+   ============================================================ */
+
+:root {
+  --font: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --mono: 'DM Mono', 'SF Mono', monospace;
+  --bg: #ffffff;
+  --bg-2: #f7f6f2;
+  --bg-3: #eeece5;
+  --text-1: #2c2c2a;
+  --text-2: #555350;
+  --text-3: #767472;
+  --border: rgba(0,0,0,0.10);
+  --accent: #0077cc;
+  --quality: #0077cc;
+  --req: #ffb3b3;
+  --req-text: #a82b1f;
+  --std: #FFC95C;
+  --std-text: #6d4e00;
+  --profile: #4a7d15;
+  --profile-bg: #eaf3de;
+  --approach: #1B5E20;
+  --approach-bg: #e8f5e9;
+  --hero-bg: #1a2332;
+  --hero-text: #e8e6df;
+  --dim-reliable:#1a73b5; --dim-flexible:#7f77dd; --dim-efficient:#1d9e75;
+  --dim-usable:#d85a30; --dim-secure:#993556; --dim-safe:#e24b4a;
+  --dim-maintainable:#4a7d15; --dim-suitable:#ba7517; --dim-operable:#2a6fba;
+}
+
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:var(--font); background:var(--bg); color:var(--text-1);
+  line-height:1.6; -webkit-font-smoothing:antialiased;
+  font-size:16px; /* WCAG baseline */
+}
+a { color:var(--accent); text-decoration:none; }
+a:hover { text-decoration:underline; }
+
+/* ---- HEADER ---- */
+.site-header {
+  display:flex; align-items:center; justify-content:space-between;
+  padding:10px 24px; background:var(--hero-bg);
+  border-bottom:1px solid rgba(255,255,255,0.06);
+  position:sticky; top:0; z-index:100;
+}
+.header-logo { display:flex; align-items:center; }
+.header-logo img { width:34px; height:34px; border-radius:6px; }
+
+/* Nav */
+nav { display:flex; gap:2px; align-items:center; }
+nav a, nav .nav-dropdown-trigger {
+  font-size:14px; font-weight:500; padding:7px 14px;
+  border-radius:8px; color:rgba(255,255,255,0.6); transition:all .15s;
+  cursor:pointer; border:none; background:none;
+}
+nav a:hover, nav .nav-dropdown-trigger:hover {
+  background:rgba(255,255,255,0.08); color:#fff; text-decoration:none;
+}
+nav a.active { background:rgba(255,255,255,0.12); color:#fff; }
+
+/* Dropdown */
+.nav-dropdown { position:relative; }
+.nav-dropdown-trigger {
+  display:inline-flex; align-items:center; gap:5px;
+}
+.nav-dropdown-trigger i.chevron { font-size:10px; opacity:.5; transition:transform .15s; }
+.nav-dropdown-menu {
+  display:none; position:absolute; top:calc(100% + 6px); left:0;
+  background:#2a3444; border:1px solid rgba(255,255,255,0.1);
+  border-radius:10px; min-width:200px; padding:6px;
+  box-shadow:0 12px 40px rgba(0,0,0,0.3); z-index:200;
+}
+.nav-dropdown.open .nav-dropdown-menu { display:block; }
+.nav-dropdown.open .chevron { transform:rotate(180deg); }
+.nav-dropdown-menu a {
+  display:flex; align-items:center; gap:10px;
+  padding:10px 14px; border-radius:7px; font-size:14px;
+  color:rgba(255,255,255,0.7);
+}
+.nav-dropdown-menu a:hover {
+  background:rgba(255,255,255,0.08); color:#fff; text-decoration:none;
+}
+.nav-dropdown-menu .dd-icon {
+  width:28px; height:28px; border-radius:6px; display:flex;
+  align-items:center; justify-content:center; font-size:13px; flex-shrink:0;
+}
+.dd-icon.standards { background:rgba(255,201,92,0.15); color:var(--std); }
+.dd-icon.approaches { background:rgba(146,239,128,0.15); color:#92EF80; }
+.dd-icon.articles { background:rgba(0,119,204,0.15); color:#5ec4f0; }
+.dd-icon.howto { background:rgba(255,255,255,0.08); color:rgba(255,255,255,0.5); }
+.nav-dropdown-menu .dd-text { display:flex; flex-direction:column; }
+.nav-dropdown-menu .dd-label { font-weight:600; line-height:1.2; }
+.nav-dropdown-menu .dd-desc { font-size:12px; color:rgba(255,255,255,0.4); line-height:1.3; }
+
+/* Graph nav button */
+.nav-graph {
+  font-size:14px; font-weight:600; padding:7px 14px; border-radius:8px;
+  border:1px solid rgba(255,255,255,0.2); background:transparent;
+  color:rgba(255,255,255,0.7); cursor:pointer;
+  display:inline-flex; align-items:center; gap:6px; margin-left:4px;
+  transition:all .15s;
+}
+.nav-graph:hover { border-color:rgba(255,255,255,0.4); color:#fff; text-decoration:none; }
+
+/* Search */
+.header-search {
+  display:flex; align-items:center; gap:6px;
+  background:rgba(255,255,255,0.06); border-radius:8px; padding:7px 14px;
+  font-size:14px; color:rgba(255,255,255,0.35); border:1px solid rgba(255,255,255,0.08);
+  cursor:pointer; min-width:170px;
+}
+.header-search kbd {
+  font-family:var(--mono); font-size:12px;
+  background:rgba(255,255,255,0.07); padding:2px 6px; border-radius:4px;
+  border:1px solid rgba(255,255,255,0.1); color:rgba(255,255,255,0.3);
+  margin-left:auto;
+}
+
+/* ---- SPLASH ---- */
+.splash {
+  background:var(--hero-bg); color:var(--hero-text); padding:36px 24px 32px;
+}
+.splash-title { text-align:center; margin-bottom:28px; }
+.splash-title h1 {
+  font-size:28px; font-weight:700; letter-spacing:-0.6px; line-height:1.25;
+  margin-bottom:6px;
+}
+.splash-title .lead {
+  font-size:16px; color:rgba(255,255,255,0.55); max-width:540px;
+  margin:0 auto; line-height:1.6;
+}
+
+/* 3 columns */
+.entry-grid {
+  display:grid; grid-template-columns:repeat(3,1fr); gap:16px;
+  max-width:1080px; margin:0 auto;
+}
+.entry-card {
+  background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08);
+  border-radius:14px; padding:24px 22px; text-align:left;
+  transition:all .2s; cursor:pointer; position:relative;
+}
+.entry-card:hover { background:rgba(255,255,255,0.07); border-color:rgba(255,255,255,0.16); transform:translateY(-1px); }
+.ec-top { display:flex; align-items:center; gap:10px; margin-bottom:12px; }
+.ec-icon {
+  width:38px; height:38px; border-radius:10px; display:flex;
+  align-items:center; justify-content:center; font-size:17px;
+}
+.entry-card.profiles .ec-icon { background:rgba(99,153,34,0.2); color:#97c459; }
+.entry-card.qualities .ec-icon { background:rgba(0,119,204,0.18); color:#5ec4f0; }
+.entry-card.requirements .ec-icon { background:rgba(255,179,179,0.2); color:#f09090; }
+.ec-top .intent {
+  font-size:12px; font-weight:600; text-transform:uppercase; letter-spacing:.06em;
+  color:rgba(255,255,255,0.38);
+}
+.entry-card h2 { font-size:18px; font-weight:600; color:#fff; margin-bottom:6px; }
+.entry-card p { font-size:14px; color:rgba(255,255,255,0.52); line-height:1.6; margin-bottom:14px; }
+.entry-card .count { font-family:var(--mono); font-size:14px; color:rgba(255,255,255,0.32); }
+.entry-card .arrow {
+  position:absolute; top:24px; right:22px; font-size:14px;
+  color:rgba(255,255,255,0.15); transition:all .15s;
+}
+.entry-card:hover .arrow { color:rgba(255,255,255,0.4); transform:translateX(2px); }
+
+/* ---- DIMENSION PINS ---- */
+.dim-bar {
+  display:flex; align-items:center; justify-content:center;
+  gap:8px; padding:16px 24px; flex-wrap:wrap;
+  background:var(--bg); border-bottom:1px solid var(--border);
+}
+.dim-bar .label {
+  font-size:14px; font-weight:600; color:var(--text-3);
+  margin-right:6px; white-space:nowrap;
+}
+.dim-pin {
+  display:inline-flex; align-items:center; gap:5px;
+  font-family:var(--mono); font-size:14px; font-weight:600;
+  padding:6px 14px; border-radius:20px; cursor:pointer;
+  border:1.5px solid; transition:all .15s; background:transparent;
+}
+.dim-pin:hover { opacity:.75; }
+.dim-pin .cnt { font-size:12px; font-weight:400; opacity:.6; }
+.dim-pin[data-d="reliable"]    { color:var(--dim-reliable); border-color:var(--dim-reliable); }
+.dim-pin[data-d="flexible"]    { color:var(--dim-flexible); border-color:var(--dim-flexible); }
+.dim-pin[data-d="efficient"]   { color:var(--dim-efficient); border-color:var(--dim-efficient); }
+.dim-pin[data-d="usable"]      { color:var(--dim-usable); border-color:var(--dim-usable); }
+.dim-pin[data-d="secure"]      { color:var(--dim-secure); border-color:var(--dim-secure); }
+.dim-pin[data-d="safe"]        { color:var(--dim-safe); border-color:var(--dim-safe); }
+.dim-pin[data-d="maintainable"]{ color:var(--dim-maintainable); border-color:var(--dim-maintainable); }
+.dim-pin[data-d="suitable"]    { color:var(--dim-suitable); border-color:var(--dim-suitable); }
+.dim-pin[data-d="operable"]    { color:var(--dim-operable); border-color:var(--dim-operable); }
+.dim-pin.active { color:#fff !important; }
+.dim-pin.active[data-d="reliable"]    { background:var(--dim-reliable); }
+.dim-pin.active[data-d="flexible"]    { background:var(--dim-flexible); }
+.dim-pin.active[data-d="efficient"]   { background:var(--dim-efficient); }
+.dim-pin.active[data-d="usable"]      { background:var(--dim-usable); }
+.dim-pin.active[data-d="secure"]      { background:var(--dim-secure); }
+.dim-pin.active[data-d="safe"]        { background:var(--dim-safe); }
+.dim-pin.active[data-d="maintainable"]{ background:var(--dim-maintainable); }
+.dim-pin.active[data-d="suitable"]    { background:var(--dim-suitable); }
+.dim-pin.active[data-d="operable"]    { background:var(--dim-operable); }
+
+/* ---- GRAPH (preview on homepage) ---- */
+.graph-section {
+  margin:20px 24px 0; border-radius:14px;
+  border:1px solid var(--border); overflow:hidden; background:var(--bg-2);
+}
+.graph-toolbar {
+  display:flex; align-items:center; justify-content:space-between;
+  padding:10px 16px; border-bottom:1px solid var(--border); background:var(--bg);
+  flex-wrap:wrap; gap:8px;
+}
+.gt-left { display:flex; align-items:center; gap:12px; flex-wrap:wrap; }
+.gt-left .label {
+  font-size:14px; font-weight:700; color:var(--text-3); white-space:nowrap;
+}
+.node-count {
+  font-family:var(--mono); font-size:14px; color:var(--text-3);
+  background:var(--bg-2); padding:3px 10px; border-radius:5px;
+}
+
+.layer-toggles { display:flex; gap:6px; align-items:center; flex-wrap:wrap; }
+.layer-toggles .show-label { font-size:14px; color:var(--text-3); margin-right:2px; }
+.layer-toggle {
+  font-family:var(--font); font-size:14px; font-weight:500;
+  padding:6px 14px; border-radius:8px; cursor:pointer;
+  border:1.5px solid var(--border); background:var(--bg);
+  color:var(--text-2); transition:all .15s;
+  display:inline-flex; align-items:center; gap:6px;
+}
+.layer-toggle:hover { border-color:var(--text-3); }
+.layer-toggle .dot { width:9px; height:9px; border-radius:50%; flex-shrink:0; }
+.layer-toggle .dot.q { background:var(--quality); }
+.layer-toggle .dot.r { background:var(--req); }
+.layer-toggle .dot.s { background:var(--std); }
+.layer-toggle .dot.a { background:#4caf50; }
+.layer-toggle.on { border-color:var(--text-1); background:var(--text-1); color:#fff; }
+
+.gt-right { display:flex; align-items:center; gap:8px; }
+.expand-btn {
+  font-family:var(--font); font-size:14px; font-weight:600;
+  padding:6px 14px; border-radius:8px; cursor:pointer;
+  border:1px solid var(--accent); background:transparent;
+  color:var(--accent); transition:all .15s;
+  display:inline-flex; align-items:center; gap:6px;
+}
+.expand-btn:hover { background:var(--accent); color:#fff; text-decoration:none; }
+
+/* Graph canvas — clickable to expand */
+.graph-canvas {
+  min-height:420px; position:relative;
+  display:flex; align-items:center; justify-content:center;
+  cursor:pointer;
+}
+.graph-canvas:hover { background:rgba(0,0,0,0.01); }
+.graph-placeholder { text-align:center; color:var(--text-3); max-width:480px; }
+.graph-placeholder .gp-title { font-size:18px; font-weight:600; color:var(--text-2); margin-bottom:8px; }
+.graph-placeholder p { font-size:15px; line-height:1.7; }
+.graph-placeholder .click-hint {
+  margin-top:16px; font-size:14px; font-weight:600; color:var(--accent);
+  display:flex; align-items:center; justify-content:center; gap:6px;
+}
+.legend {
+  display:flex; justify-content:center; gap:18px; margin-top:20px; flex-wrap:wrap;
+}
+.legend-item { display:flex; align-items:center; gap:6px; font-size:14px; color:var(--text-3); }
+.legend-dot { width:11px; height:11px; border-radius:50%; }
+.legend-dot.q { background:var(--quality); }
+.legend-dot.r { background:var(--req); }
+.legend-dot.s { background:var(--std); }
+.legend-dot.d { background:var(--bg-3); border:1.5px solid var(--border); }
+
+/* ---- FULLSCREEN GRAPH OVERLAY ---- */
+.graph-overlay {
+  display:none; position:fixed; inset:0; z-index:1000;
+  background:var(--bg); flex-direction:column;
+}
+.graph-overlay.open { display:flex; }
+
+.go-toolbar {
+  display:flex; align-items:center; justify-content:space-between;
+  padding:12px 24px; border-bottom:1px solid var(--border);
+  flex-shrink:0; flex-wrap:wrap; gap:8px;
+}
+.go-toolbar .go-left { display:flex; align-items:center; gap:12px; flex-wrap:wrap; }
+.go-toolbar .go-left .label { font-size:16px; font-weight:700; color:var(--text-1); }
+.go-toolbar .go-left .node-count {
+  font-family:var(--mono); font-size:14px; color:var(--text-3);
+  background:var(--bg-2); padding:3px 10px; border-radius:5px;
+}
+
+.go-dims {
+  display:flex; align-items:center; gap:6px; padding:10px 24px;
+  border-bottom:1px solid var(--border); flex-wrap:wrap; flex-shrink:0;
+}
+.go-dims .label { font-size:14px; font-weight:600; color:var(--text-3); margin-right:4px; }
+
+.go-canvas { flex:1; display:flex; align-items:center; justify-content:center;
+  color:var(--text-3); font-size:16px; }
+.go-canvas::after {
+  content:'Full-screen D3 graph renders here.\A All controls (layer toggles, theme filters) are available.\A Press Esc or click Close to return to homepage.';
+  white-space:pre-line; text-align:center;
+}
+
+.close-btn {
+  font-family:var(--font); font-size:14px; font-weight:600;
+  padding:7px 16px; border-radius:8px; cursor:pointer;
+  border:1px solid var(--border); background:var(--bg);
+  color:var(--text-1); display:inline-flex; align-items:center; gap:6px;
+  transition:all .15s;
+}
+.close-btn:hover { background:var(--bg-2); }
+
+/* ---- BOTTOM ROW ---- */
+.bottom-row {
+  display:grid; grid-template-columns:1fr 1fr; gap:16px;
+  padding:24px 24px 48px;
+}
+.bottom-card {
+  display:flex; align-items:center; gap:16px;
+  padding:18px 22px; border-radius:12px; border:1px solid var(--border);
+  transition:all .15s; cursor:pointer;
+}
+.bottom-card:hover { box-shadow:0 3px 12px rgba(0,0,0,0.04); text-decoration:none; }
+.bc-icon {
+  width:40px; height:40px; border-radius:10px; display:flex;
+  align-items:center; justify-content:center; font-size:17px; flex-shrink:0;
+}
+.bc-icon.standards { background:#fff3d6; color:var(--std-text); }
+.bc-icon.approaches { background:var(--approach-bg); color:var(--approach); }
+.bottom-card h4 { font-size:16px; font-weight:600; margin-bottom:2px; }
+.bottom-card p { font-size:14px; color:var(--text-2); line-height:1.5; }
+.bottom-card .bc-arrow { margin-left:auto; color:var(--text-3); font-size:14px; }
+
+/* ---- FOOTER ---- */
+footer {
+  border-top:1px solid var(--border); padding:18px 24px;
+  font-size:14px; color:var(--text-3); text-align:center;
+}
+
+@media (max-width:800px) {
+  .entry-grid { grid-template-columns:1fr; }
+  .bottom-row { grid-template-columns:1fr; }
+  nav { display:none; }
+  .dim-bar { justify-content:flex-start; overflow-x:auto; flex-wrap:nowrap; }
+}
+</style>
+</head>
+<body>
+
+<!-- ===== HEADER — logo only, no brand text ===== -->
+<header class="site-header">
+  <a class="header-logo" href="#" aria-label="Q42 Home">
+    <img src="https://quality.arc42.org/assets/img/arc42logosquare.webp" alt="arc42 Quality Model">
+  </a>
+
+  <nav>
+    <a href="#" class="active">Home</a>
+    <a href="#">Qualities</a>
+    <a href="#">Profiles</a>
+    <a href="#">Requirements</a>
+
+    <!-- Dropdown: Reference -->
+    <div class="nav-dropdown" id="dd-reference">
+      <button class="nav-dropdown-trigger" onclick="toggleDropdown('dd-reference')">
+        Reference <i class="fa fa-chevron-down chevron"></i>
+      </button>
+      <div class="nav-dropdown-menu">
+        <a href="#">
+          <span class="dd-icon standards"><i class="fa fa-award"></i></span>
+          <span class="dd-text"><span class="dd-label">Standards</span><span class="dd-desc">ISO 25010, GDPR, WCAG, ...</span></span>
+        </a>
+        <a href="#">
+          <span class="dd-icon approaches"><i class="fa fa-puzzle-piece"></i></span>
+          <span class="dd-text"><span class="dd-label">Approaches</span><span class="dd-desc">Tactics and patterns</span></span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Dropdown: Learn -->
+    <div class="nav-dropdown" id="dd-learn">
+      <button class="nav-dropdown-trigger" onclick="toggleDropdown('dd-learn')">
+        Learn <i class="fa fa-chevron-down chevron"></i>
+      </button>
+      <div class="nav-dropdown-menu">
+        <a href="#">
+          <span class="dd-icon articles"><i class="fa fa-newspaper"></i></span>
+          <span class="dd-text"><span class="dd-label">Articles</span><span class="dd-desc">Quality insights and guides</span></span>
+        </a>
+        <a href="#">
+          <span class="dd-icon howto"><i class="fa fa-compass"></i></span>
+          <span class="dd-text"><span class="dd-label">How to Use Q42</span><span class="dd-desc">Navigation approaches</span></span>
+        </a>
+      </div>
+    </div>
+
+    <a class="nav-graph" href="#" onclick="openOverlay(); return false;">
+      <i class="fa fa-expand"></i> Graph
+    </a>
+  </nav>
+
+  <div class="header-search">
+    <i class="fa fa-search"></i> Search...
+    <kbd>/</kbd>
+  </div>
+</header>
+
+<!-- ===== SPLASH ===== -->
+<section class="splash">
+  <div class="splash-title">
+    <h1>Software Quality, Made Navigable</h1>
+    <p class="lead">Translate vague quality goals into concrete, measurable requirements.</p>
+  </div>
+  <div class="entry-grid">
+    <div class="entry-card profiles">
+      <span class="arrow"><i class="fa fa-arrow-right"></i></span>
+      <div class="ec-top">
+        <div class="ec-icon"><i class="fa fa-layer-group"></i></div>
+        <span class="intent">What should I care about?</span>
+      </div>
+      <h2>Domain Profiles</h2>
+      <p>Curated starting points for 12 system types — e-commerce, SaaS, banking, medical devices, and more.</p>
+      <span class="count">12 profiles</span>
+    </div>
+    <div class="entry-card qualities">
+      <span class="arrow"><i class="fa fa-arrow-right"></i></span>
+      <div class="ec-top">
+        <div class="ec-icon"><i class="fa fa-gem"></i></div>
+        <span class="intent">What does this term mean?</span>
+      </div>
+      <h2>Quality Characteristics</h2>
+      <p>217 qualities defined, cross-linked, and mapped to standards. Browse A–Z, filter, or search.</p>
+      <span class="count">217 qualities + 120 synonyms</span>
+    </div>
+    <div class="entry-card requirements">
+      <span class="arrow"><i class="fa fa-arrow-right"></i></span>
+      <div class="ec-top">
+        <div class="ec-icon"><i class="fa fa-bullseye"></i></div>
+        <span class="intent">How good is good enough?</span>
+      </div>
+      <h2>Example Requirements</h2>
+      <p>138 testable quality scenarios with metrics and acceptance criteria for your backlog.</p>
+      <span class="count">138 examples</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== DIMENSION PINS ===== -->
+<div class="dim-bar">
+  <span class="label">Themes</span>
+  <span class="dim-pin" data-d="reliable">#reliable <span class="cnt">34</span></span>
+  <span class="dim-pin" data-d="flexible">#flexible <span class="cnt">19</span></span>
+  <span class="dim-pin" data-d="efficient">#efficient <span class="cnt">25</span></span>
+  <span class="dim-pin" data-d="usable">#usable <span class="cnt">31</span></span>
+  <span class="dim-pin" data-d="secure">#secure <span class="cnt">28</span></span>
+  <span class="dim-pin" data-d="safe">#safe <span class="cnt">14</span></span>
+  <span class="dim-pin" data-d="maintainable">#maintainable <span class="cnt">22</span></span>
+  <span class="dim-pin" data-d="suitable">#suitable <span class="cnt">26</span></span>
+  <span class="dim-pin" data-d="operable">#operable <span class="cnt">18</span></span>
+</div>
+
+<!-- ===== HOMEPAGE GRAPH (preview — click to expand) ===== -->
+<section class="graph-section">
+  <div class="graph-toolbar">
+    <div class="gt-left">
+      <span class="label">Quality Graph</span>
+      <span class="node-count" id="nodeCount">217 nodes</span>
+    </div>
+    <div class="layer-toggles">
+      <span class="show-label">Show:</span>
+      <button class="layer-toggle on" data-layer="q"><span class="dot q"></span> Qualities</button>
+      <button class="layer-toggle" data-layer="r"><span class="dot r"></span> + Requirements</button>
+      <button class="layer-toggle" data-layer="s"><span class="dot s"></span> + Standards</button>
+      <button class="layer-toggle" data-layer="a"><span class="dot a"></span> + Approaches</button>
+    </div>
+    <div class="gt-right">
+      <button class="expand-btn" onclick="openOverlay()">
+        <i class="fa fa-expand"></i> Fullscreen
+      </button>
+    </div>
+  </div>
+  <div class="graph-canvas" onclick="openOverlay()">
+    <div class="graph-placeholder">
+      <div class="gp-title">217 Quality Characteristics</div>
+      <p>Interactive graph showing qualities connected by their relationships, grouped by theme.</p>
+      <div class="click-hint"><i class="fa fa-expand"></i> Click to open fullscreen graph</div>
+      <div class="legend">
+        <span class="legend-item"><span class="legend-dot d"></span> Theme</span>
+        <span class="legend-item"><span class="legend-dot q"></span> Quality</span>
+        <span class="legend-item"><span class="legend-dot r"></span> Requirement</span>
+        <span class="legend-item"><span class="legend-dot s"></span> Standard</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== BOTTOM ROW ===== -->
+<section class="bottom-row">
+  <a class="bottom-card" href="#">
+    <div class="bc-icon standards"><i class="fa fa-award"></i></div>
+    <div>
+      <h4>42 Industry Standards</h4>
+      <p>ISO 25010, GDPR, MISRA, WCAG — mapped to qualities and requirements.</p>
+    </div>
+    <span class="bc-arrow"><i class="fa fa-arrow-right"></i></span>
+  </a>
+  <a class="bottom-card" href="#">
+    <div class="bc-icon approaches"><i class="fa fa-puzzle-piece"></i></div>
+    <div>
+      <h4>Solution Approaches</h4>
+      <p>Architectural tactics and patterns to achieve or improve qualities.</p>
+    </div>
+    <span class="bc-arrow"><i class="fa fa-arrow-right"></i></span>
+  </a>
+</section>
+
+<!-- ===== FULLSCREEN GRAPH OVERLAY ===== -->
+<div class="graph-overlay" id="graphOverlay">
+  <div class="go-toolbar">
+    <div class="go-left">
+      <span class="label">Quality Graph</span>
+      <span class="node-count" id="overlayNodeCount">217 nodes</span>
+      <div class="layer-toggles">
+        <span class="show-label">Show:</span>
+        <button class="layer-toggle on overlay-toggle" data-layer="q"><span class="dot q"></span> Qualities</button>
+        <button class="layer-toggle overlay-toggle" data-layer="r"><span class="dot r"></span> + Requirements</button>
+        <button class="layer-toggle overlay-toggle" data-layer="s"><span class="dot s"></span> + Standards</button>
+        <button class="layer-toggle overlay-toggle" data-layer="a"><span class="dot a"></span> + Approaches</button>
+      </div>
+    </div>
+    <button class="close-btn" onclick="closeOverlay()">
+      <i class="fa fa-times"></i> Close
+    </button>
+  </div>
+  <div class="go-dims">
+    <span class="label">Theme</span>
+    <span class="dim-pin" data-d="reliable">#reliable</span>
+    <span class="dim-pin" data-d="flexible">#flexible</span>
+    <span class="dim-pin" data-d="efficient">#efficient</span>
+    <span class="dim-pin" data-d="usable">#usable</span>
+    <span class="dim-pin" data-d="secure">#secure</span>
+    <span class="dim-pin" data-d="safe">#safe</span>
+    <span class="dim-pin" data-d="maintainable">#maintainable</span>
+    <span class="dim-pin" data-d="suitable">#suitable</span>
+    <span class="dim-pin" data-d="operable">#operable</span>
+  </div>
+  <div class="go-canvas"></div>
+</div>
+
+<footer>
+  <p>arc42 Quality Model · CC-BY-SA-4.0 · Maintained by Gernot Starke · Supported by INNOQ</p>
+</footer>
+
+<script>
+// Dropdown toggle
+function toggleDropdown(id) {
+  const dd = document.getElementById(id);
+  document.querySelectorAll('.nav-dropdown').forEach(d => { if (d.id !== id) d.classList.remove('open'); });
+  dd.classList.toggle('open');
+}
+document.addEventListener('click', e => {
+  if (!e.target.closest('.nav-dropdown')) document.querySelectorAll('.nav-dropdown').forEach(d => d.classList.remove('open'));
+});
+
+// Layer toggles
+function updateCount(scope) {
+  let count = 217;
+  const toggles = scope.querySelectorAll('.layer-toggle');
+  toggles.forEach((t, i) => {
+    if (i === 1 && t.classList.contains('on')) count += 138;
+    if (i === 2 && t.classList.contains('on')) count += 42;
+    if (i === 3 && t.classList.contains('on')) count += 21;
+  });
+  const badge = scope.querySelector('.node-count') || document.getElementById(scope.dataset.counter);
+  if (badge) badge.textContent = count + ' nodes';
+}
+document.querySelectorAll('.layer-toggle').forEach(btn => {
+  btn.addEventListener('click', () => {
+    btn.classList.toggle('on');
+    updateCount(btn.closest('.graph-toolbar, .go-toolbar'));
+  });
+});
+
+// Fullscreen overlay
+function openOverlay() {
+  document.getElementById('graphOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeOverlay() {
+  document.getElementById('graphOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeOverlay(); });
+
+// Dimension pins
+document.querySelectorAll('.dim-pin').forEach(pin => {
+  pin.addEventListener('click', () => {
+    const wasActive = pin.classList.contains('active');
+    pin.closest('.dim-bar, .go-dims').querySelectorAll('.dim-pin').forEach(p => p.classList.remove('active'));
+    if (!wasActive) pin.classList.add('active');
+  });
+});
+</script>
+
+</body>
+</html>
