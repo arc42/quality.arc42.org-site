@@ -62,7 +62,6 @@ const ALLOWED_IDS = {
     "#full-q-graph-legend",
     "#full-q-graph-filter__chips",
   ]),
-  "_sass/_homenew.scss": new Set(["#q-graph-container", "#full-graph-toggle"]),
   "assets/css/arc42-quality.css": new Set([
     "#scenario-header",
     "#standard-header",
@@ -92,7 +91,6 @@ const ALLOWED_IDS = {
 const ALLOWED_IMPORTANT_COUNTS = {
   "_sass/base/_utilities.scss": 3,
   "_sass/_mobile-graph.scss": 1,
-  "_sass/_homenew.scss": 1,
   "_sass/_standards.scss": 1,
   "assets/css/arc42-doc.css": 1,
   "assets/css/arc42-quality.css": 24,
@@ -112,7 +110,6 @@ const APPROVED_BREAKPOINTS = new Set(["800px"]);
  */
 const ALLOWED_LEGACY_BREAKPOINTS = {
   "_sass/_mobile-graph.scss": new Set(["900px"]),
-  "_sass/_homenew.scss": new Set(["820px"]),
   "_sass/_standards.scss": new Set(["900px"]),
   "assets/css/arc42-doc.css": new Set(["900px", "600px"]),
   "assets/css/arc42-quality.css": new Set(["900px", "768px", "600px"]),
@@ -133,7 +130,6 @@ const ALLOWED_COLOR_FILES = new Set([
   "_sass/_content.scss",
   "_sass/_footer.scss",
   "_sass/_header.scss",
-  "_sass/_homenew.scss",
   "_sass/_mobile-graph.scss",
   "_sass/_standards.scss",
   "_sass/q42/_bottom-row.scss",
