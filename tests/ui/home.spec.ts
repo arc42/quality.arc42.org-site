@@ -21,11 +21,11 @@ test("home page renders splash hero, graph preview, and theme links", async ({
   await expect(page.locator("#q-graph-home")).toBeVisible();
 
   await expect(
-    page.getByText("Open the overlay to explore without leaving the page")
+    page.getByText("Preview themes here, then click the graph to open the full overlay")
   ).toBeVisible();
-  await expect(page.getByRole("button", { name: /Qualities/i })).toBeVisible();
-  await expect(page.getByRole("button", { name: /Requirements/i })).toBeVisible();
-  await expect(page.getByRole("button", { name: /Standards/i })).toBeVisible();
+  await expect(page.getByRole("button", { name: /Qualities/i })).toBeDisabled();
+  await expect(page.getByRole("button", { name: /Requirements/i })).toBeDisabled();
+  await expect(page.getByRole("button", { name: /Standards/i })).toBeDisabled();
   await expect(page.getByRole("button", { name: /Fullscreen/i })).toBeVisible();
 
   const themeBar = page.locator(".q42-dim-bar");
@@ -33,7 +33,13 @@ test("home page renders splash hero, graph preview, and theme links", async ({
   await expect(themeBar.getByRole("button", { name: /#reliable/i })).toBeVisible();
   await expect(themeBar.getByRole("button", { name: /#maintainable/i })).toBeVisible();
 
-  await page.getByRole("button", { name: /Fullscreen/i }).click();
+  await themeBar.getByRole("button", { name: /#reliable/i }).click();
+  await expect(themeBar.getByRole("button", { name: /#reliable/i })).toHaveAttribute(
+    "aria-pressed",
+    "true"
+  );
+
+  await page.locator("#q-graph-home").click();
 
   const overlay = page.locator("#q42-graph-overlay");
   await expect(overlay).toBeVisible();

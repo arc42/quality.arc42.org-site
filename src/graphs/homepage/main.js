@@ -22,11 +22,13 @@ homeGraph
     .registerDefaultEventHandlers()
     .render();
 
-homeGraph.syncLayerControls();
-homeGraph.syncDimensionPins();
+homeGraph.applyGraphState(homeGraph.previewLayerState, homeGraph.previewDimensionFilter);
+homeGraph.syncPreviewControls();
+homeGraph.syncOverlayControls();
 
 document.querySelectorAll(".q42-layer-toggle[data-layer]").forEach((button) => {
     button.addEventListener("click", () => {
+        if (button.dataset.context !== "overlay") return;
         const nodeType = LAYER_MAP[button.dataset.layer];
         if (!nodeType || button.disabled) return;
 
@@ -39,6 +41,11 @@ document.querySelectorAll(".q42-dim-pin[data-d]").forEach((button) => {
     button.addEventListener("click", () => {
         homeGraph.toggleDimensionFilter(button.dataset.d);
     });
+});
+
+const homeGraphCanvas = document.getElementById("q-graph-home");
+homeGraphCanvas?.addEventListener("click", () => {
+    homeGraph.openOverlay(homeGraphCanvas);
 });
 
 window.openGraphOverlay = function () {

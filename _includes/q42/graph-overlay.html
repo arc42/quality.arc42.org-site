@@ -12,16 +12,16 @@
       </div>
       <div class="q42-layer-toggles" aria-label="Graph layers in overlay">
         <span class="q42-show-label">Show:</span>
-        <button class="q42-layer-toggle on" type="button" data-layer="q" aria-pressed="true">
+        <button class="q42-layer-toggle on" type="button" data-context="overlay" data-layer="q" aria-pressed="true">
           <span class="q42-dot q"></span> Qualities
         </button>
-        <button class="q42-layer-toggle" type="button" data-layer="r" aria-pressed="false">
+        <button class="q42-layer-toggle" type="button" data-context="overlay" data-layer="r" aria-pressed="false">
           <span class="q42-dot r"></span> Requirements
         </button>
-        <button class="q42-layer-toggle" type="button" data-layer="s" aria-pressed="false">
+        <button class="q42-layer-toggle" type="button" data-context="overlay" data-layer="s" aria-pressed="false">
           <span class="q42-dot s"></span> Standards
         </button>
-        <button class="q42-layer-toggle is-disabled" type="button" data-layer="a" aria-pressed="false" disabled title="{{ approaches_count }} approaches exist on the site, but the graph data does not include approach nodes yet.">
+        <button class="q42-layer-toggle is-disabled" type="button" data-context="overlay" data-layer="a" aria-pressed="false" disabled title="{{ approaches_count }} approaches exist on the site, but the graph data does not include approach nodes yet.">
           <span class="q42-dot a"></span> Approaches
         </button>
       </div>
@@ -34,7 +34,7 @@
       <span class="q42-dim-label">Themes</span>
       {% for dim in dims %}
         {% assign count = site.qualities | where_exp: "q", "q.tags contains dim" | size %}
-        <button class="q42-dim-pin" type="button" data-d="{{ dim }}" aria-pressed="false">
+        <button class="q42-dim-pin" type="button" data-context="overlay" data-d="{{ dim }}" aria-pressed="false">
           #{{ dim }} <span class="q42-dim-cnt">{{ count }}</span>
         </button>
       {% endfor %}

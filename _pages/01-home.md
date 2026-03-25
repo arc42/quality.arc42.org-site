@@ -7,13 +7,13 @@ order: 1
 excerpt: "Translate vague quality goals into concrete, measurable requirements."
 
 feature_row:
-  - title: "Quality Dimensions"
-    excerpt: "Nine cross-cutting themes to orient your quality work and browse related terms."
-    url: /dimensions/
+  - title: "Domain Quality Profiles"
+    excerpt: "Curated starting points for 12 system types — e-commerce, SaaS, banking, medical devices, and more."
+    url: /profiles/
     icon: fa-layer-group
     intent: "Where should I start?"
-    count: "9 dimensions"
-    card_class: dimensions
+    count: "12 profiles"
+    card_class: profiles
   - title: "Quality Characteristics"
     excerpt: "Defined, cross-linked, and mapped to standards. Browse A-Z, filter, or search."
     url: /qualities/

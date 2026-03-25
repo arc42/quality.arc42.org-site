@@ -14,12 +14,27 @@ export class HomeGraph extends Graph {
     constructor(containerId, dataProvider) {
         super(containerId, "home", dataProvider);
         this.layerState = {
-            quality: true,
+            quality: false,
             requirement: false,
             standard: false,
             approach: false,
         };
         this.activeDimensionFilter = null;
+        this.previewLayerState = {
+            quality: false,
+            requirement: false,
+            standard: false,
+            approach: false,
+        };
+        this.previewDimensionFilter = null;
+        this.overlayLayerState = {
+            quality: true,
+            requirement: false,
+            standard: false,
+            approach: false,
+        };
+        this.overlayDimensionFilter = null;
+        this.isOverlayOpen = false;
         this.homeContainer = null;
         this.homeHeight = 520;
         this.lastOverlayTrigger = null;
@@ -34,9 +49,7 @@ export class HomeGraph extends Graph {
         super.initialize();
         this.homeContainer = this.container;
         this.homeHeight = this.container?.clientHeight || this.homeHeight;
-        this.renderer.typeVisibility.quality = this.layerState.quality;
-        this.renderer.typeVisibility.requirement = this.layerState.requirement;
-        this.renderer.typeVisibility.standard = this.layerState.standard;
+        this.applyRendererVisibility(this.previewLayerState);
         return this;
     }
 
@@ -110,14 +123,15 @@ export class HomeGraph extends Graph {
         if (!(nodeType in this.layerState)) return this;
 
         if (nodeType === "approach") {
-            this.layerState.approach = false;
-            this.syncLayerControls();
+            this.overlayLayerState.approach = false;
+            this.syncOverlayControls();
             return this;
         }
 
+        this.overlayLayerState[nodeType] = !!visible;
         this.layerState[nodeType] = !!visible;
         this.renderer.setTypeVisibility(nodeType, visible);
-        this.syncLayerControls();
+        this.syncOverlayControls();
         return this;
     }
 
@@ -129,19 +143,67 @@ export class HomeGraph extends Graph {
     toggleDimensionFilter(dimensionId) {
         if (!dimensionId) return this;
 
-        if (this.activeDimensionFilter === dimensionId) {
-            this.activeDimensionFilter = null;
-            this.resetFilter();
+        if (this.isOverlayOpen) {
+            if (this.overlayDimensionFilter === dimensionId) {
+                this.overlayDimensionFilter = null;
+            } else {
+                this.overlayDimensionFilter = dimensionId;
+            }
+            this.applyGraphState(this.overlayLayerState, this.overlayDimensionFilter);
+            this.syncOverlayControls();
         } else {
-            this.activeDimensionFilter = dimensionId;
-            this.filter(dimensionId);
-        }
+            if (this.previewDimensionFilter === dimensionId) {
+                this.previewDimensionFilter = null;
+            } else {
+                this.previewDimensionFilter = dimensionId;
+            }
 
-        this.syncDimensionPins();
+            this.previewLayerState.quality = !!this.previewDimensionFilter;
+            this.applyGraphState(this.previewLayerState, this.previewDimensionFilter);
+            this.syncPreviewControls();
+        }
         return this;
     }
 
-    syncLayerControls() {
+    applyRendererVisibility(layerState) {
+        this.renderer.typeVisibility.quality = !!layerState.quality;
+        this.renderer.typeVisibility.requirement = !!layerState.requirement;
+        this.renderer.typeVisibility.standard = !!layerState.standard;
+    }
+
+    applyGraphState(layerState, dimensionFilter = null) {
+        this.layerState = { ...layerState };
+        this.activeDimensionFilter = dimensionFilter;
+        this.applyRendererVisibility(layerState);
+
+        if (dimensionFilter) {
+            this.filter(dimensionFilter);
+        } else {
+            this.resetFilter();
+        }
+        return this;
+    }
+
+    syncPreviewControls() {
+        document
+            .querySelectorAll('.q42-layer-toggle[data-context="home"][data-layer]')
+            .forEach((button) => {
+                const layer = button.dataset.layer === "q" ? "quality" : null;
+                const isOn = layer ? !!this.previewLayerState[layer] : false;
+                button.classList.toggle("on", isOn);
+                button.setAttribute("aria-pressed", String(isOn));
+            });
+
+        document
+            .querySelectorAll('.q42-dim-pin[data-context="home"][data-d]')
+            .forEach((button) => {
+                const isActive = button.dataset.d === this.previewDimensionFilter;
+                button.classList.toggle("active", isActive);
+                button.setAttribute("aria-pressed", String(isActive));
+            });
+    }
+
+    syncOverlayControls() {
         const layerKeyByButton = {
             q: "quality",
             r: "requirement",
@@ -149,33 +211,32 @@ export class HomeGraph extends Graph {
             a: "approach",
         };
 
-        document.querySelectorAll(".q42-layer-toggle[data-layer]").forEach((button) => {
-            const layer = layerKeyByButton[button.dataset.layer];
-            if (!layer) return;
+        document
+            .querySelectorAll('.q42-layer-toggle[data-context="overlay"][data-layer]')
+            .forEach((button) => {
+                const layer = layerKeyByButton[button.dataset.layer];
+                if (!layer) return;
 
-            const isOn = !!this.layerState[layer];
-            const isDisabled = layer === "approach";
+                const isOn = !!this.overlayLayerState[layer];
+                const isDisabled = layer === "approach";
 
-            button.classList.toggle("on", isOn);
-            button.setAttribute("aria-pressed", String(isOn));
-            button.classList.toggle("is-disabled", isDisabled);
+                button.classList.toggle("on", isOn);
+                button.setAttribute("aria-pressed", String(isOn));
+                button.classList.toggle("is-disabled", isDisabled);
 
-            if (isDisabled) {
-                button.setAttribute("disabled", "");
-                button.setAttribute("aria-disabled", "true");
-            } else {
-                button.removeAttribute("disabled");
-                button.removeAttribute("aria-disabled");
-            }
-        });
-    }
+                if (isDisabled) {
+                    button.setAttribute("disabled", "");
+                    button.setAttribute("aria-disabled", "true");
+                }
+            });
 
-    syncDimensionPins() {
-        document.querySelectorAll(".q42-dim-pin[data-d]").forEach((button) => {
-            const isActive = button.dataset.d === this.activeDimensionFilter;
-            button.classList.toggle("active", isActive);
-            button.setAttribute("aria-pressed", String(isActive));
-        });
+        document
+            .querySelectorAll('.q42-dim-pin[data-context="overlay"][data-d]')
+            .forEach((button) => {
+                const isActive = button.dataset.d === this.overlayDimensionFilter;
+                button.classList.toggle("active", isActive);
+                button.setAttribute("aria-pressed", String(isActive));
+            });
     }
 
     openOverlay(trigger = null) {
@@ -188,6 +249,8 @@ export class HomeGraph extends Graph {
 
         clearTimeout(this.overlayCloseTimer);
         this.lastOverlayTrigger = trigger || document.activeElement;
+        this.isOverlayOpen = true;
+        this.overlayDimensionFilter = null;
 
         overlay.removeAttribute("hidden");
         this.renderer.attachToContainer(overlayCanvas);
@@ -196,7 +259,8 @@ export class HomeGraph extends Graph {
             overlayCanvas.clientHeight || (window.innerHeight - 160),
             { recenter: false }
         );
-        this.renderer.simulation?.alpha(0.15).restart();
+        this.applyGraphState(this.overlayLayerState, this.overlayDimensionFilter);
+        this.syncOverlayControls();
         document.body.style.overflow = "hidden";
 
         requestAnimationFrame(() => {
@@ -211,6 +275,7 @@ export class HomeGraph extends Graph {
         const overlay = document.getElementById("q42-graph-overlay");
         if (!overlay || overlay.hidden || !this.homeContainer) return this;
 
+        this.isOverlayOpen = false;
         overlay.classList.remove("is-open");
         this.renderer.attachToContainer(this.homeContainer);
         this.renderer.resize(
@@ -218,7 +283,8 @@ export class HomeGraph extends Graph {
             this.homeContainer.clientHeight || this.homeHeight,
             { recenter: false }
         );
-        this.renderer.simulation?.alpha(0.05).restart();
+        this.applyGraphState(this.previewLayerState, this.previewDimensionFilter);
+        this.syncPreviewControls();
         document.body.style.overflow = "";
 
         this.overlayCloseTimer = setTimeout(() => {
