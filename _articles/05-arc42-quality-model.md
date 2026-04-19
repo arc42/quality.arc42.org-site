@@ -12,7 +12,7 @@ It starts with **stakeholders' expectations and requirements**.
 
 Based upon typical stakeholder needs, Q42 consists of just 9 key system dimensions, which are sufficient to cover most, if not all, required, desirable or expected of the more than 200 [_traditional_ qualities](/qualities).
 
-![arc42 quality model](/images/how2use/nine-dimensions.webp)
+{% include dimension-buttons.liquid %}
 
 But let's start at the beginning:
 ### Goals for Q42

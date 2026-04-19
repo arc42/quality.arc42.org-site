@@ -332,6 +332,15 @@
     }
   }
 
+  // Frame for the dimension-buttons include used in articles
+  .dimension-grid-frame {
+    border: 2px solid #a9d7f3;
+    border-radius: 14px;
+    padding: 1rem 1.4rem 0.4rem;
+    background: #eef8ff;
+    margin: 1.2rem 0;
+  }
+
   // Synonym "Also known as" section styling
   .also-known-as {
     padding: 0.75rem 1rem;

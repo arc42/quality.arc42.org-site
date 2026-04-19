@@ -78,6 +78,20 @@ a.hov.tags.standard {
   margin-right: 1px;
 }
 
+a.hov.tags.dimension {
+  line-height: 1.2;
+  background-color: var(--dimension-background-color);
+  color: var(--dimension-text-color);
+  border-radius: 11px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin-top: 3px;
+  margin-bottom: 3px;
+  margin-left: 10px;
+  margin-right: 1px;
+}
+
 /* style for INNOQ on about-this-site */
 
 .innoq-text {
