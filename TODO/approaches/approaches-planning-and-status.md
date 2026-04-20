@@ -98,7 +98,7 @@ Consolidated from three independent plans (Gemini, GPT-5.3, Opus 4.6), Bass et a
 | ✅  | CQRS | Optimise read and write paths independently | O |
 | ✅ | Database Sharding | Partition data across nodes for horizontal scale | O |
 | | Connection Pooling | Reuse expensive connections (DB, HTTP, gRPC) across requests | G·P·O |
-| | Content Delivery Network (CDN) | Serve static content from edge locations near users | P·O |
+| ✅ | Content Delivery Network (CDN) | Serve static content from edge locations near users | P·O |
 | | Lazy Loading | Defer initialisation until actually needed | O |
 | | Data Compression | Reduce payload sizes for transfer and storage | G·P |
 | | Data Access Optimization (Indexing, Pagination) | Tune queries, indexes, and result-set sizes for workload | P·B+ |
