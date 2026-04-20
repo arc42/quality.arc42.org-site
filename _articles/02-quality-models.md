@@ -84,7 +84,7 @@ Despite the lack of security, safety, resource-consumption and operational quali
 ### The ISO Standards 9126 and 25010 ([[ISO+25010]](/references/#iso-25010-2011))
 <a name="iso"></a>
 _Design-by-Committee_ is regarded as a _suboptimal approach to development_ - and in my opinion that happened to the ISO-standards for software quality.
-Instead of just unifying definitions from Boehm and FURPS, the invented a kind of metamodel, distinguishing between five different areas of quality (see figure below).
+Instead of just unifying definitions from Boehm and FURPS, they invented a kind of metamodel, distinguishing between five different areas of quality (see figure below).
 Divisions? Model and Management? Measurement and Evaluation? 
 These distinctions seem overly complicated from my practitioners' viewpoint.
 
