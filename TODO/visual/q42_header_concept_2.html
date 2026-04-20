@@ -1,0 +1,191 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Q42 Header Concept 2</title>
+<style>
+  :root {
+    --dim: #1A3A5C;
+    --char: #00B8F5;
+    --req: #FFB3B3;
+    --std: #FFC95C;
+    --art: #E6DAF2;
+    --app: #92EF80;
+    --header-green: #357360;
+    --header-text: #DEEFB7;
+    --counter: #FFAD80;
+    --ink: #0f172a;
+    --soft-ink: #334155;
+    --line: rgba(255,255,255,0.08);
+    --cream: #f7f7f4;
+    --shadow: 0 30px 80px rgba(15, 23, 42, 0.18);
+  }
+  * { box-sizing: border-box; }
+  html, body { margin:0; padding:0; font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background:#0b1220; }
+  body { min-height:100vh; }
+  .frame { width: 1600px; height: 900px; overflow:hidden; position:relative; }
+  .eyebrow {
+    display:inline-flex; align-items:center; gap:12px;
+    font-size: 15px; letter-spacing: .08em; text-transform: uppercase; font-weight: 700;
+    opacity:.9;
+  }
+  .dot { width:8px; height:8px; border-radius:99px; background: currentColor; }
+  h1 {
+    margin: 24px 0 18px;
+    font-size: 64px; line-height: 1.05; letter-spacing: -0.04em; max-width: 780px;
+  }
+  p.lead {
+    margin:0; font-size: 23px; line-height: 1.5; max-width: 760px; opacity: .92;
+  }
+  .actions { display:flex; gap:18px; margin-top:34px; flex-wrap: wrap; }
+  .btn {
+    display:inline-flex; align-items:center; justify-content:center;
+    padding: 15px 22px; border-radius: 16px; font-size: 18px; font-weight: 700;
+    text-decoration:none; border:1px solid transparent;
+  }
+  .btn.primary { background:#ffffff; color:#0f172a; }
+  .btn.secondary { background:transparent; color:inherit; border-color: currentColor; opacity:.88; }
+  .stats {
+    display:grid; grid-template-columns: repeat(4, 1fr); gap: 16px;
+    margin-top: 34px;
+  }
+  .stat {
+    padding: 18px 20px; border-radius: 18px; border:1px solid rgba(255,255,255,.1); backdrop-filter: blur(8px);
+  }
+  .stat b { display:block; font-size: 34px; line-height:1; margin-bottom:8px; letter-spacing:-0.03em; }
+  .stat span { font-size: 15px; opacity:.82; }
+  .pill-row { display:flex; gap:12px; flex-wrap:wrap; margin-top: 26px; }
+  .pill {
+    display:inline-flex; align-items:center; gap:10px;
+    border-radius:999px; padding:10px 14px; font-size:15px; font-weight:700;
+  }
+  .pill i { width: 10px; height: 10px; border-radius:99px; display:inline-block; }
+  .label {
+    position:absolute; top:32px; right:32px;
+    padding:10px 14px; border-radius:999px; font-size:14px; font-weight:700; letter-spacing:.04em; text-transform:uppercase;
+    background: rgba(255,255,255,.12); color:#fff; border:1px solid rgba(255,255,255,.16);
+    backdrop-filter: blur(6px);
+  }
+</style>
+</head>
+<body>
+<div class="frame concept2">
+  <style>
+    .concept2 {
+      color:#0f172a;
+      background:
+        radial-gradient(circle at 100% 0%, rgba(26,58,92,.08), transparent 35%),
+        linear-gradient(180deg, #f5f7fa 0%, #eef2f7 100%);
+    }
+    .concept2::before {
+      content:"";
+      position:absolute; inset:auto 0 0 0; height: 220px;
+      background: linear-gradient(180deg, rgba(26,58,92,0), rgba(26,58,92,.06));
+    }
+    .left {
+      position:absolute; left: 96px; top: 92px; width: 610px; z-index:2;
+    }
+    .right {
+      position:absolute; right: 74px; top: 82px; width: 720px; z-index:2;
+      display:grid; grid-template-columns: 1fr; gap:18px;
+    }
+    .eyebrow { color:#1A3A5C; }
+    .muted { color:#475569; }
+    .btn.primary { background:#1A3A5C; color:#fff; }
+    .btn.secondary { color:#1A3A5C; border-color:#1A3A5C; }
+    .stats {
+      margin-top: 26px;
+      grid-template-columns: repeat(4, 1fr);
+    }
+    .stat {
+      background: rgba(255,255,255,.72); border:1px solid rgba(15,23,42,.08);
+      box-shadow: 0 14px 40px rgba(15,23,42,.06);
+    }
+    .right .card {
+      background:#fff; border-radius: 26px; padding: 26px 26px 24px; box-shadow: 0 18px 48px rgba(15,23,42,.08);
+      border:1px solid rgba(15,23,42,.07);
+      display:grid; grid-template-columns: 84px 1fr auto; gap:18px; align-items:center;
+    }
+    .card .icon {
+      width:84px; height:84px; border-radius:22px; display:grid; place-items:center; font-size:34px; font-weight:900;
+      color:#0f172a;
+    }
+    .card h3 { margin:0 0 8px; font-size:30px; letter-spacing:-0.03em; }
+    .card p { margin:0; font-size:17px; line-height:1.45; color:#475569; }
+    .card a {
+      text-decoration:none; font-weight:800; color:#1A3A5C; font-size:17px;
+      padding: 12px 16px; border:1px solid rgba(26,58,92,.14); border-radius:16px; white-space:nowrap;
+    }
+    .note {
+      position:absolute; left:96px; bottom:66px; width:1230px; z-index:2;
+      background: rgba(255,255,255,.76); backdrop-filter: blur(8px);
+      border:1px solid rgba(15,23,42,.08); border-radius:22px; padding:20px 24px;
+      display:flex; justify-content:space-between; gap:24px; box-shadow: 0 18px 40px rgba(15,23,42,.06);
+    }
+    .note b { font-size:18px; display:block; margin-bottom:6px; }
+    .note span { color:#475569; font-size:16px; line-height:1.45; }
+  </style>
+
+  <div class="label" style="background:#1A3A5C;color:#fff;border-color:transparent;">Concept 2 · Three Entry Paths</div>
+
+  <div class="left">
+    <div class="eyebrow"><span class="dot"></span> arc42 Quality Model</div>
+    <h1>Start where your quality questions begin.</h1>
+    <p class="lead muted">A navigation-first splash header. Instead of treating the homepage as a brand banner, it becomes a structured entry point for different ways of exploring Q42.</p>
+
+    <div class="actions">
+      <a class="btn primary" href="#">How to use this site</a>
+      <a class="btn secondary" href="#">Open full graph</a>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><b>216</b><span>characteristics</span></div>
+      <div class="stat"><b>31</b><span>aliases & synonyms</span></div>
+      <div class="stat"><b>138</b><span>requirements</span></div>
+      <div class="stat"><b>42</b><span>standards</span></div>
+    </div>
+  </div>
+
+  <div class="right">
+    <div class="card">
+      <div class="icon" style="background:linear-gradient(135deg,#1A3A5C,#2e5c86); color:#C8E6F5;">01</div>
+      <div>
+        <h3>By quality dimension</h3>
+        <p>Start broad and move from dimensions such as reliability, usability, or security toward the concrete characteristics behind them.</p>
+      </div>
+      <a href="#">Browse dimensions</a>
+    </div>
+
+    <div class="card">
+      <div class="icon" style="background:linear-gradient(135deg,#E6DAF2,#f5effb); color:#4A148C;">02</div>
+      <div>
+        <h3>By relation graph</h3>
+        <p>Inspect how characteristics, standards, requirements, and approaches connect. Best suited for exploration and architecture discussions.</p>
+      </div>
+      <a href="#">Open graph</a>
+    </div>
+
+    <div class="card">
+      <div class="icon" style="background:linear-gradient(135deg,#92EF80,#d9f8cf); color:#1B5E20;">03</div>
+      <div>
+        <h3>By direct lookup</h3>
+        <p>Use the textual lists when you already know the term you are after and want fast access to definitions, examples, and related concepts.</p>
+      </div>
+      <a href="#">Go to index</a>
+    </div>
+  </div>
+
+  <div class="note">
+    <div>
+      <b>Why this direction</b>
+      <span>This is the strongest option if first-time orientation is the main goal. It makes the homepage useful immediately and reduces the “where do I begin?” problem.</span>
+    </div>
+    <div>
+      <b>Visual stance</b>
+      <span>Less “hero image”, more curated navigation layer. Clean, calm, and aligned with the site’s role as a reference system.</span>
+    </div>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>E-commerce / Online Shop – Domain Quality Profile – Q42</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   TOKENS — matching the overview page
+   ============================================================ */
+:root {
+  --font-body: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'DM Mono', 'SF Mono', monospace;
+  --bg:       #ffffff;
+  --bg-2:     #f7f6f2;
+  --bg-3:     #eeece5;
+  --text-1:   #2c2c2a;
+  --text-2:   #5f5e5a;
+  --text-3:   #8a8880;
+  --border:   rgba(0,0,0,0.09);
+  --border-h: rgba(0,0,0,0.18);
+  --g50:#eaf3de;--g100:#c0dd97;--g400:#639922;--g600:#3b6d11;--g800:#27500a;
+  --dim-reliable:#1a73b5;--dim-flexible:#7f77dd;--dim-efficient:#1d9e75;
+  --dim-usable:#d85a30;--dim-secure:#993556;--dim-safe:#e24b4a;
+  --dim-maintainable:#639922;--dim-suitable:#ba7517;--dim-operable:#378add;
+  --ax-audience-bg:#eeedfe;--ax-audience-fg:#3c3489;
+  --ax-reg-light-bg:#eaf3de;--ax-reg-light-fg:#27500a;
+  --ax-platform-bg:#e6f1fb;--ax-platform-fg:#0c447c;
+  --ax-crit-biz-bg:#faeeda;--ax-crit-biz-fg:#633806;
+  --ax-interact-bg:#fbeaf0;--ax-interact-fg:#72243e;
+  --card-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg:#18181a;--bg-2:#222224;--bg-3:#2c2c2e;
+    --text-1:#d8d6cc;--text-2:#9e9c94;--text-3:#706e68;
+    --border:rgba(255,255,255,0.08);--border-h:rgba(255,255,255,0.18);
+    --g50:rgba(99,153,34,0.12);--g100:rgba(151,196,89,0.2);
+    --g400:#97c459;--g600:#b8de88;--g800:#c0dd97;
+    --ax-audience-bg:rgba(174,168,236,0.14);--ax-audience-fg:#cecbf6;
+    --ax-reg-light-bg:rgba(151,196,89,0.12);--ax-reg-light-fg:#c0dd97;
+    --ax-platform-bg:rgba(133,183,235,0.14);--ax-platform-fg:#b5d4f4;
+    --ax-crit-biz-bg:rgba(250,199,117,0.14);--ax-crit-biz-fg:#fac775;
+    --ax-interact-bg:rgba(237,147,177,0.14);--ax-interact-fg:#f4c0d1;
+    --card-shadow: 0 1px 3px rgba(0,0,0,0.2);
+  }
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--font-body);background:var(--bg);color:var(--text-1);
+  line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:860px;margin:0 auto;padding:40px 28px 80px}
+a{color:var(--g400);text-decoration:none}
+a:hover{text-decoration:underline}
+
+/* ============================================================
+   BREADCRUMB
+   ============================================================ */
+.breadcrumb{font-size:12px;color:var(--text-3);margin-bottom:24px}
+.breadcrumb a{color:var(--text-3)}
+.breadcrumb a:hover{color:var(--g400)}
+.breadcrumb .sep{margin:0 6px;opacity:.5}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero{display:flex;gap:36px;align-items:flex-start;margin-bottom:40px;flex-wrap:wrap}
+.hero-text{flex:1;min-width:280px}
+.hero-text h1{font-size:26px;font-weight:600;letter-spacing:-.5px;line-height:1.25;margin-bottom:6px}
+.hero-text h1 .num{color:var(--text-3);font-weight:400;font-size:20px;margin-right:6px}
+.hero-text .subtitle{font-size:14px;color:var(--text-2);margin-bottom:16px;max-width:480px;line-height:1.65}
+.pills{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:16px}
+.pill{font-family:var(--font-mono);font-size:11px;padding:3px 9px;border-radius:5px;white-space:nowrap}
+.pill-audience{background:var(--ax-audience-bg);color:var(--ax-audience-fg)}
+.pill-reg{background:var(--ax-reg-light-bg);color:var(--ax-reg-light-fg)}
+.pill-platform{background:var(--ax-platform-bg);color:var(--ax-platform-fg)}
+.pill-crit{background:var(--ax-crit-biz-bg);color:var(--ax-crit-biz-fg)}
+.pill-interact{background:var(--ax-interact-bg);color:var(--ax-interact-fg)}
+.pace{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--text-3)}
+.pace-dot{width:7px;height:7px;border-radius:50%;background:var(--text-3);opacity:.25}
+.pace-dot.on{opacity:1;background:var(--text-1)}
+
+/* Radar chart */
+.radar-wrap{flex-shrink:0;width:240px;height:240px}
+@media(max-width:640px){.radar-wrap{width:100%;max-width:280px;margin:0 auto}}
+
+/* ============================================================
+   SECTION STRUCTURE
+   ============================================================ */
+.section{margin-bottom:36px}
+.section-title{font-size:18px;font-weight:600;letter-spacing:-.3px;margin-bottom:4px;color:var(--text-1)}
+.section-sub{font-size:13px;color:var(--text-3);margin-bottom:16px}
+.divider{height:1px;background:var(--border);margin:36px 0}
+
+/* ============================================================
+   VARIANT CARDS
+   ============================================================ */
+.variants-intro{font-size:14px;color:var(--text-2);margin-bottom:16px;line-height:1.65;max-width:640px}
+.variant-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px}
+.variant-card{
+  border:1px solid var(--border);border-radius:10px;padding:16px 18px;
+  background:var(--bg);box-shadow:var(--card-shadow);transition:all .2s;cursor:default;
+}
+.variant-card:hover{border-color:var(--g400);transform:translateY(-1px)}
+.variant-card h4{font-size:14px;font-weight:600;margin-bottom:4px;color:var(--text-1)}
+.variant-card .v-example{font-size:11px;font-family:var(--font-mono);color:var(--text-3);margin-bottom:8px}
+.variant-card p{font-size:12.5px;color:var(--text-2);line-height:1.55;margin-bottom:8px}
+.variant-card .v-chars{display:flex;flex-wrap:wrap;gap:4px}
+.v-char{font-size:10px;font-family:var(--font-mono);padding:2px 7px;border-radius:3px;
+  background:var(--bg-2);color:var(--text-2);border:1px solid var(--border)}
+
+/* ============================================================
+   CHARACTERISTICS TABLE
+   ============================================================ */
+.char-group{margin-bottom:20px}
+.char-group-title{
+  font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.5px;
+  color:var(--text-3);margin-bottom:8px;display:flex;align-items:center;gap:8px;
+}
+.char-group-title .badge{
+  font-size:10px;font-weight:500;padding:2px 8px;border-radius:4px;
+  text-transform:none;letter-spacing:0;
+}
+.badge-critical{background:#fcebeb;color:#791f1f}
+.badge-important{background:#faeeda;color:#633806}
+.badge-consider{background:var(--bg-2);color:var(--text-3)}
+@media(prefers-color-scheme:dark){
+  .badge-critical{background:rgba(240,149,149,0.14);color:#f7c1c1}
+  .badge-important{background:rgba(250,199,117,0.14);color:#fac775}
+  .badge-consider{background:var(--bg-3);color:var(--text-3)}
+}
+.char-list{list-style:none;display:flex;flex-direction:column;gap:2px}
+.char-item{
+  display:flex;align-items:baseline;gap:10px;padding:7px 12px;
+  border-radius:6px;transition:background .15s;font-size:13px;
+}
+.char-item:hover{background:var(--bg-2)}
+.char-item .char-name{font-weight:500;color:var(--text-1);min-width:160px;flex-shrink:0}
+.char-item .char-name a{color:var(--text-1)}
+.char-item .char-name a:hover{color:var(--g400)}
+.char-item .char-dims{display:flex;gap:6px;font-size:11px;flex-shrink:0}
+.char-item .char-note{color:var(--text-3);font-size:12px;flex:1;min-width:0}
+.dim-tag{font-weight:500}
+
+/* ============================================================
+   REQUIREMENTS
+   ============================================================ */
+.req-list{display:flex;flex-direction:column;gap:10px}
+.req-card{
+  border-left:3px solid var(--dim-usable);padding:12px 16px;
+  border-radius:0 8px 8px 0;background:var(--bg-2);
+}
+.req-card .req-text{font-size:13px;color:var(--text-1);line-height:1.6;margin-bottom:6px}
+.req-card .req-meta{font-size:11px;color:var(--text-3);display:flex;gap:12px;flex-wrap:wrap}
+.req-card .req-meta a{font-size:11px}
+.req-card:nth-child(1){border-left-color:var(--dim-efficient)}
+.req-card:nth-child(2){border-left-color:var(--dim-reliable)}
+.req-card:nth-child(3){border-left-color:var(--dim-secure)}
+.req-card:nth-child(4){border-left-color:var(--dim-usable)}
+.req-card:nth-child(5){border-left-color:var(--dim-operable)}
+
+/* ============================================================
+   STANDARDS
+   ============================================================ */
+.std-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px}
+.std-card{
+  border:1px solid var(--border);border-radius:8px;padding:12px 14px;
+  background:var(--bg);font-size:13px;
+}
+.std-card .std-name{font-weight:600;color:var(--text-1);margin-bottom:2px}
+.std-card .std-desc{font-size:12px;color:var(--text-3);line-height:1.5}
+
+/* ============================================================
+   CHANGE PACE SECTION
+   ============================================================ */
+.pace-section{
+  background:var(--bg-2);border-radius:12px;padding:20px 24px;
+  border:1px solid var(--border);
+}
+.pace-section h3{font-size:15px;font-weight:600;margin-bottom:8px}
+.pace-section p{font-size:13px;color:var(--text-2);line-height:1.65;max-width:600px}
+.pace-chars{margin-top:12px;display:flex;flex-wrap:wrap;gap:6px}
+.pace-char{font-family:var(--font-mono);font-size:11px;padding:3px 9px;border-radius:5px;
+  background:var(--g50);color:var(--g800);border:1px solid var(--g400);border-opacity:.3}
+
+/* ============================================================
+   FOOTER NAV
+   ============================================================ */
+.footer-nav{
+  display:flex;justify-content:space-between;align-items:center;
+  padding-top:24px;border-top:1px solid var(--border);margin-top:48px;
+  font-size:13px;color:var(--text-3);flex-wrap:wrap;gap:12px;
+}
+.footer-nav a{display:flex;align-items:center;gap:4px;font-weight:500}
+.footer-note{
+  font-size:12px;color:var(--text-3);margin-top:24px;line-height:1.65;
+  max-width:540px;text-align:center;margin-left:auto;margin-right:auto;
+}
+
+/* ============================================================
+   ANIMATIONS
+   ============================================================ */
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+.section{animation:fadeUp .4s ease both}
+.section:nth-child(2){animation-delay:.05s}
+.section:nth-child(3){animation-delay:.10s}
+.section:nth-child(4){animation-delay:.15s}
+.section:nth-child(5){animation-delay:.20s}
+.section:nth-child(6){animation-delay:.25s}
+.section:nth-child(7){animation-delay:.30s}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media(max-width:600px){
+  .wrap{padding:24px 16px 60px}
+  .hero-text h1{font-size:22px}
+  .char-item{flex-direction:column;gap:3px}
+  .char-item .char-name{min-width:0}
+  .variant-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- BREADCRUMB -->
+  <nav class="breadcrumb">
+    <a href="/">Q42</a><span class="sep">›</span>
+    <a href="/profiles/">Domain Quality Profiles</a><span class="sep">›</span>
+    E-commerce
+  </nav>
+
+  <!-- ====== HERO ====== -->
+  <div class="hero">
+    <div class="hero-text">
+      <h1><span class="num">01</span> E-commerce / Online Shop</h1>
+      <p class="subtitle">
+        Transactional systems for selling goods or services online.
+        Quality priorities centre on fast response under peak load,
+        reliable order processing, payment security, and conversion-optimised user experience.
+      </p>
+      <div class="pills">
+        <span class="pill pill-audience">mass-market</span>
+        <span class="pill pill-reg">light regulation</span>
+        <span class="pill pill-platform">web</span>
+        <span class="pill pill-interact">transactional</span>
+        <span class="pill pill-crit">business-critical</span>
+      </div>
+      <div class="pace">
+        <span>Change pace</span>
+        <span class="pace-dot on"></span>
+        <span class="pace-dot on"></span>
+        <span class="pace-dot on"></span>
+        <span style="font-style:italic">continuous</span>
+      </div>
+    </div>
+
+    <!-- RADAR CHART (inline SVG) -->
+    <div class="radar-wrap">
+      <svg viewBox="0 0 240 240" width="100%" height="100%">
+        <defs>
+          <style>
+            .radar-label{font-family:'DM Sans',sans-serif;font-size:9px;fill:var(--text-3);font-weight:500}
+            .radar-grid{stroke:var(--border);stroke-width:.5;fill:none}
+            .radar-area{fill:var(--g400);fill-opacity:.15;stroke:var(--g400);stroke-width:1.5}
+            .radar-dot{fill:var(--g400);r:3}
+          </style>
+        </defs>
+        <!-- Grid rings -->
+        <circle cx="120" cy="120" r="80" class="radar-grid"/>
+        <circle cx="120" cy="120" r="60" class="radar-grid" opacity=".6"/>
+        <circle cx="120" cy="120" r="40" class="radar-grid" opacity=".4"/>
+        <circle cx="120" cy="120" r="20" class="radar-grid" opacity=".2"/>
+        <!-- Grid spokes (9 dimensions at 40° intervals) -->
+        <line x1="120" y1="120" x2="120" y2="40" class="radar-grid" opacity=".3"/>
+        <line x1="120" y1="120" x2="175.3" y2="53.4" class="radar-grid" opacity=".3"/>
+        <line x1="120" y1="120" x2="197.8" y2="106.2" class="radar-grid" opacity=".3"/>
+        <line x1="120" y1="120" x2="175.3" y2="166.2" class="radar-grid" opacity=".3"/>
+        <line x1="120" y1="120" x2="120" y2="200" class="radar-grid" opacity=".3"/>
+        <line x1="120" y1="120" x2="64.7" y2="166.2" class="radar-grid" opacity=".3"/>
+        <line x1="120" y1="120" x2="42.2" y2="106.2" class="radar-grid" opacity=".3"/>
+        <line x1="120" y1="120" x2="64.7" y2="53.4" class="radar-grid" opacity=".3"/>
+        <line x1="120" y1="120" x2="120" y2="40" class="radar-grid" opacity=".3"/>
+        <!-- Data area: efficient=.9, reliable=.85, secure=.8, usable=.85, operable=.6, suitable=.55, maintainable=.5, flexible=.4, safe=.2 -->
+        <polygon class="radar-area" points="
+          120,48
+          169.7,59.1
+          186.2,108.9
+          169.7,157.5
+          120,152
+          75.9,148.5
+          62,108.9
+          76.7,72.7
+          120,48
+        "/>
+        <circle cx="120" cy="48" class="radar-dot"/>
+        <circle cx="169.7" cy="59.1" class="radar-dot"/>
+        <circle cx="186.2" cy="108.9" class="radar-dot"/>
+        <circle cx="169.7" cy="157.5" class="radar-dot"/>
+        <circle cx="120" cy="152" class="radar-dot"/>
+        <circle cx="75.9" cy="148.5" class="radar-dot"/>
+        <circle cx="62" cy="108.9" class="radar-dot"/>
+        <circle cx="76.7" cy="72.7" class="radar-dot"/>
+        <!-- Labels -->
+        <text x="120" y="28" text-anchor="middle" class="radar-label" fill="var(--dim-efficient)">#efficient</text>
+        <text x="192" y="50" text-anchor="start" class="radar-label" fill="var(--dim-reliable)">#reliable</text>
+        <text x="210" y="112" text-anchor="start" class="radar-label" fill="var(--dim-secure)">#secure</text>
+        <text x="186" y="178" text-anchor="start" class="radar-label" fill="var(--dim-usable)">#usable</text>
+        <text x="120" y="218" text-anchor="middle" class="radar-label" fill="var(--dim-operable)">#operable</text>
+        <text x="48" y="178" text-anchor="end" class="radar-label" fill="var(--dim-suitable)">#suitable</text>
+        <text x="28" y="112" text-anchor="end" class="radar-label" fill="var(--dim-maintainable)">#maintainable</text>
+        <text x="50" y="50" text-anchor="end" class="radar-label" fill="var(--dim-flexible)">#flexible</text>
+      </svg>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ====== VARIANTS ====== -->
+  <div class="section">
+    <h2 class="section-title">Variants</h2>
+    <p class="section-sub">This base profile covers what all online shops share. Your product domain adds specific quality shifts:</p>
+
+    <div class="variant-grid">
+
+      <div class="variant-card">
+        <h4>Ticketing / Events</h4>
+        <div class="v-example">Konzerttickets, Flüge, Hotel</div>
+        <p>Extreme peak concurrency — thousands competing for the same item simultaneously. Fairness, queue management, and elastic scalability dominate.</p>
+        <div class="v-chars">
+          <span class="v-char">elasticity</span>
+          <span class="v-char">fairness</span>
+          <span class="v-char">response time</span>
+          <span class="v-char">atomicity</span>
+        </div>
+      </div>
+
+      <div class="variant-card">
+        <h4>Regulated goods</h4>
+        <div class="v-example">Medikamente, Alkohol, Waffen</div>
+        <p>Legal compliance shifts from "light" to "compliance-heavy." Age verification, prescription workflows, geo-restrictions, audit trails.</p>
+        <div class="v-chars">
+          <span class="v-char">compliance</span>
+          <span class="v-char">auditability</span>
+          <span class="v-char">data protection</span>
+          <span class="v-char">access control</span>
+        </div>
+      </div>
+
+      <div class="variant-card">
+        <h4>Custom / print-on-demand</h4>
+        <div class="v-example">Fotobücher, T-Shirt-Druck, Möbel</div>
+        <p>Long asynchronous fulfilment chains. Order status tracking, configurator usability, and data integrity across production steps.</p>
+        <div class="v-chars">
+          <span class="v-char">traceability</span>
+          <span class="v-char">consistency</span>
+          <span class="v-char">operability</span>
+          <span class="v-char">configurability</span>
+        </div>
+      </div>
+
+      <div class="variant-card">
+        <h4>Fashion / high-return</h4>
+        <div class="v-example">Kleidung, Schuhe, Accessoires</div>
+        <p>Return rates of 40–60% shape the system: reverse logistics integration, visual product presentation, size/fit recommendation quality.</p>
+        <div class="v-chars">
+          <span class="v-char">accuracy</span>
+          <span class="v-char">interoperability</span>
+          <span class="v-char">usability</span>
+          <span class="v-char">appearance</span>
+        </div>
+      </div>
+
+      <div class="variant-card">
+        <h4>Marketplace / multi-vendor</h4>
+        <div class="v-example">Amazon-Modell, Etsy, B2B-Plattform</div>
+        <p>Multi-tenancy, vendor isolation, trust/rating systems, split payments. Quality concerns overlap with the SaaS/B2B profile.</p>
+        <div class="v-chars">
+          <span class="v-char">multi-tenancy</span>
+          <span class="v-char">isolation</span>
+          <span class="v-char">accountability</span>
+          <span class="v-char">scalability</span>
+        </div>
+      </div>
+
+      <div class="variant-card">
+        <h4>Subscription / recurring</h4>
+        <div class="v-example">Abo-Boxen, SaaS-Lizenzen, Streaming</div>
+        <p>Billing cycle reliability, churn-prevention UX, usage metering, prorating and plan changes without data loss.</p>
+        <div class="v-chars">
+          <span class="v-char">reliability</span>
+          <span class="v-char">data integrity</span>
+          <span class="v-char">flexibility</span>
+          <span class="v-char">transparency</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ====== CURATED CHARACTERISTICS ====== -->
+  <div class="section">
+    <h2 class="section-title">Curated characteristics</h2>
+    <p class="section-sub">Starting set for e-commerce — adapt to your context. Links go to full Q42 definitions.</p>
+
+    <!-- Critical -->
+    <div class="char-group">
+      <div class="char-group-title">
+        <span class="badge badge-critical">Critical</span>
+        Typically non-negotiable for any online shop
+      </div>
+      <ul class="char-list">
+        <li class="char-item">
+          <span class="char-name"><a href="/qualities/availability">Availability</a></span>
+          <span class="char-dims"><span class="dim-tag" style="color:var(--dim-reliable)">#reliable</span></span>
+          <span class="char-note">Downtime = lost revenue. 99.9%+ during peak hours.</span>
+        </li>
+        <li class="char-item">
+          <span class="char-name"><a href="/qualities/response-time">Response time</a></span>
+          <span class="char-dims"><span class="dim-tag" style="color:var(--dim-efficient)">#efficient</span></span>
+          <span class="char-note">Page load &lt;2s. Checkout &lt;1s. Every 100ms costs conversion.</span>
+        </li>
+        <li class="char-item">
+          <span class="char-name"><a href="/qualities/data-integrity">Data integrity</a></span>
+          <span class="char-dims"><span class="dim-tag" style="color:var(--dim-reliable)">#reliable</span></span>
+          <span class="char-note">Orders, inventory, payments must be consistent at all times.</span>
+        </li>
+        <li class="char-item">
+          <span class="char-name"><a href="/qualities/confidentiality">Confidentiality</a></span>
+          <span class="char-dims"><span class="dim-tag" style="color:var(--dim-secure)">#secure</span></span>
+          <span class="char-note">Payment data, personal data. PCI-DSS, GDPR compliance.</span>
+        </li>
+        <li class="char-item">
+          <span class="char-name"><a href="/qualities/authenticity">Authenticity</a></span>
+          <span class="char-dims"><span class="dim-tag" style="color:var(--dim-secure)">#secure</span></span>
+          <span class="char-note">User identity, payment authorization, fraud prevention.</span>
+        </li>
+        <li class="char-item">
+          <span class="char-name"><a href="/qualities/accessibility">Accessibility</a></span>
+          <span class="char-dims"><span class="dim-tag" style="color:var(--dim-usable)">#usable</span></span>
+          <span class="char-note">EAA / WCAG 2.1 AA — now legally required in EU for e-commerce.</span>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Important -->
+    <div class="char-group">
+      <div class="char-group-title">
+        <span class="badge badge-important">Important</span>
+        Highly relevant for most online shops
+      </div>
+      <ul class="char-list">
+        <li class="char-item">
+          <span class="char-name"><a href="/qualities/scalability">Scalability</a></span>
+          <span class="char-dims"><span class="dim-tag" style="color:var(--dim-efficient)">#efficient</span></span>
+          <span class="char-note">Black Friday, flash sales, campaign peaks.</span>
+        </li>
+        <li class="char-item">
+          <span class="char-name"><a href="/qualities/recoverability">Recoverability</a></span>
+          <span class="char-dims"><span class="dim-tag" style="color:var(--dim-reliable)">#reliable</span></span>
+          <span class="char-note">Order state recovery after failures. No lost carts, no duplicate charges.</span>
+        </li>
+        <li class="char-item">
+          <span class="char-name"><a href="/qualities/usability">Usability</a></span>
+          <span class="char-dims"><span class="dim-tag" style="color:var(--dim-usable)">#usable</span></span>
+          <span class="char-note">Checkout friction, search quality, mobile experience.</span>
+        </li>
+        <li class="char-item">
+          <span class="char-name"><a href="/qualities/interoperability">Interoperability</a></span>
+          <span class="char-dims"><span class="dim-tag" style="color:var(--dim-flexible)">#flexible</span></span>
+          <span class="char-note">Payment gateways, shipping providers, ERP, PIM, CRM integration.</span>
+        </li>
+        <li class="char-item">
+          <span class="char-name"><a href="/qualities/deployability">Deployability</a></span>
+          <span class="char-dims"><span class="dim-tag" style="color:var(--dim-operable)">#operable</span></span>
+          <span class="char-note">Zero-downtime deployments. Feature flags for A/B testing.</span>
+        </li>
+        <li class="char-item">
+          <span class="char-name"><a href="/qualities/monitorability">Monitorability</a></span>
+          <span class="char-dims"><span class="dim-tag" style="color:var(--dim-operable)">#operable</span></span>
+          <span class="char-note">Real-time conversion funnels, error rate alerts, performance budgets.</span>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Consider -->
+    <div class="char-group">
+      <div class="char-group-title">
+        <span class="badge badge-consider">Consider</span>
+        Relevant depending on variant and scale
+      </div>
+      <ul class="char-list">
+        <li class="char-item">
+          <span class="char-name"><a href="/qualities/elasticity">Elasticity</a></span>
+          <span class="char-dims"><span class="dim-tag" style="color:var(--dim-efficient)">#efficient</span></span>
+          <span class="char-note">Auto-scale under unpredictable load spikes. See variant: Ticketing.</span>
+        </li>
+        <li class="char-item">
+          <span class="char-name"><a href="/qualities/configurability">Configurability</a></span>
+          <span class="char-dims"><span class="dim-tag" style="color:var(--dim-flexible)">#flexible</span></span>
+          <span class="char-note">Product configurators, personalization, A/B test infrastructure.</span>
+        </li>
+        <li class="char-item">
+          <span class="char-name"><a href="/qualities/compliance">Compliance</a></span>
+          <span class="char-dims"><span class="dim-tag" style="color:var(--dim-suitable)">#suitable</span></span>
+          <span class="char-note">Pharma, alcohol, weapons — see variant: Regulated goods.</span>
+        </li>
+        <li class="char-item">
+          <span class="char-name"><a href="/qualities/testability">Testability</a></span>
+          <span class="char-dims"><span class="dim-tag" style="color:var(--dim-maintainable)">#maintainable</span></span>
+          <span class="char-note">Checkout flows, payment integration, multi-browser testing.</span>
+        </li>
+        <li class="char-item">
+          <span class="char-name"><a href="/qualities/internationalization">Internationalization</a></span>
+          <span class="char-dims"><span class="dim-tag" style="color:var(--dim-suitable)">#suitable</span></span>
+          <span class="char-note">Multi-language, multi-currency, locale-specific tax rules.</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ====== EXAMPLE REQUIREMENTS ====== -->
+  <div class="section">
+    <h2 class="section-title">Example requirements</h2>
+    <p class="section-sub">Concrete, measurable starting points — drawn from Q42's requirements collection.</p>
+
+    <div class="req-list">
+      <div class="req-card">
+        <div class="req-text">Product pages load within <strong>1.5 seconds</strong> (P95) under normal load and within <strong>3 seconds</strong> during peak events (10× baseline traffic), measured at the CDN edge.</div>
+        <div class="req-meta">
+          <span style="color:var(--dim-efficient)">#efficient</span>
+          <a href="/requirements/response-time-web">→ Response time (web)</a>
+        </div>
+      </div>
+      <div class="req-card">
+        <div class="req-text">The ordering system processes each checkout as an <strong>atomic transaction</strong>: either the complete order (including payment capture and inventory reservation) succeeds, or no state change persists. Zero partial orders.</div>
+        <div class="req-meta">
+          <span style="color:var(--dim-reliable)">#reliable</span>
+          <a href="/requirements/atomicity">→ Atomicity</a>
+        </div>
+      </div>
+      <div class="req-card">
+        <div class="req-text">No unencrypted payment card data on persistent storage. <strong>Zero PAN values</strong> stored outside the PCI-DSS compliant payment processor's scope.</div>
+        <div class="req-meta">
+          <span style="color:var(--dim-secure)">#secure</span>
+          <a href="/requirements/confidentiality-payment">→ Confidentiality (payment)</a>
+        </div>
+      </div>
+      <div class="req-card">
+        <div class="req-text">A first-time user completes a purchase (from product page to order confirmation) in <strong>under 4 minutes</strong>, without requiring account registration.</div>
+        <div class="req-meta">
+          <span style="color:var(--dim-usable)">#usable</span>
+          <a href="/requirements/task-efficiency">→ Task efficiency</a>
+        </div>
+      </div>
+      <div class="req-card">
+        <div class="req-text">New code reaches production within <strong>2 hours</strong> of merge to main. Rollback to previous version completes within <strong>5 minutes</strong>.</div>
+        <div class="req-meta">
+          <span style="color:var(--dim-operable)">#operable</span>
+          <a href="/requirements/deployment-frequency">→ Deployment frequency</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ====== RELEVANT STANDARDS ====== -->
+  <div class="section">
+    <h2 class="section-title">Relevant standards</h2>
+    <p class="section-sub">Standards most commonly applicable to e-commerce systems.</p>
+
+    <div class="std-grid">
+      <div class="std-card">
+        <div class="std-name"><a href="/standards/pci-dss">PCI-DSS</a></div>
+        <div class="std-desc">Payment card data security. Required for all systems handling card payments.</div>
+      </div>
+      <div class="std-card">
+        <div class="std-name"><a href="/standards/gdpr">GDPR</a></div>
+        <div class="std-desc">EU data protection. Customer data, consent management, right to deletion.</div>
+      </div>
+      <div class="std-card">
+        <div class="std-name"><a href="/standards/wcag">WCAG 2.1 / EAA</a></div>
+        <div class="std-desc">Web accessibility. Legally required for EU e-commerce from 2025.</div>
+      </div>
+      <div class="std-card">
+        <div class="std-name"><a href="/standards/iso-27001">ISO/IEC 27001</a></div>
+        <div class="std-desc">Information security management. Often required by enterprise clients / B2B.</div>
+      </div>
+      <div class="std-card">
+        <div class="std-name"><a href="/standards/iso-25010">ISO/IEC 25010</a></div>
+        <div class="std-desc">Product quality model. The foundational standard behind Q42's structure.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ====== CHANGE PACE ====== -->
+  <div class="section">
+    <div class="pace-section">
+      <h3>Change pace: continuous (●●●)</h3>
+      <p>
+        E-commerce systems typically deploy multiple times per day. Seasonal campaigns, A/B tests,
+        payment provider updates, and competitive pressure drive constant change.
+        This means the following quality characteristics carry extra weight:
+      </p>
+      <div class="pace-chars">
+        <span class="pace-char">deployability</span>
+        <span class="pace-char">testability</span>
+        <span class="pace-char">modularity</span>
+        <span class="pace-char">backward compatibility</span>
+        <span class="pace-char">monitorability</span>
+        <span class="pace-char">change failure rate</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====== FOOTER NAV ====== -->
+  <nav class="footer-nav">
+    <a href="/profiles/">← All profiles</a>
+    <span style="color:var(--text-3)">Profile 01 of 12</span>
+    <a href="/profiles/saas-cloud/">SaaS / Cloud (B2B) →</a>
+  </nav>
+
+  <p class="footer-note">
+    This profile is a <strong>starting point</strong>, not a checklist.
+    Your system will have unique quality needs — use the closest match as a springboard,
+    then adapt. <a href="/contact/">Feedback welcome.</a>
+  </p>
+
+</div>
+</body>
+</html>

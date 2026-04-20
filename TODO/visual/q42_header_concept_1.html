@@ -1,0 +1,190 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Q42 Header Concept 1</title>
+<style>
+  :root {
+    --dim: #1A3A5C;
+    --char: #00B8F5;
+    --req: #FFB3B3;
+    --std: #FFC95C;
+    --art: #E6DAF2;
+    --app: #92EF80;
+    --header-green: #357360;
+    --header-text: #DEEFB7;
+    --counter: #FFAD80;
+    --ink: #0f172a;
+    --soft-ink: #334155;
+    --line: rgba(255,255,255,0.08);
+    --cream: #f7f7f4;
+    --shadow: 0 30px 80px rgba(15, 23, 42, 0.18);
+  }
+  * { box-sizing: border-box; }
+  html, body { margin:0; padding:0; font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background:#0b1220; }
+  body { min-height:100vh; }
+  .frame { width: 1600px; height: 900px; overflow:hidden; position:relative; }
+  .eyebrow {
+    display:inline-flex; align-items:center; gap:12px;
+    font-size: 15px; letter-spacing: .08em; text-transform: uppercase; font-weight: 700;
+    opacity:.9;
+  }
+  .dot { width:8px; height:8px; border-radius:99px; background: currentColor; }
+  h1 {
+    margin: 24px 0 18px;
+    font-size: 64px; line-height: 1.05; letter-spacing: -0.04em; max-width: 780px;
+  }
+  p.lead {
+    margin:0; font-size: 23px; line-height: 1.5; max-width: 760px; opacity: .92;
+  }
+  .actions { display:flex; gap:18px; margin-top:34px; flex-wrap: wrap; }
+  .btn {
+    display:inline-flex; align-items:center; justify-content:center;
+    padding: 15px 22px; border-radius: 16px; font-size: 18px; font-weight: 700;
+    text-decoration:none; border:1px solid transparent;
+  }
+  .btn.primary { background:#ffffff; color:#0f172a; }
+  .btn.secondary { background:transparent; color:inherit; border-color: currentColor; opacity:.88; }
+  .stats {
+    display:grid; grid-template-columns: repeat(4, 1fr); gap: 16px;
+    margin-top: 34px;
+  }
+  .stat {
+    padding: 18px 20px; border-radius: 18px; border:1px solid rgba(255,255,255,.1); backdrop-filter: blur(8px);
+  }
+  .stat b { display:block; font-size: 34px; line-height:1; margin-bottom:8px; letter-spacing:-0.03em; }
+  .stat span { font-size: 15px; opacity:.82; }
+  .pill-row { display:flex; gap:12px; flex-wrap:wrap; margin-top: 26px; }
+  .pill {
+    display:inline-flex; align-items:center; gap:10px;
+    border-radius:999px; padding:10px 14px; font-size:15px; font-weight:700;
+  }
+  .pill i { width: 10px; height: 10px; border-radius:99px; display:inline-block; }
+  .label {
+    position:absolute; top:32px; right:32px;
+    padding:10px 14px; border-radius:999px; font-size:14px; font-weight:700; letter-spacing:.04em; text-transform:uppercase;
+    background: rgba(255,255,255,.12); color:#fff; border:1px solid rgba(255,255,255,.16);
+    backdrop-filter: blur(6px);
+  }
+</style>
+</head>
+<body>
+<div class="frame concept1">
+  <style>
+    .concept1 {
+      color:#eef6ea;
+      background:
+        radial-gradient(circle at 18% 18%, rgba(0,184,245,.20), transparent 34%),
+        radial-gradient(circle at 88% 22%, rgba(146,239,128,.16), transparent 26%),
+        linear-gradient(135deg, #0d1726 0%, #13263a 48%, #0d1623 100%);
+    }
+    .concept1::before {
+      content:"";
+      position:absolute; inset:0;
+      background:
+        linear-gradient(rgba(255,255,255,.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.06) 1px, transparent 1px);
+      background-size: 72px 72px;
+      mask-image: linear-gradient(to bottom, rgba(0,0,0,.95), rgba(0,0,0,.35));
+      opacity:.35;
+    }
+    .mesh {
+      position:absolute; inset:0; opacity:.6;
+    }
+    .content {
+      position:relative; z-index:2; padding: 92px 96px;
+      width: 900px;
+    }
+    .eyebrow { color:#c8e6f5; }
+    .stat {
+      background: rgba(255,255,255,.04);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.06);
+    }
+    .pill { background: rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.10); }
+    .mesh-card {
+      position:absolute; right: 86px; bottom: 94px; width: 430px; height: 310px; z-index:2;
+      border-radius: 28px; background: rgba(10, 18, 31, 0.52); box-shadow: var(--shadow);
+      border:1px solid rgba(255,255,255,.08); backdrop-filter: blur(10px); overflow:hidden;
+    }
+    .mesh-card .cap {
+      padding: 18px 22px; font-size: 14px; letter-spacing: .08em; text-transform: uppercase; font-weight: 800;
+      color:#c8e6f5; border-bottom:1px solid rgba(255,255,255,.08);
+    }
+    .mesh-card .body {
+      padding: 22px 24px;
+      font-size: 16px; line-height: 1.5; color: rgba(255,255,255,.85);
+    }
+    .mini-legend { display:grid; grid-template-columns: 1fr 1fr; gap:10px 14px; margin-top: 16px; }
+    .mini-legend span { display:flex; align-items:center; gap:10px; }
+    .mini-legend i { width:12px; height:12px; border-radius:99px; display:inline-block; }
+  </style>
+
+  <svg class="mesh" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <g opacity=".65">
+      <path d="M1050 150C1180 140 1290 190 1380 290" stroke="#85DCA0" stroke-width="2"/>
+      <path d="M1040 250C1180 260 1300 320 1398 410" stroke="#00B8F5" stroke-width="2"/>
+      <path d="M985 345C1120 360 1228 430 1350 540" stroke="#FFB3B3" stroke-width="2"/>
+      <path d="M850 420C990 420 1110 465 1240 585" stroke="#FFC95C" stroke-width="2"/>
+      <path d="M1020 560C1120 612 1260 640 1400 735" stroke="#92EF80" stroke-width="2"/>
+      <path d="M925 190C980 230 1020 270 1040 340" stroke="rgba(255,255,255,.52)" stroke-width="2"/>
+      <path d="M890 330C948 360 990 410 1015 475" stroke="rgba(255,255,255,.52)" stroke-width="2"/>
+      <path d="M815 505C900 520 970 565 1045 640" stroke="rgba(255,255,255,.52)" stroke-width="2"/>
+      <circle cx="905" cy="188" r="17" fill="#1A3A5C" stroke="#C8E6F5" stroke-width="2"/>
+      <circle cx="1040" cy="150" r="16" fill="#00B8F5" stroke="#003366" stroke-width="2"/>
+      <circle cx="1038" cy="252" r="14" fill="#FFC95C" stroke="#2C3E50" stroke-width="2"/>
+      <circle cx="981" cy="344" r="16" fill="#FFB3B3" stroke="#8B0000" stroke-width="2"/>
+      <circle cx="852" cy="420" r="18" fill="#1A3A5C" stroke="#C8E6F5" stroke-width="2"/>
+      <circle cx="1013" cy="476" r="16" fill="#92EF80" stroke="#1B5E20" stroke-width="2"/>
+      <circle cx="1047" cy="641" r="14" fill="#E6DAF2" stroke="#4A148C" stroke-width="2"/>
+      <circle cx="1240" cy="585" r="15" fill="#00B8F5" stroke="#003366" stroke-width="2"/>
+      <circle cx="1353" cy="540" r="16" fill="#FFC95C" stroke="#2C3E50" stroke-width="2"/>
+      <circle cx="1400" cy="736" r="17" fill="#92EF80" stroke="#1B5E20" stroke-width="2"/>
+      <circle cx="1380" cy="290" r="18" fill="#00B8F5" stroke="#003366" stroke-width="2"/>
+      <circle cx="1398" cy="411" r="15" fill="#FFB3B3" stroke="#8B0000" stroke-width="2"/>
+    </g>
+  </svg>
+
+  <div class="label">Concept 1 · Quiet Structural Mesh</div>
+
+  <div class="content">
+    <div class="eyebrow"><span class="dot"></span> arc42 Quality Model</div>
+    <h1>Navigate software and system quality with structure.</h1>
+    <p class="lead">A restrained splash header that frames Q42 as a connected knowledge system, not a marketing page. The visual language suggests relations, dependencies, and quality-driven architecture without literal screenshots or noise.</p>
+
+    <div class="actions">
+      <a class="btn primary" href="#">Explore the model</a>
+      <a class="btn secondary" href="#">Browse dimensions</a>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><b>216</b><span>quality characteristics</span></div>
+      <div class="stat"><b>138</b><span>example requirements</span></div>
+      <div class="stat"><b>42</b><span>quality standards</span></div>
+      <div class="stat"><b>21</b><span>solution approaches</span></div>
+    </div>
+
+    <div class="pill-row">
+      <span class="pill" style="color:#c8e6f5;"><i style="background:#1A3A5C;border:1px solid #C8E6F5"></i>Dimensions</span>
+      <span class="pill" style="color:#eaf8ff;"><i style="background:#00B8F5"></i>Characteristics</span>
+      <span class="pill" style="color:#ffe9e9;"><i style="background:#FFB3B3"></i>Requirements</span>
+      <span class="pill" style="color:#fff3d3;"><i style="background:#FFC95C"></i>Standards</span>
+      <span class="pill" style="color:#ecffe7;"><i style="background:#92EF80"></i>Approaches</span>
+    </div>
+  </div>
+
+  <div class="mesh-card">
+    <div class="cap">Why this direction</div>
+    <div class="body">
+      The dark neutral base modernizes the current green header while preserving the existing semantic colours for the content itself.
+      <div class="mini-legend">
+        <span><i style="background:#00B8F5"></i> precise</span>
+        <span><i style="background:#92EF80"></i> calm</span>
+        <span><i style="background:#FFC95C"></i> structured</span>
+        <span><i style="background:#FFB3B3"></i> non-distracting</span>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

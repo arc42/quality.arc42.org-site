@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Q42 Homepage Sketch A — Graph-Forward</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+/* ============================================================
+   SKETCH A — "Graph-Forward"
+   Concept: Minimal hero (one line + stats), then the FULL graph
+   dominates the viewport. Navigation bar provides all routes.
+   The small homepage graph is removed; full graph IS the homepage.
+   Below the graph: 3-column cards for Profiles, Qualities, Requirements.
+   ============================================================ */
+
+:root {
+  --font: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --mono: 'DM Mono', 'SF Mono', monospace;
+  --bg: #ffffff;
+  --bg-2: #f7f6f2;
+  --bg-3: #eeece5;
+  --text-1: #2c2c2a;
+  --text-2: #5f5e5a;
+  --text-3: #8a8880;
+  --border: rgba(0,0,0,0.09);
+  --accent: #00B8F5;
+  --quality: #00B8F5;
+  --req: #ffb3b3;
+  --req-text: #c0392b;
+  --std: #FFC95C;
+  --std-text: #856404;
+  --profile: #639922;
+  --profile-bg: #eaf3de;
+  --dim-reliable:#1a73b5; --dim-flexible:#7f77dd; --dim-efficient:#1d9e75;
+  --dim-usable:#d85a30; --dim-secure:#993556; --dim-safe:#e24b4a;
+  --dim-maintainable:#639922; --dim-suitable:#ba7517; --dim-operable:#378add;
+}
+
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:var(--font); background:var(--bg); color:var(--text-1); line-height:1.6; -webkit-font-smoothing:antialiased; }
+a { color:var(--accent); text-decoration:none; }
+a:hover { text-decoration:underline; }
+
+/* ---- HEADER / NAV ---- */
+.site-header {
+  display:flex; align-items:center; justify-content:space-between;
+  padding:12px 28px; border-bottom:1px solid var(--border);
+  background:var(--bg); position:sticky; top:0; z-index:100;
+}
+.header-left { display:flex; align-items:center; gap:12px; }
+.header-left img { width:36px; height:36px; border-radius:6px; }
+.header-left .brand { font-weight:700; font-size:16px; letter-spacing:-0.3px; }
+.header-left .brand span { color:var(--text-3); font-weight:400; }
+
+nav { display:flex; gap:6px; }
+nav a {
+  font-size:13px; font-weight:500; padding:6px 14px;
+  border-radius:8px; color:var(--text-2); transition:all .15s;
+}
+nav a:hover { background:var(--bg-2); color:var(--text-1); text-decoration:none; }
+nav a.active { background:var(--text-1); color:#fff; }
+
+.header-search {
+  display:flex; align-items:center; gap:6px;
+  background:var(--bg-2); border-radius:8px; padding:6px 12px;
+  font-size:13px; color:var(--text-3); border:1px solid var(--border);
+  cursor:pointer;
+}
+.header-search i { font-size:12px; }
+.header-search kbd { font-family:var(--mono); font-size:11px; background:var(--bg); padding:1px 5px; border-radius:4px; border:1px solid var(--border); }
+
+/* ---- COMPACT HERO ---- */
+.hero-compact {
+  padding:24px 28px 16px;
+  display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px;
+}
+.hero-compact h1 {
+  font-size:22px; font-weight:600; letter-spacing:-0.5px;
+}
+.hero-compact h1 span { color:var(--text-3); font-weight:400; }
+
+.stat-row { display:flex; gap:16px; flex-wrap:wrap; }
+.stat-chip {
+  display:inline-flex; align-items:center; gap:6px;
+  font-size:12px; font-weight:500; padding:4px 10px; border-radius:6px;
+  border:1px solid var(--border); color:var(--text-2);
+}
+.stat-chip .num { font-weight:700; font-size:14px; }
+.stat-chip.q .num  { color:var(--quality); }
+.stat-chip.r .num  { color:var(--req-text); }
+.stat-chip.s .num  { color:var(--std-text); }
+.stat-chip.p .num  { color:var(--profile); }
+
+/* ---- GRAPH AREA ---- */
+.graph-section {
+  margin:0 28px; border-radius:16px; overflow:hidden;
+  border:1px solid var(--border); background:var(--bg-2);
+  position:relative; min-height:520px;
+}
+.graph-toolbar {
+  display:flex; align-items:center; justify-content:space-between;
+  padding:10px 16px; border-bottom:1px solid var(--border); background:var(--bg);
+}
+.graph-toolbar .label { font-size:12px; font-weight:600; text-transform:uppercase; letter-spacing:.06em; color:var(--text-3); }
+.graph-filters { display:flex; gap:6px; }
+.graph-filters button {
+  font-family:var(--font); font-size:11px; font-weight:500;
+  padding:4px 10px; border-radius:6px; border:1px solid var(--border);
+  background:var(--bg); color:var(--text-2); cursor:pointer; transition:all .15s;
+}
+.graph-filters button:hover { border-color:var(--accent); color:var(--accent); }
+.graph-filters button.on { background:var(--text-1); color:#fff; border-color:var(--text-1); }
+
+.graph-canvas {
+  height:500px; display:flex; align-items:center; justify-content:center;
+  color:var(--text-3); font-size:14px; position:relative;
+}
+/* Simulated graph placeholder */
+.graph-canvas::after {
+  content:'Full interactive D3 force graph renders here — all qualities, requirements, standards, dimension tags.\A Double-click a node to open its page.';
+  white-space:pre-line; text-align:center; padding:40px;
+}
+
+.graph-hint {
+  position:absolute; bottom:12px; left:16px;
+  font-size:11px; color:var(--text-3); display:flex; align-items:center; gap:6px;
+}
+
+/* ---- THEME TAGS BAR (below graph) ---- */
+.theme-bar {
+  display:flex; align-items:center; gap:8px; padding:16px 28px; flex-wrap:wrap;
+}
+.theme-bar .label { font-size:12px; font-weight:600; color:var(--text-3); text-transform:uppercase; letter-spacing:.06em; margin-right:4px; white-space:nowrap; }
+.theme-tag {
+  font-size:12px; font-weight:500; padding:4px 12px; border-radius:20px;
+  border:1.5px solid; cursor:pointer; transition:all .15s;
+}
+.theme-tag:hover { opacity:.8; }
+.theme-tag[data-dim="reliable"]    { color:var(--dim-reliable); border-color:var(--dim-reliable); }
+.theme-tag[data-dim="flexible"]    { color:var(--dim-flexible); border-color:var(--dim-flexible); }
+.theme-tag[data-dim="efficient"]   { color:var(--dim-efficient); border-color:var(--dim-efficient); }
+.theme-tag[data-dim="usable"]      { color:var(--dim-usable); border-color:var(--dim-usable); }
+.theme-tag[data-dim="secure"]      { color:var(--dim-secure); border-color:var(--dim-secure); }
+.theme-tag[data-dim="safe"]        { color:var(--dim-safe); border-color:var(--dim-safe); }
+.theme-tag[data-dim="maintainable"]{ color:var(--dim-maintainable); border-color:var(--dim-maintainable); }
+.theme-tag[data-dim="suitable"]    { color:var(--dim-suitable); border-color:var(--dim-suitable); }
+.theme-tag[data-dim="operable"]    { color:var(--dim-operable); border-color:var(--dim-operable); }
+
+/* ---- 3-COLUMN CONTENT CARDS ---- */
+.content-grid {
+  display:grid; grid-template-columns:repeat(3,1fr); gap:20px;
+  padding:20px 28px 60px;
+}
+.content-card {
+  border-radius:14px; border:1px solid var(--border); padding:24px;
+  background:var(--bg); transition:box-shadow .2s;
+}
+.content-card:hover { box-shadow:0 4px 20px rgba(0,0,0,0.06); }
+.card-icon {
+  width:40px; height:40px; border-radius:10px; display:flex;
+  align-items:center; justify-content:center; font-size:18px;
+  margin-bottom:14px;
+}
+.card-icon.profiles { background:var(--profile-bg); color:var(--profile); }
+.card-icon.qualities { background:#e0f4ff; color:var(--quality); }
+.card-icon.requirements { background:#ffe8e8; color:var(--req-text); }
+
+.content-card h3 { font-size:16px; font-weight:600; margin-bottom:6px; }
+.content-card p { font-size:13px; color:var(--text-2); margin-bottom:16px; line-height:1.65; }
+.card-link {
+  font-size:13px; font-weight:600; display:inline-flex; align-items:center; gap:5px;
+}
+.card-link i { font-size:10px; }
+
+/* ---- SECONDARY ROW ---- */
+.secondary-grid {
+  display:grid; grid-template-columns:repeat(2,1fr); gap:20px;
+  padding:0 28px 60px;
+}
+.secondary-card {
+  border-radius:14px; border:1px solid var(--border); padding:20px 24px;
+  background:var(--bg); display:flex; align-items:center; gap:16px;
+}
+.secondary-card .sec-icon {
+  width:36px; height:36px; border-radius:8px; display:flex;
+  align-items:center; justify-content:center; font-size:15px; flex-shrink:0;
+}
+.secondary-card .sec-icon.standards { background:#fff3d6; color:var(--std-text); }
+.secondary-card .sec-icon.approaches { background:var(--profile-bg); color:var(--profile); }
+.secondary-card h4 { font-size:14px; font-weight:600; margin-bottom:2px; }
+.secondary-card p { font-size:12px; color:var(--text-2); }
+
+/* ---- FOOTER ---- */
+footer {
+  border-top:1px solid var(--border); padding:20px 28px;
+  font-size:12px; color:var(--text-3); text-align:center;
+}
+
+@media (max-width:768px) {
+  .content-grid { grid-template-columns:1fr; }
+  .secondary-grid { grid-template-columns:1fr; }
+  nav { display:none; }
+}
+</style>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<header class="site-header">
+  <div class="header-left">
+    <img src="https://quality.arc42.org/assets/img/arc42logosquare.webp" alt="arc42">
+    <div class="brand">Q42 <span>Quality Model</span></div>
+  </div>
+  <nav>
+    <a href="#" class="active">Home</a>
+    <a href="#">Qualities</a>
+    <a href="#">Profiles</a>
+    <a href="#">Requirements</a>
+    <a href="#">Standards</a>
+    <a href="#">Approaches</a>
+  </nav>
+  <div class="header-search">
+    <i class="fa fa-search"></i> Search qualities...
+    <kbd>/</kbd>
+  </div>
+</header>
+
+<!-- ===== COMPACT HERO ===== -->
+<div class="hero-compact">
+  <h1>Software Quality, <span>Made Navigable</span></h1>
+  <div class="stat-row">
+    <span class="stat-chip q"><span class="num">217</span> qualities</span>
+    <span class="stat-chip r"><span class="num">138</span> requirements</span>
+    <span class="stat-chip s"><span class="num">42</span> standards</span>
+    <span class="stat-chip p"><span class="num">12</span> profiles</span>
+  </div>
+</div>
+
+<!-- ===== THEME FILTER BAR ===== -->
+<div class="theme-bar">
+  <span class="label">Filter by theme</span>
+  <span class="theme-tag" data-dim="reliable">#reliable</span>
+  <span class="theme-tag" data-dim="flexible">#flexible</span>
+  <span class="theme-tag" data-dim="efficient">#efficient</span>
+  <span class="theme-tag" data-dim="usable">#usable</span>
+  <span class="theme-tag" data-dim="secure">#secure</span>
+  <span class="theme-tag" data-dim="safe">#safe</span>
+  <span class="theme-tag" data-dim="maintainable">#maintainable</span>
+  <span class="theme-tag" data-dim="suitable">#suitable</span>
+  <span class="theme-tag" data-dim="operable">#operable</span>
+</div>
+
+<!-- ===== FULL GRAPH (the centerpiece) ===== -->
+<section class="graph-section">
+  <div class="graph-toolbar">
+    <span class="label">Interactive Quality Graph</span>
+    <div class="graph-filters">
+      <button class="on">All</button>
+      <button>Qualities only</button>
+      <button>+ Requirements</button>
+      <button>+ Standards</button>
+    </div>
+  </div>
+  <div class="graph-canvas">
+    <span class="graph-hint"><i class="fa fa-info-circle"></i> Double-click any node to open its page. Scroll to zoom. Drag to pan.</span>
+  </div>
+</section>
+
+<!-- ===== 3-COLUMN ENTRY CARDS ===== -->
+<section class="content-grid">
+  <div class="content-card">
+    <div class="card-icon profiles"><i class="fa fa-layer-group"></i></div>
+    <h3>Domain Profiles</h3>
+    <p>Curated starting points for 12 system types. E-commerce, SaaS, banking, medical devices, mobile apps, and more — each with prioritised qualities and example requirements.</p>
+    <a class="card-link" href="#">Browse profiles <i class="fa fa-arrow-right"></i></a>
+  </div>
+  <div class="content-card">
+    <div class="card-icon qualities"><i class="fa fa-gem"></i></div>
+    <h3>Quality Characteristics</h3>
+    <p>217 quality terms from accessibility to zero-downtime, each defined, cross-linked, and mapped to standards. Browse A–Z or filter by theme.</p>
+    <a class="card-link" href="#">Explore qualities <i class="fa fa-arrow-right"></i></a>
+  </div>
+  <div class="content-card">
+    <div class="card-icon requirements"><i class="fa fa-bullseye"></i></div>
+    <h3>Example Requirements</h3>
+    <p>138 concrete, measurable quality scenarios with acceptance criteria — ready to adapt for your backlog. Each links to the qualities it specifies.</p>
+    <a class="card-link" href="#">Browse examples <i class="fa fa-arrow-right"></i></a>
+  </div>
+</section>
+
+<!-- ===== SECONDARY: Standards + Approaches ===== -->
+<section class="secondary-grid">
+  <div class="secondary-card">
+    <div class="sec-icon standards"><i class="fa fa-award"></i></div>
+    <div>
+      <h4>42 Industry Standards</h4>
+      <p>ISO 25010, GDPR, MISRA, WCAG and more — mapped to related qualities.</p>
+    </div>
+  </div>
+  <div class="secondary-card">
+    <div class="sec-icon approaches"><i class="fa fa-puzzle-piece"></i></div>
+    <div>
+      <h4>Solution Approaches</h4>
+      <p>Architectural tactics and patterns to achieve or improve qualities.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>arc42 Quality Model &middot; CC-BY-SA-4.0 &middot; Maintained by Gernot Starke &middot; Supported by INNOQ</p>
+</footer>
+
+</body>
+</html>

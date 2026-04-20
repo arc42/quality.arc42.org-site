@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Q42 Homepage Sketch C — Hybrid: Profiles + Graph</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+/* ============================================================
+   SKETCH C — "Hybrid"
+   Concept: Compact tagline hero (2 lines max), then a split
+   layout: left side = profile cards as primary entry, right
+   side = medium-sized graph with theme filters built-in.
+   Below: full-width sections for qualities, requirements,
+   standards, approaches — each as a compact row.
+   ============================================================ */
+
+:root {
+  --font: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --mono: 'DM Mono', 'SF Mono', monospace;
+  --bg: #ffffff;
+  --bg-2: #f7f6f2;
+  --bg-3: #eeece5;
+  --text-1: #2c2c2a;
+  --text-2: #5f5e5a;
+  --text-3: #8a8880;
+  --border: rgba(0,0,0,0.09);
+  --accent: #00B8F5;
+  --quality: #00B8F5;
+  --req-text: #c0392b;
+  --std-text: #856404;
+  --profile: #639922;
+  --profile-bg: #eaf3de;
+  --dim-reliable:#1a73b5; --dim-flexible:#7f77dd; --dim-efficient:#1d9e75;
+  --dim-usable:#d85a30; --dim-secure:#993556; --dim-safe:#e24b4a;
+  --dim-maintainable:#639922; --dim-suitable:#ba7517; --dim-operable:#378add;
+}
+
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:var(--font); background:var(--bg); color:var(--text-1); line-height:1.6; -webkit-font-smoothing:antialiased; }
+a { color:var(--accent); text-decoration:none; }
+a:hover { text-decoration:underline; }
+
+/* ---- HEADER ---- */
+.site-header {
+  display:flex; align-items:center; justify-content:space-between;
+  padding:12px 28px; border-bottom:1px solid var(--border);
+  background:var(--bg); position:sticky; top:0; z-index:100;
+}
+.header-left { display:flex; align-items:center; gap:12px; }
+.header-left img { width:36px; height:36px; border-radius:6px; }
+.header-left .brand { font-weight:700; font-size:16px; letter-spacing:-0.3px; }
+.header-left .brand span { color:var(--text-3); font-weight:400; }
+nav { display:flex; gap:4px; }
+nav a {
+  font-size:13px; font-weight:500; padding:6px 14px;
+  border-radius:8px; color:var(--text-2); transition:all .15s;
+}
+nav a:hover { background:var(--bg-2); color:var(--text-1); text-decoration:none; }
+nav a.active { background:var(--text-1); color:#fff; }
+.header-search {
+  display:flex; align-items:center; gap:6px;
+  background:var(--bg-2); border-radius:8px; padding:6px 12px;
+  font-size:13px; color:var(--text-3); border:1px solid var(--border);
+  cursor:pointer;
+}
+.header-search kbd { font-family:var(--mono); font-size:11px; background:var(--bg); padding:1px 5px; border-radius:4px; border:1px solid var(--border); }
+
+/* ---- COMPACT HERO ---- */
+.hero-line {
+  padding:28px 28px 8px;
+}
+.hero-line h1 {
+  font-size:24px; font-weight:700; letter-spacing:-0.6px; line-height:1.3;
+}
+.hero-line h1 span { color:var(--text-3); font-weight:400; }
+.hero-sub {
+  font-size:14px; color:var(--text-2); padding:0 28px 24px;
+  max-width:640px; line-height:1.6;
+}
+
+/* ---- SPLIT LAYOUT ---- */
+.split {
+  display:grid; grid-template-columns:340px 1fr; gap:0;
+  margin:0 28px; border:1px solid var(--border); border-radius:16px;
+  overflow:hidden; min-height:480px;
+}
+
+/* Left: profile entry */
+.split-left {
+  border-right:1px solid var(--border); background:var(--bg);
+  padding:20px; overflow-y:auto;
+}
+.split-left .section-label {
+  font-size:11px; font-weight:700; text-transform:uppercase;
+  letter-spacing:.08em; color:var(--text-3); margin-bottom:12px;
+  display:flex; align-items:center; gap:6px;
+}
+.split-left .section-label i { color:var(--profile); }
+
+.profile-list { display:flex; flex-direction:column; gap:8px; }
+.profile-item {
+  display:flex; align-items:center; gap:12px;
+  padding:10px 12px; border-radius:10px; border:1.5px dashed rgba(99,153,34,0.25);
+  cursor:pointer; transition:all .15s;
+}
+.profile-item:hover { border-color:var(--profile); background:var(--profile-bg); }
+.profile-item .p-icon {
+  width:32px; height:32px; border-radius:8px; display:flex;
+  align-items:center; justify-content:center; font-size:14px;
+  background:var(--profile-bg); color:var(--profile); flex-shrink:0;
+}
+.profile-item h4 { font-size:13px; font-weight:600; margin-bottom:1px; }
+.profile-item .p-meta { font-size:11px; color:var(--text-3); }
+
+.view-all-profiles {
+  margin-top:12px; text-align:center;
+}
+.view-all-profiles a {
+  font-size:12px; font-weight:600; color:var(--profile);
+  display:inline-flex; align-items:center; gap:4px;
+}
+
+/* Left bottom: quick links */
+.quick-links {
+  margin-top:20px; padding-top:16px; border-top:1px solid var(--border);
+}
+.quick-links .section-label { margin-bottom:8px; }
+.ql-item {
+  display:flex; align-items:center; gap:10px;
+  padding:8px 10px; border-radius:8px; cursor:pointer; transition:all .15s;
+  font-size:13px; font-weight:500; color:var(--text-2);
+}
+.ql-item:hover { background:var(--bg-2); color:var(--text-1); text-decoration:none; }
+.ql-item i { width:18px; text-align:center; font-size:13px; }
+.ql-item .cnt { margin-left:auto; font-family:var(--mono); font-size:11px; color:var(--text-3); }
+
+/* Right: graph + theme filters */
+.split-right {
+  background:var(--bg-2); display:flex; flex-direction:column;
+}
+.graph-toolbar {
+  display:flex; align-items:center; justify-content:space-between;
+  padding:12px 16px; border-bottom:1px solid var(--border); background:var(--bg);
+  flex-shrink:0;
+}
+.graph-toolbar .label { font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.08em; color:var(--text-3); }
+.theme-chips { display:flex; gap:4px; flex-wrap:wrap; }
+.theme-chip {
+  font-family:var(--mono); font-size:10px; font-weight:500;
+  padding:3px 8px; border-radius:12px; cursor:pointer;
+  border:1.5px solid; transition:all .12s; background:transparent;
+}
+.theme-chip:hover { opacity:.7; }
+.theme-chip[data-d="reliable"]    { color:var(--dim-reliable); border-color:var(--dim-reliable); }
+.theme-chip[data-d="flexible"]    { color:var(--dim-flexible); border-color:var(--dim-flexible); }
+.theme-chip[data-d="efficient"]   { color:var(--dim-efficient); border-color:var(--dim-efficient); }
+.theme-chip[data-d="usable"]      { color:var(--dim-usable); border-color:var(--dim-usable); }
+.theme-chip[data-d="secure"]      { color:var(--dim-secure); border-color:var(--dim-secure); }
+.theme-chip[data-d="safe"]        { color:var(--dim-safe); border-color:var(--dim-safe); }
+.theme-chip[data-d="maintainable"]{ color:var(--dim-maintainable); border-color:var(--dim-maintainable); }
+.theme-chip[data-d="suitable"]    { color:var(--dim-suitable); border-color:var(--dim-suitable); }
+.theme-chip[data-d="operable"]    { color:var(--dim-operable); border-color:var(--dim-operable); }
+
+.graph-canvas {
+  flex:1; display:flex; align-items:center; justify-content:center;
+  color:var(--text-3); font-size:13px; position:relative; min-height:400px;
+}
+.graph-canvas::after {
+  content:'Full interactive D3 graph here.\A Click a theme chip above to filter.\A Double-click any node to open its page.';
+  white-space:pre-line; text-align:center; padding:40px;
+}
+
+/* ---- BELOW SPLIT: Content rows ---- */
+.content-rows {
+  padding:32px 28px 48px;
+  display:grid; grid-template-columns:repeat(3, 1fr); gap:16px;
+}
+.row-card {
+  padding:20px; border-radius:12px; border:1px solid var(--border);
+  transition:all .15s;
+}
+.row-card:hover { box-shadow:0 4px 16px rgba(0,0,0,0.05); }
+.row-card .rc-head {
+  display:flex; align-items:center; gap:10px; margin-bottom:10px;
+}
+.row-card .rc-icon {
+  width:32px; height:32px; border-radius:8px; display:flex;
+  align-items:center; justify-content:center; font-size:14px;
+}
+.rc-icon.q { background:#e0f4ff; color:var(--quality); }
+.rc-icon.r { background:#ffe8e8; color:var(--req-text); }
+.rc-icon.s { background:#fff3d6; color:var(--std-text); }
+.row-card h3 { font-size:14px; font-weight:600; }
+.row-card p { font-size:12px; color:var(--text-2); line-height:1.6; margin-bottom:12px; }
+.row-card .rc-link { font-size:12px; font-weight:600; display:inline-flex; align-items:center; gap:4px; }
+.row-card .rc-link i { font-size:9px; }
+
+/* ---- FOOTER ---- */
+footer {
+  border-top:1px solid var(--border); padding:20px 28px;
+  font-size:12px; color:var(--text-3); text-align:center;
+}
+
+@media (max-width:900px) {
+  .split { grid-template-columns:1fr; }
+  .split-left { border-right:none; border-bottom:1px solid var(--border); }
+  .content-rows { grid-template-columns:1fr; }
+  nav { display:none; }
+}
+</style>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<header class="site-header">
+  <div class="header-left">
+    <img src="https://quality.arc42.org/assets/img/arc42logosquare.webp" alt="arc42">
+    <div class="brand">Q42 <span>Quality Model</span></div>
+  </div>
+  <nav>
+    <a href="#" class="active">Home</a>
+    <a href="#">Qualities</a>
+    <a href="#">Profiles</a>
+    <a href="#">Requirements</a>
+    <a href="#">Standards</a>
+    <a href="#">Approaches</a>
+  </nav>
+  <div class="header-search">
+    <i class="fa fa-search"></i> Search qualities...
+    <kbd>/</kbd>
+  </div>
+</header>
+
+<!-- ===== COMPACT HERO ===== -->
+<div class="hero-line">
+  <h1>Software Quality, <span>Made Navigable</span></h1>
+</div>
+<p class="hero-sub">
+  Start from your domain, explore the quality graph, or search 217 characteristics directly.
+</p>
+
+<!-- ===== SPLIT: Profiles (left) + Graph (right) ===== -->
+<div class="split">
+
+  <!-- LEFT: Profiles + quick links -->
+  <div class="split-left">
+    <div class="section-label"><i class="fa fa-layer-group"></i> Start from your domain</div>
+    <div class="profile-list">
+      <div class="profile-item">
+        <div class="p-icon"><i class="fa fa-shopping-cart"></i></div>
+        <div>
+          <h4>E-commerce / Online Shop</h4>
+          <div class="p-meta">mass &middot; web &middot; transactional</div>
+        </div>
+      </div>
+      <div class="profile-item">
+        <div class="p-icon"><i class="fa fa-cloud"></i></div>
+        <div>
+          <h4>SaaS / Cloud Platform</h4>
+          <div class="p-meta">professional &middot; cloud &middot; collaborative</div>
+        </div>
+      </div>
+      <div class="profile-item">
+        <div class="p-icon"><i class="fa fa-building-columns"></i></div>
+        <div>
+          <h4>Banking / Financial</h4>
+          <div class="p-meta">mass &middot; compliance &middot; transactional</div>
+        </div>
+      </div>
+      <div class="profile-item">
+        <div class="p-icon"><i class="fa fa-heartbeat"></i></div>
+        <div>
+          <h4>Medical Device / Health IT</h4>
+          <div class="p-meta">safety-critical &middot; embedded &middot; monitoring</div>
+        </div>
+      </div>
+      <div class="profile-item">
+        <div class="p-icon"><i class="fa fa-mobile-screen-button"></i></div>
+        <div>
+          <h4>Mobile App (Consumer)</h4>
+          <div class="p-meta">mass &middot; mobile &middot; informational</div>
+        </div>
+      </div>
+      <div class="profile-item">
+        <div class="p-icon"><i class="fa fa-train"></i></div>
+        <div>
+          <h4>Railway / Transportation</h4>
+          <div class="p-meta">safety-critical &middot; embedded &middot; monitoring</div>
+        </div>
+      </div>
+    </div>
+    <div class="view-all-profiles">
+      <a href="#">View all 12 profiles <i class="fa fa-arrow-right"></i></a>
+    </div>
+
+    <div class="quick-links">
+      <div class="section-label">Also explore</div>
+      <a class="ql-item" href="#"><i class="fa fa-gem" style="color:var(--quality)"></i> All Qualities <span class="cnt">217</span></a>
+      <a class="ql-item" href="#"><i class="fa fa-bullseye" style="color:var(--req-text)"></i> Requirements <span class="cnt">138</span></a>
+      <a class="ql-item" href="#"><i class="fa fa-award" style="color:var(--std-text)"></i> Standards <span class="cnt">42</span></a>
+      <a class="ql-item" href="#"><i class="fa fa-puzzle-piece" style="color:var(--profile)"></i> Approaches <span class="cnt">21</span></a>
+    </div>
+  </div>
+
+  <!-- RIGHT: Graph with theme filters -->
+  <div class="split-right">
+    <div class="graph-toolbar">
+      <span class="label">Quality Graph</span>
+      <div class="theme-chips">
+        <span class="theme-chip" data-d="reliable">#reliable</span>
+        <span class="theme-chip" data-d="secure">#secure</span>
+        <span class="theme-chip" data-d="efficient">#efficient</span>
+        <span class="theme-chip" data-d="usable">#usable</span>
+        <span class="theme-chip" data-d="maintainable">#maint.</span>
+        <span class="theme-chip" data-d="flexible">#flexible</span>
+        <span class="theme-chip" data-d="safe">#safe</span>
+        <span class="theme-chip" data-d="suitable">#suitable</span>
+        <span class="theme-chip" data-d="operable">#operable</span>
+      </div>
+    </div>
+    <div class="graph-canvas"></div>
+  </div>
+</div>
+
+<!-- ===== CONTENT ROW: Qualities, Requirements, Standards ===== -->
+<section class="content-rows">
+  <div class="row-card">
+    <div class="rc-head">
+      <div class="rc-icon q"><i class="fa fa-gem"></i></div>
+      <h3>217 Quality Characteristics</h3>
+    </div>
+    <p>From accessibility to zero-downtime — each defined, cross-linked to related qualities, and mapped to industry standards.</p>
+    <a class="rc-link" href="#">Browse A–Z <i class="fa fa-arrow-right"></i></a>
+  </div>
+  <div class="row-card">
+    <div class="rc-head">
+      <div class="rc-icon r"><i class="fa fa-bullseye"></i></div>
+      <h3>138 Example Requirements</h3>
+    </div>
+    <p>Concrete, testable quality scenarios with metrics and acceptance criteria. Adapt them for your project backlog.</p>
+    <a class="rc-link" href="#">Browse examples <i class="fa fa-arrow-right"></i></a>
+  </div>
+  <div class="row-card">
+    <div class="rc-head">
+      <div class="rc-icon s"><i class="fa fa-award"></i></div>
+      <h3>42 Industry Standards</h3>
+    </div>
+    <p>ISO 25010, GDPR, MISRA, WCAG and more — each mapped to the qualities and requirements it governs.</p>
+    <a class="rc-link" href="#">Browse standards <i class="fa fa-arrow-right"></i></a>
+  </div>
+</section>
+
+<footer>
+  <p>arc42 Quality Model &middot; CC-BY-SA-4.0 &middot; Maintained by Gernot Starke &middot; Supported by INNOQ</p>
+</footer>
+
+</body>
+</html>

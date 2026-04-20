@@ -1,0 +1,19 @@
+{% assign q42_dimensions = "efficient,flexible,maintainable,operable,reliable,safe,secure,suitable,usable" | split: "," %}
+
+<div class="dimension-grid-frame">
+  <ul class="tag-box inline">
+    {% for tag in q42_dimensions %}
+      {% assign qualities_count_for_tag = 0 %}
+      {% for quality in site.qualities %}
+        {% if quality.tags contains tag %}
+          {% assign qualities_count_for_tag = qualities_count_for_tag | plus: 1 %}
+        {% endif %}
+      {% endfor %}
+      <li>
+        <a class="hov tags dimension" href="{{ '/tag-' | append: tag | prepend: site.baseurl }}"><b>{{ tag }}</b>
+          <span>{{ qualities_count_for_tag }}</span>
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+</div>
