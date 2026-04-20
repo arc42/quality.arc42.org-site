@@ -52,6 +52,7 @@ That enables different _access patterns_ to this website:
 3. Start with asking your stakeholders for their generic or specific requirements - and then continue with 1. or 2.
 4. Finally, you might read through the list of [**example requirements**](/requirements).
 
+Reference [our domain language](/how-to-use-this-site/#our-domain-language) for a visual representation of terms.
 
 ### Stakeholder first
 
