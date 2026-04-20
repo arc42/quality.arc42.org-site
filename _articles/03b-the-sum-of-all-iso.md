@@ -88,7 +88,7 @@ And no, I did **not** press the "buy" button to collect all those documents.
 
 ### Practical Usefulness of SQuaRE
 
-As you might guess by now, I'm currently full of doubt wether the ISO 25000 clan of standards will ever have the chance to broadly succeed in industry, or if it will continue to remain a mistery to most development projects.
+As you might guess by now, I'm currently full of doubt wether the ISO 25000 clan of standards will ever have the chance to broadly succeed in industry, or if it will continue to remain a mystery to most development projects.
 
 I seriously doubt that many organizations are willing to cover the complete expenses. 
 Personally I invested in 25010, which I consider a valuable source, despite its [shortcomings](/articles/iso-25010-shortcomings).
