@@ -5,8 +5,6 @@ related: [observability, analysability, debuggability, mean-time-to-recovery]
 permalink: /requirements/production-anomalies-detectable-within-2-minutes
 ---
 
-<div class="quality-requirement" markdown="1">
-
 #### Context
 
 An e-commerce platform runs as a distributed system with multiple services.
@@ -24,5 +22,3 @@ A production anomaly occurs (e.g., elevated error rate, latency spike, resource 
 - Key runtime metrics (request rate, error rate, p95 latency, CPU, memory) are collected **at ≤ 30-second** granularity
 - Dashboards allow drill-down from system-wide overview to individual service metrics without custom queries
 - Alerting rules trigger automated notifications **within 90 seconds** of threshold breach
-
-</div>

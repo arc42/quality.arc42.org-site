@@ -3,9 +3,8 @@ title: Authenticity of a digital document
 tags: [secure, suitable]
 related: [authenticity, integrity]  
 permalink: /requirements/authenticity-of-digital-document
+source: "This scenario has been created with help from [ChatGPT](https://chat.openai.com) by using the prompt `create a quality scenario to describe an authenticity requirement`."
 ---
-
-<div class="quality-requirement" markdown="1">
 
 #### Context
 
@@ -27,11 +26,3 @@ A user attempts to verify the authenticity of a digital document.
 - System provides clear, user-friendly interface for initiating and understanding verification results
 - Audit trail searchable with complete document history retrievable within 30 seconds
 - Authenticity verification service maintains 99.99% uptime
-</div><br>
-
-
-
-Source: This scenario has been created with help from [ChatGPT](https://chat.openai.com) by using the prompt `create a quality scenario to describe an authenticity requirement`.
-
-
-

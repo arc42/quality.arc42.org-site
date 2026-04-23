@@ -5,8 +5,6 @@ related: [understandability, maintainability, readability, code-readability, leg
 permalink: /requirements/understandable-generated-code
 ---
 
-<div class="quality-requirement" markdown="1">
-
 #### Requirement
 
 Code generated from XML-based test specifications into Java, Kotlin, or Groovy must be understandable and safely modifiable by developers or testers without studying the generator internals.
@@ -20,5 +18,3 @@ Code generated from XML-based test specifications into Java, Kotlin, or Groovy m
 #### Monitoring Artifact
 
 Generator quality gate and release-readiness report for generated test code.
-
-</div><br>

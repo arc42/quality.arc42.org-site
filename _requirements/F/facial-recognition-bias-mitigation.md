@@ -5,7 +5,6 @@ related: [bias-mitigation, fairness, accountability, transparency]
 permalink: /requirements/facial-recognition-bias-mitigation
 ---
 
-<div class="quality-requirement" markdown="1">
 #### Context
 
 A facial recognition system is being developed for secure access control in a multinational corporation with employees from diverse demographic backgrounds. Previous facial recognition systems have shown significant disparities in accuracy across different demographic groups, particularly for individuals with darker skin tones and women. The organization is committed to ensuring equitable performance across all demographic groups to prevent discriminatory outcomes and maintain security integrity.
@@ -24,5 +23,3 @@ The facial recognition algorithm processes images captured by security cameras a
 - Transparent reporting of performance metrics across demographic groups in monthly system audits
 - Fallback authentication mechanism triggered automatically when confidence scores fall below predetermined threshold
 - Independent third-party testing for demographic performance disparities before deployment and annually thereafter
-
-</div><br>

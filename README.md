@@ -121,9 +121,18 @@ permalink: /requirements/unavailable-for-max-2-minutes
 
 Requirements use a **two-tier approach** for maximum clarity and usefulness as acceptance criteria:
 
+The `_layouts/requirements.html` layout automatically wraps the body of every file
+in `_requirements/` in the styled `.quality-requirement` card — write the body as
+plain Markdown, no `<div>` wrapper needed.
+
 **Tier 1** - Simple requirements (1-3 criteria, self-explanatory):
 ```markdown
-<div class="quality-requirement" markdown="1">
+---
+title: Quick unit tests
+tags: [efficient]
+related: [efficiency]
+permalink: /requirements/quick-unit-tests
+---
 
 #### Requirement
 All automated unit tests must execute quickly to enable rapid feedback.
@@ -131,13 +140,16 @@ All automated unit tests must execute quickly to enable rapid feedback.
 #### Acceptance Criteria
 - All unit tests complete in less than 180 seconds
 - Measured on standard CI/CD infrastructure
-
-</div>
 ```
 
 **Tier 2** - Complex requirements (4+ criteria, needs context):
 ```markdown
-<div class="quality-requirement" markdown="1">
+---
+title: Patient data quality
+tags: [reliable, safe]
+related: [data-quality]
+permalink: /requirements/patient-data-quality
+---
 
 #### Context
 Healthcare system manages patient data where poor quality could lead to medication errors.
@@ -146,18 +158,20 @@ Healthcare system manages patient data where poor quality could lead to medicati
 Patient data is entered, updated, or accessed throughout care journey.
 
 #### Acceptance Criteria
-- Patient duplicate detection rate ≥ 99.9%
+- Patient duplicate detection rate >= 99.9%
 - Critical fields 100% complete for active patients
 - Lab results available within 5 minutes
 - Data validation prevents 100% of impossible values
-
-</div>
 ```
+
+**Optional front-matter fields** rendered outside the card:
+- `source:` — attribution or citation (rendered as "Source: ..." below the card)
+- `note:` — meta-commentary (e.g., caveats, glossary) rendered below the card
 
 **Key principles:**
 - Use specific metrics with units (percentages, milliseconds, hours)
 - Make all criteria testable and measurable
-- See [REQUIREMENTS_TEMPLATE.md](REQUIREMENTS_TEMPLATE.md) for detailed guidance
+- Never add a `<div class="quality-requirement">` wrapper in the Markdown body — the layout handles it
 
 Standards (add under `_standards/your-standard.md`):
 ```yaml

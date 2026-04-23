@@ -5,8 +5,6 @@ related: [usability, user-experience, compliance, accessibility, inclusivity, in
 permalink: /requirements/usable-despite-color-blindness
 ---
 
-<div class="quality-requirement" markdown="1">
-
 #### Requirement
 
 All parts of the system must be usable by people with all types of color blindness.
@@ -21,8 +19,3 @@ All parts of the system must be usable by people with all types of color blindne
 - System fully usable by users with Tritanopia (blue blindness)
 - System fully usable by users with complete color blindness (achromatopsia)
 - No functionality relies solely on color differentiation
-
-</div><br>
-
-
-

@@ -5,8 +5,6 @@ related: [functionality, functional-appropriateness, interaction-capability, dis
 permalink: /requirements/search-and-graph-text-filter-available-on-q42
 ---
 
-<div class="quality-requirement" markdown="1">
-
 #### Context
 quality.arc42.org is a public software-architecture reference website with an interactive visual graph that software architects use to explore quality characteristics, related requirements, standards, and solution approaches. For these users, the characteristic `Functionality` matters because the site must provide working search and graph filtering so relevant content can be found quickly. Assumption: no external benchmark exists for this niche reference site, so the thresholds below are conservative release thresholds verified by the team.
 
@@ -20,5 +18,3 @@ A software architect searches for `Functionality` or uses the graph text filter 
 
 #### Monitoring Artifact
 Release-candidate UI regression dashboard with JavaScript-enabled and no-JavaScript fallback reports.
-
-</div>

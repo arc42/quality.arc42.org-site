@@ -5,8 +5,6 @@ related: [provability, safety, reliability, certifiability]
 permalink: /requirements/provable-railway-interlocking-safety
 ---
 
-<div class="quality-requirement" markdown="1">
-
 #### Context
 A computer-based interlocking (CBI) system must guarantee that conflicting routes are never cleared simultaneously, preventing train collisions. In compliance with safety standards such as **EN 50128 (SIL 4)**, the system's safety-critical logic must be "correct by construction" and its correctness mathematically provable. This requirement focuses on the **formal safety invariants** and mathematical proofs that demonstrate collision-free operation across all possible system states.
 
@@ -25,5 +23,3 @@ The formal safety model of the interlocking logic is submitted for mathematical 
 - [EN 50128: Formal Methods for Railway Safety](https://www.railengineer.co.uk/formal-methods-for-railway-safety/)
 - [The B-Method in Railway Industry (ClearSy)](https://link.springer.com/chapter/10.1007/978-3-032-12484-5_4)
 - [Case Study: METEOR Paris Metro Line 14 (Formal Methods Europe)](https://fmeurope.org/success-stories/meteor/)
-
-</div>

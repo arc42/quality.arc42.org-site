@@ -6,8 +6,6 @@ stakeholder: management, product-owner
 permalink: /requirements/avoid-common-vulnerabilities
 ---
 
-<div class="quality-requirement" markdown="1">
-
 #### Requirement
 
 The system must avoid common security vulnerabilities in every release and deployment.
@@ -23,8 +21,3 @@ The system must avoid common security vulnerabilities in every release and deplo
 - File upload restricted to safe file types only
 - Security decisions never rely on untrusted inputs
 - 100% of releases pass security vulnerability scanning for these common vulnerabilities
-
-</div><br>
-
-
-

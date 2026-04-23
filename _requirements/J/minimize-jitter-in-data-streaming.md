@@ -5,8 +5,6 @@ related: [jitter, predictability, latency]
 permalink: /requirements/minimize-jitter
 ---
 
-<div class="quality-requirement" markdown="1">
-
 #### Context
 
 Reduce and control [jitter](/qualities/jitter) in the real-time streaming of data. System operates under standard network conditions during operational phase.
@@ -22,5 +20,3 @@ Continuous transmission of real-time data from sensors over network.
 - System detects and logs instances of high jitter (above 5 milliseconds) in real-time
 - Alerts triggered for technical team when high jitter instances exceed 5% of total packets in any 10-minute window
 - During peak load times, allowable jitter can increase to maximum of 10 milliseconds, but such instances do not exceed 2% of total packets transmitted in 24-hour period
-
-</div><br>

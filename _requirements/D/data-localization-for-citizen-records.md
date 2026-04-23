@@ -5,8 +5,6 @@ related: [data-localization, data-sovereignty, compliance, privacy]
 permalink: /requirements/data-localization-for-citizen-records
 ---
 
-<div class="quality-requirement" markdown="1">
-
 #### Context
 
 A multi-country digital public-services platform stores citizen identity, tax, and benefits records for residents of several jurisdictions. Each jurisdiction requires that protected resident data be stored, processed, replicated, and recovered only inside its national boundary, and the Data Protection Officer needs continuous evidence that operations and recovery stay in-country.
@@ -26,5 +24,3 @@ A citizen record is created, updated, queried for processing, exported, replicat
 #### Monitoring Artifact
 
 Localization compliance dashboard combining jurisdiction-placement scans, transfer-control test results, failover exercise reports, and searchable audit-evidence SLIs.
-
-</div><br>

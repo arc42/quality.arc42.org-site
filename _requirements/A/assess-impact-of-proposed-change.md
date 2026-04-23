@@ -3,9 +3,8 @@ title: Assess impact of proposed change
 tags: [suitable, reliable]
 related: [analysability, reliability]
 permalink: /requirements/assess-impact-of-proposed-change
+source: "This scenario has been created with help from [ChatGPT](https://chat.openai.com) by using the prompt `create a quality scenario to describe an analysability requirement`."
 ---
-
-<div class="quality-requirement" markdown="1">
 
 #### Context
 
@@ -34,12 +33,3 @@ A software development team initiates an impact analysis for a proposed change t
   - Compliance verified through at least 3 different change scenarios
   - Failures documented and addressed
   - System maintains this analysability level for at least 90% of all modules
-
-</div><br>
-
-
-
-Source: This scenario has been created with help from [ChatGPT](https://chat.openai.com) by using the prompt `create a quality scenario to describe an analysability requirement`.
-
-
-

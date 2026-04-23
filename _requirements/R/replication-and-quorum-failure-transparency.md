@@ -5,7 +5,6 @@ related: [failure-transparency, availability, resilience, fault-tolerance]
 permalink: /requirements/replication-and-quorum-failure-transparency
 ---
 
-<div class="quality-requirement" markdown="1">
 #### Context
 
 An online transactional application (e.g., order processing and account ledger) uses a replicated primary datastore for user‑facing reads and writes. The service is deployed across multiple availability zones and must tolerate single‑node failures and brief network partitions without violating durability or the declared consistency guarantees. Session‑bound clients require read‑your‑writes for critical flows (checkout, balance update), while background analytics can tolerate slightly stale reads.
@@ -28,5 +27,3 @@ Single-node failure occurs, leader re-election is triggered, or network partitio
 
 - Acceptable: bounded and documented latency increase (≤ 2× p95) and stale‑read window (≤ 5s) during controlled failover; zero lost acknowledged writes; edge error rate ≤ 0.5% for ≤ 10 minutes
 - Unacceptable: any lost acknowledged write; violation of monotonic reads/read‑your‑writes guarantees; sustained (>10 minutes) edge error rate > 0.5%; stale‑read window exceeding the documented bound
-
-</div><br>

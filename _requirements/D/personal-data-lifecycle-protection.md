@@ -5,8 +5,6 @@ related: [data-protection, privacy, compliance, security, auditability]
 permalink: /requirements/personal-data-lifecycle-protection
 ---
 
-<div class="quality-requirement" markdown="1">
-
 #### Context
 A multinational Financial Services platform processes "Personally Identifiable Information" (PII) and "Sensitive Personal Data" across multiple jurisdictions (EU/GDPR, California/CCPA). The system must ensure data remains protected even in the event of partial system compromise or administrative errors.
 
@@ -21,5 +19,3 @@ Personal data is ingested, stored, accessed for processing, or requested for del
 *   **Access Accountability**: Every access to sensitive data fields (e.g., Social Security Numbers, Health Records) is logged with a tamper-proof audit trail (HMAC-chained). Audit logs must be searchable and reportable within **60 seconds** for any 24-hour window.
 *   **Breach Notification Latency**: In the event of unauthorized data access detection, the system automatically generates a "Data Impact Report" identifying 100% of affected records and their jurisdictions within **4 hours** of incident confirmation.
 *   **Data Retention Enforcement**: 100% of records exceeding the legal retention period (e.g., 7 years for financial records) are automatically flagged and securely overwritten (not just logically deleted) within **7 days** of expiry.
-
-</div>

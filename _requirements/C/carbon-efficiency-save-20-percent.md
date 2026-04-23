@@ -3,9 +3,8 @@ title: Save at least 20% of carbon emissions with every new version
 tags: [efficient]
 related: [efficiency, carbon-emission-efficiency, energy-efficiency]
 permalink: /requirements/carbon-efficiency-save
+source: "This scenario has been created with help from [ChatGPT](https://chat.openai.com) by using the prompt `create a quality scenario to describe a carbon-efficiency requirement`."
 ---
-
-<div class="quality-requirement" markdown="1">
 
 #### Context
 
@@ -20,10 +19,3 @@ System processes data and executes computations during normal operations.
 - System minimizes carbon footprint by optimizing energy usage and resource allocation
 - Energy consumption reduced by at least 20% compared to previous versions
 - Optimization targets both computational efficiency and resource allocation strategies
-
-</div><br>
-
-Source: This scenario has been created with help from [ChatGPT](https://chat.openai.com) by using the prompt `create a quality scenario to describe a carbon-efficiency requirement`.
-
-
-

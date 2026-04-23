@@ -5,8 +5,6 @@ related: [verifiability, testability, certifiability, traceability]
 permalink: /requirements/safety-requirements-traceable-to-evidence
 ---
 
-<div class="quality-requirement" markdown="1">
-
 #### Context
 
 An autonomous vehicle software platform implements safety-critical perception, planning, and control functions.  
@@ -28,5 +26,3 @@ A release candidate is submitted for safety verification and approval.
 #### Monitoring Artifact
 
 Release verification packet containing traceability matrix, CI execution report, and release-gate decision log.
-
-</div><br>

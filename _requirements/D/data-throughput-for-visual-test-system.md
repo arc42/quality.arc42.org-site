@@ -5,7 +5,6 @@ related: [throughput, efficiency, performance, capacity]
 permalink: /requirements/data-throughput-for-visual-test-system
 ---
 
-<div class="quality-requirement" markdown="1">
 #### Context
 
 The system consists of hardware boards that enhance simple webcams with image recognition capabilities. These boards contain proprietary advanced image recognition algorithms embedded in their firmware and are used in applications such as license-plate recognition systems in public parking facilities. A test and verification system is used to validate firmware updates prior to release. The quality requirement pertains to the performance of this firmware test and verification system.
@@ -24,11 +23,3 @@ An update of the firmware is available, typically including additional functiona
 - Updated firmware recognizes images with at least accuracy of previous versions
 - Complete processing of all 1000 hours of test data within 72-hour timeframe
 - Accurate logging and reporting of test results including any anomalies or performance issues detected
-</div><br>
-
-
-
-
-
-
-

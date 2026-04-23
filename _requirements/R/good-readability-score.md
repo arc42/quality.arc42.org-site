@@ -6,8 +6,6 @@ stakeholder: developer
 permalink: /requirements/good-code-readability-score
 ---
 
-<div class="quality-requirement" markdown="1">
-
 #### Context
 
 We use the [SonarQube](https://www.sonarsource.com/open-source-editions/) to obtain several kinds of metrics on the system.
@@ -25,5 +23,3 @@ New and changed production code must stay within a bounded cognitive-complexity 
 - Every new or changed function/method has cognitive complexity ≤ 15 (static-analysis report, every pull request).
 - 100% of new and changed production files are included in the analysis run (CI analysis log, every pull request).
 - Merge is blocked within 10 min if either threshold is missed (CI gate log).
-
-</div><br>

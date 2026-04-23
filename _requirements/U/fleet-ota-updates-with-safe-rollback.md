@@ -5,8 +5,6 @@ related: [updateability, maintainability, recoverability, availability, security
 permalink: /requirements/fleet-ota-updates-with-safe-rollback
 ---
 
-<div class="quality-requirement" markdown="1">
-
 #### Context
 
 A long-lived IoT product fleet is deployed across customer sites and updated remotely over heterogeneous networks.  
@@ -28,5 +26,3 @@ A signed software update is released for deployment to active devices in the pro
 #### Monitoring Artifact
 
 Fleet update compliance dashboard with per-wave reach, rollback, fault-rate, and remote-recovery metrics.
-
-</div><br>

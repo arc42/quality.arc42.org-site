@@ -5,8 +5,6 @@ related: [data-integrity, transactionality, consistency, correctness]
 permalink: /requirements/financial-transactions-are-acid-compliant
 ---
 
-<div class="quality-requirement" markdown="1">
-
 #### Context
 
 A core banking system processes payment transactions, account transfers, and balance updates across multiple services and databases.
@@ -24,5 +22,3 @@ A payment or account-transfer operation is initiated by a user, an automated pro
 - The end-of-day reconciliation job detects **100% of inconsistencies** between ledger entries and account balances in a synthetic dataset of ≥ 1 million transactions seeded with a known 0.1% error rate
 - Every committed transaction is immutably logged with: timestamp (UTC, µs precision), transaction ID, initiating user/system, before-image, after-image, and outcome — the audit log is append-only and hash-chained (tamper-evident)
 - The system rejects duplicate submissions (same idempotency key) with **HTTP 409 in ≤ 200 ms**, even under concurrent retry storms of 50 simultaneous identical requests
-
-</div>

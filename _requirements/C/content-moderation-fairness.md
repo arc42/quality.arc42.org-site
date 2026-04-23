@@ -5,7 +5,6 @@ related: [fairness, bias-mitigation, transparency, accountability]
 permalink: /requirements/content-moderation-fairness
 ---
 
-<div class="quality-requirement" markdown="1">
 #### Context
 
 An automated content moderation system classifies user posts for policy violations across multiple languages and regions. Prior studies show performance disparities by language, dialect, and demographic proxies. The system must ensure equitable error rates and transparent processes.
@@ -26,6 +25,3 @@ Trust & Safety moderation service processes content for platform operations and 
 - Safe rollback to prior model enabled
 - Monthly fairness reports produced with per-group metrics and mitigation notes
 - Audit artifacts retained for 12 months
-
-</div><br>
-

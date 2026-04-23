@@ -5,8 +5,6 @@ related: [flexibility, adaptability, interoperability, compatibility]
 permalink: /requirements/compatible-with-5-battery-providers
 ---
 
-<div class="quality-requirement" markdown="1">
-
 #### Context
 
 The system's energy is supplied by a rechargeable onboard battery mechanically attached to a circuit board (PCB). 
@@ -21,5 +19,3 @@ The circuit-board revision must support approved battery models from _five prefe
 - 100% of critical functional tests pass per approved model under the reference operating profile and environmental test setup (hardware + system test report, every board revision).
 
 - Battery-life variation across approved models ≤ 10% under the same load profile; any supplier missing a threshold is de-listed for that revision (endurance test report).
-
-</div><br>

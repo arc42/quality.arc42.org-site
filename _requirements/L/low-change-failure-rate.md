@@ -3,9 +3,8 @@ title: Low change-failure rate
 tags: [reliable]
 related: [change-failure-rate, reliability]
 permalink: /requirements/low-change-failure-rate
+source: "This scenario has been created with help from [ChatGPT](https://chat.openai.com) by using the prompt `create a quality scenario to describe a change-failure-rate requirement`."
 ---
-
-<div class="quality-requirement" markdown="1">
 
 #### Requirement
 
@@ -21,8 +20,3 @@ All metrics measured over three-month period:
 - Rollback rate due to deployment issues does not exceed 2% of all deployments
 - Average time to resolve deployment-related incidents does not exceed 4 hours for severe incidents and 2 hours for minor incidents
 - Customer complaints related to degraded service or deployment issues do not exceed 1 per month on average
-
-</div><br>
-
-Source: This scenario has been created with help from [ChatGPT](https://chat.openai.com) by using the prompt `create a quality scenario to describe a change-failure-rate requirement`.
-

@@ -5,8 +5,6 @@ related: [learnability, usability, user-error-protection]
 permalink: /requirements/new-user-completes-core-tasks-without-training
 ---
 
-<div class="quality-requirement" markdown="1">
-
 #### Context
 
 An enterprise ERP system is rolled out to employees across finance, procurement, and HR departments.
@@ -25,5 +23,3 @@ A new user with relevant domain knowledge (e.g., certified accountant, experienc
 - When a user makes an input error, the system surfaces a **contextual, actionable error message within 1 second**; no error message references internal system codes or technical jargon
 - After the test session, **≥ 70% of participants** rate the system with a **System Usability Scale (SUS) score of ≥ 68** (the industry-accepted "above average" threshold)
 - The in-application help system answers the **top-20 most common first-day questions** (as determined by support-ticket analysis of comparable ERP deployments) without requiring external documentation or internet access
-
-</div>

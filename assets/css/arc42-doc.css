@@ -51,10 +51,22 @@ p {
   padding: 5px 5px;
   background: var(--reqs-background-color);
   border-radius: 4px;
+  margin-bottom: 1em;
 
   -webkit-box-shadow: 3px 3px 4px 0px #9cad75;
   -moz-box-shadow: 3px 3px 4px 0px #9cad75;
   box-shadow: 3px 3px 4px 0px #9cad75;
+}
+
+/* Meta content shown outside the requirement card (authored in frontmatter) */
+.requirement-note {
+  margin: 0.5em 0 1em 0;
+  font-size: 0.95em;
+}
+.requirement-source {
+  margin: 0.5em 0 1em 0;
+  font-size: 0.9em;
+  color: var(--muted-text-color, #555);
 }
 
 /* Proper indentation for lists inside quality requirement */

@@ -3,9 +3,16 @@ title: "Financial Data Accuracy for Reporting"
 tags: [reliable, suitable]
 related: [data-quality, accuracy, correctness, integrity]
 permalink: /requirements/financial-data-accuracy
+source: |
+  This example was created with help from Anthropic-Claude-Sonnet-3.7 with the following prompt:
+
+  ```
+  I want to add an example requirement (under _requirements) for data-quality.
+  It shall follow the pattern "Context/Background", "Source", "Metric/Acceptance Criteria" and contain precise metrics
+  for acceptance criteria.
+  ```
 ---
 
-<div class="quality-requirement" markdown="1">
 #### Context
 
 A financial management system processes transaction data from multiple sources (payment gateways, banking APIs, accounting software) to generate quarterly financial reports for regulatory compliance and executive decision-making. Data quality issues in source systems have previously led to reporting errors that required manual correction and restatement of financial results.
@@ -24,16 +31,3 @@ Financial transaction data is collected from various internal and external syste
   - High: 4 hours
   - Medium: 24 hours
   - Low: 72 hours
-
-</div><br>
-
-<div markdown="1" style="font-size: smaller;">
-This example was created with help from Anthropic-Claude-Sonnet-3.7 with the following prompt:
-
-```
-I want to add an example requirement (under _requirements) for data-quality. 
-It shall follow the pattern "Context/Background", "Source", "Metric/Acceptance Criteria" and contain precise metrics 
-for acceptance criteria.
-```
-
-</div>

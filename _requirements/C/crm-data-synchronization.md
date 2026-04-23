@@ -5,7 +5,6 @@ related: [integrability, interoperability, data-quality, consistency]
 permalink: /requirements/crm-data-synchronization
 ---
 
-<div class="quality-requirement" markdown="1">
 #### Context
 
 The customer support system must integrate with existing CRM systems (Salesforce, HubSpot, Microsoft Dynamics) to maintain synchronized customer data and interaction history.
@@ -30,5 +29,3 @@ Customer data or interaction history is created, updated, or deleted in either t
 1. Replay tests confirm idempotent upserts and deduplication across CRMs
 2. Chaos tests (rate‑limit bursts, auth expiry) drain through retries and DLQ without data loss; RPO/RTO targets met
 3. Reconciliation job detects and repairs seeded drift within policy; observability dashboards display throughput, lag, and error taxonomy per CRM
-
-</div><br>

@@ -5,8 +5,6 @@ related: [usability, user-experience, fault-isolation, graceful-degradation, haz
 permalink: /requirements/expressive-error-messages
 ---
 
-<div class="quality-requirement" markdown="1">
-
 #### Context
 
 When error situations occur, they must be displayed to user in expressive, meaningful messages.
@@ -22,9 +20,3 @@ Error or exceptional situation occurs in technical infrastructure (memory overfl
 - Error detection occurs within 15 seconds
 - Message to user (if still possible) within 1 second
 - Shutdown within 15 seconds
-
-</div><br>
-
-
-
-

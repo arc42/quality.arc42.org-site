@@ -5,8 +5,6 @@ related: [reliability, availability, high-availability, fault-tolerance, stabili
 permalink: /requirements/server-fails-operation-without-downtime
 ---
 
-<div class="quality-requirement" markdown="1">
-
 #### Requirement
 
 The system must maintain continuous operation despite server failures in a server farm.
@@ -19,8 +17,3 @@ The system must maintain continuous operation despite server failures in a serve
 - Automatic failover to redundant servers
 
 >Source: [Len Bass et al., 2021, p. 76](/references/#bass2021software)
-
-</div>
-
-
-

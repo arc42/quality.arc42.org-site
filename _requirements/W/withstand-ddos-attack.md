@@ -3,9 +3,8 @@ title: "Withstand DDoS Attack"
 tags: [reliable]
 related: [resilience, reliability, availability, high-availability, recoverability, intrusion-detection, resistance]
 permalink: /requirements/withstand-ddos-attack
+source: "This requirement was created with help from [ChatGPT](https://chat.openai.com) by using the prompt `create a quality attribute scenario to describe a resilience requirement for a web application`."
 ---
-
-<div class="quality-requirement" markdown="1">
 
 #### Context
 
@@ -24,10 +23,3 @@ Distributed denial of service (DDoS) attack targeting the web application.
 - In event of server or infrastructure failures caused by attack, application automatically failovers to healthy resources within 2 minutes
 - Throughout attack, application ensures data integrity and prevents data corruption with zero data loss or inconsistencies
 - Application logs and reports DDoS attack incidents including attack vectors, traffic patterns, and response actions for further analysis
-
-</div><br>
-
-This requirement was created with help from [ChatGPT](https://chat.openai.com) by using the prompt `create a quality attribute scenario to describe a resilience requirement for a web application`.
-
-
-

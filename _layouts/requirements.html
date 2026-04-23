@@ -9,7 +9,21 @@ tags) {% endcomment %}
 <div class="article-wrapper">
   <article>
     {% include requirements-header.liquid page=page link=false share=page.share %}
-    <section class="post-content">{{ content }}</section>
+    <section class="post-content">
+      <div class="quality-requirement">{{ content }}</div>
+      {% if page.note %}
+      <div class="requirement-note">{{ page.note | markdownify }}</div>
+      {% endif %}
+      {% if page.source %}
+      {% assign source_html = page.source | markdownify %}
+      {% if page.source contains "
+" %}
+      <div class="requirement-source"><em>Source:</em> {{ source_html }}</div>
+      {% else %}
+      <p class="requirement-source"><em>Source:</em> {{ source_html | remove: '<p>' | remove: '</p>' | strip }}</p>
+      {% endif %}
+      {% endif %}
+    </section>
 
     <hr class="with-no-margin" />
 

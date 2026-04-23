@@ -3,9 +3,8 @@ title: Affordable CRM (customer relationship management)
 tags: [efficient, suitable]
 related: [affordability, cost, budget-constraint, profitability]
 permalink: /requirements/affordable-crm
+source: "This scenario has been created with help from [ChatGPT](https://chat.openai.com) by using the prompt `create a quality scenario to describe an affordability requirement`."
 ---
-
-<div class="quality-requirement" markdown="1">
 
 #### Context
 
@@ -28,12 +27,3 @@ Finance department initiates adoption of a new Customer Relationship Management 
 - Hidden costs and fees identified and included in TCO calculation
 - CRM solution meets at least 90% of company's functional requirements
 - TCO calculation completed and verified minimum 30 days before final decision
-
-</div><br>
-
-
-
-Source: This scenario has been created with help from [ChatGPT](https://chat.openai.com) by using the prompt `create a quality scenario to describe an affordability requirement`.
-
-
-

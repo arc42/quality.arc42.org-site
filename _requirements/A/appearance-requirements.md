@@ -3,9 +3,8 @@ title: Appearance of mobile UI
 tags: [usable]
 related: [appearance, usability, consistency, user-interface-aesthetics, interaction-capability]
 permalink: /requirements/appearance-requirements
+source: "This scenario has been created with help from [ChatGPT](https://chat.openai.com) by using the prompt `create a quality scenario to describe an appearance requirement`."
 ---
-
-<div class="quality-requirement" markdown="1">
 
 #### Context
 
@@ -40,11 +39,3 @@ A user interacts with the mobile application's user interface to perform a commo
 - Overall Compliance:
   - Application passes all above criteria in at least 3 consecutive testing cycles
   - Failures documented, addressed, and re-tested until compliance achieved
-</div><br>
-
-
-
-Source: This scenario has been created with help from [ChatGPT](https://chat.openai.com) by using the prompt `create a quality scenario to describe an appearance requirement`.
-
-
-

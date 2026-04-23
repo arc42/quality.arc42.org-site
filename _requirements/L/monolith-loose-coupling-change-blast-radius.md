@@ -5,8 +5,6 @@ related: [loose-coupling, modularity, modifiability, maintainability, cohesion]
 permalink: /requirements/monolith-loose-coupling-change-blast-radius
 ---
 
-<div class="quality-requirement" markdown="1">
-
 #### Context
 
 A conventional client/server business application with a modular monolith backend (UI, application, domain, persistence modules).
@@ -22,5 +20,3 @@ A new business rule is added in one functional area (for example pricing or invo
 - Over a rolling 90-day window, at least **90%** of classes in changed modules keep class coupling (CBO) **<= 10** after the change.
 - Over a rolling 90-day window, at least **90%** of functional changes are implemented without code changes in unrelated modules.
 - Over a rolling 90-day window, at least **80%** of such changes are delivered (code, tests, and release) by one developer within **<= 3 working days**.
-
-</div><br>

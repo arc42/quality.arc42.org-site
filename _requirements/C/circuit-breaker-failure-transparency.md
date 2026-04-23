@@ -5,7 +5,6 @@ related: [failure-transparency, availability, resilience, fault-tolerance]
 permalink: /requirements/circuit-breaker-failure-transparency
 ---
 
-<div class="quality-requirement" markdown="1">
 #### Context
 
 The system depends on multiple upstream services (payments, profiles, notifications). Transient upstream failures must not cascade or break core user flows.
@@ -38,5 +37,3 @@ Upstream service experiences transient failures or degraded performance during n
   - Breaker state transitions, time in state, open/close counts, half‑open probe success rate
   - Retry counts, backoff/cancel rates, queue depth, and client/thread‑pool saturation
 - Validate via chaos exercises at least quarterly (inject 5xx, timeouts, and 2× latency), demonstrating compliance with thresholds and successful recovery to closed state
-
-</div><br>

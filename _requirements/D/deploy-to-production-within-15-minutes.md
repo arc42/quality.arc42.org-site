@@ -5,8 +5,6 @@ related: [deployability, releasability, testability]
 permalink: /requirements/deploy-to-production-within-15-minutes
 ---
 
-<div class="quality-requirement" markdown="1">
-
 #### Context
 
 A multi-tenant SaaS platform delivers continuous updates to hundreds of enterprise customers.
@@ -24,5 +22,3 @@ A developer merges a feature branch into the main branch and all CI pipeline che
 - Rollback completes and the previous version serves 100% of traffic within **5 minutes** of rollback initiation
 - The deployment pipeline enforces at least: compilation, unit tests (≥ 85% statement coverage), one integration test suite, and a lightweight DAST scan — none of these gates may be manually bypassed on the main branch
 - Pipeline failure rate due to flakiness (excluding real defects) remains **below 2%** averaged over any rolling 7-day window
-
-</div>

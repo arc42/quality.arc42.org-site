@@ -5,8 +5,6 @@ related: [transactionality, atomicity, consistency, data-integrity]
 permalink: /requirements/order-transaction-consistency
 ---
 
-<div class="quality-requirement" markdown="1">
-
 #### Context
 
 An order-processing system must handle reservation, payment, and order recording as one business transaction.
@@ -22,5 +20,3 @@ A customer submits an order.
 - No partial order state is visible to users or downstream systems **outside the 2-second recovery window** (for example: charged but not recorded, or recorded without reserved inventory).
 - In failure-injection tests (service crash, timeout, network interruption) across at least **1,000** order attempts, inconsistent end states occur in **0** cases.
 - Daily reconciliation between orders, payments, and reservations reports **0** unexplained mismatches.
-
-</div><br>

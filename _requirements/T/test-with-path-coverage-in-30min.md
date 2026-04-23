@@ -5,8 +5,6 @@ related: [testability, risk-identification, cycle-time]
 permalink: /requirements/test-with-path-coverage-30min
 ---
 
-<div class="quality-requirement" markdown="1">
-
 Idea: [Bass et al., 2021](/references/#bass2021software)
 
 #### Trigger
@@ -18,8 +16,3 @@ Developer completes a code unit.
 - Developer performs test sequence whose results are captured
 - Test sequence achieves path coverage of 85%
 - Testing completed within at most 30 minutes
-
-</div><br>
-
-
-

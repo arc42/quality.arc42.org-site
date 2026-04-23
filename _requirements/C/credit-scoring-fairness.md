@@ -5,7 +5,6 @@ related: [fairness, bias-mitigation, transparency, accountability]
 permalink: /requirements/credit-scoring-fairness
 ---
 
-<div class="quality-requirement" markdown="1">
 #### Context
 
 An ML-based credit scoring model ranks applicants for loan approval. Historical data may embed societal or institutional biases. The system must ensure equitable performance and decisions across protected groups while maintaining predictive validity.
@@ -42,5 +41,3 @@ Retail banking credit risk platform (scoring + decisioning) processes loan appli
 - Archive notebooks/reports with data and code hashes
 - Monitor same metrics on fresh labeled samples in production
 - Alert and trigger rollback/human review on sustained breaches
-
-</div><br>

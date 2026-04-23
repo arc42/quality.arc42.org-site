@@ -5,8 +5,6 @@ related: [flexibility, portability, compatibility, interoperability, interaction
 permalink: /requirements/user-interface-works-with-current-browsers
 ---
 
-<div class="quality-requirement" markdown="1">
-
 #### Context
 The system provides a responsive HTML5 user interface accessible via public internet.
 
@@ -20,5 +18,3 @@ A user accesses any application page using a desktop or mobile browser.
 
 #### Monitoring Artifact
 Cross-browser compatibility dashboard
-
-</div>

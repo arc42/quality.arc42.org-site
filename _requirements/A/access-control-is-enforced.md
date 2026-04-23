@@ -3,9 +3,8 @@ title: Access control is enforced
 tags: [secure, suitable]
 related: [access-control, auditability]
 permalink: /requirements/access-control-is-enforced
+source: "This scenario has been created with help from [ChatGPT](https://chat.openai.com) by using the prompt `create a quality scenario to describe an access control requirement`."
 ---
-
-<div class="quality-requirement" markdown="1">
 
 #### Context
 
@@ -34,11 +33,3 @@ The access control mechanism must meet the following criteria:
 * 100% of access control violations are logged and reported to authorized personnel within 5 minutes
 * The system maintains 99.99% uptime for the access control service
 * Access control policy updates are applied system-wide within 5 minutes of being implemented
-</div><br>
-
-
-
-Source: This scenario has been created with help from [ChatGPT](https://chat.openai.com) by using the prompt `create a quality scenario to describe an access control requirement`.
-
-
-

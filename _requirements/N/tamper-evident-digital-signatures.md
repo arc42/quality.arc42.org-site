@@ -5,8 +5,6 @@ related: [non-repudiation, security, auditability, data-integrity, authenticity,
 permalink: /requirements/tamper-evident-digital-signatures
 ---
 
-<div class="quality-requirement" markdown="1">
-
 #### Context
 An enterprise Contract Management System (CMS) handles legally binding agreements between multiple parties. To prevent legal disputes, the system must provide irrefutable proof of who signed what and when, ensuring that even system administrators cannot forge or alter signatures after the fact.
 
@@ -23,5 +21,3 @@ A user (Signer) completes the signing workflow for a digital contract.
 - Cryptographic proofs and audit records are retained for **≥ 10 years**; automated integrity checks run at least **quarterly on a statistically representative sample** (≥ 5% of stored contracts, randomly selected) and alert within 24 hours if corruption is detected
 
 > one reviewer remarked: The MFA requirement is intentionally strict for high-assurance signing contexts. In environments with different legal or privacy constraints, an equivalent policy-defined signer-assurance mechanism may be used.
-
-</div><br>

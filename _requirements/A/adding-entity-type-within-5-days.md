@@ -5,8 +5,6 @@ related: [evolvability, modularity, maintainability, extensibility]
 permalink: /requirements/adding-entity-type-within-5-days
 ---
 
-<div class="quality-requirement" markdown="1">
-
 #### Context
 
 A legacy business application is undergoing incremental modernisation toward a modular architecture.
@@ -28,5 +26,3 @@ A product team receives a business requirement to add a new entity type to the s
 - The new module itself achieves **≥ 80% statement coverage** and **zero critical issues** in static analysis (e.g., SonarQube 'Blocker' or 'Critical' severity)
 - The new REST endpoint passes **automated schema linting** (e.g., Spectral), confirming 100% adherence to project-wide naming, pagination, and error-structure standards
 - The new entity type is **automatically reflected** in the OpenAPI/Swagger documentation and the System Data Dictionary upon successful build, requiring zero manual documentation updates
-
-</div>

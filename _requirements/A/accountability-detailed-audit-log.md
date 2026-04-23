@@ -3,9 +3,9 @@ title: Detailed audit log
 tags: [secure, suitable]
 related: [accountability]  
 permalink: /requirements/detailed-audit-log
+source: "This scenario has been created with help from [ChatGPT](https://chat.openai.com) by using the prompt `create a quality scenario to describe an accountability requirement`."
+note: ">This \"requirement\" describes a solution approach to accountability."
 ---
-
-<div class="quality-requirement" markdown="1">
 
 #### Context
 
@@ -27,12 +27,3 @@ User submits a request to access personal data stored in the system.
 - Regular integrity checks performed to ensure no tampering
 - Secure backups maintained to prevent data loss
 - Full compliance with relevant privacy and data protection regulations
-
-</div><br>
-
->This "requirement" describes a solution approach to accountability.
-
-Source: This scenario has been created with help from [ChatGPT](https://chat.openai.com) by using the prompt `create a quality scenario to describe an accountability requirement`.
-
-
-

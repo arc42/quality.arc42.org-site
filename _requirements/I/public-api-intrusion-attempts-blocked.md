@@ -5,8 +5,6 @@ related: [intrusion-prevention, intrusion-detection, security, availability]
 permalink: /requirements/public-api-intrusion-attempts-blocked
 ---
 
-<div class="quality-requirement" markdown="1">
-
 #### Context
 
 A public-facing API handles authentication and business operations for internet users and partner systems.  
@@ -28,5 +26,3 @@ An inbound request reaches an internet-exposed authentication or API endpoint.
 #### Monitoring Artifact
 
 Security operations dashboard combining gateway metrics, intrusion-test reports, and SIEM event-ingestion SLIs.
-
-</div><br>

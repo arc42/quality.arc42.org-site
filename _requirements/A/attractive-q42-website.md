@@ -3,9 +3,14 @@ title: Attractive Appearance of Website
 tags: [usable]
 related: [attractiveness, usability, appearance, user-interface-aesthetics, user-experience]
 permalink: /requirements/attractive-quality-knowledge-base
+note: |
+  **Measurement instruments referenced above:**
+  
+  - **[Likert scale](https://en.wikipedia.org/wiki/Likert_scale)** — a symmetric agree/disagree rating scale (typically 5 or 7 points), widely used in survey research to quantify subjective attitudes.
+  - **[VisAWI](https://doi.org/10.1016/j.ijhcs.2010.05.006)** (Moshagen & Thielsch, 2010) — a validated 18-item questionnaire measuring perceived visual aesthetics of websites across four facets: simplicity, diversity, colorfulness, and craftsmanship.
+  - **[AttrakDiff](https://attrakdiff.de/)** (Hassenzahl et al., 2003) — a semantic differential questionnaire measuring pragmatic quality (usability), hedonic quality (stimulation and identity), and overall attractiveness of interactive products.
+  - **[SUS](https://doi.org/10.1201/9781498710411-35)** (Brooke, 1996) — a 10-item questionnaire producing a single score (0–100) for perceived usability. Scores above 68 are considered above average.
 ---
-
-<div class="quality-requirement" markdown="1">
 
 #### Context
 
@@ -48,12 +53,3 @@ A new or returning user loads any page of quality.arc42.org on a desktop or mobi
 
 Annual UX survey dashboard combining VisAWI scores, AttrakDiff profiles, SUS scores,
 CLS telemetry from PageSpeed Insights, and bounce rate trends from web analytics.
-
-</div>
-
-**Measurement instruments referenced above:**
-
-- **[Likert scale](https://en.wikipedia.org/wiki/Likert_scale)** — a symmetric agree/disagree rating scale (typically 5 or 7 points), widely used in survey research to quantify subjective attitudes.
-- **[VisAWI](https://doi.org/10.1016/j.ijhcs.2010.05.006)** (Moshagen & Thielsch, 2010) — a validated 18-item questionnaire measuring perceived visual aesthetics of websites across four facets: simplicity, diversity, colorfulness, and craftsmanship.
-- **[AttrakDiff](https://attrakdiff.de/)** (Hassenzahl et al., 2003) — a semantic differential questionnaire measuring pragmatic quality (usability), hedonic quality (stimulation and identity), and overall attractiveness of interactive products.
-- **[SUS](https://doi.org/10.1201/9781498710411-35)** (Brooke, 1996) — a 10-item questionnaire producing a single score (0–100) for perceived usability. Scores above 68 are considered above average.

@@ -5,7 +5,6 @@ related: [bias-mitigation, fairness, transparency, accountability, explainabilit
 permalink: /requirements/hiring-algorithm-bias-mitigation
 ---
 
-<div class="quality-requirement" markdown="1">
 #### Context
 
 A large organization is implementing an AI-powered resume screening and candidate ranking system to streamline its hiring process. Historical hiring data may contain implicit biases that have led to underrepresentation of certain demographic groups. The system must be designed to identify and mitigate these biases to ensure fair consideration of all qualified candidates regardless of gender, ethnicity, age, or other protected characteristics.
@@ -25,5 +24,3 @@ The hiring algorithm processes resumes and application materials submitted throu
 - At least 90% of algorithm-recommended candidates who proceed to interview evaluated as qualified by human recruiters
 - Diverse validation dataset represents broader labor market demographics for each job category
 - "Human-in-the-loop" design requires human review before any final decisions made
-
-</div><br>

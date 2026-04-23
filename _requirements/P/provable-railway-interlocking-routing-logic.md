@@ -5,8 +5,6 @@ related: [provability, verifiability, correctness, certifiability]
 permalink: /requirements/provable-railway-interlocking-routing-logic
 ---
 
-<div class="quality-requirement" markdown="1">
-
 #### Context
 A computer-based interlocking (CBI) system is responsible for controlling signals and points to ensure safe train movements in a high-density rail network. In this domain, testing alone is not sufficient assurance for the safety-critical routing logic, because the set of possible route combinations and state transitions is too large to justify safety by sampling alone. This requirement focuses on the **automated verification pipeline** that ensures implementation code strictly adheres to the proven safety specification before any release.
 
@@ -24,5 +22,3 @@ A release candidate of the safety-critical routing logic is submitted for safety
 - Release-candidate formal verification report
 - Release-gate decision log
 - [EN 50128: Formal Methods for Railway Safety](https://www.railengineer.co.uk/formal-methods-for-railway-safety/)
-
-</div>

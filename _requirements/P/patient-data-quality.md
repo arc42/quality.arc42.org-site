@@ -3,9 +3,16 @@ title: "Patient Data Quality in Healthcare System"
 tags: [reliable, safe]
 related: [data-quality, accuracy, completeness, timeliness, integrity]
 permalink: /requirements/patient-data-quality
+source: |
+  This example was created with help from Anthropic-Claude-Sonnet-3.7 with the following prompt:
+
+  ```
+  I want to add an example requirement (under _requirements) for data-quality.
+  It shall follow the pattern "Context/Background", "Source", "Metric/Acceptance Criteria" and contain precise metrics
+  for acceptance criteria.
+  ```
 ---
 
-<div class="quality-requirement" markdown="1">
 #### Context
 
 A healthcare information system manages patient data across multiple departments (emergency, radiology, pharmacy, laboratory) in a large hospital network. The system must ensure high-quality patient data to support clinical decision-making, avoid medication errors, and ensure proper continuity of care. Poor data quality could lead to incorrect diagnoses, inappropriate treatments, or adverse patient outcomes.
@@ -33,16 +40,3 @@ The healthcare information system must ensure:
   * Error rates by department and user role
   * Timeliness of data updates
   * Number of data quality incidents by severity
-
-</div><br>
-
-<div markdown="1" style="font-size: smaller;">
-This example was created with help from Anthropic-Claude-Sonnet-3.7 with the following prompt:
-
-```
-I want to add an example requirement (under _requirements) for data-quality. 
-It shall follow the pattern "Context/Background", "Source", "Metric/Acceptance Criteria" and contain precise metrics 
-for acceptance criteria.
-```
-
-</div>

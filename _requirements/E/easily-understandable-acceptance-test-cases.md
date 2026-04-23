@@ -5,8 +5,6 @@ related: [understandability, learnability, testability, maintainability]
 permalink: /requirements/understandable-acceptance-tests
 ---
 
-<div class="quality-requirement" markdown="1">
-
 #### Requirement
 
 Acceptance test cases written in the domain-specific test language must be understandable and independently extendable by testers without software-development background.
@@ -20,5 +18,3 @@ Acceptance test cases written in the domain-specific test language must be under
 #### Monitoring Artifact
 
 Acceptance-test authoring evaluation report and release gate.
-
-</div><br>

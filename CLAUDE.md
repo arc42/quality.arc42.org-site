@@ -147,26 +147,22 @@ permalink: /requirements/access-control-is-enforced
 
 **Content Structure - Two Tiers**:
 
-The repository uses a flexible two-tier approach documented in [REQUIREMENTS_TEMPLATE.md](REQUIREMENTS_TEMPLATE.md):
+Requirement files are written as **pure Markdown**. The `_layouts/requirements.html`
+layout automatically wraps the body in the styled `.quality-requirement` card — do
+**not** add a `<div class="quality-requirement" markdown="1">` wrapper in the file.
 
 **Tier 1** - For simple, self-explanatory requirements (1-3 criteria):
 ```markdown
-<div class="quality-requirement" markdown="1">
-
 #### Requirement
 [One clear statement of what must be achieved]
 
 #### Acceptance Criteria
 - [Specific, measurable criterion with numeric threshold]
 - [Additional criteria if needed]
-
-</div>
 ```
 
 **Tier 2** - For complex requirements needing context (4+ criteria, compliance/security):
 ```markdown
-<div class="quality-requirement" markdown="1">
-
 #### Context
 [1-3 sentences explaining system, business constraint, or why this matters]
 
@@ -177,8 +173,6 @@ The repository uses a flexible two-tier approach documented in [REQUIREMENTS_TEM
 - [Specific, measurable criterion with numeric threshold]
 - [Additional criteria with sub-bullets when needed]
   - [Sub-criterion]
-
-</div>
 ```
 
 **Optional Enhancement** - For complex measurement scenarios:
@@ -188,11 +182,21 @@ The repository uses a flexible two-tier approach documented in [REQUIREMENTS_TEM
 - [Testing approach or monitoring requirements]
 ```
 
+**Optional Front-matter Fields** (rendered *outside* the card, below the requirement):
+```yaml
+source: "This scenario has been created with help from [ChatGPT](...)..."
+note: "Please note: this requirement is tagged both efficient and usable"
+```
+
+`source:` values are rendered as `Source: <value>`; `note:` values are rendered as
+free-form Markdown. Use `source:` for attributions/citations and `note:` for
+meta-commentary that should not sit inside the styled card.
+
 **Key Principles**:
 - All acceptance criteria must be **specific, measurable, and testable**
 - Use concrete metrics: percentages, timeframes, thresholds with units
 - Focus on "what must be achieved" rather than "how to achieve it"
-- See REQUIREMENTS_TEMPLATE.md for detailed guidance and examples
+- Never include a `<div class="quality-requirement">` wrapper in the body — the layout adds it
 
 #### 3. **Standards** (`_standards/`)
 
@@ -754,26 +758,20 @@ bundle exec jekyll build
    permalink: /requirements/your-requirement-name
    ---
    ```
-3. **Choose tier** and add structured content:
+3. **Choose tier** and add structured content (as pure Markdown — the layout adds the `.quality-requirement` wrapper automatically):
 
    **For simple requirements** (Tier 1):
    ```markdown
-   <div class="quality-requirement" markdown="1">
-
    #### Requirement
    [Clear statement of what must be achieved]
 
    #### Acceptance Criteria
    - [Specific, measurable criterion with units]
    - [Additional criteria if needed]
-
-   </div>
    ```
 
    **For complex requirements** (Tier 2):
    ```markdown
-   <div class="quality-requirement" markdown="1">
-
    #### Context
    [System/business context - why this matters]
 
@@ -783,14 +781,15 @@ bundle exec jekyll build
    #### Acceptance Criteria
    - [Specific, measurable criterion with threshold]
    - [Additional criteria as bullet points]
-
-   </div>
    ```
+
+   **Optional** — add a `source:` or `note:` field in the front matter for
+   attribution or meta-commentary rendered outside the card.
 
 4. **Follow best practices**:
    - Use specific metrics with units (percentages, milliseconds, hours)
    - Make all criteria testable and measurable
-   - Reference REQUIREMENTS_TEMPLATE.md for detailed guidance
+   - Do not add a `<div class="quality-requirement">` wrapper — the layout handles it
 
 5. **Test**:
    ```bash

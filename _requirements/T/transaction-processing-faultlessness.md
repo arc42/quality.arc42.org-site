@@ -5,8 +5,6 @@ related: [faultlessness, reliability, dependability, correctness]
 permalink: /requirements/transaction-processing-faultlessness
 ---
 
-<div class="quality-requirement" markdown="1">
-
 #### Context
 
 The platform processes financial transactions across multiple channels (mobile, web, point-of-sale, partner API) at volumes exceeding 500 000 per day. Each transaction must complete its full lifecycle — validation, authorization, settlement, ledger posting — without incorrect results, silent corruption, or inconsistent state. A single wrong balance triggers regulatory reporting and erodes customer trust.
@@ -27,6 +25,3 @@ A customer or partner system submits a valid transaction during normal operating
 
 - Automated end-of-day reconciliation job; discrepancies feed a dashboard and pager alert.
 - Weekly replay suite resubmitting ≥ 10 000 transactions against the shadow ledger, asserting identical outcomes.
-
-
-</div>
