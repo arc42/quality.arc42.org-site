@@ -17,8 +17,9 @@ User was subject of an AI-generated decision by the system and is informed of th
 
 #### Acceptance Criteria
 
-- User is informed about the 3 features that were most influential in the final decision
-- Explanation provided immediately when decision is communicated to user
-- Explanations support oversight and appeal processes for high-risk scenarios
+- The explanation shows the top 3 decision factors that drove the outcome, each with its direction of influence and a normalized contribution score.
+- The explanation is rendered within 2 seconds and is shown in the same response or screen as the decision, without additional user action.
+- The explanation uses plain language, and is no longer than 150 words.
+- If no valid explanation can be generated, the system must not issue a final automated decision and must route the case for human review.
 
 </div><br>
