@@ -136,7 +136,16 @@ include:
 exclude:
   - "*.drawio"
   - "*.graffle"
+  - "*.code-workspace"
   - Dockerfile
+  - Makefile
+  - Gemfile
+  - Gemfile.lock
+  - .dockerignore
+  - .gitignore
+  - .gitmodules
+  - .impeccable.md
+  - LICENSE
   - README.md
   - AGENTS.md
   - .agents
@@ -144,6 +153,7 @@ exclude:
   - .junie
   - .deciduous
   - .bundle
+  - _docker/
   - CRUSH/
   - docs/*
   - docs/index.html
@@ -152,8 +162,7 @@ exclude:
   - _manage*
   - .sass-cache
   - _scripts/
-  - .code-workspace
-  - vendor/bundle
+  - vendor/
   - node_modules
   - playwright-report
   - test-results
@@ -166,7 +175,6 @@ exclude:
   - CLAUDE.md
   - cheat-sheet.*
   - statistic-utilities/
-  - narratives*
   
 
 watch_exclude:

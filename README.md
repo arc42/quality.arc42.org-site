@@ -53,17 +53,31 @@ We recommend Docker as the local build/test platform. Non-Docker workflows are n
 
 ### Build and test
 
-In the root directory, run `docker compose up`.
-This will build the site and start a web server on port 4000.
+In the root directory, build the required images once:
+
+```bash
+make build
+```
+
+Then start the development environment:
+
+```bash
+make dev
+```
+
+This starts the prebuilt Jekyll and esbuild services and serves the site on port 4000.
 
 In case you already had the environment spun up, run `docker compose down` to stop the server so that changes in the
 docker-compose.yml file are applied.
+
+If you prefer raw Compose commands, use `docker compose up esbuild jekyll`. The default `docker compose up` is no longer the recommended entrypoint because test services are kept off the normal dev path.
 
 Alternatively, use the provided Makefile targets:
 
 | Command | Description |
 |---------|-------------|
-| `make dev` | Start the development environment (`docker compose up`) |
+| `make build` | Build all Docker images required for local development and test runs |
+| `make dev` | Start the prebuilt development environment (`docker compose up esbuild jekyll`) |
 | `make doctor` | Verify local dev readiness (Docker + site startup + key route checks, including alias redirects) |
 | `make clean` | Remove the generated `_site` directory |
 | `make test` | Run Playwright UI tests in Docker and print report/artifact locations |
@@ -71,14 +85,15 @@ Alternatively, use the provided Makefile targets:
 | `make wcag-test-strict` | Run same WCAG scan but fail on any violation |
 
 Notes:
-- The esbuild service will run `npm run data` once on startup to generate graph data under `assets/data`.
-- The esbuild service will also run `npm run test:links` to validate all internal links.
+- `make build` is the slow path by design: it installs Node and Ruby dependencies into the Docker images once, so repeat `make dev` runs stay fast.
+- The esbuild service generates graph data on startup and watches content/data changes to keep `assets/data` current during development.
 - `make doctor` is the quickest local sanity check before/after `make dev`; it verifies that `http://localhost:4000` is reachable and probes key routes such as `/qualities/autonomy/` and `/qualities/autonomicity/`.
 - `make test` automatically starts the local stack (`docker compose up -d`) and waits for `http://localhost:4000` before executing Playwright.
 - `make wcag-test` also starts the local stack if needed and writes report files to `assets/reports/wcag/` (displayed at `/about/wcag-report/`).
 - `make wcag-test` is informative (does not fail on existing violations). Use `make wcag-test-strict` for gating.
 - For browser access, prefer `http://localhost:4000` (or `http://127.0.0.1:4000`) over `http://0.0.0.0:4000`.
-- If you add or change content that affects tags/related/permalinks, restart the stack (`docker compose down` then `docker compose up`) so data is regenerated.
+- If you change `package-lock.json` or `Gemfile.lock`, rerun `make build` before starting the stack again.
+- Docker assets live under `_docker/`. Build-context size is kept small via `.dockerignore`.
 
 ## How to contribute
 
@@ -88,7 +103,7 @@ Change files and create a pull request with your changes using your fork.
 Hint: `_todo/qualities` contains qualities whose definitions are missing. You may fill those files with content. Then
 move them to the appropriate folder (e.g. `_qualities/<LETTER>/`).
 
-Hint: If you add new files you have to clean-rebuild the whole application (stop and start Docker again).
+Hint: Most content and front matter changes are picked up live while `make dev` is running. Rebuild images only when dependency lockfiles change.
 
 ### Adding new content (qualities, requirements, standards)
 
@@ -278,7 +293,7 @@ npm run test:links:strict   # Exit with error code 1 if broken links found
 ```
 
 **Automatic validation:**
-Link validation runs automatically when you start Docker (`docker compose up`). Broken links are displayed as warnings but don't stop the build.
+Link validation no longer runs automatically on dev startup, so `make dev` stays fast. Run it explicitly before committing if you changed tags, related links, standards, or permalinks.
 
 **Example output:**
 ```
@@ -330,11 +345,12 @@ This creates:
 
 Optional modes:
 ```bash
-docker compose run --rm -e UI_BASE_URL=http://jekyll:4000 playwright sh -lc "npm ci && xvfb-run -a npx playwright test --headed"
-docker compose run --rm -e UI_BASE_URL=http://jekyll:4000 playwright sh -lc "npm ci && npx playwright test --debug"
+docker compose --profile test run --rm -e UI_BASE_URL=http://jekyll:4000 playwright xvfb-run -a npx playwright test --config _docker/playwright/playwright.config.ts --headed
+docker compose --profile test run --rm -e UI_BASE_URL=http://jekyll:4000 playwright npx playwright test --config _docker/playwright/playwright.config.ts --debug
 ```
 
 Note: the Playwright container uses `UI_BASE_URL=http://jekyll:4000` to reach the Jekyll service over Docker Compose networking.
+The Playwright config lives in `_docker/playwright/playwright.config.ts`.
 
 #### CI behavior and artifacts
 

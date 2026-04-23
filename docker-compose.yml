@@ -1,31 +1,52 @@
 services:
   esbuild:
-    image: node:22-alpine
+    build:
+      context: .
+      dockerfile: _docker/esbuild/Dockerfile
     init: true
     volumes:
       - .:/site
-      - /site/node_modules
+      - esbuild_node_modules:/site/node_modules
     working_dir: /site
-    tty: true
-    stdin_open: true
-    restart: always
-    command: sh -c "npm install && npm run data && npm run test:links && npm run watch"
+    healthcheck:
+      test: ["CMD-SHELL", "test -f /site/assets/.esbuild-ready"]
+      interval: 2s
+      timeout: 2s
+      retries: 30
+      start_period: 5s
 
   jekyll:
     depends_on:
-      - esbuild
-    image: bretfisher/jekyll-serve
+      esbuild:
+        condition: service_healthy
+    build:
+      context: .
+      dockerfile: _docker/jekyll/Dockerfile
     volumes:
       - .:/site
+      - jekyll_cache:/site/.jekyll-cache
+      - sass_cache:/site/.sass-cache
     ports:
       - "4000:4000"
-    command: bundle exec jekyll serve --incremental --watch --host 0.0.0.0
 
   playwright:
-    image: mcr.microsoft.com/playwright:v1.58.2-jammy
+    build:
+      context: .
+      dockerfile: _docker/playwright/Dockerfile
+    profiles:
+      - test
     init: true
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    environment:
+      UI_BASE_URL: http://host.docker.internal:4000
     volumes:
       - .:/site
-      - /site/node_modules
+      - playwright_node_modules:/site/node_modules
     working_dir: /site
-    command: sh -lc "npm ci && npx playwright test"
+
+volumes:
+  esbuild_node_modules:
+  playwright_node_modules:
+  jekyll_cache:
+  sass_cache:

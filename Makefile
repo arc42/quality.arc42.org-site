@@ -1,17 +1,22 @@
-.PHONY: help clean dev doctor test wcag-test wcag-test-strict
+.PHONY: help build clean dev doctor test wcag-test wcag-test-strict
 
 help:
 	@printf "Available targets:\n"
+	@printf "  make build  Build all Docker images used by local development and tests.\n"
 	@printf "  make help   Show this help.\n"
-	@printf "  make dev    Start development environment (docker compose up esbuild jekyll).\n"
+	@printf "  make dev    Start the prebuilt development environment (docker compose up esbuild jekyll).\n"
 	@printf "  make doctor Check local dev setup and key URLs (including alias redirects).\n"
 	@printf "  make clean  Remove generated _site directory.\n"
 	@printf "  make test   Ensure local site is up, run Playwright UI tests in Docker, optionally serve HTML report.\n"
 	@printf "  make wcag-test  Run axe-based WCAG scan in Docker and generate report assets (informative, non-blocking).\n"
 	@printf "  make wcag-test-strict  Run the same WCAG scan but fail on any violation.\n"
 
+build:
+	docker compose --profile test build esbuild jekyll playwright
+
 clean:
 	rm -rf _site
+	rm -f assets/.esbuild-ready
 
 dev:
 	docker compose up esbuild jekyll
@@ -68,7 +73,6 @@ doctor:
 	@printf "✅ doctor passed.\n\n"
 
 test:
-	@docker compose pull
 	@printf "\n[ui-test] Ensuring local site is running (docker compose up -d esbuild jekyll)...\n"
 	@docker compose up -d esbuild jekyll >/dev/null
 	@printf "[ui-test] Waiting for http://localhost:4000 to become ready"
@@ -91,7 +95,7 @@ test:
 	@printf "[ui-test] Running CSS lint checks...\n"
 	@npm run test:css || { printf "❌ CSS lint failed.\n"; exit 1; }
 	@printf "[ui-test] Running Playwright UI tests in Docker...\n"
-	@/bin/bash -lc 'set -o pipefail; docker compose run --rm -e UI_BASE_URL=http://jekyll:4000 playwright 2>&1 | sed "/^To open last HTML report run:/,+3d"; exit $${PIPESTATUS[0]}'; status=$$?; \
+	@/bin/bash -lc 'set -o pipefail; docker compose --profile test run --rm -e UI_BASE_URL=http://jekyll:4000 playwright npx playwright test --config _docker/playwright/playwright.config.ts 2>&1 | sed "/^To open last HTML report run:/,+3d"; exit $${PIPESTATUS[0]}'; status=$$?; \
 	printf "\n"; \
 	if [ $$status -eq 0 ]; then \
 		printf "✅ Playwright UI tests passed.\n"; \
@@ -104,19 +108,18 @@ test:
 		printf "Open Playwright HTML report in browser now? (y/N) "; \
 		read answer; \
 		case "$$answer" in \
-			y|Y) \
-				printf "\n[ui-test] Starting Docker report server at http://localhost:9323 (Ctrl+C to stop)\n"; \
-				docker compose run --rm -p 9323:9323 playwright sh -lc "npm ci >/dev/null && npx playwright show-report --host 0.0.0.0 --port 9323"; \
-				;; \
-			*) \
-				printf "[ui-test] Report not opened.\n"; \
+				y|Y) \
+					printf "\n[ui-test] Starting Docker report server at http://localhost:9323 (Ctrl+C to stop)\n"; \
+					docker compose --profile test run --rm -p 9323:9323 playwright npx playwright show-report playwright-report --host 0.0.0.0 --port 9323; \
+					;; \
+				*) \
+					printf "[ui-test] Report not opened.\n"; \
 				;; \
 		esac; \
 	fi; \
 	exit $$status
 
 wcag-test:
-	@docker compose pull
 	@printf "\n[wcag-test] Ensuring local site is running (docker compose up -d esbuild jekyll)...\n"
 	@docker compose up -d esbuild jekyll >/dev/null
 	@printf "[wcag-test] Waiting for http://localhost:4000 to become ready"
@@ -133,11 +136,11 @@ wcag-test:
 	printf "\n"; \
 	if [ $$ready -ne 1 ]; then \
 		printf "❌ Timed out waiting for site on http://localhost:4000\n"; \
-		printf "Try: docker compose logs --tail=120 jekyll esbuild\n\n"; \
+	printf "Try: docker compose logs --tail=120 jekyll esbuild\n\n"; \
 		exit 1; \
 	fi
 	@printf "[wcag-test] Running WCAG (wcag2a/wcag2aa/wcag21a/wcag21aa) scan in Docker (informative mode)...\n"
-	@/bin/bash -lc 'set -o pipefail; docker compose run --rm -e UI_BASE_URL=http://jekyll:4000 -e WCAG_STRICT=0 playwright sh -lc "npm ci && npx playwright test tests/ui/wcag.spec.ts" 2>&1 | sed "/^To open last HTML report run:/,+3d"; exit $${PIPESTATUS[0]}'; status=$$?; \
+	@/bin/bash -lc 'set -o pipefail; docker compose --profile test run --rm -e UI_BASE_URL=http://jekyll:4000 -e WCAG_STRICT=0 playwright npx playwright test --config _docker/playwright/playwright.config.ts tests/ui/wcag.spec.ts 2>&1 | sed "/^To open last HTML report run:/,+3d"; exit $${PIPESTATUS[0]}'; status=$$?; \
 	printf "\n"; \
 	if [ $$status -eq 0 ]; then \
 		printf "✅ WCAG scan completed.\n"; \
@@ -150,7 +153,6 @@ wcag-test:
 	exit $$status
 
 wcag-test-strict:
-	@docker compose pull
 	@printf "\n[wcag-test-strict] Ensuring local site is running (docker compose up -d esbuild jekyll)...\n"
 	@docker compose up -d esbuild jekyll >/dev/null
 	@printf "[wcag-test-strict] Waiting for http://localhost:4000 to become ready"
@@ -167,11 +169,11 @@ wcag-test-strict:
 	printf "\n"; \
 	if [ $$ready -ne 1 ]; then \
 		printf "❌ Timed out waiting for site on http://localhost:4000\n"; \
-		printf "Try: docker compose logs --tail=120 jekyll esbuild\n\n"; \
+	printf "Try: docker compose logs --tail=120 jekyll esbuild\n\n"; \
 		exit 1; \
 	fi
 	@printf "[wcag-test-strict] Running strict WCAG scan (fails on violations)...\n"
-	@/bin/bash -lc 'set -o pipefail; docker compose run --rm -e UI_BASE_URL=http://jekyll:4000 -e WCAG_STRICT=1 playwright sh -lc "npm ci && npx playwright test tests/ui/wcag.spec.ts" 2>&1 | sed "/^To open last HTML report run:/,+3d"; exit $${PIPESTATUS[0]}'; status=$$?; \
+	@/bin/bash -lc 'set -o pipefail; docker compose --profile test run --rm -e UI_BASE_URL=http://jekyll:4000 -e WCAG_STRICT=1 playwright npx playwright test --config _docker/playwright/playwright.config.ts tests/ui/wcag.spec.ts 2>&1 | sed "/^To open last HTML report run:/,+3d"; exit $${PIPESTATUS[0]}'; status=$$?; \
 	printf "\n"; \
 	if [ $$status -eq 0 ]; then \
 		printf "✅ Strict WCAG scan passed (zero violations).\n"; \

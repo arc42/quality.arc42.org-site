@@ -12,6 +12,7 @@ node_modules
 assets/js/**/*.js.map
 assets/js/fullpage/*.js
 assets/js/homepage/*.js
+assets/.esbuild-ready
 assets/data
 
 # Local Crush agent artifacts

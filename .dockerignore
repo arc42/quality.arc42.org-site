@@ -1,0 +1,7 @@
+**
+!_docker/
+!_docker/**
+!Gemfile
+!Gemfile.lock
+!package.json
+!package-lock.json

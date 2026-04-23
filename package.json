@@ -21,9 +21,9 @@
     "test:css:rules": "node src/scripts/validate-css.js",
     "test:links": "node src/scripts/validate-links.js",
     "test:links:strict": "node src/scripts/validate-links.js --strict",
-    "test:ui": "docker run --rm --add-host=host.docker.internal:host-gateway -e UI_BASE_URL=http://host.docker.internal:4000 -v \"$(git rev-parse --show-toplevel):/work\" -w /work mcr.microsoft.com/playwright:v1.51.1-jammy sh -lc \"npm ci && npx playwright test\"",
-    "test:ui:headed": "docker run --rm --add-host=host.docker.internal:host-gateway -e UI_BASE_URL=http://host.docker.internal:4000 -v \"$(git rev-parse --show-toplevel):/work\" -w /work mcr.microsoft.com/playwright:v1.51.1-jammy sh -lc \"npm ci && xvfb-run -a npx playwright test --headed\"",
-    "test:ui:debug": "docker run --rm --add-host=host.docker.internal:host-gateway -e UI_BASE_URL=http://host.docker.internal:4000 -v \"$(git rev-parse --show-toplevel):/work\" -w /work mcr.microsoft.com/playwright:v1.51.1-jammy -e PWDEBUG=1 sh -lc \"npm ci && npx playwright test --debug\""
+    "test:ui": "docker compose --profile test run --rm playwright npx playwright test --config _docker/playwright/playwright.config.ts",
+    "test:ui:headed": "docker compose --profile test run --rm playwright xvfb-run -a npx playwright test --config _docker/playwright/playwright.config.ts --headed",
+    "test:ui:debug": "docker compose --profile test run --rm -e PWDEBUG=1 playwright npx playwright test --config _docker/playwright/playwright.config.ts --debug"
   },
   "dependencies": {
     "d3": "^7.8.5",
