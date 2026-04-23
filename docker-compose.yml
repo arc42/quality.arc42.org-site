@@ -14,12 +14,14 @@ services:
   jekyll:
     depends_on:
       - esbuild
-    image: bretfisher/jekyll-serve
+    build:
+      context: .
+      dockerfile: Dockerfile.jekyll
     volumes:
       - .:/site
     ports:
       - "4000:4000"
-    command: bundle exec jekyll serve --incremental --watch --host 0.0.0.0
+    command: sh -lc "bundle install && bundle exec jekyll serve --incremental --watch --host 0.0.0.0"
 
   playwright:
     image: mcr.microsoft.com/playwright:v1.58.2-jammy
