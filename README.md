@@ -2,12 +2,30 @@
 
 [![Better Stack Badge](https://uptime.betterstack.com/status-badges/v2/monitor/20tqv.svg)](https://uptime.betterstack.com/?utm_source=status_badge)
 
-Here we collect definitions of quality attributes and their relationships .
+Here we collect definitions and examples of quality characteristics (_attributes_) and their relationships,
+together with aliases, standards and approaches (_how to achieve the quality requirements_).
 
 
 It's powered by Jekyll and a modified TTSCK theme (see below).
 We use Liquid for extensive automatic hyperlinking along the dependencies you see in the model above.
 
+## Metamodel (Our Domain Language)
+
+The site uses a shared domain language to connect dimensions, characteristics, requirements,
+standards and implementation approaches.
+
+![Q42 domain language](images/domain-language/q42-domain-language.webp)
+
+Excerpted from [How to Use this Site](_pages/05-how-to-use-this-site.md):
+
+| Term | Explanation |
+| :--- | :--- |
+| **Dimension** | Top-level quality dimensions such as `#secure`, `#reliable` or `#maintainable`. They are intentionally broad and overlapping, so they need further refinement. |
+| **Quality Characteristic** | A specific quality term such as confidentiality, accessibility or accuracy. Q42 maps each dimension to many concrete characteristics. |
+| **Requirement Example** | A specific, measurable expectation for a system, often expressed as a quality scenario or acceptance criterion. |
+| **Standard** | A quality-related standard such as ISO/IEC 27001 or ISO 25010 that prescribes or describes relevant quality concerns. |
+| **Approach** | A concrete way to achieve or improve one or several quality requirements. |
+| **Quality Attribute** | The resulting property of a concrete system once the relevant approaches have been implemented and the requirements are met. |
 
 ## License
 
@@ -27,6 +45,8 @@ We implemented several enhancements over the original theme (e.g. responsive nav
 ## Color Scheme
 
 The site uses the following color scheme for visual consistency across all content:
+
+![Color scheme preview](images/color-scheme.svg)
 
 The canonical source lives in [`_includes/about/color-scheme.md`](_includes/about/color-scheme.md).
 A standalone preview is generated at [`docs/color-scheme.html`](docs/color-scheme.html) so it can be reviewed directly from Git.

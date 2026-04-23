@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="820" viewBox="0 0 1200 820" role="img" aria-labelledby="title desc">
+  <title id="title">quality.arc42.org color scheme</title>
+  <desc id="desc">Preview cards showing the color palette for dimensions, characteristics, requirements, standards, articles, approaches, trade-offs, and the site header.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#f5f7f2"/>
+      <stop offset="100%" stop-color="#eef3f6"/>
+    </linearGradient>
+    <style>
+      .title { font: 700 36px Avenir Next, Avenir, Segoe UI, sans-serif; fill: #1f2933; }
+      .subtitle { font: 400 18px Avenir Next, Avenir, Segoe UI, sans-serif; fill: #48606f; }
+      .card-title { font: 700 24px Avenir Next, Avenir, Segoe UI, sans-serif; }
+      .card-meta { font: 400 17px SFMono-Regular, Consolas, monospace; }
+      .header-line { font: 700 20px Avenir Next, Avenir, Segoe UI, sans-serif; }
+      .header-copy { font: 600 17px Avenir Next, Avenir, Segoe UI, sans-serif; }
+      .shadow { filter: drop-shadow(0 12px 22px rgba(26, 58, 92, 0.12)); }
+    </style>
+  </defs>
+
+  <rect width="1200" height="820" fill="url(#bg)"/>
+  <rect x="36" y="36" width="1128" height="748" rx="28" fill="#ffffff" fill-opacity="0.94" stroke="#d5e0e7" class="shadow"/>
+
+  <text x="84" y="96" class="title">quality.arc42.org color scheme</text>
+  <text x="84" y="128" class="subtitle">Canonical palette for content types and the site header</text>
+
+  <g transform="translate(84 164)">
+    <rect width="238" height="126" rx="18" fill="#1A3A5C"/>
+    <text x="24" y="42" class="card-title" fill="#C8E6F5">Dimensions</text>
+    <text x="24" y="78" class="card-meta" fill="#C8E6F5">bg #1A3A5C</text>
+    <text x="24" y="102" class="card-meta" fill="#C8E6F5">text #C8E6F5</text>
+  </g>
+
+  <g transform="translate(348 164)">
+    <rect width="238" height="126" rx="18" fill="#00B8F5"/>
+    <text x="24" y="42" class="card-title" fill="#003366">Characteristics</text>
+    <text x="24" y="78" class="card-meta" fill="#003366">bg #00B8F5</text>
+    <text x="24" y="102" class="card-meta" fill="#003366">text #003366</text>
+  </g>
+
+  <g transform="translate(612 164)">
+    <rect width="238" height="126" rx="18" fill="#FFB3B3"/>
+    <text x="24" y="42" class="card-title" fill="#8B0000">Requirements</text>
+    <text x="24" y="78" class="card-meta" fill="#8B0000">bg #FFB3B3</text>
+    <text x="24" y="102" class="card-meta" fill="#8B0000">text #8B0000</text>
+  </g>
+
+  <g transform="translate(876 164)">
+    <rect width="238" height="126" rx="18" fill="#FFC95C"/>
+    <text x="24" y="42" class="card-title" fill="#2C3E50">Standards</text>
+    <text x="24" y="78" class="card-meta" fill="#2C3E50">bg #FFC95C</text>
+    <text x="24" y="102" class="card-meta" fill="#2C3E50">text #2C3E50</text>
+  </g>
+
+  <g transform="translate(84 318)">
+    <rect width="238" height="126" rx="18" fill="#E6DAF2"/>
+    <text x="24" y="42" class="card-title" fill="#4A148C">Articles</text>
+    <text x="24" y="78" class="card-meta" fill="#4A148C">bg #E6DAF2</text>
+    <text x="24" y="102" class="card-meta" fill="#4A148C">text #4A148C</text>
+  </g>
+
+  <g transform="translate(348 318)">
+    <rect width="238" height="126" rx="18" fill="#92EF80"/>
+    <text x="24" y="42" class="card-title" fill="#1B5E20">Approaches</text>
+    <text x="24" y="78" class="card-meta" fill="#1B5E20">bg #92EF80</text>
+    <text x="24" y="102" class="card-meta" fill="#1B5E20">text #1B5E20</text>
+  </g>
+
+  <g transform="translate(612 318)">
+    <rect width="238" height="126" rx="18" fill="#FBE9E3"/>
+    <text x="24" y="42" class="card-title" fill="#A04323">Trade-offs</text>
+    <text x="24" y="78" class="card-meta" fill="#A04323">bg #FBE9E3</text>
+    <text x="24" y="102" class="card-meta" fill="#A04323">text #A04323</text>
+  </g>
+
+  <g transform="translate(876 318)">
+    <rect width="238" height="126" rx="18" fill="#357360"/>
+    <text x="24" y="42" class="card-title" fill="#DEEFB7">Site header</text>
+    <text x="24" y="78" class="card-meta" fill="#DEEFB7">bg #357360</text>
+    <text x="24" y="102" class="card-meta" fill="#DEEFB7">text #DEEFB7</text>
+  </g>
+
+  <g transform="translate(84 496)">
+    <rect width="1030" height="210" rx="24" fill="#357360"/>
+    <text x="34" y="52" class="header-line" fill="#DEEFB7">Header preview</text>
+    <text x="34" y="102" class="title" fill="#DEEFB7" font-size="30">arc42 Quality Model</text>
+    <text x="34" y="144" class="header-copy" fill="#DEEFB7">
+      <tspan fill="#FFAD80">216</tspan>
+      <tspan> quality characteristics, explained.</tspan>
+    </text>
+    <text x="34" y="176" class="header-copy" fill="#DEEFB7">
+      <tspan fill="#FFAD80">133</tspan>
+      <tspan> examples of specific requirements.</tspan>
+    </text>
+    <text x="34" y="200" class="subtitle" fill="#DEEFB7">WCAG-tuned palette used across page chrome and counters</text>
+  </g>
+</svg>
