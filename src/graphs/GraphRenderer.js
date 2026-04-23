@@ -73,7 +73,6 @@ export class GraphRenderer {
         };
         // Tooltip for synonym display
         this.tooltip = null;
-        this.resizeObserver = null;
         this._createTooltip();
     }
 
@@ -526,7 +525,7 @@ export class GraphRenderer {
     /**
      * Handle container resize
      */
-    _handleResize(width, height, { recenter = true } = {}) {
+    _handleResize(width, height) {
         this.width = width;
         this.height = height;
 
@@ -545,46 +544,9 @@ export class GraphRenderer {
         }
         this.drawCanvas();
 
+        // Re-center view after resize settles (debounced)
         clearTimeout(this._resizeCenterTimer);
-        if (recenter) {
-            this._resizeCenterTimer = setTimeout(() => this.centerView(), 200);
-        }
-    }
-
-    /**
-     * Public resize hook for callers that move the renderer between containers.
-     * @param {number} width
-     * @param {number} height
-     * @param {{recenter?: boolean}} [options]
-     * @returns {GraphRenderer}
-     */
-    resize(width, height, options = {}) {
-        this._handleResize(width, height, options);
-        return this;
-    }
-
-    /**
-     * Reparent canvas, SVG, and tooltip to a new container.
-     * @param {HTMLElement} container
-     * @returns {GraphRenderer}
-     */
-    attachToContainer(container) {
-        if (!container || container === this.container) return this;
-
-        this.container = container;
-
-        if (this.canvas && this.canvas.parentNode !== container) {
-            container.appendChild(this.canvas);
-        }
-        if (this.svg?.node() && this.svg.node().parentNode !== container) {
-            container.appendChild(this.svg.node());
-        }
-        if (this.tooltip?.node() && this.tooltip.node().parentNode !== container) {
-            container.appendChild(this.tooltip.node());
-        }
-
-        this._addResizeHandler();
-        return this;
+        this._resizeCenterTimer = setTimeout(() => this.centerView(), 200);
     }
 
     /**
@@ -1064,7 +1026,7 @@ export class GraphRenderer {
         // Calculate center and scale
         const width = this.width;
         const height = this.height;
-        const sidebarWidth = this.container?.id === "full-q-graph-container" ? 200 : 0;
+        const sidebarWidth = 200;
         const availableWidth = width - sidebarWidth;
 
         const graphWidth = maxX - minX;
@@ -1328,11 +1290,9 @@ export class GraphRenderer {
     }
 
     _addResizeHandler() {
-        this.resizeObserver?.disconnect();
-        this.resizeObserver = new ResizeObserver(entries => {
+        new ResizeObserver(entries => {
             const rect = entries[0].contentRect;
             this._handleResize(rect.width, rect.height);
-        });
-        this.resizeObserver.observe(this.container);
+        }).observe(this.container);
     }
 }

@@ -1,9 +1,0 @@
-main:
-  - title: "Home"
-    url: /
-  - title: "Qualities"
-    url: /qualities/
-  - title: "Profiles"
-    url: /profiles/
-  - title: "Requirements"
-    url: /requirements/
