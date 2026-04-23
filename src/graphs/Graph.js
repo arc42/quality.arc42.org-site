@@ -246,7 +246,10 @@ export class Graph {
     _positionPropertyNodes(rootId, levelRadius) {
         const propertyNodes = this.graph
             .inNeighbors(rootId)
-            .filter((n) => this.graph.getNodeAttribute(n, "qualityType") === NODE_TYPES.PROPERTY);
+            .filter((n) => {
+                const type = this.graph.getNodeAttribute(n, "qualityType");
+                return type === NODE_TYPES.PROPERTY || type === NODE_TYPES.DIMENSION;
+            });
 
         if (propertyNodes.length === 0) return [];
 

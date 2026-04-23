@@ -62,14 +62,14 @@ const ALLOWED_IDS = {
     "#full-q-graph-legend",
     "#full-q-graph-filter__chips",
   ]),
-  "_sass/_homenew.scss": new Set(["#q-graph-container", "#full-graph-toggle"]),
   "assets/css/arc42-quality.css": new Set([
     "#scenario-header",
     "#standard-header",
     "#about-author",
   ]),
-  "assets/css/q-graph.css": new Set([
+  "_sass/_q-graph.scss": new Set([
     "#q-graph-container",
+    "#q-graph-home",
     "#graph-site",
     "#full-q-graph-container",
     "#full-q-graph-sidebar",
@@ -91,11 +91,10 @@ const ALLOWED_IDS = {
 const ALLOWED_IMPORTANT_COUNTS = {
   "_sass/base/_utilities.scss": 3,
   "_sass/_mobile-graph.scss": 1,
-  "_sass/_homenew.scss": 1,
   "_sass/_standards.scss": 1,
   "assets/css/arc42-doc.css": 1,
   "assets/css/arc42-quality.css": 24,
-  "assets/css/q-graph.css": 2,
+  "_sass/_q-graph.scss": 2,
 };
 
 /**
@@ -111,11 +110,10 @@ const APPROVED_BREAKPOINTS = new Set(["800px"]);
  */
 const ALLOWED_LEGACY_BREAKPOINTS = {
   "_sass/_mobile-graph.scss": new Set(["900px"]),
-  "_sass/_homenew.scss": new Set(["820px"]),
   "_sass/_standards.scss": new Set(["900px"]),
   "assets/css/arc42-doc.css": new Set(["900px", "600px"]),
   "assets/css/arc42-quality.css": new Set(["900px", "768px", "600px"]),
-  "assets/css/q-graph.css": new Set(["768px"]),
+  "_sass/_q-graph.scss": new Set(["768px"]),
 };
 
 /**
@@ -132,14 +130,21 @@ const ALLOWED_COLOR_FILES = new Set([
   "_sass/_content.scss",
   "_sass/_footer.scss",
   "_sass/_header.scss",
-  "_sass/_homenew.scss",
   "_sass/_mobile-graph.scss",
+  "_sass/_q-graph.scss",
   "_sass/_standards.scss",
+  "_sass/q42/_bottom-row.scss",
+  "_sass/q42/_dimension-pins.scss",
+  "_sass/q42/_graph.scss",
+  "_sass/q42/_masthead.scss",
+  "_sass/q42/_mega-menu.scss",
+  "_sass/q42/_splash.scss",
   "assets/css/arc42-quality.css",
-  "assets/css/q-graph.css",
   "assets/css/ukraine.css",
   "assets/css/toggle-switch.css",
 ]);
+
+TOKEN_OWNER_FILES.add("_sass/q42/_variables.scss");
 
 // ── Helpers ─────────────────────────────────────────────────
 
@@ -276,13 +281,18 @@ function checkHardcodedColors(relPath, lines) {
  */
 async function checkUnreferencedSheets(sassFiles) {
   const violations = [];
-  const styleEntry = path.join(process.cwd(), CSS_DIR, "style.scss");
-  let styleContent;
-  try {
-    styleContent = await fs.readFile(styleEntry, "utf-8");
-  } catch {
-    violations.push({ file: "assets/css/style.scss", message: "Could not read style.scss" });
-    return violations;
+  const styleEntries = ["style.scss", "q42-splash.scss"].map((entry) =>
+    path.join(process.cwd(), CSS_DIR, entry),
+  );
+  const styleContents = [];
+
+  for (const entry of styleEntries) {
+    try {
+      styleContents.push(await fs.readFile(entry, "utf-8"));
+    } catch {
+      violations.push({ file: rel(entry), message: `Could not read ${path.basename(entry)}` });
+      return violations;
+    }
   }
 
   for (const file of sassFiles) {
@@ -299,9 +309,9 @@ async function checkUnreferencedSheets(sassFiles) {
       `'${sassRel.replace(/\.scss$/, "")}'`,
     ];
 
-    const found = variants.some((v) => styleContent.includes(v));
+    const found = styleContents.some((content) => variants.some((v) => content.includes(v)));
     if (!found) {
-      violations.push({ file: relFile, message: `Not imported in assets/css/style.scss` });
+      violations.push({ file: relFile, message: "Not imported in a CSS entry stylesheet" });
     }
   }
   return violations;

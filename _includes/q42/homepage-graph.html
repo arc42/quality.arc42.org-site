@@ -1,0 +1,45 @@
+<!-- Q42 Homepage Graph Section — toolbar + D3 canvas -->
+{% assign approaches_count = site.approaches | size %}
+
+<section class="q42-graph-section" aria-label="Quality graph preview">
+  <div class="q42-graph-toolbar">
+    <div class="q42-gt-left">
+      <span class="q42-label">Quality Graph</span>
+      <span class="q42-node-count">Preview themes here, then click the graph to open the full overlay</span>
+    </div>
+    <div class="q42-layer-toggles" aria-label="Graph layers">
+      <span class="q42-show-label">Preview:</span>
+      <button class="q42-layer-toggle" type="button" data-context="home" data-layer="q" aria-pressed="false" disabled title="Use the theme buttons below to expand a single preview, or click the graph to open the full overlay.">
+        <span class="q42-dot q"></span> Qualities
+      </button>
+      <button class="q42-layer-toggle is-disabled" type="button" data-context="home" data-layer="r" aria-pressed="false" disabled>
+        <span class="q42-dot r"></span> Requirements
+      </button>
+      <button class="q42-layer-toggle is-disabled" type="button" data-context="home" data-layer="s" aria-pressed="false" disabled>
+        <span class="q42-dot s"></span> Standards
+      </button>
+      <button class="q42-layer-toggle is-disabled" type="button" data-context="home" data-layer="a" aria-pressed="false" disabled title="{{ approaches_count }} approaches exist on the site, but the graph data does not include approach nodes yet.">
+        <span class="q42-dot a"></span> Approaches
+      </button>
+    </div>
+    <div class="q42-gt-right">
+      <button class="q42-expand-btn" type="button" onclick="openGraphOverlay()" aria-label="Open quality graph overlay">
+        <i class="fa fa-expand"></i> Fullscreen
+      </button>
+    </div>
+  </div>
+
+  <div class="q42-graph-canvas-home" id="q-graph-home" aria-label="Quality graph preview. Click to open the fullscreen overlay.">
+    <!-- D3 graph renders here via homepage/main.js -->
+  </div>
+  <span class="q42-graph-hint"><i class="fa fa-info-circle"></i> Click to expand · Scroll to zoom · Drag to pan</span>
+
+  <div class="q42-legend">
+    <span class="q42-legend-item"><span class="q42-legend-dot d"></span> Theme</span>
+    <span class="q42-legend-item"><span class="q42-legend-dot q"></span> Quality</span>
+    <span class="q42-legend-item"><span class="q42-legend-dot r"></span> Requirement</span>
+    <span class="q42-legend-item"><span class="q42-legend-dot s"></span> Standard</span>
+  </div>
+
+  <script src="{{ '/assets/js/homepage/main.js' | prepend: site.baseurl }}" defer></script>
+</section>

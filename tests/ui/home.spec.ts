@@ -1,38 +1,52 @@
 import { expect, test } from "@playwright/test";
 
-test("home page renders hero, graph entry point, and dimensions table", async ({
+test("home page renders splash hero, graph preview, and theme links", async ({
   page,
 }) => {
   await page.goto("/");
 
   await expect(
     page.getByRole("heading", {
-      level: 2,
-      name: "System and Product Quality, Made Easy",
+      level: 1,
+      name: "Software Quality, Made Navigable",
     })
   ).toBeVisible();
 
-  const modeGrid = page.locator(".home-new-mode-grid");
-  await expect(modeGrid).toBeVisible();
+  await expect(page.getByRole("link", { name: /Quality Characteristics/i })).toBeVisible();
+  await expect(page.getByRole("link", { name: /Example Requirements/i })).toBeVisible();
+  await expect(page.getByRole("link", { name: /Quality Dimensions/i })).toBeVisible();
 
-  await expect(page.getByRole("link", { name: /small-graph/i })).toBeVisible();
-  await expect(page.getByRole("link", { name: /full-graph/i })).toBeVisible();
-  await expect(
-    page.getByRole("link", { name: /textual-navigation/i })
-  ).toBeVisible();
+  await expect(page.locator(".q42-nav-graph")).toBeVisible();
 
-  await expect(page.locator("#q-graph-container")).toBeVisible();
+  await expect(page.locator("#q-graph-home")).toBeVisible();
 
   await expect(
-    page.getByRole("heading", { level: 3, name: "Quality Dimensions" })
+    page.getByText("Preview themes here, then click the graph to open the full overlay")
   ).toBeVisible();
+  await expect(page.getByRole("button", { name: /Qualities/i })).toBeDisabled();
+  await expect(page.getByRole("button", { name: /Requirements/i })).toBeDisabled();
+  await expect(page.getByRole("button", { name: /Standards/i })).toBeDisabled();
+  await expect(page.getByRole("button", { name: /Fullscreen/i })).toBeVisible();
 
-  const dimensionsTable = page.locator(".home-new-dimensions-table");
-  await expect(dimensionsTable).toBeVisible();
-  await expect(dimensionsTable.locator("tbody tr")).toHaveCount(9);
+  const themeBar = page.locator(".q42-dim-bar");
+  await expect(themeBar).toBeVisible();
+  await expect(themeBar.getByRole("button", { name: /#reliable/i })).toBeVisible();
+  await expect(themeBar.getByRole("button", { name: /#maintainable/i })).toBeVisible();
 
-  await expect(page.getByRole("link", { name: "#reliable" })).toBeVisible();
-  await expect(page.getByRole("link", { name: "#maintainable" })).toBeVisible();
+  await themeBar.getByRole("button", { name: /#reliable/i }).click();
+  await expect(themeBar.getByRole("button", { name: /#reliable/i })).toHaveAttribute(
+    "aria-pressed",
+    "true"
+  );
+
+  await page.locator("#q-graph-home").click();
+
+  const overlay = page.locator("#q42-graph-overlay");
+  await expect(overlay).toBeVisible();
+  await expect(overlay).not.toHaveAttribute("hidden", "");
+  await expect(
+    overlay.getByRole("button", { name: /Close graph overlay/i })
+  ).toBeVisible();
 
   const hasHorizontalOverflow = await page.evaluate(() => {
     return document.documentElement.scrollWidth > window.innerWidth + 1;
