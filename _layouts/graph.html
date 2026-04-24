@@ -39,28 +39,7 @@
 </head>
 
 <body{% if page.body_class %} class="{{ page.body_class }}"{% endif %}>
-<header class="site-header">
-    <div class="inner clearfix">
-        <button class="fa fa-fw fa-bars nav-toggle" data-target=".site-aside" aria-label="Toggle navigation menu"></button>
-        {% if site.avatar %}
-        <a href="{{ '/' | prepend: site.baseurl }}" aria-label="Go to home page">
-            <img class="avatar" src="{{ site.avatar | prepend: site.baseurl }}" alt="arc42 Quality Model – home"/>
-        </a>
-        {% endif %}
-        <h1 class="clearfix">
-            <a class="title {% if site.avatar == null %}slim{% endif %}" href="{{ '/' | prepend: site.baseurl }}">{{ site.title }}</a>
-
-            {% assign qualities_count = site.qualities | size %}
-            {% assign requirements_count = site.requirements | size %}
-            {% assign standards_count = site.standards | size %}
-            {% assign approaches_count = site.approaches | size %}
-            
-            <br><span class="description"><span class="accent-color">{{ qualities_count }}</span> quality characteristics, <span class="accent-color">{{ standards_count }}</span> quality standards.</span>
-
-            <br><span class="description"><span class="accent-color">{{ requirements_count }}</span> examples of requirements, <span class="accent-color">{{ approaches_count }}</span> solution approaches.</span>
-        </h1>
-    </div>
-</header>
+{% include site-header.html %}
 
 
 <div class="site-container" id="graph-site">

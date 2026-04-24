@@ -147,7 +147,8 @@
 
   .article-wrapper {
     @extend .clearfix;
-    margin: $margin 0;
+    margin: $margin auto;
+    max-width: 980px;
   }
 
   article {

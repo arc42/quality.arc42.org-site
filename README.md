@@ -112,7 +112,7 @@ Notes:
 - `make wcag-test` also starts the local stack if needed and writes report files to `assets/reports/wcag/` (displayed at `/about/wcag-report/`).
 - `make wcag-test` is informative (does not fail on existing violations). Use `make wcag-test-strict` for gating.
 - For browser access, prefer `http://localhost:4000` (or `http://127.0.0.1:4000`) over `http://0.0.0.0:4000`.
-- If you change `package-lock.json` or `Gemfile.lock`, rerun `make build` before starting the stack again.
+- If you change `package-lock.json` or `Gemfile`, rerun `make build` before starting the stack again.
 - Docker assets live under `_docker/`. Build-context size is kept small via `.dockerignore`.
 
 ## How to contribute
@@ -123,7 +123,7 @@ Change files and create a pull request with your changes using your fork.
 Hint: `_todo/qualities` contains qualities whose definitions are missing. You may fill those files with content. Then
 move them to the appropriate folder (e.g. `_qualities/<LETTER>/`).
 
-Hint: Most content and front matter changes are picked up live while `make dev` is running. Rebuild images only when dependency lockfiles change.
+Hint: Most content and front matter changes are picked up live while `make dev` is running. Rebuild images only when dependency files change.
 
 ### Adding new content (qualities, requirements, standards)
 

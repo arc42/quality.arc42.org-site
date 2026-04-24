@@ -1,0 +1,27 @@
+primary:
+  - label: Home
+    url: /
+  - label: Qualities
+    url: /qualities/
+  - label: Requirements
+    url: /requirements/
+  - label: Approaches
+    url: /approaches/
+  - label: Standards
+    url: /standards/
+
+secondary:
+  - label: How to Use
+    url: /how-to-use-this-site/
+  - label: Dimensions
+    url: /dimensions/
+  - label: Aliases
+    url: /aliases/
+  - label: Articles
+    url: /articles/
+  - label: References
+    url: /references/
+  - label: About
+    url: /aboutthissite/
+  - label: Contact
+    url: /contact/
