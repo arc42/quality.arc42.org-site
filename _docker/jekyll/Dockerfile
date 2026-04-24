@@ -1,17 +1,16 @@
 FROM ruby:3.1
 
-WORKDIR /opt/site-deps
+WORKDIR /tmp/bundle
 
 RUN gem install bundler:2.3.27
 
-COPY Gemfile ./
+COPY Gemfile Gemfile.lock ./
 
-RUN bundle _2.3.27_ config set path /usr/local/bundle \
-    && bundle _2.3.27_ lock \
+RUN bundle _2.3.27_ config set frozen true \
+    && bundle _2.3.27_ config set path /usr/local/bundle \
     && bundle _2.3.27_ install --jobs 4 --retry 3 \
-    && sha256sum Gemfile | awk '{ print $1 }' > /opt/site-deps/.gemfile.sha256
-
-ENV BUNDLE_GEMFILE=/opt/site-deps/Gemfile
+    && mkdir -p /opt/site-deps \
+    && sha256sum Gemfile.lock | awk '{ print $1 }' > /opt/site-deps/.gemfile-lock.sha256
 
 COPY _docker/shared/jekyll-entrypoint.sh /usr/local/bin/jekyll-entrypoint
 
