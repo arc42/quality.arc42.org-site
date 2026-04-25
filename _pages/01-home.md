@@ -3,13 +3,15 @@ layout: default
 title: Home
 permalink: /
 order: 1
+q-graph: true
+q_graph_script: /assets/js/homepage/main.js
 ---
 
 {% assign qualities = site.qualities | where_exp: "q", "q.alias_of == nil" %}
 {% assign synonym_map = site.data.quality-synonyms %}
 {% assign synonyms = 0 %}
 {% for entry in synonym_map %}
-  {% assign synonyms = synonyms | plus: entry[1].size %}
+{% assign synonyms = synonyms | plus: entry[1].size %}
 {% endfor %}
 {% assign requirements = site.requirements %}
 {% assign standards = site.standards %}
@@ -20,8 +22,7 @@ order: 1
     <div class="home-violet-hero__inner">
       <div class="home-violet-hero__lede">
         <h1>
-          Quality drives
-          <br><span>Architecture</span>
+          Quality drives Architecture
         </h1>
         <p>
           Q42 turns broad quality goals into precise terms, concrete
@@ -30,7 +31,7 @@ order: 1
         </p>
       </div>
 
-      <ol class="home-violet-directory" aria-label="Main entry points">
+      <ul class="home-violet-directory" aria-label="Main entry points">
         <li>
           <a href="{{ '/qualities/' | prepend: site.baseurl }}">
             <span class="home-violet-directory__title">
@@ -60,8 +61,9 @@ order: 1
             <span class="home-violet-directory__count"><b>{{ approaches | size }}</b> <i>tactics</i></span>
           </a>
         </li>
-      </ol>
+      </ul>
     </div>
+
   </section>
 
   <section class="home-violet-graph">
@@ -80,7 +82,7 @@ order: 1
       </p>
 
       <div id="q-graph-container"></div>
-      <script src="{{ '/assets/js/homepage/main.js' | prepend: site.baseurl }}" defer></script>
     </div>
+
   </section>
 </div>

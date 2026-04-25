@@ -55,11 +55,11 @@
 
 .site-brand__name {
   color: var(--header-on-violet);
-  font-family: "Arial Black", "Arial Narrow", "Helvetica Neue", Arial, sans-serif;
-  font-size: 0.5rem;
+  font-family: $heading-font-family;
+  font-size: 0.62rem;
   font-style: normal;
-  font-weight: 900;
-  letter-spacing: 0.13em;
+  font-weight: 700;
+  letter-spacing: 0.08em;
   line-height: 1;
   text-transform: uppercase;
   white-space: nowrap;

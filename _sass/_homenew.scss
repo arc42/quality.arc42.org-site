@@ -40,10 +40,6 @@
   margin: 0;
   max-width: 12.5ch;
   text-wrap: balance;
-
-  span {
-    font: inherit;
-  }
 }
 
 .home-violet-hero__lede p {
@@ -70,9 +66,15 @@
 // Category-color cue: tied to graph node colors
 // (see CLAUDE.md → Graph Node Types) so the home directory acts
 // as a legend for the color a visitor meets on the destination page.
-.home-violet-directory li:nth-child(1) { --cat: #00b8f5; } // qualities (graph blue)
-.home-violet-directory li:nth-child(2) { --cat: #ffb3b3; } // requirements (graph salmon)
-.home-violet-directory li:nth-child(3) { --cat: #92ef80; } // approaches (existing $approaches-background-color)
+.home-violet-directory li:nth-child(1) {
+  --cat: #00b8f5;
+} // qualities (graph blue)
+.home-violet-directory li:nth-child(2) {
+  --cat: #ffb3b3;
+} // requirements (graph salmon)
+.home-violet-directory li:nth-child(3) {
+  --cat: #92ef80;
+} // approaches (existing $approaches-background-color)
 
 .home-violet-directory a {
   align-items: baseline;
@@ -132,9 +134,11 @@
 .home-violet-directory a:hover .home-violet-directory__title,
 .home-violet-directory a:focus-visible .home-violet-directory__title {
   color: var(--home-on-violet);
-  text-decoration: underline;
-  text-decoration-color: var(--home-on-violet-muted);
-  text-underline-offset: 0.18em;
+}
+
+.home-violet-directory a:hover,
+.home-violet-directory a:focus-visible {
+  background: rgba(251, 246, 239, 0.04);
 }
 
 .home-violet-directory a:focus-visible {
@@ -209,10 +213,6 @@
   min-height: 320px;
   overflow: hidden;
   position: relative;
-}
-
-.home-violet #q-graph-container #full-graph-toggle {
-  display: none !important;
 }
 
 @media (min-width: 900px) {

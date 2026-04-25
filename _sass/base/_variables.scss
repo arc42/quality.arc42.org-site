@@ -62,6 +62,7 @@ $brand-teal: #5fb49c;
 $brand-blue: #00b8f5;
 $brand-blue-dark: #0077ad;
 $brand-blue-soft: #f2faff;
+$brand-blue-text: #003366;
 
 $brand-color: $brand-violet;
 $brand-color-light: $brand-violet-soft;
@@ -102,6 +103,7 @@ $marker-color: $brand-color;
   --brand-blue: #{$brand-blue};
   --brand-blue-dark: #{$brand-blue-dark};
   --brand-blue-soft: #{$brand-blue-soft};
+  --brand-blue-text: #{$brand-blue-text};
 }
 
 // other major colors.
@@ -119,7 +121,7 @@ $link-color: $brand-color;
 $blockquote-color: $brand-muted;
 
 // Tag-specific colors
-$quality-background-color: $brand-violet-soft;
+$quality-background-color: $brand-blue;
 $requirement-background-color: lighten($brand-color-blue, 35%);
 $requirement-text-color: darken($brand-color-blue, 20%);
 

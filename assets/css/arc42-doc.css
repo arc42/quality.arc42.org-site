@@ -2,16 +2,16 @@
 
 /* define colors for qualities and requirements */
 :root {
-  --quality-background-color: var(--brand-violet-soft, #e9d9e8);
+  --quality-background-color: var(--brand-blue, #00b8f5);
   --reqs-background-color: #ffb3b3;
   --reqs-soft-background-color: #ffe0e0;
   --standard-background-color: #ffc95c;
   --standard-soft-background-color: #ffefc8;
-  --quality-text-color: var(--brand-violet-deep, #52214f);
+  --quality-text-color: var(--brand-blue-text, #003366);
   --req-text-color: #8b0000;
   --standard-text-color: #2c3e50;
   --dark-blue-text-color: #ffffff;
-  --blue-text-color: var(--brand-violet-deep, #52214f);
+  --blue-text-color: var(--brand-blue-text, #003366);
   --error-color: #ec645b;
   --article-background-color: var(--brand-violet-soft, #e9d9e8);
   --approaches-background-color: #92ef80;

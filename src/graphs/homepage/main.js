@@ -8,9 +8,7 @@ import { HomeGraph } from "../HomeGraph";
 const dataProvider = new GraphDataProvider(propertyNodes, nodes, edges);
 
 // Initialize and render the homepage graph
-const homeGraph = new HomeGraph("q-graph-container", dataProvider);
-homeGraph
-    .initialize()
-    .buildGraph()
-    .registerDefaultEventHandlers()
-    .render();
+const homeGraph = new HomeGraph("q-graph-container", dataProvider, {
+  showFullGraphToggle: false,
+});
+homeGraph.initialize().buildGraph().registerDefaultEventHandlers().render();
