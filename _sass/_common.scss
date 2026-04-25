@@ -6,15 +6,52 @@ body {
   color: $text-color;
   font-family: $font-family;
   font-size: $font-size;
+  line-height: 1.55;
   word-wrap: break-word;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-kerning: normal;
+  font-optical-sizing: auto;
+  font-feature-settings: "kern", "liga", "calt";
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $heading-font-family;
+  font-weight: 700;
+  color: $site-title-color;
+  line-height: 1.15;
+  letter-spacing: -0.005em;
+  text-wrap: balance;
+}
+
+p, li, dd {
+  text-wrap: pretty;
+}
+
+/* Tabular figures for counts, data, and quality-requirement thresholds. */
+.tabular-nums,
+.quality-requirement li,
+.home-new-entry-count,
+.home-new-dimension-count {
+  font-variant-numeric: tabular-nums;
 }
 
 a {
   color: $link-color;
   text-decoration: none;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+
   &:hover {
-    opacity: 0.8;
+    color: darken($link-color, 12%);
     text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-thickness: 1px;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $link-color;
+    outline-offset: 2px;
+    border-radius: 2px;
   }
 }
 

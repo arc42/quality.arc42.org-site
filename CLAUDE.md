@@ -52,7 +52,31 @@ https://quality.arc42.org
 
 ---
 
-## Repository Structure
+## Design Context
+
+### Users
+Software architects, consultants, and trainers working with software quality in professional contexts. They visit during design reviews, workshop preparation, or when specifying quality requirements for real projects. Secondary audience includes students and learners exploring quality concepts. Users arrive with domain knowledge but need fast, reliable lookup and clear structure.
+
+### Brand Personality
+**Authoritative & clear** meets **approachable & pragmatic**. The arc42 brand is a trusted expert who cuts through complexity without dumbing things down. Confident but never condescending. Structured but not rigid.
+
+Three words: **precise, pragmatic, trustworthy**.
+
+### Aesthetic Direction
+- **Theme**: Light — professionals using this during work hours.
+- **Tone**: Editorial reference — closer to a well-designed technical handbook than a SaaS dashboard.
+- **Current palette**: Violet header (#682d63), teal/green brand color (#5fb49c), blue accents (#00b8f5), purple contrast (#682d63), warm orange highlights (#ffad80).
+- **Typography**: Atkinson Hyperlegible Next (body) for maximum readability; Libre Caslon Text (headings) for an editorial, authoritative feel.
+- **Direction**: The interactive graph is the hero. Typography and spacing support dense, scannable content.
+
+### Design Principles
+1. **Clarity over decoration** — Every visual element must improve comprehension or navigation.
+2. **Structure is the design** — Information architecture is the interface. Strong typographic hierarchy and consistent patterns are paramount.
+3. **Professional density** — Provide dense, scannable content with clear entry points.
+4. **The graph is the signature** — Support and amplify the interactive visualization.
+5. **Accessibility is non-negotiable** — Target WCAG 2.2 AA. Atkinson Hyperlegible Next is used for low-vision disambiguation.
+
+---
 
 ```
 quality.arc42.org-site/

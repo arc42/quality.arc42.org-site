@@ -5,10 +5,14 @@
   h4,
   h5,
   h6 {
-    line-height: 1.3;
-    margin: 1em 0;
+    font-family: $heading-font-family;
+    font-weight: 700;
+    line-height: 1.15;
+    margin: 1.5em 0 0.5em;
+    color: $site-title-color;
+
     a {
-      color: $text-color;
+      color: inherit;
     }
     .header-link {
       margin-left: 0.2em;
@@ -21,12 +25,37 @@
   }
 
   h1 {
-    font-size: 2.3em;
+    font-size: $text-4xl;   // 3.15rem — reference-book display
+    letter-spacing: -0.015em;
+    line-height: 1.05;
   }
 
   h2 {
-    font-size: 1.8em;
+    font-size: $text-3xl;   // 2.37rem
     color: $link-color;
+    border-bottom: 1px solid rgba($link-color, 0.12);
+    padding-bottom: 0.25rem;
+  }
+
+  h3 {
+    font-size: $text-2xl;   // 1.78rem
+  }
+
+  h4 {
+    font-size: $text-xl;    // 1.45rem
+  }
+
+  h5 {
+    font-size: $text-lg;    // 1.2rem
+  }
+
+  h6 {
+    font-size: $text-sm;    // 0.875rem
+    font-weight: 400;
+    font-family: $font-family;    // drop the serif for tiny caps-style labels
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba($site-title-color, 0.7);
   }
 
   blockquote {
@@ -62,6 +91,7 @@
   pre,
   samp {
     margin: 1.5em 0;
+    max-width: 75ch;
   }
 
   // WCAG 1.4.1: links in text blocks must be distinguishable without relying on color alone
@@ -110,7 +140,7 @@
   ol,
   ul,
   dl {
-    line-height: 1.5;
+    line-height: 1.6;
   }
 
   ol,

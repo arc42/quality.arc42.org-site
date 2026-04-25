@@ -3,40 +3,36 @@
 
 <header class="site-header">
   <div class="site-header__inner">
-    <a class="site-brand" href="{{ '/' | prepend: site.baseurl }}" aria-label="Go to home page">
-      {% if site.avatar %}
-      <img class="site-brand__logo" src="{{ site.avatar | prepend: site.baseurl }}" alt="" />
-      {% endif %}
-      <span class="site-brand__name">{{ site.title }}</span>
+    <a class="site-brand" href="{{ '/' | prepend: site.baseurl }}" aria-label="arc42 Quality Model home">
+      <img class="site-brand__logo" src="{{ '/assets/img/ARC42_white.webp' | prepend: site.baseurl }}" alt="arc42" />
+      <span class="site-brand__name">quality model</span>
     </a>
 
-    <nav class="site-primary-nav" aria-label="Primary navigation">
-      {% for item in primary_nav %}
-        {% assign item_active = false %}
-        {% if item.url == '/' and page.url == '/' %}
-          {% assign item_active = true %}
-        {% elsif item.url != '/' and page.url contains item.url %}
-          {% assign item_active = true %}
-        {% endif %}
-        <a class="site-primary-nav__link{% if item_active %} is-active{% endif %}" href="{{ item.url | prepend: site.baseurl }}"{% if item_active %} aria-current="page"{% endif %}>{{ item.label }}</a>
-      {% endfor %}
-    </nav>
+    <div class="site-header__right">
+      <nav class="site-primary-nav" aria-label="Primary navigation">
+        {% for item in primary_nav %}
+          {% assign item_active = false %}
+          {% if item.url == '/' and page.url == '/' %}
+            {% assign item_active = true %}
+          {% elsif item.url != '/' and page.url contains item.url %}
+            {% assign item_active = true %}
+          {% endif %}
+          <a class="site-primary-nav__link{% if item_active %} is-active{% endif %}" href="{{ item.url | prepend: site.baseurl }}"{% if item_active %} aria-current="page"{% endif %}>{{ item.label }}</a>
+        {% endfor %}
+      </nav>
 
-    <div class="site-actions">
-      <a class="site-action site-action--graph{% if page.url contains '/full-quality-graph' %} is-active{% endif %}" href="{{ '/full-quality-graph' | prepend: site.baseurl }}"{% if page.url contains '/full-quality-graph' %} aria-current="page"{% endif %}>
-        <i class="fa fa-project-diagram" aria-hidden="true"></i>
-        <span>Graph</span>
-      </a>
+      <div class="site-actions">
+        <form class="site-search" action="{{ '/search/' | prepend: site.baseurl }}" role="search">
+          <label class="sr-only" for="search">Search Q42</label>
+          <input type="search" id="search" name="q" placeholder="{{ site.str_search }}" />
+        </form>
 
-      <form class="site-search" action="{{ '/search/' | prepend: site.baseurl }}" role="search">
-        <label class="sr-only" for="search">Search Q42</label>
-        <i class="fa fa-search" aria-hidden="true"></i>
-        <input type="search" id="search" name="q" placeholder="{{ site.str_search }}" />
-      </form>
-
-      <button class="site-menu-toggle nav-toggle" type="button" data-target="#site-secondary-nav" aria-controls="site-secondary-nav" aria-expanded="false" aria-label="Open secondary navigation">
-        <i class="fa fa-bars" aria-hidden="true"></i>
-      </button>
+        <button class="site-menu-toggle nav-toggle" type="button" data-target="#site-secondary-nav" aria-controls="site-secondary-nav" aria-expanded="false" aria-label="Open secondary navigation">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </button>
+      </div>
     </div>
   </div>
 
@@ -47,7 +43,6 @@
         {% for item in primary_nav %}
           <a href="{{ item.url | prepend: site.baseurl }}">{{ item.label }}</a>
         {% endfor %}
-        <a href="{{ '/full-quality-graph' | prepend: site.baseurl }}">Graph</a>
       </div>
 
       <div class="site-secondary-nav__group">

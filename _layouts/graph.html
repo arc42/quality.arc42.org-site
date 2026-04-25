@@ -35,7 +35,9 @@
         }
     </script>
     <link href="{{ '/assets/css/style.css' | prepend: site.baseurl }}" rel="stylesheet">
+    {% if jekyll.environment == 'production' %}
     <script defer data-domain="quality.arc42.org" src="https://plausible.io/js/script.js"></script>
+    {% endif %}
 </head>
 
 <body{% if page.body_class %} class="{{ page.body_class }}"{% endif %}>

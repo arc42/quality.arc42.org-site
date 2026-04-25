@@ -1,10 +1,40 @@
 // typography.
-$font-family: Helvetica, Arial, sans-serif;
-$font-size: 16px;
+// Body: Atkinson Hyperlegible Next — commissioned by the Braille Institute for
+// low-vision disambiguation. Variable weight. Functional choice for a reference
+// site whose users scan dense content under time pressure.
+// Headings: Libre Caslon Text — the pre-trend English reference serif, predating
+// the current editorial-revival crop (Fraunces, Newsreader, Tiempos).
+$font-family:
+  "Atkinson Hyperlegible Next",
+  "Atkinson Hyperlegible",
+  -apple-system,
+  BlinkMacSystemFont,
+  "Segoe UI",
+  Roboto,
+  Helvetica,
+  Arial,
+  sans-serif,
+  "Apple Color Emoji",
+  "Segoe UI Emoji";
+$heading-font-family: "Libre Caslon Text", "Iowan Old Style", "Palatino Linotype", Georgia,
+  "Times New Roman", serif;
+$font-size: 17px;
+
+// Modular scale — 1.333 (perfect fourth) from 1rem base.
+$text-xs: 0.75rem; // captions, legal
+$text-sm: 0.875rem; // metadata, labels
+$text-base: 1rem; // body
+$text-lg: 1.2rem; // lead paragraph
+$text-xl: 1.45rem; // h4 / small subhead
+$text-2xl: 1.78rem; // h3
+$text-3xl: 2.37rem; // h2
+$text-4xl: 3.15rem; // h1 / content display
+$text-5xl: 4.2rem; // hero display (use with clamp)
 
 // source code typography.
-$code-font-family: Consolas, Monaco, "Andale Mono", monospace;
-$code-font-size: 0.85em;
+$code-font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono",
+  monospace;
+$code-font-size: 0.9em;
 
 // vertical margin.
 $margin: 50px;
@@ -13,7 +43,7 @@ $margin: 50px;
 $site-max-width: 1200px;
 $mobile-width: 800px;
 $side-padding: 10px;
-$nav-collapse-width: 1040px;
+$nav-collapse-width: 1180px;
 $nav-compact-width: 720px;
 $nav-narrow-width: 520px;
 $home-stack-width: 860px;

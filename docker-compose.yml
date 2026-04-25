@@ -4,9 +4,12 @@ services:
       context: .
       dockerfile: _docker/esbuild/Dockerfile
     init: true
+    environment:
+      NODE_ENV: development
     volumes:
       - .:/site
       - esbuild_node_modules:/site/node_modules
+      - jekyll_site:/site/_site
     working_dir: /site
     healthcheck:
       test: ["CMD-SHELL", "test -f /site/assets/.esbuild-ready"]
@@ -22,12 +25,19 @@ services:
     build:
       context: .
       dockerfile: _docker/jekyll/Dockerfile
+    init: true
+    environment:
+      JEKYLL_ENV: development
+      POLLING: "--force_polling"
     volumes:
       - .:/site
+      - jekyll_site:/site/_site
       - jekyll_cache:/site/.jekyll-cache
       - sass_cache:/site/.sass-cache
     ports:
       - "4000:4000"
+    command: >
+      sh -c "bundle exec jekyll serve --incremental --watch --host 0.0.0.0 $${POLLING} --config _config.yml,_config_dev.yml"
 
   playwright:
     build:
@@ -43,6 +53,7 @@ services:
     volumes:
       - .:/site
       - playwright_node_modules:/site/node_modules
+      - jekyll_site:/site/_site
     working_dir: /site
 
 volumes:
@@ -50,3 +61,4 @@ volumes:
   playwright_node_modules:
   jekyll_cache:
   sass_cache:
+  jekyll_site:

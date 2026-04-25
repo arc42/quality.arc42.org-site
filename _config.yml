@@ -148,6 +148,8 @@ exclude:
   - LICENSE
   - README.md
   - AGENTS.md
+  - ACCESSIBILITY.md
+  - PRODUCT.md
   - .agents
   - .claude
   - .junie
@@ -185,6 +187,10 @@ watch_exclude:
   - .bundle
   - playwright-report
   - test-results
+  - node_modules
+  - .jekyll-cache
+  - .sass-cache
+  - _site
   - assets/js/fullpage # handled by esbuild
   - assets/js/homepage # handled by esbuild
 

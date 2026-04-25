@@ -11,7 +11,7 @@ Three words: **precise, pragmatic, trustworthy**.
 ### Aesthetic Direction
 - **Theme**: Light — professionals using this during work hours, often alongside other tools and documents
 - **Tone**: Editorial reference — closer to a well-designed technical handbook than a SaaS dashboard or marketing site
-- **Existing palette**: Teal/green header (#357360), blue accents (#00b8f5), purple contrast (#682d63), warm orange highlights (#ffad80). These colors have identity — lean into them rather than replacing
+- **Existing palette**: Violet header (#682d63), teal/green brand color (#5fb49c), blue accents (#00b8f5), purple contrast (#682d63), warm orange highlights (#ffad80). These colors have identity — lean into them rather than replacing
 - **Anti-references**: Should NOT look like a generic SaaS landing page, a startup pitch deck, or an AI-generated dashboard. Should NOT feel like a blog or a wiki
 - **Direction**: The graph visualization is the distinctive feature — let it be the hero. Typography and spacing should support dense, scannable content without feeling cramped
 
@@ -21,3 +21,4 @@ Three words: **precise, pragmatic, trustworthy**.
 3. **Professional density** — Respect the user's expertise. Don't over-explain or over-space. Provide dense, scannable content with clear entry points — more like a well-designed reference than a marketing page.
 4. **The graph is the signature** — The interactive force-directed graph is what makes this site memorable. Design decisions should support and amplify it, not compete with it.
 5. **Pragmatic consistency** — Match the arc42 ethos: practical, no-nonsense, proven. Consistency in spacing, color usage, and component patterns builds trust.
+6. **Accessibility is non-negotiable** — Target is **WCAG 2.2 AA** across the site. The audience itself includes architects who design for accessibility; failing it visibly is a credibility issue, not just a compliance one. Atkinson Hyperlegible Next is the body face for this reason. See `ACCESSIBILITY.md` for the working contract and review checklist.
