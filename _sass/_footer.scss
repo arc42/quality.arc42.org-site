@@ -1,111 +1,128 @@
 .site-footer {
-  background: #f8fafc;
-  border-top: 1px solid #e2e8f0;
-  padding: 1.5rem 0;
-  color: #64748b;
+  background: var(--brand-violet);
+  color: var(--brand-cream);
+  padding: clamp(2rem, 3.5vw, 2.8rem) 2rem clamp(1.6rem, 2.8vw, 2.2rem);
   text-align: center;
-  font-size: 0.9rem;
-
-  .inner {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.45rem;
-    max-width: $site-max-width;
-    margin: 0 auto;
-    padding: 0 1.5rem;
-  }
-
-  .footer-sponsor {
-    line-height: 1;
-    opacity: 0.8;
-    transition: opacity 0.2s ease;
-    
-    &:hover {
-      opacity: 1;
-    }
-    
-    .supported-by-innoq {
-      display: block;
-      width: 110px;
-      height: auto;
-      margin-bottom: 0;
-    }
-  }
-
-  .footer-icons {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    gap: 0.75rem;
-    margin: 0;
-  }
-
-  .footer-icons > a,
-  .footer-privacy-link {
-    color: #475569;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.25rem;
-    transition: color 0.2s ease;
-
-    &:hover {
-      color: $link-color;
-      text-decoration: none;
-    }
-  }
-
-  .footer-wcag-item {
-    display: inline-flex;
-    align-items: center;
-  }
-
-  span:last-child {
-    font-size: 0.85rem;
-    color: #94a3b8;
-  }
 }
 
-.wcag-score-pill {
-  display: inline-flex;
+.site-footer__inner {
   align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem; // tight by default; logo gets a slightly larger gap below
+  margin: 0 auto;
+  max-width: $site-max-width;
+}
+
+.footer-sponsor {
+  margin-bottom: 0.4rem; // a hair more air below the logo than between text rows
+}
+
+// zone 1 — sponsor anchor
+.footer-sponsor a {
+  display: block;
+  line-height: 0; // remove inline-img descender gap
+}
+
+.footer-sponsor a:focus-visible {
+  outline: 2px solid var(--brand-cream-74);
+  outline-offset: 0.6rem;
+}
+
+.footer-sponsor img {
+  height: auto;
+  transition: opacity 0.2s ease;
+  width: clamp(95px, 11vw, 115px);
+}
+
+.footer-sponsor a:hover img,
+.footer-sponsor a:focus-visible img {
+  opacity: 0.86;
+}
+
+// zone 2 — colophon (replaces the FontAwesome icon row)
+.footer-colophon {
+  color: var(--brand-cream);
+  font-family: $font-family;
+  font-size: 0.92rem;
+  line-height: 1.55;
   margin: 0;
-  line-height: 1;
 }
 
-.wcag-score-pill a {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.32em;
-  width: auto;
-  padding: 0;
-  color: #333;
+.footer-colophon a,
+.footer-wcag-link {
+  border-bottom: 1px solid var(--brand-cream-22);
+  color: var(--brand-cream);
+  padding-bottom: 0.05em;
+  text-decoration: none;
+  transition: border-color 0.2s ease;
+}
+
+.footer-colophon a:hover,
+.footer-colophon a:focus-visible,
+.footer-wcag-link:hover,
+.footer-wcag-link:focus-visible {
+  border-bottom-color: var(--brand-cream);
+  color: var(--brand-cream);
+  outline: none;
   text-decoration: none;
 }
 
-.wcag-score-pill a:hover {
-  text-decoration: underline;
+.footer-colophon a:focus-visible,
+.footer-wcag-link:focus-visible {
+  border-bottom-color: transparent;
+  outline: 2px solid var(--brand-cream-74);
+  outline-offset: 0.3rem;
 }
 
-.wcag-score-dot {
-  width: 0.52em;
-  height: 0.52em;
-  border-radius: 50%;
-  background: #9aa0a6;
-  border: 1px solid rgba(0, 0, 0, 0.15);
-  flex: 0 0 auto;
+.footer-sep {
+  color: var(--brand-cream-46);
+  margin: 0 0.55rem;
+  user-select: none;
 }
 
-.wcag-score-badge {
-  height: 20px;
-  display: block;
+.footer-wcag-score {
+  color: var(--brand-cream-74);
+  font-feature-settings: "tnum" 1;
+  font-style: italic;
+  margin-left: 0.25rem;
 }
 
-.wcag-score-pill.wcag-score-ready.wcag-score-good .wcag-score-dot {
-  background: #2da44e;
+// zone 3 — credits + license
+.footer-credits {
+  color: var(--brand-cream-74);
+  font-family: $heading-font-family;
+  font-size: 0.92rem;
+  font-style: italic;
+  line-height: 1.5;
+  margin: 0;
 }
 
-.wcag-score-pill.wcag-score-ready.wcag-score-bad .wcag-score-dot {
-  background: #cf222e;
+.footer-credits a {
+  border-bottom: 1px solid var(--brand-cream-22);
+  color: var(--brand-cream);
+  font-style: italic;
+  padding-bottom: 0.05em;
+  text-decoration: none;
+  transition: border-color 0.2s ease;
+}
+
+.footer-credits a:hover,
+.footer-credits a:focus-visible {
+  border-bottom-color: var(--brand-cream);
+  outline: none;
+  text-decoration: none;
+}
+
+@media (max-width: 600px) {
+  .footer-colophon {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+  }
+
+  .footer-sep {
+    display: none;
+  }
 }

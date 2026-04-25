@@ -1,9 +1,9 @@
 .site-header {
-  --header-violet: #682d63;
-  --header-violet-deep: #52214f;
-  --header-on-violet: #fbf6ef;
-  --header-on-violet-muted: rgba(251, 246, 239, 0.74);
-  --header-rule: rgba(251, 246, 239, 0.22);
+  --header-violet: var(--brand-violet);
+  --header-violet-deep: var(--brand-violet-deep);
+  --header-on-violet: var(--brand-cream);
+  --header-on-violet-muted: var(--brand-cream-74);
+  --header-rule: var(--brand-cream-22);
 
   background: var(--header-violet);
   border-bottom: 1px solid var(--header-rule);
@@ -142,8 +142,8 @@
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   appearance: none;
-  background: rgba(251, 246, 239, 0.1);
-  border: 1px solid rgba(251, 246, 239, 0.24);
+  background: var(--brand-cream-10);
+  border: 1px solid var(--brand-cream-24);
   border-radius: 7px;
   box-sizing: border-box;
   color: var(--header-on-violet);
@@ -163,17 +163,17 @@
   }
 
   &:focus {
-    background: rgba(251, 246, 239, 0.16);
-    border-color: rgba(251, 246, 239, 0.46);
-    outline: 2px solid rgba(251, 246, 239, 0.32);
+    background: var(--brand-cream-16);
+    border-color: var(--brand-cream-46);
+    outline: 2px solid var(--brand-cream-32);
     outline-offset: 2px;
   }
 }
 
 .site-menu-toggle {
   align-items: center;
-  background: rgba(251, 246, 239, 0.06);
-  border: 1px solid rgba(251, 246, 239, 0.24);
+  background: var(--brand-cream-06);
+  border: 1px solid var(--brand-cream-24);
   border-radius: 7px;
   color: var(--header-on-violet-muted);
   cursor: pointer;
@@ -202,8 +202,8 @@
 .site-menu-toggle:hover,
 .site-menu-toggle:focus-visible,
 .site-menu-toggle.active {
-  background: rgba(251, 246, 239, 0.14);
-  border-color: rgba(251, 246, 239, 0.42);
+  background: var(--brand-cream-14);
+  border-color: var(--brand-cream-42);
   color: var(--header-on-violet);
   outline: none;
 }
@@ -238,7 +238,7 @@
 }
 
 .site-secondary-nav__label {
-  color: rgba(251, 246, 239, 0.48);
+  color: var(--brand-cream-48);
   font-size: $text-xs;
   font-weight: 700;
   letter-spacing: 0.06em;
@@ -255,7 +255,7 @@
 
   &:hover,
   &:focus-visible {
-    background: rgba(251, 246, 239, 0.09);
+    background: var(--brand-cream-09);
     color: var(--header-on-violet);
     outline: none;
     text-decoration: none;

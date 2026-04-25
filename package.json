@@ -12,8 +12,8 @@
     "quality"
   ],
   "scripts": {
-    "build": "node build.js",
-    "watch": "node build.js --watch",
+    "build": "node src/scripts/build.js",
+    "watch": "node src/scripts/build.js --watch",
     "color-scheme": "node src/scripts/generate-color-scheme-preview.js",
     "data": "rimraf \"./assets/data\" && node src/scripts/data.js",
     "test:css": "npm run test:css:format && npm run test:css:rules",

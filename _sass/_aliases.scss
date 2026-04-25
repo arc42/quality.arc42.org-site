@@ -1,17 +1,18 @@
 // Quality aliases page styles
 .aliases-page {
-  --aliases-blue: #00b8f5;
-  --aliases-blue-dark: #0077ad;
-  --aliases-blue-soft: #f2faff;
+  --aliases-accent: var(--brand-violet);
+  --aliases-accent-deep: var(--brand-violet-deep);
+  --aliases-accent-soft: var(--brand-violet-faint);
 
   .aliases-hero {
     position: relative;
     margin: 0 0 1.5rem;
     padding: 1.25rem 1.25rem 1.1rem;
     border-radius: 12px;
-    border: 1px solid rgba(0, 184, 245, 0.25);
-    background: radial-gradient(circle at 0% 0%, rgba(0, 184, 245, 0.16), transparent 52%),
-      radial-gradient(circle at 100% 100%, rgba(0, 119, 173, 0.14), transparent 56%), #f8fcff;
+    border: 1px solid var(--brand-violet-18);
+    background: radial-gradient(circle at 0% 0%, var(--brand-violet-08), transparent 52%),
+      radial-gradient(circle at 100% 100%, var(--brand-violet-18), transparent 56%),
+      var(--brand-paper);
     overflow: hidden;
   }
 
@@ -25,23 +26,23 @@
     transform: rotate(12deg);
     background: linear-gradient(
       180deg,
-      rgba(255, 255, 255, 0.38) 0%,
-      rgba(255, 255, 255, 0.04) 70%,
-      rgba(255, 255, 255, 0) 100%
+      var(--brand-cream-46) 0%,
+      var(--brand-cream-06) 70%,
+      transparent 100%
     );
     pointer-events: none;
   }
 
   .aliases-hero-title {
     margin: 0 0 0.4rem;
-    color: var(--aliases-blue-dark);
+    color: var(--aliases-accent-deep);
     font-size: 1.45rem;
     line-height: 1.2;
   }
 
   .aliases-hero-text {
     margin: 0;
-    color: #245269;
+    color: var(--brand-muted);
     max-width: 76ch;
   }
 
@@ -57,19 +58,19 @@
     align-items: baseline;
     gap: 0.4rem;
     padding: 0.35rem 0.7rem;
-    border: 1px solid rgba(0, 184, 245, 0.35);
+    border: 1px solid var(--brand-violet-24);
     border-radius: 999px;
-    background: rgba(255, 255, 255, 0.84);
+    background: var(--brand-cream-74);
   }
 
   .aliases-stat-value {
-    color: var(--aliases-blue-dark);
+    color: var(--aliases-accent-deep);
     font-weight: 700;
     font-size: 1rem;
   }
 
   .aliases-stat-label {
-    color: #35677d;
+    color: var(--brand-muted);
     font-size: 0.86rem;
     font-weight: 600;
     letter-spacing: 0.01em;
@@ -85,12 +86,11 @@
 
   .synonym-card {
     position: relative;
-    background: var(--aliases-blue-soft);
-    border: 1px solid rgba(0, 184, 245, 0.25);
-    border-left: 4px solid var(--aliases-blue);
+    background: var(--aliases-accent-soft);
+    border: 1px solid var(--brand-violet-18);
     border-radius: 10px;
     padding: 18px;
-    box-shadow: 0 2px 8px rgba(0, 61, 91, 0.06);
+    box-shadow: 0 2px 8px var(--brand-violet-08);
     transition:
       transform 0.2s ease,
       box-shadow 0.2s ease,
@@ -101,21 +101,21 @@
 
   .synonym-card:hover {
     transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(0, 61, 91, 0.14);
-    border-color: rgba(0, 119, 173, 0.45);
+    box-shadow: 0 8px 20px var(--brand-violet-18);
+    border-color: var(--brand-violet-46);
   }
 
   .synonym-canonical {
     font-weight: 700;
     font-size: 1.15rem;
     margin-bottom: 0.55rem;
-    color: var(--aliases-blue-dark);
-    border-bottom: 1px solid rgba(0, 184, 245, 0.18);
+    color: var(--aliases-accent-deep);
+    border-bottom: 1px solid var(--brand-violet-18);
     padding-bottom: 0.4rem;
   }
 
   .synonym-canonical a {
-    color: var(--aliases-blue-dark);
+    color: var(--aliases-accent-deep);
     text-decoration: none;
   }
 
@@ -140,7 +140,7 @@
   }
 
   .synonym-tags a.tag {
-    color: #005f8f;
+    color: var(--aliases-accent-deep);
     text-decoration: none;
   }
 
@@ -165,9 +165,9 @@
     margin: 0;
     padding: 0.25rem 0.55rem;
     border-radius: 999px;
-    background: #ffffff;
-    border: 1px solid rgba(0, 184, 245, 0.2);
-    color: #355f73;
+    background: var(--brand-cream);
+    border: 1px solid var(--brand-violet-18);
+    color: var(--brand-ink);
     font-size: 0.88rem;
     line-height: 1.25;
     display: inline-flex;
@@ -176,7 +176,7 @@
   }
 
   .synonym-prefix {
-    color: #5b7786;
+    color: var(--brand-muted);
     font-size: 0.78rem;
     font-weight: 700;
     text-transform: lowercase;
@@ -184,19 +184,19 @@
   }
 
   .synonym-item a {
-    color: #355f73;
+    color: var(--brand-ink);
     text-decoration: none;
   }
 
   .synonym-item a:hover {
-    border-color: rgba(0, 119, 173, 0.42);
-    background: #f0f9ff;
+    border-color: var(--brand-violet-24);
+    background: var(--brand-paper);
   }
 
   .synonym-footer {
     margin-top: 0.85rem;
     font-size: 0.82rem;
-    color: #51788b;
+    color: var(--brand-muted);
     font-style: italic;
   }
 }

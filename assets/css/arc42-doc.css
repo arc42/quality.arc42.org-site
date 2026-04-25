@@ -2,18 +2,18 @@
 
 /* define colors for qualities and requirements */
 :root {
-  --quality-background-color: #00b8f5;
+  --quality-background-color: var(--brand-violet-soft, #e9d9e8);
   --reqs-background-color: #ffb3b3;
   --reqs-soft-background-color: #ffe0e0;
   --standard-background-color: #ffc95c;
   --standard-soft-background-color: #ffefc8;
-  --quality-text-color: #003366;
+  --quality-text-color: var(--brand-violet-deep, #52214f);
   --req-text-color: #8b0000;
   --standard-text-color: #2c3e50;
   --dark-blue-text-color: #ffffff;
-  --blue-text-color: #003366;
+  --blue-text-color: var(--brand-violet-deep, #52214f);
   --error-color: #ec645b;
-  --article-background-color: #e6daf2;
+  --article-background-color: var(--brand-violet-soft, #e9d9e8);
   --approaches-background-color: #92ef80;
   --approaches-soft-background-color: #d9f7d3;
   --approaches-text-color: #1b5e20;
@@ -22,11 +22,11 @@
   --tradeoff-background-color: #fbe9e3;
   --tradeoff-text-color: #a04323;
   --tradeoff-muted-text-color: #6b6b6b;
-  --synonym-text-color: #005987;
+  --synonym-text-color: var(--brand-violet-deep, #52214f);
   --muted-text-1: #6f6f6f;
   --muted-text-2: #6b6b6b;
   --muted-text-3: #5e5e5e;
-  --muted-blue-text: #4d6f84;
+  --muted-blue-text: var(--brand-muted, #746671);
 }
 
 p {
@@ -35,14 +35,14 @@ p {
 
 /* unified style for template help */
 .arc42-help {
-  color: #003366;
+  color: var(--brand-violet-deep, #52214f);
   padding: 5px 5px;
-  background: #00b8f5;
+  background: var(--brand-violet-soft, #e9d9e8);
   border-radius: 4px;
 
-  -webkit-box-shadow: 3px 3px 4px 0px rgba(11, 82, 185, 1);
-  -moz-box-shadow: 3px 3px 4px 0px rgba(11, 82, 185, 1);
-  box-shadow: 3px 3px 4px 0px rgba(11, 82, 185, 1);
+  -webkit-box-shadow: 3px 3px 4px 0px var(--brand-violet-24, rgba(104, 45, 99, 0.24));
+  -moz-box-shadow: 3px 3px 4px 0px var(--brand-violet-24, rgba(104, 45, 99, 0.24));
+  box-shadow: 3px 3px 4px 0px var(--brand-violet-24, rgba(104, 45, 99, 0.24));
 }
 
 /* unified style for quality requirement text */

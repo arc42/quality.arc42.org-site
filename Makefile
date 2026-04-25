@@ -15,6 +15,8 @@ build:
 	docker compose --profile test build esbuild jekyll playwright
 
 clean:
+	docker compose down --volumes 2>/dev/null || true
+	chmod -RN _site 2>/dev/null || true
 	rm -rf _site
 	rm -f assets/.esbuild-ready
 

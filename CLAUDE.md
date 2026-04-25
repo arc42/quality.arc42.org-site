@@ -115,7 +115,7 @@ quality.arc42.org-site/
 │   └── js/             # Compiled JavaScript
 ├── _config.yml         # Jekyll configuration
 ├── package.json        # Node.js dependencies
-├── build.js            # Build script (esbuild)
+├── src/scripts/build.js            # Build script (esbuild)
 ├── docker-compose.yml  # Docker development setup
 └── Gemfile             # Ruby dependencies
 ```
@@ -380,8 +380,8 @@ If Volta is installed, it will automatically use the correct versions.
 
 ```json
 {
-  "build": "node build.js",
-  "watch": "node build.js --watch",
+  "build": "node src/scripts/build.js",
+  "watch": "node src/scripts/build.js --watch",
   "data": "rimraf \"./assets/data\" && node src/scripts/data.js",
   "test:links": "node src/scripts/validate-links.js",
   "test:links:strict": "node src/scripts/validate-links.js --strict"
@@ -390,7 +390,7 @@ If Volta is installed, it will automatically use the correct versions.
 
 ### Key Build Files
 
-#### `build.js`
+#### `src/scripts/build.js`
 
 Main build orchestrator:
 ```javascript
@@ -931,7 +931,7 @@ docker compose up
 
 | File | Purpose |
 |------|---------|
-| `build.js` | Main build orchestrator (esbuild) |
+| `src/scripts/build.js` | Main build orchestrator (esbuild) |
 | `src/scripts/data.js` | Graph data generator |
 | `src/scripts/validate-links.js` | Link validation script |
 

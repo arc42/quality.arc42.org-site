@@ -50,29 +50,76 @@ $home-stack-width: 860px;
 $home-edge-width: 560px;
 
 // brand color.
-$brand-color: #5fb49c;
-$brand-color-light: #deefb7;
-$brand-color-blue: #00b8f5;
-$brand-color-lila: #682d63;
-$brand-color-dark: $brand-color-lila;
-$marker-color: $brand-color-blue;
+$brand-violet: #682d63;
+$brand-violet-deep: #52214f;
+$brand-violet-soft: #e9d9e8;
+$brand-violet-faint: #f5eef4;
+$brand-cream: #fbf6ef;
+$brand-paper: #f8f7f2;
+$brand-ink: #241823;
+$brand-muted: #746671;
+$brand-teal: #5fb49c;
+$brand-blue: #00b8f5;
+$brand-blue-dark: #0077ad;
+$brand-blue-soft: #f2faff;
+
+$brand-color: $brand-violet;
+$brand-color-light: $brand-violet-soft;
+$brand-color-blue: $brand-blue;
+$brand-color-lila: $brand-violet;
+$brand-color-dark: $brand-violet-deep;
+$marker-color: $brand-color;
+
+:root {
+  --brand-violet: #{$brand-violet};
+  --brand-violet-deep: #{$brand-violet-deep};
+  --brand-violet-soft: #{$brand-violet-soft};
+  --brand-violet-faint: #{$brand-violet-faint};
+  --brand-violet-rgb: #{red($brand-violet)}, #{green($brand-violet)}, #{blue($brand-violet)};
+  --brand-violet-08: rgba(var(--brand-violet-rgb), 0.08);
+  --brand-violet-18: rgba(var(--brand-violet-rgb), 0.18);
+  --brand-violet-24: rgba(var(--brand-violet-rgb), 0.24);
+  --brand-violet-46: rgba(var(--brand-violet-rgb), 0.46);
+  --brand-cream: #{$brand-cream};
+  --brand-cream-rgb: #{red($brand-cream)}, #{green($brand-cream)}, #{blue($brand-cream)};
+  --brand-cream-06: rgba(var(--brand-cream-rgb), 0.06);
+  --brand-cream-09: rgba(var(--brand-cream-rgb), 0.09);
+  --brand-cream-10: rgba(var(--brand-cream-rgb), 0.1);
+  --brand-cream-14: rgba(var(--brand-cream-rgb), 0.14);
+  --brand-cream-16: rgba(var(--brand-cream-rgb), 0.16);
+  --brand-cream-22: rgba(var(--brand-cream-rgb), 0.22);
+  --brand-cream-24: rgba(var(--brand-cream-rgb), 0.24);
+  --brand-cream-32: rgba(var(--brand-cream-rgb), 0.32);
+  --brand-cream-42: rgba(var(--brand-cream-rgb), 0.42);
+  --brand-cream-46: rgba(var(--brand-cream-rgb), 0.46);
+  --brand-cream-48: rgba(var(--brand-cream-rgb), 0.48);
+  --brand-cream-74: rgba(var(--brand-cream-rgb), 0.74);
+  --brand-cream-82: rgba(var(--brand-cream-rgb), 0.82);
+  --brand-paper: #{$brand-paper};
+  --brand-ink: #{$brand-ink};
+  --brand-muted: #{$brand-muted};
+  --brand-teal: #{$brand-teal};
+  --brand-blue: #{$brand-blue};
+  --brand-blue-dark: #{$brand-blue-dark};
+  --brand-blue-soft: #{$brand-blue-soft};
+}
 
 // other major colors.
-$site-title-color: #123f4e;
+$site-title-color: $brand-ink;
 $page-title-color: $marker-color;
 $background-color: #fff;
 $border-color: rgba(#000, 0.1);
-$border-contrast-color: #414288;
-$accent-color: #414288;
+$border-contrast-color: $brand-violet-deep;
+$accent-color: $brand-violet-deep;
 $status-ok-color: #50c878;
 
 // typography colors.
 $text-color: #383838;
-$link-color: #1675b9;
-$blockquote-color: #6f6f6f;
+$link-color: $brand-color;
+$blockquote-color: $brand-muted;
 
 // Tag-specific colors
-$quality-background-color: lighten($brand-color, 25%);
+$quality-background-color: $brand-violet-soft;
 $requirement-background-color: lighten($brand-color-blue, 35%);
 $requirement-text-color: darken($brand-color-blue, 20%);
 

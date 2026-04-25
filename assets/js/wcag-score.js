@@ -2,12 +2,9 @@
   const container = document.querySelector("[data-wcag-score-container]");
   if (!container) return;
 
-  const badgeElement = container.querySelector("[data-wcag-score-badge]");
+  const scoreElement = container.querySelector("[data-wcag-score-text]");
   const reportUrl = container.getAttribute("data-wcag-score-url");
-  if (!badgeElement || !reportUrl) return;
-
-  const badgeUrl = (message) =>
-    `https://img.shields.io/badge/WCAG-${encodeURIComponent(message)}-lightgrey?style=social`;
+  if (!scoreElement || !reportUrl) return;
 
   fetch(reportUrl, { cache: "no-store" })
     .then((response) => {
@@ -20,19 +17,16 @@
       }
 
       const score = Math.max(0, Math.min(100, Math.round(report.totals.avgScore)));
-      const message = `${score}/100`;
-      badgeElement.src = badgeUrl(message);
-      badgeElement.alt = `WCAG ${message}`;
-      container.classList.add("wcag-score-ready");
-      container.classList.remove("wcag-score-good", "wcag-score-bad");
-
-      if (score >= 95) {
-        container.classList.add("wcag-score-good");
-      } else {
-        container.classList.add("wcag-score-bad");
-      }
+      scoreElement.textContent = ` · ${score}/100`;
+      container.setAttribute(
+        "aria-label",
+        `Open WCAG accessibility report — current score ${score} of 100`
+      );
+      container.classList.add("is-ready");
+      container.classList.remove("is-good", "is-bad");
+      container.classList.add(score >= 95 ? "is-good" : "is-bad");
     })
     .catch(() => {
-      // Keep fallback badge when report is missing or unreadable.
+      // Leave the static "WCAG 2.2 AA" label in place when the report is missing.
     });
 })();

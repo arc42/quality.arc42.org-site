@@ -4,7 +4,7 @@
 - Content: `_qualities/`, `_requirements/`, `_standards/`, `_articles/`, `_pages/`.
 - Theme/templates: `_layouts/`, `_includes/`, `_sass/`.
 - Assets: `assets/` (compiled JS under `assets/js`, generated data under `assets/data`).
-- Source JS: `src/graphs/**`, data generator in `src/scripts/data.js`, build entry in `build.js`.
+- Source JS: `src/graphs/**`, data generator in `src/scripts/data.js`, build entry in `src/scripts/build.js`.
 - Config: `_config.yml`, `Gemfile`, `docker-compose.yml`, `package.json`.
 
 ## Build, Test, and Development

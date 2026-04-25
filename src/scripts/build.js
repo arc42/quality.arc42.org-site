@@ -1,7 +1,7 @@
 import esbuild from "esbuild";
 import { promises as fs, watch as watchFs } from "node:fs";
 import path from "node:path";
-import { generateData } from "./src/scripts/data.js";
+import { generateData } from "./data.js";
 
 const READY_FILE = path.join("assets", ".esbuild-ready");
 const DATA_WATCH_TARGETS = [

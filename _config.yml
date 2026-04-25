@@ -170,7 +170,7 @@ exclude:
   - test-results
   - package.json
   - package-lock.json
-  - build.js
+  - src/scripts/build.js
   - src/
   - TODO/
   - .prettierrc

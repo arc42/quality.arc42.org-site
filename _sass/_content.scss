@@ -59,7 +59,9 @@
   }
 
   blockquote {
-    border-left: 5px solid #ddd;
+    background-color: var(--brand-violet-faint);
+    border: 1px solid var(--brand-violet-18);
+    border-radius: 4px;
     color: $blockquote-color;
     padding: 0.5em 1em;
     p:first-child {
@@ -188,12 +190,13 @@
       margin-bottom: $margin;
       .panel {
         padding: 1em 1.5em;
-        background-color: rgba($page-title-color, 0.2);
+        background-color: var(--brand-violet-faint);
+        border: 1px solid var(--brand-violet-18);
         h1 {
           margin: 0;
           &,
           a {
-            color: $page-title-color;
+            color: $brand-violet-deep;
           }
         }
         ul.meta,
@@ -234,8 +237,8 @@
           margin-left: auto;
           padding: 0.38rem 0.74rem;
           border-radius: 999px;
-          border: 1px solid rgba(0, 0, 0, 0.12);
-          background: rgba(255, 255, 255, 0.34);
+          border: 1px solid var(--brand-violet-18);
+          background: var(--brand-cream-74);
           color: inherit;
           font-size: 0.95em;
           line-height: 1;
@@ -256,8 +259,8 @@
 
           &:hover,
           &:focus-visible {
-            background: rgba(255, 255, 255, 0.5);
-            border-color: rgba(0, 0, 0, 0.18);
+            background: var(--brand-cream);
+            border-color: var(--brand-violet-24);
             text-decoration: none;
             transform: translateY(-1px);
           }
@@ -276,8 +279,8 @@
         }
         &.quality-header {
           .header-category-link {
-            color: var(--blue-text-color);
-            border-color: rgba(22, 117, 185, 0.24);
+            color: var(--brand-violet-deep);
+            border-color: var(--brand-violet-24);
           }
         }
         &.standard-header {
@@ -376,8 +379,8 @@
   .also-known-as {
     padding: 0.75rem 1rem;
     margin-bottom: 1.5rem;
-    background-color: rgba(0, 184, 245, 0.08); // Light blue tint
-    border-left: 4px solid #00b8f5; // Quality color
+    background-color: var(--brand-violet-faint);
+    border: 1px solid var(--brand-violet-18);
     border-radius: 4px;
     font-size: 0.95rem;
 
@@ -390,8 +393,9 @@
       display: inline-block;
       padding: 0.2rem 0.6rem;
       margin: 0.1rem 0.25rem;
-      background-color: rgba(0, 184, 245, 0.15);
-      color: var(--synonym-text-color, #005987);
+      background-color: var(--brand-cream);
+      border: 1px solid var(--brand-violet-18);
+      color: var(--synonym-text-color);
       border-radius: 3px;
       font-size: 0.9rem;
       font-weight: 500;

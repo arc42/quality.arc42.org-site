@@ -120,8 +120,9 @@ video {
 .tag-box a {
   padding: 4px 6px;
   margin: 2px;
-  background-color: var(--quality-background-color);
-  color: var(--quality-text-color, #003366);
+  background-color: var(--brand-violet-faint);
+  border: 1px solid var(--brand-violet-18);
+  color: var(--brand-violet-deep);
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
@@ -129,8 +130,9 @@ video {
 }
 
 .tag-box a.req {
-  background-color: var(--reqs-background-color, #ffb3b3);
-  color: var(--req-text-color, #8b0000);
+  background-color: var(--brand-violet-faint);
+  border-color: var(--brand-violet-24);
+  color: var(--brand-violet-deep);
 }
 
 .tag-box a span {
