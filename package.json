@@ -29,15 +29,16 @@
     "d3": "^7.8.5",
     "graphology": "^0.26.0",
     "graphology-layout": "^0.6.1",
-    "graphology-layout-forceatlas2": "^0.10.1"
+    "graphology-layout-forceatlas2": "^0.10.1",
+    "lunr": "^2.3.9"
   },
   "devDependencies": {
     "@axe-core/playwright": "^4.10.2",
+    "@playwright/test": "1.58.2",
     "esbuild": "^0.25.0",
     "gray-matter": "^4.0.3",
     "prettier": "^3.4.2",
-    "rimraf": "^6.0.1",
-    "@playwright/test": "1.58.2"
+    "rimraf": "^6.0.1"
   },
   "volta": {
     "node": "22.13.1",

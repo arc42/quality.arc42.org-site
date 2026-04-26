@@ -171,6 +171,7 @@ exclude:
   - package.json
   - package-lock.json
   - src/scripts/build.js
+  - src/scripts/index-search.js
   - src/
   - TODO/
   - .prettierrc

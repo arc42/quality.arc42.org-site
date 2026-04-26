@@ -1,108 +1,130 @@
 $(function () {
-    var query = getQuery(["q", "t", "a", "d"]);
+    const searchStatus = $("#search-status");
+    const resultsContainer = $("#search-results-container");
+    const searchInput = $("#search");
 
-    var targets;
-    switch (query.key) {
-        case "t":
-            targets = ["tags"];
-            break;
-        case "a":
-            targets = ["author"];
-            break;
-        case "d":
-            targets = ["date"];
-            break;
-        case "q":
-        default:
-            targets = ["title", "tags", "author", "url", "date", "content"];
-            break;
+    let lunrIndex = null;
+    let searchLookup = null;
+
+    // 1. Get query from URL
+    const queryData = getQuery(["q"]);
+    const initialQuery = queryData.query;
+
+    if (initialQuery) {
+        searchInput.val(initialQuery);
     }
-    showPosts(query.words, targets);
 
-    if (query.key == "q") {
-        $("#search").val(query.query).focus();
+    // 2. Load Index and Lookup
+    Promise.all([
+        fetch(baseurl + "/assets/data/search-index.json").then(r => r.json()),
+        fetch(baseurl + "/assets/data/search-lookup.json").then(r => r.json())
+    ]).then(([indexData, lookupData]) => {
+        lunrIndex = lunr.Index.load(indexData);
+        searchLookup = lookupData;
+        
+        searchStatus.text("Search ready.");
+        
+        if (initialQuery) {
+            performSearch(initialQuery);
+        }
+    }).catch(err => {
+        console.error("Failed to load search index:", err);
+        searchStatus.text("Error loading search index. Please try refreshing.");
+    });
+
+    // 3. Listen for input (live search)
+    let debounceTimer;
+    searchInput.on("input", function() {
+        const q = $(this).val();
+        clearTimeout(debounceTimer);
+        debounceTimer = setTimeout(() => {
+            performSearch(q);
+            // Update URL without reload
+            const newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?q=' + encodeURIComponent(q);
+            window.history.pushState({path:newurl},'',newurl);
+        }, 150);
+    });
+
+    function performSearch(q) {
+        if (!lunrIndex || !q || q.length < 2) {
+            if (!q) resultsContainer.empty();
+            searchStatus.text("Enter at least 2 characters to search.");
+            return;
+        }
+
+        searchStatus.text("Searching for '" + q + "'...");
+        
+        // Support multi-term search with wildcards and field boosts
+        const terms = q.trim().split(/\s+/);
+        const results = lunrIndex.query(function(query) {
+            terms.forEach(term => {
+                // Title boost
+                query.term(term, { fields: ['title'], boost: 10 });
+                // Aliases boost
+                query.term(term, { fields: ['aliases'], boost: 5 });
+                // Tags boost
+                query.term(term, { fields: ['tags'], boost: 3 });
+                // Body search
+                query.term(term, { fields: ['body'], boost: 1 });
+                
+                // Wildcard for partial matches (prefix)
+                query.term(term, { fields: ['title', 'aliases', 'body'], boost: 2, wildcard: lunr.Query.wildcard.TRAILING });
+            });
+        });
+        
+        renderResults(results, q);
+    }
+
+    function highlightText(text, query) {
+        if (!query) return text;
+        const terms = query.trim().split(/\s+/).map(t => t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'));
+        const regex = new RegExp(`(${terms.join('|')})`, 'gi');
+        return text.replace(regex, '<mark>$1</mark>');
+    }
+
+    function renderResults(results, q) {
+        resultsContainer.empty();
+
+        if (results.length === 0) {
+            searchStatus.text("No results found for '" + q + "'.");
+            return;
+        }
+
+        searchStatus.text("Found " + results.length + " results for '" + q + "'.");
+
+        results.forEach(result => {
+            const item = searchLookup[result.ref];
+            if (!item) return;
+
+            const highlightedTitle = highlightText(item.title, q);
+
+            const html = `
+                <div class="search-result-item">
+                    <span class="search-result-category cat-${item.type}">${item.type}</span>
+                    <h2 class="search-result-title">
+                        <a href="${baseurl}${item.url}">${highlightedTitle}</a>
+                    </h2>
+                    <div class="search-result-snippet">
+                        ${item.url}
+                    </div>
+                </div>
+            `;
+            resultsContainer.append(html);
+        });
     }
 });
 
-function getQuery(keys)
-{
-    var query = "";
-    var key = "";
-    var words = [];
-
+function getQuery(keys) {
+    let query = "";
+    let key = "";
     keys.forEach(function (queryKey) {
-        var regex = RegExp("[?&]" + queryKey + "=([^&]+)", 'i');
-        var matched;
+        const regex = RegExp("[?&]" + queryKey + "=([^&]+)", 'i');
+        let matched;
         if (matched = window.location.search.match(regex)) {
             query = decodeURIComponent(matched[1]).replace(/(　| )+/g, ' ');
-            words = query.split(' ');
             key = queryKey;
-            return false;  // break;
+            return false;
         }
-        return true;  // continue;
     });
-
-    return { query: query, key: key, words: words };
-}
-
-function showPosts(words, targets)
-{
-    var getJson = function () {
-
-        var dfd = $.Deferred();
-        $.ajax({
-            url: baseurl + "/search.json",
-            dataType: "json",
-            timeout: 3000,  // 3 sec
-            success: function (posts) {
-                var matchedPosts = [];
-                posts.forEach(function (post) {
-
-                    // concatenate target fields as a string.
-                    var searchee = "";
-                    for (var i = 0; i < targets.length; i++) {
-                        var target = post[targets[i]];
-                        var targetString = "";
-                        if (target instanceof Array) {
-                            for (var j = 0; j < target.length; j++) {
-                                targetString += target[j];
-                            }
-                        } else if (typeof target == "object") {
-                            for (key in target) {
-                                targetString += target[key];
-                            }
-                        } else {
-                            targetString = target;
-                        }
-                        searchee += targetString;
-                    }
-
-                    // matching.
-                    var matched = false;
-                    words.forEach(function (word) {
-                        var regex = new RegExp(word, 'i');
-                        if (searchee.match(regex) != null) {
-                            matched = true;
-                            return false;  // break;
-                        }
-                        return true;  // continue;
-                    });
-
-                    if (matched) {
-                        matchedPosts.push(post);
-                    }
-                });
-
-                dfd.resolve(matchedPosts);
-            }
-        });
-
-        return dfd.promise();
-    };
-
-    getJson().then(function (matchedPosts) {
-        matchedPosts.forEach(function (post) {
-            $("#search-results").find("#" + post.id).show();
-        });
-    });
+    return { query: query, key: key };
 }

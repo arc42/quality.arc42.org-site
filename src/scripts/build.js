@@ -2,12 +2,14 @@ import esbuild from "esbuild";
 import { promises as fs, watch as watchFs } from "node:fs";
 import path from "node:path";
 import { generateData } from "./data.js";
+import { generateSearchIndex } from "./index-search.js";
 
 const READY_FILE = path.join("assets", ".esbuild-ready");
 const DATA_WATCH_TARGETS = [
   { path: "_qualities", recursive: true },
   { path: "_requirements", recursive: true },
   { path: "_standards", recursive: true },
+  { path: "_approaches", recursive: true },
   { path: "_data", recursive: true },
 ];
 const DATA_REBUILD_DEBOUNCE_MS = 150;
@@ -24,7 +26,8 @@ async function markReady() {
 async function rebuildGraphData() {
   console.log("Generating graph data...");
   await generateData();
-  console.log("Graph data generation complete.");
+  await generateSearchIndex();
+  console.log("Graph data and search index generation complete.");
 }
 
 function installDataWatchers(onChange) {

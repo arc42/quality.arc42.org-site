@@ -34,7 +34,7 @@ import yaml from "js-yaml";
  * Load quality synonyms mapping from _data/quality-synonyms.yml
  * @returns {Promise<Object>} Synonym mapping (canonical -> [synonyms])
  */
-async function loadQualitySynonyms() {
+export async function loadQualitySynonyms() {
     try {
         const projectRoot = process.cwd();
         const synonymsPath = path.join(projectRoot, "_data", "quality-synonyms.yml");
@@ -52,7 +52,7 @@ async function loadQualitySynonyms() {
  * @param {Object} synonymMap - Synonym mapping from loadQualitySynonyms()
  * @returns {string} Canonical slug
  */
-function resolveCanonical(slug, synonymMap) {
+export function resolveCanonical(slug, synonymMap) {
     // Check if this slug is a synonym of something
     for (const [canonical, synonyms] of Object.entries(synonymMap)) {
         if (synonyms.includes(slug)) {
@@ -187,7 +187,7 @@ function extractId(permalink) {
  * @param {string} separator
  * @returns {string[]}
  */
-function parseList(value, separator) {
+export function parseList(value, separator) {
     if (Array.isArray(value)) {
         return value;
     }
@@ -320,12 +320,12 @@ function addMainNode(id, data, isRequirements, nodes, synonymMap = {}) {
  * @param {string[]} filePaths - Array of file paths
  * @returns {Promise<Object[]>} - Array of frontmatter objects
  */
-async function parseFrontmatter(filePaths) {
+export async function parseFrontmatter(filePaths) {
     return Promise.all(
         filePaths.map(async (filePath) => {
             const content = await fs.readFile(filePath, "utf-8");
-            const { data } = matter(content);
-            return data;
+            const { data, content: body } = matter(content);
+            return { ...data, body };
         })
     );
 }
@@ -335,7 +335,7 @@ async function parseFrontmatter(filePaths) {
  * @param {string} dir - The directory to search
  * @returns {Promise<string[]>} Array of markdown file paths
  */
-async function getFilePaths(dir) {
+export async function getFilePaths(dir) {
     const result = [];
     const files = await fs.readdir(dir);
 
