@@ -12,7 +12,7 @@ It measures Performance, Accessibility, Best Practices, and SEO using Google's [
 
 <iframe
   title="Lighthouse Audit Report"
-  src="{{ '/assets/reports/lighthouse/latest.html' | prepend: site.baseurl }}"
-  style="width: 100%; min-height: 800px; border: 1px solid #d8e3ef; border-radius: 8px; background: #ffffff;"
+  src="{{ '/assets/reports/lighthouse/latest.html' | relative_url }}"
+  class="report-page__frame report-page__frame--lighthouse"
   loading="lazy">
 </iframe>

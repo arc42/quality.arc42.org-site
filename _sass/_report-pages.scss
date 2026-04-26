@@ -1,0 +1,32 @@
+.report-page {
+  .site-container {
+    width: 100%;
+    max-width: $site-max-width;
+  }
+
+  .report-page__content {
+    float: none;
+    width: 100%;
+    padding: 0 clamp(1rem, 3vw, 2rem);
+  }
+
+  .report-page__actions {
+    margin: 1rem 0;
+  }
+
+  .report-page__frame {
+    display: block;
+    width: 100%;
+    border: 1px solid $border-color;
+    border-radius: 8px;
+    background: $background-color;
+  }
+
+  .report-page__frame--wcag {
+    min-height: 1100px;
+  }
+
+  .report-page__frame--lighthouse {
+    min-height: 800px;
+  }
+}

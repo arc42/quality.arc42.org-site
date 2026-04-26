@@ -40,13 +40,13 @@
     {% endif %}
 </head>
 
-<body>
+<body class="report-page">
 {% include site-header.html %}
 
 <div class="site-container">
-    <div class="site-content" style="width: 100%; float: none; padding: 0 1rem;">
-        <div style="margin: 1rem 0;">
-            <a class="btn" href="{{ '/' | prepend: site.baseurl }}" id="wcag-report-home__btn">
+    <div class="site-content report-page__content">
+        <div class="report-page__actions">
+            <a class="btn" href="{{ '/' | relative_url }}" id="wcag-report-home__btn">
                 <i class="fa fa-home" aria-hidden="true"></i>
                 back to home
             </a>

@@ -18,9 +18,16 @@
 
 div.ua-background {
   background-color: #e7ddd8;
+  border: 1px solid #d4c8c3;
 }
 
 div.ua-background blockquote {
+  max-width: none;
+  margin: 0;
+  padding: 1.35rem 1rem;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
   color: #5e5e5e;
 }
 

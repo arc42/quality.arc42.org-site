@@ -1,7 +1,7 @@
 {% assign page = include.page %}
 
 <header>
-  <div class="panel article-header">
+  <div class="panel article-header{% if page.header_class %} {{ page.header_class }}{% endif %}">
     <h1>
       {% if include.link %}
       <a class="post-link" href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>

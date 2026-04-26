@@ -103,6 +103,7 @@ Alternatively, use the provided Makefile targets:
 | `make test` | Run Playwright UI tests in Docker and print report/artifact locations |
 | `make wcag-test` | Run Docker-based axe WCAG scan and generate graphical report assets (informative, non-blocking) |
 | `make wcag-test-strict` | Run same WCAG scan but fail on any violation |
+| `make lighthouse-test` | Run Lighthouse performance/SEO audits in Docker (informative, non-blocking) |
 
 Notes:
 - `make build` is the slow path by design: it installs Node and Ruby dependencies into the Docker images once, so repeat `make dev` runs stay fast.
@@ -110,6 +111,7 @@ Notes:
 - `make doctor` is the quickest local sanity check before/after `make dev`; it verifies that `http://localhost:4000` is reachable and probes key routes such as `/qualities/autonomy/` and `/qualities/autonomicity/`.
 - `make test` automatically starts the local stack (`docker compose up -d`) and waits for `http://localhost:4000` before executing Playwright.
 - `make wcag-test` also starts the local stack if needed and writes report files to `assets/reports/wcag/` (displayed at `/about/wcag-report/`).
+- `make lighthouse-test` generates detailed performance and SEO audits in `assets/reports/lighthouse/` (displayed at `/about/lighthouse-report/`).
 - `make wcag-test` is informative (does not fail on existing violations). Use `make wcag-test-strict` for gating.
 - For browser access, prefer `http://localhost:4000` (or `http://127.0.0.1:4000`) over `http://0.0.0.0:4000`.
 - If you change `package-lock.json` or `Gemfile.lock`, rerun `make build` before starting the stack again.

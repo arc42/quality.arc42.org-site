@@ -1,17 +1,23 @@
 // Quality aliases page styles
 .aliases-page {
-  --aliases-accent: var(--brand-violet);
-  --aliases-accent-deep: var(--brand-violet-deep);
-  --aliases-accent-soft: var(--brand-violet-faint);
+  // Aliases are quality synonyms, so they share the qualities (blue) palette.
+  --aliases-accent: var(--brand-blue);
+  --aliases-accent-deep: var(--brand-blue-text);
+  --aliases-accent-soft: var(--brand-blue-soft);
+  --aliases-accent-rgb: 0, 184, 245; // matches $brand-blue
+  --aliases-accent-08: rgba(var(--aliases-accent-rgb), 0.08);
+  --aliases-accent-18: rgba(var(--aliases-accent-rgb), 0.18);
+  --aliases-accent-24: rgba(var(--aliases-accent-rgb), 0.24);
+  --aliases-accent-46: rgba(var(--aliases-accent-rgb), 0.46);
 
   .aliases-hero {
     position: relative;
     margin: 0 0 1.5rem;
     padding: 1.25rem 1.25rem 1.1rem;
     border-radius: 12px;
-    border: 1px solid var(--brand-violet-18);
-    background: radial-gradient(circle at 0% 0%, var(--brand-violet-08), transparent 52%),
-      radial-gradient(circle at 100% 100%, var(--brand-violet-18), transparent 56%),
+    border: 1px solid var(--aliases-accent-18);
+    background: radial-gradient(circle at 0% 0%, var(--aliases-accent-08), transparent 52%),
+      radial-gradient(circle at 100% 100%, var(--aliases-accent-18), transparent 56%),
       var(--brand-paper);
     overflow: hidden;
   }
@@ -58,7 +64,7 @@
     align-items: baseline;
     gap: 0.4rem;
     padding: 0.35rem 0.7rem;
-    border: 1px solid var(--brand-violet-24);
+    border: 1px solid var(--aliases-accent-24);
     border-radius: 999px;
     background: var(--brand-cream-74);
   }
@@ -87,10 +93,10 @@
   .synonym-card {
     position: relative;
     background: var(--aliases-accent-soft);
-    border: 1px solid var(--brand-violet-18);
+    border: 1px solid var(--aliases-accent-18);
     border-radius: 10px;
     padding: 18px;
-    box-shadow: 0 2px 8px var(--brand-violet-08);
+    box-shadow: 0 2px 8px var(--aliases-accent-08);
     transition:
       transform 0.2s ease,
       box-shadow 0.2s ease,
@@ -101,8 +107,8 @@
 
   .synonym-card:hover {
     transform: translateY(-3px);
-    box-shadow: 0 8px 20px var(--brand-violet-18);
-    border-color: var(--brand-violet-46);
+    box-shadow: 0 8px 20px var(--aliases-accent-18);
+    border-color: var(--aliases-accent-46);
   }
 
   .synonym-canonical {
@@ -110,7 +116,7 @@
     font-size: 1.15rem;
     margin-bottom: 0.55rem;
     color: var(--aliases-accent-deep);
-    border-bottom: 1px solid var(--brand-violet-18);
+    border-bottom: 1px solid var(--aliases-accent-18);
     padding-bottom: 0.4rem;
   }
 
@@ -166,7 +172,7 @@
     padding: 0.25rem 0.55rem;
     border-radius: 999px;
     background: var(--brand-cream);
-    border: 1px solid var(--brand-violet-18);
+    border: 1px solid var(--aliases-accent-18);
     color: var(--brand-ink);
     font-size: 0.88rem;
     line-height: 1.25;
@@ -189,7 +195,7 @@
   }
 
   .synonym-item a:hover {
-    border-color: var(--brand-violet-24);
+    border-color: var(--aliases-accent-24);
     background: var(--brand-paper);
   }
 
