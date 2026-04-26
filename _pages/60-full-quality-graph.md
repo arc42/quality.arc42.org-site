@@ -58,12 +58,12 @@ hide: true
           <span class="legend-label">Root Node</span>
         </div>
         <div class="legend-item">
-          <span class="color-box" style="background-color: #1a3a5c;"></span>
+          <span class="color-box" style="background-color: var(--dimension-background-color);"></span>
           <span class="legend-label">Property Nodes</span>
         </div>
         <hr />
         <div class="legend-item">
-          <span class="color-box" style="background-color: #FFC95C;"></span>
+          <span class="color-box" style="background-color: var(--standard-background-color);"></span>
           <label class="toggle">
             <span class="toggle-label legend-label">Standards</span>
             <input class="toggle-checkbox" type="checkbox" id="legend-toggle-standards" checked>
@@ -71,7 +71,7 @@ hide: true
           </label>
         </div>
         <div class="legend-item">
-          <span class="color-box" style="background-color: #00B8F5;"></span>
+          <span class="color-box" style="background-color: var(--quality-background-color);"></span>
           <label class="toggle">
             <span class="toggle-label legend-label">Qualities</span>
             <input class="toggle-checkbox" type="checkbox" id="legend-toggle-qualities" checked>
@@ -79,7 +79,7 @@ hide: true
           </label>
         </div>
         <div class="legend-item">
-          <span class="color-box" style="background-color: #ffb3b3;"></span>
+          <span class="color-box" style="background-color: var(--reqs-background-color);"></span>
           <label class="toggle">
             <span class="toggle-label legend-label">Requirements</span>
             <input class="toggle-checkbox" type="checkbox" id="legend-toggle-requirements">

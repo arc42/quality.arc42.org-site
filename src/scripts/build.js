@@ -103,10 +103,11 @@ async function build({ watch = false } = {}) {
     await rebuildGraphData();
 
     const context = await esbuild.context({
-      entryPoints: [
-        "src/graphs/homepage/main.js",
-        "src/graphs/fullpage/main.js",
-      ],
+      entryPoints: {
+        "homepage/main": "src/graphs/homepage/main.js",
+        "fullpage/main": "src/graphs/fullpage/main.js",
+        "site": "src/scripts/site/main.js"
+      },
       outdir: "assets/js",
       bundle: true,
       minify: !watch,

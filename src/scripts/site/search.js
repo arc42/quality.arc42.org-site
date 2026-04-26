@@ -1,7 +1,11 @@
-$(function () {
-    const searchStatus = $("#search-status");
-    const resultsContainer = $("#search-results-container");
-    const searchInput = $("#search");
+import lunr from 'lunr';
+
+export function initSearch() {
+    const searchStatus = document.getElementById("search-status");
+    const resultsContainer = document.getElementById("search-results-container");
+    const searchInput = document.getElementById("search");
+
+    if (!searchInput || !resultsContainer) return;
 
     let lunrIndex = null;
     let searchLookup = null;
@@ -11,31 +15,31 @@ $(function () {
     const initialQuery = queryData.query;
 
     if (initialQuery) {
-        searchInput.val(initialQuery);
+        searchInput.value = initialQuery;
     }
 
     // 2. Load Index and Lookup
     Promise.all([
-        fetch(baseurl + "/assets/data/search-index.json").then(r => r.json()),
-        fetch(baseurl + "/assets/data/search-lookup.json").then(r => r.json())
+        fetch(window.baseurl + "/assets/data/search-index.json").then(r => r.json()),
+        fetch(window.baseurl + "/assets/data/search-lookup.json").then(r => r.json())
     ]).then(([indexData, lookupData]) => {
         lunrIndex = lunr.Index.load(indexData);
         searchLookup = lookupData;
         
-        searchStatus.text("Search ready.");
+        if (searchStatus) searchStatus.textContent = "Search ready.";
         
         if (initialQuery) {
             performSearch(initialQuery);
         }
     }).catch(err => {
         console.error("Failed to load search index:", err);
-        searchStatus.text("Error loading search index. Please try refreshing.");
+        if (searchStatus) searchStatus.textContent = "Error loading search index. Please try refreshing.";
     });
 
     // 3. Listen for input (live search)
     let debounceTimer;
-    searchInput.on("input", function() {
-        const q = $(this).val();
+    searchInput.addEventListener("input", function() {
+        const q = this.value;
         clearTimeout(debounceTimer);
         debounceTimer = setTimeout(() => {
             performSearch(q);
@@ -47,12 +51,12 @@ $(function () {
 
     function performSearch(q) {
         if (!lunrIndex || !q || q.length < 2) {
-            if (!q) resultsContainer.empty();
-            searchStatus.text("Enter at least 2 characters to search.");
+            if (!q) resultsContainer.innerHTML = '';
+            if (searchStatus) searchStatus.textContent = "Enter at least 2 characters to search.";
             return;
         }
 
-        searchStatus.text("Searching for '" + q + "'...");
+        if (searchStatus) searchStatus.textContent = "Searching for '" + q + "'...";
         
         // Support multi-term search with wildcards and field boosts
         const terms = q.trim().split(/\s+/);
@@ -83,14 +87,14 @@ $(function () {
     }
 
     function renderResults(results, q) {
-        resultsContainer.empty();
+        resultsContainer.innerHTML = '';
 
         if (results.length === 0) {
-            searchStatus.text("No results found for '" + q + "'.");
+            if (searchStatus) searchStatus.textContent = "No results found for '" + q + "'.";
             return;
         }
 
-        searchStatus.text("Found " + results.length + " results for '" + q + "'.");
+        if (searchStatus) searchStatus.textContent = "Found " + results.length + " results for '" + q + "'.";
 
         results.forEach(result => {
             const item = searchLookup[result.ref];
@@ -102,17 +106,19 @@ $(function () {
                 <div class="search-result-item">
                     <span class="search-result-category cat-${item.type}">${item.type}</span>
                     <h2 class="search-result-title">
-                        <a href="${baseurl}${item.url}">${highlightedTitle}</a>
+                        <a href="${window.baseurl}${item.url}">${highlightedTitle}</a>
                     </h2>
                     <div class="search-result-snippet">
                         ${item.url}
                     </div>
                 </div>
             `;
-            resultsContainer.append(html);
+            const div = document.createElement('div');
+            div.innerHTML = html;
+            resultsContainer.appendChild(div.firstElementChild);
         });
     }
-});
+}
 
 function getQuery(keys) {
     let query = "";
@@ -123,7 +129,6 @@ function getQuery(keys) {
         if (matched = window.location.search.match(regex)) {
             query = decodeURIComponent(matched[1]).replace(/(　| )+/g, ' ');
             key = queryKey;
-            return false;
         }
     });
     return { query: query, key: key };

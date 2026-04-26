@@ -48,6 +48,9 @@
     {% include q-graph-config.html %}
     {% endif %}
 
+    <script>
+        window.baseurl = "{{ site.baseurl }}";
+    </script>
 </head>
 <body{% if page.name contains 'tag-' %} class="dimension-tag-page"{% endif %}>
 
@@ -62,18 +65,7 @@
 {% include footer.html %}
 
 
-<script src="{{ '/assets/jquery/jquery-3.7.1-min.js' | prepend: site.baseurl }}"></script>
-<script src="{{ '/assets/lib/garand-sticky/jquery.sticky.js' | prepend: site.baseurl }}"></script>
-<script src="{{ '/assets/js/script.js' | prepend: site.baseurl }}"></script>
-
-{% if page.id %}
-<script src="{{ '/assets/js/header-link.js' | prepend: site.baseurl }}"></script>
-{% endif %}
-
-{% if page.permalink == '/search/' %}
-<script src="{{ '/assets/js/search.js' | prepend: site.baseurl }}"></script>
-{% endif %}
-
+<script src="{{ '/assets/js/site.js' | prepend: site.baseurl }}"></script>
 
 </body>
 </html>
