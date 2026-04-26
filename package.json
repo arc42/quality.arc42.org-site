@@ -37,6 +37,8 @@
     "@playwright/test": "1.58.2",
     "esbuild": "^0.25.0",
     "gray-matter": "^4.0.3",
+    "lighthouse": "^13.1.0",
+    "playwright-lighthouse": "^4.0.0",
     "prettier": "^3.4.2",
     "rimraf": "^6.0.1"
   },

@@ -1,4 +1,4 @@
-.PHONY: help build clean dev doctor test wcag-test wcag-test-strict
+.PHONY: help build clean dev doctor test wcag-test wcag-test-strict lighthouse-test
 
 help:
 	@printf "Available targets:\n"
@@ -10,6 +10,7 @@ help:
 	@printf "  make test   Ensure local site is up, run Playwright UI tests in Docker, optionally serve HTML report.\n"
 	@printf "  make wcag-test  Run axe-based WCAG scan in Docker and generate report assets (informative, non-blocking).\n"
 	@printf "  make wcag-test-strict  Run the same WCAG scan but fail on any violation.\n"
+	@printf "  make lighthouse-test  Run Lighthouse performance/SEO audits in Docker (informative).\n"
 
 build:
 	docker compose --profile test build esbuild jekyll playwright
@@ -185,4 +186,36 @@ wcag-test-strict:
 	printf "Graphical report: assets/reports/wcag/latest.html\n"; \
 	printf "Raw data: assets/reports/wcag/latest.json\n"; \
 	printf "Site page: /about/wcag-report/\n\n"; \
+	exit $$status
+
+lighthouse-test:
+	@printf "\n[lighthouse-test] Ensuring local site is running (docker compose up -d esbuild jekyll)...\n"
+	@docker compose up -d esbuild jekyll >/dev/null
+	@printf "[lighthouse-test] Waiting for http://localhost:4000 to become ready"
+	@ready=0; i=0; \
+	while [ $$i -lt 60 ]; do \
+		if curl -fsS http://localhost:4000 >/dev/null 2>&1; then \
+			ready=1; \
+			break; \
+		fi; \
+		printf "."; \
+		i=$$((i+1)); \
+		sleep 2; \
+	done; \
+	printf "\n"; \
+	if [ $$ready -ne 1 ]; then \
+		printf "❌ Timed out waiting for site on http://localhost:4000\n"; \
+	printf "Try: docker compose logs --tail=120 jekyll esbuild\n\n"; \
+		exit 1; \
+	fi
+	@printf "[lighthouse-test] Running Lighthouse audits in Docker...\n"
+	@/bin/bash -lc 'set -o pipefail; docker compose --profile test run --rm -e UI_BASE_URL=http://jekyll:4000 playwright npx playwright test --config _docker/playwright/playwright.config.ts tests/ui/lighthouse.spec.ts 2>&1 | sed "/^To open last HTML report run:/,+3d"; exit $${PIPESTATUS[0]}'; status=$$?; \
+	printf "\n"; \
+	if [ $$status -eq 0 ]; then \
+		printf "✅ Lighthouse audits completed.\n"; \
+	else \
+		printf "❌ Lighthouse audits failed (exit %s).\n" "$$status"; \
+	fi; \
+	printf "Graphical report: assets/reports/lighthouse/latest.html\n"; \
+	printf "Raw data: assets/reports/lighthouse/latest.json\n\n"; \
 	exit $$status

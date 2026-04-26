@@ -8,35 +8,35 @@ share: false
 
 <script src="{{ '/assets/js/lunr.min.js' | prepend: site.baseurl }}"></script>
 <script>
-    var baseurl = "{{ site.baseurl }}";
+  var baseurl = "{{ site.baseurl }}";
 </script>
 
 <div class="article-wrapper">
-    <div id="search-status" style="margin-bottom: 2rem; color: var(--home-muted);">
-        Initializing search...
-    </div>
-    <div id="search-results-container" class="search-results-list">
-        <!-- Results will be injected here -->
-    </div>
+  <div id="search-status" style="margin-bottom: 2rem; color: var(--home-muted)">
+    Initializing search...
+  </div>
+  <div id="search-results-container" class="search-results-list">
+    <!-- Results will be injected here -->
+  </div>
 </div>
 
 <style>
-.search-results-list {
+  .search-results-list {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
-}
+  }
 
-.search-result-item {
+  .search-result-item {
     padding-bottom: 1.5rem;
     border-bottom: 1px solid var(--home-rule, #eee);
-}
+  }
 
-.search-result-item:last-child {
+  .search-result-item:last-child {
     border-bottom: none;
-}
+  }
 
-.search-result-category {
+  .search-result-category {
     display: inline-block;
     font-size: 0.75rem;
     text-transform: uppercase;
@@ -45,29 +45,44 @@ share: false
     margin-bottom: 0.4rem;
     padding: 0.2rem 0.6rem;
     border-radius: 4px;
-}
+  }
 
-.cat-quality { background: #e0f7ff; color: #0089ba; }
-.cat-requirement { background: #fff0f0; color: #d64545; }
-.cat-standard { background: #fff9e6; color: #b38b00; }
-.cat-approach { background: #f0fff0; color: #2d8a2d; }
+  .cat-quality {
+    background: #e0f7ff;
+    color: #0089ba;
+  }
+  .cat-requirement {
+    background: #fff0f0;
+    color: #d64545;
+  }
+  .cat-standard {
+    background: #fff9e6;
+    color: #b38b00;
+  }
+  .cat-approach {
+    background: #f0fff0;
+    color: #2d8a2d;
+  }
 
-.search-result-title {
+  .search-results-list h2.search-result-title {
     font-family: var(--heading-font-family, serif);
-    font-size: 1.5rem;
+    font-size: 1.35rem;
+    line-height: 1.2;
     margin: 0 0 0.5rem 0;
-}
+    border-bottom: 0;
+    padding-bottom: 0;
+  }
 
-.search-result-title a {
+  .search-results-list h2.search-result-title a {
     color: var(--link-color, #1675b9);
     text-decoration: none;
-}
+  }
 
-.search-result-title a:hover {
+  .search-results-list h2.search-result-title a:hover {
     text-decoration: underline;
-}
+  }
 
-.search-result-snippet {
+  .search-result-snippet {
     font-size: 0.95rem;
     line-height: 1.5;
     color: var(--text-color, #333);
@@ -75,5 +90,5 @@ share: false
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
-}
+  }
 </style>

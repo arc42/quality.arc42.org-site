@@ -1,0 +1,51 @@
+{
+  "generatedAt": "2026-04-26T16:22:05.290Z",
+  "results": [
+    {
+      "name": "Home",
+      "path": "/",
+      "scores": {
+        "performance": 100,
+        "accessibility": 98,
+        "bestPractices": 78,
+        "seo": 100
+      }
+    },
+    {
+      "name": "Qualities Index",
+      "path": "/qualities/",
+      "scores": {
+        "performance": 97,
+        "accessibility": 95,
+        "bestPractices": 78,
+        "seo": 100
+      }
+    },
+    {
+      "name": "Quality: Availability",
+      "path": "/qualities/availability",
+      "scores": {
+        "performance": 99,
+        "accessibility": 98,
+        "bestPractices": 78,
+        "seo": 100
+      }
+    },
+    {
+      "name": "Full Graph",
+      "path": "/full-quality-graph/",
+      "scores": {
+        "performance": 93,
+        "accessibility": 98,
+        "bestPractices": 78,
+        "seo": 100
+      }
+    }
+  ],
+  "averages": {
+    "performance": 97,
+    "accessibility": 97,
+    "bestPractices": 78,
+    "seo": 100
+  }
+}

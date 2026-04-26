@@ -74,7 +74,8 @@ Three words: **precise, pragmatic, trustworthy**.
 2. **Structure is the design** — Information architecture is the interface. Strong typographic hierarchy and consistent patterns are paramount.
 3. **Professional density** — Provide dense, scannable content with clear entry points.
 4. **The graph is the signature** — Support and amplify the interactive visualization.
-5. **Accessibility is non-negotiable** — Target WCAG 2.2 AA. Atkinson Hyperlegible Next is used for low-vision disambiguation.
+5. **Automated Validation** — Maintain quality via link validation, WCAG scans, and Lighthouse audits.
+6. **Accessibility is non-negotiable** — Target WCAG 2.2 AA. Atkinson Hyperlegible Next is used for low-vision disambiguation.
 
 ---
 

@@ -178,6 +178,7 @@ exclude:
   - CLAUDE.md
   - cheat-sheet.*
   - statistic-utilities/
+  - assets/reports/
   
 
 watch_exclude:

@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Lighthouse Audit Report</title>
+  <style>
+    :root {
+      --good: #0cce6b;
+      --average: #ffa400;
+      --poor: #ff4e42;
+      --text: #1f2d3d;
+      --bg: #f8fbff;
+    }
+    body { font-family: sans-serif; color: var(--text); background: var(--bg); margin: 0; padding: 2rem; }
+    main { max-width: 1000px; margin: 0 auto; background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); }
+    h1 { color: #003366; margin-top: 0; }
+    .meta { color: #666; margin-bottom: 2rem; }
+    table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
+    th, td { text-align: left; padding: 1rem; border-bottom: 1px solid #eee; }
+    th { background: #f4f8fb; color: #003366; }
+    .score-good { color: var(--good); font-weight: bold; }
+    .score-average { color: var(--average); font-weight: bold; }
+    .score-poor { color: var(--poor); font-weight: bold; }
+    .summary-cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-bottom: 2rem; }
+    .card { padding: 1rem; border-radius: 8px; border: 1px solid #ddd; text-align: center; }
+    .card-label { font-size: 0.8rem; color: #666; text-transform: uppercase; }
+    .card-value { font-size: 1.8rem; margin-top: 0.5rem; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Lighthouse Audit Report</h1>
+    <p class="meta">Generated: 4/26/2026, 4:22:05 PM</p>
+    
+    <div class="summary-cards">
+      <div class="card"><div class="card-label">Avg Performance</div><div class="card-value score-good">97</div></div>
+      <div class="card"><div class="card-label">Avg Accessibility</div><div class="card-value score-good">97</div></div>
+      <div class="card"><div class="card-label">Avg Best Practices</div><div class="card-value score-average">78</div></div>
+      <div class="card"><div class="card-label">Avg SEO</div><div class="card-value score-good">100</div></div>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Page</th>
+          <th>Perf</th>
+          <th>A11y</th>
+          <th>Best Prac.</th>
+          <th>SEO</th>
+        </tr>
+      </thead>
+      <tbody>
+        
+    <tr>
+      <td><a href="/">Home</a></td>
+      <td class="score-good">100</td>
+      <td class="score-good">98</td>
+      <td class="score-average">78</td>
+      <td class="score-good">100</td>
+    </tr>
+  
+    <tr>
+      <td><a href="/qualities/">Qualities Index</a></td>
+      <td class="score-good">97</td>
+      <td class="score-good">95</td>
+      <td class="score-average">78</td>
+      <td class="score-good">100</td>
+    </tr>
+  
+    <tr>
+      <td><a href="/qualities/availability">Quality: Availability</a></td>
+      <td class="score-good">99</td>
+      <td class="score-good">98</td>
+      <td class="score-average">78</td>
+      <td class="score-good">100</td>
+    </tr>
+  
+    <tr>
+      <td><a href="/full-quality-graph/">Full Graph</a></td>
+      <td class="score-good">93</td>
+      <td class="score-good">98</td>
+      <td class="score-average">78</td>
+      <td class="score-good">100</td>
+    </tr>
+  
+      </tbody>
+    </table>
+  </main>
+</body>
+</html>

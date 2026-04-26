@@ -13,6 +13,9 @@
 - `npm run build`: generate graph data and bundle JS to `assets/js` once.
 - `npm run watch`: build and watch for JS changes.
 - `npm run data`: regenerate JSON under `assets/data` from content front matter.
+- `make wcag-test`: run automated accessibility scan (informative).
+- `make lighthouse-test`: run automated performance/SEO audit (informative).
+- `make test`: run full Playwright UI test suite.
 Notes: The Docker stack runs `npm run data` on startup. If you change tags/related/permalinks, restart the stack so data is refreshed.
 
 ## Coding Style & Naming
