@@ -1,0 +1,36 @@
+h2.section-heading {
+  margin: 1em 0;
+  padding: 0.8em 1.5em;
+  border-radius: 0;
+  font-size: 1.8em;
+}
+
+h2.section-heading.requirements {
+  background-color: var(--reqs-background-color);
+  color: var(--req-text-color);
+}
+
+h2.section-heading.qualities {
+  background-color: var(--quality-background-color);
+  color: var(--quality-text-color);
+}
+
+h2.section-heading.standards {
+  background-color: var(--standard-background-color);
+  color: var(--standard-text-color);
+}
+
+h2.section-heading.approaches {
+  background-color: var(--approaches-background-color);
+  color: var(--approaches-text-color);
+}
+
+h2.section-heading.tradeoffs {
+  background-color: var(--tradeoff-background-color);
+  color: var(--tradeoff-text-color);
+}
+
+h2.section-heading.articles {
+  background-color: var(--article-background-color);
+  color: var(--blue-text-color);
+}

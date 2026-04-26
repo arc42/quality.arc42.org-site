@@ -48,6 +48,8 @@ $nav-compact-width: 720px;
 $nav-narrow-width: 520px;
 $home-stack-width: 860px;
 $home-edge-width: 560px;
+$home-graph-wide-width: 900px;
+$footer-stack-width: 600px;
 
 // brand color.
 $brand-violet: #682d63;
@@ -70,6 +72,38 @@ $brand-color-blue: $brand-blue;
 $brand-color-lila: $brand-violet;
 $brand-color-dark: $brand-violet-deep;
 $marker-color: $brand-color;
+
+// Domain color tokens.
+$quality-background-color: $brand-blue;
+$quality-text-color: $brand-blue-text;
+$requirement-background-color: #ffb3b3;
+$requirement-soft-background-color: #ffe0e0;
+$requirement-text-color: #8b0000;
+$standard-background-color: #ffc95c;
+$standard-soft-background-color: #ffefc8;
+$standard-text-color: #2c3e50;
+$dark-blue-text-color: #ffffff;
+$blue-text-color: $brand-blue-text;
+$error-color: #ec645b;
+$article-background-color: $brand-violet-soft;
+$approaches-background-color: #92ef80;
+$approaches-soft-background-color: #d9f7d3;
+$approaches-text-color: #1b5e20;
+$dimension-background-color: #1a3a5c;
+$dimension-text-color: #c8e6f5;
+$tradeoff-background-color: #fbe9e3;
+$tradeoff-text-color: #a04323;
+$tradeoff-muted-text-color: #6b6b6b;
+$synonym-text-color: $brand-violet-deep;
+$muted-text-color: #555555;
+$muted-text-1: #6f6f6f;
+$muted-text-2: #6b6b6b;
+$muted-text-3: #5e5e5e;
+$muted-blue-text: $brand-muted;
+$approach-impact-border-color: #e1e7ef;
+$legacy-requirement-shadow-color: #9cad75;
+$legacy-danger-shadow-color: rgba(156, 61, 75, 1);
+$innoq-heart-color: #ff9c66;
 
 :root {
   --brand-violet: #{$brand-violet};
@@ -104,6 +138,36 @@ $marker-color: $brand-color;
   --brand-blue-dark: #{$brand-blue-dark};
   --brand-blue-soft: #{$brand-blue-soft};
   --brand-blue-text: #{$brand-blue-text};
+  --quality-background-color: #{$quality-background-color};
+  --quality-text-color: #{$quality-text-color};
+  --reqs-background-color: #{$requirement-background-color};
+  --reqs-soft-background-color: #{$requirement-soft-background-color};
+  --req-text-color: #{$requirement-text-color};
+  --standard-background-color: #{$standard-background-color};
+  --standard-soft-background-color: #{$standard-soft-background-color};
+  --standard-text-color: #{$standard-text-color};
+  --dark-blue-text-color: #{$dark-blue-text-color};
+  --blue-text-color: #{$blue-text-color};
+  --error-color: #{$error-color};
+  --article-background-color: #{$article-background-color};
+  --approaches-background-color: #{$approaches-background-color};
+  --approaches-soft-background-color: #{$approaches-soft-background-color};
+  --approaches-text-color: #{$approaches-text-color};
+  --dimension-background-color: #{$dimension-background-color};
+  --dimension-text-color: #{$dimension-text-color};
+  --tradeoff-background-color: #{$tradeoff-background-color};
+  --tradeoff-text-color: #{$tradeoff-text-color};
+  --tradeoff-muted-text-color: #{$tradeoff-muted-text-color};
+  --synonym-text-color: #{$synonym-text-color};
+  --muted-text-color: #{$muted-text-color};
+  --muted-text-1: #{$muted-text-1};
+  --muted-text-2: #{$muted-text-2};
+  --muted-text-3: #{$muted-text-3};
+  --muted-blue-text: #{$muted-blue-text};
+  --approach-impact-border-color: #{$approach-impact-border-color};
+  --legacy-requirement-shadow-color: #{$legacy-requirement-shadow-color};
+  --legacy-danger-shadow-color: #{$legacy-danger-shadow-color};
+  --innoq-heart-color: #{$innoq-heart-color};
 }
 
 // other major colors.
@@ -119,16 +183,3 @@ $status-ok-color: #50c878;
 $text-color: #383838;
 $link-color: $brand-color;
 $blockquote-color: $brand-muted;
-
-// Tag-specific colors
-$quality-background-color: $brand-blue;
-$requirement-background-color: lighten($brand-color-blue, 35%);
-$requirement-text-color: darken($brand-color-blue, 20%);
-
-// dimension colors
-$dimension-background-color: #1a3a5c;
-$dimension-text-color: #c8e6f5;
-
-// approaches colors
-$approaches-background-color: #92ef80;
-$approaches-text-color: #1b5e20;

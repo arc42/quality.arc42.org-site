@@ -1,0 +1,57 @@
+a.hov {
+  --tag-chip-bg: var(--quality-background-color);
+  --tag-chip-color: var(--quality-text-color);
+
+  display: inline-block;
+  margin: 3px 2px;
+  padding: 5px 10px;
+  border-radius: 11px;
+  background-color: var(--tag-chip-bg);
+  color: var(--tag-chip-color);
+  text-align: center;
+  text-decoration: none;
+}
+
+a.hov:hover {
+  transform: scale(1.25);
+  text-decoration: none;
+}
+
+a.hov.tags {
+  line-height: 1.2;
+  margin-left: 10px;
+  margin-right: 1px;
+}
+
+a.hov.tags.req {
+  --tag-chip-bg: var(--reqs-background-color);
+  --tag-chip-color: var(--req-text-color);
+}
+
+a.hov.tags.approach {
+  --tag-chip-bg: var(--approaches-background-color);
+  --tag-chip-color: var(--approaches-text-color);
+}
+
+a.hov.tags.standard {
+  --tag-chip-bg: var(--standard-background-color);
+  --tag-chip-color: var(--standard-text-color);
+}
+
+a.hov.tags.dimension {
+  --tag-chip-bg: var(--dimension-background-color);
+  --tag-chip-color: var(--dimension-text-color);
+}
+
+a.reqs {
+  color: var(--req-text-color);
+}
+
+.no-bullets {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.as-bullet {
+  margin-right: 10px;
+}

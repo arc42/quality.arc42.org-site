@@ -114,7 +114,7 @@
   text-decoration: none;
 }
 
-@media (max-width: 600px) {
+@media (max-width: $footer-stack-width) {
   .footer-colophon {
     align-items: center;
     display: flex;

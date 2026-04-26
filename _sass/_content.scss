@@ -25,34 +25,34 @@
   }
 
   h1 {
-    font-size: $text-4xl;   // 3.15rem — reference-book display
+    font-size: $text-4xl; // 3.15rem — reference-book display
     letter-spacing: -0.015em;
     line-height: 1.05;
   }
 
   h2 {
-    font-size: $text-3xl;   // 2.37rem
+    font-size: $text-3xl; // 2.37rem
     color: $link-color;
     border-bottom: 1px solid rgba($link-color, 0.12);
     padding-bottom: 0.25rem;
   }
 
   h3 {
-    font-size: $text-2xl;   // 1.78rem
+    font-size: $text-2xl; // 1.78rem
   }
 
   h4 {
-    font-size: $text-xl;    // 1.45rem
+    font-size: $text-xl; // 1.45rem
   }
 
   h5 {
-    font-size: $text-lg;    // 1.2rem
+    font-size: $text-lg; // 1.2rem
   }
 
   h6 {
-    font-size: $text-sm;    // 0.875rem
+    font-size: $text-sm; // 0.875rem
     font-weight: 400;
-    font-family: $font-family;    // drop the serif for tiny caps-style labels
+    font-family: $font-family; // drop the serif for tiny caps-style labels
     letter-spacing: 0.08em;
     text-transform: uppercase;
     color: rgba($site-title-color, 0.7);

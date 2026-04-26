@@ -1,0 +1,35 @@
+.innoq-text {
+  color: var(--innoq-heart-color);
+}
+
+[id="about-author"] {
+  margin: 2rem 0;
+}
+
+[id="about-author"] + p img {
+  float: left;
+  width: 200px;
+  max-width: 200px;
+  margin: 0 2rem 1rem 0;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+[id="about-author"] + p + p,
+[id="about-author"] + p + p + ul {
+  overflow: hidden;
+}
+
+[id="about-author"] ~ hr {
+  clear: both;
+}
+
+@media screen and (max-width: $mobile-width) {
+  [id="about-author"] + p img {
+    float: none;
+    display: block;
+    margin: 0 auto 1rem;
+    width: 150px;
+    max-width: 150px;
+  }
+}

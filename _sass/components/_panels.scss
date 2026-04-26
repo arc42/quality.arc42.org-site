@@ -1,0 +1,95 @@
+.panel.quality-header,
+.site-content .panel.quality-header {
+  background-color: var(--quality-background-color);
+}
+
+.panel.quality-header h1,
+.panel.quality-header h1 a,
+.site-content .panel.quality-header h1,
+.site-content .panel.quality-header h1 a,
+.panel.quality-header ul.tags a.tag,
+.site-content .panel.quality-header ul.tags a.tag {
+  color: var(--quality-text-color);
+}
+
+.panel.requirements-header,
+.site-content .panel.requirements-header {
+  background-color: var(--reqs-background-color);
+}
+
+.panel.requirements-header h1,
+.panel.requirements-header h1 a,
+.site-content .panel.requirements-header h1,
+.site-content .panel.requirements-header h1 a,
+.panel.requirements-header ul.tags a.tag,
+.site-content .panel.requirements-header ul.tags a.tag {
+  color: var(--req-text-color);
+}
+
+.panel.standard-header,
+.panel.standards-header,
+.site-content .panel.standard-header,
+.site-content .panel.standards-header {
+  background-color: var(--standard-background-color);
+}
+
+.panel.standard-header h1,
+.panel.standard-header h1 a,
+.site-content .panel.standard-header h1,
+.site-content .panel.standard-header h1 a,
+.panel.standard-header ul.tags a.tag,
+.panel.standards-header ul.tags a.tag,
+.panel.standard-header ul.tags .category,
+.site-content .panel.standard-header ul.tags a.tag,
+.site-content .panel.standards-header ul.tags a.tag,
+.site-content .panel.standard-header ul.tags .category {
+  color: var(--standard-text-color);
+}
+
+.panel.dimension-header,
+.site-content .panel.dimension-header {
+  background-color: var(--dimension-background-color);
+}
+
+.panel.dimension-header h1,
+.panel.dimension-header h1 a,
+.site-content .panel.dimension-header h1,
+.site-content .panel.dimension-header h1 a,
+.panel.dimension-header ul.tags a.tag,
+.site-content .panel.dimension-header ul.tags a.tag {
+  color: var(--dimension-text-color);
+}
+
+.panel.approaches-header,
+.site-content .panel.approaches-header {
+  background-color: var(--approaches-background-color);
+}
+
+.panel.approaches-header h1,
+.panel.approaches-header h1 a,
+.site-content .panel.approaches-header h1,
+.site-content .panel.approaches-header h1 a,
+.panel.approaches-header ul.tags a.tag,
+.site-content .panel.approaches-header ul.tags a.tag {
+  color: var(--approaches-text-color);
+}
+
+.panel.article-header,
+.site-content .panel.article-header {
+  background-color: var(--article-background-color);
+}
+
+.panel.article-header h1,
+.panel.article-header h1 a,
+.site-content .panel.article-header h1,
+.site-content .panel.article-header h1 a {
+  color: var(--blue-text-color);
+}
+
+.category-header {
+  background-color: var(--standard-background-color);
+  color: var(--standard-text-color);
+  padding: 10px;
+  border-radius: 5px;
+  margin: 20px 0 10px;
+}

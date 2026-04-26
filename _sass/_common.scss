@@ -15,7 +15,12 @@ body {
   font-feature-settings: "kern", "liga", "calt";
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: $heading-font-family;
   font-weight: 700;
   color: $site-title-color;
@@ -24,7 +29,9 @@ h1, h2, h3, h4, h5, h6 {
   text-wrap: balance;
 }
 
-p, li, dd {
+p,
+li,
+dd {
   text-wrap: pretty;
 }
 

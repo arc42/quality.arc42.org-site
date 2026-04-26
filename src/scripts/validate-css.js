@@ -37,7 +37,7 @@ const CSS_DIR = "assets/css";
 const EXCLUDED_FILES = new Set(["assets/css/all.css", "assets/css/style.scss"]);
 
 /** Files whose purpose is to define colour tokens — exempt from rule 4. */
-const TOKEN_OWNER_FILES = new Set(["_sass/base/_variables.scss", "assets/css/arc42-doc.css"]);
+const TOKEN_OWNER_FILES = new Set(["_sass/base/_variables.scss"]);
 
 // ── Allowlists (current legacy patterns) ────────────────────
 
@@ -63,11 +63,6 @@ const ALLOWED_IDS = {
     "#full-q-graph-filter__chips",
   ]),
   "_sass/_homenew.scss": new Set(["#q-graph-container", "#full-graph-toggle"]),
-  "assets/css/arc42-quality.css": new Set([
-    "#scenario-header",
-    "#standard-header",
-    "#about-author",
-  ]),
   "assets/css/q-graph.css": new Set([
     "#q-graph-container",
     "#graph-site",
@@ -91,10 +86,6 @@ const ALLOWED_IDS = {
 const ALLOWED_IMPORTANT_COUNTS = {
   "_sass/base/_utilities.scss": 3,
   "_sass/_mobile-graph.scss": 1,
-  "_sass/_homenew.scss": 1,
-  "_sass/_standards.scss": 1,
-  "assets/css/arc42-doc.css": 1,
-  "assets/css/arc42-quality.css": 24,
   "assets/css/q-graph.css": 2,
 };
 
@@ -111,10 +102,7 @@ const APPROVED_BREAKPOINTS = new Set(["800px"]);
  */
 const ALLOWED_LEGACY_BREAKPOINTS = {
   "_sass/_mobile-graph.scss": new Set(["900px"]),
-  "_sass/_homenew.scss": new Set(["820px"]),
   "_sass/_standards.scss": new Set(["900px"]),
-  "assets/css/arc42-doc.css": new Set(["900px", "600px"]),
-  "assets/css/arc42-quality.css": new Set(["900px", "768px", "600px"]),
   "assets/css/q-graph.css": new Set(["768px"]),
 };
 
@@ -135,7 +123,6 @@ const ALLOWED_COLOR_FILES = new Set([
   "_sass/_homenew.scss",
   "_sass/_mobile-graph.scss",
   "_sass/_standards.scss",
-  "assets/css/arc42-quality.css",
   "assets/css/q-graph.css",
   "assets/css/ukraine.css",
   "assets/css/toggle-switch.css",
@@ -290,7 +277,10 @@ async function checkUnreferencedSheets(sassFiles) {
     // Derive the import name: _sass/_common.scss  →  _common  or  base/_variables
     const sassRel = path.relative(path.join(process.cwd(), SASS_DIR), file);
     // Remove leading _ and .scss, keep directory prefix
-    const importName = sassRel.replace(/\.scss$/, "").replace(/\/?_/, "/").replace(/^\//, "");
+    const importName = sassRel
+      .replace(/\.scss$/, "")
+      .replace(/\/?_/, "/")
+      .replace(/^\//, "");
     // Also try with leading underscore stripped differently
     const variants = [
       importName,

@@ -1,0 +1,79 @@
+.arc42-help {
+  color: var(--brand-violet-deep);
+  padding: 5px;
+  background: var(--brand-violet-soft);
+  border-radius: 4px;
+  box-shadow: 3px 3px 4px 0 var(--brand-violet-24);
+}
+
+.quality-requirement {
+  color: var(--req-text-color);
+  padding: 5px;
+  background: var(--reqs-background-color);
+  border-radius: 4px;
+  margin-bottom: 1em;
+  box-shadow: 3px 3px 4px 0 var(--legacy-requirement-shadow-color);
+}
+
+.requirement-note {
+  margin: 0.5em 0 1em;
+  font-size: 0.95em;
+}
+
+.requirement-source {
+  margin: 0.5em 0 1em;
+  font-size: 0.9em;
+  color: var(--muted-text-color);
+}
+
+.quality-requirement ul > li {
+  display: table-row;
+  font-size: 1em;
+}
+
+.quality-requirement ul > li::before {
+  content: "\2022";
+  display: table-cell;
+  text-align: right;
+  padding-right: 5px;
+}
+
+.quality-requirement ul > li > ul > li::before {
+  content: "\25e6";
+  display: table-cell;
+  text-align: right;
+  padding-right: 5px;
+}
+
+.arc42-help::before,
+.quality-requirement::before {
+  display: block;
+  float: right;
+  width: 24px;
+  height: 26px;
+  content: "";
+  background: url("./arc42-exclamation.svg") no-repeat;
+  background-size: 24px 26px;
+}
+
+.dimension-tag-page .arc42-help {
+  color: inherit;
+  padding: 0;
+  background: transparent;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.dimension-tag-page .arc42-help::before {
+  display: none;
+}
+
+.callout-error,
+.sanity-check,
+.error-box {
+  color: var(--dark-blue-text-color);
+  background-color: var(--error-color);
+  padding: 8px 10px;
+  border-radius: 4px;
+  box-shadow: 3px 3px 4px 0 var(--legacy-danger-shadow-color);
+}

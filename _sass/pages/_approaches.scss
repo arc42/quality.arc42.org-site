@@ -1,0 +1,56 @@
+.approach-impacts-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 18px;
+  margin-bottom: 1rem;
+}
+
+.approach-impact-list {
+  margin: 0;
+  padding-left: 0;
+}
+
+.approach-impact-column > .approach-impact-list {
+  margin-top: 0.75rem;
+}
+
+.approach-impact-item {
+  border-bottom: 1px solid var(--approach-impact-border-color);
+  padding: 10px 0;
+}
+
+.approach-impact-list .approach-impact-item:last-child {
+  border-bottom: 0;
+}
+
+.approach-impact-note {
+  color: var(--muted-text-1);
+  margin: 6px 0 0 30px;
+}
+
+.approach-tradeoff-box {
+  margin-top: 0.75rem;
+  background: var(--tradeoff-background-color);
+  border: 0;
+  border-radius: 10px;
+  padding: 0 14px;
+}
+
+.approach-tradeoff-box .approach-impact-list {
+  margin-top: 0;
+}
+
+.approach-tradeoff-box .approach-impact-note {
+  color: var(--tradeoff-muted-text-color);
+}
+
+.approach-impact-intro {
+  color: var(--muted-text-2);
+}
+
+@media screen and (min-width: 56.25em) {
+  .approach-impacts-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+}

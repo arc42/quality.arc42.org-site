@@ -18,9 +18,9 @@ Each item is tagged with which reviews proposed it: **[C]** Claude, **[G]** Gemi
 
 ## P0 — Triple-consensus items (do first)
 
-- [ ] **Delete `_sass/_splash-home.scss`** — orphan partial (~296 LOC, ~6 KB CSS), no markup uses `splash-home*` selectors. Also removes most `npm run test:css:rules` noise. **[C][G][X]**
+- [x] **Delete `_sass/_splash-home.scss`** — orphan partial (~296 LOC, ~6 KB CSS), no markup uses `splash-home*` selectors. Also removes most `npm run test:css:rules` noise. **[C][G][X]**
 - [ ] **Delete dead static JS `assets/js/full-graph-page.js` and `assets/js/mobile-graph-page.js`** — superseded by the bundled `src/graphs/GraphPageController.js`. Smoke-test full graph page after. **[C][G][X]**
-- [ ] **Decommission legacy CSS (`arc42-doc.css`, `arc42-quality.css`)** — migrate rules into modular SCSS components, then drop the `@import` lines from `assets/css/style.scss`. Removes the "double system" and the `!important` chain used to win specificity. **[C][G][X]**
+- [x] **Decommission legacy CSS (`arc42-doc.css`, `arc42-quality.css`)** — migrate rules into modular SCSS components, then drop the `@import` lines from `assets/css/style.scss`. Removes the "double system" and the `!important` chain used to win specificity. **[C][G][X]**
 - [ ] **Single source of truth for design tokens** — move every `:root { --… }` block (currently in `arc42-doc.css`, `_variables.scss`, plus local `--qx-*`/`--app-*`/`--std-*` declarations) into `_sass/base/_variables.scss`, generated from Sass values. Replace hard-coded hex literals (notably in `_pages/60-full-quality-graph.md` legend swatches and `_mobile-graph.scss`) with `var(--…)`. **[C][G][X]**
 - [ ] **Consolidate repeated tag-chip / `a.hov.tags.*` styles** — collapse the 8 near-identical color-only blocks into a single base + modifiers driven by CSS variables. Rename toward semantic classes (`.tag-chip--requirement` etc.). **[C][G][X]**
 - [ ] **Modernize JS / drop jQuery** — rewrite `script.js`, `header-link.js`, `search.js` in vanilla DOM, move under `src/scripts/site/`, bundle via esbuild. Drop `<script src=".../jquery-3.7.1-min.js">` and the sticky plugin. Saves ~93 KB on every page load. **[C][G][X]**

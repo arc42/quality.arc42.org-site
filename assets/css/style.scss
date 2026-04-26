@@ -1,25 +1,29 @@
 ---
 ---
 
-@import 'base/_reset';
-@import 'base/_syntax';
-@import 'base/_variables';
-@import 'base/_fonts';
-@import 'base/_layout';
-@import 'base/_utilities';
-@import '_common';
-@import '_header';
-@import '_footer';
-@import '_aside';
-@import '_content';
-@import '_homenew';
-@import '_standards';
-@import '_aliases';
-@import '_mobile-graph';
-@import '_report-pages';
-@import 'arc42-doc.css';
-@import 'arc42-quality.css';
-@import 'ukraine.css';
-@import 'q-graph.css';
-@import 'all.css'; // fontawesome
-@import 'toggle-switch.css';
+@import "base/_reset";
+@import "base/_syntax";
+@import "base/_variables";
+@import "base/_fonts";
+@import "base/_layout";
+@import "base/_utilities";
+@import "_common";
+@import "_header";
+@import "_footer";
+@import "_aside";
+@import "_content";
+@import "_homenew";
+@import "_standards";
+@import "_aliases";
+@import "_mobile-graph";
+@import "_report-pages";
+@import "components/_callouts";
+@import "components/_tag-chips";
+@import "components/_section-headings";
+@import "components/_panels";
+@import "pages/_about";
+@import "pages/_approaches";
+@import "ukraine.css";
+@import "q-graph.css";
+@import "all.css"; // fontawesome
+@import "toggle-switch.css";
