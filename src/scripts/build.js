@@ -110,8 +110,8 @@ async function build({ watch = false } = {}) {
       },
       outdir: "assets/js",
       bundle: true,
-      minify: !watch,
-      sourcemap: !watch,
+      minify: true,
+      sourcemap: true,
     });
 
     await context.rebuild();

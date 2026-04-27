@@ -19,6 +19,7 @@ hide: true
 - [Color Scheme](#colors)
 - [Tooling and Build](#tooling)
 - [WCAG Accessibility Report](/about/wcag-report/)
+- [Lighthouse Quality Report](/about/lighthouse-report/)
 - [Content Analytics](#analytics) 
    - <small>[Orphan Qualities](#orphanqualities)</small>
    - <small>[Qualities without Requirements](#qualitieswithoutrequirements)</small>
@@ -42,6 +43,16 @@ hide: true
 ---
 
 {% include about/tooling.md %}
+
+---
+
+## Lighthouse Quality Report {#lighthouse}
+
+We continuously monitor the site's quality using **Google Lighthouse**. 
+It audits performance, accessibility, SEO, and best practices.
+
+[View the latest Lighthouse Report](/about/lighthouse-report/)
+
 ---
 
 {% include about/content-analytics.md %}

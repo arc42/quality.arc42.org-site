@@ -25,18 +25,20 @@
     .card { padding: 1rem; border-radius: 8px; border: 1px solid #ddd; text-align: center; }
     .card-label { font-size: 0.8rem; color: #666; text-transform: uppercase; }
     .card-value { font-size: 1.8rem; margin-top: 0.5rem; }
+    .failing-audits { font-size: 0.85rem; color: var(--poor); margin-top: 0.5rem; padding-left: 1.2rem; }
+    .failing-audits li { margin-bottom: 0.2rem; }
   </style>
 </head>
 <body>
   <main>
     <h1>Lighthouse Audit Report</h1>
-    <p class="meta">Generated: 4/26/2026, 4:22:05 PM</p>
+    <p class="meta">Generated: 4/27/2026, 6:56:45 AM</p>
     
     <div class="summary-cards">
-      <div class="card"><div class="card-label">Avg Performance</div><div class="card-value score-good">97</div></div>
-      <div class="card"><div class="card-label">Avg Accessibility</div><div class="card-value score-good">97</div></div>
-      <div class="card"><div class="card-label">Avg Best Practices</div><div class="card-value score-average">78</div></div>
-      <div class="card"><div class="card-label">Avg SEO</div><div class="card-value score-good">100</div></div>
+      <div class="card"><div class="card-label">Avg Performance</div><div class="card-value score-good">92</div></div>
+      <div class="card"><div class="card-label">Avg Accessibility</div><div class="card-value score-good">91</div></div>
+      <div class="card"><div class="card-label">Avg Best Practices</div><div class="card-value score-average">74</div></div>
+      <div class="card"><div class="card-label">Avg SEO</div><div class="card-value score-good">95</div></div>
     </div>
 
     <table>
@@ -44,45 +46,245 @@
         <tr>
           <th>Page</th>
           <th>Perf</th>
-          <th>A11y</th>
-          <th>Best Prac.</th>
+          <th>Acc</th>
+          <th>Best Pr.</th>
           <th>SEO</th>
+          <th>Failing Best Practices</th>
         </tr>
       </thead>
       <tbody>
         
-    <tr>
-      <td><a href="/">Home</a></td>
-      <td class="score-good">100</td>
-      <td class="score-good">98</td>
-      <td class="score-average">78</td>
-      <td class="score-good">100</td>
-    </tr>
-  
-    <tr>
-      <td><a href="/qualities/">Qualities Index</a></td>
-      <td class="score-good">97</td>
-      <td class="score-good">95</td>
-      <td class="score-average">78</td>
-      <td class="score-good">100</td>
-    </tr>
-  
-    <tr>
-      <td><a href="/qualities/availability">Quality: Availability</a></td>
-      <td class="score-good">99</td>
-      <td class="score-good">98</td>
-      <td class="score-average">78</td>
-      <td class="score-good">100</td>
-    </tr>
-  
-    <tr>
-      <td><a href="/full-quality-graph/">Full Graph</a></td>
-      <td class="score-good">93</td>
-      <td class="score-good">98</td>
-      <td class="score-average">78</td>
-      <td class="score-good">100</td>
-    </tr>
-  
+          <tr>
+            <td><a href="/">Home</a></td>
+            <td class="score-good">98</td>
+            <td class="score-good">98</td>
+            <td class="score-average">78</td>
+            <td class="score-good">100</td>
+            <td>
+              <ul class="failing-audits"><li title="All sites should be protected with HTTPS, even ones that don't handle sensitive data. This includes avoiding [mixed content](https://developers.google.com/web/fundamentals/security/prevent-mixed-content/what-is-mixed-content), where some resources are loaded over HTTP despite the initial request being served over HTTPS. HTTPS prevents intruders from tampering with or passively listening in on the communications between your app and your users, and is a prerequisite for HTTP/2 and many new web platform APIs. [Learn more about HTTPS](https://developer.chrome.com/docs/lighthouse/pwa/is-on-https/).">Does not use HTTPS</li><li title="Make sure that you redirect all HTTP traffic to HTTPS in order to enable secure web features for all your users. [Learn more](https://developer.chrome.com/docs/lighthouse/pwa/redirects-http/).">Does not redirect HTTP traffic to HTTPS</li></ul>
+            </td>
+          </tr>
+        
+          <tr>
+            <td><a href="/05-how-to-use-this-site/">How to Use</a></td>
+            <td class="score-poor">0</td>
+            <td class="score-poor">0</td>
+            <td class="score-poor">0</td>
+            <td class="score-poor">0</td>
+            <td>
+              None
+            </td>
+          </tr>
+        
+          <tr>
+            <td><a href="/full-quality-graph/">Full Graph</a></td>
+            <td class="score-good">97</td>
+            <td class="score-good">98</td>
+            <td class="score-average">78</td>
+            <td class="score-good">100</td>
+            <td>
+              <ul class="failing-audits"><li title="All sites should be protected with HTTPS, even ones that don't handle sensitive data. This includes avoiding [mixed content](https://developers.google.com/web/fundamentals/security/prevent-mixed-content/what-is-mixed-content), where some resources are loaded over HTTP despite the initial request being served over HTTPS. HTTPS prevents intruders from tampering with or passively listening in on the communications between your app and your users, and is a prerequisite for HTTP/2 and many new web platform APIs. [Learn more about HTTPS](https://developer.chrome.com/docs/lighthouse/pwa/is-on-https/).">Does not use HTTPS</li><li title="Make sure that you redirect all HTTP traffic to HTTPS in order to enable secure web features for all your users. [Learn more](https://developer.chrome.com/docs/lighthouse/pwa/redirects-http/).">Does not redirect HTTP traffic to HTTPS</li></ul>
+            </td>
+          </tr>
+        
+          <tr>
+            <td><a href="/qualities/">Qualities Index</a></td>
+            <td class="score-average">78</td>
+            <td class="score-good">95</td>
+            <td class="score-average">78</td>
+            <td class="score-good">100</td>
+            <td>
+              <ul class="failing-audits"><li title="All sites should be protected with HTTPS, even ones that don't handle sensitive data. This includes avoiding [mixed content](https://developers.google.com/web/fundamentals/security/prevent-mixed-content/what-is-mixed-content), where some resources are loaded over HTTP despite the initial request being served over HTTPS. HTTPS prevents intruders from tampering with or passively listening in on the communications between your app and your users, and is a prerequisite for HTTP/2 and many new web platform APIs. [Learn more about HTTPS](https://developer.chrome.com/docs/lighthouse/pwa/is-on-https/).">Does not use HTTPS</li><li title="Make sure that you redirect all HTTP traffic to HTTPS in order to enable secure web features for all your users. [Learn more](https://developer.chrome.com/docs/lighthouse/pwa/redirects-http/).">Does not redirect HTTP traffic to HTTPS</li></ul>
+            </td>
+          </tr>
+        
+          <tr>
+            <td><a href="/requirements/">Requirements Index</a></td>
+            <td class="score-average">88</td>
+            <td class="score-good">98</td>
+            <td class="score-average">78</td>
+            <td class="score-good">100</td>
+            <td>
+              <ul class="failing-audits"><li title="All sites should be protected with HTTPS, even ones that don't handle sensitive data. This includes avoiding [mixed content](https://developers.google.com/web/fundamentals/security/prevent-mixed-content/what-is-mixed-content), where some resources are loaded over HTTP despite the initial request being served over HTTPS. HTTPS prevents intruders from tampering with or passively listening in on the communications between your app and your users, and is a prerequisite for HTTP/2 and many new web platform APIs. [Learn more about HTTPS](https://developer.chrome.com/docs/lighthouse/pwa/is-on-https/).">Does not use HTTPS</li><li title="Make sure that you redirect all HTTP traffic to HTTPS in order to enable secure web features for all your users. [Learn more](https://developer.chrome.com/docs/lighthouse/pwa/redirects-http/).">Does not redirect HTTP traffic to HTTPS</li></ul>
+            </td>
+          </tr>
+        
+          <tr>
+            <td><a href="/standards/">Standards Index</a></td>
+            <td class="score-good">98</td>
+            <td class="score-good">97</td>
+            <td class="score-average">78</td>
+            <td class="score-good">100</td>
+            <td>
+              <ul class="failing-audits"><li title="All sites should be protected with HTTPS, even ones that don't handle sensitive data. This includes avoiding [mixed content](https://developers.google.com/web/fundamentals/security/prevent-mixed-content/what-is-mixed-content), where some resources are loaded over HTTP despite the initial request being served over HTTPS. HTTPS prevents intruders from tampering with or passively listening in on the communications between your app and your users, and is a prerequisite for HTTP/2 and many new web platform APIs. [Learn more about HTTPS](https://developer.chrome.com/docs/lighthouse/pwa/is-on-https/).">Does not use HTTPS</li><li title="Make sure that you redirect all HTTP traffic to HTTPS in order to enable secure web features for all your users. [Learn more](https://developer.chrome.com/docs/lighthouse/pwa/redirects-http/).">Does not redirect HTTP traffic to HTTPS</li></ul>
+            </td>
+          </tr>
+        
+          <tr>
+            <td><a href="/approaches/">Approaches Index</a></td>
+            <td class="score-average">89</td>
+            <td class="score-good">97</td>
+            <td class="score-average">78</td>
+            <td class="score-good">100</td>
+            <td>
+              <ul class="failing-audits"><li title="All sites should be protected with HTTPS, even ones that don't handle sensitive data. This includes avoiding [mixed content](https://developers.google.com/web/fundamentals/security/prevent-mixed-content/what-is-mixed-content), where some resources are loaded over HTTP despite the initial request being served over HTTPS. HTTPS prevents intruders from tampering with or passively listening in on the communications between your app and your users, and is a prerequisite for HTTP/2 and many new web platform APIs. [Learn more about HTTPS](https://developer.chrome.com/docs/lighthouse/pwa/is-on-https/).">Does not use HTTPS</li><li title="Make sure that you redirect all HTTP traffic to HTTPS in order to enable secure web features for all your users. [Learn more](https://developer.chrome.com/docs/lighthouse/pwa/redirects-http/).">Does not redirect HTTP traffic to HTTPS</li></ul>
+            </td>
+          </tr>
+        
+          <tr>
+            <td><a href="/tag-efficient/">Dimension: Efficient</a></td>
+            <td class="score-average">89</td>
+            <td class="score-good">93</td>
+            <td class="score-average">78</td>
+            <td class="score-good">100</td>
+            <td>
+              <ul class="failing-audits"><li title="All sites should be protected with HTTPS, even ones that don't handle sensitive data. This includes avoiding [mixed content](https://developers.google.com/web/fundamentals/security/prevent-mixed-content/what-is-mixed-content), where some resources are loaded over HTTP despite the initial request being served over HTTPS. HTTPS prevents intruders from tampering with or passively listening in on the communications between your app and your users, and is a prerequisite for HTTP/2 and many new web platform APIs. [Learn more about HTTPS](https://developer.chrome.com/docs/lighthouse/pwa/is-on-https/).">Does not use HTTPS</li><li title="Make sure that you redirect all HTTP traffic to HTTPS in order to enable secure web features for all your users. [Learn more](https://developer.chrome.com/docs/lighthouse/pwa/redirects-http/).">Does not redirect HTTP traffic to HTTPS</li></ul>
+            </td>
+          </tr>
+        
+          <tr>
+            <td><a href="/tag-flexible/">Dimension: Flexible</a></td>
+            <td class="score-good">99</td>
+            <td class="score-good">93</td>
+            <td class="score-average">78</td>
+            <td class="score-good">100</td>
+            <td>
+              <ul class="failing-audits"><li title="All sites should be protected with HTTPS, even ones that don't handle sensitive data. This includes avoiding [mixed content](https://developers.google.com/web/fundamentals/security/prevent-mixed-content/what-is-mixed-content), where some resources are loaded over HTTP despite the initial request being served over HTTPS. HTTPS prevents intruders from tampering with or passively listening in on the communications between your app and your users, and is a prerequisite for HTTP/2 and many new web platform APIs. [Learn more about HTTPS](https://developer.chrome.com/docs/lighthouse/pwa/is-on-https/).">Does not use HTTPS</li><li title="Make sure that you redirect all HTTP traffic to HTTPS in order to enable secure web features for all your users. [Learn more](https://developer.chrome.com/docs/lighthouse/pwa/redirects-http/).">Does not redirect HTTP traffic to HTTPS</li></ul>
+            </td>
+          </tr>
+        
+          <tr>
+            <td><a href="/tag-maintainable/">Dimension: Maintainable</a></td>
+            <td class="score-good">99</td>
+            <td class="score-good">93</td>
+            <td class="score-average">78</td>
+            <td class="score-good">100</td>
+            <td>
+              <ul class="failing-audits"><li title="All sites should be protected with HTTPS, even ones that don't handle sensitive data. This includes avoiding [mixed content](https://developers.google.com/web/fundamentals/security/prevent-mixed-content/what-is-mixed-content), where some resources are loaded over HTTP despite the initial request being served over HTTPS. HTTPS prevents intruders from tampering with or passively listening in on the communications between your app and your users, and is a prerequisite for HTTP/2 and many new web platform APIs. [Learn more about HTTPS](https://developer.chrome.com/docs/lighthouse/pwa/is-on-https/).">Does not use HTTPS</li><li title="Make sure that you redirect all HTTP traffic to HTTPS in order to enable secure web features for all your users. [Learn more](https://developer.chrome.com/docs/lighthouse/pwa/redirects-http/).">Does not redirect HTTP traffic to HTTPS</li></ul>
+            </td>
+          </tr>
+        
+          <tr>
+            <td><a href="/tag-operable/">Dimension: Operable</a></td>
+            <td class="score-good">99</td>
+            <td class="score-good">95</td>
+            <td class="score-average">78</td>
+            <td class="score-good">100</td>
+            <td>
+              <ul class="failing-audits"><li title="All sites should be protected with HTTPS, even ones that don't handle sensitive data. This includes avoiding [mixed content](https://developers.google.com/web/fundamentals/security/prevent-mixed-content/what-is-mixed-content), where some resources are loaded over HTTP despite the initial request being served over HTTPS. HTTPS prevents intruders from tampering with or passively listening in on the communications between your app and your users, and is a prerequisite for HTTP/2 and many new web platform APIs. [Learn more about HTTPS](https://developer.chrome.com/docs/lighthouse/pwa/is-on-https/).">Does not use HTTPS</li><li title="Make sure that you redirect all HTTP traffic to HTTPS in order to enable secure web features for all your users. [Learn more](https://developer.chrome.com/docs/lighthouse/pwa/redirects-http/).">Does not redirect HTTP traffic to HTTPS</li></ul>
+            </td>
+          </tr>
+        
+          <tr>
+            <td><a href="/tag-reliable/">Dimension: Reliable</a></td>
+            <td class="score-good">99</td>
+            <td class="score-good">95</td>
+            <td class="score-average">78</td>
+            <td class="score-good">100</td>
+            <td>
+              <ul class="failing-audits"><li title="All sites should be protected with HTTPS, even ones that don't handle sensitive data. This includes avoiding [mixed content](https://developers.google.com/web/fundamentals/security/prevent-mixed-content/what-is-mixed-content), where some resources are loaded over HTTP despite the initial request being served over HTTPS. HTTPS prevents intruders from tampering with or passively listening in on the communications between your app and your users, and is a prerequisite for HTTP/2 and many new web platform APIs. [Learn more about HTTPS](https://developer.chrome.com/docs/lighthouse/pwa/is-on-https/).">Does not use HTTPS</li><li title="Make sure that you redirect all HTTP traffic to HTTPS in order to enable secure web features for all your users. [Learn more](https://developer.chrome.com/docs/lighthouse/pwa/redirects-http/).">Does not redirect HTTP traffic to HTTPS</li></ul>
+            </td>
+          </tr>
+        
+          <tr>
+            <td><a href="/tag-safe/">Dimension: Safe</a></td>
+            <td class="score-good">99</td>
+            <td class="score-good">95</td>
+            <td class="score-average">78</td>
+            <td class="score-good">100</td>
+            <td>
+              <ul class="failing-audits"><li title="All sites should be protected with HTTPS, even ones that don't handle sensitive data. This includes avoiding [mixed content](https://developers.google.com/web/fundamentals/security/prevent-mixed-content/what-is-mixed-content), where some resources are loaded over HTTP despite the initial request being served over HTTPS. HTTPS prevents intruders from tampering with or passively listening in on the communications between your app and your users, and is a prerequisite for HTTP/2 and many new web platform APIs. [Learn more about HTTPS](https://developer.chrome.com/docs/lighthouse/pwa/is-on-https/).">Does not use HTTPS</li><li title="Make sure that you redirect all HTTP traffic to HTTPS in order to enable secure web features for all your users. [Learn more](https://developer.chrome.com/docs/lighthouse/pwa/redirects-http/).">Does not redirect HTTP traffic to HTTPS</li></ul>
+            </td>
+          </tr>
+        
+          <tr>
+            <td><a href="/tag-secure/">Dimension: Secure</a></td>
+            <td class="score-good">99</td>
+            <td class="score-good">93</td>
+            <td class="score-average">78</td>
+            <td class="score-good">100</td>
+            <td>
+              <ul class="failing-audits"><li title="All sites should be protected with HTTPS, even ones that don't handle sensitive data. This includes avoiding [mixed content](https://developers.google.com/web/fundamentals/security/prevent-mixed-content/what-is-mixed-content), where some resources are loaded over HTTP despite the initial request being served over HTTPS. HTTPS prevents intruders from tampering with or passively listening in on the communications between your app and your users, and is a prerequisite for HTTP/2 and many new web platform APIs. [Learn more about HTTPS](https://developer.chrome.com/docs/lighthouse/pwa/is-on-https/).">Does not use HTTPS</li><li title="Make sure that you redirect all HTTP traffic to HTTPS in order to enable secure web features for all your users. [Learn more](https://developer.chrome.com/docs/lighthouse/pwa/redirects-http/).">Does not redirect HTTP traffic to HTTPS</li></ul>
+            </td>
+          </tr>
+        
+          <tr>
+            <td><a href="/tag-suitable/">Dimension: Suitable</a></td>
+            <td class="score-good">99</td>
+            <td class="score-good">95</td>
+            <td class="score-average">78</td>
+            <td class="score-good">92</td>
+            <td>
+              <ul class="failing-audits"><li title="All sites should be protected with HTTPS, even ones that don't handle sensitive data. This includes avoiding [mixed content](https://developers.google.com/web/fundamentals/security/prevent-mixed-content/what-is-mixed-content), where some resources are loaded over HTTP despite the initial request being served over HTTPS. HTTPS prevents intruders from tampering with or passively listening in on the communications between your app and your users, and is a prerequisite for HTTP/2 and many new web platform APIs. [Learn more about HTTPS](https://developer.chrome.com/docs/lighthouse/pwa/is-on-https/).">Does not use HTTPS</li><li title="Make sure that you redirect all HTTP traffic to HTTPS in order to enable secure web features for all your users. [Learn more](https://developer.chrome.com/docs/lighthouse/pwa/redirects-http/).">Does not redirect HTTP traffic to HTTPS</li></ul>
+            </td>
+          </tr>
+        
+          <tr>
+            <td><a href="/tag-usable/">Dimension: Usable</a></td>
+            <td class="score-good">98</td>
+            <td class="score-good">93</td>
+            <td class="score-average">78</td>
+            <td class="score-good">100</td>
+            <td>
+              <ul class="failing-audits"><li title="All sites should be protected with HTTPS, even ones that don't handle sensitive data. This includes avoiding [mixed content](https://developers.google.com/web/fundamentals/security/prevent-mixed-content/what-is-mixed-content), where some resources are loaded over HTTP despite the initial request being served over HTTPS. HTTPS prevents intruders from tampering with or passively listening in on the communications between your app and your users, and is a prerequisite for HTTP/2 and many new web platform APIs. [Learn more about HTTPS](https://developer.chrome.com/docs/lighthouse/pwa/is-on-https/).">Does not use HTTPS</li><li title="Make sure that you redirect all HTTP traffic to HTTPS in order to enable secure web features for all your users. [Learn more](https://developer.chrome.com/docs/lighthouse/pwa/redirects-http/).">Does not redirect HTTP traffic to HTTPS</li></ul>
+            </td>
+          </tr>
+        
+          <tr>
+            <td><a href="/qualities/availability">Quality: Availability</a></td>
+            <td class="score-good">99</td>
+            <td class="score-good">98</td>
+            <td class="score-average">78</td>
+            <td class="score-good">100</td>
+            <td>
+              <ul class="failing-audits"><li title="All sites should be protected with HTTPS, even ones that don't handle sensitive data. This includes avoiding [mixed content](https://developers.google.com/web/fundamentals/security/prevent-mixed-content/what-is-mixed-content), where some resources are loaded over HTTP despite the initial request being served over HTTPS. HTTPS prevents intruders from tampering with or passively listening in on the communications between your app and your users, and is a prerequisite for HTTP/2 and many new web platform APIs. [Learn more about HTTPS](https://developer.chrome.com/docs/lighthouse/pwa/is-on-https/).">Does not use HTTPS</li><li title="Make sure that you redirect all HTTP traffic to HTTPS in order to enable secure web features for all your users. [Learn more](https://developer.chrome.com/docs/lighthouse/pwa/redirects-http/).">Does not redirect HTTP traffic to HTTPS</li></ul>
+            </td>
+          </tr>
+        
+          <tr>
+            <td><a href="/qualities/security">Quality: Security</a></td>
+            <td class="score-good">99</td>
+            <td class="score-good">98</td>
+            <td class="score-average">78</td>
+            <td class="score-good">100</td>
+            <td>
+              <ul class="failing-audits"><li title="All sites should be protected with HTTPS, even ones that don't handle sensitive data. This includes avoiding [mixed content](https://developers.google.com/web/fundamentals/security/prevent-mixed-content/what-is-mixed-content), where some resources are loaded over HTTP despite the initial request being served over HTTPS. HTTPS prevents intruders from tampering with or passively listening in on the communications between your app and your users, and is a prerequisite for HTTP/2 and many new web platform APIs. [Learn more about HTTPS](https://developer.chrome.com/docs/lighthouse/pwa/is-on-https/).">Does not use HTTPS</li><li title="Make sure that you redirect all HTTP traffic to HTTPS in order to enable secure web features for all your users. [Learn more](https://developer.chrome.com/docs/lighthouse/pwa/redirects-http/).">Does not redirect HTTP traffic to HTTPS</li></ul>
+            </td>
+          </tr>
+        
+          <tr>
+            <td><a href="/qualities/usability">Quality: Usability</a></td>
+            <td class="score-good">99</td>
+            <td class="score-good">98</td>
+            <td class="score-average">78</td>
+            <td class="score-good">100</td>
+            <td>
+              <ul class="failing-audits"><li title="All sites should be protected with HTTPS, even ones that don't handle sensitive data. This includes avoiding [mixed content](https://developers.google.com/web/fundamentals/security/prevent-mixed-content/what-is-mixed-content), where some resources are loaded over HTTP despite the initial request being served over HTTPS. HTTPS prevents intruders from tampering with or passively listening in on the communications between your app and your users, and is a prerequisite for HTTP/2 and many new web platform APIs. [Learn more about HTTPS](https://developer.chrome.com/docs/lighthouse/pwa/is-on-https/).">Does not use HTTPS</li><li title="Make sure that you redirect all HTTP traffic to HTTPS in order to enable secure web features for all your users. [Learn more](https://developer.chrome.com/docs/lighthouse/pwa/redirects-http/).">Does not redirect HTTP traffic to HTTPS</li></ul>
+            </td>
+          </tr>
+        
+          <tr>
+            <td><a href="/qualities/maintainability">Quality: Maintainability</a></td>
+            <td class="score-good">99</td>
+            <td class="score-good">98</td>
+            <td class="score-average">78</td>
+            <td class="score-good">100</td>
+            <td>
+              <ul class="failing-audits"><li title="All sites should be protected with HTTPS, even ones that don't handle sensitive data. This includes avoiding [mixed content](https://developers.google.com/web/fundamentals/security/prevent-mixed-content/what-is-mixed-content), where some resources are loaded over HTTP despite the initial request being served over HTTPS. HTTPS prevents intruders from tampering with or passively listening in on the communications between your app and your users, and is a prerequisite for HTTP/2 and many new web platform APIs. [Learn more about HTTPS](https://developer.chrome.com/docs/lighthouse/pwa/is-on-https/).">Does not use HTTPS</li><li title="Make sure that you redirect all HTTP traffic to HTTPS in order to enable secure web features for all your users. [Learn more](https://developer.chrome.com/docs/lighthouse/pwa/redirects-http/).">Does not redirect HTTP traffic to HTTPS</li></ul>
+            </td>
+          </tr>
+        
+          <tr>
+            <td><a href="/qualities/accessibility">Quality: Accessibility</a></td>
+            <td class="score-good">99</td>
+            <td class="score-good">98</td>
+            <td class="score-average">78</td>
+            <td class="score-good">100</td>
+            <td>
+              <ul class="failing-audits"><li title="All sites should be protected with HTTPS, even ones that don't handle sensitive data. This includes avoiding [mixed content](https://developers.google.com/web/fundamentals/security/prevent-mixed-content/what-is-mixed-content), where some resources are loaded over HTTP despite the initial request being served over HTTPS. HTTPS prevents intruders from tampering with or passively listening in on the communications between your app and your users, and is a prerequisite for HTTP/2 and many new web platform APIs. [Learn more about HTTPS](https://developer.chrome.com/docs/lighthouse/pwa/is-on-https/).">Does not use HTTPS</li><li title="Make sure that you redirect all HTTP traffic to HTTPS in order to enable secure web features for all your users. [Learn more](https://developer.chrome.com/docs/lighthouse/pwa/redirects-http/).">Does not redirect HTTP traffic to HTTPS</li></ul>
+            </td>
+          </tr>
+        
       </tbody>
     </table>
   </main>

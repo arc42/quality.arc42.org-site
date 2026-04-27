@@ -102,7 +102,17 @@ test.describe("Lighthouse Audits", () => {
           accessibility: result.lhr.categories.accessibility.score * 100,
           bestPractices: result.lhr.categories["best-practices"].score * 100,
           seo: result.lhr.categories.seo.score * 100,
-        }
+        },
+        failingBestPractices: result.lhr.categories["best-practices"].auditRefs
+          .filter((ref: any) => {
+            const audit = result.lhr.audits[ref.id];
+            return ref.weight > 0 && audit.score !== null && audit.score < 1;
+          })
+          .map((ref: any) => ({
+            id: ref.id,
+            title: result.lhr.audits[ref.id].title,
+            description: result.lhr.audits[ref.id].description
+          }))
       });
 
       await browser.close();
@@ -174,6 +184,8 @@ function renderLighthouseHtml(report: any) {
     .card { padding: 1rem; border-radius: 8px; border: 1px solid #ddd; text-align: center; }
     .card-label { font-size: 0.8rem; color: #666; text-transform: uppercase; }
     .card-value { font-size: 1.8rem; margin-top: 0.5rem; }
+    .failing-audits { font-size: 0.85rem; color: var(--poor); margin-top: 0.5rem; padding-left: 1.2rem; }
+    .failing-audits li { margin-bottom: 0.2rem; }
   </style>
 </head>
 <body>
@@ -192,14 +204,28 @@ function renderLighthouseHtml(report: any) {
       <thead>
         <tr>
           <th>Page</th>
-          <th>Performance</th>
-          <th>Accessibility</th>
-          <th>Best Practices</th>
+          <th>Perf</th>
+          <th>Acc</th>
+          <th>Best Pr.</th>
           <th>SEO</th>
+          <th>Failing Best Practices</th>
         </tr>
       </thead>
       <tbody>
-        ${rows}
+        ${report.results.map((r: any) => `
+          <tr>
+            <td><a href="${r.path}">${r.name}</a></td>
+            <td class="${getScoreClass(r.scores.performance)}">${r.scores.performance}</td>
+            <td class="${getScoreClass(r.scores.accessibility)}">${r.scores.accessibility}</td>
+            <td class="${getScoreClass(r.scores.bestPractices)}">${r.scores.bestPractices}</td>
+            <td class="${getScoreClass(r.scores.seo)}">${r.scores.seo}</td>
+            <td>
+              ${r.failingBestPractices?.length > 0 
+                ? `<ul class="failing-audits">${r.failingBestPractices.map((f: any) => `<li title="${f.description}">${f.title}</li>`).join("")}</ul>`
+                : "None"}
+            </td>
+          </tr>
+        `).join("")}
       </tbody>
     </table>
   </main>

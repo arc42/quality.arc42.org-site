@@ -128,4 +128,4 @@ This site uses color coding to distinguish content types and a WCAG-improved hea
   </div>
 </div>
 
-<p><small>Accessibility note: current header colors were tuned for better readability; see <a href="/about/wcag-report/">WCAG Accessibility Report</a>.</small></p>
+<p><small>Accessibility note: current header colors were tuned for better readability; see <a href="/about/wcag-report/">WCAG Accessibility Report</a> and <a href="/about/lighthouse-report/">Lighthouse Quality Report</a>.</small></p>

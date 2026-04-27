@@ -1,8 +1,9 @@
-.PHONY: help build clean dev doctor test wcag-test wcag-test-strict lighthouse-test
+.PHONY: help build clean dev doctor test wcag-test wcag-test-strict lighthouse-test assets
 
 help:
 	@printf "Available targets:\n"
 	@printf "  make build  Build all Docker images used by local development and tests.\n"
+	@printf "  make assets Build minified production assets (JS/search index) via Docker.\n"
 	@printf "  make help   Show this help.\n"
 	@printf "  make dev    Start the prebuilt development environment (docker compose up esbuild jekyll).\n"
 	@printf "  make doctor Check local dev setup and key URLs (including alias redirects).\n"
@@ -14,6 +15,9 @@ help:
 
 build:
 	docker compose --profile test build esbuild jekyll playwright
+
+assets:
+	docker compose run --rm esbuild npm run build
 
 clean:
 	docker compose down --volumes 2>/dev/null || true
