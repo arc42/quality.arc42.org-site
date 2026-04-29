@@ -25,9 +25,11 @@
   }
 
   h1 {
-    font-size: $text-4xl; // 3.15rem — reference-book display
+    font-size: clamp(2rem, calc(4.5vw + 1rem), #{$text-4xl});
     letter-spacing: -0.015em;
-    line-height: 1.05;
+    line-height: 1.1;
+    hyphens: auto;
+    overflow-wrap: break-word;
   }
 
   h2 {
