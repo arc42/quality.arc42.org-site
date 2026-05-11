@@ -195,4 +195,3 @@ watch_exclude:
   - assets/js/fullpage # handled by esbuild
   - assets/js/homepage # handled by esbuild
 
-incremental: true

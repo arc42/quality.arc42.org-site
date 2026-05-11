@@ -39,10 +39,6 @@
     <script defer data-domain="quality.arc42.org" src="https://plausible.io/js/script.js"></script>
     {% endif %}
 
-    {% if page.mermaid %}
-    {% include mermaid-config.html %}
-    {% endif %}
-
 
     {% if page.q-graph %}
     {% include q-graph-config.html %}
@@ -68,6 +64,8 @@
 
 
 <script src="{{ '/assets/js/site.js' | prepend: site.baseurl }}"></script>
+
+{% include mermaid-config.html %}
 
 </body>
 </html>
