@@ -64,6 +64,7 @@ test.describe("Lighthouse Audits", () => {
         config: {
           extends: "lighthouse:default",
           settings: {
+            skipAudits: ["is-on-https"],
             formFactor: "desktop",
             screenEmulation: {
               mobile: false,

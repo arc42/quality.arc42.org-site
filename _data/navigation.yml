@@ -1,6 +1,6 @@
 primary:
-  - label: Home
-    url: /
+  - label: How-To
+    url: /how-to-use-this-site/
   - label: Qualities
     url: /qualities/
   - label: Requirements
@@ -11,8 +11,6 @@ primary:
     url: /standards/
 
 secondary:
-  - label: How to Use
-    url: /how-to-use-this-site/
   - label: Dimensions
     url: /dimensions/
   - label: Aliases

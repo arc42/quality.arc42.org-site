@@ -3,11 +3,22 @@
  */
 
 export function initNavigation() {
+    const header = document.querySelector('.site-header');
+    const mobileHeaderQuery = window.matchMedia('(max-width: 720px)');
+    const hiddenHeaderClass = 'is-hidden';
+
+    const revealHeader = () => {
+        if (header) {
+            header.classList.remove(hiddenHeaderClass);
+        }
+    };
+
     // 1. Navigation toggle
     const navToggles = document.querySelectorAll('.nav-toggle');
     navToggles.forEach(toggle => {
         toggle.addEventListener('click', (e) => {
             e.preventDefault();
+            revealHeader();
             const targetId = toggle.getAttribute('data-target');
             const target = document.querySelector(targetId);
 
@@ -23,6 +34,7 @@ export function initNavigation() {
     // 2. Escape key closes active navigation
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') {
+            revealHeader();
             document.querySelectorAll('.nav-toggle.active').forEach(toggle => {
                 const targetId = toggle.getAttribute('data-target');
                 const target = document.querySelector(targetId);
@@ -54,12 +66,72 @@ export function initNavigation() {
             const searchInput = document.getElementById('search');
             if (searchInput) {
                 e.preventDefault();
+                revealHeader();
                 searchInput.focus();
             }
         }
     });
 
-    // 5. Add target="_blank" to external links
+    // 5. Hide the sticky header on mobile scroll-down, reveal it on scroll-up.
+    if (header) {
+        let lastScrollY = window.scrollY;
+        let scrollTicking = false;
+        const minScrollY = 80;
+        const scrollDelta = 8;
+
+        const headerHasFocus = () => header.contains(document.activeElement);
+        const headerMenuIsOpen = () => Boolean(header.querySelector('.nav-toggle.active'));
+        const shouldKeepHeaderVisible = () =>
+            !mobileHeaderQuery.matches ||
+            window.scrollY <= minScrollY ||
+            headerHasFocus() ||
+            headerMenuIsOpen();
+
+        const updateHeaderVisibility = () => {
+            scrollTicking = false;
+
+            const currentScrollY = window.scrollY;
+            const scrollDiff = currentScrollY - lastScrollY;
+
+            if (Math.abs(scrollDiff) < scrollDelta) {
+                return;
+            }
+
+            if (shouldKeepHeaderVisible() || scrollDiff < 0) {
+                revealHeader();
+            } else {
+                header.classList.add(hiddenHeaderClass);
+            }
+
+            lastScrollY = currentScrollY;
+        };
+
+        window.addEventListener(
+            'scroll',
+            () => {
+                if (scrollTicking) return;
+
+                scrollTicking = true;
+                window.requestAnimationFrame(updateHeaderVisibility);
+            },
+            { passive: true },
+        );
+
+        header.addEventListener('focusin', revealHeader);
+
+        const handleHeaderMediaChange = () => {
+            revealHeader();
+            lastScrollY = window.scrollY;
+        };
+
+        if (mobileHeaderQuery.addEventListener) {
+            mobileHeaderQuery.addEventListener('change', handleHeaderMediaChange);
+        } else {
+            mobileHeaderQuery.addListener(handleHeaderMediaChange);
+        }
+    }
+
+    // 6. Add target="_blank" to external links
     const host = window.location.host;
     document.querySelectorAll('a[href]').forEach(link => {
         const href = link.getAttribute('href');
@@ -69,7 +141,7 @@ export function initNavigation() {
         }
     });
 
-    // 6. Center and wrap images in articles
+    // 7. Center and wrap images in articles
     const images = document.querySelectorAll('article img:not(.emoji, .eye-catch)');
     images.forEach(img => {
         const parent = img.parentElement;

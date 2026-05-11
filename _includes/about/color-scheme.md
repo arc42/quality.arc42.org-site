@@ -1,12 +1,13 @@
 <style>
 .color-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 10px;
   margin-top: 20px;
 }
 
 .color-grid-item {
+  min-width: 0;
   padding: 20px;
   border-radius: 8px;
   transition: transform 0.2s;
@@ -23,6 +24,7 @@
   display: flex;
   align-items: center;
   gap: 10px;
+  min-width: 0;
 }
 
 .color-name i {
@@ -33,6 +35,7 @@
 .color-codes {
   font-size: 0.9em;
   margin-top: 10px;
+  overflow-wrap: anywhere;
 }
 
 .header-preview {
@@ -48,8 +51,8 @@
   font-weight: 700;
 }
 
-.header-preview .counter {
-  color: #ffad80;
+.header-preview .accent {
+  color: var(--brand-cream);
   font-weight: 800;
 }
 
@@ -76,8 +79,24 @@
 .t-bg { background-color: #fbe9e3; color: #a04323; }
 .t-ico { color: #a04323; }
 /* Header */
-.h-bg { background-color: #357360; color: #deefb7; }
-.h-ico { color: #deefb7; }
+.h-bg { background-color: var(--brand-violet); color: var(--brand-cream); }
+.h-ico { color: var(--brand-cream); }
+
+@media screen and (max-width: 720px) {
+  .color-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .color-grid-item:hover {
+    transform: none;
+  }
+
+  .color-name {
+    align-items: flex-start;
+    font-size: 1.15em;
+    line-height: 1.25;
+  }
+}
 </style>
 
 ## Color Scheme {#colors}
@@ -116,14 +135,14 @@ This site uses color coding to distinguish content types and a WCAG-improved hea
   <div class="color-grid-item h-bg">
     <div class="color-name"><i class="fa fa-heading h-ico"></i> Site Header</div>
     <div class="color-codes">
-      Background: #357360<br>
-      Primary text: #DEEFB7<br>
-      Counters: #FFAD80
+      Background: #682D63<br>
+      Deep background: #52214F<br>
+      Primary text: #FBF6EF
     </div>
     <div class="header-preview">
       <div class="title">arc42 Quality Model</div>
-      <div><span class="counter">216</span> quality characteristics, explained.</div>
-      <div><span class="counter">133</span> examples of specific requirements.</div>
+      <div><span class="accent">How-To</span> · Qualities · Requirements</div>
+      <div>Search and menu controls use translucent cream borders.</div>
     </div>
   </div>
 </div>
