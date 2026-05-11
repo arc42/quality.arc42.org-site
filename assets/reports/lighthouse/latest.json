@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-11T06:44:29.143Z",
+  "generatedAt": "2026-05-11T14:24:09.454Z",
   "results": [
     {
       "name": "Home",
@@ -20,20 +20,26 @@
     },
     {
       "name": "How to Use",
-      "path": "/05-how-to-use-this-site/",
+      "path": "/how-to-use-this-site/",
       "scores": {
-        "performance": 0,
-        "accessibility": 0,
-        "bestPractices": 0,
-        "seo": 0
+        "performance": 98,
+        "accessibility": 100,
+        "bestPractices": 95,
+        "seo": 92
       },
-      "failingBestPractices": []
+      "failingBestPractices": [
+        {
+          "id": "redirects-http",
+          "title": "Does not redirect HTTP traffic to HTTPS",
+          "description": "Make sure that you redirect all HTTP traffic to HTTPS in order to enable secure web features for all your users. [Learn more](https://developer.chrome.com/docs/lighthouse/pwa/redirects-http/)."
+        }
+      ]
     },
     {
       "name": "Full Graph",
       "path": "/full-quality-graph/",
       "scores": {
-        "performance": 97,
+        "performance": 96,
         "accessibility": 98,
         "bestPractices": 95,
         "seo": 100
@@ -50,7 +56,7 @@
       "name": "Qualities Index",
       "path": "/qualities/",
       "scores": {
-        "performance": 78,
+        "performance": 84,
         "accessibility": 96,
         "bestPractices": 95,
         "seo": 100
@@ -67,7 +73,7 @@
       "name": "Requirements Index",
       "path": "/requirements/",
       "scores": {
-        "performance": 91,
+        "performance": 88,
         "accessibility": 100,
         "bestPractices": 95,
         "seo": 100
@@ -101,7 +107,7 @@
       "name": "Approaches Index",
       "path": "/approaches/",
       "scores": {
-        "performance": 88,
+        "performance": 89,
         "accessibility": 98,
         "bestPractices": 95,
         "seo": 100
@@ -354,9 +360,9 @@
     }
   ],
   "averages": {
-    "performance": 92,
-    "accessibility": 93,
-    "bestPractices": 90,
-    "seo": 95
+    "performance": 96,
+    "accessibility": 98,
+    "bestPractices": 95,
+    "seo": 99
   }
 }

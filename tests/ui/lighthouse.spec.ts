@@ -6,7 +6,7 @@ import path from "node:path";
 const ROUTES_TO_AUDIT = [
   // Main Entry Points
   { path: "/", name: "Home" },
-  { path: "/05-how-to-use-this-site/", name: "How to Use" },
+  { path: "/how-to-use-this-site/", name: "How to Use" },
   { path: "/full-quality-graph/", name: "Full Graph" },
 
   // Collection Start Pages
