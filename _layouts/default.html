@@ -54,12 +54,14 @@
 </head>
 <body{% if page.name contains 'tag-' %} class="dimension-tag-page"{% endif %}>
 
+<a class="skip-link" href="#main-content">Skip to content</a>
+
 {% include site-header.html %}
 
 <div class="site-container">
-    <div class="site-content">
+    <main id="main-content" class="site-content" tabindex="-1">
         {{ content }}
-    </div>
+    </main>
 </div>
 
 {% include footer.html %}

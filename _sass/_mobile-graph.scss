@@ -111,10 +111,16 @@
     cursor: pointer;
   }
 
-  .mobile-quick-filter:hover,
+  .mobile-quick-filter:hover {
+    background: var(--brand-blue);
+    border-color: var(--brand-blue-dark);
+    color: white;
+  }
+
   .mobile-quick-filter:focus-visible {
     background: var(--brand-blue);
     border-color: var(--brand-blue-dark);
+    box-shadow: var(--focus-ring);
     color: white;
     outline: none;
   }
@@ -131,10 +137,15 @@
     cursor: pointer;
   }
 
-  #mobile-graph-reset__btn:hover,
+  #mobile-graph-reset__btn:hover {
+    background: var(--reqs-background-color);
+    border-color: var(--req-text-color);
+  }
+
   #mobile-graph-reset__btn:focus-visible {
     background: var(--reqs-background-color);
     border-color: var(--req-text-color);
+    box-shadow: var(--focus-ring);
     outline: none;
   }
 
@@ -170,10 +181,16 @@
       font-weight: 700;
     }
 
-    #mobile-graph-controls-toggle:hover,
+    #mobile-graph-controls-toggle:hover {
+      background: var(--brand-blue);
+      border-color: var(--brand-blue-dark);
+      color: white;
+    }
+
     #mobile-graph-controls-toggle:focus-visible {
       background: var(--brand-blue);
       border-color: var(--brand-blue-dark);
+      box-shadow: var(--focus-ring);
       color: white;
       outline: none;
     }
@@ -252,10 +269,16 @@
       cursor: pointer;
     }
 
-    #mobile-graph-sheet-close:hover,
+    #mobile-graph-sheet-close:hover {
+      background: var(--brand-blue);
+      border-color: var(--brand-blue-dark);
+      color: white;
+    }
+
     #mobile-graph-sheet-close:focus-visible {
       background: var(--brand-blue);
       border-color: var(--brand-blue-dark);
+      box-shadow: var(--focus-ring);
       color: white;
       outline: none;
     }

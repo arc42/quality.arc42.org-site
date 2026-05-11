@@ -92,8 +92,13 @@
 }
 
 .site-primary-nav__link:hover,
-.site-primary-nav__link:focus-visible,
 .site-primary-nav__link.is-active {
+  color: var(--header-on-violet);
+}
+
+.site-primary-nav__link:focus-visible {
+  border-radius: 3px;
+  box-shadow: var(--focus-ring-on-violet);
   color: var(--header-on-violet);
   outline: none;
 }
@@ -201,10 +206,16 @@
 }
 
 .site-menu-toggle:hover,
-.site-menu-toggle:focus-visible,
 .site-menu-toggle.active {
   background: var(--brand-cream-14);
   border-color: var(--brand-cream-42);
+  color: var(--header-on-violet);
+}
+
+.site-menu-toggle:focus-visible {
+  background: var(--brand-cream-14);
+  border-color: var(--brand-cream-42);
+  box-shadow: var(--focus-ring-on-violet);
   color: var(--header-on-violet);
   outline: none;
 }
@@ -254,9 +265,16 @@
   padding: 0.45rem 0.6rem;
   text-transform: uppercase;
 
-  &:hover,
+  &:hover {
+    background: var(--brand-cream-09);
+    color: var(--header-on-violet);
+    text-decoration: none;
+  }
+
   &:focus-visible {
     background: var(--brand-cream-09);
+    border-radius: 3px;
+    box-shadow: var(--focus-ring-on-violet);
     color: var(--header-on-violet);
     outline: none;
     text-decoration: none;

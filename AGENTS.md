@@ -35,3 +35,6 @@ Notes: The Docker stack runs `npm run data` on startup. If you change tags/relat
 ## Security & Configuration Tips
 - No secrets required. Do not commit local caches (`.sass-cache/`) or large generated assets except those in `assets/data` that are intentionally versioned.
 - Keep permalinks stable; the graph uses the last path segment as node IDs.
+
+## Deliberate scope exclusions
+For accessibility-specific scope decisions (graph keyboard a11y, touch-target sizing, etc.), see `ACCESSIBILITY.md` § *Deliberate scope decisions*. Audits should consult that file before re-flagging a11y items.

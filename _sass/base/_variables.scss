@@ -168,6 +168,26 @@ $innoq-heart-color: #ff9c66;
   --legacy-requirement-shadow-color: #{$legacy-requirement-shadow-color};
   --legacy-danger-shadow-color: #{$legacy-danger-shadow-color};
   --innoq-heart-color: #{$innoq-heart-color};
+
+  // Focus ring — two-tone box-shadow gives ≥3:1 contrast on both violet
+  // header surfaces and cream/paper body surfaces. Apply everywhere we
+  // suppress the native outline. See _sass/_header.scss, _homenew.scss,
+  // _mobile-graph.scss.
+  --focus-ring: 0 0 0 2px var(--brand-violet), 0 0 0 4px var(--brand-cream);
+  --focus-ring-on-violet: 0 0 0 2px var(--brand-cream), 0 0 0 4px var(--brand-violet-deep);
+
+  // Code blocks (used in _content.scss)
+  --code-border: #ddd;
+  --code-border-strong: #ccc;
+
+  // Standards palette — consolidates repeated hex literals in _standards.scss.
+  // Pure-pixel aliases; do not adjust values without a deliberate redesign.
+  --std-surface-pure: #fff;
+  --std-icon: #9f751b;
+  --std-cream-soft: #fff6de;
+  --std-cream-softer: #fff2cd;
+  --std-text-rich: #5f4714;
+  --std-text-soft: #766136;
 }
 
 // other major colors.

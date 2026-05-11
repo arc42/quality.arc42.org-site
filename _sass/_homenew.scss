@@ -67,14 +67,14 @@
 // (see CLAUDE.md → Graph Node Types) so the home directory acts
 // as a legend for the color a visitor meets on the destination page.
 .home-violet-directory li:nth-child(1) {
-  --cat: #00b8f5;
-} // qualities (graph blue)
+  --cat: var(--brand-blue);
+} // qualities
 .home-violet-directory li:nth-child(2) {
-  --cat: #ffb3b3;
-} // requirements (graph salmon)
+  --cat: var(--reqs-background-color);
+} // requirements
 .home-violet-directory li:nth-child(3) {
-  --cat: #92ef80;
-} // approaches (existing $approaches-background-color)
+  --cat: var(--approaches-background-color);
+} // approaches
 
 .home-violet-directory li a {
   align-items: baseline;
@@ -192,10 +192,16 @@
   text-transform: uppercase;
 }
 
-.home-violet-graph__link:hover,
+.home-violet-graph__link:hover {
+  background: var(--brand-violet-08);
+  border-color: var(--brand-violet-46);
+  text-decoration: none;
+}
+
 .home-violet-graph__link:focus-visible {
   background: var(--brand-violet-08);
   border-color: var(--brand-violet-46);
+  box-shadow: var(--focus-ring);
   outline: none;
   text-decoration: none;
 }

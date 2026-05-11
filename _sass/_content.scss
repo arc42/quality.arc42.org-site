@@ -39,6 +39,21 @@
     padding-bottom: 0.25rem;
   }
 
+  // Approach-meta labels are semantically H2 (sibling sections of the page)
+  // but visually small inline metadata. Override the section-heading
+  // treatment for this specific role.
+  .approach-meta__title {
+    border-bottom: none;
+    color: $brand-muted;
+    font-family: $font-family;
+    font-size: $text-xs;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    margin: 0 0 0.35em;
+    padding-bottom: 0;
+    text-transform: uppercase;
+  }
+
   h3 {
     font-size: $text-2xl; // 1.78rem
   }
@@ -157,13 +172,13 @@
     font-size: $code-font-size;
     margin: 0 2px;
     padding: 0 5px;
-    border: 1px solid #ddd;
+    border: 1px solid var(--code-border);
     background-color: rgba(#ddd, 0.1);
     border-radius: 3px;
   }
 
   pre {
-    border: 1px solid #ccc;
+    border: 1px solid var(--code-border-strong);
     background-color: rgba(#ddd, 0.1);
     overflow: auto;
     padding: 10px 15px;

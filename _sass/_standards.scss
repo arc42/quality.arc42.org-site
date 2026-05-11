@@ -199,8 +199,7 @@
 }
 
 .standards-category-card {
-  border: 1px solid var(--std-border);
-  border-left: 4px solid var(--std-border-strong);
+  border: 1px solid var(--std-border-strong);
   border-radius: 12px;
   background: var(--std-surface);
   box-shadow: 0 4px 10px rgba(61, 45, 10, 0.06);
@@ -228,7 +227,7 @@
   padding: 0.08rem 0.48rem;
   border-radius: 999px;
   border: 1px solid var(--std-border);
-  background: #fff;
+  background: var(--std-surface-pure);
   color: #776232;
   font-size: 0.78rem;
   font-weight: 600;
@@ -255,7 +254,7 @@
   border-radius: 999px;
   border: 1px solid var(--std-chip-border);
   background: var(--std-chip);
-  color: #5f4714;
+  color: var(--std-text-rich);
   text-decoration: none;
   font-size: 0.79rem;
   line-height: 1.2;
@@ -306,17 +305,16 @@
   gap: 0.45rem;
   margin: 1.15rem 0 0.55rem;
   padding: 0.45rem 0.7rem;
-  border: 1px solid var(--std-border);
-  border-left: 4px solid var(--std-border-strong);
+  border: 1px solid var(--std-border-strong);
   border-radius: 10px;
-  background: linear-gradient(180deg, #fff6de 0%, #fff2cd 100%);
+  background: linear-gradient(180deg, var(--std-cream-soft) 0%, var(--std-cream-softer) 100%);
   color: var(--std-heading);
   font-size: 1.07rem;
   line-height: 1.25;
 }
 
 .standards-section-header-icon {
-  color: #9f751b;
+  color: var(--std-icon);
   font-size: 0.86rem;
 }
 
@@ -329,8 +327,8 @@
   padding: 0.08rem 0.48rem;
   border-radius: 999px;
   border: 1px solid var(--std-border);
-  background: #fff;
-  color: #766136;
+  background: var(--std-surface-pure);
+  color: var(--std-text-soft);
   font-size: 0.77rem;
   font-weight: 700;
 }
@@ -362,7 +360,7 @@
   border-radius: 10px;
   padding: 0.45rem 0.52rem;
   color: var(--std-text);
-  background: #fff;
+  background: var(--std-surface-pure);
 }
 
 .standards-reset-btn {
@@ -402,7 +400,7 @@
 .standards-facet-btn {
   border: 1px solid var(--std-border);
   border-radius: 999px;
-  background: #fff;
+  background: var(--std-surface-pure);
   color: #655c4a;
   font-size: 0.78rem;
   font-weight: 600;
@@ -413,7 +411,7 @@
 .standards-facet-btn.is-active {
   border-color: transparent;
   background: linear-gradient(180deg, #ddb453 0%, var(--std-facet-active) 100%);
-  color: #fff;
+  color: var(--std-surface-pure);
 }
 
 .standards-facet-count {
@@ -584,7 +582,7 @@
 }
 
 .standards-award-icon {
-  color: #9f751b;
+  color: var(--std-icon);
   margin-right: 0.45rem;
   font-size: 0.86rem;
 }

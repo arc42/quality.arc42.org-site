@@ -13,6 +13,28 @@ export function initNavigation() {
         }
     };
 
+    // Disclosure menu helpers. The secondary nav is a non-modal drawer
+    // (sits in document flow, pushes content), so we manage focus rather
+    // than trap it: move focus into the menu on open, return it to the
+    // toggle on close.
+    const FOCUSABLE_SELECTOR = [
+        'a[href]',
+        'button:not([disabled])',
+        'input:not([disabled])',
+        'select:not([disabled])',
+        'textarea:not([disabled])',
+        '[tabindex]:not([tabindex="-1"])',
+    ].join(',');
+
+    const closeMenu = (toggle, { restoreFocus = false } = {}) => {
+        const targetId = toggle.getAttribute('data-target');
+        const target = targetId ? document.querySelector(targetId) : null;
+        toggle.classList.remove('active');
+        toggle.setAttribute('aria-expanded', 'false');
+        if (target) target.classList.remove('active');
+        if (restoreFocus) toggle.focus();
+    };
+
     // 1. Navigation toggle
     const navToggles = document.querySelectorAll('.nav-toggle');
     navToggles.forEach(toggle => {
@@ -27,33 +49,30 @@ export function initNavigation() {
                 target.classList.toggle('active');
                 const isActive = target.classList.contains('active');
                 toggle.setAttribute('aria-expanded', isActive ? 'true' : 'false');
+
+                if (isActive) {
+                    const firstFocusable = target.querySelector(FOCUSABLE_SELECTOR);
+                    if (firstFocusable) firstFocusable.focus();
+                }
             }
         });
     });
 
-    // 2. Escape key closes active navigation
+    // 2. Escape key closes active navigation, restoring focus to toggle.
     document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') {
-            revealHeader();
-            document.querySelectorAll('.nav-toggle.active').forEach(toggle => {
-                const targetId = toggle.getAttribute('data-target');
-                const target = document.querySelector(targetId);
-                toggle.classList.remove('active');
-                toggle.setAttribute('aria-expanded', 'false');
-                if (target) target.classList.remove('active');
-            });
-        }
+        if (e.key !== 'Escape') return;
+        const openToggles = document.querySelectorAll('.nav-toggle.active');
+        if (!openToggles.length) return;
+        revealHeader();
+        openToggles.forEach(toggle => closeMenu(toggle, { restoreFocus: true }));
     });
 
-    // 3. Click outside closes active navigation
+    // 3. Click outside closes active navigation (no focus restore — pointer
+    // user chose to leave the menu, don't yank focus back to the toggle).
     document.addEventListener('click', (e) => {
         if (e.target.closest('.site-header')) return;
         document.querySelectorAll('.nav-toggle.active').forEach(toggle => {
-            const targetId = toggle.getAttribute('data-target');
-            const target = document.querySelector(targetId);
-            toggle.classList.remove('active');
-            toggle.setAttribute('aria-expanded', 'false');
-            if (target) target.classList.remove('active');
+            closeMenu(toggle);
         });
     });
 
@@ -141,14 +160,18 @@ export function initNavigation() {
         }
     });
 
-    // 7. Center and wrap images in articles
+    // 7. Center, lazy-load, and wrap images in articles
     const images = document.querySelectorAll('article img:not(.emoji, .eye-catch)');
     images.forEach(img => {
         const parent = img.parentElement;
         if (parent && parent.tagName === 'P') {
             parent.style.textAlign = 'center';
         }
-        
+
+        // Defer offscreen images; decode off the main thread.
+        if (!img.hasAttribute('loading')) img.loading = 'lazy';
+        if (!img.hasAttribute('decoding')) img.decoding = 'async';
+
         // Wrap with link if not already wrapped
         if (parent && parent.tagName !== 'A') {
             const wrapper = document.createElement('a');

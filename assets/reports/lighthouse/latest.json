@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-04-27T07:07:36.567Z",
+  "generatedAt": "2026-05-11T06:44:29.143Z",
   "results": [
     {
       "name": "Home",
       "path": "/",
       "scores": {
         "performance": 98,
-        "accessibility": 98,
+        "accessibility": 100,
         "bestPractices": 95,
         "seo": 100
       },
@@ -51,7 +51,7 @@
       "path": "/qualities/",
       "scores": {
         "performance": 78,
-        "accessibility": 95,
+        "accessibility": 96,
         "bestPractices": 95,
         "seo": 100
       },
@@ -68,7 +68,7 @@
       "path": "/requirements/",
       "scores": {
         "performance": 91,
-        "accessibility": 98,
+        "accessibility": 100,
         "bestPractices": 95,
         "seo": 100
       },
@@ -85,7 +85,7 @@
       "path": "/standards/",
       "scores": {
         "performance": 98,
-        "accessibility": 97,
+        "accessibility": 98,
         "bestPractices": 95,
         "seo": 100
       },
@@ -101,8 +101,8 @@
       "name": "Approaches Index",
       "path": "/approaches/",
       "scores": {
-        "performance": 89,
-        "accessibility": 97,
+        "performance": 88,
+        "accessibility": 98,
         "bestPractices": 95,
         "seo": 100
       },
@@ -118,8 +118,8 @@
       "name": "Dimension: Efficient",
       "path": "/tag-efficient/",
       "scores": {
-        "performance": 91,
-        "accessibility": 93,
+        "performance": 89,
+        "accessibility": 95,
         "bestPractices": 95,
         "seo": 100
       },
@@ -136,7 +136,7 @@
       "path": "/tag-flexible/",
       "scores": {
         "performance": 99,
-        "accessibility": 93,
+        "accessibility": 95,
         "bestPractices": 95,
         "seo": 100
       },
@@ -153,7 +153,7 @@
       "path": "/tag-maintainable/",
       "scores": {
         "performance": 99,
-        "accessibility": 93,
+        "accessibility": 95,
         "bestPractices": 95,
         "seo": 100
       },
@@ -170,7 +170,7 @@
       "path": "/tag-operable/",
       "scores": {
         "performance": 99,
-        "accessibility": 95,
+        "accessibility": 97,
         "bestPractices": 95,
         "seo": 100
       },
@@ -187,7 +187,7 @@
       "path": "/tag-reliable/",
       "scores": {
         "performance": 99,
-        "accessibility": 95,
+        "accessibility": 97,
         "bestPractices": 95,
         "seo": 100
       },
@@ -204,7 +204,7 @@
       "path": "/tag-safe/",
       "scores": {
         "performance": 99,
-        "accessibility": 95,
+        "accessibility": 97,
         "bestPractices": 95,
         "seo": 100
       },
@@ -221,7 +221,7 @@
       "path": "/tag-secure/",
       "scores": {
         "performance": 99,
-        "accessibility": 93,
+        "accessibility": 95,
         "bestPractices": 95,
         "seo": 100
       },
@@ -238,7 +238,7 @@
       "path": "/tag-suitable/",
       "scores": {
         "performance": 99,
-        "accessibility": 95,
+        "accessibility": 97,
         "bestPractices": 95,
         "seo": 92
       },
@@ -255,7 +255,7 @@
       "path": "/tag-usable/",
       "scores": {
         "performance": 98,
-        "accessibility": 93,
+        "accessibility": 95,
         "bestPractices": 95,
         "seo": 100
       },
@@ -272,7 +272,7 @@
       "path": "/qualities/availability",
       "scores": {
         "performance": 99,
-        "accessibility": 98,
+        "accessibility": 100,
         "bestPractices": 95,
         "seo": 100
       },
@@ -289,7 +289,7 @@
       "path": "/qualities/security",
       "scores": {
         "performance": 99,
-        "accessibility": 98,
+        "accessibility": 100,
         "bestPractices": 95,
         "seo": 100
       },
@@ -306,7 +306,7 @@
       "path": "/qualities/usability",
       "scores": {
         "performance": 99,
-        "accessibility": 98,
+        "accessibility": 100,
         "bestPractices": 95,
         "seo": 100
       },
@@ -323,7 +323,7 @@
       "path": "/qualities/maintainability",
       "scores": {
         "performance": 99,
-        "accessibility": 98,
+        "accessibility": 100,
         "bestPractices": 95,
         "seo": 100
       },
@@ -340,7 +340,7 @@
       "path": "/qualities/accessibility",
       "scores": {
         "performance": 99,
-        "accessibility": 98,
+        "accessibility": 100,
         "bestPractices": 95,
         "seo": 100
       },
@@ -355,7 +355,7 @@
   ],
   "averages": {
     "performance": 92,
-    "accessibility": 91,
+    "accessibility": 93,
     "bestPractices": 90,
     "seo": 95
   }
