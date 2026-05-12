@@ -1,14 +1,14 @@
-FROM ruby:3.1
+FROM ruby:3.3
 
 WORKDIR /tmp/bundle
 
-RUN gem install bundler:2.3.27
+RUN gem install bundler:2.5.4
 
 COPY Gemfile Gemfile.lock ./
 
-RUN bundle _2.3.27_ config set frozen true \
-    && bundle _2.3.27_ config set path /usr/local/bundle \
-    && bundle _2.3.27_ install --jobs 4 --retry 3 \
+RUN bundle _2.5.4_ config set frozen true \
+    && bundle _2.5.4_ config set path /usr/local/bundle \
+    && bundle _2.5.4_ install --jobs 4 --retry 3 \
     && mkdir -p /opt/site-deps \
     && sha256sum Gemfile.lock | awk '{ print $1 }' > /opt/site-deps/.gemfile-lock.sha256
 
