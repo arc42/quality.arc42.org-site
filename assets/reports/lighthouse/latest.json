@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-12T08:36:01.693Z",
+  "generatedAt": "2026-05-12T08:50:00.182Z",
   "results": [
     {
       "name": "Home",
@@ -39,7 +39,7 @@
       "name": "Full Graph",
       "path": "/full-quality-graph/",
       "scores": {
-        "performance": 96,
+        "performance": 97,
         "accessibility": 98,
         "bestPractices": 95,
         "seo": 100
@@ -56,7 +56,7 @@
       "name": "Qualities Index",
       "path": "/qualities/",
       "scores": {
-        "performance": 84,
+        "performance": 87,
         "accessibility": 96,
         "bestPractices": 95,
         "seo": 100
@@ -73,7 +73,7 @@
       "name": "Requirements Index",
       "path": "/requirements/",
       "scores": {
-        "performance": 88,
+        "performance": 99,
         "accessibility": 100,
         "bestPractices": 95,
         "seo": 100
@@ -107,7 +107,7 @@
       "name": "Approaches Index",
       "path": "/approaches/",
       "scores": {
-        "performance": 89,
+        "performance": 99,
         "accessibility": 98,
         "bestPractices": 95,
         "seo": 100
@@ -124,7 +124,7 @@
       "name": "Dimension: Efficient",
       "path": "/tag-efficient/",
       "scores": {
-        "performance": 88,
+        "performance": 99,
         "accessibility": 95,
         "bestPractices": 95,
         "seo": 100
@@ -260,7 +260,7 @@
       "name": "Dimension: Usable",
       "path": "/tag-usable/",
       "scores": {
-        "performance": 97,
+        "performance": 99,
         "accessibility": 95,
         "bestPractices": 95,
         "seo": 100
@@ -311,7 +311,7 @@
       "name": "Quality: Usability",
       "path": "/qualities/usability",
       "scores": {
-        "performance": 100,
+        "performance": 99,
         "accessibility": 100,
         "bestPractices": 95,
         "seo": 100
@@ -360,7 +360,7 @@
     }
   ],
   "averages": {
-    "performance": 96,
+    "performance": 98,
     "accessibility": 98,
     "bestPractices": 95,
     "seo": 99
