@@ -169,9 +169,3 @@ _config.yml    package.json      Gemfile        docker-compose.yml
 ```
 
 Build details and graph class internals live in the code — read `src/scripts/build.js`, `src/scripts/data.js`, and `src/graphs/*.js` directly when needed.
-
----
-
-## Decision Graph
-
-Project uses [deciduous](https://github.com/) for decision tracking. Use the `/decision`, `/work`, `/recover`, `/sync-graph`, `/document`, and `/build-test` skills. The canonical flow is `goal → options → decision → actions → outcomes`; capture user prompts verbatim on root goals; link every node to its parent immediately.

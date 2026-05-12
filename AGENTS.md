@@ -38,3 +38,6 @@ Notes: The Docker stack runs `npm run data` on startup. If you change tags/relat
 
 ## Deliberate scope exclusions
 For accessibility-specific scope decisions (graph keyboard a11y, touch-target sizing, etc.), see `ACCESSIBILITY.md` § *Deliberate scope decisions*. Audits should consult that file before re-flagging a11y items.
+
+## Architecture Decision Records
+Coarser-grained, human-readable decisions live under `adr/` (Nygard-style). Consult these before flagging configuration that looks stale — e.g. `netlify.toml` is retained intentionally for manual branch previews (see `adr/0001-keep-netlify-for-manual-branch-previews.md`).

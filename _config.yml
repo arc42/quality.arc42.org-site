@@ -153,7 +153,6 @@ exclude:
   - .agents
   - .claude
   - .junie
-  - .deciduous
   - .bundle
   - _docker/
   - CRUSH/
@@ -178,13 +177,13 @@ exclude:
   - CLAUDE.md
   - cheat-sheet.*
   - statistic-utilities/
+  - adr/
   
 
 watch_exclude:
   - .agents
   - .claude
   - .junie
-  - .deciduous
   - .bundle
   - playwright-report
   - test-results

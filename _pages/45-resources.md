@@ -17,7 +17,7 @@ This section collects background material, crosswalks, references, and site meta
     Canonical names and alternative terms for quality characteristics.
   </li>
   <li>
-    <a href="{{ '/q42-for-iso-users/' | prepend: site.baseurl }}">Q42 for ISO-25010 Users</a><br>
+    <a href="{{ '/articles/q42-for-iso-users/' | prepend: site.baseurl }}">Q42 for ISO-25010 Users</a><br>
     Navigate the model through the ISO-25010 structure.
   </li>
   <li>

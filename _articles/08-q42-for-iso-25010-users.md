@@ -1,9 +1,7 @@
 ---
 layout: page
 title: Q42 for ISO-25010 Users
-permalink: /q42-for-iso-users/
-order: 50
-hide: true
+permalink: /articles/q42-for-iso-users/
 ---
 
 For basic information about using this site see [**how to use this site**](/how-to-use-this-site).
