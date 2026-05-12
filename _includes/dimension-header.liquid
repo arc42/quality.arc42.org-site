@@ -3,7 +3,7 @@
 <header>
     <div class="panel dimension-header">
         <h1>
-            <i class="fa fa-layer-group"></i>
+            {% include icon.html name="layers" %}
             {% if include.link %}
             <a class="post-link" href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>
             {% else %}
@@ -16,7 +16,7 @@
             {% include header-category-link.liquid
               href='/qualities/'
               value='Dimension'
-              icon='fa-layer-group'
+              icon='layers'
             %}
             {% endunless %}
         </div>

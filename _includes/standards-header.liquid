@@ -14,7 +14,7 @@
       <ul class="tags">
         {% assign categories_num = (page.categories | size) %}
         {% if categories_num > 0 %}
-           <li><i class="fa fa-tags" style="color: var(--standard-text-color);"> </i></li>
+           <li>{% include icon.html name="tags" style="color: var(--standard-text-color);" %}</li>
         {% endif %}
         {% for category in page.categories %}
            <li>
@@ -26,7 +26,7 @@
       {% include header-category-link.liquid
         href='/standards/'
         value='Standard'
-        icon='fa-sitemap'
+        icon='network'
       %}
     </div>
  

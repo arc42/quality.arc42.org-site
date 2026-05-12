@@ -14,7 +14,7 @@
             <ul class="tags">
                 {% assign tags_num = (page.tags | size) %}
                 {% if tags_num > 0 %}
-                <li><i class="fa fa-tags" style="color: var(--blue-text-color);"></i></li>
+                <li>{% include icon.html name="tags" style="color: var(--blue-text-color);" %}</li>
                 {% endif %}
                 {% for tag in page.tags %}
                 <li>
@@ -27,7 +27,7 @@
             {% include header-category-link.liquid
               href='/qualities/'
               value='Characteristic'
-              icon='fa-sitemap'
+              icon='network'
             %}
             {% endunless %}
         </div>

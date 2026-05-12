@@ -6,7 +6,7 @@
 {% endfor %}
 
 <h2 class="category-header standards-section-header">
-  <i class="fa fa-award standards-section-header-icon" aria-hidden="true"></i>
+  {% include icon.html name="award" class="standards-section-header-icon" %}
   {{ include.title }}
   <span class="standards-section-header-count">{{ filtered_standards | size }}</span>
 </h2>

@@ -4,7 +4,8 @@
   aria-label="Open {{ include.value | downcase }} overview page"
   title="Open {{ include.value | downcase }} overview page"
 >
-  <i class="fa {% if include.icon %}{{ include.icon }}{% else %}fa-sitemap{% endif %}" aria-hidden="true"></i>
+  {% assign category_icon = include.icon | default: "network" %}
+  {% include icon.html name=category_icon %}
   {% if include.label %}
   <span class="header-category-link-label">{{ include.label }}</span>
   {% endif %}
