@@ -14,7 +14,7 @@ as these pages need to display all related approaches.
   <ul class="posts no-bullets">
       {%- for item in site.approaches -%}
         {%- if item.tags contains tag_to_find -%}
-          <li> <a href="{{ item.url }}"><i class="fa fa-puzzle-piece fa-xs as-bullet" style="color: var(--approaches-text-color);"> </i> {{ item.title }}</a></li>
+          <li> <a href="{{ item.url }}">{% include icon.html name="puzzle" size="xs" class="bullet" style="color: var(--approaches-text-color);" %} {{ item.title }}</a></li>
         {%- endif -%}
       {%- endfor -%}
 

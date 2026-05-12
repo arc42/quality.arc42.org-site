@@ -10,7 +10,7 @@ include.tag -%} {%- if tag_to_find and tag_to_find != "" -%}
     {%- for item in site.requirements -%} {%- if item.tags contains tag_to_find -%}
     <li>
       <a class="reqs" href="{{item.permalink}}"
-        ><i class="fa fa-bullseye fa-xs as-bullet" style="color: var(--req-text-color)"> </i> {{
+        >{% include icon.html name="target" size="xs" class="bullet" style="color: var(--req-text-color)" %} {{
         item.title }}</a
       >
     </li>

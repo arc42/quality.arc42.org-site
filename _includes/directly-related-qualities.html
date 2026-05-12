@@ -1,6 +1,6 @@
 {% assign related_qualities = include.item.related | sort %}
 
-<h2 class="section-heading qualities"><i class="fa fa-gem"></i> Related Qualities</h2>
+<h2 class="section-heading qualities">{% include icon.html name="gem" %} Related Qualities</h2>
 
 {% assign all_qualities = site.qualities %}
 
@@ -16,7 +16,7 @@
           {% assign number = 1 %}
           <li>
             <a href="{{ whole_quality.permalink }}">
-              <i class="fa fa-gem fa-xs as-bullet" style="color: var(--quality-text-color)"> </i>
+              {% include icon.html name="gem" size="xs" class="bullet" style="color: var(--quality-text-color)" %}
               {{ whole_quality.title }}
             </a>
           </li>

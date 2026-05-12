@@ -15,13 +15,13 @@
 {% endif %}
 
 {% if related_standards.size > 0 %}
-  <h2 class="section-heading standards"><i class="fa fa-award"></i> Related Standards</h2>
+  <h2 class="section-heading standards">{% include icon.html name="award" %} Related Standards</h2>
   <p>The following standards mention {{ include.item.title }}:</p>
   <ul class="posts no-bullets">
     {% for standard in related_standards %}
       <li>
         <a href="{{ standard.url | relative_url }}">
-          <i class="fa fa-award fa-xs as-bullet" style="color: var(--standard-text-color)"></i>
+          {% include icon.html name="award" size="xs" class="bullet" style="color: var(--standard-text-color)" %}
           {{ standard.title }}
         </a>
       </li>
