@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hero language: before vs after</title>
+<style>
+  :root {
+    --brand-violet: #682d63;
+    --brand-blue: #00b8f5;
+    --brand-paper: #f8f7f2;
+    --brand-cream: #fbf6ef;
+    --brand-ink: #241823;
+    --brand-muted: #746671;
+    --reqs-bg: #ffb3b3;
+    --std-bg: #ffc95c;
+    --approach-bg: #92ef80;
+    --rule: rgba(104, 45, 99, 0.18);
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: #efeae3;
+    font-family: -apple-system, "Atkinson Hyperlegible Next", BlinkMacSystemFont, "Segoe UI", sans-serif;
+    color: var(--brand-ink);
+    line-height: 1.4;
+  }
+  .wrap { max-width: 1380px; margin: 0 auto; padding: 2.5rem 2rem 4rem; }
+  h1 {
+    font-family: "Libre Caslon Text", Georgia, serif;
+    font-weight: 500;
+    font-size: 2rem;
+    margin: 0 0 0.4rem;
+    letter-spacing: -0.01em;
+  }
+  .lede {
+    color: var(--brand-muted);
+    max-width: 60ch;
+    margin: 0 0 2.5rem;
+  }
+  h2.row-title {
+    font-family: "Libre Caslon Text", Georgia, serif;
+    font-weight: 500;
+    font-size: 1.05rem;
+    margin: 2.4rem 0 0.6rem;
+    color: var(--brand-violet);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.4rem;
+    margin-bottom: 0.5rem;
+  }
+  .col-label {
+    font-family: "Libre Caslon Text", Georgia, serif;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--brand-muted);
+    margin: 0 0 0.5rem;
+  }
+  .col-label.before { color: #b94a3b; }
+  .col-label.after { color: #4f7d3c; }
+  .ann {
+    color: var(--brand-muted);
+    font-size: 0.83rem;
+    margin: 0.6rem 0 0;
+    line-height: 1.4;
+  }
+  .ann strong { color: var(--brand-ink); }
+  .ann code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 0.85em;
+    background: rgba(0,0,0,0.05);
+    padding: 0 0.25em;
+    border-radius: 2px;
+  }
+
+  /* ───────────────────────────────────────────────────────── */
+  /* BEFORE — Standards hero (current production)            */
+  /* ───────────────────────────────────────────────────────── */
+  .b-standards-hero {
+    position: relative;
+    border-radius: 12px;
+    border: 1px solid rgba(201, 157, 52, 0.38);
+    background:
+      radial-gradient(circle at 0% 0%, rgba(238, 200, 102, 0.24), transparent 54%),
+      radial-gradient(circle at 100% 100%, rgba(214, 166, 58, 0.20), transparent 58%),
+      #fff9e8;
+    padding: 1.1rem 1.1rem 1rem;
+    overflow: hidden;
+  }
+  .b-standards-hero::after {
+    content: "";
+    position: absolute;
+    top: -24%;
+    right: -9%;
+    width: 42%;
+    height: 180%;
+    transform: rotate(12deg);
+    background: linear-gradient(180deg, rgba(255,255,255,0.34) 0%, rgba(255,255,255,0.08) 70%, rgba(255,255,255,0) 100%);
+    pointer-events: none;
+  }
+  .b-standards-hero h3 {
+    margin: 0 0 0.4rem;
+    font-family: "Libre Caslon Text", Georgia, serif;
+    font-weight: 500;
+    color: #5f4714;
+    font-size: 1.3rem;
+  }
+  .b-standards-hero p {
+    margin: 0;
+    color: #61573c;
+    font-size: 0.92rem;
+    max-width: 60ch;
+  }
+  .b-standards-hero-stats {
+    display: flex; gap: 0.5rem; margin-top: 0.8rem; flex-wrap: wrap;
+  }
+  .b-stat {
+    display: inline-flex; gap: 0.35rem; align-items: baseline;
+    padding: 0.28rem 0.68rem;
+    border-radius: 999px;
+    border: 1px solid rgba(208, 164, 66, 0.38);
+    background: rgba(255, 255, 255, 0.86);
+  }
+  .b-stat b { color: #8f6611; font-weight: 700; }
+  .b-stat span { color: #6b5523; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.04em; }
+  .b-chips { display: flex; gap: 0.42rem; margin-top: 0.7rem; flex-wrap: wrap; }
+  .b-chip {
+    border: 1px solid #d8c084;
+    border-radius: 999px;
+    background: #fff;
+    padding: 0.23rem 0.6rem;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: #655c4a;
+  }
+  .b-chip.active {
+    border-color: transparent;
+    background: linear-gradient(180deg, #ddb453 0%, #c89a3a 100%);
+    color: #fff;
+  }
+
+  /* ───────────────────────────────────────────────────────── */
+  /* BEFORE — Qualities hero (current production)            */
+  /* ───────────────────────────────────────────────────────── */
+  .b-qualities-hero {
+    border: 1px solid #c9e3f4;
+    border-radius: 12px;
+    padding: 0.95rem 1rem;
+    background:
+      radial-gradient(circle at 0% 0%, rgba(65, 165, 234, 0.15), transparent 50%),
+      radial-gradient(circle at 100% 100%, rgba(4, 184, 246, 0.13), transparent 52%),
+      #f9fcff;
+  }
+  .b-qualities-hero h3 {
+    margin: 0 0 0.4rem;
+    font-family: "Libre Caslon Text", Georgia, serif;
+    font-weight: 500;
+    color: #003366;
+    font-size: 1.3rem;
+  }
+  .b-qualities-hero p {
+    margin: 0;
+    color: #4a6378;
+    font-size: 0.92rem;
+    max-width: 60ch;
+  }
+  .b-q-chips { display: flex; gap: 0.42rem; margin-top: 0.7rem; flex-wrap: wrap; }
+  .b-q-chip {
+    border: 1px solid #bcd5ea;
+    border-radius: 999px;
+    background: #f0f7fd;
+    color: #1e4e74;
+    padding: 0.23rem 0.6rem;
+    font-size: 0.78rem;
+    font-weight: 700;
+  }
+  .b-q-chip.active {
+    border-color: transparent;
+    background: linear-gradient(180deg, #6dd7ff, #00b8f5);
+    color: #00395b;
+  }
+
+  /* ───────────────────────────────────────────────────────── */
+  /* BEFORE — Standards explorer card with hover reveal       */
+  /* ───────────────────────────────────────────────────────── */
+  .b-card {
+    position: relative;
+    border: 1px solid #e1d3a3;
+    border-radius: 12px;
+    background: #fffef9;
+    padding: 0.7rem;
+    min-height: 170px;
+    box-shadow: 0 3px 9px rgba(44, 31, 5, 0.07);
+    overflow: hidden;
+  }
+  .b-card-shortname { color: #b3881e; font-weight: 700; font-size: 0.88rem; }
+  .b-card-title { margin: 0.2rem 0 0.5rem; font-size: 0.94rem; line-height: 1.3; color: #4e5961; }
+  .b-card-tags { color: #7b715d; font-size: 0.76rem; }
+  .b-card-hover {
+    position: absolute;
+    left: 0; right: 0; bottom: 0;
+    transform: translateY(100%);
+    transition: transform 0.2s ease;
+    background: linear-gradient(180deg, rgba(177,131,24,0.98), rgba(132,96,17,0.98));
+    color: #fff8eb;
+    padding: 0.6rem 0.66rem;
+    font-size: 0.8rem;
+    line-height: 1.3;
+    min-height: 86px;
+  }
+  .b-card:hover .b-card-hover { transform: translateY(0); }
+
+  /* ───────────────────────────────────────────────────────── */
+  /* AFTER — Unified hero pattern (one language)             */
+  /* ───────────────────────────────────────────────────────── */
+  .a-hero {
+    position: relative;
+    border-radius: 10px;
+    border: 1px solid var(--rule);
+    background: var(--brand-paper);
+    padding: 1.1rem 1.1rem 1rem 1.5rem;
+  }
+  .a-hero::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 1rem; bottom: 1rem;
+    width: 3px;
+    background: var(--cat, var(--brand-violet));
+    border-radius: 2px;
+  }
+  .a-hero[data-section="standards"]  { --cat: var(--std-bg); }
+  .a-hero[data-section="qualities"]  { --cat: var(--brand-blue); }
+  .a-hero[data-section="requirements"] { --cat: var(--reqs-bg); }
+  .a-hero[data-section="approaches"] { --cat: var(--approach-bg); }
+
+  .a-hero h3 {
+    margin: 0 0 0.4rem;
+    font-family: "Libre Caslon Text", Georgia, serif;
+    font-weight: 500;
+    color: var(--brand-ink);
+    font-size: 1.3rem;
+  }
+  .a-hero p {
+    margin: 0;
+    color: var(--brand-muted);
+    font-size: 0.92rem;
+    max-width: 60ch;
+  }
+  .a-meta {
+    color: var(--brand-muted);
+    font-size: 0.85rem;
+    margin-top: 0.6rem;
+  }
+  .a-meta b { color: var(--brand-ink); font-weight: 600; }
+  .a-chips { display: flex; gap: 0.42rem; margin-top: 0.75rem; flex-wrap: wrap; }
+  .a-chip {
+    border: 1px solid var(--rule);
+    border-radius: 999px;
+    background: #fff;
+    color: var(--brand-ink);
+    padding: 0.23rem 0.7rem;
+    font-size: 0.78rem;
+    font-weight: 600;
+  }
+  .a-chip.active[data-section="standards"]  { background: var(--std-bg); border-color: var(--std-bg); color: #4a3a0a; }
+  .a-chip.active[data-section="qualities"]  { background: var(--brand-blue); border-color: var(--brand-blue); color: #00395b; }
+
+  /* AFTER — Unified card with inline description             */
+  .a-card {
+    border: 1px solid var(--rule);
+    border-radius: 10px;
+    background: #fff;
+    padding: 0.8rem 0.85rem;
+    min-height: 170px;
+    box-shadow: 0 1px 2px rgba(36, 24, 35, 0.04);
+    display: flex; flex-direction: column; gap: 0.45rem;
+  }
+  .a-card-head { display: flex; align-items: baseline; gap: 0.5rem; }
+  .a-card-rail {
+    width: 3px; height: 1rem; background: var(--std-bg); border-radius: 2px;
+  }
+  .a-card-shortname { color: var(--brand-ink); font-weight: 700; font-size: 0.88rem; }
+  .a-card-title { margin: 0; font-size: 0.94rem; line-height: 1.3; color: var(--brand-ink); font-weight: 500; }
+  .a-card-desc { color: var(--brand-muted); font-size: 0.82rem; line-height: 1.4; margin: 0; }
+  .a-card-tags { color: var(--brand-muted); font-size: 0.76rem; margin-top: auto; }
+
+  /* Annotation list */
+  ul.changes { margin: 0.4rem 0 0; padding-left: 1.2rem; color: var(--brand-muted); font-size: 0.83rem; }
+  ul.changes li { margin: 0.15rem 0; }
+  ul.changes code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 0.9em;
+    background: rgba(0,0,0,0.05);
+    padding: 0 0.25em;
+    border-radius: 2px;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Hero language: before · after</h1>
+  <p class="lede">Three different hero treatments on the live site, collapsed to one language. Same information, one visual vocabulary, four fewer decorative effects per page. Hover the BEFORE card to see the slide-up reveal anti-pattern.</p>
+
+  <h2 class="row-title">Standards hero</h2>
+  <div class="row">
+    <div>
+      <p class="col-label before">Before — _sass/_standards.scss:54–80</p>
+      <div class="b-standards-hero">
+        <h3>Standards</h3>
+        <p>Authoritative references that ground qualities and requirements in measurable, externally-defined criteria.</p>
+        <div class="b-standards-hero-stats">
+          <span class="b-stat"><b>184</b><span>Standards</span></span>
+          <span class="b-stat"><b>13</b><span>Categories</span></span>
+        </div>
+        <div class="b-chips">
+          <span class="b-chip active">All</span>
+          <span class="b-chip">Accessibility</span>
+          <span class="b-chip">Security</span>
+          <span class="b-chip">Coding</span>
+        </div>
+      </div>
+      <ul class="changes">
+        <li>Radial gradients ×2 + rotated 12° white shine pseudo-element</li>
+        <li>Gold-cream background, gold border, gold gradient chip fill</li>
+        <li>Stat pills as hero metrics</li>
+      </ul>
+    </div>
+
+    <div>
+      <p class="col-label after">After — unified hero pattern</p>
+      <div class="a-hero" data-section="standards">
+        <h3>Standards</h3>
+        <p>Authoritative references that ground qualities and requirements in measurable, externally-defined criteria.</p>
+        <p class="a-meta"><b>184</b> standards across <b>13</b> categories.</p>
+        <div class="a-chips">
+          <span class="a-chip active" data-section="standards">All</span>
+          <span class="a-chip">Accessibility</span>
+          <span class="a-chip">Security</span>
+          <span class="a-chip">Coding</span>
+        </div>
+      </div>
+      <ul class="changes">
+        <li>Paper background, no gradients, no shine</li>
+        <li>3 px gold rail on the left = section identity</li>
+        <li>Stats inline in a sentence, not in pills</li>
+        <li>Flat gold fill on active chip</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2 class="row-title">Qualities hero</h2>
+  <div class="row">
+    <div>
+      <p class="col-label before">Before — _pages/20-quality-characteristics.md inline CSS</p>
+      <div class="b-qualities-hero">
+        <h3>Quality Characteristics</h3>
+        <p>Definitions, aliases, related qualities, and the standards that back them up.</p>
+        <div class="b-q-chips">
+          <span class="b-q-chip active">All dimensions</span>
+          <span class="b-q-chip">Usable</span>
+          <span class="b-q-chip">Secure</span>
+          <span class="b-q-chip">Efficient</span>
+          <span class="b-q-chip">Reliable</span>
+        </div>
+      </div>
+      <ul class="changes">
+        <li>Radial gradients ×2 over cyan-cream background</li>
+        <li>Cyan vertical-gradient chip fill on active state</li>
+        <li>Local cyan palette (<code>--qx-*</code> tokens) that exists nowhere else</li>
+      </ul>
+    </div>
+
+    <div>
+      <p class="col-label after">After — unified hero pattern</p>
+      <div class="a-hero" data-section="qualities">
+        <h3>Quality Characteristics</h3>
+        <p>Definitions, aliases, related qualities, and the standards that back them up.</p>
+        <p class="a-meta"><b>184</b> entries, <b>32</b> aliases.</p>
+        <div class="a-chips">
+          <span class="a-chip active" data-section="qualities">All dimensions</span>
+          <span class="a-chip">Usable</span>
+          <span class="a-chip">Secure</span>
+          <span class="a-chip">Efficient</span>
+          <span class="a-chip">Reliable</span>
+        </div>
+      </div>
+      <ul class="changes">
+        <li>Same paper background as standards / requirements / approaches</li>
+        <li>3 px blue rail = qualities section identity (matches home-directory)</li>
+        <li>Flat blue fill on active chip</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2 class="row-title">Standards explorer card</h2>
+  <div class="row">
+    <div>
+      <p class="col-label before">Before — _sass/_standards.scss:493–511 (hover the card)</p>
+      <div class="b-card">
+        <div class="b-card-shortname">ISO/IEC 25010</div>
+        <h4 class="b-card-title">Systems and software quality models</h4>
+        <div class="b-card-tags">tags: maintainable, reliable</div>
+        <div class="b-card-hover">
+          Hierarchy of eight quality characteristics with associated sub-characteristics. The base reference for product quality.
+        </div>
+      </div>
+      <ul class="changes">
+        <li>Description is hidden under the card until hover/focus</li>
+        <li>Touch users never see it without explicit tap</li>
+        <li>Card reserves vertical space for content that's invisible most of the time</li>
+      </ul>
+    </div>
+
+    <div>
+      <p class="col-label after">After — inline description, no hover reveal</p>
+      <div class="a-card">
+        <div class="a-card-head">
+          <span class="a-card-rail"></span>
+          <span class="a-card-shortname">ISO/IEC 25010</span>
+        </div>
+        <h4 class="a-card-title">Systems and software quality models</h4>
+        <p class="a-card-desc">Hierarchy of eight quality characteristics with associated sub-characteristics. The base reference for product quality.</p>
+        <div class="a-card-tags">tags: maintainable, reliable</div>
+      </div>
+      <ul class="changes">
+        <li>Description always visible at reduced emphasis</li>
+        <li>Touch- and keyboard-honest</li>
+        <li>Same gold rail signals section identity, replacing the gold-gradient reveal</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2 class="row-title">Side-effect: requirements + approaches inherit free</h2>
+  <p class="lede" style="max-width:80ch; margin:0.5rem 0 1rem;">Today, <code>/requirements/</code> and <code>/approaches/</code> have no hero — the page just opens with the index. Once the pattern is one card with a section-colored rail, those sections gain a hero for the same cost:</p>
+  <div class="row">
+    <div>
+      <div class="a-hero" data-section="requirements">
+        <h3>Example Requirements</h3>
+        <p>Specify measurable targets: scenarios with context, triggers, and acceptance criteria.</p>
+        <p class="a-meta"><b>141</b> examples across 9 dimensions.</p>
+      </div>
+    </div>
+    <div>
+      <div class="a-hero" data-section="approaches">
+        <h3>Solution Approaches</h3>
+        <p>Architectural tactics, patterns, and practices that enable specific qualities.</p>
+        <p class="a-meta"><b>23</b> tactics, linked to their target qualities.</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
