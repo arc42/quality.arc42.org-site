@@ -83,13 +83,19 @@ async function generateSearchIndex() {
     const dataPath = path.join(assetsDir, "data");
     await fs.mkdir(dataPath, { recursive: true });
 
-    // We also need a lookup table for the UI to show titles/types without the full index
+    // Lookup table for the UI to show titles/types without the full index.
+    // Aliases + tags are included so the header autocomplete can do its own
+    // prefix scoring without going through Lunr's stemmer (the stemmer rewrites
+    // "performance" → "perform" which breaks prefix matching for typed queries
+    // like "performa"). Lunr is still used for the /search/ full-results page.
     const lookup = {};
     documents.forEach(doc => {
         lookup[doc.id] = {
             title: doc.title,
             type: doc.type,
-            url: doc.id
+            url: doc.id,
+            aliases: doc.aliases || "",
+            tags: doc.tags || ""
         };
     });
 
