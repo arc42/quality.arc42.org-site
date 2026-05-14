@@ -23,7 +23,7 @@
     left: 0;
     position: absolute;
     top: 1.25rem;
-    width: 3px;
+    width: 5px;
   }
 
   &[data-section="qualities"] {
@@ -38,9 +38,18 @@
   &[data-section="standards"] {
     --cat: var(--standard-background-color);
   }
-  // Tag pages are filtered cross-cuts, not a primary section — neutral rail.
+  // Tag / dimension pages — cross-cuts, not a primary section. Use the
+  // existing dimension navy so the rail reads "this is a filter view".
   &[data-section="tag"] {
-    --cat: var(--brand-violet-soft);
+    --cat: var(--dimension-background-color);
+  }
+  // Long-form background reading — calm brand teal.
+  &[data-section="article"] {
+    --cat: var(--brand-teal);
+  }
+  // First-run guidance — warm innoq orange.
+  &[data-section="how-to"] {
+    --cat: var(--innoq-heart-color);
   }
 }
 
