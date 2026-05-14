@@ -84,14 +84,14 @@ hide: true
           <a href="{{ std.url | prepend: site.baseurl }}">{{ std.title }}</a>
         </h3>
 
+        <p class="standards-explorer-summary">{{ summary }}</p>
+
         <ul class="standards-explorer-tags">
           <li><i class="fa fa-tags" aria-hidden="true"></i></li>
           {% for category in std.categories %}
             <li>#{{ category }}</li>
           {% endfor %}
         </ul>
-
-        <div class="standards-explorer-hover">{{ summary }}</div>
       </article>
     {% endfor %}
   </div>
