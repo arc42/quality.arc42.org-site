@@ -13,7 +13,9 @@
 .home-violet-hero {
   background: var(--home-violet);
   color: var(--home-on-violet);
-  padding: clamp(2.7rem, 6.5vw, 5.6rem) 0 clamp(3rem, 7vw, 5.5rem);
+  // Trimmed from clamp(2.7rem, 6.5vw, 5.6rem) — the original sat ~5.6rem
+  // (~90 px) below the sticky header on wide screens with nothing in it.
+  padding: clamp(1.4rem, 3vw, 2.6rem) 0 clamp(2.4rem, 5vw, 4rem);
 }
 
 .home-violet-hero__inner,
@@ -25,7 +27,7 @@
 
 .home-violet-hero__inner {
   display: grid;
-  gap: clamp(3rem, 6vw, 6rem);
+  gap: clamp(2rem, 4.5vw, 4.5rem);
   grid-template-columns: minmax(0, 1fr);
 }
 
@@ -224,7 +226,9 @@
 
 @media (min-width: $home-graph-wide-width) {
   .home-violet-hero__inner {
-    align-items: end;
+    // align-items: start so the H1 sits at the top of the row track instead
+    // of being pulled down to match the taller 3-row directory's bottom.
+    align-items: start;
     grid-template-columns: minmax(0, 4fr) minmax(0, 6fr);
   }
 }

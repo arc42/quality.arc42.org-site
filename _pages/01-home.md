@@ -25,9 +25,9 @@ q_graph_script: /assets/js/homepage/main.js
           Quality drives Architecture
         </h1>
         <p>
-          Q42 turns broad quality goals into precise terms, concrete
-          requirements, and practical solution approaches: a working
-          reference for software architects.
+          The arc42 quality model: a working reference for specifying
+          quality goals, comparing approaches, and grounding them in
+          established standards.
         </p>
       </div>
 
