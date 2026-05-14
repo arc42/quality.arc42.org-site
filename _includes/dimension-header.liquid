@@ -1,26 +1,39 @@
+{% comment %}
+  dimension-header — header for tag pages (/tag-*/) and the dimensions
+  index page (/dimensions/).
+
+  Migrated to the unified section-hero component in PR #5. Tag pages are
+  filtered cross-cuts, not a primary section, so they all share the
+  neutral "tag" rail colour rather than per-dimension hues.
+
+  When called from a /tag-*/ page, computes a meta line with counts of
+  qualities, requirements, approaches, and standards tagged with the
+  dimension slug.
+{% endcomment %}
 {% assign page = include.page %}
 
-<header>
-    <div class="panel dimension-header">
-        <h1>
-            {% include icon.html name="layers" %}
-            {% if include.link %}
-            <a class="post-link" href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>
-            {% else %}
-            {{ page.title }}
-            {% endif %}
-        </h1>
+{% if page.url contains '/tag-' %}
+  {% assign tag_slug = page.url | remove: '/tag-' | remove: '/' %}
+  {% assign q_count = 0 %}
+  {% for item in site.qualities %}
+    {% if item.tags contains tag_slug %}{% assign q_count = q_count | plus: 1 %}{% endif %}
+  {% endfor %}
+  {% assign r_count = 0 %}
+  {% for item in site.requirements %}
+    {% if item.tags contains tag_slug %}{% assign r_count = r_count | plus: 1 %}{% endif %}
+  {% endfor %}
+  {% assign a_count = 0 %}
+  {% for item in site.approaches %}
+    {% if item.tags contains tag_slug %}{% assign a_count = a_count | plus: 1 %}{% endif %}
+  {% endfor %}
+  {% assign s_count = 0 %}
+  {% for item in site.standards %}
+    {% if item.tags contains tag_slug %}{% assign s_count = s_count | plus: 1 %}{% endif %}
+  {% endfor %}
+  {% capture tag_meta %}<b>{{ q_count }}</b> qualities &middot; <b>{{ r_count }}</b> requirements &middot; <b>{{ a_count }}</b> approaches &middot; <b>{{ s_count }}</b> standards{% endcapture %}
+{% endif %}
 
-        <div class="header-taxonomy-row">
-            {% unless include.show_category_link == false %}
-            {% include header-category-link.liquid
-              href='/qualities/'
-              value='Dimension'
-              icon='layers'
-            %}
-            {% endunless %}
-        </div>
-
-        <div class="clearfix"></div>
-    </div>
-</header>
+{% include section-hero.liquid
+  section="tag"
+  title=page.title
+  meta=tag_meta %}

@@ -31,6 +31,6 @@
 {% endcomment %}
 <header class="section-hero" data-section="{{ include.section }}">
   <h1 class="section-hero__title">{{ include.title }}</h1>
-  {% if include.lede %}<p class="section-hero__lede">{{ include.lede }}</p>{% endif %}
-  {% if include.meta %}<p class="section-hero__meta">{{ include.meta }}</p>{% endif %}
+  {% if include.lede and include.lede != "" %}<p class="section-hero__lede">{{ include.lede }}</p>{% endif %}
+  {% if include.meta and include.meta != "" %}<p class="section-hero__meta">{{ include.meta }}</p>{% endif %}
 </header>
