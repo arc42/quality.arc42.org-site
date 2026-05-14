@@ -4,7 +4,9 @@ layout: default
 
 <div class="article-wrapper">
     <article>
+        {% unless page.no_layout_header %}
         {% include requirements-header.liquid page=page link=false share=page.share %}
+        {% endunless %}
         <section class="post-content">
             {{ content }}
         </section>

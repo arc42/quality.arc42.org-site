@@ -3,6 +3,7 @@ layout: page
 title: Quality Characteristics
 permalink: /qualities/
 order: 20
+no_layout_header: true
 ---
 
 {% assign canonical_qualities = site.qualities | where_exp: "q", "q.alias_of == nil" | sort: "title" %}

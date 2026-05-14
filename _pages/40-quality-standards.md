@@ -3,6 +3,7 @@ layout: page_standards
 title: Quality Standards
 permalink: /standards/
 order: 40
+no_layout_header: true
 ---
 
 {% assign allStandards = site.standards %}

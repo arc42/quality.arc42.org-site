@@ -4,6 +4,7 @@ title: Standards Explorer
 permalink: /standards/explorer/
 order: 41
 hide: true
+no_layout_header: true
 ---
 
 {% assign allStandards = site.standards | sort: "shortname" %}
