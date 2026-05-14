@@ -1,12 +1,19 @@
 {% assign page = include.page %}
+{% comment %}
+  heading_level lets a caller render the article title as h2 instead of h1
+  when this include is used inside a listing (e.g. /articles/), so the page
+  document outline keeps a single canonical h1. Defaults to h1 for the
+  per-page header use case.
+{% endcomment %}
+{% assign heading_level = include.heading_level | default: "h1" %}
 
 <header>
   <div class="panel article-header{% if page.header_class %} {{ page.header_class }}{% endif %}">
-    <h1>
+    <{{ heading_level }}>
       {% if include.link %}
       <a class="post-link" href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>
       {% else %} {{ page.title }} {% endif %}
-    </h1>
+    </{{ heading_level }}>
 
     <ul class="tags">
       {% assign tags_num = (page.tags | size) %} {% if tags_num > 0 %}

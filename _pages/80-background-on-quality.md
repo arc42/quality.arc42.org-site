@@ -24,7 +24,7 @@ no_layout_header: true
 {% for article in articles %}
    <div class="article-wrapper">
       <article>
-         {% include article-header.html page=article link=true share=false %}
+         {% include article-header.html page=article link=true share=false heading_level="h2" %}
        </article>
     <hr class="with-no-margin"/>
   </div>

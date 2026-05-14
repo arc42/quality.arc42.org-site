@@ -11,18 +11,18 @@
   background: var(--brand-paper);
   border: 1px solid var(--brand-violet-18);
   border-radius: 10px;
-  margin: 0 0 1.5rem;
-  padding: 1.25rem 1.5rem 1.15rem 1.85rem;
+  margin: 0 0 1.2rem;
+  padding: 0.75rem 1.4rem 0.7rem 1.7rem;
   position: relative;
 
   &::before {
     background: var(--cat);
     border-radius: 2px;
-    bottom: 1.25rem;
+    bottom: 0.75rem;
     content: "";
     left: 0;
     position: absolute;
-    top: 1.25rem;
+    top: 0.75rem;
     width: 5px;
   }
 
@@ -56,25 +56,25 @@
 .section-hero__title {
   color: var(--brand-ink);
   font-family: $heading-font-family;
-  font-size: clamp(1.6rem, 2.6vw, 2.05rem);
+  font-size: clamp(1.25rem, 1.85vw, 1.55rem);
   font-weight: 500;
   letter-spacing: -0.01em;
-  line-height: 1.1;
-  margin: 0 0 0.4rem;
+  line-height: 1.15;
+  margin: 0 0 0.25rem;
 }
 
 .section-hero__lede {
   color: var(--brand-muted);
-  font-size: $text-lg;
-  line-height: 1.5;
+  font-size: $text-base;
+  line-height: 1.4;
   margin: 0;
-  max-width: 70ch;
+  max-width: 78ch;
 }
 
 .section-hero__meta {
   color: var(--brand-muted);
-  font-size: 0.92rem;
-  margin: 0.7rem 0 0;
+  font-size: 0.85rem;
+  margin: 0.4rem 0 0;
 
   b {
     color: var(--brand-ink);
@@ -92,6 +92,6 @@
 @media (max-width: $nav-narrow-width) {
   .section-hero {
     border-radius: 8px;
-    padding: 1rem 1.1rem 0.95rem 1.45rem;
+    padding: 0.65rem 1rem 0.6rem 1.35rem;
   }
 }
