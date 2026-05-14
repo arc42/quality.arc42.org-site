@@ -17,19 +17,15 @@ order: 20
 
 <div id="top"></div>
 
+{% capture qualities_meta %}<b>{{ canonical_qualities | size }}</b> qualities, <b>{{ alias_qualities | size }}</b> aliases, across <b>{{ dimension_tags | size }}</b> dimensions.{% endcapture %}
+
+{% include section-hero.liquid
+  section="qualities"
+  title="Quality Characteristics"
+  lede="Definitions, aliases, related qualities, and the standards that back them up. Use dimension filters and A-Z jump links to narrow the list."
+  meta=qualities_meta %}
+
 <section id="qualities-explorer" class="qualities-explorer" data-baseurl="{{ site.baseurl }}">
-  <div class="qualities-explorer-hero">
-    <p class="qualities-explorer-text">
-      Here you find quality characteristics (desirable, expected, or required qualities) of IT systems.
-      Use <strong>dimension filters</strong> and <strong>A-Z jump links</strong> to
-      quickly narrow down this list.
-    </p>
-    <p class="qualities-explorer-stats">
-      We currently explain <strong>{{ canonical_qualities | size }}</strong> canonical qualities, with
-      <strong>{{ alias_qualities | size }}</strong> aliases/synonyms, across
-      <strong>{{ dimension_tags | size }}</strong> dimensions.
-    </p>
-  </div>
 
   <div class="qualities-explorer-panel">
     <div class="qualities-explorer-head">
@@ -191,31 +187,9 @@ order: 20
     margin-top: 0.75rem;
   }
 
-  .qualities-explorer-hero {
-    border: 1px solid var(--qx-border);
-    border-radius: 12px;
-    padding: 0.92rem 1rem;
-    background:
-      radial-gradient(circle at 0% 0%, rgba(65, 165, 234, 0.15), transparent 50%),
-      radial-gradient(circle at 100% 100%, rgba(4, 184, 246, 0.13), transparent 52%),
-      var(--qx-surface);
-  }
-
-  .qualities-explorer-text {
-    margin: 0;
-    color: var(--qx-muted);
-  }
-
-  .qualities-explorer-stats {
-    margin: 0.48rem 0 0;
-    color: var(--qx-muted);
-    font-size: 0.92rem;
-    font-weight: 600;
-  }
-
-  .qualities-explorer-stats strong {
-    color: var(--qx-accent);
-  }
+  /* Hero replaced by the unified section-hero component (PR #3 of the
+     hero-unification plan). Hero-specific rules removed; panels and chips
+     below continue to use the local --qx-* tokens. */
 
   .qualities-explorer-panel {
     margin-top: 0.72rem;
@@ -268,8 +242,9 @@ order: 20
   }
 
   .qualities-facet-chip.active {
-    border-color: transparent;
-    background: linear-gradient(180deg, #6dd7ff, var(--qx-accent-2));
+    background: var(--brand-blue);
+    border-color: var(--brand-blue);
+    box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.08);
     color: #00395b;
   }
 
