@@ -1,0 +1,36 @@
+{% comment %}
+  section-hero — unified hero card for index / landing / tag pages.
+
+  Replaces the bespoke treatments in _sass/_standards.scss and the inline
+  block in _pages/20-quality-characteristics.md, and supplies a hero for
+  /requirements/, /approaches/, and the tag pages.
+
+  Section identity comes from the data-section attribute, which sets a
+  CSS custom property --cat. The colour matches the home-directory rails,
+  so the homepage acts as a legend for the destination section.
+
+  Required:
+    section  Color key. One of:
+               qualities | requirements | approaches | standards | tag
+    title    H1 text (plain).
+
+  Optional:
+    lede     Single paragraph of plain text shown below the title.
+    meta     Inline metadata line (e.g. counts). HTML allowed.
+
+  Example:
+    {% raw %}{% include section-hero.liquid
+        section="standards"
+        title="Standards"
+        lede="Authoritative references that ground qualities and requirements."
+        meta="<b>184</b> standards across <b>13</b> categories." %}{% endraw %}
+
+  Page-specific controls (chip rows, search inputs, A–Z bars) are placed
+  in the consuming page after the include, not inside it — the hero stays
+  a quiet identity card.
+{% endcomment %}
+<header class="section-hero" data-section="{{ include.section }}">
+  <h1 class="section-hero__title">{{ include.title }}</h1>
+  {% if include.lede %}<p class="section-hero__lede">{{ include.lede }}</p>{% endif %}
+  {% if include.meta %}<p class="section-hero__meta">{{ include.meta }}</p>{% endif %}
+</header>
