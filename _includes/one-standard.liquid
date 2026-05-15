@@ -14,7 +14,7 @@ as these pages need to display all related standards.
 {% assign category_to_find = site.data.tag-aliases[tag_to_find] | default: tag_to_find %}
 
 <div class="panel standards-header" style="margin-top: 1rem">
-  <h2 style="margin: 0; padding: 1rem; color: var(--standard-text-color)">Standards related to #{{ include.tag }}</h2>
+  <h2 style="margin: 0; padding: 1rem">Standards tagged with #{{ include.tag }}</h2>
 </div>
 <div id="search-results">
   {% assign filtered_standards = "" | split: "," %}
@@ -29,7 +29,7 @@ as these pages need to display all related standards.
       {% include standard-item.liquid standard=standard link=true %}
     {% endfor %}
   {% else %}
-    <p>No standards categorized under #{{ category_to_find }} yet.</p>
+    <p>No standards tagged with #{{ include.tag }} yet.</p>
   {% endif %}
 </div>
 
