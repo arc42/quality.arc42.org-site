@@ -105,8 +105,14 @@ layout: default
       <span class="req-detail__breadcrumb-current" aria-current="page">{{ page.title }}</span>
     </nav>
 
-    {%- comment -%} 2. H1 title {%- endcomment -%}
-    <h1 class="req-detail__title">{{ page.title }}</h1>
+    {%- comment -%} 2. Hero card — unified section-hero with eyebrow "Requirement"
+         linking back to /requirements/. Replaces the bare <h1> that was being
+         overridden by the global .site-content h1 rule (0,1,1 beat 0,1,0). {%- endcomment -%}
+    {% include section-hero.liquid
+      section="requirements"
+      title=page.title
+      eyebrow_label="Requirement"
+      eyebrow_href="/requirements/" %}
 
     {%- comment -%} 3. Implements line {%- endcomment -%}
     {%- if implements_qualities.size > 0 or page.tags.size > 0 -%}
