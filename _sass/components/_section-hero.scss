@@ -62,11 +62,13 @@
   .section-hero__title {
     color: var(--brand-ink);
     font-family: $heading-font-family;
-    font-size: clamp(1.25rem, 1.85vw, 1.55rem);
+    // The page H1 must outrank any h2/h3 in category-card titles below it.
+    // Previous compression cut this to 1.55rem and inverted the hierarchy.
+    font-size: clamp(1.6rem, 2.4vw, 1.95rem);
     font-weight: 500;
     letter-spacing: -0.01em;
     line-height: 1.15;
-    margin: 0 0 0.25rem;
+    margin: 0 0 0.3rem;
   }
 
   .section-hero__lede {
