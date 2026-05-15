@@ -2,13 +2,131 @@
 layout: default
 ---
 
-{% comment %} These requirements pages are structured as follows: - Header - Content section -
-Related qualities (this requirement is related to these qualities) - Related requirements (same
-tags) {% endcomment %}
+{%- comment -%}
+  Requirement detail page.
+
+  Layout flow:
+    1. Breadcrumb       Qualities › <parent quality> › <requirement>
+    2. H1 title         clean, no decorative panel
+    3. Implements row   resolved related: qualities promoted from a footer
+                        block to a primary navigation handle, plus the tag
+                        chip as a quiet aside
+    4. Content          Context / Trigger / Acceptance Criteria
+    5. Top 8 siblings   ranked by score = (related-overlap × 5) + tag-overlap,
+                        with per-row rationale ("shares N qualities" or
+                        "via #tag" when only the dimension matches)
+    6. View all link    escape hatch to /tag-<primary-tag>/
+    7. Return link      ← All requirements
+
+  Replaces the previous flat-list "Directly Related Quality Requirements"
+  wall (40+ items on a typical page) and the footer-style "Related
+  Qualities" block.
+{%- endcomment -%}
+
+{%- comment -%} 1. Resolve breadcrumb parent + "Implements" qualities {%- endcomment -%}
+{%- assign parent_slug = page.related | first -%}
+{%- assign parent_quality = nil -%}
+{%- assign implements_qualities = "" | split: "" -%}
+{%- for slug in page.related -%}
+  {%- for q in site.qualities -%}
+    {%- assign q_slug = q.permalink | split: "/" | last -%}
+    {%- if q_slug == slug -%}
+      {%- assign implements_qualities = implements_qualities | push: q -%}
+      {%- if slug == parent_slug -%}{%- assign parent_quality = q -%}{%- endif -%}
+      {%- break -%}
+    {%- endif -%}
+  {%- endfor -%}
+{%- endfor -%}
+
+{%- comment -%}
+  2. Score and rank sibling requirements.
+  Liquid does not ship an `intersection` filter (the old layout used it and
+  silently no-op'd — every non-empty-tagged requirement matched). We hand-roll
+  the intersection with `contains` instead, which works for arrays in Liquid.
+{%- endcomment -%}
+{%- assign scored = "" | split: "" -%}
+
+{%- for req in site.requirements -%}
+  {%- if req.permalink == page.permalink -%}{%- continue -%}{%- endif -%}
+
+  {%- assign rel_overlap = 0 -%}
+  {%- if req.related and page.related -%}
+    {%- for slug in req.related -%}
+      {%- if page.related contains slug -%}
+        {%- assign rel_overlap = rel_overlap | plus: 1 -%}
+      {%- endif -%}
+    {%- endfor -%}
+  {%- endif -%}
+
+  {%- assign tag_overlap = 0 -%}
+  {%- if req.tags and page.tags -%}
+    {%- for tag in req.tags -%}
+      {%- if page.tags contains tag -%}
+        {%- assign tag_overlap = tag_overlap | plus: 1 -%}
+      {%- endif -%}
+    {%- endfor -%}
+  {%- endif -%}
+
+  {%- assign score = rel_overlap | times: 5 | plus: tag_overlap -%}
+  {%- if score > 0 -%}
+    {%- comment -%} Pad score for lexical-sort stability (max ~50 fits in 4 digits) {%- endcomment -%}
+    {%- assign score_str = score | prepend: "0000" -%}
+    {%- assign score_str = score_str | slice: -4, 4 -%}
+    {%- capture entry -%}{{ score_str }}|{{ rel_overlap }}|{{ tag_overlap }}|{{ req.permalink }}{%- endcapture -%}
+    {%- assign scored = scored | push: entry -%}
+  {%- endif -%}
+{%- endfor -%}
+
+{%- assign top_entries = scored | sort | reverse | slice: 0, 8 -%}
+
+{%- comment -%} 3. Count total requirements in the primary tag for the
+     "View all N in #tag" link {%- endcomment -%}
+{%- assign primary_tag = page.tags | first -%}
+{%- assign tag_total = 0 -%}
+{%- if primary_tag -%}
+  {%- for req in site.requirements -%}
+    {%- if req.tags contains primary_tag and req.permalink != page.permalink -%}
+      {%- assign tag_total = tag_total | plus: 1 -%}
+    {%- endif -%}
+  {%- endfor -%}
+{%- endif -%}
 
 <div class="article-wrapper">
-  <article>
-    {% include requirements-header.liquid page=page link=false share=page.share %}
+  <article class="req-detail">
+
+    {%- comment -%} 1. Breadcrumb {%- endcomment -%}
+    <nav class="req-detail__breadcrumb" aria-label="Breadcrumb">
+      <a href="{{ '/qualities/' | prepend: site.baseurl }}">Qualities</a>
+      <span class="req-detail__breadcrumb-sep" aria-hidden="true">›</span>
+      {%- if parent_quality -%}
+        <a href="{{ parent_quality.permalink | prepend: site.baseurl }}">{{ parent_quality.title }}</a>
+        <span class="req-detail__breadcrumb-sep" aria-hidden="true">›</span>
+      {%- endif -%}
+      <span class="req-detail__breadcrumb-current" aria-current="page">{{ page.title }}</span>
+    </nav>
+
+    {%- comment -%} 2. H1 title {%- endcomment -%}
+    <h1 class="req-detail__title">{{ page.title }}</h1>
+
+    {%- comment -%} 3. Implements line {%- endcomment -%}
+    {%- if implements_qualities.size > 0 or page.tags.size > 0 -%}
+      <p class="req-detail__implements">
+        {%- if implements_qualities.size > 0 -%}
+          <span class="req-detail__implements-label">Implements</span>
+          {%- for q in implements_qualities -%}
+            <a href="{{ q.permalink | prepend: site.baseurl }}">{{ q.title }}</a>{%- unless forloop.last -%}, {% endunless -%}
+          {%- endfor -%}
+        {%- endif -%}
+        {%- if page.tags.size > 0 -%}
+          {%- if implements_qualities.size > 0 %} <span class="req-detail__implements-dot" aria-hidden="true">·</span>{% endif -%}
+          {%- for tag in page.tags -%}
+            <a href="{{ '/tag-' | append: tag | prepend: site.baseurl }}" class="req-detail__implements-tag">#{{ tag }}</a>{%- unless forloop.last %} {% endunless -%}
+          {%- endfor -%}
+        {%- endif -%}
+      </p>
+    {%- endif -%}
+
+    {%- comment -%} 4. Content {%- endcomment -%}
     <section class="post-content">
       <div class="quality-requirement">{{ content }}</div>
       {% if page.note %}
@@ -25,53 +143,46 @@ tags) {% endcomment %}
       {% endif %}
     </section>
 
-    <hr class="with-no-margin" />
+    {%- comment -%} 5. Top 8 siblings ranked by overlap {%- endcomment -%}
+    {%- if top_entries.size > 0 -%}
+    <section class="req-detail__siblings">
+      <h2 class="req-detail__siblings-heading">
+        Related requirements
+        <span class="req-detail__siblings-count">top {{ top_entries.size }} by overlap</span>
+      </h2>
 
-    {% comment %} Find related qualities by iterating over all other qualities. {% endcomment %}
+      {%- for entry in top_entries -%}
+        {%- assign parts = entry | split: "|" -%}
+        {%- assign rel_overlap = parts[1] | plus: 0 -%}
+        {%- assign tag_overlap = parts[2] | plus: 0 -%}
+        {%- assign sibling_permalink = parts[3] -%}
+        {%- assign sibling = site.requirements | where: "permalink", sibling_permalink | first -%}
+        {%- if sibling -%}
+          <div class="req-detail__sibling">
+            <a class="req-detail__sibling-link" href="{{ sibling.permalink | prepend: site.baseurl }}">{{ sibling.title }}</a>
+            <span class="req-detail__sibling-context">
+              {%- if rel_overlap > 0 -%}
+                shares {{ rel_overlap }} qualit{% if rel_overlap == 1 %}y{% else %}ies{% endif %}
+              {%- elsif tag_overlap > 0 and primary_tag -%}
+                via #{{ primary_tag }}
+              {%- endif -%}
+            </span>
+          </div>
+        {%- endif -%}
+      {%- endfor -%}
 
-    <h2 class="section-heading qualities">Related Qualities</h2>
+      {%- if tag_total > top_entries.size and primary_tag -%}
+        <p class="req-detail__view-all">
+          <a href="{{ '/tag-' | append: primary_tag | prepend: site.baseurl }}">View all {{ tag_total }} requirements in #{{ primary_tag }} →</a>
+        </p>
+      {%- endif -%}
+    </section>
+    {%- endif -%}
 
-    {% assign all_qualities = site.qualities %} {% assign related_qualities = page.related | sort %}
-
-    <ul class="posts no-bullets">
-      {% for quality in related_qualities %} {% assign quality_title = quality | replace: "-", " "
-      %} {% for whole_quality in all_qualities %} {% assign check_title = whole_quality.title |
-      downcase %} {% assign check_title_downcase = check_title | replace: "-", " " %} {% if
-      check_title_downcase == quality_title %}
-      <li>
-        <a href="{{whole_quality.permalink}}"
-          ><i class="fa fa-gem fa-xs as-bullet" style="color: var(--quality-text-color)"> </i>
-          {{whole_quality.title}}</a
-        >
-      </li>
-      {% endif %} {% endfor %} {% endfor %}
-    </ul>
-
-    <hr class="with-no-margin" />
-
-    {% comment %} Find related requirements by comparing the tags of all other requirements. {%
-    endcomment %}
-
-    <h2 class="section-heading requirements">Directly Related Quality Requirements</h2>
-
-    {% assign page_tags = page.tags | sort %} Related here means "having the same tags/dimensions
-    ({{ page_tags | join: ", " }})". {% assign all_reqs = site.requirements %} {% assign
-    found_related_reqs = false %}
-    <ul class="posts no-bullets">
-      {% for req in all_reqs %} {% assign common_tags = req.tags | intersection: page_tags %} {% if
-      common_tags.size > 0 and req.title != page.title %} {% assign found_related_reqs = true %}
-      <li>
-        <a class="reqs" href="{{req.permalink}}"
-          ><i class="fa fa-bullseye fa-xs as-bullet" style="color: var(--req-text-color)"> </i
-          >{{req.title}}</a
-        >
-      </li>
-      {% endif %} {% endfor %} {% if found_related_reqs == false %}
-      <li>No directly related quality requirements found.</li>
-      {% endif %}
-    </ul>
-
-    <hr class="with-no-margin" />
+    {%- comment -%} 6. Return link {%- endcomment -%}
+    <p class="req-detail__return">
+      <a href="{{ '/requirements/' | prepend: site.baseurl }}">← All requirements</a>
+    </p>
 
     {% include article-footer.html page=page share=page.share %}
   </article>

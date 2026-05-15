@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Requirement detail: before vs after</title>
+<style>
+  :root {
+    --brand-violet: #682d63;
+    --brand-blue: #00b8f5;
+    --brand-paper: #f8f7f2;
+    --brand-cream: #fbf6ef;
+    --brand-ink: #241823;
+    --brand-muted: #746671;
+    --reqs-bg: #ffb3b3;
+    --req-text: #8b0000;
+    --quality-bg: #00b8f5;
+    --quality-text: #003366;
+    --rule: rgba(104, 45, 99, 0.18);
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: #efeae3;
+    font-family: -apple-system, "Atkinson Hyperlegible Next", BlinkMacSystemFont, "Segoe UI", sans-serif;
+    color: var(--brand-ink);
+    line-height: 1.4;
+    font-size: 16px;
+  }
+  .wrap { max-width: 1440px; margin: 0 auto; padding: 2.5rem 2rem 4rem; }
+  h1.intro {
+    font-family: "Libre Caslon Text", Georgia, serif;
+    font-weight: 500;
+    font-size: 2rem;
+    margin: 0 0 0.4rem;
+    letter-spacing: -0.01em;
+  }
+  .lede {
+    color: var(--brand-muted);
+    max-width: 70ch;
+    margin: 0 0 2.5rem;
+  }
+  .col-label {
+    font-family: "Libre Caslon Text", Georgia, serif;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin: 0 0 0.5rem;
+  }
+  .col-label.before { color: #b94a3b; }
+  .col-label.after  { color: #4f7d3c; }
+  .row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.6rem;
+    margin-bottom: 0.5rem;
+  }
+  .page {
+    background: #fff;
+    border: 1px solid var(--rule);
+    border-radius: 10px;
+    padding: 1.4rem 1.6rem;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+  }
+  .ann {
+    color: var(--brand-muted);
+    font-size: 0.83rem;
+    margin: 0.6rem 0 0;
+    line-height: 1.4;
+  }
+  ul.changes { margin: 0.4rem 0 0; padding-left: 1.2rem; color: var(--brand-muted); font-size: 0.83rem; }
+  ul.changes li { margin: 0.18rem 0; }
+  ul.changes code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 0.9em;
+    background: rgba(0,0,0,0.05);
+    padding: 0 0.25em;
+    border-radius: 2px;
+  }
+
+  /* ─────── shared requirement body chrome ─────── */
+  .req-h4 { font-family: "Libre Caslon Text", Georgia, serif; font-weight: 500; font-size: 1.02rem; margin: 0.8rem 0 0.3rem; color: var(--brand-ink); }
+  .req-h4:first-of-type { margin-top: 0; }
+  .req-body p { margin: 0; }
+  .req-body ul { margin: 0; padding-left: 1.2rem; }
+  .req-body ul li { margin: 0.2rem 0; color: #383838; font-size: 0.95rem; }
+  .req-body strong { color: var(--brand-ink); }
+
+  /* ─────── BEFORE — current production ─────── */
+  .b-header {
+    border-radius: 0;
+    border: 0;
+    border-bottom: 2px dotted #d8c4c4;
+    margin: 0 0 1.2rem;
+    padding: 0 0 1rem;
+  }
+  .b-header h1 {
+    font-family: "Libre Caslon Text", Georgia, serif;
+    font-weight: 500;
+    font-size: 1.85rem;
+    margin: 0 0 0.4rem;
+    color: var(--brand-ink);
+  }
+  .b-header .tags { color: var(--brand-muted); font-size: 0.85rem; }
+  .b-header .tags a { color: var(--brand-muted); text-decoration: underline; }
+
+  .b-related {
+    margin: 1.4rem 0 0;
+  }
+  .b-related h2 {
+    font-family: "Libre Caslon Text", Georgia, serif;
+    font-weight: 500;
+    font-size: 1.18rem;
+    color: var(--brand-ink);
+    margin: 0 0 0.4rem;
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 0.3rem;
+  }
+  .b-related ul { list-style: none; margin: 0; padding: 0; font-size: 0.92rem; }
+  .b-related ul li { padding: 0.15rem 0; }
+  .b-related ul li a { color: #1675b9; text-decoration: none; }
+  .b-related ul li a:hover { text-decoration: underline; }
+  .b-related ul li .icon { color: var(--quality-text); font-size: 0.7rem; margin-right: 0.35rem; }
+  .b-related ul li .icon.r { color: var(--req-text); }
+
+  /* the wall */
+  .b-wall {
+    max-height: 320px;
+    overflow-y: auto;
+    border: 1px dashed #d8c4c4;
+    border-radius: 4px;
+    padding: 0.5rem 0.8rem;
+    background: #fffaf6;
+  }
+  .b-wall p { font-size: 0.78rem; color: var(--brand-muted); margin: 0 0 0.4rem; font-style: italic; }
+
+  /* ─────── AFTER — proposal ─────── */
+  .a-breadcrumb {
+    color: var(--brand-muted);
+    font-size: 0.78rem;
+    letter-spacing: 0.02em;
+    margin: 0 0 0.7rem;
+  }
+  .a-breadcrumb a { color: var(--brand-muted); text-decoration: none; }
+  .a-breadcrumb a:hover { color: var(--brand-violet); text-decoration: underline; }
+  .a-breadcrumb .sep { margin: 0 0.4rem; color: rgba(116, 102, 113, 0.4); }
+  .a-breadcrumb .current { color: var(--brand-ink); }
+
+  .a-title {
+    font-family: "Libre Caslon Text", Georgia, serif;
+    font-weight: 500;
+    font-size: 1.85rem;
+    margin: 0 0 0.45rem;
+    color: var(--brand-ink);
+    line-height: 1.15;
+  }
+
+  .a-implements {
+    font-size: 0.85rem;
+    color: var(--brand-muted);
+    margin: 0 0 1.2rem;
+    padding: 0 0 0.7rem;
+    border-bottom: 1px solid var(--rule);
+  }
+  .a-implements .label {
+    font-family: "Libre Caslon Text", Georgia, serif;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--brand-muted);
+    margin-right: 0.4rem;
+  }
+  .a-implements a { color: var(--brand-violet); text-decoration: none; font-weight: 500; }
+  .a-implements a:hover { text-decoration: underline; }
+
+  .a-section {
+    margin: 1.4rem 0 0;
+  }
+  .a-section h2 {
+    font-family: "Libre Caslon Text", Georgia, serif;
+    font-weight: 500;
+    font-size: 1rem;
+    text-transform: none;
+    letter-spacing: 0;
+    color: var(--brand-ink);
+    margin: 0 0 0.5rem;
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+  }
+  .a-section h2 .count {
+    color: var(--brand-muted);
+    font-family: -apple-system, sans-serif;
+    font-size: 0.78rem;
+    font-weight: 400;
+  }
+
+  .a-sibling {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    column-gap: 0.7rem;
+    align-items: baseline;
+    padding: 0.42rem 0.7rem 0.42rem 0.85rem;
+    border-radius: 6px;
+    position: relative;
+  }
+  .a-sibling:hover { background: rgba(104, 45, 99, 0.05); }
+  .a-sibling::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.55rem;
+    bottom: 0.55rem;
+    width: 3px;
+    background: var(--reqs-bg);
+    border-radius: 2px;
+  }
+  .a-sibling a {
+    color: var(--brand-ink);
+    text-decoration: none;
+    font-size: 0.93rem;
+  }
+  .a-sibling a:hover { text-decoration: underline; }
+  .a-sibling .quality-context {
+    color: var(--brand-muted);
+    font-size: 0.78rem;
+    font-style: italic;
+    white-space: nowrap;
+  }
+
+  .a-view-all {
+    margin: 0.7rem 0 0 0.85rem;
+    font-size: 0.85rem;
+  }
+  .a-view-all a {
+    color: var(--brand-violet);
+    text-decoration: none;
+    font-weight: 500;
+  }
+  .a-view-all a:hover { text-decoration: underline; }
+
+  .a-return {
+    margin: 2rem 0 0;
+    padding: 0.8rem 0 0;
+    border-top: 1px solid var(--rule);
+    font-size: 0.85rem;
+  }
+  .a-return a { color: var(--brand-muted); text-decoration: none; }
+  .a-return a:hover { color: var(--brand-violet); text-decoration: underline; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1 class="intro">Requirement detail: before · after</h1>
+  <p class="lede">A concrete look at <code>/requirements/accessible-user-interface</code>, which is tagged <code>#usable</code>. The dimension has 41 requirements; today the page lists all 40 siblings as a flat scroll. After: parent breadcrumb, curated 8 ranked by relevance, one click to the full dimension if needed.</p>
+
+  <div class="row">
+    <!-- ─────────────────── BEFORE ─────────────────── -->
+    <div>
+      <p class="col-label before">Before — live today</p>
+      <div class="page">
+        <div class="b-header">
+          <h1>Accessible User Interface</h1>
+          <div class="tags">🏷 <a href="#">#usable</a></div>
+        </div>
+
+        <div class="req-body">
+          <h4 class="req-h4">Context</h4>
+          <p>Users who rely on keyboard navigation and assistive technologies must be able to complete core product journeys without barriers.</p>
+
+          <h4 class="req-h4">Trigger</h4>
+          <p>A release candidate is built, or a quarterly accessibility review is due.</p>
+
+          <h4 class="req-h4">Acceptance Criteria</h4>
+          <ul>
+            <li>100% of pages in the top 20 user journeys are scanned in CI with zero critical WCAG 2.1 AA violations and ≤ 5 serious violations per release candidate.</li>
+            <li>Quarterly manual audit of the top 10 journeys using keyboard-only plus ≥ 2 mainstream screen readers completes with zero critical blockers.</li>
+            <li>Any open critical accessibility violation on a critical journey blocks release within 10 min.</li>
+          </ul>
+        </div>
+
+        <div class="b-related">
+          <h2>Related Qualities</h2>
+          <ul>
+            <li><span class="icon">◆</span><a href="#">Usability</a></li>
+            <li><span class="icon">◆</span><a href="#">Inclusivity</a></li>
+            <li><span class="icon">◆</span><a href="#">Compliance</a></li>
+            <li><span class="icon">◆</span><a href="#">Accessibility</a></li>
+            <li><span class="icon">◆</span><a href="#">Interaction Capability</a></li>
+          </ul>
+        </div>
+
+        <div class="b-related">
+          <h2>Directly Related Quality Requirements</h2>
+          <div class="b-wall">
+            <p>Related here means "having the same tags/dimensions (usable)"</p>
+            <ul>
+              <li><span class="icon r">◉</span><a href="#">Access find function in 3 secs</a></li>
+              <li><span class="icon r">◉</span><a href="#">Affordable CRM</a></li>
+              <li><span class="icon r">◉</span><a href="#">Async batch import never blocks the operator console</a></li>
+              <li><span class="icon r">◉</span><a href="#">Catalog navigation completes in two clicks</a></li>
+              <li><span class="icon r">◉</span><a href="#">Checkout requires no more than three form fields</a></li>
+              <li><span class="icon r">◉</span><a href="#">Configurable shortcuts for power users</a></li>
+              <li><span class="icon r">◉</span><a href="#">Contextual help available without leaving the page</a></li>
+              <li><span class="icon r">◉</span><a href="#">CRM contact creation under 30 seconds</a></li>
+              <li><span class="icon r">◉</span><a href="#">Customer-self-service ticket close rate</a></li>
+              <li><span class="icon r">◉</span><a href="#">Display response time under 2 seconds</a></li>
+              <li><span class="icon r">◉</span><a href="#">Easy onboarding for first-time users</a></li>
+              <li><span class="icon r">◉</span><a href="#">Error messages give a recovery hint</a></li>
+              <li><span class="icon r">◉</span><a href="#">Field-level validation runs on input</a></li>
+              <li><span class="icon r">◉</span><a href="#">First-time user can complete the primary task in 60 seconds</a></li>
+              <li><span class="icon r">◉</span><a href="#">High-frequency tasks support keyboard shortcuts</a></li>
+              <li><span class="icon r">◉</span><a href="#">Keyboard navigation across all primary flows</a></li>
+              <li><span class="icon r">◉</span><a href="#">Localization covers 5 target languages on launch</a></li>
+              <li><span class="icon r">◉</span><a href="#">Mobile checkout completes in three steps</a></li>
+              <li><span class="icon r">◉</span><a href="#">No critical action takes more than five clicks</a></li>
+              <li><span class="icon r">◉</span><a href="#">Persistent settings remembered per device</a></li>
+              <li><span class="icon r">◉</span><a href="#">Predictable navigation across all pages</a></li>
+              <li><span class="icon r">◉</span><a href="#">Read receipts visible within 3 seconds</a></li>
+              <li><span class="icon r">◉</span><a href="#">Recently viewed list persists across sessions</a></li>
+              <li><span class="icon r">◉</span><a href="#">Returning user can resume in under 10 seconds</a></li>
+              <li><span class="icon r">◉</span><a href="#">Search ranks recent items higher</a></li>
+              <li><span class="icon r">◉</span><a href="#">Single sign-on with a popular provider</a></li>
+              <li><span class="icon r">◉</span><a href="#">Speech-to-text input for free-form fields</a></li>
+              <li><span class="icon r">◉</span><a href="#">Status indicators on long-running operations</a></li>
+              <li><span class="icon r">◉</span><a href="#">Stepper wizard for multi-page processes</a></li>
+              <li><span class="icon r">◉</span><a href="#">Tab order follows visual reading flow</a></li>
+              <li><span class="icon r">◉</span><a href="#">Touch targets meet 44×44 pt minimum</a></li>
+              <li><span class="icon r">◉</span><a href="#">Tutorial mode is skippable on every screen</a></li>
+              <li><span class="icon r">◉</span><a href="#">Undo for destructive actions within 10 seconds</a></li>
+              <li><span class="icon r">◉</span><a href="#">User can self-cancel a paid subscription</a></li>
+              <li><span class="icon r">◉</span><a href="#">User can switch language without losing state</a></li>
+              <li><span class="icon r">◉</span><a href="#">User-customizable dashboard tiles</a></li>
+              <li><span class="icon r">◉</span><a href="#">Voice navigation responds within 1 second</a></li>
+              <li><span class="icon r">◉</span><a href="#">Voiceover names every interactive element</a></li>
+              <li><span class="icon r">◉</span><a href="#">Warning banners disappear automatically after action</a></li>
+              <li><span class="icon r">◉</span><a href="#">Workflow templates available out of the box</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <ul class="changes">
+        <li>No breadcrumb &mdash; no way to know what quality this requirement implements without scrolling past the content</li>
+        <li>"Related Qualities" sits <em>below</em> the content and reads as a footer attribution, not navigation</li>
+        <li><strong>40 siblings</strong> in a single flat list, alphabetized; tagged with <code>#usable</code> but not necessarily about accessibility</li>
+        <li>No return path to <code>/requirements/</code> or <code>/tag-usable/</code></li>
+      </ul>
+    </div>
+
+    <!-- ─────────────────── AFTER ─────────────────── -->
+    <div>
+      <p class="col-label after">After — proposal</p>
+      <div class="page">
+        <p class="a-breadcrumb">
+          <a href="#">Qualities</a>
+          <span class="sep">›</span>
+          <a href="#">Usability</a>
+          <span class="sep">›</span>
+          <span class="current">Accessible User Interface</span>
+        </p>
+
+        <h1 class="a-title">Accessible User Interface</h1>
+
+        <p class="a-implements">
+          <span class="label">Implements</span>
+          <a href="#">Usability</a>, <a href="#">Inclusivity</a>, <a href="#">Compliance</a>, <a href="#">Accessibility</a>, <a href="#">Interaction Capability</a>
+          &nbsp;·&nbsp; <a href="#" style="color: var(--brand-muted)">#usable</a>
+        </p>
+
+        <div class="req-body">
+          <h4 class="req-h4">Context</h4>
+          <p>Users who rely on keyboard navigation and assistive technologies must be able to complete core product journeys without barriers.</p>
+
+          <h4 class="req-h4">Trigger</h4>
+          <p>A release candidate is built, or a quarterly accessibility review is due.</p>
+
+          <h4 class="req-h4">Acceptance Criteria</h4>
+          <ul>
+            <li>100% of pages in the top 20 user journeys are scanned in CI with zero critical WCAG 2.1 AA violations and ≤ 5 serious violations per release candidate.</li>
+            <li>Quarterly manual audit of the top 10 journeys using keyboard-only plus ≥ 2 mainstream screen readers completes with zero critical blockers.</li>
+            <li>Any open critical accessibility violation on a critical journey blocks release within 10 min.</li>
+          </ul>
+        </div>
+
+        <div class="a-section">
+          <h2>Related requirements <span class="count">— top 8 by overlap</span></h2>
+
+          <div class="a-sibling">
+            <a href="#">Voiceover names every interactive element</a>
+            <span class="quality-context">shares 4 qualities</span>
+          </div>
+          <div class="a-sibling">
+            <a href="#">Keyboard navigation across all primary flows</a>
+            <span class="quality-context">shares 4 qualities</span>
+          </div>
+          <div class="a-sibling">
+            <a href="#">Touch targets meet 44×44 pt minimum</a>
+            <span class="quality-context">shares 3 qualities</span>
+          </div>
+          <div class="a-sibling">
+            <a href="#">Tab order follows visual reading flow</a>
+            <span class="quality-context">shares 3 qualities</span>
+          </div>
+          <div class="a-sibling">
+            <a href="#">Localization covers 5 target languages on launch</a>
+            <span class="quality-context">shares 2 qualities</span>
+          </div>
+          <div class="a-sibling">
+            <a href="#">First-time user can complete the primary task in 60 seconds</a>
+            <span class="quality-context">shares 2 qualities</span>
+          </div>
+          <div class="a-sibling">
+            <a href="#">Error messages give a recovery hint</a>
+            <span class="quality-context">shares 2 qualities</span>
+          </div>
+          <div class="a-sibling">
+            <a href="#">Speech-to-text input for free-form fields</a>
+            <span class="quality-context">shares 1 quality</span>
+          </div>
+
+          <p class="a-view-all">
+            <a href="#">View all 40 requirements in #usable →</a>
+          </p>
+        </div>
+
+        <p class="a-return">
+          <a href="#">← All requirements</a>
+        </p>
+      </div>
+
+      <ul class="changes">
+        <li><strong>Breadcrumb</strong> at the top: <code>Qualities › Usability › Accessible User Interface</code> &mdash; first entry in <code>related:</code> is the canonical parent</li>
+        <li><strong>"Implements"</strong> moved <em>above</em> the content as a navigation handle, not a footer</li>
+        <li><strong>Top 8 siblings</strong> ranked by relevance: <code>related-overlap × 5 + tag-overlap × 1</code></li>
+        <li>Per-row context: <em>"shares N qualities"</em> &mdash; explains <em>why</em> this is here</li>
+        <li><strong>"View all 40 in #usable →"</strong> escape hatch for the wider net</li>
+        <li><strong>"← All requirements"</strong> return path</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2 class="intro" style="font-size: 1.3rem; margin-top: 3rem;">How the ranking would work in Liquid</h2>
+  <pre style="background: #fff; border: 1px solid var(--rule); border-radius: 6px; padding: 1rem 1.2rem; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.85rem; line-height: 1.5; overflow-x: auto; color: #333;">
+{% raw %}{%- comment -%} For each candidate sibling, score against the current page. {%- endcomment -%}
+{%- assign current_related = page.related -%}
+{%- assign current_tags = page.tags -%}
+{%- assign scored = "" | split: "" -%}
+
+{%- for req in site.requirements -%}
+  {%- if req.permalink == page.permalink -%}{%- continue -%}{%- endif -%}
+  {%- assign rel_overlap = req.related | intersection: current_related | size -%}
+  {%- assign tag_overlap = req.tags | intersection: current_tags | size -%}
+  {%- assign score = rel_overlap | times: 5 | plus: tag_overlap -%}
+  {%- if score > 0 -%}
+    {%- assign entry = req.permalink | append: "|" | append: score | append: "|" | append: rel_overlap -%}
+    {%- assign scored = scored | push: entry -%}
+  {%- endif -%}
+{%- endfor -%}
+
+{%- comment -%} Sort lex descending by the "score" segment, then slice top 8. {%- endcomment -%}
+{%- assign top = scored | sort | reverse | slice: 0, 8 -%}{% endraw %}</pre>
+  <p class="lede" style="font-size: 0.88rem; margin-top: 0.8rem;">~30 lines of Liquid total in <code>_layouts/requirements.html</code>. The breadcrumb resolution adds another 8 lines (look up <code>page.related[0]</code> in <code>site.qualities</code> by permalink slug to get the title). No JavaScript, no new dependencies.</p>
+
+</div>
+</body>
+</html>
