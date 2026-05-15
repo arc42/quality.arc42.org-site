@@ -55,10 +55,13 @@
   &[data-section="standards"] {
     --cat: var(--standard-background-color);
   }
-  // Tag / dimension pages — cross-cuts, not a primary section. Use the
-  // existing dimension navy so the rail reads "this is a filter view".
+  // Tag pages — cross-cuts on top of the quality-node colour family.
+  // Same hue as --brand-blue (the quality node colour) but darker, so
+  // the rail reads as "filter handle for blue content" rather than
+  // borrowing the dimensions-index navy. --dimension-background-color
+  // is reserved for the actual /dimensions/ index now.
   &[data-section="tag"] {
-    --cat: var(--dimension-background-color);
+    --cat: var(--brand-blue-dark);
   }
   // Articles, background reading, and the how-to guide all live in the
   // "meta / longform" register — not a primary section. They share the
