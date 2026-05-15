@@ -6,15 +6,12 @@ as these pages need to display all related standards.
 {%- assign tag_to_find = include.tag -%}
 {%- if tag_to_find and tag_to_find != "" -%}
 
-{% assign category_to_find = tag_to_find %}
-{% case tag_to_find %}
-  {% when "safe" %}
-    {% assign category_to_find = "safety" %}
-  {% when "secure" %}
-    {% assign category_to_find = "security" %}
-  {% when "usable" %}
-    {% assign category_to_find = "usability" %}
-{% endcase %}
+{% comment %}
+  Standards classify by topical `categories` (security, safety, ...),
+  while tags use shorter slugs (secure, safe, ...). The shared mapping
+  lives in `_data/tag-aliases.yml`.
+{% endcomment %}
+{% assign category_to_find = site.data.tag-aliases[tag_to_find] | default: tag_to_find %}
 
 <div class="panel standards-header" style="margin-top: 1rem">
   <h2 style="margin: 0; padding: 1rem; color: var(--standard-text-color)">Standards related to #{{ include.tag }}</h2>

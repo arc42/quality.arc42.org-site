@@ -26,9 +26,15 @@
   {% for item in site.approaches %}
     {% if item.tags contains tag_slug %}{% assign a_count = a_count | plus: 1 %}{% endif %}
   {% endfor %}
+  {% comment %}
+    Standards have no `tags` field — they classify by `categories`
+    (security, safety, usability, ...). The slug↔category bridge lives
+    in `_data/tag-aliases.yml`; unmapped slugs fall through unchanged.
+  {% endcomment %}
+  {% assign category_slug = site.data.tag-aliases[tag_slug] | default: tag_slug %}
   {% assign s_count = 0 %}
   {% for item in site.standards %}
-    {% if item.tags contains tag_slug %}{% assign s_count = s_count | plus: 1 %}{% endif %}
+    {% if item.categories contains category_slug %}{% assign s_count = s_count | plus: 1 %}{% endif %}
   {% endfor %}
   {% capture tag_meta %}<b>{{ q_count }}</b> qualities &middot; <b>{{ r_count }}</b> requirements &middot; <b>{{ a_count }}</b> approaches &middot; <b>{{ s_count }}</b> standards{% endcapture %}
 {% endif %}

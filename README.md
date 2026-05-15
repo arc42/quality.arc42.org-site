@@ -296,6 +296,48 @@ Tag links render to `/tag-<tag>`. If you introduce a new tag value in front matt
 - Copy an existing tag page (`_pages/tag-efficient.md`) to `_pages/tag-<yourtag>.md`
 - Adjust the title/permalink and keep the include macros
 
+#### Why standards use `categories` instead of `tags`
+
+Qualities, requirements, and approaches are classified by short tag slugs
+(`secure`, `safe`, `usable`, `reliable`, ...) that double as URL segments for
+`/tag-<slug>` pages. Standards deliberately use a different field,
+`categories`, with the fuller topical names (`security`, `safety`,
+`usability`, `reliability`, ...).
+
+The split is intentional:
+
+- **Different vocabularies.** A standard's category names a topical area
+  (information *security*, functional *safety*), not a quality-model
+  dimension. Some categories — `ai`, `governance`, `privacy`, `sector`,
+  `data`, `documentation`, `coding`, `general` — describe standards but
+  do not correspond to any quality tag.
+- **Different lifecycles.** Tags are part of the quality model's
+  taxonomy and rarely change. Categories evolve with the standards
+  landscape and can grow independently without inflating the tag list.
+- **Different granularity.** A single standard often spans multiple
+  categories (e.g. `[security, privacy]`); forcing standards into the
+  tag vocabulary would either lose nuance or pollute every tag page.
+
+The bridge between the two vocabularies lives in `_data/tag-aliases.yml`:
+
+```yaml
+secure: security
+safe: safety
+usable: usability
+reliable: reliability
+```
+
+Includes that need to find standards for a tag look up the alias and
+then filter `site.standards` by `categories`. Unmapped tags fall
+through unchanged, so tags whose slug already matches a category name
+need no entry. If you introduce a new dimension whose category name
+differs from the slug, add a line to `tag-aliases.yml` — do **not**
+duplicate the mapping inline in templates.
+
+Consumers of the alias map today:
+- `_includes/dimension-header.liquid` — counts standards on tag pages.
+- `_includes/one-standard.liquid` — lists standards on tag pages.
+
 ### Link Validation
 
 The site includes automated link validation to ensure all internal references are correct. The validator checks:
