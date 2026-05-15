@@ -1,38 +1,22 @@
+{% comment %}
+  requirements-header — header for the requirements index/listing surfaces.
+
+  Single-requirement detail pages use the bespoke header in
+  _layouts/requirements.html (breadcrumb + h1 + Implements row); this
+  include is consumed by _layouts/page_requirements.html and similar
+  listing wrappers.
+
+  Migrated to the unified section-hero component. The eyebrow
+  "Requirement" links back to /requirements/, and tag chips render in the
+  section-hero chips row.
+{% endcomment %}
 {% assign page = include.page %}
 
-<header>
-  <div class="panel requirements-header">
-    <h1>
-      {% if include.link %}
-         <a class="post-link" href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>
-      {% else %}
-         {{ page.title }}
-      {% endif %}
-    </h1>
+{% capture chips_html %}{% for tag in page.tags %}<a class="tag" href="{{ '/tag-' | append: tag | prepend: site.baseurl }}">#{{ tag }}</a>{% endfor %}{% endcapture %}
 
-    <div class="header-taxonomy-row">
-      <ul class="tags">
-        {% assign tags_num = (page.tags | size) %}
-        {% if tags_num > 0 %}
-           <li>{% include icon.html name="tags" style="color: var(--req-text-color);" %}</li>
-        {% endif %}
-        {% for tag in page.tags %}
-           <li>
-             <a class="tag" href="{{ '/tag-' | append: tag | prepend: site.baseurl }}">#{{ tag }}</a>
-            </li>
-        {% endfor %}
-      </ul>
-
-      {% include header-category-link.liquid
-        href='/requirements/'
-        value='Requirement'
-        icon='network'
-      %}
-    </div>
- 
-        <div class="clearfix">
-        </div>
-    </div>
-
-
-</header>
+{% include section-hero.liquid
+  section="requirements"
+  title=page.title
+  eyebrow_label="Requirement"
+  eyebrow_href="/requirements/"
+  chips_html=chips_html %}

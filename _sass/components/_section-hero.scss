@@ -1,29 +1,36 @@
-// section-hero — one hero language across /qualities/, /requirements/,
-// /approaches/, /standards/, and tag pages.
+// section-hero — one hero language across every page that announces a
+// section or a single item.
 //
-// Paper card with a 3px coloured rail on the left. The rail colour comes
-// from --cat, set per section via data-section. Colour tokens match the
-// home-directory rails (see _homenew.scss) so the homepage acts as a
-// legend for the destination section's identity colour.
+// Paper card with a 10px coloured rail on the left and an 8% wash of the
+// section colour into paper. The rail colour comes from --cat, set per
+// section via data-section. Colour tokens match the home-directory rails
+// (see _homenew.scss) so the homepage acts as a legend for the
+// destination section's identity colour.
+//
+// The same component shape applies on index pages and on single-item
+// detail pages — detail pages get an eyebrow label ("Quality",
+// "Requirement", …) and a chips row beneath the title.
 
 .section-hero {
   --cat: var(--brand-violet);
+  // Fallback for browsers without color-mix; modern browsers see the tinted wash.
   background: var(--brand-paper);
+  background: color-mix(in oklab, var(--brand-paper) 92%, var(--cat) 8%);
   border: 1px solid var(--brand-violet-18);
   border-radius: 10px;
   margin: 0 0 1.2rem;
-  padding: 0.75rem 1.4rem 0.7rem 1.7rem;
+  padding: 0.75rem 1.4rem 0.7rem 2rem;
   position: relative;
 
   &::before {
     background: var(--cat);
-    border-radius: 2px;
-    bottom: 0.75rem;
+    border-radius: 3px;
+    bottom: 0.55rem;
     content: "";
     left: 0;
     position: absolute;
-    top: 0.75rem;
-    width: 5px;
+    top: 0.55rem;
+    width: 10px;
   }
 
   &[data-section="qualities"] {
@@ -59,6 +66,27 @@
 // _content.scss (0,1,1) which would otherwise force margin: 1.5em 0 0.5em
 // and font-weight: 700 onto the hero h1.
 .section-hero {
+  .section-hero__eyebrow {
+    color: var(--brand-muted);
+    font-family: $font-family;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    margin: 0 0 0.25rem;
+    text-transform: uppercase;
+  }
+
+  .section-hero__eyebrow-link {
+    color: inherit;
+    text-decoration: none;
+    transition: color 120ms ease-out;
+
+    &:hover,
+    &:focus-visible {
+      color: var(--brand-violet);
+    }
+  }
+
   .section-hero__title {
     color: var(--brand-ink);
     font-family: $heading-font-family;
@@ -77,6 +105,44 @@
     line-height: 1.4;
     margin: 0;
     max-width: 78ch;
+  }
+
+  .section-hero__chips {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem 0.45rem;
+    margin: 0.55rem 0 0;
+
+    // Override the global .tag styling so chips read uniformly across all
+    // section variants. Section identity is carried by the rail + tint,
+    // not by chip colour — keeps the chip row a calm navigation aid.
+    a,
+    .tag,
+    a.tag,
+    .category {
+      background: rgba(var(--brand-violet-rgb), 0.06);
+      border: 1px solid rgba(var(--brand-violet-rgb), 0.18);
+      border-radius: 999px;
+      color: var(--brand-ink);
+      display: inline-block;
+      font-family: $font-family;
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0;
+      line-height: 1.3;
+      padding: 0.12rem 0.55rem;
+      text-decoration: none;
+      transition:
+        background 120ms ease-out,
+        border-color 120ms ease-out;
+
+      &:hover,
+      &:focus-visible {
+        background: rgba(var(--brand-violet-rgb), 0.12);
+        border-color: rgba(var(--brand-violet-rgb), 0.32);
+      }
+    }
   }
 
   .section-hero__meta {
@@ -101,6 +167,10 @@
 @media (max-width: $nav-narrow-width) {
   .section-hero {
     border-radius: 8px;
-    padding: 0.65rem 1rem 0.6rem 1.35rem;
+    padding: 0.65rem 1rem 0.6rem 1.7rem;
+
+    &::before {
+      width: 8px;
+    }
   }
 }

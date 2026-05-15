@@ -1,12 +1,28 @@
 {% assign page = include.page %}
 {% comment %}
-  heading_level lets a caller render the article title as h2 instead of h1
-  when this include is used inside a listing (e.g. /articles/), so the page
-  document outline keeps a single canonical h1. Defaults to h1 for the
-  per-page header use case.
+  article-header — used in two contexts:
+
+    1. Single-article page (h1, default heading_level). Migrated to the
+       unified section-hero component with the "Article" eyebrow linking
+       back to /articles/.
+
+    2. Listing entry inside /articles/ and similar index pages
+       (heading_level="h2" passed explicitly). Keeps the legacy compact
+       panel-card markup so the listing stays scannable; the
+       .panel.article-header rule in _sass/components/_panels.scss still
+       drives that path.
 {% endcomment %}
 {% assign heading_level = include.heading_level | default: "h1" %}
 
+{% if heading_level == "h1" %}
+  {% capture chips_html %}{% for tag in page.tags %}<a class="tag" href="{{ '/tag-' | append: tag | prepend: site.baseurl }}">#{{ tag }}</a>{% endfor %}{% endcapture %}
+  {% include section-hero.liquid
+    section="article"
+    title=page.title
+    eyebrow_label="Article"
+    eyebrow_href="/articles/"
+    chips_html=chips_html %}
+{% else %}
 <header>
   <div class="panel article-header{% if page.header_class %} {{ page.header_class }}{% endif %}">
     <{{ heading_level }}>
@@ -28,3 +44,4 @@
     <div class="clearfix"></div>
   </div>
 </header>
+{% endif %}

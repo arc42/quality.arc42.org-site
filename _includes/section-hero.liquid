@@ -1,9 +1,12 @@
 {% comment %}
-  section-hero — unified hero card for index / landing / tag pages.
+  section-hero — unified hero card for every page that announces a section
+  or a single item.
 
-  Replaces the bespoke treatments in _sass/_standards.scss and the inline
-  block in _pages/20-quality-characteristics.md, and supplies a hero for
-  /requirements/, /approaches/, and the tag pages.
+  One component drives:
+    - Index / landing pages (/qualities/, /requirements/, /approaches/,
+      /standards/, /tag-*/, /dimensions/, /articles/, /how-to/)
+    - Single-item detail pages (qualities/<x>, approaches/<x>, standards/<x>,
+      requirements/<x> via its bespoke layout, single article)
 
   Section identity comes from the data-section attribute, which sets a
   CSS custom property --cat. The colour matches the home-directory rails,
@@ -11,26 +14,43 @@
 
   Required:
     section  Color key. One of:
-               qualities | requirements | approaches | standards | tag
+               qualities | requirements | approaches | standards | tag | article | how-to
     title    H1 text (plain).
 
   Optional:
-    lede     Single paragraph of plain text shown below the title.
-    meta     Inline metadata line (e.g. counts). HTML allowed.
+    eyebrow_label  Small uppercase label above the title ("Quality", "Requirement", …).
+                   Used on detail pages to signal the meta-class.
+    eyebrow_href   Link target for the eyebrow (typically the index page).
+    lede           Single paragraph of plain text shown below the title.
+    chips_html     Pre-rendered HTML for the taxonomy chip row (tags, categories).
+    meta           Inline metadata line (e.g. counts). HTML allowed.
 
-  Example:
+  Example (index page):
     {% raw %}{% include section-hero.liquid
         section="standards"
         title="Standards"
         lede="Authoritative references that ground qualities and requirements."
         meta="<b>184</b> standards across <b>13</b> categories." %}{% endraw %}
 
-  Page-specific controls (chip rows, search inputs, A–Z bars) are placed
-  in the consuming page after the include, not inside it — the hero stays
-  a quiet identity card.
+  Example (detail page):
+    {% raw %}{% capture chips %}<a class="tag" href="/tag-usable">#usable</a>{% endcapture %}
+    {% include section-hero.liquid
+        section="qualities"
+        title=page.title
+        eyebrow_label="Quality"
+        eyebrow_href="/qualities/"
+        chips_html=chips %}{% endraw %}
 {% endcomment %}
 <header class="section-hero" data-section="{{ include.section }}">
+  {% if include.eyebrow_label and include.eyebrow_label != "" %}
+    {% if include.eyebrow_href and include.eyebrow_href != "" %}
+  <p class="section-hero__eyebrow"><a class="section-hero__eyebrow-link" href="{{ include.eyebrow_href | relative_url }}">{{ include.eyebrow_label }}</a></p>
+    {% else %}
+  <p class="section-hero__eyebrow">{{ include.eyebrow_label }}</p>
+    {% endif %}
+  {% endif %}
   <h1 class="section-hero__title">{{ include.title }}</h1>
   {% if include.lede and include.lede != "" %}<p class="section-hero__lede">{{ include.lede }}</p>{% endif %}
+  {% if include.chips_html and include.chips_html != "" %}<div class="section-hero__chips">{{ include.chips_html }}</div>{% endif %}
   {% if include.meta and include.meta != "" %}<p class="section-hero__meta">{{ include.meta }}</p>{% endif %}
 </header>
