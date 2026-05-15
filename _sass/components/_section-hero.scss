@@ -53,39 +53,46 @@
   }
 }
 
-.section-hero__title {
-  color: var(--brand-ink);
-  font-family: $heading-font-family;
-  font-size: clamp(1.25rem, 1.85vw, 1.55rem);
-  font-weight: 500;
-  letter-spacing: -0.01em;
-  line-height: 1.15;
-  margin: 0 0 0.25rem;
-}
-
-.section-hero__lede {
-  color: var(--brand-muted);
-  font-size: $text-base;
-  line-height: 1.4;
-  margin: 0;
-  max-width: 78ch;
-}
-
-.section-hero__meta {
-  color: var(--brand-muted);
-  font-size: 0.85rem;
-  margin: 0.4rem 0 0;
-
-  b {
+// Specificity note: the inner element selectors are scoped under .section-hero
+// so they compile to .section-hero .section-hero__title etc. (specificity
+// 0,2,0). This is required to beat the global .site-content h1 rule in
+// _content.scss (0,1,1) which would otherwise force margin: 1.5em 0 0.5em
+// and font-weight: 700 onto the hero h1.
+.section-hero {
+  .section-hero__title {
     color: var(--brand-ink);
-    font-weight: 600;
+    font-family: $heading-font-family;
+    font-size: clamp(1.25rem, 1.85vw, 1.55rem);
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    line-height: 1.15;
+    margin: 0 0 0.25rem;
   }
 
-  a {
-    color: var(--brand-violet);
-    text-decoration: underline;
-    text-decoration-thickness: 1px;
-    text-underline-offset: 0.18em;
+  .section-hero__lede {
+    color: var(--brand-muted);
+    font-size: $text-base;
+    line-height: 1.4;
+    margin: 0;
+    max-width: 78ch;
+  }
+
+  .section-hero__meta {
+    color: var(--brand-muted);
+    font-size: 0.85rem;
+    margin: 0.4rem 0 0;
+
+    b {
+      color: var(--brand-ink);
+      font-weight: 600;
+    }
+
+    a {
+      color: var(--brand-violet);
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 0.18em;
+    }
   }
 }
 

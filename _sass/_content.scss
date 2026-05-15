@@ -196,7 +196,10 @@
 
   .article-wrapper {
     @extend .clearfix;
-    margin: $margin auto;
+    // Was `$margin auto` (50px top + bottom) which produced an awkward gap
+    // between the sticky header and the section-hero on every page. Working
+    // reference, not a marketing page — content starts close to the header.
+    margin: 1rem auto 2rem;
     max-width: 980px;
   }
 
