@@ -33,14 +33,24 @@
     width: 10px;
   }
 
+  // Sections that needed more identity dial-up — qualities (blue),
+  // requirements (red), approaches (green) — get a 14% wash. The other
+  // sections (standards, tag, article, how-to) keep the calmer 8% from
+  // the base rule above.
   &[data-section="qualities"] {
     --cat: var(--brand-blue);
+    background: var(--brand-paper);
+    background: color-mix(in oklab, var(--brand-paper) 86%, var(--cat) 14%);
   }
   &[data-section="requirements"] {
     --cat: var(--reqs-background-color);
+    background: var(--brand-paper);
+    background: color-mix(in oklab, var(--brand-paper) 86%, var(--cat) 14%);
   }
   &[data-section="approaches"] {
     --cat: var(--approaches-background-color);
+    background: var(--brand-paper);
+    background: color-mix(in oklab, var(--brand-paper) 86%, var(--cat) 14%);
   }
   &[data-section="standards"] {
     --cat: var(--standard-background-color);
@@ -50,22 +60,25 @@
   &[data-section="tag"] {
     --cat: var(--dimension-background-color);
   }
-  // Long-form background reading — calm brand teal.
-  &[data-section="article"] {
-    --cat: var(--brand-teal);
-  }
-  // First-run guidance — warm innoq orange.
+  // Articles, background reading, and the how-to guide all live in the
+  // "meta / longform" register — not a primary section. They share the
+  // brand violet rail so they read as anchored to the site identity
+  // rather than to any one content type.
+  &[data-section="article"],
   &[data-section="how-to"] {
-    --cat: var(--innoq-heart-color);
+    --cat: var(--brand-violet);
   }
 }
 
-// Specificity note: the inner element selectors are scoped under .section-hero
-// so they compile to .section-hero .section-hero__title etc. (specificity
-// 0,2,0). This is required to beat the global .site-content h1 rule in
-// _content.scss (0,1,1) which would otherwise force margin: 1.5em 0 0.5em
-// and font-weight: 700 onto the hero h1.
-.section-hero {
+// Specificity note: inner element selectors are scoped under
+// `.site-content .section-hero` so they compile to
+// `.site-content .section-hero .section-hero__title` etc. (specificity
+// 0,3,0). This is required to beat the global `.site-content h1` rule in
+// _content.scss (0,1,1) which would otherwise force the larger display
+// size and font-weight: 700 onto the hero h1. The single-class chain
+// `.section-hero .section-hero__title` (0,2,0) wasn't reliably winning
+// in every browser/cascade order, so we anchor to `.site-content`.
+.site-content .section-hero {
   .section-hero__eyebrow {
     color: var(--brand-muted);
     font-family: $font-family;
