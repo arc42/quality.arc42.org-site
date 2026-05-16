@@ -6,33 +6,30 @@ layout: default
   Requirement detail page.
 
   Layout flow:
-    1. Breadcrumb       Qualities › <parent quality> › <requirement>
-    2. H1 title         clean, no decorative panel
-    3. Implements row   resolved related: qualities promoted from a footer
+    1. Hero card        unified section-hero with "Requirement" eyebrow
+                        linking back to /requirements/
+    2. Implements row   resolved related: qualities promoted from a footer
                         block to a primary navigation handle, plus the tag
                         chip as a quiet aside
-    4. Content          Context / Trigger / Acceptance Criteria
-    5. Top 8 siblings   ranked by score = (related-overlap × 5) + tag-overlap,
+    3. Content          Context / Trigger / Acceptance Criteria
+    4. Top 8 siblings   ranked by score = (related-overlap × 5) + tag-overlap,
                         with per-row rationale ("shares N qualities" or
                         "via #tag" when only the dimension matches)
-    6. View all link    escape hatch to /tag-<primary-tag>/
-    7. Return link      ← All requirements
+    5. View all link    escape hatch to /tag-<primary-tag>/
+    6. Return link      ← All requirements
 
   Replaces the previous flat-list "Directly Related Quality Requirements"
   wall (40+ items on a typical page) and the footer-style "Related
   Qualities" block.
 {%- endcomment -%}
 
-{%- comment -%} 1. Resolve breadcrumb parent + "Implements" qualities {%- endcomment -%}
-{%- assign parent_slug = page.related | first -%}
-{%- assign parent_quality = nil -%}
+{%- comment -%} 1. Resolve "Implements" qualities {%- endcomment -%}
 {%- assign implements_qualities = "" | split: "" -%}
 {%- for slug in page.related -%}
   {%- for q in site.qualities -%}
     {%- assign q_slug = q.permalink | split: "/" | last -%}
     {%- if q_slug == slug -%}
       {%- assign implements_qualities = implements_qualities | push: q -%}
-      {%- if slug == parent_slug -%}{%- assign parent_quality = q -%}{%- endif -%}
       {%- break -%}
     {%- endif -%}
   {%- endfor -%}
@@ -94,18 +91,7 @@ layout: default
 <div class="article-wrapper">
   <article class="req-detail">
 
-    {%- comment -%} 1. Breadcrumb {%- endcomment -%}
-    <nav class="req-detail__breadcrumb" aria-label="Breadcrumb">
-      <a href="{{ '/qualities/' | prepend: site.baseurl }}">Qualities</a>
-      <span class="req-detail__breadcrumb-sep" aria-hidden="true">›</span>
-      {%- if parent_quality -%}
-        <a href="{{ parent_quality.permalink | prepend: site.baseurl }}">{{ parent_quality.title }}</a>
-        <span class="req-detail__breadcrumb-sep" aria-hidden="true">›</span>
-      {%- endif -%}
-      <span class="req-detail__breadcrumb-current" aria-current="page">{{ page.title }}</span>
-    </nav>
-
-    {%- comment -%} 2. Hero card — unified section-hero with eyebrow "Requirement"
+    {%- comment -%} 1. Hero card — unified section-hero with eyebrow "Requirement"
          linking back to /requirements/. Replaces the bare <h1> that was being
          overridden by the global .site-content h1 rule (0,1,1 beat 0,1,0). {%- endcomment -%}
     {% include section-hero.liquid

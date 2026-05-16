@@ -1,38 +1,9 @@
-// Requirement detail page chrome — breadcrumb, implements line, ranked
-// siblings, view-all link, return link. Replaces the bespoke
-// .requirements-header panel + the 40-item flat sibling wall.
+// Requirement detail page chrome — implements line, ranked siblings,
+// view-all link, return link. Replaces the bespoke .requirements-header
+// panel + the 40-item flat sibling wall.
 
 .req-detail {
   // Container styles inherited from .article-wrapper / <article>.
-}
-
-// ─── 1. Breadcrumb ────────────────────────────────────────────────
-.req-detail__breadcrumb {
-  color: var(--brand-muted);
-  font-size: 0.82rem;
-  letter-spacing: 0.01em;
-  margin: 0 0 0.7rem;
-
-  a {
-    color: var(--brand-muted);
-    text-decoration: none;
-
-    &:hover,
-    &:focus-visible {
-      color: var(--brand-violet);
-      text-decoration: underline;
-    }
-  }
-}
-
-.req-detail__breadcrumb-sep {
-  color: rgba(116, 102, 113, 0.45);
-  margin: 0 0.4rem;
-}
-
-.req-detail__breadcrumb-current {
-  color: var(--brand-ink);
-  font-weight: 500;
 }
 
 // ─── 2. Title ─────────────────────────────────────────────────────
@@ -210,14 +181,6 @@
 }
 
 @media (max-width: $nav-narrow-width) {
-  .req-detail__breadcrumb {
-    font-size: 0.78rem;
-
-    .req-detail__breadcrumb-sep {
-      margin: 0 0.3rem;
-    }
-  }
-
   .req-detail__sibling {
     grid-template-columns: minmax(0, 1fr);
     row-gap: 0.15rem;
