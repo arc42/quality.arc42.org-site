@@ -25,6 +25,10 @@
 			"titleBar.inactiveForeground": "#15202b99"
 		},
 		"peacock.color": "#8cd99f",
+		"git.enabled": true,
+		"git.autoRepositoryDetection": true,
+		"scm.alwaysShowRepositories": true,
+		"workbench.statusBar.visible": true,
 		"languageToolLinter.languageTool.ignoredWordsInWorkspace": [
 			"frontmatter"
 		]
