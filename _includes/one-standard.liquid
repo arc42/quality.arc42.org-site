@@ -13,8 +13,8 @@ as these pages need to display all related standards.
 {% endcomment %}
 {% assign category_to_find = site.data.tag-aliases[tag_to_find] | default: tag_to_find %}
 
-<div class="panel standards-header" style="margin-top: 1rem">
-  <h2 style="margin: 0; padding: 1rem">Standards tagged with #{{ include.tag }}</h2>
+<div class="panel standards-header">
+  <h2>Standards tagged with #{{ include.tag }}</h2>
 </div>
 <div id="search-results">
   {% assign filtered_standards = "" | split: "," %}
