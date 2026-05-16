@@ -7,18 +7,26 @@ as these pages need to display all related approaches.
 {%- assign tag_to_find = include.tag -%}
 {%- if tag_to_find and tag_to_find != "" -%}
 
+{% assign filtered_approaches = "" | split: "" %}
+{%- for item in site.approaches -%}
+  {%- if item.tags contains tag_to_find -%}
+    {% assign filtered_approaches = filtered_approaches | push: item %}
+  {%- endif -%}
+{%- endfor -%}
+
 <div class="panel approaches-header">
   <h2>Approaches tagged with #{{ include.tag }}</h2>
 </div>
 <div id="search-results">
-  <ul class="posts no-bullets">
-      {%- for item in site.approaches -%}
-        {%- if item.tags contains tag_to_find -%}
-          <li> <a href="{{ item.url }}">{% include icon.html name="puzzle" size="xs" class="bullet" style="color: var(--approaches-text-color);" %} {{ item.title }}</a></li>
-        {%- endif -%}
+  {% if filtered_approaches.size > 0 %}
+    <ul class="posts no-bullets">
+      {%- for item in filtered_approaches -%}
+        <li> <a href="{{ item.url }}">{% include icon.html name="puzzle" size="xs" class="bullet" style="color: var(--approaches-text-color);" %} {{ item.title }}</a></li>
       {%- endfor -%}
-
     </ul>
+  {% else %}
+    <p>No approaches tagged with #{{ include.tag }} yet.</p>
+  {% endif %}
 </div>
 
 {%- endif -%}
