@@ -93,7 +93,8 @@ export class GraphRenderer {
         this.typeVisibility = {
             quality: true,
             requirement: false,
-            standard: false
+            standard: false,
+            approach: false
         };
         // Tooltip for synonym display
         this.tooltip = null;
@@ -352,7 +353,8 @@ export class GraphRenderer {
             const t = d.qualityType;
             d._legendHidden = (t === NODE_TYPES.QUALITY && !typeVis.quality) ||
                 (t === NODE_TYPES.REQUIREMENT && !typeVis.requirement) ||
-                (t === NODE_TYPES.STANDARD && !typeVis.standard);
+                (t === NODE_TYPES.STANDARD && !typeVis.standard) ||
+                (t === NODE_TYPES.APPROACH && !typeVis.approach);
         });
     }
 
