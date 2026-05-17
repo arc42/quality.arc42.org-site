@@ -65,6 +65,8 @@ $brand-blue: #00b8f5;
 $brand-blue-dark: #0077ad;
 $brand-blue-soft: #f2faff;
 $brand-blue-text: #003366;
+$brand-blue-muted: #536b80;
+$brand-blue-accent: #1675b9;
 
 $brand-color: $brand-violet;
 $brand-color-light: $brand-violet-soft;
@@ -138,6 +140,8 @@ $innoq-heart-color: #ff9c66;
   --brand-blue-dark: #{$brand-blue-dark};
   --brand-blue-soft: #{$brand-blue-soft};
   --brand-blue-text: #{$brand-blue-text};
+  --brand-blue-muted: #{$brand-blue-muted};
+  --brand-blue-accent: #{$brand-blue-accent};
   --quality-background-color: #{$quality-background-color};
   --quality-text-color: #{$quality-text-color};
   --reqs-background-color: #{$requirement-background-color};
