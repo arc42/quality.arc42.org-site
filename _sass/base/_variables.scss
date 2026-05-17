@@ -67,6 +67,9 @@ $brand-blue-soft: #f2faff;
 $brand-blue-text: #003366;
 $brand-blue-muted: #536b80;
 $brand-blue-accent: #1675b9;
+// Darker accent for foreground text on the lightest blue surfaces where
+// $brand-blue-accent would drop below WCAG AA 4.5:1 (e.g. graph chips).
+$brand-blue-accent-dark: #1f5f82;
 
 $brand-color: $brand-violet;
 $brand-color-light: $brand-violet-soft;
@@ -142,6 +145,7 @@ $innoq-heart-color: #ff9c66;
   --brand-blue-text: #{$brand-blue-text};
   --brand-blue-muted: #{$brand-blue-muted};
   --brand-blue-accent: #{$brand-blue-accent};
+  --brand-blue-accent-dark: #{$brand-blue-accent-dark};
   --quality-background-color: #{$quality-background-color};
   --quality-text-color: #{$quality-text-color};
   --reqs-background-color: #{$requirement-background-color};

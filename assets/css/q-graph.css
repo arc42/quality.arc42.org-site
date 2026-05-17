@@ -97,7 +97,7 @@
 .full-quick-filter {
   border: 1px solid #9ecbe3;
   background: #eef8ff;
-  color: #1f5f82;
+  color: var(--brand-blue-accent-dark);
   border-radius: 999px;
   padding: 0.2rem 0.52rem;
   font-size: 0.73rem;
@@ -123,7 +123,7 @@
   border: 1px solid #b7d9ed;
   border-radius: 4px;
   background: #ecf8ff;
-  color: #1e5f84;
+  color: var(--brand-blue-accent-dark);
   font-weight: 700;
   text-decoration: none;
 }
