@@ -137,25 +137,31 @@
 
 #full-q-graph-center__btn {
   background: transparent;
-  border: 1px solid transparent;
-  border-radius: 50%;
-  width: 32px;
-  height: 32px;
-  display: flex;
+  border: 1px solid #cb9fff;
+  border-radius: 999px;
+  display: inline-flex;
   align-items: center;
-  justify-content: center;
+  gap: 0.32rem;
   cursor: pointer;
-  padding: 0;
+  padding: 0.22rem 0.62rem;
   transition: all 0.2s ease-in-out;
-  color: #333;
+  color: #414288;
+  font-size: 0.82rem;
+  font-weight: 600;
   margin-left: 10px;
   margin-bottom: 8px;
 }
 
-#full-q-graph-center__btn:hover {
+#full-q-graph-center__btn:hover,
+#full-q-graph-center__btn:focus-visible {
   border-color: #cb9fff;
-  background-color: rgba(203, 159, 255, 0.1);
+  background-color: rgba(203, 159, 255, 0.18);
   color: #414288;
+  outline: none;
+}
+
+.full-q-graph-center__label {
+  letter-spacing: 0.02em;
 }
 
 #full-q-graph-filter__chips {

@@ -93,7 +93,7 @@ export class GraphRenderer {
         this.typeVisibility = {
             quality: true,
             requirement: false,
-            standard: true
+            standard: false
         };
         // Tooltip for synonym display
         this.tooltip = null;

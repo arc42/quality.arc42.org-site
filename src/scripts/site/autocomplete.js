@@ -245,11 +245,17 @@ export function initAutocomplete() {
 
   const baseurl = (window.baseurl || "").replace(/\/$/, "");
 
+  const isMac =
+    typeof navigator !== "undefined" && /Mac|iPhone|iPad|iPod/.test(navigator.platform || "");
   if (hint) {
-    const isMac =
-      typeof navigator !== "undefined" && /Mac|iPhone|iPad|iPod/.test(navigator.platform || "");
     hint.textContent = isMac ? "⌘K" : "/";
-    hint.setAttribute("title", isMac ? "Press ⌘K to search" : "Press / to search");
+    hint.setAttribute("title", isMac ? "Press ⌘K to focus search" : "Press / to focus search");
+  }
+  const hintDesc = form.querySelector("[data-site-search-hint-desc]");
+  if (hintDesc) {
+    hintDesc.textContent = isMac
+      ? "Press Command-K to focus this search."
+      : "Press slash to focus this search.";
   }
 
   let activeIndex = -1;

@@ -58,8 +58,9 @@ hide: true
       <div id="full-q-graph-controls-container">
         <div class="mobile-graph-filter-header">
           <h3>Filter Graph</h3>
-          <button id="full-q-graph-center__btn" class="btn" title="Center View" aria-label="Center Graph View">
-            <i class="fas fa-crosshairs"></i>
+          <button id="full-q-graph-center__btn" class="btn" type="button" title="Center the graph" aria-label="Center graph view">
+            <i class="fas fa-crosshairs" aria-hidden="true"></i>
+            <span class="full-q-graph-center__label">center</span>
           </button>
         </div>
 
@@ -68,14 +69,17 @@ hide: true
         <button id="full-q-graph-filter__btn" class="btn">Filter</button>
 
         <div class="mobile-quick-filter-wrap">
-          <p class="mobile-quick-filter-label">Quick filters</p>
+          <p class="mobile-quick-filter-label">Quick filters &mdash; dimensions</p>
           <div class="mobile-quick-filters">
-            <button class="mobile-quick-filter" type="button" data-term="secure">#secure</button>
-            <button class="mobile-quick-filter" type="button" data-term="reliable">#reliable</button>
+            <button class="mobile-quick-filter" type="button" data-term="efficient">#efficient</button>
+            <button class="mobile-quick-filter" type="button" data-term="flexible">#flexible</button>
             <button class="mobile-quick-filter" type="button" data-term="maintainable">#maintainable</button>
-            <button class="mobile-quick-filter" type="button" data-term="safety">safety</button>
-            <button class="mobile-quick-filter" type="button" data-term="privacy">privacy</button>
-            <button class="mobile-quick-filter" type="button" data-term="ai" data-show-standards="true">ai + standards</button>
+            <button class="mobile-quick-filter" type="button" data-term="operable">#operable</button>
+            <button class="mobile-quick-filter" type="button" data-term="reliable">#reliable</button>
+            <button class="mobile-quick-filter" type="button" data-term="safe">#safe</button>
+            <button class="mobile-quick-filter" type="button" data-term="secure">#secure</button>
+            <button class="mobile-quick-filter" type="button" data-term="suitable">#suitable</button>
+            <button class="mobile-quick-filter" type="button" data-term="usable">#usable</button>
           </div>
         </div>
 
@@ -102,7 +106,7 @@ hide: true
           <span class="color-box" style="background-color: var(--standard-background-color);"></span>
           <label class="toggle">
             <span class="toggle-label legend-label">Standards</span>
-            <input class="toggle-checkbox" type="checkbox" id="legend-toggle-standards" checked>
+            <input class="toggle-checkbox" type="checkbox" id="legend-toggle-standards">
             <div class="toggle-switch"></div>
           </label>
         </div>
