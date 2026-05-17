@@ -32,7 +32,7 @@ div.ua-background blockquote {
 }
 
 div.ua-background blockquote a {
-  color: #0d5f93;
+  color: var(--brand-blue-accent-dark);
   text-decoration: underline;
 }
 

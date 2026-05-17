@@ -373,7 +373,7 @@ no_layout_header: true
     flex-wrap: wrap;
     align-items: center;
     gap: 0.3rem;
-    color: #607789;
+    color: var(--brand-blue-muted);
     font-size: 0.8rem;
   }
 
@@ -381,7 +381,7 @@ no_layout_header: true
     border-radius: 999px;
     border: 1px solid #ccd9e5;
     background: #e9f0f6;
-    color: #647d90;
+    color: var(--brand-blue-muted);
     font-size: 0.68rem;
     font-weight: 700;
     text-transform: uppercase;
@@ -390,7 +390,7 @@ no_layout_header: true
   }
 
   .qualities-alias-meta a {
-    color: #4e6a80;
+    color: var(--brand-blue-muted);
     text-decoration: underline;
     text-decoration-style: dotted;
     text-underline-offset: 2px;
@@ -412,7 +412,7 @@ no_layout_header: true
   }
 
   .qualities-return-top a:hover {
-    color: #3f5564;
+    color: var(--brand-blue-text);
   }
 
   .qualities-empty {
