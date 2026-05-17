@@ -8,11 +8,7 @@ q_graph_script: /assets/js/homepage/main.js
 ---
 
 {% assign qualities = site.qualities | where_exp: "q", "q.alias_of == nil" %}
-{% assign synonym_map = site.data.quality-synonyms %}
-{% assign synonyms = 0 %}
-{% for entry in synonym_map %}
-{% assign synonyms = synonyms | plus: entry[1].size %}
-{% endfor %}
+{% assign aliases = site.qualities | where_exp: "q", "q.alias_of != nil" %}
 {% assign requirements = site.requirements %}
 {% assign standards = site.standards %}
 {% assign approaches = site.approaches %}
@@ -38,7 +34,7 @@ q_graph_script: /assets/js/homepage/main.js
               Quality Characteristics
               <small>Find the right term: definitions, aliases, related qualities, linked standards.</small>
             </span>
-            <span class="home-violet-directory__count"><b>{{ qualities | size }}</b> entries, <i>{{ synonyms }} aliases</i></span>
+            <span class="home-violet-directory__count"><b>{{ qualities | size }}</b> entries, <i>{{ aliases | size }} aliases</i></span>
           </a>
         </li>
 

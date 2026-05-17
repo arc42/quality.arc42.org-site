@@ -112,3 +112,7 @@ accuracy:
 # Testability (unit-testability emphasizes fast developer-facing automated tests)
 testability:
   - unit-testability
+
+# Reproducibility (repeatability file says "alias_of: reproducibility")
+reproducibility:
+  - repeatability
