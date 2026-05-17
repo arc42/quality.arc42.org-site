@@ -2,7 +2,7 @@
 
 Jekyll site for software quality attributes, requirements, and standards. Visualizes relationships with D3.js force-directed graphs. Live at https://quality.arc42.org.
 
-**Stack**: Jekyll (Ruby) · Node 22 (ESM) · esbuild · D3.js · Graphology · Docker Compose · GitHub Pages.
+**Stack**: make (for development) · Jekyll (Ruby) · Node 22 (ESM) · esbuild · D3.js · Graphology · Docker Compose · GitHub Pages.
 
 ---
 
@@ -12,14 +12,13 @@ Jekyll site for software quality attributes, requirements, and standards. Visual
 
 **Brand**: Authoritative & clear meets approachable & pragmatic. Three words: *precise, pragmatic, trustworthy*.
 
-**Aesthetic**: Light theme. Editorial reference (technical handbook, not SaaS dashboard). Palette: violet header `#682d63`, teal/green `#5fb49c`, blue accents `#00b8f5`, warm orange `#ffad80`. Typography: Atkinson Hyperlegible Next (body), Libre Caslon Text (headings). The interactive graph is the hero.
+**Aesthetic**: Light theme. Editorial reference (technical handbook, not SaaS dashboard). Palette: violet header `#682d63`, teal/green `#5fb49c`, blue accents `#00b8f5`, warm orange `#ffad80`. Typography: Atkinson Hyperlegible Next (body), Libre Caslon Text (headings). 
 
 **Principles**:
 1. Clarity over decoration — every visual must aid comprehension or navigation.
 2. Structure is the design — strong typographic hierarchy, consistent patterns.
 3. Professional density — dense, scannable content with clear entry points.
-4. The graph is the signature.
-5. Accessibility is non-negotiable — target WCAG 2.2 AA.
+4. Accessibility is non-negotiable — target WCAG 2.2 AA.
 
 ---
 
@@ -116,34 +115,12 @@ Edges derive from `tags`, `related`, and `standards` fields.
 - **Tag pages required**: every tag in any frontmatter must have `_pages/tag-<tag>.md`, or links 404.
 - **Standard matching**: standards reference by `standard_id` (case-insensitive), not filename or title.
 - **Case sensitivity elsewhere**: `related: [Accessibility]` will NOT match `accessibility`. Use kebab-case throughout.
-- **Jekyll does NOT watch** `assets/js/homepage/` or `assets/js/fullpage/` — run `npm run watch` for JS changes.
 - **Restart Docker** after adding/removing content or changing frontmatter (tags/related/permalinks) so graph data regenerates.
-
+- **no local jekyll or ruby**: all development and testing over docker and/or make
 ---
 
 ## Commands
 
-```bash
-# Dev (recommended)
-docker compose up                  # installs deps, generates data, watches JS, serves Jekyll on :4000
-
-# Local dev (two terminals)
-npm run data                       # generate assets/data/*.json
-npm run watch                      # esbuild watch for src/graphs/*
-bundle exec jekyll serve --incremental --watch
-
-# Build
-npm run build                      # production JS + data
-bundle exec jekyll build           # _site/
-
-# Validation
-npm run test:links                 # warn on broken references
-npm run test:links:strict          # exit non-zero on broken references
-
-# Formatting
-npx prettier --check .
-npx prettier --write .
-```
 
 Link validator checks: quality→quality `related`, quality→tag, quality→standard, requirement→quality, requirement→tag.
 

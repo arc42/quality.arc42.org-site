@@ -1,15 +1,17 @@
-.PHONY: help build clean dev doctor test wcag-test wcag-test-strict lighthouse-test assets
+.PHONY: help build clean dev down doctor diagnose test wcag-test wcag-test-strict lighthouse-test assets
 
 help:
 	@printf "Available targets:\n"
-	@printf "  make build  Build all Docker images used by local development and tests.\n"
-	@printf "  make assets Build minified production assets (JS/search index) via Docker.\n"
-	@printf "  make help   Show this help.\n"
-	@printf "  make dev    Start the prebuilt development environment (docker compose up esbuild jekyll).\n"
-	@printf "  make doctor Check local dev setup and key URLs (including alias redirects).\n"
-	@printf "  make clean  Remove generated _site directory.\n"
-	@printf "  make test   Ensure local site is up, run Playwright UI tests in Docker, optionally serve HTML report.\n"
-	@printf "  make wcag-test  Run axe-based WCAG scan in Docker and generate report assets (informative, non-blocking).\n"
+	@printf "  make build         Build all Docker images used by local development and tests.\n"
+	@printf "  make assets        Build minified production assets (JS/search index) via Docker.\n"
+	@printf "  make help          Show this help.\n"
+	@printf "  make dev           Start the prebuilt development environment (docker compose up esbuild jekyll).\n"
+	@printf "  make down          Stop and remove dev containers + network. Preserves cache volumes.\n"
+	@printf "  make doctor        Check local dev setup and key URLs (including alias redirects).\n"
+	@printf "  make diagnose      Read-only health snapshot (Docker daemon, stack state, port 4000, HTTP probe).\n"
+	@printf "  make clean         Remove generated _site directory AND cache volumes.\n"
+	@printf "  make test          Ensure local site is up, run Playwright UI tests in Docker, optionally serve HTML report.\n"
+	@printf "  make wcag-test     Run axe-based WCAG scan in Docker and generate report assets (informative, non-blocking).\n"
 	@printf "  make wcag-test-strict  Run the same WCAG scan but fail on any violation.\n"
 	@printf "  make lighthouse-test  Run Lighthouse performance/SEO audits in Docker (informative).\n"
 
@@ -27,6 +29,63 @@ clean:
 
 dev:
 	docker compose up esbuild jekyll
+
+down:
+	@printf "\n[down] Stopping and removing dev containers + network (preserving cache volumes)...\n"
+	@docker compose down
+	@printf "[down] Done. Run 'make dev' to start again, or 'make clean' to also wipe cache volumes.\n\n"
+
+diagnose:
+	@printf "\n[diagnose] Local dev stack health snapshot\n\n"
+	@if ! docker info >/dev/null 2>&1; then \
+		printf "  [fail] Docker daemon: not reachable.\n"; \
+		printf "         Start Docker Desktop (or the docker daemon) and try again.\n\n"; \
+		exit 1; \
+	fi
+	@printf "  [ok]   Docker daemon: reachable\n"
+	@printf "\n  --- Compose stack ---\n"
+	@if [ -z "$$(docker compose ps -q 2>/dev/null)" ]; then \
+		printf "  [warn] No services running for this compose project.\n"; \
+		printf "         Run 'make dev' to start the stack.\n\n"; \
+		exit 0; \
+	fi
+	@docker compose ps --format 'table {{.Service}}\t{{.State}}\t{{.Status}}\t{{.Ports}}' 2>&1 | sed 's/^/         /'
+	@printf "\n  --- Port 4000 publishing (container side) ---\n"
+	@jekyll_id=$$(docker compose ps -q jekyll 2>/dev/null); \
+	if [ -z "$$jekyll_id" ]; then \
+		printf "  [warn] Jekyll service not in the running stack.\n"; \
+	else \
+		ports=$$(docker inspect "$$jekyll_id" --format '{{json .NetworkSettings.Ports}}' 2>/dev/null); \
+		if echo "$$ports" | grep -q '"HostPort"'; then \
+			printf "  [ok]   Jekyll container: port 4000 published to host\n"; \
+		else \
+			printf "  [fail] Jekyll container: port 4000 NOT published to host\n"; \
+			printf "         Container has stale config (docker-compose.yml edited after start).\n"; \
+			printf "         Fix: make down && make dev\n"; \
+		fi; \
+	fi
+	@printf "\n  --- Host network (port 4000) ---\n"
+	@listener=$$(lsof -nP -iTCP:4000 -sTCP:LISTEN 2>/dev/null); \
+	if [ -z "$$listener" ]; then \
+		printf "  [fail] Nothing listening on host port 4000.\n"; \
+		printf "         If the container shows it as published, restart Docker Desktop.\n"; \
+	else \
+		printf "  [ok]   Host port 4000: in use\n"; \
+		non_docker=$$(printf "%s\n" "$$listener" | awk 'NR>1 && tolower($$1) !~ /docker|com.docke|vpnkit/'); \
+		if [ -n "$$non_docker" ]; then \
+			printf "  [warn] A non-Docker process is also bound to port 4000:\n"; \
+			printf "%s\n" "$$non_docker" | head -3 | sed 's/^/         /'; \
+		fi; \
+	fi
+	@printf "\n  --- HTTP probe ---\n"
+	@code=$$(curl -s --max-time 5 -o /dev/null -w "%{http_code}" http://localhost:4000/ 2>/dev/null || echo "000"); \
+	case "$$code" in \
+		200) printf "  [ok]   GET http://localhost:4000/ -> 200\n";; \
+		000) printf "  [fail] GET http://localhost:4000/ -> connection refused or timeout\n";; \
+		*)   printf "  [warn] GET http://localhost:4000/ -> HTTP %s\n" "$$code";; \
+	esac
+	@printf "\n[diagnose] Done. For deeper investigation:\n"
+	@printf "  docker compose logs --tail=60 jekyll esbuild\n\n"
 
 doctor:
 	@printf "\n[doctor] Checking local prerequisites...\n"

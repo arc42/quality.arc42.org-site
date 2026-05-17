@@ -33,6 +33,95 @@
   }
 }
 
+.graph-intro {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.4rem 0.85rem;
+  padding: 0.4rem 0.9rem 0.45rem;
+  margin: 0 0 0.4rem;
+  border-bottom: 1px solid var(--brand-blue-soft);
+
+  &__title {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.25;
+    color: var(--brand-blue-text);
+    flex-shrink: 0;
+  }
+
+  &__lede {
+    margin: 0;
+    font-size: 0.84rem;
+    line-height: 1.35;
+    color: var(--brand-blue-text);
+    max-width: 78ch;
+  }
+
+  @media (max-width: 800px) {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.15rem;
+    padding: 0.35rem 0.7rem 0.4rem;
+
+    &__title {
+      font-size: 0.95rem;
+    }
+
+    &__lede {
+      font-size: 0.8rem;
+    }
+  }
+}
+
+.graph-noscript-fallback {
+  max-width: 65ch;
+  margin: 1.5rem auto;
+  padding: 1.25rem 1.5rem;
+  border: 1px solid var(--brand-blue);
+  border-radius: 8px;
+  background: var(--brand-blue-soft);
+
+  h2 {
+    margin: 0 0 0.6rem;
+    font-size: 1.15rem;
+    color: var(--brand-blue-text);
+  }
+
+  p {
+    margin: 0.6rem 0;
+    color: var(--brand-blue-text);
+  }
+
+  ul {
+    margin: 0.4rem 0 0.8rem;
+    padding-left: 1.4rem;
+  }
+
+  &__tags {
+    list-style: none;
+    padding-left: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+
+    li {
+      margin: 0;
+    }
+
+    a {
+      display: inline-block;
+      padding: 0.2rem 0.55rem;
+      border: 1px solid var(--brand-blue);
+      border-radius: 999px;
+      font-size: 0.85rem;
+      text-decoration: none;
+      color: var(--brand-blue-text);
+    }
+  }
+}
+
 .mobile-graph-page {
   max-width: 100%;
 
@@ -63,7 +152,9 @@
 
   #full-q-graph-container {
     width: 100%;
-    height: calc(100dvh - 190px);
+    // NOTE: magic numbers reserve space for site-header (~150px) + .graph-intro (~40px)
+    // + small margin. If site-header height changes, adjust here.
+    height: calc(100dvh - 230px);
     border-radius: 14px;
     overflow: hidden;
     border: 1px solid var(--brand-blue-soft);
@@ -160,7 +251,8 @@
 
   @media (max-width: 900px) {
     #full-q-graph-container {
-      height: calc(100dvh - 210px);
+      // Mobile reserves an extra ~50px for the stacked .graph-intro layout
+      height: calc(100dvh - 260px);
       width: 100%;
     }
 
