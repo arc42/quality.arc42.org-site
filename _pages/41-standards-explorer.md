@@ -98,4 +98,4 @@ no_layout_header: true
   </div>
 </div>
 
-<script src="{{ '/assets/js/standards-explorer.js' | prepend: site.baseurl }}"></script>
+<script defer src="{{ '/assets/js/standards-explorer.js' | prepend: site.baseurl }}"></script>

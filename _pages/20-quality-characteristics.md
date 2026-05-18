@@ -171,7 +171,7 @@ no_layout_header: true
   {% endfor %}
 ]
 </script>
-<script src="{{ '/assets/js/qualities-explorer.js' | prepend: site.baseurl }}"></script>
+<script defer src="{{ '/assets/js/qualities-explorer.js' | prepend: site.baseurl }}"></script>
 
 <style>
   .qualities-explorer {
