@@ -6,8 +6,8 @@ test("standards overview renders hero modes and category cards", async ({
   await page.goto("/standards/");
 
   await expect(page.locator(".standards-page.standards-overview")).toBeVisible();
-  await expect(page.locator(".standards-hero")).toBeVisible();
-  await expect(page.locator(".standards-hero-mode")).toHaveCount(2);
+  await expect(page.locator('.section-hero[data-section="standards"]')).toBeVisible();
+  await expect(page.locator(".standards-mode-switch__link")).toHaveCount(2);
 
   const cards = page.locator(".standards-category-card");
   const cardCount = await cards.count();
@@ -21,7 +21,7 @@ test("standards explorer filters and resets results", async ({ page }) => {
   await page.goto("/standards/explorer/");
 
   await expect(
-    page.getByRole("heading", { level: 1, name: "Standards Explorer" })
+    page.locator(".standards-page.standards-explorer-view")
   ).toBeVisible();
 
   const searchInput = page.locator("#standards-search");

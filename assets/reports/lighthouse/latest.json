@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-05-12T08:50:00.182Z",
+  "generatedAt": "2026-05-18T15:04:53.137Z",
   "results": [
     {
       "name": "Home",
       "path": "/",
       "scores": {
-        "performance": 98,
+        "performance": 99,
         "accessibility": 100,
         "bestPractices": 95,
         "seo": 100
@@ -23,7 +23,7 @@
       "path": "/how-to-use-this-site/",
       "scores": {
         "performance": 98,
-        "accessibility": 100,
+        "accessibility": 97,
         "bestPractices": 95,
         "seo": 92
       },
@@ -56,7 +56,7 @@
       "name": "Qualities Index",
       "path": "/qualities/",
       "scores": {
-        "performance": 87,
+        "performance": 98,
         "accessibility": 96,
         "bestPractices": 95,
         "seo": 100
@@ -107,7 +107,7 @@
       "name": "Approaches Index",
       "path": "/approaches/",
       "scores": {
-        "performance": 99,
+        "performance": 98,
         "accessibility": 98,
         "bestPractices": 95,
         "seo": 100
@@ -125,7 +125,7 @@
       "path": "/tag-efficient/",
       "scores": {
         "performance": 99,
-        "accessibility": 95,
+        "accessibility": 99,
         "bestPractices": 95,
         "seo": 100
       },
@@ -142,7 +142,7 @@
       "path": "/tag-flexible/",
       "scores": {
         "performance": 99,
-        "accessibility": 95,
+        "accessibility": 99,
         "bestPractices": 95,
         "seo": 100
       },
@@ -159,7 +159,7 @@
       "path": "/tag-maintainable/",
       "scores": {
         "performance": 99,
-        "accessibility": 95,
+        "accessibility": 99,
         "bestPractices": 95,
         "seo": 100
       },
@@ -176,7 +176,7 @@
       "path": "/tag-operable/",
       "scores": {
         "performance": 99,
-        "accessibility": 97,
+        "accessibility": 100,
         "bestPractices": 95,
         "seo": 100
       },
@@ -193,7 +193,7 @@
       "path": "/tag-reliable/",
       "scores": {
         "performance": 99,
-        "accessibility": 97,
+        "accessibility": 100,
         "bestPractices": 95,
         "seo": 100
       },
@@ -210,7 +210,7 @@
       "path": "/tag-safe/",
       "scores": {
         "performance": 99,
-        "accessibility": 97,
+        "accessibility": 100,
         "bestPractices": 95,
         "seo": 100
       },
@@ -227,7 +227,7 @@
       "path": "/tag-secure/",
       "scores": {
         "performance": 99,
-        "accessibility": 95,
+        "accessibility": 99,
         "bestPractices": 95,
         "seo": 100
       },
@@ -244,7 +244,7 @@
       "path": "/tag-suitable/",
       "scores": {
         "performance": 99,
-        "accessibility": 97,
+        "accessibility": 100,
         "bestPractices": 95,
         "seo": 92
       },
@@ -261,7 +261,7 @@
       "path": "/tag-usable/",
       "scores": {
         "performance": 99,
-        "accessibility": 95,
+        "accessibility": 99,
         "bestPractices": 95,
         "seo": 100
       },
@@ -360,8 +360,8 @@
     }
   ],
   "averages": {
-    "performance": 98,
-    "accessibility": 98,
+    "performance": 99,
+    "accessibility": 99,
     "bestPractices": 95,
     "seo": 99
   }

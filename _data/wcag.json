@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-05-11T06:53:10.682Z",
+  "generatedAt": "2026-05-18T15:02:47.381Z",
   "totals": {
-    "pagesScanned": 35,
-    "violations": 10,
-    "incomplete": 38,
-    "passes": 933,
-    "avgScore": 97
+    "pagesScanned": 36,
+    "violations": 6,
+    "incomplete": 73,
+    "passes": 981,
+    "avgScore": 98
   }
 }
