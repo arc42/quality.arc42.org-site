@@ -4,7 +4,12 @@ title: Contact
 permalink: /contact/
 order: 95
 hide: true
+no_layout_header: true
 ---
+
+{% include section-hero.liquid
+  section="contact"
+  title="Contact" %}
 
 ## You have questions? {#contact-author}
 
@@ -20,6 +25,13 @@ Whether you've spotted an error, want to suggest a new quality, or simply have a
       <i class="fa fa-fw fa-envelope" aria-hidden="true"></i>
       <span class="contact-channel-label">Email</span>
       <span class="contact-channel-meta">&#105;&#110;&#102;&#111;&#64;&#97;&#114;&#99;&#52;&#50;&#46;&#100;&#101;</span>
+    </a>
+  </li>
+  <li>
+    <a href="https://www.innoq.com" target="_blank" rel="noopener noreferrer">
+      <img class="contact-channel-logo" src="/images/innoq-logo--petrol.svg" alt="INNOQ" loading="lazy" decoding="async" />
+      <span class="contact-channel-label">Fellow</span>
+      <span class="contact-channel-meta">innoq.com</span>
     </a>
   </li>
   <li>
