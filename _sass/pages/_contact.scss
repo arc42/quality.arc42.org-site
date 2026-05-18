@@ -1,0 +1,90 @@
+// Contact page channel grid.
+//
+// Sits below the floated portrait shared with the about page. Cards
+// echo the editorial panel pattern: paper background, hairline border,
+// violet rail revealed on hover. No flashy shadows or saturated fills.
+
+.contact-channels {
+  list-style: none;
+  margin: 2rem 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+  clear: both;
+
+  li {
+    margin: 0;
+    padding: 0;
+
+    &::before {
+      content: none;
+    }
+  }
+
+  a {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.35rem;
+    height: 100%;
+    padding: 1.1rem 1.2rem;
+    background: var(--brand-paper);
+    border: 1px solid color-mix(in oklab, var(--brand-paper) 70%, var(--brand-violet) 30%);
+    border-radius: $radius-sm;
+    color: var(--brand-ink);
+    text-decoration: none;
+    position: relative;
+    transition:
+      transform 0.15s ease,
+      border-color 0.15s ease,
+      background 0.15s ease;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0.6rem;
+      bottom: 0.6rem;
+      left: 0;
+      width: 4px;
+      background: var(--brand-violet);
+      border-radius: 3px;
+      opacity: 0;
+      transition: opacity 0.15s ease;
+    }
+
+    &:hover,
+    &:focus-visible {
+      background: color-mix(in oklab, var(--brand-paper) 85%, var(--brand-violet) 15%);
+      border-color: var(--brand-violet);
+      transform: translateY(-1px);
+
+      &::before {
+        opacity: 1;
+      }
+    }
+  }
+
+  i {
+    font-size: 1.6rem;
+    color: var(--brand-violet);
+    margin-bottom: 0.2rem;
+  }
+
+  .contact-channel-logo {
+    height: 1.4rem;
+    width: auto;
+    margin-bottom: 0.4rem;
+    display: block;
+  }
+
+  .contact-channel-label {
+    font-weight: 600;
+    font-size: $text-lg;
+  }
+
+  .contact-channel-meta {
+    color: $muted-text-1;
+    font-size: $text-sm;
+  }
+}

@@ -2,11 +2,13 @@
   color: var(--innoq-heart-color);
 }
 
-[id="about-author"] {
+[id="about-author"],
+[id="contact-author"] {
   margin: 2rem 0;
 }
 
-[id="about-author"] + p img {
+[id="about-author"] + p img,
+[id="contact-author"] + p img {
   float: left;
   width: 200px;
   max-width: 200px;
@@ -16,16 +18,20 @@
 }
 
 [id="about-author"] + p + p,
-[id="about-author"] + p + p + ul {
+[id="about-author"] + p + p + ul,
+[id="contact-author"] + p + p,
+[id="contact-author"] + p + p + ul {
   overflow: hidden;
 }
 
-[id="about-author"] ~ hr {
+[id="about-author"] ~ hr,
+[id="contact-author"] ~ hr {
   clear: both;
 }
 
 @media screen and (max-width: $mobile-width) {
-  [id="about-author"] + p img {
+  [id="about-author"] + p img,
+  [id="contact-author"] + p img {
     float: none;
     display: block;
     margin: 0 auto 1rem;
