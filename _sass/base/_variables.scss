@@ -208,14 +208,31 @@ $innoq-heart-color: #ff9c66;
   --radius-lg: #{$radius-lg};
   --radius-pill: #{$radius-pill};
 
-  // Standards palette — consolidates repeated hex literals in _standards.scss.
+  // Standards palette — canonical home for the /standards/ section colour
+  // system. Previously split across `:root` here (6 tokens) and
+  // `.standards-page` in _standards.scss (12 tokens, page-scoped). Unified
+  // here so the standards theme is co-located with the rest of the design
+  // tokens. Promoting from page-scope to :root is functionally identical
+  // because nothing else in the codebase reads these names.
   // Pure-pixel aliases; do not adjust values without a deliberate redesign.
   --std-surface-pure: #fff;
-  --std-icon: #9f751b;
+  --std-bg: #fffaf0;
+  --std-surface: #fffdf7;
   --std-cream-soft: #fff6de;
   --std-cream-softer: #fff2cd;
+  --std-chip: #ffefc8;
+  --std-chip-hover: #fce6af;
+  --std-tooltip-bg: #fff8e4;
+  --std-border: #ead8ab;
+  --std-border-strong: #d4b878;
+  --std-chip-border: #debe72;
+  --std-icon: #9f751b;
+  --std-accent: #af841f;
+  --std-facet-active: #c4952c;
+  --std-heading: #8a6314;
   --std-text-rich: #5f4714;
   --std-text-soft: #766136;
+  --std-text: #47535c;
 }
 
 // other major colors.

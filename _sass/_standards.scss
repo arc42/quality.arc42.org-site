@@ -33,21 +33,11 @@
   }
 }
 
-// Common styles for standards overview and standards explorer pages
+// Common styles for standards overview and standards explorer pages.
+// The --std-* palette this page reads from is declared in
+// _sass/base/_variables.scss so the standards theme is co-located with
+// the rest of the design tokens.
 .standards-page {
-  --std-bg: #fffaf0;
-  --std-surface: #fffdf7;
-  --std-border: #ead8ab;
-  --std-border-strong: #d4b878;
-  --std-text: #47535c;
-  --std-heading: #8a6314;
-  --std-accent: #af841f;
-  --std-chip: #ffefc8;
-  --std-chip-border: #debe72;
-  --std-chip-hover: #fce6af;
-  --std-tooltip-bg: #fff8e4;
-  --std-facet-active: #c4952c;
-
   color: var(--std-text);
 }
 
