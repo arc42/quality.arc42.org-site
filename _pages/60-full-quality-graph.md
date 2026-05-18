@@ -140,4 +140,4 @@ hide: true
   </div>
 </div>
 
-<script src="{{ '/assets/js/fullpage/main.js' | prepend: site.baseurl }}"></script>
+<script defer src="{{ '/assets/js/fullpage/main.js' | prepend: site.baseurl }}"></script>
