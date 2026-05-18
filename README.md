@@ -1,168 +1,170 @@
-# arc42 Quality model
+# arc42 Quality Model
 
-[![Better Stack Badge](https://uptime.betterstack.com/status-badges/v2/monitor/20tqv.svg)](https://uptime.betterstack.com/?utm_source=status_badge)
+Definitions, examples, and relationships for **software quality**: characteristics,
+requirements, standards, and the architectural approaches that help systems achieve them.
 
-Here we collect definitions and examples of quality characteristics (_attributes_) and their relationships,
-together with aliases, standards and approaches (_how to achieve the quality requirements_).
+**Live site:** https://quality.arc42.org
 
+The site is a static Jekyll build with interactive D3.js force-directed graphs that
+visualise how qualities, requirements, standards, and approaches connect. The content
+is the product — the build pipeline is intentionally simple so contributors can focus
+on writing.
 
-It's powered by Jekyll and a modified TTSCK theme (see below).
-We use Liquid for extensive automatic hyperlinking along the dependencies you see in the model above.
+> Working on this codebase with Claude Code or another AI agent? See
+> [CLAUDE.md](CLAUDE.md) for the agent-oriented guide (deeper schema notes,
+> gotchas, and conventions).
 
-## Metamodel (Our Domain Language)
+---
 
-The site uses a shared domain language to connect dimensions, characteristics, requirements,
-standards and implementation approaches.
+## Contents
+
+1. [Metamodel — our domain language](#metamodel--our-domain-language)
+2. [Repository at a glance](#repository-at-a-glance)
+3. [Quick start](#quick-start)
+4. [Adding content](#adding-content)
+5. [Why standards use `categories` instead of `tags`](#why-standards-use-categories-instead-of-tags)
+6. [Testing & validation](#testing--validation)
+7. [How it deploys](#how-it-deploys)
+8. [Search (Lunr)](#search-lunr)
+9. [Color & design system](#color--design-system)
+10. [License & status](#license--status)
+
+---
+
+## Metamodel — our domain language
+
+The site uses a shared domain language to connect dimensions, characteristics,
+requirements, standards, and implementation approaches.
 
 ![Q42 domain language](images/domain-language/q42-domain-language.webp)
 
 Excerpted from [How to Use this Site](_pages/05-how-to-use-this-site.md):
 
-| Term | Explanation |
-| :--- | :--- |
-| **Dimension** | Top-level quality dimensions such as `#secure`, `#reliable` or `#maintainable`. They are intentionally broad and overlapping, so they need further refinement. |
-| **Quality Characteristic** | A specific quality term such as confidentiality, accessibility or accuracy. Q42 maps each dimension to many concrete characteristics. |
-| **Requirement Example** | A specific, measurable expectation for a system, often expressed as a quality scenario or acceptance criterion. |
-| **Standard** | A quality-related standard such as ISO/IEC 27001 or ISO 25010 that prescribes or describes relevant quality concerns. |
-| **Approach** | A concrete way to achieve or improve one or several quality requirements. |
-| **Quality Attribute** | The resulting property of a concrete system once the relevant approaches have been implemented and the requirements are met. |
+| Term                       | Explanation                                                                                                                                                    |
+| :------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Dimension**              | Top-level quality dimensions such as `#secure`, `#reliable` or `#maintainable`. They are intentionally broad and overlapping, so they need further refinement. |
+| **Quality Characteristic** | A specific quality term such as confidentiality, accessibility or accuracy. Q42 maps each dimension to many concrete characteristics.                          |
+| **Requirement Example**    | A specific, measurable expectation for a system, often expressed as a quality scenario or acceptance criterion.                                                |
+| **Standard**               | A quality-related standard such as ISO/IEC 27001 or ISO 25010 that prescribes or describes relevant quality concerns.                                          |
+| **Approach**               | A concrete way to achieve or improve one or several quality requirements.                                                                                      |
+| **Quality Attribute**      | The resulting property of a concrete system once the relevant approaches have been implemented and the requirements are met.                                   |
 
-## License
+---
 
-As all of the arc42 content, this FAQ is free to use under a liberal Creative-Commons
-license:
+## Repository at a glance
 
-![](https://i.creativecommons.org/l/by-sa/4.0/88x31.png)
-This work is licensed under a
-[Creative Commons Attribution-ShareAlike 4.0 International License](https://creativecommons.org/licenses/by-sa/4.0/).
+```
+quality.arc42.org-site/
+├── _qualities/        quality characteristics (~217 entries, ~33 are synonym redirects)
+│   └── A/             organised by first letter
+├── _requirements/     specific measurable requirements (~141)
+│   └── A/
+├── _standards/        industry standards (~42)
+├── _approaches/       architectural tactics and patterns (~23)
+├── _articles/         long-form articles and background reading
+├── _pages/            static pages, tag pages, explorer pages
+├── _layouts/          Jekyll layout templates
+├── _includes/         Liquid partials
+├── _sass/             SCSS source (compiled by Jekyll)
+├── _data/             site data (synonyms, tag aliases, WCAG totals)
+├── src/
+│   ├── graphs/        D3.js force-directed graph code
+│   └── scripts/       build scripts, link validator, search index generator
+├── assets/
+│   ├── css/           generated CSS
+│   ├── data/          generated graph data (nodes, edges)
+│   ├── js/            compiled JavaScript (esbuild output)
+│   └── reports/       WCAG and Lighthouse report snapshots
+├── tests/ui/          Playwright UI + WCAG specs
+├── _config.yml        Jekyll configuration
+├── Makefile           docker-based dev / test / build targets
+└── docker-compose.yml  development services (esbuild + jekyll)
+```
 
-## Jekyll TTSCK Theme
+The four content collections — qualities, requirements, standards, approaches —
+are the product. Everything else exists to render them and keep their
+relationships honest.
 
-For documentation on this theme, see the [original documentation](https://ttskch.github.io/jekyll-ttskch-theme/).
+---
 
-We implemented several enhancements over the original theme (e.g. responsive navigation, thx to Falk Hoppe)
+## Quick start
 
-## Color Scheme
+The project runs entirely in Docker. There is no supported non-Docker workflow.
 
-The site uses the following color scheme for visual consistency across all content:
+**Prerequisites:** [Docker](https://docs.docker.com/get-docker/) and
+[Docker Compose](https://docs.docker.com/compose/), plus a POSIX shell (`/bin/bash`).
 
-![Color scheme preview](images/color-scheme.svg)
-
-The canonical source lives in [`_includes/about/color-scheme.md`](_includes/about/color-scheme.md).
-A standalone preview is generated at [`docs/color-scheme.html`](docs/color-scheme.html) so it can be reviewed directly from Git.
-
-These colors are defined in the following css variables:
-
-
-- qualities: `$brand-color-blue: #00B8F5;` <span style="background-color:#00B8F5; color: #003366; padding: 2px 5px; border-radius: 3px;">preview</span>
-- requirements: `--reqs-background-color: #ffb3b3;` <span style="background-color:#ffb3b3; color: #8b0000; padding: 2px 5px; border-radius: 3px;">preview</span>
-- standards: `--standard-background-color: #ffc95c;` <span style="background-color:#FFC95C; color: #2C3E50; padding: 2px 5px; border-radius: 3px;">preview</span>
-- articles (and generic pages): `--article-background-color: #e6daf2;` <span style="background-color:#E6DAF2; color: #003366; padding: 2px 5px; border-radius: 3px;">preview</span>
-  
-
-## How to build & run
-
-### Preconditions
-
-You have an environment that allows to run
-
-- a bash script (`/bin/bash`)
-- [docker](https://docs.docker.com/build/building/context/) and [docker-compose](https://docs.docker.com/compose/)
-
-We recommend Docker as the local build/test platform. Non-Docker workflows are not supported.
-
-### Build and test
-
-In the root directory, build the required images once:
+**Build the images once** (installs Node + Ruby dependencies into the dev image —
+slow but cached):
 
 ```bash
 make build
 ```
 
-Then start the development environment:
+**Start the dev stack:**
 
 ```bash
 make dev
 ```
 
-This starts the prebuilt Jekyll and esbuild services and serves the site on port 4000.
+The site serves on http://localhost:4000. Content and front-matter changes
+are picked up live; rebuild images only when `package-lock.json` or
+`Gemfile.lock` change.
 
-In case you already had the environment spun up, run `docker compose down` to stop the server so that changes in the
-docker-compose.yml file are applied.
+**Common Make targets:**
 
-If you prefer raw Compose commands, use `docker compose up esbuild jekyll`. The default `docker compose up` is no longer the recommended entrypoint because test services are kept off the normal dev path.
+| Command                 | What it does                                                                                                                               |
+| ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
+| `make build`            | Build Docker images. Slow path — runs `bundle install` and `npm ci` inside the images.                                                     |
+| `make dev`              | Start the prebuilt dev stack (esbuild watcher + Jekyll on port 4000).                                                                      |
+| `make doctor`           | Sanity-check the dev stack: Docker up, site reachable, key routes (including alias redirects) responding.                                  |
+| `make clean`            | Remove `_site/`.                                                                                                                           |
+| `make test`             | Run Playwright UI tests in Docker. Starts the stack first if needed.                                                                       |
+| `make wcag-test`        | Run the axe-core WCAG scan; writes `assets/reports/wcag/latest.{json,html}` and `_data/wcag.json` (powers the footer score). Non-blocking. |
+| `make wcag-test-strict` | Same scan, exit non-zero on any violation. For CI gating.                                                                                  |
+| `make lighthouse-test`  | Lighthouse performance/SEO audits → `assets/reports/lighthouse/`. Non-blocking.                                                            |
 
-Alternatively, use the provided Makefile targets:
+If you change a docker-compose file, run `docker compose down` and `make dev`
+again so the new compose definition takes effect.
 
-| Command | Description |
-|---------|-------------|
-| `make build` | Build all Docker images required for local development and test runs |
-| `make dev` | Start the prebuilt development environment (`docker compose up esbuild jekyll`) |
-| `make doctor` | Verify local dev readiness (Docker + site startup + key route checks, including alias redirects) |
-| `make clean` | Remove the generated `_site` directory |
-| `make test` | Run Playwright UI tests in Docker and print report/artifact locations |
-| `make wcag-test` | Run Docker-based axe WCAG scan and generate graphical report assets (informative, non-blocking) |
-| `make wcag-test-strict` | Run same WCAG scan but fail on any violation |
-| `make lighthouse-test` | Run Lighthouse performance/SEO audits in Docker (informative, non-blocking) |
+---
 
-Notes:
-- `make build` is the slow path by design: it installs Node and Ruby dependencies into the Docker images once, so repeat `make dev` runs stay fast.
-- The esbuild service generates graph data on startup and watches content/data changes to keep `assets/data` current during development.
-- `make doctor` is the quickest local sanity check before/after `make dev`; it verifies that `http://localhost:4000` is reachable and probes key routes such as `/qualities/autonomy/` and `/qualities/autonomicity/`.
-- `make test` automatically starts the local stack (`docker compose up -d`) and waits for `http://localhost:4000` before executing Playwright.
-- `make wcag-test` also starts the local stack if needed and writes report files to `assets/reports/wcag/` (displayed at `/about/wcag-report/`).
-- `make lighthouse-test` generates detailed performance and SEO audits in `assets/reports/lighthouse/` (displayed at `/about/lighthouse-report/`).
-- `make wcag-test` is informative (does not fail on existing violations). Use `make wcag-test-strict` for gating.
-- For browser access, prefer `http://localhost:4000` (or `http://127.0.0.1:4000`) over `http://0.0.0.0:4000`.
-- If you change `package-lock.json` or `Gemfile.lock`, rerun `make build` before starting the stack again.
-- Docker assets live under `_docker/`. Build-context size is kept small via `.dockerignore`.
+## Adding content
 
-## How to contribute
+Every collection follows the same shape: front matter for metadata + Markdown
+for the body. **Tags are always YAML arrays** (`tags: [secure, usable]`, not
+space-separated strings).
 
-Create a fork of [https://github.com/arc42/quality.arc42.org-site](https://github.com/arc42/quality.arc42.org-site).
-Change files and create a pull request with your changes using your fork.
+### Qualities — `_qualities/<LETTER>/<name>.md`
 
-Hint: `_todo/qualities` contains qualities whose definitions are missing. You may fill those files with content. Then
-move them to the appropriate folder (e.g. `_qualities/<LETTER>/`).
-
-Hint: Most content and front matter changes are picked up live while `make dev` is running. Rebuild images only when dependency lockfiles change.
-
-### Adding new content (qualities, requirements, standards)
-
-Front matter conventions used by the site and graph generator:
-- `tags`: space-separated string (e.g. `usable secure`)
-- `related`: comma-separated list of quality IDs/titles (e.g. `reliability, resilience`)
-- `permalink`: stable, kebab-cased URL; the graph uses the last path segment as node ID
-
-Qualities (add under `_qualities/<LETTER>/your-quality.md`):
 ```yaml
 ---
-title: Availability
-tags: reliable
-related: reliability, resilience
-permalink: /qualities/availability
+title: Accessibility
+tags: [usable]
+related: [usability, inclusivity]
+standards: [iso26514, iso25024]
+permalink: /qualities/accessibility
 ---
+Definition…
 ```
 
-Requirements (add under `_requirements/<LETTER>/your-requirement.md`):
-```yaml
----
-title: Unavailable for max 2 minutes
-tags: reliable suitable
-related: availability
-permalink: /requirements/unavailable-for-max-2-minutes
----
-```
+Field reference:
 
-#### Requirements Structure
+- `tags` — dimension tags (must have matching `_pages/tag-<tag>.md` files)
+- `related` — quality IDs (the last permalink segment of another quality)
+- `standards` — standard IDs (matching `standard_id` in `_standards/*.md`, case-insensitive)
+- `permalink` — the last segment becomes the node ID in the graph
 
-Requirements use a **two-tier approach** for maximum clarity and usefulness as acceptance criteria:
+### Requirements — `_requirements/<LETTER>/<name>.md`
 
-The `_layouts/requirements.html` layout automatically wraps the body of every file
-in `_requirements/` in the styled `.quality-requirement` card — write the body as
-plain Markdown, no `<div>` wrapper needed.
+The `requirements` layout wraps the body in the `.quality-requirement` card —
+write the body as plain Markdown, **no `<div>` wrapper**.
 
-**Tier 1** - Simple requirements (1-3 criteria, self-explanatory):
+Section headings inside the body use `###` (h3). The page H1 comes from the
+section hero, so `###` keeps the outline coherent.
+
+**Tier 1** — simple, 1–3 criteria:
+
 ```markdown
 ---
 title: Quick unit tests
@@ -171,15 +173,18 @@ related: [efficiency]
 permalink: /requirements/quick-unit-tests
 ---
 
-#### Requirement
+### Requirement
+
 All automated unit tests must execute quickly to enable rapid feedback.
 
-#### Acceptance Criteria
+### Acceptance Criteria
+
 - All unit tests complete in less than 180 seconds
 - Measured on standard CI/CD infrastructure
 ```
 
-**Tier 2** - Complex requirements (4+ criteria, needs context):
+**Tier 2** — complex, 4+ criteria, compliance/security:
+
 ```markdown
 ---
 title: Patient data quality
@@ -188,129 +193,144 @@ related: [data-quality]
 permalink: /requirements/patient-data-quality
 ---
 
-#### Context
+### Context
+
 Healthcare system manages patient data where poor quality could lead to medication errors.
 
-#### Trigger
+### Trigger
+
 Patient data is entered, updated, or accessed throughout care journey.
 
-#### Acceptance Criteria
+### Acceptance Criteria
+
 - Patient duplicate detection rate >= 99.9%
 - Critical fields 100% complete for active patients
 - Lab results available within 5 minutes
 - Data validation prevents 100% of impossible values
 ```
 
-**Optional front-matter fields** rendered outside the card:
-- `source:` — attribution or citation (rendered as "Source: ..." below the card)
-- `note:` — meta-commentary (e.g., caveats, glossary) rendered below the card
+Optional `### Measurement & Verification` section for tooling/calculation details.
+
+**Optional front-matter fields** rendered _outside_ the card:
+
+- `source:` — attribution/citation (rendered as "Source: …" below the card)
+- `note:` — meta-commentary (free-form Markdown, rendered below the card)
 
 **Key principles:**
-- Use specific metrics with units (percentages, milliseconds, hours)
-- Make all criteria testable and measurable
-- Never add a `<div class="quality-requirement">` wrapper in the Markdown body — the layout handles it
 
-Standards (add under `_standards/your-standard.md`):
+- Use specific, testable metrics with units
+- Focus on _what_ must be achieved, not _how_
+- Never wrap the body in `<div class="quality-requirement">` — the layout adds it
+
+### Standards — `_standards/<name>.md`
+
 ```yaml
 ---
+layout: page_standard
 title: "ISO/IEC 25010 - Systems and Software Quality"
-permalink: /standards/iso-25010
 standard_id: iso25010
+shortname: "ISO/IEC 25010"
+categories: [general]
+permalink: /standards/iso-25010
 ---
 ```
-Defaults in `_config.yml` assign layouts automatically for collections; you usually do not need to set `layout`.
 
-### Synonyms
+`standard_id` is the cross-reference key used from `_qualities/*.md`
+`standards:` lists. See
+[Why standards use `categories` instead of `tags`](#why-standards-use-categories-instead-of-tags)
+below.
 
-The site supports synonym handling for quality attributes. Some quality terms are synonymous (e.g., "Performance" and "Performance Efficiency"), and the system provides a clean way to handle these:
-
-#### How Synonyms Work
-
-1. **One canonical page** - Only one quality page contains the full definition
-2. **Redirect stubs** - Synonym terms redirect to the canonical page
-3. **Visual indicators** - Canonical pages show "Also known as" badges
-4. **Graph consolidation** - Graph shows single node per concept with tooltip showing all synonym labels
-
-#### Synonym Configuration
-
-Synonyms are defined in `_data/quality-synonyms.yml`:
+### Approaches — `_approaches/<LETTER>/<name>.md`
 
 ```yaml
-# Format: canonical-slug: [synonym1, synonym2, ...]
+---
+title: Bulkhead
+tags: [reliable]
+supported_qualities: [availability, resilience]
+tradeoffs: [efficiency, latency]
+permalink: /approaches/bulkhead
+---
+Description…
+```
+
+Field reference:
+
+- `tags` — dimensions this approach helps with
+- `supported_qualities` — quality IDs the approach is intended to improve
+- `tradeoffs` — quality IDs the approach may worsen
+- See [`_approaches/`](_approaches/) for examples, or run
+  `/create-approach` from the `.claude/skills/create-approach/` skill for a
+  guided scaffold
+
+### Tag pages — `_pages/tag-<tag>.md`
+
+Every tag used anywhere in front matter needs a tag page, or links 404.
+
+Easiest path: copy an existing tag page (e.g. `_pages/tag-efficient.md`),
+rename to `_pages/tag-<yourtag>.md`, update the title and permalink, leave
+the include macros alone.
+
+### Synonyms / aliases
+
+Some quality terms are synonymous (e.g. "Performance" and "Performance
+Efficiency"). The site keeps one canonical page and lightweight redirect
+stubs for the others.
+
+**1.** Add the mapping to `_data/quality-synonyms.yml`:
+
+```yaml
 performance:
   - performance-efficiency
-availability:
-  - high-availability
-changeability:
-  - mutability
-time-to-market:
-  - speed-to-market
 ```
 
-#### Creating a Synonym
+**2.** Add `aka:` to the canonical quality:
 
-**Step 1:** Add to `_data/quality-synonyms.yml`
-```yaml
-your-canonical-term:
-  - your-synonym-term
-```
-
-**Step 2:** Add `aka` field to canonical quality (`_qualities/<LETTER>/your-canonical-term.md`):
 ```yaml
 ---
-title: Your Canonical Term
-aka: [Your Synonym Term]
-tags: relevant
-related: other-qualities
-permalink: /qualities/your-canonical-term
+title: Performance
+aka: [Performance Efficiency]
+tags: [efficient]
+permalink: /qualities/performance
 ---
 ```
 
-**Step 3:** Create redirect stub (`_qualities/<LETTER>/your-synonym-term.md`):
+**3.** Create a redirect stub at the synonym's permalink:
+
 ```yaml
 ---
-title: Your Synonym Term
-alias_of: your-canonical-term
-redirect_to: /qualities/your-canonical-term
+title: Performance Efficiency
+alias_of: performance
+redirect_to: /qualities/performance
 layout: redirect
-permalink: /qualities/your-synonym-term
+permalink: /qualities/performance-efficiency
 ---
 ```
 
-**Step 4:** Rebuild the site
-```bash
-docker compose down
-docker compose up
-```
+**4.** Restart the dev stack (`make dev` if it was down, or
+`docker compose restart jekyll` if it was already running) so the graph
+data regenerates.
 
-#### Result
+Result: the canonical page shows an "Also known as" badge, the synonym
+URL redirects, and the graph collapses to a single node with synonym
+labels in the hover tooltip.
 
-- ✅ `/qualities/your-canonical-term` - Shows full definition with "Also known as: Your Synonym Term" badge
-- ✅ `/qualities/your-synonym-term` - Redirects instantly to canonical page
-- ✅ Graph shows single node with tooltip displaying all synonym labels on hover
-- ✅ No 404 errors for synonym URLs
+---
 
-### Tags
-
-Tag links render to `/tag-<tag>`. If you introduce a new tag value in front matter, create a matching page to avoid 404s:
-- Copy an existing tag page (`_pages/tag-efficient.md`) to `_pages/tag-<yourtag>.md`
-- Adjust the title/permalink and keep the include macros
-
-#### Why standards use `categories` instead of `tags`
+## Why standards use `categories` instead of `tags`
 
 Qualities, requirements, and approaches are classified by short tag slugs
-(`secure`, `safe`, `usable`, `reliable`, ...) that double as URL segments for
+(`secure`, `safe`, `usable`, `reliable`, …) that double as URL segments for
 `/tag-<slug>` pages. Standards deliberately use a different field,
-`categories`, with the fuller topical names (`security`, `safety`,
-`usability`, `reliability`, ...).
+`categories`, with fuller topical names (`security`, `safety`,
+`usability`, `reliability`, …).
 
 The split is intentional:
 
 - **Different vocabularies.** A standard's category names a topical area
-  (information *security*, functional *safety*), not a quality-model
+  (information _security_, functional _safety_), not a quality-model
   dimension. Some categories — `ai`, `governance`, `privacy`, `sector`,
   `data`, `documentation`, `coding`, `general` — describe standards but
-  do not correspond to any quality tag.
+  don't correspond to any quality tag.
 - **Different lifecycles.** Tags are part of the quality model's
   taxonomy and rarely change. Categories evolve with the standards
   landscape and can grow independently without inflating the tag list.
@@ -318,7 +338,7 @@ The split is intentional:
   categories (e.g. `[security, privacy]`); forcing standards into the
   tag vocabulary would either lose nuance or pollute every tag page.
 
-The bridge between the two vocabularies lives in `_data/tag-aliases.yml`:
+The bridge lives in `_data/tag-aliases.yml`:
 
 ```yaml
 secure: security
@@ -327,249 +347,170 @@ usable: usability
 reliable: reliability
 ```
 
-Includes that need to find standards for a tag look up the alias and
-then filter `site.standards` by `categories`. Unmapped tags fall
-through unchanged, so tags whose slug already matches a category name
-need no entry. If you introduce a new dimension whose category name
-differs from the slug, add a line to `tag-aliases.yml` — do **not**
-duplicate the mapping inline in templates.
+Includes that need to find standards for a given tag look up the alias and
+filter `site.standards` by `categories`. Unmapped tags pass through
+unchanged. If you add a new dimension whose category name differs from
+the slug, add a line to `tag-aliases.yml` — **don't** duplicate the
+mapping inline in templates.
 
-Consumers of the alias map today:
-- `_includes/dimension-header.liquid` — counts standards on tag pages.
-- `_includes/one-standard.liquid` — lists standards on tag pages.
+Current consumers: `_includes/dimension-header.liquid` (counts standards on
+tag pages) and `_includes/one-standard.liquid` (lists them).
 
-### Link Validation
+---
 
-The site includes automated link validation to ensure all internal references are correct. The validator checks:
+## Testing & validation
 
-- **Quality → Quality**: References in the `related` field of quality files
-- **Quality → Tag**: Tags used in qualities have corresponding tag pages
-- **Quality → Standard**: Standards referenced in the `standards` field exist
-- **Requirement → Quality**: Requirements reference existing qualities in their `related` field
-- **Requirement → Tag**: Tags used in requirements have corresponding tag pages
+### Link validation
 
-#### Running Link Validation
-
-**Manual validation:**
 ```bash
-npm run test:links          # Show warnings only
-npm run test:links:strict   # Exit with error code 1 if broken links found
+npm run test:links          # warnings only
+npm run test:links:strict   # exits non-zero if any broken links
 ```
 
-**Automatic validation:**
-Link validation no longer runs automatically on dev startup, so `make dev` stays fast. Run it explicitly before committing if you changed tags, related links, standards, or permalinks.
+Checks:
 
-**Example output:**
-```
-═══════════════════════════════════════════════════════════
-  LINK VALIDATION REPORT
-═══════════════════════════════════════════════════════════
+- Quality → Quality (`related` field)
+- Quality → Tag (must have a `_pages/tag-<tag>.md` page)
+- Quality → Standard (`standards` field must match `standard_id`)
+- Requirement → Quality (`related` field)
+- Requirement → Tag
 
-REQUIREMENT→QUALITY (1 errors)
-───────────────────────────────────────────────────────────
-  ✗ Requirement "patient-data-quality" references non-existent quality "completeness"
-    Source: _requirements/P/patient-data-quality.md
+Not on the dev-server startup path (kept off so `make dev` stays fast).
+Run it before pushing if you changed tags, `related:`, `standards:`, or
+permalinks.
 
-═══════════════════════════════════════════════════════════
-Total broken links: 1
-```
+### UI tests (Playwright, Docker)
 
-### UI Testing (Playwright)
+No local Playwright install needed. With the stack running (`make dev`):
 
-Playwright-based UI automation is available for browser interaction checks.
-
-#### Docker-first setup
-
-No local Playwright installation is required.
-
-Start the site in one terminal (recommended):
-```bash
-make dev
-```
-
-Run UI tests from another terminal (tests run inside a Playwright Docker image):
 ```bash
 make test
 ```
 
-After tests complete, `make test` can optionally start an HTML report viewer in Docker at `http://localhost:9323` (`y/N` prompt).
+Tests run in the bundled Playwright Docker image. After a run, `make test`
+optionally launches an HTML report viewer at http://localhost:9323.
 
-Run WCAG scan with axe-core tags (`wcag2a`, `wcag2aa`, `wcag21a`, `wcag21aa`):
+**CI behaviour:** Chromium with one retry; on failure stores traces,
+screenshots, and videos to `playwright-report/` and `test-results/ui/`.
+
+### WCAG accessibility scan
+
 ```bash
-make wcag-test
+make wcag-test           # non-blocking; logs warnings
+make wcag-test-strict    # exits non-zero on any violation
 ```
-Strict (fail on any violations):
+
+Uses axe-core with tags `wcag2a`, `wcag2aa`, `wcag21a`, `wcag21aa`. Outputs:
+
+- `assets/reports/wcag/latest.json` — full per-page findings
+- `assets/reports/wcag/latest.html` — graphical report
+- `_data/wcag.json` — totals subset, read by `_includes/wcag-score-pill.html`
+  to render the footer score at build time (no client-side JS, no fetch)
+- Live view: `/about/wcag-report/`
+
+### Lighthouse
+
 ```bash
-make wcag-test-strict
-```
-This creates:
-- `assets/reports/wcag/latest.html` (graphical report)
-- `assets/reports/wcag/latest.json` (raw findings)
-- Site view at `/about/wcag-report/`
-
-Optional modes:
-```bash
-docker compose --profile test run --rm -e UI_BASE_URL=http://jekyll:4000 playwright xvfb-run -a npx playwright test --config _docker/playwright/playwright.config.ts --headed
-docker compose --profile test run --rm -e UI_BASE_URL=http://jekyll:4000 playwright npx playwright test --config _docker/playwright/playwright.config.ts --debug
+make lighthouse-test
 ```
 
-Note: the Playwright container uses `UI_BASE_URL=http://jekyll:4000` to reach the Jekyll service over Docker Compose networking.
-The Playwright config lives in `_docker/playwright/playwright.config.ts`.
+Performance + SEO audits to `assets/reports/lighthouse/`. Non-blocking.
+Live view: `/about/lighthouse-report/`.
 
-#### CI behavior and artifacts
-
-- CI uses Chromium with one retry.
-- On failure/retry, Playwright stores:
-  - trace files
-  - screenshots
-  - videos
-- Artifact folders:
-  - `playwright-report/`
-  - `test-results/ui/`
-
-
-# Technical details
-
-## Graph visualization
-The quality graph visualizations are implemented using D3.js forced graphs.
-The graph data is stored in JSON files in the `assets/data` directory and loaded by the JavaScript code in the `src/graphs` directory.
-
-
-## Statistics Utilities
-
-The `statistic-utilities/` directory contains development tools for analyzing repository content. These utilities are **not part of the production build** and are excluded from the Jekyll site.
-
-**Available utilities:**
-- **`build-quality-index.js`** - Generates a comprehensive index of all quality attributes with metadata (tags, relationships, standards)
-- **`create-index-summary.js`** - Creates statistical summaries (total counts, top-connected qualities, tag distributions)
-- **`list-all-qualities.js`** - Displays a human-readable list of all qualities with their properties
-
-**Usage:**
-```bash
-# Generate quality index
-node statistic-utilities/build-quality-index.js
-
-# Create statistical summary
-node statistic-utilities/create-index-summary.js
-
-# List all qualities
-node statistic-utilities/list-all-qualities.js
-```
-
-For detailed documentation, see [`statistic-utilities/README.md`](statistic-utilities/README.md).
-
-## Site Structure and Configuration
-
-This site uses [Jekyll](https://jekyllrb.com/) to generate a static website from a set of Markdown files and templates. 
-The following sections explain the key concepts and configurations used in this site.
-
-### Collections
-
-Jekyll's collections are a powerful feature that allows you to group related content together. This site uses collections to manage the different types of content:
-
-*   **Qualities:** These are the quality attributes of a system, such as "Performance" or "Security".
-The 'qualities' collection is stored under `./_qualities`.
-*   **Requirements:** These are specific quality requirements, which are related to one or more qualities.
-The 'requirements' collection is stored under `./_requirements`.
-*   **Standards:** These are industry standards related to quality, such as "ISO-25010".
-
-The collections are defined in the `_config.yml` file:
-
-```yaml
-collections:
-  posts:
-    hide: true
-  articles:
-    output: true
-    hide: true
-  qualities:
-    output: true
-    hide: true
-  requirements:
-    output: true
-    hide: true
-  standards:
-    output: true
-    hide: true
-```
-
-### Qualities
-
-Qualities are stored in the `_qualities` directory. 
-Each quality is a Markdown file with a YAML front matter that contains metadata about the quality.
-
-Here is an example of a quality file (`_qualities/A/accountability.md`):
-
-```yaml
----
-title: Accountability
-tags: secure
-related: security, accessibility, confidentiality, privacy, intrusion-detection, intrusion-prevention
-permalink: /qualities/accountability
-standards: iso25010
 ---
 
-Definition:
-> ...
-```
+## How it deploys
 
-The front matter contains the following fields:
+Production deploys to **GitHub Pages** on every push to `main` via
+[`.github/workflows/build-deploy-gh-pages.yml`](.github/workflows/build-deploy-gh-pages.yml).
+The workflow installs Node + Ruby, runs `npm run data && npm run build`
+(esbuild generates graph data + bundles JS), then `bundle exec jekyll build`,
+and uploads the result to the Pages environment.
 
-*   `title`: The title of the quality.
-*   `tags`: A list of tags related to the quality.
-*   `related`: A list of related qualities.
-*   `permalink`: The URL of the quality's page.
-*   `standards`: A list of standards that this quality is related to.
+**Netlify** also builds the repo (see `netlify.toml`) for branch
+previews — useful when iterating on a PR before merging.
 
-### Requirements
+The deployed footer WCAG score reflects whichever `_data/wcag.json` is on
+`main` at build time. To refresh it: run `make wcag-test` locally, commit
+the updated `_data/wcag.json`, push. A scheduled GitHub Action that
+opens a refresh PR automatically is planned.
 
-Requirements are stored in the `_requirements` directory. 
-Each requirement is a Markdown file with a YAML front matter that contains metadata about the requirement.
+Dependabot keeps `npm`, `bundler`, and `github-actions` dependencies
+current; see [`.github/dependabot.yml`](.github/dependabot.yml).
 
-Here is an example of a requirement file (`_requirements/A/access-control-policy.md`):
-
-```yaml
----
-title: Access Control Policy
-tags: secure
-related: access-control
-permalink: /requirements/access-control-policy
 ---
 
-Context:
-> ...
-```
+## Search (Lunr)
 
-The front matter contains the following fields:
+The site uses a pre-built [Lunr.js](https://lunrjs.com/) index — no external
+API calls, fully offline-capable.
 
-*   `title`: The title of the requirement.
-*   `tags`: A list of tags related to the requirement.
-*   `standards`: A list of standards (like iso25010) where this quality is used/defined/part-of
-*   `related`: A list of related qualities.
-*   `permalink`: The URL of the requirement's page.
+- Built at site-build time by `src/scripts/index-search.js` (invoked from
+  `src/scripts/build.js`)
+- Served as static JSON
+- Weighted ranking: Title > Aliases > Tags > Content
+- Supports synonym discovery via `aka` / `alias` front-matter fields
+- Live search with debounced input and highlighted matches in the dropdown
 
-### Layouts and Includes
+Any content change regenerates the index on the next `make dev` cycle or
+`npm run build`.
 
-The site uses a system of layouts and includes to render the content of the collections.
+---
 
-*   **Layouts:** Layouts are templates that define the structure of a page. 
-*   The layouts are stored in the `_layouts` directory. 
-*   For example, the `standards.html` layout is used to render the pages for the standards collection.
-*   **Includes:** Includes are snippets of code that can be reused in different layouts. 
-*   The includes are stored in the `_includes` directory. 
-*   For example, the `related-qualities.html` include is used to display the list of qualities related to a standard.
+## Color & design system
 
-This architecture allows for a clean separation of content and presentation, making it easy to manage and extend the site.
+Light theme. Editorial reference, not SaaS dashboard. The primary brand
+colour is **violet `#682d63`** (header, footer, brand anchor); each content
+type gets its own identity colour, used for rails and accents rather than
+saturated fills.
 
-## Search Functionality
+| Content type              | Token                           | Hex       | Usage                                 |
+| ------------------------- | ------------------------------- | --------- | ------------------------------------- |
+| **Brand** (header/footer) | `--brand-violet`                | `#682d63` | Primary brand anchor                  |
+| **Dimensions**            | `--dimension-background-color`  | `#1a3a5c` | Top-level navigation, dimension cards |
+| **Qualities**             | `--brand-blue`                  | `#00b8f5` | Quality detail pages, graph nodes     |
+| **Requirements**          | `--reqs-background-color`       | `#ffb3b3` | Requirement cards                     |
+| **Standards**             | `--standard-background-color`   | `#ffc95c` | Standards pages                       |
+| **Approaches**            | `--approaches-background-color` | `#92ef80` | Approach detail pages                 |
+| **Articles**              | `--article-background-color`    | `#e6daf2` | Long-form / background reading        |
+| **Tradeoffs**             | `--tradeoff-background-color`   | `#fbe9e3` | Trade-off rendering on approach pages |
 
-The site uses a high-performance, full-text search powered by **Lunr.js**.
+The current design uses a **rail-on-left card pattern** across detail pages
+and section headers: paper background, ~10–14% wash of the section colour,
+6–10px coloured rail on the left edge. This keeps the colour as a
+wayfinding cue rather than a saturated fill.
 
-- **Offline Capable:** The search index is pre-built during the site build process and served as a static JSON file. No external API calls are required.
-- **Weighted Results:** Search results are ranked based on field importance (Title > Aliases > Tags > Content).
-- **Synonym Support:** Supports `aka` and `alias` frontmatter fields for discovery via synonyms.
-- **Live Search:** Results appear as you type with a debounced input to maintain performance.
-- **Result Highlighting:** Matching terms are automatically highlighted in the result titles.
+**Canonical sources:**
 
-### Build Process
-The search index is generated by `src/scripts/index-search.js`, which is automatically triggered by the main build script (`src/scripts/build.js`). Any changes to Markdown content will result in an updated search index in the next `make dev` or `npm run build` cycle.
+- Brand tokens: [`_sass/base/_variables.scss`](_sass/base/_variables.scss)
+- Visual reference (on the live site): [`/aboutthissite/#colors`](https://quality.arc42.org/aboutthissite/#colors)
+- Include source: [`_includes/about/color-scheme.md`](_includes/about/color-scheme.md)
+
+**Typography:** body in
+[Atkinson Hyperlegible Next](https://www.brailleinstitute.org/freefont)
+(designed for low-vision disambiguation; scannable under time pressure);
+headings in [Libre Caslon Text](https://fonts.google.com/specimen/Libre+Caslon+Text)
+(editorial serif).
+
+---
+
+## How to contribute
+
+1. Fork [`arc42/quality.arc42.org-site`](https://github.com/arc42/quality.arc42.org-site)
+2. Add or edit content following the schemas above
+3. Run `npm run test:links` if you touched tags, `related:`, `standards:`,
+   or permalinks
+4. Open a pull request
+
+Smaller-than-content help is also welcome: typo fixes, broken links,
+out-of-date references, or improvements to existing definitions.
+
+---
+
+## License & status
+
+[![Status](https://uptime.betterstack.com/status-badges/v2/monitor/20tqv.svg)](https://uptime.betterstack.com/?utm_source=status_badge)
+
+Content and code: [Creative Commons Attribution-ShareAlike 4.0 International](https://creativecommons.org/licenses/by-sa/4.0/).
+
+![CC BY-SA 4.0](https://i.creativecommons.org/l/by-sa/4.0/88x31.png)
