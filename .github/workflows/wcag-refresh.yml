@@ -1,0 +1,117 @@
+name: WCAG score refresh
+
+# Runs the existing tests/ui/wcag.spec.ts against a freshly built site and
+# opens a PR back to main if _data/wcag.json changed. The footer pill on
+# every page is rendered at build time from _data/wcag.json, so this is
+# what keeps the displayed score current without any manual step.
+#
+# Triggers:
+#   - schedule: weekly (Monday 06:00 UTC) — keeps the score within a week
+#     of any real change, no impact on normal deploys
+#   - workflow_dispatch: manual button in the Actions tab — use this to
+#     validate the workflow without waiting for the cron
+#
+# To trigger manually:
+#   gh workflow run wcag-refresh.yml --ref <branch>
+# or
+#   GitHub UI → Actions → "WCAG score refresh" → Run workflow
+#
+# Note: PR auto-creation requires "Allow GitHub Actions to create and
+# approve pull requests" in repo Settings → Actions → General → Workflow
+# permissions. The existing cleanup-decision-graphs.yml workflow already
+# uses this same pattern.
+
+on:
+  schedule:
+    - cron: "0 6 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.1
+          bundler-cache: true
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+
+      - name: Install npm deps
+        run: npm ci
+
+      - name: Build JS assets
+        run: npm run data && npm run build
+
+      - name: Start Jekyll
+        run: |
+          bundle exec jekyll serve --detach --host 0.0.0.0 --port 4000
+          for i in $(seq 1 60); do
+            if curl -fsS http://localhost:4000 >/dev/null 2>&1; then
+              echo "Jekyll ready after ${i}s"
+              exit 0
+            fi
+            sleep 1
+          done
+          echo "Jekyll did not become ready within 60s" >&2
+          exit 1
+
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps chromium
+
+      - name: Run WCAG scan
+        run: npx playwright test --config _docker/playwright/playwright.config.ts tests/ui/wcag.spec.ts
+
+      - name: Detect score change
+        id: diff
+        run: |
+          if git diff --quiet -- _data/wcag.json; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "No score change — nothing to do." | tee -a "$GITHUB_STEP_SUMMARY"
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+            {
+              echo "## WCAG score updated"
+              echo ""
+              echo "\`\`\`diff"
+              git --no-pager diff -- _data/wcag.json
+              echo "\`\`\`"
+            } >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - name: Open PR with updated score
+        if: steps.diff.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          BRANCH="bot/wcag-refresh-$(date +%Y-%m-%d-%H%M)"
+          git checkout -b "$BRANCH"
+          git add _data/wcag.json assets/reports/wcag/latest.json assets/reports/wcag/latest.html
+          git commit -m "chore(wcag): refresh score from scheduled scan"
+          git push origin "$BRANCH"
+
+          gh pr create \
+            --title "chore(wcag): refresh score from scheduled scan" \
+            --body "Automated weekly WCAG scan. Updates \`_data/wcag.json\` (which powers the footer pill at build time) plus the full report at \`assets/reports/wcag/latest.{json,html}\`.
+
+          Triggered by: \`${{ github.event_name }}\`
+          Run: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}" \
+            --head "$BRANCH" \
+            --base main

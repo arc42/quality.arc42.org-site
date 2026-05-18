@@ -1,0 +1,147 @@
+// Requirements index page — /requirements/
+//
+// Modernises the previously-legacy list/chip styling on this page so it
+// reads as a peer of the qualities / standards / approaches explorers
+// rather than older-feeling editorial content.
+//
+// Replaces:
+//   - `<ul class="tag-box inline">` chip row → `.req-explorer-facets`
+//     (calm pill chips on paper, neutral hover; old version used
+//     saturated reqs-pink with a hover scale)
+//   - `<ul class="posts no-bullets">` per-dimension list →
+//     `.req-explorer-list` (bordered panel + grouped rows, mirroring
+//     the approaches-explorer noscript-fallback pattern)
+//   - `<a class="reqs">` link → `.req-explorer-item__link` (brand-ink
+//     text, quiet hover; old version used dark-red text + dark-red
+//     underline, which read as legacy content styling)
+//   - The dark-red bullseye bullet → a small low-saturation marker
+//
+// Section headings (`h2.section-heading.requirements`) already use the
+// modern rail-on-left pattern (see _sass/components/_section-headings.scss)
+// so we only adjust the surrounding context here.
+
+.req-explorer {
+  margin-top: 0.75rem;
+}
+
+// ─── Facet chip row (in-page jump to each dimension section) ──────────────
+.req-explorer-facets {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.42rem;
+  list-style: none;
+  margin: 0.5rem 0 1.25rem;
+  padding: 0;
+}
+
+.req-explorer-facet {
+  align-items: center;
+  background: var(--brand-paper);
+  background: color-mix(in oklab, var(--brand-paper) 88%, var(--reqs-background-color) 12%);
+  border: 1px solid color-mix(in oklab, var(--brand-paper) 70%, var(--reqs-background-color) 30%);
+  border-radius: $radius-pill;
+  color: var(--brand-ink);
+  display: inline-flex;
+  font-family: $font-family;
+  font-size: 0.85rem;
+  font-weight: 600;
+  gap: 0.35rem;
+  line-height: 1.2;
+  padding: 0.22rem 0.7rem;
+  text-decoration: none;
+  transition:
+    background 120ms ease-out,
+    border-color 120ms ease-out;
+}
+
+.req-explorer-facet:hover,
+.req-explorer-facet:focus-visible {
+  background: color-mix(in oklab, var(--brand-paper) 78%, var(--reqs-background-color) 22%);
+  border-color: color-mix(in oklab, var(--brand-paper) 55%, var(--reqs-background-color) 45%);
+  text-decoration: none;
+  // Override the global a:hover underline so chips stay calm.
+  text-underline-offset: 0;
+}
+
+.req-explorer-facet__count {
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: $radius-pill;
+  color: var(--req-text-color);
+  font-size: 0.74rem;
+  font-weight: 700;
+  line-height: 1;
+  padding: 0.18em 0.5em;
+}
+
+// ─── Per-dimension panel (heading + bordered list of requirements) ────────
+.req-explorer-section {
+  scroll-margin-top: 1rem; // anchor jumps land below the sticky-ish header
+}
+
+.req-explorer-list {
+  background: var(--brand-paper);
+  border: 1px solid color-mix(in oklab, var(--brand-paper) 70%, var(--reqs-background-color) 30%);
+  border-radius: $radius-md;
+  list-style: none;
+  margin: 0.4rem 0 2rem;
+  overflow: hidden;
+  padding: 0;
+}
+
+.req-explorer-item {
+  border-top: 1px solid
+    color-mix(in oklab, var(--brand-paper) 82%, var(--reqs-background-color) 18%);
+}
+
+.req-explorer-item:first-child {
+  border-top: 0;
+}
+
+.req-explorer-item__link {
+  align-items: baseline;
+  color: var(--brand-ink);
+  display: flex;
+  font-weight: 500;
+  gap: 0.5rem;
+  line-height: 1.35;
+  padding: 0.55rem 0.85rem;
+  text-decoration: none;
+  transition:
+    background 120ms ease-out,
+    color 120ms ease-out;
+}
+
+.req-explorer-item__link:hover,
+.req-explorer-item__link:focus-visible {
+  background: color-mix(in oklab, var(--brand-paper) 85%, var(--reqs-background-color) 15%);
+  color: var(--req-text-color);
+  text-decoration: none;
+}
+
+.req-explorer-item__bullet {
+  color: var(--req-text-color);
+  flex: 0 0 auto;
+  font-size: 0.7em;
+  opacity: 0.7;
+  transform: translateY(0.05em);
+}
+
+.req-explorer-item__link:hover .req-explorer-item__bullet,
+.req-explorer-item__link:focus-visible .req-explorer-item__bullet {
+  opacity: 1;
+}
+
+.req-explorer-item__title {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+// ─── Empty state (defensive — a dimension with zero requirements ought
+// to be filtered out upstream, but keep the styling consistent if it isn't)
+.req-explorer-empty {
+  border: 1px dashed color-mix(in oklab, var(--brand-paper) 60%, var(--reqs-background-color) 40%);
+  border-radius: $radius-md;
+  color: var(--brand-muted);
+  margin: 0.4rem 0 2rem;
+  padding: 0.85rem 1rem;
+}

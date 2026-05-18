@@ -5,7 +5,7 @@ export function initSearch() {
     const resultsContainer = document.getElementById("search-results-container");
     const searchInput = document.getElementById("search");
 
-    if (!searchInput || !resultsContainer) return;
+    if (!resultsContainer) return;
 
     let lunrIndex = null;
     let searchLookup = null;
@@ -14,7 +14,7 @@ export function initSearch() {
     const queryData = getQuery(["q"]);
     const initialQuery = queryData.query;
 
-    if (initialQuery) {
+    if (initialQuery && searchInput) {
         searchInput.value = initialQuery;
     }
 
@@ -36,18 +36,20 @@ export function initSearch() {
         if (searchStatus) searchStatus.textContent = "Error loading search index. Please try refreshing.";
     });
 
-    // 3. Listen for input (live search)
-    let debounceTimer;
-    searchInput.addEventListener("input", function() {
-        const q = this.value;
-        clearTimeout(debounceTimer);
-        debounceTimer = setTimeout(() => {
-            performSearch(q);
-            // Update URL without reload
-            const newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?q=' + encodeURIComponent(q);
-            window.history.pushState({path:newurl},'',newurl);
-        }, 150);
-    });
+    // 3. Listen for input (live search) — only if a page-local input exists
+    if (searchInput) {
+        let debounceTimer;
+        searchInput.addEventListener("input", function() {
+            const q = this.value;
+            clearTimeout(debounceTimer);
+            debounceTimer = setTimeout(() => {
+                performSearch(q);
+                // Update URL without reload
+                const newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?q=' + encodeURIComponent(q);
+                window.history.pushState({path:newurl},'',newurl);
+            }, 150);
+        });
+    }
 
     function performSearch(q) {
         if (!lunrIndex || !q || q.length < 2) {

@@ -167,6 +167,30 @@
   }
 }
 
+// "Show all N results" row — selectable listbox option that routes to
+// /search/?q=… via its data-href. Visually distinct from result rows so
+// it reads as an action, not a content hit.
+.site-search__item--all {
+  grid-template-columns: minmax(0, 1fr);
+
+  &::before {
+    display: none;
+  }
+
+  .site-search__title {
+    color: var(--brand-muted);
+    font-size: 0.88rem;
+    font-style: italic;
+    font-weight: 400;
+
+    strong {
+      color: var(--brand-ink);
+      font-style: normal;
+      font-weight: 600;
+    }
+  }
+}
+
 .site-search__path {
   color: var(--brand-muted);
   font-family: $code-font-family;

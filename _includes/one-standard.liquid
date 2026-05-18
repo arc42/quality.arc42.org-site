@@ -1,6 +1,16 @@
 {% comment %}
-This file is "included" from each of the tag-efficient.md, tag-flexible.md etc files,
-as these pages need to display all related standards.
+This file is "included" from each of the tag-efficient.md, tag-flexible.md
+etc files to render all standards associated with the given tag.
+
+Renders each standard as a compact list row matching the visual weight of
+the other `one-*.liquid` includes on the same page (qualities, requirements,
+approaches). The previous version delegated to standard-item.liquid, which
+wraps each title in an <h3> — appropriate on the categorised standards
+listing (where standards are the page subject) but far too heavy on tag
+pages, where standards sit as one of four peer sections.
+
+The `standard-item.liquid` partial is intentionally left untouched here so
+the categorised standards listing keeps its heading-level weight.
 {% endcomment %}
 
 {%- assign tag_to_find = include.tag -%}
@@ -25,9 +35,13 @@ as these pages need to display all related standards.
   {% endfor %}
 
   {% if filtered_standards.size > 0 %}
-    {% for standard in filtered_standards %}
-      {% include standard-item.liquid standard=standard link=true %}
-    {% endfor %}
+    <ul class="posts no-bullets">
+      {%- for standard in filtered_standards -%}
+        <li>
+          <a href="{{ standard.url | prepend: site.baseurl }}">{% include icon.html name="award" size="xs" class="bullet" style="color: var(--standard-text-color);" %} {{ standard.shortname | default: standard.title }}</a>
+        </li>
+      {%- endfor -%}
+    </ul>
   {% else %}
     <p>No standards tagged with #{{ include.tag }} yet.</p>
   {% endif %}

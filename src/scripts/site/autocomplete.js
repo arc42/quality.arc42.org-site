@@ -175,6 +175,7 @@ function renderPanel({ scored, terms, query: q, baseurl }) {
         `<span class="site-search__hint-line">Press Enter to search full text.</span>` +
         `</div>`,
       optionCount: 0,
+      resultCount: 0,
     };
   }
 
@@ -209,12 +210,24 @@ function renderPanel({ scored, terms, query: q, baseurl }) {
   }
 
   if (scored.length > totalRendered) {
+    // Selectable "Show all" row: lives in the listbox so Arrow ↓ past the
+    // last result lands on it, then Enter routes to /search/?q=… via the
+    // existing data-href handlers.
+    const allUrl = baseurl + "/search/?q=" + encodeURIComponent(q);
+    const id = `site-search-opt-${idx}`;
     parts.push(
-      `<div class="site-search__more">` +
-        `Showing ${totalRendered} of ${scored.length}. ` +
-        `<span class="site-search__hint-line">Press Enter to see all results.</span>` +
-        `</div>`,
+      `<div class="site-search__group site-search__group--all" role="group" aria-label="More">` +
+        `<ul class="site-search__list" role="presentation">` +
+          `<li role="option" id="${id}" class="site-search__item site-search__item--all" ` +
+            `data-href="${escapeHtml(allUrl)}" data-index="${idx}" aria-selected="false">` +
+            `<span class="site-search__title">` +
+              `Show all <strong>${scored.length}</strong> results for <strong>${escapeHtml(q)}</strong>` +
+            `</span>` +
+          `</li>` +
+        `</ul>` +
+      `</div>`,
     );
+    idx++;
   } else {
     parts.push(
       `<div class="site-search__more">` +
@@ -223,7 +236,7 @@ function renderPanel({ scored, terms, query: q, baseurl }) {
     );
   }
 
-  return { html: parts.join(""), optionCount: idx };
+  return { html: parts.join(""), optionCount: idx, resultCount: scored.length };
 }
 
 function isTypingTarget(el) {
@@ -329,7 +342,7 @@ export function initAutocomplete() {
 
     const terms = q.trim().toLowerCase().split(/\s+/).filter(Boolean);
     const scored = rank(q);
-    const { html, optionCount } = renderPanel({
+    const { html, optionCount, resultCount } = renderPanel({
       scored,
       terms,
       query: q,
@@ -337,8 +350,8 @@ export function initAutocomplete() {
     });
     openPanel(html, optionCount);
     setStatus(
-      optionCount > 0
-        ? `${optionCount} result${optionCount === 1 ? "" : "s"} for ${q}.`
+      resultCount > 0
+        ? `${resultCount} result${resultCount === 1 ? "" : "s"} for ${q}.`
         : `No results for ${q}.`,
     );
   }
