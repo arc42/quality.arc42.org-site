@@ -10,7 +10,7 @@
   --cat: var(--brand-violet);
   min-width: 0;
   padding: 0.9rem 1rem 0.95rem 1.7rem;
-  border-radius: 10px;
+  border-radius: var(--radius-md);
   position: relative;
   text-align: left;
   background: var(--brand-paper);
@@ -21,7 +21,7 @@
 
 .color-grid-item::before {
   background: var(--cat);
-  border-radius: 3px;
+  border-radius: 3px; /* rail edge — intentional sub-token value */
   bottom: 0.55rem;
   content: "";
   left: 0;
@@ -73,7 +73,7 @@
   display: inline-block;
   width: 22px;
   height: 22px;
-  border-radius: 4px;
+  border-radius: var(--radius-xs);
   border: 1px solid rgba(0, 0, 0, 0.12);
 }
 

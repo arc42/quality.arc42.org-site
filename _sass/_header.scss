@@ -150,7 +150,7 @@
   appearance: none;
   background: var(--brand-cream-10);
   border: 1px solid var(--brand-cream-24);
-  border-radius: 7px;
+  border-radius: $radius-sm;
   box-sizing: border-box;
   color: var(--header-on-violet);
   font-family: $font-family;
@@ -180,7 +180,7 @@
   align-items: center;
   background: var(--brand-cream-06);
   border: 1px solid var(--brand-cream-24);
-  border-radius: 7px;
+  border-radius: $radius-sm;
   color: var(--header-on-violet-muted);
   cursor: pointer;
   display: inline-flex;
@@ -198,7 +198,7 @@
 
   span {
     background: currentColor;
-    border-radius: 99px;
+    border-radius: $radius-pill;
     display: block;
     height: 2px;
     width: 0.95rem;

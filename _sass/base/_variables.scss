@@ -51,6 +51,19 @@ $home-edge-width: 560px;
 $home-graph-wide-width: 900px;
 $footer-stack-width: 600px;
 
+// Border radii — canonical scale. Migrated from 16 raw values that had
+// accumulated across the codebase (3px, 4px, 5px, 6px, 7px, 8px, 9px, 10px,
+// 11px, 12px, 14px, 16px, 50%, 99px, 999px and friends). Keep ad-hoc:
+//   - 3px / 4px rails (section-hero / panel left edge are very short)
+//   - 50% circular
+//   - 0 reset
+// Everything else maps to one of these:
+$radius-xs: 4px; // hairline corners — buttons, chips, swatches, small inputs
+$radius-sm: 8px; // standard cards, panels, search bars
+$radius-md: 10px; // section heroes, primary content cards
+$radius-lg: 14px; // hero surfaces, large modal-style containers
+$radius-pill: 999px; // full pills / capsules — facet buttons, tag chips
+
 // brand color.
 $brand-violet: #682d63;
 $brand-violet-deep: #52214f;
@@ -187,6 +200,13 @@ $innoq-heart-color: #ff9c66;
   // Code blocks (used in _content.scss)
   --code-border: #ddd;
   --code-border-strong: #ccc;
+
+  // Border radii — see SCSS section at the top of this file for the rationale.
+  --radius-xs: #{$radius-xs};
+  --radius-sm: #{$radius-sm};
+  --radius-md: #{$radius-md};
+  --radius-lg: #{$radius-lg};
+  --radius-pill: #{$radius-pill};
 
   // Standards palette — consolidates repeated hex literals in _standards.scss.
   // Pure-pixel aliases; do not adjust values without a deliberate redesign.

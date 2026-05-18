@@ -78,7 +78,7 @@
   blockquote {
     background-color: var(--brand-violet-faint);
     border: 1px solid var(--brand-violet-18);
-    border-radius: 4px;
+    border-radius: $radius-xs;
     color: $blockquote-color;
     padding: 0.5em 1em;
     p:first-child {
@@ -256,7 +256,7 @@
           gap: 0.45rem;
           margin-left: auto;
           padding: 0.38rem 0.74rem;
-          border-radius: 999px;
+          border-radius: $radius-pill;
           border: 1px solid var(--brand-violet-18);
           background: var(--brand-cream-74);
           color: inherit;
@@ -399,7 +399,7 @@
   // Frame for the dimension-buttons include used in articles
   .dimension-grid-frame {
     border: 2px solid #a9d7f3;
-    border-radius: 14px;
+    border-radius: $radius-lg;
     padding: 1rem 1.4rem 0.4rem;
     background: #eef8ff;
     margin: 1.2rem 0;
@@ -411,7 +411,7 @@
     margin-bottom: 1.5rem;
     background-color: var(--brand-violet-faint);
     border: 1px solid var(--brand-violet-18);
-    border-radius: 4px;
+    border-radius: $radius-xs;
     font-size: 0.95rem;
 
     strong {

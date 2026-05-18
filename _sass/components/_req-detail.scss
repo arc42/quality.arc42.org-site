@@ -120,7 +120,7 @@
   &:hover,
   &:focus-within {
     background: rgba(104, 45, 99, 0.05);
-    border-radius: 6px;
+    border-radius: $radius-sm;
   }
 }
 

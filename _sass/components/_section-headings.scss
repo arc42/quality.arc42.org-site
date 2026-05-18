@@ -17,7 +17,7 @@ h2.section-heading {
   background: var(--brand-paper);
   background: color-mix(in oklab, var(--brand-paper) 80%, var(--cat) 20%);
   border: 1px solid color-mix(in oklab, var(--brand-paper) 65%, var(--cat) 35%);
-  border-radius: 8px;
+  border-radius: $radius-sm;
   font-size: 1.5em;
   margin: 1.5rem 0 1rem;
   padding: 0.55em 1em 0.55em 1.5em;

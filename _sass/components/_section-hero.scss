@@ -17,7 +17,7 @@
   background: var(--brand-paper);
   background: color-mix(in oklab, var(--brand-paper) 92%, var(--cat) 8%);
   border: 1px solid var(--brand-violet-18);
-  border-radius: 10px;
+  border-radius: $radius-md;
   margin: 0 0 1.2rem;
   padding: 0.75rem 1.4rem 0.7rem 2rem;
   position: relative;
@@ -139,7 +139,7 @@
     .category {
       background: rgba(var(--brand-violet-rgb), 0.06);
       border: 1px solid rgba(var(--brand-violet-rgb), 0.18);
-      border-radius: 999px;
+      border-radius: $radius-pill;
       color: var(--brand-ink);
       display: inline-block;
       font-family: $font-family;
@@ -182,7 +182,7 @@
 
 @media (max-width: $nav-narrow-width) {
   .section-hero {
-    border-radius: 8px;
+    border-radius: $radius-sm;
     padding: 0.65rem 1rem 0.6rem 1.7rem;
 
     &::before {

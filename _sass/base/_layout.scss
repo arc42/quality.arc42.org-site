@@ -43,7 +43,7 @@
 // Skip-link: off-screen until focused, slides into view top-left.
 .skip-link {
   background: var(--brand-violet);
-  border-radius: 4px;
+  border-radius: $radius-xs;
   color: var(--brand-cream);
   font-weight: 700;
   inset-inline-start: 0.5rem;

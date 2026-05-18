@@ -21,7 +21,7 @@
   background: var(--brand-paper);
   background: color-mix(in oklab, var(--brand-paper) 80%, var(--cat) 20%);
   border: 1px solid color-mix(in oklab, var(--brand-paper) 65%, var(--cat) 35%);
-  border-radius: 8px;
+  border-radius: $radius-sm;
   margin-top: 1rem;
   padding: 0.9rem 1rem 0.9rem 1.7rem;
   position: relative;
@@ -83,6 +83,6 @@
   background-color: var(--standard-background-color);
   color: var(--standard-text-color);
   padding: 10px;
-  border-radius: 5px;
+  border-radius: $radius-xs;
   margin: 20px 0 10px;
 }

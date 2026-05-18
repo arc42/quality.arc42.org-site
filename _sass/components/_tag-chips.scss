@@ -5,7 +5,7 @@ a.hov {
   display: inline-block;
   margin: 3px 2px;
   padding: 5px 10px;
-  border-radius: 11px;
+  border-radius: $radius-pill;
   background-color: var(--tag-chip-bg);
   color: var(--tag-chip-color);
   text-align: center;

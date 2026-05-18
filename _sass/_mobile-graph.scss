@@ -80,7 +80,7 @@
   margin: 1.5rem auto;
   padding: 1.25rem 1.5rem;
   border: 1px solid var(--brand-blue);
-  border-radius: 8px;
+  border-radius: $radius-sm;
   background: var(--brand-blue-soft);
 
   h2 {
@@ -114,7 +114,7 @@
       display: inline-block;
       padding: 0.2rem 0.55rem;
       border: 1px solid var(--brand-blue);
-      border-radius: 999px;
+      border-radius: $radius-pill;
       font-size: 0.85rem;
       text-decoration: none;
       color: var(--brand-blue-text);
@@ -129,7 +129,7 @@
     margin: 0 0 0.6rem;
     padding: 0.7rem 0.9rem;
     border: 1px solid var(--brand-blue);
-    border-radius: 14px;
+    border-radius: $radius-lg;
     background: var(--brand-blue-soft);
   }
 
@@ -155,7 +155,7 @@
     // NOTE: magic numbers reserve space for site-header (~150px) + .graph-intro (~40px)
     // + small margin. If site-header height changes, adjust here.
     height: calc(100dvh - 230px);
-    border-radius: 14px;
+    border-radius: $radius-lg;
     overflow: hidden;
     border: 1px solid var(--brand-blue-soft);
   }
@@ -195,7 +195,7 @@
     border: 1px solid var(--brand-blue);
     background: var(--brand-blue-soft);
     color: var(--brand-blue-text);
-    border-radius: 999px;
+    border-radius: $radius-pill;
     padding: 0.2rem 0.52rem;
     font-size: 0.73rem;
     font-weight: 600;
@@ -220,7 +220,7 @@
     width: 100%;
     margin-bottom: 0.45rem;
     padding: 0.5rem 0.6rem;
-    border-radius: 4px;
+    border-radius: $radius-xs;
     border: 1px solid var(--req-text-color);
     color: var(--req-text-color);
     background: var(--reqs-soft-background-color);
@@ -265,7 +265,7 @@
       border: 1px solid var(--brand-blue);
       background: var(--brand-blue-soft);
       color: var(--brand-blue-text);
-      border-radius: 999px;
+      border-radius: $radius-pill;
       align-items: center;
       gap: 0.34rem;
       padding: 0.38rem 0.68rem;
@@ -297,7 +297,7 @@
       max-height: min(72dvh, 560px);
       /* No padding-top — sheet head sits flush against the top edge */
       padding: 0 0.72rem 0.72rem;
-      border-radius: 14px;
+      border-radius: $radius-lg;
       box-shadow: 0 12px 36px rgba(0, 0, 0, 0.2);
       background: rgba(255, 255, 255, 0.97);
       /* Fully out of view when closed */
@@ -354,7 +354,7 @@
       border: 1px solid var(--brand-blue);
       background: var(--brand-blue-soft);
       color: var(--brand-blue-text);
-      border-radius: 999px;
+      border-radius: $radius-pill;
       font-size: 0.72rem;
       font-weight: 700;
       padding: 0.18rem 0.56rem;
