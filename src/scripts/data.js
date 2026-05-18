@@ -132,7 +132,8 @@ const NODE_CONFIGS = {
     quality:     { color: '#00B8F5', size: 25, qualityType: 'quality' },
     dimension:   { color: '#1a3a5c', textColor: '#c8e6f5', size: 35, qualityType: 'dimension' },
     property:    { color: '#f8f9fa', size: 35, qualityType: 'property' },  // kept for backward compat
-    standard:    { color: '#FFC95C', size: 45, qualityType: 'standard' }
+    standard:    { color: '#FFC95C', size: 45, qualityType: 'standard' },
+    approach:    { color: '#92ef80', size: 20, qualityType: 'approach' }
 };
 
 /**
@@ -316,6 +317,51 @@ function addMainNode(id, data, isRequirements, nodes, synonymMap = {}) {
 }
 
 /**
+ * Build approach nodes and edges. Approaches connect to dimensions (tags)
+ * and to the qualities they support (supported_qualities, canonical-resolved).
+ * Tradeoffs are intentionally skipped for now to keep the toggled-on graph
+ * legible — they can be added as a separate edge type later.
+ *
+ * @param {FrontmatterData[]} approachData
+ * @param {Map<string, Q42Node>} propertyNodes
+ * @param {Set<Q42Node>} nodes
+ * @param {Set<Q42Edge>} edges
+ * @param {Object} synonymMap - Synonym mapping for canonical resolution
+ */
+function createApproachData(approachData, propertyNodes, nodes, edges, synonymMap = {}) {
+    const config = NODE_CONFIGS.approach;
+
+    for (const data of approachData) {
+        const id = extractId(data.permalink);
+        const tags = parseList(data.tags, ' ');
+        const supportedQualities = parseList(data.supported_qualities, ',');
+
+        for (const tag of tags) {
+            edges.add({ source: id, target: tag });
+            if (!propertyNodes.has(tag)) {
+                propertyNodes.set(tag, createPropertyNode(tag));
+                edges.add({ source: tag, target: "quality-root" });
+            }
+        }
+
+        for (let qSlug of supportedQualities) {
+            qSlug = resolveCanonical(qSlug, synonymMap);
+            edges.add({ source: id, target: qSlug });
+        }
+
+        nodes.add({
+            id,
+            label: data.title,
+            labels: [data.title],
+            size: config.size,
+            color: config.color,
+            qualityType: config.qualityType,
+            page: data.permalink
+        });
+    }
+}
+
+/**
  * Parses the frontmatter data for a given Markdown file
  * @param {string[]} filePaths - Array of file paths
  * @returns {Promise<Object[]>} - Array of frontmatter objects
@@ -364,24 +410,27 @@ async function generateData() {
     const requirementsDir = path.join(projectRoot, "_requirements");
     const assetsDir = path.join(projectRoot, "assets");
     const standardsDir = path.join(projectRoot, "_standards");
+    const approachesDir = path.join(projectRoot, "_approaches");
 
     // Load synonym mappings
     const synonymMap = await loadQualitySynonyms();
     console.log(`✓ Loaded ${Object.keys(synonymMap).length} synonym mappings`);
 
-    let [qualityFiles, requirementFiles, standardsFiles] = await Promise.all([
+    let [qualityFiles, requirementFiles, standardsFiles, approachFiles] = await Promise.all([
         getFilePaths(qualitiesDir),
         getFilePaths(requirementsDir),
-        getFilePaths(standardsDir)
+        getFilePaths(standardsDir),
+        getFilePaths(approachesDir)
     ]);
 
     qualityFiles = qualityFiles.filter(f => !f.includes("_files-must-have-identical-dates"));
     requirementFiles = requirementFiles.filter(f => !f.includes("_req-template-simple"));
 
-    const [qualityData, requirementsData, standardsMeta] = await Promise.all([
+    const [qualityData, requirementsData, standardsMeta, approachData] = await Promise.all([
         parseFrontmatter(qualityFiles),
         parseFrontmatter(requirementFiles),
-        parseFrontmatter(standardsFiles)
+        parseFrontmatter(standardsFiles),
+        parseFrontmatter(approachFiles)
     ]);
 
     // Build a lookup from standard_id -> title (label) and permalink
@@ -419,6 +468,7 @@ async function generateData() {
 
     createGraphData(qualityData, false, propertyNodes, nodes, edges, synonymMap);
     createGraphData(requirementsData, true, propertyNodes, nodes, edges, synonymMap);
+    createApproachData(approachData, propertyNodes, nodes, edges, synonymMap);
 
     // Create standard nodes and edges (standard -> quality)
     const standardNodes = new Map();

@@ -123,6 +123,7 @@ export class FullGraph extends Graph {
         const qualToggle = document.getElementById("legend-toggle-qualities");
         const reqToggle = document.getElementById("legend-toggle-requirements");
         const stdToggle = document.getElementById("legend-toggle-standards");
+        const approachToggle = document.getElementById("legend-toggle-approaches");
 
         // Sync current renderer state to inputs
         if (qualToggle) {
@@ -179,6 +180,15 @@ export class FullGraph extends Graph {
                     // Remove selected standard from URL state
                     this._writeUrlState({ selectedStandard: null });
                 }
+            });
+        }
+
+        if (approachToggle) {
+            approachToggle.checked = this.renderer.typeVisibility.approach;
+            approachToggle.addEventListener("change", (e) => {
+                const isChecked = e.target.checked;
+                this.renderer.setTypeVisibility('approach', isChecked);
+                this._writeUrlState({ showApproaches: isChecked });
             });
         }
 
@@ -815,6 +825,7 @@ export class FullGraph extends Graph {
             showQualities: p.has('showQualities') ? toBool(p.get('showQualities')) : undefined,
             showRequirements: p.has('showRequirements') ? toBool(p.get('showRequirements')) : undefined,
             showStandards: p.has('showStandards') ? toBool(p.get('showStandards')) : undefined,
+            showApproaches: p.has('showApproaches') ? toBool(p.get('showApproaches')) : undefined,
             selectedStandard: p.get('selectedStandard') || null,
         };
         this._urlState = state;
@@ -843,6 +854,7 @@ export class FullGraph extends Graph {
         setOrDel('showQualities', next.showQualities);
         setOrDel('showRequirements', next.showRequirements);
         setOrDel('showStandards', next.showStandards);
+        setOrDel('showApproaches', next.showApproaches);
         setOrDel('selectedStandard', next.selectedStandard);
         const newUrl = `${ globalThis.location.pathname }?${ p.toString() }`;
         globalThis.history.replaceState({}, '', newUrl);
@@ -850,14 +862,16 @@ export class FullGraph extends Graph {
     }
 
     _defaultFor(key) {
-        // default UI/renderer state
+        // default UI/renderer state — must mirror GraphRenderer.typeVisibility
         switch (key) {
             case 'showQualities':
                 return true;
             case 'showRequirements':
                 return false;
             case 'showStandards':
-                return true;
+                return false;
+            case 'showApproaches':
+                return false;
             default:
                 return null;
         }
@@ -874,6 +888,7 @@ export class FullGraph extends Graph {
         const qualToggle = document.getElementById('legend-toggle-qualities');
         const reqToggle = document.getElementById('legend-toggle-requirements');
         const stdToggle = document.getElementById('legend-toggle-standards');
+        const approachToggle = document.getElementById('legend-toggle-approaches');
 
         if (state.showQualities !== undefined && qualToggle) {
             const isVisible = !!state.showQualities;
@@ -889,6 +904,11 @@ export class FullGraph extends Graph {
             const isVisible = !!state.showStandards;
             stdToggle.checked = isVisible;
             this.renderer.setTypeVisibility('standard', isVisible);
+        }
+        if (state.showApproaches !== undefined && approachToggle) {
+            const isVisible = !!state.showApproaches;
+            approachToggle.checked = isVisible;
+            this.renderer.setTypeVisibility('approach', isVisible);
         }
     }
 

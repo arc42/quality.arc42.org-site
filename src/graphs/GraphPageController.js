@@ -22,6 +22,7 @@ export class GraphPageController {
     #qualityToggle;
     #requirementsToggle;
     #standardsToggle;
+    #approachesToggle;
 
     /**
      * @param {import('./FullGraph.js').FullGraph} [graph] - Optional graph instance for direct reset
@@ -39,6 +40,7 @@ export class GraphPageController {
         this.#qualityToggle = document.getElementById("legend-toggle-qualities");
         this.#requirementsToggle = document.getElementById("legend-toggle-requirements");
         this.#standardsToggle = document.getElementById("legend-toggle-standards");
+        this.#approachesToggle = document.getElementById("legend-toggle-approaches");
     }
 
     /**
@@ -87,6 +89,7 @@ export class GraphPageController {
         this.#applyToggle(this.#qualityToggle, true);
         this.#applyToggle(this.#requirementsToggle, false);
         this.#applyToggle(this.#standardsToggle, false);
+        this.#applyToggle(this.#approachesToggle, false);
         this.#closeSheet();
     }
 
@@ -106,6 +109,7 @@ export class GraphPageController {
         this.#applyToggle(this.#qualityToggle, true);
         this.#applyToggle(this.#standardsToggle, btn.dataset.showStandards === "true");
         this.#applyToggle(this.#requirementsToggle, btn.dataset.showRequirements === "true");
+        this.#applyToggle(this.#approachesToggle, btn.dataset.showApproaches === "true");
 
         this.#filterInput.disabled = false;
         this.#filterInput.value = term;

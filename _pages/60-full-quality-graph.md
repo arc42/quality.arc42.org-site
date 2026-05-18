@@ -126,6 +126,14 @@ hide: true
             <div class="toggle-switch"></div>
           </label>
         </div>
+        <div class="legend-item">
+          <span class="color-box" style="background-color: var(--approaches-background-color);"></span>
+          <label class="toggle">
+            <span class="toggle-label legend-label">Approaches</span>
+            <input class="toggle-checkbox" type="checkbox" id="legend-toggle-approaches">
+            <div class="toggle-switch"></div>
+          </label>
+        </div>
       </div>
     </div>
 
