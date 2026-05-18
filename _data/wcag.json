@@ -1,0 +1,10 @@
+{
+  "generatedAt": "2026-05-11T06:53:10.682Z",
+  "totals": {
+    "pagesScanned": 35,
+    "violations": 10,
+    "incomplete": 38,
+    "passes": 933,
+    "avgScore": 97
+  }
+}

@@ -58,6 +58,10 @@ const STANDARD_SAMPLE_COUNT = 5;
 const REPORT_DIR = path.join("assets", "reports", "wcag");
 const JSON_REPORT = path.join(REPORT_DIR, "latest.json");
 const HTML_REPORT = path.join(REPORT_DIR, "latest.html");
+// Small totals-only file consumed by _includes/wcag-score-pill.html at build
+// time so the footer pill renders statically (no client-side fetch).
+const DATA_DIR = "_data";
+const DATA_SCORE = path.join(DATA_DIR, "wcag.json");
 
 type FrontMatterMap = Record<string, string>;
 
@@ -428,6 +432,15 @@ test("wcag scan for key pages", async ({ page }) => {
   await mkdir(REPORT_DIR, { recursive: true });
   await writeFile(JSON_REPORT, JSON.stringify(report, null, 2), "utf8");
   await writeFile(HTML_REPORT, renderHtml(report), "utf8");
+
+  // Compact totals-only snapshot for Jekyll's _data/ pipeline (powers the
+  // footer WCAG pill at build time).
+  await mkdir(DATA_DIR, { recursive: true });
+  await writeFile(
+    DATA_SCORE,
+    JSON.stringify({ generatedAt: report.generatedAt, totals: report.totals }, null, 2) + "\n",
+    "utf8"
+  );
 
   const strict =
     process.env.WCAG_STRICT === "1" ||
