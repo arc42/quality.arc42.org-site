@@ -56,9 +56,12 @@
   margin: 0 0.4rem;
 }
 
-.req-detail__implements-tag {
-  color: var(--brand-muted) !important;
-  font-weight: 400 !important;
+// Beats the `.req-detail__implements a` rule above (specificity 0,1,1)
+// by anchoring the class match to the same parent. Lets the tag chips
+// read as muted metadata next to the violet quality links.
+.req-detail__implements a.req-detail__implements-tag {
+  color: var(--brand-muted);
+  font-weight: 400;
 }
 
 // Whitespace-control in the Liquid loop strips the literal space between
