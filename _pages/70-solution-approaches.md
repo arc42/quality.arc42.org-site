@@ -3,632 +3,387 @@ layout: page
 title: Solution Approaches
 permalink: /approaches/
 order: 35
-no_layout_header: true
 ---
 
-{% assign valid_tags = site.data.standard_tags.tags | sort %}
 {% assign approaches_sorted = site.approaches | sort: "title" %}
-{% assign dimensions_with_approaches = 0 %}
-{% for tag in valid_tags %}
-  {% assign approaches_count_for_tag = 0 %}
-  {% for approach in approaches_sorted %}
-    {% if approach.tags contains tag %}
-      {% assign approaches_count_for_tag = approaches_count_for_tag | plus: 1 %}
-    {% endif %}
-  {% endfor %}
-  {% if approaches_count_for_tag > 0 %}
-    {% assign dimensions_with_approaches = dimensions_with_approaches | plus: 1 %}
-  {% endif %}
+{% assign approach_tags = "" | split: "" %}
+{% for approach in approaches_sorted %}
+{% if approach.tags %}
+{% assign approach_tags = approach_tags | concat: approach.tags %}
+{% endif %}
 {% endfor %}
+{% assign dimension_tags = approach_tags | uniq | sort %}
 
-{% capture approaches_meta %}<b>{{ approaches_sorted | size }}</b> tactics across <b>{{ dimensions_with_approaches }}</b> dimensions.{% endcapture %}
+<div id="top"></div>
 
-{% include section-hero.liquid
-  section="approaches"
-  title="Solution Approaches"
-  lede="Architectural tactics and patterns that bridge quality requirements and concrete implementation decisions."
-  meta=approaches_meta %}
+<section id="approaches-explorer" class="approaches-explorer" data-baseurl="{{ site.baseurl }}">
+  <div class="approaches-explorer-hero">
+    <p class="approaches-explorer-text">
+      Solution approaches are <strong>architectural tactics and patterns</strong> that bridge
+      quality requirements and concrete implementation decisions.
+      Use <strong>dimension filters</strong> and <strong>A-Z jump links</strong> to
+      quickly narrow down this list.
+    </p>
+    <p class="approaches-explorer-stats">
+      We currently explain <strong>{{ approaches_sorted | size }}</strong> solution approaches, across
+      <strong>{{ dimension_tags | size }}</strong> dimensions.
+    </p>
+  </div>
 
-<div class="approach-entry">
-  <nav class="approach-entry-mode-switch" aria-label="Approach browsing modes">
-    <button class="approach-entry-mode-btn active" type="button" data-target="explorer">
-      <span class="approach-entry-mode-name">Dimension Explorer</span>
-      <span class="approach-entry-mode-desc">Filter by dimension and browse matching approaches.</span>
-    </button>
-    <button class="approach-entry-mode-btn" type="button" data-target="dimlist">
-      <span class="approach-entry-mode-name">Sorted by Dimension</span>
-      <span class="approach-entry-mode-desc">See all approaches under each dimension.</span>
-    </button>
-    <button class="approach-entry-mode-btn" type="button" data-target="search">
-      <span class="approach-entry-mode-name">Keyword Search</span>
-      <span class="approach-entry-mode-desc">Search by name, tags, qualities, and trade-offs.</span>
-    </button>
-  </nav>
+  <div class="approaches-explorer-panel">
+    <div class="approaches-explorer-head">
+      <h2>Dimensions</h2>
+      <span id="approaches-facet-summary"></span>
+    </div>
+    <div id="approaches-facets" class="approaches-explorer-facets"></div>
+  </div>
 
-  <section id="approach-entry-panel-explorer" class="approach-entry-panel active">
-    <div class="approach-entry-explorer">
-      <aside class="approach-entry-dim-nav">
-        <h3>Dimensions</h3>
-        <div class="approach-entry-dim-chips">
-          {% for tag in valid_tags %}
-            {% assign approaches_count_for_tag = 0 %}
-            {% for approach in approaches_sorted %}
-              {% if approach.tags contains tag %}
-                {% assign approaches_count_for_tag = approaches_count_for_tag | plus: 1 %}
-              {% endif %}
-            {% endfor %}
-            <button
-              class="approach-entry-dim-chip {% if forloop.first %}active{% endif %}"
-              type="button"
-              data-tag="{{ tag }}">
-              {{ tag }} <span>{{ approaches_count_for_tag }}</span>
-            </button>
-          {% endfor %}
-        </div>
-      </aside>
+  <div class="approaches-explorer-panel">
+    <div class="approaches-explorer-head">
+      <h2>Jump to Letter</h2>
+      <span id="approaches-letters-summary"></span>
+    </div>
+    <div id="approaches-letter-nav" class="approaches-explorer-letters"></div>
+  </div>
 
-      <section class="approach-entry-results-pane">
-        {% for tag in valid_tags %}
-          {% assign approaches_count_for_tag = 0 %}
-          {% for approach in approaches_sorted %}
-            {% if approach.tags contains tag %}
-              {% assign approaches_count_for_tag = approaches_count_for_tag | plus: 1 %}
-            {% endif %}
-          {% endfor %}
-          <div class="approach-entry-results-block {% if forloop.first %}active{% endif %}" data-tag="{{ tag }}">
-            <div class="approach-entry-results-head">
-              <h3>{{ tag }}</h3>
-              <span>{{ approaches_count_for_tag }} approaches, sorted A-Z</span>
+  <div class="approaches-explorer-panel">
+    <div class="approaches-explorer-head">
+      <h2>Solution Approaches</h2>
+      <span id="approaches-results-summary"></span>
+    </div>
+    <div id="approaches-results" class="approaches-explorer-results"></div>
+  </div>
+
+  <noscript>
+    <style>
+      #approaches-explorer .approaches-explorer-panel {
+        display: none;
+      }
+
+      #approaches-explorer .approaches-fallback-panel {
+        display: block;
+      }
+    </style>
+
+    <div class="approaches-explorer-panel approaches-fallback-panel">
+      <div class="approaches-explorer-head">
+        <h2>No-JS Fallback</h2>
+        <span>alphabetic list of solution approaches</span>
+      </div>
+
+      <div class="approaches-explorer-letters approaches-fallback-letters">
+        {% assign previous_letter = "" %}
+        {% for approach in approaches_sorted %}
+          {% assign current_letter = approach.title | slice: 0 | upcase %}
+          {% if current_letter != previous_letter %}
+            <a class="approaches-letter-chip" href="#fallback-{{ current_letter | slugify }}">{{ current_letter }}</a>
+            {% assign previous_letter = current_letter %}
+          {% endif %}
+        {% endfor %}
+      </div>
+
+      <div class="approaches-fallback-list">
+        {% assign previous_letter = "" %}
+        {% for approach in approaches_sorted %}
+          {% assign current_letter = approach.title | slice: 0 | upcase %}
+          {% if current_letter != previous_letter %}
+            {% unless forloop.first %}
+              <div class="approaches-return-top">
+                <a href="#top" title="Return to top"><i class="fa fa-arrow-up" aria-hidden="true"></i> Return to top</a>
+              </div>
+            {% endunless %}
+            <h3 id="fallback-{{ current_letter | slugify }}" class="approaches-letter-heading">&mdash; {{ current_letter }} &mdash;</h3>
+            {% assign previous_letter = current_letter %}
+          {% endif %}
+
+          <div class="approaches-item">
+            <h4 class="approaches-item-title">
+              <a href="{{ approach.url | prepend: site.baseurl }}"><i class="fa fa-puzzle-piece fa-xs as-bullet" aria-hidden="true"></i> {{ approach.title }}</a>
+            </h4>
+
+            <div class="approaches-item-meta">
+              <span>supports: {{ approach.supported_qualities | size }}</span>
+              <span>trade-offs: {{ approach.tradeoffs | size }}</span>
             </div>
-            {% if approaches_count_for_tag > 0 %}
-              <ul class="posts no-bullets approach-entry-approach-list">
-                {% for approach in approaches_sorted %}
-                  {% if approach.tags contains tag %}
-                    <li>
-                      <a href="{{ approach.permalink }}"><i class="fa fa-puzzle-piece fa-xs as-bullet"></i> {{ approach.title }}</a>
-                      {% if approach.supported_qualities %}
-                        <div class="approach-entry-inline">supports: {{ approach.supported_qualities | join: ", " | replace: "-", " " }}</div>
-                      {% endif %}
-                    </li>
-                  {% endif %}
+
+            {% if approach.tags %}
+              <div class="approaches-item-tags">
+                <i class="fa fa-tags" aria-hidden="true"></i>
+                {% for tag in approach.tags %}
+                  <a href="{{ '/tag-' | append: tag | prepend: site.baseurl }}">#{{ tag }}</a>{% unless forloop.last %}, {% endunless %}
                 {% endfor %}
-              </ul>
-            {% else %}
-              <p class="approach-entry-empty">No approaches in this dimension yet.</p>
+              </div>
             {% endif %}
           </div>
         {% endfor %}
-      </section>
-    </div>
-  </section>
 
-  <section id="approach-entry-panel-dimlist" class="approach-entry-panel">
-    <h2 class="approach-entry-dimlist-heading">Dimensions and Solution Approaches</h2>
-
-    <div class="approach-entry-tag-pills">
-      {% for tag in valid_tags %}
-        {% assign tag_id = tag | slugify %}
-        {% assign approaches_count_for_tag = 0 %}
-        {% for approach in approaches_sorted %}
-          {% if approach.tags contains tag %}
-            {% assign approaches_count_for_tag = approaches_count_for_tag | plus: 1 %}
-          {% endif %}
-        {% endfor %}
-        <a class="approach-entry-tag-pill" href="#approach-dimension-{{ tag_id }}">{{ tag }} <small>{{ approaches_count_for_tag }}</small></a>
-      {% endfor %}
-    </div>
-
-    <div class="approach-entry-dimlist-sections">
-      {% for tag in valid_tags %}
-        {% assign tag_id = tag | slugify %}
-        {% assign approaches_count_for_tag = 0 %}
-        {% for approach in approaches_sorted %}
-          {% if approach.tags contains tag %}
-            {% assign approaches_count_for_tag = approaches_count_for_tag | plus: 1 %}
-          {% endif %}
-        {% endfor %}
-        <article class="approach-entry-dimlist-section">
-          <h3 id="approach-dimension-{{ tag_id }}" class="approach-entry-dimlist-title">Approaches tagged with {{ tag }}</h3>
-          {% if approaches_count_for_tag > 0 %}
-            <ul class="posts no-bullets approach-entry-approach-list">
-              {% for approach in approaches_sorted %}
-                {% if approach.tags contains tag %}
-                  <li>
-                    <a href="{{ approach.permalink }}"><i class="fa fa-puzzle-piece fa-xs as-bullet"></i> {{ approach.title }}</a>
-                    {% if approach.supported_qualities %}
-                      <div class="approach-entry-inline">supports: {{ approach.supported_qualities | join: ", " | replace: "-", " " }}</div>
-                    {% endif %}
-                  </li>
-                {% endif %}
-              {% endfor %}
-            </ul>
-          {% else %}
-            <p class="approach-entry-empty">No approaches in this dimension yet.</p>
-          {% endif %}
-        </article>
-      {% endfor %}
-    </div>
-  </section>
-
-  <section id="approach-entry-panel-search" class="approach-entry-panel">
-    <div class="approach-entry-search-head">
-      <h3><i class="fa fa-search"></i> Keyword Search</h3>
-      <p>Search by approach name, dimensions, supported qualities, trade-offs, and intent text.</p>
-      <div class="approach-entry-search-row">
-        <input id="approach-entry-search-input" type="search" placeholder="e.g. latency, resilience, rollout, accessibility">
-        <button id="approach-entry-search-btn" type="button">Search</button>
+        <div class="approaches-return-top">
+          <a href="#top" title="Return to top"><i class="fa fa-arrow-up" aria-hidden="true"></i> Return to top</a>
+        </div>
       </div>
-      <div class="approach-entry-search-suggested">
-        <span>latency</span><span>resilience</span><span>rollout</span><span>accessibility</span><span>scalability</span>
-      </div>
-      <p id="approach-entry-search-count" class="approach-entry-search-count"></p>
     </div>
 
-    <div id="approach-entry-search-grid" class="approach-entry-search-grid">
-      {% for approach in approaches_sorted %}
-        {% capture searchable %}
-          {{ approach.title }}
-          {% if approach.intent %} {{ approach.intent }} {% endif %}
-          {% if approach.mechanism %} {{ approach.mechanism }} {% endif %}
-          {% if approach.tags %} {{ approach.tags | join: " " }} {% endif %}
-          {% if approach.supported_qualities %} {{ approach.supported_qualities | join: " " }} {% endif %}
-          {% if approach.tradeoffs %} {{ approach.tradeoffs | join: " " }} {% endif %}
-        {% endcapture %}
-        <article class="approach-entry-search-card" data-search="{{ searchable | strip_newlines | downcase | escape }}">
-          <h4><a href="{{ approach.permalink }}">{{ approach.title }}</a></h4>
-          {% if approach.tags %}
-            <div class="approach-entry-inline">dimensions: {{ approach.tags | join: ", " }}</div>
-          {% endif %}
-          {% if approach.supported_qualities %}
-            <div class="approach-entry-inline">supports: {{ approach.supported_qualities | join: ", " | replace: "-", " " }}</div>
-          {% endif %}
-          {% if approach.tradeoffs %}
-            <div class="approach-entry-inline">trade-offs: {{ approach.tradeoffs | join: ", " | replace: "-", " " }}</div>
-          {% endif %}
-        </article>
-      {% endfor %}
-    </div>
-  </section>
-</div>
+  </noscript>
+</section>
+
+<script id="approaches-explorer-data" type="application/json">
+[
+  {% for approach in approaches_sorted %}
+    {% assign approach_slug = approach.permalink | remove: "/approaches/" | replace: "/", "" %}
+    {
+      "id": {{ approach_slug | jsonify }},
+      "title": {{ approach.title | jsonify }},
+      "url": {{ approach.url | prepend: site.baseurl | jsonify }},
+      "tags": [
+        {% if approach.tags %}
+          {% for tag in approach.tags %}
+            {{ tag | jsonify }}{% unless forloop.last %}, {% endunless %}
+          {% endfor %}
+        {% endif %}
+      ],
+      "supportedCount": {{ approach.supported_qualities | size }},
+      "tradeoffsCount": {{ approach.tradeoffs | size }}
+    }{% unless forloop.last %}, {% endunless %}
+  {% endfor %}
+]
+</script>
+<script src="{{ '/assets/js/approaches-explorer.js' | prepend: site.baseurl }}"></script>
 
 <style>
-  .approach-entry {
-    margin-top: 0.7rem;
-    --app-border: rgba(56, 133, 50, 0.34);
-    --app-border-strong: rgba(34, 104, 29, 0.5);
-    --app-surface: #f8fff5;
-    --app-surface-strong: #f2fde9;
-    --app-text-soft: #496346;
+  .approaches-explorer {
+    --ax-border: rgba(56, 133, 50, 0.34);
+    --ax-border-soft: rgba(56, 133, 50, 0.2);
+    --ax-surface: #f8fff5;
+    --ax-surface-2: #f2fde9;
+    --ax-text: #1b5e20;
+    --ax-muted: #496346;
+    --ax-accent: #2f7727;
+    --ax-accent-2: #5ec552;
+    --ax-chip: #eaf7e6;
+    --ax-chip-text: #1b5e20;
+    --ax-chip-border: #b9dcb1;
+    --ax-heading-bg: #e7f6e1;
+    margin-top: 0.75rem;
   }
 
-  /* Hero replaced by the unified section-hero component (PR #4). */
-
-  .approach-entry-mode-switch {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 0.55rem;
-    margin: 0 0 1.5rem;
-  }
-
-  .approach-entry-mode-btn {
-    align-items: flex-start;
-    background: var(--brand-paper);
-    border: 1px solid var(--brand-violet-18);
-    border-radius: 10px;
-    color: inherit;
-    cursor: pointer;
-    display: flex;
-    flex-direction: column;
-    font: inherit;
-    gap: 0.15rem;
-    padding: 0.6rem 0.75rem;
-    text-align: left;
-    transition:
-      background 0.18s ease,
-      border-color 0.18s ease;
-    width: 100%;
-  }
-
-  .approach-entry-mode-btn:hover,
-  .approach-entry-mode-btn:focus-visible {
-    background: var(--brand-violet-08);
-    border-color: var(--brand-violet-46);
-    outline: none;
-  }
-
-  .approach-entry-mode-btn.active {
-    background: var(--brand-violet-08);
-    border-color: var(--brand-violet-46);
-    cursor: default;
-  }
-
-  .approach-entry-mode-name {
-    color: var(--brand-ink);
-    font-family: "Libre Caslon Text", "Iowan Old Style", "Palatino Linotype", Georgia, "Times New Roman", serif;
-    font-size: 0.95rem;
-    font-weight: 500;
-  }
-
-  .approach-entry-mode-desc {
-    color: var(--brand-muted);
-    font-size: 0.85rem;
-    line-height: 1.35;
-  }
-
-  .approach-entry-panel {
-    display: none;
-    border: 1px solid var(--app-border);
+  .approaches-explorer-hero {
+    border: 1px solid var(--ax-border);
     border-radius: 12px;
-    background: #fbfffa;
-    padding: 0.85rem;
+    padding: 0.92rem 1rem;
+    background:
+      radial-gradient(circle at 0% 0%, rgba(146, 239, 128, 0.24), transparent 54%),
+      radial-gradient(circle at 100% 100%, rgba(94, 197, 82, 0.18), transparent 58%),
+      var(--ax-surface);
   }
 
-  .approach-entry-panel.active {
-    display: block;
+  .approaches-explorer-text {
+    margin: 0;
+    color: var(--ax-muted);
   }
 
-  .approach-entry-explorer {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 0.75rem;
+  .approaches-explorer-stats {
+    margin: 0.48rem 0 0;
+    color: var(--ax-muted);
+    font-size: 0.92rem;
+    font-weight: 600;
   }
 
-  .approach-entry-dim-nav {
-    border: 1px solid var(--app-border);
-    border-radius: 10px;
-    padding: 0.7rem;
-    background: #f7fdf4;
+  .approaches-explorer-stats strong {
+    color: var(--ax-accent);
   }
 
-  .approach-entry-dim-nav h3 {
-    margin: 0 0 0.5rem;
-    color: var(--approaches-text-color);
-    font-size: 1.05rem;
+  .approaches-explorer-panel {
+    margin-top: 0.72rem;
+    border: 1px solid var(--ax-border);
+    border-radius: 12px;
+    background: #fff;
+    padding: 0.78rem 0.82rem;
   }
 
-  .approach-entry-dim-chips {
+  .approaches-explorer-head {
     display: flex;
-    flex-wrap: wrap;
-    gap: 0.35rem;
-  }
-
-  .approach-entry-dim-chip {
-    border: 1px solid rgba(27, 94, 32, 0.28);
-    border-radius: 999px;
-    background: #ffffff;
-    color: var(--approaches-text-color);
-    font-size: 0.8rem;
-    font-weight: 700;
-    padding: 0.24rem 0.62rem;
-    cursor: pointer;
-    text-transform: lowercase;
-  }
-
-  .approach-entry-dim-chip.active {
-    background: var(--approaches-soft-background-color);
-  }
-
-  .approach-entry-dim-chip span {
-    margin-left: 0.15rem;
-    font-size: 0.8em;
-  }
-
-  .approach-entry-results-pane {
-    border: 1px solid var(--app-border);
-    border-radius: 10px;
-    padding: 0.7rem;
-    background: #ffffff;
-    min-width: 0;
-    overflow: hidden;
-  }
-
-  .approach-entry-results-block {
-    display: none;
-  }
-
-  .approach-entry-results-block.active {
-    display: block;
-  }
-
-  .approach-entry-results-head {
-    display: flex;
-    flex-wrap: wrap;
     justify-content: space-between;
     align-items: baseline;
-    gap: 0.4rem;
-    margin-bottom: 0.45rem;
+    gap: 0.42rem;
+    margin-bottom: 0.55rem;
   }
 
-  .approach-entry-results-head h3 {
+  .approaches-explorer-head h2 {
     margin: 0;
-    color: var(--approaches-text-color);
-    font-size: 1.05rem;
-    text-transform: lowercase;
-    min-width: 0;
+    color: var(--ax-text);
+    font-size: 1.04rem;
   }
 
-  .approach-entry-results-head span {
-    color: var(--muted-text-2);
+  .approaches-explorer-head span {
+    color: var(--ax-muted);
     font-size: 0.84rem;
-    min-width: 0;
-    overflow-wrap: anywhere;
   }
 
-  .approach-entry-approach-list {
+  .approaches-explorer-facets,
+  .approaches-explorer-letters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.42rem;
+  }
+
+  .approaches-facet-chip,
+  .approaches-letter-chip {
+    border: 1px solid var(--ax-chip-border);
+    border-radius: 999px;
+    background: var(--ax-chip);
+    color: var(--ax-chip-text);
+    font-size: 0.82rem;
+    font-weight: 700;
+    padding: 0.22rem 0.62rem;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.24rem;
+  }
+
+  .approaches-facet-chip.active {
+    border-color: transparent;
+    background: linear-gradient(180deg, #b9f0ac, var(--ax-accent-2));
+    color: #0d3b09;
+  }
+
+  .approaches-count {
+    font-size: 0.8em;
+    opacity: 0.85;
+  }
+
+  .approaches-explorer-results {
+    display: grid;
+    gap: 0.68rem;
+  }
+
+  .approaches-fallback-panel {
+    margin-top: 0.72rem;
+  }
+
+  .approaches-fallback-letters {
+    margin-bottom: 0.62rem;
+  }
+
+  .approaches-fallback-list {
+    border: 1px solid var(--ax-border);
+    border-radius: 10px;
+    overflow: hidden;
+    background: #fff;
+  }
+
+  .approaches-letter-section {
+    border: 1px solid var(--ax-border);
+    border-radius: 10px;
+    overflow: hidden;
+    background: #fff;
+  }
+
+  .approaches-letter-heading {
+    margin: 0;
+    padding: 0.54rem 0.76rem;
+    background: var(--ax-heading-bg);
+    color: var(--ax-text);
+    font-size: 1rem;
+    border-bottom: 1px solid var(--ax-border);
+    scroll-margin-top: 0.8rem;
+  }
+
+  .approaches-letter-list {
+    list-style: none;
     margin: 0;
     padding: 0;
   }
 
-  .approach-entry-approach-list li {
-    border-bottom: 1px solid rgba(56, 133, 50, 0.2);
-    padding: 0.5rem 0.2rem 0.55rem;
+  .approaches-item {
+    padding: 0.68rem 0.76rem;
+    border-top: 1px solid #eaf3e6;
+  }
+
+  .approaches-item:first-child {
+    border-top: 0;
+  }
+
+  .approaches-item-title {
     margin: 0;
-    min-width: 0;
+    font-size: 1.12rem;
+    line-height: 1.28;
+    color: var(--ax-text);
   }
 
-  .approach-entry-approach-list li:last-child {
-    border-bottom: 0;
-  }
-
-  .approach-entry-approach-list a {
-    color: var(--quality-text-color);
+  .approaches-item-title a {
+    color: var(--ax-accent);
     text-decoration: none;
     font-weight: 700;
     display: inline-flex;
-    align-items: flex-start;
+    align-items: baseline;
     gap: 0.35rem;
-    max-width: 100%;
-    white-space: normal;
-    overflow-wrap: anywhere;
-    word-break: break-word;
   }
 
-  .approach-entry-approach-list a .as-bullet {
-    color: var(--approaches-text-color);
+  .approaches-item-title a:hover {
+    text-decoration: underline;
+  }
+
+  .approaches-item-title .as-bullet {
+    color: var(--ax-accent);
     flex: 0 0 auto;
-    margin-top: 0.15rem;
   }
 
-  .approach-entry-inline {
-    color: var(--muted-text-2);
+  .approaches-item-meta {
+    margin-top: 0.22rem;
+    color: var(--ax-muted);
     font-size: 0.83rem;
-    margin-top: 0.18rem;
-    max-width: 100%;
-    white-space: normal;
-    overflow-wrap: anywhere;
-    word-break: break-word;
-  }
-
-  .approach-entry-empty {
-    color: var(--muted-text-2);
-    margin: 0.55rem 0 0.15rem;
-    font-size: 0.9rem;
-  }
-
-  .approach-entry-dimlist-heading {
-    margin: 0 0 0.7rem;
-    color: var(--approaches-text-color) !important;
-    font-size: 1.35rem;
-  }
-
-  .approach-entry-tag-pills {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.52rem;
-    margin-bottom: 0.85rem;
+    gap: 0.7rem;
   }
 
-  .approach-entry-tag-pill {
-    display: inline-block;
-    border-radius: 20px;
-    background: var(--approaches-background-color);
-    color: var(--approaches-text-color);
-    font-weight: 800;
-    font-size: 0.95rem;
-    padding: 0.28rem 0.82rem;
-    border: 1px solid rgba(27, 94, 32, 0.16);
-    text-transform: lowercase;
-    text-decoration: none;
-    transition: transform 0.14s ease, box-shadow 0.14s ease;
-  }
-
-  .approach-entry-tag-pill:visited {
-    color: var(--approaches-text-color);
-  }
-
-  .approach-entry-tag-pill:hover,
-  .approach-entry-tag-pill:focus-visible {
-    transform: translateY(-1px);
-    box-shadow: 0 3px 8px rgba(21, 56, 18, 0.14);
-  }
-
-  .approach-entry-tag-pill:focus-visible {
-    outline: 2px solid rgba(44, 120, 38, 0.45);
-    outline-offset: 2px;
-  }
-
-  .approach-entry-tag-pill small {
-    font-size: 0.8em;
-    margin-left: 0.2rem;
-  }
-
-  .approach-entry-dimlist-section {
-    margin-bottom: 0.85rem;
-  }
-
-  .approach-entry-dimlist-title {
-    margin: 0;
-    background: var(--approaches-soft-background-color);
-    color: var(--approaches-text-color);
-    border-radius: 0;
-    padding: 0.6rem 0.82rem;
-    font-size: 1.03rem;
-    text-transform: lowercase;
-    scroll-margin-top: 0.8rem;
-  }
-
-  .approach-entry-search-head {
-    border: 1px solid rgba(27, 94, 32, 0.18);
-    border-radius: 12px;
-    background:
-      linear-gradient(110deg, rgba(146, 239, 128, 0.16), rgba(255, 255, 255, 1)),
-      #fff;
-    padding: 0.72rem;
-    margin-bottom: 0.75rem;
-  }
-
-  .approach-entry-search-head h3 {
-    margin: 0;
-    color: var(--approaches-text-color);
-    font-size: 1.12rem;
-  }
-
-  .approach-entry-search-head p {
-    margin: 0.36rem 0 0.55rem;
-    color: var(--muted-text-2);
-    font-size: 0.9rem;
-  }
-
-  .approach-entry-search-row {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 0.42rem;
-  }
-
-  .approach-entry-search-row input {
-    border: 1px solid rgba(27, 94, 32, 0.25);
-    border-radius: 10px;
-    padding: 0.55rem 0.68rem;
+  .approaches-item-tags {
+    margin-top: 0.25rem;
+    color: var(--ax-muted);
     font-size: 0.95rem;
   }
 
-  .approach-entry-search-row button {
-    border: 1px solid transparent;
-    border-radius: 10px;
-    background: var(--approaches-background-color);
-    color: var(--approaches-text-color);
-    font-size: 0.9rem;
+  .approaches-item-tags .fa-tags {
+    color: var(--ax-accent);
+    margin-right: 0.2rem;
+  }
+
+  .approaches-item-tags a {
+    color: var(--ax-accent);
+    text-decoration: none;
     font-weight: 700;
-    padding: 0.52rem 0.7rem;
-    cursor: pointer;
   }
 
-  .approach-entry-search-suggested {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.32rem;
-    margin-top: 0.5rem;
+  .approaches-item-tags a:hover {
+    text-decoration: underline;
   }
 
-  .approach-entry-search-suggested span {
-    border: 1px solid rgba(27, 94, 32, 0.16);
-    border-radius: 999px;
-    background: #f5fbf4;
-    color: var(--approaches-text-color);
-    font-size: 0.78rem;
-    font-weight: 700;
-    padding: 0.16rem 0.52rem;
+  .approaches-return-top {
+    border-top: 1px solid #eaf3e6;
+    text-align: right;
+    padding: 0.62rem 0.76rem;
   }
 
-  .approach-entry-search-count {
-    margin: 0.5rem 0 0;
-    color: var(--muted-text-2);
-    font-size: 0.86rem;
-  }
-
-  .approach-entry-search-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 0.62rem;
-  }
-
-  .approach-entry-search-card {
-    border: 1px solid rgba(56, 133, 50, 0.24);
-    border-radius: 10px;
-    padding: 0.62rem;
-    background: #fdfffc;
-  }
-
-  .approach-entry-search-card h4 {
-    margin: 0;
-    font-size: 1rem;
-    color: var(--quality-text-color);
-  }
-
-  .approach-entry-search-card h4 a {
-    color: var(--quality-text-color);
+  .approaches-return-top a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.34rem;
+    color: #60666b;
+    font-size: 1.25rem;
     text-decoration: none;
   }
 
-  @media (min-width: 940px) {
-    .approach-entry-explorer {
-      grid-template-columns: 320px 1fr;
-    }
+  .approaches-return-top a:hover {
+    color: #3f5564;
+  }
 
-    .approach-entry-search-row {
-      grid-template-columns: 1fr auto;
-    }
-
-    .approach-entry-search-grid {
-      grid-template-columns: 1fr 1fr;
-    }
+  .approaches-empty {
+    border: 1px dashed var(--ax-border);
+    border-radius: 10px;
+    padding: 1rem 0.82rem;
+    color: var(--ax-muted);
+    background: var(--ax-surface-2);
   }
 </style>
-
-<script>
-  (function () {
-    const modeButtons = document.querySelectorAll(".approach-entry-mode-btn");
-    const panels = document.querySelectorAll(".approach-entry-panel");
-
-    modeButtons.forEach((btn) => {
-      btn.addEventListener("click", () => {
-        const target = btn.dataset.target;
-        modeButtons.forEach((b) => b.classList.remove("active"));
-        panels.forEach((p) => p.classList.remove("active"));
-        btn.classList.add("active");
-        const panel = document.getElementById("approach-entry-panel-" + target);
-        if (panel) panel.classList.add("active");
-      });
-    });
-
-    const dimChips = document.querySelectorAll(".approach-entry-dim-chip");
-    const resultBlocks = document.querySelectorAll(".approach-entry-results-block");
-
-    dimChips.forEach((chip) => {
-      chip.addEventListener("click", () => {
-        const tag = chip.dataset.tag;
-        dimChips.forEach((c) => c.classList.remove("active"));
-        resultBlocks.forEach((b) => b.classList.remove("active"));
-        chip.classList.add("active");
-        const block = document.querySelector('.approach-entry-results-block[data-tag=\"' + tag + '\"]');
-        if (block) block.classList.add("active");
-      });
-    });
-
-    const searchInput = document.getElementById("approach-entry-search-input");
-    const searchButton = document.getElementById("approach-entry-search-btn");
-    const searchCards = document.querySelectorAll(".approach-entry-search-card");
-    const searchCount = document.getElementById("approach-entry-search-count");
-
-    function runSearch() {
-      const query = (searchInput.value || "").toLowerCase().trim();
-      const terms = query.split(/\\s+/).filter(Boolean);
-      let visible = 0;
-
-      searchCards.forEach((card) => {
-        const haystack = (card.dataset.search || "").toLowerCase();
-        const match = terms.length === 0 || terms.every((term) => haystack.indexOf(term) !== -1);
-        card.style.display = match ? "" : "none";
-        if (match) visible += 1;
-      });
-
-      if (searchCount) {
-        searchCount.textContent = visible + " approach" + (visible === 1 ? "" : "es") + " shown";
-      }
-    }
-
-    if (searchButton) searchButton.addEventListener("click", runSearch);
-    if (searchInput) searchInput.addEventListener("input", runSearch);
-    runSearch();
-  })();
-</script>
