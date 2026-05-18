@@ -49,7 +49,7 @@ hide: true
       filters + legend
     </button>
 
-    <div id="full-q-graph-sidebar">
+    <div id="full-q-graph-sidebar" aria-hidden="true" inert>
       <div class="mobile-graph-sheet-head">
         <span class="mobile-graph-sheet-title">Filters and legend</span>
         <button id="mobile-graph-sheet-close" type="button" aria-label="Close controls">close</button>
