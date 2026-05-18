@@ -1,18 +1,17 @@
 import { expect, test } from "@playwright/test";
 
-const REQUIREMENTS_RED = "rgb(255, 179, 179)";
-
-test("requirements entry page layout and key reddish dimension buttons", async ({
+test("requirements entry page layout and key dimension buttons", async ({
   page,
 }) => {
   await page.goto("/requirements/");
 
-  const headerPanel = page.locator(".panel.requirements-header").first();
+  const headerPanel = page
+    .locator('.section-hero[data-section="requirements"]')
+    .first();
   await expect(headerPanel).toBeVisible();
-  await expect(headerPanel).toHaveCSS("background-color", REQUIREMENTS_RED);
 
   await expect(
-    page.getByRole("heading", { level: 1, name: "Quality Requirements" })
+    page.getByRole("heading", { level: 1, name: "Example Requirements" })
   ).toBeVisible();
 
   const sectionHeading = page.getByRole("heading", {
@@ -21,7 +20,9 @@ test("requirements entry page layout and key reddish dimension buttons", async (
   });
   await expect(sectionHeading).toBeVisible();
 
-  const dimensionsSection = sectionHeading.locator("xpath=following-sibling::div[1]");
+  const dimensionsSection = sectionHeading.locator(
+    "xpath=following-sibling::div[1]"
+  );
   const efficientButton = dimensionsSection.locator(
     'a.hov.tags.req:has-text("efficient")'
   );
@@ -34,7 +35,4 @@ test("requirements entry page layout and key reddish dimension buttons", async (
 
   await expect(efficientButton.locator("span")).toContainText(/^\d+$/);
   await expect(reliableButton.locator("span")).toContainText(/^\d+$/);
-
-  await expect(efficientButton).toHaveCSS("background-color", REQUIREMENTS_RED);
-  await expect(reliableButton).toHaveCSS("background-color", REQUIREMENTS_RED);
 });

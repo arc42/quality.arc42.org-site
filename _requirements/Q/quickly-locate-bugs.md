@@ -5,11 +5,11 @@ related: [efficiency, maintainability]
 permalink: /requirements/quickly-locate-bugs
 ---
 
-#### Trigger
+### Trigger
 
 Developers, testers or build system execute automatic test cases (unit or integration tests) and a test fails.
 
-#### Acceptance Criteria
+### Acceptance Criteria
 
 - Developer can locate cause of error in less than 10 minutes on average based on error and/or log messages
 - Error messages provide sufficient information for quick diagnosis

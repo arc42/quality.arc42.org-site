@@ -1,0 +1,19 @@
+# _data/tag-aliases.yml
+# Single source of truth for mapping tag slugs (used on qualities,
+# requirements, approaches) to standards `categories` values.
+#
+# Qualities/requirements/approaches classify by tag slug (`secure`,
+# `safe`, `usable`, `reliable`, ...). Standards classify by topical
+# `categories` (`security`, `safety`, `usability`, `reliability`, ...).
+# This map bridges the two vocabularies wherever a tag page needs to
+# count or list its related standards.
+#
+# Liquid usage:
+#   {% assign category = site.data.tag-aliases[tag_slug] | default: tag_slug %}
+#
+# Only tags whose category name differs from the slug need an entry.
+# Unmapped tags fall through to the tag slug itself.
+secure: security
+safe: safety
+usable: usability
+reliable: reliability

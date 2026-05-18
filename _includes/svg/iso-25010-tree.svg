@@ -1,0 +1,258 @@
+<svg width="100%" height="auto" viewBox="0 0 1100 2460" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="font-family: 'Atkinson Hyperlegible Next', sans-serif;">
+  <style>
+    .node:hover rect { fill: #008ebc !important; cursor: pointer; }
+    text { user-select: none; }
+  </style>
+  <a xlink:href="{{ '/articles/iso-25010-update-2023' | prepend: site.baseurl }}">
+  <g class="node root" transform="translate(20, 1000)">
+    <rect width="200" height="100" rx="10" ry="10" style="fill:#00B8F5;stroke:#808080;stroke-width:2" />
+    <text x="100" y="45" text-anchor="middle" style="fill:white;font-weight:bold;font-size:24px;">ISO 25010</text>
+    <text x="100" y="75" text-anchor="middle" style="fill:white;font-weight:bold;font-size:24px;">-2023</text>
+  </g>
+</a><path d="M220,1050 L300,125" style="stroke:#d3d3d3;stroke-width:2;fill:none" /><a xlink:href="{{ '/qualities/functional-suitability' | prepend: site.baseurl }}">
+    <g class="node characteristic" transform="translate(300, 95)">
+      <rect width="300" height="60" rx="30" ry="30" style="fill:#00B8F5;stroke:#808080;stroke-width:2" />
+      <text x="150" y="35" text-anchor="middle" style="fill:white;font-weight:bold;font-size:18px;">3.1 Functional suitablility</text>
+    </g>
+  </a><path d="M600,125 L700,65" style="stroke:#d3d3d3;stroke-width:2;fill:none" /><a xlink:href="{{ '/qualities/functional-completeness' | prepend: site.baseurl }}">
+      <g class="node sub-characteristic" transform="translate(700, 50)">
+        <rect width="280" height="30" rx="15" ry="15" style="fill:#00B8F5;stroke:#808080;stroke-width:2" />
+        <text x="140" y="19" text-anchor="middle" style="fill:white;font-weight:bold;font-size:13px;">3.1.1 Functional completeness</text>
+      </g>
+    </a><path d="M600,125 L700,115" style="stroke:#d3d3d3;stroke-width:2;fill:none" /><a xlink:href="{{ '/qualities/functional-correctness' | prepend: site.baseurl }}">
+      <g class="node sub-characteristic" transform="translate(700, 100)">
+        <rect width="280" height="30" rx="15" ry="15" style="fill:#00B8F5;stroke:#808080;stroke-width:2" />
+        <text x="140" y="19" text-anchor="middle" style="fill:white;font-weight:bold;font-size:13px;">3.1.2 Functional correctness</text>
+      </g>
+    </a><path d="M600,125 L700,165" style="stroke:#d3d3d3;stroke-width:2;fill:none" /><a xlink:href="{{ '/qualities/functional-appropriateness' | prepend: site.baseurl }}">
+      <g class="node sub-characteristic" transform="translate(700, 150)">
+        <rect width="280" height="30" rx="15" ry="15" style="fill:#00B8F5;stroke:#808080;stroke-width:2" />
+        <text x="140" y="19" text-anchor="middle" style="fill:white;font-weight:bold;font-size:13px;">3.1.3 Functional appropriateness</text>
+      </g>
+    </a><path d="M220,1050 L300,315" style="stroke:#d3d3d3;stroke-width:2;fill:none" /><a xlink:href="{{ '/qualities/performance' | prepend: site.baseurl }}">
+    <g class="node characteristic" transform="translate(300, 285)">
+      <rect width="300" height="60" rx="30" ry="30" style="fill:#00B8F5;stroke:#808080;stroke-width:2" />
+      <text x="150" y="35" text-anchor="middle" style="fill:white;font-weight:bold;font-size:18px;">3.2 Performance efficiency</text>
+    </g>
+  </a><path d="M600,315 L700,255" style="stroke:#d3d3d3;stroke-width:2;fill:none" /><a xlink:href="{{ '/qualities/time-behaviour' | prepend: site.baseurl }}">
+      <g class="node sub-characteristic" transform="translate(700, 240)">
+        <rect width="280" height="30" rx="15" ry="15" style="fill:#00B8F5;stroke:#808080;stroke-width:2" />
+        <text x="140" y="19" text-anchor="middle" style="fill:white;font-weight:bold;font-size:13px;">3.2.1 Time behaviour</text>
+      </g>
+    </a><path d="M600,315 L700,305" style="stroke:#d3d3d3;stroke-width:2;fill:none" /><a xlink:href="{{ '/qualities/resource-utilization' | prepend: site.baseurl }}">
+      <g class="node sub-characteristic" transform="translate(700, 290)">
+        <rect width="280" height="30" rx="15" ry="15" style="fill:#00B8F5;stroke:#808080;stroke-width:2" />
+        <text x="140" y="19" text-anchor="middle" style="fill:white;font-weight:bold;font-size:13px;">3.2.2 Resource utilization</text>
+      </g>
+    </a><path d="M600,315 L700,355" style="stroke:#d3d3d3;stroke-width:2;fill:none" /><a xlink:href="{{ '/qualities/capacity' | prepend: site.baseurl }}">
+      <g class="node sub-characteristic" transform="translate(700, 340)">
+        <rect width="280" height="30" rx="15" ry="15" style="fill:#00B8F5;stroke:#808080;stroke-width:2" />
+        <text x="140" y="19" text-anchor="middle" style="fill:white;font-weight:bold;font-size:13px;">3.2.3 Capacity</text>
+      </g>
+    </a><path d="M220,1050 L300,480" style="stroke:#d3d3d3;stroke-width:2;fill:none" /><a xlink:href="{{ '/qualities/compatibility' | prepend: site.baseurl }}">
+    <g class="node characteristic" transform="translate(300, 450)">
+      <rect width="300" height="60" rx="30" ry="30" style="fill:#00B8F5;stroke:#808080;stroke-width:2" />
+      <text x="150" y="35" text-anchor="middle" style="fill:white;font-weight:bold;font-size:18px;">3.3 Compatibility</text>
+    </g>
+  </a><path d="M600,480 L700,445" style="stroke:#d3d3d3;stroke-width:2;fill:none" /><a xlink:href="{{ '/qualities/co-existence' | prepend: site.baseurl }}">
+      <g class="node sub-characteristic" transform="translate(700, 430)">
+        <rect width="280" height="30" rx="15" ry="15" style="fill:#00B8F5;stroke:#808080;stroke-width:2" />
+        <text x="140" y="19" text-anchor="middle" style="fill:white;font-weight:bold;font-size:13px;">3.3.1 Co-existence</text>
+      </g>
+    </a><path d="M600,480 L700,495" style="stroke:#d3d3d3;stroke-width:2;fill:none" /><a xlink:href="{{ '/qualities/interoperability' | prepend: site.baseurl }}">
+      <g class="node sub-characteristic" transform="translate(700, 480)">
+        <rect width="280" height="30" rx="15" ry="15" style="fill:#00B8F5;stroke:#808080;stroke-width:2" />
+        <text x="140" y="19" text-anchor="middle" style="fill:white;font-weight:bold;font-size:13px;">3.3.2 Interoperability</text>
+      </g>
+    </a><path d="M220,1050 L300,770" style="stroke:#d3d3d3;stroke-width:2;fill:none" /><a xlink:href="{{ '/qualities/interaction-capability' | prepend: site.baseurl }}">
+    <g class="node characteristic" transform="translate(300, 740)">
+      <rect width="300" height="60" rx="30" ry="30" style="fill:#00B8F5;stroke:#808080;stroke-width:2" />
+      <text x="150" y="35" text-anchor="middle" style="fill:white;font-weight:bold;font-size:18px;">3.4 Interaction capability</text>
+    </g>
+  </a><path d="M600,770 L700,585" style="stroke:#d3d3d3;stroke-width:2;fill:none" /><a xlink:href="{{ '/qualities/appropriateness-recognizability' | prepend: site.baseurl }}">
+      <g class="node sub-characteristic" transform="translate(700, 570)">
+        <rect width="280" height="30" rx="15" ry="15" style="fill:#00B8F5;stroke:#808080;stroke-width:2" />
+        <text x="140" y="19" text-anchor="middle" style="fill:white;font-weight:bold;font-size:13px;">3.4.1 Appropriateness recognizability</text>
+      </g>
+    </a><path d="M600,770 L700,635" style="stroke:#d3d3d3;stroke-width:2;fill:none" /><a xlink:href="{{ '/qualities/learnability' | prepend: site.baseurl }}">
+      <g class="node sub-characteristic" transform="translate(700, 620)">
+        <rect width="280" height="30" rx="15" ry="15" style="fill:#00B8F5;stroke:#808080;stroke-width:2" />
+        <text x="140" y="19" text-anchor="middle" style="fill:white;font-weight:bold;font-size:13px;">3.4.2 Learnability</text>
+      </g>
+    </a><path d="M600,770 L700,685" style="stroke:#d3d3d3;stroke-width:2;fill:none" /><a xlink:href="{{ '/qualities/operability' | prepend: site.baseurl }}">
+      <g class="node sub-characteristic" transform="translate(700, 670)">
+        <rect width="280" height="30" rx="15" ry="15" style="fill:#00B8F5;stroke:#808080;stroke-width:2" />
+        <text x="140" y="19" text-anchor="middle" style="fill:white;font-weight:bold;font-size:13px;">3.4.3 Operability</text>
+      </g>
+    </a><path d="M600,770 L700,735" style="stroke:#d3d3d3;stroke-width:2;fill:none" /><a xlink:href="{{ '/qualities/user-error-protection' | prepend: site.baseurl }}">
+      <g class="node sub-characteristic" transform="translate(700, 720)">
+        <rect width="280" height="30" rx="15" ry="15" style="fill:#00B8F5;stroke:#808080;stroke-width:2" />
+        <text x="140" y="19" text-anchor="middle" style="fill:white;font-weight:bold;font-size:13px;">3.4.4 User error protection</text>
+      </g>
+    </a><path d="M600,770 L700,785" style="stroke:#d3d3d3;stroke-width:2;fill:none" /><a xlink:href="{{ '/qualities/user-engagement' | prepend: site.baseurl }}">
+      <g class="node sub-characteristic" transform="translate(700, 770)">
+        <rect width="280" height="30" rx="15" ry="15" style="fill:#00B8F5;stroke:#808080;stroke-width:2" />
+        <text x="140" y="19" text-anchor="middle" style="fill:white;font-weight:bold;font-size:13px;">3.4.5 User engagement</text>
+      </g>
+    </a><path d="M600,770 L700,835" style="stroke:#d3d3d3;stroke-width:2;fill:none" /><a xlink:href="{{ '/qualities/inclusivity' | prepend: site.baseurl }}">
+      <g class="node sub-characteristic" transform="translate(700, 820)">
+        <rect width="280" height="30" rx="15" ry="15" style="fill:#00B8F5;stroke:#808080;stroke-width:2" />
+        <text x="140" y="19" text-anchor="middle" style="fill:white;font-weight:bold;font-size:13px;">3.4.6 Inclusivity</text>
+      </g>
+    </a><path d="M600,770 L700,885" style="stroke:#d3d3d3;stroke-width:2;fill:none" /><a xlink:href="{{ '/qualities/user-assistance' | prepend: site.baseurl }}">
+      <g class="node sub-characteristic" transform="translate(700, 870)">
+        <rect width="280" height="30" rx="15" ry="15" style="fill:#00B8F5;stroke:#808080;stroke-width:2" />
+        <text x="140" y="19" text-anchor="middle" style="fill:white;font-weight:bold;font-size:13px;">3.4.7 User assistance</text>
+      </g>
+    </a><path d="M600,770 L700,935" style="stroke:#d3d3d3;stroke-width:2;fill:none" /><a xlink:href="{{ '/qualities/self-descriptiveness' | prepend: site.baseurl }}">
+      <g class="node sub-characteristic" transform="translate(700, 920)">
+        <rect width="280" height="30" rx="15" ry="15" style="fill:#00B8F5;stroke:#808080;stroke-width:2" />
+        <text x="140" y="19" text-anchor="middle" style="fill:white;font-weight:bold;font-size:13px;">3.4.8 Self-descriptiveness</text>
+      </g>
+    </a><path d="M220,1050 L300,1110" style="stroke:#d3d3d3;stroke-width:2;fill:none" /><a xlink:href="{{ '/qualities/reliability' | prepend: site.baseurl }}">
+    <g class="node characteristic" transform="translate(300, 1080)">
+      <rect width="300" height="60" rx="30" ry="30" style="fill:#00B8F5;stroke:#808080;stroke-width:2" />
+      <text x="150" y="35" text-anchor="middle" style="fill:white;font-weight:bold;font-size:18px;">3.5 Reliability</text>
+    </g>
+  </a><path d="M600,1110 L700,1025" style="stroke:#d3d3d3;stroke-width:2;fill:none" /><a xlink:href="{{ '/qualities/faultlessness' | prepend: site.baseurl }}">
+      <g class="node sub-characteristic" transform="translate(700, 1010)">
+        <rect width="280" height="30" rx="15" ry="15" style="fill:#00B8F5;stroke:#808080;stroke-width:2" />
+        <text x="140" y="19" text-anchor="middle" style="fill:white;font-weight:bold;font-size:13px;">3.5.1 Faultlessness</text>
+      </g>
+    </a><path d="M600,1110 L700,1075" style="stroke:#d3d3d3;stroke-width:2;fill:none" /><a xlink:href="{{ '/qualities/availability' | prepend: site.baseurl }}">
+      <g class="node sub-characteristic" transform="translate(700, 1060)">
+        <rect width="280" height="30" rx="15" ry="15" style="fill:#00B8F5;stroke:#808080;stroke-width:2" />
+        <text x="140" y="19" text-anchor="middle" style="fill:white;font-weight:bold;font-size:13px;">3.5.2 Availability</text>
+      </g>
+    </a><path d="M600,1110 L700,1125" style="stroke:#d3d3d3;stroke-width:2;fill:none" /><a xlink:href="{{ '/qualities/fault-tolerance' | prepend: site.baseurl }}">
+      <g class="node sub-characteristic" transform="translate(700, 1110)">
+        <rect width="280" height="30" rx="15" ry="15" style="fill:#00B8F5;stroke:#808080;stroke-width:2" />
+        <text x="140" y="19" text-anchor="middle" style="fill:white;font-weight:bold;font-size:13px;">3.5.3 Fault tolerance</text>
+      </g>
+    </a><path d="M600,1110 L700,1175" style="stroke:#d3d3d3;stroke-width:2;fill:none" /><a xlink:href="{{ '/qualities/recoverability' | prepend: site.baseurl }}">
+      <g class="node sub-characteristic" transform="translate(700, 1160)">
+        <rect width="280" height="30" rx="15" ry="15" style="fill:#00B8F5;stroke:#808080;stroke-width:2" />
+        <text x="140" y="19" text-anchor="middle" style="fill:white;font-weight:bold;font-size:13px;">3.5.4 Recoverability</text>
+      </g>
+    </a><path d="M220,1050 L300,1400" style="stroke:#d3d3d3;stroke-width:2;fill:none" /><a xlink:href="{{ '/qualities/security' | prepend: site.baseurl }}">
+    <g class="node characteristic" transform="translate(300, 1370)">
+      <rect width="300" height="60" rx="30" ry="30" style="fill:#00B8F5;stroke:#808080;stroke-width:2" />
+      <text x="150" y="35" text-anchor="middle" style="fill:white;font-weight:bold;font-size:18px;">3.6 Security</text>
+    </g>
+  </a><path d="M600,1400 L700,1265" style="stroke:#d3d3d3;stroke-width:2;fill:none" /><a xlink:href="{{ '/qualities/confidentiality' | prepend: site.baseurl }}">
+      <g class="node sub-characteristic" transform="translate(700, 1250)">
+        <rect width="280" height="30" rx="15" ry="15" style="fill:#00B8F5;stroke:#808080;stroke-width:2" />
+        <text x="140" y="19" text-anchor="middle" style="fill:white;font-weight:bold;font-size:13px;">3.6.1 Confidentiality</text>
+      </g>
+    </a><path d="M600,1400 L700,1315" style="stroke:#d3d3d3;stroke-width:2;fill:none" /><a xlink:href="{{ '/qualities/integrity' | prepend: site.baseurl }}">
+      <g class="node sub-characteristic" transform="translate(700, 1300)">
+        <rect width="280" height="30" rx="15" ry="15" style="fill:#00B8F5;stroke:#808080;stroke-width:2" />
+        <text x="140" y="19" text-anchor="middle" style="fill:white;font-weight:bold;font-size:13px;">3.6.2 Integrity</text>
+      </g>
+    </a><path d="M600,1400 L700,1365" style="stroke:#d3d3d3;stroke-width:2;fill:none" /><a xlink:href="{{ '/qualities/non-repudiation' | prepend: site.baseurl }}">
+      <g class="node sub-characteristic" transform="translate(700, 1350)">
+        <rect width="280" height="30" rx="15" ry="15" style="fill:#00B8F5;stroke:#808080;stroke-width:2" />
+        <text x="140" y="19" text-anchor="middle" style="fill:white;font-weight:bold;font-size:13px;">3.6.3 Non-repudiation</text>
+      </g>
+    </a><path d="M600,1400 L700,1415" style="stroke:#d3d3d3;stroke-width:2;fill:none" /><a xlink:href="{{ '/qualities/accountability' | prepend: site.baseurl }}">
+      <g class="node sub-characteristic" transform="translate(700, 1400)">
+        <rect width="280" height="30" rx="15" ry="15" style="fill:#00B8F5;stroke:#808080;stroke-width:2" />
+        <text x="140" y="19" text-anchor="middle" style="fill:white;font-weight:bold;font-size:13px;">3.6.4 Accountability</text>
+      </g>
+    </a><path d="M600,1400 L700,1465" style="stroke:#d3d3d3;stroke-width:2;fill:none" /><a xlink:href="{{ '/qualities/authenticity' | prepend: site.baseurl }}">
+      <g class="node sub-characteristic" transform="translate(700, 1450)">
+        <rect width="280" height="30" rx="15" ry="15" style="fill:#00B8F5;stroke:#808080;stroke-width:2" />
+        <text x="140" y="19" text-anchor="middle" style="fill:white;font-weight:bold;font-size:13px;">3.6.5 Authenticity</text>
+      </g>
+    </a><path d="M600,1400 L700,1515" style="stroke:#d3d3d3;stroke-width:2;fill:none" /><a xlink:href="{{ '/qualities/resistance' | prepend: site.baseurl }}">
+      <g class="node sub-characteristic" transform="translate(700, 1500)">
+        <rect width="280" height="30" rx="15" ry="15" style="fill:#00B8F5;stroke:#808080;stroke-width:2" />
+        <text x="140" y="19" text-anchor="middle" style="fill:white;font-weight:bold;font-size:13px;">3.6.6 Resistance</text>
+      </g>
+    </a><path d="M220,1050 L300,1715" style="stroke:#d3d3d3;stroke-width:2;fill:none" /><a xlink:href="{{ '/qualities/maintainability' | prepend: site.baseurl }}">
+    <g class="node characteristic" transform="translate(300, 1685)">
+      <rect width="300" height="60" rx="30" ry="30" style="fill:#00B8F5;stroke:#808080;stroke-width:2" />
+      <text x="150" y="35" text-anchor="middle" style="fill:white;font-weight:bold;font-size:18px;">3.7 Maintainability</text>
+    </g>
+  </a><path d="M600,1715 L700,1605" style="stroke:#d3d3d3;stroke-width:2;fill:none" /><a xlink:href="{{ '/qualities/modularity' | prepend: site.baseurl }}">
+      <g class="node sub-characteristic" transform="translate(700, 1590)">
+        <rect width="280" height="30" rx="15" ry="15" style="fill:#00B8F5;stroke:#808080;stroke-width:2" />
+        <text x="140" y="19" text-anchor="middle" style="fill:white;font-weight:bold;font-size:13px;">3.7.1 Modularity</text>
+      </g>
+    </a><path d="M600,1715 L700,1655" style="stroke:#d3d3d3;stroke-width:2;fill:none" /><a xlink:href="{{ '/qualities/reusability' | prepend: site.baseurl }}">
+      <g class="node sub-characteristic" transform="translate(700, 1640)">
+        <rect width="280" height="30" rx="15" ry="15" style="fill:#00B8F5;stroke:#808080;stroke-width:2" />
+        <text x="140" y="19" text-anchor="middle" style="fill:white;font-weight:bold;font-size:13px;">3.7.2 Reusability</text>
+      </g>
+    </a><path d="M600,1715 L700,1705" style="stroke:#d3d3d3;stroke-width:2;fill:none" /><a xlink:href="{{ '/qualities/analysability' | prepend: site.baseurl }}">
+      <g class="node sub-characteristic" transform="translate(700, 1690)">
+        <rect width="280" height="30" rx="15" ry="15" style="fill:#00B8F5;stroke:#808080;stroke-width:2" />
+        <text x="140" y="19" text-anchor="middle" style="fill:white;font-weight:bold;font-size:13px;">3.7.3 Analysability</text>
+      </g>
+    </a><path d="M600,1715 L700,1755" style="stroke:#d3d3d3;stroke-width:2;fill:none" /><a xlink:href="{{ '/qualities/modifiability' | prepend: site.baseurl }}">
+      <g class="node sub-characteristic" transform="translate(700, 1740)">
+        <rect width="280" height="30" rx="15" ry="15" style="fill:#00B8F5;stroke:#808080;stroke-width:2" />
+        <text x="140" y="19" text-anchor="middle" style="fill:white;font-weight:bold;font-size:13px;">3.7.4 Modifiability</text>
+      </g>
+    </a><path d="M600,1715 L700,1805" style="stroke:#d3d3d3;stroke-width:2;fill:none" /><a xlink:href="{{ '/qualities/testability' | prepend: site.baseurl }}">
+      <g class="node sub-characteristic" transform="translate(700, 1790)">
+        <rect width="280" height="30" rx="15" ry="15" style="fill:#00B8F5;stroke:#808080;stroke-width:2" />
+        <text x="140" y="19" text-anchor="middle" style="fill:white;font-weight:bold;font-size:13px;">3.7.5 Testability</text>
+      </g>
+    </a><path d="M220,1050 L300,1980" style="stroke:#d3d3d3;stroke-width:2;fill:none" /><a xlink:href="{{ '/qualities/flexibility' | prepend: site.baseurl }}">
+    <g class="node characteristic" transform="translate(300, 1950)">
+      <rect width="300" height="60" rx="30" ry="30" style="fill:#00B8F5;stroke:#808080;stroke-width:2" />
+      <text x="150" y="35" text-anchor="middle" style="fill:white;font-weight:bold;font-size:18px;">3.8 Flexibility</text>
+    </g>
+  </a><path d="M600,1980 L700,1895" style="stroke:#d3d3d3;stroke-width:2;fill:none" /><a xlink:href="{{ '/qualities/adaptability' | prepend: site.baseurl }}">
+      <g class="node sub-characteristic" transform="translate(700, 1880)">
+        <rect width="280" height="30" rx="15" ry="15" style="fill:#00B8F5;stroke:#808080;stroke-width:2" />
+        <text x="140" y="19" text-anchor="middle" style="fill:white;font-weight:bold;font-size:13px;">3.8.1 Adaptability</text>
+      </g>
+    </a><path d="M600,1980 L700,1945" style="stroke:#d3d3d3;stroke-width:2;fill:none" /><a xlink:href="{{ '/qualities/scalability' | prepend: site.baseurl }}">
+      <g class="node sub-characteristic" transform="translate(700, 1930)">
+        <rect width="280" height="30" rx="15" ry="15" style="fill:#00B8F5;stroke:#808080;stroke-width:2" />
+        <text x="140" y="19" text-anchor="middle" style="fill:white;font-weight:bold;font-size:13px;">3.8.2 Scalability</text>
+      </g>
+    </a><path d="M600,1980 L700,1995" style="stroke:#d3d3d3;stroke-width:2;fill:none" /><a xlink:href="{{ '/qualities/installability' | prepend: site.baseurl }}">
+      <g class="node sub-characteristic" transform="translate(700, 1980)">
+        <rect width="280" height="30" rx="15" ry="15" style="fill:#00B8F5;stroke:#808080;stroke-width:2" />
+        <text x="140" y="19" text-anchor="middle" style="fill:white;font-weight:bold;font-size:13px;">3.8.3 Installability</text>
+      </g>
+    </a><path d="M600,1980 L700,2045" style="stroke:#d3d3d3;stroke-width:2;fill:none" /><a xlink:href="{{ '/qualities/replaceability' | prepend: site.baseurl }}">
+      <g class="node sub-characteristic" transform="translate(700, 2030)">
+        <rect width="280" height="30" rx="15" ry="15" style="fill:#00B8F5;stroke:#808080;stroke-width:2" />
+        <text x="140" y="19" text-anchor="middle" style="fill:white;font-weight:bold;font-size:13px;">3.8.4 Replaceability</text>
+      </g>
+    </a><path d="M220,1050 L300,2245" style="stroke:#d3d3d3;stroke-width:2;fill:none" /><a xlink:href="{{ '/qualities/safety' | prepend: site.baseurl }}">
+    <g class="node characteristic" transform="translate(300, 2215)">
+      <rect width="300" height="60" rx="30" ry="30" style="fill:#00B8F5;stroke:#808080;stroke-width:2" />
+      <text x="150" y="35" text-anchor="middle" style="fill:white;font-weight:bold;font-size:18px;">3.9 Safety</text>
+    </g>
+  </a><path d="M600,2245 L700,2135" style="stroke:#d3d3d3;stroke-width:2;fill:none" /><a xlink:href="{{ '/qualities/operational-constraint' | prepend: site.baseurl }}">
+      <g class="node sub-characteristic" transform="translate(700, 2120)">
+        <rect width="280" height="30" rx="15" ry="15" style="fill:#00B8F5;stroke:#808080;stroke-width:2" />
+        <text x="140" y="19" text-anchor="middle" style="fill:white;font-weight:bold;font-size:13px;">3.9.1 Operational constraint</text>
+      </g>
+    </a><path d="M600,2245 L700,2185" style="stroke:#d3d3d3;stroke-width:2;fill:none" /><a xlink:href="{{ '/qualities/risk-identification' | prepend: site.baseurl }}">
+      <g class="node sub-characteristic" transform="translate(700, 2170)">
+        <rect width="280" height="30" rx="15" ry="15" style="fill:#00B8F5;stroke:#808080;stroke-width:2" />
+        <text x="140" y="19" text-anchor="middle" style="fill:white;font-weight:bold;font-size:13px;">3.9.2 Risk identification</text>
+      </g>
+    </a><path d="M600,2245 L700,2235" style="stroke:#d3d3d3;stroke-width:2;fill:none" /><a xlink:href="{{ '/qualities/fail-safe' | prepend: site.baseurl }}">
+      <g class="node sub-characteristic" transform="translate(700, 2220)">
+        <rect width="280" height="30" rx="15" ry="15" style="fill:#00B8F5;stroke:#808080;stroke-width:2" />
+        <text x="140" y="19" text-anchor="middle" style="fill:white;font-weight:bold;font-size:13px;">3.9.3 Fail safe</text>
+      </g>
+    </a><path d="M600,2245 L700,2285" style="stroke:#d3d3d3;stroke-width:2;fill:none" /><a xlink:href="{{ '/qualities/hazard-warning' | prepend: site.baseurl }}">
+      <g class="node sub-characteristic" transform="translate(700, 2270)">
+        <rect width="280" height="30" rx="15" ry="15" style="fill:#00B8F5;stroke:#808080;stroke-width:2" />
+        <text x="140" y="19" text-anchor="middle" style="fill:white;font-weight:bold;font-size:13px;">3.9.4 Hazard warning</text>
+      </g>
+    </a><path d="M600,2245 L700,2335" style="stroke:#d3d3d3;stroke-width:2;fill:none" /><a xlink:href="{{ '/qualities/safe-integration' | prepend: site.baseurl }}">
+      <g class="node sub-characteristic" transform="translate(700, 2320)">
+        <rect width="280" height="30" rx="15" ry="15" style="fill:#00B8F5;stroke:#808080;stroke-width:2" />
+        <text x="140" y="19" text-anchor="middle" style="fill:white;font-weight:bold;font-size:13px;">3.9.5 Safe integration</text>
+      </g>
+    </a>
+</svg>

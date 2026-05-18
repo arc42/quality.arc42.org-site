@@ -5,15 +5,15 @@ related: [throughput, efficiency, performance, capacity]
 permalink: /requirements/data-throughput-for-visual-test-system
 ---
 
-#### Context
+### Context
 
 The system consists of hardware boards that enhance simple webcams with image recognition capabilities. These boards contain proprietary advanced image recognition algorithms embedded in their firmware and are used in applications such as license-plate recognition systems in public parking facilities. A test and verification system is used to validate firmware updates prior to release. The quality requirement pertains to the performance of this firmware test and verification system.
 
-#### Trigger
+### Trigger
 
 An update of the firmware is available, typically including additional functionality or improved recognition performance.
 
-#### Acceptance Criteria
+### Acceptance Criteria
 
 - Test and verification system processes 1000 real-hours of video and image playback in less than 72 hours
 - Minimum playback speed of 14 times real-time maintained (1000 hours / 72 hours ≈ 14)

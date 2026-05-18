@@ -1,0 +1,16 @@
+# Development-specific Jekyll configuration
+# Usage: jekyll serve --config _config.yml,_config_dev.yml
+
+# Disable github-metadata plugin to avoid network calls and speed up build
+plugins:
+  - jekyll-sitemap
+  - jekyll-seo-tag
+  - jemoji
+  - jekyll-paginate
+
+# Faster build settings
+incremental: true
+future: true
+
+# Ensure JEKYLL_ENV is development
+env: development

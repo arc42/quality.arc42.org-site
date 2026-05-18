@@ -5,11 +5,11 @@ related: [anticipated-workplace-environment, usability, interaction-capability]
 permalink: /requirements/usable-on-factory-floor
 ---
 
-#### Requirement
+### Requirement
 
 The interactive system must remain operable for trained production workers under representative factory-floor conditions, including required protective gloves, high ambient noise, and poor or uneven lighting.
 
-#### Acceptance Criteria
+### Acceptance Criteria
 
 - Critical-task completion: in a qualification test with **>= 12 trained operators**, **>= 95%** complete the top **5** operational tasks without assistance within **<= 75 s per task**; scope: representative factory-floor environment with required gloves, ambient noise **>= 80 dB(A)**, and illuminance between **100 and 500 lux**; source: moderated usability test log; horizon: each release affecting UI, input devices, or workflow.
 - Input accuracy: under the same test conditions, the interaction error rate is **<= 2%** across all attempts for the top **5** operational tasks; scope: tap, key, and selection actions required to complete the tested tasks; source: session recordings and task-observation protocol; horizon: each release affecting UI or input devices.

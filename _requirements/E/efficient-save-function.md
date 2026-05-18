@@ -5,11 +5,11 @@ related: [efficiency, time-behaviour, capacity]
 permalink: /requirements/efficient-save-function
 ---
 
-#### Requirement
+### Requirement
 
 User can add articles to shopping cart with immediate confirmation feedback.
 
-#### Acceptance Criteria
+### Acceptance Criteria
 
 - System displays confirmation once article added reliably to cart
 - Article counter above shopping cart icon is incremented

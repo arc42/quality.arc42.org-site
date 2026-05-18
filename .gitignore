@@ -2,7 +2,6 @@
 .sass-cache
 .DS_Store
 _site
-Gemfile.lock
 .jekyll-metadata
 .idea
 vendor
@@ -23,9 +22,8 @@ assets/data
 playwright-report/
 test-results/
 
-# Deciduous database (local)
-.deciduous/
 .junie
 .agents
 .claude
 skills-lock.json
+.vscode

@@ -1,36 +1,17 @@
+{% comment %}
+  approach-header — single-approach detail page header.
+
+  Migrated to the unified section-hero component. The eyebrow "Approach"
+  links back to /approaches/ (replaces the old header-category-link), and
+  the tag chips render in the section-hero chips row.
+{% endcomment %}
 {% assign page = include.page %}
 
-<header>
-    <div class="panel approaches-header">
-        <h1>
-            {% if include.link %}
-            <a class="post-link" href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>
-            {% else %}
-            <i class="fa fa-puzzle-piece"></i> {{ page.title }}
-            {% endif %}
-        </h1>
+{% capture chips_html %}{% for tag in page.tags %}<a class="tag" href="{{ '/tag-' | append: tag | prepend: site.baseurl }}">#{{ tag }}</a>{% endfor %}{% endcapture %}
 
-        <div class="header-taxonomy-row">
-            <ul class="tags">
-                {% assign tags_num = (page.tags | size) %}
-                {% if tags_num > 0 %}
-                <li><i class="fa fa-tags" style="color: var(--approaches-text-color);"></i></li>
-                {% endif %}
-                {% for tag in page.tags %}
-                <li>
-                    <a class="tag" href="{{ '/tag-' | append: tag | prepend: site.baseurl }}">#{{ tag }}</a>
-                </li>
-                {% endfor %}
-            </ul>
-
-            {% include header-category-link.liquid
-              href='/approaches/'
-              value='Approach'
-              icon='fa-sitemap'
-            %}
-        </div>
-
-        <div class="clearfix">
-        </div>
-    </div>
-</header>
+{% include section-hero.liquid
+  section="approaches"
+  title=page.title
+  eyebrow_label="Approach"
+  eyebrow_href="/approaches/"
+  chips_html=chips_html %}

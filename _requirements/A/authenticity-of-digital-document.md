@@ -6,15 +6,15 @@ permalink: /requirements/authenticity-of-digital-document
 source: "This scenario has been created with help from [ChatGPT](https://chat.openai.com) by using the prompt `create a quality scenario to describe an authenticity requirement`."
 ---
 
-#### Context
+### Context
 
 The system operates in an environment where document integrity and trustworthiness are critical. It provides functionality for users to verify the authenticity of digital documents using a robust digital signature mechanism, while maintaining a secure and tamper-proof audit trail for all document-related activities.
 
-#### Trigger
+### Trigger
 
 A user attempts to verify the authenticity of a digital document.
 
-#### Acceptance Criteria
+### Acceptance Criteria
 
 - Digital signature mechanism correctly verifies 100% of unmodified documents
 - Document modifications or tampering detected with 100% accuracy

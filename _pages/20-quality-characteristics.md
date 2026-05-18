@@ -3,6 +3,7 @@ layout: page
 title: Quality Characteristics
 permalink: /qualities/
 order: 20
+no_layout_header: true
 ---
 
 {% assign canonical_qualities = site.qualities | where_exp: "q", "q.alias_of == nil" | sort: "title" %}
@@ -17,19 +18,15 @@ order: 20
 
 <div id="top"></div>
 
+{% capture qualities_meta %}<b>{{ canonical_qualities | size }}</b> qualities, <b>{{ alias_qualities | size }}</b> aliases, across <b>{{ dimension_tags | size }}</b> dimensions.{% endcapture %}
+
+{% include section-hero.liquid
+  section="qualities"
+  title="Quality Characteristics"
+  lede="Definitions, aliases, related qualities, and the standards that back them up. Use dimension filters and A-Z jump links to narrow the list."
+  meta=qualities_meta %}
+
 <section id="qualities-explorer" class="qualities-explorer" data-baseurl="{{ site.baseurl }}">
-  <div class="qualities-explorer-hero">
-    <p class="qualities-explorer-text">
-      Here you find quality characteristics (desirable, expected, or required qualities) of IT systems.
-      Use <strong>dimension filters</strong> and <strong>A-Z jump links</strong> to
-      quickly narrow down this list.
-    </p>
-    <p class="qualities-explorer-stats">
-      We currently explain <strong>{{ canonical_qualities | size }}</strong> canonical qualities, with
-      <strong>{{ alias_qualities | size }}</strong> aliases/synonyms, across
-      <strong>{{ dimension_tags | size }}</strong> dimensions.
-    </p>
-  </div>
 
   <div class="qualities-explorer-panel">
     <div class="qualities-explorer-head">
@@ -174,48 +171,26 @@ order: 20
   {% endfor %}
 ]
 </script>
-<script src="{{ '/assets/js/qualities-explorer.js' | prepend: site.baseurl }}"></script>
+<script defer src="{{ '/assets/js/qualities-explorer.js' | prepend: site.baseurl }}"></script>
 
 <style>
   .qualities-explorer {
     --qx-border: #cddced;
     --qx-surface: #f9fcff;
     --qx-surface-2: #f0f8ff;
-    --qx-text: #214564;
-    --qx-muted: #536b80;
-    --qx-accent: #1675b9;
-    --qx-accent-2: #00b8f5;
+    --qx-text: var(--brand-blue-text);
+    --qx-muted: var(--brand-blue-muted);
+    --qx-accent: var(--brand-blue-accent);
+    --qx-accent-2: var(--brand-blue);
     --qx-chip: #e8f4ff;
-    --qx-chip-text: #1f5e8b;
+    --qx-chip-text: var(--brand-blue-accent);
     --qx-heading-bg: #e9f4ff;
     margin-top: 0.75rem;
   }
 
-  .qualities-explorer-hero {
-    border: 1px solid var(--qx-border);
-    border-radius: 12px;
-    padding: 0.92rem 1rem;
-    background:
-      radial-gradient(circle at 0% 0%, rgba(65, 165, 234, 0.15), transparent 50%),
-      radial-gradient(circle at 100% 100%, rgba(4, 184, 246, 0.13), transparent 52%),
-      var(--qx-surface);
-  }
-
-  .qualities-explorer-text {
-    margin: 0;
-    color: var(--qx-muted);
-  }
-
-  .qualities-explorer-stats {
-    margin: 0.48rem 0 0;
-    color: var(--qx-muted);
-    font-size: 0.92rem;
-    font-weight: 600;
-  }
-
-  .qualities-explorer-stats strong {
-    color: var(--qx-accent);
-  }
+  /* Hero replaced by the unified section-hero component (PR #3 of the
+     hero-unification plan). Hero-specific rules removed; panels and chips
+     below continue to use the local --qx-* tokens. */
 
   .qualities-explorer-panel {
     margin-top: 0.72rem;
@@ -268,9 +243,10 @@ order: 20
   }
 
   .qualities-facet-chip.active {
-    border-color: transparent;
-    background: linear-gradient(180deg, #6dd7ff, var(--qx-accent-2));
-    color: #00395b;
+    background: var(--brand-blue);
+    border-color: var(--brand-blue);
+    box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.08);
+    color: var(--brand-blue-text);
   }
 
   .qualities-count {
@@ -309,7 +285,7 @@ order: 20
     margin: 0;
     padding: 0.54rem 0.76rem;
     background: var(--qx-heading-bg);
-    color: #325979;
+    color: var(--brand-blue-text);
     font-size: 1rem;
     border-bottom: 1px solid var(--qx-border);
     scroll-margin-top: 0.8rem;
@@ -358,7 +334,7 @@ order: 20
   }
 
   .qualities-item.is-alias .qualities-item-title a {
-    color: #5a7388;
+    color: var(--brand-blue-muted);
   }
 
   .qualities-item-meta {
@@ -397,7 +373,7 @@ order: 20
     flex-wrap: wrap;
     align-items: center;
     gap: 0.3rem;
-    color: #607789;
+    color: var(--brand-blue-muted);
     font-size: 0.8rem;
   }
 
@@ -405,7 +381,7 @@ order: 20
     border-radius: 999px;
     border: 1px solid #ccd9e5;
     background: #e9f0f6;
-    color: #647d90;
+    color: var(--brand-blue-muted);
     font-size: 0.68rem;
     font-weight: 700;
     text-transform: uppercase;
@@ -414,7 +390,7 @@ order: 20
   }
 
   .qualities-alias-meta a {
-    color: #4e6a80;
+    color: var(--brand-blue-muted);
     text-decoration: underline;
     text-decoration-style: dotted;
     text-underline-offset: 2px;
@@ -436,7 +412,7 @@ order: 20
   }
 
   .qualities-return-top a:hover {
-    color: #3f5564;
+    color: var(--brand-blue-text);
   }
 
   .qualities-empty {

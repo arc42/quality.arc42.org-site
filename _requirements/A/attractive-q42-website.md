@@ -12,7 +12,7 @@ note: |
   - **[SUS](https://doi.org/10.1201/9781498710411-35)** (Brooke, 1996) — a 10-item questionnaire producing a single score (0–100) for perceived usability. Scores above 68 are considered above average.
 ---
 
-#### Context
+### Context
 
 The quality.arc42.org knowledge base serves software architects and developers who browse
 ~220 quality attributes, ~140 requirements, and an interactive force-directed graph.
@@ -20,11 +20,11 @@ Users typically arrive via search engines and decide within seconds whether the 
 feels trustworthy and worth exploring. Visual appeal directly affects engagement
 and return visits.
 
-#### Trigger
+### Trigger
 
 A new or returning user loads any page of quality.arc42.org on a desktop or mobile browser.
 
-#### Acceptance Criteria
+### Acceptance Criteria
 
 - At least 70% of surveyed users (n >= 50) rate overall visual appeal >= 4 on a
   5-point [Likert scale](https://en.wikipedia.org/wiki/Likert_scale),
@@ -49,7 +49,7 @@ A new or returning user loads any page of quality.arc42.org on a desktop or mobi
   score >= 68 (industry average) across >= 20 users, evaluated annually.
   
 
-#### Monitoring Artifact
+### Monitoring Artifact
 
 Annual UX survey dashboard combining VisAWI scores, AttrakDiff profiles, SUS scores,
 CLS telemetry from PageSpeed Insights, and bounce rate trends from web analytics.

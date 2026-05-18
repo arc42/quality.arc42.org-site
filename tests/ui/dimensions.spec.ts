@@ -1,7 +1,6 @@
 import { expect, test } from "@playwright/test";
 
 const QUALITY_BLUE = "rgb(0, 184, 245)";
-const REQUIREMENT_RED = "rgb(255, 179, 179)";
 
 test("dimensions page renders image and required sections", async ({ page }) => {
   await page.goto("/dimensions/");
@@ -59,7 +58,7 @@ test("dimensions and quality characteristics has blue efficient/flexible buttons
   await expect(flexibleButton).toHaveCSS("background-color", QUALITY_BLUE);
 });
 
-test("dimensions and quality requirements has reddish efficient/flexible buttons with counters", async ({
+test("dimensions and quality requirements has efficient/flexible buttons with counters", async ({
   page,
 }) => {
   await page.goto("/dimensions/");
@@ -83,7 +82,4 @@ test("dimensions and quality requirements has reddish efficient/flexible buttons
 
   await expect(efficientButton.locator("span")).toContainText(/^\d+$/);
   await expect(flexibleButton.locator("span")).toContainText(/^\d+$/);
-
-  await expect(efficientButton).toHaveCSS("background-color", REQUIREMENT_RED);
-  await expect(flexibleButton).toHaveCSS("background-color", REQUIREMENT_RED);
 });

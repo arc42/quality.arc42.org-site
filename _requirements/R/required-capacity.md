@@ -5,11 +5,11 @@ related: [capacity, resource-efficiency]
 permalink: /requirements/respond-to-15000-requests-per-workday
 ---
 
-#### Requirement
+### Requirement
 
 The system must handle the required request volume during normal business operations.
 
-#### Acceptance Criteria
+### Acceptance Criteria
 
 - System responds to 15000 requests per workday (8 hours)
 - Average capacity of 1875 requests per hour maintained

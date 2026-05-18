@@ -5,13 +5,13 @@ related: [non-repudiation, security, auditability, data-integrity, authenticity,
 permalink: /requirements/tamper-evident-digital-signatures
 ---
 
-#### Context
+### Context
 An enterprise Contract Management System (CMS) handles legally binding agreements between multiple parties. To prevent legal disputes, the system must provide irrefutable proof of who signed what and when, ensuring that even system administrators cannot forge or alter signatures after the fact.
 
-#### Trigger
+### Trigger
 A user (Signer) completes the signing workflow for a digital contract.
 
-#### Acceptance Criteria
+### Acceptance Criteria
 
 - Every signature is cryptographically bound to the document content such that **any modification — however small — causes verification to fail**; this is confirmed by automated tests that alter a single byte and assert rejection
 - Each signature is bound to an **independent, trusted timestamp** (sourced outside the CMS) accurate to **≤ 1 second**; the timestamp remains verifiable even if the CMS is unavailable

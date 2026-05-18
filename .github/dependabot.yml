@@ -1,0 +1,48 @@
+# Dependabot config.
+#
+# This file fully overrides the repo-level Dependabot defaults, so every
+# ecosystem that should be scanned must be listed here — adding a file
+# without listing npm/pip would silently disable the previously
+# auto-detected scans.
+#
+# Coverage:
+#   - npm           (root package.json)
+#   - pip           (/_scripts/optimize-relations/requirements.txt)
+#   - bundler       (root Gemfile)            — newly covered
+#   - github-actions (.github/workflows/*)    — newly covered
+#
+# Auto-merge is intentionally NOT configured here. Re-evaluate once a
+# pull_request CI workflow runs tests (see review item A2).
+
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: "/"
+    schedule:
+      interval: weekly
+    labels: ["dependencies", "npm"]
+    groups:
+      dev-patches:
+        dependency-type: development
+        update-types: ["patch", "minor"]
+
+  - package-ecosystem: pip
+    directory: "/_scripts/optimize-relations"
+    schedule:
+      interval: weekly
+    labels: ["dependencies", "pip"]
+
+  - package-ecosystem: bundler
+    directory: "/"
+    schedule:
+      interval: weekly
+    labels: ["dependencies", "bundler"]
+
+  - package-ecosystem: github-actions
+    directory: "/"
+    schedule:
+      interval: weekly
+    labels: ["dependencies", "github-actions"]
+    groups:
+      actions:
+        patterns: ["*"]

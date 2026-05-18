@@ -20,7 +20,7 @@ jobs:
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 3.1  # or match your local Ruby version
+          ruby-version: '3.3'  # keep in sync with _docker/jekyll/Dockerfile
           bundler-cache: true
           cache-version: 0
 
@@ -30,7 +30,7 @@ jobs:
       - name: Install Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '22'  # or match your local Node.js version
+          node-version: '22.13.1'  # keep in sync with _docker/esbuild/Dockerfile, netlify.toml, package.json volta
           cache: 'npm'
 
       - name: Install npm dependencies

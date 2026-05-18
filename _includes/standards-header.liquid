@@ -1,37 +1,17 @@
+{% comment %}
+  standards-header — single-standard detail page header.
+
+  Migrated to the unified section-hero component. The eyebrow "Standard"
+  links back to /standards/ (replaces the old header-category-link).
+  Standards taxonomy uses `categories` (not `tags`), rendered as chips.
+{% endcomment %}
 {% assign page = include.page %}
 
-<header>
-  <div class="panel standard-header" id="standard-header">
-    <h1>
-      {% if include.link %}
-         <a class="post-link" href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>
-      {% else %}
-         {{ page.title }}
-      {% endif %}
-    </h1>
+{% capture chips_html %}{% for category in page.categories %}<span class="category">#{{ category }}</span>{% endfor %}{% endcapture %}
 
-    <div class="header-taxonomy-row">
-      <ul class="tags">
-        {% assign categories_num = (page.categories | size) %}
-        {% if categories_num > 0 %}
-           <li><i class="fa fa-tags" style="color: var(--standard-text-color);"> </i></li>
-        {% endif %}
-        {% for category in page.categories %}
-           <li>
-             <span class="category">#{{ category }}</span>
-            </li>
-        {% endfor %}
-      </ul>
-
-      {% include header-category-link.liquid
-        href='/standards/'
-        value='Standard'
-        icon='fa-sitemap'
-      %}
-    </div>
- 
-        <div class="clearfix"></div>
-    </div>
-
-
-</header>
+{% include section-hero.liquid
+  section="standards"
+  title=page.title
+  eyebrow_label="Standard"
+  eyebrow_href="/standards/"
+  chips_html=chips_html %}

@@ -5,15 +5,15 @@ related: [usability, consistency, user-experience, user-assistance, interaction-
 permalink: /requirements/consistent-keyboard-shortcuts
 ---
 
-#### Context
+### Context
 
 The system provides keyboard shortcuts to select and execute functions within the graphical user interface, supporting keyboard-only navigation across all parts of the interface.
 
-#### Trigger
+### Trigger
 
 A user navigates the graphical interface using only a keyboard, without a mouse or trackpad.
 
-#### Acceptance Criteria
+### Acceptance Criteria
 
 - User can perform all actions with keyboard alone
 - Keyboard shortcuts are consistent throughout the system

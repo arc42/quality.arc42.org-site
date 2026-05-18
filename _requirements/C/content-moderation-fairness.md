@@ -5,15 +5,15 @@ related: [fairness, bias-mitigation, transparency, accountability]
 permalink: /requirements/content-moderation-fairness
 ---
 
-#### Context
+### Context
 
 An automated content moderation system classifies user posts for policy violations across multiple languages and regions. Prior studies show performance disparities by language, dialect, and demographic proxies. The system must ensure equitable error rates and transparent processes.
 
-#### Trigger
+### Trigger
 
 Trust & Safety moderation service processes content for platform operations and policy teams.
 
-#### Acceptance Criteria
+### Acceptance Criteria
 
 - False positive rate (FPR) and false negative rate (FNR) gaps ≤ 2.0 percentage points between any language/dialect groups on stratified benchmark
 - Macro-averaged F1 within ±3 points across languages/regions with published per-group PR curves

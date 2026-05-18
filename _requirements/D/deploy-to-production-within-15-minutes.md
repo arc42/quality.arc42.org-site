@@ -5,16 +5,16 @@ related: [deployability, releasability, testability]
 permalink: /requirements/deploy-to-production-within-15-minutes
 ---
 
-#### Context
+### Context
 
 A multi-tenant SaaS platform delivers continuous updates to hundreds of enterprise customers.
 The development team practices trunk-based development and aims to minimise the gap between code merge and live deployment to accelerate feedback and reduce integration risk.
 
-#### Trigger
+### Trigger
 
 A developer merges a feature branch into the main branch and all CI pipeline checks pass (unit tests, integration tests, static analysis, security scan).
 
-#### Acceptance Criteria
+### Acceptance Criteria
 
 - The end-to-end pipeline — from merge to full production rollout — completes in **≤ 15 minutes** (p95 over 30 consecutive deployments)
 - Deployments use a rolling or blue/green strategy; **zero requests return HTTP 5xx** attributable to the deployment process during rollout

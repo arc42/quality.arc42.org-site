@@ -5,15 +5,15 @@ related: [availability, reliability]
 permalink: /requirements/unavailability-max-2-minutes
 ---
 
-#### Context
+### Context
 
 If an expert system becomes unavailable, the employer has to pay the employees even though they cannot work. This is especially a problem in countries with high labour costs.
 
-#### Trigger
+### Trigger
 
 User intends to perform any operation within the expert system.
 
-#### Acceptance Criteria
+### Acceptance Criteria
 
 - User never blocked longer than 2 minutes at any time due to system unavailability
 - Maximum system downtime per incident: 2 minutes

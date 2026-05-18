@@ -5,16 +5,16 @@ related: [data-integrity, transactionality, consistency, correctness]
 permalink: /requirements/financial-transactions-are-acid-compliant
 ---
 
-#### Context
+### Context
 
 A core banking system processes payment transactions, account transfers, and balance updates across multiple services and databases.
 Regulatory requirements and customer trust demand that no financial data is ever lost, duplicated, or left in a partial state — even during concurrent load, infrastructure failures, or network partitions.
 
-#### Trigger
+### Trigger
 
 A payment or account-transfer operation is initiated by a user, an automated process, or an external payment network (e.g., SWIFT, SEPA).
 
-#### Acceptance Criteria
+### Acceptance Criteria
 
 - Every financial transaction is **fully ACID-compliant**: either all steps (debit, credit, audit log entry) commit atomically, or all are rolled back within **2 seconds** of failure detection — no partial transaction is ever visible to users or downstream systems
 - Under concurrent load of **500 simultaneous transactions per second**, zero data anomalies (phantom reads, dirty reads, lost updates) are detected in automated concurrency tests using ≥ 10,000-iteration stress runs

@@ -5,11 +5,11 @@ related: [mean-time-between-failures, stability, reliability, availability, high
 permalink: /requirements/long-running-without-reboot
 ---
 
-#### Requirement
+### Requirement
 
 The system must run continuously without requiring operating system reboots.
 
-#### Acceptance Criteria
+### Acceptance Criteria
 
 - System operates continuously for more than 12 hours without OS reboot
 - No OS reboot required during extended operation periods

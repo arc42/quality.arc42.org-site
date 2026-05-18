@@ -1,38 +1,38 @@
 import { expect, test } from "@playwright/test";
 
-test("home page renders hero, graph entry point, and dimensions table", async ({
+test("home page renders hero, directory entries, and graph section", async ({
   page,
 }) => {
   await page.goto("/");
 
   await expect(
     page.getByRole("heading", {
-      level: 2,
-      name: "System and Product Quality, Made Easy",
+      level: 1,
+      name: "Quality drives Architecture",
     })
   ).toBeVisible();
 
-  const modeGrid = page.locator(".home-new-mode-grid");
-  await expect(modeGrid).toBeVisible();
+  const directory = page.locator(".home-violet-directory");
+  await expect(directory).toBeVisible();
+  await expect(directory.locator("li")).toHaveCount(3);
 
-  await expect(page.getByRole("link", { name: /small-graph/i })).toBeVisible();
-  await expect(page.getByRole("link", { name: /full-graph/i })).toBeVisible();
   await expect(
-    page.getByRole("link", { name: /textual-navigation/i })
+    page.getByRole("link", { name: /Quality Characteristics/ })
+  ).toBeVisible();
+  await expect(
+    page.getByRole("link", { name: /Example Requirements/ })
+  ).toBeVisible();
+  await expect(
+    page.getByRole("link", { name: /Solution Approaches/ })
+  ).toBeVisible();
+
+  await expect(
+    page.getByRole("heading", { level: 2, name: "The quality graph" })
   ).toBeVisible();
 
   await expect(page.locator("#q-graph-container")).toBeVisible();
 
-  await expect(
-    page.getByRole("heading", { level: 3, name: "Quality Dimensions" })
-  ).toBeVisible();
-
-  const dimensionsTable = page.locator(".home-new-dimensions-table");
-  await expect(dimensionsTable).toBeVisible();
-  await expect(dimensionsTable.locator("tbody tr")).toHaveCount(9);
-
-  await expect(page.getByRole("link", { name: "#reliable" })).toBeVisible();
-  await expect(page.getByRole("link", { name: "#maintainable" })).toBeVisible();
+  await expect(page.getByRole("link", { name: "Open graph" })).toBeVisible();
 
   const hasHorizontalOverflow = await page.evaluate(() => {
     return document.documentElement.scrollWidth > window.innerWidth + 1;

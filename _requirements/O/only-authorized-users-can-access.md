@@ -5,11 +5,11 @@ related: [access-control, confidentiality, security, privacy]
 permalink: /requirements/only-authenticated-users-can-access
 ---
 
-#### Requirement
+### Requirement
 
 Access to protected data and business functions requires successful authentication and an authorization decision for the requested action and resource.
 
-#### Acceptance Criteria
+### Acceptance Criteria
 
 - Unauthenticated denial: in automated security tests covering **100%** of protected API routes and primary UI entry points, **100%** of requests without a valid session are denied or redirected to login within **<= 1 s**; source: security regression test report; horizon: every pull request.
 - Unauthorized access denial: in release-candidate tests with **>= 20** representative cross-role and cross-tenant access attempts, **100%** of out-of-scope reads, writes, and admin actions are denied and written to the audit log within **<= 30 s**; source: authorization test report and audit-log review; horizon: every release candidate.

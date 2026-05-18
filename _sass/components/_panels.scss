@@ -1,0 +1,88 @@
+// Tag-page section dividers — mini section-hero pattern.
+//
+// Sits between the four lists on /tag-*/ pages ("Qualities tagged with
+// #x" → list, "Requirements tagged with #x" → list, etc.). Echoes the
+// section-hero language: 6px coloured rail in --cat, paper with a
+// clearly-visible tint of --cat. Single-item detail page headers use
+// the full section-hero component; these are the listing equivalent.
+//
+// Replaces the previous saturated 100% fills (blue / red / green /
+// gold panels with violet h2 text on top).
+.panel.quality-header,
+.panel.requirements-header,
+.panel.approaches-header,
+.panel.standards-header,
+.site-content .panel.quality-header,
+.site-content .panel.requirements-header,
+.site-content .panel.approaches-header,
+.site-content .panel.standards-header {
+  --cat: var(--brand-blue);
+  // Fallback for browsers without color-mix; modern browsers see the tint.
+  background: var(--brand-paper);
+  background: color-mix(in oklab, var(--brand-paper) 80%, var(--cat) 20%);
+  border: 1px solid color-mix(in oklab, var(--brand-paper) 65%, var(--cat) 35%);
+  border-radius: $radius-sm;
+  margin-top: 1rem;
+  padding: 0.9rem 1rem 0.9rem 1.7rem;
+  position: relative;
+
+  &::before {
+    background: var(--cat);
+    border-radius: 3px;
+    bottom: 0.5rem;
+    content: "";
+    left: 0;
+    position: absolute;
+    top: 0.5rem;
+    width: 6px;
+  }
+
+  h2 {
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.panel.quality-header,
+.site-content .panel.quality-header {
+  --cat: var(--brand-blue);
+}
+
+.panel.requirements-header,
+.site-content .panel.requirements-header {
+  --cat: var(--reqs-background-color);
+}
+
+.panel.approaches-header,
+.site-content .panel.approaches-header {
+  --cat: var(--approaches-background-color);
+}
+
+.panel.standards-header,
+.site-content .panel.standards-header {
+  --cat: var(--standard-background-color);
+}
+
+// .panel.article-header is still used by the legacy listing-context
+// markup in article-header.html (heading_level="h2" path on /articles/
+// and /background/ index entries). Single-article pages route to
+// section-hero instead.
+.panel.article-header,
+.site-content .panel.article-header {
+  background-color: var(--article-background-color);
+}
+
+.panel.article-header h1,
+.panel.article-header h1 a,
+.site-content .panel.article-header h1,
+.site-content .panel.article-header h1 a {
+  color: var(--blue-text-color);
+}
+
+.category-header {
+  background-color: var(--standard-background-color);
+  color: var(--standard-text-color);
+  padding: 10px;
+  border-radius: $radius-xs;
+  margin: 20px 0 10px;
+}

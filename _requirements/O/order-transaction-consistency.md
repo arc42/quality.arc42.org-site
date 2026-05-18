@@ -5,15 +5,15 @@ related: [transactionality, atomicity, consistency, data-integrity]
 permalink: /requirements/order-transaction-consistency
 ---
 
-#### Context
+### Context
 
 An order-processing system must handle reservation, payment, and order recording as one business transaction.
 
-#### Trigger
+### Trigger
 
 A customer submits an order.
 
-#### Acceptance Criteria
+### Acceptance Criteria
 
 - For each submitted order, inventory reservation, payment capture, and order creation either all complete successfully or the order is completed in an explicit failed/canceled state with no remaining side effects.
 - If any transaction step fails, all intermediate effects are undone within **≤ 2 seconds** — either via atomic rollback or via compensating transactions that complete within the same window; in either case the system reaches a consistent terminal state (succeeded or explicitly failed/cancelled) within that window.

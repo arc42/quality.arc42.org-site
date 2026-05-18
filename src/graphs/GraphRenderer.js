@@ -1,4 +1,28 @@
-import * as d3 from "d3";
+// Submodule imports: pulling only what's used drops ~120KB off the d3 bundle
+// compared with `import * as d3 from "d3"`. The local `d3` namespace below
+// preserves every call site and JSDoc type reference unchanged.
+import { select } from "d3-selection";
+import {
+    forceSimulation,
+    forceLink,
+    forceManyBody,
+    forceCenter,
+    forceCollide,
+} from "d3-force";
+import { zoom, zoomIdentity } from "d3-zoom";
+import { drag } from "d3-drag";
+
+const d3 = {
+    select,
+    forceSimulation,
+    forceLink,
+    forceManyBody,
+    forceCenter,
+    forceCollide,
+    zoom,
+    zoomIdentity,
+    drag,
+};
 import { NODE_TYPES } from './constants';
 import { isDimension, isProperty, isQuality, isRequirement, isRoot, isStandard } from './nodeUtils';
 
@@ -69,7 +93,8 @@ export class GraphRenderer {
         this.typeVisibility = {
             quality: true,
             requirement: false,
-            standard: true
+            standard: false,
+            approach: false
         };
         // Tooltip for synonym display
         this.tooltip = null;
@@ -328,7 +353,8 @@ export class GraphRenderer {
             const t = d.qualityType;
             d._legendHidden = (t === NODE_TYPES.QUALITY && !typeVis.quality) ||
                 (t === NODE_TYPES.REQUIREMENT && !typeVis.requirement) ||
-                (t === NODE_TYPES.STANDARD && !typeVis.standard);
+                (t === NODE_TYPES.STANDARD && !typeVis.standard) ||
+                (t === NODE_TYPES.APPROACH && !typeVis.approach);
         });
     }
 
@@ -343,13 +369,27 @@ export class GraphRenderer {
     }
 
     _kickSimulation() {
-        if (this.simulation) {
-            const prevAlphaTarget = this.simulation.alphaTarget();
-            this.simulation.alpha(0.3).alphaTarget(Math.max(prevAlphaTarget, 0.01)).restart();
-            setTimeout(() => {
-                if (this.simulation) this.simulation.alphaTarget(prevAlphaTarget || 0);
-            }, 100);
+        if (!this.simulation) return;
+        if (this._prefersReducedMotion()) {
+            // Settle synchronously instead of animating the swarm.
+            this.simulation.alpha(1).stop();
+            for (let i = 0; i < 300; i += 1) this.simulation.tick();
+            this.drawCanvas();
+            return;
         }
+        const prevAlphaTarget = this.simulation.alphaTarget();
+        this.simulation.alpha(0.3).alphaTarget(Math.max(prevAlphaTarget, 0.01)).restart();
+        setTimeout(() => {
+            if (this.simulation) this.simulation.alphaTarget(prevAlphaTarget || 0);
+        }, 100);
+    }
+
+    // WCAG 2.3.3 — respect user motion preference. Re-read each call so
+    // changes to the OS setting take effect on the next interaction.
+    _prefersReducedMotion() {
+        return typeof window !== 'undefined'
+            && window.matchMedia
+            && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     }
 
     _refreshVisibilityUpdaters() {
@@ -660,6 +700,14 @@ export class GraphRenderer {
             .on("tick", this.handleTick.bind(this));
 
         this.simulation.force("link").links(graphData.links);
+
+        // Reduced motion: settle layout synchronously so users never see the
+        // force-directed swarm animation. Layout still happens; only the
+        // visible animation is skipped.
+        if (this._prefersReducedMotion()) {
+            this.simulation.alpha(1).stop();
+            for (let i = 0; i < 300; i += 1) this.simulation.tick();
+        }
 
         // Set initial label and node visibility
         this.updateLabelVisibility = this.createLabelVisibilityUpdater(this.labels, this.currentZoomScale);
@@ -1049,7 +1097,7 @@ export class GraphRenderer {
             .translate(-centerX, -centerY);
 
         this.svg.transition()
-            .duration(750)
+            .duration(this._prefersReducedMotion() ? 0 : 750)
             .call(this.zoom.transform, transform);
         // Do not set currentTransform/currentZoomScale here.
         // The zoom behavior's 'zoom' event will update transforms progressively during the transition

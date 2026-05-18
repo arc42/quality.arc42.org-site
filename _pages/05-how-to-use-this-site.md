@@ -4,11 +4,13 @@ title: How to Use this Site
 permalink: /how-to-use-this-site/
 order: 5
 hide: true
+no_layout_header: true
 ---
 
-This site supports you in defining specific quality requirements for your system.
-
-To make the best use, you should become familiar with our terminology.
+{% include section-hero.liquid
+  section="how-to"
+  title="How to Use this Site"
+  lede="Q42 helps you specify quality requirements for your system. The site uses five connected concepts: dimensions, characteristics, requirements, approaches, and standards." %}
 
 ## Our _Domain Language_
 

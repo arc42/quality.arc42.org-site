@@ -1,0 +1,81 @@
+{% assign primary_nav = site.data.navigation.primary %}
+{% assign secondary_nav = site.data.navigation.secondary %}
+
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="site-brand" href="{{ '/' | prepend: site.baseurl }}" aria-label="arc42 Quality Model home">
+      <img class="site-brand__logo" src="{{ '/assets/img/ARC42_white.webp' | prepend: site.baseurl }}" alt="arc42" />
+      <span class="site-brand__name">quality model</span>
+    </a>
+
+    <div class="site-header__right">
+      <nav class="site-primary-nav" aria-label="Primary navigation">
+        {% for item in primary_nav %}
+          {% assign item_active = false %}
+          {% if item.url == '/' and page.url == '/' %}
+            {% assign item_active = true %}
+          {% elsif item.url != '/' and page.url contains item.url %}
+            {% assign item_active = true %}
+          {% endif %}
+          <a class="site-primary-nav__link{% if item_active %} is-active{% endif %}" href="{{ item.url | prepend: site.baseurl }}"{% if item_active %} aria-current="page"{% endif %}>{{ item.label }}</a>
+        {% endfor %}
+      </nav>
+
+      <div class="site-actions">
+        <form class="site-search" action="{{ '/search/' | prepend: site.baseurl }}" role="search" data-site-search>
+          <label class="sr-only" for="site-search-input">Search Q42</label>
+          <input
+            type="search"
+            id="site-search-input"
+            name="q"
+            placeholder="{{ site.str_search }}"
+            autocomplete="off"
+            autocorrect="off"
+            autocapitalize="off"
+            spellcheck="false"
+            role="combobox"
+            aria-autocomplete="list"
+            aria-expanded="false"
+            aria-controls="site-search-panel"
+            aria-haspopup="listbox"
+            aria-describedby="site-search-hint-desc"
+          />
+          <kbd class="site-search__hint" aria-hidden="true" data-site-search-hint>/</kbd>
+          <span class="sr-only" id="site-search-hint-desc" data-site-search-hint-desc>Press slash to focus this search.</span>
+          <div
+            id="site-search-panel"
+            class="site-search__panel"
+            role="listbox"
+            aria-label="Search suggestions"
+            hidden
+          ></div>
+          <div class="sr-only" aria-live="polite" data-site-search-status></div>
+        </form>
+
+        <button class="site-menu-toggle nav-toggle" type="button" data-target="#site-secondary-nav" aria-controls="site-secondary-nav" aria-expanded="false" aria-label="Open secondary navigation">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <nav id="site-secondary-nav" class="site-secondary-nav" aria-label="Secondary navigation">
+    <div class="site-secondary-nav__inner">
+      <div class="site-secondary-nav__group site-secondary-nav__primary">
+        <span class="site-secondary-nav__label">Main</span>
+        {% for item in primary_nav %}
+          <a href="{{ item.url | prepend: site.baseurl }}">{{ item.label }}</a>
+        {% endfor %}
+      </div>
+
+      <div class="site-secondary-nav__group">
+        <span class="site-secondary-nav__label">More</span>
+        {% for item in secondary_nav %}
+          <a href="{{ item.url | prepend: site.baseurl }}">{{ item.label }}</a>
+        {% endfor %}
+      </div>
+    </div>
+  </nav>
+</header>

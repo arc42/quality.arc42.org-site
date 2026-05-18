@@ -15,19 +15,18 @@
     <!-- SEO includes title and canonical tags, plus several others -->
     {% seo %}
 
-    <link rel="apple-touch-icon" sizes="180x180" href="{{ '/apple-touch-icon.png' | prepend: site.baseurl }}">
-    <link rel="icon" type="image/png" href="{{ '/favicon-32x32.png' | prepend: site.baseurl }}" sizes="32x32">
-    <link rel="icon" type="image/png" href="{{ '/favicon-16x16.png' | prepend: site.baseurl }}" sizes="16x16">
-    <link rel="manifest" href="{{ '/manifest.json' | prepend: site.baseurl }}">
-    <link rel="mask-icon" href="{{ '/safari-pinned-tab.svg' | prepend: site.baseurl }}" color="#5bbad5">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ '/assets/img/favicons/apple-touch-icon.png' | prepend: site.baseurl }}">
+    <link rel="icon" type="image/png" href="{{ '/assets/img/favicons/favicon-32x32.png' | prepend: site.baseurl }}" sizes="32x32">
+    <link rel="icon" type="image/png" href="{{ '/assets/img/favicons/favicon-16x16.png' | prepend: site.baseurl }}" sizes="16x16">
+    <link rel="manifest" href="{{ '/assets/img/favicons/manifest.json' | prepend: site.baseurl }}">
+    <link rel="mask-icon" href="{{ '/assets/img/favicons/safari-pinned-tab.svg' | prepend: site.baseurl }}" color="#5bbad5">
     <meta name="theme-color" content="#ffffff">
     <meta name="description" content="{{ description }}">
     <link rel="shortcut icon" href="{{ site.favicon | prepend: site.baseurl }}" type="image/x-icon">
 
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
+    <link rel="preload" href="{{ '/assets/fonts/atkinson/AtkinsonHyperlegibleNext-Variable.woff2' | prepend: site.baseurl }}" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="{{ '/assets/fonts/libre-caslon/LibreCaslonText-Regular.woff2' | prepend: site.baseurl }}" as="font" type="font/woff2" crossorigin>
+
     <script>
         try {
             document.getElementsByTagName('html')[0].className += ' js';
@@ -35,10 +34,8 @@
         }
     </script>
     <link href="{{ '/assets/css/style.css' | prepend: site.baseurl }}" rel="stylesheet">
+    {% if jekyll.environment == 'production' %}
     <script defer data-domain="quality.arc42.org" src="https://plausible.io/js/script.js"></script>
-
-    {% if page.mermaid %}
-    {% include mermaid-config.html %}
     {% endif %}
 
 
@@ -46,71 +43,26 @@
     {% include q-graph-config.html %}
     {% endif %}
 
+    <script>
+        window.baseurl = "{{ site.baseurl }}";
+    </script>
 </head>
 <body{% if page.name contains 'tag-' %} class="dimension-tag-page"{% endif %}>
 
-<header class="site-header">
-    <div class="inner clearfix">
-        <button class="fa fa-fw fa-bars nav-toggle" data-target=".site-aside" aria-label="Toggle navigation menu"></button>
-        {% if site.avatar %}
-        <a href="{{ '/' | prepend: site.baseurl }}" aria-label="Go to home page">
-            <img class="avatar" src="{{ site.avatar | prepend: site.baseurl }}" alt="arc42 Quality Model – home"/>
-        </a>
-        {% endif %}
-        <h1 class="clearfix">
-            <a class="title {% if site.avatar == null %}slim{% endif %}" href="{{ '/' | prepend: site.baseurl }}">{{ site.title }}</a>
+<a class="skip-link" href="#main-content">Skip to content</a>
 
-            {% assign qualities_count = site.qualities | size %}
-            {% assign requirements_count = site.requirements | size %}
-            {% assign standards_count = site.standards | size %}
-            {% assign approaches_count = site.approaches | size %}
-            
-            <br><span class="description"><span class="accent-color">{{ qualities_count }}</span> quality characteristics, <span class="accent-color">{{ standards_count }}</span> quality standards.</span>
-
-            <br><span class="description"><span class="accent-color">{{ requirements_count }}</span> examples of requirements, <span class="accent-color">{{ approaches_count }}</span> solution approaches.</span>
-        </h1>
-    </div>
-</header>
+{% include site-header.html %}
 
 <div class="site-container">
-    <aside class="site-aside">
-        <div class="inner">
-            <div class="block">
-                <form action="{{ site.baseurl }}/search">
-                    <input type="search" id="search" name="q" placeholder="{{ site.str_search }}"/>
-                </form>
-            </div>
-            <ul>
-                {% assign pages = site.pages | sort: 'order' %}
-                {% for page in pages %}
-                {% if page.title and page.hide != true %}
-                <li><a class="page-link" href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a></li>
-                {% endif %}
-                {% endfor %}
-            </ul>
-        </div>
-    </aside>
-
-    <div class="site-content">
+    <main id="main-content" class="site-content" tabindex="-1">
         {{ content }}
-    </div>
+    </main>
 </div>
 
 {% include footer.html %}
 
 
-<script src="{{ '/assets/jquery/jquery-3.7.1-min.js' | prepend: site.baseurl }}"></script>
-<script src="{{ '/assets/lib/garand-sticky/jquery.sticky.js' | prepend: site.baseurl }}"></script>
-<script src="{{ '/assets/js/script.js' | prepend: site.baseurl }}"></script>
-
-{% if page.id %}
-<script src="{{ '/assets/js/header-link.js' | prepend: site.baseurl }}"></script>
-{% endif %}
-
-{% if page.permalink == '/search/' %}
-<script src="{{ '/assets/js/search.js' | prepend: site.baseurl }}"></script>
-{% endif %}
-
+<script defer src="{{ '/assets/js/site.js' | prepend: site.baseurl }}"></script>
 
 </body>
 </html>

@@ -5,15 +5,15 @@ related: [fairness, bias-mitigation, transparency, accountability]
 permalink: /requirements/credit-scoring-fairness
 ---
 
-#### Context
+### Context
 
 An ML-based credit scoring model ranks applicants for loan approval. Historical data may embed societal or institutional biases. The system must ensure equitable performance and decisions across protected groups while maintaining predictive validity.
 
-#### Trigger
+### Trigger
 
 Retail banking credit risk platform (scoring + decisioning) processes loan applications for underwriting teams.
 
-#### Acceptance Criteria
+### Acceptance Criteria
 
 - Demographic parity difference (selection-rate gap) limited to ≤ 0.10 across any protected-group comparison
 - Disparate impact investigated and remediated if falling below 0.80 (4/5ths rule per EEOC Uniform Guidelines)
@@ -26,12 +26,12 @@ Retail banking credit risk platform (scoring + decisioning) processes loan appli
 - Alerts triggered when fairness metric breaches threshold for >24h with rollback or human review
 - Auditable log maintained for model versions, features, thresholds, and mitigation settings for at least 24 months
 
-#### Terminology
+### Terminology
 
 - **True Positive Rate (TPR)**: Share of actual positives correctly predicted as positive; also called recall/sensitivity
 - **Expected Calibration Error (ECE)**: Weighted average gap between predicted probability (by bin) and observed outcome frequency; lower is better
 
-#### Measurement & Verification
+### Measurement & Verification
 
 - Use held-out, stratified evaluation set with sufficient support per group (≥100 positives/negatives) and fixed data-splits
 - Compute per-group metrics (selection rate, DI, parity diff, TPR/FPR, calibration curves) and confidence intervals (bootstrap 95% CI) each release

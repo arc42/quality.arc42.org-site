@@ -31,13 +31,40 @@
 
 .site-content {
   width: 100%;
-  padding: 0 $side-padding;
+  padding: 0 1rem;
+}
 
-  @media screen and (min-width: $mobile-width) {
-    width: 70%;
-    float: left;
-    padding-right: 0;
-    padding-left: 0;
+// Focused main landmark should not show a focus ring around the whole
+// page; tabindex="-1" is there only so skip-link can move focus here.
+.site-content:focus {
+  outline: none;
+}
+
+// Skip-link: off-screen until focused, slides into view top-left.
+.skip-link {
+  background: var(--brand-violet);
+  border-radius: $radius-xs;
+  color: var(--brand-cream);
+  font-weight: 700;
+  inset-inline-start: 0.5rem;
+  padding: 0.6rem 1rem;
+  position: absolute;
+  text-decoration: none;
+  top: -3rem;
+  transition: top 120ms cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 2000;
+}
+
+.skip-link:focus,
+.skip-link:focus-visible {
+  box-shadow: var(--focus-ring-on-violet);
+  outline: none;
+  top: 0.5rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skip-link {
+    transition: none;
   }
 }
 

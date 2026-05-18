@@ -1,0 +1,17 @@
+{%- comment -%}
+  Inline SVG icon. See _includes/icons/<name>.svg for available icons.
+
+  Params:
+    name   — required. Basename of file in _includes/icons/<name>.svg
+    label  — optional. Visible-to-AT name. Omit for decorative icons.
+    size   — optional. "xs" | "sm" | "lg" | "fw" (fixed-width)
+    class  — optional. Extra utility classes (e.g. "bullet", "beat").
+    style  — optional. Inline style (mainly for `color: var(--...)`).
+
+  Examples:
+    {%- include icon.html name="search" label="Search" -%}
+    {%- include icon.html name="tags" style="color: var(--blue-text-color)" -%}
+    {%- include icon.html name="puzzle" size="xs" class="bullet" -%}
+    {%- include icon.html name="heart" class="beat" -%}
+{%- endcomment -%}
+<span class="icon{% if include.size %} icon--{{ include.size }}{% endif %}{% if include.class %} {{ include.class }}{% endif %}"{% if include.style %} style="{{ include.style }}"{% endif %}{% if include.label %} role="img" aria-label="{{ include.label }}"{% else %} aria-hidden="true"{% endif %}>{% include icons/{{ include.name }}.svg %}</span>

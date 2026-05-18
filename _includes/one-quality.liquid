@@ -7,18 +7,26 @@ as these pages need to display all related qualities/requirements.
 {%- assign tag_to_find = include.tag -%}
 {%- if tag_to_find and tag_to_find != "" -%}
 
-<div class="panel quality-header" style="margin-top: 1rem;">
-  <h2 style="margin: 0; padding: 1rem;">Qualities tagged with #{{ include.tag }}</h2>
+{% assign filtered_qualities = "" | split: "" %}
+{%- for item in site.qualities -%}
+  {%- if item.tags contains tag_to_find -%}
+    {% assign filtered_qualities = filtered_qualities | push: item %}
+  {%- endif -%}
+{%- endfor -%}
+
+<div class="panel quality-header">
+  <h2>Qualities tagged with #{{ include.tag }}</h2>
 </div>
 <div id="search-results">
-  <ul class="posts">
-      {%- for item in site.qualities -%}
-        {%- if item.tags contains tag_to_find -%}
-          <li> <a href="{{ item.url }}"><i class="fa fa-gem fa-xs as-bullet" style="color: var(--quality-text-color);"> </i> {{ item.title }}</a></li>
-        {%- endif -%}
+  {% if filtered_qualities.size > 0 %}
+    <ul class="posts">
+      {%- for item in filtered_qualities -%}
+        <li> <a href="{{ item.url }}">{% include icon.html name="gem" size="xs" class="bullet" style="color: var(--quality-text-color);" %} {{ item.title }}</a></li>
       {%- endfor -%}
-    
     </ul>
+  {% else %}
+    <p>No qualities tagged with #{{ include.tag }} yet.</p>
+  {% endif %}
 </div>
 
 {%- endif -%}

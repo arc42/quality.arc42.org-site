@@ -2,20 +2,31 @@
 as these pages need to display all related requirements. {% endcomment %} {%- assign tag_to_find =
 include.tag -%} {%- if tag_to_find and tag_to_find != "" -%}
 
-<div class="panel requirements-header" style="margin-top: 1rem">
-  <h2 style="margin: 0; padding: 1rem">Requirements tagged with #{{ include.tag }}</h2>
+{% assign filtered_requirements = "" | split: "" %}
+{%- for item in site.requirements -%}
+  {%- if item.tags contains tag_to_find -%}
+    {% assign filtered_requirements = filtered_requirements | push: item %}
+  {%- endif -%}
+{%- endfor -%}
+
+<div class="panel requirements-header">
+  <h2>Requirements tagged with #{{ include.tag }}</h2>
 </div>
 <div id="search-results">
-  <ul class="posts no-bullets">
-    {%- for item in site.requirements -%} {%- if item.tags contains tag_to_find -%}
-    <li>
-      <a class="reqs" href="{{item.permalink}}"
-        ><i class="fa fa-bullseye fa-xs as-bullet" style="color: var(--req-text-color)"> </i> {{
-        item.title }}</a
-      >
-    </li>
-    {%- endif -%} {%- endfor -%}
-  </ul>
+  {% if filtered_requirements.size > 0 %}
+    <ul class="posts no-bullets">
+      {%- for item in filtered_requirements -%}
+        <li>
+          <a class="reqs" href="{{item.permalink}}"
+            >{% include icon.html name="target" size="xs" class="bullet" style="color: var(--req-text-color)" %} {{
+            item.title }}</a
+          >
+        </li>
+      {%- endfor -%}
+    </ul>
+  {% else %}
+    <p>No requirements tagged with #{{ include.tag }} yet.</p>
+  {% endif %}
 </div>
 
 {%- endif -%}

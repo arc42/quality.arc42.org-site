@@ -6,11 +6,11 @@ stakeholder: management, product-owner
 permalink: /requirements/avoid-common-vulnerabilities
 ---
 
-#### Requirement
+### Requirement
 
 The system must avoid common security vulnerabilities in every release and deployment.
 
-#### Acceptance Criteria
+### Acceptance Criteria
 
 - Zero instances of missing data encryption in production
 - No OS command injection vulnerabilities present

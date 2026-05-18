@@ -5,11 +5,11 @@ related: [confidentiality, security, privacy]
 permalink: /requirements/confidentiality-by-multitenance
 ---
 
-#### Requirement
+### Requirement
 
 The system must enforce multi-tenant data isolation.
 
-#### Acceptance Criteria
+### Acceptance Criteria
 
 - System designed with multi-tenant architecture
 - Users of one tenant cannot access data specific to other tenants

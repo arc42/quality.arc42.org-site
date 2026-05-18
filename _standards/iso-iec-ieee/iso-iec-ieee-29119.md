@@ -3,6 +3,7 @@ layout: page_standard
 title: "ISO/IEC/IEEE 29119 - Software Testing"
 shortname: "ISO/IEC/IEEE 29119"
 standard_id: iso29119
+alias: [Testing, Software Testing]
 categories: [general, documentation]
 permalink: /standards/iso-iec-ieee-29119
 ---

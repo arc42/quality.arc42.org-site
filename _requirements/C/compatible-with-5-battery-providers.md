@@ -5,13 +5,13 @@ related: [flexibility, adaptability, interoperability, compatibility]
 permalink: /requirements/compatible-with-5-battery-providers
 ---
 
-#### Context
+### Context
 
 The system's energy is supplied by a rechargeable onboard battery mechanically attached to a circuit board (PCB). 
 The current board version fits only batteries from _one specific_ supplier.
 
 
-#### Metric / Acceptance Criteria
+### Metric / Acceptance Criteria
 
 The circuit-board revision must support approved battery models from _five preferred suppliers_ without PCB redesign or supplier-specific firmware.
 

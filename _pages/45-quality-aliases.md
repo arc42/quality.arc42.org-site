@@ -4,6 +4,7 @@ title: Quality Aliases and Synonyms
 permalink: /aliases/
 order: 45
 hide: true
+header_class: aliases-header
 ---
 
 {% assign synonym_map = site.data.quality-synonyms %}

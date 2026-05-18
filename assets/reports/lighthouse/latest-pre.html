@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Lighthouse Audit Report</title>
+  <style>
+    :root {
+      --good: #0cce6b;
+      --average: #ffa400;
+      --poor: #ff4e42;
+      --text: #1f2d3d;
+      --bg: #f8fbff;
+    }
+    body { font-family: sans-serif; color: var(--text); background: var(--bg); margin: 0; padding: 2rem; }
+    main { max-width: 1000px; margin: 0 auto; background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); }
+    h1 { color: #003366; margin-top: 0; }
+    .meta { color: #666; margin-bottom: 2rem; }
+    table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
+    th, td { text-align: left; padding: 1rem; border-bottom: 1px solid #eee; }
+    th { background: #f4f8fb; color: #003366; }
+    .score-good { color: var(--good); font-weight: bold; }
+    .score-average { color: var(--average); font-weight: bold; }
+    .score-poor { color: var(--poor); font-weight: bold; }
+    .summary-cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-bottom: 2rem; }
+    .card { padding: 1rem; border-radius: 8px; border: 1px solid #ddd; text-align: center; }
+    .card-label { font-size: 0.8rem; color: #666; text-transform: uppercase; }
+    .card-value { font-size: 1.8rem; margin-top: 0.5rem; }
+    .failing-audits { font-size: 0.85rem; color: var(--poor); margin-top: 0.5rem; padding-left: 1.2rem; }
+    .failing-audits li { margin-bottom: 0.2rem; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Lighthouse Audit Report</h1>
+    <p class="meta">Generated: 5/12/2026, 8:36:01 AM</p>
+    
+    <div class="summary-cards">
+      <div class="card"><div class="card-label">Avg Performance</div><div class="card-value score-good">96</div></div>
+      <div class="card"><div class="card-label">Avg Accessibility</div><div class="card-value score-good">98</div></div>
+      <div class="card"><div class="card-label">Avg Best Practices</div><div class="card-value score-good">95</div></div>
+      <div class="card"><div class="card-label">Avg SEO</div><div class="card-value score-good">99</div></div>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Page</th>
+          <th>Perf</th>
+          <th>Acc</th>
+          <th>Best Pr.</th>
+          <th>SEO</th>
+          <th>Failing Best Practices</th>
+        </tr>
+      </thead>
+      <tbody>
+        
+          <tr>
+            <td><a href="/">Home</a></td>
+            <td class="score-good">98</td>
+            <td class="score-good">100</td>
+            <td class="score-good">95</td>
+            <td class="score-good">100</td>
+            <td>
+              <ul class="failing-audits"><li title="Make sure that you redirect all HTTP traffic to HTTPS in order to enable secure web features for all your users. [Learn more](https://developer.chrome.com/docs/lighthouse/pwa/redirects-http/).">Does not redirect HTTP traffic to HTTPS</li></ul>
+            </td>
+          </tr>
+        
+          <tr>
+            <td><a href="/how-to-use-this-site/">How to Use</a></td>
+            <td class="score-good">98</td>
+            <td class="score-good">100</td>
+            <td class="score-good">95</td>
+            <td class="score-good">92</td>
+            <td>
+              <ul class="failing-audits"><li title="Make sure that you redirect all HTTP traffic to HTTPS in order to enable secure web features for all your users. [Learn more](https://developer.chrome.com/docs/lighthouse/pwa/redirects-http/).">Does not redirect HTTP traffic to HTTPS</li></ul>
+            </td>
+          </tr>
+        
+          <tr>
+            <td><a href="/full-quality-graph/">Full Graph</a></td>
+            <td class="score-good">96</td>
+            <td class="score-good">98</td>
+            <td class="score-good">95</td>
+            <td class="score-good">100</td>
+            <td>
+              <ul class="failing-audits"><li title="Make sure that you redirect all HTTP traffic to HTTPS in order to enable secure web features for all your users. [Learn more](https://developer.chrome.com/docs/lighthouse/pwa/redirects-http/).">Does not redirect HTTP traffic to HTTPS</li></ul>
+            </td>
+          </tr>
+        
+          <tr>
+            <td><a href="/qualities/">Qualities Index</a></td>
+            <td class="score-average">84</td>
+            <td class="score-good">96</td>
+            <td class="score-good">95</td>
+            <td class="score-good">100</td>
+            <td>
+              <ul class="failing-audits"><li title="Make sure that you redirect all HTTP traffic to HTTPS in order to enable secure web features for all your users. [Learn more](https://developer.chrome.com/docs/lighthouse/pwa/redirects-http/).">Does not redirect HTTP traffic to HTTPS</li></ul>
+            </td>
+          </tr>
+        
+          <tr>
+            <td><a href="/requirements/">Requirements Index</a></td>
+            <td class="score-average">88</td>
+            <td class="score-good">100</td>
+            <td class="score-good">95</td>
+            <td class="score-good">100</td>
+            <td>
+              <ul class="failing-audits"><li title="Make sure that you redirect all HTTP traffic to HTTPS in order to enable secure web features for all your users. [Learn more](https://developer.chrome.com/docs/lighthouse/pwa/redirects-http/).">Does not redirect HTTP traffic to HTTPS</li></ul>
+            </td>
+          </tr>
+        
+          <tr>
+            <td><a href="/standards/">Standards Index</a></td>
+            <td class="score-good">99</td>
+            <td class="score-good">98</td>
+            <td class="score-good">95</td>
+            <td class="score-good">100</td>
+            <td>
+              <ul class="failing-audits"><li title="Make sure that you redirect all HTTP traffic to HTTPS in order to enable secure web features for all your users. [Learn more](https://developer.chrome.com/docs/lighthouse/pwa/redirects-http/).">Does not redirect HTTP traffic to HTTPS</li></ul>
+            </td>
+          </tr>
+        
+          <tr>
+            <td><a href="/approaches/">Approaches Index</a></td>
+            <td class="score-average">89</td>
+            <td class="score-good">98</td>
+            <td class="score-good">95</td>
+            <td class="score-good">100</td>
+            <td>
+              <ul class="failing-audits"><li title="Make sure that you redirect all HTTP traffic to HTTPS in order to enable secure web features for all your users. [Learn more](https://developer.chrome.com/docs/lighthouse/pwa/redirects-http/).">Does not redirect HTTP traffic to HTTPS</li></ul>
+            </td>
+          </tr>
+        
+          <tr>
+            <td><a href="/tag-efficient/">Dimension: Efficient</a></td>
+            <td class="score-average">88</td>
+            <td class="score-good">95</td>
+            <td class="score-good">95</td>
+            <td class="score-good">100</td>
+            <td>
+              <ul class="failing-audits"><li title="Make sure that you redirect all HTTP traffic to HTTPS in order to enable secure web features for all your users. [Learn more](https://developer.chrome.com/docs/lighthouse/pwa/redirects-http/).">Does not redirect HTTP traffic to HTTPS</li></ul>
+            </td>
+          </tr>
+        
+          <tr>
+            <td><a href="/tag-flexible/">Dimension: Flexible</a></td>
+            <td class="score-good">99</td>
+            <td class="score-good">95</td>
+            <td class="score-good">95</td>
+            <td class="score-good">100</td>
+            <td>
+              <ul class="failing-audits"><li title="Make sure that you redirect all HTTP traffic to HTTPS in order to enable secure web features for all your users. [Learn more](https://developer.chrome.com/docs/lighthouse/pwa/redirects-http/).">Does not redirect HTTP traffic to HTTPS</li></ul>
+            </td>
+          </tr>
+        
+          <tr>
+            <td><a href="/tag-maintainable/">Dimension: Maintainable</a></td>
+            <td class="score-good">99</td>
+            <td class="score-good">95</td>
+            <td class="score-good">95</td>
+            <td class="score-good">100</td>
+            <td>
+              <ul class="failing-audits"><li title="Make sure that you redirect all HTTP traffic to HTTPS in order to enable secure web features for all your users. [Learn more](https://developer.chrome.com/docs/lighthouse/pwa/redirects-http/).">Does not redirect HTTP traffic to HTTPS</li></ul>
+            </td>
+          </tr>
+        
+          <tr>
+            <td><a href="/tag-operable/">Dimension: Operable</a></td>
+            <td class="score-good">99</td>
+            <td class="score-good">97</td>
+            <td class="score-good">95</td>
+            <td class="score-good">100</td>
+            <td>
+              <ul class="failing-audits"><li title="Make sure that you redirect all HTTP traffic to HTTPS in order to enable secure web features for all your users. [Learn more](https://developer.chrome.com/docs/lighthouse/pwa/redirects-http/).">Does not redirect HTTP traffic to HTTPS</li></ul>
+            </td>
+          </tr>
+        
+          <tr>
+            <td><a href="/tag-reliable/">Dimension: Reliable</a></td>
+            <td class="score-good">99</td>
+            <td class="score-good">97</td>
+            <td class="score-good">95</td>
+            <td class="score-good">100</td>
+            <td>
+              <ul class="failing-audits"><li title="Make sure that you redirect all HTTP traffic to HTTPS in order to enable secure web features for all your users. [Learn more](https://developer.chrome.com/docs/lighthouse/pwa/redirects-http/).">Does not redirect HTTP traffic to HTTPS</li></ul>
+            </td>
+          </tr>
+        
+          <tr>
+            <td><a href="/tag-safe/">Dimension: Safe</a></td>
+            <td class="score-good">99</td>
+            <td class="score-good">97</td>
+            <td class="score-good">95</td>
+            <td class="score-good">100</td>
+            <td>
+              <ul class="failing-audits"><li title="Make sure that you redirect all HTTP traffic to HTTPS in order to enable secure web features for all your users. [Learn more](https://developer.chrome.com/docs/lighthouse/pwa/redirects-http/).">Does not redirect HTTP traffic to HTTPS</li></ul>
+            </td>
+          </tr>
+        
+          <tr>
+            <td><a href="/tag-secure/">Dimension: Secure</a></td>
+            <td class="score-good">99</td>
+            <td class="score-good">95</td>
+            <td class="score-good">95</td>
+            <td class="score-good">100</td>
+            <td>
+              <ul class="failing-audits"><li title="Make sure that you redirect all HTTP traffic to HTTPS in order to enable secure web features for all your users. [Learn more](https://developer.chrome.com/docs/lighthouse/pwa/redirects-http/).">Does not redirect HTTP traffic to HTTPS</li></ul>
+            </td>
+          </tr>
+        
+          <tr>
+            <td><a href="/tag-suitable/">Dimension: Suitable</a></td>
+            <td class="score-good">99</td>
+            <td class="score-good">97</td>
+            <td class="score-good">95</td>
+            <td class="score-good">92</td>
+            <td>
+              <ul class="failing-audits"><li title="Make sure that you redirect all HTTP traffic to HTTPS in order to enable secure web features for all your users. [Learn more](https://developer.chrome.com/docs/lighthouse/pwa/redirects-http/).">Does not redirect HTTP traffic to HTTPS</li></ul>
+            </td>
+          </tr>
+        
+          <tr>
+            <td><a href="/tag-usable/">Dimension: Usable</a></td>
+            <td class="score-good">97</td>
+            <td class="score-good">95</td>
+            <td class="score-good">95</td>
+            <td class="score-good">100</td>
+            <td>
+              <ul class="failing-audits"><li title="Make sure that you redirect all HTTP traffic to HTTPS in order to enable secure web features for all your users. [Learn more](https://developer.chrome.com/docs/lighthouse/pwa/redirects-http/).">Does not redirect HTTP traffic to HTTPS</li></ul>
+            </td>
+          </tr>
+        
+          <tr>
+            <td><a href="/qualities/availability">Quality: Availability</a></td>
+            <td class="score-good">99</td>
+            <td class="score-good">100</td>
+            <td class="score-good">95</td>
+            <td class="score-good">100</td>
+            <td>
+              <ul class="failing-audits"><li title="Make sure that you redirect all HTTP traffic to HTTPS in order to enable secure web features for all your users. [Learn more](https://developer.chrome.com/docs/lighthouse/pwa/redirects-http/).">Does not redirect HTTP traffic to HTTPS</li></ul>
+            </td>
+          </tr>
+        
+          <tr>
+            <td><a href="/qualities/security">Quality: Security</a></td>
+            <td class="score-good">99</td>
+            <td class="score-good">100</td>
+            <td class="score-good">95</td>
+            <td class="score-good">100</td>
+            <td>
+              <ul class="failing-audits"><li title="Make sure that you redirect all HTTP traffic to HTTPS in order to enable secure web features for all your users. [Learn more](https://developer.chrome.com/docs/lighthouse/pwa/redirects-http/).">Does not redirect HTTP traffic to HTTPS</li></ul>
+            </td>
+          </tr>
+        
+          <tr>
+            <td><a href="/qualities/usability">Quality: Usability</a></td>
+            <td class="score-good">100</td>
+            <td class="score-good">100</td>
+            <td class="score-good">95</td>
+            <td class="score-good">100</td>
+            <td>
+              <ul class="failing-audits"><li title="Make sure that you redirect all HTTP traffic to HTTPS in order to enable secure web features for all your users. [Learn more](https://developer.chrome.com/docs/lighthouse/pwa/redirects-http/).">Does not redirect HTTP traffic to HTTPS</li></ul>
+            </td>
+          </tr>
+        
+          <tr>
+            <td><a href="/qualities/maintainability">Quality: Maintainability</a></td>
+            <td class="score-good">99</td>
+            <td class="score-good">100</td>
+            <td class="score-good">95</td>
+            <td class="score-good">100</td>
+            <td>
+              <ul class="failing-audits"><li title="Make sure that you redirect all HTTP traffic to HTTPS in order to enable secure web features for all your users. [Learn more](https://developer.chrome.com/docs/lighthouse/pwa/redirects-http/).">Does not redirect HTTP traffic to HTTPS</li></ul>
+            </td>
+          </tr>
+        
+          <tr>
+            <td><a href="/qualities/accessibility">Quality: Accessibility</a></td>
+            <td class="score-good">99</td>
+            <td class="score-good">100</td>
+            <td class="score-good">95</td>
+            <td class="score-good">100</td>
+            <td>
+              <ul class="failing-audits"><li title="Make sure that you redirect all HTTP traffic to HTTPS in order to enable secure web features for all your users. [Learn more](https://developer.chrome.com/docs/lighthouse/pwa/redirects-http/).">Does not redirect HTTP traffic to HTTPS</li></ul>
+            </td>
+          </tr>
+        
+      </tbody>
+    </table>
+  </main>
+</body>
+</html>

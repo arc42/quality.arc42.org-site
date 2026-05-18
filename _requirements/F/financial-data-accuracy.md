@@ -13,15 +13,15 @@ source: |
   ```
 ---
 
-#### Context
+### Context
 
 A financial management system processes transaction data from multiple sources (payment gateways, banking APIs, accounting software) to generate quarterly financial reports for regulatory compliance and executive decision-making. Data quality issues in source systems have previously led to reporting errors that required manual correction and restatement of financial results.
 
-#### Trigger
+### Trigger
 
 Financial transaction data is collected from various internal and external systems and must be validated before being used in regulatory reporting.
 
-#### Acceptance Criteria
+### Acceptance Criteria
 
 - 99.99% accuracy of financial transaction data (maximum error rate of 1 in 10,000 transactions)
 - 100% completeness of mandatory fields for all financial records

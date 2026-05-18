@@ -1,4 +1,4 @@
-<h2 class="section-heading requirements"><i class="fa fa-bullseye"></i> Directly Related Quality Requirements</h2>
+<h2 class="section-heading requirements">{% include icon.html name="target" %} Directly Related Quality Requirements</h2>
 <p>A requirement that contains a "related" attribute to the quality.</p>
 
 {% assign requirements = site.requirements %}
@@ -9,7 +9,7 @@
   {% if related_list contains check_title %} {% assign number = 1 %}
   <li>
     <a class="reqs" href="{{requirement.permalink}}"
-      ><i class="fa fa-bullseye fa-xs as-bullet" style="color: var(--req-text-color)"> </i> {{
+      >{% include icon.html name="target" size="xs" class="bullet" style="color: var(--req-text-color)" %} {{
       requirement.title }}</a
     >
   </li>

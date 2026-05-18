@@ -4,6 +4,7 @@ title: Standards Explorer
 permalink: /standards/explorer/
 order: 41
 hide: true
+no_layout_header: true
 ---
 
 {% assign allStandards = site.standards | sort: "shortname" %}
@@ -84,17 +85,17 @@ hide: true
           <a href="{{ std.url | prepend: site.baseurl }}">{{ std.title }}</a>
         </h3>
 
+        <p class="standards-explorer-summary">{{ summary }}</p>
+
         <ul class="standards-explorer-tags">
           <li><i class="fa fa-tags" aria-hidden="true"></i></li>
           {% for category in std.categories %}
             <li>#{{ category }}</li>
           {% endfor %}
         </ul>
-
-        <div class="standards-explorer-hover">{{ summary }}</div>
       </article>
     {% endfor %}
   </div>
 </div>
 
-<script src="{{ '/assets/js/standards-explorer.js' | prepend: site.baseurl }}"></script>
+<script defer src="{{ '/assets/js/standards-explorer.js' | prepend: site.baseurl }}"></script>

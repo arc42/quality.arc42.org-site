@@ -4,7 +4,7 @@
 - Content: `_qualities/`, `_requirements/`, `_standards/`, `_articles/`, `_pages/`.
 - Theme/templates: `_layouts/`, `_includes/`, `_sass/`.
 - Assets: `assets/` (compiled JS under `assets/js`, generated data under `assets/data`).
-- Source JS: `src/graphs/**`, data generator in `src/scripts/data.js`, build entry in `build.js`.
+- Source JS: `src/graphs/**`, data generator in `src/scripts/data.js`, build entry in `src/scripts/build.js`.
 - Config: `_config.yml`, `Gemfile`, `docker-compose.yml`, `package.json`.
 
 ## Build, Test, and Development
@@ -13,6 +13,9 @@
 - `npm run build`: generate graph data and bundle JS to `assets/js` once.
 - `npm run watch`: build and watch for JS changes.
 - `npm run data`: regenerate JSON under `assets/data` from content front matter.
+- `make wcag-test`: run automated accessibility scan (informative).
+- `make lighthouse-test`: run automated performance/SEO audit (informative).
+- `make test`: run full Playwright UI test suite.
 Notes: The Docker stack runs `npm run data` on startup. If you change tags/related/permalinks, restart the stack so data is refreshed.
 
 ## Coding Style & Naming
@@ -32,3 +35,9 @@ Notes: The Docker stack runs `npm run data` on startup. If you change tags/relat
 ## Security & Configuration Tips
 - No secrets required. Do not commit local caches (`.sass-cache/`) or large generated assets except those in `assets/data` that are intentionally versioned.
 - Keep permalinks stable; the graph uses the last path segment as node IDs.
+
+## Deliberate scope exclusions
+For accessibility-specific scope decisions (graph keyboard a11y, touch-target sizing, etc.), see `ACCESSIBILITY.md` § *Deliberate scope decisions*. Audits should consult that file before re-flagging a11y items.
+
+## Architecture Decision Records
+Coarser-grained, human-readable decisions live under `adr/` (Nygard-style). Consult these before flagging configuration that looks stale — e.g. `netlify.toml` is retained intentionally for manual branch previews (see `adr/0001-keep-netlify-for-manual-branch-previews.md`).

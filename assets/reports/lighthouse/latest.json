@@ -1,0 +1,368 @@
+{
+  "generatedAt": "2026-05-18T15:04:53.137Z",
+  "results": [
+    {
+      "name": "Home",
+      "path": "/",
+      "scores": {
+        "performance": 99,
+        "accessibility": 100,
+        "bestPractices": 95,
+        "seo": 100
+      },
+      "failingBestPractices": [
+        {
+          "id": "redirects-http",
+          "title": "Does not redirect HTTP traffic to HTTPS",
+          "description": "Make sure that you redirect all HTTP traffic to HTTPS in order to enable secure web features for all your users. [Learn more](https://developer.chrome.com/docs/lighthouse/pwa/redirects-http/)."
+        }
+      ]
+    },
+    {
+      "name": "How to Use",
+      "path": "/how-to-use-this-site/",
+      "scores": {
+        "performance": 98,
+        "accessibility": 97,
+        "bestPractices": 95,
+        "seo": 92
+      },
+      "failingBestPractices": [
+        {
+          "id": "redirects-http",
+          "title": "Does not redirect HTTP traffic to HTTPS",
+          "description": "Make sure that you redirect all HTTP traffic to HTTPS in order to enable secure web features for all your users. [Learn more](https://developer.chrome.com/docs/lighthouse/pwa/redirects-http/)."
+        }
+      ]
+    },
+    {
+      "name": "Full Graph",
+      "path": "/full-quality-graph/",
+      "scores": {
+        "performance": 97,
+        "accessibility": 98,
+        "bestPractices": 95,
+        "seo": 100
+      },
+      "failingBestPractices": [
+        {
+          "id": "redirects-http",
+          "title": "Does not redirect HTTP traffic to HTTPS",
+          "description": "Make sure that you redirect all HTTP traffic to HTTPS in order to enable secure web features for all your users. [Learn more](https://developer.chrome.com/docs/lighthouse/pwa/redirects-http/)."
+        }
+      ]
+    },
+    {
+      "name": "Qualities Index",
+      "path": "/qualities/",
+      "scores": {
+        "performance": 98,
+        "accessibility": 96,
+        "bestPractices": 95,
+        "seo": 100
+      },
+      "failingBestPractices": [
+        {
+          "id": "redirects-http",
+          "title": "Does not redirect HTTP traffic to HTTPS",
+          "description": "Make sure that you redirect all HTTP traffic to HTTPS in order to enable secure web features for all your users. [Learn more](https://developer.chrome.com/docs/lighthouse/pwa/redirects-http/)."
+        }
+      ]
+    },
+    {
+      "name": "Requirements Index",
+      "path": "/requirements/",
+      "scores": {
+        "performance": 99,
+        "accessibility": 100,
+        "bestPractices": 95,
+        "seo": 100
+      },
+      "failingBestPractices": [
+        {
+          "id": "redirects-http",
+          "title": "Does not redirect HTTP traffic to HTTPS",
+          "description": "Make sure that you redirect all HTTP traffic to HTTPS in order to enable secure web features for all your users. [Learn more](https://developer.chrome.com/docs/lighthouse/pwa/redirects-http/)."
+        }
+      ]
+    },
+    {
+      "name": "Standards Index",
+      "path": "/standards/",
+      "scores": {
+        "performance": 99,
+        "accessibility": 98,
+        "bestPractices": 95,
+        "seo": 100
+      },
+      "failingBestPractices": [
+        {
+          "id": "redirects-http",
+          "title": "Does not redirect HTTP traffic to HTTPS",
+          "description": "Make sure that you redirect all HTTP traffic to HTTPS in order to enable secure web features for all your users. [Learn more](https://developer.chrome.com/docs/lighthouse/pwa/redirects-http/)."
+        }
+      ]
+    },
+    {
+      "name": "Approaches Index",
+      "path": "/approaches/",
+      "scores": {
+        "performance": 98,
+        "accessibility": 98,
+        "bestPractices": 95,
+        "seo": 100
+      },
+      "failingBestPractices": [
+        {
+          "id": "redirects-http",
+          "title": "Does not redirect HTTP traffic to HTTPS",
+          "description": "Make sure that you redirect all HTTP traffic to HTTPS in order to enable secure web features for all your users. [Learn more](https://developer.chrome.com/docs/lighthouse/pwa/redirects-http/)."
+        }
+      ]
+    },
+    {
+      "name": "Dimension: Efficient",
+      "path": "/tag-efficient/",
+      "scores": {
+        "performance": 99,
+        "accessibility": 99,
+        "bestPractices": 95,
+        "seo": 100
+      },
+      "failingBestPractices": [
+        {
+          "id": "redirects-http",
+          "title": "Does not redirect HTTP traffic to HTTPS",
+          "description": "Make sure that you redirect all HTTP traffic to HTTPS in order to enable secure web features for all your users. [Learn more](https://developer.chrome.com/docs/lighthouse/pwa/redirects-http/)."
+        }
+      ]
+    },
+    {
+      "name": "Dimension: Flexible",
+      "path": "/tag-flexible/",
+      "scores": {
+        "performance": 99,
+        "accessibility": 99,
+        "bestPractices": 95,
+        "seo": 100
+      },
+      "failingBestPractices": [
+        {
+          "id": "redirects-http",
+          "title": "Does not redirect HTTP traffic to HTTPS",
+          "description": "Make sure that you redirect all HTTP traffic to HTTPS in order to enable secure web features for all your users. [Learn more](https://developer.chrome.com/docs/lighthouse/pwa/redirects-http/)."
+        }
+      ]
+    },
+    {
+      "name": "Dimension: Maintainable",
+      "path": "/tag-maintainable/",
+      "scores": {
+        "performance": 99,
+        "accessibility": 99,
+        "bestPractices": 95,
+        "seo": 100
+      },
+      "failingBestPractices": [
+        {
+          "id": "redirects-http",
+          "title": "Does not redirect HTTP traffic to HTTPS",
+          "description": "Make sure that you redirect all HTTP traffic to HTTPS in order to enable secure web features for all your users. [Learn more](https://developer.chrome.com/docs/lighthouse/pwa/redirects-http/)."
+        }
+      ]
+    },
+    {
+      "name": "Dimension: Operable",
+      "path": "/tag-operable/",
+      "scores": {
+        "performance": 99,
+        "accessibility": 100,
+        "bestPractices": 95,
+        "seo": 100
+      },
+      "failingBestPractices": [
+        {
+          "id": "redirects-http",
+          "title": "Does not redirect HTTP traffic to HTTPS",
+          "description": "Make sure that you redirect all HTTP traffic to HTTPS in order to enable secure web features for all your users. [Learn more](https://developer.chrome.com/docs/lighthouse/pwa/redirects-http/)."
+        }
+      ]
+    },
+    {
+      "name": "Dimension: Reliable",
+      "path": "/tag-reliable/",
+      "scores": {
+        "performance": 99,
+        "accessibility": 100,
+        "bestPractices": 95,
+        "seo": 100
+      },
+      "failingBestPractices": [
+        {
+          "id": "redirects-http",
+          "title": "Does not redirect HTTP traffic to HTTPS",
+          "description": "Make sure that you redirect all HTTP traffic to HTTPS in order to enable secure web features for all your users. [Learn more](https://developer.chrome.com/docs/lighthouse/pwa/redirects-http/)."
+        }
+      ]
+    },
+    {
+      "name": "Dimension: Safe",
+      "path": "/tag-safe/",
+      "scores": {
+        "performance": 99,
+        "accessibility": 100,
+        "bestPractices": 95,
+        "seo": 100
+      },
+      "failingBestPractices": [
+        {
+          "id": "redirects-http",
+          "title": "Does not redirect HTTP traffic to HTTPS",
+          "description": "Make sure that you redirect all HTTP traffic to HTTPS in order to enable secure web features for all your users. [Learn more](https://developer.chrome.com/docs/lighthouse/pwa/redirects-http/)."
+        }
+      ]
+    },
+    {
+      "name": "Dimension: Secure",
+      "path": "/tag-secure/",
+      "scores": {
+        "performance": 99,
+        "accessibility": 99,
+        "bestPractices": 95,
+        "seo": 100
+      },
+      "failingBestPractices": [
+        {
+          "id": "redirects-http",
+          "title": "Does not redirect HTTP traffic to HTTPS",
+          "description": "Make sure that you redirect all HTTP traffic to HTTPS in order to enable secure web features for all your users. [Learn more](https://developer.chrome.com/docs/lighthouse/pwa/redirects-http/)."
+        }
+      ]
+    },
+    {
+      "name": "Dimension: Suitable",
+      "path": "/tag-suitable/",
+      "scores": {
+        "performance": 99,
+        "accessibility": 100,
+        "bestPractices": 95,
+        "seo": 92
+      },
+      "failingBestPractices": [
+        {
+          "id": "redirects-http",
+          "title": "Does not redirect HTTP traffic to HTTPS",
+          "description": "Make sure that you redirect all HTTP traffic to HTTPS in order to enable secure web features for all your users. [Learn more](https://developer.chrome.com/docs/lighthouse/pwa/redirects-http/)."
+        }
+      ]
+    },
+    {
+      "name": "Dimension: Usable",
+      "path": "/tag-usable/",
+      "scores": {
+        "performance": 99,
+        "accessibility": 99,
+        "bestPractices": 95,
+        "seo": 100
+      },
+      "failingBestPractices": [
+        {
+          "id": "redirects-http",
+          "title": "Does not redirect HTTP traffic to HTTPS",
+          "description": "Make sure that you redirect all HTTP traffic to HTTPS in order to enable secure web features for all your users. [Learn more](https://developer.chrome.com/docs/lighthouse/pwa/redirects-http/)."
+        }
+      ]
+    },
+    {
+      "name": "Quality: Availability",
+      "path": "/qualities/availability",
+      "scores": {
+        "performance": 99,
+        "accessibility": 100,
+        "bestPractices": 95,
+        "seo": 100
+      },
+      "failingBestPractices": [
+        {
+          "id": "redirects-http",
+          "title": "Does not redirect HTTP traffic to HTTPS",
+          "description": "Make sure that you redirect all HTTP traffic to HTTPS in order to enable secure web features for all your users. [Learn more](https://developer.chrome.com/docs/lighthouse/pwa/redirects-http/)."
+        }
+      ]
+    },
+    {
+      "name": "Quality: Security",
+      "path": "/qualities/security",
+      "scores": {
+        "performance": 99,
+        "accessibility": 100,
+        "bestPractices": 95,
+        "seo": 100
+      },
+      "failingBestPractices": [
+        {
+          "id": "redirects-http",
+          "title": "Does not redirect HTTP traffic to HTTPS",
+          "description": "Make sure that you redirect all HTTP traffic to HTTPS in order to enable secure web features for all your users. [Learn more](https://developer.chrome.com/docs/lighthouse/pwa/redirects-http/)."
+        }
+      ]
+    },
+    {
+      "name": "Quality: Usability",
+      "path": "/qualities/usability",
+      "scores": {
+        "performance": 99,
+        "accessibility": 100,
+        "bestPractices": 95,
+        "seo": 100
+      },
+      "failingBestPractices": [
+        {
+          "id": "redirects-http",
+          "title": "Does not redirect HTTP traffic to HTTPS",
+          "description": "Make sure that you redirect all HTTP traffic to HTTPS in order to enable secure web features for all your users. [Learn more](https://developer.chrome.com/docs/lighthouse/pwa/redirects-http/)."
+        }
+      ]
+    },
+    {
+      "name": "Quality: Maintainability",
+      "path": "/qualities/maintainability",
+      "scores": {
+        "performance": 99,
+        "accessibility": 100,
+        "bestPractices": 95,
+        "seo": 100
+      },
+      "failingBestPractices": [
+        {
+          "id": "redirects-http",
+          "title": "Does not redirect HTTP traffic to HTTPS",
+          "description": "Make sure that you redirect all HTTP traffic to HTTPS in order to enable secure web features for all your users. [Learn more](https://developer.chrome.com/docs/lighthouse/pwa/redirects-http/)."
+        }
+      ]
+    },
+    {
+      "name": "Quality: Accessibility",
+      "path": "/qualities/accessibility",
+      "scores": {
+        "performance": 99,
+        "accessibility": 100,
+        "bestPractices": 95,
+        "seo": 100
+      },
+      "failingBestPractices": [
+        {
+          "id": "redirects-http",
+          "title": "Does not redirect HTTP traffic to HTTPS",
+          "description": "Make sure that you redirect all HTTP traffic to HTTPS in order to enable secure web features for all your users. [Learn more](https://developer.chrome.com/docs/lighthouse/pwa/redirects-http/)."
+        }
+      ]
+    }
+  ],
+  "averages": {
+    "performance": 99,
+    "accessibility": 99,
+    "bestPractices": 95,
+    "seo": 99
+  }
+}

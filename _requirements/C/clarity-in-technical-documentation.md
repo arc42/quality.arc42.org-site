@@ -5,15 +5,15 @@ related: [clarity, coherence, understandability, legibility]
 permalink: /requirements/clarity-in-technical-documentation
 ---
 
-#### Context
+### Context
 
 The system is fairly large, and maintained/developed by an internationally distributed and highly heterogeneous, diverse and volatile development team.
 
-#### Trigger
+### Trigger
 
 Users refer to technical documentation to understand technical details or troubleshoot issues.
 
-#### Acceptance Criteria
+### Acceptance Criteria
 
 - Documentation provides coherent and intelligible explanations and instructions
 - At least 90% of system-specific terms used in documentation are defined in glossary section accessible within same document or via direct links

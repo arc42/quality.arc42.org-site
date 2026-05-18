@@ -22,6 +22,7 @@ export class GraphPageController {
     #qualityToggle;
     #requirementsToggle;
     #standardsToggle;
+    #approachesToggle;
 
     /**
      * @param {import('./FullGraph.js').FullGraph} [graph] - Optional graph instance for direct reset
@@ -39,6 +40,7 @@ export class GraphPageController {
         this.#qualityToggle = document.getElementById("legend-toggle-qualities");
         this.#requirementsToggle = document.getElementById("legend-toggle-requirements");
         this.#standardsToggle = document.getElementById("legend-toggle-standards");
+        this.#approachesToggle = document.getElementById("legend-toggle-approaches");
     }
 
     /**
@@ -47,7 +49,15 @@ export class GraphPageController {
      */
     initialize() {
         this.#bindEvents();
-        // Defer so the graph bundle can finish its own initialization first
+        // Sync the sheet aria state immediately so screen readers don't see
+        // the closed mobile sheet's controls during the ~180 ms window before
+        // the graph bundle finishes its own initialization. The template
+        // renders the sidebar with aria-hidden + inert (correct for mobile),
+        // so this call mainly matters on desktop where we need to expose it.
+        this.#syncSheetAriaState();
+        // Defer the legend/quick-filter setup so the graph bundle can finish
+        // its own initialization first — those toggles fire change events the
+        // graph must already be listening for.
         globalThis.setTimeout(() => this.#setMobileDefaults(), 180);
         return this;
     }
@@ -74,6 +84,26 @@ export class GraphPageController {
 
     // ── responsive defaults ───────────────────────────────────────────────────
 
+    /**
+     * Aria/inert state for the mobile sheet — safe to call synchronously
+     * at init because it doesn't touch the graph or fire any change events.
+     * Template renders the sidebar with aria-hidden + inert (mobile-default);
+     * on desktop we need to expose it before the user interacts.
+     */
+    #syncSheetAriaState() {
+        if (!this.#sidebar) return;
+        if (this.#media.matches) {
+            // Mobile: sheet is closed on first paint — keep it hidden from
+            // the a11y tree until the user opens it.
+            this.#sidebar.setAttribute("aria-hidden", "true");
+            this.#sidebar.setAttribute("inert", "");
+        } else {
+            // Desktop: sidebar is always visible — expose to screen readers.
+            this.#sidebar.removeAttribute("aria-hidden");
+            this.#sidebar.removeAttribute("inert");
+        }
+    }
+
     #setMobileDefaults() {
         if (!this.#media.matches) {
             // Desktop: sidebar is always visible — make sure it is reachable
@@ -87,6 +117,7 @@ export class GraphPageController {
         this.#applyToggle(this.#qualityToggle, true);
         this.#applyToggle(this.#requirementsToggle, false);
         this.#applyToggle(this.#standardsToggle, false);
+        this.#applyToggle(this.#approachesToggle, false);
         this.#closeSheet();
     }
 
@@ -106,6 +137,7 @@ export class GraphPageController {
         this.#applyToggle(this.#qualityToggle, true);
         this.#applyToggle(this.#standardsToggle, btn.dataset.showStandards === "true");
         this.#applyToggle(this.#requirementsToggle, btn.dataset.showRequirements === "true");
+        this.#applyToggle(this.#approachesToggle, btn.dataset.showApproaches === "true");
 
         this.#filterInput.disabled = false;
         this.#filterInput.value = term;

@@ -5,15 +5,15 @@ related: [usability, user-experience, fault-isolation, graceful-degradation, haz
 permalink: /requirements/expressive-error-messages
 ---
 
-#### Context
+### Context
 
 When error situations occur, they must be displayed to user in expressive, meaningful messages.
 
-#### Trigger
+### Trigger
 
 Error or exceptional situation occurs in technical infrastructure (memory overflow, out-of-memory, hardware error, virtual-machine-issue, container-related-issue).
 
-#### Acceptance Criteria
+### Acceptance Criteria
 
 - System detects error, reports (as far as possible) to user and shuts down in controlled manner
 - Message contains specific explanations and instructions on possible reactions

@@ -13,15 +13,15 @@ source: |
   ```
 ---
 
-#### Context
+### Context
 
 A healthcare information system manages patient data across multiple departments (emergency, radiology, pharmacy, laboratory) in a large hospital network. The system must ensure high-quality patient data to support clinical decision-making, avoid medication errors, and ensure proper continuity of care. Poor data quality could lead to incorrect diagnoses, inappropriate treatments, or adverse patient outcomes.
 
-#### Trigger
+### Trigger
 
 Patient data is entered, updated, and accessed by various healthcare professionals throughout the patient care journey. Data may be manually entered or automatically imported from medical devices and external systems.
 
-#### Acceptance Criteria
+### Acceptance Criteria
 
 The healthcare information system must ensure:
 

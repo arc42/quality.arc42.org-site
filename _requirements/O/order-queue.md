@@ -5,15 +5,15 @@ related: [fault-tolerance, recoverability]
 permalink: /requirements/order-queue
 ---
 
-#### Context
+### Context
 
 The database is down, so orders received from the shop cannot be processed immediately.
 
-#### Trigger
+### Trigger
 
 User sends an order to the shop while database is unavailable.
 
-#### Acceptance Criteria
+### Acceptance Criteria
 
 - System detects database is down and queues the order
 - Orders queued for up to 1 day

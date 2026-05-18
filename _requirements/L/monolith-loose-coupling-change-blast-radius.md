@@ -5,15 +5,15 @@ related: [loose-coupling, modularity, modifiability, maintainability, cohesion]
 permalink: /requirements/monolith-loose-coupling-change-blast-radius
 ---
 
-#### Context
+### Context
 
 A conventional client/server business application with a modular monolith backend (UI, application, domain, persistence modules).
 
-#### Trigger
+### Trigger
 
 A new business rule is added in one functional area (for example pricing or invoicing).
 
-#### Acceptance Criteria
+### Acceptance Criteria
 
 - Per change, implementation touches no more than **2 modules** outside the owning functional module.
 - Architecture tests in CI report **0** violations of declared layer/module dependency rules (for example no direct UI -> persistence dependencies, and no cyclic dependencies across modules).

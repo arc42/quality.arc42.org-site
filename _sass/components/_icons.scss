@@ -1,0 +1,56 @@
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: -0.125em;
+  line-height: 1;
+
+  > svg {
+    width: 1em;
+    height: 1em;
+    flex-shrink: 0;
+  }
+
+  &--xs {
+    font-size: 0.75em;
+  }
+  &--sm {
+    font-size: 0.875em;
+  }
+  &--lg {
+    font-size: 1.25em;
+  }
+  &--fw {
+    width: 1.25em;
+  }
+
+  &.bullet {
+    margin-right: 0.4em;
+  }
+}
+
+@keyframes icon-beat {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  10%,
+  30% {
+    transform: scale(0.95);
+  }
+  20%,
+  40% {
+    transform: scale(1.1);
+  }
+}
+
+.icon.beat > svg {
+  animation: icon-beat 1.4s ease-in-out infinite;
+  transform-origin: center;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .icon.beat > svg {
+    animation: none;
+  }
+}

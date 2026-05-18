@@ -5,15 +5,15 @@ related: [test-coverage, testability, maintainability]
 permalink: /requirements/test-coverage-for-critical-business-logic
 ---
 
-#### Context
+### Context
 
 A business application contains critical pricing, billing, and eligibility logic where unnoticed regressions would cause financial or contractual errors. The engineering lead needs lightweight but reliable evidence that this logic is exercised sufficiently by automated tests before changes are merged.
 
-#### Trigger
+### Trigger
 
 A change affecting a critical business-logic module is proposed for merge to the main branch.
 
-#### Acceptance Criteria
+### Acceptance Criteria
 
 - Branch coverage: automated tests achieve **>= 85% branch coverage** for all modules classified as critical business logic; 
 - Requirement coverage: **>= 95%** of high-risk business rules for the changed scope are linked to at least one automated test case; 

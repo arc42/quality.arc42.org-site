@@ -1,13 +1,20 @@
-<span
-    class="wcag-score-pill"
-    data-wcag-score-container
-    data-wcag-score-url="{{ '/assets/reports/wcag/latest.json' | prepend: site.baseurl }}">
-    <a href="{{ '/about/wcag-report/' | prepend: site.baseurl }}" aria-label="Open WCAG accessibility report">
-        <span class="wcag-score-dot" aria-hidden="true"></span>
-        <img
-            class="wcag-score-badge"
-            data-wcag-score-badge
-            src="https://img.shields.io/badge/WCAG-n%2Fa-lightgrey?style=social"
-            alt="WCAG n/a">
-    </a>
-</span>
+{%- comment -%}
+  WCAG accessibility-score pill in the footer. Rendered at build time from
+  _data/wcag.json (kept in sync by tests/ui/wcag.spec.ts, which writes both
+  this file and the full assets/reports/wcag/latest.json report).
+
+  No client-side JS — the previous wcag-score.js fetched latest.json on every
+  page load to set the same text. Switching to a build-time render removes a
+  render-blocking script from every page.
+{%- endcomment -%}
+{%- assign wcag_score = site.data.wcag.totals.avgScore -%}
+<a
+    class="footer-wcag-link"
+    href="{{ '/about/wcag-report/' | prepend: site.baseurl }}"
+    {%- if wcag_score %}
+    aria-label="Open WCAG accessibility report — current score {{ wcag_score | round }} of 100"
+    {%- else %}
+    aria-label="Open WCAG accessibility report"
+    {%- endif %}>
+    WCAG 2.2 AA{% if wcag_score %}<span class="footer-wcag-score" aria-hidden="true"> · {{ wcag_score | round }}/100</span>{% endif %}
+</a>

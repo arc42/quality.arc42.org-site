@@ -1,4 +1,5 @@
 import matter from "gray-matter";
+import yaml from "js-yaml";
 import { promises as fs } from "node:fs";
 import path from "node:path";
 
@@ -26,6 +27,7 @@ class LinkValidator {
     this.standards = new Map();
     this.approaches = new Map();
     this.tagPages = new Set();
+    this.synonymMap = {};
     this.errors = [];
   }
 
@@ -150,6 +152,7 @@ class LinkValidator {
             tags: this.parseList(data.tags, SEPARATORS.tags),
             related: this.parseList(data.related, SEPARATORS.related),
             standards: this.parseList(data.standards, SEPARATORS.related),
+            alias_of: data.alias_of || null,
           },
         };
       }),
@@ -211,12 +214,21 @@ class LinkValidator {
       }
     }
 
+    const synonymsPath = path.join(projectRoot, "_data", "quality-synonyms.yml");
+    try {
+      const synonymsContent = await fs.readFile(synonymsPath, "utf-8");
+      this.synonymMap = yaml.load(synonymsContent) || {};
+    } catch (err) {
+      this.synonymMap = {};
+    }
+
     console.log(`  ${COLORS.bold}Indexed:${COLORS.reset}`);
     console.log(`    - ${this.qualities.size} qualities`);
     console.log(`    - ${this.requirements.size} requirements`);
     console.log(`    - ${this.standards.size} standards`);
     console.log(`    - ${this.approaches.size} approaches`);
-    console.log(`    - ${this.tagPages.size} tag pages\n`);
+    console.log(`    - ${this.tagPages.size} tag pages`);
+    console.log(`    - ${Object.keys(this.synonymMap).length} synonym map keys\n`);
   }
 
   /**
@@ -377,6 +389,57 @@ class LinkValidator {
   }
 
   /**
+   * Validate alias-of frontmatter against _data/quality-synonyms.yml.
+   * Both sides must agree on (alias slug, canonical slug) pairs — otherwise
+   * the graph builder, the aliases page, and the homepage counters drift.
+   */
+  validateAliasMap() {
+    const frontmatterPairs = new Map();
+    for (const [id, q] of this.qualities) {
+      if (q.alias_of) frontmatterPairs.set(id, q.alias_of);
+    }
+
+    const yamlPairs = new Map();
+    for (const [canonical, aliases] of Object.entries(this.synonymMap)) {
+      for (const alias of aliases || []) {
+        yamlPairs.set(alias, canonical);
+      }
+    }
+
+    for (const [alias, canonical] of frontmatterPairs) {
+      if (!yamlPairs.has(alias)) {
+        this.errors.push({
+          type: "alias-drift",
+          source: this.qualities.get(alias).file,
+          sourceId: alias,
+          target: canonical,
+          message: `Alias "${alias}" (alias_of: ${canonical}) is missing from _data/quality-synonyms.yml. Add "- ${alias}" under "${canonical}:" key.`,
+        });
+      }
+    }
+
+    for (const [alias, canonical] of yamlPairs) {
+      if (!frontmatterPairs.has(alias)) {
+        this.errors.push({
+          type: "alias-drift",
+          source: "_data/quality-synonyms.yml",
+          sourceId: alias,
+          target: canonical,
+          message: `_data/quality-synonyms.yml lists "${alias}" under "${canonical}:" but no _qualities/*/${alias}.md doc with "alias_of: ${canonical}" exists.`,
+        });
+      } else if (frontmatterPairs.get(alias) !== canonical) {
+        this.errors.push({
+          type: "alias-drift",
+          source: this.qualities.get(alias).file,
+          sourceId: alias,
+          target: `${frontmatterPairs.get(alias)} vs ${canonical}`,
+          message: `Alias "${alias}" points to "${frontmatterPairs.get(alias)}" in frontmatter but to "${canonical}" in _data/quality-synonyms.yml. Pick one canonical.`,
+        });
+      }
+    }
+  }
+
+  /**
    * Validate all links
    */
   async validate() {
@@ -393,6 +456,8 @@ class LinkValidator {
     for (const [id, approach] of this.approaches) {
       this.validateApproach(id, approach);
     }
+
+    this.validateAliasMap();
   }
 
   /**
@@ -428,6 +493,7 @@ class LinkValidator {
       "requirement→tag",
       "approach→quality",
       "approach→tag",
+      "alias-drift",
     ];
 
     for (const type of typeOrder) {

@@ -1,40 +1,22 @@
+{% comment %}
+  quality-header — single-quality detail page header.
+
+  Migrated to the unified section-hero component. The eyebrow "Quality"
+  links back to /qualities/ (replaces the old header-category-link), and
+  the tag chips render in the section-hero chips row.
+
+  Params:
+    page                 The quality page object (required).
+    link                 Unused on the detail surface; kept for call-site compatibility.
+    share                Unused; kept for call-site compatibility.
+    show_category_link   Set to false to suppress the "Quality" eyebrow link.
+{% endcomment %}
 {% assign page = include.page %}
 
-<header>
-    <div class="panel quality-header">
-        <h1>
-            {% if include.link %}
-            <a class="post-link" href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>
-            {% else %}
-            {{ page.title }}
-            {% endif %}
-        </h1>
+{% capture chips_html %}{% for tag in page.tags %}<a class="tag" href="{{ '/tag-' | append: tag | prepend: site.baseurl }}">#{{ tag }}</a>{% endfor %}{% endcapture %}
 
-        <div class="header-taxonomy-row">
-            <ul class="tags">
-                {% assign tags_num = (page.tags | size) %}
-                {% if tags_num > 0 %}
-                <li><i class="fa fa-tags" style="color: var(--blue-text-color);"></i></li>
-                {% endif %}
-                {% for tag in page.tags %}
-                <li>
-                    <a class="tag" href="{{ '/tag-' | append: tag | prepend: site.baseurl }}">#{{ tag }}</a>
-                </li>
-                {% endfor %}
-            </ul>
-
-            {% unless include.show_category_link == false %}
-            {% include header-category-link.liquid
-              href='/qualities/'
-              value='Characteristic'
-              icon='fa-sitemap'
-            %}
-            {% endunless %}
-        </div>
-
-        <div class="clearfix">
-        </div>
-    </div>
-
-
-</header>
+{% if include.show_category_link == false %}
+  {% include section-hero.liquid section="qualities" title=page.title chips_html=chips_html %}
+{% else %}
+  {% include section-hero.liquid section="qualities" title=page.title eyebrow_label="Quality" eyebrow_href="/qualities/" chips_html=chips_html %}
+{% endif %}

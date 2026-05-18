@@ -13,6 +13,12 @@ permalink: /search.json
     "tags": [
         {% for tag in item.tags %}{{ tag | jsonify }}{% unless forloop.last %},{% endunless %}{% endfor %}
     ],
+    "aka": [
+        {% for a in item.aka %}{{ a | jsonify }}{% unless forloop.last %},{% endunless %}{% endfor %}
+    ],
+    "alias": [
+        {% for a in item.alias %}{{ a | jsonify }}{% unless forloop.last %},{% endunless %}{% endfor %}
+    ],
     "url": {{ item.url | jsonify }},
     "date": {{ item.date | date: '%Y-%m-%d' | jsonify }},
     "content": {{ item.content | strip_html | strip_newlines | jsonify }}

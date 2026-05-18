@@ -1,0 +1,60 @@
+// Section headings on detail pages — "Directly Related Quality
+// Requirements", "Related Qualities", "Related Approaches", "Related
+// Standards", "Tradeoffs". Mini-hero pattern matching the tag-page
+// section dividers in _panels.scss: 6px rail in --cat, paper + a
+// clearly-visible 20% color-mix tint, calm border. Icon-left-of-text
+// inside the h2 is preserved.
+//
+// Replaces the previous saturated 100% fills (e.g. requirements got a
+// solid red panel, qualities a solid blue panel) plus their per-variant
+// text-colour overrides. Now the h2 inherits the global .site-content
+// h2 violet via _content.scss — the rail + tint do the section-identity
+// work, the heading text stays calm.
+
+h2.section-heading {
+  --cat: var(--brand-blue);
+  // Fallback for browsers without color-mix; modern browsers see the tint.
+  background: var(--brand-paper);
+  background: color-mix(in oklab, var(--brand-paper) 80%, var(--cat) 20%);
+  border: 1px solid color-mix(in oklab, var(--brand-paper) 65%, var(--cat) 35%);
+  border-radius: $radius-sm;
+  font-size: 1.5em;
+  margin: 1.5rem 0 1rem;
+  padding: 0.55em 1em 0.55em 1.5em;
+  position: relative;
+
+  &::before {
+    background: var(--cat);
+    border-radius: 3px;
+    bottom: 0.5rem;
+    content: "";
+    left: 0;
+    position: absolute;
+    top: 0.5rem;
+    width: 6px;
+  }
+}
+
+h2.section-heading.qualities {
+  --cat: var(--brand-blue);
+}
+
+h2.section-heading.requirements {
+  --cat: var(--reqs-background-color);
+}
+
+h2.section-heading.approaches {
+  --cat: var(--approaches-background-color);
+}
+
+h2.section-heading.standards {
+  --cat: var(--standard-background-color);
+}
+
+h2.section-heading.tradeoffs {
+  --cat: var(--tradeoff-background-color);
+}
+
+h2.section-heading.articles {
+  --cat: var(--brand-violet);
+}

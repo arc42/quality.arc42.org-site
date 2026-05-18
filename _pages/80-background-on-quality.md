@@ -1,13 +1,19 @@
 ---
 layout: page
-title: Background on "Quality"
+title: Background on Quality
 permalink: /articles/
 order: 80
 hide: true
+no_layout_header: true
 ---
 
-Here you find a list of some background articles about _quality_, quality-models, the ISO-25010 standard and quality requirements.
+{% capture articles_meta %}<b>{{ site.articles | size }}</b> background articles.{% endcapture %}
 
+{% include section-hero.liquid
+  section="article"
+  title="Background on Quality"
+  lede="Longer-form reading on quality models, the ISO 25010 standard, and the thinking behind quality requirements."
+  meta=articles_meta %}
 
 <div id="search-results">
     <hr id="first-hr" class="with-no-margin"/>
@@ -18,7 +24,7 @@ Here you find a list of some background articles about _quality_, quality-models
 {% for article in articles %}
    <div class="article-wrapper">
       <article>
-         {% include article-header.html page=article link=true share=false %}
+         {% include article-header.html page=article link=true share=false heading_level="h2" %}
        </article>
     <hr class="with-no-margin"/>
   </div>

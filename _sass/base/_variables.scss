@@ -1,10 +1,40 @@
 // typography.
-$font-family: Helvetica, Arial, sans-serif;
-$font-size: 16px;
+// Body: Atkinson Hyperlegible Next — commissioned by the Braille Institute for
+// low-vision disambiguation. Variable weight. Functional choice for a reference
+// site whose users scan dense content under time pressure.
+// Headings: Libre Caslon Text — the pre-trend English reference serif, predating
+// the current editorial-revival crop (Fraunces, Newsreader, Tiempos).
+$font-family:
+  "Atkinson Hyperlegible Next",
+  "Atkinson Hyperlegible",
+  -apple-system,
+  BlinkMacSystemFont,
+  "Segoe UI",
+  Roboto,
+  Helvetica,
+  Arial,
+  sans-serif,
+  "Apple Color Emoji",
+  "Segoe UI Emoji";
+$heading-font-family: "Libre Caslon Text", "Iowan Old Style", "Palatino Linotype", Georgia,
+  "Times New Roman", serif;
+$font-size: 17px;
+
+// Modular scale — 1.333 (perfect fourth) from 1rem base.
+$text-xs: 0.75rem; // captions, legal
+$text-sm: 0.875rem; // metadata, labels
+$text-base: 1rem; // body
+$text-lg: 1.2rem; // lead paragraph
+$text-xl: 1.45rem; // h4 / small subhead
+$text-2xl: 1.78rem; // h3
+$text-3xl: 2.37rem; // h2
+$text-4xl: 3.15rem; // h1 / content display
+$text-5xl: 4.2rem; // hero display (use with clamp)
 
 // source code typography.
-$code-font-family: Consolas, Monaco, "Andale Mono", monospace;
-$code-font-size: 0.85em;
+$code-font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono",
+  monospace;
+$code-font-size: 0.9em;
 
 // vertical margin.
 $margin: 50px;
@@ -13,38 +43,208 @@ $margin: 50px;
 $site-max-width: 1200px;
 $mobile-width: 800px;
 $side-padding: 10px;
+$nav-collapse-width: 1180px;
+$nav-compact-width: 720px;
+$nav-narrow-width: 520px;
+$home-stack-width: 860px;
+$home-edge-width: 560px;
+$home-graph-wide-width: 900px;
+$footer-stack-width: 600px;
+
+// Border radii — canonical scale. Migrated from 16 raw values that had
+// accumulated across the codebase (3px, 4px, 5px, 6px, 7px, 8px, 9px, 10px,
+// 11px, 12px, 14px, 16px, 50%, 99px, 999px and friends). Keep ad-hoc:
+//   - 3px / 4px rails (section-hero / panel left edge are very short)
+//   - 50% circular
+//   - 0 reset
+// Everything else maps to one of these:
+$radius-xs: 4px; // hairline corners — buttons, chips, swatches, small inputs
+$radius-sm: 8px; // standard cards, panels, search bars
+$radius-md: 10px; // section heroes, primary content cards
+$radius-lg: 14px; // hero surfaces, large modal-style containers
+$radius-pill: 999px; // full pills / capsules — facet buttons, tag chips
 
 // brand color.
-$brand-color: #5fb49c;
-$brand-color-light: #deefb7;
-$brand-color-blue: #00b8f5;
-$brand-color-lila: #682d63;
-$brand-color-dark: $brand-color-lila;
-$marker-color: $brand-color-blue;
+$brand-violet: #682d63;
+$brand-violet-deep: #52214f;
+$brand-violet-soft: #e9d9e8;
+$brand-violet-faint: #f5eef4;
+$brand-cream: #fbf6ef;
+$brand-paper: #f8f7f2;
+$brand-ink: #241823;
+$brand-muted: #746671;
+$brand-teal: #5fb49c;
+$brand-blue: #00b8f5;
+$brand-blue-dark: #0077ad;
+$brand-blue-soft: #f2faff;
+$brand-blue-text: #003366;
+$brand-blue-muted: #536b80;
+$brand-blue-accent: #1675b9;
+// Darker accent for foreground text on the lightest blue surfaces where
+// $brand-blue-accent would drop below WCAG AA 4.5:1 (e.g. graph chips).
+$brand-blue-accent-dark: #1f5f82;
+
+$brand-color: $brand-violet;
+$brand-color-light: $brand-violet-soft;
+$brand-color-blue: $brand-blue;
+$brand-color-lila: $brand-violet;
+$brand-color-dark: $brand-violet-deep;
+$marker-color: $brand-color;
+
+// Domain color tokens.
+$quality-background-color: $brand-blue;
+$quality-text-color: $brand-blue-text;
+$requirement-background-color: #ffb3b3;
+$requirement-soft-background-color: #ffe0e0;
+$requirement-text-color: #8b0000;
+$standard-background-color: #ffc95c;
+$standard-soft-background-color: #ffefc8;
+$standard-text-color: #2c3e50;
+$dark-blue-text-color: #ffffff;
+$blue-text-color: $brand-blue-text;
+$error-color: #ec645b;
+$article-background-color: $brand-violet-soft;
+$approaches-background-color: #92ef80;
+$approaches-soft-background-color: #d9f7d3;
+$approaches-text-color: #1b5e20;
+$dimension-background-color: #1a3a5c;
+$dimension-text-color: #c8e6f5;
+$tradeoff-background-color: #fbe9e3;
+$tradeoff-text-color: #a04323;
+$tradeoff-muted-text-color: #6b6b6b;
+$synonym-text-color: $brand-violet-deep;
+$muted-text-color: #555555;
+$muted-text-1: #6f6f6f;
+$muted-text-2: #6b6b6b;
+$muted-text-3: #5e5e5e;
+$muted-blue-text: $brand-muted;
+$approach-impact-border-color: #e1e7ef;
+$legacy-requirement-shadow-color: #9cad75;
+$legacy-danger-shadow-color: rgba(156, 61, 75, 1);
+$innoq-heart-color: #ff9c66;
+
+:root {
+  --brand-violet: #{$brand-violet};
+  --brand-violet-deep: #{$brand-violet-deep};
+  --brand-violet-soft: #{$brand-violet-soft};
+  --brand-violet-faint: #{$brand-violet-faint};
+  --brand-violet-rgb: #{red($brand-violet)}, #{green($brand-violet)}, #{blue($brand-violet)};
+  --brand-violet-08: rgba(var(--brand-violet-rgb), 0.08);
+  --brand-violet-18: rgba(var(--brand-violet-rgb), 0.18);
+  --brand-violet-24: rgba(var(--brand-violet-rgb), 0.24);
+  --brand-violet-46: rgba(var(--brand-violet-rgb), 0.46);
+  --brand-cream: #{$brand-cream};
+  --brand-cream-rgb: #{red($brand-cream)}, #{green($brand-cream)}, #{blue($brand-cream)};
+  --brand-cream-06: rgba(var(--brand-cream-rgb), 0.06);
+  --brand-cream-09: rgba(var(--brand-cream-rgb), 0.09);
+  --brand-cream-10: rgba(var(--brand-cream-rgb), 0.1);
+  --brand-cream-14: rgba(var(--brand-cream-rgb), 0.14);
+  --brand-cream-16: rgba(var(--brand-cream-rgb), 0.16);
+  --brand-cream-22: rgba(var(--brand-cream-rgb), 0.22);
+  --brand-cream-24: rgba(var(--brand-cream-rgb), 0.24);
+  --brand-cream-32: rgba(var(--brand-cream-rgb), 0.32);
+  --brand-cream-42: rgba(var(--brand-cream-rgb), 0.42);
+  --brand-cream-46: rgba(var(--brand-cream-rgb), 0.46);
+  --brand-cream-48: rgba(var(--brand-cream-rgb), 0.48);
+  --brand-cream-74: rgba(var(--brand-cream-rgb), 0.74);
+  --brand-cream-82: rgba(var(--brand-cream-rgb), 0.82);
+  --brand-paper: #{$brand-paper};
+  --brand-ink: #{$brand-ink};
+  --brand-muted: #{$brand-muted};
+  --brand-teal: #{$brand-teal};
+  --brand-blue: #{$brand-blue};
+  --brand-blue-dark: #{$brand-blue-dark};
+  --brand-blue-soft: #{$brand-blue-soft};
+  --brand-blue-text: #{$brand-blue-text};
+  --brand-blue-muted: #{$brand-blue-muted};
+  --brand-blue-accent: #{$brand-blue-accent};
+  --brand-blue-accent-dark: #{$brand-blue-accent-dark};
+  --quality-background-color: #{$quality-background-color};
+  --quality-text-color: #{$quality-text-color};
+  --reqs-background-color: #{$requirement-background-color};
+  --reqs-soft-background-color: #{$requirement-soft-background-color};
+  --req-text-color: #{$requirement-text-color};
+  --standard-background-color: #{$standard-background-color};
+  --standard-soft-background-color: #{$standard-soft-background-color};
+  --standard-text-color: #{$standard-text-color};
+  --dark-blue-text-color: #{$dark-blue-text-color};
+  --blue-text-color: #{$blue-text-color};
+  --error-color: #{$error-color};
+  --article-background-color: #{$article-background-color};
+  --approaches-background-color: #{$approaches-background-color};
+  --approaches-soft-background-color: #{$approaches-soft-background-color};
+  --approaches-text-color: #{$approaches-text-color};
+  --dimension-background-color: #{$dimension-background-color};
+  --dimension-text-color: #{$dimension-text-color};
+  --tradeoff-background-color: #{$tradeoff-background-color};
+  --tradeoff-text-color: #{$tradeoff-text-color};
+  --tradeoff-muted-text-color: #{$tradeoff-muted-text-color};
+  --synonym-text-color: #{$synonym-text-color};
+  --muted-text-color: #{$muted-text-color};
+  --muted-text-1: #{$muted-text-1};
+  --muted-text-2: #{$muted-text-2};
+  --muted-text-3: #{$muted-text-3};
+  --muted-blue-text: #{$muted-blue-text};
+  --approach-impact-border-color: #{$approach-impact-border-color};
+  --legacy-requirement-shadow-color: #{$legacy-requirement-shadow-color};
+  --legacy-danger-shadow-color: #{$legacy-danger-shadow-color};
+  --innoq-heart-color: #{$innoq-heart-color};
+
+  // Focus ring — two-tone box-shadow gives ≥3:1 contrast on both violet
+  // header surfaces and cream/paper body surfaces. Apply everywhere we
+  // suppress the native outline. See _sass/_header.scss, _homenew.scss,
+  // _mobile-graph.scss.
+  --focus-ring: 0 0 0 2px var(--brand-violet), 0 0 0 4px var(--brand-cream);
+  --focus-ring-on-violet: 0 0 0 2px var(--brand-cream), 0 0 0 4px var(--brand-violet-deep);
+
+  // Code blocks (used in _content.scss)
+  --code-border: #ddd;
+  --code-border-strong: #ccc;
+
+  // Border radii — see SCSS section at the top of this file for the rationale.
+  --radius-xs: #{$radius-xs};
+  --radius-sm: #{$radius-sm};
+  --radius-md: #{$radius-md};
+  --radius-lg: #{$radius-lg};
+  --radius-pill: #{$radius-pill};
+
+  // Standards palette — canonical home for the /standards/ section colour
+  // system. Previously split across `:root` here (6 tokens) and
+  // `.standards-page` in _standards.scss (12 tokens, page-scoped). Unified
+  // here so the standards theme is co-located with the rest of the design
+  // tokens. Promoting from page-scope to :root is functionally identical
+  // because nothing else in the codebase reads these names.
+  // Pure-pixel aliases; do not adjust values without a deliberate redesign.
+  --std-surface-pure: #fff;
+  --std-bg: #fffaf0;
+  --std-surface: #fffdf7;
+  --std-cream-soft: #fff6de;
+  --std-cream-softer: #fff2cd;
+  --std-chip: #ffefc8;
+  --std-chip-hover: #fce6af;
+  --std-tooltip-bg: #fff8e4;
+  --std-border: #ead8ab;
+  --std-border-strong: #d4b878;
+  --std-chip-border: #debe72;
+  --std-icon: #9f751b;
+  --std-accent: #af841f;
+  --std-facet-active: #c4952c;
+  --std-heading: #8a6314;
+  --std-text-rich: #5f4714;
+  --std-text-soft: #766136;
+  --std-text: #47535c;
+}
 
 // other major colors.
-$site-title-color: #123f4e;
+$site-title-color: $brand-ink;
 $page-title-color: $marker-color;
 $background-color: #fff;
 $border-color: rgba(#000, 0.1);
-$border-contrast-color: #414288;
-$accent-color: #414288;
+$border-contrast-color: $brand-violet-deep;
+$accent-color: $brand-violet-deep;
 $status-ok-color: #50c878;
 
 // typography colors.
 $text-color: #383838;
-$link-color: #1675b9;
-$blockquote-color: #6f6f6f;
-
-// Tag-specific colors
-$quality-background-color: lighten($brand-color, 25%);
-$requirement-background-color: lighten($brand-color-blue, 35%);
-$requirement-text-color: darken($brand-color-blue, 20%);
-
-// dimension colors
-$dimension-background-color: #1a3a5c;
-$dimension-text-color: #c8e6f5;
-
-// approaches colors
-$approaches-background-color: #92ef80;
-$approaches-text-color: #1b5e20;
+$link-color: $brand-color;
+$blockquote-color: $brand-muted;

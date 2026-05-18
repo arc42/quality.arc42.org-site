@@ -5,15 +5,15 @@ related: [efficiency, time-behaviour, resource-efficiency]
 permalink: /requirements/low-impact-diagnosis
 ---
 
-#### Context
+### Context
 
 Diagnostics subsystem must have minimal impact on system performance.
 
-#### Trigger
+### Trigger
 
 Diagnostics subsystem is running during normal system operation.
 
-#### Acceptance Criteria
+### Acceptance Criteria
 
 - Diagnostics subsystem has only minor impact on execution time of system functions and transactions
 - Performance degradation due to diagnostics is measurable but minimal

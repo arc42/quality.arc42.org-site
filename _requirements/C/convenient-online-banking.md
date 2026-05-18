@@ -5,15 +5,15 @@ related: [user-experience, convenience, interaction-capability, clarity, ease-of
 permalink: /requirements/convenient-online-banking
 ---
 
-#### Context
+### Context
 
 A browser-based online banking application lets retail customers manage accounts, add payees, and make payments without branch or phone support. The add-payee-plus-first-payment flow must be fast and low-friction because it is both frequent and error-sensitive.
 
-#### Trigger
+### Trigger
 
 An authenticated customer adds a new payee and submits the first bill payment to that payee.
 
-#### Acceptance Criteria
+### Acceptance Criteria
 
 - Task completion: in a usability test with **>= 20** representative customers, **>= 90%** complete the end-to-end flow without assistance within **<= 2 min** including second-factor confirmation; source: moderated usability test log; horizon: each major release affecting the payment flow.
 - Correction rate: across the same test, the percentage of attempts requiring user correction of payee data, amount, or scheduling details before confirmation stays **<= 5%**; source: session recordings and task-observation protocol; horizon: each major release affecting the payment flow.

@@ -5,15 +5,15 @@ related: [usability, user-experience, time-behaviour, interaction-capability]
 permalink: /requirements/interruptable-backend-process
 ---
 
-#### Context
+### Context
 
 Report generation is performed in several parallel threads or processes, eventually on different OS-processes, virtual machines or containers. Cancelling or aborting needs to handle distributed execution.
 
-#### Trigger
+### Trigger
 
 User has (accidentally) started report generation, but now wants to interrupt and clicks `abort` or `cancel` button or selects cancel-function via keyboard.
 
-#### Acceptance Criteria
+### Acceptance Criteria
 
 - System interrupts report generation
 - Current generation state saved (in case user wants to continue later)

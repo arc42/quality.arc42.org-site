@@ -7,15 +7,15 @@ permalink: /requirements/backup-patient-monitoring-sensor
 
 Idea: [Bass et al., 2021](/references/#bass2021software)
 
-#### Context
+### Context
 
 The system monitors patients several health and vitality parameters (e.g. heartbeat frequency and amplitude, blood flow in coronary artery etc).
 
-#### Trigger
+### Trigger
 
 A sensor in the patient monitoring system fails to report a life-critical value after 100 ms.
 
-#### Acceptance Criteria
+### Acceptance Criteria
 
 - Failure is logged
 - Warning light is illuminated on the console

@@ -5,15 +5,15 @@ related: [reliability, robustness, ease-of-use, user-experience, interaction-cap
 permalink: /requirements/keep-data-on-error
 ---
 
-#### Context
+### Context
 
 A user wants to open a new bank account and is required to identify herself using an external system.
 
-#### Trigger
+### Trigger
 
 External identification system returns an error that identification could not be completed.
 
-#### Acceptance Criteria
+### Acceptance Criteria
 
 - System keeps any data entered by the user when external identification fails
 - 100% of user-entered data is preserved when identification error occurs

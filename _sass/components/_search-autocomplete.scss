@@ -1,0 +1,238 @@
+// Header search autocomplete dropdown.
+// Anchored to the right edge of .site-search (header form) so it can extend
+// leftward past the input's narrow column. Group rails reuse the home-directory
+// category colour tokens so the dropdown is a legend for the destination palette.
+
+.site-search {
+  position: relative;
+}
+
+.site-search input[type="search"] {
+  padding-right: 2.4rem; // room for the kbd hint
+}
+
+.site-search__hint {
+  align-items: center;
+  background: var(--brand-cream-14);
+  border: 1px solid var(--brand-cream-24);
+  border-radius: $radius-xs;
+  color: var(--header-on-violet-muted);
+  display: inline-flex;
+  font-family: $code-font-family;
+  font-size: 0.68rem;
+  font-weight: 600;
+  height: 1.25rem;
+  justify-content: center;
+  letter-spacing: 0;
+  line-height: 1;
+  min-width: 1.5rem;
+  padding: 0 0.35rem;
+  pointer-events: none;
+  position: absolute;
+  right: 0.45rem;
+  text-transform: none;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: opacity 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 2;
+
+  @media (hover: none) {
+    display: none;
+  }
+}
+
+.site-search input[type="search"]:focus ~ .site-search__hint,
+.site-search input[type="search"]:not(:placeholder-shown) ~ .site-search__hint {
+  opacity: 0;
+}
+
+.site-search__panel {
+  background: var(--brand-paper);
+  border: 1px solid var(--brand-violet-24);
+  border-radius: $radius-sm;
+  box-shadow:
+    0 1px 2px rgba(36, 24, 35, 0.06),
+    0 14px 36px rgba(36, 24, 35, 0.22);
+  color: var(--brand-ink);
+  font-family: $font-family;
+  font-size: 0.92rem;
+  font-weight: 400;
+  // Anchor to the right edge of the (narrow) input and grow leftward.
+  // min-width gives titles room; max-width keeps the panel readable on wide screens.
+  left: auto;
+  letter-spacing: 0;
+  line-height: 1.35;
+  margin-top: 0.45rem;
+  max-height: min(70vh, 34rem);
+  max-width: 38rem;
+  min-width: clamp(22rem, 32vw, 32rem);
+  overflow-y: auto;
+  padding: 0.25rem 0;
+  position: absolute;
+  right: 0;
+  text-transform: none;
+  top: 100%;
+  z-index: 1100; // above sticky header (1000)
+
+  &[hidden] {
+    display: none;
+  }
+}
+
+.site-search__group + .site-search__group {
+  border-top: 1px solid var(--brand-violet-18);
+  margin-top: 0.2rem;
+  padding-top: 0.2rem;
+}
+
+.site-search__group-label {
+  color: var(--brand-muted);
+  font-family: $heading-font-family;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  padding: 0.55rem 1rem 0.25rem;
+  text-transform: uppercase;
+}
+
+.site-search__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.site-search__item {
+  align-items: baseline;
+  column-gap: 0.9rem;
+  cursor: pointer;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  padding: 0.5rem 1rem 0.5rem 1.1rem;
+  position: relative;
+
+  // Category rail — picks up the type colour via --cat below.
+  &::before {
+    background: var(--cat, transparent);
+    border-radius: 2px;
+    content: "";
+    display: block;
+    height: 1.2rem;
+    left: 0.45rem;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 3px;
+  }
+
+  &.is-active,
+  &:hover {
+    background: var(--brand-violet-08);
+  }
+
+  &.is-active {
+    outline: 2px solid var(--brand-violet-46);
+    outline-offset: -2px;
+  }
+
+  // Per-type colour — mirrors _sass/_homenew.scss home-directory rails.
+  &[data-type="quality"] {
+    --cat: var(--brand-blue);
+  }
+  &[data-type="requirement"] {
+    --cat: var(--reqs-background-color);
+  }
+  &[data-type="approach"] {
+    --cat: var(--approaches-background-color);
+  }
+  &[data-type="standard"] {
+    --cat: var(--standard-background-color);
+  }
+}
+
+.site-search__title {
+  color: var(--brand-ink);
+  font-size: 0.98rem;
+  font-weight: 500;
+  line-height: 1.3;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  mark {
+    background: var(--brand-violet-18);
+    border-radius: 2px;
+    color: inherit;
+    padding: 0 0.1em;
+  }
+}
+
+.site-search__path {
+  color: var(--brand-muted);
+  font-family: $code-font-family;
+  font-size: 0.74rem;
+  font-weight: 400;
+  max-width: 18rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.site-search__empty {
+  color: var(--brand-muted);
+  font-size: 0.92rem;
+  padding: 0.9rem 1rem;
+
+  strong {
+    color: var(--brand-ink);
+  }
+}
+
+.site-search__more {
+  border-top: 1px solid var(--brand-violet-18);
+  color: var(--brand-muted);
+  font-size: 0.78rem;
+  margin-top: 0.25rem;
+  padding: 0.55rem 1rem;
+}
+
+.site-search__hint-line {
+  color: var(--brand-muted);
+}
+
+// Tablet / narrow desktop: shrink panel + drop path column for readability.
+@media screen and (max-width: $nav-collapse-width) {
+  .site-search__panel {
+    border-radius: $radius-sm;
+    left: auto;
+    max-height: 60vh;
+    max-width: 28rem;
+    min-width: clamp(18rem, 60vw, 26rem);
+    right: 0;
+  }
+
+  .site-search__item {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .site-search__path {
+    display: none;
+  }
+}
+
+// Mobile: full-width panel below the input.
+@media screen and (max-width: $nav-compact-width) {
+  .site-search__panel {
+    left: 0;
+    max-width: none;
+    min-width: 0;
+    right: 0;
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-search__hint {
+    transition: none;
+  }
+}

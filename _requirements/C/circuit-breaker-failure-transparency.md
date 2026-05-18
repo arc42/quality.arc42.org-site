@@ -5,15 +5,15 @@ related: [failure-transparency, availability, resilience, fault-tolerance]
 permalink: /requirements/circuit-breaker-failure-transparency
 ---
 
-#### Context
+### Context
 
 The system depends on multiple upstream services (payments, profiles, notifications). Transient upstream failures must not cascade or break core user flows.
 
-#### Trigger
+### Trigger
 
 Upstream service experiences transient failures or degraded performance during normal system operation.
 
-#### Acceptance Criteria
+### Acceptance Criteria
 
 - Implement circuit breakers with automatic open/half‑open/close states and exponential backoff
   - Sliding window: 10–60s time window or 20–200 requests minimum sample size (use both where supported)
