@@ -14,7 +14,7 @@ export function initSearch() {
     const queryData = getQuery(["q"]);
     const initialQuery = queryData.query;
 
-    if (initialQuery) {
+    if (initialQuery && searchInput) {
         searchInput.value = initialQuery;
     }
 
