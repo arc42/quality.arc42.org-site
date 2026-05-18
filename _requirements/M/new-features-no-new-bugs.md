@@ -6,11 +6,11 @@ stakeholder: management, product-owner, developer
 permalink: /requirements/new-features-introduct-no-bugs
 ---
 
-#### Requirement
+### Requirement
 
 Each newly released feature must have a bounded escaped-defect rate in the days immediately after release.
 
-#### Acceptance Criteria
+### Acceptance Criteria
 
 - Escaped defect count: each new feature introduces **<= 1** customer-visible defect within the first **10 days** after release; source: defect tracker with release linkage; horizon: every feature release.
 - Severity guard: each new feature introduces **0** high-severity production defects within the first **10 days** after release; source: incident log and release report; horizon: every feature release.

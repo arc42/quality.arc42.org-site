@@ -5,11 +5,11 @@ related: [usability, inclusivity, accessibility, interaction-capability, interna
 permalink: /requirements/multilinguality-support
 ---
 
-#### Requirement
+### Requirement
 
 Core user journeys must be fully translated and linguistically reviewed for every supported locale before release.
 
-#### Acceptance Criteria
+### Acceptance Criteria
 
 - The top 20 user journeys (UI, onboarding, error messages, help) are available in ≥ 10 locales with ≥ 98% translated strings and zero placeholder/fallback-language texts (i18n completeness report, every release).
 - Native-language review of the top 20 journeys per changed locale finds ≤ 2 major translation defects (linguistic QA report, every release).

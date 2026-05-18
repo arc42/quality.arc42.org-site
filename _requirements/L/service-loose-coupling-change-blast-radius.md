@@ -5,15 +5,15 @@ related: [loose-coupling, modularity, evolvability, deployability, independence]
 permalink: /requirements/service-loose-coupling-change-blast-radius
 ---
 
-#### Context
+### Context
 
 A microservice system with independently owned services (for example order, payment, inventory, notification).
 
-#### Trigger
+### Trigger
 
 A team changes one service (internal model, API, or event schema) to implement a new feature.
 
-#### Acceptance Criteria
+### Acceptance Criteria
 
 - Over a rolling 90-day window, architecture/compliance checks report **0** direct dependencies on another service's internal implementation artifacts (for example internal packages, private libraries, or shared source).
 - Cross-service direct database access is **0**; communication is only via explicit API/event contracts.

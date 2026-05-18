@@ -6,13 +6,13 @@ permalink: /requirements/compliance-to-wcag
 source: "This scenario has been created with help from [ChatGPT](https://chat.openai.com) by using the prompt `Please generate a quality attribute scenario for accessibility compliance with WCAG 2.1 with precise metrics`."
 ---
 
-#### Context
+### Context
 The web application must comply with WCAG 2.1 Level AA standards to ensure accessibility for users with disabilities navigating with screen readers in standard web browsers.
 
-#### Trigger
+### Trigger
 A person with visual impairment using a screen reader attempts to navigate and interact with the web application.
 
-#### Acceptance Criteria
+### Acceptance Criteria
 
 - **Navigation**: At least 95% of all interactive elements (links, buttons, form fields) are navigable and identifiable using the screen reader
 - **Content**: At least 98% of all content (text, images with alt attributes, videos with captions) is accessible and consumable using the screen reader

@@ -5,15 +5,15 @@ related: [jitter, predictability, latency]
 permalink: /requirements/minimize-jitter
 ---
 
-#### Context
+### Context
 
 Reduce and control [jitter](/qualities/jitter) in the real-time streaming of data. System operates under standard network conditions during operational phase.
 
-#### Trigger
+### Trigger
 
 Continuous transmission of real-time data from sensors over network.
 
-#### Acceptance Criteria
+### Acceptance Criteria
 
 - Variance in delay between data packets (jitter) does not exceed 5 milliseconds for 95% of transmitted packets
 - When jitter exceeds 5ms threshold, system employs buffering mechanisms to smooth data flow, ensuring effective jitter experienced by end-user remains below 7 milliseconds

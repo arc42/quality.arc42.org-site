@@ -6,15 +6,15 @@ permalink: /requirements/access-control-is-enforced
 source: "This scenario has been created with help from [ChatGPT](https://chat.openai.com) by using the prompt `create a quality scenario to describe an access control requirement`."
 ---
 
-#### Context
+### Context
 
 The system operates in a multi-user environment with varying levels of user roles and permissions. Sensitive features and confidential information require role-based access control (RBAC) and audit trails to maintain data security and privacy.
 
-#### Trigger
+### Trigger
 
 A user attempts to access a sensitive feature or confidential information within the system.
 
-#### Acceptance Criteria
+### Acceptance Criteria
 
 The system must enforce appropriate access controls based on the user's role and permissions.
 

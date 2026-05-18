@@ -6,11 +6,11 @@ permalink: /requirements/low-change-failure-rate
 source: "This scenario has been created with help from [ChatGPT](https://chat.openai.com) by using the prompt `create a quality scenario to describe a change-failure-rate requirement`."
 ---
 
-#### Requirement
+### Requirement
 
 Software development team deploys new versions to production with low failure rate.
 
-#### Acceptance Criteria
+### Acceptance Criteria
 
 All metrics measured over three-month period:
 

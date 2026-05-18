@@ -5,11 +5,11 @@ related: [reliability, availability, high-availability, fault-tolerance, stabili
 permalink: /requirements/server-fails-operation-without-downtime
 ---
 
-#### Requirement
+### Requirement
 
 The system must maintain continuous operation despite server failures in a server farm.
 
-#### Acceptance Criteria
+### Acceptance Criteria
 
 - System continues to operate with no downtime when a server fails during normal operation
 - Operator is informed of server failure

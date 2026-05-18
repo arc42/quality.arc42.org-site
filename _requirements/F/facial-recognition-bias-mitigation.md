@@ -5,15 +5,15 @@ related: [bias-mitigation, fairness, accountability, transparency]
 permalink: /requirements/facial-recognition-bias-mitigation
 ---
 
-#### Context
+### Context
 
 A facial recognition system is being developed for secure access control in a multinational corporation with employees from diverse demographic backgrounds. Previous facial recognition systems have shown significant disparities in accuracy across different demographic groups, particularly for individuals with darker skin tones and women. The organization is committed to ensuring equitable performance across all demographic groups to prevent discriminatory outcomes and maintain security integrity.
 
-#### Trigger
+### Trigger
 
 The facial recognition algorithm processes images captured by security cameras at entry points and compares them against the employee database to grant or deny access.
 
-#### Acceptance Criteria
+### Acceptance Criteria
 
 - Maximum false non-match rate (FNMR) difference of 1.5% between any demographic groups defined by intersections of gender, age range, and skin tone
 - Overall accuracy rate of at least 98% across all demographic groups

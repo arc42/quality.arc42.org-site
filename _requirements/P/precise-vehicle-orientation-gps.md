@@ -5,11 +5,11 @@ related: [accuracy, preciseness, precision, reliability, functional-correctness]
 permalink: /requirements/precise-vehicle-orientation-gps
 ---
 
-#### Trigger
+### Trigger
 
 The orientation of the vehicle is measured twice for the same orientation.
 
-#### Acceptance Criteria
+### Acceptance Criteria
 
 - Orientation is displayed in GPS software
 - Orientation precision is better than ± 3°

@@ -5,15 +5,15 @@ related: [integrability, interoperability, data-quality, consistency]
 permalink: /requirements/crm-data-synchronization
 ---
 
-#### Context
+### Context
 
 The customer support system must integrate with existing CRM systems (Salesforce, HubSpot, Microsoft Dynamics) to maintain synchronized customer data and interaction history.
 
-#### Trigger
+### Trigger
 
 Customer data or interaction history is created, updated, or deleted in either the support system or connected CRM systems.
 
-#### Acceptance Criteria
+### Acceptance Criteria
 
 - Implement standardized data mapping layer that transforms between internal data model and CRM-specific schemas without custom code for each CRM
 - Support both real-time (webhook/API) and batch synchronization modes with configurable sync intervals (1min to 24hrs)
@@ -24,7 +24,7 @@ Customer data or interaction history is created, updated, or deleted in either t
 - Reconciliation: produce a bidirectional reconciliation report daily; alert when drift exceeds thresholds (e.g., >0.5% records diverged) and provide a remediation workflow
 - RPO/RTO: recovery point objective ≤ 15 minutes for incremental sync; recovery time objective ≤ 30 minutes for resuming normal sync after incident
 
-#### Measurement & Verification
+### Measurement & Verification
 
 1. Replay tests confirm idempotent upserts and deduplication across CRMs
 2. Chaos tests (rate‑limit bursts, auth expiry) drain through retries and DLQ without data loss; RPO/RTO targets met

@@ -6,15 +6,15 @@ permalink: /requirements/appearance-requirements
 source: "This scenario has been created with help from [ChatGPT](https://chat.openai.com) by using the prompt `create a quality scenario to describe an appearance requirement`."
 ---
 
-#### Context
+### Context
 
 The system is a mobile application with a user interface for performing common tasks such as creating an account or making a purchase. The appearance of the UI is critical for user experience and brand consistency, requiring visual consistency, color scheme compliance, text legibility, proper image resolution, responsive design, and acceptable loading times across various devices and screen sizes while adhering to WCAG 2.0 accessibility standards.
 
-#### Trigger
+### Trigger
 
 A user interacts with the mobile application's user interface to perform a common task, such as creating an account or making a purchase.
 
-#### Acceptance Criteria
+### Acceptance Criteria
 
 - Visual Consistency:
   - At least 95% of UI elements adhere to established style guide

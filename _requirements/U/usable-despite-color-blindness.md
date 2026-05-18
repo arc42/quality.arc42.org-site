@@ -5,11 +5,11 @@ related: [usability, user-experience, compliance, accessibility, inclusivity, in
 permalink: /requirements/usable-despite-color-blindness
 ---
 
-#### Requirement
+### Requirement
 
 All parts of the system must be usable by people with all types of color blindness.
 
-#### Acceptance Criteria
+### Acceptance Criteria
 
 - System fully usable by users with Deuteranomaly (red-green weakness)
 - System fully usable by users with Protanomaly (red weakness)

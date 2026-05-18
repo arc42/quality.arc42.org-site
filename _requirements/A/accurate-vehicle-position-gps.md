@@ -5,15 +5,15 @@ related: [preciseness, precision, reliability, functional-correctness]
 permalink: /requirements/accurate-vehicle-position-gps
 ---
 
-#### Context
+### Context
 
 The system is a vehicle navigation system that displays the vehicle's position on a map. GPS data might be retrieved at an insufficient rate for smooth position updates. To compensate for this, the system uses extrapolation to determine in-between positions, which is crucial for providing a smooth and accurate representation of the vehicle's movement on the map.
 
-#### Trigger
+### Trigger
 
 The vehicle's position on the map is being updated when the current position is determined by extrapolation rather than direct GPS data.
 
-#### Acceptance Criteria
+### Acceptance Criteria
 
 - Extrapolated position recalculated with frequency greater than 10Hz
 - System consistently maintains position update rate higher than 10 times per second

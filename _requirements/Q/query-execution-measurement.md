@@ -5,15 +5,15 @@ related: [efficiency, time-behaviour, memory-usage, resource-efficiency, resourc
 permalink: /requirements/query-execution-management
 ---
 
-#### Context
+### Context
 
 The system runs CPU- and memory-intensive database queries. A diagnostic component can measure execution times when `query-diagnosis` is enabled.
 
-#### Trigger
+### Trigger
 
 Query diagnosis is enabled in production or a staging environment.
 
-#### Acceptance Criteria
+### Acceptance Criteria
 
 - p95 runtime overhead ≤ 1% for queries with baseline ≥ 200 ms, and ≤ 2 ms absolute for faster queries, across the top-50 benchmark suite (benchmark report, each diagnostic-component release).
 - Peak resident-memory increase ≤ 1 MB vs. baseline under the same benchmark (profiler report, each diagnostic-component release).

@@ -5,11 +5,11 @@ related: [availability, high-availability, reliability, operability, user-error-
 permalink: /requirements/available-7-24-99
 ---
 
-#### Requirement
+### Requirement
 
 The user-facing service scope consisting of login, landing page, and the three most-used business transactions must remain continuously available with a monthly uptime objective of at least 99%.
 
-#### Acceptance Criteria
+### Acceptance Criteria
 
 - Availability objective: over each rolling **30-day** window, the defined service scope achieves **>= 99.0%** successful synthetic checks from at least **3** independent monitoring regions at **1 min** intervals; source: uptime dashboard and probe logs; horizon: continuous 24x7 operation.
 - Incident detection: any outage of the defined scope lasting **> 5 min** triggers an on-call alert within **<= 2 min** after the fifth failed check; source: monitoring and alerting log; horizon: every production incident.

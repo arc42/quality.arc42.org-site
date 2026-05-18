@@ -6,15 +6,15 @@ permalink: /requirements/assess-impact-of-proposed-change
 source: "This scenario has been created with help from [ChatGPT](https://chat.openai.com) by using the prompt `create a quality scenario to describe an analysability requirement`."
 ---
 
-#### Context
+### Context
 
 The system is a financial software application with multiple modules. The system's analysability is crucial for efficient change management and maintenance, supported by tools and practices for code documentation, dependency mapping, and change simulation.
 
-#### Trigger
+### Trigger
 
 A software development team initiates an impact analysis for a proposed change to a specific module of the financial software application.
 
-#### Acceptance Criteria
+### Acceptance Criteria
 
 - Change Impact Assessment Time:
   - Team assesses impact of proposed change within 2 hours

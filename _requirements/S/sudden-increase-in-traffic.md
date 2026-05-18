@@ -5,15 +5,15 @@ related: [resilience, reliability, elasticity, scalability]
 permalink: /requirements/handle-sudden-increase-in-traffic
 ---
 
-#### Context
+### Context
 
 The web application runs in a cloud-based environment with multiple servers. It must remain serviceable during sudden traffic surges and tolerate single-node failure.
 
-#### Trigger
+### Trigger
 
 A quarterly resilience drill simulates traffic at 300% of baseline within 5 min, sustained for 15 min.
 
-#### Acceptance Criteria
+### Acceptance Criteria
 
 - Successful response rate ≥ 99% and p95 end-user latency ≤ 4 s during the surge (load-test + APM report, quarterly).
 - Loss of one serving node during the surge causes zero accepted-request loss; traffic redistributes to healthy nodes within 60 s (load-balancer metrics, quarterly).

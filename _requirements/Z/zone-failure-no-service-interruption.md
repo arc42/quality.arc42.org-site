@@ -5,15 +5,15 @@ related: [redundancy, availability, fault-tolerance, resilience]
 permalink: /requirements/zone-failure-no-service-interruption
 ---
 
-#### Context
+### Context
 
 A business-critical online service must remain available during infrastructure failures.
 
-#### Trigger
+### Trigger
 
 One complete availability zone (or equivalent independent failure domain) becomes unavailable.
 
-#### Acceptance Criteria
+### Acceptance Criteria
 
 - The production deployment provides **N+1** capacity for stateless service workloads across at least **2** independent failure domains.
 - Loss of one failure domain causes **0** user-visible outage for core functions.

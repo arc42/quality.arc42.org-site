@@ -5,11 +5,11 @@ related: [confidentiality, security, privacy]
 permalink: /requirements/encrypted-storage
 ---
 
-#### Requirement
+### Requirement
 
 Data-at-rest must be encrypted using state-of-the-art encryption algorithms.
 
-#### Acceptance Criteria
+### Acceptance Criteria
 
 - All data in databases and backups is encrypted
 - Encryption uses proven algorithms from established vendors or open-source projects

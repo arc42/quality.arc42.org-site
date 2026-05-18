@@ -5,15 +5,15 @@ related: [accuracy, preciseness, precision, reliability, functional-correctness,
 permalink: /requirements/accurate-estimate-of-insurance-rate
 ---
 
-#### Context
+### Context
 
 The system is an online application for configuring health insurance contracts. The final price of the insurance rate needs to be determined by backoffice employees due to legal and organizational reasons. This constraint cannot currently be relaxed.
 
-#### Trigger
+### Trigger
 
 A user configures a health insurance contract in the online app.
 
-#### Acceptance Criteria
+### Acceptance Criteria
 
 - System calculates price estimate based on currently available information
 - Estimate falls within ±15% margin relative to the final price

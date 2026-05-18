@@ -5,15 +5,15 @@ related: [functional-appropriateness]
 permalink: /requirements/restore-filter-after-log-in
 ---
 
-#### Context
+### Context
 
 In a multi-tenant web based system within a factory, each user may need to have their work environment with their settings restored after successful log in.
 
-#### Trigger
+### Trigger
 
 User logs in to start their shift and accesses a website with a table with data.
 
-#### Acceptance Criteria
+### Acceptance Criteria
 
 - Website displays table filtered by filter configuration from user's last session
 - Filter settings automatically restored upon login

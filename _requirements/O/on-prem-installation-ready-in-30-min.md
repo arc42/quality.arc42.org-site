@@ -5,15 +5,15 @@ related: [installability, deployability, operability, maintainability]
 permalink: /requirements/on-prem-installation-ready-in-30-min
 ---
 
-#### Context
+### Context
 
 An enterprise product is deployed on customer-managed infrastructure.
 
-#### Trigger
+### Trigger
 
 A fresh installation is performed on a supported operating system and platform baseline.
 
-#### Acceptance Criteria
+### Acceptance Criteria
 
 - A first-time installation completes within **<= 30 minutes** from start to operational verification.
 - Installation requires **0** manual dependency resolution steps outside the documented installer workflow.

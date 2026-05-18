@@ -5,15 +5,15 @@ related: [intuitiveness, usability, learnability, understandability]
 permalink: /requirements/first-time-onboarding-without-errors
 ---
 
-#### Context
+### Context
 
 A consumer-facing application should be understandable and usable by first-time users without prior training.
 
-#### Trigger
+### Trigger
 
 A user opens the product for the first time and attempts the primary onboarding flow.
 
-#### Acceptance Criteria
+### Acceptance Criteria
 
 - In usability tests with at least **30** representative first-time users and no facilitator guidance, at least **80%** complete the primary onboarding flow on the first attempt without critical errors.
 - No core feature requires more than **3 interactions** from the home screen to reach its starting point.

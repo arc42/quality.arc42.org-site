@@ -5,11 +5,11 @@ related: [efficiency, resource-efficiency, memory-usage]
 permalink: /requirements/restricted-memory
 ---
 
-#### Requirement
+### Requirement
 
 The system must operate within strict memory constraints.
 
-#### Acceptance Criteria
+### Acceptance Criteria
 
 - Total RAM consumption does not exceed 512 MB
 - Memory limit enforced at all times during system operation

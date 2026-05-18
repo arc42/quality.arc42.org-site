@@ -5,15 +5,15 @@ related: [efficiency, maintainability, changeability, adaptability, agility]
 permalink: /requirements/independent-enhancement-of-subsystem
 ---
 
-#### Context
+### Context
 
 Extensions or changes to a subsystem should be possible independently of all other subsystems.
 
-#### Trigger
+### Trigger
 
 Development team changes code or configuration within a subsystem or component.
 
-#### Acceptance Criteria
+### Acceptance Criteria
 
 - No other subsystem needs to be changed
 - For all other subsystems, the following remains identical:

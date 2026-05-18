@@ -5,15 +5,15 @@ related: [access-control, auditability]
 permalink: /requirements/access-control-via-sso
 ---
 
-#### Context
+### Context
 
 Employees authenticate through the corporate SSO system and must receive correct application roles immediately after login.
 
-#### Trigger
+### Trigger
 
 An employee initiates SSO login.
 
-#### Acceptance Criteria
+### Acceptance Criteria
 
 - SSO login completes at p95 ≤ 3 s with ≥ 99.5% success rate across the top 5 user roles, excluding declared IdP outage windows (authentication telemetry, rolling 30-day window).
 - In release-candidate tests with ≥ 20 representative identities, 100% receive correct roles and rights immediately after login (SSO integration test report, every release candidate).

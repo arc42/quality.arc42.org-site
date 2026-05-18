@@ -5,15 +5,15 @@ related: [bias-mitigation, fairness, transparency, accountability, explainabilit
 permalink: /requirements/hiring-algorithm-bias-mitigation
 ---
 
-#### Context
+### Context
 
 A large organization is implementing an AI-powered resume screening and candidate ranking system to streamline its hiring process. Historical hiring data may contain implicit biases that have led to underrepresentation of certain demographic groups. The system must be designed to identify and mitigate these biases to ensure fair consideration of all qualified candidates regardless of gender, ethnicity, age, or other protected characteristics.
 
-#### Trigger
+### Trigger
 
 The hiring algorithm processes resumes and application materials submitted through the company's applicant tracking system, comparing them against job requirements and historical hiring patterns to rank candidates for human review.
 
-#### Acceptance Criteria
+### Acceptance Criteria
 
 - Statistical parity within ±5% across demographic groups (selection rates for protected groups)
 - Protected characteristics (name, gender, age, address, proxies) removed or masked during initial screening phase

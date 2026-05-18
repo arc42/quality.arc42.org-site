@@ -5,15 +5,15 @@ related: [efficiency, maintainability, changeability]
 permalink: /requirements/annual-tax-update
 ---
 
-#### Context
+### Context
 
 The data output format of the annual accounting report is adjusted every year on December 31 to comply with legal and tax changes. The system must be able to generate the new format.
 
-#### Trigger
+### Trigger
 
 Updated specification of data output format for booking reports becomes available, usually October 31st.
 
-#### Acceptance Criteria
+### Acceptance Criteria
 
 - Source code of reporting components is updated
 - System creates report according to new specification

@@ -5,11 +5,11 @@ related: [time-behaviour, speed, performance, startup-time, elasticity, scalabil
 permalink: /requirements/fast-startup-time
 ---
 
-#### Requirement
+### Requirement
 
 The system must reach a defined ready-for-use state quickly after a cold start from the fully powered-off state.
 
-#### Acceptance Criteria
+### Acceptance Criteria
 
 - Startup latency: on supported production hardware or runtime profiles, the system reaches ready state within **<= 90 s at p95** after the start command; source: startup timing report; horizon: each release affecting startup or deployment.
 - Ready-state completeness: the startup success rate is **>= 99%** for cold starts, where ready state means that all mandatory services are initialized and the first health check or representative user transaction succeeds; source: startup test report; horizon: each release affecting startup or deployment.

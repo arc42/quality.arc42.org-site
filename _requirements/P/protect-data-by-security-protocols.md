@@ -5,15 +5,15 @@ related: [safety, cyber-security, security, information-security, patient-safety
 permalink: /requirements/protect-data-by-security-procols
 ---
 
-#### Context
+### Context
 
 A medical system stores, transmits, and administers patient data. Regulatory and ethical obligations require enforceable security controls.
 
-#### Trigger
+### Trigger
 
 A release candidate is prepared, or a scheduled security review is due.
 
-#### Acceptance Criteria
+### Acceptance Criteria
 
 - Zero unresolved critical and ≤ 5 unresolved high vulnerabilities older than 30 days on patient-data systems (authenticated vulnerability scan, weekly + every release).
 - Penetration test at least once per 12 months and after each major architecture change; critical findings remediated within 14 days; releases with open critical findings are blocked (pen-test report and remediation tracker).

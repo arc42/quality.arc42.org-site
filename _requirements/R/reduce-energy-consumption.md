@@ -6,15 +6,15 @@ permalink: /requirements/reduce-energy-consumption-with-new-version
 source: "This scenario has been created with help from [ChatGPT](https://chat.openai.com) by using the prompt `create a quality scenario to describe a carbon-efficiency requirement`."
 ---
 
-#### Context
+### Context
 
 Large-scale application in data center powered by non-renewable energy sources, serving high number of concurrent users with high demand for data processing and computational resources.
 
-#### Trigger
+### Trigger
 
 Software system is in operation serving concurrent users.
 
-#### Acceptance Criteria
+### Acceptance Criteria
 
 - System prioritizes energy efficiency and carbon reduction in operations
 - Energy consumption optimized, reducing overall energy usage by 25% compared to previous year's consumption

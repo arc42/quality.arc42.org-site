@@ -5,15 +5,15 @@ related: [patient-safety, safety, reliability, efficiency, availability]
 permalink: /requirements/reliable-erh-system
 ---
 
-#### Context
+### Context
 
 An Electronic Health Records (EHR) system needs to ensure accurate and timely documentation of patient information.
 
-#### Trigger
+### Trigger
 
 Healthcare provider performs clinical interaction requiring patient record documentation.
 
-#### Acceptance Criteria
+### Acceptance Criteria
 
 - System achieves 99.9% uptime
 - Patient records updated within 5 minutes of any clinical interaction

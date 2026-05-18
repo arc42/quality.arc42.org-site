@@ -5,15 +5,15 @@ related: [flexibility, changeability, adaptability, configurability]
 permalink: /requirements/luggage-routing
 ---
 
-#### Context
+### Context
 
 Luggage routing at an airport depends on origin, destination, stopovers, and current government travel warnings. When an official warning changes, the affected routing rules must be updated quickly enough that inspections and routing decisions stay compliant.
 
-#### Trigger
+### Trigger
 
 An official government travel warning relevant to an origin, destination, or stopover location is published or changed.
 
-#### Acceptance Criteria
+### Acceptance Criteria
 
 - Rule rollout latency: the updated routing rules are active in production within **<= 4 h** after publication of the warning; source: publication timestamp and deployment/change log; horizon: every warning change.
 - Impact correctness: in the regression suite for affected routes, **100%** of impacted luggage-routing cases follow the new warning-based rule after rollout; source: rule-validation test report; horizon: every warning change.

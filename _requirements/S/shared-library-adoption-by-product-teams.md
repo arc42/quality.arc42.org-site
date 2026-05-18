@@ -5,15 +5,15 @@ related: [reusability, maintainability, modifiability, adaptability]
 permalink: /requirements/shared-library-adoption-by-product-teams
 ---
 
-#### Context
+### Context
 
 Multiple product teams build user-facing features and should reuse a shared component library instead of duplicating common implementations.
 
-#### Trigger
+### Trigger
 
 A team starts a new feature stream or a new product integration.
 
-#### Acceptance Criteria
+### Acceptance Criteria
 
 - Over a rolling quarter, at least **80%** of UI components used in shipped features come from the shared library.
 - A new team can integrate the library and deliver its first production use within **<= 2 hours**, using only the provided documentation and examples.

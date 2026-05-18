@@ -6,7 +6,7 @@ stakeholder: developer
 permalink: /requirements/good-code-readability-score
 ---
 
-#### Context
+### Context
 
 We use the [SonarQube](https://www.sonarsource.com/open-source-editions/) to obtain several kinds of metrics on the system.
 
@@ -15,10 +15,10 @@ All source code requires a [SonarQube cognitive complexity](https://www.sonarsou
 (See their [whitepaper](https://www.sonarsource.com/resources/cognitive-complexity/) for details)
 
 
-#### Requirement
+### Requirement
 New and changed production code must stay within a bounded cognitive-complexity limit.
 
-#### Acceptance Criteria
+### Acceptance Criteria
 
 - Every new or changed function/method has cognitive complexity ≤ 15 (static-analysis report, every pull request).
 - 100% of new and changed production files are included in the analysis run (CI analysis log, every pull request).

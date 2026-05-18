@@ -5,17 +5,17 @@ related: [evolvability, modularity, maintainability, extensibility]
 permalink: /requirements/adding-entity-type-within-5-days
 ---
 
-#### Context
+### Context
 
 A legacy business application is undergoing incremental modernisation toward a modular architecture.
 The business regularly introduces new entity types (e.g., a new product category, contract type, or regulatory report) that require end-to-end support: persistence, validation, REST API, and UI.
 The architecture must make such changes predictable, localised, and fast — without cascading modifications across unrelated modules.
 
-#### Trigger
+### Trigger
 
 A product team receives a business requirement to add a new entity type to the system, requiring full-stack support (database schema, domain model, service layer, REST endpoint, and basic UI form).
 
-#### Acceptance Criteria
+### Acceptance Criteria
 
 - Full-stack implementation of a new entity type touches **at most 3 existing modules** (measured by the number of top-level module directories modified in the version-control diff, excluding the new module itself)
 - The **aggregate number of lines changed** outside the new module's own directory is **≤ 50 lines** (excluding auto-generated code such as OpenAPI stubs or ORM migrations)

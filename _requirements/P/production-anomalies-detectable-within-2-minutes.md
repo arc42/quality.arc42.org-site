@@ -5,16 +5,16 @@ related: [observability, analysability, debuggability, mean-time-to-recovery]
 permalink: /requirements/production-anomalies-detectable-within-2-minutes
 ---
 
-#### Context
+### Context
 
 An e-commerce platform runs as a distributed system with multiple services.
 Operations engineers must detect and assess production anomalies quickly — without accessing source code or redeploying instrumentation.
 
-#### Trigger
+### Trigger
 
 A production anomaly occurs (e.g., elevated error rate, latency spike, resource exhaustion, or unexpected traffic pattern).
 
-#### Acceptance Criteria
+### Acceptance Criteria
 
 - The anomaly is visible on operational dashboards **within 2 minutes** of onset
 - All services emit structured logs (JSON) with at minimum: timestamp, severity, service name, trace ID, and error category

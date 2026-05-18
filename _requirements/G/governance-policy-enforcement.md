@@ -5,15 +5,15 @@ related: [governability, compliance, accountability, auditability, security]
 permalink: /requirements/governance-policy-enforcement
 ---
 
-#### Context
+### Context
 
 Multiple services process sensitive and regulated data under centrally defined organizational policies (for access control, data handling, retention, and model usage).
 
-#### Trigger
+### Trigger
 
 A policy is created, changed, or violated.
 
-#### Acceptance Criteria
+### Acceptance Criteria
 
 - New/updated policies are distributed to all in-scope enforcement points within **15 minutes**.
 - At least **99.5%** of in-scope requests are evaluated against active policies.

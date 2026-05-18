@@ -5,15 +5,15 @@ related: [usability, user-experience, compliance, interaction-capability]
 permalink: /requirements/compliance-with-ui-styleguide
 ---
 
-#### Context
+### Context
 
 Operating systems like Windows(tm) or MacOS(tm) have strict human-interaction-guidelines that must be followed.
 
-#### Trigger
+### Trigger
 
 User interface and interactive components of the system are redesigned and implemented.
 
-#### Acceptance Criteria
+### Acceptance Criteria
 
 - Manual audit/inspection by user-interface specialist is performed and/or automated style tests are in place
 - No deviation from user interface guidelines are detected

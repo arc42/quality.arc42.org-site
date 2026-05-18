@@ -5,15 +5,15 @@ related: [usability, consistency, user-experience, user-assistance, interaction-
 permalink: /requirements/detect-inconsistent-user-input
 ---
 
-#### Context
+### Context
 
 System needs to validate user-entered data. It must be clarified what kind of inconsistencies can be recognized within the domain.
 
-#### Trigger
+### Trigger
 
 User manually enters data into the system.
 
-#### Acceptance Criteria
+### Acceptance Criteria
 
 - System accepts consistent or correct data
 - System rejects inconsistent or wrong data

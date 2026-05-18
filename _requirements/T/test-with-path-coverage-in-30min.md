@@ -7,11 +7,11 @@ permalink: /requirements/test-with-path-coverage-30min
 
 Idea: [Bass et al., 2021](/references/#bass2021software)
 
-#### Trigger
+### Trigger
 
 Developer completes a code unit.
 
-#### Acceptance Criteria
+### Acceptance Criteria
 
 - Developer performs test sequence whose results are captured
 - Test sequence achieves path coverage of 85%

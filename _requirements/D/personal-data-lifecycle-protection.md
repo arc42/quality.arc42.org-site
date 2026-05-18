@@ -5,13 +5,13 @@ related: [data-protection, privacy, compliance, security, auditability]
 permalink: /requirements/personal-data-lifecycle-protection
 ---
 
-#### Context
+### Context
 A multinational Financial Services platform processes "Personally Identifiable Information" (PII) and "Sensitive Personal Data" across multiple jurisdictions (EU/GDPR, California/CCPA). The system must ensure data remains protected even in the event of partial system compromise or administrative errors.
 
-#### Trigger
+### Trigger
 Personal data is ingested, stored, accessed for processing, or requested for deletion by a data subject.
 
-#### Acceptance Criteria
+### Acceptance Criteria
 
 *   **Encryption at Rest & Transit**: 100% of PII fields (defined in the Data Dictionary) are encrypted at rest using **AES-256-GCM** with per-customer keys (Envelope Encryption). 100% of data in transit uses **TLS 1.3** with Perfect Forward Secrecy.
 *   **Anonymization for Non-Production**: 100% of data exported to staging or analytics environments is automatically anonymized via **k-anonymity (k≥5)** or differential privacy, ensuring no individual can be re-identified with >0.01% probability.

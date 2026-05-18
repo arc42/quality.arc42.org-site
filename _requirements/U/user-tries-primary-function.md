@@ -5,15 +5,15 @@ related: [functional-appropriateness, functional-completeness, user-experience, 
 permalink: /requirements/user-tries-primary-function
 ---
 
-#### Context
+### Context
 
 Software is operational, running on its standard platform in typical use-case setting. User is trying to accomplish a primary task in the application.
 
-#### Trigger
+### Trigger
 
 User attempts to use a feature of the software for its intended purpose.
 
-#### Acceptance Criteria
+### Acceptance Criteria
 
 - Software provides functionality that allows user to achieve desired outcome without unnecessary steps or interactions
 - 95% of users are able to complete the desired task using the feature on their first attempt

@@ -7,15 +7,15 @@ source: "This scenario has been created with help from [ChatGPT](https://chat.op
 note: ">This \"requirement\" describes a solution approach to accountability."
 ---
 
-#### Context
+### Context
 
 The system stores personal data and operates in compliance with privacy and data protection regulations. Detailed audit logs of all user actions are crucial for ensuring accountability, transparency, and compliance, as well as facilitating the identification and investigation of any unauthorized or suspicious activities.
 
-#### Trigger
+### Trigger
 
 User submits a request to access personal data stored in the system.
 
-#### Acceptance Criteria
+### Acceptance Criteria
 
 - System maintains detailed audit log of all user actions (data access, modification, deletion)
 - 100% of user actions related to personal data are captured

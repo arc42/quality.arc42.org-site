@@ -6,15 +6,15 @@ permalink: /requirements/withstand-ddos-attack
 source: "This requirement was created with help from [ChatGPT](https://chat.openai.com) by using the prompt `create a quality attribute scenario to describe a resilience requirement for a web application`."
 ---
 
-#### Context
+### Context
 
 Web application is hosted on cloud-based infrastructure with multiple server instances distributed across different regions.
 
-#### Trigger
+### Trigger
 
 Distributed denial of service (DDoS) attack targeting the web application.
 
-#### Acceptance Criteria
+### Acceptance Criteria
 
 - Web application maintains at least 99.9% uptime during DDoS attack, measured over 24-hour period
 - Application maintains maximum response time of 500 milliseconds for 95% of legitimate user requests during attack

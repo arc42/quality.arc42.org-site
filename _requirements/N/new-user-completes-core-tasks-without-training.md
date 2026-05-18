@@ -5,17 +5,17 @@ related: [learnability, usability, user-error-protection]
 permalink: /requirements/new-user-completes-core-tasks-without-training
 ---
 
-#### Context
+### Context
 
 An enterprise ERP system is rolled out to employees across finance, procurement, and HR departments.
 Users have domain expertise (e.g., accountants understand invoices) but receive no system-specific training before their first session.
 The organisation cannot afford extended training programmes; the software must be self-explanatory to domain-knowledgeable users.
 
-#### Trigger
+### Trigger
 
 A new user with relevant domain knowledge (e.g., certified accountant, experienced buyer) logs into the ERP for the first time, with no prior demo, tutorial, or instructor-led training.
 
-#### Acceptance Criteria
+### Acceptance Criteria
 
 - In a moderated usability test with **≥ 12 first-time users**, **≥ 80% complete all 5 predefined core tasks** (create purchase order, approve invoice, submit expense claim, generate monthly cost-centre report, update supplier record) **within 30 minutes total**, using only in-application guidance
 - The **task success rate** (fully correct completion without facilitator intervention) is **≥ 75% per individual task** across test participants

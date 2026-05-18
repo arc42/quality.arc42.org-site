@@ -52,28 +52,30 @@ note: "Meta-commentary (free-form Markdown, rendered outside the card)"
 
 Body is **pure Markdown** — the `requirements` layout wraps it in `.quality-requirement`. Do **not** add a `<div class="quality-requirement">` wrapper.
 
+Section headings inside the body are `###` (h3). The page H1 is the requirement title (rendered by the section-hero), so `###` keeps the document outline coherent — `####` left a two-level skip from H1 that screen readers reported as broken structure.
+
 **Tier 1** (simple, 1–3 criteria):
 ```markdown
-#### Requirement
+### Requirement
 [One clear statement]
 
-#### Acceptance Criteria
+### Acceptance Criteria
 - [Specific, measurable, with units]
 ```
 
 **Tier 2** (complex, 4+ criteria, compliance/security):
 ```markdown
-#### Context
+### Context
 [Why this matters — 1–3 sentences]
 
-#### Trigger
+### Trigger
 [Who/what initiates]
 
-#### Acceptance Criteria
+### Acceptance Criteria
 - [Specific, measurable, with units]
 ```
 
-Optional `#### Measurement & Verification` section for tooling/calculation details.
+Optional `### Measurement & Verification` section for tooling/calculation details.
 
 All criteria must be specific, measurable, testable. Focus on *what*, not *how*.
 

@@ -5,11 +5,11 @@ related: [security, privacy, traceability, recoverability]
 permalink: /requirements/every-data-modification-is-logged
 ---
 
-#### Requirement
+### Requirement
 
 Every data modification must be logged in an immutable audit trail.
 
-#### Acceptance Criteria
+### Acceptance Criteria
 
 - All data modifications (create, update, delete operations) are logged
 - Logs stored in a data store that cannot be erased by system users
