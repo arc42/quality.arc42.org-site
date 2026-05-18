@@ -63,7 +63,7 @@ const ALLOWED_IDS = {
     "#full-q-graph-filter__chips",
   ]),
   "_sass/_homenew.scss": new Set(["#q-graph-container", "#full-graph-toggle"]),
-  "assets/css/q-graph.css": new Set([
+  "_sass/_q-graph.scss": new Set([
     "#q-graph-container",
     "#graph-site",
     "#full-q-graph-container",
@@ -86,7 +86,7 @@ const ALLOWED_IDS = {
 const ALLOWED_IMPORTANT_COUNTS = {
   "_sass/base/_utilities.scss": 3,
   "_sass/_mobile-graph.scss": 1,
-  "assets/css/q-graph.css": 2,
+  "_sass/_q-graph.scss": 2,
 };
 
 /**
@@ -103,7 +103,7 @@ const APPROVED_BREAKPOINTS = new Set(["800px"]);
 const ALLOWED_LEGACY_BREAKPOINTS = {
   "_sass/_mobile-graph.scss": new Set(["900px"]),
   "_sass/_standards.scss": new Set(["900px"]),
-  "assets/css/q-graph.css": new Set(["768px"]),
+  "_sass/_q-graph.scss": new Set(["768px"]),
 };
 
 /**
@@ -123,9 +123,9 @@ const ALLOWED_COLOR_FILES = new Set([
   "_sass/_homenew.scss",
   "_sass/_mobile-graph.scss",
   "_sass/_standards.scss",
-  "assets/css/q-graph.css",
-  "assets/css/ukraine.css",
-  "assets/css/toggle-switch.css",
+  "_sass/_q-graph.scss",
+  "_sass/_ukraine.scss",
+  "_sass/_toggle-switch.scss",
 ]);
 
 // ── Helpers ─────────────────────────────────────────────────

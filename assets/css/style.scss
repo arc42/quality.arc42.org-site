@@ -27,7 +27,7 @@
 @import "components/_req-detail";
 @import "pages/_about";
 @import "pages/_approaches";
-@import "ukraine.css";
-@import "q-graph.css";
-@import "all.css"; // fontawesome
-@import "toggle-switch.css";
+@import "ukraine";
+@import "q-graph";
+@import "all.css"; // fontawesome — vendored, kept as separate @import url() round-trip
+@import "toggle-switch";
