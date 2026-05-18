@@ -45,14 +45,21 @@ five includes if extracted as a shared component.
 
 **`_pages/tag-*.md`** (`tag-secure`, `tag-reliable`, `tag-maintainable`,
 `tag-usable`, `tag-efficient`, `tag-safe`, `tag-flexible`, `tag-operable`,
-`tag-suitable`) — each tag page renders 3 sections (qualities, requirements,
-approaches) via shared includes:
+`tag-suitable`) — each tag page renders 4 sections (qualities, requirements,
+approaches, standards) via shared includes:
 - `_includes/one-quality.liquid` — `ul.posts` + legacy link styling
 - `_includes/one-requirement.liquid` — `a.reqs` + `fa-bullseye` + `ul.posts`
 - `_includes/one-approach.liquid` — `ul.posts` + legacy link styling
+- `_includes/one-standard.liquid` — **was** delegating to
+  `standard-item.liquid` (`<h3>` per standard), which blew each row up to
+  editorial-heading size on tag pages. **Fixed in commit `<this>`** to
+  render compact list rows matching the other three sections. The
+  `standard-item.liquid` partial is intentionally left untouched so
+  the categorised standards listing keeps its heading-level weight.
 
-Estimated effort: **~20 min** if finding #1 already produced the shared
-per-item partial — same component, plug into the three `one-*` includes.
+Estimated effort for the remaining three `one-*` includes: **~20 min**
+if finding #1 already produced the shared per-item partial — same
+component, plug into the three includes.
 
 ### 3. Medium impact — `/dimensions/` index
 
