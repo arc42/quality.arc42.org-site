@@ -25,6 +25,11 @@
   margin-top: 1rem;
   padding: 0.9rem 1rem 0.9rem 1.7rem;
   position: relative;
+  // Anchor jumps from the tag-page hero meta links (`#qualities`,
+  // `#requirements`, `#approaches`, `#standards`) land here. Margin keeps
+  // the heading below the sticky-ish site header rather than flush to
+  // the viewport top.
+  scroll-margin-top: 1rem;
 
   &::before {
     background: var(--cat);

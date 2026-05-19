@@ -23,7 +23,7 @@ the categorised standards listing keeps its heading-level weight.
 {% endcomment %}
 {% assign category_to_find = site.data.tag-aliases[tag_to_find] | default: tag_to_find %}
 
-<div class="panel standards-header">
+<div class="panel standards-header" id="standards">
   <h2>Standards tagged with #{{ include.tag }}</h2>
 </div>
 <div id="search-results">

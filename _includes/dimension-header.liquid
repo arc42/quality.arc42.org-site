@@ -36,7 +36,7 @@
   {% for item in site.standards %}
     {% if item.categories contains category_slug %}{% assign s_count = s_count | plus: 1 %}{% endif %}
   {% endfor %}
-  {% capture tag_meta %}<b>{{ q_count }}</b> qualities &middot; <b>{{ r_count }}</b> requirements &middot; <b>{{ a_count }}</b> approaches &middot; <b>{{ s_count }}</b> standards{% endcapture %}
+  {% capture tag_meta %}<a href="#qualities"><b>{{ q_count }}</b> qualities</a> &middot; <a href="#requirements"><b>{{ r_count }}</b> requirements</a> &middot; <a href="#approaches"><b>{{ a_count }}</b> approaches</a> &middot; <a href="#standards"><b>{{ s_count }}</b> standards</a>{% endcapture %}
 {% endif %}
 
 {% include section-hero.liquid
