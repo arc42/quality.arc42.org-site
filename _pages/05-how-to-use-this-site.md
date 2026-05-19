@@ -14,7 +14,7 @@ no_layout_header: true
 
 ## Our _Domain Language_
 
-![Q42 domain language](/images/domain-language/q42-domain-language.webp)
+![Q42 domain language](/images/domain-language/q42-domain-language-v2026.webp)
 
 Let's explain some terms, starting with an example:
 

@@ -11,7 +11,7 @@ The top-level dimensions overlap by design and are not orthogonal.
 Consider an excerpt of our [domain language (aka _metamodel_)](/how-to-use-this-site/#our-domain-language):
 
 
-![Dimensions and quality characteristics](/images/domain-language/q42-dimensions-qualities-requirements.webp)
+![Dimensions and quality characteristics](/images/domain-language/q42-dimensions-qualities-requirements-v2026.webp)
 
 
 ### Dimensions and Quality Characteristics

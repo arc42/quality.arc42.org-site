@@ -44,7 +44,20 @@ a.hov.tags.dimension {
 }
 
 a.reqs {
+  color: var(--brand-ink);
+
+  .icon.bullet {
+    opacity: 0.5;
+  }
+}
+
+a.reqs:hover,
+a.reqs:focus-visible {
   color: var(--req-text-color);
+
+  .icon.bullet {
+    opacity: 1;
+  }
 }
 
 .no-bullets {
