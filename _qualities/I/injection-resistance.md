@@ -8,7 +8,7 @@ permalink: /qualities/injection-resistance
 
 See [#secure](/tag-secure)
 
-### Definition
+### Definitions
 
 Injection resistance is the degree to which a system prevents untrusted input from being interpreted as executable instructions, control data, or persistent context that can alter behavior, decisions, privileges, outputs, or stored state.
 
