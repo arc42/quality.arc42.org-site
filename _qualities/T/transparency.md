@@ -1,18 +1,32 @@
 ---
 title: Transparency
-tags: [reliable] 
-related: [clarity, understandability, usability]
-standards: [iso38500, iso42001, cra, isoiec22989, iso42010, gdpr, iso42030, sox, ieee2857, iso24028, etsien304223, nistairmf, ieee7000]
+tags: [reliable]
+related: [clarity, understandability, usability, model-transparency]
+standards:
+  [
+    iso38500,
+    iso42001,
+    cra,
+    isoiec22989,
+    isoiec12792,
+    iso42010,
+    gdpr,
+    iso42030,
+    sox,
+    ieee2857,
+    iso24028,
+    etsien304223,
+    nistairmf,
+    ieee7000,
+  ]
 permalink: /qualities/transparency
 ---
 
->**Transparency**:
+> **Transparency**:
 >
->* the quality of being easy to see through.
->
->* a situation in which business and financial activities are done in an open way without secrets, so that people can trust that they are fair and honest:
+> - the quality of being easy to see through.
+> - a situation in which business and financial activities are done in an open way without secrets, so that people can trust that they are fair and honest:
 
->[Cambridge Dictionary](https://dictionary.cambridge.org/dictionary/english/transparency)
+> [Cambridge Dictionary](https://dictionary.cambridge.org/dictionary/english/transparency)
 
 <hr class="with-no-margin"/>
-
