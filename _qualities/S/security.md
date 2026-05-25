@@ -11,6 +11,7 @@ related:
     accountability,
     authenticity,
     resistance,
+    injection-resistance,
   ]
 standards:
   [

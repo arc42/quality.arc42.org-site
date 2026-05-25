@@ -1,7 +1,7 @@
 ---
 title: Resistance
 tags: [secure]
-related: [integrity, security, dependability, fault-tolerance, recoverability] 
+related: [integrity, security, injection-resistance, dependability, fault-tolerance, recoverability]
 standards: [iso25010, owaspasvs]
 permalink: /qualities/resistance
 ---
