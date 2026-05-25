@@ -36,7 +36,7 @@ For broader context, see the [OWASP Top 10 for LLMs and Generative AI Apps](http
 
 OWASP defines memory and context poisoning as corruption or seeding of retained or retrieved agent context with malicious or misleading data, causing later reasoning, planning, or tool use to become biased, unsafe, or useful for exfiltration.
 
-[OWASP Top 10 for Agentic Applications 2026, ASI06: Memory & Context Poisoning](https://genai.owasp.org/download/52117/?tmstv=1765059207)
+[OWASP Top 10 for Agentic Applications 2026, ASI06: Memory & Context Poisoning](https://genai.owasp.org/agentic/asi06-memory-and-context-poisoning/)
 
 <hr class="with-no-margin"/>
 
