@@ -26,6 +26,9 @@ const d3 = {
 import { NODE_TYPES } from './constants';
 import { isDimension, isProperty, isQuality, isRequirement, isRoot, isStandard } from './nodeUtils';
 
+// Width reserved for the desktop full-graph sidebar (used for initial pan + centerView).
+const SIDEBAR_WIDTH = 200;
+
 /**
  * GraphRenderer class
  * Responsible for rendering graph data using D3 (Canvas for nodes/links + SVG for labels/interactions)
@@ -655,7 +658,7 @@ export class GraphRenderer {
             .enter()
             .append("text")
             .text(d => d.label)
-            .attr("fill", d => (isDimension(d) || isProperty(d)) ? "#ffffff" : null)
+            .attr("fill", d => d.textColor || null)
             .attr("font-size", d => this._labelFontSize(d))
             .attr("font-weight", d => (isDimension(d) || isProperty(d)) ? 700 : null)
             .attr("text-anchor", d => this._labelTextAnchor(d))
@@ -837,10 +840,12 @@ export class GraphRenderer {
 
         this.svg.call(this.zoom);
 
-        // Apply an initial pan offset for desktop full graph view (sidebar takes ~250px on the left).
-        // On mobile, the sidebar is a bottom sheet — no horizontal offset needed.
-        const isMobileViewport = typeof matchMedia !== "undefined" && matchMedia("(max-width: 900px)").matches;
-        const initialOffsetX = (this.container?.id === "full-q-graph-container" && !isMobileViewport) ? 100 : 0;
+        // Apply an initial pan for the desktop full graph view (it has a left sidebar).
+        // Mobile graph page uses a bottom sheet and should start centered.
+        const isDesktopFullGraph =
+            this.container?.id === "full-q-graph-container" &&
+            !this.container?.closest?.(".mobile-graph-page");
+        const initialOffsetX = isDesktopFullGraph ? SIDEBAR_WIDTH / 2 : 0;
         const initialTransform = d3.zoomIdentity.translate(initialOffsetX, 0);
         this.svg.call(this.zoom.transform, initialTransform);
         this.currentTransform = initialTransform;
@@ -1074,7 +1079,7 @@ export class GraphRenderer {
         // Calculate center and scale
         const width = this.width;
         const height = this.height;
-        const sidebarWidth = 200;
+        const sidebarWidth = SIDEBAR_WIDTH;
         const availableWidth = width - sidebarWidth;
 
         const graphWidth = maxX - minX;
