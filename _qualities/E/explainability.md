@@ -1,10 +1,11 @@
 ---
 title: Explainability
 tags: [safe, suitable]
-related: [accountability, analysability, clarity, determinism]
+related: [accountability, analysability, clarity, determinism, groundedness]
 standards: [iso42001, isoiec22989, iso24028, nistairmf, ieee7000]
 permalink: /qualities/explainability
 ---
+
 Explainability is a quality sometimes required in the context of Artificial Intelligence (AI). The European's proposed AI Act will probably contain obligations for some AI systems to provide explanations about decisions that impact user rights.
 
 ### Definitions
@@ -20,9 +21,9 @@ Explainability is a quality sometimes required in the context of Artificial Inte
 <hr class="with-no-margin"/>
 
 > [..] local explainability helps answer the question, “for this particular example, why did the model make this particular decision?”
-> 
->Cohort explainability is the process of understanding to what degree your model’s features contribute to its predictions over a subset of your data.
-> 
+>
+> Cohort explainability is the process of understanding to what degree your model’s features contribute to its predictions over a subset of your data.
+>
 > We consider an ML engineer to have access to global model explainability if across all predictions they are able to attribute which features contributed the most to the model’s decisions.
 > [Towards Datascience](https://towardsdatascience.com/a-look-into-global-cohort-and-local-model-explainability-973bd449969f)
 
