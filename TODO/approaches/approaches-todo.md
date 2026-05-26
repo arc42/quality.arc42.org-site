@@ -1,6 +1,6 @@
 # Top 10 Proposed Solution Approaches
 
-This backlog is normalized to the canonical schema in `TODO/approaches/TEMPLATE.md`.
+This backlog is normalized to the canonical schema in `TODO/approaches/approaches-template.md`.
 All `supported_qualities` and `tradeoffs` values are plain quality slug candidates.
 
 | Priority | Approach | Permalink | Tags (9 dimensions only) | supported_qualities (slug candidates) | tradeoffs (slug candidates) |
