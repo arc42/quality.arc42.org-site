@@ -4,18 +4,23 @@
 // the current dimension. Echoes the .panel.* section-rail language from
 // _panels.scss (6px coloured rail + tinted paper background) but reads as
 // a single tappable card rather than a section heading.
+//
+// Colour: --brand-blue-dark — the same hue the tag-page section-hero rail
+// uses (see _section-hero.scss → &[data-section="tag"]). Keeps the card
+// anchored to the quality / dimension colour family and out of the green
+// "approaches" register.
 
 .dimension-graph-link {
   margin: 1.25rem 0 1.75rem;
 }
 
 .dimension-graph-link__card {
-  --cat: var(--brand-teal);
+  --cat: var(--brand-blue-dark);
 
   align-items: center;
   background: var(--brand-paper);
-  background: color-mix(in oklab, var(--brand-paper) 82%, var(--cat) 18%);
-  border: 1px solid color-mix(in oklab, var(--brand-paper) 60%, var(--cat) 40%);
+  background: color-mix(in oklab, var(--brand-paper) 86%, var(--cat) 14%);
+  border: 1px solid color-mix(in oklab, var(--brand-paper) 70%, var(--cat) 30%);
   border-radius: $radius-sm;
   color: inherit;
   display: flex;
@@ -39,8 +44,8 @@
 
   &:hover,
   &:focus-visible {
-    background: color-mix(in oklab, var(--brand-paper) 68%, var(--cat) 32%);
-    border-color: color-mix(in oklab, var(--brand-paper) 40%, var(--cat) 60%);
+    background: color-mix(in oklab, var(--brand-paper) 76%, var(--cat) 24%);
+    border-color: color-mix(in oklab, var(--brand-paper) 55%, var(--cat) 45%);
   }
 
   &:focus-visible {
@@ -55,7 +60,7 @@
 
 .dimension-graph-link__icon {
   align-items: center;
-  background: color-mix(in oklab, var(--brand-paper) 55%, var(--cat) 45%);
+  background: color-mix(in oklab, var(--brand-paper) 68%, var(--cat) 32%);
   border-radius: 50%;
   color: var(--brand-violet-deep);
   display: inline-flex;

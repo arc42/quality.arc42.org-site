@@ -16,6 +16,8 @@ Easy to:
 
 </div><br>
 
+{% include dimension-graph-link.liquid tag="operable" %}
+
 Deployability is a...
 
 >Measure of cost, time or process effectiveness for a deployment,

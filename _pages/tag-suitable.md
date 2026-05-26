@@ -12,6 +12,8 @@ _Suitable_ might be the most generic term within the Q42 dimensions.
 Being right or appropriate for a particular person, purpose, or situation.
 </div><br>
 
+{% include dimension-graph-link.liquid tag="suitable" %}
+
 Note: In previous versions of Q42, the term "_testable_" was used instead of _suitable_.
 Users found that to be overly specific, see the discussion [here](https://github.com/arc42/quality.arc42.org-site/issues/90).
 

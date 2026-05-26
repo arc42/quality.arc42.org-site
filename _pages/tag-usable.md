@@ -15,6 +15,8 @@ The main idea of _usability_ is that a system shall be designed with (generalize
 
 </div><br>
 
+{% include dimension-graph-link.liquid tag="usable" %}
+
 ### Definitions:
 
 >Capability of a product to be interacted with by specified users to exchange information between a user and a system via the user interface to complete the intended task.
