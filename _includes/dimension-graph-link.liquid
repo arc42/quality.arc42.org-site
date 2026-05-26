@@ -1,0 +1,29 @@
+{% comment %}
+  Dimension graph deep-link card.
+  Renders a CTA on each /tag-*/ page that links into the full graph,
+  pre-filtered to the dimension. FullGraph reads ?filter=<term> at init
+  (see src/graphs/FullGraph.js → _applyFilterFromUrl), so no JS here.
+
+  Usage:
+    {% include dimension-graph-link.liquid tag="secure" %}
+{% endcomment %}
+
+{% assign tag = include.tag %}
+{% assign graph_url = "/full-quality-graph?filter=" | append: tag | prepend: site.baseurl %}
+
+<aside class="dimension-graph-link" aria-labelledby="dgl-{{ tag }}-title">
+  <a class="dimension-graph-link__card" href="{{ graph_url }}">
+    <span class="dimension-graph-link__icon" aria-hidden="true">
+      <i class="fa fa-project-diagram"></i>
+    </span>
+    <span class="dimension-graph-link__body">
+      <span class="dimension-graph-link__title" id="dgl-{{ tag }}-title">
+        Explore <strong>#{{ tag }}</strong> in the quality graph
+      </span>
+      <span class="dimension-graph-link__desc">
+        See the qualities and standards connected to this dimension, visually.
+      </span>
+    </span>
+    <span class="dimension-graph-link__chevron" aria-hidden="true">&rarr;</span>
+  </a>
+</aside>

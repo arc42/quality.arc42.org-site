@@ -16,6 +16,8 @@ Easy to:
 
 </div>
 
+{% include dimension-graph-link.liquid tag="maintainable" %}
+
 ### Definition
 
 > Capability of a product to be modified by the intended maintainers with effectiveness and efficiency.

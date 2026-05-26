@@ -15,6 +15,8 @@ permalink: /tag-efficient/
 
 </div><br>
 
+{% include dimension-graph-link.liquid tag="efficient" %}
+
 ### Definitions
 
 

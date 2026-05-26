@@ -27,6 +27,8 @@ Safety means:
 Quoted from [Wikipedia/Safety](https://en.wikipedia.org/wiki/Safety)
 </div><br>
 
+{% include dimension-graph-link.liquid tag="safe" %}
+
 <hr class="with-no-margin"/>
 
 >Capability of a product under defined conditions to avoid a state in which human life, health, property, or the environment is endangered.

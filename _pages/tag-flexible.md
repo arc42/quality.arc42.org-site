@@ -17,6 +17,8 @@ Easy to:
 
 </div>
 
+{% include dimension-graph-link.liquid tag="flexible" %}
+
 ### Definition
 
 >Capability of a product to be adapted to changes in its requirements, contexts of use, or system environment.
