@@ -106,6 +106,7 @@ export class Graph {
                 label: node.label,
                 size: node.size,
                 color: node.color,
+                textColor: node.textColor,
                 qualityType: node.qualityType,
                 page: node.page,
                 filterMatched: matchedNodeIds.has(node.id),

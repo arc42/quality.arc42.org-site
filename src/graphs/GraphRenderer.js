@@ -658,7 +658,10 @@ export class GraphRenderer {
             .enter()
             .append("text")
             .text(d => d.label)
-            .attr("fill", d => d.textColor || null)
+            // Prefer per-node textColor (set in data.js); keep a white fallback for
+            // dimension/property labels so they stay legible on dark fills even if
+            // textColor isn't propagated through the data pipeline (regression guard).
+            .attr("fill", d => d.textColor || ((isDimension(d) || isProperty(d)) ? "#ffffff" : null))
             .attr("font-size", d => this._labelFontSize(d))
             .attr("font-weight", d => (isDimension(d) || isProperty(d)) ? 700 : null)
             .attr("text-anchor", d => this._labelTextAnchor(d))
