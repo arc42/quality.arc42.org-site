@@ -14,6 +14,8 @@ permalink: /tag-secure/
 
 </div><br>
 
+{% include dimension-graph-link.liquid tag="secure" %}
+
 <hr class="with-no-margin"/>
 
 ### Definition

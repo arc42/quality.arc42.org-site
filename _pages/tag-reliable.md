@@ -12,6 +12,8 @@ Being trustworthy or performing consistently well.
 
 </div><br>
 
+{% include dimension-graph-link.liquid tag="reliable" %}
+
 <hr class="with-no-margin"/>
 
 <div class="arc42-help" markdown="1">
