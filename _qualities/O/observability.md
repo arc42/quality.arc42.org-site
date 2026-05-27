@@ -1,7 +1,7 @@
 ---
 title: Observability
 tags: [operable]
-related: [analysability, testability]
+related: [analysability, testability, drift-detectability]
 standards: [iso26262, cra, sox, ieee2857]
 permalink: /qualities/observability
 ---
