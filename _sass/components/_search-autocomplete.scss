@@ -72,7 +72,7 @@
   right: 0;
   text-transform: none;
   top: 100%;
-  z-index: 1100; // above sticky header (1000)
+  z-index: var(--z-popover); // above sticky header (1000)
 
   &[hidden] {
     display: none;

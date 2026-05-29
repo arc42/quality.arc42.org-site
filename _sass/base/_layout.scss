@@ -52,7 +52,7 @@
   text-decoration: none;
   top: -3rem;
   transition: top 120ms cubic-bezier(0.16, 1, 0.3, 1);
-  z-index: 2000;
+  z-index: var(--z-skip-link);
 }
 
 .skip-link:focus,
@@ -62,9 +62,18 @@
   top: 0.5rem;
 }
 
+// Respect the OS "reduce motion" setting site-wide (WCAG 2.3.3). Near-zero
+// rather than 0 keeps transitionend/animationend listeners firing so any JS
+// awaiting them still resolves. The graph renderer honours the same
+// preference in JS; component-level blocks elsewhere remain as explicit intent.
 @media (prefers-reduced-motion: reduce) {
-  .skip-link {
-    transition: none;
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }
 
