@@ -795,27 +795,29 @@ export class GraphRenderer {
     }
 
     /**
-     * Handle simulation tick
+     * Handle simulation tick.
+     *
+     * d3-force already drives ticks off d3-timer, which is itself rAF-throttled,
+     * so the body runs at most once per frame. Wrapping it in another
+     * requestAnimationFrame only deferred the work by a frame and let multiple
+     * ticks queue overlapping callbacks; we update synchronously instead.
      */
     handleTick() {
-        // Use requestAnimationFrame for better performance
-        requestAnimationFrame(() => {
-            // Only position invisible SVG for interactions and labels
-            if (this.nodes) {
-                this.nodes
-                    .attr("cx", d => d.x)
-                    .attr("cy", d => d.y);
-            }
+        // Position the invisible hit-circles and the labels for interaction.
+        if (this.nodes) {
+            this.nodes
+                .attr("cx", d => d.x)
+                .attr("cy", d => d.y);
+        }
 
-            if (this.labels) {
-                this.labels
-                    .attr("x", d => d.x)
-                    .attr("y", d => d.y);
-            }
+        if (this.labels) {
+            this.labels
+                .attr("x", d => d.x)
+                .attr("y", d => d.y);
+        }
 
-            // Redraw canvas
-            this.drawCanvas();
-        });
+        // Redraw canvas
+        this.drawCanvas();
     }
 
     /**
