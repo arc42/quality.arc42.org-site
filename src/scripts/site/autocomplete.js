@@ -103,14 +103,8 @@ function scoreItem(item, terms) {
   return score;
 }
 
-function rank(query) {
-  if (!lookupItems) return [];
-  const terms = query
-    .trim()
-    .toLowerCase()
-    .split(/\s+/)
-    .filter((t) => t.length >= 1);
-  if (terms.length === 0) return [];
+function rank(terms) {
+  if (!lookupItems || terms.length === 0) return [];
 
   const scored = [];
   for (const item of lookupItems) {
@@ -341,7 +335,7 @@ export function initAutocomplete() {
     if (q !== lastQuery) return; // a newer query is in flight
 
     const terms = q.trim().toLowerCase().split(/\s+/).filter(Boolean);
-    const scored = rank(q);
+    const scored = rank(terms);
     const { html, optionCount, resultCount } = renderPanel({
       scored,
       terms,
