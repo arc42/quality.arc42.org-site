@@ -77,26 +77,29 @@ export class FullGraph extends Graph {
                     return applied;
                 };
 
+                // Re-assert the selection if it gets dropped. Simulation
+                // stabilization and the center-view transition can clear the
+                // transient .highlighted classes during the first ~2s, so
+                // rather than a fixed ladder of timeouts we re-check when the
+                // layout actually settles (simulation "end"), with one short
+                // fallback for the case where it had already settled (so "end"
+                // won't fire again). The check is idempotent and URL-guarded.
+                const reassertIfDropped = () => {
+                    const stillSelectedInUrl = this._readUrlState().selectedStandard === stdId;
+                    const selectionOk = this.renderer?.selectionActive === true &&
+                        this.renderer?.selection?.id === stdId &&
+                        this.renderer?.nodes?.filter(".highlighted").size() > 0;
+                    if (stillSelectedInUrl && !selectionOk) {
+                        applyOnce();
+                    }
+                };
+
                 // Apply as soon as render is ready
                 this._waitForRenderThen(() => {
                     applyOnce();
-
-                    // The graph often undergoes simulation stabilization and center-view transitions
-                    // during the first ~2 seconds of load or filter. These can clear transient DOM classes.
-                    // We perform multiple re-applications to ensure the selection "sticks".
-                    const retryDelays = [300, 800, 1500, 2500];
-                    retryDelays.forEach(delay => {
-                        setTimeout(() => {
-                            const stillSelectedInUrl = this._readUrlState().selectedStandard === stdId;
-                            const selectionOk = this.renderer?.selectionActive === true &&
-                                this.renderer?.selection?.id === stdId &&
-                                this.renderer?.nodes?.filter(".highlighted").size() > 0;
-
-                            if (stillSelectedInUrl && !selectionOk) {
-                                applyOnce();
-                            }
-                        }, delay);
-                    });
+                    // Namespaced so re-renders replace (not stack) the handler.
+                    this.renderer?.simulation?.on("end.reapplyStd", reassertIfDropped);
+                    setTimeout(reassertIfDropped, 1200);
                 });
             }
         } else {
@@ -207,7 +210,6 @@ export class FullGraph extends Graph {
             // Center view button
             if (this.centerButton) {
                 this.centerButton.addEventListener("click", () => {
-                    console.warn("Centering view...");
                     this.renderer.centerView();
                 });
             }
@@ -229,7 +231,7 @@ export class FullGraph extends Graph {
 
             // Also handle Enter key for immediate filtering
             this.filterInput.addEventListener("keyup", (e) => {
-                const isEnter = e.key === "Enter" || e.keyCode === 13;
+                const isEnter = e.key === "Enter";
                 if (isEnter) {
                     // Finalize pending token on Enter
                     const val = this.filterInput.value.trim();

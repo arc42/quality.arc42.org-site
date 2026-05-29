@@ -76,20 +76,8 @@ export function initNavigation() {
         });
     });
 
-    // 4. Focus on search input with '/' key
-    document.addEventListener('keyup', (e) => {
-        if (['INPUT', 'TEXTAREA', 'SELECT'].includes(e.target.tagName)) return;
-        
-        const slashKeys = ['/', '÷']; // '/' or keypad divide
-        if (slashKeys.includes(e.key) || e.keyCode === 191) {
-            const searchInput = document.getElementById('search');
-            if (searchInput) {
-                e.preventDefault();
-                revealHeader();
-                searchInput.focus();
-            }
-        }
-    });
+    // 4. '/'-to-focus-search is owned by the header autocomplete (see
+    // autocomplete.js). No duplicate handler here.
 
     // 5. Hide the sticky header on mobile scroll-down, reveal it on scroll-up.
     if (header) {
@@ -150,11 +138,19 @@ export function initNavigation() {
         }
     }
 
-    // 6. Add target="_blank" to external links
-    const host = window.location.host;
+    // 6. Add target="_blank" to external links. Resolve each href against the
+    // current location and compare hosts — substring checks on the raw href
+    // misclassify protocol-relative URLs, fragments/queries containing '//',
+    // and internal links whose path happens to contain the host string.
     document.querySelectorAll('a[href]').forEach(link => {
-        const href = link.getAttribute('href');
-        if (href.includes('//') && !href.includes(host)) {
+        let url;
+        try {
+            url = new URL(link.href, window.location.href);
+        } catch {
+            return; // mailto:, tel:, javascript:, malformed — leave untouched
+        }
+        const isHttp = url.protocol === 'http:' || url.protocol === 'https:';
+        if (isHttp && url.host !== window.location.host) {
             link.setAttribute('target', '_blank');
             link.setAttribute('rel', 'noopener noreferrer');
         }

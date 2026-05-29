@@ -2,6 +2,7 @@ import matter from "gray-matter";
 import { promises as fs } from "node:fs";
 import path from "node:path";
 import yaml from "js-yaml";
+import { NODE_COLORS, NODE_TEXT_COLORS } from "../graphs/colors.js";
 
 /**
  * @typedef {Object} FrontmatterData
@@ -128,12 +129,12 @@ async function writeJsonToFile(jsonString, filename, assetsDir) {
  */
 
 const NODE_CONFIGS = {
-    requirement: { color: '#ffb3b3', size: 15, qualityType: 'requirement' },
-    quality:     { color: '#00B8F5', size: 25, qualityType: 'quality' },
-    dimension:   { color: '#1a3a5c', textColor: '#c8e6f5', size: 35, qualityType: 'dimension' },
-    property:    { color: '#f8f9fa', size: 35, qualityType: 'property' },  // kept for backward compat
-    standard:    { color: '#FFC95C', size: 45, qualityType: 'standard' },
-    approach:    { color: '#92ef80', size: 20, qualityType: 'approach' }
+    requirement: { color: NODE_COLORS.requirement, size: 15, qualityType: 'requirement' },
+    quality:     { color: NODE_COLORS.quality, size: 25, qualityType: 'quality' },
+    dimension:   { color: NODE_COLORS.dimension, textColor: NODE_TEXT_COLORS.dimension, size: 35, qualityType: 'dimension' },
+    property:    { color: NODE_COLORS.property, size: 35, qualityType: 'property' },  // kept for backward compat
+    standard:    { color: NODE_COLORS.standard, size: 45, qualityType: 'standard' },
+    approach:    { color: NODE_COLORS.approach, size: 20, qualityType: 'approach' }
 };
 
 /**

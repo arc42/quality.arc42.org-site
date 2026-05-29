@@ -24,6 +24,7 @@ const d3 = {
     drag,
 };
 import { NODE_TYPES } from './constants';
+import { GRAPH_COLORS } from './colors';
 import { isDimension, isProperty, isQuality, isRequirement, isRoot, isStandard } from './nodeUtils';
 
 // Width reserved for the desktop full-graph sidebar (used for initial pan + centerView).
@@ -144,7 +145,7 @@ export class GraphRenderer {
             if (node.labels?.length > 1) {
                 const synonyms = node.labels.slice(1); // All labels except the first (canonical)
                 content += `<br><span style="color: #aaa; font-size: 11px;">Also known as:</span><br>`;
-                content += `<span style="color: #00B8F5;">${ synonyms.join(', ') }</span>`;
+                content += `<span style="color: ${ GRAPH_COLORS.synonymAccent };">${ synonyms.join(', ') }</span>`;
             }
 
             // Compute position once to reduce repeated work
@@ -661,7 +662,7 @@ export class GraphRenderer {
             // Prefer per-node textColor (set in data.js); keep a white fallback for
             // dimension/property labels so they stay legible on dark fills even if
             // textColor isn't propagated through the data pipeline (regression guard).
-            .attr("fill", d => d.textColor || ((isDimension(d) || isProperty(d)) ? "#ffffff" : null))
+            .attr("fill", d => d.textColor || ((isDimension(d) || isProperty(d)) ? GRAPH_COLORS.propertyLabelText : null))
             .attr("font-size", d => this._labelFontSize(d))
             .attr("font-weight", d => (isDimension(d) || isProperty(d)) ? 700 : null)
             .attr("text-anchor", d => this._labelTextAnchor(d))
@@ -669,7 +670,7 @@ export class GraphRenderer {
             .attr("dx", d => this._labelDx(d))
             .attr("dy", d => this._labelDy(d))
             .style("paint-order", d => (isDimension(d) || isProperty(d)) ? "stroke" : null)
-            .attr("stroke", d => (isDimension(d) || isProperty(d)) ? "#1a3a5c" : null)
+            .attr("stroke", d => (isDimension(d) || isProperty(d)) ? GRAPH_COLORS.propertyLabelHalo : null)
             .attr("stroke-width", d => (isDimension(d) || isProperty(d)) ? 4 : null)
             .attr("stroke-linejoin", d => (isDimension(d) || isProperty(d)) ? "round" : null)
             .style("pointer-events", (d) => (isRoot(d) || isProperty(d) || isDimension(d)) ? "all" : "none");
@@ -794,27 +795,29 @@ export class GraphRenderer {
     }
 
     /**
-     * Handle simulation tick
+     * Handle simulation tick.
+     *
+     * d3-force already drives ticks off d3-timer, which is itself rAF-throttled,
+     * so the body runs at most once per frame. Wrapping it in another
+     * requestAnimationFrame only deferred the work by a frame and let multiple
+     * ticks queue overlapping callbacks; we update synchronously instead.
      */
     handleTick() {
-        // Use requestAnimationFrame for better performance
-        requestAnimationFrame(() => {
-            // Only position invisible SVG for interactions and labels
-            if (this.nodes) {
-                this.nodes
-                    .attr("cx", d => d.x)
-                    .attr("cy", d => d.y);
-            }
+        // Position the invisible hit-circles and the labels for interaction.
+        if (this.nodes) {
+            this.nodes
+                .attr("cx", d => d.x)
+                .attr("cy", d => d.y);
+        }
 
-            if (this.labels) {
-                this.labels
-                    .attr("x", d => d.x)
-                    .attr("y", d => d.y);
-            }
+        if (this.labels) {
+            this.labels
+                .attr("x", d => d.x)
+                .attr("y", d => d.y);
+        }
 
-            // Redraw canvas
-            this.drawCanvas();
-        });
+        // Redraw canvas
+        this.drawCanvas();
     }
 
     /**
@@ -924,7 +927,7 @@ export class GraphRenderer {
             const opacity = isHover ? 0.9 : baseOpacity;
             if (opacity <= 0) return;
             ctx.globalAlpha = opacity;
-            ctx.strokeStyle = isHover ? '#cb9fff' : '#E0E0E0';
+            ctx.strokeStyle = isHover ? GRAPH_COLORS.linkHover : GRAPH_COLORS.link;
             ctx.lineWidth = isHover ? 2 : 1;
             ctx.beginPath();
             ctx.moveTo(l.source.x, l.source.y);
@@ -948,7 +951,7 @@ export class GraphRenderer {
             const opacity = isHover ? 0.85 : baseOpacity;
             if (opacity <= 0) return;
             ctx.globalAlpha = opacity;
-            ctx.strokeStyle = isHover ? '#cb9fff' : '#E0E0E0';
+            ctx.strokeStyle = isHover ? GRAPH_COLORS.linkHover : GRAPH_COLORS.link;
             ctx.setLineDash([3, 3]);
             ctx.lineWidth = isHover ? 2 : 1;
             ctx.beginPath();
@@ -971,7 +974,7 @@ export class GraphRenderer {
             const r = n._canvasR == null ? n.size : n._canvasR;
             const opacity = n._canvasOpacity == null ? 1 : n._canvasOpacity;
             const strokeW = n._canvasStrokeWidth == null ? 1.5 : n._canvasStrokeWidth;
-            const strokeColor = n._canvasStrokeColor || '#2C3E50';
+            const strokeColor = n._canvasStrokeColor || GRAPH_COLORS.nodeStroke;
             if (r <= 0 || opacity <= 0) return;
             ctx.globalAlpha = opacity;
             ctx.fillStyle = n.color;
@@ -985,7 +988,7 @@ export class GraphRenderer {
             if (n._canvasOuterRing) {
                 ctx.globalAlpha = Math.min(1, opacity + 0.05);
                 ctx.lineWidth = n._canvasOuterRingWidth || 2.2;
-                ctx.strokeStyle = n._canvasOuterRingColor || '#F97316';
+                ctx.strokeStyle = n._canvasOuterRingColor || GRAPH_COLORS.outerRing;
                 ctx.beginPath();
                 ctx.arc(n.x, n.y, r + 2.8, 0, Math.PI * 2);
                 ctx.stroke();
@@ -1160,9 +1163,9 @@ export class GraphRenderer {
                 size: d.size,
                 opacity: (isProp && isFilterRelated) ? 0.72 : 1,
                 strokeWidth: isFilterMatch ? 2.8 : 1.5,
-                strokeColor: isFilterMatch ? "#0F172A" : "#2C3E50",
+                strokeColor: isFilterMatch ? GRAPH_COLORS.nodeStrokeMatch : GRAPH_COLORS.nodeStroke,
                 outerRing: isFilterMatch,
-                outerRingColor: "#F97316",
+                outerRingColor: GRAPH_COLORS.outerRing,
                 outerRingWidth: 2.2
             };
         }
@@ -1176,7 +1179,7 @@ export class GraphRenderer {
 
         const sizeFactor = Math.min(1, Math.max(0.5, zoom / 1.5));
         const strokeWidth = Math.min(1.5, Math.max(0.5, zoom / 1.5));
-        const strokeColor = isFilterMatch ? "#0F172A" : "#2C3E50";
+        const strokeColor = isFilterMatch ? GRAPH_COLORS.nodeStrokeMatch : GRAPH_COLORS.nodeStroke;
 
         if (isHighlighted) {
             const size = this.selectionActive ? d.size * sizeFactor : d.size;
@@ -1188,7 +1191,7 @@ export class GraphRenderer {
                 strokeWidth: isFilterMatch ? Math.max(sw, 2.8) : sw,
                 strokeColor,
                 outerRing: isFilterMatch,
-                outerRingColor: "#F97316",
+                outerRingColor: GRAPH_COLORS.outerRing,
                 outerRingWidth: 2.2
             };
         }
@@ -1205,7 +1208,7 @@ export class GraphRenderer {
             strokeWidth: isFilterMatch ? Math.max(strokeWidth, 2.8) : strokeWidth,
             strokeColor,
             outerRing: isFilterMatch,
-            outerRingColor: "#F97316",
+            outerRingColor: GRAPH_COLORS.outerRing,
             outerRingWidth: 2.2
         };
     }
@@ -1223,18 +1226,18 @@ export class GraphRenderer {
             d._canvasR = state.size;
             d._canvasOpacity = state.opacity;
             d._canvasStrokeWidth = state.strokeWidth;
-            d._canvasStrokeColor = state.strokeColor || "#2C3E50";
+            d._canvasStrokeColor = state.strokeColor || GRAPH_COLORS.nodeStroke;
             d._canvasOuterRing = !!state.outerRing;
-            d._canvasOuterRingColor = state.outerRingColor || "#F97316";
+            d._canvasOuterRingColor = state.outerRingColor || GRAPH_COLORS.outerRing;
             d._canvasOuterRingWidth = state.outerRingWidth || 2.2;
         } else {
             element.style("display", "none").attr("opacity", 0);
             d._canvasR = 0;
             d._canvasOpacity = 0;
             d._canvasStrokeWidth = 1.5;
-            d._canvasStrokeColor = "#2C3E50";
+            d._canvasStrokeColor = GRAPH_COLORS.nodeStroke;
             d._canvasOuterRing = false;
-            d._canvasOuterRingColor = "#F97316";
+            d._canvasOuterRingColor = GRAPH_COLORS.outerRing;
             d._canvasOuterRingWidth = 2.2;
         }
     }

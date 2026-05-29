@@ -147,7 +147,7 @@ order: 35
   {% endfor %}
 ]
 </script>
-<script src="{{ '/assets/js/approaches-explorer.js' | prepend: site.baseurl }}"></script>
+<script defer src="{{ '/assets/js/approaches-explorer.js' | prepend: site.baseurl }}"></script>
 
 <style>
   .approaches-explorer {

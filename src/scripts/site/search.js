@@ -82,10 +82,17 @@ export function initSearch() {
     }
 
     function highlightText(text, query) {
-        if (!query) return text;
-        const terms = query.trim().split(/\s+/).map(t => t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'));
+        // Escape first, then wrap matches — the result is injected via innerHTML.
+        const safe = escapeHtml(text);
+        if (!query) return safe;
+        const terms = query
+            .trim()
+            .split(/\s+/)
+            .map(t => t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'))
+            .filter(Boolean);
+        if (!terms.length) return safe;
         const regex = new RegExp(`(${terms.join('|')})`, 'gi');
-        return text.replace(regex, '<mark>$1</mark>');
+        return safe.replace(regex, '<mark>$1</mark>');
     }
 
     function renderResults(results, q) {
@@ -103,15 +110,18 @@ export function initSearch() {
             if (!item) return;
 
             const highlightedTitle = highlightText(item.title, q);
+            const safeType = escapeHtml(item.type);
+            const safeHref = escapeHtml(window.baseurl + item.url);
+            const safePath = escapeHtml(item.url);
 
             const html = `
                 <div class="search-result-item">
-                    <span class="search-result-category cat-${item.type}">${item.type}</span>
+                    <span class="search-result-category cat-${safeType}">${safeType}</span>
                     <h2 class="search-result-title">
-                        <a href="${window.baseurl}${item.url}">${highlightedTitle}</a>
+                        <a href="${safeHref}">${highlightedTitle}</a>
                     </h2>
                     <div class="search-result-snippet">
-                        ${item.url}
+                        ${safePath}
                     </div>
                 </div>
             `;
@@ -122,13 +132,22 @@ export function initSearch() {
     }
 }
 
+function escapeHtml(s) {
+    return String(s ?? "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#39;");
+}
+
 function getQuery(keys) {
     let query = "";
     let key = "";
     keys.forEach(function (queryKey) {
         const regex = RegExp("[?&]" + queryKey + "=([^&]+)", 'i');
-        let matched;
-        if (matched = window.location.search.match(regex)) {
+        const matched = window.location.search.match(regex);
+        if (matched) {
             query = decodeURIComponent(matched[1]).replace(/(　| )+/g, ' ');
             key = queryKey;
         }
