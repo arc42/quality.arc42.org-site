@@ -12,7 +12,7 @@
   position: sticky;
   top: 0;
   transform: translateY(0);
-  z-index: 1000;
+  z-index: var(--z-sticky);
 
   a {
     color: inherit;

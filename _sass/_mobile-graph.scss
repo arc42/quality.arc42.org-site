@@ -261,7 +261,7 @@
       position: absolute;
       top: 0.65rem;
       right: 0.65rem;
-      z-index: 1201;
+      z-index: var(--z-sheet);
       border: 1px solid var(--brand-blue);
       background: var(--brand-blue-soft);
       color: var(--brand-blue-text);
@@ -303,7 +303,7 @@
       /* Fully out of view when closed */
       transform: translateY(calc(100% + 1rem));
       transition: transform 0.25s ease;
-      z-index: 1300;
+      z-index: var(--z-sheet-top);
       /* Scrollable but hidden scrollbar */
       overflow-y: auto;
       scrollbar-width: none;

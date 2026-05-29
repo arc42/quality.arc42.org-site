@@ -213,6 +213,16 @@ $innoq-heart-color: #ff9c66;
   --radius-lg: #{$radius-lg};
   --radius-pill: #{$radius-pill};
 
+  // Z-index scale for the global stacking layers. Small in-component values
+  // (1, 2, 30, 40) stay local; these name the high "overlay" tiers that
+  // previously jumped 40 → 1000 with no documented order. Values are unchanged
+  // from the literals they replaced.
+  --z-sticky: 1000; // sticky site header, graph control bars
+  --z-popover: 1100; // search autocomplete panel (above the sticky header)
+  --z-sheet: 1201; // mobile graph bottom-sheet
+  --z-sheet-top: 1300; // controls layered on top of the sheet
+  --z-skip-link: 2000; // skip-to-content link, above everything
+
   // Standards palette — canonical home for the /standards/ section colour
   // system. Previously split across `:root` here (6 tokens) and
   // `.standards-page` in _standards.scss (12 tokens, page-scoped). Unified
