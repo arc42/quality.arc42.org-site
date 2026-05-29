@@ -72,9 +72,12 @@ export class HomeGraph extends Graph {
     this.fullGraphToggle.setAttribute("aria-label", "Open full graph");
     this.fullGraphToggle.title = "Open full graph";
 
-    // Add click event listener to navigate to the full graph page
+    // Add click event listener to navigate to the full graph page.
+    // Prefix with the site baseurl so the link survives subpath deploys
+    // (e.g. project GitHub Pages), consistent with the rest of the site JS.
     this.fullGraphToggle.addEventListener("click", () => {
-      window.location.href = "/full-quality-graph";
+      const baseurl = (window.baseurl || "").replace(/\/$/, "");
+      window.location.href = `${baseurl}/full-quality-graph`;
     });
 
     // Add the button to the container
