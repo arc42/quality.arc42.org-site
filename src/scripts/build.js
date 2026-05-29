@@ -106,7 +106,10 @@ async function build({ watch = false } = {}) {
       entryPoints: {
         "homepage/main": "src/graphs/homepage/main.js",
         "fullpage/main": "src/graphs/fullpage/main.js",
-        "site": "src/scripts/site/main.js"
+        "site": "src/scripts/site/main.js",
+        "qualities-explorer": "src/explorers/qualities.js",
+        "approaches-explorer": "src/explorers/approaches.js",
+        "standards-explorer": "src/explorers/standards.js"
       },
       outdir: "assets/js",
       bundle: true,
