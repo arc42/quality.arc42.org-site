@@ -561,28 +561,23 @@ export class Graph {
             links: []
         };
 
-        // Add nodes to D3 data
+        // Add nodes to D3 data. (Legend/zoom visibility is handled later at the
+        // render layer via `_legendHidden`; there is no `hidden` node attribute.)
         this.graph.forEachNode((nodeId, attrs) => {
-            if (!attrs.hidden) {
-                graphData.nodes.push({
-                    id: nodeId,
-                    ...attrs,
-                    size: attrs.size
-                });
-            }
+            graphData.nodes.push({
+                id: nodeId,
+                ...attrs,
+            });
         });
 
         // Add edges to D3 data
         this.graph.forEachEdge((edgeId, attrs, source, target) => {
-            // Only add edges where both nodes are visible
-            if (!this.graph.getNodeAttribute(source, "hidden") && !this.graph.getNodeAttribute(target, "hidden")) {
-                graphData.links.push({
-                    id: edgeId,
-                    source,
-                    target,
-                    ...attrs
-                });
-            }
+            graphData.links.push({
+                id: edgeId,
+                source,
+                target,
+                ...attrs
+            });
         });
 
         return graphData;

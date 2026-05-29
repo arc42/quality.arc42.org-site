@@ -207,7 +207,6 @@ export class FullGraph extends Graph {
             // Center view button
             if (this.centerButton) {
                 this.centerButton.addEventListener("click", () => {
-                    console.warn("Centering view...");
                     this.renderer.centerView();
                 });
             }
@@ -229,7 +228,7 @@ export class FullGraph extends Graph {
 
             // Also handle Enter key for immediate filtering
             this.filterInput.addEventListener("keyup", (e) => {
-                const isEnter = e.key === "Enter" || e.keyCode === 13;
+                const isEnter = e.key === "Enter";
                 if (isEnter) {
                     // Finalize pending token on Enter
                     const val = this.filterInput.value.trim();
