@@ -124,6 +124,11 @@ $legacy-danger-shadow-color: rgba(156, 61, 75, 1);
 $innoq-heart-color: #ff9c66;
 
 :root {
+  // Declare the page as light-only. The brand is an intentional light theme
+  // (no dark mode); this stops browsers/OSes from auto-inverting form controls,
+  // scrollbars, etc. in forced-dark contexts where colours would garble.
+  color-scheme: light;
+
   --brand-violet: #{$brand-violet};
   --brand-violet-deep: #{$brand-violet-deep};
   --brand-violet-soft: #{$brand-violet-soft};
