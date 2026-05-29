@@ -1,8 +1,10 @@
 # CSS & JS Nitpick Review — Verdict
 
-**Reviewer:** Claude (opus-4-8) · **Date:** 2026-05-29
+**Reviewer:** Claude (opus-4-8) · **Date:** 2026-05-29 · **Last updated:** 2026-05-29 (post-fix)
 **Scope:** `src/graphs/**`, `src/scripts/site/**`, `assets/js/*-explorer.js`, `_sass/**`, `assets/css/**`
-**Method:** Manual read of all hand-written JS source + SCSS audit. No files changed.
+**Method:** Manual read of all hand-written JS source + SCSS audit.
+**Branch:** `claude/youthful-planck-FHpek`. See the **Resolution status** section below for what
+has been fixed; the detailed findings further down are preserved as the original review.
 
 ## TL;DR verdict
 
@@ -14,8 +16,81 @@ violations that remain are mostly **consistency and hygiene** issues, plus a few
 prioritize: (1) a committed build artifact + an inconsistent module strategy, and
 (2) the duplicated/conflicting global `/` key handler with dead code behind it.
 
+> **Post-fix note:** most of the JS findings and the safe CSS subset are now fixed on
+> `claude/youthful-planck-FHpek` — including (2) and the module-strategy half of (1). The
+> remaining open/deferred items (the `@use` migration, colour normalization, the build-
+> artifact deploy decision) are tracked in **Resolution status** below.
+
 Priorities: **P0** = correctness/bug or maintenance hazard · **P1** = clear best-practice
 violation worth fixing soon · **P2** = nitpick / consistency · **P3** = optional polish.
+
+---
+
+## Resolution status (2026-05-29)
+
+Legend: ✅ fixed · 🟡 partially fixed · ⏭️ deferred (deliberate, with rationale) · ⬜ open.
+
+All fixes are on `claude/youthful-planck-FHpek`, one finding-group per commit so they
+cherry-pick cleanly. JS bundles rebuilt via `npm run build`; CSS changes verified by
+diffing a full dart-sass compile of the stylesheet against a saved baseline (no browser
+needed for the value-preserving ones).
+
+### JavaScript
+
+| ID | Status | Commit / note |
+|----|--------|---------------|
+| J2  | ✅ | `b57b5d2` — explorers moved to `src/explorers/`, built by esbuild (no longer source-in-outdir) |
+| J3  | ✅ | `a4e2d07` — dead `/` keyup handler removed |
+| J4  | ✅ | `7f1b09b` — `defer` added to approaches-explorer |
+| J5  | ✅ | `5b450a3` — HomeGraph uses `window.baseurl` |
+| J6  | ✅ | `266cb87` (search.js escaping) + `b57b5d2` (explorers now build DOM with elements, no `innerHTML`) |
+| J7  | ✅ | `0021648` — re-assert on simulation `end` + single fallback, replacing the timer ladder |
+| J8  | ✅ | `5966e20` — removed the `Centering view…` debug log; genuine `console.error`/edge-skip `warn` kept by design |
+| J9  | ✅ | `04ea112` — `src/graphs/colors.js` single source; off-palette `#F97316` consolidated |
+| J11 | ✅ | `a4e2d07` — external-link detection via `new URL(...).host` |
+| J12 | ✅ | `b57b5d2` — shared `letter-explorer.js`; ~250 duplicated lines removed |
+| J13 | ✅ | `b57b5d2` — all three explorers now ESM-bundled (one strategy) |
+| J15 | ✅ | `5966e20` — dead `attrs.hidden` guards removed |
+| J16 | ✅ | `f681c5b` — redundant rAF wrapper dropped from the tick |
+| J17 | ✅ | `5966e20` (`keyCode===13`) + `a4e2d07` (`keyCode===191` removed with J3); `mql.addListener` fallbacks intentionally kept |
+| J18 | ✅ | `266cb87` — assignment hoisted out of the `if` |
+| J19 | ✅ | `7f1b09b` — `rank()` takes pre-tokenized terms |
+| J20 | ✅ | `b57b5d2` — focus restored to the toggled facet chip |
+| J1  | ⏭️ | Committing build artifacts vs. gitignoring is a **deploy-policy** call (GitHub Pages doesn't run esbuild; CI does). Left for a deliberate decision, not a code cleanup. |
+| J10 | ⏭️ | Tooltip inline styles → `.graph-tooltip` CSS. Couples JS+CSS and is value-changing; not done. |
+| J14 | ⬜ | FullGraph parallel filter-term state not refactored. |
+| J21 | ⬜ | search.js still uses the `innerHTML`-wrapper pattern (now *escaped*, so safe); not converted to `createElement`. |
+| J22 | ⬜ | Layout magic numbers / `SIDEBAR_WIDTH` not named. |
+
+### CSS
+
+| ID | Status | Commit / note |
+|----|--------|---------------|
+| C8  | ✅ | `6174bf3` — site-wide `prefers-reduced-motion` (global near-zero-duration block) |
+| C9  | ✅ | `c5a962c` — global-layer z-index tokens (`--z-sticky/popover/sheet/sheet-top/skip-link`), values unchanged |
+| C4  | 🟡 | `65756f3` — removed the legacy `a:active/a:hover{outline:0}` reset (the real fix). The `_mobile-graph.scss` `outline:none` spots still want a focus-ring **verification** pass. |
+| C5  | ✅ | `722b5c9` — added `color-scheme: light` to `:root` (prevents forced-dark garbling; not dark-mode support) |
+| C7  | ⏭️ | **Reclassified.** Grep proved **zero** brand-colour literals exist outside `_variables.scss` — the palette is fully adopted. The remaining literals are *bespoke* one-offs with no token equivalent, so replacing them is value-*changing* (normalization), not a refactor. Deferred. |
+| C1  | ⏭️ | `@use`/`@forward` migration. Attempted via `sass-migrator`; **not byte-identical achievable** here (cross-module `@extend .clearfix` changes selector grouping) and the tool didn't compile cleanly in the Jekyll-partial/load-path setup. Warnings-only today. Needs a dedicated, locally-run + browser-reviewed effort — see follow-up below. |
+| C10 | ⏭️ | `darken()` / `red/green/blue()` → `sass:color`. Tied to C1 (`@use "sass:color"`); deferred with it. |
+| C2  | ⏭️ | Breakpoint tokenizing **skipped**: only 5 literal media queries, and the matching tokens would *falsely couple* independent breakpoints (changing the home-graph breakpoint would move the standards one). Net-negative. |
+| C11 | ⏭️ | `px`→`rem` fonts is value-changing (root is 17px, so naive conversion resizes text). Normalization, deferred. |
+| C3  | ⬜ | `!important` (7×, mostly legit) — not touched. |
+| C12 | ⬜ | Stale vendor prefixes / minor duplicate selectors — not touched. |
+| C6  | ⬜ | FontAwesome size / `@import "all.css"` → `<link>` / subsetting — not touched (perf task). |
+
+### Follow-up worth scheduling: the `@use` migration (C1 + C10)
+
+This is the one real *deadline* item (Dart Sass will eventually remove `@import`). It was
+deferred here because a clean, verifiable migration needs:
+1. `sass-migrator module --migrate-deps` run against the **real Jekyll** Sass environment
+   (the throwaway dart-sass + `--load-path` setup didn't resolve the `_partial`/`all.css`
+   graph cleanly), and
+2. resolving the cross-module `@extend .clearfix` (in `_aside`/`_content`/`_layout`) —
+   under modules this either needs the extendable selector co-located or a switch to a
+   mixin, which **changes compiled output** (selector grouping → duplicated rules), so it
+   can't be a silent byte-identical refactor and must be eyeballed in a browser.
+   It touches all ~30 partials. Recommend its own PR with visual review.
 
 ---
 
@@ -140,6 +215,12 @@ violation worth fixing soon · **P2** = nitpick / consistency · **P3** = option
   JS constant.
 
 ### C7. ~70+ hardcoded colors bypass the token system (HIGH)
+> **Update (post-fix): reclassified, deferred.** A targeted grep found **zero** *brand*-colour
+> literals outside `_variables.scss` — the palette is already fully adopted. The literals below
+> are **bespoke** values with no token equivalent, so "fixing" them means inventing tokens or
+> snapping to the nearest colour — a value-*changing* normalization (Option C), not a safe
+> refactor. Left for a deliberate design pass.
+
 - Despite the strong `_variables.scss`/`:root` palette, the agent counted **186+
   hex/rgb literals**, ~70 of which duplicate or *should* map to existing tokens.
   Worst offenders:
@@ -158,6 +239,10 @@ violation worth fixing soon · **P2** = nitpick / consistency · **P3** = option
   made in one place.
 
 ### C8. ~10+ transitions/animations lack `prefers-reduced-motion` (HIGH, WCAG 2.3.3)
+> **Update (post-fix): RESOLVED** in `6174bf3` via a single global `prefers-reduced-motion`
+> block (`*,*::before,*::after { …-duration: 0.01ms !important }`), which neutralizes every
+> current and future transition/animation. The pre-existing targeted blocks were left in place.
+
 - Reduced-motion *is* handled in 4 places (`base/_layout.scss:65`, `_header.scss:294`,
   `components/_icons.scss:52`, `components/_search-autocomplete.scss:258`) — but many
   animated rules are **unguarded**: `_common.scss:49` (`transition: all .2s` on all
@@ -287,8 +372,8 @@ violation worth fixing soon · **P2** = nitpick / consistency · **P3** = option
 - `_variables.scss`: mature token system — modular type scale, radius scale, RGBA
   ramps, **two-tone `--focus-ring` tokens with documented WCAG-AA contrast rationale**.
 - Reduced-motion is handled well in JS (`GraphRenderer._prefersReducedMotion` settles
-  the simulation synchronously) and *started* in SCSS (4 files) — though the CSS side is
-  incomplete (see C8).
+  the simulation synchronously) and, as of `6174bf3`, site-wide in CSS via a global guard
+  (was the partial state noted in C8).
 - Autocomplete: solid ARIA (`aria-activedescendant`, `role=option`, `aria-expanded`),
   proper escaping, debounce, deliberate non-Lunr scoring with a documented reason.
 - D3 renderer split into small private helpers; submodule d3 imports to trim bundle.
