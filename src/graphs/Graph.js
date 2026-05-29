@@ -4,6 +4,7 @@
  */
 import { MultiGraph } from "graphology";
 import { NODE_TYPES, QUALITY_ROOT_ID } from "./constants";
+import { NODE_COLORS } from "./colors";
 import { GraphDataProvider } from "./GraphDataProvider";
 import { GraphRenderer } from "./GraphRenderer";
 
@@ -50,7 +51,7 @@ export class Graph {
         };
 
         try {
-            this.createRootNode("Quality", 55, "#ebebeb");
+            this.createRootNode("Quality", 55, NODE_COLORS.root);
             // Create nodes and edges
             this.createNodes(propertyNodes, filterHighlights);
             this.createNodes(nodes, filterHighlights);

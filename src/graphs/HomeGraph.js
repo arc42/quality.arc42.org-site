@@ -4,6 +4,7 @@
  */
 import { Graph } from "./Graph";
 import { QUALITY_ROOT_ID } from "./constants";
+import { NODE_COLORS } from "./colors";
 import { isRootId } from "./nodeUtils";
 
 export class HomeGraph extends Graph {
@@ -44,7 +45,7 @@ export class HomeGraph extends Graph {
     try {
       this.graph.clear();
 
-      this.createRootNode("Quality", 55, "#ebebeb");
+      this.createRootNode("Quality", 55, NODE_COLORS.root);
       this.createNodes(homeData.propertyNodes);
       this.createEdges(homeData.edges);
 
