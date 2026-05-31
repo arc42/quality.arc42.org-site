@@ -42,7 +42,7 @@ permalink: /approaches/circuit-breaker
 - `tradeoffs`:
   - Array of slugs that exist under `/qualities/<slug>`. Plain strings, no objects.
 - `tradeoff_notes`:
-  - Map keyed by each slug in `tradeoffs`. Value: one sentence naming a concrete cost (a metric impact, a maintenance task, a class of stale data) — not a generic warning.
+  - Map keyed by each slug in `tradeoffs`. Value: name a concrete cost (a metric impact, a maintenance task, a class of stale data) *and* its consequence or triggering condition — not a generic warning. Trade-offs are a key differentiator of the site, so favour a substantive note (one or two sentences, ~50 words) over a terse one; length follows substance, don't pad.
 - `related_requirements`:
   - Array of slugs that exist under `/requirements/<slug>`. Use `[]` when none apply.
 - `related_requirements_notes`:

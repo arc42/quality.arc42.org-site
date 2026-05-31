@@ -11,10 +11,10 @@ supported_qualities_notes:
   verifiability: Formal models make assumptions, states, and transitions precise enough for automated and manual checking.
 tradeoffs: [cost, modifiability, time-to-market, understandability]
 tradeoff_notes:
-  cost: Modeling, proof, review, and specialist training raise upfront engineering cost.
-  modifiability: Changing core requirements can force updates to machines, invariants, refinements, and proofs.
-  time-to-market: Early delivery is slower because assurance is built before implementation is considered complete.
-  understandability: Many stakeholders can review the intent, but few can read the notation and proof artifacts directly.
+  cost: Formalizing specifications and discharging proofs takes far more upfront effort than ordinary coding, and it demands scarce expertise in formal logic and set theory that can bottleneck hiring and team scaling — even where the rigor reduces later rework.
+  modifiability: Changing a core requirement can ripple through machines, invariants, refinements, and their proofs; a safety-critical change may force re-proving large portions of the refinement chain, slowing iteration and reducing agility.
+  time-to-market: First usable output arrives later because the assurance argument is built before the implementation is considered complete, pushing delivery out compared with iterative or test-driven approaches.
+  understandability: Most stakeholders can follow the intent, but few read the formal notation or proof artifacts directly; success also hinges on proof, animation, and model-analysis tools and a team that interprets their output correctly.
 related_requirements: [provable-railway-interlocking-routing-logic, provable-railway-interlocking-safety, provable-insulin-dosage-safety]
 related_requirements_notes:
   provable-railway-interlocking-routing-logic: Uses automated proof and release gates to keep implementation aligned with the proven model.
@@ -56,12 +56,6 @@ The invariant states that two conflicting routes must never both be clear at the
 - **Refinement chain**: Move from abstract behavior to more concrete design in small steps, preserving the properties of the previous level instead of rewriting them informally.
 - **Proof obligations**: Use tool support to generate and discharge the proof obligations that arise from operations, invariants, and refinements.
 - **Exploration and review**: Complement proofs with animation, model checking, and human review to catch wrong assumptions or missing cases before implementation.
-
-## Trade-offs and Challenges
-- **Specialized Expertise**: Requires deep knowledge of formal logic and set theory, which can create a bottleneck in hiring and team scaling.
-- **Initial Development Cost**: The upfront effort in formalizing specifications and discharging proofs is significantly higher than traditional coding, even if it can reduce later rework.
-- **Rigidity**: Changes to safety-critical requirements may require re-proving large portions of the refinement chain, impacting agility.
-- **Toolchain Dependency**: Success depends heavily on capable proof, animation, and model-analysis tools, plus a team that knows how to interpret their output correctly.
 
 ## Failure Modes
 - **Wrong thing proved**: The model is internally consistent, but it captures the wrong requirement, so the team proves a property nobody actually needed.

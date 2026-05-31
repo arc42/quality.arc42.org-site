@@ -43,7 +43,8 @@ Follow the schema in `approaches-template.md` exactly. The example there is the 
 - `intent`: one sentence, ≤ 25 words.
 - `mechanism`: one sentence or short paragraph, ≤ 50 words.
 - `applicability`: ≤ 50 words. Cover both "use when" and "skip when".
-- Each `*_notes` value: one sentence, ≤ 25 words.
+- `supported_qualities_notes` / `related_requirements_notes` value: one sentence, ≤ 25 words.
+- `tradeoff_notes` value: trade-offs are a core differentiator of this site, so give each the room it needs. Name the concrete cost *and* its consequence or the condition under which it bites; one or two sentences, ~50 words as a soft ceiling. Length follows substance — don't pad a simple cost, don't truncate a real one.
 - Body: ≤ 350 words total across all sections.
 
 ## Body Sections
