@@ -29,7 +29,7 @@ applicability: "Use when coarse roles alone are insufficient, especially in mult
 permalink: /approaches/fine-grained-authorization
 ---
 
-Fine-grained authorization answers a narrower question than authentication: not who are you, but may you perform this action on this resource now? RBAC groups permissions into stable business roles; ABAC adds resource and context rules such as tenant, ownership, data classification, geography, time window, or workflow state. In practice, robust systems usually combine both.
+Fine-grained authorization answers a narrower question than authentication: not who are you, but may you perform this action on this resource now? RBAC groups permissions into stable business roles; ABAC adds resource and context rules such as tenant, ownership, data classification, geography, time window, or workflow state. In practice, mature systems combine both.
 
 This approach must be enforced at the business boundary, not only in the UI or at the edge. Hidden buttons are not authorization, and a gateway-only check is insufficient if internal services or data stores can still be reached through other paths.
 

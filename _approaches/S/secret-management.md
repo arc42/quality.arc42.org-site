@@ -14,7 +14,7 @@ tradeoffs: [availability, latency, code-complexity]
 tradeoff_notes:
   availability: The vault is a Tier-0 dependency; its failure can prevent service startup or renewal of dynamic credentials, potentially causing system-wide cascading outages.
   latency: Authenticating to the vault and fetching secrets at runtime adds overhead to cold starts and introduces latency spikes during periodic credential renewal.
-  code-complexity: Developers must solve the "secret zero" bootstrap problem, manage token renewal lifecycles, and implement robust retry/fallback logic for vault transients.
+  code-complexity: Developers must solve the "secret zero" bootstrap problem, manage token renewal lifecycles, and implement reliable retry and fallback logic for vault transients.
 related_requirements: [access-control-is-enforced, encrypted-storage, governance-policy-enforcement]
 related_requirements_notes:
   access-control-is-enforced: Secret management enforces access control at the credential layer — only authorized identities receive the secrets they need.
@@ -32,10 +32,10 @@ Secret management centralizes the entire credential lifecycle — creation, stor
 
 ## How It Works
 
-- **Centralized Vaulting**: Store all secrets in a dedicated vault (HashiCorp Vault, AWS Secrets Manager, etc.) with an encrypted-at-rest backend.
+- **Centralized Vaulting**: Store all secrets in a dedicated vault (e.g. HashiCorp Vault, AWS Secrets Manager) with an encrypted-at-rest backend.
 - **Identity-Based Bootstrapping**: Solve the "secret zero" problem (authenticating to the vault) by using trusted platform identities—such as Kubernetes ServiceAccounts, AWS IAM Roles, or OIDC tokens—rather than static, hardcoded vault tokens.
 - **Access Policies**: Define fine-grained paths (e.g., `secret/data/payment-service/*`) and map them to specific service identities, ensuring strict isolation between components.
-- **Runtime Injection**: Deliver secrets at runtime via vault APIs, sidecar proxies (e.g., vault-agent), or CSI drivers. Avoid environment variables where possible, as they are often logged by monitoring agents or visible in process listings (`/proc`).
+- **Runtime Injection**: Deliver secrets at runtime via vault APIs, sidecar injectors, or CSI drivers. Avoid environment variables where possible, as they are often logged by monitoring agents or visible in process listings (`/proc`).
 - **Dynamic Secrets & Short TTLs**: Prefer dynamic secrets generated on-the-fly (e.g., a database user created for 4 hours) over long-lived static passwords.
 - **Automated Rotation**: Configure the vault to automatically rotate credentials on a schedule, updating the target system (e.g., changing the DB password) and notifying or restarting the consuming application if necessary.
 - **Master Key Management**: Secure the vault's "root of trust" using Shamir’s Secret Sharing or hardware/cloud-based auto-unseal (KMS/HSM) to prevent a single administrator from compromising or losing the entire secret store.
@@ -51,7 +51,7 @@ Secret management centralizes the entire credential lifecycle — creation, stor
 
 ## Verification
 
-- **Secret-Sprawl Scan**: Use automated tools (truffleHog, gitleaks) to verify zero plaintext secrets exist in repositories, container images, or CI/CD logs.
+- **Secret-Sprawl Scan**: Use secret-scanning tools (e.g. truffleHog, gitleaks) to verify zero plaintext secrets exist in repositories, container images, or CI/CD logs.
 - **Identity Validation**: Audit vault policies to ensure service A cannot, under any circumstances, read secrets belonging to service B.
 - **Rotation Validity**: Trigger a manual rotation and verify that (1) the new secret works, and (2) the **old secret is immediately revoked** and no longer functions.
 - **Bootstrap Audit**: Verify that services authenticate to the vault using platform-provided identities (K8s, IAM) rather than static files or environment variables.
@@ -61,7 +61,7 @@ Secret management centralizes the entire credential lifecycle — creation, stor
 ## Variants and Related Tactics
 
 - **Dynamic Secrets**: On-demand credential generation that eliminates the need to "store" a password at all.
-- **Kubernetes External Secrets**: Operators that sync vault secrets into native K8s Secrets for legacy applications.
+- **External-secrets operators**: Sync vault secrets into the platform's native secret store for legacy applications.
 - [Encryption at Rest + in Transit](/approaches/encryption-at-rest-and-in-transit) depends on secret management for the "master keys" used in envelope encryption.
 - [Least Privilege](/approaches/least-privilege) is applied here at the credential layer via path-based scoping.
 - [Strong Authentication (MFA / OIDC)](/approaches/strong-authentication) provides the identity foundation used to solve the vault's own bootstrap problem.

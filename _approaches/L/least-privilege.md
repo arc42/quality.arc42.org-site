@@ -36,7 +36,7 @@ The principle limits blast radius. When an attacker compromises a component, the
 - Use simple role or group assignments only for stable baseline grants. When access depends on tenant, ownership, geography, time, or workflow state, move that decision to [Fine-Grained Authorization (RBAC/ABAC)](/approaches/fine-grained-authorization) rather than encoding endless exceptions into broad roles.
 - Enforce permissions at every trust boundary: API gateway, service mesh, database connection, filesystem, cloud IAM, and container security context.
 - Use short-lived, scoped credentials rather than long-lived, broad ones — this is where Least Privilege intersects with [Secret Management](/approaches/secret-management).
-- Use [Just-In-Time (JIT) access](https://learn.microsoft.com/en-us/entra/id-governance/privileged-identity-management/pim-configure) for rare administrative privileges so elevation expires automatically instead of becoming a standing entitlement.
+- Use just-in-time (JIT) access for rare administrative privileges so elevation expires automatically instead of becoming a standing entitlement.
 - Conduct regular access reviews to identify and revoke permissions that are no longer needed (role drift, offboarded employees, decommissioned services).
 - Audit permission usage: log which permissions are actually exercised, and flag grants that go unused over a threshold period.
 

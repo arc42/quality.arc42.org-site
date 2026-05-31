@@ -68,7 +68,7 @@ The core application defines one or more **extension points** — typically inte
 ## Variants and Related Tactics
 
 - **Micro-kernel:** A design where the core is reduced to a minimal engine and nearly all behavior, including built-in features, is implemented as plugins.
-- **Extension Hooks:** Named points (e.g., `before-save`, `after-login`) where external handlers can be attached; simpler but less powerful than full interface implementation.
+- **Extension Hooks:** Named points (e.g., `before-save`, `after-login`) where external handlers can be attached; simpler but more limited than full interface implementation.
 - **Marketplace Model:** Distribution through a curated, versioned registry with automated quality and security checks.
 
 ## References
