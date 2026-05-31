@@ -43,7 +43,8 @@ The approach becomes especially valuable when the read-to-write ratio is heavily
 - Projector failures create a growing backlog; without lag monitoring and alerting, stale views go undetected.
 - Multiple read models drift apart when projectors process events at different speeds or skip messages due to deserialization errors.
 - Storage overhead: maintaining multiple denormalized views significantly increases data storage costs and backup complexity compared to a single normalized model.
-- Teams apply CQRS to a simple CRUD domain, paying the two-model cost without gaining measurable scaling or flexibility benefits.
+
+- On a simple CRUD domain, the projection plumbing, sync, and dual schemas add maintenance burden and read latency while delivering no measurable scaling or flexibility gain.
 - Missing idempotency in projectors causes duplicate or corrupted view state after event redelivery.
 
 ## Verification

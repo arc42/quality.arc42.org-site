@@ -45,7 +45,7 @@ Progressive disclosure structures an interface into levels of detail. The first 
 ## Failure Modes
 
 - **Over-hiding:** Critical information or primary actions are buried so deep that users cannot find them, leading to frustration and support calls.
-- **Click Fatigue:** Forcing users to perform too many clicks to reach information they need frequently, turning a "simple" UI into a tedious one.
+- **Click Fatigue:** Frequently-needed information sits several disclosure layers deep, so routine tasks take many clicks and the "simple" UI feels tedious.
 - **Broken Discoverability:** Users do not realize that additional levels exist because the "expand" affordance (e.g., a tiny chevron or subtle link) is too discreet.
 - **Performance Penalty:** If secondary layers are lazy-loaded, a slow network can make the "disclosure" feel broken or unresponsive when the user clicks.
 

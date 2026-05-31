@@ -39,7 +39,8 @@ The circuit starts **Closed**. Once the failure rate or consecutive failure coun
 - **Inappropriate thresholds**: Setting thresholds too low causes "flapping" (unnecessary tripping), while setting them too high allows cascading failures to exhaust resources before the breaker trips.
 - **Fallback failure**: The fallback logic (e.g., returning a default value) fails under the same load or depends on another failing service, leading to a complete outage.
 - **Resource exhaustion**: If timeouts are set too long, the calling system can still exhaust its thread pool or memory while waiting for the "Closed" circuit's calls to fail.
-- **Silent trips**: If monitoring and alerting are not configured for state transitions, the system stays in a degraded "Open" state without the operations team being aware.
+
+- **Silent trips**: The breaker stays "Open" and serves degraded responses for an extended period while emitting no state-transition metric or alert, so operators remain unaware that a dependency is down.
 
 ## Verification
 
