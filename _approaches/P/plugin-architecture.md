@@ -7,7 +7,7 @@ supported_qualities_notes:
   extensibility: Allows new capabilities to be added without core code changes.
   modifiability: Localizes many behavior changes to plugin modules and contracts.
   reusability: Shared plugin APIs can be reused across products and deployments.
-  availability: Enables fault isolation; a crashing plugin should not bring down the entire host.
+  availability: Isolates faults so a crashing plugin does not bring down the host.
 tradeoffs: [security, performance, maintainability]
 tradeoff_notes:
   security: Untrusted plugins can execute harmful behavior without strict isolation.
@@ -17,8 +17,8 @@ related_requirements: [compatible-with-5-battery-providers, service-loose-coupli
 related_requirements_notes:
   compatible-with-5-battery-providers: Supports hardware-agnostic logic via driver-style plugins.
   service-loose-coupling-change-blast-radius: Plugin contracts isolate changes from the core system.
-  fast-rollout-of-changes: Enables targeted capability rollout by enabling plugins incrementally.
-intent: "Enable third parties or independent teams to extend system behavior without modifying or redeploying its core."
+  fast-rollout-of-changes: Rolls out capabilities incrementally by switching plugins on one at a time.
+intent: "Let third parties or independent teams extend system behavior without modifying or redeploying its core."
 mechanism: "Define a stable extension point (API, interface, or event bus) in the core; plugins are self-contained units that register themselves at startup or runtime and are invoked by the host through a shared contract."
 applicability: "Use when you need to support a varying or unknown set of capabilities that cannot all be built into the core, or when different customers or environments need different feature combinations. Avoid when the extension set is fully known and fixed, or when the overhead of maintaining a plugin API is greater than the benefit."
 permalink: /approaches/plugin-architecture

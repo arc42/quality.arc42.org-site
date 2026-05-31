@@ -55,7 +55,7 @@ Caching places a fast-access storage layer (near-memory or distributed) between 
 ## Variants and Related Tactics
 
 - **In-process cache**: Data stored in application memory (e.g., hash maps, Caffeine). Fastest access, but not shared across instances.
-- **Distributed cache**: Shared cache across multiple application instances (e.g., Redis, Memcached, Hazelcast). Enables horizontal scaling and consistency across the cluster.
+- **Distributed cache**: Shared cache across multiple application instances (e.g., Redis, Memcached, Hazelcast). Scales horizontally and keeps consistency across the cluster.
 - **CDN caching**: Content cached at edge locations close to users. Essential for static or semi-static assets in global applications.
 - **HTTP caching**: Browser and proxy caches using standard headers (Cache-Control, ETag).
 - **Memoization**: Caching the results of pure functions based on their input parameters.

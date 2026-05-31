@@ -59,7 +59,7 @@ The two complement each other: encrypting only in transit leaves data vulnerable
 
 ## Variants and Related Tactics
 
-- **Client-Side Encryption**: Customer-managed keys move key custody to the data owner, enabling zero-knowledge architectures but shifting key-management burden to the client.
+- **Client-Side Encryption**: Customer-managed keys move key custody to the data owner, supporting zero-knowledge architectures but shifting key-management burden to the client.
 - **Mutual TLS (mTLS)**: Adds certificate-based peer authentication to transport encryption, ensuring both sides of the connection prove their identity.
 - **Transparent Data Encryption (TDE)**: Database-level encryption protects storage media but not data after decryption in the database engine — an attacker with a valid database session reads plaintext.
 - [Secret Management](/approaches/secret-management) handles key and certificate distribution and rotation.

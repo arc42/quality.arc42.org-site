@@ -5,7 +5,7 @@ tags: [flexible, operable]
 supported_qualities: [deployability, flexibility, testability, changeability, modifiability]
 supported_qualities_notes:
   deployability: Allows code deployment independently from feature release timing.
-  flexibility: Enables runtime control by cohort, environment, or rollout percentage.
+  flexibility: Controls behavior at runtime by cohort, environment, or rollout percentage.
   testability: Supports safe experiments and canary rollout validation in production.
   changeability: Decouples implementation changes from immediate user exposure.
   modifiability: Localizes behavior changes to specific conditional paths without affecting core logic.
@@ -18,7 +18,7 @@ tradeoff_notes:
 related_requirements: [fast-deployment, fast-rollout-of-changes]
 related_requirements_notes:
   fast-deployment: Supports shipping code quickly while keeping risky behavior disabled.
-  fast-rollout-of-changes: Enables gradual rollout and rapid rollback without redeploy.
+  fast-rollout-of-changes: Rolls out gradually and rolls back fast without redeploying.
 intent: "Decouple code deployment from feature release by wrapping new behavior behind a runtime-configurable flag."
 mechanism: "Wrap new or risky code paths in a conditional check against a toggle store (configuration file, database, or feature-flag service), allowing the switch to be flipped per environment, user cohort, or percentage rollout without a redeployment."
 applicability: "Use when merging incomplete features to the main branch (trunk-based development), conducting canary releases or A/B tests, or providing a fast kill switch for risky changes. Avoid retaining toggles permanently; treat them as technical debt with an explicit expiry date."
@@ -71,7 +71,7 @@ Every toggle is a named boolean (or multi-variant) condition evaluated at runtim
 
 - **Dark launching**: The new code path executes in production (often reading data or making calls) but its output is discarded—used to validate performance and correctness before exposure.
 - **Percentage rollout**: The toggle is ON for a configurable fraction of users (e.g. 5 %, then 25 %, then 100 %), allowing gradual exposure and early detection of issues at scale.
-- **User-segment targeting**: Toggles scoped to specific user attributes (country, plan, cohort), enabling localized releases and targeted experiments.
+- **User-segment targeting**: Toggles scoped to specific user attributes (country, plan, cohort) for localized releases and targeted experiments.
 - **Branch by Abstraction**: A technique for making large-scale changes by introducing an abstraction layer that can toggle between old and new implementations.
 
 ## References

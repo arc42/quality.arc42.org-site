@@ -44,7 +44,7 @@ Input sanitization and output encoding address the two sides of this problem. On
 - Validation at the API gateway but not at the service layer: a direct service-to-service call bypasses the gateway and delivers unsanitized input.
 - Output encoding applied in the wrong context — for example, HTML-encoding data that is injected into a JavaScript string literal, where JavaScript escaping is required.
 - Double encoding: data is encoded twice, producing garbled output for legitimate users while potentially still allowing attacks through decode-then-interpret chains.
-- Rich-text fields allow overly permissive HTML, enabling stored XSS that activates when other users view the content.
+- Rich-text fields allow overly permissive HTML, so stored XSS activates when other users view the content.
 
 ## Verification
 

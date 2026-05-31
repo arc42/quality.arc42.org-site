@@ -6,7 +6,7 @@ supported_qualities: [resilience, stability, fault-tolerance, availability]
 supported_qualities_notes:
   resilience: Improves uptime by containing dependency failures and preventing cascading effects.
   stability: Prevents cascading errors across service boundaries by isolating unhealthy dependencies.
-  fault-tolerance: Enables controlled degradation under partial failures by providing safe fallbacks.
+  fault-tolerance: Degrades in a controlled way under partial failure by serving safe fallbacks.
   availability: Protects overall system availability by failing fast rather than hanging on slow dependencies.
 tradeoffs: [maintainability, latency]
 tradeoff_notes:

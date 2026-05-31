@@ -18,7 +18,7 @@ tradeoff_notes:
 related_requirements: [access-control-is-enforced, encrypted-storage, governance-policy-enforcement]
 related_requirements_notes:
   access-control-is-enforced: Secret management enforces access control at the credential layer — only authorized identities receive the secrets they need.
-  encrypted-storage: Vault-managed keys enable the encryption-at-rest controls that this requirement demands, while the vault itself requires encrypted backend storage.
+  encrypted-storage: Vault-managed keys provide the encryption-at-rest controls this requirement demands, while the vault itself requires encrypted backend storage.
   governance-policy-enforcement: Centralized secret policies and immutable audit trails demonstrate that governance controls over sensitive credentials are in place.
 intent: "Eliminate secret sprawl by centralizing the storage, distribution, rotation, and revocation of sensitive credentials in a hardened, auditable vault using short-lived, identity-based tokens."
 mechanism: "Store all secrets in a dedicated vault with encrypted storage and fine-grained access policies; bootstrap service access via trusted platform identities (OIDC, IAM, K8s) to solve the 'secret zero' problem; issue short-lived, scoped credentials at runtime via API or sidecar injection; automate rotation and revoke compromised credentials immediately; avoid persisting secrets in source code, images, or environment variables (which leak via /proc/self/environ and crash dumps)."

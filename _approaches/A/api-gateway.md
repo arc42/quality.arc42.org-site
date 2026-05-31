@@ -8,7 +8,7 @@ supported_qualities_notes:
   interoperability: Translates between client-facing protocols (REST, GraphQL, WebSocket) and internal protocols, shielding consumers from backend technology choices.
   observability: Produces a uniform stream of access logs, latency histograms, error rates, and distributed-trace headers for every request entering the system.
   scalability: Offloads cross-cutting work from backend services and absorbs traffic spikes via connection pooling, request buffering, and integration with autoscaling.
-  availability: Enables transparent failover, health-check-based routing, and retry with jitter so that transient backend failures do not propagate to callers.
+  availability: Fails over transparently via health-check routing and retry-with-jitter, so transient backend failures stay hidden from callers.
   modularity: Decouples client-facing API contracts from internal service boundaries, allowing backend teams to split, merge, or rewrite services without breaking consumers.
 tradeoffs: [latency, operability, loose-coupling]
 tradeoff_notes:

@@ -62,7 +62,7 @@ Responsive design rests on three core technical pillars:
 
 - **Adaptive Design:** Serving distinct, purpose-built HTML/CSS for specific device classes (e.g., mobile vs. desktop) based on server-side detection.
 - **Progressive Enhancement:** Starting with a functional baseline that works on all browsers and layering on advanced CSS/JS features only for capable modern browsers.
-- **Container Queries:** Using `@container` rules to style elements based on the size of their direct parent container rather than the entire viewport, enabling truly modular responsive components.
+- **Container Queries:** Using `@container` rules to style elements based on the size of their direct parent container rather than the entire viewport, for modular responsive components.
 
 ## References
 - [Responsive Web Design](https://alistapart.com/article/responsive-web-design/) — Ethan Marcotte ([full citation](/references/#marcotte2011responsive))
