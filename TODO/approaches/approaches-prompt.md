@@ -55,7 +55,7 @@ Follow the schema in `approaches-template.md` exactly. The example there is the 
 - No `###` headings.
 - `## Failure Modes` describes observable failure conditions and their effects, not prohibitions.
 - `## Verification` items name a measurable signal: a metric with a threshold, a chaos check with an expected state transition, or a clear pass/fail assertion.
-- Stay vendor-neutral. Name vendors only as illustrative examples or in `## References`. Prefer generic terms ("chaos-injection tool", "message broker", "identity provider") in the body.
+- Stay vendor-neutral. Name vendors only as illustrative `e.g.` examples in the body, and prefer generic terms ("chaos-injection tool", "message broker", "identity provider"). Do **not** add vendor or product documentation links to `## References` — that section is for durable, authoritative, vendor-neutral sources (standards, RFCs, papers, books, OWASP/NIST). Vendor doc URLs rot, go unchecked by the link validator, and naming one product over another implies endorsement.
 
 ## Voice and Language
 

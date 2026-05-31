@@ -68,6 +68,8 @@ permalink: /approaches/circuit-breaker
 
 When a source also appears on the site's [References](/references/) page, link to its anchor: `[Title](url) — Author(s) ([full citation](/references/#anchor))`.
 
+**What belongs in `## References`:** durable, authoritative, vendor-neutral sources — standards (ISO, NIST), RFCs, foundational papers, books, and bodies like OWASP. Do **not** add vendor or product documentation links (a specific cloud's or tool's how-to). They rot, the link validator does not check external URLs, and naming one product over another implies endorsement and undercuts the site's neutral, trustworthy voice. Name vendors only as illustrative `e.g.` examples in the body.
+
 ## Body Skeleton
 
 ```md
