@@ -39,6 +39,19 @@
     padding-bottom: 0.25rem;
   }
 
+  // Intent / Mechanism / Applicability blocks. Each is a label + one paragraph.
+  // The paragraph is its div's last child, so `p:last-child { margin-bottom: 0 }`
+  // zeroes the gap below it; combined with the label's zero top margin (below)
+  // the next label would otherwise hug the preceding paragraph. Separate the
+  // blocks here and keep the label tight to its own paragraph.
+  .approach-meta {
+    margin-top: 1.75em;
+
+    p {
+      margin-top: 0;
+    }
+  }
+
   // Approach-meta labels are semantically H2 (sibling sections of the page)
   // but visually small inline metadata. Override the section-heading
   // treatment for this specific role.
