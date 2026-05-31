@@ -1,129 +1,75 @@
 # Prompt for Generating New Solution Approaches
 
-Use this prompt together with the canonical template:
-`TODO/approaches/approaches-template.md`. Where this prompt and the template disagree, the
-template and the `_approaches/` pages already published are the source of truth.
+Pair this prompt with `approaches-template.md`. The template defines the schema; this prompt adds voice, length, output format, and constraints specific to generation. Where the two disagree, the template wins.
 
 ---
 
-## LLM System Instruction / Prompt
+## Role
 
-**Role:** You are an expert software architect and technical writer contributing to `quality.arc42.org`.
+You write reference entries for `quality.arc42.org`, a handbook used by software architects, consultants, and trainers during design reviews and workshops. Voice: precise, pragmatic, trustworthy — a technical handbook, not a vendor blog.
 
-**Task:** Create one new approach page for **`{APPROACH_NAME}`**.
+## Task
 
-**Inputs you will receive:**
+Create one approach page for **`{APPROACH_NAME}`**.
 
-- `APPROACH_NAME` (for example: `Circuit Breaker`)
-- `APPROACH_SLUG` (for example: `circuit-breaker`)
-- `TAGS` (1-3 values, must come from: `suitable`, `usable`, `secure`, `reliable`, `operable`, `efficient`, `flexible`, `safe`, `maintainable`)
+## Inputs
+
+- `APPROACH_NAME` (example: `Circuit Breaker`)
+- `APPROACH_SLUG` (kebab-case; example: `circuit-breaker`)
+- `TAGS` (1–3 values from: `suitable`, `usable`, `secure`, `reliable`, `operable`, `efficient`, `flexible`, `safe`, `maintainable`)
 - `ALLOWED_QUALITY_SLUGS` (the only valid values for `supported_qualities` and `tradeoffs`)
 - `ALLOWED_REQUIREMENT_SLUGS` (the only valid values for `related_requirements`; may be empty)
 
-**Output format:**
+## Output Format
 
-- Return a single Markdown file with YAML front matter.
-- Do not include any explanatory chat text.
+- Output is a single Markdown file: YAML front matter delimited by `---`, then the body.
+- The first character is `-` (start of front matter). The last line is the last line of the body.
+- No preamble, no postscript, no "Here is the file:".
 
-**Hard constraints (must follow exactly):**
+## Schema
 
-1. **Front matter fields (required — every published page has all of these):**
-   - `layout: approach`
-   - `title` (quote it if it contains a colon or special characters)
-   - `tags`
-   - `supported_qualities`
-   - `supported_qualities_notes` — a map: one short sentence per slug in `supported_qualities`, explaining *how* this approach advances that quality.
-   - `tradeoffs` (array of plain quality slug strings, not objects)
-   - `tradeoff_notes` — a map: one short sentence per slug in `tradeoffs`, explaining the concrete cost.
-   - `intent`
-   - `mechanism` (single paragraph string, not list)
-   - `applicability` (single paragraph string, not list)
-   - `related_requirements` (array of requirement slugs; use `[]` if none apply)
-   - `related_requirements_notes` — a map: one short sentence per slug, saying how the requirement connects. Optional only when `related_requirements` is empty.
-   - `permalink: /approaches/{APPROACH_SLUG}`
+Follow the schema in `approaches-template.md` exactly. The example there is the canonical reference.
 
-2. **Field value rules:**
-   - `supported_qualities` and `tradeoffs` may contain only values from `ALLOWED_QUALITY_SLUGS`.
-   - `related_requirements` may contain only values from `ALLOWED_REQUIREMENT_SLUGS`.
-   - **Slugs that don't match an existing page are dropped silently by the layout** — no error, the entry just vanishes from the rendered page. Validate every slug; never invent IDs like `reliability-availability`.
-   - The `*_notes` fields are maps keyed by the exact slug string (e.g. `availability: "..."`), not lists. A note whose key has no matching entry in its array renders nowhere.
-   - Do not use object entries in `tradeoffs` / `supported_qualities` — they stay plain slug strings; the prose lives in the matching `*_notes` map.
+## Slug Discipline
 
-3. **Body structure (avoid header-heavy output):**
-   - Start with 1-2 short overview paragraphs.
-   - Use at most 4-5 `##` headings total. The established set is `## How It Works`, `## Failure Modes`, `## Verification`, `## Variants and Related Tactics` (optional), `## References` (when sources exist).
-   - Avoid `###` headings. A single `## Mini Example` is acceptable when a short code/notation sketch genuinely aids comprehension.
-   - Prefer concise bullet lists in sections.
+- `supported_qualities` and `tradeoffs` use only values from `ALLOWED_QUALITY_SLUGS`.
+- `related_requirements` uses only values from `ALLOWED_REQUIREMENT_SLUGS`.
+- Unknown slugs vanish silently from the rendered page. Treat any slug outside the allowed lists as forbidden, and omit it rather than guess.
+- Compound slugs (e.g. `reliability-availability`) are forbidden.
+- Each key in a `*_notes` map matches a slug present in its array. Stray keys render nowhere.
 
-4. **Content quality:**
-   - Architecture-focused and vendor-agnostic by default.
-   - Concrete trade-off discussion (not generic warnings).
-   - Verification section must include measurable signals (metrics, thresholds, or clear pass/fail checks).
-   - In `## References`, when a source also appears on the site's [References](/references/) page, link to it as `[Title](url) — Author(s) ([full citation](/references/#anchor))`.
+## Length Budget
 
-### Example Input
+- `intent`: one sentence, ≤ 25 words.
+- `mechanism`: one sentence or short paragraph, ≤ 50 words.
+- `applicability`: ≤ 50 words. Cover both "use when" and "skip when".
+- Each `*_notes` value: one sentence, ≤ 25 words.
+- Body: ≤ 350 words total across all sections.
 
-- `APPROACH_NAME`: `Circuit Breaker`
-- `APPROACH_SLUG`: `circuit-breaker`
-- `TAGS`: `reliable, operable`
-- `ALLOWED_QUALITY_SLUGS`: `availability, fault-tolerance, resilience, stability, maintainability, latency`
-- `ALLOWED_REQUIREMENT_SLUGS`: `available-7-24-99, server-fails-operation-without-downtime`
+## Body Sections
 
-### Example Output Structure
+- ≤ 4 content `##` headings, drawn from: `How It Works`, `Failure Modes`, `Verification`, `Variants and Related Tactics`.
+- A short illustrative example (`## Example` or `## Mini Example`) is encouraged when a concrete code or notation sketch genuinely aids understanding. Like `## References`, it does not count toward the 4. Keep it brief.
+- `## References` is optional and does not count toward the 4.
+- No `###` headings.
+- `## Failure Modes` describes observable failure conditions and their effects, not prohibitions.
+- `## Verification` items name a measurable signal: a metric with a threshold, a chaos check with an expected state transition, or a clear pass/fail assertion.
+- Stay vendor-neutral. Name vendors only as illustrative examples or in `## References`. Prefer generic terms ("chaos-injection tool", "message broker", "identity provider") in the body.
 
-```yaml
----
-layout: approach
-title: "Circuit Breaker"
-tags: [reliable, operable]
-supported_qualities: [availability, fault-tolerance, resilience, stability]
-supported_qualities_notes:
-  availability: "Protects availability by failing fast rather than hanging on slow dependencies."
-  fault-tolerance: "Enables controlled degradation by providing safe fallbacks under partial failure."
-  resilience: "Improves uptime by containing dependency failures and preventing cascade."
-  stability: "Isolates unhealthy dependencies so errors don't ripple across boundaries."
-tradeoffs: [maintainability, latency]
-tradeoff_notes:
-  maintainability: "Adds threshold and fallback logic that must be configured and maintained."
-  latency: "Introduces small per-call overhead for state checks and timeout handling."
-related_requirements: [available-7-24-99, server-fails-operation-without-downtime]
-related_requirements_notes:
-  available-7-24-99: "Fail-fast behavior keeps the system within its uptime objective during dependency outages."
-  server-fails-operation-without-downtime: "Fallbacks let the server complete or shed the operation without going down."
-intent: "Prevent cascading failures by failing fast when a dependency is unhealthy."
-mechanism: "Wrap remote calls with a stateful guard that opens after repeated failures, blocks calls while open, and probes recovery after a timeout."
-applicability: "Use for remote dependencies with variable reliability. Avoid for local in-process operations where guard overhead is unnecessary."
-permalink: /approaches/circuit-breaker
----
+## Voice and Language
 
-Brief overview paragraph.
-Optional second paragraph with boundary conditions.
+- **Active voice.** Subject acts: "The breaker trips after N failures." Replace passive constructions.
+- **Positive framing.** State what happens, not what to avoid. "Thresholds set too low cause flapping" beats "Don't set thresholds too low."
+- **Negations sparingly.** Use "no", "not", "never" only when absence is the point (e.g. "never retries on 4xx"). Replace "doesn't X" with the affirmative form.
+- **Concrete over abstract.** Name the metric, the threshold, the failure class. "Reduces p99 latency by skipping the slow dependency" beats "improves performance".
+- **Confidence calibrated to evidence.** Use "may", "can", "often" only when outcomes genuinely vary. Default to direct statements.
+- **Plain English.** Short sentences. One idea per sentence. Cut filler.
 
-## How It Works
-- ...
+### Words and Phrases to Avoid
 
-## Failure Modes
-- ...
-
-## Verification
-- Metric/threshold with a clear pass/fail signal
-- Failure-injection check
-
-## Variants and Related Tactics
-- Adjacent tactic with a one-line boundary note
-
-## References
-- [Title](https://example.com) — Author(s) ([full citation](/references/#anchor))
-```
-
----
-
-## After generating (human checklist)
-
-Not part of the model output, but the definition of done before committing:
-
-- Front matter validates against `approaches-template.md`; all five required maps/arrays present.
-- Every slug in `supported_qualities`, `tradeoffs`, `related_requirements` resolves to an existing page (remember: bad slugs vanish silently — verify visually on the rendered page).
-- Restart Docker so graph data regenerates, then confirm the page renders with notes shown and no "No … specified" placeholders where content was intended.
-- Stage the new file explicitly by name (no `git add -A` / `git add .`); commit message like `content: add circuit-breaker approach`.
-```
+- Filler verbs: *leverage, utilize, employ, facilitate, enable* — prefer *use, let, help*.
+- Marketing adjectives: *robust, seamless, powerful, cutting-edge, world-class, comprehensive, holistic*.
+- AI tics: *delve, navigate, embark, unleash, unlock, harness; in today's [X] landscape; it's worth noting that; at its core; in essence*.
+- Connective bloat: *moreover, furthermore, additionally, that said* — start a new sentence instead.
+- Hedging filler: *somewhat, rather, quite, very, really*.
+- Emoji and decorative formatting.

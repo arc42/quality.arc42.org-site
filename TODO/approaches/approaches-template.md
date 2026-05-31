@@ -1,7 +1,8 @@
-# Solution Approach Template
+# Approach Template
 
-This file is the canonical source of truth for all approach pages in `_approaches/`.
-Use it as the definition of done for every new approach.
+This file is the canonical schema for pages in `_approaches/`. It defines required front matter, body structure, and the definition of done.
+
+Generating new approaches? Pair this file with `approaches-prompt.md`, which adds voice, length, and output-format rules.
 
 ## Required Front Matter
 
@@ -10,101 +11,101 @@ Use it as the definition of done for every new approach.
 layout: approach
 title: "Circuit Breaker"
 tags: [reliable, operable]
-supported_qualities: [availability, fault-tolerance, resilience]
+supported_qualities: [availability, fault-tolerance, resilience, stability]
 supported_qualities_notes:
-  availability: "Protects availability by failing fast rather than hanging on slow dependencies."
-  fault-tolerance: "Provides safe fallbacks for controlled degradation under partial failure."
-  resilience: "Contains dependency failures and prevents cascade."
-tradeoffs: [code-complexity, consistency, cost]
+  availability: "Failing fast preserves availability when a dependency slows or hangs."
+  fault-tolerance: "Safe fallbacks let the system degrade in a controlled way under partial failure."
+  resilience: "Containing dependency failures prevents cascade across services."
+  stability: "Isolating unhealthy dependencies stops errors rippling across boundaries."
+tradeoffs: [maintainability, latency]
 tradeoff_notes:
-  code-complexity: "Adds threshold and fallback logic that must be configured and maintained."
-  consistency: "Fallback responses may serve stale or partial data while the circuit is open."
-  cost: "State tracking and probing add small runtime overhead on protected calls."
-intent: "Fail fast when a dependency is unhealthy to prevent cascading failures and preserve overall service availability."
-mechanism: "Wrap dependency calls with a stateful guard that opens after a failure threshold, skips calls while open, and probes recovery after a timeout."
-applicability: "Use for remote calls that can fail transiently. Avoid for local in-process calls where overhead exceeds benefit."
+  maintainability: "Threshold, fallback, and recovery logic add code that the team owns and tunes."
+  latency: "Each protected call carries a small overhead for the state check and timeout handling."
+intent: "Fail fast when a dependency is unhealthy, so cascading failures stop at the breaker."
+mechanism: "Wrap remote calls in a stateful guard that opens after a failure threshold, blocks calls while open, and probes recovery after a timeout."
+applicability: "Use for remote calls that fail transiently or slowly. Skip for local in-process calls where the guard overhead outweighs the benefit."
 related_requirements: [available-7-24-99]
 related_requirements_notes:
-  available-7-24-99: "Fail-fast behavior keeps the system within its uptime objective during dependency outages."
+  available-7-24-99: "Failing fast keeps the system inside its uptime objective during a dependency outage."
 permalink: /approaches/circuit-breaker
 ---
 ```
 
-## Front Matter Rules
+## Front-Matter Rules
 
 - `tags`:
-  - Must use only these 9 dimensions: `suitable`, `usable`, `secure`, `reliable`, `operable`, `efficient`, `flexible`, `safe`, `maintainable`.
-  - Use 1-3 tags per page.
+  - Use 1–3 values from the 9 quality dimensions: `suitable`, `usable`, `secure`, `reliable`, `operable`, `efficient`, `flexible`, `safe`, `maintainable`.
 - `supported_qualities`:
-  - Array of existing quality slugs from `/qualities/<slug>`.
-  - Use plain slugs only, no prefixes like `category-attribute`.
+  - Array of slugs that exist under `/qualities/<slug>`. Plain slugs, no prefixes.
 - `supported_qualities_notes`:
-  - A map keyed by each slug in `supported_qualities`, value = one short sentence on *how* the approach advances that quality.
-  - The layout renders each note as a paragraph under its quality link.
+  - Map keyed by each slug in `supported_qualities`. Value: one sentence on how the approach advances that quality. The layout renders each note under its quality link.
 - `tradeoffs`:
-  - Array of existing quality slugs from `/qualities/<slug>`.
-  - Keep as plain slug strings only (no objects).
+  - Array of slugs that exist under `/qualities/<slug>`. Plain strings, no objects.
 - `tradeoff_notes`:
-  - A map keyed by each slug in `tradeoffs`, value = one short sentence on the concrete cost.
+  - Map keyed by each slug in `tradeoffs`. Value: one sentence naming a concrete cost (a metric impact, a maintenance task, a class of stale data) — not a generic warning.
 - `related_requirements`:
-  - Array of existing requirement slugs from `/requirements/<slug>`. Use `[]` if none apply.
+  - Array of slugs that exist under `/requirements/<slug>`. Use `[]` when none apply.
 - `related_requirements_notes`:
-  - A map keyed by each slug in `related_requirements`, value = one short sentence on how the requirement connects. Omit only when `related_requirements` is empty.
+  - Required whenever `related_requirements` is non-empty. Map keyed by each slug; value: one sentence on how the requirement connects.
 - `intent`, `mechanism`, `applicability`:
-  - Single concise paragraphs (not YAML lists), because the current layout renders them as paragraph text.
+  - Single paragraphs (not YAML lists). The layout renders them as prose.
 - `permalink`:
-  - Must be unique and kebab-case: `/approaches/<slug>`.
+  - Unique and kebab-case: `/approaches/<slug>`. The last segment is the graph node ID — changing it breaks references.
 
-> **Silent-drop warning:** the layout matches each slug against existing pages and simply omits any slug it can't resolve — no error is raised. A typo'd quality or requirement slug disappears from the rendered page rather than failing the build. Verify slugs visually after rebuild.
+> **Silent-drop warning:** the layout matches each slug against existing pages and omits any it can't resolve, with no error. A typo'd slug disappears from the rendered page rather than failing the build. Verify slugs visually after rebuild.
 
-## Body Structure (Keep It Lean)
+## Body Structure
 
-- Start with 1-2 short overview paragraphs directly after front matter.
-- Use at most 4 `##` headings.
-- Avoid `###` headings unless absolutely necessary.
+- Open with 1–2 short overview paragraphs directly after the front matter.
+- At most 4 content `##` headings, drawn from this set:
+  1. `## How It Works`
+  2. `## Failure Modes`
+  3. `## Verification`
+  4. `## Variants and Related Tactics` (optional)
+- A short illustrative example (`## Example` or `## Mini Example`) is encouraged where a concrete code or notation sketch aids understanding. Like `## References`, it does not count toward the 4. Keep it brief.
+- `## References` is optional and does not count toward the 4.
+- No `###` headings.
 
-Recommended sections:
-
-1. `## How It Works`
-2. `## Failure Modes`
-3. `## Verification`
-4. `## Variants and Related Tactics` (optional)
-
-`## References` can be added when needed, but keep pages concise. When a source also appears on the site's [References](/references/) page, link to the anchor there via `([full citation](/references/#anchor))`.
+When a source also appears on the site's [References](/references/) page, link to its anchor: `[Title](url) — Author(s) ([full citation](/references/#anchor))`.
 
 ## Body Skeleton
 
 ```md
 Short overview paragraph.
-Optional second overview paragraph with boundary conditions.
+Optional second paragraph with boundary conditions.
 
 ## How It Works
-- Step/mechanism point 1
-- Step/mechanism point 2
-- Step/mechanism point 3
+- Step or mechanism point 1
+- Step or mechanism point 2
+- Step or mechanism point 3
 
 ## Failure Modes
-- Typical misuse/failure 1
-- Typical misuse/failure 2
+- Observable failure condition and its effect
+- Observable failure condition and its effect
 
 ## Verification
-- Metric/test idea with measurable signal
-- Failure injection/chaos check
+- Metric with a threshold or pass/fail signal
+- Chaos or failure-injection check with expected state transition
 - Production signal to monitor
 
 ## Variants and Related Tactics
-- Variant or adjacent tactic with one-line boundary note
+- Variant or adjacent tactic with a one-line boundary note
 
 ## References
-- [Source Title](https://example.com) — Author(s) ([full citation](/references/#anchor))
-- [Source Title](https://example.com)
+- [Title](https://example.com) — Author(s) ([full citation](/references/#anchor))
 ```
+
+## Voice and Language
+
+Voice rules — active, positive, concrete, AI-slop-free — live in `approaches-prompt.md` under "Voice and Language". Apply them to handwritten pages too.
 
 ## Definition of Done (Single Page)
 
-- Front matter validates against this template, including the four `*_notes` / `related_requirements` blocks.
-- `supported_qualities` and `tradeoffs` only contain existing quality slugs; `related_requirements` only existing requirement slugs (bad slugs vanish silently — verify on the rendered page).
+- Front matter validates against this schema, including all `*_notes` blocks and `related_requirements`.
+- `supported_qualities` and `tradeoffs` contain only existing quality slugs; `related_requirements` only existing requirement slugs. Bad slugs vanish silently — verify on the rendered page.
 - Every `*_notes` key matches a slug present in its corresponding array.
 - Tags use only the 9 dimensions listed above.
 - Page renders correctly with no broken links.
-- Trade-offs and verification are specific, measurable, and non-generic.
+- `tradeoff_notes` name concrete costs; `## Verification` items name measurable signals.
+- Restart Docker after adding the file so graph data regenerates; confirm notes render and no "No … specified" placeholders appear where content was intended.
+- Stage the new file explicitly by name (no `git add -A` / `git add .`). Commit message style: `content: add <slug> approach`.
