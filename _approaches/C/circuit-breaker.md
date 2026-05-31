@@ -13,6 +13,9 @@ tradeoff_notes:
   maintainability: Adds threshold and fallback logic that must be configured and maintained.
   latency: Introduces a small overhead for state checks and timeout handling on every request.
 related_requirements: [available-7-24-99, server-fails-operation-without-downtime]
+related_requirements_notes:
+  available-7-24-99: Failing fast during a dependency outage keeps the system inside its uptime objective.
+  server-fails-operation-without-downtime: The breaker sheds calls to a failing server and serves a fallback, so the operation completes without downtime.
 intent: "Prevent a failure in one part of the system from cascading to others by failing fast when a remote service is struggling."
 mechanism: "Wrap remote calls in a stateful guard that monitors success/failure rates; it trips to an 'Open' state to reject calls immediately when failures exceed a threshold, and probes for recovery via a 'Half-Open' state after a timeout."
 applicability: "Use when making remote calls (API, DB, etc.) that can fail or become slow and where a fail-fast response is better than waiting. Avoid for local in-process calls where overhead exceeds benefit or when operations must be retried immediately without delay."

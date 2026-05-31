@@ -14,6 +14,8 @@ tradeoff_notes:
   memory-usage: Large or unbounded caches can consume significant memory.
   observability: Monitoring cache hit rates, eviction frequency, and data staleness adds operational overhead.
 related_requirements: [response-time-for-image-rendering]
+related_requirements_notes:
+  response-time-for-image-rendering: Caching rendered image data avoids repeat work and helps meet the image-rendering response-time target.
 intent: "Store frequently accessed data closer to the consumer to reduce latency and load on backend systems."
 mechanism: "Interpose a fast-access storage layer between the consumer and the source, check it first for a match (hit), and only fetch from the source (miss) when necessary, optionally updating the cache according to read/write strategies."
 applicability: "Use when data is read significantly more often than it is written, when slight staleness is acceptable, and when backend latency or load is a concern. Avoid when data must always be real-time consistent or when the working set exceeds available cache memory."

@@ -2,13 +2,12 @@
 layout: approach
 title: Plugin Architecture
 tags: [flexible]
-supported_qualities: [extensibility, modifiability, reusability, availability, security]
+supported_qualities: [extensibility, modifiability, reusability, availability]
 supported_qualities_notes:
   extensibility: Allows new capabilities to be added without core code changes.
   modifiability: Localizes many behavior changes to plugin modules and contracts.
   reusability: Shared plugin APIs can be reused across products and deployments.
   availability: Enables fault isolation; a crashing plugin should not bring down the entire host.
-  security: Provides a framework for sandboxing and validating untrusted code.
 tradeoffs: [security, performance, maintainability]
 tradeoff_notes:
   security: Untrusted plugins can execute harmful behavior without strict isolation.
@@ -35,14 +34,14 @@ The core application defines one or more **extension points** — typically inte
 2. **Discovery:** The host discovers available plugins by querying the registry without needing to know any concrete plugin types.
 3. **Execution:** When specific behavior is needed, the host invokes the extension point contract, which delegates the call to one or all registered plugins.
 
-### Common Loading Strategies
+**Common loading strategies:**
 
 - **Static (Classpath / File-system Scan):** Plugins are placed in a known directory; the host scans and loads them at startup.
 - **Service Locator / SPI (Java `ServiceLoader`, Python `entry_points`):** Plugins declare themselves in metadata; the host discovers them dynamically.
 - **Hot-plug / Hot-reload:** Plugins can be added, updated, or removed while the host is running (e.g., OSGi, VS Code extension host).
 - **Event-driven:** The host publishes lifecycle and data events; plugins subscribe to specific topics without direct coupling to the host's call stack.
 
-### Plugin Isolation Options
+**Plugin isolation options:**
 
 | Isolation level | Mechanism | Trade-off |
 | :--- | :--- | :--- |

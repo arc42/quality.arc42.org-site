@@ -12,9 +12,9 @@ tradeoff_notes:
   performance: Adaptive layouts can still ship heavy assets without careful optimization.
   maintainability: Breakpoints and cross-device testing increase styling complexity.
   observability: Tracking layout-driven errors across thousands of device/browser combinations is difficult.
-related_requirements: [usable-on-latest-browsers, usable-on-factory-floor, usable-with-gloves, localizable-to-n-languages, usable-despite-color-blindness]
+related_requirements: [user-interface-works-with-current-browsers, usable-on-factory-floor, usable-with-gloves, localizable-to-n-languages, usable-despite-color-blindness]
 related_requirements_notes:
-  usable-on-latest-browsers: Helps ensure consistent behavior across current browser engines.
+  user-interface-works-with-current-browsers: Helps ensure consistent behavior across current browser engines.
   usable-on-factory-floor: Supports constrained devices and harsh operating environments.
   usable-with-gloves: Encourages larger touch targets and simplified interaction patterns.
   localizable-to-n-languages: Responsive layouts must accommodate varying text lengths across languages.
@@ -35,7 +35,7 @@ Responsive design rests on three core technical pillars:
 2. **Flexible Media:** Images and video are constrained with `max-width: 100%` and `height: auto` so they never overflow their containers on small screens.
 3. **Media Queries:** CSS `@media` rules apply specific styles only when the viewport meets certain conditions (e.g., `min-width`, `orientation`, or `resolution`), allowing for drastic layout changes at defined breakpoints.
 
-### Key Design Decisions
+**Key design decisions:**
 
 - **Mobile-First Workflow:** Start by styling for the smallest screen (single column, simple navigation) and use `min-width` media queries to add complexity as more screen real estate becomes available.
 - **Content-Driven Breakpoints:** Place breakpoints where the content begins to look "broken" or becomes hard to read, rather than targeting specific device dimensions (e.g., "iPhone 15 width").

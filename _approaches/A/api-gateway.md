@@ -10,12 +10,11 @@ supported_qualities_notes:
   scalability: Offloads cross-cutting work from backend services and absorbs traffic spikes via connection pooling, request buffering, and integration with autoscaling.
   availability: Enables transparent failover, health-check-based routing, and retry with jitter so that transient backend failures do not propagate to callers.
   modularity: Decouples client-facing API contracts from internal service boundaries, allowing backend teams to split, merge, or rewrite services without breaking consumers.
-tradeoffs: [latency, operability, loose-coupling, availability]
+tradeoffs: [latency, operability, loose-coupling]
 tradeoff_notes:
   latency: Every request traverses an additional network hop; TLS termination, policy evaluation, and logging add measurable overhead on the critical path.
   operability: The gateway's routing rules, rate-limit policies, certificate rotation, and plugin configuration become a shared operational surface that requires dedicated ownership.
   loose-coupling: If routing rules, request transformations, or response shaping accumulate business logic, the gateway becomes a coupling bottleneck that must change whenever any backend changes.
-  availability: A single gateway fleet is a chokepoint — if it goes down, every backend behind it becomes unreachable regardless of its own health.
 related_requirements: [access-control-is-enforced, withstand-ddos-attack, handle-sudden-increase-in-traffic, production-anomalies-detectable-within-2-minutes, public-api-intrusion-attempts-blocked]
 related_requirements_notes:
   access-control-is-enforced: The gateway validates tokens or API keys on every inbound request before any backend is reached, enforcing authentication and coarse-grained authorization in one place.

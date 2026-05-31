@@ -16,6 +16,9 @@ tradeoff_notes:
   operability: Projection pipelines, consumer lag dashboards, and rebuild tooling add operational surface area.
   observability: Monitoring projection lag, data drift, and consumer health is critical for maintaining trust in the read models.
 related_requirements: [handle-sudden-increase-in-traffic, crm-data-synchronization]
+related_requirements_notes:
+  handle-sudden-increase-in-traffic: Independently scalable read models absorb read spikes without contending with the write path.
+  crm-data-synchronization: Projecting changes into read-optimized views keeps synchronized CRM data consistent with the write side.
 intent: "Separate the read and write sides of a system so each can be modeled, optimized, and scaled for its own workload characteristics."
 mechanism: "Route commands through a write model that enforces invariants and emits state changes, then project those changes asynchronously into one or more read-optimized views tailored to specific query patterns."
 applicability: "Use when read and write workloads differ significantly in volume, shape, or scaling needs, or when multiple query patterns require views that do not map naturally to the write schema. Avoid for simple CRUD domains where a single model serves both paths without contention."

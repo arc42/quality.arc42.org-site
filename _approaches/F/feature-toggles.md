@@ -35,14 +35,14 @@ Every toggle is a named boolean (or multi-variant) condition evaluated at runtim
 - **Branching**: If the flag is **ON**, the new code path executes. If **OFF**, the existing path runs. The caller sees no difference in the interface.
 - **Runtime Control**: An operator can flip the flag in the toggle store at any time to enable a feature, start an experiment, or kill a misbehaving service.
 
-### Toggle Lifecycle
+**Toggle lifecycle:** A toggle moves through four stages.
 
 1. **Create:** Wrap new code behind a toggle; default OFF in production.
 2. **Validate:** Enable for internal users, then a small canary percentage.
 3. **Roll out:** Increase rollout percentage; monitor error rates and business metrics.
 4. **Clean up:** Once fully released and stable, remove the toggle and dead code path to avoid technical debt. Set a calendar reminder or use a "stale flag" alert when the toggle is created.
 
-### Toggle Categories
+**Toggle categories:** Toggles differ by lifespan and ownership.
 
 | Category | Lifespan | Who controls? | Example |
 | :--- | :--- | :--- | :--- |

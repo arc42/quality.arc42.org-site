@@ -34,7 +34,7 @@ Progressive disclosure structures an interface into levels of detail. The first 
 2. **Explicit Disclosure (Level 2):** An intentional user action (e.g., clicking "Advanced Settings" or expanding an accordion) reveals secondary options and additional detail.
 3. **Deep Detail (Level 3):** Expert-level controls, raw data, or rarely used configuration settings are kept in the deepest layer, often behind a drill-down or separate configuration page.
 
-### Common Patterns
+**Common patterns:**
 
 - **Accordions / Collapsible Sections:** Reveal secondary details (e.g., "Show technical details" in an error message).
 - **Wizards:** Break a complex multi-step process into sequential, manageable screens.

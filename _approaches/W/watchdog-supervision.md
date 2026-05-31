@@ -10,10 +10,9 @@ supported_qualities_notes:
   self-healing: The watchdog closes the detect-restart loop autonomously, making the system self-correcting for a class of failures.
   mean-time-to-recovery: Detection and restart happen on a fixed timer, bounding recovery time to a predictable interval.
   safety: In safety-critical systems, a missed heartbeat triggers a transition to a safe state, preventing a hung controller from causing harm.
-tradeoffs: [availability, determinism, observability, code-complexity]
+tradeoffs: [determinism, observability, code-complexity]
 tradeoff_notes:
-  availability: False-positive restarts caused by transient load spikes or GC pauses create unnecessary downtime and can trigger cascading restarts.
-  determinism: In-flight work is lost on forced restart unless the supervised component checkpoints state, making behavior less predictable under failure.
+  determinism: In-flight work is lost on forced restart, and false-positive restarts from transient load or GC pauses add unplanned downtime, making behavior less predictable.
   observability: The watchdog detects that a process is unresponsive but not why — root-cause diagnosis requires separate pre-restart telemetry capture.
   code-complexity: Supervised components must support clean shutdown, state checkpointing, and startup-after-restart semantics, adding implementation effort.
 related_requirements: [server-fails-operation-without-downtime, unavailability-max-2-minutes, production-anomalies-detectable-within-2-minutes]

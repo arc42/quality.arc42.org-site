@@ -58,7 +58,7 @@ This approach must be enforced at the business boundary, not only in the UI or a
 - Fail-closed drill: disconnect the policy engine or an authoritative attribute source and verify protected operations deny rather than allow, with an alert and audit entry for each failure mode.
 - Audit completeness: 100% of denied requests and privileged grants include subject, action, resource identifier, policy identifier, result, and timestamp in searchable logs.
 
-## Variants, Related Tactics, and References
+## Variants and Related Tactics
 
 - RBAC-only is the simpler variant: sufficient when the permission model is stable, the number of roles is manageable, and context does not materially change access decisions.
 - Relationship-Based Access Control (ReBAC), as pioneered by Google Zanzibar, models authorization as graph relationships (owner-of, member-of, viewer-of) and evaluates access by traversing the graph — well suited for document sharing and social-graph-style permissions.
@@ -67,7 +67,7 @@ This approach must be enforced at the business boundary, not only in the UI or a
 - [Strong Authentication (MFA / OIDC)](/approaches/strong-authentication) provides the verified identity that authorization decisions depend on — authorization is only as trustworthy as the identity signal it receives.
 - [Input Sanitization / Output Encoding](/approaches/input-sanitization-output-encoding) reduces injection paths that can subvert authorization-sensitive query logic, but it does not replace object-level authorization checks.
 
-References:
+## References
 
 - [NIST Model for Role-Based Access Control: Toward a Unified Standard](https://www.nist.gov/publications/nist-model-role-based-access-control-towards-unified-standard)
 - [NIST SP 800-162: Guide to Attribute Based Access Control (ABAC) Definition and Considerations](https://csrc.nist.gov/pubs/sp/800/162/upd2/final)
