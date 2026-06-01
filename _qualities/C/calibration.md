@@ -49,13 +49,13 @@ This definition is derived from the established usage and evaluation practices b
 
 ### Typical Calibration Signals
 
-- Reliability diagrams plotting predicted probability against observed frequency
-- Expected Calibration Error (ECE) and Maximum Calibration Error (MCE)
-- Brier score and its calibration–refinement decomposition
-- Negative log-likelihood on held-out data
-- Selective accuracy at fixed coverage and risk–coverage curves for abstention
-- Refusal rate and correct-refusal precision under out-of-distribution or low-confidence inputs
-- Cohort calibration across subpopulations, time windows, or input difficulty bands
+- Reliability diagrams — predicted probability plotted against observed frequency to visualize over- or underconfidence.
+- Expected Calibration Error (ECE) and Maximum Calibration Error (MCE) — average and worst-case gap between stated confidence and observed accuracy, bucketed by confidence level.
+- Brier score with calibration–refinement decomposition — mean squared error between predicted probability and outcome, split into a *calibration* term (does confidence match reality) and a *refinement* term (how sharply confidence varies).
+- Negative log-likelihood on held-out data — proper scoring rule that penalizes confident wrong answers more than uncertain ones.
+- Selective accuracy and risk–coverage curves — accuracy on the subset the model chooses to answer, plotted against the fraction of inputs answered (the rest are abstained).
+- Refusal rate and correct-refusal precision under out-of-distribution or low-confidence inputs — how often the system declines, and whether its declines align with genuinely hard cases.
+- Cohort calibration across subpopulations, time windows, or input difficulty bands — calibration holding within slices, not just on average.
 
 <hr class="with-no-margin"/>
 
