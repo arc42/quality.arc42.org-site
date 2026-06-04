@@ -214,7 +214,7 @@ Consolidated from three independent plans (Gemini, GPT-5.3, Opus 4.6), Bass et a
 
 | Done | Approach | One-line description | Source |
 |:----:|----------|----------------------|:------:|
-| 📋 | Blue-Green Deployment | Run two identical environments, switch traffic for zero-downtime releases | O·B+ |
+| ✅ | Blue-Green Deployment | Run two identical environments, switch traffic for zero-downtime releases | O·B+ |
 | 📋 | API Gateway | Centralise routing, auth, and observability at the edge (secondary) | P·O |
 | | Scripted Deployment Commands | Capture deployment procedures as versioned scripts for repeatable releases | ★·B+ |
 | | Progressive Rollouts (Scale Rollouts) | Expand rollout scope in stages with health gates and stop criteria | ★·B+ |
@@ -223,7 +223,7 @@ Consolidated from three independent plans (Gemini, GPT-5.3, Opus 4.6), Bass et a
 | | Package Dependency Management | Control package versions and compatibility to reduce deployment drift | ★·B+ |
 | | Structured Observability (Logs, Metrics, Traces) | Correlated telemetry via unified pipeline (OpenTelemetry) | G·P·O |
 | | Infrastructure as Code (IaC) | Version-controlled, declarative environment definitions | P·O |
-| | Canary Deployment | Route small traffic percentage to new version, promote or rollback on metrics | P·O·B+ |
+| ✅ | Canary Deployment | Route small traffic percentage to new version, promote or rollback on metrics | P·O·B+ |
 | | Runbooks + Automated Remediation | Executable SOPs for known failure modes, progressing toward auto-fix | P·O |
 | | SLO/SLI-Based Alerting | Alert on user-impacting objectives, not raw infrastructure noise | P |
 | | CI/CD Pipelines | Automate build, test, and release for repeatable delivery | G·P·B+ |
@@ -239,14 +239,14 @@ Consolidated from three independent plans (Gemini, GPT-5.3, Opus 4.6), Bass et a
 | Dimension | ✅ | 📋 | New | Total |
 |-----------|:--:|:--:|:---:|:-----:|
 | reliable | 4 | 1 | 17 | **22** |
-| flexible | 3 | 1 | 12 | **16** |
-| maintainable | 0 | 0 | 25 | **25** |
-| efficient | 4 | 1 | 15 | **20** |
+| flexible | 4 | 0 | 12 | **16** |
+| maintainable | 0 | 0 | 19 | **19** |
+| efficient | 5 | 0 | 15 | **20** |
 | usable | 2 | 0 | 14 | **16** |
 | safe | 3 | 0 | 12 | **15** |
 | secure | 7 | 1 | 14 | **22** |
 | suitable | 0 | 0 | 10 | **10** |
-| operable | 0 | 2 | 15 | **17** |
-| **Total** | **23** | **6** | **134** | **163** |
+| operable | 2 | 1 | 14 | **17** |
+| **Total** | **27** | **3** | **127** | **157** |
 
 Note: Some approaches appear in multiple dimensions (e.g. Caching in reliable+efficient, Rate Limiting in reliable+secure). The unique approach count is lower than 163.
