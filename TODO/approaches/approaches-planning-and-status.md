@@ -19,6 +19,7 @@ Consolidated from three independent plans (Gemini, GPT-5.3, Opus 4.6), Bass et a
 | ✅ | Bulkheads | Isolate resource pools so one failure path can't exhaust all | P·O |
 | 📋 | Graceful Degradation | Disable non-essential features to preserve core function | G·O·B+ |
 | ✅ | Rate Limiting | Cap request volume to protect availability under load | P·O |
+| ✅ | Saga Pattern | Split a distributed transaction into local steps with compensating actions (also `#flexible`) | ★ |
 | | Retry with Exponential Backoff | Retry transient failures with increasing, jittered delays | G·P·O·B+ |
 | | Idempotent Operations | Make writes safely repeatable to enable retries and replay | G·O |
 | | Health Checks + Auto-Healing | Liveness/readiness probes trigger restart or rerouting | G·P·B+ |

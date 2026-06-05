@@ -1,0 +1,163 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+  <defs>
+    <marker id="arrow-teal" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#5fb49c"/>
+    </marker>
+    <marker id="arrow-orange" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#ffad80"/>
+    </marker>
+    <style>
+      text {
+        font-family: "Atkinson Hyperlegible Next", "Atkinson Hyperlegible", Inter, Arial, sans-serif;
+        fill: #1f2933;
+      }
+      .node-title {
+        font-size: 26px;
+        font-weight: 700;
+      }
+      .node-subtitle {
+        font-size: 20px;
+        font-weight: 500;
+      }
+      .circle-label {
+        font-size: 22px;
+        font-weight: 700;
+      }
+      .legend-label {
+        font-size: 24px;
+        font-weight: 700;
+      }
+      .box {
+        stroke-width: 2.5;
+        stroke-linejoin: round;
+      }
+      .terminal {
+        fill: #6b7280;
+        fill-opacity: 0.08;
+        stroke: #6b7280;
+        stroke-width: 2.5;
+      }
+      .terminal-success {
+        fill: #5fb49c;
+        fill-opacity: 0.10;
+        stroke: #5fb49c;
+        stroke-width: 2.5;
+      }
+      .terminal-abort {
+        fill: #ffad80;
+        fill-opacity: 0.14;
+        stroke: #ffad80;
+        stroke-width: 2.5;
+      }
+      .transaction {
+        fill: #5fb49c;
+        fill-opacity: 0.10;
+        stroke: #5fb49c;
+      }
+      .compensation {
+        fill: #ffad80;
+        fill-opacity: 0.14;
+        stroke: #ffad80;
+      }
+      .forward-flow {
+        fill: none;
+        stroke: #5fb49c;
+        stroke-width: 3;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+      .compensation-flow {
+        fill: none;
+        stroke: #ffad80;
+        stroke-width: 3;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-dasharray: 10 10;
+      }
+      .failure-badge {
+        fill: #d64545;
+      }
+      .failure-mark {
+        fill: #ffffff;
+        font-size: 28px;
+        font-weight: 700;
+      }
+      .failure-label {
+        fill: #6b7280;
+        font-size: 20px;
+        font-weight: 500;
+      }
+    </style>
+  </defs>
+
+  <rect width="1920" height="1080" fill="#ffffff"/>
+
+  <g id="forward-transactions">
+    <circle cx="160" cy="270" r="42" class="terminal"/>
+    <text x="160" y="278" text-anchor="middle" class="circle-label">Start</text>
+
+    <rect x="295" y="205" width="220" height="130" rx="16" class="box transaction"/>
+    <text x="405" y="258" text-anchor="middle" class="node-title">Create Order</text>
+    <text x="405" y="292" text-anchor="middle" class="node-subtitle">(Transaction 1)</text>
+
+    <rect x="610" y="205" width="220" height="130" rx="16" class="box transaction"/>
+    <text x="720" y="248" text-anchor="middle" class="node-title">Process</text>
+    <text x="720" y="280" text-anchor="middle" class="node-title">Payment</text>
+    <text x="720" y="312" text-anchor="middle" class="node-subtitle">(Transaction 2)</text>
+
+    <rect x="925" y="205" width="220" height="130" rx="16" class="box transaction"/>
+    <text x="1035" y="248" text-anchor="middle" class="node-title">Update</text>
+    <text x="1035" y="280" text-anchor="middle" class="node-title">Inventory</text>
+    <text x="1035" y="312" text-anchor="middle" class="node-subtitle">(Transaction 3)</text>
+
+    <rect x="1240" y="205" width="220" height="130" rx="16" class="box transaction"/>
+    <text x="1350" y="248" text-anchor="middle" class="node-title">Deliver</text>
+    <text x="1350" y="280" text-anchor="middle" class="node-title">Order</text>
+    <text x="1350" y="312" text-anchor="middle" class="node-subtitle">(Transaction 4)</text>
+
+    <rect x="1608" y="220" width="190" height="100" rx="50" class="terminal-success"/>
+    <text x="1703" y="262" text-anchor="middle" class="circle-label">Fully</text>
+    <text x="1703" y="292" text-anchor="middle" class="circle-label">done</text>
+
+    <path d="M 202 270 H 285" class="forward-flow" marker-end="url(#arrow-teal)"/>
+    <path d="M 515 270 H 600" class="forward-flow" marker-end="url(#arrow-teal)"/>
+    <path d="M 830 270 H 915" class="forward-flow" marker-end="url(#arrow-teal)"/>
+    <path d="M 1145 270 H 1230" class="forward-flow" marker-end="url(#arrow-teal)"/>
+    <path d="M 1460 270 H 1598" class="forward-flow" marker-end="url(#arrow-teal)"/>
+    <circle cx="1456" cy="333" r="22" class="failure-badge"/>
+    <text x="1456" y="342" text-anchor="middle" class="failure-mark">✗</text>
+    <text x="1488" y="340" class="failure-label">step fails</text>
+  </g>
+
+  <g id="compensating-transactions">
+    <rect x="295" y="520" width="220" height="118" rx="14" class="box compensation"/>
+    <text x="405" y="572" text-anchor="middle" class="node-title">Cancel</text>
+    <text x="405" y="604" text-anchor="middle" class="node-title">Order</text>
+
+    <rect x="610" y="520" width="220" height="118" rx="14" class="box compensation"/>
+    <text x="720" y="572" text-anchor="middle" class="node-title">Reverse</text>
+    <text x="720" y="604" text-anchor="middle" class="node-title">Payment</text>
+
+    <rect x="925" y="520" width="220" height="118" rx="14" class="box compensation"/>
+    <text x="1035" y="560" text-anchor="middle" class="node-title">Reverse</text>
+    <text x="1035" y="592" text-anchor="middle" class="node-title">Inventory</text>
+    <text x="1035" y="624" text-anchor="middle" class="node-title">Update</text>
+
+    <path d="M 1456 355 V 448 Q 1456 480 1424 480 H 1035 Q 1035 480 1035 510" class="compensation-flow" marker-end="url(#arrow-orange)"/>
+    <path d="M 925 579 H 840" class="compensation-flow" marker-end="url(#arrow-orange)"/>
+    <path d="M 610 579 H 525" class="compensation-flow" marker-end="url(#arrow-orange)"/>
+
+    <path d="M 405 638 V 735 Q 405 770 440 770 H 1598" class="compensation-flow" marker-end="url(#arrow-orange)"/>
+    <rect x="1608" y="720" width="190" height="100" rx="50" class="terminal-abort"/>
+    <text x="1703" y="762" text-anchor="middle" class="circle-label">Fully</text>
+    <text x="1703" y="792" text-anchor="middle" class="circle-label">undone</text>
+  </g>
+
+  <g id="legend">
+    <rect x="480" y="875" width="380" height="82" rx="14" class="box transaction"/>
+    <text x="670" y="925" text-anchor="middle" class="legend-label">Transaction</text>
+
+    <rect x="1020" y="875" width="430" height="82" rx="14" class="box compensation"/>
+    <text x="1235" y="925" text-anchor="middle" class="legend-label">Compensating Transaction</text>
+  </g>
+</svg>
