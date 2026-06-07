@@ -1,6 +1,5 @@
 # Solution Approaches — Merged Overview
 
-Consolidated from three independent plans (Gemini, GPT-5.3, Opus 4.6), Bass et al. tactics, plus additional proposals.
 
 **Legend — Done column:**
 `✅` published in `_approaches/` · `📋` in backlog (`approaches-todo.md`) · ` ` not started
@@ -110,9 +109,7 @@ Consolidated from three independent plans (Gemini, GPT-5.3, Opus 4.6), Bass et a
 | | Execution-Time Bounding | Enforce upper bounds for request/task execution times | ★·B+ |
 | | Computational Overhead Reduction | Remove unnecessary processing steps to cut resource demand | ★·B+ |
 | | Increase Resource Usage Efficiency | Optimize algorithms/implementations to lower cost per transaction | ★·B+ |
-| | Maintain Multiple Copies of Data/Computation | Use replicas and cached/precomputed results to reduce contention and delay | ★·B+ |
 | | Load Balancing | Distribute traffic across instances for throughput and fault tolerance | ★·B+ |
-| | Backpressure / Flow Control | Let consumers signal capacity limits to upstream producers | ★·B+ |
 | | Batch Processing | Aggregate operations to reduce per-item overhead | ★ |
 
 ---
@@ -124,19 +121,6 @@ Consolidated from three independent plans (Gemini, GPT-5.3, Opus 4.6), Bass et a
 | ✅ | Progressive Disclosure | Show primary actions first, reveal complexity on demand | G·P·O |
 | ✅ | Responsive Design | Adapt layout and interactions across screen sizes and inputs | G·P·O |
 | | Accessibility-First Design (WCAG) | Semantic HTML, keyboard nav, contrast, screen reader support from day one | P·O |
-| | Inline Validation + Error Recovery | Real-time input feedback with clear recovery paths (undo, retry) | G·P·O·B+ |
-| | Consistent Design System | Shared UI components, terminology, and interaction patterns | G·P |
-| | Skeleton Screens / Optimistic UI | Show placeholder layouts immediately, apply actions before confirmation | O |
-| | Cancel Operations | Let users cancel in-progress actions safely before irreversible effects occur | ★·B+ |
-| | Undo/Redo | Provide reversible operations so users can recover quickly from mistakes | ★·B+ |
-| | Pause/Resume Flows | Allow temporary interruption/resumption of long-running user workflows | ★·B+ |
-| | Aggregate Actions | Group repetitive actions to reduce effort and interaction overhead | ★·B+ |
-| | Maintain Task Model | Keep UI behavior aligned with user tasks and goals rather than system internals | ★·B+ |
-| | Maintain User Model | Keep terminology/mental model consistent with user expectations | ★·B+ |
-| | Maintain System Model | Make system state/modes visible and coherent to reduce confusion | ★·B+ |
-| | Internationalization (i18n) | Multi-language, locale-aware formatting, and right-to-left support | ★ |
-| | Dark Mode / Theming | User-selectable visual themes via design token architecture | ★ |
-| | Onboarding / Guided Tours | Step-by-step first-use guidance to accelerate learnability | ★ |
 
 ---
 
@@ -151,13 +135,10 @@ Consolidated from three independent plans (Gemini, GPT-5.3, Opus 4.6), Bass et a
 | | Hazard Analysis (FMEA / STPA) | Systematic derivation of safety constraints from identified hazards | P |
 | | Graceful Degradation (safety-focused) | Shed non-essential functions to protect safety-critical core | G·B+ |
 | | Unsafe State Detection (Comparison/Timeout/Monitoring) | Detect hazardous drift using comparison, timeout, timestamp, and condition monitoring | ★·B+ |
-| | Barrier Containment (Firewall/Interlock) | Place barriers that block propagation of unsafe effects across boundaries | ★·B+ |
-| | Consequence Limitation (Masking/Abort) | Mask faults when possible; otherwise abort/degrade to minimize harm | ★·B+ |
 | | Replication / Analytic / Functional Redundancy | Combine physical and analytical redundancy for stronger containment | ★·B+ |
 | | Repair-State Recovery | Transition through a validated repair state before normal operation resumes | ★·B+ |
 | | Predictive Hazard Models | Use predictive models to anticipate unsafe states and trigger safeguards | ★·B+ |
 | | Dead Man's Switch / Operator Confirmation | Require active periodic confirmation to continue hazardous operations | ★ |
-| | Safety-Certified RTOS / Execution Environment | Run safety-critical code on a pre-certified runtime with deterministic scheduling | ★ |
 | | Independent Safety Monitor | Separate hardware/software channel that can override primary control | ★ |
 
 ---
@@ -169,10 +150,9 @@ Consolidated from three independent plans (Gemini, GPT-5.3, Opus 4.6), Bass et a
 |:----:|----------|----------------------|:------:|
 | ✅ | Least Privilege | Grant only minimum permissions required per actor/process | G·P·O·B+ |
 | ✅ | Rate Limiting | Throttle requests to limit brute-force and DoS exposure (secondary) | P·O·B+ |
-| 📋 | API Gateway | Centralise auth, throttling, and input validation at the edge (secondary) | P·O |
+| ✅ | API Gateway | Centralise auth, throttling, and input validation at the edge (secondary) | P·O |
 | ✅ | Encryption at Rest + in Transit | Cryptographic protection of stored and transmitted data with key rotation | G·P·O·B+ |
 | ✅ | Secret Management | Vault-based credential storage with rotation and short-lived tokens | P·O |
-| | Defense in Depth | Layer independent controls so no single failure yields a breach | O |
 | ✅ | Input Sanitization / Output Encoding | Neutralise untrusted data to prevent injection and XSS | G·P·B+ |
 | ✅ | Strong Authentication (MFA / OIDC) | Multi-factor or phishing-resistant identity verification | G·P·B+ |
 | ✅ | Fine-Grained Authorization (RBAC/ABAC) | Authorize actors per action/resource with policy-based access control | ★·B+ |
@@ -180,34 +160,12 @@ Consolidated from three independent plans (Gemini, GPT-5.3, Opus 4.6), Bass et a
 | | Service Denial Detection | Detect denial-of-service conditions early via traffic and saturation signals | ★·B+ |
 | | Message Integrity Verification | Verify message integrity/authenticity to detect tampering in transit | ★·B+ |
 | | Message Delivery Anomaly Detection | Detect replay, duplication, reordering, or unexpected delivery gaps | ★·B+ |
-| | Revoke Access + Credential Rotation | Revoke compromised access quickly and rotate credentials safely | ★·B+ |
 | | Restrict Login Attempts | Limit login attempts and enforce lockout/challenge policies | ★·B+ |
-| | Security Notifications | Inform users/operators promptly about relevant security events | ★·B+ |
 | | Audit Logging | Tamper-evident records of security-relevant events | O·B+ |
 | | Non-Repudiation Evidence | Preserve signed, verifiable evidence so actors cannot deny critical actions | ★·B+ |
-| | Separation of Entities (Isolation) | Separate tenants/components/security domains to reduce cross-impact | ★·B+ |
 | | Zero Trust Architecture | Authenticate and authorise every request regardless of network origin | ★ |
 | | Dependency Vulnerability Scanning | Automated checks for known CVEs in third-party libraries (SCA) | ★ |
 | | Network Segmentation / Micro-Segmentation | Isolate workloads so lateral movement after breach is contained | ★·B+ |
-
----
-
-## `#suitable` — Meet stated and implied stakeholder needs
-
-**Zero published approaches, zero in backlog — largest gap.**
-
-| Done | Approach | One-line description | Source |
-|:----:|----------|----------------------|:------:|
-| | Domain-Driven Design (DDD) | Align model, terminology, and module boundaries with business domain | G·P·O |
-| | Fitness Functions | Automated architectural tests that continuously verify quality constraints | O |
-| | ATDD / Scenario-Based Requirements | Executable acceptance tests before implementation | P·O |
-| | Compliance as Code | Encode regulatory rules as automated policy checks in CI/CD or runtime | O |
-| | Configurable Business Rules | Policy/rules engine for behaviour changes without redeployment | G·P |
-| | A/B Testing / Evidence-Driven Validation | Compare alternatives with real usage outcomes and metrics | G·P |
-| | Role-Based Workflows / Persona-Based UI | Tailor interactions and data views to user role and task context | G·P |
-| | Prototyping / Spike Solutions | Build throwaway implementations to validate feasibility early | ★ |
-| | Impact Mapping | Connect features to business goals via actors and impacts | ★ |
-| | Stakeholder Feedback Loops | Structured, recurring collection of user/operator feedback into backlog | ★ |
 
 ---
 
@@ -216,38 +174,7 @@ Consolidated from three independent plans (Gemini, GPT-5.3, Opus 4.6), Bass et a
 | Done | Approach | One-line description | Source |
 |:----:|----------|----------------------|:------:|
 | ✅ | Blue-Green Deployment | Run two identical environments, switch traffic for zero-downtime releases | O·B+ |
-| 📋 | API Gateway | Centralise routing, auth, and observability at the edge (secondary) | P·O |
-| | Scripted Deployment Commands | Capture deployment procedures as versioned scripts for repeatable releases | ★·B+ |
-| | Progressive Rollouts (Scale Rollouts) | Expand rollout scope in stages with health gates and stop criteria | ★·B+ |
-| | Explicit Rollback Strategy | Define and rehearse rollback paths before each production change | ★·B+ |
-| | Manage Service Interactions | Coordinate service interaction policies/contracts during deployment changes | ★·B+ |
-| | Package Dependency Management | Control package versions and compatibility to reduce deployment drift | ★·B+ |
-| | Structured Observability (Logs, Metrics, Traces) | Correlated telemetry via unified pipeline (OpenTelemetry) | G·P·O |
+| ✅ | API Gateway | Centralise routing, auth, and observability at the edge (secondary) | P·O |
 | | Infrastructure as Code (IaC) | Version-controlled, declarative environment definitions | P·O |
 | ✅ | Canary Deployment | Route small traffic percentage to new version, promote or rollback on metrics | P·O·B+ |
-| | Runbooks + Automated Remediation | Executable SOPs for known failure modes, progressing toward auto-fix | P·O |
-| | SLO/SLI-Based Alerting | Alert on user-impacting objectives, not raw infrastructure noise | P |
-| | CI/CD Pipelines | Automate build, test, and release for repeatable delivery | G·P·B+ |
 | | Auto-Scaling / Elasticity | Adjust resources automatically based on demand signals | G |
-| | Containerization + Orchestration | Package workloads as containers, manage with Kubernetes or similar | ★ |
-| | ChatOps / Incident Communication | Integrate operational commands and alerts into team chat channels | ★ |
-| | On-Call Rotation + Blameless Post-Mortems | Structured incident response with learning-focused retrospectives | ★ |
-
----
-
-## Summary: Approaches per Dimension
-
-| Dimension | ✅ | 📋 | New | Total |
-|-----------|:--:|:--:|:---:|:-----:|
-| reliable | 4 | 1 | 17 | **22** |
-| flexible | 4 | 0 | 12 | **16** |
-| maintainable | 0 | 0 | 19 | **19** |
-| efficient | 5 | 0 | 15 | **20** |
-| usable | 2 | 0 | 14 | **16** |
-| safe | 3 | 0 | 12 | **15** |
-| secure | 7 | 1 | 14 | **22** |
-| suitable | 0 | 0 | 10 | **10** |
-| operable | 2 | 1 | 14 | **17** |
-| **Total** | **27** | **3** | **127** | **157** |
-
-Note: Some approaches appear in multiple dimensions (e.g. Caching in reliable+efficient, Rate Limiting in reliable+secure). The unique approach count is lower than 163.
