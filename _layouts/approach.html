@@ -9,6 +9,16 @@ from frontmatter - Content body - Supported qualities (cross-linked) - Trade-off
   <article>
     {% include approach-header.liquid page=page link=false share=page.share %}
 
+    {% if page.aka and page.aka.size > 0 %}
+    {% assign aka_sorted = page.aka | uniq | sort_natural %}
+    <div class="also-known-as">
+      <strong>Also known as:</strong>
+      {% for alias in aka_sorted %}
+        <span class="synonym-badge">{{ alias }}</span>{% unless forloop.last %}, {% endunless %}
+      {% endfor %}
+    </div>
+    {% endif %}
+
     {% if page.intent %}
     <div class="approach-meta">
       <h2 class="approach-meta__title">Intent</h2>

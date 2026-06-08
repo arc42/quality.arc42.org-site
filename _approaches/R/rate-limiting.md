@@ -2,6 +2,7 @@
 layout: approach
 title: "Rate Limiting"
 tags: [secure, reliable]
+aka: [Throttling]
 supported_qualities: [security, intrusion-prevention, availability, resilience, stability]
 supported_qualities_notes:
   security: Slows brute-force login attempts, credential stuffing, scraping, and abusive automation before those requests consume expensive application work.

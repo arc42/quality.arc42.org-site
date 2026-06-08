@@ -336,6 +336,7 @@ function createApproachData(approachData, propertyNodes, nodes, edges, synonymMa
         const id = extractId(data.permalink);
         const tags = parseList(data.tags, ' ');
         const supportedQualities = parseList(data.supported_qualities, ',');
+        const aka = parseList(data.aka, ',');
 
         for (const tag of tags) {
             edges.add({ source: id, target: tag });
@@ -353,7 +354,7 @@ function createApproachData(approachData, propertyNodes, nodes, edges, synonymMa
         nodes.add({
             id,
             label: data.title,
-            labels: [data.title],
+            labels: [data.title, ...aka],
             size: config.size,
             color: config.color,
             qualityType: config.qualityType,

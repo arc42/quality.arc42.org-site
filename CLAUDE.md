@@ -96,6 +96,16 @@ permalink: /standards/iso-25010
 
 Every tag used anywhere requires a tag page. Copy an existing one (e.g. `tag-efficient.md`), update title + permalink, leave the include macros alone.
 
+### Approaches — `_approaches/<LETTER>/<slug>.md`
+
+Solution approaches (tactics). Full schema lives in the `write-approach` skill (`.claude/skills/write-approach/reference/approaches-template.md`). One optional field worth noting here:
+
+```yaml
+aka: [Throttling]                               # optional: index terms ("also known as")
+```
+
+`aka:` is an optional YAML list of plain display strings (title-case) — **index terms**, not strict synonyms. The same term may appear on multiple approaches; aliases create **no** redirects and **no** graph nodes (unlike quality aliases). They surface in the A–Z explorer, the on-page "Also known as" block, and graph search.
+
 ---
 
 ## Graph Node Types

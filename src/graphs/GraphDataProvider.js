@@ -152,7 +152,10 @@ export class GraphDataProvider {
         nodesPool.forEach(node => {
             const label = String(node.label || "").toLowerCase();
             const id = String(node.id || "").toLowerCase();
-            if (lowerTerms.some(t => label.includes(t) || id.includes(t))) {
+            const labels = Array.isArray(node.labels)
+                ? node.labels.map(l => String(l).toLowerCase())
+                : [];
+            if (lowerTerms.some(t => label.includes(t) || id.includes(t) || labels.some(lv => lv.includes(t)))) {
                 filteredNodeIds.add(node.id);
             }
         });

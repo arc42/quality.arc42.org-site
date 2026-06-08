@@ -2,6 +2,7 @@
 layout: approach
 title: "Canary Deployment"
 tags: [operable, reliable]
+aka: [Scale Rollouts]
 supported_qualities: [releasability, deployability, recoverability, availability]
 supported_qualities_notes:
   releasability: "Traffic shifts in graded steps gated on live metrics, so exposure stays controlled and decoupled from deploy."

@@ -12,6 +12,8 @@ q_graph_script: /assets/js/homepage/main.js
 {% assign requirements = site.requirements %}
 {% assign standards = site.standards %}
 {% assign approaches = site.approaches %}
+{% assign approach_alias_count = 0 %}
+{% for a in approaches %}{% if a.aka %}{% assign approach_alias_count = approach_alias_count | plus: a.aka.size %}{% endif %}{% endfor %}
 
 <div class="home-violet">
   <section class="home-violet-hero">
@@ -54,7 +56,7 @@ q_graph_script: /assets/js/homepage/main.js
               Solution Approaches
               <small>Choose architectural tactics: patterns and practices that enable specific qualities.</small>
             </span>
-            <span class="home-violet-directory__count"><b>{{ approaches | size }}</b> <i>tactics</i></span>
+            <span class="home-violet-directory__count"><b>{{ approaches | size }}</b> approaches, <i>{{ approach_alias_count }} aliases</i></span>
           </a>
         </li>
       </ul>

@@ -51,6 +51,9 @@ permalink: /approaches/circuit-breaker
   - Single paragraphs (not YAML lists). The layout renders them as prose.
 - `permalink`:
   - Unique and kebab-case: `/approaches/<slug>`. The last segment is the graph node ID — changing it breaks references.
+- `aka` (optional):
+  - YAML list of plain display strings (title-case): `aka: [Throttling, Monitor]`. These are **index terms** ("also known as"), not strict synonyms — "if you know this term, you'll find the concept here". The same term may appear on more than one approach; aliases create **no** permalink, redirect, or graph node (unlike quality aliases). They surface in the A–Z explorer, the on-page "Also known as" block, and graph search. Where literature context matters (e.g. "Bass et al. call this Throttling"), put that in the body prose, not in `aka`.
+  - **Curation:** add an alias only when its wording genuinely differs from the canonical title. Skip singular/plural variants, near-identical restatements or terms identical to the title, and trivial rephrasings. Do **not** reuse a term already used as an alias on another approach — duplicate alias terms clutter the A–Z explorer. When in doubt, leave it out.
 
 > **Silent-drop warning:** the layout matches each slug against existing pages and omits any it can't resolve, with no error. A typo'd slug disappears from the rendered page rather than failing the build. Verify slugs visually after rebuild.
 

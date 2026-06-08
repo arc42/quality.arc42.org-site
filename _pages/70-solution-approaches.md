@@ -13,6 +13,8 @@ order: 35
 {% endif %}
 {% endfor %}
 {% assign dimension_tags = approach_tags | uniq | sort %}
+{% assign approach_alias_count = 0 %}
+{% for approach in approaches_sorted %}{% if approach.aka %}{% assign approach_alias_count = approach_alias_count | plus: approach.aka.size %}{% endif %}{% endfor %}
 
 <div id="top"></div>
 
@@ -25,7 +27,8 @@ order: 35
       quickly narrow down this list.
     </p>
     <p class="approaches-explorer-stats">
-      We currently explain <strong>{{ approaches_sorted | size }}</strong> solution approaches, across
+      We currently explain <strong>{{ approaches_sorted | size }}</strong> solution approaches
+      (plus <strong>{{ approach_alias_count }}</strong> aliases), across
       <strong>{{ dimension_tags | size }}</strong> dimensions.
     </p>
   </div>
@@ -114,6 +117,19 @@ order: 35
                 {% endfor %}
               </div>
             {% endif %}
+
+            {% if approach.aka %}
+              {% for alias in approach.aka %}
+                <div class="approaches-item is-alias">
+                  <h4 class="approaches-item-title">{{ alias }}</h4>
+                  <div class="approaches-alias-meta">
+                    <span class="approaches-alias-label">alias</span>
+                    of
+                    <a href="{{ approach.url | prepend: site.baseurl }}">{{ approach.title }}</a>
+                  </div>
+                </div>
+              {% endfor %}
+            {% endif %}
           </div>
         {% endfor %}
 
@@ -142,7 +158,14 @@ order: 35
         {% endif %}
       ],
       "supportedCount": {{ approach.supported_qualities | size }},
-      "tradeoffsCount": {{ approach.tradeoffs | size }}
+      "tradeoffsCount": {{ approach.tradeoffs | size }},
+      "aliases": [
+        {% if approach.aka %}
+          {% for alias in approach.aka %}
+            {{ alias | jsonify }}{% unless forloop.last %}, {% endunless %}
+          {% endfor %}
+        {% endif %}
+      ]
     }{% unless forloop.last %}, {% endunless %}
   {% endfor %}
 ]
@@ -305,6 +328,12 @@ order: 35
     border-top: 0;
   }
 
+  .approaches-item.is-alias {
+    background: var(--ax-surface);
+    border-left: 3px solid var(--ax-chip-border);
+    padding-left: 0.66rem;
+  }
+
   .approaches-item-title {
     margin: 0;
     font-size: 1.12rem;
@@ -323,6 +352,14 @@ order: 35
 
   .approaches-item-title a:hover {
     text-decoration: underline;
+  }
+
+  .approaches-item.is-alias .approaches-item-title {
+    font-size: 1rem;
+  }
+
+  .approaches-item.is-alias .approaches-item-title a {
+    color: var(--ax-muted);
   }
 
   .approaches-item-title .as-bullet {
@@ -358,6 +395,35 @@ order: 35
 
   .approaches-item-tags a:hover {
     text-decoration: underline;
+  }
+
+  .approaches-alias-meta {
+    margin-top: 0.24rem;
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.3rem;
+    color: var(--ax-muted);
+    font-size: 0.8rem;
+  }
+
+  .approaches-alias-label {
+    border-radius: 999px;
+    border: 1px solid var(--ax-chip-border);
+    background: var(--ax-chip);
+    color: var(--ax-muted);
+    font-size: 0.68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    padding: 0.06rem 0.3rem;
+  }
+
+  .approaches-alias-meta a {
+    color: var(--ax-muted);
+    text-decoration: underline;
+    text-decoration-style: dotted;
+    text-underline-offset: 2px;
   }
 
   .approaches-return-top {

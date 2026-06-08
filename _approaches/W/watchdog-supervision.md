@@ -2,6 +2,7 @@
 layout: approach
 title: "Watchdog Supervision"
 tags: [safe, reliable]
+aka: [Monitor]
 supported_qualities: [availability, fault-tolerance, recoverability, self-healing, mean-time-to-recovery, safety]
 supported_qualities_notes:
   availability: Hung or unresponsive processes are detected and restarted automatically, reducing the window of unavailability.

@@ -2,6 +2,7 @@
 layout: approach
 title: Plugin Architecture
 tags: [flexible]
+aka: [Plug-in (Microkernel)]
 supported_qualities: [extensibility, modifiability, reusability, availability]
 supported_qualities_notes:
   extensibility: Allows new capabilities to be added without core code changes.

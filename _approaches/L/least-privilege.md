@@ -2,6 +2,7 @@
 layout: approach
 title: "Least Privilege"
 tags: [secure]
+aka: [Limit Access]
 supported_qualities: [security, confidentiality, integrity, access-control, compliance]
 supported_qualities_notes:
   security: Reducing the permissions available to any actor or process limits the damage an attacker can do after compromising that actor.
