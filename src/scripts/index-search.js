@@ -49,9 +49,12 @@ async function generateSearchIndex() {
                 const slug = id.split("/").pop();
                 const synonymSlugs = synonymMap[slug] || [];
                 aliases = synonymSlugs.map(s => s.replace(/-/g, " ")).join(" ");
-                if (item.aka) {
-                    aliases += " " + parseList(item.aka, ",").join(" ");
-                }
+            }
+            // `aka:` index terms — used by qualities and approaches alike, so index
+            // them regardless of type. (Approaches were previously skipped, leaving
+            // terms like "Split Testing" unsearchable in the header/full-text search.)
+            if (item.aka) {
+                aliases += " " + parseList(item.aka, ",").join(" ");
             }
             if (item.alias) {
                 aliases += " " + parseList(item.alias, ",").join(" ");
