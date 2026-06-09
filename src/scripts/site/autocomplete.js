@@ -158,7 +158,7 @@ function groupAndCap(scored) {
   return { groups, totalRendered: total };
 }
 
-function renderPanel({ scored, terms, query: q, baseurl }) {
+function renderPanel({ scored, terms, query: q, baseurl, chordLabel }) {
   const { groups, totalRendered } = groupAndCap(scored);
 
   if (totalRendered === 0) {
@@ -174,7 +174,7 @@ function renderPanel({ scored, terms, query: q, baseurl }) {
   }
 
   let idx = 0;
-  const parts = [];
+  const parts = [`<div class="site-search__scroll" role="presentation">`];
 
   for (const { type, label } of GROUPS) {
     const bucket = groups.get(type) || [];
@@ -212,23 +212,32 @@ function renderPanel({ scored, terms, query: q, baseurl }) {
     parts.push(
       `<div class="site-search__group site-search__group--all" role="group" aria-label="More">` +
         `<ul class="site-search__list" role="presentation">` +
-          `<li role="option" id="${id}" class="site-search__item site-search__item--all" ` +
-            `data-href="${escapeHtml(allUrl)}" data-index="${idx}" aria-selected="false">` +
-            `<span class="site-search__title">` +
-              `Show all <strong>${scored.length}</strong> results for <strong>${escapeHtml(q)}</strong>` +
-            `</span>` +
-          `</li>` +
+        `<li role="option" id="${id}" class="site-search__item site-search__item--all" ` +
+        `data-href="${escapeHtml(allUrl)}" data-index="${idx}" aria-selected="false">` +
+        `<span class="site-search__title">` +
+        `Show all <strong>${scored.length}</strong> results for <strong>${escapeHtml(q)}</strong>` +
+        `</span>` +
+        `</li>` +
         `</ul>` +
-      `</div>`,
-    );
-    idx++;
-  } else {
-    parts.push(
-      `<div class="site-search__more">` +
-        `<span class="site-search__hint-line">Enter to open · Esc to close · ↑↓ to navigate</span>` +
         `</div>`,
     );
+    idx++;
   }
+
+  parts.push(`</div>`); // close .site-search__scroll
+
+  // Persistent footer — always shown, never scrolls. Decorative (aria-hidden);
+  // the aria-live status region carries counts for assistive tech.
+  parts.push(
+    `<div class="site-search__footer" aria-hidden="true">` +
+      `<span class="site-search__footer-hint">` +
+      `<kbd>↵</kbd> open` +
+      ` · <kbd>${escapeHtml(chordLabel)}</kbd> all results` +
+      ` · <kbd>↑↓</kbd> navigate` +
+      ` · <kbd>esc</kbd> close` +
+      `</span>` +
+      `</div>`,
+  );
 
   return { html: parts.join(""), optionCount: idx, resultCount: scored.length };
 }
@@ -261,15 +270,17 @@ export function initAutocomplete() {
   const hintDesc = form.querySelector("[data-site-search-hint-desc]");
   if (hintDesc) {
     hintDesc.textContent = isMac
-      ? "Press Command-K to focus this search."
-      : "Press slash to focus this search.";
+      ? "Press Command-K to focus this search. Press Command-Enter to open all results."
+      : "Press slash to focus this search. Press Control-Enter to open all results.";
   }
+  const chordLabel = isMac ? "⌘⏎" : "Ctrl ⏎";
 
   let activeIndex = -1;
   let currentOptions = [];
   let lastQuery = "";
   let debounceTimer = null;
   let suppressNextOpen = false;
+  let scrollEl = null; // the inner .site-search__scroll region (set on each render)
 
   function setStatus(message) {
     if (status) status.textContent = message || "";
@@ -281,6 +292,7 @@ export function initAutocomplete() {
     input.setAttribute("aria-expanded", "false");
     input.removeAttribute("aria-activedescendant");
     activeIndex = -1;
+    scrollEl = null;
     currentOptions = [];
   }
 
@@ -288,6 +300,7 @@ export function initAutocomplete() {
     panel.innerHTML = html;
     panel.hidden = false;
     input.setAttribute("aria-expanded", optionCount > 0 ? "true" : "false");
+    scrollEl = panel.querySelector(".site-search__scroll");
     currentOptions = Array.from(panel.querySelectorAll(".site-search__item"));
     activeIndex = currentOptions.length > 0 ? 0 : -1;
     applyActive();
@@ -302,11 +315,12 @@ export function initAutocomplete() {
     if (activeIndex >= 0 && currentOptions[activeIndex]) {
       input.setAttribute("aria-activedescendant", currentOptions[activeIndex].id);
       const el = currentOptions[activeIndex];
+      const view = scrollEl || panel;
       const elTop = el.offsetTop;
       const elBottom = elTop + el.offsetHeight;
-      if (elTop < panel.scrollTop) panel.scrollTop = elTop;
-      else if (elBottom > panel.scrollTop + panel.clientHeight) {
-        panel.scrollTop = elBottom - panel.clientHeight;
+      if (elTop < view.scrollTop) view.scrollTop = elTop;
+      else if (elBottom > view.scrollTop + view.clientHeight) {
+        view.scrollTop = elBottom - view.clientHeight;
       }
     } else {
       input.removeAttribute("aria-activedescendant");
@@ -341,6 +355,7 @@ export function initAutocomplete() {
       terms,
       query: q,
       baseurl,
+      chordLabel,
     });
     openPanel(html, optionCount);
     setStatus(
@@ -408,6 +423,16 @@ export function initAutocomplete() {
         input.blur();
       }
     } else if (e.key === "Enter") {
+      // Cmd / Ctrl / Shift + Enter jumps to the full-text /search/ page,
+      // whatever row is highlighted. Plain Enter keeps opening the active row.
+      if (e.metaKey || e.ctrlKey || e.shiftKey) {
+        const q = input.value.trim();
+        if (q.length >= 2) {
+          e.preventDefault();
+          window.location.assign(baseurl + "/search/?q=" + encodeURIComponent(q));
+          return;
+        }
+      }
       if (!panel.hidden && activeIndex >= 0 && currentOptions[activeIndex]) {
         const href = currentOptions[activeIndex].getAttribute("data-href");
         if (href) {

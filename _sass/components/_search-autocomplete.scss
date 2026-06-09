@@ -54,6 +54,8 @@
     0 1px 2px rgba(36, 24, 35, 0.06),
     0 14px 36px rgba(36, 24, 35, 0.22);
   color: var(--brand-ink);
+  display: flex;
+  flex-direction: column;
   font-family: $font-family;
   font-size: 0.92rem;
   font-weight: 400;
@@ -66,8 +68,8 @@
   max-height: min(70vh, 34rem);
   max-width: 38rem;
   min-width: clamp(22rem, 32vw, 32rem);
-  overflow-y: auto;
-  padding: 0.25rem 0;
+  overflow: hidden;
+  padding: 0;
   position: absolute;
   right: 0;
   text-transform: none;
@@ -77,6 +79,14 @@
   &[hidden] {
     display: none;
   }
+}
+
+.site-search__scroll {
+  flex: 1 1 auto;
+  min-height: 0; // let the flex child shrink so it can scroll
+  overflow-y: auto;
+  padding: 0.25rem 0;
+  position: relative; // offsetParent for the active-row auto-scroll math
 }
 
 .site-search__group + .site-search__group {
@@ -212,12 +222,23 @@
   }
 }
 
-.site-search__more {
+.site-search__footer {
   border-top: 1px solid var(--brand-violet-18);
   color: var(--brand-muted);
-  font-size: 0.78rem;
-  margin-top: 0.25rem;
-  padding: 0.55rem 1rem;
+  flex: 0 0 auto;
+  font-size: 0.74rem;
+  padding: 0.5rem 1rem;
+
+  kbd {
+    background: var(--brand-violet-08);
+    border: 1px solid var(--brand-violet-18);
+    border-radius: $radius-xs;
+    color: var(--brand-ink);
+    font-family: $code-font-family;
+    font-size: 0.72rem;
+    line-height: 1;
+    padding: 0.1rem 0.3rem;
+  }
 }
 
 .site-search__hint-line {
