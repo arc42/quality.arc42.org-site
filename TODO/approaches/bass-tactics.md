@@ -28,9 +28,9 @@ plus a set of performance **patterns**.
 
 | Done | Approach | One-line description | Source |
 |:----:|----------|----------------------|:------:|
-| | Manage Event Arrival (SLA) | Cap the maximum event-arrival rate a component will accept via a service-level agreement | B+ |
+| ✅ | Manage Event Arrival (SLA) | Cap the maximum event-arrival rate a component will accept via a service-level agreement — site: "Manage Event Arrival" (SLA folded in as `aka`) | B+ |
 | | Manage Sampling Rate | Reduce the sampling frequency of inputs (sensor/video) to keep latency predictable, trading fidelity | B+ |
-| | Limit Event Response | Process events only up to a set maximum rate; queue or discard the excess | B+ |
+| ✅ | Limit Event Response | Process events only up to a set maximum rate; queue or discard the excess — site: "Limit Event Response" | B+ |
 | | Prioritize Events | Rank events by importance; service high-priority first, drop low-priority under load | B+ |
 | | Reduce Computational Overhead | Cut the work per event — site tracks this as "Computational Overhead Reduction" | B+ |
 | | Reduce Indirection | Remove intermediaries from the event path to lower per-event latency (modifiability tradeoff) | B+ |
@@ -184,8 +184,8 @@ set of energy efficiency **patterns** (Sec. 6.4).
 
 | Done | Approach | One-line description | Source |
 |:----:|----------|----------------------|:------:|
-| | Manage Event Arrival | Cap or shape the event-arrival rate to do less work and save energy | B+ |
-| | Limit Event Response | Process events only up to a set rate to reduce energy spent | B+ |
+| ✅ | Manage Event Arrival | Cap or shape the event-arrival rate to do less work and save energy — site: "Manage Event Arrival" | B+ |
+| ✅ | Limit Event Response | Process events only up to a set rate to reduce energy spent — site: "Limit Event Response" | B+ |
 | | Prioritize Events | Rank events; let low-priority events go unserviced to save energy | B+ |
 |  | Reduce Computational Overhead | Cut the work per event to lower energy demand — site tracks this as "Computational Overhead Reduction" | B+ |
 |  | Bound Execution Times | Cap execution time per task to reduce energy use — site tracks this as "Execution-Time Bounding" | B+ |

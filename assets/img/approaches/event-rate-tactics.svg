@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 560" role="img" aria-labelledby="ert-title ert-desc">
+  <title id="ert-title">Where Manage Event Arrival and Limit Event Response act on the event pipeline</title>
+  <desc id="ert-desc">Events flow from sources through a bounded queue to a processing component. Manage Event Arrival caps the rate at the input, before events arrive, by agreeing a service-level agreement or pacing the producer. Limit Event Response caps the processing rate between the queue and the component, queuing or discarding the excess.</desc>
+  <defs>
+    <marker id="ert-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#6b7280"/>
+    </marker>
+    <style>
+      text { font-family: "Atkinson Hyperlegible Next","Atkinson Hyperlegible",Inter,Arial,sans-serif; fill:#1f2933; }
+      .subtitle { font-size:24px; font-weight:700; fill:#682d63; }
+      .box { fill:#6b7280; fill-opacity:0.06; stroke:#6b7280; stroke-width:2.5; }
+      .box-label { font-size:23px; font-weight:600; text-anchor:middle; }
+      .box-sub { font-size:18px; font-weight:400; fill:#52606d; text-anchor:middle; }
+      .flowline { stroke:#6b7280; stroke-width:2.5; fill:none; }
+      .flow-label { font-size:17px; font-weight:500; fill:#52606d; text-anchor:middle; }
+      .gate-arrival { fill:#5fb49c; fill-opacity:0.16; stroke:#5fb49c; stroke-width:3; }
+      .gate-response { fill:#ffad80; fill-opacity:0.22; stroke:#e8895a; stroke-width:3; }
+      .cap-title { font-size:23px; font-weight:700; text-anchor:middle; }
+      .cap-sub { font-size:18px; font-weight:400; fill:#3e4c59; text-anchor:middle; }
+      .connector { stroke-width:2; stroke-dasharray:5 5; fill:none; }
+    </style>
+  </defs>
+
+  <text class="subtitle" x="600" y="46" text-anchor="middle">Two siblings, two points on the same event pipeline</text>
+
+  <!-- Sources -->
+  <rect class="box" x="40" y="180" width="170" height="110" rx="12"/>
+  <text class="box-label" x="125" y="232">Event</text>
+  <text class="box-label" x="125" y="260">sources</text>
+
+  <!-- flow: sources -> gate 1 -->
+  <path class="flowline" d="M210 235 L296 235" marker-end="url(#ert-arrow)"/>
+  <text class="flow-label" x="253" y="222">arrivals</text>
+
+  <!-- Gate 1: Manage Event Arrival -->
+  <rect class="gate-arrival" x="300" y="172" width="46" height="126" rx="10"/>
+
+  <!-- flow: gate 1 -> queue -->
+  <path class="flowline" d="M346 235 L436 235" marker-end="url(#ert-arrow)"/>
+
+  <!-- Queue -->
+  <rect class="box" x="440" y="180" width="180" height="110" rx="12"/>
+  <text class="box-label" x="530" y="232">Queue</text>
+  <text class="box-sub" x="530" y="260">(buffer)</text>
+
+  <!-- flow: queue -> gate 2 -->
+  <path class="flowline" d="M620 235 L676 235" marker-end="url(#ert-arrow)"/>
+
+  <!-- Gate 2: Limit Event Response -->
+  <rect class="gate-response" x="680" y="172" width="46" height="126" rx="10"/>
+
+  <!-- flow: gate 2 -> processor -->
+  <path class="flowline" d="M726 235 L826 235" marker-end="url(#ert-arrow)"/>
+  <text class="flow-label" x="776" y="222">responses</text>
+
+  <!-- Processor -->
+  <rect class="box" x="830" y="180" width="200" height="110" rx="12"/>
+  <text class="box-label" x="930" y="232">Component</text>
+  <text class="box-sub" x="930" y="260">(processor)</text>
+
+  <!-- Caption 1 -->
+  <path class="connector" d="M323 298 L323 348" stroke="#5fb49c"/>
+  <text class="cap-title" x="323" y="378">Manage Event Arrival</text>
+  <rect x="263" y="388" width="120" height="4" rx="2" fill="#5fb49c"/>
+  <text class="cap-sub" x="323" y="416">Cap the inflow — SLA or</text>
+  <text class="cap-sub" x="323" y="440">pace the producer</text>
+
+  <!-- Caption 2 -->
+  <path class="connector" d="M703 298 L703 348" stroke="#e8895a"/>
+  <text class="cap-title" x="703" y="378">Limit Event Response</text>
+  <rect x="643" y="388" width="120" height="4" rx="2" fill="#e8895a"/>
+  <text class="cap-sub" x="703" y="416">Process up to a max rate;</text>
+  <text class="cap-sub" x="703" y="440">overflow queues or is dropped</text>
+</svg>
