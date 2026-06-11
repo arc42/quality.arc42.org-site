@@ -30,7 +30,7 @@ Two flavors share one voter. Triple Modular Redundancy (TMR) runs three identica
 - N units compute a result from the same input.
 - A voter compares the outputs.
 - On agreement it forwards the result; on a minority disagreement it masks the outlier and forwards the majority (TMR); on no majority it flags an error or commands a safe state.
-- Independent design (N-version) or independent hardware (TMR) keeps faults from correlating.
+- Independent design (N-version) or independent hardware (TMR) reduces correlated faults — though the Knight & Leveson experiment showed independently developed versions still fail together more often than independence predicts.
 
 ## Failure Modes
 - Common-mode fault: a shared specification error, library, or input defeats the vote because every version fails the same way.
@@ -49,3 +49,7 @@ Two flavors share one voter. Triple Modular Redundancy (TMR) runs three identica
 - N-version programming — design diversity against specification and implementation faults.
 - Analytic redundancy — a simple high-assurance channel checks a complex high-performance one.
 - Standby/Failover — the complementary tactic for crash faults rather than wrong answers.
+
+## References
+
+- [An Experimental Evaluation of the Assumption of Independence in Multiversion Programming](https://doi.org/10.1109/TSE.1986.6312924) — Knight & Leveson, IEEE Transactions on Software Engineering, 1986

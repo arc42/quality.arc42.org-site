@@ -5,7 +5,7 @@ tags: [secure]
 supported_qualities: [confidentiality, data-integrity, data-protection, privacy, compliance]
 supported_qualities_notes:
   confidentiality: Data is unreadable without the corresponding decryption key, whether stored on disk or intercepted on the network.
-  data-integrity: Authenticated encryption (AEAD) detects tampering — any modification to ciphertext or metadata causes decryption to fail.
+  data-integrity: Authenticated encryption (AEAD) modes detect ciphertext tampering at decryption time; full-disk and TDE setups often use unauthenticated modes (AES-XTS) that provide no integrity protection.
   data-protection: Cryptographic protection is a primary technical control for safeguarding personal and sensitive data at every stage of its lifecycle.
   privacy: Encryption limits exposure of personal data to authorized processors, supporting data-protection-by-design requirements.
   compliance: Regulatory frameworks (GDPR, PCI DSS, HIPAA) mandate or strongly recommend encryption as a baseline control for sensitive data.
