@@ -51,5 +51,5 @@ The defining property is the randomized, concurrent comparison: because users ar
 
 ## References
 - [Trustworthy Online Controlled Experiments](https://experimentguide.com/) — Kohavi, Tang & Xu ([full citation](/references/#kohavi2020trustworthy))
-- [Practical Guide to Controlled Experiments on the Web](https://ai.stanford.edu/~ronnyk/2007GuideControlledExperiments.pdf) — Kohavi, Henne & Sommerfield (KDD 2007)
+- [Practical Guide to Controlled Experiments on the Web](https://doi.org/10.1145/1281192.1281295) — Kohavi, Henne & Sommerfield (KDD 2007)
 - [Software Architecture in Practice](https://www.sei.cmu.edu/library/software-architecture-in-practice-fourth-edition/) — Bass, Clements & Kazman ([full citation](/references/#bass2021software))

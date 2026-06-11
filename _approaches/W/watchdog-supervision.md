@@ -66,6 +66,4 @@ The pattern is fundamental to both safety-critical systems (hardware watchdog ti
 ## References
 
 - [IEC 61508: Functional Safety of E/E/PE Systems](https://www.iec.ch/functional-safety) — defines watchdog timer requirements for safety-instrumented systems
-- [Kubernetes: Configure Liveness, Readiness and Startup Probes](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/) — the canonical reference for container-level watchdog probes
-- [Erlang/OTP Supervisor Behaviour](https://www.erlang.org/doc/system/sup_princ.html) — hierarchical supervision trees with configurable restart strategies
 - [Software Architecture in Practice](https://www.sei.cmu.edu/library/software-architecture-in-practice-fourth-edition/) — Bass, Clements & Kazman ([full citation](/references/#bass2021software))

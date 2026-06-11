@@ -59,7 +59,5 @@ It is not a default optimization. A well-indexed single cluster, read replicas, 
 
 ## References
 
-- [Vitess Docs: Sharding](https://vitess.io/docs/22.0/reference/features/sharding/)
-- [Vitess Docs: VSchema](https://vitess.io/docs/reference/features/vschema/)
-- [MongoDB Manual: Sharding](https://www.mongodb.com/docs/manual/sharding/)
-- [Spanner: Google's Globally-Distributed Database](https://research.google/pubs/pub39966/)
+- [Designing Data-Intensive Applications](https://dataintensive.net/) — Martin Kleppmann, O'Reilly 2017 (ch. 6, "Partitioning")
+- [Spanner: Google's Globally-Distributed Database](https://research.google/pubs/pub39966/) — Corbett et al., OSDI 2012

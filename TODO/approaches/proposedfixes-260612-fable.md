@@ -31,9 +31,9 @@ Prioritized P1 (do first) → P6 (decide once, then mechanical). Mark items ✅ 
 
 ## P4 — References policy violations (template forbids vendor/product docs)
 
-- [ ] **database-sharding**: 3 of 4 references are product docs (2× Vitess — one version-pinned —, 1× MongoDB Manual). Keep the Spanner paper; replace the rest with durable sources (e.g. Kleppmann, *Designing Data-Intensive Applications*, partitioning chapter — already site-citable style). Move Vitess/MongoDB to body as `e.g.` mentions if wanted.
-- [ ] **watchdog-supervision**: drop kubernetes.io probe how-to ("the canonical reference" — it isn't, it's a product doc) and the Erlang/OTP Supervisor docs from `## References`; both belong in the body as `e.g.` illustrations only.
-- [ ] **ab-testing** (minor, same class): the KDD 2007 paper is linked via a personal Stanford homepage; relink via DOI (10.1007/s10618-008-0114-1) or the ACM DL.
+- [x] ✅ 2026-06-12 (Claude — Vitess/MongoDB dropped, Kleppmann ch. 6 added, Spanner kept with full citation) **database-sharding**: 3 of 4 references are product docs (2× Vitess — one version-pinned —, 1× MongoDB Manual). Keep the Spanner paper; replace the rest with durable sources (e.g. Kleppmann, *Designing Data-Intensive Applications*, partitioning chapter — already site-citable style). Move Vitess/MongoDB to body as `e.g.` mentions if wanted.
+- [x] ✅ 2026-06-12 (Claude — both dropped; body already illustrates K8s probes and OTP supervisors, so nothing lost) **watchdog-supervision**: drop kubernetes.io probe how-to ("the canonical reference" — it isn't, it's a product doc) and the Erlang/OTP Supervisor docs from `## References`; both belong in the body as `e.g.` illustrations only.
+- [x] ✅ 2026-06-12 (Claude — relinked to the KDD paper's own DOI 10.1145/1281192.1281295) **ab-testing** (minor, same class): the KDD 2007 paper is linked via a personal Stanford homepage; relink via DOI (10.1007/s10618-008-0114-1) or the ACM DL.
 
 ## P5 — Graph & relationship curation (editorial judgment, one-sided `related:` per convention)
 
