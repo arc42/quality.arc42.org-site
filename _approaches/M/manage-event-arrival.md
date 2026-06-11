@@ -16,9 +16,8 @@ tradeoff_notes:
 intent: "Cap or shape the rate at which events reach a component, so it only accepts work it can serve within its operating range."
 mechanism: "Agree a maximum arrival rate with each event source — often as a service-level agreement — and pace, batch, or reject events at the boundary so the inflow stays at or below that rate."
 applicability: "Use when event sources are known and contractable, and an agreed input ceiling keeps the system efficient and stable. Skip when arrival is intrinsically unbounded or anonymous — public internet traffic, DDoS — where edge rate limiting or admission control fits better than a negotiated rate."
-related_requirements: [handle-sudden-increase-in-traffic, respond-to-15000-requests-per-workday, reduce-energy-consumption-with-new-version]
+related_requirements: [respond-to-15000-requests-per-workday, reduce-energy-consumption-with-new-version]
 related_requirements_notes:
-  handle-sudden-increase-in-traffic: "Capping or shaping arrival is a traffic-management response to a surge: shed or pace excess so accepted requests still meet their latency target."
   respond-to-15000-requests-per-workday: "Aligning the agreed arrival rate with sustained capacity keeps the inflow within the system's rate budget across the workday."
   reduce-energy-consumption-with-new-version: "Shaping arrival so the system does less work per interval lowers energy use, contributing to the per-version reduction target."
 permalink: /approaches/manage-event-arrival

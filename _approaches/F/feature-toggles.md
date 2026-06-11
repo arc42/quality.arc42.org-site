@@ -21,7 +21,7 @@ related_requirements_notes:
   fast-rollout-of-changes: Rolls out gradually and rolls back fast without redeploying.
 intent: "Decouple code deployment from feature release by wrapping new behavior behind a runtime-configurable flag."
 mechanism: "Wrap new or risky code paths in a conditional check against a toggle store (configuration file, database, or feature-flag service), allowing the switch to be flipped per environment, user cohort, or percentage rollout without a redeployment."
-applicability: "Use when merging incomplete features to the main branch (trunk-based development), conducting canary releases or A/B tests, or providing a fast kill switch for risky changes. Avoid retaining toggles permanently; treat them as technical debt with an explicit expiry date."
+applicability: "Use when merging incomplete features to the main branch (trunk-based development), conducting canary releases or A/B tests, or providing a fast kill switch for risky changes. Give release, experiment, and ops toggles an explicit expiry date and treat overdue ones as technical debt; only permission toggles are long-lived by design."
 permalink: /approaches/feature-toggles
 ---
 

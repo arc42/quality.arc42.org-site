@@ -5,7 +5,7 @@ tags: [safe]
 supported_qualities: [safety, fail-safe, controllability, integrity, hazard-warning, user-error-protection]
 supported_qualities_notes:
   safety: Hazardous operations cannot execute unless all preconditions are satisfied, preventing the system from entering dangerous states.
-  fail-safe: If an interlock check fails or cannot be evaluated, the operation is blocked — the default is always the safe path.
+  fail-safe: If an interlock check fails or cannot be evaluated, the interlock falls to the default the hazard analysis declared safe — it never proceeds as if the check had passed.
   controllability: Operators retain explicit control over hazardous transitions because each gate requires deliberate confirmation that conditions are met.
   integrity: Data and physical state are protected from corruption caused by operations executed under invalid preconditions.
   hazard-warning: Interlock violations produce immediate, unambiguous feedback explaining which precondition is not met and what must change.
@@ -27,7 +27,7 @@ permalink: /approaches/safety-interlocks
 
 Safety interlocks place explicit gates in front of hazardous operations. Each gate evaluates a set of preconditions — sensor readings within range, system state valid, operator confirmation received — and blocks execution until all conditions are satisfied. The concept originates in physical engineering (electrical interlocks that prevent a machine from starting while a guard is open) and translates directly to software: a deployment pipeline that refuses to proceed without passing health checks, a medical device that will not deliver treatment until patient parameters are confirmed, or a financial system that blocks large transfers without dual authorization.
 
-The key property is that the interlock defaults to blocking. If a precondition cannot be evaluated — a sensor is offline, a confirmation times out, a state check returns an error — the operation does not proceed. This fail-safe default distinguishes interlocks from advisory warnings, which inform but do not prevent.
+The key property is that the interlock defaults to its safe state. If a precondition cannot be evaluated — a sensor is offline, a confirmation times out, a state check returns an error — the gated operation never proceeds as if the check had passed. This fail-safe default distinguishes interlocks from advisory warnings, which inform but do not prevent.
 
 Whether "safe" means fail-closed or fail-open depends on the primary hazard. A firewall interlock fails closed — all traffic blocked — because the hazard is unauthorized access. A fire-exit interlock fails open — door unlocked — because the hazard is people trapped inside. The interlock designer must derive the correct default from the hazard analysis, not assume one direction fits all cases.
 
@@ -52,7 +52,7 @@ Whether "safe" means fail-closed or fail-open depends on the primary hazard. A f
 - For each defined interlock, inject a precondition violation and verify the operation is blocked within the specified response time (for example `< 200 ms` for a safety controller, `< 1 s` for a software gate).
 - Bypass audit: invoke every documented bypass path and verify it requires the specified authorization level, is time-limited, and produces a distinct audit log entry.
 - Coverage check: map every operation classified as hazardous to its interlock definition; flag any hazardous operation without a corresponding gate.
-- False-negative test: simulate sensor failure or timeout during a precondition check and verify the interlock defaults to blocking, not permitting.
+- False-negative test: simulate sensor failure or timeout during a precondition check and verify the interlock falls to its declared safe state instead of proceeding.
 - Audit trail integrity: verify that interlock logs are tamper-evident and that every gate evaluation — pass, fail, and bypass — is recorded with timestamp, actor, and precondition details.
 
 ## Variants and Related Tactics

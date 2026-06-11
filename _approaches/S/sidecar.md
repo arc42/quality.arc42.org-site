@@ -29,7 +29,7 @@ permalink: /approaches/sidecar
 
 A sidecar is a companion process deployed beside an application in the same scheduling unit — pod, VM, or host — sharing its network and storage. It adds or adapts capabilities — TLS termination, retries, protocol translation, telemetry — while the application stays unchanged.
 
-Burns and Oppenheimer named the pattern in 2016: containers had made co-deployment cheap enough to turn "modify the application" problems into "deploy a companion" problems. Today it underpins every service mesh.
+Burns and Oppenheimer named the pattern in 2016: containers had made co-deployment cheap enough to turn "modify the application" problems into "deploy a companion" problems. Most service meshes build on it, though sidecar-less variants are emerging.
 
 ![Sidecar: a companion process in the same scheduling unit intercepts inbound traffic, hands it to the unchanged application over localhost, proxies outbound calls, and ships telemetry.](/assets/img/approaches/sidecar.svg)
 
