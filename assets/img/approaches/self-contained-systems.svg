@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 500" font-family="'Atkinson Hyperlegible Next','Atkinson Hyperlegible',-apple-system,'Segoe UI',sans-serif" role="img" aria-labelledby="scs-title scs-desc">
+  <title id="scs-title">Self-contained systems</title>
+  <desc id="scs-desc">Three autonomous web applications, each owning its UI, business logic, and database, integrated through links and UI composition in the browser and through asynchronous events below — no shared database, one team per system.</desc>
+
+  <defs>
+    <marker id="sarr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#444"/>
+    </marker>
+  </defs>
+
+  <!-- Browser integration bar -->
+  <rect x="60" y="35" width="800" height="56" rx="8" fill="#f8f9fa" stroke="#00b8f5" stroke-width="2"/>
+  <text x="460" y="58" font-size="14" fill="#0077a3" font-weight="700" text-anchor="middle">Browser</text>
+  <text x="460" y="78" font-size="12.5" fill="#555" text-anchor="middle">integration via links and UI composition</text>
+
+  <!-- connectors browser -> systems -->
+  <line x1="190" y1="91" x2="190" y2="128" stroke="#444" stroke-width="2" marker-end="url(#sarr)" marker-start="url(#sarr)"/>
+  <line x1="460" y1="91" x2="460" y2="128" stroke="#444" stroke-width="2" marker-end="url(#sarr)" marker-start="url(#sarr)"/>
+  <line x1="730" y1="91" x2="730" y2="128" stroke="#444" stroke-width="2" marker-end="url(#sarr)" marker-start="url(#sarr)"/>
+
+  <!-- Three SCS columns -->
+  <g text-anchor="middle">
+    <!-- SCS: Catalog -->
+    <rect x="80" y="132" width="220" height="240" rx="10" fill="#fff" stroke="#682d63" stroke-width="2.5"/>
+    <text x="190" y="158" font-size="15" fill="#682d63" font-weight="700">Catalog</text>
+    <rect x="100" y="172" width="180" height="48" rx="5" fill="#e6f7fd" stroke="#00b8f5" stroke-width="1.6"/>
+    <text x="190" y="200" font-size="13" fill="#0077a3">UI</text>
+    <rect x="100" y="230" width="180" height="48" rx="5" fill="#f4eef3" stroke="#682d63" stroke-width="1.6"/>
+    <text x="190" y="258" font-size="13" fill="#682d63">Business logic</text>
+    <path d="M 100 300 a 90 12 0 0 1 180 0 v 36 a 90 12 0 0 1 -180 0 z" fill="#eaf6f2" stroke="#5fb49c" stroke-width="1.8"/>
+    <ellipse cx="190" cy="300" rx="90" ry="12" fill="#eaf6f2" stroke="#5fb49c" stroke-width="1.8"/>
+    <text x="190" y="330" font-size="13" fill="#3e8a76">own database</text>
+    <text x="190" y="392" font-size="12" fill="#777">Team A</text>
+
+    <!-- SCS: Checkout -->
+    <rect x="350" y="132" width="220" height="240" rx="10" fill="#fff" stroke="#682d63" stroke-width="2.5"/>
+    <text x="460" y="158" font-size="15" fill="#682d63" font-weight="700">Checkout</text>
+    <rect x="370" y="172" width="180" height="48" rx="5" fill="#e6f7fd" stroke="#00b8f5" stroke-width="1.6"/>
+    <text x="460" y="200" font-size="13" fill="#0077a3">UI</text>
+    <rect x="370" y="230" width="180" height="48" rx="5" fill="#f4eef3" stroke="#682d63" stroke-width="1.6"/>
+    <text x="460" y="258" font-size="13" fill="#682d63">Business logic</text>
+    <path d="M 370 300 a 90 12 0 0 1 180 0 v 36 a 90 12 0 0 1 -180 0 z" fill="#eaf6f2" stroke="#5fb49c" stroke-width="1.8"/>
+    <ellipse cx="460" cy="300" rx="90" ry="12" fill="#eaf6f2" stroke="#5fb49c" stroke-width="1.8"/>
+    <text x="460" y="330" font-size="13" fill="#3e8a76">own database</text>
+    <text x="460" y="392" font-size="12" fill="#777">Team B</text>
+
+    <!-- SCS: Billing -->
+    <rect x="620" y="132" width="220" height="240" rx="10" fill="#fff" stroke="#682d63" stroke-width="2.5"/>
+    <text x="730" y="158" font-size="15" fill="#682d63" font-weight="700">Billing</text>
+    <rect x="640" y="172" width="180" height="48" rx="5" fill="#e6f7fd" stroke="#00b8f5" stroke-width="1.6"/>
+    <text x="730" y="200" font-size="13" fill="#0077a3">UI</text>
+    <rect x="640" y="230" width="180" height="48" rx="5" fill="#f4eef3" stroke="#682d63" stroke-width="1.6"/>
+    <text x="730" y="258" font-size="13" fill="#682d63">Business logic</text>
+    <path d="M 640 300 a 90 12 0 0 1 180 0 v 36 a 90 12 0 0 1 -180 0 z" fill="#eaf6f2" stroke="#5fb49c" stroke-width="1.8"/>
+    <ellipse cx="730" cy="300" rx="90" ry="12" fill="#eaf6f2" stroke="#5fb49c" stroke-width="1.8"/>
+    <text x="730" y="330" font-size="13" fill="#3e8a76">own database</text>
+    <text x="730" y="392" font-size="12" fill="#777">Team C</text>
+  </g>
+
+  <!-- Async event channel -->
+  <line x1="190" y1="372" x2="190" y2="425" stroke="#e88a55" stroke-width="2" stroke-dasharray="6 4"/>
+  <line x1="460" y1="372" x2="460" y2="425" stroke="#e88a55" stroke-width="2" stroke-dasharray="6 4"/>
+  <line x1="730" y1="372" x2="730" y2="425" stroke="#e88a55" stroke-width="2" stroke-dasharray="6 4"/>
+  <rect x="60" y="425" width="800" height="42" rx="8" fill="#fff5ef" stroke="#e88a55" stroke-width="2" stroke-dasharray="8 5"/>
+  <text x="460" y="451" font-size="13" fill="#b35e2e" font-weight="600" text-anchor="middle">asynchronous events · data replication — no shared database, no synchronous call chains</text>
+</svg>

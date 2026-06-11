@@ -141,6 +141,60 @@ from frontmatter - Content body - Supported qualities (cross-linked) - Trade-off
       {% endunless %}
     </ul>
 
+    {% comment %} Related approaches — `related:` is declared on one page only;
+    this block renders the relation on both: forward from page.related, reverse
+    by scanning all approaches for ones that declare this page. The section is
+    omitted entirely when no relation exists. {% endcomment %}
+    {% assign my_id = page.permalink | split: "/" | last %}
+    {% assign has_related_approaches = false %}
+    {% if page.related and page.related.size > 0 %}
+      {% assign has_related_approaches = true %}
+    {% endif %}
+    {% for other in site.approaches %}
+      {% if other.related contains my_id %}
+        {% assign has_related_approaches = true %}
+      {% endif %}
+    {% endfor %}
+
+    {% if has_related_approaches %}
+    <hr class="with-no-margin" />
+    <h2 class="section-heading approaches"><i class="fa fa-puzzle-piece"></i> Related Approaches</h2>
+    <ul class="posts no-bullets approach-related-approaches">
+      {% if page.related %}
+        {% for ra in page.related %}
+          {% assign ra_trimmed = ra | strip %}
+          {% for other in site.approaches %}
+            {% assign other_id = other.permalink | split: "/" | last %}
+            {% if other_id == ra_trimmed %}
+              {% assign ra_note = page.related_notes[ra_trimmed] %}
+              <li class="approach-impact-item">
+                <a href="{{ other.permalink }}"><i class="fa fa-puzzle-piece fa-xs as-bullet" style="color: var(--approaches-text-color)"> </i> {{ other.title }}</a>
+                {% if ra_note %}
+                  <p class="approach-impact-note">{{ ra_note }}</p>
+                {% endif %}
+              </li>
+              {% break %}
+            {% endif %}
+          {% endfor %}
+        {% endfor %}
+      {% endif %}
+      {% for other in site.approaches %}
+        {% assign other_id = other.permalink | split: "/" | last %}
+        {% if other.related contains my_id %}
+          {% unless page.related contains other_id %}
+            {% assign reverse_note = other.related_notes[my_id] %}
+            <li class="approach-impact-item">
+              <a href="{{ other.permalink }}"><i class="fa fa-puzzle-piece fa-xs as-bullet" style="color: var(--approaches-text-color)"> </i> {{ other.title }}</a>
+              {% if reverse_note %}
+                <p class="approach-impact-note">{{ reverse_note }}</p>
+              {% endif %}
+            </li>
+          {% endunless %}
+        {% endif %}
+      {% endfor %}
+    </ul>
+    {% endif %}
+
     {% include article-footer.html page=page share=page.share %}
   </article>
 </div>

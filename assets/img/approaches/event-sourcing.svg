@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 470" font-family="'Atkinson Hyperlegible Next','Atkinson Hyperlegible',-apple-system,'Segoe UI',sans-serif" role="img" aria-labelledby="es-title es-desc">
+  <title id="es-title">Event sourcing</title>
+  <desc id="es-desc">Commands append immutable events to an append-only event log; the aggregate rehydrates by replaying its events, and projections fold the same log into read-optimized views.</desc>
+
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#444"/>
+    </marker>
+    <marker id="arrow-teal" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#5fb49c"/>
+    </marker>
+    <marker id="arrow-violet" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#682d63"/>
+    </marker>
+  </defs>
+
+  <!-- Command -->
+  <text x="40" y="78" font-size="15" fill="#222" font-weight="600">Command</text>
+  <text x="40" y="96" font-size="12" fill="#666">AddItem(…)</text>
+  <line x1="135" y1="80" x2="205" y2="80" stroke="#444" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Aggregate -->
+  <rect x="210" y="40" width="200" height="80" rx="8" fill="#fff" stroke="#682d63" stroke-width="2.5"/>
+  <text x="310" y="72" font-size="16" fill="#682d63" font-weight="700" text-anchor="middle">Order Aggregate</text>
+  <text x="310" y="94" font-size="12" fill="#555" text-anchor="middle">validates invariants</text>
+
+  <!-- append arrow: aggregate -> log -->
+  <line x1="360" y1="120" x2="430" y2="185" stroke="#682d63" stroke-width="2" marker-end="url(#arrow-violet)"/>
+  <text x="420" y="145" font-size="13" fill="#682d63" font-weight="600">append new event</text>
+
+  <!-- replay arrow: log -> aggregate -->
+  <line x1="270" y1="190" x2="270" y2="125" stroke="#5fb49c" stroke-width="2" marker-end="url(#arrow-teal)"/>
+  <text x="258" y="165" font-size="13" fill="#3e8a76" font-weight="600" text-anchor="end">rehydrate by replay</text>
+
+  <!-- Event log -->
+  <rect x="120" y="195" width="680" height="86" rx="8" fill="#f8f9fa" stroke="#444" stroke-width="2"/>
+  <text x="132" y="218" font-size="13" fill="#222" font-weight="700">Event Log</text>
+  <text x="212" y="218" font-size="12" fill="#666">append-only · immutable · system of record</text>
+
+  <!-- event cells -->
+  <g font-size="12" text-anchor="middle">
+    <rect x="135" y="230" width="125" height="38" rx="5" fill="#fff" stroke="#00b8f5" stroke-width="1.8"/>
+    <text x="197" y="253" fill="#222">OrderPlaced</text>
+    <rect x="270" y="230" width="125" height="38" rx="5" fill="#fff" stroke="#00b8f5" stroke-width="1.8"/>
+    <text x="332" y="253" fill="#222">ItemAdded</text>
+    <rect x="405" y="230" width="125" height="38" rx="5" fill="#fff" stroke="#00b8f5" stroke-width="1.8"/>
+    <text x="467" y="253" fill="#222">ItemAdded</text>
+    <rect x="540" y="230" width="135" height="38" rx="5" fill="#fff" stroke="#00b8f5" stroke-width="1.8"/>
+    <text x="607" y="253" fill="#222">PaymentCaptured</text>
+    <rect x="685" y="230" width="100" height="38" rx="5" fill="#fff" stroke="#999" stroke-width="1.5" stroke-dasharray="5 4"/>
+    <text x="735" y="253" fill="#999">next…</text>
+  </g>
+
+  <!-- fold/project arrows to projections -->
+  <line x1="330" y1="281" x2="265" y2="350" stroke="#444" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="460" y1="281" x2="460" y2="350" stroke="#444" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="600" y1="281" x2="660" y2="350" stroke="#444" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="460" y="325" font-size="13" fill="#444" font-weight="600" text-anchor="middle">fold / project — rebuildable from event zero</text>
+
+  <!-- Projections -->
+  <g text-anchor="middle">
+    <rect x="130" y="355" width="200" height="72" rx="8" fill="#fff" stroke="#5fb49c" stroke-width="2.5"/>
+    <text x="230" y="385" font-size="14" fill="#222" font-weight="700">Current state</text>
+    <text x="230" y="406" font-size="12" fill="#555">SQL read model</text>
+
+    <rect x="360" y="355" width="200" height="72" rx="8" fill="#fff" stroke="#5fb49c" stroke-width="2.5"/>
+    <text x="460" y="385" font-size="14" fill="#222" font-weight="700">Search index</text>
+    <text x="460" y="406" font-size="12" fill="#555">projection</text>
+
+    <rect x="590" y="355" width="200" height="72" rx="8" fill="#fff" stroke="#ffad80" stroke-width="2.5"/>
+    <text x="690" y="385" font-size="14" fill="#222" font-weight="700">Order history</text>
+    <text x="690" y="406" font-size="12" fill="#555">added later, built from full log</text>
+  </g>
+</svg>

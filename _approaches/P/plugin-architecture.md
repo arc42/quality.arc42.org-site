@@ -2,76 +2,68 @@
 layout: approach
 title: Plugin Architecture
 tags: [flexible]
-aka: [Plug-in (Microkernel)]
-supported_qualities: [extensibility, modifiability, reusability, availability]
+aka: [Microkernel, Add-in Architecture]
+supported_qualities: [extensibility, modifiability, configurability, reusability]
 supported_qualities_notes:
-  extensibility: Allows new capabilities to be added without core code changes.
-  modifiability: Localizes many behavior changes to plugin modules and contracts.
-  reusability: Shared plugin APIs can be reused across products and deployments.
-  availability: Isolates faults so a crashing plugin does not bring down the host.
+  extensibility: "New capabilities arrive as plugins against a stable extension point; the core stays closed to modification, open to extension."
+  modifiability: "A behavior change lands in one plugin behind a contract; the blast radius stops at the extension-point boundary."
+  configurability: "Per-customer or per-environment feature sets become composition: ship the same core, vary the plugin set."
+  reusability: "A plugin written once runs in every product and version that hosts the same extension point."
 tradeoffs: [security, performance, maintainability]
 tradeoff_notes:
-  security: Untrusted plugins can execute harmful behavior without strict isolation.
-  performance: Indirection and plugin boundaries can increase invocation overhead.
-  maintainability: Versioning plugin contracts and compatibility adds ongoing effort.
+  security: "A plugin inherits the host's privileges unless sandboxed; one malicious or compromised third-party extension reads what the host reads and writes what it writes. Marketplace ecosystems carry this as a permanent supply-chain risk."
+  performance: "Every extension-point call pays indirection — registry lookup, dynamic dispatch, sometimes a process or sandbox crossing. One slow synchronous plugin stalls the host's whole pipeline, and the isolation levels strong enough for safety cost the most latency."
+  maintainability: "The extension API is a public contract: every change must stay compatible with plugins the team neither owns nor sees. Versioning, deprecation windows, and compatibility test suites become permanent core-team work that grows with the ecosystem."
+intent: "Let third parties or independent teams extend system behavior without modifying or redeploying its core."
+mechanism: "Define a stable extension point (API, interface, or event bus) in the core; plugins register themselves at startup or runtime, and the host invokes them through the shared contract."
+applicability: "Use when the capability set varies or is unknown — third-party extensions, per-customer feature combinations, hardware drivers. Skip when the extension set is small and fixed: a stable public API is permanent work that a handful of known variants never repays."
+related: [sidecar, externalized-business-rules]
+related_notes:
+  sidecar: "A sidecar extends an application out-of-process at deployment time, with no extension points; plugins extend in-process through design-time contracts."
+  externalized-business-rules: "Both defer binding of volatile behavior: rules externalize decision logic declaratively, plugins extend the system imperatively through code."
 related_requirements: [compatible-with-5-battery-providers, service-loose-coupling-change-blast-radius, fast-rollout-of-changes]
 related_requirements_notes:
-  compatible-with-5-battery-providers: Supports hardware-agnostic logic via driver-style plugins.
-  service-loose-coupling-change-blast-radius: Plugin contracts isolate changes from the core system.
-  fast-rollout-of-changes: Rolls out capabilities incrementally by switching plugins on one at a time.
-intent: "Let third parties or independent teams extend system behavior without modifying or redeploying its core."
-mechanism: "Define a stable extension point (API, interface, or event bus) in the core; plugins are self-contained units that register themselves at startup or runtime and are invoked by the host through a shared contract."
-applicability: "Use when you need to support a varying or unknown set of capabilities that cannot all be built into the core, or when different customers or environments need different feature combinations. Avoid when the extension set is fully known and fixed, or when the overhead of maintaining a plugin API is greater than the benefit."
+  compatible-with-5-battery-providers: "Each battery provider becomes a driver-style plugin behind one hardware contract; a sixth provider means adding a plugin, not changing core logic."
+  service-loose-coupling-change-blast-radius: "Plugin contracts confine a change to one module; the core and all other plugins stay untouched."
+  fast-rollout-of-changes: "New capabilities roll out by enabling plugins one at a time, without redeploying the host."
 permalink: /approaches/plugin-architecture
 ---
 
-Plugin architecture (or Add-in architecture) allows a system to grow beyond its initial requirements. By providing stable extension points, the core application remains lean while allowing new features to be added, swapped, or removed without impacting the base system.
+Plugin architecture lets a system grow beyond its initial requirements: the core defines stable extension points, and features arrive as plugins that add, swap, or drop behavior without touching it. Richards catalogs the style as microkernel — a minimal core whose features are all plugins.
+
+The price sits in the contract: once third parties build against the API, the core team maintains a public product.
+
+![Plugin architecture: the host core owns extension-point contracts and a plugin registry; plugins implement the contracts and register at startup or runtime, so features can be added, swapped, or dropped without changing the core.](/assets/img/approaches/plugin-architecture.svg)
 
 ## How It Works
 
-The core application defines one or more **extension points** — typically interfaces, abstract base classes, or event types. Plugins implement those contracts and are discovered by the host.
-
-1. **Registration:** At startup or on demand, each plugin registers itself with the host's plugin registry, declaring which extension point it implements.
-2. **Discovery:** The host discovers available plugins by querying the registry without needing to know any concrete plugin types.
-3. **Execution:** When specific behavior is needed, the host invokes the extension point contract, which delegates the call to one or all registered plugins.
-
-**Common loading strategies:**
-
-- **Static (Classpath / File-system Scan):** Plugins are placed in a known directory; the host scans and loads them at startup.
-- **Service Locator / SPI (Java `ServiceLoader`, Python `entry_points`):** Plugins declare themselves in metadata; the host discovers them dynamically.
-- **Hot-plug / Hot-reload:** Plugins can be added, updated, or removed while the host is running (e.g., OSGi, VS Code extension host).
-- **Event-driven:** The host publishes lifecycle and data events; plugins subscribe to specific topics without direct coupling to the host's call stack.
-
-**Plugin isolation options:**
-
-| Isolation level | Mechanism | Trade-off |
-| :--- | :--- | :--- |
-| **None (In-process)** | Direct class loading | Maximum performance; any plugin crash kills the host. |
-| **Classloader isolation** | Separate `ClassLoader` | Prevents library version conflicts; moderate memory overhead. |
-| **Process isolation** | Plugin in subprocess | Strong fault isolation; high IPC latency. |
-| **Sandbox / WASM** | WebAssembly or VM guard | Maximum security and isolation; limited to specific language targets. |
+- The core declares extension points — interfaces, abstract classes, event topics — and owns their semantics.
+- Plugins implement a contract and register through discovery: directory scan, service registry (e.g. Java ServiceLoader, Python entry points), or runtime hot-plug.
+- The host invokes extension points without knowing concrete types; one or all registered plugins answer.
+- Isolation is a dial: in-process is fastest, classloader isolation prevents dependency conflicts, subprocess or sandbox contains crashes and malice — each step up costs latency.
 
 ## Failure Modes
 
-- **API versioning breakage:** Changing the core extension API breaks existing plugins; semantic versioning and long deprecation cycles are mandatory for public APIs.
-- **Resource Leaks:** Plugins that fail to release memory, file handles, or thread pools upon unloading eventually destabilize the host.
-- **Registration race conditions:** In dynamic environments, the host invokes an extension point before the required plugins have fully initialized or registered.
-- **Malicious plugins:** Without sandboxing, a plugin inherits the host's privileges, creating a significant security risk for third-party extensions.
-- **Performance unpredictability:** A single slow or blocking plugin executed synchronously can stall the entire host request-handling pipeline.
+- A breaking API change strands the plugin ecosystem; core upgrades stall until plugins catch up.
+- A plugin leaks memory, handles, or threads across unload cycles and slowly destabilizes the host.
+- The host invokes an extension point before plugins finish registering; behavior varies silently with startup timing.
+- An unsandboxed plugin runs with the host's privileges; one compromised extension becomes a supply-chain incident.
 
 ## Verification
 
-- **Compliance Tests:** For each extension point, maintain a suite of tests (e.g., a "TCK" or shared test base class) that all plugins must pass to ensure contract adherence.
-- **Fault Injection:** Use a "Chaos Plugin" that throws exceptions or times out to verify the host continues running with other plugins active.
-- **Unload/Reload Cycle:** Perform 100 consecutive load/unload cycles while monitoring memory usage to detect resource leaks in the plugin lifecycle.
-- **Latency Budgeting:** Measure the p99 invocation time for each extension point; alert if a single plugin increases total request latency by more than 10% over the baseline.
+- Every plugin passes the extension point's shared compliance test suite before release.
+- A chaos plugin that throws and hangs leaves the host and all other plugins serving.
+- 100 consecutive load/unload cycles show flat memory and handle counts.
+- Per-plugin p99 invocation time is tracked; one plugin adding over 10% to request latency triggers an alert.
 
 ## Variants and Related Tactics
 
-- **Micro-kernel:** A design where the core is reduced to a minimal engine and nearly all behavior, including built-in features, is implemented as plugins.
-- **Extension Hooks:** Named points (e.g., `before-save`, `after-login`) where external handlers can be attached; simpler but more limited than full interface implementation.
-- **Marketplace Model:** Distribution through a curated, versioned registry with automated quality and security checks.
+- Microkernel: the limiting case, where even built-in features are plugins — IDEs and module systems work this way.
+- Extension hooks: named attachment points (before-save, after-login) — simpler and weaker than full contracts.
+- Marketplace model: third-party plugins ship through a curated registry with automated quality and security gates.
+- Sidecar moves the same extend-without-modifying idea out of process, to deployment time.
 
 ## References
-- [Pattern: Microkernel (Plugin) Architecture](https://www.oreilly.com/library/view/software-architecture-patterns/9781491971437/ch03.html) — Mark Richards ([full citation](/references/#richards2022patterns))
-- [Eclipse Plugin Architecture](https://www.eclipse.org/articles/Article-Plug-in-architecture/plugin_architecture.html)
+
+- *Software Architecture Patterns*, 2nd ed. — Mark Richards (O'Reilly, 2022), the Microkernel chapter
+- *Pattern-Oriented Software Architecture, Volume 1* — Frank Buschmann et al. (Wiley, 1996), the Microkernel pattern

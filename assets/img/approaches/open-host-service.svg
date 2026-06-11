@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 520" font-family="'Atkinson Hyperlegible Next','Atkinson Hyperlegible',-apple-system,'Segoe UI',sans-serif" role="img" aria-labelledby="ohs-title ohs-desc">
+  <title id="ohs-title">Open Host Service with Published Language</title>
+  <desc id="ohs-desc">Inside the upstream bounded context, a translation layer maps the internal domain model to the Open Host Service; all consumers — including future ones — integrate through one open protocol whose requests, responses, and events are expressed in the published language, a documented and versioned shared model.</desc>
+
+  <defs>
+    <marker id="oarr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#444"/>
+    </marker>
+  </defs>
+
+  <!-- upstream bounded context -->
+  <rect x="40" y="48" width="390" height="290" rx="12" fill="none" stroke="#5fb49c" stroke-width="1.8" stroke-dasharray="7 5"/>
+  <text x="235" y="322" font-size="11.5" fill="#3d8a73" text-anchor="middle">upstream bounded context</text>
+
+  <!-- internal domain model -->
+  <g text-anchor="middle">
+    <rect x="64" y="140" width="160" height="84" rx="10" fill="#fff" stroke="#682d63" stroke-width="2.5"/>
+    <text x="144" y="176" font-size="14.5" fill="#682d63" font-weight="700">Internal</text>
+    <text x="144" y="195" font-size="14.5" fill="#682d63" font-weight="700">Domain Model</text>
+  </g>
+
+  <!-- translation -->
+  <line x1="224" y1="182" x2="282" y2="182" stroke="#444" stroke-width="2" marker-end="url(#oarr)"/>
+  <text x="253" y="170" font-size="11" fill="#666" text-anchor="middle">translate</text>
+
+  <!-- open host service on the boundary -->
+  <g text-anchor="middle">
+    <rect x="286" y="128" width="124" height="108" rx="10" fill="#eaf6f2" stroke="#5fb49c" stroke-width="2.5"/>
+    <text x="348" y="166" font-size="14.5" fill="#2f6e5b" font-weight="700">Open Host</text>
+    <text x="348" y="185" font-size="14.5" fill="#2f6e5b" font-weight="700">Service</text>
+    <text x="348" y="208" font-size="11" fill="#666">one open protocol</text>
+  </g>
+
+  <!-- consumers -> OHS -->
+  <line x1="688" y1="100" x2="414" y2="158" stroke="#444" stroke-width="2" marker-end="url(#oarr)"/>
+  <line x1="688" y1="182" x2="414" y2="182" stroke="#444" stroke-width="2" marker-end="url(#oarr)"/>
+  <line x1="688" y1="264" x2="414" y2="206" stroke="#444" stroke-width="2" marker-end="url(#oarr)"/>
+  <text x="551" y="148" font-size="11.5" fill="#666" text-anchor="middle">requests · responses · events</text>
+
+  <!-- consumers -->
+  <g text-anchor="middle">
+    <rect x="692" y="72" width="180" height="56" rx="8" fill="#f8f9fa" stroke="#00b8f5" stroke-width="2.5"/>
+    <text x="782" y="105" font-size="14" fill="#0077a3" font-weight="700">Consumer A</text>
+
+    <rect x="692" y="154" width="180" height="56" rx="8" fill="#f8f9fa" stroke="#00b8f5" stroke-width="2.5"/>
+    <text x="782" y="187" font-size="14" fill="#0077a3" font-weight="700">Consumer B</text>
+
+    <rect x="692" y="236" width="180" height="56" rx="8" fill="#f8f9fa" stroke="#00b8f5" stroke-width="2.5" stroke-dasharray="7 5"/>
+    <text x="782" y="263" font-size="14" fill="#0077a3" font-weight="700">Future Consumer</text>
+    <text x="782" y="281" font-size="11" fill="#666">unknown today</text>
+  </g>
+
+  <!-- published language -->
+  <g text-anchor="middle">
+    <rect x="446" y="356" width="230" height="92" rx="10" fill="#fff" stroke="#e88a55" stroke-width="2.5"/>
+    <text x="561" y="390" font-size="15" fill="#b05a24" font-weight="700">Published Language</text>
+    <text x="561" y="412" font-size="11.5" fill="#666">documented · versioned</text>
+    <text x="561" y="429" font-size="11.5" fill="#666">shared model (schema)</text>
+  </g>
+
+  <!-- both sides speak the published language -->
+  <line x1="380" y1="236" x2="490" y2="352" stroke="#e88a55" stroke-width="1.8" stroke-dasharray="3 4"/>
+  <line x1="744" y1="296" x2="640" y2="352" stroke="#e88a55" stroke-width="1.8" stroke-dasharray="3 4"/>
+  <text x="561" y="340" font-size="11.5" fill="#b05a24" text-anchor="middle">both sides speak it</text>
+
+  <text x="460" y="486" font-size="13" fill="#444" text-anchor="middle" font-weight="600">the host translates — consumers never see the internal model</text>
+  <text x="460" y="508" font-size="11.5" fill="#999" text-anchor="middle">new consumers integrate against language + documentation alone · no host-side change per consumer</text>
+</svg>

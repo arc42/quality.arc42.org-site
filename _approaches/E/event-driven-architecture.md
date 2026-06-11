@@ -56,7 +56,7 @@ The diagram shows the fan-out of one event type; in a running system, consumers 
 - Asynchronous messaging provides the transport beneath the style — queues, retries, dead-letter handling.
 - CQRS projects events into read-optimized views.
 - Choreography-style sagas coordinate distributed transactions purely through events, adding compensation on failure.
-- Event sourcing goes further: the event log is the system of record, and current state is derived by replay.
+- Event sourcing is the persistence-side counterpart: within one component, the event log is the system of record and current state derives from replay — a decision independent of how components communicate.
 
 ## References
 

@@ -318,8 +318,10 @@ function addMainNode(id, data, isRequirements, nodes, synonymMap = {}) {
 }
 
 /**
- * Build approach nodes and edges. Approaches connect to dimensions (tags)
- * and to the qualities they support (supported_qualities, canonical-resolved).
+ * Build approach nodes and edges. Approaches connect to dimensions (tags),
+ * to the qualities they support (supported_qualities, canonical-resolved),
+ * and to explicitly related approaches (related — declared one-sided; the
+ * approach layout renders the relation on both pages).
  * Tradeoffs are intentionally skipped for now to keep the toggled-on graph
  * legible — they can be added as a separate edge type later.
  *
@@ -349,6 +351,11 @@ function createApproachData(approachData, propertyNodes, nodes, edges, synonymMa
         for (let qSlug of supportedQualities) {
             qSlug = resolveCanonical(qSlug, synonymMap);
             edges.add({ source: id, target: qSlug });
+        }
+
+        for (let relId of parseList(data.related, ',')) {
+            relId = resolveCanonical(relId, synonymMap);
+            edges.add({ source: id, target: relId });
         }
 
         nodes.add({

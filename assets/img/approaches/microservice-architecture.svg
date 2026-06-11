@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 520" font-family="'Atkinson Hyperlegible Next','Atkinson Hyperlegible',-apple-system,'Segoe UI',sans-serif" role="img" aria-labelledby="ms-title ms-desc">
+  <title id="ms-title">Microservice architecture</title>
+  <desc id="ms-desc">Clients reach independently deployable services through an API gateway; each service owns its data store and team, calls peers through versioned APIs, and publishes asynchronous events to a broker — no shared database.</desc>
+
+  <defs>
+    <marker id="marr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#444"/>
+    </marker>
+    <marker id="marr-orange" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#e88a55"/>
+    </marker>
+  </defs>
+
+  <!-- Clients -->
+  <text x="460" y="40" font-size="14" fill="#222" font-weight="600" text-anchor="middle">Clients (web, mobile, partners)</text>
+  <line x1="460" y1="50" x2="460" y2="86" stroke="#444" stroke-width="2" marker-end="url(#marr)"/>
+
+  <!-- API Gateway -->
+  <rect x="280" y="90" width="360" height="52" rx="8" fill="#f8f9fa" stroke="#00b8f5" stroke-width="2.5"/>
+  <text x="460" y="113" font-size="15" fill="#0077a3" font-weight="700" text-anchor="middle">API Gateway</text>
+  <text x="460" y="131" font-size="11.5" fill="#666" text-anchor="middle">routing · authentication · rate limiting</text>
+
+  <!-- gateway -> services -->
+  <line x1="350" y1="142" x2="195" y2="195" stroke="#444" stroke-width="2" marker-end="url(#marr)"/>
+  <line x1="460" y1="142" x2="460" y2="195" stroke="#444" stroke-width="2" marker-end="url(#marr)"/>
+  <line x1="570" y1="142" x2="725" y2="195" stroke="#444" stroke-width="2" marker-end="url(#marr)"/>
+
+  <!-- Services -->
+  <g text-anchor="middle">
+    <rect x="100" y="200" width="190" height="120" rx="10" fill="#fff" stroke="#682d63" stroke-width="2.5"/>
+    <text x="195" y="228" font-size="15" fill="#682d63" font-weight="700">Catalog</text>
+    <ellipse cx="195" cy="280" rx="48" ry="10" fill="#eaf6f2" stroke="#5fb49c" stroke-width="1.8"/>
+    <path d="M 147 280 v 16 a 48 10 0 0 0 96 0 v -16" fill="#eaf6f2" stroke="#5fb49c" stroke-width="1.8"/>
+    <text x="195" y="343" font-size="11.5" fill="#777">Team A · own pipeline</text>
+
+    <rect x="365" y="200" width="190" height="120" rx="10" fill="#fff" stroke="#682d63" stroke-width="2.5"/>
+    <text x="460" y="228" font-size="15" fill="#682d63" font-weight="700">Checkout</text>
+    <ellipse cx="460" cy="280" rx="48" ry="10" fill="#eaf6f2" stroke="#5fb49c" stroke-width="1.8"/>
+    <path d="M 412 280 v 16 a 48 10 0 0 0 96 0 v -16" fill="#eaf6f2" stroke="#5fb49c" stroke-width="1.8"/>
+    <text x="460" y="343" font-size="11.5" fill="#777">Team B · own pipeline</text>
+
+    <rect x="630" y="200" width="190" height="120" rx="10" fill="#fff" stroke="#682d63" stroke-width="2.5"/>
+    <text x="725" y="228" font-size="15" fill="#682d63" font-weight="700">Payment</text>
+    <ellipse cx="725" cy="280" rx="48" ry="10" fill="#eaf6f2" stroke="#5fb49c" stroke-width="1.8"/>
+    <path d="M 677 280 v 16 a 48 10 0 0 0 96 0 v -16" fill="#eaf6f2" stroke="#5fb49c" stroke-width="1.8"/>
+    <text x="725" y="343" font-size="11.5" fill="#777">Team C · own pipeline</text>
+  </g>
+
+  <!-- sync call checkout -> payment -->
+  <line x1="555" y1="245" x2="625" y2="245" stroke="#444" stroke-width="2" marker-end="url(#marr)"/>
+  <text x="590" y="233" font-size="11.5" fill="#444" text-anchor="middle">API call</text>
+  <text x="590" y="262" font-size="10.5" fill="#999" text-anchor="middle">timeout + breaker</text>
+
+  <!-- async events to broker -->
+  <line x1="195" y1="320" x2="195" y2="425" stroke="#e88a55" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#marr-orange)"/>
+  <line x1="460" y1="320" x2="460" y2="425" stroke="#e88a55" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#marr-orange)"/>
+  <line x1="725" y1="425" x2="725" y2="320" stroke="#e88a55" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#marr-orange)"/>
+  <text x="320" y="400" font-size="11.5" fill="#b35e2e" text-anchor="middle">publish events</text>
+  <text x="800" y="400" font-size="11.5" fill="#b35e2e" text-anchor="middle">subscribe</text>
+
+  <!-- Broker -->
+  <rect x="100" y="430" width="720" height="46" rx="8" fill="#fff5ef" stroke="#e88a55" stroke-width="2"/>
+  <text x="460" y="458" font-size="13" fill="#b35e2e" font-weight="600" text-anchor="middle">Event broker — asynchronous integration, no shared database</text>
+
+  <text x="460" y="505" font-size="11.5" fill="#999" text-anchor="middle">each service: one business capability · one data store · one team · independent deploy and scale</text>
+</svg>

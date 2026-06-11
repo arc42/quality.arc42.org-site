@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 440" font-family="'Atkinson Hyperlegible Next','Atkinson Hyperlegible',-apple-system,'Segoe UI',sans-serif" role="img" aria-labelledby="ebr-title ebr-desc">
+  <title id="ebr-title">Externalized business rules</title>
+  <desc id="ebr-desc">The application sends input facts to a rule engine; the engine evaluates a versioned decision model, edited and reviewed by domain experts on its own release cadence, and returns the outcome plus the rules that fired.</desc>
+
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#444"/>
+    </marker>
+    <marker id="arr-teal" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#5fb49c"/>
+    </marker>
+    <marker id="arr-orange" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#e88a55"/>
+    </marker>
+  </defs>
+
+  <!-- Domain experts -->
+  <g text-anchor="middle">
+    <circle cx="610" cy="52" r="11" fill="none" stroke="#e88a55" stroke-width="2.5"/>
+    <path d="M 592 88 Q 610 66 628 88" fill="none" stroke="#e88a55" stroke-width="2.5"/>
+    <text x="687" y="62" font-size="14" fill="#b35e2e" font-weight="700">Domain experts</text>
+    <text x="687" y="80" font-size="12" fill="#777">own the policy</text>
+  </g>
+  <line x1="610" y1="94" x2="610" y2="128" stroke="#e88a55" stroke-width="2" marker-end="url(#arr-orange)"/>
+  <text x="622" y="116" font-size="12" fill="#b35e2e">edit &amp; review</text>
+
+  <!-- Decision model -->
+  <rect x="460" y="133" width="300" height="130" rx="8" fill="#fff" stroke="#5fb49c" stroke-width="2.5"/>
+  <text x="610" y="156" font-size="15" fill="#3e8a76" font-weight="700" text-anchor="middle">Decision Model</text>
+  <text x="610" y="173" font-size="11.5" fill="#777" text-anchor="middle">versioned · reviewed · tested · own release cadence</text>
+  <!-- mini decision table -->
+  <g font-size="11" fill="#333">
+    <rect x="485" y="184" width="250" height="64" fill="#f8f9fa" stroke="#ccc" stroke-width="1"/>
+    <line x1="485" y1="200" x2="735" y2="200" stroke="#ccc"/>
+    <line x1="485" y1="216" x2="735" y2="216" stroke="#eee"/>
+    <line x1="485" y1="232" x2="735" y2="232" stroke="#eee"/>
+    <line x1="575" y1="184" x2="575" y2="248" stroke="#ccc"/>
+    <line x1="655" y1="184" x2="655" y2="248" stroke="#ccc"/>
+    <text x="492" y="196" font-weight="700">age</text>
+    <text x="582" y="196" font-weight="700">claims</text>
+    <text x="662" y="196" font-weight="700">risk class</text>
+    <text x="492" y="212">&lt; 25</text><text x="582" y="212">any</text><text x="662" y="212">high</text>
+    <text x="492" y="228">25–65</text><text x="582" y="228">≤ 2</text><text x="662" y="228">standard</text>
+    <text x="492" y="244">&gt; 65</text><text x="582" y="244">any</text><text x="662" y="244">manual review</text>
+  </g>
+
+  <!-- deploy arrow: model -> engine -->
+  <line x1="510" y1="263" x2="445" y2="312" stroke="#5fb49c" stroke-width="2" marker-end="url(#arr-teal)"/>
+  <text x="505" y="296" font-size="12.5" fill="#3e8a76" font-weight="600">deploy independently</text>
+
+  <!-- Application -->
+  <rect x="60" y="295" width="190" height="86" rx="8" fill="#fff" stroke="#682d63" stroke-width="2.5"/>
+  <text x="155" y="332" font-size="16" fill="#682d63" font-weight="700" text-anchor="middle">Application</text>
+  <text x="155" y="353" font-size="12" fill="#555" text-anchor="middle">unchanged, undeployed</text>
+
+  <!-- Rule engine -->
+  <rect x="335" y="295" width="200" height="86" rx="8" fill="#fff" stroke="#00b8f5" stroke-width="2.5"/>
+  <text x="435" y="332" font-size="16" fill="#0077a3" font-weight="700" text-anchor="middle">Rule Engine</text>
+  <text x="435" y="353" font-size="12" fill="#555" text-anchor="middle">evaluates hit policy</text>
+
+  <!-- request / response arrows -->
+  <line x1="250" y1="318" x2="330" y2="318" stroke="#444" stroke-width="2" marker-end="url(#arr)"/>
+  <text x="290" y="306" font-size="12.5" fill="#444" font-weight="600" text-anchor="middle">facts</text>
+  <line x1="330" y1="358" x2="250" y2="358" stroke="#444" stroke-width="2" marker-end="url(#arr)"/>
+  <text x="290" y="378" font-size="12.5" fill="#444" font-weight="600" text-anchor="middle">outcome</text>
+  <text x="290" y="393" font-size="11.5" fill="#777" text-anchor="middle">+ rules that fired</text>
+
+  <!-- cadence note -->
+  <text x="155" y="408" font-size="11.5" fill="#777" text-anchor="middle">releases quarterly</text>
+  <text x="660" y="285" font-size="11.5" fill="#777" text-anchor="middle">changes weekly</text>
+</svg>
