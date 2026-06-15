@@ -35,7 +35,7 @@
   "devDependencies": {
     "@axe-core/playwright": "^4.11.3",
     "@playwright/test": "1.60.0",
-    "esbuild": "^0.28.0",
+    "esbuild": "^0.28.1",
     "gray-matter": "^4.0.3",
     "lighthouse": "^13.3.0",
     "playwright-lighthouse": "^4.0.0",
