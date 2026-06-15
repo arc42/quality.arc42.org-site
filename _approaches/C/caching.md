@@ -19,6 +19,9 @@ related_requirements_notes:
 intent: "Store frequently accessed data closer to the consumer to reduce latency and load on backend systems."
 mechanism: "Interpose a fast-access storage layer between the consumer and the source, check it first for a match (hit), and only fetch from the source (miss) when necessary, optionally updating the cache according to read/write strategies."
 applicability: "Use when data is read significantly more often than it is written, when slight staleness is acceptable, and when backend latency or load is a concern. Avoid when data must always be real-time consistent or when the working set exceeds available cache memory."
+related: [content-delivery-network]
+related_notes:
+  content-delivery-network: "A CDN is caching pushed to the network edge: the same hit-ratio, TTL, and invalidation concerns, operated as a global fleet close to users."
 permalink: /approaches/caching
 ---
 
@@ -40,7 +43,7 @@ Caching places a fast-access storage layer (near-memory or distributed) between 
 ## Failure Modes
 
 - **Stale data**: Serving outdated information because the source changed but the cache has not yet expired or been invalidated.
-- **Cache stampede (Thunderous Herd)**: Many concurrent requests for the same expired key all trigger a miss simultaneously, overwhelming the backend with redundant recomputations.
+- **Cache stampede (Thundering Herd)**: Many concurrent requests for the same expired key all trigger a miss simultaneously, overwhelming the backend with redundant recomputations.
 - **Cold start**: After a restart or deployment, the cache is empty, causing all initial requests to hit the backend at once.
 - **Memory pressure**: An unbounded cache consumes excessive memory, leading to garbage collection pauses or system instability.
 - **Cache poisoning**: Incorrect, unauthorized, or corrupted data enters the cache and is served repeatedly to multiple users.
@@ -55,7 +58,7 @@ Caching places a fast-access storage layer (near-memory or distributed) between 
 ## Variants and Related Tactics
 
 - **In-process cache**: Data stored in application memory (e.g., hash maps, Caffeine). Fastest access, but not shared across instances.
-- **Distributed cache**: Shared cache across multiple application instances (e.g., Redis, Memcached, Hazelcast). Scales horizontally and keeps consistency across the cluster.
+- **Distributed cache**: Shared cache across multiple application instances (e.g., Redis, Memcached, Hazelcast). Scales horizontally; cluster-wide consistency is configurable and typically eventual.
 - **CDN caching**: Content cached at edge locations close to users. Essential for static or semi-static assets in global applications.
 - **HTTP caching**: Browser and proxy caches using standard headers (Cache-Control, ETag).
 - **Memoization**: Caching the results of pure functions based on their input parameters.

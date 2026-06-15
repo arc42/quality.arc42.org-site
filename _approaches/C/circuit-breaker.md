@@ -19,6 +19,9 @@ related_requirements_notes:
 intent: "Prevent a failure in one part of the system from cascading to others by failing fast when a remote service is struggling."
 mechanism: "Wrap remote calls in a stateful guard that monitors success/failure rates; it trips to an 'Open' state to reject calls immediately when failures exceed a threshold, and probes for recovery via a 'Half-Open' state after a timeout."
 applicability: "Use when making remote calls (API, DB, etc.) that can fail or become slow and where a fail-fast response is better than waiting. Avoid for local in-process calls where overhead exceeds benefit or when operations must be retried immediately without delay."
+related: [bulkheads]
+related_notes:
+  bulkheads: "Complementary fault isolation — bulkheads cap how much capacity a failing dependency can consume; the breaker stops calling it altogether. Together they bound both sides of the blast radius."
 permalink: /approaches/circuit-breaker
 ---
 

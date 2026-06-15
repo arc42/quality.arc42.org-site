@@ -8,7 +8,7 @@ supported_qualities_notes:
   confidentiality: Secrets remain encrypted at rest and in transit, appearing in plaintext only within the memory space of the authorized consuming process.
   access-control: Fine-grained policies ensure that each service identity (e.g., K8s ServiceAccount, IAM role) accesses only the specific secrets required for its role.
   auditability: Every lifecycle event — creation, access, rotation, and revocation — is recorded in an immutable trail for forensic and compliance use.
-  compliance: Automated rotation and centralized auditing fulfill mandatory technical controls for PCI DSS, SOC 2, and ISO 27001.
+  compliance: Automated rotation and centralized auditing support controls commonly required by PCI DSS, SOC 2 audits, and ISO 27001 Annex A.
   operability: Decouples the secret lifecycle (rotation/updates) from application deployment, reducing manual toil and "expired credential" outages.
 tradeoffs: [availability, latency, code-complexity]
 tradeoff_notes:

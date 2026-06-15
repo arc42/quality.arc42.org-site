@@ -15,6 +15,9 @@ tradeoff_notes:
 intent: "Release a new version with zero downtime by running it on an idle, identical environment, then switching all traffic to it at once."
 mechanism: "Keep two identical application environments in production, blue and green. One serves live traffic while the other stays idle. Deploy and validate the new version on the idle one, then repoint the router or load balancer to it. The previous environment stays running as the rollback target."
 applicability: "Use for stateless or compatibility-tolerant services behind a router where downtime windows are costly and fast rollback matters. Skip when environment duplication is unaffordable, or when stateful schema and data migrations cannot be made compatible across both versions — then a rolling or canary release fits better."
+related: [canary-deployment]
+related_notes:
+  canary-deployment: "The two canonical safe-rollout tactics: blue-green flips all traffic at once for instant rollback; a canary widens exposure step by step under live metrics."
 related_requirements: [available-7-24-99, low-change-failure-rate, unavailability-max-2-minutes]
 related_requirements_notes:
   available-7-24-99: "Cutting over to a pre-warmed environment releases new versions without a downtime window, protecting the monthly uptime objective."

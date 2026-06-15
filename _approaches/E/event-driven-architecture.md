@@ -17,6 +17,9 @@ tradeoff_notes:
 intent: "Connect components through asynchronous events so producers publish facts without knowing their consumers, and new behavior attaches by subscription instead of modification."
 mechanism: "Components publish events — immutable records of completed state changes — to a broker. Subscribed consumers react independently with their own logic and may emit further events. The producer's responsibility ends at publication; routing, fan-out, and delivery belong to the broker, so the consumer set changes freely."
 applicability: "Use when several consumers react to the same business facts, integrations change often, and bounded staleness is acceptable. Skip when the caller needs an immediate, strongly consistent answer in the request path, or when so few components interact that a broker adds more moving parts than it removes."
+related: [asynchronous-messaging]
+related_notes:
+  asynchronous-messaging: "Asynchronous messaging moves work off the request path between known parties; event-driven architecture layers an architectural style on the same broker mechanism — topology defined by subscriptions."
 related_requirements: [service-loose-coupling-change-blast-radius, add-new-product]
 related_requirements_notes:
   service-loose-coupling-change-blast-radius: "Events as the only coupling surface keep most changes inside one service and bound how many consumers a contract change touches."

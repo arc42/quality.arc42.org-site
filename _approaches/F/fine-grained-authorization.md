@@ -61,7 +61,7 @@ This approach must be enforced at the business boundary, not only in the UI or a
 ## Variants and Related Tactics
 
 - RBAC-only is the simpler variant: sufficient when the permission model is stable, the number of roles is manageable, and context does not materially change access decisions.
-- Relationship-Based Access Control (ReBAC), as pioneered by Google Zanzibar, models authorization as graph relationships (owner-of, member-of, viewer-of) and evaluates access by traversing the graph — well suited for document sharing and social-graph-style permissions.
+- Relationship-Based Access Control (ReBAC), implemented at global scale by Google's Zanzibar, models authorization as graph relationships (owner-of, member-of, viewer-of) and evaluates access by traversing the graph — well suited for document sharing and social-graph-style permissions.
 - Policy-as-code engines (Open Policy Agent/Rego, AWS Cedar, Casbin) externalize authorization logic from application code into declarative, testable, versionable policies.
 - [Least Privilege](/approaches/least-privilege) is the design principle that fine-grained authorization implements: every actor gets only the permissions required for its function.
 - [Strong Authentication (MFA / OIDC)](/approaches/strong-authentication) provides the verified identity that authorization decisions depend on — authorization is only as trustworthy as the identity signal it receives.

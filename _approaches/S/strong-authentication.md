@@ -9,7 +9,7 @@ supported_qualities_notes:
   access-control: Reliable identity verification is the prerequisite for all access-control decisions — [Least Privilege](/approaches/least-privilege) only works if the identity is trustworthy.
   accountability: Actions can be attributed to a verified identity rather than a shared or spoofed account.
   non-repudiation: Strong authentication binds actions to a verified identity, making it difficult for actors to deny having performed them.
-  compliance: Regulatory frameworks (PCI DSS, NIST 800-63, GDPR for sensitive processing) require multi-factor or phishing-resistant authentication for privileged access.
+  compliance: PCI DSS mandates multi-factor authentication for privileged and remote access; NIST SP 800-63 supplies the assurance levels (AAL1–AAL3) that audits and regulations commonly reference.
 tradeoffs: [usability, availability, operability]
 tradeoff_notes:
   usability: Additional authentication steps (second factor, biometric, redirect to identity provider) add friction to every login and can frustrate users.
@@ -21,7 +21,7 @@ related_requirements_notes:
   access-control-is-enforced: Access control decisions depend on a trustworthy identity — strong authentication is the foundation.
   access-control-via-sso: SSO via OIDC centralizes authentication and simplifies the user experience while maintaining strong identity verification.
   governance-policy-enforcement: Authentication policies (MFA required for admin, session timeout, device trust) are governance controls that must be enforceable and auditable.
-intent: "Verify the identity of every actor — human user, service, or device — with sufficient assurance that credential-based attacks (phishing, credential stuffing, brute force) cannot succeed, providing a trustworthy foundation for all downstream access-control decisions."
+intent: "Verify the identity of every actor — human user, service, or device — with sufficient assurance that credential-based attacks (phishing, credential stuffing, brute force) rarely succeed, providing a trustworthy foundation for all downstream access-control decisions."
 mechanism: "Authenticate actors using at least two independent factors (knowledge, possession, inherence) or a phishing-resistant protocol (FIDO2/WebAuthn, mutual TLS); centralize identity verification through an OIDC-compliant identity provider that issues short-lived, signed tokens; enforce authentication at every trust boundary and re-authenticate for sensitive operations."
 applicability: "Use for any system that distinguishes between actors and grants differentiated access — which is nearly every system. Multi-factor is mandatory for privileged access (admin, infrastructure, financial). Phishing-resistant methods (FIDO2/WebAuthn) are preferred for high-value targets. Single-factor password authentication is acceptable only for low-risk, non-sensitive contexts. Service-to-service authentication should use mutual TLS or signed JWT tokens, not shared secrets."
 permalink: /approaches/strong-authentication
@@ -59,7 +59,7 @@ Centralizing authentication through an OIDC-compliant identity provider (IdP) gi
 
 ## Variants and Related Tactics
 
-- FIDO2/WebAuthn eliminates passwords entirely — the authenticator (hardware key or platform biometric) performs a challenge-response that is bound to the origin, making phishing structurally impossible.
+- FIDO2/WebAuthn eliminates passwords entirely — the authenticator (hardware key or platform biometric) performs a challenge-response bound to the origin, defeating credential-harvesting phishing. Enrolled fallback factors and stolen session tokens remain residual attack paths.
 - Mutual TLS (mTLS) provides certificate-based authentication for service-to-service communication, combining identity verification with [Encryption at Rest + in Transit](/approaches/encryption-at-rest-and-in-transit).
 - Step-up authentication dynamically requires a stronger factor for high-risk operations based on transaction risk scoring.
 - [Least Privilege](/approaches/least-privilege) depends on strong authentication: permissions are only meaningful when the identity claiming them is verified.

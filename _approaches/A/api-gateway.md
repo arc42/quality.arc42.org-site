@@ -8,7 +8,7 @@ supported_qualities_notes:
   interoperability: Translates between client-facing protocols (REST, GraphQL, WebSocket) and internal protocols, shielding consumers from backend technology choices.
   observability: Produces a uniform stream of access logs, latency histograms, error rates, and distributed-trace headers for every request entering the system.
   scalability: Offloads cross-cutting work from backend services and absorbs traffic spikes via connection pooling, request buffering, and integration with autoscaling.
-  availability: Fails over transparently via health-check routing and retry-with-jitter, so transient backend failures stay hidden from callers.
+  availability: Health-check routing steers traffic away from failing backends, and retry-with-jitter masks transient failures on idempotent routes — provided the gateway fleet itself is deployed redundantly; a single fleet is a single point of failure.
   modularity: Decouples client-facing API contracts from internal service boundaries, allowing backend teams to split, merge, or rewrite services without breaking consumers.
 tradeoffs: [latency, operability, loose-coupling]
 tradeoff_notes:
@@ -37,7 +37,7 @@ The pattern becomes especially valuable once a system grows beyond a handful of 
 ## How It Works
 
 - **TLS Termination and Re-encryption**: The gateway terminates client-facing TLS, inspects and validates the request, then forwards it to the backend over internal TLS (or mTLS). This concentrates certificate management and cipher-suite policy in one fleet. See [Encryption at Rest + in Transit](/approaches/encryption-at-rest-and-in-transit) for the underlying principles.
-- **Authentication and Coarse Authorization**: Validate tokens (JWT, OAuth 2.0, API keys) on every inbound request. Reject unauthenticated or expired credentials with `401`/`403` before the request reaches any backend. Delegate fine-grained permission checks to the owning service — the gateway enforces identity, not business rules. See [Strong Authentication](/approaches/strong-authentication) and [Fine-Grained Authorization](/approaches/fine-grained-authorization).
+- **Authentication and Coarse Authorization**: Validate OAuth 2.0 access tokens (typically signed JWTs) and API keys on every inbound request; user authentication itself happens upstream at the identity provider via an OpenID Connect flow. Reject unauthenticated or expired credentials with `401`/`403` before the request reaches any backend. Delegate fine-grained permission checks to the owning service — the gateway enforces identity, not business rules. See [Strong Authentication](/approaches/strong-authentication) and [Fine-Grained Authorization](/approaches/fine-grained-authorization).
 - **Rate Limiting and Admission Control**: Enforce per-client, per-tenant, and per-route request budgets at the edge. Reject excess traffic with `429 Too Many Requests` and `Retry-After`, shedding load before it reaches downstream pools. See [Rate Limiting](/approaches/rate-limiting) for algorithm and key-selection details.
 - **Declarative Routing**: Map external URL paths, headers, or hostnames to internal service endpoints via configuration, not code. Support canary releases, blue-green deployments, and A/B routing by shifting traffic weights without redeploying backend services.
 - **Protocol Translation**: Accept client-preferred protocols (REST/JSON, GraphQL, gRPC-Web) and translate to the internal protocol the backend expects. This shields consumers from internal technology choices and simplifies client integration.
@@ -73,6 +73,6 @@ The pattern becomes especially valuable once a system grows beyond a handful of 
 ## References
 
 - [OWASP API Security Top 10](https://owasp.org/API-Security/) — threat model and mitigation guidance for API-layer security
-- [RFC 6749: The OAuth 2.0 Authorization Framework](https://www.rfc-editor.org/rfc/rfc6749) — token-based authentication and delegation model enforced at the gateway
+- [RFC 6749: The OAuth 2.0 Authorization Framework](https://www.rfc-editor.org/rfc/rfc6749) — the delegated-authorization framework whose access tokens the gateway validates; OpenID Connect layers authentication on top
 - [Software Architecture in Practice](https://www.sei.cmu.edu/library/software-architecture-in-practice-fourth-edition/) — Bass, Clements & Kazman ([full citation](/references/#bass2021software))
 - [Release It!](https://pragprog.com/titles/mnee2/release-it-second-edition/) — Michael Nygard ([full citation](/references/#nygard2018release))

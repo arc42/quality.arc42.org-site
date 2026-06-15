@@ -11,7 +11,7 @@ supported_qualities_notes:
   modifiability: Localizes behavior changes to specific conditional paths without affecting core logic.
 tradeoffs: [maintainability, code-complexity, reliability, observability]
 tradeoff_notes:
-  maintainability: Long-lived toggles create technical debt and dead paths.
+  maintainability: Toggles that outlive their purpose create technical debt and dead paths; only permission toggles are long-lived by design.
   code-complexity: Branching logic multiplies execution paths and test effort.
   reliability: Inconsistent flag evaluation can produce incoherent behavior.
   observability: Monitoring which users see which toggle state adds operational logging overhead.
@@ -62,7 +62,7 @@ Every toggle is a named boolean (or multi-variant) condition evaluated at runtim
 
 ## Verification
 
-- **Automated Inventory**: Keep a registry of all active toggles with their expected expiry dates; fail the build or send an alert if any toggle is older than its maximum allowed lifespan (e.g., 90 days).
+- **Automated Inventory**: Keep a registry of all active toggles with category and expected expiry date; fail the build or send an alert when a release, experiment, or ops toggle outlives its maximum lifespan (e.g., 90 days) — permission toggles are exempt but reviewed on a schedule.
 - **Dual-Path Testing**: For critical toggles, run the automated test suite with the toggle both ON and OFF in CI to ensure no regressions in either path.
 - **Canary Monitoring**: After each increment of a percentage rollout, monitor error rates, p95 latency, and key business metrics (e.g., conversion) for a defined period (e.g., 30 minutes) before proceeding.
 - **Kill-switch Drill**: Periodically verify that an ops toggle can be flipped to OFF and the change propagates across the system within the SLA recovery window (e.g., ≤ 5 minutes) without a code deployment.

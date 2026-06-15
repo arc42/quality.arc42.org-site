@@ -17,9 +17,8 @@ tradeoff_notes:
 intent: "Let third parties or independent teams extend system behavior without modifying or redeploying its core."
 mechanism: "Define a stable extension point (API, interface, or event bus) in the core; plugins register themselves at startup or runtime, and the host invokes them through the shared contract."
 applicability: "Use when the capability set varies or is unknown — third-party extensions, per-customer feature combinations, hardware drivers. Skip when the extension set is small and fixed: a stable public API is permanent work that a handful of known variants never repays."
-related: [sidecar, externalized-business-rules]
+related: [externalized-business-rules]
 related_notes:
-  sidecar: "A sidecar extends an application out-of-process at deployment time, with no extension points; plugins extend in-process through design-time contracts."
   externalized-business-rules: "Both defer binding of volatile behavior: rules externalize decision logic declaratively, plugins extend the system imperatively through code."
 related_requirements: [compatible-with-5-battery-providers, service-loose-coupling-change-blast-radius, fast-rollout-of-changes]
 related_requirements_notes:

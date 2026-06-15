@@ -24,6 +24,9 @@ related_requirements_notes:
 intent: "Protect scarce resources by capping request admission per client, identity, tenant, or route over time, so brute-force attempts, abusive automation, and sudden traffic spikes cannot exhaust shared capacity or overwhelm sensitive endpoints."
 mechanism: "Enforce request budgets as close to ingress as possible using deterministic algorithms such as token bucket or sliding window, keyed by IP address, account, API key, tenant, route, or operation cost as appropriate; apply layered quotas for global traffic, high-risk endpoints, and expensive handlers; reject excess requests immediately with explicit backpressure such as `429 Too Many Requests`, optional `Retry-After`, and structured audit events for tuning and incident response."
 applicability: "Use on any internet-facing endpoint and any internal API where overload from misuse, retries, or fan-out can exhaust shared resources. Most valuable on authentication, password reset, search, export, and write-heavy endpoints. Do not treat it as the only DDoS control when upstream bandwidth can be saturated before the request reaches the application; pair it with upstream filtering, caching, bulkheads, and autoscaling."
+related: [manage-event-arrival]
+related_notes:
+  manage-event-arrival: "Overlapping territory, different contracts: Manage Event Arrival negotiates a per-source ceiling with known, contractable producers; rate limiting imposes budgets unilaterally at the edge on anonymous or untrusted callers."
 permalink: /approaches/rate-limiting
 ---
 

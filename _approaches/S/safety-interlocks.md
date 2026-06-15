@@ -20,7 +20,7 @@ related_requirements_notes:
   shutdown-to-safe-state: A failed interlock check can trigger a safe-state shutdown when the precondition violation indicates an active hazard.
   safety-requirements-traceable-to-evidence: Interlock logic and its test results provide traceable evidence that safety constraints are enforced.
 intent: "Enforce verified preconditions before allowing hazardous operations to execute, ensuring the system never enters a dangerous state through premature, accidental, or unauthorized action."
-mechanism: "Guard every hazardous operation with a gate that evaluates required preconditions — sensor readings, system state, operator confirmations, or environmental conditions; block execution and provide explicit feedback when any precondition is not met; log every check, pass, and override for audit."
+mechanism: "Guard every hazardous operation with a gate that evaluates required preconditions — sensor readings, system state, operator confirmations, or environmental conditions; when any precondition is not met or cannot be evaluated, drive the system to the default the hazard analysis declared safe — typically blocking execution — and provide explicit feedback; log every check, pass, and override for audit."
 applicability: "Use wherever an operation can cause harm to people, equipment, data, or environment if executed under wrong conditions — industrial control, medical devices, financial transactions with irreversible effect, infrastructure provisioning. Avoid for low-risk operations where the gate overhead reduces throughput without meaningful safety benefit."
 permalink: /approaches/safety-interlocks
 ---
@@ -35,7 +35,7 @@ Whether "safe" means fail-closed or fail-open depends on the primary hazard. A f
 
 - Identify every operation that can cause harm if executed under wrong conditions, and for each, define the preconditions that must hold before execution is safe.
 - Implement each precondition as a verifiable check: a sensor reading within a defined range, a state-machine transition that is valid, an operator confirmation received within a time window, or a multi-party authorization quorum.
-- Gate the operation behind the conjunction of all its preconditions — if any check fails or cannot be evaluated, block execution and return an explicit reason.
+- Gate the operation behind the conjunction of all its preconditions — if any check fails or cannot be evaluated, fall to the declared safe default (usually: block execution) and return an explicit reason.
 - Log every interlock evaluation — which preconditions were checked, which passed, which failed, and whether any bypass was invoked — to provide a tamper-evident audit trail.
 - Define a formal bypass governance process for maintenance or emergency scenarios: require elevated authorization, time-limit the bypass, log it separately, and alert operations.
 

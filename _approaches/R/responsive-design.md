@@ -39,7 +39,7 @@ Responsive design rests on three core technical pillars:
 
 - **Mobile-First Workflow:** Start by styling for the smallest screen (single column, simple navigation) and use `min-width` media queries to add complexity as more screen real estate becomes available.
 - **Content-Driven Breakpoints:** Place breakpoints where the content begins to look "broken" or becomes hard to read, rather than targeting specific device dimensions (e.g., "iPhone 15 width").
-- **Touch Targets:** Ensure interactive elements (buttons, links) are at least 44 × 44 pixels on touch-enabled viewports to prevent "fat finger" errors (WCAG 2.5.5).
+- **Touch Targets:** Ensure interactive elements (buttons, links) meet the WCAG 2.2 AA minimum of 24 × 24 pixels (SC 2.5.8); 44 × 44 pixels — the Level-AAA target of SC 2.5.5 — remains good practice on touch-enabled viewports to prevent "fat finger" errors.
 - **Typography Scaling:** Use relative units like `rem` or `em` for font sizes so that text scales appropriately with user preferences and viewport changes.
 
 ## Failure Modes
@@ -53,9 +53,9 @@ Responsive design rests on three core technical pillars:
 ## Verification
 
 - **Multi-Viewport Testing:** Verify the layout at common widths (320px, 768px, 1024px, 1440px) using browser dev tools or real device clouds (e.g., BrowserStack).
-- **Orientation Stress Test:** Rotate mobile devices and tablets 180 degrees to ensure the layout re-flows correctly without losing context or scroll position.
+- **Orientation Stress Test:** Rotate mobile devices and tablets 90 degrees (portrait ↔ landscape) to ensure the layout re-flows correctly without losing context or scroll position.
 - **Core Web Vitals (Mobile):** Measure "Largest Contentful Paint" (LCP) and "Cumulative Layout Shift" (CLS) on a throttled 4G connection; target LCP ≤ 2.5s and CLS ≤ 0.1.
-- **Target Size Audit:** Automate checks to ensure all interactive elements on mobile viewports meet the 44px minimum touch target size.
+- **Target Size Audit:** Automate checks to ensure all interactive elements on mobile viewports meet the WCAG 2.2 SC 2.5.8 minimum of 24 × 24 px; flag targets below the recommended 44 px.
 - **Visual Regression Testing:** Use automated tools to capture and compare screenshots across multiple breakpoints in CI to detect layout shifts caused by CSS changes.
 
 ## Variants and Related Tactics
@@ -67,4 +67,4 @@ Responsive design rests on three core technical pillars:
 ## References
 - [Responsive Web Design](https://alistapart.com/article/responsive-web-design/) — Ethan Marcotte ([full citation](/references/#marcotte2011responsive))
 - [MDN: Responsive Design](https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Responsive_Design)
-- [WCAG 2.5.5: Target Size](https://www.w3.org/WAI/WCAG21/Understanding/target-size.html)
+- [WCAG 2.2 SC 2.5.8: Target Size (Minimum)](https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum.html) — the Level-AA baseline; [SC 2.5.5: Target Size (Enhanced)](https://www.w3.org/WAI/WCAG22/Understanding/target-size-enhanced.html) is the stricter AAA target

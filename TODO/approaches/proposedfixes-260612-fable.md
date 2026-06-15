@@ -27,7 +27,7 @@ Prioritized P1 (do first) → P6 (decide once, then mechanical). Mark items ✅ 
 - [x] ✅ 2026-06-12 (Claude — expiry scoped to release/experiment/ops; permission toggles long-lived by design) **feature-toggles**: applicability demands all toggles expire, but the body's category table legitimizes long-lived Permission toggles. Scope the expiry rule to release/experiment/ops toggles.
 - [x] ✅ 2026-06-12 (Claude — "Most service meshes build on it, though sidecar-less variants are emerging.") **sidecar**: "today it underpins every service mesh" — contradicted by the page's own Variants (ambient mode, eBPF node proxies). Soften to "most service meshes" or "historically underpinned".
 - [x] ✅ 2026-06-12 (Claude — mapping REMOVED, fits the page's own "skip for anonymous public traffic" applicability; graph edge gone → Docker restart needed) **manage-event-arrival**: the `related_requirements` mapping to `handle-sudden-increase-in-traffic` contradicts both pages — the requirement demands ≥99% success *during* a 300% surge (absorb), while this tactic sheds/refuses excess. Remove the mapping or rewrite the note to say what the tactic actually contributes (protecting the core path while shedding).
-- [ ] **api-gateway**: availability note claims transparent failover universally, while the body's Single-Point-of-Failure mode says the opposite unless the gateway fleet is redundant; retries also only safe for idempotent routes. Condition the note.
+- [x] ✅ 2026-06-12 (Claude — note now conditioned on a redundant gateway fleet and idempotent-route retries) **api-gateway**: availability note claims transparent failover universally, while the body's Single-Point-of-Failure mode says the opposite unless the gateway fleet is redundant; retries also only safe for idempotent routes. Condition the note.
 
 ## P4 — References policy violations (template forbids vendor/product docs)
 
@@ -37,8 +37,8 @@ Prioritized P1 (do first) → P6 (decide once, then mechanical). Mark items ✅ 
 
 ## P5 — Graph & relationship curation (editorial judgment, one-sided `related:` per convention)
 
-- [ ] **Remove the duplicate declaration** `plugin-architecture ↔ sidecar` (declared on both sides; keep the sidecar side, notes are near-identical).
-- [ ] **Add the strongest missing `related:` links** (declare on the side named first; write notes symmetrically):
+- [x] ✅ 2026-06-12 (Claude — removed from plugin-architecture; sidecar side kept) **Remove the duplicate declaration** `plugin-architecture ↔ sidecar` (declared on both sides; keep the sidecar side, notes are near-identical).
+- [x] ✅ 2026-06-12 (Claude — all 8 first-tier links added, one-sided, slugs verified against the content tree; second tier still open, decide after a look at the regenerated graph) **Add the strongest missing `related:` links** (declare on the side named first; write notes symmetrically):
   - blue-green-deployment → canary-deployment — the two canonical safe-rollout variants, constantly compared.
   - cqrs → event-sourcing — canonical literature pairing, constantly conflated; currently unlinked.
   - event-driven-architecture → asynchronous-messaging — style layered directly on the mechanism.

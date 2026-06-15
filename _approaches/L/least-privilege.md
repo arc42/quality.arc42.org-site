@@ -23,6 +23,9 @@ related_requirements_notes:
 intent: "Grant every actor and process only the minimum permissions required for its specific function, so that a compromise or error in one part of the system cannot escalate into broader unauthorized access."
 mechanism: "Assign permissions and policies based on the specific actions each actor or process needs to perform; default to deny-all and grant explicit, scoped permissions; enforce at every trust boundary — API gateway, service-to-service call, database connection, filesystem access — and review regularly to revoke permissions that are no longer needed."
 applicability: "Use as a foundational security principle in any system that handles sensitive data or exposes operations with significant impact. Particularly critical in multi-tenant systems, systems under regulatory oversight, and environments with many service-to-service integrations. The principle applies at every layer: user roles, service accounts, database grants, cloud IAM policies, and container security contexts."
+related: [fine-grained-authorization]
+related_notes:
+  fine-grained-authorization: "Principle and enforcement mechanism: least privilege says every actor gets only the permissions its function needs; fine-grained authorization is the machinery that evaluates and enforces those permissions per request."
 permalink: /approaches/least-privilege
 ---
 

@@ -16,6 +16,9 @@ tradeoff_notes:
 intent: "Split live traffic between variants with randomized assignment, then ship the version that measurably improves the target metric."
 mechanism: "Randomly assign incoming users to a control (A) and one or more treatments (B), each seeing a different variant. Log a predefined success metric per user, run until the sample reaches statistical power, then compare variants with a significance test and promote the winner."
 applicability: "Use when you have enough traffic to reach significance quickly, a clear quantitative success metric, and reliable per-user logging. Skip when traffic is too low for a timely verdict, the change has no measurable outcome, or ethics or safety forbid withholding it from a group."
+related: [canary-deployment]
+related_notes:
+  canary-deployment: "Same traffic-splitting infrastructure, different question: a canary asks whether the new version is safe to roll out; an A/B test asks which variant serves users better."
 related_requirements: [first-time-onboarding-without-errors, user-tries-primary-function, new-features-introduct-no-bugs]
 related_requirements_notes:
   first-time-onboarding-without-errors: "Onboarding-flow variants are A/B tested on real first-time users, and the version with the higher completion rate and fewer errors is kept."

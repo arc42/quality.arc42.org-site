@@ -7,7 +7,7 @@ supported_qualities_notes:
   latency: Serving assets from edge nodes geographically close to users cuts round-trip time across long-haul links.
   response-time: Cached static responses return from the edge without touching the origin, shortening time-to-first-byte.
   throughput: Fan-out of requests across thousands of edge nodes multiplies effective serving capacity far beyond a single origin.
-  availability: The origin stays reachable during traffic spikes and regional outages because edge caches absorb most of the load.
+  availability: Edge caches absorb traffic spikes before they reach the origin; during an origin outage, already-cached content keeps serving users — provided serve-stale (stale-if-error) is configured.
   scalability: Traffic surges are absorbed by the CDN's elastic edge fleet without provisioning origin capacity.
 tradeoffs: [currentness, cost, debuggability]
 tradeoff_notes:

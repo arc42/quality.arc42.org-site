@@ -25,7 +25,7 @@ applicability: "Use at every trust boundary where untrusted data enters or leave
 permalink: /approaches/input-sanitization-output-encoding
 ---
 
-Injection vulnerabilities — SQL injection, cross-site scripting (XSS), command injection, LDAP injection, log injection — have topped the OWASP Top 10 for over two decades. They all share the same root cause: untrusted data crosses a trust boundary and is interpreted as code, query logic, or markup because the system failed to distinguish data from instructions.
+Injection vulnerabilities — SQL injection, cross-site scripting (XSS), command injection, LDAP injection, log injection — have been a perennial top category of the OWASP Top 10 since its first edition, ranked #1 in 2010, 2013, and 2017 and A03 in 2021. They all share the same root cause: untrusted data crosses a trust boundary and is interpreted as code, query logic, or markup because the system failed to distinguish data from instructions.
 
 Input sanitization and output encoding address the two sides of this problem. On the input side, validation rejects data that does not conform to expected schemas. On the output side, encoding ensures that when data is rendered in a specific context — HTML page, SQL query, shell command, JSON response — it is treated as literal data, never as executable content.
 

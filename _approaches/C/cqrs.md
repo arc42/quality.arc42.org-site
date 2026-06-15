@@ -22,6 +22,9 @@ related_requirements_notes:
 intent: "Separate the read and write sides of a system so each can be modeled, optimized, and scaled for its own workload characteristics."
 mechanism: "Route commands through a write model that enforces invariants and emits state changes, then project those changes asynchronously into one or more read-optimized views tailored to specific query patterns."
 applicability: "Use when read and write workloads differ significantly in volume, shape, or scaling needs, or when multiple query patterns require views that do not map naturally to the write schema. Avoid for simple CRUD domains where a single model serves both paths without contention."
+related: [event-sourcing]
+related_notes:
+  event-sourcing: "Often paired, often conflated: event sourcing persists the write side as a replayable log — the ideal projection source for CQRS read models — yet each pattern works without the other."
 permalink: /approaches/cqrs
 ---
 
@@ -35,7 +38,7 @@ The approach becomes especially valuable when the read-to-write ratio is heavily
 - One or more projectors consume the change stream and materialize read-optimized views (flat tables, search indexes, caches, or pre-aggregated summaries).
 - Queries are served entirely from the read models, bypassing the write store. Each read model can use a different storage technology suited to its access pattern.
 - The projection step typically runs asynchronously, decoupling write latency from view-update cost and allowing the write side to return quickly. While often asynchronous for scale, CQRS can also be implemented synchronously within a single transaction if consistency is prioritized over throughput.
-- Schema changes on the read side are isolated: a new read model can be built from scratch by replaying the event or change stream without touching the command-side code.
+- Schema changes on the read side are isolated: a new read model can be built from scratch without touching command-side code — by replaying the event log where one is retained (event sourcing), or by reprojecting from a current-state snapshot when change data capture feeds from a mutable store.
 
 ## Failure Modes
 
