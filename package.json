@@ -34,10 +34,10 @@
   },
   "devDependencies": {
     "@axe-core/playwright": "^4.11.3",
-    "@playwright/test": "1.60.0",
+    "@playwright/test": "1.61.0",
     "esbuild": "^0.28.1",
     "gray-matter": "^4.0.3",
-    "lighthouse": "^13.3.0",
+    "lighthouse": "^13.4.0",
     "playwright-lighthouse": "^4.0.0",
     "prettier": "^3.8.4",
     "rimraf": "^6.1.3"
