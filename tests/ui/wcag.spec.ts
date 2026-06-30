@@ -375,6 +375,11 @@ function renderHtml(report: WcagReport): string {
 }
 
 test("wcag scan for key pages", async ({ page }) => {
+  // Single test that scans every key route (goto + axe analysis) sequentially,
+  // so it far exceeds Playwright's default 30s per-test timeout. Scope a generous
+  // budget here; the workflow's 20-min job timeout is the real outer bound.
+  test.setTimeout(300_000);
+
   const routes = await collectRoutes();
   const pageSummaries: PageSummary[] = [];
 
