@@ -41,7 +41,7 @@ The classic realization is a service-level agreement (SLA) with an upstream prod
 - Per-source caps alone let aggregate arrival across many in-limit sources exceed capacity.
 
 ## Verification
-- Load-test at the agreed ceiling; confirm p99 latency holds within target while inflow sits at the cap.
+- Load-test at the agreed ceiling; confirm [p99](https://en.wikipedia.org/wiki/Percentile) latency holds within target while inflow sits at the cap.
 - Drive arrival past the ceiling and assert the excess is paced or rejected, never silently dropped.
 - Monitor accepted-versus-offered rate in production; a persistent gap signals a mis-sized cap.
 

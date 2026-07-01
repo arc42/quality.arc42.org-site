@@ -30,7 +30,7 @@ Upstream service experiences transient failures or degraded performance during n
 - When a breaker opens, the user experience degrades gracefully (e.g., hide recommendations, queue notifications) while core operations succeed; display a neutral placeholder, never a stack trace
 - All client calls are idempotent (PUT/DELETE with idempotency keys; POST with dedup keys) to allow safe retries
 - Latency and errors during failure injection:
-  - Median end‑user latency increases by ≤20%; p95 ≤ 2× baseline, p99 ≤ 3× baseline
+  - Median end‑user latency increases by ≤20%; p95 ≤ 2× baseline, [p99](https://en.wikipedia.org/wiki/Percentile) ≤ 3× baseline
   - Edge error rate (5xx/timeouts) ≤ 0.5% over any rolling 10‑minute window
 - Observability (must track and dashboard):
   - Per‑dependency p50/p95/p99 latency; success/error rates by error type (timeout, connect error, 5xx, 4xx policy)

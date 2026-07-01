@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 456" font-family="'Atkinson Hyperlegible Next','Atkinson Hyperlegible',-apple-system,'Segoe UI',sans-serif" role="img" aria-labelledby="db-title db-desc">
+  <title id="db-title">The binding-time spectrum</title>
+  <desc id="db-desc">Five stages where a choice can be bound, arranged earliest to latest: compile time (hard-coded in source), build (select a component or library), deploy or install (config files and environment variables), startup (resource files and init parameters), and runtime (polymorphism, plugins, service lookup, or a broker). The later the binding, the lower the cost and blast-radius of a change: early binding needs an edit, rebuild, and redeploy; late binding needs only a reconfigure or hot-swap. Deferring a binding is coupling reduction across time — callers depend on the binding point, not on the choice.</desc>
+
+  <defs>
+    <marker id="db-arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#682d63"/>
+    </marker>
+  </defs>
+
+  <!-- heading -->
+  <text x="460" y="34" font-size="21" fill="#682d63" font-weight="700" text-anchor="middle">Defer Binding</text>
+  <text x="460" y="58" font-size="14" fill="#666" text-anchor="middle">the later a choice is bound, the less a change costs</text>
+
+  <!-- stage cards -->
+  <!-- 1 Compile -->
+  <rect x="30" y="100" width="160" height="110" rx="10" fill="#fff" stroke="#cfd8d5"/>
+  <circle cx="52" cy="122" r="12" fill="#682d63"/>
+  <text x="52" y="126" font-size="12.5" fill="#fff" font-weight="700" text-anchor="middle">1</text>
+  <text x="110" y="127" font-size="14.5" fill="#333" font-weight="700" text-anchor="middle">Compile</text>
+  <text x="110" y="166" font-size="11.5" fill="#666" text-anchor="middle">hard-coded</text>
+  <text x="110" y="184" font-size="11.5" fill="#666" text-anchor="middle">in source</text>
+
+  <!-- 2 Build -->
+  <rect x="205" y="100" width="160" height="110" rx="10" fill="#fff" stroke="#cfd8d5"/>
+  <circle cx="227" cy="122" r="12" fill="#00b8f5"/>
+  <text x="227" y="126" font-size="12.5" fill="#fff" font-weight="700" text-anchor="middle">2</text>
+  <text x="285" y="127" font-size="14.5" fill="#333" font-weight="700" text-anchor="middle">Build</text>
+  <text x="285" y="166" font-size="11.5" fill="#666" text-anchor="middle">component or</text>
+  <text x="285" y="184" font-size="11.5" fill="#666" text-anchor="middle">library selection</text>
+
+  <!-- 3 Deploy / Install -->
+  <rect x="380" y="100" width="160" height="110" rx="10" fill="#fff" stroke="#cfd8d5"/>
+  <circle cx="402" cy="122" r="12" fill="#5fb49c"/>
+  <text x="402" y="126" font-size="12.5" fill="#fff" font-weight="700" text-anchor="middle">3</text>
+  <text x="460" y="127" font-size="14.5" fill="#333" font-weight="700" text-anchor="middle">Deploy / Install</text>
+  <text x="460" y="166" font-size="11.5" fill="#666" text-anchor="middle">config files ·</text>
+  <text x="460" y="184" font-size="11.5" fill="#666" text-anchor="middle">environment variables</text>
+
+  <!-- 4 Startup -->
+  <rect x="555" y="100" width="160" height="110" rx="10" fill="#fff" stroke="#cfd8d5"/>
+  <circle cx="577" cy="122" r="12" fill="#3d8a73"/>
+  <text x="577" y="126" font-size="12.5" fill="#fff" font-weight="700" text-anchor="middle">4</text>
+  <text x="635" y="127" font-size="14.5" fill="#333" font-weight="700" text-anchor="middle">Startup</text>
+  <text x="635" y="166" font-size="11.5" fill="#666" text-anchor="middle">resource files ·</text>
+  <text x="635" y="184" font-size="11.5" fill="#666" text-anchor="middle">init parameters</text>
+
+  <!-- 5 Runtime -->
+  <rect x="730" y="100" width="160" height="110" rx="10" fill="#fff" stroke="#cfd8d5"/>
+  <circle cx="752" cy="122" r="12" fill="#e88a55"/>
+  <text x="752" y="126" font-size="12.5" fill="#fff" font-weight="700" text-anchor="middle">5</text>
+  <text x="810" y="127" font-size="14.5" fill="#333" font-weight="700" text-anchor="middle">Runtime</text>
+  <text x="810" y="166" font-size="11.5" fill="#666" text-anchor="middle">polymorphism · plugins</text>
+  <text x="810" y="184" font-size="11.5" fill="#666" text-anchor="middle">service lookup · broker</text>
+
+  <!-- deferral arrow -->
+  <text x="460" y="246" font-size="13.5" fill="#682d63" font-weight="600" text-anchor="middle">binding time — the moment the choice is fixed, deferred later</text>
+  <line x1="40" y1="262" x2="884" y2="262" stroke="#682d63" stroke-width="2.4" marker-end="url(#db-arr)"/>
+
+  <!-- cost-of-change wedge -->
+  <text x="460" y="300" font-size="12.5" fill="#b05a24" font-weight="600" text-anchor="middle">cost &amp; blast-radius to change a bound choice</text>
+  <polygon points="40,312 884,330 884,342 40,356" fill="#ffe0cc" stroke="#f0b892" stroke-width="1"/>
+  <text x="40" y="378" font-size="11.5" fill="#b05a24" text-anchor="start">high — edit, rebuild, redeploy</text>
+  <text x="884" y="378" font-size="11.5" fill="#b05a24" text-anchor="end">low — reconfigure or hot-swap</text>
+
+  <!-- tie to reduce coupling -->
+  <text x="460" y="418" font-size="14.5" fill="#444" font-weight="600" text-anchor="middle">deferring a binding is coupling reduction across time —</text>
+  <text x="460" y="440" font-size="14.5" fill="#444" font-weight="600" text-anchor="middle">callers depend on the binding point, not on the choice</text>
+</svg>

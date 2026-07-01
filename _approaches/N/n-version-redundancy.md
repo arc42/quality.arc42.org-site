@@ -26,6 +26,8 @@ N-Version Redundancy and Voting runs the same computation on several redundant u
 
 Two flavors share one voter. Triple Modular Redundancy (TMR) runs three identical units and masks a single hardware fault by majority. N-version programming runs independently developed implementations of one specification, so a design fault in one is outvoted by the others.
 
+![N-version redundancy with voting: the same input goes to three independently built versions; Versions A and B compute the correct result (42) while the faulty Version C computes 99; a voter compares all three outputs, outvotes the faulty one, and forwards the correct majority result.](/assets/img/approaches/n-version-redundancy.svg)
+
 ## How It Works
 - N units compute a result from the same input.
 - A voter compares the outputs.

@@ -16,6 +16,10 @@ tradeoff_notes:
 intent: "Keep a redundant component ready to take over when the active one fails, so service continues through the failure."
 mechanism: "Run one or more redundant components behind a failure detector. On failure it promotes a standby to active. Standbys range from hot (fully synchronized) to cold (started on demand), trading cost against recovery time."
 applicability: "Use when downtime is costly and the component can be replicated. Skip when state cannot be replicated affordably, or the recovery-time budget is loose enough that a plain restart suffices."
+related: [data-replication, n-version-redundancy]
+related_notes:
+  data-replication: "Failover spares the compute component; replication copies the state it needs. A stateful standby is only useful once data is replicated to it, so the two tactics are usually deployed together."
+  n-version-redundancy: "Both run redundant copies, but against different faults: identical standbys survive independent hardware or crash failures, while diverse N-version replicas survive the common-mode design faults that identical copies would all share."
 related_requirements: [available-7-24-99, server-fails-operation-without-downtime, zone-failure-no-service-interruption, unavailability-max-2-minutes]
 related_requirements_notes:
   available-7-24-99: "A ready standby keeps the system inside its uptime objective when the active component fails."

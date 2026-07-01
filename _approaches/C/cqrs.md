@@ -53,7 +53,7 @@ The approach becomes especially valuable when the read-to-write ratio is heavily
 ## Verification
 
 - Projection lag SLO: p95 delay between write commit and read-model update stays below the agreed threshold (for example `< 2 s` in steady state, `< 10 s` during peak).
-- Read throughput: query endpoints handle the target request rate (for example `5 000 req/s`) at p99 latency below `50 ms` from the read store, independent of write-side load.
+- Read throughput: query endpoints handle the target request rate (for example `5 000 req/s`) at [p99](https://en.wikipedia.org/wiki/Percentile) latency below `50 ms` from the read store, independent of write-side load.
 - Freshness SLI: 99.9% of queries reflect state changes within the p95 projection lag threshold during automated verification runs.
 - Rebuild test: a full projection rebuild from the event stream completes within the agreed time window (for example `< 4 h` for the largest view) and produces a byte-identical result.
 - Failure injection: pause the projector for 10 minutes, resume, and verify the backlog drains within 15 minutes with zero lost or duplicated events.

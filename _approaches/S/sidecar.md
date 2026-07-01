@@ -50,7 +50,7 @@ Burns and Oppenheimer named the pattern in 2016: containers had made co-deployme
 ## Verification
 
 - Sidecar CPU and memory stay within an agreed per-instance budget, e.g. below 10% of the workload's reservation.
-- p95/p99 latency with and without interception stays within the agreed delta.
+- p95/[p99](https://en.wikipedia.org/wiki/Percentile) latency with and without interception stays within the agreed delta.
 - Chaos check: killing the sidecar marks the whole instance unhealthy and traffic shifts away; no half-alive instance keeps serving.
 - Rollout logs show sidecar upgrades completing fleet-wide with zero application code changes.
 

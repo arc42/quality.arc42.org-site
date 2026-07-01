@@ -16,6 +16,9 @@ tradeoff_notes:
 intent: "Keep copies of data on independent nodes so reads and writes survive node loss and can be served close to the user."
 mechanism: "A write to one replica propagates to the others, synchronously (the write waits for acknowledgement) or asynchronously (it returns first, replicas catch up). A consistency protocol such as quorum or consensus decides when a read sees a write."
 applicability: "Use when data must survive node or zone failure, or reads must scale or sit near users. Skip when a single node's durability suffices, or the staleness and write-latency costs of staying in sync outweigh the benefit."
+related: [n-version-redundancy]
+related_notes:
+  n-version-redundancy: "Redundancy at different layers: replication duplicates stored data for durability and read scaling, while N-version duplicates computation with design diversity to catch wrong results. One protects state, the other protects the compute over it."
 related_requirements: [replication-and-quorum-failure-transparency, available-7-24-99, zone-failure-no-service-interruption]
 related_requirements_notes:
   replication-and-quorum-failure-transparency: "Quorum reads and writes across replicas are exactly the protocol this requirement specifies for tolerating node loss and partitions."
@@ -42,7 +45,7 @@ Strategies sit on two axes: where writes are accepted (single-leader, multi-lead
 - Lag cascade: a slow replica falls progressively behind under write load, widening the data-loss window.
 
 ## Verification
-- Measure replication lag (p99) and alert when it exceeds the recovery-point objective (RPO).
+- Measure replication lag ([p99](https://en.wikipedia.org/wiki/Percentile)) and alert when it exceeds the recovery-point objective (RPO).
 - Kill the leader under load; assert reads and writes resume within the failover budget with no committed-write loss.
 - Run a consistency checker (e.g. a linearizability test) against the declared model.
 - Partition the cluster and confirm the configured behavior — reject writes, or accept and reconcile.

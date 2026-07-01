@@ -61,7 +61,7 @@ Hit policy *unique*: exactly one row may match; overlaps fail validation.
 
 - Static validation in CI checks every table for completeness and overlapping rows.
 - A regression suite replays recorded production decisions against every new model version; outcome diffs block deployment.
-- Decision latency p99 stays inside its budget under production load.
+- Decision latency [p99](https://en.wikipedia.org/wiki/Percentile) stays inside its budget under production load.
 - An audit query returns the rule version behind any past decision.
 
 ## Variants and Related Tactics

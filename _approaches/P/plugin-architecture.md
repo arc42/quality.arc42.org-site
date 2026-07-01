@@ -53,7 +53,7 @@ The price sits in the contract: once third parties build against the API, the co
 - Every plugin passes the extension point's shared compliance test suite before release.
 - A chaos plugin that throws and hangs leaves the host and all other plugins serving.
 - 100 consecutive load/unload cycles show flat memory and handle counts.
-- Per-plugin p99 invocation time is tracked; one plugin adding over 10% to request latency triggers an alert.
+- Per-plugin [p99](https://en.wikipedia.org/wiki/Percentile) invocation time is tracked; one plugin adding over 10% to request latency triggers an alert.
 
 ## Variants and Related Tactics
 

@@ -50,7 +50,7 @@ Caching places a fast-access storage layer (near-memory or distributed) between 
 
 ## Verification
 
-- Under realistic load, p99 response time for cached endpoints stays below the target threshold (e.g., `< 100 ms`) with a cache hit ratio of at least 80%.
+- Under realistic load, [p99](https://en.wikipedia.org/wiki/Percentile) response time for cached endpoints stays below the target threshold (e.g., `< 100 ms`) with a cache hit ratio of at least 80%.
 - Latency reduction: Verify that p95 response time is at least 50% lower with caching enabled compared to a non-cached baseline.
 - Invalidation check: After a write to the source, the cache reflects the new value within the agreed TTL window or immediately upon explicit invalidation.
 - Fallback under cache outage: with the caching layer unavailable, requests fall back to the source with an error rate below the agreed threshold (e.g., `< 1%`) and p99 latency within the degraded-mode budget (e.g., `< 500 ms`); once the cache returns, the hit ratio recovers to baseline within a defined window (e.g., `< 5 min`).

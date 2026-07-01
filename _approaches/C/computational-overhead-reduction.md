@@ -43,7 +43,7 @@ It sits between coarser demand controls, which shed or delay events, and adding 
 
 ## Verification
 - Profile before and after: the targeted operation's share of CPU time — or joules per request — drops by a stated margin.
-- p99 latency or throughput on the hot path improves against a fixed load, with the regression suite still green.
+- [p99](https://en.wikipedia.org/wiki/Percentile) latency or throughput on the hot path improves against a fixed load, with the regression suite still green.
 - A property or golden-output test confirms the optimized path returns results identical to the reference implementation across the input range.
 
 ## Variants and Related Tactics

@@ -46,7 +46,7 @@ Bulkheads borrow their name from ship construction, where watertight compartment
 ## Verification
 
 - **Compartment Isolation Test**: Under production-like load, saturate one bulkhead (e.g., by delaying its downstream dependency) and verify that the success rate in other bulkheads stays above the target SLO (e.g., `> 99.9%`).
-- **Fail-Fast Latency**: Assert that requests hitting a saturated bulkhead are rejected immediately (e.g., p99 rejection latency `< 50 ms`) rather than waiting for timeouts.
+- **Fail-Fast Latency**: Assert that requests hitting a saturated bulkhead are rejected immediately (e.g., [p99](https://en.wikipedia.org/wiki/Percentile) rejection latency `< 50 ms`) rather than waiting for timeouts.
 - **Headroom Validation**: Verify that the sum of all bulkhead limits (threads, memory) stays within the physical limits of the host under peak load to avoid overcommitment.
 - **Recovery SLO**: After the saturated dependency recovers, verify that the bulkhead drains its backlog and resumes normal operation within the agreed time window (e.g., `< 30 s`).
 
