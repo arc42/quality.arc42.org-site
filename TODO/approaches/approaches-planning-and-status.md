@@ -107,7 +107,7 @@
 | | Introduce Concurrency | Parallelize independent work to improve throughput and latency | ★·B+ |
 | | Bound Queue Sizes | Cap queue lengths to prevent latency collapse and resource exhaustion | ★·B+ |
 | | Execution-Time Bounding | Enforce upper bounds for request/task execution times | ★·B+ |
-| | Computational Overhead Reduction | Remove unnecessary processing steps to cut resource demand | ★·B+ |
+| ✅ | Computational Overhead Reduction | Remove unnecessary processing steps to cut resource demand | ★·B+ |
 | | Increase Resource Usage Efficiency | Optimize algorithms/implementations to lower cost per transaction | ★·B+ |
 | | Load Balancing | Distribute traffic across instances for throughput and fault tolerance | ★·B+ |
 | | Batch Processing | Aggregate operations to reduce per-item overhead | ★ |

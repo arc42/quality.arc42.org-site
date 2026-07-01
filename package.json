@@ -16,6 +16,7 @@
     "watch": "node src/scripts/build.js --watch",
     "color-scheme": "node src/scripts/generate-color-scheme-preview.js",
     "data": "rimraf \"./assets/data\" && node src/scripts/data.js",
+    "validate:approach": "node src/scripts/validate-approach.js",
     "test:css": "npm run test:css:format && npm run test:css:rules",
     "test:css:format": "npx prettier --check \"_sass/**/*.scss\" \"assets/css/*.css\"",
     "test:css:rules": "node src/scripts/validate-css.js",

@@ -11,14 +11,13 @@ Generate one validated approach page for `quality.arc42.org`, ready to drop into
 
 **Scope:** generate and write the file. Do **not** restart Docker, do **not** commit — the author reviews the render and commits.
 
-## Rules source — read these first
+## Rules source — read this first
 
-Voice, length budgets, output format, and the full schema live in two reference files alongside this skill. Read both before generating:
+Everything about *what a good approach page contains* — front-matter schema, length budgets, body structure, voice, words to avoid, and the definition of done — lives in one canonical, self-contained file:
 
-- `reference/approaches-prompt.md` — voice, length budgets, body-section rules, words to avoid.
-- `reference/approaches-template.md` — canonical front-matter schema, body skeleton, definition of done.
+- `reference/approaches-template.md`
 
-Where they disagree, **the template wins**.
+Read it before generating. This `SKILL.md` owns the **procedure**; the template owns the **rules**. Where a step below cites a budget or a heading set, the authoritative number lives in the template — do not restate it here.
 
 ## Procedure
 
@@ -38,15 +37,15 @@ Where they disagree, **the template wins**.
    ```
    `supported_qualities` and `tradeoffs` may use only quality slugs. `related_requirements` may use only requirement slugs — use `[]` when none genuinely fit; do not invent one to fill the slot. To find requirement candidates among the 140+, grep titles/permalinks by keyword (`grep -rl "<keyword>" _requirements/`) and read the few that look relevant before including them.
 
-3. **Generate** the page following the two reference files. Choose the closest-matching *existing* quality slugs for `supported_qualities` / `tradeoffs`. Do not coin new slugs, and do not use compound slugs (`reliability-availability` is forbidden — pick `reliability` or `availability`). When a slug's fit is unclear, open its quality page under `_qualities/` and confirm the note you would write is actually true of it. An approach may share its name with a quality (e.g. `graceful-degradation` is also a quality); omit that self-named slug from `supported_qualities` unless it carries a distinct, non-circular note.
+3. **Generate** the page following `reference/approaches-template.md`. Choose the closest-matching *existing* quality slugs for `supported_qualities` / `tradeoffs`. Do not coin new slugs, and do not use compound slugs (`reliability-availability` is forbidden — pick `reliability` or `availability`). When a slug's fit is unclear, open its quality page under `_qualities/` and confirm the note you would write is actually true of it. An approach may share its name with a quality (e.g. `graceful-degradation` is also a quality); omit that self-named slug from `supported_qualities` unless it carries a distinct, non-circular note.
 
 4. **Validate before writing.** Every check must pass:
    - Every `supported_qualities` / `tradeoffs` slug ∈ ALLOWED_QUALITY_SLUGS.
    - Every `related_requirements` slug ∈ ALLOWED_REQUIREMENT_SLUGS.
    - Every key in each `*_notes` map matches a slug present in its own array (no stray keys, no missing keys).
    - `tags` ⊆ the 9 dimensions.
-   - Length budgets — count words mechanically with `wc -w` (paste each field through it), do not eyeball; nothing in the build enforces these: `intent` ≤ 25 words; `mechanism` ≤ 50; `applicability` ≤ 50; each support/requirement note ≤ 25 words; tradeoff notes ~50 (substance over padding); body ≤ 350 words total.
-   - Body: ≤ 4 content `##` headings drawn from {`How It Works`, `Failure Modes`, `Verification`, `Variants and Related Tactics`}. An optional `## Example`/`## Mini Example` and `## References` do not count toward the 4. No `###` headings.
+   - Length budgets hold — use the numbers in the template's "Length Budgets" and count words mechanically with `wc -w` (paste each field through it), do not eyeball.
+   - Body structure matches the template's "Body Structure": ≤ 4 content `##` headings from the allowed set, optional `## Example` / `## References` excluded from the count, no `###` headings.
    - Front matter has `layout: approach` and `permalink: /approaches/<slug>`.
 
 5. **Write** to `_approaches/<LETTER>/<slug>.md`, where `<LETTER>` is the **uppercase first letter** of the slug (`graceful-degradation` → `_approaches/G/graceful-degradation.md`). Create the letter directory if it does not exist.

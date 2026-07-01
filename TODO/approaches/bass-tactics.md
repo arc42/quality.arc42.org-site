@@ -28,11 +28,11 @@ plus a set of performance **patterns**.
 
 | Done | Approach | One-line description | Source |
 |:----:|----------|----------------------|:------:|
-| ✅ | Manage Event Arrival (SLA) | Cap the maximum event-arrival rate a component will accept via a service-level agreement — site: "Manage Event Arrival" (SLA folded in as `aka`) | B+ |
+| ✅ | Manage Event Arrival (SLA) | Cap the maximum event-arrival rate a component will accept via a service-level agreement | B+ |
 | | Manage Sampling Rate | Reduce the sampling frequency of inputs (sensor/video) to keep latency predictable, trading fidelity | B+ |
 | ✅ | Limit Event Response | Process events only up to a set maximum rate; queue or discard the excess — site: "Limit Event Response" | B+ |
 | | Prioritize Events | Rank events by importance; service high-priority first, drop low-priority under load | B+ |
-| | Reduce Computational Overhead | Cut the work per event — site tracks this as "Computational Overhead Reduction" | B+ |
+| ✅ | Reduce Computational Overhead | Cut the work per event — site tracks this as "Computational Overhead Reduction" | B+ |
 | | Reduce Indirection | Remove intermediaries from the event path to lower per-event latency (modifiability tradeoff) | B+ |
 | | Co-locate Communicating Resources | Place cooperating components together (same processor/runtime/rack) to cut communication cost | B+ |
 | | Periodic Cleaning | Periodically clean up resources that degrade over time (hash tables, virtual-memory maps) | B+ |
@@ -152,9 +152,9 @@ Bass groups deployability tactics under two goals: **Manage Deployment Pipeline*
 
 | Done | Approach | One-line description | Source |
 |:----:|----------|----------------------|:------:|
-| | Microservice Architecture | Structure the system as independently deployable, message-only services with a discovery service | B+ |
+| ✅ | Microservice Architecture | Structure the system as independently deployable, message-only services with a discovery service — site: "Microservice Architecture" | B+ |
 | | Canary Testing | Test a new release in production with a small set of designated users before full rollout — site tracks this as "Canary Deployment" | B+·P·O |
-| | A/B Testing | Run multiple versions on different user groups to determine which yields the best business results | B+ |
+| ✅ | A/B Testing | Run multiple versions on different user groups to determine which yields the best business results | B+ |
 
 ---
 
@@ -187,7 +187,7 @@ set of energy efficiency **patterns** (Sec. 6.4).
 | ✅ | Manage Event Arrival | Cap or shape the event-arrival rate to do less work and save energy — site: "Manage Event Arrival" | B+ |
 | ✅ | Limit Event Response | Process events only up to a set rate to reduce energy spent — site: "Limit Event Response" | B+ |
 | | Prioritize Events | Rank events; let low-priority events go unserviced to save energy | B+ |
-|  | Reduce Computational Overhead | Cut the work per event to lower energy demand — site tracks this as "Computational Overhead Reduction" | B+ |
+| ✅ | Reduce Computational Overhead | Cut the work per event to lower energy demand — site tracks this as "Computational Overhead Reduction" | B+ |
 |  | Bound Execution Times | Cap execution time per task to reduce energy use — site tracks this as "Execution-Time Bounding" | B+ |
 |  | Increase Resource Usage Efficiency | Improve algorithms/implementations to lower energy cost per unit of work — site: "Increase Resource Usage Efficiency" | B+ |
 
