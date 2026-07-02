@@ -295,9 +295,9 @@ Adapt to the exact surrounding variable names — `label`, `id`, `lowerTerms`, `
 
 Seed `aka:` values for existing approaches from the Bass+ extraction notes.
 
-**Source file:** `TODO/approaches/bass-tactics.md`. Its rows use a convention like "site: X" / "site tracks this as X" / "site tracks the realization as X" to map a Bass term to one of our approaches.
+**Source:** the "Appendix — Bass et al. tactic index" in `TODO/approaches/approaches-planning-and-status.md` (formerly `bass-tactics.md`, merged 2026-07-01). Its entries map each Bass term to our approach ("Bass tactic → site approach").
 
-Known examples to seed (re-scan `bass-tactics.md` for the full list, and confirm each target approach exists in `_approaches/`):
+Known examples to seed (re-scan that appendix for the full list, and confirm each target approach exists in `_approaches/`):
 
 - Rate Limiting ← `aka: [Throttling]` (Bass: "Throttling")
 - Watchdog Supervision ← `aka: [Monitor]` (Bass tactic "Monitor"; index-term, not strict synonym)

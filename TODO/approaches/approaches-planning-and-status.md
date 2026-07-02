@@ -1,9 +1,9 @@
 # Solution Approaches — Planning & Status (single source)
 
 Single planning source for `_approaches/`. Merged from the former `bass-tactics.md`
-on 2026-07-01 (that file is now a stub pointing here). The Bass tactic catalogue is
-preserved condensed in the [Appendix](#appendix--bass-et-al-tactic-index) so literature
-terms stay searchable for `aka:` harvesting.
+on 2026-07-01 (that file is removed; its full catalogue lives in git history). The Bass
+tactic catalogue is preserved condensed in the [Appendix](#appendix--bass-et-al-tactic-index)
+so literature terms stay searchable for `aka:` harvesting.
 
 Re-evaluated 2026-07-01: overly simple / non-architectural rows moved to
 [removal candidates](#removal-candidates); missing surprising/effective tactics added (`★`).
