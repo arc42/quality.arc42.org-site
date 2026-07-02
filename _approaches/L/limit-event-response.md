@@ -49,6 +49,7 @@ A bounded queue absorbs short bursts while a rate limiter drains it at the set r
 - Manage Event Arrival caps the inflow at the source instead of the response — use it when sources are contractable.
 - Rate Limiting (Throttling) places the same cap at an intermediary, per client.
 - Bound Queue Sizes fixes the buffer so shedding decisions stay explicit.
+- [Backpressure Propagation](/approaches/backpressure-propagation) forwards the back-pressure signal upstream, hop by hop, so the whole pipeline slows rather than one stage.
 
 ## References
 - [Software Architecture in Practice](https://www.sei.cmu.edu/library/software-architecture-in-practice-fourth-edition/) — Bass, Clements & Kazman ([full citation](/references/#bass2021software))

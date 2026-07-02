@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 420" font-family="'Atkinson Hyperlegible Next','Atkinson Hyperlegible',-apple-system,'Segoe UI',sans-serif" role="img" aria-labelledby="bp-title bp-desc">
+  <title id="bp-title">Backpressure propagation</title>
+  <desc id="bp-desc">Data flows from sources through bounded buffers and a processing stage into a slowed data store; a dashed pressure signal travels the opposite way, hop by hop, until the sources pace their intake, degrade fidelity, or reject work at the edge.</desc>
+
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#444"/>
+    </marker>
+    <marker id="arrow-orange" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#e88a55"/>
+    </marker>
+  </defs>
+
+  <!-- flow direction header -->
+  <text x="465" y="168" font-size="12.5" fill="#444" font-weight="600" text-anchor="middle">data flows downstream</text>
+
+  <!-- Sources -->
+  <rect x="40" y="190" width="160" height="84" rx="8" fill="#fff" stroke="#682d63" stroke-width="2.5"/>
+  <text x="120" y="218" font-size="16" fill="#682d63" font-weight="700" text-anchor="middle">Sources</text>
+  <text x="120" y="238" font-size="12" fill="#555" text-anchor="middle">agents, clients</text>
+  <text x="120" y="260" font-size="11" fill="#b25e2f" font-weight="600" text-anchor="middle">pace · degrade · reject</text>
+
+  <!-- buffer A (part-filled) -->
+  <line x1="202" y1="232" x2="226" y2="232" stroke="#444" stroke-width="2" marker-end="url(#arrow)"/>
+  <rect x="230" y="208" width="104" height="48" rx="5" fill="#fff" stroke="#444" stroke-width="1.5"/>
+  <rect x="238" y="216" width="16" height="32" fill="#5fb49c"/>
+  <rect x="258" y="216" width="16" height="32" fill="#5fb49c"/>
+  <rect x="278" y="216" width="16" height="32" fill="#fff" stroke="#ccc"/>
+  <rect x="298" y="216" width="16" height="32" fill="#fff" stroke="#ccc"/>
+  <rect x="318" y="216" width="16" height="32" fill="#fff" stroke="#ccc"/>
+  <text x="282" y="272" font-size="10.5" fill="#888" text-anchor="middle">bounded</text>
+
+  <!-- Processing Stage -->
+  <line x1="336" y1="232" x2="360" y2="232" stroke="#444" stroke-width="2" marker-end="url(#arrow)"/>
+  <rect x="364" y="190" width="166" height="84" rx="8" fill="#fff" stroke="#5fb49c" stroke-width="2.5"/>
+  <text x="447" y="222" font-size="15" fill="#222" font-weight="700" text-anchor="middle">Processing Stage</text>
+  <text x="447" y="246" font-size="11.5" fill="#555" text-anchor="middle">pulls only what it requests</text>
+
+  <!-- buffer B (nearly full) -->
+  <line x1="532" y1="232" x2="556" y2="232" stroke="#444" stroke-width="2" marker-end="url(#arrow)"/>
+  <rect x="560" y="208" width="104" height="48" rx="5" fill="#fff" stroke="#444" stroke-width="1.5"/>
+  <rect x="568" y="216" width="16" height="32" fill="#ffad80"/>
+  <rect x="588" y="216" width="16" height="32" fill="#ffad80"/>
+  <rect x="608" y="216" width="16" height="32" fill="#ffad80"/>
+  <rect x="628" y="216" width="16" height="32" fill="#ffad80"/>
+  <rect x="648" y="216" width="16" height="32" fill="#fff" stroke="#ccc"/>
+  <text x="612" y="272" font-size="10.5" fill="#888" text-anchor="middle">bounded — nearly full</text>
+
+  <!-- Data Store -->
+  <line x1="666" y1="232" x2="696" y2="232" stroke="#444" stroke-width="2" marker-end="url(#arrow)"/>
+  <rect x="700" y="190" width="190" height="84" rx="8" fill="#fff" stroke="#e88a55" stroke-width="2.5"/>
+  <text x="795" y="222" font-size="16" fill="#222" font-weight="700" text-anchor="middle">Data Store</text>
+  <text x="795" y="246" font-size="11.5" fill="#555" text-anchor="middle">slowed — compaction running</text>
+
+  <!-- pressure band: upstream, hop by hop -->
+  <line x1="795" y1="316" x2="455" y2="316" stroke="#e88a55" stroke-width="2" stroke-dasharray="6 5" marker-end="url(#arrow-orange)"/>
+  <text x="627" y="338" font-size="12" fill="#b25e2f" font-weight="600" text-anchor="middle">buffer full: request less</text>
+  <line x1="440" y1="316" x2="122" y2="316" stroke="#e88a55" stroke-width="2" stroke-dasharray="6 5" marker-end="url(#arrow-orange)"/>
+  <text x="280" y="338" font-size="12" fill="#b25e2f" font-weight="600" text-anchor="middle">slow acks: pace intake</text>
+
+  <!-- bottom note -->
+  <text x="40" y="392" font-size="12.5" fill="#666" font-style="italic">Pressure travels against the data direction until the edge slows, degrades, or rejects — no queue grows without bound.</text>
+</svg>

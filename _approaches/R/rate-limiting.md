@@ -59,6 +59,10 @@ It is not a complete denial-of-service strategy. If an attack saturates the netw
 - Signaling correctness: in controlled throttle scenarios, verify that 100% of throttled requests return `429`, and when the reset time is known, `Retry-After` is present and matches the configured wait window. If the edge intentionally drops connections under extreme saturation, that behavior must be documented and monitored separately.
 - Failure drill: simulate unavailability of the shared counter store for at least 30 seconds and verify that high-risk endpoints switch to protective mode within the defined window, low-risk endpoints apply the documented fallback behavior, and alerting reaches operators within 60 seconds.
 
+## Variants and Related Tactics
+
+- [Backpressure Propagation](/approaches/backpressure-propagation) replaces the static budget with a live signal: producers slow to actual downstream capacity instead of a preconfigured ceiling.
+
 ## References
 
 - [RFC 6585: Additional HTTP Status Codes](https://www.rfc-editor.org/rfc/rfc6585) — defines `429 Too Many Requests`
