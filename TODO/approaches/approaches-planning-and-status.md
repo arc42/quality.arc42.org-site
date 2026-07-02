@@ -38,7 +38,7 @@ Within each dimension: published approaches first, then open candidates ordered 
 | ✅ | — | Quarantine | Temporarily detach unstable components until diagnosis/repair completes (Removal from Service) | ★·B+ |
 | ✅ | — | Feature Degradation | Disable non-essential features to preserve core function (Graceful Degradation) | G·O·B+ |
 | ✅ | — | N-Version Redundancy and Voting | Run N independent paths, majority vote masks single failures (also `#safe`) | P·O·B+ |
-| | P1 | Transactional Outbox | Write events and state in one local transaction; a relay publishes the outbox, solving dual-write | ★ |
+|✅ | P1 | Transactional Outbox | Write events and state in one local transaction; a relay publishes the outbox, solving dual-write | ★ |
 | | P1 | Backpressure Propagation | Signal overload upstream so producers slow down before queues collapse | ★ |
 | | P1 | Conflict-Free Replicated Data Types (CRDTs) | Data types whose replicas merge deterministically, allowing coordination-free concurrent writes | ★ |
 | | P1 | Consensus / Leader Election | Agree on one leader or value despite node failures (Raft, Paxos) — failover without split-brain | ★ |

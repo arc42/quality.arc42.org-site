@@ -62,7 +62,7 @@ This approach is especially useful when traffic is bursty, dependencies are vari
 
 - Competing Consumers (Work Queue) for parallel job execution.
 - Pub/sub fan-out when multiple downstream systems must react to the same event.
-- Transactional outbox to avoid dual-write inconsistencies between database state and message publication.
+- [Transactional outbox](/approaches/transactional-outbox) to avoid dual-write inconsistencies between database state and message publication.
 - Saga orchestration/choreography for multi-step business flows with compensating actions.
 
 ## References

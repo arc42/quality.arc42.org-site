@@ -33,7 +33,7 @@ A saga coordinates a business transaction spanning several services, each owning
 - Classify each step: **compensatable** (has a compensating action), the **pivot** (once it commits, the saga must run forward), and **retriable** (post-pivot steps designed so retries eventually succeed).
 - Coordinate by **choreography** (services react to each other's events; flows get hard to trace) or **orchestration** (a coordinator sends commands, tracks state, triggers compensation).
 - Persist progress durably before acting; a crashed coordinator then resumes or compensates.
-- Make all steps and compensations idempotent (brokers redeliver), and publish events atomically with the local commit via an outbox or change data capture.
+- Make all steps and compensations idempotent (brokers redeliver), and publish events atomically with the local commit via a [transactional outbox](/approaches/transactional-outbox) or change data capture.
 
 ## Failure Modes
 

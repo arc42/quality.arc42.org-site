@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 450" font-family="'Atkinson Hyperlegible Next','Atkinson Hyperlegible',-apple-system,'Segoe UI',sans-serif" role="img" aria-labelledby="to-title to-desc">
+  <title id="to-title">Transactional outbox</title>
+  <desc id="to-desc">The order service writes its state change and an OrderPaid event record to its own database in one ACID transaction; a message relay polls the outbox or tails the commit log, publishes to the message broker, and marks rows sent after acknowledgement; consumers deduplicate by event ID.</desc>
+
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#444"/>
+    </marker>
+    <marker id="arrow-teal" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#5fb49c"/>
+    </marker>
+    <marker id="arrow-violet" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#682d63"/>
+    </marker>
+  </defs>
+
+  <!-- Order Service -->
+  <rect x="70" y="36" width="200" height="76" rx="8" fill="#fff" stroke="#682d63" stroke-width="2.5"/>
+  <text x="170" y="68" font-size="16" fill="#682d63" font-weight="700" text-anchor="middle">Order Service</text>
+  <text x="170" y="90" font-size="12" fill="#555" text-anchor="middle">marks order 4711 as paid</text>
+
+  <!-- write arrow: service -> transaction -->
+  <line x1="170" y1="112" x2="170" y2="194" stroke="#682d63" stroke-width="2" marker-end="url(#arrow-violet)"/>
+  <text x="182" y="158" font-size="13" fill="#682d63" font-weight="600">state change + event record</text>
+
+  <!-- Service Database -->
+  <rect x="40" y="200" width="440" height="180" rx="8" fill="#f8f9fa" stroke="#444" stroke-width="2"/>
+  <text x="52" y="224" font-size="13" fill="#222" font-weight="700">Service Database</text>
+  <text x="185" y="224" font-size="12" fill="#666">one commit covers both tables</text>
+
+  <!-- transaction boundary -->
+  <rect x="55" y="240" width="410" height="120" rx="8" fill="none" stroke="#682d63" stroke-width="2" stroke-dasharray="6 5"/>
+  <text x="260" y="260" font-size="12.5" fill="#682d63" font-weight="600" text-anchor="middle">one ACID transaction — commit or roll back together</text>
+
+  <!-- orders table -->
+  <rect x="75" y="276" width="180" height="64" rx="5" fill="#fff" stroke="#00b8f5" stroke-width="1.8"/>
+  <text x="165" y="302" font-size="14" fill="#222" font-weight="700" text-anchor="middle">orders</text>
+  <text x="165" y="322" font-size="12" fill="#555" text-anchor="middle">#4711 → paid</text>
+
+  <!-- outbox table -->
+  <rect x="275" y="276" width="175" height="64" rx="5" fill="#fff" stroke="#ffad80" stroke-width="2.5"/>
+  <text x="362" y="302" font-size="14" fill="#222" font-weight="700" text-anchor="middle">outbox</text>
+  <text x="362" y="322" font-size="12" fill="#555" text-anchor="middle">OrderPaid #4711</text>
+
+  <!-- poll arrow: outbox -> relay -->
+  <line x1="482" y1="276" x2="581" y2="276" stroke="#444" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="531" y="264" font-size="12" fill="#444" font-weight="600" text-anchor="middle">read new rows</text>
+
+  <!-- mark-sent arrow: relay -> outbox -->
+  <line x1="581" y1="308" x2="484" y2="308" stroke="#5fb49c" stroke-width="1.8" stroke-dasharray="5 4" marker-end="url(#arrow-teal)"/>
+  <text x="531" y="326" font-size="12" fill="#3e8a76" font-weight="600" text-anchor="middle">then: mark sent</text>
+
+  <!-- Message Relay -->
+  <rect x="585" y="240" width="180" height="84" rx="8" fill="#fff" stroke="#5fb49c" stroke-width="2.5"/>
+  <text x="675" y="272" font-size="16" fill="#222" font-weight="700" text-anchor="middle">Message Relay</text>
+  <text x="675" y="294" font-size="12" fill="#555" text-anchor="middle">poller or CDC reader</text>
+
+  <!-- publish arrow: relay -> broker -->
+  <line x1="767" y1="282" x2="841" y2="282" stroke="#444" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="804" y="270" font-size="13" fill="#444" font-weight="600" text-anchor="middle">publish</text>
+
+  <!-- Message Broker -->
+  <rect x="845" y="240" width="140" height="84" rx="8" fill="#fff" stroke="#00b8f5" stroke-width="2.5"/>
+  <text x="915" y="272" font-size="15" fill="#222" font-weight="700" text-anchor="middle">Message Broker</text>
+  <text x="915" y="294" font-size="11.5" fill="#555" text-anchor="middle">acknowledges receipt</text>
+
+  <!-- consumers -->
+  <line x1="915" y1="324" x2="915" y2="376" stroke="#444" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="907" y="354" font-size="12" fill="#444" font-weight="600" text-anchor="end">at-least-once</text>
+  <rect x="835" y="380" width="160" height="56" rx="8" fill="#fff" stroke="#5fb49c" stroke-width="2.5"/>
+  <text x="915" y="404" font-size="14" fill="#222" font-weight="700" text-anchor="middle">Consumers</text>
+  <text x="915" y="422" font-size="11.5" fill="#555" text-anchor="middle">deduplicate by event ID</text>
+
+  <!-- crash note -->
+  <text x="52" y="408" font-size="12.5" fill="#666" font-style="italic">A crash after commit loses nothing: the event waits in the outbox until the relay publishes it.</text>
+</svg>
