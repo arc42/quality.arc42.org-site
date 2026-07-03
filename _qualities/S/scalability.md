@@ -2,7 +2,7 @@
 title: Scalability
 tags: [flexible]
 related: [adaptability, elasticity, performance]
-standards: [iso25010, iso42030, iso12207, sox, ieee2857, dicom]
+standards: [iso25010, iso42030, iso12207, sox, ieee2857, hl7, dicom]
 permalink: /qualities/scalability
 ---
 
