@@ -79,18 +79,9 @@ Optional `### Measurement & Verification` section for tooling/calculation detail
 
 All criteria must be specific, measurable, testable. Focus on *what*, not *how*.
 
-### Standards — `_standards/<name>.md`
+### Standards — `_standards/<group>/<name>.md`
 
-```yaml
----
-layout: page_standard
-title: "ISO/IEC 25010 - Systems and Software Quality"
-standard_id: iso25010                           # the cross-reference key
-shortname: "ISO/IEC 25010"
-categories: [general]
-permalink: /standards/iso-25010
----
-```
+Standard/regulation pages (ISO, NIST, EU, …). Full schema and authoring guardrails live in the `write-standards` skill (`.claude/skills/write-standards/reference/standards-template.md`). The load-bearing field is `standard_id`: qualities reference it in their `standards:` arrays, and those arrays — not the standard's own body — generate the graph node, its edges, and the "Related Qualities" list on the standard page.
 
 ### Tag pages — `_pages/tag-<tag>.md`
 

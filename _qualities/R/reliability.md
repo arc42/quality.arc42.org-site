@@ -26,6 +26,8 @@ standards:
     sox,
     nistairmf,
     iso24028,
+    dicom,
+    ihe,
   ]
 permalink: /qualities/reliability
 ---

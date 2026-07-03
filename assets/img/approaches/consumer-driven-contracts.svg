@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 450" font-family="'Atkinson Hyperlegible Next','Atkinson Hyperlegible',-apple-system,'Segoe UI',sans-serif" role="img" aria-labelledby="cdc-title cdc-desc">
+  <title id="cdc-title">Consumer-driven contracts</title>
+  <desc id="cdc-desc">Two consumer teams, checkout and invoicing, publish executable expectations to a contract broker. The provider's CI fetches all current contracts and replays them against the real pricing service on every commit: checkout's contract passes, invoicing's contract fails on a renamed field, and the release is blocked before deployment.</desc>
+
+  <defs>
+    <marker id="cdc-arrow-teal" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#5fb49c"/>
+    </marker>
+    <marker id="cdc-arrow-violet" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#682d63"/>
+    </marker>
+  </defs>
+
+  <!-- Consumers -->
+  <rect x="50" y="60" width="230" height="88" rx="8" fill="#fff" stroke="#5fb49c" stroke-width="2.5"/>
+  <text x="165" y="90" font-size="15" fill="#3d8a75" font-weight="700" text-anchor="middle">Checkout</text>
+  <text x="165" y="110" font-size="12" fill="#555" text-anchor="middle">consumer</text>
+  <text x="165" y="132" font-size="12.5" fill="#222" text-anchor="middle" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">reads: net, tax, total</text>
+
+  <rect x="50" y="220" width="230" height="88" rx="8" fill="#fff" stroke="#5fb49c" stroke-width="2.5"/>
+  <text x="165" y="250" font-size="15" fill="#3d8a75" font-weight="700" text-anchor="middle">Invoicing</text>
+  <text x="165" y="270" font-size="12" fill="#555" text-anchor="middle">consumer</text>
+  <text x="165" y="292" font-size="12.5" fill="#222" text-anchor="middle" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">reads: net, total, vat_id</text>
+
+  <!-- publish arrows -->
+  <line x1="280" y1="104" x2="382" y2="160" stroke="#5fb49c" stroke-width="2" marker-end="url(#cdc-arrow-teal)"/>
+  <line x1="280" y1="264" x2="382" y2="212" stroke="#5fb49c" stroke-width="2" marker-end="url(#cdc-arrow-teal)"/>
+  <text x="330" y="192" font-size="13" fill="#3d8a75" font-weight="600" text-anchor="middle">publish</text>
+  <text x="330" y="208" font-size="13" fill="#3d8a75" font-weight="600" text-anchor="middle">expectations</text>
+
+  <!-- Broker -->
+  <rect x="390" y="112" width="220" height="150" rx="8" fill="#f8f9fa" stroke="#682d63" stroke-width="2.5"/>
+  <text x="500" y="140" font-size="15" fill="#682d63" font-weight="700" text-anchor="middle">Contract Broker</text>
+  <rect x="410" y="156" width="180" height="30" rx="4" fill="#fff" stroke="#5fb49c"/>
+  <text x="500" y="176" font-size="12" fill="#222" text-anchor="middle" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">checkout · contract v14</text>
+  <rect x="410" y="194" width="180" height="30" rx="4" fill="#fff" stroke="#5fb49c"/>
+  <text x="500" y="214" font-size="12" fill="#222" text-anchor="middle" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">invoicing · contract v9</text>
+  <text x="500" y="248" font-size="11.5" fill="#666" text-anchor="middle">versioned per consumer + environment</text>
+
+  <!-- fetch/replay arrow -->
+  <line x1="610" y1="187" x2="702" y2="187" stroke="#682d63" stroke-width="2" marker-end="url(#cdc-arrow-violet)"/>
+  <text x="656" y="172" font-size="13" fill="#682d63" font-weight="600" text-anchor="middle">fetch and</text>
+  <text x="656" y="208" font-size="13" fill="#682d63" font-weight="600" text-anchor="middle">replay</text>
+
+  <!-- Provider CI -->
+  <rect x="710" y="60" width="240" height="248" rx="8" fill="#fff" stroke="#682d63" stroke-width="2.5"/>
+  <text x="830" y="90" font-size="15" fill="#682d63" font-weight="700" text-anchor="middle">Provider CI</text>
+  <text x="830" y="110" font-size="12" fill="#555" text-anchor="middle">pricing service — every commit</text>
+
+  <rect x="730" y="128" width="200" height="32" rx="4" fill="#eef7f4" stroke="#5fb49c" stroke-width="2"/>
+  <text x="742" y="149" font-size="12.5" fill="#3d8a75" font-weight="700">✓ checkout v14 passes</text>
+
+  <rect x="730" y="170" width="200" height="46" rx="4" fill="#fff" stroke="#e88a55" stroke-width="2"/>
+  <text x="742" y="189" font-size="12.5" fill="#b35c2a" font-weight="700">✗ invoicing v9 fails</text>
+  <text x="742" y="207" font-size="11.5" fill="#b35c2a" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">vat_id renamed</text>
+
+  <rect x="730" y="240" width="200" height="46" rx="4" fill="#e88a55" stroke="none"/>
+  <text x="830" y="260" font-size="13.5" fill="#fff" font-weight="700" text-anchor="middle">release blocked</text>
+  <text x="830" y="278" font-size="11.5" fill="#fff" text-anchor="middle">before anything deploys</text>
+
+  <!-- bottom band -->
+  <rect x="50" y="360" width="900" height="52" rx="8" fill="none" stroke="#682d63" stroke-width="2" stroke-dasharray="6 5"/>
+  <text x="500" y="391" font-size="13.5" fill="#682d63" font-weight="600" text-anchor="middle">breakage surfaces in the provider's pipeline, naming the affected consumer — a field no contract mentions is safe to change</text>
+</svg>

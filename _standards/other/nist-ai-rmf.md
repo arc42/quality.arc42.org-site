@@ -3,7 +3,7 @@ layout: page_standard
 title: "NIST AI RMF — Artificial Intelligence Risk Management Framework"
 standard_id: nistairmf
 shortname: "NIST AI RMF"
-categories: [ai, security, reliability]
+categories: [ai, security, trustworthiness]
 permalink: /standards/nist-ai-rmf
 ---
 

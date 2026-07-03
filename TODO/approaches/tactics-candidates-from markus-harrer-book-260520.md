@@ -28,7 +28,7 @@ These combine "surprising or under-used" with "fits our depth format and has rea
 
 | # | Tactic (book) | Type | Maps to qualities | Why it earns a page |
 |---|---------------|------|-------------------|---------------------|
-| 1 | **Tolerant Reader** | 🎯 Gap-filler | backward-compatibility, interoperability, robustness, evolvability | Postel's-law parsing as an explicit design tactic. Rarely taught, hugely practical for API/event evolution. We have nothing on compatibility yet. Pairs with a Schema Registry page. |
+
 | 2 | **Bubble Context** | 🎯 | maintainability, evolvability, modularity | DDD's quietest move: carve a clean model *inside* a legacy mess without boiling the ocean. Off-beat, advanced, and a genuine alternative to "rewrite". Strong intent/mechanism story. |
 | 3 | **Anti-Corruption Layer** | 📐 Gap-filler | maintainability, interoperability, loose-coupling, integrability | The standard way to integrate with a model you don't control. Mainstream in DDD circles, under-applied everywhere else. Appears in our plan only as a sub-bullet of "Interface Tailoring" — deserves its own page. |
 | 4 | **Consumer-Driven Contracts** | 🎯 Gap-filler | backward-compatibility, testability, interoperability | Inverts contract testing: consumers publish expectations, providers verify against them. Off-beat, prevents whole classes of integration breakage. Compatibility gap. |

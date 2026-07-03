@@ -3,7 +3,7 @@ title: Performance
 aka: [Performance Efficiency]
 tags: [efficient]
 related: [efficiency, resource-efficiency, speed, timeliness, currentness]
-standards: [iso14756, iso42030, iso12207, sox]
+standards: [iso14756, iso42030, iso12207, sox, dicom]
 permalink: /qualities/performance
 ---
 

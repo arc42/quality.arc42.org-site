@@ -18,6 +18,8 @@ standards:
     do178c,
     ieee2857,
     etsien304223,
+    dicom,
+    ihe,
   ]
 permalink: /qualities/integrity
 ---

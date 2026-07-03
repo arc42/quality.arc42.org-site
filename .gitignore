@@ -24,10 +24,11 @@ test-results/
 
 .junie
 .agents
-# Ignore local .claude config, but track the project's write-approach skill
+# Ignore local .claude config, but track the project's authoring skills
 .claude/*
 !.claude/skills/
 .claude/skills/*
 !.claude/skills/write-approach/
+!.claude/skills/write-standards/
 skills-lock.json
 .vscode

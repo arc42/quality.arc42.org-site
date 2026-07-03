@@ -39,7 +39,7 @@ Within each dimension: published approaches first, then open candidates ordered 
 | ✅ | — | Feature Degradation | Disable non-essential features to preserve core function (Graceful Degradation) | G·O·B+ |
 | ✅ | — | N-Version Redundancy and Voting | Run N independent paths, majority vote masks single failures (also `#safe`) | P·O·B+ |
 |✅ | P1 | Transactional Outbox | Write events and state in one local transaction; a relay publishes the outbox, solving dual-write | ★ |
-| | P1 | Backpressure Propagation | Signal overload upstream so producers slow down before queues collapse | ★ |
+|✅ | P1 | Backpressure Propagation | Signal overload upstream so producers slow down before queues collapse | ★ |
 | | P1 | Conflict-Free Replicated Data Types (CRDTs) | Data types whose replicas merge deterministically, allowing coordination-free concurrent writes | ★ |
 | | P1 | Consensus / Leader Election | Agree on one leader or value despite node failures (Raft, Paxos) — failover without split-brain | ★ |
 | | P1 | Predictive Fault Detection | Use predictive models to anticipate failures and trigger preventive action | ★·B+ |
@@ -79,7 +79,8 @@ Within each dimension: published approaches first, then open candidates ordered 
 | ✅ | — | Backends for Frontends | A tailored backend per frontend to decouple client needs from shared services | ★ |
 | ✅ | — | Open Host Service | Publish a stable, documented integration API for many consumers | ★ |
 | ✅ | — | Externalized Business Rules | Move decision logic into an editable rule set outside compiled code | ★ |
-| | P1 | Schema Evolution / Tolerant Reader | Evolve data schemas while remaining compatible with older consumers | ★ |
+| ✅ | — | Schema Evolution / Tolerant Reader | Evolve data schemas while remaining compatible with older consumers | ★ |
+| ✅ | — | Consumer-Driven Contracts | Consumers publish executable expectations; providers verify them in CI | ★ |
 | | P1 | Shared Repositories (Blackboard) | Bind producers and consumers via a runtime shared data store | B+ |
 | | P2 | Anti-Corruption Layer | Translate a foreign model at the boundary so an external system's concepts can't leak into the domain | ★ |
 | | P2 | Backward-Compatible API Versioning | Evolve public contracts without breaking existing consumers | P·O |

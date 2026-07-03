@@ -41,6 +41,8 @@ standards:
     etsien304223,
     owaspasvs,
     nistairmf,
+    dicom,
+    ihe,
   ]
 permalink: /qualities/security
 ---

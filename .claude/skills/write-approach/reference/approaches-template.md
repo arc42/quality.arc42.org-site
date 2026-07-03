@@ -26,6 +26,9 @@ tradeoff_notes:
 intent: "Fail fast when a dependency is unhealthy, so cascading failures stop at the breaker."
 mechanism: "Wrap remote calls in a stateful guard that opens after a failure threshold, blocks calls while open, and probes recovery after a timeout."
 applicability: "Use for remote calls that fail transiently or slowly. Skip for local in-process calls where the guard overhead outweighs the benefit."
+related: [timeout]                              # optional — approach↔approach, declared one-sided
+related_notes:
+  timeout: "A timeout turns a hanging call into a countable failure that the breaker's threshold can act on."
 related_requirements: [available-7-24-99]
 related_requirements_notes:
   available-7-24-99: "Failing fast keeps the system inside its uptime objective during a dependency outage."
@@ -45,6 +48,10 @@ permalink: /approaches/circuit-breaker
   - Array of slugs that exist under `/qualities/<slug>`. Plain strings, no objects. Single slugs only, as above.
 - `tradeoff_notes`:
   - Map keyed by each slug in `tradeoffs`. Value: name a concrete cost (a metric impact, a maintenance task, a class of stale data) *and* its consequence or triggering condition — not a generic warning. Trade-offs are a key differentiator of the site, so favour a substantive note (one or two sentences, ~50 words) over a terse one; length follows substance, don't pad.
+- `related` (optional):
+  - Array of approach slugs that exist as `_approaches/<LETTER>/<slug>.md`. Approach↔approach relations are declared **one-sided**: exactly one of the two pages carries the entry; `_layouts/approach.html` renders the relation on both pages and `src/scripts/data.js` emits one graph edge. Never declare the same relation on both pages. The link validator does **not** check these slugs — confirm each target file exists, or the entry vanishes silently.
+- `related_notes`:
+  - Map keyed by each slug in `related`. One sentence. The note renders on **both** pages, so write it symmetrically — it must read correctly from either page's point of view.
 - `related_requirements`:
   - Array of slugs that exist under `/requirements/<slug>`. Use `[]` when none apply.
 - `related_requirements_notes`:
@@ -55,7 +62,7 @@ permalink: /approaches/circuit-breaker
   - Unique and kebab-case: `/approaches/<slug>`. The last segment is the graph node ID — changing it breaks references.
 - `aka` (optional):
   - YAML list of plain display strings (title-case): `aka: [Throttling, Monitor]`. These are **index terms** ("also known as"), not strict synonyms — "if you know this term, you'll find the concept here". The same term may appear on more than one approach; aliases create **no** permalink, redirect, or graph node (unlike quality aliases). They surface in the A–Z explorer, the on-page "Also known as" block, and graph search. Where literature context matters (e.g. "Bass et al. call this Throttling"), put that in the body prose, not in `aka`.
-  - **Curation:** add an alias only when its wording genuinely differs from the canonical title. Skip singular/plural variants, near-identical restatements or terms identical to the title, and trivial rephrasings. Do **not** reuse a term already used as an alias on another approach — duplicate alias terms clutter the A–Z explorer. When in doubt, leave it out.
+  - **Curation:** add an alias only when its wording genuinely differs from the canonical title. Skip singular/plural variants, near-identical restatements or terms identical to the title, and trivial rephrasings. Skip umbrella terms that name a whole problem space rather than this tactic (e.g. *Schema Evolution* is not an alias for Tolerant Reader, even where planning docs pair the two in a row title). Do **not** reuse a term already used as an alias on another approach — duplicate alias terms clutter the A–Z explorer. When in doubt, leave it out.
 
 > **Silent-drop warning:** the layout matches each slug against existing pages and omits any it can't resolve, with no error. A typo'd slug — or a `*_notes` key that matches no slug in its array — disappears from the rendered page rather than failing the build. Verify slugs visually after rebuild.
 
@@ -66,9 +73,15 @@ Count words mechanically with `wc -w` — do not eyeball. Nothing in the build e
 - `intent`: one sentence, ≤ 25 words.
 - `mechanism`: one sentence or short paragraph, ≤ 50 words.
 - `applicability`: ≤ 50 words. Cover both "use when" and "skip when".
-- `supported_qualities_notes` / `related_requirements_notes` value: one sentence, ≤ 25 words.
+- `supported_qualities_notes` / `related_notes` / `related_requirements_notes` value: one sentence, ≤ 25 words.
 - `tradeoff_notes` value: name the concrete cost *and* its consequence or the condition under which it bites; one or two sentences, ~50 words as a soft ceiling. Length follows substance — don't pad a simple cost, don't truncate a real one.
-- Body: ≤ 350 words total across all sections.
+- Body: ≤ 350 words across the overview paragraphs and the (max 4) content sections. The image line (`![…]`), `## Example` / `## Mini Example`, and `## References` are **excluded** from the count. Count with exactly this pipeline — `wc -w` counts bullet dashes, em-dashes, and table pipes as words, and the budget is calibrated to that, so do not hand-adjust:
+
+  ```bash
+  awk 'BEGIN{fm=0} /^---$/{fm++; next} fm>=2{print}' <file> \
+    | awk '/^## (References|Example|Mini Example)/{skip=1; next} /^## /{skip=0} !skip && !/^!\[/' \
+    | wc -w
+  ```
 
 ## Body Structure
 
@@ -139,6 +152,7 @@ Voice: precise, pragmatic, trustworthy — a technical handbook for software arc
 
 - Front matter validates against this schema, including all `*_notes` blocks and `related_requirements`.
 - `supported_qualities` and `tradeoffs` contain only existing quality slugs; `related_requirements` only existing requirement slugs. Bad slugs vanish silently — verify on the rendered page.
+- `related` contains only existing approach slugs, each relation declared on **one** page only (check the counterpart's front matter), and every note reads correctly from both pages.
 - Every `*_notes` key matches a slug present in its corresponding array.
 - Tags use only the 9 dimensions listed above.
 - Length budgets hold (see "Length Budgets").
