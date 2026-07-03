@@ -12,9 +12,9 @@ supported_qualities_notes:
 tradeoffs: [correctness, maintainability]
 tradeoff_notes:
   correctness: "A renamed or repurposed field no longer raises a parse error — the reader substitutes its default and processes wrong data silently. Contract drift then surfaces downstream, in reports or invoices, instead of at the integration boundary where a strict parser would have stopped it."
-  maintainability: "Every consumer owns explicit extraction code, defaults, and drift monitoring instead of one generated schema binding. The tolerated field set must be documented and contract-tested per consumer, or it decays into guesswork about what producers may still change."
+  maintainability: "Every consumer owns a hand-curated subset model, its defaults, and drift monitoring instead of one generated full-schema binding. The tolerated field set must be documented and contract-tested per consumer, or it decays into guesswork about what producers may still change."
 intent: "Read only what you need from a message and ignore the rest, so producer-side schema changes leave consumers working."
-mechanism: "Consumers extract just the elements they use — by name or path, not by strict schema binding — ignore unknown fields, apply explicit defaults for absent optional elements, validate the extracted values, and treat an unknown value in a read enum field as an error."
+mechanism: "Consumers bind only the fields they use — a subset DTO with unknown properties ignored, or name/path extraction — apply explicit defaults for absent optional elements, validate the extracted values, and treat an unknown value in a read enum field as an error."
 applicability: "Use where producers and consumers evolve independently: public APIs, event streams, third-party integrations, long-lived document formats. Skip where the contract is the protection and every deviation must fail loudly — financial postings, safety commands, security-sensitive input."
 related: [open-host-service, event-driven-architecture]
 related_notes:
@@ -30,12 +30,12 @@ In 1980 Jon Postel wrote into the TCP specification: be conservative in what you
 
 Tolerance applies to structure the consumer never reads, not to values it does read. Producers still owe additive-only discipline, pinned down by consumer-driven contract tests.
 
-![Tolerant Reader: a producer's payload grows from four fields to six; the tolerant reader extracts only the four fields it uses, ignores the additions, and keeps working — no consumer deployment needed. A new value in an enum field it does read fails loudly instead of defaulting silently.](/assets/img/approaches/tolerant-reader.svg)
+![Tolerant Reader: a producer's payload grows from four fields to six; the tolerant reader binds only the four fields it uses, ignores the additions, and keeps working — no consumer deployment needed. A new value in an enum field it does read fails loudly instead of defaulting silently.](/assets/img/approaches/tolerant-reader.svg)
 
 ## How It Works
 
-- Extract the needed elements by name or path (JSON pointer, XPath) instead of binding the whole payload to a generated schema class.
-- Ignore unknown fields and elements — structure the consumer never reads is noise, not an error.
+- Bind only a subset DTO of the fields the consumer uses; configure the deserializer to ignore unknown properties (e.g. Jackson's ignoreUnknown).
+- Path extraction (JSON pointer, XPath) serves the same end for document-oriented formats.
 - An unknown value in an enum field the consumer does read is an error: reject, alert, or route to a manual fallback queue — never a silent default.
 - Apply explicit defaults for absent optional elements; fail only when required data is missing or invalid.
 - Validate the extracted values — types, ranges, invariants — not the document structure around them.
@@ -58,7 +58,7 @@ Tolerance applies to structure the consumer never reads, not to values it does r
 
 ## Example
 
-A payment provider's webhook initially sends `id`, `amount`, `currency`, and `status`. The shop's reader extracts exactly those four fields. Over two years the provider adds `fee_breakdown`, `risk_score`, and a nested `metadata` object — the shop deploys nothing. When the provider later renames `status` to `state`, a breaking change, the contract tests catch it before production does.
+A payment provider's webhook initially sends `id`, `amount`, `currency`, and `status`. The shop's reader binds exactly those four fields to a small DTO, unknown properties ignored. Over two years the provider adds `fee_breakdown`, `risk_score`, and a nested `metadata` object — the shop deploys nothing. When the provider later renames `status` to `state`, a breaking change, the contract tests catch it before production does.
 
 ## References
 

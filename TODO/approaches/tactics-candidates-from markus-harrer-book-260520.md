@@ -2,15 +2,9 @@
 
 **Date:** 2026-05-20
 **Source reviewed:** Markus Harrer, *Qualitätstaktiken — Lösungsstrategien für Softwarearchitekturen qualitätsgetrieben entwickeln* (Leanpub, 2026-03). Table of contents only (~280 pp, 400+ tactics).
-**Cross-referenced against:** `todo/approaches/approaches-planning-and-status.md` (our 163-entry merged plan) and the 23 published `_approaches/`.
 
 ---
 
-## How to read this
-
-Harrer's book is **breadth-first**: 400+ short tactics grouped by ISO-25010 quality. Our collection is **depth-first**: a smaller set of editorial pages with intent / mechanism / tradeoffs / verification / variants. So we should *not* mirror his list. We should mine it for items that (a) clear our editorial bar, (b) are **not already in our plan**, and (c) are either genuinely off-beat, important-but-underused, or fill a quality area we cover thinly.
-
-Every candidate below was checked against the merged plan. Items already present there (Graceful Degradation, Retry/Backoff, Idempotency, Event-Driven Architecture, Zero Trust, Canary, Blue-Green, IaC, Observability, DDD, Fitness Functions, Backpressure, Load Balancing, Connection Pooling, i18n, Dark Mode, Strangler Fig, Hexagonal, etc.) are **excluded** — they're already queued.
 
 Each candidate is tagged:
 
@@ -31,7 +25,7 @@ These combine "surprising or under-used" with "fits our depth format and has rea
 
 | 2 | **Bubble Context** | 🎯 | maintainability, evolvability, modularity | DDD's quietest move: carve a clean model *inside* a legacy mess without boiling the ocean. Off-beat, advanced, and a genuine alternative to "rewrite". Strong intent/mechanism story. |
 | 3 | **Anti-Corruption Layer** | 📐 Gap-filler | maintainability, interoperability, loose-coupling, integrability | The standard way to integrate with a model you don't control. Mainstream in DDD circles, under-applied everywhere else. Appears in our plan only as a sub-bullet of "Interface Tailoring" — deserves its own page. |
-| 4 | **Consumer-Driven Contracts** | 🎯 Gap-filler | backward-compatibility, testability, interoperability | Inverts contract testing: consumers publish expectations, providers verify against them. Off-beat, prevents whole classes of integration breakage. Compatibility gap. |
+
 | 5 | **Chaos Engineering** | 🎯 | resilience, fault-tolerance, availability, recoverability | Already a `★` in our reliable plan but unwritten. Worth elevating: it's the discipline that *validates* every other resilience tactic. Deep verification story fits our format perfectly. |
 | 6 | **Fitness Functions** | 📐 Gap-filler | maintainability, evolvability, testability, standard-compliance | Executable architecture tests. In our plan under `#suitable` but really a *maintainability* keystone. Pair with Architecture Conformance Analysis. Our largest gaps are maintainable + suitable. |
 | 7 | **Saga Pattern** | 📐 | transactionality, eventual-consistency, fault-tolerance, distributability | The standard answer to "distributed transactions without 2PC." Essential for microservice data integrity; we have nothing on distributed consistency. |

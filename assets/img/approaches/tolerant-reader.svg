@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 450" font-family="'Atkinson Hyperlegible Next','Atkinson Hyperlegible',-apple-system,'Segoe UI',sans-serif" role="img" aria-labelledby="tr-title tr-desc">
   <title id="tr-title">Tolerant Reader</title>
-  <desc id="tr-desc">A producer's webhook payload grows from four fields (id, amount, currency, status) to six when fee_breakdown and risk_score are added later. The tolerant reader extracts only the four fields it uses by name, ignores the additions, and applies defaults for absent optional fields — the consumer keeps working without a deployment. A new enum value in a field the reader does read is treated as an error, never a silent default. Contract tests pin the extracted field set so producers know what they must preserve.</desc>
+  <desc id="tr-desc">A producer's webhook payload grows from four fields (id, amount, currency, status) to six when fee_breakdown and risk_score are added later. The tolerant reader binds only the four fields it uses into a subset model, ignores the additions, and applies defaults for absent optional fields — the consumer keeps working without a deployment. A new enum value in a field the reader does read is treated as an error, never a silent default. Contract tests pin the extracted field set so producers know what they must preserve.</desc>
 
   <defs>
     <marker id="tr-arrow-teal" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
@@ -38,7 +38,7 @@
     <line x1="360" y1="193" x2="632" y2="193" marker-end="url(#tr-arrow-teal)"/>
     <line x1="360" y1="227" x2="632" y2="227" marker-end="url(#tr-arrow-teal)"/>
   </g>
-  <text x="500" y="112" font-size="13" fill="#3d8a75" font-weight="600" text-anchor="middle">extracted by name</text>
+  <text x="500" y="112" font-size="13" fill="#3d8a75" font-weight="600" text-anchor="middle">binds only these fields</text>
 
   <!-- connectors: ignored fields -->
   <g stroke="#999" stroke-width="2" stroke-dasharray="5 5">
