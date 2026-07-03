@@ -2,7 +2,7 @@
 title: Extensibility
 tags: [flexible, maintainable]
 related: [adaptability, modifiability, changeability, flexibility]
-standards: [hl7]
+standards: [hl7, dicom, ihe]
 permalink: /qualities/extensibility
 ---
 
