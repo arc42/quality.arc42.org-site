@@ -77,6 +77,9 @@
 .home-violet-directory li:nth-child(3) {
   --cat: var(--approaches-background-color);
 } // approaches
+.home-violet-directory li:nth-child(4) {
+  --cat: var(--standard-background-color);
+} // standards
 
 .home-violet-directory li a {
   align-items: baseline;

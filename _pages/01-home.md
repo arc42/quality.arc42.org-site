@@ -14,6 +14,9 @@ q_graph_script: /assets/js/homepage/main.js
 {% assign approaches = site.approaches %}
 {% assign approach_alias_count = 0 %}
 {% for a in approaches %}{% if a.aka %}{% assign approach_alias_count = approach_alias_count | plus: a.aka.size %}{% endif %}{% endfor %}
+{% assign standard_categories = "" | split: "" %}
+{% for s in standards %}{% if s.categories %}{% assign standard_categories = standard_categories | concat: s.categories %}{% endif %}{% endfor %}
+{% assign standard_category_count = standard_categories | uniq | size %}
 
 <div class="home-violet">
   <section class="home-violet-hero">
@@ -57,6 +60,16 @@ q_graph_script: /assets/js/homepage/main.js
               <small>Choose architectural tactics: patterns and practices that enable specific qualities.</small>
             </span>
             <span class="home-violet-directory__count"><b>{{ approaches | size }}</b> approaches, <i>{{ approach_alias_count }} aliases</i></span>
+          </a>
+        </li>
+
+        <li>
+          <a href="{{ '/standards/' | prepend: site.baseurl }}">
+            <span class="home-violet-directory__title">
+              Standards &amp; Regulations
+              <small>Ground qualities in authority: ISO, NIST, EU, and sector standards, by category.</small>
+            </span>
+            <span class="home-violet-directory__count"><b>{{ standards | size }}</b> standards, <i>{{ standard_category_count }} categories</i></span>
           </a>
         </li>
       </ul>
