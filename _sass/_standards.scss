@@ -124,10 +124,18 @@
   gap: 0.5rem;
 }
 
-.standards-category-title {
+// Scoped with the card parent so it outranks `.site-content h2` (the card
+// titles are semantic h2s living inside the content wrapper, which would
+// otherwise impose 2.37rem + a border-bottom and overflow the tile).
+.standards-category-card .standards-category-title {
   margin: 0;
+  padding-bottom: 0;
+  border-bottom: none;
   color: var(--std-heading);
   font-size: 1.03rem;
+  line-height: 1.2;
+  overflow-wrap: break-word;
+  hyphens: auto;
 }
 
 .standards-category-count {
@@ -331,6 +339,25 @@
   font-size: 0.75rem;
 }
 
+// Facets whose remaining match count (given the other active filters) is zero
+// are dimmed but stay operable — OR-within-group means selecting one never
+// blanks the grid on its own.
+.standards-facet-btn.is-empty:not(.is-active) {
+  opacity: 0.4;
+}
+
+.standards-empty-state {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 2.75rem 1rem;
+  color: var(--brand-muted);
+}
+
+.standards-empty-state__msg {
+  margin: 0 0 1rem;
+  font-size: 1rem;
+}
+
 .standards-explorer-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
@@ -368,10 +395,17 @@
   text-decoration: underline;
 }
 
-.standards-explorer-title {
+// Same override as the category cards: these are semantic h2s inside
+// `.site-content`, so pin the intended size/spacing and drop the content-h2
+// border.
+.standards-explorer-card .standards-explorer-title {
   margin: 0.2rem 0 0.52rem;
+  padding-bottom: 0;
+  border-bottom: none;
   font-size: 0.94rem;
   line-height: 1.3;
+  overflow-wrap: break-word;
+  hyphens: auto;
 }
 
 .standards-explorer-title a {
@@ -457,13 +491,29 @@
   }
 }
 
-// Standard item styling - applies globally to all standard items
+// Standard item styling - applies globally to all standard items.
+// Title/link colour and size are pinned here (matching the .standards-list
+// treatment) so the h3 title does not fall through to `.site-content h3`,
+// which would paint it near-black ink at an oversized default.
 .standard-item {
   margin-bottom: 0.1rem;
   padding: 0.1rem 0;
 
   .standard-title {
     margin-top: 0;
+    font-size: 1.1rem;
+    color: #4c5860;
+  }
+
+  .standard-link {
+    color: #4c5860;
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+  .standard-link:hover {
+    color: #3f4a52;
+    text-decoration: underline;
   }
 
   .standard-tags {

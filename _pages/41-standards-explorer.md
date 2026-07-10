@@ -29,13 +29,13 @@ no_layout_header: true
       type="search"
       placeholder="Try ISO, security, privacy, AI, medical..."
     />
-    <button type="button" id="standards-reset-filters" class="standards-reset-btn">reset-filters</button>
+    <button type="button" id="standards-reset-filters" class="standards-reset-btn">Reset filters</button>
     <div id="standards-result-counter" class="standards-result-counter" aria-live="polite"></div>
   </div>
 
   <div class="standards-facet-group">
     <p class="standards-facet-group-label">Category</p>
-    <div class="standards-facet-list" role="toolbar" aria-label="Filter by standard category">
+    <div class="standards-facet-list" role="group" aria-label="Filter by standard category">
       {% for category in category_order %}
         {% assign filtered_standards = allStandards | where_exp: "std", "std.categories contains category" %}
         {% if filtered_standards.size > 0 %}
@@ -57,7 +57,7 @@ no_layout_header: true
 
   <div class="standards-facet-group">
     <p class="standards-facet-group-label">Organization</p>
-    <div id="standards-org-facet-list" class="standards-facet-list" role="toolbar" aria-label="Filter by standard organization"></div>
+    <div id="standards-org-facet-list" class="standards-facet-list" role="group" aria-label="Filter by standard organization"></div>
   </div>
 
   <div id="standards-explorer-grid" class="standards-explorer-grid">
@@ -72,7 +72,6 @@ no_layout_header: true
       {% endcapture %}
       <article
         class="standards-explorer-card"
-        tabindex="0"
         data-shortname="{{ std.shortname | escape }}"
         data-categories="{{ std.categories | join: ' ' }}"
         data-search="{{ searchable | strip_html | strip_newlines | normalize_whitespace | downcase | escape }}"
@@ -81,9 +80,9 @@ no_layout_header: true
           <a class="standards-explorer-shortname" href="{{ std.url | prepend: site.baseurl }}">{{ std.shortname }}</a>
         </div>
 
-        <h3 class="standards-explorer-title">
+        <h2 class="standards-explorer-title">
           <a href="{{ std.url | prepend: site.baseurl }}">{{ std.title }}</a>
-        </h3>
+        </h2>
 
         <p class="standards-explorer-summary">{{ summary }}</p>
 
@@ -95,6 +94,11 @@ no_layout_header: true
         </ul>
       </article>
     {% endfor %}
+  </div>
+
+  <div id="standards-empty-state" class="standards-empty-state" hidden>
+    <p class="standards-empty-state__msg">No standards match those filters.</p>
+    <button type="button" id="standards-empty-reset" class="standards-reset-btn">Reset filters</button>
   </div>
 </div>
 

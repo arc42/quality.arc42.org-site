@@ -13,7 +13,7 @@
 
     {% if standard.categories and standard.categories.size > 0 %}
     <div class="standard-tags">
-        {% include icon.html name="tags" style="color: #999;" %}
+        {% include icon.html name="tags" style="color: var(--brand-muted);" %}
         {% for category in standard.categories %}<span class="category-name">#{{ category }}</span>{% unless forloop.last %}, {% endunless %}{% endfor %}
     </div>
     <hr>

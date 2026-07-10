@@ -1,12 +1,20 @@
 // Standards explorer: card grid with category + organization facets and search.
 // Distinct enough from the letter-grouped explorers that it doesn't share their
 // engine; kept here so all three explorers build through esbuild (one strategy).
+//
+// Facet logic: OR within a group, AND across groups. Selecting two categories
+// widens the result set to standards in either category; adding an organization
+// narrows across groups. Organizations are inherently OR (a card has exactly one
+// organization), so this makes the two groups behave consistently and removes
+// the near-disjoint AND combinations that used to blank the grid.
 (function () {
   const grid = document.getElementById("standards-explorer-grid");
   if (!grid) return;
 
   const searchInput = document.getElementById("standards-search");
   const resetButton = document.getElementById("standards-reset-filters");
+  const emptyResetButton = document.getElementById("standards-empty-reset");
+  const emptyState = document.getElementById("standards-empty-state");
   const resultCounter = document.getElementById("standards-result-counter");
   const categoryFacetButtons = Array.from(document.querySelectorAll(".standards-facet-btn[data-category]"));
   const organizationFacetList = document.getElementById("standards-org-facet-list");
@@ -44,10 +52,16 @@
     return fallbackToken || "Other";
   }
 
+  function cardCategoriesOf(card) {
+    return (card.dataset.categories || "").split(/\s+/).filter(Boolean);
+  }
+
+  // OR within the category group: a card matches if it carries ANY active
+  // category. Empty selection matches everything.
   function cardMatchesCategoryFacets(card, facets) {
     if (facets.size === 0) return true;
-    const cardCategories = (card.dataset.categories || "").split(/\s+/).filter(Boolean);
-    return Array.from(facets).every((facet) => cardCategories.includes(facet));
+    const cardCategories = cardCategoriesOf(card);
+    return Array.from(facets).some((facet) => cardCategories.includes(facet));
   }
 
   function cardMatchesOrganizationFacets(card, facets) {
@@ -66,6 +80,39 @@
     resultCounter.textContent = `${visibleCount} standard${visibleCount === 1 ? "" : "s"} visible`;
   }
 
+  // Live facet counts reflect the other groups' active filters plus search, so
+  // each count answers "how many results carry this facet, given everything else
+  // currently selected." Zero-count facets are dimmed (but stay operable).
+  function updateFacetCounts(query) {
+    categoryFacetButtons.forEach((button) => {
+      const category = button.dataset.category;
+      const count = cards.reduce((total, card) => {
+        const matches =
+          cardMatchesOrganizationFacets(card, activeOrganizationFacets) &&
+          cardMatchesSearch(card, query) &&
+          cardCategoriesOf(card).includes(category);
+        return matches ? total + 1 : total;
+      }, 0);
+      const countEl = button.querySelector(".standards-facet-count");
+      if (countEl) countEl.textContent = String(count);
+      button.classList.toggle("is-empty", count === 0);
+    });
+
+    organizationFacetButtons.forEach((button) => {
+      const organization = button.dataset.organization;
+      const count = cards.reduce((total, card) => {
+        const matches =
+          cardMatchesCategoryFacets(card, activeCategoryFacets) &&
+          cardMatchesSearch(card, query) &&
+          (card.dataset.organization || "") === organization;
+        return matches ? total + 1 : total;
+      }, 0);
+      const countEl = button.querySelector(".standards-facet-count");
+      if (countEl) countEl.textContent = String(count);
+      button.classList.toggle("is-empty", count === 0);
+    });
+  }
+
   function applyFilters() {
     const query = normalize(searchInput ? searchInput.value : "");
     let visibleCount = 0;
@@ -81,6 +128,8 @@
     });
 
     updateCounter(visibleCount);
+    updateFacetCounts(query);
+    if (emptyState) emptyState.hidden = visibleCount !== 0;
   }
 
   const organizationCounts = new Map();
@@ -167,22 +216,24 @@
     searchInput.addEventListener("input", applyFilters);
   }
 
-  if (resetButton) {
-    resetButton.addEventListener("click", () => {
-      if (searchInput) searchInput.value = "";
-      activeCategoryFacets.clear();
-      activeOrganizationFacets.clear();
-      categoryFacetButtons.forEach((button) => {
-        button.classList.remove("is-active");
-        button.setAttribute("aria-pressed", "false");
-      });
-      organizationFacetButtons.forEach((button) => {
-        button.classList.remove("is-active");
-        button.setAttribute("aria-pressed", "false");
-      });
-      applyFilters();
+  function resetAll() {
+    if (searchInput) searchInput.value = "";
+    activeCategoryFacets.clear();
+    activeOrganizationFacets.clear();
+    categoryFacetButtons.forEach((button) => {
+      button.classList.remove("is-active");
+      button.setAttribute("aria-pressed", "false");
     });
+    organizationFacetButtons.forEach((button) => {
+      button.classList.remove("is-active");
+      button.setAttribute("aria-pressed", "false");
+    });
+    applyFilters();
+    if (searchInput) searchInput.focus();
   }
+
+  if (resetButton) resetButton.addEventListener("click", resetAll);
+  if (emptyResetButton) emptyResetButton.addEventListener("click", resetAll);
 
   applyFilters();
 })();
