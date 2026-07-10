@@ -219,15 +219,6 @@ export function mountExplorer(config) {
 
       section.appendChild(list);
 
-      const returnTop = document.createElement("div");
-      returnTop.className = "ix-return-top";
-      const returnTopLink = document.createElement("a");
-      returnTopLink.href = "#top";
-      returnTopLink.title = "Return to top";
-      returnTopLink.innerHTML = '<i class="fa fa-arrow-up" aria-hidden="true"></i> Return to top';
-      returnTop.appendChild(returnTopLink);
-      section.appendChild(returnTop);
-
       resultsContainer.appendChild(section);
     });
   }
@@ -237,6 +228,40 @@ export function mountExplorer(config) {
     renderResults(filterItems());
   }
 
+  // One floating return-to-top for the whole page instead of a link row after
+  // every letter section (~26 rows ≈ 1,000px of chrome on /qualities/). Shown
+  // once the reader has scrolled past the control panels.
+  function mountScrollTop() {
+    const link = document.createElement("a");
+    link.className = "ix-scroll-top";
+    link.href = "#top";
+    link.setAttribute("aria-label", "Return to top");
+    link.title = "Return to top";
+    link.innerHTML = '<i class="fa fa-arrow-up" aria-hidden="true"></i>';
+    link.hidden = true;
+
+    link.addEventListener("click", (event) => {
+      event.preventDefault();
+      const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      window.scrollTo({ top: 0, behavior: reduceMotion ? "auto" : "smooth" });
+    });
+
+    let ticking = false;
+    function onScroll() {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        link.hidden = window.scrollY < window.innerHeight;
+        ticking = false;
+      });
+    }
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+
+    root.appendChild(link);
+  }
+
   state.all = normalize(parseData());
   renderAll();
+  mountScrollTop();
 }

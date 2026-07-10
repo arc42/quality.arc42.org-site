@@ -53,6 +53,13 @@
 }
 
 // ─── Panels ────────────────────────────────────────────────────────────────
+//
+// Spacing rhythm, three registers: 0.42rem inside panels (chip gaps, item
+// separation), 0.72rem between the control panels (facets + letters cluster
+// with the hero as the page's "header"), 1.4rem before the results panel and
+// 0.9rem between letter sections — the two biggest semantic breaks on the
+// page get the biggest space, so spacing encodes the hierarchy instead of
+// flattening it.
 
 .index-explorer .ix-panel {
   margin-top: 0.72rem;
@@ -60,6 +67,12 @@
   border-radius: $radius-lg;
   background: $background-color;
   padding: 0.78rem 0.82rem;
+}
+
+// The results panel is content, not controls: separate it from the filter
+// cluster with the largest step on the scale.
+.index-explorer .ix-panel--results {
+  margin-top: 1.4rem;
 }
 
 // Scoped with the explorer parent so panel headings outrank the generic
@@ -134,7 +147,7 @@
 
 .index-explorer .ix-results {
   display: grid;
-  gap: 0.42rem;
+  gap: 0.9rem;
 }
 
 .index-explorer .ix-letter-section,
@@ -272,10 +285,13 @@
 
 // ─── Return-to-top + empty state ───────────────────────────────────────────
 
+// Per-letter-section return links exist only in the noscript fallbacks (the
+// JS path renders one floating .ix-scroll-top instead) — kept small so ~26
+// repetitions cost footer-note space, not a full control row each.
 .index-explorer .ix-return-top {
   border-top: 1px solid var(--ix-rule);
   text-align: right;
-  padding: 0.52rem 0.76rem;
+  padding: 0.36rem 0.76rem;
 }
 
 .index-explorer .ix-return-top a {
@@ -283,12 +299,43 @@
   align-items: center;
   gap: 0.34rem;
   color: var(--muted-text-1);
-  font-size: 1.25rem;
+  font-size: 0.85rem;
   text-decoration: none;
 }
 
 .index-explorer .ix-return-top a:hover {
   color: var(--ix-strong);
+}
+
+// Single floating return-to-top, rendered once by the explorer JS and shown
+// after the reader has scrolled past the control panels. Same tier as the
+// sticky header utilities; it never spatially overlaps them.
+.ix-scroll-top {
+  position: fixed;
+  right: 1.25rem;
+  bottom: 1.25rem;
+  z-index: var(--z-sticky);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border: 1px solid var(--ix-border, var(--brand-muted));
+  border-radius: $radius-pill;
+  background: $background-color;
+  color: var(--ix-strong, var(--brand-ink));
+  font-size: 1rem;
+  text-decoration: none;
+  box-shadow: 0 2px 8px rgba(36, 24, 35, 0.14);
+}
+
+.ix-scroll-top:hover {
+  background: var(--ix-chip-bg, var(--brand-paper));
+  text-decoration: none;
+}
+
+.ix-scroll-top[hidden] {
+  display: none;
 }
 
 .index-explorer .ix-empty {
