@@ -1,54 +1,91 @@
 ---
 layout: page
-title: 404 Not Found
+title: Page not found
 permalink: 404.html
 hide: true
 share: false
+no_layout_header: true
 ---
 
-<img src="{{ '/assets/img/q42-404.webp' | prepend: site.baseurl }}" alt=""/>
+{% include section-hero.liquid
+  section="utility"
+  title="Page not found"
+  lede="That page has moved, been renamed, or never existed. Try a search, or head back to the start." %}
 
-<h1 style="color:#fe5a83">Sorry...</h1>
+<img src="{{ '/assets/img/q42-404.webp' | prepend: site.baseurl }}" alt="" />
 
-Oops - the page you requested wasn't found.
+<form class="not-found-search" action="{{ '/search/' | prepend: site.baseurl }}" role="search" method="get">
+  <label for="not-found-search-input">Search the quality model</label>
+  <div class="not-found-search__row">
+    <input
+      type="search"
+      id="not-found-search-input"
+      name="q"
+      placeholder="{{ site.str_search }}"
+      autocomplete="off"
+      autocapitalize="off"
+      spellcheck="false"
+    />
+    <button type="submit" class="btn">Search</button>
+  </div>
+</form>
 
 <p>
-  <a class="cta-home" href="{{ '/' | prepend: site.baseurl }}">
+  <a class="btn" href="{{ '/' | prepend: site.baseurl }}">
     <i class="fa fa-home" aria-hidden="true"></i>
-    Back to Home
+    Back to home
   </a>
 </p>
 
-Please let us know what you did, by
+<p>Spotted a broken link? Let us know:</p>
 
 <ul>
-    <li>sending an E-Mail to <a href="xmxaxixlxtxo:ixnxfxox@xaxrxcx4x2x.xdxex"
-                                onmouseover="this.href=this.href.replace(/x/g,'');">email (protected)</a>
-    </li>
-    <li> creating an issue in our public <a href="https://github.com/arc42/quality.arc42.org-site/issues">
-        repository</a>
-    </li>
+  <li>
+    open an issue in our public
+    <a href="https://github.com/arc42/quality.arc42.org-site/issues">repository</a>,
+    or
+  </li>
+  <li>
+    email
+    <a
+      id="not-found-contact"
+      href="xmxaxixlxtxo:ixnxfxox@xaxrxcx4x2x.xdxex"
+      >info&#8203;@&#8203;arc42.de</a
+    >
+    <noscript>(replace with info@arc42.de)</noscript>
+  </li>
 </ul>
 
-
 <style>
-  .cta-home {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.45rem;
-    padding: 0.4rem 0.8rem;
-    border-radius: 999px;
-    border: 1px solid #b8d8ea;
-    background: #eaf7ff;
-    color: #1f5f84;
-    font-weight: 700;
-    text-decoration: none;
+  .not-found-search {
+    margin: 2rem 0;
   }
-
-  .cta-home:hover,
-  .cta-home:focus-visible {
-    text-decoration: none;
-    background: #dff2ff;
-    border-color: #9ecde8;
+  .not-found-search label {
+    display: block;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+  .not-found-search__row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    align-items: stretch;
+  }
+  .not-found-search input[type="search"] {
+    flex: 1 1 16rem;
+    min-width: 0;
+    padding: 0.5em 0.75em;
+    border: 1px solid var(--brand-violet-24);
+    border-radius: 0.3em;
   }
 </style>
+
+<script>
+  // De-obfuscate the contact address on load rather than on a hover event, so
+  // the link is operable by keyboard, touch, and screen readers before any
+  // interaction.
+  (function () {
+    var link = document.getElementById("not-found-contact");
+    if (link) link.href = link.getAttribute("href").replace(/x/g, "");
+  })();
+</script>
