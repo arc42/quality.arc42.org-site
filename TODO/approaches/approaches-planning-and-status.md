@@ -102,16 +102,7 @@ Within each dimension: published approaches first, then open candidates ordered 
 | ✅ | — | Reduce Coupling | Encapsulate, add intermediaries, restrict and abstract dependencies to localize change | ★·B+ |
 | ✅ | — | Defer Binding | Bind implementation choices late via config, resources, or polymorphism | ★·B+ |
 | ✅ | — | Hexagonal Architecture (Ports & Adapters) | Isolate domain logic from infrastructure behind abstract ports | P·O |
-| | P1 | Record/Playback Harnesses | Capture interaction traces and replay them deterministically for regression tests | ★·B+ |
-| | P1 | Executable Assertions | Encode invariants as runtime-checkable assertions in tests and critical paths | ★·B+ |
-| | P1 | Limit Nondeterminism | Reduce time/order randomness for stable, reproducible test outcomes | ★·B+ |
-| | P1 | Specialized Test Interfaces | Expose controlled inspection/control points to observe and steer state in tests | ★·B+ |
-| | P1 | Localized State Storage | Keep mutable state local and explicit to simplify setup, reset, and assertions | ★·B+ |
-| | P2 | Modular Architecture / Bounded Contexts | Split codebase into cohesive, low-coupling modules | G·P·B+ |
-| | P2 | Strangler Fig Pattern | Incrementally replace legacy behind a routing facade | O |
-| | P2 | Abstract Data Sources | Abstract external data so tests can swap stubs, fixtures, and simulators | ★·B+ |
-| | P2 | Sandbox Environments | Run tests in isolated sandboxes to prevent side effects and improve repeatability | ★·B+ |
-| | P2 | Limit Structural Complexity | Constrain structure/dependencies to keep components understandable and testable | ★·B+ |
+
 | | P3 | Layered Architecture | Horizontal layers with strict top-down dependency rules | G·B+ |
 
 ---

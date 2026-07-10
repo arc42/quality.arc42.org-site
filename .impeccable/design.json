@@ -1,0 +1,148 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-07-09T18:48:35Z",
+  "title": "Design System: quality.arc42.org",
+  "extensions": {
+    "colorMeta": {
+      "arc42-violet": { "role": "primary", "displayName": "arc42 Violet", "canonical": "#682d63", "tonalRamp": ["oklch(18% 0.06 332)", "oklch(28% 0.09 332)", "oklch(38% 0.10 332)", "oklch(48% 0.10 332)", "oklch(60% 0.09 332)", "oklch(74% 0.07 332)", "oklch(86% 0.045 332)", "oklch(95% 0.02 332)"] },
+      "quality-blue": { "role": "secondary", "displayName": "Quality Blue", "canonical": "#00b8f5", "tonalRamp": ["oklch(20% 0.06 227)", "oklch(32% 0.09 227)", "oklch(44% 0.11 227)", "oklch(56% 0.13 227)", "oklch(68% 0.14 227)", "oklch(78% 0.12 227)", "oklch(88% 0.07 227)", "oklch(96% 0.02 227)"] },
+      "requirement-rose": { "role": "secondary", "displayName": "Requirement Rose", "canonical": "#ffb3b3", "tonalRamp": ["oklch(22% 0.09 20)", "oklch(34% 0.12 20)", "oklch(46% 0.14 20)", "oklch(58% 0.14 20)", "oklch(70% 0.11 20)", "oklch(80% 0.09 20)", "oklch(88% 0.06 20)", "oklch(96% 0.02 20)"] },
+      "standard-gold": { "role": "secondary", "displayName": "Standard Gold", "canonical": "#ffc95c", "tonalRamp": ["oklch(22% 0.05 88)", "oklch(34% 0.08 88)", "oklch(46% 0.10 88)", "oklch(58% 0.11 88)", "oklch(70% 0.12 88)", "oklch(80% 0.12 88)", "oklch(90% 0.09 88)", "oklch(97% 0.03 88)"] },
+      "approach-green": { "role": "secondary", "displayName": "Approach Green", "canonical": "#92ef80", "tonalRamp": ["oklch(20% 0.07 140)", "oklch(32% 0.10 140)", "oklch(44% 0.12 140)", "oklch(56% 0.14 140)", "oklch(68% 0.15 140)", "oklch(80% 0.15 140)", "oklch(88% 0.11 140)", "oklch(96% 0.04 140)"] },
+      "arc42-teal": { "role": "tertiary", "displayName": "arc42 Teal", "canonical": "#5fb49c", "tonalRamp": ["oklch(20% 0.05 172)", "oklch(32% 0.07 172)", "oklch(44% 0.08 172)", "oklch(56% 0.08 172)", "oklch(68% 0.08 172)", "oklch(78% 0.07 172)", "oklch(88% 0.05 172)", "oklch(96% 0.02 172)"] },
+      "dimension-navy": { "role": "tertiary", "displayName": "Dimension Navy", "canonical": "#1a3a5c", "tonalRamp": ["oklch(18% 0.04 250)", "oklch(28% 0.06 250)", "oklch(38% 0.07 250)", "oklch(50% 0.07 250)", "oklch(62% 0.06 250)", "oklch(76% 0.05 250)", "oklch(88% 0.03 250)", "oklch(96% 0.01 250)"] },
+      "ink": { "role": "neutral", "displayName": "Ink", "canonical": "#241823", "tonalRamp": ["oklch(15% 0.02 332)", "oklch(25% 0.03 332)", "oklch(35% 0.03 332)", "oklch(48% 0.03 332)", "oklch(62% 0.025 332)", "oklch(76% 0.02 332)", "oklch(88% 0.012 332)", "oklch(96% 0.006 332)"] },
+      "paper": { "role": "neutral", "displayName": "Paper", "canonical": "#f8f7f2", "tonalRamp": ["oklch(20% 0.005 100)", "oklch(35% 0.005 100)", "oklch(50% 0.005 100)", "oklch(65% 0.006 100)", "oklch(78% 0.007 100)", "oklch(88% 0.007 100)", "oklch(94% 0.006 100)", "oklch(97.5% 0.005 100)"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Page H1 on content pages; hero display may reach 4.2rem with clamp." },
+      "headline": { "displayName": "Headline", "purpose": "h2 section breaks." },
+      "title": { "displayName": "Title", "purpose": "h3; 1.45rem for h4. All headings balance-wrapped, -0.005em tracking." },
+      "body": { "displayName": "Body", "purpose": "17px base, text-wrap: pretty, ledes max 78ch. Atkinson Hyperlegible Next for low-vision legibility." },
+      "label": { "displayName": "Label / Eyebrow", "purpose": "Uppercase eyebrows (QUALITY, REQUIREMENT) and group labels. Always the sans." },
+      "mono": { "displayName": "Mono", "purpose": "Code and the search kbd hint." }
+    },
+    "shadows": [
+      { "name": "popover", "value": "0 1px 2px rgba(36, 24, 35, 0.06), 0 14px 36px rgba(36, 24, 35, 0.22)", "purpose": "Search autocomplete panel — the strongest float on the site. Ink-tinted." },
+      { "name": "sheet", "value": "0 12px 36px rgba(0, 0, 0, 0.2)", "purpose": "Mobile graph bottom-sheet." },
+      { "name": "graph-control", "value": "0 2px 10px rgba(0, 0, 0, 0.1)", "purpose": "Floating controls over the graph canvas." },
+      { "name": "graph-tooltip", "value": "0 2px 5px rgba(0, 0, 0, 0.2)", "purpose": "Graph hover tooltip." },
+      { "name": "standards-card-rest", "value": "0 1px 2px rgba(44, 31, 5, 0.05)", "purpose": "Standards explorer card at rest — warm-ink whisper; the sole sanctioned in-flow shadow." },
+      { "name": "standards-card-hover", "value": "0 10px 20px rgba(38, 27, 4, 0.15)", "purpose": "Standards explorer card hover-lift." },
+      { "name": "focus-ring", "value": "0 0 0 2px #682d63, 0 0 0 4px #fbf6ef", "purpose": "Two-tone focus ring on paper/cream surfaces. State indicator, not elevation." },
+      { "name": "focus-ring-on-violet", "value": "0 0 0 2px #fbf6ef, 0 0 0 4px #52214f", "purpose": "Two-tone focus ring on the violet header." },
+      { "name": "legacy-callout", "value": "3px 3px 4px 0 rgba(104, 45, 99, 0.24)", "purpose": "Hard-offset shadow on old callout boxes. Legacy — do not extend." }
+    ],
+    "motion": [
+      { "name": "micro-ease-out", "value": "120ms ease-out", "purpose": "Chip and nav-link state changes: background, border-color, color." },
+      { "name": "expo-out", "value": "cubic-bezier(0.16, 1, 0.3, 1)", "purpose": "Larger moves at 150–250ms: header transitions, search hint fade, sheet slide." },
+      { "name": "link-standard", "value": "0.2s cubic-bezier(0.4, 0, 0.2, 1)", "purpose": "Global link hover transition." }
+    ],
+    "breakpoints": [
+      { "name": "site-max", "value": "1200px" },
+      { "name": "nav-collapse", "value": "1180px" },
+      { "name": "home-graph-wide", "value": "900px" },
+      { "name": "home-stack", "value": "860px" },
+      { "name": "mobile", "value": "800px" },
+      { "name": "nav-compact", "value": "720px" },
+      { "name": "footer-stack", "value": "600px" },
+      { "name": "home-edge", "value": "560px" },
+      { "name": "nav-narrow", "value": "520px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Tag Chip (Quality)",
+      "kind": "chip",
+      "refersTo": "tag-chip",
+      "description": "Pill chip washed 14% toward its section color; deepens to 25% on hover. Requirement and approach variants swap the --chip-cat color.",
+      "html": "<a href=\"#\" class=\"ds-chip-quality\">reliable <span>42</span></a>",
+      "css": ".ds-chip-quality { display: inline-flex; align-items: center; gap: 0.35rem; background: color-mix(in oklab, var(--brand-paper, #f8f7f2) 86%, var(--brand-blue, #00b8f5) 14%); border: 1px solid color-mix(in oklab, var(--brand-paper, #f8f7f2) 65%, var(--brand-blue, #00b8f5) 35%); border-radius: 999px; color: var(--brand-blue-text, #003366); font-family: 'Atkinson Hyperlegible Next', sans-serif; font-size: 0.85rem; font-weight: 500; line-height: 1.2; padding: 0.22rem 0.7rem; text-decoration: none; transition: background 120ms ease-out, border-color 120ms ease-out; } .ds-chip-quality span { font-size: 0.78rem; font-weight: 400; opacity: 0.7; } .ds-chip-quality:hover, .ds-chip-quality:focus-visible { background: color-mix(in oklab, var(--brand-paper, #f8f7f2) 75%, var(--brand-blue, #00b8f5) 25%); border-color: color-mix(in oklab, var(--brand-paper, #f8f7f2) 50%, var(--brand-blue, #00b8f5) 50%); } .ds-chip-quality:focus-visible { outline: none; box-shadow: 0 0 0 2px var(--brand-violet, #682d63), 0 0 0 4px var(--brand-cream, #fbf6ef); }"
+    },
+    {
+      "name": "Hero Chip",
+      "kind": "chip",
+      "refersTo": "hero-chip",
+      "description": "Quieter chip for the section-hero chips row — violet-alpha wash, ink text; section identity stays in the rail.",
+      "html": "<a href=\"#\" class=\"ds-chip-hero\">efficient</a>",
+      "css": ".ds-chip-hero { display: inline-block; background: rgba(104, 45, 99, 0.06); border: 1px solid rgba(104, 45, 99, 0.18); border-radius: 999px; color: var(--brand-ink, #241823); font-family: 'Atkinson Hyperlegible Next', sans-serif; font-size: 0.78rem; font-weight: 500; line-height: 1.3; padding: 0.12rem 0.55rem; text-decoration: none; transition: background 120ms ease-out, border-color 120ms ease-out; } .ds-chip-hero:hover, .ds-chip-hero:focus-visible { background: rgba(104, 45, 99, 0.12); border-color: rgba(104, 45, 99, 0.32); } .ds-chip-hero:focus-visible { outline: none; box-shadow: 0 0 0 2px var(--brand-violet, #682d63), 0 0 0 4px var(--brand-cream, #fbf6ef); }"
+    },
+    {
+      "name": "Section Hero",
+      "kind": "card",
+      "refersTo": "section-hero",
+      "description": "The signature container: paper card, 8–14% section wash, 10px colored left rail, eyebrow → serif title → muted lede → chips.",
+      "html": "<div class=\"ds-section-hero\"><p class=\"ds-section-hero-eyebrow\">Quality</p><h1 class=\"ds-section-hero-title\">Reliability</h1><p class=\"ds-section-hero-lede\">The ability of a system to perform its required functions under stated conditions for a specified period of time.</p></div>",
+      "css": ".ds-section-hero { position: relative; background: color-mix(in oklab, var(--brand-paper, #f8f7f2) 86%, var(--brand-blue, #00b8f5) 14%); border: 1px solid rgba(104, 45, 99, 0.18); border-radius: 10px; padding: 0.75rem 1.4rem 0.7rem 2rem; } .ds-section-hero::before { content: ''; position: absolute; left: 0; top: 0.55rem; bottom: 0.55rem; width: 10px; border-radius: 3px; background: var(--brand-blue, #00b8f5); } .ds-section-hero-eyebrow { color: var(--brand-muted, #746671); font-family: 'Atkinson Hyperlegible Next', sans-serif; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; margin: 0 0 0.25rem; } .ds-section-hero-title { color: var(--brand-ink, #241823); font-family: 'Libre Caslon Text', Georgia, serif; font-size: clamp(1.6rem, 2.4vw, 1.95rem); font-weight: 500; letter-spacing: -0.01em; line-height: 1.15; margin: 0 0 0.3rem; } .ds-section-hero-lede { color: var(--brand-muted, #746671); font-family: 'Atkinson Hyperlegible Next', sans-serif; font-size: 1rem; line-height: 1.4; margin: 0; max-width: 78ch; }"
+    },
+    {
+      "name": "Panel Divider",
+      "kind": "card",
+      "refersTo": "section-hero",
+      "description": "Mini-hero used between lists on tag pages: 6px rail, 20% wash, h2 only.",
+      "html": "<div class=\"ds-panel-divider\"><h2>Requirements tagged with #secure</h2></div>",
+      "css": ".ds-panel-divider { position: relative; background: color-mix(in oklab, var(--brand-paper, #f8f7f2) 80%, var(--reqs-background-color, #ffb3b3) 20%); border: 1px solid color-mix(in oklab, var(--brand-paper, #f8f7f2) 65%, var(--reqs-background-color, #ffb3b3) 35%); border-radius: 8px; padding: 0.9rem 1rem 0.9rem 1.7rem; } .ds-panel-divider::before { content: ''; position: absolute; left: 0; top: 0.5rem; bottom: 0.5rem; width: 6px; border-radius: 3px; background: var(--reqs-background-color, #ffb3b3); } .ds-panel-divider h2 { margin: 0; padding: 0; color: var(--brand-ink, #241823); font-family: 'Libre Caslon Text', Georgia, serif; font-size: 1.4rem; font-weight: 700; line-height: 1.15; }"
+    },
+    {
+      "name": "Facet Pill",
+      "kind": "button",
+      "refersTo": "facet-pill",
+      "description": "Filter pill from the standards explorer; active state fills with Standard Gold plus an inset keyline.",
+      "html": "<button class=\"ds-facet-pill\">ISO <span>12</span></button> <button class=\"ds-facet-pill is-active\">Security <span>8</span></button>",
+      "css": ".ds-facet-pill { border: 1px solid #ead8ab; border-radius: 999px; background: #ffffff; color: #655c4a; font-family: 'Atkinson Hyperlegible Next', sans-serif; font-size: 0.78rem; font-weight: 600; padding: 0.23rem 0.56rem; cursor: pointer; transition: background 120ms ease-out, border-color 120ms ease-out; } .ds-facet-pill span { margin-left: 0.28rem; font-size: 0.75rem; } .ds-facet-pill:hover { background: #fff6de; } .ds-facet-pill:focus-visible { outline: none; box-shadow: 0 0 0 2px var(--brand-violet, #682d63), 0 0 0 4px var(--brand-cream, #fbf6ef); } .ds-facet-pill.is-active { background: var(--standard-background-color, #ffc95c); border-color: var(--standard-background-color, #ffc95c); box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.08); color: #4a3a0a; }"
+    },
+    {
+      "name": "Primary Nav Link",
+      "kind": "nav",
+      "refersTo": "nav-link",
+      "description": "Header navigation on the violet bar: muted on-violet brightening to full white; two-tone on-violet focus ring.",
+      "html": "<div class=\"ds-nav-demo\"><a href=\"#\" class=\"ds-nav-link\">Qualities</a><a href=\"#\" class=\"ds-nav-link is-active\">Requirements</a><a href=\"#\" class=\"ds-nav-link\">Standards</a></div>",
+      "css": ".ds-nav-demo { display: flex; gap: 1.25rem; align-items: center; background: var(--brand-violet, #682d63); padding: 0.9rem 1.2rem; border-radius: 8px; } .ds-nav-link { color: rgba(251, 246, 239, 0.78); font-family: 'Atkinson Hyperlegible Next', sans-serif; font-size: 0.875rem; font-weight: 600; line-height: 1; text-decoration: none; white-space: nowrap; transition: color 0.25s cubic-bezier(0.16, 1, 0.3, 1); } .ds-nav-link:hover, .ds-nav-link.is-active { color: #fbf6ef; } .ds-nav-link:focus-visible { outline: none; border-radius: 3px; box-shadow: 0 0 0 2px #fbf6ef, 0 0 0 4px #52214f; color: #fbf6ef; }"
+    },
+    {
+      "name": "Text Input",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Content-area input: white, hairline border, 0.3em radius.",
+      "html": "<input type=\"text\" class=\"ds-input\" placeholder=\"Filter standards…\" />",
+      "css": ".ds-input { background: #ffffff; border: 1px solid rgba(0, 0, 0, 0.1); border-radius: 0.3em; color: #383838; display: inline-block; font-family: 'Atkinson Hyperlegible Next', sans-serif; font-size: 1rem; padding: 0.5em 0.75em; } .ds-input::placeholder { color: #5e5e5e; } .ds-input:focus-visible { outline: 2px solid var(--brand-violet, #682d63); outline-offset: 2px; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Annotated Atlas",
+    "overview": "quality.arc42.org is a reference atlas of software quality. The interactive force-directed graph is the map; the homepage rails are the legend; every content page is a labeled plate. Each of the four content types owns exactly one identity color — Quality Blue, Requirement Rose, Standard Gold, Approach Green — and that color travels with its type everywhere: as a graph node fill, as a hero rail, as a chip wash.\n\nThe system is a working document, not a showpiece. Surfaces are paper-flat; color arrives as thin washes and solid rails, never as saturated fills. Typography does the heavy lifting: a pre-trend English reference serif (Libre Caslon Text) announces, and a low-vision-optimized sans (Atkinson Hyperlegible Next) carries the dense body content that architects scan under time pressure. The register is product: design serves lookup, comprehension, and navigation.",
+    "keyCharacteristics": [
+      "Semantic color: every hue means a content type; decoration-only color is prohibited",
+      "Paper-flat surfaces with color-mix washes (8–14%) and solid left rails as section identity",
+      "Serif/sans two-voice typography on a 1.333 modular scale, 17px body base",
+      "Light-only theme (color-scheme: light), WCAG 2.2 AA non-negotiable",
+      "Motion is micro and stateful: 120–250ms ease-out, full prefers-reduced-motion coverage",
+      "Professional density: dense, scannable, tabular-nums for data, no over-spacing"
+    ],
+    "rules": [
+      { "name": "The Legend Rule", "body": "Every content type owns exactly one color, and that color must match everywhere the type appears — graph node, homepage rail, hero rail, chip. The homepage is the legend; never let a rail color contradict its destination.", "section": "colors" },
+      { "name": "The Wash Rule", "body": "Section color reaches a surface only as a color-mix wash into Paper — 8% for calm sections, 14% for dialed-up sections, 25% at chip hover — plus a solid rail. Full-saturation fills are reserved for graph nodes.", "section": "colors" },
+      { "name": "The Two Voices Rule", "body": "Libre Caslon Text speaks only in headings (and the search dropdown's group labels). Atkinson Hyperlegible Next speaks everything else — body, chips, buttons, navigation, data. Never a serif in a UI control; never a third face.", "section": "typography" },
+      { "name": "The Tabular Data Rule", "body": "Counts, thresholds, and quality-requirement figures always set font-variant-numeric: tabular-nums.", "section": "typography" },
+      { "name": "The Overlay Rule", "body": "A shadow means the element floats above the page: popover, sheet, tooltip. If it doesn't float, it doesn't cast. (Standards explorer cards are the sole sanctioned exception.)", "section": "elevation" }
+    ],
+    "dos": [
+      "Do route every section color through The Wash Rule (8/14/25% color-mix into Paper) and The Rail Rule (solid rail, 10px hero / 6px panel).",
+      "Do hold WCAG 2.2 AA everywhere: body text ≥4.5:1, and use Quality Blue Accent Dark (#1f5f82) instead of lighter blues on tinted surfaces.",
+      "Do apply the two-tone focus rings (--focus-ring / --focus-ring-on-violet) whenever a native outline is suppressed.",
+      "Do ship a prefers-reduced-motion: reduce alternative for every animation.",
+      "Do stay on the scales: radii 4/8/10/14/999px, the 1.333 type scale, the named z-index tiers, tabular-nums for data.",
+      "Do keep micro-transitions at 120ms ease-out and reserve cubic-bezier(0.16, 1, 0.3, 1) for larger moves."
+    ],
+    "donts": [
+      "Don't look like \"a generic SaaS landing page, a startup pitch deck, or an AI-generated dashboard\". No hero-metric templates, no gradient text, no glassmorphism.",
+      "Don't feel like \"a blog or a wiki\". This is an atlas with an information architecture, not a stream of posts.",
+      "Don't reintroduce saturated-fill pills or full-color background panels — the exact pattern the 2026 chip/panel refactor removed.",
+      "Don't use section colors decoratively. A color that doesn't identify its content type is wrong.",
+      "Don't add dark mode. color-scheme: light is doctrine; the light theme is the brand.",
+      "Don't set Libre Caslon in UI labels, buttons, chips, or data.",
+      "Don't add shadows to resting page-flow elements, extend the legacy hard-offset callout shadows, or invent z-index values outside the named tiers.",
+      "Don't add new ad-hoc muted grays — use Muted (#746671) or Text Gray (#383838)."
+    ]
+  }
+}
