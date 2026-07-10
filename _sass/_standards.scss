@@ -471,17 +471,17 @@
     font-size: 1.1rem;
     font-weight: bold;
     margin: 0 0 0.3rem 0;
-    color: #4c5860;
+    color: var(--std-heading);
   }
 
   .standard-link {
-    color: #4c5860;
+    color: var(--std-heading);
     text-decoration: none;
     font-weight: bold;
   }
 
   .standard-link:hover {
-    color: #3f4a52;
+    color: color-mix(in oklab, var(--std-heading) 82%, var(--brand-ink));
     text-decoration: underline;
   }
 
@@ -492,9 +492,10 @@
 }
 
 // Standard item styling - applies globally to all standard items.
-// Title/link colour and size are pinned here (matching the .standards-list
-// treatment) so the h3 title does not fall through to `.site-content h3`,
-// which would paint it near-black ink at an oversized default.
+// Title/link colour and size are pinned here so the h3 title does not fall
+// through to `.site-content h3` (near-black ink at an oversized default).
+// Colour follows the section accent-text grammar: gold-brown --std-heading,
+// like every other section's list titles use their own accent-text.
 .standard-item {
   margin-bottom: 0.1rem;
   padding: 0.1rem 0;
@@ -502,17 +503,17 @@
   .standard-title {
     margin-top: 0;
     font-size: 1.1rem;
-    color: #4c5860;
+    color: var(--std-heading);
   }
 
   .standard-link {
-    color: #4c5860;
+    color: var(--std-heading);
     text-decoration: none;
     font-weight: bold;
   }
 
   .standard-link:hover {
-    color: #3f4a52;
+    color: color-mix(in oklab, var(--std-heading) 82%, var(--brand-ink));
     text-decoration: underline;
   }
 
