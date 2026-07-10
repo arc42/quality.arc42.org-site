@@ -219,24 +219,29 @@
   gap: 0.7rem;
 }
 
+// Tags live in the meta register: one item = one bold thing (the title).
+// At 700/accent they formed a second bold accent line per item and made the
+// eye zigzag title-tags-title down the whole list; the accent now returns
+// only on hover, when the reader actually reaches for a tag.
 .index-explorer .ix-item-tags {
   margin-top: 0.22rem;
   color: var(--ix-muted);
-  font-size: 0.95rem;
+  font-size: 0.83rem;
 }
 
 .index-explorer .ix-item-tags .fa-tags {
-  color: var(--ix-link);
+  color: var(--ix-muted);
   margin-right: 0.2rem;
 }
 
 .index-explorer .ix-item-tags a {
-  color: var(--ix-link);
+  color: var(--ix-muted);
   text-decoration: none;
-  font-weight: 700;
+  font-weight: 500;
 }
 
 .index-explorer .ix-item-tags a:hover {
+  color: var(--ix-link);
   text-decoration: underline;
 }
 
