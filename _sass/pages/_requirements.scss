@@ -1,10 +1,11 @@
-// Requirements index page — /requirements/
+// Requirements index page — /requirements/ (noscript fallback only)
 //
-// Modernises the previously-legacy list/chip styling on this page so it
-// reads as a peer of the qualities / standards / approaches explorers
-// rather than older-feeling editorial content.
+// The JS-enabled page now uses the shared index-explorer component
+// (_sass/components/_index-explorer.scss + src/explorers/requirements.js).
+// These styles drive the dimension-grouped no-JS fallback inside <noscript>:
+// jump-link chips plus one bordered list per dimension section.
 //
-// Replaces:
+// Historic notes (the pre-explorer modernisation this replaced):
 //   - `<ul class="tag-box inline">` chip row → `.req-explorer-facets`
 //     (calm pill chips on paper, neutral hover; old version used
 //     saturated reqs-pink with a hover scale)
