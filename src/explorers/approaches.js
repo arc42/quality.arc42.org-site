@@ -59,11 +59,11 @@ function normalize(rawItems) {
 
 function renderItem(item, { baseUrl, tagUrl }) {
   const li = document.createElement("li");
-  li.className = "approaches-item";
+  li.className = "ix-item";
   if (item.kind === "alias") li.classList.add("is-alias");
 
   const title = document.createElement("h4");
-  title.className = "approaches-item-title";
+  title.className = "ix-item-title";
   const titleLink = document.createElement("a");
   titleLink.href = item.url || `${baseUrl}/approaches/${encodeURIComponent(item.id)}`;
   const icon = document.createElement("i");
@@ -76,9 +76,9 @@ function renderItem(item, { baseUrl, tagUrl }) {
 
   if (item.kind === "alias") {
     const aliasMeta = document.createElement("div");
-    aliasMeta.className = "approaches-alias-meta";
+    aliasMeta.className = "ix-alias-meta";
     const label = document.createElement("span");
-    label.className = "approaches-alias-label";
+    label.className = "ix-alias-label";
     label.textContent = "alias";
     aliasMeta.appendChild(label);
     aliasMeta.appendChild(document.createTextNode(" of "));
@@ -90,7 +90,7 @@ function renderItem(item, { baseUrl, tagUrl }) {
     li.appendChild(aliasMeta);
   } else {
     const meta = document.createElement("div");
-    meta.className = "approaches-item-meta";
+    meta.className = "ix-item-meta";
     const supports = document.createElement("span");
     supports.textContent = `supports: ${item.supportedCount}`;
     const tradeoffs = document.createElement("span");
@@ -100,7 +100,7 @@ function renderItem(item, { baseUrl, tagUrl }) {
   }
 
   if (item.tags.length > 0) {
-    li.appendChild(createTagsLine(PREFIX, item.tags, tagUrl));
+    li.appendChild(createTagsLine(item.tags, tagUrl));
   }
 
   return li;

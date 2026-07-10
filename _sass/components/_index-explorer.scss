@@ -1,0 +1,310 @@
+// index-explorer — the shared letter-grouped facet explorer used by the
+// three dimension-organized index pages (/qualities/, /requirements/,
+// /approaches/).
+//
+// One structure, one spacing rhythm, one item grammar (title · meta · tags),
+// one alias treatment. The section accent comes from --cat, set per section
+// via data-section — the same mechanism section-hero and the homepage
+// directory rails use, so the explorer inherits the site-wide color legend
+// instead of carrying page-local palettes (the former --qx-*/--ax-* inline
+// blocks).
+//
+// The scaffold DOM (chips, letter sections, items) is rendered by
+// src/explorers/letter-explorer.js; the per-page noscript fallbacks reuse
+// the same classes. Element IDs stay page-prefixed for the JS mount and are
+// never styled here.
+
+.index-explorer {
+  // Fallback accent; every real instance sets data-section below.
+  --cat: var(--brand-violet);
+  --ix-strong: var(--brand-ink); // panel headings, letter headings, active chips
+  --ix-link: var(--brand-ink); // item titles, tag links, chip text
+  --ix-muted: var(--brand-muted); // summaries, meta lines, alias links
+
+  // Surfaces derived from the accent, mixed over paper.
+  --ix-border: color-mix(in oklab, var(--brand-paper) 64%, var(--cat) 36%);
+  --ix-rule: color-mix(in oklab, var(--brand-paper) 86%, var(--cat) 14%);
+  --ix-chip-bg: color-mix(in oklab, var(--brand-paper) 88%, var(--cat) 12%);
+  --ix-heading-bg: color-mix(in oklab, var(--brand-paper) 86%, var(--cat) 14%);
+  --ix-alias-bg: color-mix(in oklab, var(--brand-paper) 94%, var(--cat) 6%);
+
+  margin-top: 0.75rem;
+
+  &[data-section="qualities"] {
+    --cat: var(--brand-blue);
+    --ix-strong: var(--brand-blue-text);
+    // accent-dark, not accent: #1675b9 is ~4.5:1 on white and falls below
+    // WCAG AA on the blue-tinted chip background; #1f5f82 clears it there.
+    --ix-link: var(--brand-blue-accent-dark);
+    --ix-muted: var(--brand-blue-muted);
+  }
+
+  &[data-section="requirements"] {
+    --cat: var(--reqs-background-color);
+    --ix-strong: var(--req-text-color);
+    --ix-link: var(--req-text-color);
+  }
+
+  &[data-section="approaches"] {
+    --cat: var(--approaches-background-color);
+    --ix-strong: var(--approaches-text-color);
+    --ix-link: var(--approaches-text-color);
+  }
+}
+
+// ─── Panels ────────────────────────────────────────────────────────────────
+
+.index-explorer .ix-panel {
+  margin-top: 0.72rem;
+  border: 1px solid var(--ix-border);
+  border-radius: $radius-lg;
+  background: $background-color;
+  padding: 0.78rem 0.82rem;
+}
+
+// Scoped with the explorer parent so panel headings outrank the generic
+// `.site-content h2` treatment (2.37rem + border-bottom).
+.index-explorer .ix-panel-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.42rem;
+  margin-bottom: 0.55rem;
+}
+
+.index-explorer .ix-panel-head h2 {
+  margin: 0;
+  border-bottom: none;
+  padding-bottom: 0;
+  color: var(--ix-strong);
+  font-size: 1.04rem;
+}
+
+.index-explorer .ix-panel-head span {
+  color: var(--ix-muted);
+  font-size: 0.84rem;
+}
+
+// ─── Facet + letter chips ──────────────────────────────────────────────────
+
+.index-explorer .ix-facets,
+.index-explorer .ix-letters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.42rem;
+}
+
+.index-explorer .ix-facet-chip,
+.index-explorer .ix-letter-chip {
+  border: 1px solid var(--ix-border);
+  border-radius: $radius-pill;
+  background: var(--ix-chip-bg);
+  color: var(--ix-link);
+  font-size: 0.82rem;
+  font-weight: 700;
+  padding: 0.22rem 0.62rem;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.24rem;
+}
+
+.index-explorer .ix-facet-chip:hover,
+.index-explorer .ix-letter-chip:hover {
+  background: color-mix(in oklab, var(--brand-paper) 78%, var(--cat) 22%);
+  text-decoration: none;
+}
+
+.index-explorer .ix-facet-chip.active {
+  background: var(--cat);
+  border-color: var(--cat);
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.08);
+  color: var(--ix-strong);
+}
+
+// No opacity on the counts: they inherit the chip text colour, which sits
+// close to the AA threshold on tinted chip backgrounds — dimming would put
+// them under it.
+.index-explorer .ix-count {
+  font-size: 0.8em;
+}
+
+// ─── Results ───────────────────────────────────────────────────────────────
+
+.index-explorer .ix-results {
+  display: grid;
+  gap: 0.42rem;
+}
+
+.index-explorer .ix-letter-section,
+.index-explorer .ix-fallback-list {
+  border: 1px solid var(--ix-border);
+  border-radius: $radius-md;
+  overflow: hidden;
+  background: $background-color;
+}
+
+.index-explorer .ix-letter-heading {
+  margin: 0;
+  padding: 0.54rem 0.76rem;
+  background: var(--ix-heading-bg);
+  color: var(--ix-strong);
+  font-size: 1rem;
+  border-bottom: 1px solid var(--ix-border);
+  scroll-margin-top: 0.8rem;
+}
+
+.index-explorer .ix-letter-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+// ─── Item grammar: title · meta · tags ─────────────────────────────────────
+
+.index-explorer .ix-item {
+  padding: 0.48rem 0.76rem;
+  border-top: 1px solid var(--ix-rule);
+}
+
+.index-explorer .ix-item:first-child {
+  border-top: 0;
+}
+
+.index-explorer .ix-item-title {
+  margin: 0;
+  font-size: 1.12rem;
+  line-height: 1.28;
+  color: var(--ix-strong);
+}
+
+.index-explorer .ix-item-title a {
+  color: var(--ix-link);
+  text-decoration: none;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.35rem;
+}
+
+.index-explorer .ix-item-title a:hover {
+  text-decoration: underline;
+}
+
+.index-explorer .ix-item-title .as-bullet {
+  color: var(--ix-link);
+  flex: 0 0 auto;
+}
+
+.index-explorer .ix-item-meta {
+  margin-top: 0.2rem;
+  color: var(--ix-muted);
+  font-size: 0.83rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+}
+
+.index-explorer .ix-item-tags {
+  margin-top: 0.22rem;
+  color: var(--ix-muted);
+  font-size: 0.95rem;
+}
+
+.index-explorer .ix-item-tags .fa-tags {
+  color: var(--ix-link);
+  margin-right: 0.2rem;
+}
+
+.index-explorer .ix-item-tags a {
+  color: var(--ix-link);
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.index-explorer .ix-item-tags a:hover {
+  text-decoration: underline;
+}
+
+// ─── Alias rows: accent tint + pill, no side-stripe ────────────────────────
+
+.index-explorer .ix-item.is-alias {
+  background: var(--ix-alias-bg);
+}
+
+.index-explorer .ix-item.is-alias .ix-item-title {
+  font-size: 1rem;
+}
+
+.index-explorer .ix-item.is-alias .ix-item-title a {
+  color: var(--ix-muted);
+}
+
+.index-explorer .ix-alias-meta {
+  margin-top: 0.24rem;
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.3rem;
+  color: var(--ix-muted);
+  font-size: 0.8rem;
+}
+
+.index-explorer .ix-alias-label {
+  border-radius: $radius-pill;
+  border: 1px solid var(--ix-border);
+  background: var(--ix-chip-bg);
+  color: var(--ix-strong);
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  padding: 0.06rem 0.3rem;
+}
+
+.index-explorer .ix-alias-meta a {
+  color: var(--ix-muted);
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  text-underline-offset: 2px;
+}
+
+// ─── Return-to-top + empty state ───────────────────────────────────────────
+
+.index-explorer .ix-return-top {
+  border-top: 1px solid var(--ix-rule);
+  text-align: right;
+  padding: 0.52rem 0.76rem;
+}
+
+.index-explorer .ix-return-top a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.34rem;
+  color: var(--muted-text-1);
+  font-size: 1.25rem;
+  text-decoration: none;
+}
+
+.index-explorer .ix-return-top a:hover {
+  color: var(--ix-strong);
+}
+
+.index-explorer .ix-empty {
+  border: 1px dashed var(--ix-border);
+  border-radius: $radius-md;
+  padding: 1rem 0.82rem;
+  color: var(--ix-muted);
+  background: var(--ix-chip-bg);
+}
+
+// ─── Fallback (noscript) helpers ───────────────────────────────────────────
+
+.index-explorer .ix-fallback-panel {
+  margin-top: 0.72rem;
+}
+
+.index-explorer .ix-fallback-letters {
+  margin-bottom: 0.62rem;
+}

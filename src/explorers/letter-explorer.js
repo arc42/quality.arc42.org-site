@@ -1,13 +1,15 @@
-// Shared engine for the letter-grouped facet explorers (qualities, approaches).
+// Shared engine for the letter-grouped facet explorers (qualities,
+// requirements, approaches). The scaffold — dimension facets, A–Z letter
+// navigation, letter-grouped result sections, "return to top" links, and the
+// summary lines — lives here. Each page supplies only what actually differs
+// via config: how to normalize its data, how to render a single result item,
+// and its summary/empty copy.
 //
-// These two pages were ~95% duplicated standalone IIFE scripts. The scaffold —
-// dimension facets, A–Z letter navigation, letter-grouped result sections,
-// "return to top" links, and the summary lines — lives here. Each page supplies
-// only what actually differs via config: how to normalize its data, how to
-// render a single result item, and its summary/empty copy.
-//
-// Element IDs and the scaffold class names are derived from `prefix`
-// (e.g. "qualities" → #qualities-facets, .qualities-facet-chip).
+// Element IDs are derived from `prefix` (e.g. "qualities" →
+// #qualities-facets) so several pages can mount independently. Class names
+// are the shared `ix-*` scaffold styled by
+// _sass/components/_index-explorer.scss; the section accent comes from the
+// root element's data-section attribute, not from per-page classes.
 
 export function firstLetter(title) {
   const first = (title || "").trim().charAt(0).toUpperCase();
@@ -20,9 +22,9 @@ export function letterAnchorId(letterPrefix, letter) {
 
 // Build the "tags" line shared by every result item: a tag icon followed by
 // comma-separated links to each tag page.
-export function createTagsLine(prefix, tags, tagUrl) {
+export function createTagsLine(tags, tagUrl) {
   const line = document.createElement("div");
-  line.className = `${prefix}-item-tags`;
+  line.className = "ix-item-tags";
 
   const icon = document.createElement("i");
   icon.className = "fa fa-tags";
@@ -103,7 +105,7 @@ export function mountExplorer(config) {
     tags.forEach((tag) => {
       const button = document.createElement("button");
       button.type = "button";
-      button.className = `${prefix}-facet-chip${state.activeTags.has(tag) ? " active" : ""}`;
+      button.className = `ix-facet-chip${state.activeTags.has(tag) ? " active" : ""}`;
       button.dataset.tag = tag;
       button.setAttribute("aria-pressed", state.activeTags.has(tag) ? "true" : "false");
 
@@ -112,7 +114,7 @@ export function mountExplorer(config) {
       button.appendChild(name);
 
       const count = document.createElement("span");
-      count.className = `${prefix}-count`;
+      count.className = "ix-count";
       count.textContent = String(counts.get(tag) || 0);
       button.appendChild(count);
 
@@ -149,7 +151,7 @@ export function mountExplorer(config) {
 
     letters.forEach((letter) => {
       const link = document.createElement("a");
-      link.className = `${prefix}-letter-chip`;
+      link.className = "ix-letter-chip";
       link.href = `#${letterAnchorId(letterPrefix, letter)}`;
 
       const name = document.createElement("span");
@@ -157,7 +159,7 @@ export function mountExplorer(config) {
       link.appendChild(name);
 
       const count = document.createElement("span");
-      count.className = `${prefix}-count`;
+      count.className = "ix-count";
       count.textContent = String(groups.get(letter).length);
       link.appendChild(count);
 
@@ -188,7 +190,7 @@ export function mountExplorer(config) {
 
     if (items.length === 0) {
       const empty = document.createElement("p");
-      empty.className = `${prefix}-empty`;
+      empty.className = "ix-empty";
       empty.textContent = emptyText;
       resultsContainer.appendChild(empty);
       return;
@@ -198,16 +200,16 @@ export function mountExplorer(config) {
 
     letters.forEach((letter) => {
       const section = document.createElement("section");
-      section.className = `${prefix}-letter-section`;
+      section.className = "ix-letter-section";
 
       const heading = document.createElement("h3");
-      heading.className = `${prefix}-letter-heading`;
+      heading.className = "ix-letter-heading";
       heading.id = letterAnchorId(letterPrefix, letter);
       heading.textContent = `— ${letter} —`;
       section.appendChild(heading);
 
       const list = document.createElement("ul");
-      list.className = `${prefix}-letter-list`;
+      list.className = "ix-letter-list";
 
       groups
         .get(letter)
@@ -218,7 +220,7 @@ export function mountExplorer(config) {
       section.appendChild(list);
 
       const returnTop = document.createElement("div");
-      returnTop.className = `${prefix}-return-top`;
+      returnTop.className = "ix-return-top";
       const returnTopLink = document.createElement("a");
       returnTopLink.href = "#top";
       returnTopLink.title = "Return to top";

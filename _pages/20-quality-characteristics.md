@@ -26,85 +26,63 @@ no_layout_header: true
   lede="Definitions, aliases, related qualities, and the standards that back them up. Use dimension filters and A-Z jump links to narrow the list."
   meta=qualities_meta %}
 
-<section id="qualities-explorer" class="qualities-explorer" data-baseurl="{{ site.baseurl }}">
+<section id="qualities-explorer" class="index-explorer" data-section="qualities" data-baseurl="{{ site.baseurl }}">
 
-  <div class="qualities-explorer-panel">
-    <div class="qualities-explorer-head">
-      <h2>Dimensions</h2>
-      <span id="qualities-facet-summary"></span>
-    </div>
-    <div id="qualities-facets" class="qualities-explorer-facets"></div>
-  </div>
-
-  <div class="qualities-explorer-panel">
-    <div class="qualities-explorer-head">
-      <h2>Jump to Letter</h2>
-      <span id="qualities-letters-summary"></span>
-    </div>
-    <div id="qualities-letter-nav" class="qualities-explorer-letters"></div>
-  </div>
-
-  <div class="qualities-explorer-panel">
-    <div class="qualities-explorer-head">
-      <h2>Quality Characteristics</h2>
-      <span id="qualities-results-summary"></span>
-    </div>
-    <div id="qualities-results" class="qualities-explorer-results"></div>
-  </div>
+  {% include index-explorer-panels.liquid prefix="qualities" results_heading="Quality Characteristics" %}
 
   <noscript>
     <style>
-      #qualities-explorer .qualities-explorer-panel {
+      #qualities-explorer .ix-panel {
         display: none;
       }
 
-      #qualities-explorer .qualities-fallback-panel {
+      #qualities-explorer .ix-fallback-panel {
         display: block;
       }
     </style>
 
     {% assign fallback_terms = site.qualities | sort: "title" %}
-    <div class="qualities-explorer-panel qualities-fallback-panel">
-      <div class="qualities-explorer-head">
+    <div class="ix-panel ix-fallback-panel">
+      <div class="ix-panel-head">
         <h2>No-JS Fallback</h2>
         <span>alphabetic list of canonical and alias terms</span>
       </div>
 
-      <div class="qualities-explorer-letters qualities-fallback-letters">
+      <div class="ix-letters ix-fallback-letters">
         {% assign previous_letter = "" %}
         {% for term in fallback_terms %}
           {% assign current_letter = term.title | slice: 0 | upcase %}
           {% if current_letter != previous_letter %}
-            <a class="qualities-letter-chip" href="#fallback-{{ current_letter | slugify }}">{{ current_letter }}</a>
+            <a class="ix-letter-chip" href="#fallback-{{ current_letter | slugify }}">{{ current_letter }}</a>
             {% assign previous_letter = current_letter %}
           {% endif %}
         {% endfor %}
       </div>
 
-      <div class="qualities-fallback-list">
+      <div class="ix-fallback-list">
         {% assign previous_letter = "" %}
         {% for term in fallback_terms %}
           {% assign current_letter = term.title | slice: 0 | upcase %}
           {% if current_letter != previous_letter %}
             {% unless forloop.first %}
-              <div class="qualities-return-top">
+              <div class="ix-return-top">
                 <a href="#top" title="Return to top"><i class="fa fa-arrow-up" aria-hidden="true"></i> Return to top</a>
               </div>
             {% endunless %}
-            <h3 id="fallback-{{ current_letter | slugify }}" class="qualities-letter-heading">&mdash; {{ current_letter }} &mdash;</h3>
+            <h3 id="fallback-{{ current_letter | slugify }}" class="ix-letter-heading">&mdash; {{ current_letter }} &mdash;</h3>
             {% assign previous_letter = current_letter %}
           {% endif %}
 
-          <div class="qualities-item{% if term.alias_of %} is-alias{% endif %}">
-            <h4 class="qualities-item-title">
+          <div class="ix-item{% if term.alias_of %} is-alias{% endif %}">
+            <h4 class="ix-item-title">
               <a href="{{ term.url | prepend: site.baseurl }}">{{ term.title }}</a>
             </h4>
 
             {% if term.alias_of %}
               {% assign canonical_path = "/qualities/" | append: term.alias_of %}
               {% assign canonical_term = site.qualities | where: "permalink", canonical_path | first %}
-              <div class="qualities-alias-meta">
-                <span class="qualities-alias-label">alias</span>
+              <div class="ix-alias-meta">
+                <span class="ix-alias-label">alias</span>
                 of
                 {% if canonical_term %}
                   <a href="{{ canonical_term.url | prepend: site.baseurl }}">{{ canonical_term.title }}</a>
@@ -113,13 +91,13 @@ no_layout_header: true
                 {% endif %}
               </div>
             {% else %}
-              <div class="qualities-item-meta">
+              <div class="ix-item-meta">
                 <span>related: {{ term.related | size }}</span>
                 <span>standards: {{ term.standards | size }}</span>
               </div>
 
               {% if term.tags %}
-                <div class="qualities-item-tags">
+                <div class="ix-item-tags">
                   <i class="fa fa-tags" aria-hidden="true"></i>
                   {% for tag in term.tags %}
                     <a href="{{ '/tag-' | append: tag | prepend: site.baseurl }}">#{{ tag }}</a>{% unless forloop.last %}, {% endunless %}
@@ -130,7 +108,7 @@ no_layout_header: true
           </div>
         {% endfor %}
 
-        <div class="qualities-return-top">
+        <div class="ix-return-top">
           <a href="#top" title="Return to top"><i class="fa fa-arrow-up" aria-hidden="true"></i> Return to top</a>
         </div>
       </div>
@@ -172,255 +150,3 @@ no_layout_header: true
 ]
 </script>
 <script defer src="{{ '/assets/js/qualities-explorer.js' | prepend: site.baseurl }}"></script>
-
-<style>
-  .qualities-explorer {
-    --qx-border: #cddced;
-    --qx-surface: #f9fcff;
-    --qx-surface-2: #f0f8ff;
-    --qx-text: var(--brand-blue-text);
-    --qx-muted: var(--brand-blue-muted);
-    --qx-accent: var(--brand-blue-accent);
-    --qx-accent-2: var(--brand-blue);
-    --qx-chip: #e8f4ff;
-    --qx-chip-text: var(--brand-blue-accent);
-    --qx-heading-bg: #e9f4ff;
-    margin-top: 0.75rem;
-  }
-
-  /* Hero replaced by the unified section-hero component (PR #3 of the
-     hero-unification plan). Hero-specific rules removed; panels and chips
-     below continue to use the local --qx-* tokens. */
-
-  .qualities-explorer-panel {
-    margin-top: 0.72rem;
-    border: 1px solid var(--qx-border);
-    border-radius: 12px;
-    background: #fff;
-    padding: 0.78rem 0.82rem;
-  }
-
-  .qualities-explorer-head {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    gap: 0.42rem;
-    margin-bottom: 0.55rem;
-  }
-
-  .qualities-explorer-head h2 {
-    margin: 0;
-    color: var(--qx-text);
-    font-size: 1.04rem;
-  }
-
-  .qualities-explorer-head span {
-    color: var(--qx-muted);
-    font-size: 0.84rem;
-  }
-
-  .qualities-explorer-facets,
-  .qualities-explorer-letters {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.42rem;
-  }
-
-  .qualities-facet-chip,
-  .qualities-letter-chip {
-    border: 1px solid #bcd5ea;
-    border-radius: 999px;
-    background: var(--qx-chip);
-    color: var(--qx-chip-text);
-    font-size: 0.82rem;
-    font-weight: 700;
-    padding: 0.22rem 0.62rem;
-    cursor: pointer;
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.24rem;
-  }
-
-  .qualities-facet-chip.active {
-    background: var(--brand-blue);
-    border-color: var(--brand-blue);
-    box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.08);
-    color: var(--brand-blue-text);
-  }
-
-  .qualities-count {
-    font-size: 0.8em;
-    opacity: 0.85;
-  }
-
-  .qualities-explorer-results {
-    display: grid;
-    gap: 0.68rem;
-  }
-
-  .qualities-fallback-panel {
-    margin-top: 0.72rem;
-  }
-
-  .qualities-fallback-letters {
-    margin-bottom: 0.62rem;
-  }
-
-  .qualities-fallback-list {
-    border: 1px solid var(--qx-border);
-    border-radius: 10px;
-    overflow: hidden;
-    background: #fff;
-  }
-
-  .qualities-letter-section {
-    border: 1px solid var(--qx-border);
-    border-radius: 10px;
-    overflow: hidden;
-    background: #fff;
-  }
-
-  .qualities-letter-heading {
-    margin: 0;
-    padding: 0.54rem 0.76rem;
-    background: var(--qx-heading-bg);
-    color: var(--brand-blue-text);
-    font-size: 1rem;
-    border-bottom: 1px solid var(--qx-border);
-    scroll-margin-top: 0.8rem;
-  }
-
-  .qualities-letter-list {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-
-  .qualities-item {
-    padding: 0.68rem 0.76rem;
-    border-top: 1px solid #edf4fb;
-  }
-
-  .qualities-item:first-child {
-    border-top: 0;
-  }
-
-  .qualities-item.is-alias {
-    background: #f6f9fc;
-    border-left: 3px solid #d4dfe8;
-    padding-left: 0.66rem;
-  }
-
-  .qualities-item-title {
-    margin: 0;
-    font-size: 1.12rem;
-    line-height: 1.28;
-    color: var(--qx-text);
-  }
-
-  .qualities-item-title a {
-    color: var(--qx-accent);
-    text-decoration: none;
-    font-weight: 700;
-  }
-
-  .qualities-item-title a:hover {
-    text-decoration: underline;
-  }
-
-  .qualities-item.is-alias .qualities-item-title {
-    font-size: 1rem;
-  }
-
-  .qualities-item.is-alias .qualities-item-title a {
-    color: var(--brand-blue-muted);
-  }
-
-  .qualities-item-meta {
-    margin-top: 0.22rem;
-    color: var(--qx-muted);
-    font-size: 0.83rem;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.7rem;
-  }
-
-  .qualities-item-tags {
-    margin-top: 0.25rem;
-    color: var(--qx-muted);
-    font-size: 0.95rem;
-  }
-
-  .qualities-item-tags .fa-tags {
-    color: var(--qx-accent);
-    margin-right: 0.2rem;
-  }
-
-  .qualities-item-tags a {
-    color: var(--qx-accent);
-    text-decoration: none;
-    font-weight: 700;
-  }
-
-  .qualities-item-tags a:hover {
-    text-decoration: underline;
-  }
-
-  .qualities-alias-meta {
-    margin-top: 0.24rem;
-    display: inline-flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 0.3rem;
-    color: var(--brand-blue-muted);
-    font-size: 0.8rem;
-  }
-
-  .qualities-alias-label {
-    border-radius: 999px;
-    border: 1px solid #ccd9e5;
-    background: #e9f0f6;
-    color: var(--brand-blue-muted);
-    font-size: 0.68rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.03em;
-    padding: 0.06rem 0.3rem;
-  }
-
-  .qualities-alias-meta a {
-    color: var(--brand-blue-muted);
-    text-decoration: underline;
-    text-decoration-style: dotted;
-    text-underline-offset: 2px;
-  }
-
-  .qualities-return-top {
-    border-top: 1px solid #edf4fb;
-    text-align: right;
-    padding: 0.62rem 0.76rem;
-  }
-
-  .qualities-return-top a {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.34rem;
-    color: #60666b;
-    font-size: 1.25rem;
-    text-decoration: none;
-  }
-
-  .qualities-return-top a:hover {
-    color: var(--brand-blue-text);
-  }
-
-  .qualities-empty {
-    border: 1px dashed var(--qx-border);
-    border-radius: 10px;
-    padding: 1rem 0.82rem;
-    color: var(--qx-muted);
-    background: var(--qx-surface-2);
-  }
-
-</style>

@@ -1,0 +1,39 @@
+{% comment %}
+  index-explorer-panels — the three JS-rendered panels of the shared
+  letter-grouped facet explorer (see _sass/components/_index-explorer.scss
+  and src/explorers/letter-explorer.js).
+
+  The caller wraps this in
+    <section id="<prefix>-explorer" class="index-explorer"
+             data-section="..." data-baseurl="...">
+  and supplies the JSON data element (#<prefix>-explorer-data), the module
+  script tag, and a noscript fallback.
+
+  Required:
+    prefix           Element-id prefix — must match the JS module ("qualities",
+                     "requirements", "approaches").
+    results_heading  Heading of the results panel (e.g. "Quality Characteristics").
+{% endcomment %}
+<div class="ix-panel">
+  <div class="ix-panel-head">
+    <h2>Dimensions</h2>
+    <span id="{{ include.prefix }}-facet-summary"></span>
+  </div>
+  <div id="{{ include.prefix }}-facets" class="ix-facets"></div>
+</div>
+
+<div class="ix-panel">
+  <div class="ix-panel-head">
+    <h2>Jump to Letter</h2>
+    <span id="{{ include.prefix }}-letters-summary"></span>
+  </div>
+  <div id="{{ include.prefix }}-letter-nav" class="ix-letters"></div>
+</div>
+
+<div class="ix-panel">
+  <div class="ix-panel-head">
+    <h2>{{ include.results_heading }}</h2>
+    <span id="{{ include.prefix }}-results-summary"></span>
+  </div>
+  <div id="{{ include.prefix }}-results" class="ix-results"></div>
+</div>

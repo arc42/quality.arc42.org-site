@@ -55,11 +55,11 @@ function normalize(rawItems) {
 
 function renderItem(item, { baseUrl, tagUrl }) {
   const li = document.createElement("li");
-  li.className = "qualities-item";
+  li.className = "ix-item";
   if (item.kind === "alias") li.classList.add("is-alias");
 
   const title = document.createElement("h4");
-  title.className = "qualities-item-title";
+  title.className = "ix-item-title";
   const titleLink = document.createElement("a");
   titleLink.href = item.url || `${baseUrl}/qualities/${encodeURIComponent(item.id)}`;
   titleLink.textContent = item.title;
@@ -68,10 +68,10 @@ function renderItem(item, { baseUrl, tagUrl }) {
 
   if (item.kind === "alias") {
     const aliasMeta = document.createElement("div");
-    aliasMeta.className = "qualities-alias-meta";
+    aliasMeta.className = "ix-alias-meta";
 
     const aliasLabel = document.createElement("span");
-    aliasLabel.className = "qualities-alias-label";
+    aliasLabel.className = "ix-alias-label";
     aliasLabel.textContent = "alias";
     aliasMeta.appendChild(aliasLabel);
 
@@ -85,7 +85,7 @@ function renderItem(item, { baseUrl, tagUrl }) {
     li.appendChild(aliasMeta);
   } else {
     const meta = document.createElement("div");
-    meta.className = "qualities-item-meta";
+    meta.className = "ix-item-meta";
     const related = document.createElement("span");
     related.textContent = `related: ${item.relatedCount}`;
     const standards = document.createElement("span");
@@ -95,7 +95,7 @@ function renderItem(item, { baseUrl, tagUrl }) {
   }
 
   if (item.tags.length > 0) {
-    li.appendChild(createTagsLine(PREFIX, item.tags, tagUrl));
+    li.appendChild(createTagsLine(item.tags, tagUrl));
   }
 
   return li;
