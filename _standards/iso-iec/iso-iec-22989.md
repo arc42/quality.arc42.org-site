@@ -5,6 +5,7 @@ shortname: "ISO/IEC 22989"
 standard_id: isoiec22989
 permalink: /standards/iso-iec-22989
 categories: [ai]
+summary: "Foundational vocabulary for artificial intelligence: core concepts and terms for AI systems, data, lifecycle stages, roles, and AI properties."
 ---
 
 ## ISO/IEC 22989: Artificial intelligence — concepts and terminology

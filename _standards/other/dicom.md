@@ -5,6 +5,7 @@ shortname: "DICOM"
 permalink: /standards/dicom
 standard_id: dicom
 categories: [sector]
+summary: "International standard for storing, transmitting, and managing medical imaging data across modalities, PACS, and viewers for cross-vendor interoperability."
 ---
 
 ## DICOM: Medical Imaging Interoperability

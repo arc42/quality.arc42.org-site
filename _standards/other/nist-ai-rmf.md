@@ -5,6 +5,7 @@ standard_id: nistairmf
 shortname: "NIST AI RMF"
 categories: [ai, security, trustworthiness]
 permalink: /standards/nist-ai-rmf
+summary: "NIST voluntary framework for managing AI risks across the system lifecycle, organized around seven trustworthiness characteristics and four functions."
 ---
 
 ## NIST AI RMF: Artificial Intelligence Risk Management Framework

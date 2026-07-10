@@ -5,6 +5,7 @@ shortname: "HL7 / FHIR"
 permalink: /standards/hl7
 standard_id: hl7
 categories: [sector]
+summary: "Family of healthcare interoperability standards (V2, CDA, FHIR) for exchanging, integrating, and retrieving health information across organizations."
 ---
 
 ## HL7: Healthcare Interoperability Standards

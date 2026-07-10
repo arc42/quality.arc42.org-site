@@ -5,6 +5,7 @@ standard_id: wcag22
 shortname: "WCAG 2.2"
 categories: [accessibility, usability]
 permalink: /standards/wcag-2-2
+summary: "The W3C standard for web accessibility: how to make web content usable by people with disabilities, organized around the four POUR principles."
 ---
 
 

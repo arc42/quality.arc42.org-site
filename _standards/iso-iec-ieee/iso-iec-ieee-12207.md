@@ -5,6 +5,7 @@ shortname: "ISO/IEC/IEEE 12207"
 standard_id: iso12207
 categories: [general, documentation]
 permalink: /standards/iso12207
+summary: "ISO/IEC/IEEE framework defining software life cycle processes across acquisition, development, operation, maintenance, and disposal of software systems."
 ---
 
 ## ISO/IEC/IEEE 12207:2017 - Systems and Software Engineering — Software Life Cycle Processes

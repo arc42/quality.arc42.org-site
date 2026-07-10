@@ -5,6 +5,7 @@ standard_id: misra-c
 shortname: "MISRA-C"
 categories: [safety, sector,coding]
 permalink: /standards/misra-c
+summary: "Guidelines defining a safer subset of the C language for safety- and security-critical embedded systems, reducing undefined behavior for higher assurance."
 ---
 
 MISRA C is a widely adopted set of guidelines (aka "standard") for developing software in the C language, especially for safety‑ and security‑related embedded systems. 

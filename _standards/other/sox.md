@@ -5,6 +5,7 @@ shortname: "SOX"
 standard_id: sox
 categories: [sector]
 permalink: /standards/sox
+summary: "US federal law mandating financial reporting accuracy and internal controls (ICFR) for systems that process, store, or report financial data."
 ---
 
 ## Sarbanes-Oxley Act of 2002 (SOX) - Financial Reporting and Internal Controls

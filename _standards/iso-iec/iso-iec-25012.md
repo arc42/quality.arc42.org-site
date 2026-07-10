@@ -5,6 +5,7 @@ standard_id: iso25012
 shortname: "ISO/IEC 25012"
 categories: [data]
 permalink: /standards/iso-iec-25012
+summary: "SQuaRE-family data quality model defining 15 data quality characteristics across inherent and system-dependent perspectives for information systems."
 ---
 
 ## ISO/IEC 25012: Data Quality Model

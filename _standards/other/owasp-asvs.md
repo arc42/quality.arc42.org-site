@@ -5,6 +5,7 @@ standard_id: owaspasvs
 shortname: "OWASP ASVS"
 categories: [security]
 permalink: /standards/owasp-asvs
+summary: "Open OWASP framework of requirement-level security controls for designing, building, and testing web applications and APIs, with three assurance levels."
 ---
 
 ## OWASP Application Security Verification Standard (ASVS)

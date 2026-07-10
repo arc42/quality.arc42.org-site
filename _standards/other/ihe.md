@@ -5,6 +5,7 @@ shortname: "IHE"
 permalink: /standards/ihe
 standard_id: ihe
 categories: [sector]
+summary: "Healthcare initiative defining integration profiles that combine HL7 and DICOM to solve interoperability problems, verified through Connectathon testing."
 ---
 
 ## IHE: Verified Healthcare Interoperability

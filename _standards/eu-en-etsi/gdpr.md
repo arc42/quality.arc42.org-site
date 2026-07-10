@@ -5,6 +5,7 @@ shortname: "GDPR"
 standard_id: gdpr
 categories: [privacy, security]
 permalink: /standards/gdpr
+summary: "EU regulation governing the processing of personal data: individual rights, accountability, and privacy by design for anyone handling EU residents' data."
 ---
 
 ## GDPR: General Data Protection Regulation (EU) 2016/679

@@ -5,6 +5,7 @@ shortname: "ISO/IEC 12792"
 standard_id: isoiec12792
 permalink: /standards/iso-iec-12792
 categories: [ai]
+summary: "Taxonomy of information elements helping AI stakeholders identify and address the transparency needs of AI systems across model, data, and governance."
 ---
 
 ## ISO/IEC 12792: AI transparency taxonomy

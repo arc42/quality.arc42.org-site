@@ -5,6 +5,7 @@ standard_id: nistpf
 shortname: "NIST PF"
 categories: [privacy, security]
 permalink: /standards/nist-privacy-framework
+summary: "NIST voluntary tool for managing privacy risk in personal data processing through enterprise risk management, organized around five core functions."
 ---
 
 ## NIST Privacy Framework: A Tool for Improving Privacy through Enterprise Risk Management

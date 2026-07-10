@@ -5,6 +5,7 @@ shortname: "ISO/IEC 14756"
 permalink: /standards/iso-iec-14756
 standard_id: iso14756
 categories: [general]
+summary: "Methods for measuring and rating user-oriented performance of computer-based software systems from the user's perspective: response times and throughput."
 ---
 
 ## ISO/IEC 14756: Measurement and rating of performance of computer-based software systems

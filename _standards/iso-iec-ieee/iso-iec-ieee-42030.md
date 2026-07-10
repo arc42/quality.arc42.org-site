@@ -5,6 +5,7 @@ shortname: "ISO/IEC/IEEE 42030"
 standard_id: iso42030
 categories: [documentation, general]
 permalink: /standards/iso-iec-ieee-42030
+summary: "Framework for systematically evaluating software, systems, and enterprise architectures: evaluation processes, methods, criteria, and quality models."
 ---
 
 ## ISO/IEC/IEEE 42030:2019 - Software, Systems and Enterprise Architecture Evaluation Framework

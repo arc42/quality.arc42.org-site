@@ -5,6 +5,7 @@ shortname: "AIUC-1"
 permalink: /standards/aiuc-1
 standard_id: aiuc1
 categories: [ai]
+summary: "Commercial framework for enterprise AI agent adoption, addressing data and privacy, security, safety, reliability, accountability, and societal risk."
 ---
 
 ## AIUC-1: (attempt of an) AI agent standard

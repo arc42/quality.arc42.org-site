@@ -6,6 +6,7 @@ standard_id: iso29119
 alias: [Testing, Software Testing]
 categories: [general, documentation]
 permalink: /standards/iso-iec-ieee-29119
+summary: "International software testing standard series defining test processes, documentation, and techniques from small projects to regulated environments."
 ---
 
 

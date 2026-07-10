@@ -5,6 +5,7 @@ shortname: "CRA"
 permalink: /standards/cra
 standard_id: cra
 categories: [security]
+summary: "EU regulation mandating cybersecurity requirements for products with digital elements across their lifecycle: secure-by-design, vulnerability handling, updates."
 ---
 
 ## Cyber Resilience Act (CRA)

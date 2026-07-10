@@ -5,6 +5,7 @@ shortname: "ISO/IEC 29100"
 standard_id: iso29100
 categories: [privacy, general]
 permalink: /standards/iso-iec-29100
+summary: "Privacy framework establishing common terminology, actors, and safeguards for processing personally identifiable information across its lifecycle."
 ---
 
 ## ISO/IEC 29100:2024 - Information Technology — Privacy Techniques — Privacy Framework

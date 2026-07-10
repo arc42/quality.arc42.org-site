@@ -5,6 +5,7 @@ standard_id: soc2
 shortname: "SOC 2"
 categories: [security]
 permalink: /standards/soc-2
+summary: "AICPA auditing framework producing a CPA attestation report on a service organization's controls across five Trust Services Criteria."
 ---
 
 ## SOC 2: Service Organization Control 2

@@ -5,6 +5,7 @@ standard_id: pcidss
 shortname: "PCI DSS"
 categories: [security, sector]
 permalink: /standards/pci-dss
+summary: "Payment card industry standard defining twelve baseline security requirements to protect cardholder data wherever it is stored, processed, or transmitted."
 ---
 
 ## PCI Data Security Standard (PCI DSS)
