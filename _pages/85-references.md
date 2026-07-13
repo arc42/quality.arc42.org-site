@@ -275,6 +275,33 @@ Available [online](https://resources.sei.cmu.edu/library/asset-view.cfm?assetid=
 
 A structured facilitation method for eliciting architecture-critical quality attributes from stakeholders before any software architecture exists. The QAW produces a prioritised set of quality attribute scenarios — directly usable as the basis for quality requirements — and is particularly effective at surfacing conflicting stakeholder expectations early.
 
+<a id="cervantes2024designing"></a>
+### Cervantes/Kazman: Designing Software Architectures
+
+H. Cervantes and R. Kazman, _Designing Software Architectures: A Practical Approach_, 2nd ed. Addison-Wesley Professional, 2024. ISBN 978-0-13-810810-6.
+
+Available [online](https://www.sei.cmu.edu/library/designing-software-architectures-a-practical-approach/)
+
+The current book-length treatment of Attribute-Driven Design (ADD). It explains how architects iteratively turn architecturally significant requirements into design decisions, using patterns, tactics, reference architectures, and frameworks while making trade-offs explicit.
+
+<a id="sei-add-v2"></a>
+### SEI: Attribute-Driven Design (ADD), Version 2.0
+
+R. Wojcik, F. Bachmann, L. Bass, P. Clements, P. Merson, R. Nord, and W. Wood, _Attribute-Driven Design (ADD), Version 2.0_. Carnegie Mellon Software Engineering Institute, CMU/SEI-2006-TR-023, 2006.
+
+Available [online](https://doi.org/10.1184/R1/6572066.v1) ([SEI catalog entry](https://www.sei.cmu.edu/library/attribute-driven-design-add-version-20/))
+
+The canonical technical report for ADD 2.0. The method recursively decomposes a system by selecting design concepts that address prioritized functional requirements, quality-attribute scenarios, and constraints, then allocates responsibilities, defines interfaces, and verifies the result against its drivers.
+
+<a id="sei-add-example"></a>
+### SEI: Practical Example of Attribute-Driven Design
+
+W. Wood, _A Practical Example of Applying Attribute-Driven Design (ADD), Version 2.0_. Carnegie Mellon Software Engineering Institute, CMU/SEI-2007-TR-005, 2007.
+
+Available [online](https://doi.org/10.1184/R1/6571706.v1) ([SEI catalog entry](https://www.sei.cmu.edu/library/a-practical-example-of-applying-attribute-driven-design-add-version-20/))
+
+A worked client-server example showing how ADD selects patterns and tactics for availability and fault-tolerance drivers. It complements the method report with concrete decomposition decisions and models used to assess whether the emerging architecture satisfies its drivers.
+
 <a id="starke2021software"></a>
 ### Starke/Lorz: Software Architecture Foundations
 
