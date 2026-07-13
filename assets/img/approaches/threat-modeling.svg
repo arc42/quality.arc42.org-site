@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 460" role="img" aria-labelledby="title desc">
+  <title id="title">Threat modeling turns a data-flow model into traced mitigations</title>
+  <desc id="desc">A browser sends an order across an internet trust boundary to a payment API backed by an orders database. A tampering threat is flagged where the flow crosses the boundary. The model feeds a loop: enumerate threats with STRIDE per element or attack trees per attacker goal, rank by impact and exploitability, choose dispositions, and trace owner, disposition, and evidence for every threat. Design changes flow back into updating the model.</desc>
+  <defs>
+    <marker id="arrow-violet" markerWidth="14" markerHeight="12" refX="13" refY="6" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L0,12 L14,6 z" fill="#682d63"/>
+    </marker>
+    <marker id="arrow-teal" markerWidth="14" markerHeight="12" refX="13" refY="6" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L0,12 L14,6 z" fill="#2f806d"/>
+    </marker>
+    <style>
+      .heading { font: 700 21px system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #2d2530; }
+      .label { font: 700 16px system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #2d2530; }
+      .small { font: 14px system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #554b57; }
+      .tiny { font: 12px system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #554b57; }
+      .flow { fill: none; stroke: #682d63; stroke-width: 3; marker-end: url(#arrow-violet); }
+      .feedback { fill: none; stroke: #2f806d; stroke-width: 3; marker-end: url(#arrow-teal); }
+    </style>
+  </defs>
+
+  <rect width="1120" height="460" rx="22" fill="#f8f9fa"/>
+  <text x="560" y="38" text-anchor="middle" class="heading">From data-flow model to traced mitigations</text>
+
+  <!-- Data-flow model -->
+  <g aria-label="Data-flow model with trust boundary">
+    <text x="60" y="88" class="label">Model</text>
+
+    <rect x="60" y="120" width="140" height="64" rx="10" fill="#ffffff" stroke="#682d63" stroke-width="3"/>
+    <text x="130" y="158" text-anchor="middle" class="label">Browser</text>
+
+    <line x1="280" y1="100" x2="280" y2="330" stroke="#e88a55" stroke-width="3" stroke-dasharray="10 8"/>
+    <text x="288" y="330" class="tiny" fill="#b25a2b">trust boundary · internet</text>
+
+    <path class="flow" d="M200 152 H 338"/>
+    <text x="266" y="140" text-anchor="middle" class="tiny">order + price</text>
+
+    <rect x="340" y="120" width="170" height="64" rx="14" fill="#ffffff" stroke="#2f806d" stroke-width="3"/>
+    <text x="425" y="158" text-anchor="middle" class="label">Payment API</text>
+
+    <path class="flow" d="M425 184 V 247"/>
+    <line x1="340" y1="250" x2="510" y2="250" stroke="#00b8f5" stroke-width="3"/>
+    <line x1="340" y1="304" x2="510" y2="304" stroke="#00b8f5" stroke-width="3"/>
+    <text x="425" y="284" text-anchor="middle" class="label">Orders DB</text>
+
+    <line x1="266" y1="158" x2="266" y2="196" stroke="#e88a55" stroke-width="2" stroke-dasharray="4 4"/>
+    <rect x="186" y="198" width="160" height="46" rx="10" fill="#e88a55"/>
+    <text x="266" y="217" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#ffffff">threat: tampering</text>
+    <text x="266" y="234" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#ffffff">price manipulation</text>
+
+    <text x="60" y="376" class="tiny" fill="#2f806d">mitigation: server recomputes the price · client value is display-only</text>
+    <text x="60" y="396" class="tiny" fill="#2f806d">verified by an integration test that posts a manipulated price</text>
+  </g>
+
+  <!-- Analysis loop -->
+  <g aria-label="Threat modeling loop">
+    <path class="flow" d="M510 152 C 580 152, 580 128, 638 128"/>
+    <text x="572" y="118" text-anchor="middle" class="tiny">analyze</text>
+
+    <rect x="640" y="100" width="380" height="56" rx="12" fill="#ffffff" stroke="#682d63" stroke-width="3"/>
+    <text x="830" y="126" text-anchor="middle" class="label">1 · Enumerate threats</text>
+    <text x="830" y="145" text-anchor="middle" class="tiny">STRIDE per element · attack trees per goal</text>
+
+    <path class="flow" d="M830 158 V 177"/>
+
+    <rect x="640" y="180" width="380" height="56" rx="12" fill="#ffffff" stroke="#682d63" stroke-width="3"/>
+    <text x="830" y="206" text-anchor="middle" class="label">2 · Rank</text>
+    <text x="830" y="225" text-anchor="middle" class="tiny">impact and exploitability, assumptions recorded</text>
+
+    <path class="flow" d="M830 238 V 257"/>
+
+    <rect x="640" y="260" width="380" height="56" rx="12" fill="#ffffff" stroke="#682d63" stroke-width="3"/>
+    <text x="830" y="286" text-anchor="middle" class="label">3 · Decide</text>
+    <text x="830" y="305" text-anchor="middle" class="tiny">mitigate · remove · transfer · accept</text>
+
+    <path class="flow" d="M830 318 V 337"/>
+
+    <rect x="640" y="340" width="380" height="56" rx="12" fill="#ffffff" stroke="#2f806d" stroke-width="3"/>
+    <text x="830" y="366" text-anchor="middle" class="label">4 · Trace</text>
+    <text x="830" y="385" text-anchor="middle" class="tiny">owner, disposition, and evidence for every threat</text>
+
+    <path class="feedback" d="M1021 368 H 1062 V 70 H 130 V 112"/>
+    <text x="596" y="62" text-anchor="middle" class="tiny">design change → update model</text>
+  </g>
+</svg>
