@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-30T07:20:21.188Z",
+  "generatedAt": "2026-07-20T09:25:11.530Z",
   "tags": [
     "wcag2a",
     "wcag2aa",
@@ -8,10 +8,10 @@
   ],
   "totals": {
     "pagesScanned": 36,
-    "violations": 6,
+    "violations": 5,
     "incomplete": 73,
-    "passes": 980,
-    "avgScore": 98
+    "passes": 981,
+    "avgScore": 99
   },
   "pages": [
     {
@@ -39,7 +39,7 @@
           "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
           "help": "Elements must meet minimum color contrast ratio thresholds",
           "helpUrl": "https://dequeuniversity.com/rules/axe/4.12/color-contrast?application=playwright",
-          "nodes": 3
+          "nodes": 4
         }
       ]
     },
@@ -47,20 +47,11 @@
       "route": "/qualities/",
       "title": "Quality Characteristics | arc42 Quality Model",
       "url": "http://127.0.0.1:4000/qualities/",
-      "violationsCount": 1,
+      "violationsCount": 0,
       "incompleteCount": 2,
       "passesCount": 26,
-      "score": 90,
-      "violations": [
-        {
-          "id": "color-contrast",
-          "impact": "serious",
-          "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
-          "help": "Elements must meet minimum color contrast ratio thresholds",
-          "helpUrl": "https://dequeuniversity.com/rules/axe/4.12/color-contrast?application=playwright",
-          "nodes": 29
-        }
-      ]
+      "score": 100,
+      "violations": []
     },
     {
       "route": "/requirements/",
@@ -97,7 +88,7 @@
           "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
           "help": "Elements must meet minimum color contrast ratio thresholds",
           "helpUrl": "https://dequeuniversity.com/rules/axe/4.12/color-contrast?application=playwright",
-          "nodes": 43
+          "nodes": 45
         }
       ]
     },
@@ -399,6 +390,16 @@
       "violations": []
     },
     {
+      "route": "/standards/dicom",
+      "title": "DICOM — Digital Imaging and Communications in Medicine | arc42 Quality Model",
+      "url": "http://127.0.0.1:4000/standards/dicom",
+      "violationsCount": 0,
+      "incompleteCount": 2,
+      "passesCount": 30,
+      "score": 100,
+      "violations": []
+    },
+    {
       "route": "/standards/do-178c",
       "title": "DO-178C - Software Considerations in Airborne Systems and Equipment Certification | arc42 Quality Model",
       "url": "http://127.0.0.1:4000/standards/do-178c",
@@ -415,16 +416,6 @@
       "violationsCount": 0,
       "incompleteCount": 2,
       "passesCount": 30,
-      "score": 100,
-      "violations": []
-    },
-    {
-      "route": "/standards/etsi-en-304-223",
-      "title": "ETSI EN 304 223 - AI Cybersecurity Baseline Requirements | arc42 Quality Model",
-      "url": "http://127.0.0.1:4000/standards/etsi-en-304-223",
-      "violationsCount": 0,
-      "incompleteCount": 2,
-      "passesCount": 29,
       "score": 100,
       "violations": []
     }
