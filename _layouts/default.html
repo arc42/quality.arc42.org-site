@@ -38,7 +38,12 @@
     </script>
     <link href="{{ '/assets/css/style.css' | prepend: site.baseurl }}" rel="stylesheet">
     {% if jekyll.environment == 'production' %}
-    <script defer data-domain="quality.arc42.org" src="https://plausible.io/js/script.js"></script>
+    {%- comment -%} Legacy Plausible script on purpose: the comma-separated
+        data-domain feeds this site's own dashboard AND the rollup.arc42.com
+        journey dashboard — the new per-site snippet cannot do that. Keep all
+        three layouts (default, graph, wcag-report) identical.
+        See meta.arc42.org/plausible-journey-tracking.md {%- endcomment %}
+    <script defer data-domain="quality.arc42.org,rollup.arc42.com" src="https://plausible.io/js/script.outbound-links.file-downloads.js"></script>
     {% endif %}
 
 
