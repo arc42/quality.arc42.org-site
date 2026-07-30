@@ -385,7 +385,7 @@
 }
 
 .standards-explorer-shortname {
-  color: var(--std-accent);
+  color: var(--std-heading); // --std-accent measured 3.36:1 on --std-surface
   font-weight: 700;
   font-size: 0.88rem;
   text-decoration: none;

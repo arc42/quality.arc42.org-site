@@ -1,0 +1,40 @@
+# Watches the production HTTP→HTTPS redirect continuously.
+#
+# The redirect is performed by GitHub Pages ("Enforce HTTPS") — a repo
+# setting, not code — so nothing in a PR diff can break or fix it, and no
+# local test can observe it. This scheduled probe is the durable guarantee:
+# if someone toggles the Pages setting, DNS changes, or GitHub alters
+# behaviour, this fails within a day instead of at the next manual audit.
+# (Companion: tests/ui/https-redirect.spec.ts asserts the same thing when
+# the UI test suite runs.)
+name: https-redirect-check
+
+on:
+  schedule:
+    - cron: "17 5 * * *" # daily, 05:17 UTC
+  workflow_dispatch:
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - name: http root must 301 to https
+        run: |
+          set -eu
+          status_loc=$(curl -sI -o /dev/null -w '%{http_code} %{redirect_url}' http://quality.arc42.org/)
+          echo "got: $status_loc"
+          [ "$status_loc" = "301 https://quality.arc42.org/" ]
+
+      - name: http deep link must 301 to https, path preserved
+        run: |
+          set -eu
+          status_loc=$(curl -sI -o /dev/null -w '%{http_code} %{redirect_url}' http://quality.arc42.org/qualities/reliability)
+          echo "got: $status_loc"
+          [ "$status_loc" = "301 https://quality.arc42.org/qualities/reliability" ]
+
+      - name: https root must serve 200 directly
+        run: |
+          set -eu
+          status=$(curl -sI -o /dev/null -w '%{http_code}' https://quality.arc42.org/)
+          echo "got: $status"
+          [ "$status" = "200" ]

@@ -99,7 +99,7 @@ export function initSearch() {
         resultsContainer.innerHTML = '';
 
         if (results.length === 0) {
-            if (searchStatus) searchStatus.textContent = "No results found for '" + q + "'.";
+            if (searchStatus) searchStatus.textContent = "No matches for '" + q + "'. Try different terms, or browse the Qualities, Requirements, Standards and Approaches indexes from the menu.";
             return;
         }
 
@@ -117,9 +117,9 @@ export function initSearch() {
             const html = `
                 <div class="search-result-item">
                     <span class="search-result-category cat-${safeType}">${safeType}</span>
-                    <h2 class="search-result-title">
+                    <h3 class="search-result-title">
                         <a href="${safeHref}">${highlightedTitle}</a>
-                    </h2>
+                    </h3>
                     <div class="search-result-snippet">
                         ${safePath}
                     </div>

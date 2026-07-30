@@ -15,8 +15,7 @@ a.hov {
   align-items: center;
   background: var(--brand-paper);
   background: color-mix(in oklab, var(--brand-paper) 86%, var(--chip-cat) 14%);
-  border: 1px solid
-    color-mix(in oklab, var(--brand-paper) 65%, var(--chip-cat) 35%);
+  border: 1px solid color-mix(in oklab, var(--brand-paper) 65%, var(--chip-cat) 35%);
   border-radius: $radius-pill;
   color: var(--chip-text);
   display: inline-flex;

@@ -83,7 +83,8 @@
 // in every browser/cascade order, so we anchor to `.site-content`.
 .site-content .section-hero {
   .section-hero__eyebrow {
-    color: var(--brand-muted);
+    color: var(--brand-muted-strong); // plain muted fails AA on the wash
+
     font-family: $font-family;
     font-size: 0.78rem;
     font-weight: 600;
@@ -116,7 +117,8 @@
   }
 
   .section-hero__lede {
-    color: var(--brand-muted);
+    color: var(--brand-muted-strong); // plain muted fails AA on the wash
+
     font-size: $text-base;
     line-height: 1.4;
     margin: 0;

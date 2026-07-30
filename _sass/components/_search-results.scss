@@ -1,0 +1,112 @@
+// ============================================================================
+// Full search-results page (/search/) — replaces the inline <style> block that
+// shipped a fifth palette. The category chips now speak the homepage legend
+// (The Legend Rule): the /search/ list is the only surface where all four
+// content types meet in one column, so it is exactly where the legend must
+// hold. Chip pattern mirrors a.hov in _tag-chips.scss: paper washed 14%
+// toward the section colour, 35% border, section text colour.
+//
+// Text colours are the measured AA pairs from the token set
+// (--brand-blue-accent-dark exists precisely for light blue washes).
+// ============================================================================
+
+.search-results-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+// The element keeps id="search-status" as the JS hook; styling binds to the
+// class (the project bans new ID selectors in stylesheets).
+.search-status {
+  margin-bottom: 2rem;
+  color: var(--brand-muted); // was var(--home-muted): scoped to .home-violet, undefined here
+}
+
+.search-result-item {
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--brand-violet-18); // was var(--home-rule, #eee)
+}
+
+.search-result-item:last-child {
+  border-bottom: none;
+}
+
+.search-result-category {
+  --cat: var(--brand-blue);
+  --cat-text: var(--brand-blue-accent-dark);
+
+  display: inline-block;
+  font-family: $font-family;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+  padding: 0.2rem 0.6rem;
+  border-radius: $radius-pill;
+  background: color-mix(in oklab, var(--brand-paper) 86%, var(--cat) 14%);
+  border: 1px solid color-mix(in oklab, var(--brand-paper) 65%, var(--cat) 35%);
+  color: var(--cat-text);
+}
+
+// The legend, verbatim — one colour per content type, matching graph nodes,
+// homepage rails and hero rails. (The old inline styles invented
+// #0089ba/#d64545/#b38b00/#2d8a2d, all failing AA.)
+.cat-quality {
+  --cat: var(--brand-blue);
+  --cat-text: var(--brand-blue-accent-dark);
+}
+.cat-requirement {
+  --cat: var(--reqs-background-color);
+  --cat-text: var(--req-text-color);
+}
+.cat-standard {
+  --cat: var(--standard-background-color);
+  --cat-text: var(--std-heading);
+}
+.cat-approach {
+  --cat: var(--approaches-background-color);
+  --cat-text: var(--approaches-text-color);
+}
+
+.search-results-list h3.search-result-title {
+  // $heading-font-family resolves at build time — the old inline block asked
+  // for var(--heading-font-family), which is never emitted to :root, so
+  // titles silently rendered in the generic serif fallback (Times).
+  font-family: $heading-font-family;
+  font-size: 1.35rem;
+  line-height: 1.2;
+  margin: 0 0 0.5rem;
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+
+.search-results-list h3.search-result-title a {
+  color: var(--brand-blue-accent-dark);
+  text-decoration: none;
+}
+
+.search-results-list h3.search-result-title a:hover,
+.search-results-list h3.search-result-title a:focus-visible {
+  text-decoration: underline;
+}
+
+.search-result-snippet {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--brand-muted); // was var(--text-color, #333): token never existed
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+// Highlight marks match the autocomplete panel (_search-autocomplete.scss);
+// without this the page fell through to normalize's #ff0 on #000.
+.search-results-list mark {
+  background: var(--brand-violet-18);
+  color: inherit;
+  border-radius: 2px;
+  padding: 0 1px;
+}

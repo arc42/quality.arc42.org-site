@@ -111,6 +111,11 @@
   border-color: #73b1d4;
   outline: none;
 }
+// Suppressing the native outline obliges a ring (DESIGN.md focus rule);
+// a background tint alone loses keyboard position on the graph controls.
+.full-quick-filter:focus-visible {
+  box-shadow: var(--focus-ring);
+}
 
 #full-q-graph-home__btn {
   margin-top: 0.45rem;
@@ -158,6 +163,9 @@
   background-color: rgba(203, 159, 255, 0.18);
   color: #414288;
   outline: none;
+}
+#full-q-graph-center__btn:focus-visible {
+  box-shadow: var(--focus-ring); // no outline without a ring
 }
 
 .full-q-graph-center__label {
@@ -212,6 +220,9 @@
   background-color: #414288;
   color: #ebebeb;
   outline: none;
+}
+.q-chip__close:focus-visible {
+  box-shadow: var(--focus-ring); // no outline without a ring
 }
 
 #full-q-graph-legend {

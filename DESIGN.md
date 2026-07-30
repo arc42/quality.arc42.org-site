@@ -177,7 +177,7 @@ Flat by default. Depth on this site is conveyed by hairline borders (1px, usuall
 - **Graph controls / tooltip** (`0 2px 10px rgba(0,0,0,0.1)` / `0 2px 5px rgba(0,0,0,0.2)`): floating UI over the graph canvas.
 - **Standards cards** (`0 1px 2px rgba(44,31,5,0.05)` rest, `0 10px 20px rgba(38,27,4,0.15)` hover-lift): the one documented exception — explorer cards cast a whisper of warm ink, and lift on hover.
 - **Focus rings** (`--focus-ring`, `--focus-ring-on-violet`): two-tone box-shadows (2px + 4px) guaranteeing ≥3:1 on both paper and violet surfaces. These are state indicators, not elevation.
-- **Legacy callout shadows** (`3px 3px 4px 0 …`): hard-offset shadows on old callout boxes. Legacy — do not extend to new components.
+- **Pinned-note callout shadow** (`3px 3px 0 0 var(--brand-violet-deep)`): the family's tactile signature (meta.arc42.org ADR-0002), hardened 2026-07-30 from the old 4px-blurred legacy form to docs' canonical zero-blur offset. Reserved for annotation boxes pinned onto the page (`.arc42-help`, error callouts in their danger-deep tone) — never headings, cards, or containers at rest. The requirement box deliberately carries **no** shadow, mirroring docs' help/example weighting.
 
 ### Named Rules
 **The Overlay Rule.** A shadow means the element floats above the page: popover, sheet, tooltip. If it doesn't float, it doesn't cast. (Standards explorer cards are the sole sanctioned exception.)
@@ -230,5 +230,29 @@ D3 force-directed graph of the whole model. Node fills are the legend incarnate:
 - **Don't** use section colors decoratively. A color that doesn't identify its content type is wrong (The Legend Rule).
 - **Don't** add dark mode. `color-scheme: light` is doctrine; the light theme is the brand.
 - **Don't** set Libre Caslon in UI labels, buttons, chips, or data (The Two Voices Rule).
-- **Don't** add shadows to resting page-flow elements (The Overlay Rule), extend the legacy hard-offset callout shadows, or invent z-index values outside the named tiers.
+- **Don't** add shadows to resting page-flow elements (The Overlay Rule), use the pinned-note shadow outside annotation boxes, or invent z-index values outside the named tiers.
 - **Don't** add new ad-hoc muted grays — three legacy ones (#6f6f6f, #6b6b6b, #5e5e5e) are already quarantined in the tokens; use Muted (#746671) or Text Gray (#383838).
+
+## 7. Family
+
+quality.arc42.org is a satellite of the arc42 site family. The normative
+family documents live in **meta.arc42.org** (`BRAND.md`, `DESIGN.md`,
+`adr/`):
+
+- **Signature hue** (owned by this site, ADR-0013): arc42 Violet `#682d63`
+  (deep `#52214f`). No other family site may use it; this site uses no other
+  site's signature hue.
+- **Inherited constants**: the Caslon/Atkinson type pair (self-hosted), the
+  saturated masthead band, paper-flat surfaces, light-only, WCAG 2.2 AA with
+  measured contrast recorded at the declaration site (ADR-0005), the
+  hard-offset pinned-note shadow (ADR-0002), and the shared accents amber
+  `#ffc95c` (= Standard Gold, this site's visible job for it), coral
+  `#ff5c7c`, coral-deep `#c22b47` (the error fill), emerald `#2e9e67`.
+- **Site-local, never exported**: the four-colour semantic legend
+  (Quality Blue / Requirement Rose / Standard Gold / Approach Green), the
+  `--std-*` sub-palette, the D3 graph palette. The `--cat` one-attribute
+  colour mechanism is this site's *export* to the family — the mechanism
+  travels, the hues do not.
+
+Changing a shared token or family constant is an ecosystem decision (ADR in
+meta), not a site edit.

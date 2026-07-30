@@ -149,7 +149,7 @@
   -webkit-box-sizing: border-box;
   appearance: none;
   background: var(--brand-cream-10);
-  border: 1px solid var(--brand-cream-24);
+  border: 1px solid var(--brand-cream-46); // cream-24 measured 1.87:1 on violet — invisible boundary
   border-radius: $radius-sm;
   box-sizing: border-box;
   color: var(--header-on-violet);
@@ -171,8 +171,10 @@
   &:focus {
     background: var(--brand-cream-16);
     border-color: var(--brand-cream-46);
-    outline: 2px solid var(--brand-cream-32);
-    outline-offset: 2px;
+    // The site's most-used control gets the documented on-violet ring:
+    // the old cream-32 outline measured 2.29:1 (needs 3:1, SC 2.4.13).
+    outline: none;
+    box-shadow: var(--focus-ring-on-violet);
   }
 }
 
@@ -250,7 +252,7 @@
 }
 
 .site-secondary-nav__label {
-  color: var(--brand-cream-48);
+  color: var(--brand-cream-74); // cream-48 measured 3.85:1 at 0.75rem — fails AA
   font-size: $text-xs;
   font-weight: 700;
   letter-spacing: 0.06em;

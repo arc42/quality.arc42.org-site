@@ -64,7 +64,14 @@ test.describe("Lighthouse Audits", () => {
         config: {
           extends: "lighthouse:default",
           settings: {
-            skipAudits: ["is-on-https"],
+            // Both HTTPS audits are environment artifacts here: the audit
+            // target is the local dev server (http://jekyll:4000), which has
+            // no TLS listener, so neither "is HTTPS" nor "redirects to HTTPS"
+            // can ever pass locally. The behaviour these audits want IS
+            // asserted — against production, where the redirect actually
+            // happens: tests/ui/https-redirect.spec.ts (suite) and
+            // .github/workflows/https-redirect-check.yml (daily probe).
+            skipAudits: ["is-on-https", "redirects-http"],
             formFactor: "desktop",
             screenEmulation: {
               mobile: false,

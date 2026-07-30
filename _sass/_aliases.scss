@@ -10,33 +10,17 @@
   --aliases-accent-24: rgba(var(--aliases-accent-rgb), 0.24);
   --aliases-accent-46: rgba(var(--aliases-accent-rgb), 0.46);
 
+  // Flat wash, section-hero language — the former stacked radial gradients
+  // plus a rotated linear-gradient "sheen" were the one decorative-glow
+  // pattern on the site (DESIGN.md: no gradients, colour must mean something).
   .aliases-hero {
     position: relative;
     margin: 0 0 1.5rem;
     padding: 1.25rem 1.25rem 1.1rem;
     border-radius: $radius-lg;
     border: 1px solid var(--aliases-accent-18);
-    background: radial-gradient(circle at 0% 0%, var(--aliases-accent-08), transparent 52%),
-      radial-gradient(circle at 100% 100%, var(--aliases-accent-18), transparent 56%),
-      var(--brand-paper);
-    overflow: hidden;
-  }
-
-  .aliases-hero::after {
-    content: "";
-    position: absolute;
-    top: -28%;
-    right: -10%;
-    width: 44%;
-    height: 190%;
-    transform: rotate(12deg);
-    background: linear-gradient(
-      180deg,
-      var(--brand-cream-46) 0%,
-      var(--brand-cream-06) 70%,
-      transparent 100%
-    );
-    pointer-events: none;
+    background: var(--brand-paper);
+    background: color-mix(in oklab, var(--brand-paper) 92%, $brand-blue 8%);
   }
 
   .aliases-hero-title {
@@ -96,18 +80,15 @@
     border: 1px solid var(--aliases-accent-18);
     border-radius: $radius-md;
     padding: 18px;
-    box-shadow: 0 2px 8px var(--aliases-accent-08);
-    transition:
-      transform 0.2s ease,
-      box-shadow 0.2s ease,
-      border-color 0.2s ease;
+    // Flat at rest (The Overlay Rule: if it doesn't float, it doesn't cast);
+    // the old resting shadow + translateY hover-lift was the generic
+    // card-grid pattern the design system rejects.
+    transition: border-color 0.2s ease;
     display: flex;
     flex-direction: column;
   }
 
   .synonym-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 20px var(--aliases-accent-18);
     border-color: var(--aliases-accent-46);
   }
 

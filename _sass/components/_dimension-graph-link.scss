@@ -29,7 +29,10 @@
   padding: 0.85rem 1rem 0.85rem 1.7rem;
   position: relative;
   text-decoration: none;
-  transition: background-color 120ms ease, border-color 120ms ease, transform 120ms ease;
+  transition:
+    background-color 120ms ease,
+    border-color 120ms ease,
+    transform 120ms ease;
 
   &::before {
     background: var(--cat);

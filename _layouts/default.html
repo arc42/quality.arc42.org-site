@@ -19,8 +19,11 @@
     <link rel="icon" type="image/png" href="{{ '/assets/img/favicons/favicon-32x32.png' | prepend: site.baseurl }}" sizes="32x32">
     <link rel="icon" type="image/png" href="{{ '/assets/img/favicons/favicon-16x16.png' | prepend: site.baseurl }}" sizes="16x16">
     <link rel="manifest" href="{{ '/assets/img/favicons/manifest.json' | prepend: site.baseurl }}">
-    <link rel="mask-icon" href="{{ '/assets/img/favicons/safari-pinned-tab.svg' | prepend: site.baseurl }}" color="#5bbad5">
-    <meta name="theme-color" content="#ffffff">
+    {%- comment -%} Mobile chrome wears the masthead hue (meta.arc42.org
+        ADR-0008; was #ffffff over a violet band). No mask-icon: Safari ≥12
+        pins tabs with the standard favicon — the pinned-tab SVG (whose
+        #5bbad5 was a favicon-generator default) served Safari 9–11 only. {%- endcomment -%}
+    <meta name="theme-color" content="#682d63">
     <meta name="description" content="{{ description }}">
     <link rel="shortcut icon" href="{{ site.favicon | prepend: site.baseurl }}" type="image/x-icon">
 

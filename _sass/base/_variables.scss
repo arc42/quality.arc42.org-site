@@ -16,8 +16,8 @@ $font-family:
   sans-serif,
   "Apple Color Emoji",
   "Segoe UI Emoji";
-$heading-font-family: "Libre Caslon Text", "Iowan Old Style", "Palatino Linotype", Georgia,
-  "Times New Roman", serif;
+$heading-font-family:
+  "Libre Caslon Text", "Iowan Old Style", "Palatino Linotype", Georgia, "Times New Roman", serif;
 $font-size: 17px;
 
 // Modular scale — 1.333 (perfect fourth) from 1rem base.
@@ -32,8 +32,8 @@ $text-4xl: 3.15rem; // h1 / content display
 $text-5xl: 4.2rem; // hero display (use with clamp)
 
 // source code typography.
-$code-font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono",
-  monospace;
+$code-font-family:
+  ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
 $code-font-size: 0.9em;
 
 // vertical margin.
@@ -73,6 +73,10 @@ $brand-cream: #fbf6ef;
 $brand-paper: #f8f7f2;
 $brand-ink: #241823;
 $brand-muted: #746671;
+// Muted for *tinted* surfaces: plain muted measures 4.39:1 on the 8–14%
+// section washes (section-hero eyebrow + lede) and fails AA; this deepened
+// violet-cast gray clears 4.5:1 on the 14% wash.
+$brand-muted-strong: #5c4f59;
 $brand-teal: #5fb49c;
 $brand-blue: #00b8f5;
 $brand-blue-dark: #0077ad;
@@ -102,7 +106,12 @@ $standard-soft-background-color: #ffefc8;
 $standard-text-color: #2c3e50;
 $dark-blue-text-color: #ffffff;
 $blue-text-color: $brand-blue-text;
-$error-color: #ec645b;
+// #ec645b measured 3.21:1 under white text and failed AA — on a site about
+// quality. #c22b47 is the family's coral-deep (meta.arc42.org BRAND.md),
+// 5.4:1 with white.
+$error-color: #c22b47;
+// Deepened error tone for the pinned-note offset under error callouts.
+$error-deep-color: #8f1f34;
 $article-background-color: $brand-violet-soft;
 $approaches-background-color: #92ef80;
 $approaches-soft-background-color: #d9f7d3;
@@ -156,6 +165,7 @@ $innoq-heart-color: #ff9c66;
   --brand-paper: #{$brand-paper};
   --brand-ink: #{$brand-ink};
   --brand-muted: #{$brand-muted};
+  --brand-muted-strong: #{$brand-muted-strong};
   --brand-teal: #{$brand-teal};
   --brand-blue: #{$brand-blue};
   --brand-blue-dark: #{$brand-blue-dark};
@@ -175,6 +185,7 @@ $innoq-heart-color: #ff9c66;
   --dark-blue-text-color: #{$dark-blue-text-color};
   --blue-text-color: #{$blue-text-color};
   --error-color: #{$error-color};
+  --error-deep-color: #{$error-deep-color};
   --article-background-color: #{$article-background-color};
   --approaches-background-color: #{$approaches-background-color};
   --approaches-soft-background-color: #{$approaches-soft-background-color};
