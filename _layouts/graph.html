@@ -23,7 +23,11 @@
         the masthead hue per meta.arc42.org ADR-0008. {%- endcomment -%}
     <meta name="theme-color" content="#682d63">
     <meta name="description" content="{{ description }}">
-    <link rel="shortcut icon" href="{{ site.favicon | prepend: site.baseurl }}" type="image/x-icon">
+    {%- comment -%} The legacy `rel="shortcut icon"` line that used to sit
+        here pointed at site.favicon (assets/img/arc42logosquare.webp), so it
+        competed with the favicons above and won in some browsers. The
+        42-circle set plus /favicon.ico is the whole declaration now.
+    {%- endcomment -%}
 
     <script>
         try {

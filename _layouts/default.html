@@ -25,7 +25,11 @@
         #5bbad5 was a favicon-generator default) served Safari 9–11 only. {%- endcomment -%}
     <meta name="theme-color" content="#682d63">
     <meta name="description" content="{{ description }}">
-    <link rel="shortcut icon" href="{{ site.favicon | prepend: site.baseurl }}" type="image/x-icon">
+    {%- comment -%} The legacy `rel="shortcut icon"` line that used to sit
+        here pointed at site.favicon (assets/img/arc42logosquare.webp), so it
+        competed with the favicons above and won in some browsers. The
+        42-circle set plus /favicon.ico is the whole declaration now.
+    {%- endcomment -%}
 
     <link rel="preload" href="{{ '/assets/fonts/atkinson/AtkinsonHyperlegibleNext-Variable.woff2' | prepend: site.baseurl }}" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="{{ '/assets/fonts/libre-caslon/LibreCaslonText-Regular.woff2' | prepend: site.baseurl }}" as="font" type="font/woff2" crossorigin>
