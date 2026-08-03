@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-07-27T10:01:16.621Z",
+  "generatedAt": "2026-08-03T09:56:16.663Z",
   "totals": {
     "pagesScanned": 36,
-    "violations": 5,
+    "violations": 4,
     "incomplete": 73,
     "passes": 981,
     "avgScore": 99
