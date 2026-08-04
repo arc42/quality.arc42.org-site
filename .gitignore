@@ -32,3 +32,6 @@ test-results/
 !.claude/skills/write-standards/
 skills-lock.json
 .vscode
+/.vs/quality.arc42.org-site.slnx/copilot-chat/1cfb6920/sessions
+/.vs/quality.arc42.org-site/CopilotIndices/18.8.1096.64007
+/.vs
