@@ -141,7 +141,7 @@ Systems and software engineering — Systems and software Quality Requirements a
 
 Available [online](https://www.iso.org/obp/ui/#iso:std:iso-iec:25010:ed-2:v1:en)
 
-The authoritative international standard defining the product quality model used as the backbone of this site. The 2023 revision restructures the eight top-level quality characteristics and refines sub-characteristics, superseding the 2011 edition for most practical purposes.
+The authoritative international standard defining the product quality model used as the backbone of this site. The 2023 revision restructures the eight top-level quality characteristics, extends the top-level quality characteristics with _Safety_ and refines sub-characteristics, superseding the 2011 edition for most practical purposes.
 
 However, as discussed in [Shortcomings of ISO 25010](/articles/iso-25010-shortcomings), the standard remains problematic for practitioners. Its abstract terminology, overlapping definitions, and rigid hierarchy often lack pragmatism, while essential aspects like code quality and operational concerns are largely ignored. The paywall further limits its practical accessibility for many development teams.
 

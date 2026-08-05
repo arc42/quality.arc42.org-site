@@ -10,11 +10,16 @@ permalink: /qualities/correctness
 See also [functional-correctness](/qualities/functional-correctness)
 
 
-Definitions:
+###Definitions:
 
->Provide accurate results when used by intended users for intended functions.
+>Provide accurate results when used by intended users for intended functions. Sub-charcteristic of functional suitability.
 > 
 >[ISO-25010:2023](/references/#iso-25010-2023)
+
+>Provide the correct results with the needed degree of precision. AI systems, and particularly those using machine learning models, do not usually provide functional correctness in all observed circumstances.
+>_Modification of sub-characteristic of functional suitability in [ISO-25010:2023](/standards/iso-25010)_.
+> 
+>[ISO-25059:2026](/references/iso-25059-2026)
 
 
 > Extent to which a program satisfies its specifications and fulfills the user's mission objectives.

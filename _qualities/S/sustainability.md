@@ -2,7 +2,7 @@
 title: Sustainability 
 tags: [efficient, reliable]
 related: [energy-efficiency, carbon-emission-efficiency]
-standards: [iso38500, iso42030]
+standards: [iso38500, iso42030, iso25059]
 permalink: /qualities/sustainability
 ---
 
@@ -19,3 +19,9 @@ permalink: /qualities/sustainability
 
 This definition was created with help from [ChatGPT](https://chat.openai.com) by using the prompt `define the term "sustainability" in context of software and systems architecture`
 
+### Definitions
+
+>State in which the ecosystem and its functions are maintained for the present and future generation(s).
+>
+>[ISO-25059](/references/iso-25059)
+>[ISO-17889-1](https://www.iso.org/obp/ui/en/#iso:std:iso:17889:-1:ed-1:v1:en) (origin of added definition in ISO-25059:2026-Under development)
