@@ -34,10 +34,10 @@ permalink: /qualities/transparency
 
 ### Definitions
 
->Communicate appropriate information about the AI system to relevant stakeholders.
->Appropriate information for AI system transparency can include aspects such as features, components, procedures, measures, design goals, design choices and assumptions.
+> Communicate appropriate information about the AI system to relevant stakeholders.
+> Appropriate information for AI system transparency can include aspects such as features, components, procedures, measures, design goals, design choices and assumptions.
 >
->[ISO-25059](/references/iso-25059)
+> [ISO-25059](/references/#iso-25059)
 
 Transparent AI systems document, log or display their internal processes using introspection tools and data files. The flow of data can be trackable at each step, with applied decisions, exceptions and rules documented. Log output can track processes in the pipeline as they permute data, as well as system level calls. Errors are logged explicitly, particularly in transform steps.
 

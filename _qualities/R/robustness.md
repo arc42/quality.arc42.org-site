@@ -20,7 +20,7 @@ permalink: /qualities/robustness
 
 >Degree to which an AI system can maintain its level of functional correctness under any circumstances.
 >
->[ISO-25059](/references/iso-25059)
+>[ISO-25059](/references/#iso-25059)
 
 It is used to describe the ability of a system to maintain its level of functional correctness / “performance” under any circumstances.
 

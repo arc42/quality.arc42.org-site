@@ -6,7 +6,7 @@ order: 85
 hide: true
 ---
 
-[Aroms/NIST](#nist-idps) · [Bass et al.](#bass2021software) · [bbv](#bbvquality) · [Boehm 1976](#boehm1976quantitative) · [Boehm 1978](#boehm1978characteristics) · [Cavano/McCall](#mccall) · [Crosby](#crosby-quality) · [Eeles](#eeles2005capturing) · [Frost](#brad-frost-theming) · [Forsgren/Humble/Kim](#forsgren-accelerate) · [Grady](#grady1992practical) · [Harasymczuk](#astrotech) · [Harrer](#harrer-quality-tactics) · [Hohpe/Woolf](#hohpe2004enterprise) · [ISO 9241](#iso-9241-110) · [ISO 25010 (2011)](#iso-25010-2011) · [ISO 25010 (2023)](#iso-25010-2022) · [Jamwal et al.](#jamwal) · [Kazman et al.](#kazman-maintainability) · [Kohavi et al.](#kohavi2020trustworthy) · [Martin](#martin-clean-architecture) · [Nygard](#nygard2018release) · [McCabe](#mccabe1976complexity) · [McCall/Matsumoto](#mccall1980software) · [McCall/Walters](#mccall1977factors) · [Mockus et al.](#mockus2010experiences) · [Robertson/Robertson](#volere) · [SEI/QAW](#sei-qaw) · [Starke/Lorz](#starke2021software) · [SWEBOK](#swebok) · [W3C](#w3c-design-tokens) · [Wikipedia](#wikipedia-theming)
+[Aroms/NIST](#nist-idps) · [Bass et al.](#bass2021software) · [bbv](#bbvquality) · [Boehm 1976](#boehm1976quantitative) · [Boehm 1978](#boehm1978characteristics) · [Cavano/McCall](#mccall) · [Crosby](#crosby-quality) · [Eeles](#eeles2005capturing) · [Frost](#brad-frost-theming) · [Forsgren/Humble/Kim](#forsgren-accelerate) · [Grady](#grady1992practical) · [Harasymczuk](#astrotech) · [Harrer](#harrer-quality-tactics) · [Hohpe/Woolf](#hohpe2004enterprise) · [ISO 9241](#iso-9241-110) · [ISO 25010 (2011)](#iso-25010-2011) · [ISO 25010 (2023)](#iso-25010-2022) · [ISO 25059](#iso-25059) · [Jamwal et al.](#jamwal) · [Kazman et al.](#kazman-maintainability) · [Kohavi et al.](#kohavi2020trustworthy) · [Martin](#martin-clean-architecture) · [Nygard](#nygard2018release) · [McCabe](#mccabe1976complexity) · [McCall/Matsumoto](#mccall1980software) · [McCall/Walters](#mccall1977factors) · [Mockus et al.](#mockus2010experiences) · [Robertson/Robertson](#volere) · [SEI/QAW](#sei-qaw) · [Starke/Lorz](#starke2021software) · [SWEBOK](#swebok) · [W3C](#w3c-design-tokens) · [Wikipedia](#wikipedia-theming)
 
 ---
 
@@ -144,6 +144,18 @@ Available [online](https://www.iso.org/obp/ui/#iso:std:iso-iec:25010:ed-2:v1:en)
 The authoritative international standard defining the product quality model used as the backbone of this site. The 2023 revision restructures the eight top-level quality characteristics, extends the top-level quality characteristics with _Safety_ and refines sub-characteristics, superseding the 2011 edition for most practical purposes.
 
 However, as discussed in [Shortcomings of ISO 25010](/articles/iso-25010-shortcomings), the standard remains problematic for practitioners. Its abstract terminology, overlapping definitions, and rigid hierarchy often lack pragmatism, while essential aspects like code quality and operational concerns are largely ignored. The paywall further limits its practical accessibility for many development teams.
+
+<a id="iso-25059"></a>
+### ISO 25059 (v. 2023, revision in progress)
+
+ISO/IEC 25059:2023(en)
+Software engineering — Systems and software Quality Requirements and Evaluation (SQuaRE) — Quality model for AI systems
+
+Available [online](https://www.iso.org/obp/ui/en/#iso:std:iso-iec:25059:ed-1:v1:en)
+
+An application-specific extension of the SQuaRE product quality model for AI systems, described in detail on the [ISO/IEC 25059 standard page](/standards/iso-25059). The published 2023 edition adds five sub-characteristics to [ISO 25010](#iso-25010-2023) and modifies the definition of functional correctness.
+
+A revision is in progress at [ISO/IEC FDIS 25059](https://www.iso.org/standard/88234.html), which will supersede the 2023 edition. It is not yet published, so any content attributed to it is subject to change.
 
 <a id="jamwal"></a>
 ### Jamwal et al.: Comparative Analysis of Different Software Quality Models

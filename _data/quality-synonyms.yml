@@ -116,3 +116,11 @@ testability:
 # Reproducibility (repeatability file says "alias_of: reproducibility")
 reproducibility:
   - repeatability
+
+# Sustainability (environmental sustainability is the ISO 25059 sub-characteristic name)
+sustainability:
+  - environmental-sustainability
+
+# Controllability (user controllability is the ISO 25059 sub-characteristic name)
+controllability:
+  - user-controllability

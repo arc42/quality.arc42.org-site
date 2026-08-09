@@ -8,6 +8,6 @@ permalink: /qualities/functional-adaptability
 
 Definitions:
 
->Degree to which an AI system can accurately acquire information from data, or the result of previous actions, and use that information in future predictions.
+> Degree to which an AI system can accurately acquire information from data, or the result of previous actions, and use that information in future predictions.
 >
->[ISO-25059](/references/iso-25059)
+> [ISO-25059](/references/#iso-25059)
