@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-27T10:01:16.621Z",
+  "generatedAt": "2026-08-10T07:51:01.049Z",
   "tags": [
     "wcag2a",
     "wcag2aa",
@@ -8,7 +8,7 @@
   ],
   "totals": {
     "pagesScanned": 36,
-    "violations": 5,
+    "violations": 4,
     "incomplete": 73,
     "passes": 981,
     "avgScore": 99
@@ -77,20 +77,11 @@
       "route": "/standards/explorer/",
       "title": "Standards Explorer | arc42 Quality Model",
       "url": "http://127.0.0.1:4000/standards/explorer/",
-      "violationsCount": 1,
+      "violationsCount": 0,
       "incompleteCount": 2,
       "passesCount": 26,
-      "score": 90,
-      "violations": [
-        {
-          "id": "color-contrast",
-          "impact": "serious",
-          "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
-          "help": "Elements must meet minimum color contrast ratio thresholds",
-          "helpUrl": "https://dequeuniversity.com/rules/axe/4.12/color-contrast?application=playwright",
-          "nodes": 45
-        }
-      ]
+      "score": 100,
+      "violations": []
     },
     {
       "route": "/approaches/",
