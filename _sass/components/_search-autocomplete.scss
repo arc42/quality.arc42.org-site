@@ -157,6 +157,12 @@
   &[data-type="standard"] {
     --cat: var(--standard-background-color);
   }
+  // Articles and pages sit outside the four content-type legend — neutral
+  // rail rather than inventing a fifth graph colour.
+  &[data-type="article"],
+  &[data-type="page"] {
+    --cat: var(--brand-muted);
+  }
 }
 
 .site-search__title {

@@ -2,6 +2,7 @@
 layout: page
 title: "Challenges with Quality"
 permalink: /articles/challenge-with-quality
+aka: ["Quality Definition", "What is Quality", "Definition of Quality"]
 ---
 
 <div class="arc42-help" markdown="1">
@@ -13,6 +14,16 @@ A practical approach to achieve essential quality characteristics.
 
 </div><br>
 
+### What is Quality? A Working Definition
+
+> Software quality is the degree to which a system satisfies the stated and
+> implied needs of its various stakeholders. *(based on ISO/IEC 25010 and the
+> SEBoK glossary)*
+
+In practice that means: quality is never a single property, but a **set of
+specific, measurable characteristics** — performance, security,
+maintainability, usability and friends. The rest of this article explains why
+the abstract definition alone doesn't help, and what to do instead.
 
 ### The (incredibly un-useful) Definition
 

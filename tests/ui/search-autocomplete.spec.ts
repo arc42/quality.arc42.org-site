@@ -4,11 +4,11 @@ import { expect, test } from "@playwright/test";
 // so the panel shows the "Show all N results" row and the footer.
 const QUERY = "data";
 
-async function openAutocomplete(page) {
+async function openAutocomplete(page, query = QUERY) {
   await page.goto("/");
   const input = page.locator("#site-search-input");
   await input.click();
-  await input.fill(QUERY);
+  await input.fill(query);
   // Panel renders after the 100ms input debounce + lookup fetch.
   await expect(page.locator("#site-search-panel")).toBeVisible();
   await expect(page.locator(".site-search__item").first()).toBeVisible();
@@ -42,4 +42,11 @@ test("Control+Enter jumps to the full /search/ page", async ({ page }) => {
   const input = await openAutocomplete(page);
   await input.press("Control+Enter");
   await expect(page).toHaveURL(/\/search\/\?q=data/);
+});
+
+test('searching "quality" surfaces the definition article', async ({ page }) => {
+  await openAutocomplete(page, "quality");
+  const articleGroup = page.locator('.site-search__group[data-type="article"]');
+  await expect(articleGroup).toBeVisible();
+  await expect(articleGroup).toContainText("Challenges with Quality");
 });

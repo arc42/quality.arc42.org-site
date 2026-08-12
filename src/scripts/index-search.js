@@ -15,29 +15,50 @@ async function generateSearchIndex() {
     const requirementsDir = path.join(projectRoot, "_requirements");
     const standardsDir = path.join(projectRoot, "_standards");
     const approachesDir = path.join(projectRoot, "_approaches");
+    const articlesDir = path.join(projectRoot, "_articles");
+    const pagesDir = path.join(projectRoot, "_pages");
     const assetsDir = path.join(projectRoot, "assets");
 
     console.log("Generating search index...");
 
     const synonymMap = await loadQualitySynonyms();
 
+    // Curated pages worth finding via search. Utility pages (imprint,
+    // reports, redirects, tag stubs) stay unindexed.
+    const PAGE_ALLOWLIST = new Set([
+        "05-how-to-use-this-site.md",
+        "10-quality-dimensions.md",
+        "20-quality-characteristics.md",
+        "30-quality-requirements.md",
+        "40-quality-standards.md",
+        "70-solution-approaches.md",
+        "80-background-on-quality.md"
+    ]);
+
     const collections = [
         { dir: qualitiesDir, type: "quality" },
         { dir: requirementsDir, type: "requirement" },
         { dir: standardsDir, type: "standard" },
-        { dir: approachesDir, type: "approach" }
+        { dir: approachesDir, type: "approach" },
+        { dir: articlesDir, type: "article" },
+        { dir: pagesDir, type: "page", allowlist: PAGE_ALLOWLIST }
     ];
 
     const documents = [];
 
-    for (const { dir, type } of collections) {
+    for (const { dir, type, allowlist } of collections) {
         const files = await getFilePaths(dir);
-        const data = await parseFrontmatter(files);
+        const selected = allowlist
+            ? files.filter(f => allowlist.has(path.basename(f)))
+            : files;
+        const data = await parseFrontmatter(selected);
 
         for (const item of data) {
             // Skip synonym stub files for indexing, or index them?
             // Actually, for Lunr, we want to find the canonical page.
             if (item.alias_of) continue;
+            // A stray file without a permalink can't produce a usable ref.
+            if (!item.permalink) continue;
 
             const id = item.permalink;
             const title = item.title || "";
@@ -66,7 +87,8 @@ async function generateSearchIndex() {
                 type,
                 tags,
                 aliases,
-                body: item.body || ""
+                // Liquid tags/includes are markup noise, not content.
+                body: (item.body || "").replace(/\{%[\s\S]*?%\}|\{\{[\s\S]*?\}\}/g, " ")
             });
         }
     }

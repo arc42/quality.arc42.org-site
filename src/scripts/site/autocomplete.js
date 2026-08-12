@@ -23,6 +23,8 @@ const GROUPS = [
   { type: "requirement", label: "Requirements" },
   { type: "approach", label: "Approaches" },
   { type: "standard", label: "Standards" },
+  { type: "article", label: "Articles" },
+  { type: "page", label: "Pages" },
 ];
 
 // Scoring weights — higher is better. Tuned for typical autocomplete intent:
@@ -43,7 +45,7 @@ const W = {
 
 // Type-priority for tie-breaking — qualities first because they're the
 // usual entry point during a workshop lookup.
-const TYPE_RANK = { quality: 0, requirement: 1, approach: 2, standard: 3 };
+const TYPE_RANK = { quality: 0, requirement: 1, approach: 2, standard: 3, article: 4, page: 5 };
 
 let lookupPromise = null;
 let lookupItems = null; // [{ title, type, url, aliases, tags, _titleL, _aliasL, _tagsL, _titleWords, _aliasWords }]
