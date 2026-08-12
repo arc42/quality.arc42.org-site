@@ -280,7 +280,15 @@
   font-weight: 600;
   text-decoration: none;
   cursor: pointer;
-  z-index: var(--z-sticky);
+  // Local overlay value only — just needs to sit above the graph SVG inside
+  // #q-graph-container. Previously reused --z-sticky (1000), which tied with
+  // .site-header's own stacking context (also --z-sticky): on a tie, DOM
+  // order wins, so this control (later in the DOM) painted over the header's
+  // search autocomplete panel despite the panel's higher --z-popover value —
+  // that value only wins comparisons *inside* the header's stacking context.
+  // Keeping this well below --z-sticky lets the header's context (and
+  // anything inside it) stack above unconditionally.
+  z-index: 2;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   transition:
     transform 0.2s ease-in-out,
