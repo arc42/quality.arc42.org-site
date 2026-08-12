@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/playwright:v1.61.1-jammy
+FROM mcr.microsoft.com/playwright:v1.62.0-jammy
 
 WORKDIR /tmp/deps
 
