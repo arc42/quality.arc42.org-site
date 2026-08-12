@@ -70,7 +70,7 @@ All these approaches are described below.
 
 <figure class="how2use-figure">
   {% include svg/how-to-use-this-site.svg %}
-  <figcaption>Click any element to jump to its section. (Diagram of the arc42 quality metamodel.)</figcaption>
+  <figcaption>Quality characteristics (outer cloud) grouped into the eight quality dimensions (inner band). Click a dimension tag for its page, or any quality name for the full list of quality characteristics.</figcaption>
 </figure>
 
 ### Inside-Out, starting with Q42 Quality Dimensions

@@ -14,7 +14,7 @@
   marks its children presentational — axe flags that as nested-interactive.
 -->
 <svg viewBox="-36 -2 769 696" role="group" aria-labelledby="how2use-svg-title" class="how2use-svg">
-  <title id="how2use-svg-title">How the quality model fits together: dimensions, qualities, requirements, standards, and approaches</title>
+  <title id="how2use-svg-title">A cloud of quality characteristic names surrounding the eight quality dimensions — #reliable, #flexible, #efficient, #usable, #safe, #secure, #operable and #suitable. Arrows show the two routes through the model: inside-out from a dimension into its characteristics, outside-in from a characteristic to its dimension.</title>
   <defs/>
   <g id="out-in-in-out" stroke-dasharray="none" fill="none" fill-opacity="1" stroke="none" stroke-opacity="1">
     <rect fill="white" x="-36" y="-2" width="769" height="696"/>
