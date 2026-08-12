@@ -68,7 +68,10 @@ You can approach in several ways:
 
 All these approaches are described below.
 
-![inside-out vs outside-in graphic](/images/how2use/how-to-use-this-site.svg)
+<figure class="how2use-figure">
+  {% include svg/how-to-use-this-site.svg %}
+  <figcaption>Click any element to jump to its section. (Diagram of the arc42 quality metamodel.)</figcaption>
+</figure>
 
 ### Inside-Out, starting with Q42 Quality Dimensions
 Let's assume that your stakeholders want a "flexible" system. 

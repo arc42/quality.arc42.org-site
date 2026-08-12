@@ -1,0 +1,41 @@
+// How-to-use-this-site page.
+//
+// The inside-out / outside-in metamodel graphic is an inline SVG include
+// (`_includes/svg/how-to-use-this-site.svg`) whose concept groups — the
+// eight dimension tags and the surrounding cloud of quality names — are
+// links. Affordances live here, never as inline `cursor` attributes in
+// the SVG, so the graphic stays a pure geometry derivative of the
+// OmniGraffle master.
+
+.how2use-figure {
+  margin: 1.5rem 0;
+
+  svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-width: 769px;
+    margin: 0 auto;
+  }
+
+  figcaption {
+    margin-top: 0.5rem;
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--brand-blue-text);
+  }
+}
+
+.how2use-link {
+  cursor: pointer;
+
+  &:hover g,
+  &:focus-visible g {
+    opacity: 0.75;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--brand-blue-dark);
+    outline-offset: 2px;
+  }
+}
