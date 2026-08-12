@@ -69,6 +69,11 @@
   --cat: var(--approaches-background-color);
   --cat-text: var(--approaches-text-color);
 }
+.cat-article,
+.cat-page {
+  --cat: var(--brand-muted);
+  --cat-text: var(--brand-ink);
+}
 
 .search-results-list h3.search-result-title {
   // $heading-font-family resolves at build time — the old inline block asked
