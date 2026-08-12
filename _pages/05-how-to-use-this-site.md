@@ -14,7 +14,17 @@ no_layout_header: true
 
 ## Our _Domain Language_
 
-![Q42 domain language](/images/domain-language/q42-domain-language-v2026.webp)
+<figure class="domain-language-figure">
+  <div
+    class="domain-language-figure__viewport"
+    role="region"
+    aria-label="Scrollable Q42 domain language diagram"
+    tabindex="0"
+  >
+    {% include svg/q42-domain-language-v2026.svg %}
+  </div>
+  <figcaption>Select a dimension or content type to explore it. On narrow screens, scroll horizontally to see the complete model.</figcaption>
+</figure>
 
 Let's explain some terms, starting with an example:
 

@@ -1,0 +1,187 @@
+<!--
+  Interactive derivative of images/domain-language/q42-domain-language-v2026.svg.
+  Geometry and wording follow the draw.io export. Native SVG text replaces its
+  foreignObject/embedded-PNG fallbacks so labels inherit the site's UI font.
+-->
+<svg
+  class="domain-language-svg"
+  viewBox="0 0 881 446"
+  role="group"
+  aria-labelledby="domain-language-svg-title domain-language-svg-description"
+>
+  <title id="domain-language-svg-title">Q42 domain language</title>
+  <desc id="domain-language-svg-description">
+    System or product quality is structured into nine quality dimensions and described by quality characteristics. Quality characteristics are associated with dimensions, specified by example requirements, related to standards, and enabled or improved by approaches. The nine dimension names and all six boxes are links.
+  </desc>
+
+  <defs>
+    <symbol id="domain-language-icon-tag" viewBox="0 0 448 512">
+      <path d="M48 32H197.5C214.5 32 230.7 38.74 242.7 50.75L418.7 226.7C443.7 251.7 443.7 292.3 418.7 317.3L285.3 450.7C260.3 475.7 219.7 475.7 194.7 450.7L18.75 274.7C6.743 262.7 0 246.5 0 229.5V80C0 53.49 21.49 32 48 32ZM112 176C129.7 176 144 161.7 144 144C144 126.3 129.7 112 112 112C94.33 112 80 126.3 80 144C80 161.7 94.33 176 112 176Z"/>
+    </symbol>
+    <symbol id="domain-language-icon-gem" viewBox="0 0 512 512">
+      <path d="M378.7 32H133.3L256 182.7L378.7 32ZM512 192 404.6 50.7 289.6 192H512ZM107.4 50.7 0 192H222.4L107.4 50.7ZM244.3 474.9C247.3 478.2 251.6 480 256 480S264.7 478.2 267.7 474.9L510.6 224H1.4L244.3 474.9Z"/>
+    </symbol>
+    <symbol id="domain-language-icon-puzzle" viewBox="0 0 512 512">
+      <path d="M512 288C512 323.4 490.5 352 464 352C431.6 352 432.3 320 408.4 320C394.9 320 384 330.9 384 344.4V480C384 497.7 369.7 512 352 512H280.4C266.9 512 256 501.1 256 487.6C256 463.1 288 464.4 288 432C288 405.5 259.4 384 224 384S160 405.5 160 432C160 464.4 192 463.7 192 487.6C192 501.1 181.1 512 167.6 512H32C14.3 512 0 497.7 0 480V344.4C0 330.9 10.9 320 24.4 320C48.1 320 47.6 352 80 352C106.5 352 128 323.3 128 288S106.5 223.1 80 223.1C47.6 223.1 48.3 255.1 24.4 255.1C10.9 255.1 0 245.1 0 231.6V160C0 142.3 14.3 128.9 32 128.9H167.6C181.1 128.9 192 117.1 192 103.6C192 79.9 160 80.4 160 48C160 21.5 188.7 .9 224 .9S288 22.4 288 48C288 80.4 256 79.7 256 103.6C256 117.1 266.9 128 280.4 128H352C369.7 128 384 142.3 384 159.1V230.7C384 244.2 394.9 255.1 408.4 255.1C432.1 255.1 431.6 223.1 464 223.1C490.5 223.1 512 252.7 512 288Z"/>
+    </symbol>
+    <symbol id="domain-language-icon-target" viewBox="0 0 512 512">
+      <path d="M288 256C288 273.7 273.7 288 256 288S224 273.7 224 256S238.3 224 256 224S288 238.3 288 256ZM112 256C112 176.5 176.5 112 256 112S400 176.5 400 256S335.5 400 256 400S112 335.5 112 256ZM256 336C300.2 336 336 300.2 336 256S300.2 176 256 176S176 211.8 176 256S211.8 336 256 336ZM512 256C512 397.4 397.4 512 256 512S0 397.4 0 256S114.6 0 256 0S512 114.6 512 256ZM256 64C149.1 64 64 149.1 64 256S149.1 448 256 448S448 362 448 256S362 64 256 64Z"/>
+    </symbol>
+    <symbol id="domain-language-icon-award" viewBox="0 0 384 512">
+      <path d="M288 358.3C302 350.2 305.5 328.3 316.9 316.9S350.2 302 358.3 288C366.2 274.2 358.4 253.5 362.6 237.7C366.7 222.5 383.1 208.5 383.1 192S365.8 161.5 361.7 146.3C357.5 130.5 365.3 109.8 357.4 96C349.3 82 327.4 78.5 316 67.1S301.1 33.8 287.1 25.7C273.3 17.7 252.6 25.5 236.9 21.3C222.5 17.3 208.5 0 192 0S161.5 17.3 146.3 21.3C130.5 25.5 109.8 17.7 96 25.7C82 33.8 78.5 55.7 67.1 67.1S33.8 82 25.7 96C17.7 109.7 25.6 130.5 21.4 146.2C17.3 161.5 0 175.5 0 192S17.3 222.5 21.3 237.7C25.5 253.5 17.7 274.2 25.7 288C33.8 302 55.7 305.5 67.1 316.9S82 350.2 96 358.3C109.8 366.3 130.5 358.5 146.3 362.7C161.5 366.7 175.5 384 192 384S222.5 366.7 237.7 362.7C253.5 358.5 274.2 366.3 288 358.3ZM112 192C112 147.7 147.8 112 192 112S272 147.7 272 192S236.2 272 192 272S112 236.2 112 192ZM1.7 433.2C-1.5 441.4 0 450.7 5.6 457.5C11.3 464.2 20.1 467.4 28.7 465.6L73.9 456.6L95.3 498.8C99.5 507 107.6 512 116.7 512H117.7C127.2 511.6 135.4 505.9 138.9 497.1L172.5 415C118.8 410.4 70.5 386.9 34.3 351.1L1.7 433.2ZM349.6 351.1C313.5 386.9 265.2 410.4 211.4 415L245 497.1C248.6 505.9 256.7 511.6 266.2 512H267.3C276.4 512 284.5 507 288.7 498.9L310.1 456.6L355.3 465.6C363.9 467.4 372.8 464.2 378.4 457.5C384.1 450.7 385.5 441.4 382.3 433.2L349.6 351.1Z"/>
+    </symbol>
+  </defs>
+
+  <g class="domain-language-svg__connectors" aria-hidden="true">
+    <path d="M170 160H370"/>
+    <path d="M145.5 200 350 347.5"/>
+    <path d="M450 200V315"/>
+    <path d="M530 160H690"/>
+    <path d="M550 347.5 690 250"/>
+    <path d="M550 380.3 690 380.7"/>
+    <path d="M170 380H350"/>
+
+    <path d="M447 120 466 29"/>
+    <path d="M430 120 356 29"/>
+    <path d="M409 120 349 70"/>
+    <path d="M389 120 260 52"/>
+    <path d="M378 120 247 100"/>
+    <path d="M471 120 491 50"/>
+    <path d="M490 120 549 30"/>
+    <path d="M510 120 592 52"/>
+    <path d="M530 120 646 80"/>
+  </g>
+
+  <g class="domain-language-svg__relations" aria-hidden="true">
+    <text x="282" y="153" text-anchor="middle">structured into →</text>
+    <text x="267" y="270" text-anchor="middle" transform="rotate(35 267 270)">described by →</text>
+    <text x="255" y="375" text-anchor="middle">enables / improves →</text>
+    <text x="392" y="305" text-anchor="middle">associated with ↑</text>
+    <text x="608" y="153" text-anchor="middle">← associated with</text>
+    <text x="621" y="287" text-anchor="middle" transform="rotate(-35 621 287)">specified by →</text>
+  </g>
+
+  <a href="{{ '/articles/what-is-quality' | prepend: site.baseurl }}" class="domain-language-link domain-language-link--box" aria-label="System- or product quality — what quality means">
+    <title>Read the article: What is Quality?</title>
+    <rect class="domain-language-svg__box-surface" x="10" y="120" width="160" height="80" rx="12" fill="#ece7e7" stroke="#e2d6dd"/>
+    <text x="90" y="143" text-anchor="middle" class="domain-language-svg__system-title">
+      <tspan x="90">System- or</tspan>
+      <tspan x="90" dy="25">Product</tspan>
+      <tspan x="90" dy="25">Quality</tspan>
+    </text>
+    <rect class="domain-language-link__focus" x="11" y="121" width="158" height="78" rx="11"/>
+  </a>
+
+  <a href="{{ '/dimensions/' | prepend: site.baseurl }}" class="domain-language-link domain-language-link--box" aria-label="Quality dimensions — the top-level tags structuring all characteristics">
+    <title>Explore the quality dimensions</title>
+    <rect class="domain-language-svg__box-surface" x="370" y="120" width="160" height="80" rx="12" fill="#e4edec" stroke="#e2d6dd"/>
+    <rect x="367" y="124" width="10" height="72" rx="3" fill="#0077ad"/>
+    <use href="#domain-language-icon-tag" x="381" y="122" width="27" height="27" fill="#003366"/>
+    <text x="450" y="143" text-anchor="middle" fill="#003366">
+      <tspan x="450" class="domain-language-svg__box-detail">(top-level)</tspan>
+      <tspan x="450" dy="27" class="domain-language-svg__box-title">Dimension</tspan>
+      <tspan x="450" dy="22" class="domain-language-svg__box-detail">tag, label</tspan>
+    </text>
+    <rect class="domain-language-link__focus" x="371" y="121" width="158" height="78" rx="11"/>
+  </a>
+
+  <a href="{{ '/tag-efficient/' | prepend: site.baseurl }}" class="domain-language-link domain-language-link--tag" aria-label="Quality dimension #efficient">
+    <title>#efficient: qualities tagged efficient</title>
+    <rect class="domain-language-link__focus" x="215" y="72" width="68" height="31" rx="8"/>
+    <text class="domain-language-svg__tag" x="249" y="95" text-anchor="middle">#efficient</text>
+  </a>
+  <a href="{{ '/tag-flexible/' | prepend: site.baseurl }}" class="domain-language-link domain-language-link--tag" aria-label="Quality dimension #flexible">
+    <title>#flexible: qualities tagged flexible</title>
+    <rect class="domain-language-link__focus" x="220" y="21" width="80" height="31" rx="8"/>
+    <text class="domain-language-svg__tag" x="260" y="45" text-anchor="middle">#flexible</text>
+  </a>
+  <a href="{{ '/tag-maintainable/' | prepend: site.baseurl }}" class="domain-language-link domain-language-link--tag" aria-label="Quality dimension #maintainable">
+    <title>#maintainable: qualities tagged maintainable</title>
+    <rect class="domain-language-link__focus" x="299" y="0" width="114" height="29" rx="8"/>
+    <text class="domain-language-svg__tag" x="356" y="23" text-anchor="middle">#maintainable</text>
+  </a>
+  <a href="{{ '/tag-operable/' | prepend: site.baseurl }}" class="domain-language-link domain-language-link--tag" aria-label="Quality dimension #operable">
+    <title>#operable: qualities tagged operable</title>
+    <rect class="domain-language-link__focus" x="303" y="42" width="84" height="31" rx="8"/>
+    <text class="domain-language-svg__tag" x="345" y="65" text-anchor="middle">#operable</text>
+  </a>
+  <a href="{{ '/tag-reliable/' | prepend: site.baseurl }}" class="domain-language-link domain-language-link--tag" aria-label="Quality dimension #reliable">
+    <title>#reliable: qualities tagged reliable</title>
+    <rect class="domain-language-link__focus" x="424" y="0" width="84" height="29" rx="8"/>
+    <text class="domain-language-svg__tag" x="466" y="23" text-anchor="middle">#reliable</text>
+  </a>
+  <a href="{{ '/tag-safe/' | prepend: site.baseurl }}" class="domain-language-link domain-language-link--tag" aria-label="Quality dimension #safe">
+    <title>#safe: qualities tagged safe</title>
+    <rect class="domain-language-link__focus" x="457" y="28" width="68" height="29" rx="8"/>
+    <text class="domain-language-svg__tag" x="491" y="50" text-anchor="middle">#safe</text>
+  </a>
+  <a href="{{ '/tag-secure/' | prepend: site.baseurl }}" class="domain-language-link domain-language-link--tag" aria-label="Quality dimension #secure">
+    <title>#secure: qualities tagged secure</title>
+    <rect class="domain-language-link__focus" x="514" y="0" width="77" height="31" rx="8"/>
+    <text class="domain-language-svg__tag" x="552.5" y="23" text-anchor="middle">#secure</text>
+  </a>
+  <a href="{{ '/tag-suitable/' | prepend: site.baseurl }}" class="domain-language-link domain-language-link--tag" aria-label="Quality dimension #suitable">
+    <title>#suitable: qualities tagged suitable</title>
+    <rect class="domain-language-link__focus" x="555" y="25" width="88" height="31" rx="8"/>
+    <text class="domain-language-svg__tag" x="599" y="48" text-anchor="middle">#suitable</text>
+  </a>
+  <a href="{{ '/tag-usable/' | prepend: site.baseurl }}" class="domain-language-link domain-language-link--tag" aria-label="Quality dimension #usable">
+    <title>#usable: qualities tagged usable</title>
+    <rect class="domain-language-link__focus" x="610" y="53" width="75" height="31" rx="8"/>
+    <text class="domain-language-svg__tag" x="647.5" y="76" text-anchor="middle">#usable</text>
+  </a>
+
+  <a href="{{ '/approaches/' | prepend: site.baseurl }}" class="domain-language-link domain-language-link--box" aria-label="Approaches — patterns, practices, tactics and strategies">
+    <title>Explore solution approaches</title>
+    <rect class="domain-language-svg__box-surface" x="0.5" y="320" width="169" height="120" rx="12" fill="#eaf6e2" stroke="#e2d6dd"/>
+    <rect x="0" y="322" width="10" height="114" rx="3" fill="#92ef80"/>
+    <use href="#domain-language-icon-puzzle" x="14" y="322" width="30" height="30" fill="#1b5e20"/>
+    <text x="85" y="371" text-anchor="middle" fill="#1b5e20">
+      <tspan x="85" class="domain-language-svg__box-title">Approach</tspan>
+      <tspan x="85" dy="22" class="domain-language-svg__box-detail">pattern, practice,</tspan>
+      <tspan x="85" dy="20" class="domain-language-svg__box-detail">tactic, strategy</tspan>
+    </text>
+    <rect class="domain-language-link__focus" x="1.5" y="321" width="167" height="118" rx="11"/>
+  </a>
+
+  <a href="{{ '/qualities/' | prepend: site.baseurl }}" class="domain-language-link domain-language-link--box" aria-label="Quality characteristics — the full list of specific quality terms">
+    <title>Explore quality characteristics</title>
+    <rect class="domain-language-svg__box-surface" x="350" y="315" width="200" height="130" rx="12" fill="#d5eef2" stroke="#e2d6dd"/>
+    <rect x="349" y="324" width="10" height="114" rx="3" fill="#00b8f5"/>
+    <use href="#domain-language-icon-gem" x="366" y="324" width="30" height="30" fill="#003366"/>
+    <text x="450" y="340" text-anchor="middle" fill="#113040">
+      <tspan x="450" class="domain-language-svg__box-detail">(specific)</tspan>
+      <tspan x="450" dy="34" class="domain-language-svg__quality-title">Quality</tspan>
+      <tspan x="450" dy="34" class="domain-language-svg__quality-title">Characteristic</tspan>
+      <tspan x="450" dy="21" class="domain-language-svg__box-detail">attribute</tspan>
+    </text>
+    <rect class="domain-language-link__focus" x="351" y="316" width="198" height="128" rx="11"/>
+  </a>
+
+  <a href="{{ '/requirements/' | prepend: site.baseurl }}" class="domain-language-link domain-language-link--box" aria-label="Example requirements with metrics and acceptance criteria">
+    <title>Explore example quality requirements</title>
+    <rect class="domain-language-svg__box-surface" x="690" y="120" width="190" height="130" rx="12" fill="#f9ede9" stroke="#e2d6dd"/>
+    <rect x="690" y="128" width="12" height="114" rx="3" fill="#ffb3b3"/>
+    <use href="#domain-language-icon-target" x="707" y="124" width="23" height="23" fill="#8b0000"/>
+    <text x="785" y="161" text-anchor="middle" fill="#8b0000">
+      <tspan x="785" class="domain-language-svg__requirement-title">Example</tspan>
+      <tspan x="785" dy="31" class="domain-language-svg__requirement-title">Requirement</tspan>
+      <tspan x="785" dy="21" class="domain-language-svg__box-detail">with metric /</tspan>
+      <tspan x="785" dy="20" class="domain-language-svg__box-detail">acceptance criterion</tspan>
+    </text>
+    <rect class="domain-language-link__focus" x="691" y="121" width="188" height="128" rx="11"/>
+  </a>
+
+  <a href="{{ '/standards/' | prepend: site.baseurl }}" class="domain-language-link domain-language-link--box" aria-label="Quality-related standards">
+    <title>Explore quality standards</title>
+    <rect class="domain-language-svg__box-surface" x="690" y="328.5" width="190" height="105" rx="12" fill="#f9f3e6" stroke="#e2d6dd"/>
+    <rect x="690" y="336.5" width="12" height="89" rx="3" fill="#ffc95c"/>
+    <use href="#domain-language-icon-award" x="705" y="331.5" width="29" height="29" fill="#2c3e50"/>
+    <text x="785" y="374" text-anchor="middle" fill="#113040">
+      <tspan x="785" class="domain-language-svg__box-title">Standard</tspan>
+      <tspan x="785" dy="22" class="domain-language-svg__box-detail">e.g. ISO-25010 or</tspan>
+      <tspan x="785" dy="20" class="domain-language-svg__box-detail">ISO-27001</tspan>
+    </text>
+    <rect class="domain-language-link__focus" x="691" y="329.5" width="188" height="103" rx="11"/>
+  </a>
+</svg>
