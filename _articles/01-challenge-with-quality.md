@@ -2,7 +2,6 @@
 layout: page
 title: "Challenges with Quality"
 permalink: /articles/challenge-with-quality
-aka: ["Quality Definition", "What is Quality", "Definition of Quality"]
 ---
 
 <div class="arc42-help" markdown="1">

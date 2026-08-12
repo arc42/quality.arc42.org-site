@@ -44,11 +44,31 @@ test("Control+Enter jumps to the full /search/ page", async ({ page }) => {
   await expect(page).toHaveURL(/\/search\/\?q=data/);
 });
 
-test('searching "quality" surfaces the definition article', async ({ page }) => {
+test('searching "quality" surfaces the definition article near the top of its group', async ({
+  page,
+}) => {
   await openAutocomplete(page, "quality");
   const articleGroup = page.locator('.site-search__group[data-type="article"]');
   await expect(articleGroup).toBeVisible();
-  await expect(articleGroup).toContainText("Challenges with Quality");
+  await expect(articleGroup).toContainText("What is Quality?");
+
+  // Not strictly first: per src/scripts/site/autocomplete.js's scorer, a
+  // literal TITLE_PREFIX match (a title that *starts with* "quality", e.g.
+  // "Quality Models") outscores an ALIAS_EXACT match (our `aka: Quality`
+  // entry), since "What is Quality?" doesn't start with the query term.
+  // What IS deterministic — and what this regression actually needs — is
+  // that the definition article now outranks the old article it took its
+  // "Quality Definition" / "What is Quality" aka terms from.
+  const titles = await articleGroup
+    .locator(".site-search__item .site-search__title")
+    .allTextContents();
+  const definitionIndex = titles.findIndex((t) => t.includes("What is Quality?"));
+  const challengeIndex = titles.findIndex((t) => t.includes("Challenges with Quality"));
+  expect(definitionIndex).toBeGreaterThanOrEqual(0);
+  expect(challengeIndex).toBeGreaterThanOrEqual(0);
+  expect(definitionIndex).toBeLessThan(challengeIndex);
+  // And it should sit right at the top of the group (rank 0 or 1).
+  expect(definitionIndex).toBeLessThanOrEqual(1);
 });
 
 test("full-graph toggle never paints over the open search dropdown", async ({ page }) => {
