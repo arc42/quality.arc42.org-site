@@ -27,7 +27,8 @@
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   padding: 1rem;
   z-index: var(--z-sticky);
-  overflow: visible;
+  max-height: calc(100% - 40px); /* container height minus top offset + margin */
+  overflow-y: auto;
   transition: background-color 0.3s ease;
 }
 

@@ -8,7 +8,7 @@
  * - responsive defaults when the viewport crosses the mobile breakpoint
  */
 export class GraphPageController {
-    static #MOBILE_BREAKPOINT = "(max-width: 900px)";
+    static #MOBILE_BREAKPOINT = "(max-width: 900px), (max-height: 700px)";
 
     #graph;
     #media;

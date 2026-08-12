@@ -249,7 +249,7 @@
     display: none;
   }
 
-  @media (max-width: 900px) {
+  @media (max-width: 900px), (max-height: 700px) {
     #full-q-graph-container {
       // Mobile reserves an extra ~50px for the stacked .graph-intro layout
       height: calc(100dvh - 260px);
