@@ -72,30 +72,27 @@ export class HomeGraph extends Graph {
    * @returns {HomeGraph} This graph instance for chaining
    */
   addFullGraphToggle() {
-    // Create the button element
-    this.fullGraphToggle = document.createElement("button");
+    // A real <a> so the control works with no JS, middle-click, and
+    // "open in new tab" — not just a JS-driven location.href button.
+    // Prefix with the site baseurl so the link survives subpath deploys
+    // (e.g. project GitHub Pages), consistent with the rest of the site JS.
+    const baseurl = (window.baseurl || "").replace(/\/$/, "");
+    this.fullGraphToggle = document.createElement("a");
     this.fullGraphToggle.id = "full-graph-toggle";
+    this.fullGraphToggle.href = `${baseurl}/full-quality-graph`;
 
     const icon = document.createElement("i");
     icon.className = "fas fa-expand";
+    icon.setAttribute("aria-hidden", "true");
     this.fullGraphToggle.appendChild(icon);
 
     this.fullGraphToggle.setAttribute("aria-label", "Open full graph");
-    this.fullGraphToggle.title = "Open full graph";
 
     const label = document.createElement("span");
     label.textContent = "Open full graph";
     this.fullGraphToggle.appendChild(label);
 
-    // Add click event listener to navigate to the full graph page.
-    // Prefix with the site baseurl so the link survives subpath deploys
-    // (e.g. project GitHub Pages), consistent with the rest of the site JS.
-    this.fullGraphToggle.addEventListener("click", () => {
-      const baseurl = (window.baseurl || "").replace(/\/$/, "");
-      window.location.href = `${baseurl}/full-quality-graph`;
-    });
-
-    // Add the button to the container
+    // Add the link to the container
     this.container.appendChild(this.fullGraphToggle);
 
     return this;

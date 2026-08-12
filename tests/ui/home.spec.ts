@@ -43,14 +43,18 @@ test("clicking an intro graph node navigates to its page", async ({ page }) => {
   await page.waitForURL(/tag-secure/);
 });
 
-test("intro graph has a visible labeled button to the full graph", async ({
+test("intro graph has a visible labeled link to the full graph", async ({
   page,
 }) => {
   await page.goto("/");
-  const button = page.locator("#full-graph-toggle");
-  await expect(button).toBeVisible();
-  await expect(button).toContainText(/open full graph/i);
-  await button.click();
+  const link = page.locator("#full-graph-toggle");
+  await expect(link).toBeVisible();
+  // A real <a>, not a JS-only button: works with no JS, middle-click, and
+  // "open in new tab", and has a resolvable href for no-JS users.
+  await expect(link).toHaveAttribute("href", /\/full-quality-graph$/);
+  await expect(link).toHaveAccessibleName(/open full graph/i);
+  await expect(link).toContainText(/open full graph/i);
+  await link.click();
   await page.waitForURL(/full-quality-graph/);
 });
 

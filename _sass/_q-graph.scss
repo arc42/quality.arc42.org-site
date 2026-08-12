@@ -278,6 +278,7 @@
   border-radius: $radius-pill;
   font-size: 0.85rem;
   font-weight: 600;
+  text-decoration: none;
   cursor: pointer;
   z-index: var(--z-sticky);
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
@@ -291,6 +292,7 @@
   background-color: var(--brand-blue);
   border-color: var(--brand-blue-dark);
   color: white;
+  text-decoration: none;
 }
 
 #full-graph-toggle:focus-visible {

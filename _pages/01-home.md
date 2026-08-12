@@ -92,6 +92,9 @@ q_graph_script: /assets/js/homepage/main.js
       </p>
 
       <div id="q-graph-container"></div>
+      <noscript>
+        <a href="{{ '/full-quality-graph' | prepend: site.baseurl }}">Open the full quality graph</a>
+      </noscript>
     </div>
 
   </section>
