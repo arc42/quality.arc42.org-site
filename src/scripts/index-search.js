@@ -64,22 +64,25 @@ async function generateSearchIndex() {
             const title = item.title || "";
             const tags = parseList(item.tags, " ").join(" ");
             
-            // Collect aliases/synonyms
-            let aliases = "";
+            // Collect aliases/synonyms as whole phrases — the autocomplete
+            // scorer ranks "query is a prefix of a complete alias term" above
+            // mere word-level matches, which needs phrase boundaries intact.
+            const aliasPhrases = [];
             if (type === "quality") {
                 const slug = id.split("/").pop();
                 const synonymSlugs = synonymMap[slug] || [];
-                aliases = synonymSlugs.map(s => s.replace(/-/g, " ")).join(" ");
+                aliasPhrases.push(...synonymSlugs.map(s => s.replace(/-/g, " ")));
             }
             // `aka:` index terms — used by qualities and approaches alike, so index
             // them regardless of type. (Approaches were previously skipped, leaving
             // terms like "Split Testing" unsearchable in the header/full-text search.)
             if (item.aka) {
-                aliases += " " + parseList(item.aka, ",").join(" ");
+                aliasPhrases.push(...parseList(item.aka, ","));
             }
             if (item.alias) {
-                aliases += " " + parseList(item.alias, ",").join(" ");
+                aliasPhrases.push(...parseList(item.alias, ","));
             }
+            const aliases = aliasPhrases.join(" ");
 
             documents.push({
                 id: item.permalink,
@@ -87,6 +90,7 @@ async function generateSearchIndex() {
                 type,
                 tags,
                 aliases,
+                aliasPhrases,
                 // Liquid tags/includes are markup noise, not content.
                 body: (item.body || "").replace(/\{%[\s\S]*?%\}|\{\{[\s\S]*?\}\}/g, " ")
             });
@@ -120,6 +124,7 @@ async function generateSearchIndex() {
             type: doc.type,
             url: doc.id,
             aliases: doc.aliases || "",
+            aliasList: doc.aliasPhrases || [],
             tags: doc.tags || ""
         };
     });

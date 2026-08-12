@@ -58,6 +58,23 @@ test('searching "quality" surfaces the definition article first in its group', a
   await expect(articleGroup.locator(".site-search__item").first()).toContainText(
     "What is Quality?",
   );
+
+  // Groups render strongest-first, so the article group — carrying the top
+  // score — leads the panel and its first row is the pre-highlighted one.
+  await expect(page.locator(".site-search__group").first()).toHaveAttribute("data-type", "article");
+  await expect(page.locator(".site-search__item").first()).toContainText("What is Quality?");
+});
+
+test('partial query "qua" already leads with the definition article', async ({ page }) => {
+  await openAutocomplete(page, "qua");
+
+  // ALIAS_PHRASE_PREFIX: "qua" is a prefix of the whole aka term "Quality"
+  // (520), which outranks TITLE_PREFIX titles like "Quality Models" (500)
+  // and "Quarantine" — mid-typing already surfaces the definition article
+  // as the panel's first, pre-highlighted row.
+  const firstItem = page.locator(".site-search__item").first();
+  await expect(firstItem).toContainText("What is Quality?");
+  await expect(firstItem).toHaveAttribute("aria-selected", "true");
 });
 
 test("full-graph toggle never paints over the open search dropdown", async ({ page }) => {

@@ -41,9 +41,18 @@ const GROUPS = [
 // (that's ALIAS_PREFIX / ALIAS_WORD_PREFIX, which intentionally stay well
 // below TITLE_PREFIX: a partial alias match is a weaker signal than a title
 // that starts with the whole term).
+//
+// ALIAS_PHRASE_PREFIX sits between the two: the query is a prefix of a
+// complete alias phrase (a whole `aka:` term or synonym, boundaries kept in
+// the lookup's aliasList). An alias is an alternate title, so a prefix of
+// the full phrase carries title-prefix strength — mid-typing "qua" must
+// already lead to the article aliased plain "Quality", not stall on titles
+// that merely start with the letters (like "Quality Models") until the
+// word is typed out.
 const W = {
   TITLE_EXACT: 1000,
   ALIAS_EXACT: 550,
+  ALIAS_PHRASE_PREFIX: 520,
   TITLE_PREFIX: 500,
   TITLE_WORD_PREFIX: 320,
   ALIAS_PREFIX: 240,
@@ -78,6 +87,7 @@ function loadLookup(baseurl) {
           _tagsL: tagsL,
           _titleWords: titleL.split(/[\s\-_/]+/).filter(Boolean),
           _aliasWords: aliasesL.split(/[\s\-_/]+/).filter(Boolean),
+          _aliasPhrases: (d.aliasList || []).map((p) => String(p).toLowerCase()),
           _tagWords: tagsL.split(/[\s,]+/).filter(Boolean),
         };
       });
@@ -102,6 +112,7 @@ function scoreItem(item, terms) {
     // be the highest-scoring one.
     if (item._titleL === term) termScore = W.TITLE_EXACT;
     else if (item._aliasWords.includes(term)) termScore = W.ALIAS_EXACT;
+    else if (item._aliasPhrases.some((p) => p.startsWith(term))) termScore = W.ALIAS_PHRASE_PREFIX;
     else if (item._titleL.startsWith(term)) termScore = W.TITLE_PREFIX;
     else if (item._titleWords.some((w) => w.startsWith(term))) termScore = W.TITLE_WORD_PREFIX;
     else if (item._aliasesL.startsWith(term)) termScore = W.ALIAS_PREFIX;
@@ -194,7 +205,17 @@ function renderPanel({ scored, terms, query: q, baseurl, chordLabel }) {
   let idx = 0;
   const parts = [`<div class="site-search__scroll" role="presentation">`];
 
-  for (const { type, label } of GROUPS) {
+  // Groups render strongest-first — ordered by their best hit's score, not
+  // the fixed GROUPS order. The globally best result is always its group's
+  // first row, so it becomes the panel's very first (and pre-highlighted)
+  // row: searching "quality" leads with the definition article, even though
+  // articles sit last in the fixed type order. Ties keep the GROUPS order
+  // (stable sort). scored is sorted descending, so bucket[0] is the max.
+  const orderedGroups = GROUPS.filter((g) => (groups.get(g.type) || []).length > 0).sort(
+    (a, b) => groups.get(b.type)[0].score - groups.get(a.type)[0].score,
+  );
+
+  for (const { type, label } of orderedGroups) {
     const bucket = groups.get(type) || [];
     if (bucket.length === 0) continue;
 
