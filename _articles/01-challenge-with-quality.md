@@ -14,7 +14,7 @@ A practical approach to achieve essential quality characteristics.
 
 </div><br>
 
-### What is Quality? A Working Definition
+### A Working Definition of Quality
 
 > Software quality is the degree to which a system satisfies the stated and
 > implied needs of its various stakeholders. *(based on ISO/IEC 25010 and the
@@ -25,9 +25,10 @@ specific, measurable characteristics** — performance, security,
 maintainability, usability and friends. The rest of this article explains why
 the abstract definition alone doesn't help, and what to do instead.
 
-### The (incredibly un-useful) Definition
+### Why the textbook definitions don't help
 
-Let's ask the [System-Engineering Body of Knowledge (SEBok)](https://www.sebokwiki.org/wiki/Quality_(glossary)):
+Look closer at that definition. Here's the same idea, spelled out by the
+[System-Engineering Body of Knowledge (SEBok)](https://www.sebokwiki.org/wiki/Quality_(glossary)):
 
 >Quality: Ability of a product, service, system, component, or process to meet customer or user needs, expectations, or requirements. 
 >
