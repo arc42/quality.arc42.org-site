@@ -9,6 +9,6 @@ const dataProvider = new GraphDataProvider(propertyNodes, nodes, edges);
 
 // Initialize and render the homepage graph
 const homeGraph = new HomeGraph("q-graph-container", dataProvider, {
-  showFullGraphToggle: false,
+  showFullGraphToggle: true,
 });
 homeGraph.initialize().buildGraph().registerDefaultEventHandlers().render();

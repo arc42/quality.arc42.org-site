@@ -84,7 +84,6 @@ q_graph_script: /assets/js/homepage/main.js
           <p class="home-violet-section-head__kicker">Interactive map</p>
           <h2>The quality graph</h2>
         </div>
-        <a class="home-violet-graph__link" href="{{ '/full-quality-graph' | prepend: site.baseurl }}">Open graph</a>
       </div>
 
       <p class="home-violet-graph__note">

@@ -30,6 +30,16 @@ export class HomeGraph extends Graph {
     if (this.options.showFullGraphToggle) {
       this.addFullGraphToggle();
     }
+
+    // Background click (not on a node) also opens the full graph.
+    const svg = this.container.querySelector("svg");
+    svg?.addEventListener("click", (event) => {
+      if (event.target === svg) {
+        const baseurl = (window.baseurl || "").replace(/\/$/, "");
+        window.location.href = `${baseurl}/full-quality-graph`;
+      }
+    });
+
     return this;
   }
 
@@ -73,6 +83,10 @@ export class HomeGraph extends Graph {
     this.fullGraphToggle.setAttribute("aria-label", "Open full graph");
     this.fullGraphToggle.title = "Open full graph";
 
+    const label = document.createElement("span");
+    label.textContent = "Open full graph";
+    this.fullGraphToggle.appendChild(label);
+
     // Add click event listener to navigate to the full graph page.
     // Prefix with the site baseurl so the link survives subpath deploys
     // (e.g. project GitHub Pages), consistent with the rest of the site JS.
@@ -92,11 +106,15 @@ export class HomeGraph extends Graph {
    * @returns {Graph} This graph instance for chaining
    */
   registerDefaultEventHandlers() {
-    // Default double-click handler for navigation
-    const nodeDoubleClick = (event, d) => {
-      if (!isRootId(d.id)) {
-        window.location.href = this.graph.getNodeAttribute(d.id, "page");
+    // Single click navigates: content nodes to their page, the root
+    // node to the full graph. Hover keeps the highlight role.
+    const nodeClick = (event, d) => {
+      const baseurl = (window.baseurl || "").replace(/\/$/, "");
+      if (isRootId(d.id)) {
+        window.location.href = `${baseurl}/full-quality-graph`;
+        return;
       }
+      window.location.href = this.graph.getNodeAttribute(d.id, "page");
     };
 
     // Default click hover handler for highlighting
@@ -134,7 +152,7 @@ export class HomeGraph extends Graph {
 
     return this.registerEventHandlers({
       nodeHover,
-      nodeDoubleClick,
+      nodeClick,
     });
   }
 }

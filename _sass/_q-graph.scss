@@ -4,6 +4,10 @@
   position: relative;
 }
 
+#q-graph-container svg {
+  cursor: pointer;
+}
+
 #graph-site {
   margin: 0 !important;
   width: 100% !important;
@@ -262,17 +266,19 @@
 
 #full-graph-toggle {
   position: absolute;
-  bottom: 20px;
+  top: 20px;
   right: 20px;
-  background-color: #e6daf2;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 0.8rem;
+  background-color: var(--brand-blue-soft);
   color: var(--brand-blue-text);
-  border: none;
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  font-size: 24px;
+  border: 1px solid var(--brand-blue);
+  border-radius: $radius-pill;
+  font-size: 0.85rem;
+  font-weight: 600;
   cursor: pointer;
-  display: none;
   z-index: var(--z-sticky);
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   transition:
@@ -281,10 +287,13 @@
 }
 
 #full-graph-toggle:hover {
-  transform: scale(1.1);
-  background-color: #cb9fff;
+  transform: scale(1.05);
+  background-color: var(--brand-blue);
+  border-color: var(--brand-blue-dark);
+  color: white;
 }
 
-#q-graph-container:hover #full-graph-toggle {
-  display: block;
+#full-graph-toggle:focus-visible {
+  box-shadow: var(--focus-ring); // no outline without a ring
+  outline: none;
 }

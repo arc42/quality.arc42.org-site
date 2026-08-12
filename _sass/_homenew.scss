@@ -185,32 +185,6 @@
   margin: 0;
 }
 
-.home-violet-graph__link {
-  border: 1px solid var(--brand-violet-24);
-  color: var(--home-ink);
-  flex: 0 0 auto;
-  font-size: $text-sm;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  padding: 0.62rem 0.8rem;
-  text-decoration: none;
-  text-transform: uppercase;
-}
-
-.home-violet-graph__link:hover {
-  background: var(--brand-violet-08);
-  border-color: var(--brand-violet-46);
-  text-decoration: none;
-}
-
-.home-violet-graph__link:focus-visible {
-  background: var(--brand-violet-08);
-  border-color: var(--brand-violet-46);
-  box-shadow: var(--focus-ring);
-  outline: none;
-  text-decoration: none;
-}
-
 .home-violet-graph__note {
   color: var(--home-muted);
   line-height: 1.55;
