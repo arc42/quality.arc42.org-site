@@ -37,25 +37,9 @@ test("clicking an intro graph node navigates to its page", async ({ page }) => {
   const container = page.locator("#q-graph-container");
   await expect(container.locator("svg")).toBeVisible();
 
-  // Property nodes render a centered text label directly on top of an
-  // invisible hit-circle (same index, same position) — the circle carries
-  // the click handler, so clicking through the label's own bounding box
-  // would hit the label instead. Find "secure" among the labels, then
-  // dispatch the click on its sibling circle by index.
-  const labels = container.locator("svg text");
-  const labelCount = await labels.count();
-  let secureIndex = -1;
-  for (let i = 0; i < labelCount; i += 1) {
-    const text = (await labels.nth(i).textContent())?.trim().toLowerCase();
-    if (text === "secure") {
-      secureIndex = i;
-      break;
-    }
-  }
-  expect(secureIndex).toBeGreaterThanOrEqual(0);
-
-  const circle = container.locator("svg circle").nth(secureIndex);
-  await circle.dispatchEvent("click");
+  // Property nodes render a text label; "secure" links to its dimension page.
+  const label = container.locator("svg text", { hasText: "secure" }).first();
+  await label.click();
   await page.waitForURL(/tag-secure/);
 });
 

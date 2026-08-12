@@ -682,18 +682,26 @@ export class GraphRenderer {
         this.setupDrag();
 
         // Setup node interactions (on invisible hit circles and selected labels)
+        const internalLabels = this.labels.filter(d => isRoot(d) || isProperty(d) || isDimension(d));
+
         if (onNodeHover) {
             // Bind identical hover behavior to both node hit-circles and internal labels
             this._bindHoverHandlers(this.nodes, onNodeHover);
-            const internalLabels = this.labels.filter(d => isRoot(d) || isProperty(d) || isDimension(d));
             this._bindHoverHandlers(internalLabels, onNodeHover);
         }
 
+        // Internal labels (root/property/dimension) are painted on top of their
+        // hit-circles and carry pointer-events, so they must also carry click
+        // handlers directly — a click on the visible label is otherwise a dead
+        // click, since it never reaches the circle underneath (siblings, not
+        // ancestor/descendant).
         if (onNodeDoubleClick) {
             this.nodes.on("dblclick", onNodeDoubleClick);
+            internalLabels.on("dblclick", onNodeDoubleClick);
         }
         if (onNodeClick) {
             this.nodes.on("click", onNodeClick);
+            internalLabels.on("click", onNodeClick);
         }
 
         // Update node positions based on graph layout
