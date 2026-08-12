@@ -9,9 +9,14 @@
  */
 export class GraphPageController {
     static #MOBILE_BREAKPOINT = "(max-width: 900px), (max-height: 700px)";
+    // Width-only: gates the legend-toggle defaults so short-but-wide desktop
+    // windows (e.g. 1366x768, or a 1080p display at 125% zoom) keep all node
+    // types visible — only genuinely narrow viewports get the simplified set.
+    static #NARROW_BREAKPOINT = "(max-width: 900px)";
 
     #graph;
     #media;
+    #narrowMedia;
     #sidebar;
     #toggleButton;
     #closeButton;
@@ -30,6 +35,7 @@ export class GraphPageController {
     constructor(graph = null) {
         this.#graph = graph;
         this.#media = globalThis.matchMedia(GraphPageController.#MOBILE_BREAKPOINT);
+        this.#narrowMedia = globalThis.matchMedia(GraphPageController.#NARROW_BREAKPOINT);
         this.#sidebar = document.getElementById("full-q-graph-sidebar");
         this.#toggleButton = document.getElementById("mobile-graph-controls-toggle");
         this.#closeButton = document.getElementById("mobile-graph-sheet-close");
@@ -105,20 +111,29 @@ export class GraphPageController {
     }
 
     #setMobileDefaults() {
+        // Sheet UI (compact header, bottom sheet) reacts to the combined
+        // width-or-height breakpoint — short viewports need the sheet just
+        // as much as narrow ones do.
         if (!this.#media.matches) {
             // Desktop: sidebar is always visible — make sure it is reachable
             document.body.classList.remove("graph-compact-header");
             this.#sidebar?.removeAttribute("inert");
             this.#sidebar?.removeAttribute("aria-hidden");
-            this.#closeSheet();
-            return;
+        } else {
+            document.body.classList.add("graph-compact-header");
         }
-        document.body.classList.add("graph-compact-header");
-        this.#applyToggle(this.#qualityToggle, true);
-        this.#applyToggle(this.#requirementsToggle, false);
-        this.#applyToggle(this.#standardsToggle, false);
-        this.#applyToggle(this.#approachesToggle, false);
         this.#closeSheet();
+
+        // Legend-toggle defaults react to width only. A short-but-wide
+        // desktop window triggers the sheet above but must NOT lose the
+        // requirements/standards/approaches node types — that narrowing is
+        // only appropriate on genuinely narrow (mobile-width) viewports.
+        if (this.#narrowMedia.matches) {
+            this.#applyToggle(this.#qualityToggle, true);
+            this.#applyToggle(this.#requirementsToggle, false);
+            this.#applyToggle(this.#standardsToggle, false);
+            this.#applyToggle(this.#approachesToggle, false);
+        }
     }
 
     // ── filtering helpers ─────────────────────────────────────────────────────
@@ -189,9 +204,14 @@ export class GraphPageController {
         const onBreakpointChange = () => this.#setMobileDefaults();
         if (typeof this.#media.addEventListener === "function") {
             this.#media.addEventListener("change", onBreakpointChange);
+            // Separate listener: if height is already short, #media.matches
+            // stays true while the viewport narrows further, so #media never
+            // fires a "change" event even though the narrow breakpoint does.
+            this.#narrowMedia.addEventListener("change", onBreakpointChange);
         } else {
             // Safari < 14 fallback
             this.#media.addListener(onBreakpointChange);
+            this.#narrowMedia.addListener(onBreakpointChange);
         }
     }
 }

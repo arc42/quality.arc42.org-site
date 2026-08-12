@@ -60,13 +60,21 @@ test("mobile graph view toggles filter sheet without horizontal overflow", async
 test("short viewport (e.g. zoomed browser) switches to the filter sheet and keeps all controls reachable", async ({
   page,
 }) => {
-  // 1280x580 approximates a 1280x700 window at ~120% browser zoom.
+  // 1280x580 approximates a 1280x700 window at ~120% browser zoom: short
+  // (height < 700) but desktop-wide (width > 900). Load with
+  // requirements/standards/approaches already enabled via URL state, as a
+  // shared/bookmarked graph link would — the state the height-only part of
+  // the breakpoint must not silently discard.
   await page.setViewportSize({ width: 1280, height: 580 });
-  await page.goto("/full-quality-graph");
+  await page.goto(
+    "/full-quality-graph?showRequirements=1&showStandards=1&showApproaches=1"
+  );
 
   const toggleButton = page.locator("#mobile-graph-controls-toggle");
   await expect(toggleButton).toBeVisible();
 
+  // GraphPageController defers its mobile defaults by 180 ms after init;
+  // wait for that pass to complete before asserting anything it could affect.
   await page.waitForFunction(() =>
     document.body.classList.contains("graph-compact-header")
   );
@@ -85,6 +93,14 @@ test("short viewport (e.g. zoomed browser) switches to the filter sheet and keep
     await el.scrollIntoViewIfNeeded();
     await expect(el).toBeVisible();
   }
+
+  // Regression this fix prevents: this viewport is short but NOT narrow
+  // (1280px > the 900px width breakpoint), so the legend-toggle defaults
+  // must not be forced off even though the sheet UI is active. Only the
+  // width-gated narrow breakpoint may reset these to the simplified set.
+  await expect(page.locator("#legend-toggle-requirements")).toBeChecked();
+  await expect(page.locator("#legend-toggle-standards")).toBeChecked();
+  await expect(page.locator("#legend-toggle-approaches")).toBeChecked();
 });
 
 test("desktop sidebar scrolls instead of clipping when content overflows", async ({

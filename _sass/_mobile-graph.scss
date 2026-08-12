@@ -290,10 +290,13 @@
     #full-q-graph-sidebar {
       position: fixed;
       left: 0.6rem;
-      right: 0.6rem;
       top: auto;
       bottom: 0.6rem;
-      width: auto;
+      // Narrow (mobile) viewports: fills the width minus the 0.6rem side
+      // margins, same as the old left/right pair. Wide-short viewports
+      // (e.g. 1366x768, or desktop at 125% zoom): capped at 420px instead
+      // of stretching edge-to-edge.
+      width: min(calc(100% - 1.2rem), 420px);
       max-height: min(72dvh, 560px);
       /* No padding-top — sheet head sits flush against the top edge */
       padding: 0 0.72rem 0.72rem;
