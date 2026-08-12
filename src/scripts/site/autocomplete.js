@@ -28,13 +28,24 @@ const GROUPS = [
 ];
 
 // Scoring weights — higher is better. Tuned for typical autocomplete intent:
-// title prefix matches dominate, alias matches strong second, substring/tag
-// matches break ties at the bottom.
+// an exact whole-word alias match (the user typed a known synonym/index term
+// verbatim) is the strongest intent signal after an exact title match, so it
+// outranks even a title-prefix match — e.g. searching "quality" should lead
+// with an article whose `aka:` list contains the standalone term "Quality",
+// not merely a title that happens to start with "quality" (like "Quality
+// Models"). Below that: title prefix, then alias/title word-prefix matches,
+// then substring/tag matches breaking ties at the bottom.
+//
+// ALIAS_EXACT here means the query term equals one whole tokenised alias
+// word (see `_aliasWords.includes(term)` below) — not merely a prefix of one
+// (that's ALIAS_PREFIX / ALIAS_WORD_PREFIX, which intentionally stay well
+// below TITLE_PREFIX: a partial alias match is a weaker signal than a title
+// that starts with the whole term).
 const W = {
   TITLE_EXACT: 1000,
+  ALIAS_EXACT: 550,
   TITLE_PREFIX: 500,
   TITLE_WORD_PREFIX: 320,
-  ALIAS_EXACT: 400,
   ALIAS_PREFIX: 240,
   ALIAS_WORD_PREFIX: 180,
   TITLE_SUBSTR: 90,
@@ -84,9 +95,14 @@ function scoreItem(item, terms) {
   let hits = 0;
   for (const term of terms) {
     let termScore = 0;
+    // Evaluation order follows the weight priority (highest first), not the
+    // grouping by field (title vs. alias) — a term can satisfy more than one
+    // branch (e.g. a title that both starts with the term AND carries it as
+    // an exact alias), and only the first matching branch wins, so it must
+    // be the highest-scoring one.
     if (item._titleL === term) termScore = W.TITLE_EXACT;
-    else if (item._titleL.startsWith(term)) termScore = W.TITLE_PREFIX;
     else if (item._aliasWords.includes(term)) termScore = W.ALIAS_EXACT;
+    else if (item._titleL.startsWith(term)) termScore = W.TITLE_PREFIX;
     else if (item._titleWords.some((w) => w.startsWith(term))) termScore = W.TITLE_WORD_PREFIX;
     else if (item._aliasesL.startsWith(term)) termScore = W.ALIAS_PREFIX;
     else if (item._aliasWords.some((w) => w.startsWith(term))) termScore = W.ALIAS_WORD_PREFIX;
