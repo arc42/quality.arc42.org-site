@@ -101,7 +101,10 @@ const APPROVED_BREAKPOINTS = new Set(["800px"]);
  * Key = relative file path, value = Set of allowed legacy pixel values.
  */
 const ALLOWED_LEGACY_BREAKPOINTS = {
-  "_sass/_mobile-graph.scss": new Set(["900px"]),
+  // 700px pairs with the 900px width query as a `(max-height: 700px)`
+  // condition so the mobile-sheet UI also kicks in on short (zoomed)
+  // viewports — see GraphPageController's #MOBILE_BREAKPOINT.
+  "_sass/_mobile-graph.scss": new Set(["900px", "700px"]),
   "_sass/_standards.scss": new Set(["900px"]),
   "_sass/_q-graph.scss": new Set(["768px"]),
 };
