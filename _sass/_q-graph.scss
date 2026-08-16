@@ -142,19 +142,19 @@
 }
 
 #full-q-graph-home__btn {
-  margin-top: 0.45rem;
-  width: 100%;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.4rem;
-  padding: 0.5rem;
+  width: 1.85rem;
+  height: 1.85rem;
   border: 1px solid #b7d9ed;
-  border-radius: $radius-xs;
+  border-radius: $radius-pill;
   background: #ecf8ff;
   color: var(--brand-blue-accent-dark);
-  font-weight: 700;
+  font-size: 0.85rem;
   text-decoration: none;
+  flex-shrink: 0;
+  transition: all 0.2s ease-in-out;
 }
 
 #full-q-graph-home__btn:hover,
@@ -162,6 +162,12 @@
   text-decoration: none;
   background: #def2ff;
   border-color: #8fc4e5;
+  color: var(--brand-blue-dark);
+}
+
+#full-q-graph-home__btn:focus-visible {
+  box-shadow: var(--focus-ring);
+  outline: none;
 }
 
 #full-q-graph-center__btn {

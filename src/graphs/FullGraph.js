@@ -7,1001 +7,1014 @@ import { MAX_FILTER_TERMS } from "./constants";
 import { isProperty, isRootId, isStandard } from "./nodeUtils";
 
 export class FullGraph extends Graph {
+  #filterTypeState = {
+    quality: true,
+    requirement: false,
+  };
 
-    #filterTypeState = {
-        quality: true,
-        requirement: false
-    };
+  // URL state cache
+  _urlState = null;
 
-    // URL state cache
-    _urlState = null;
+  /**
+   * @param {string} containerId - ID of the container element
+   * @param {GraphDataProvider} dataProvider - Data provider instance
+   */
+  constructor(containerId, dataProvider) {
+    super(containerId, "fullpage", dataProvider);
+    this.filterInput = document.getElementById("full-q-graph-filter__input");
+    this.filterButton = document.getElementById("full-q-graph-filter__btn");
+    this.centerButton = document.getElementById("full-q-graph-center__btn");
+    this.debounceTimeout = null;
+    // Persisted UI state
+    this.currentFilterTerm = ""; // raw input string (for URL/input)
+    this.currentFilterTerms = []; // parsed terms (array, max 10) — kept for backward compatibility
+    this.finalizedTerms = []; // chips terms (array, max 10)
+    this.filterChipsContainer = null; // container element for chips
+    // Track last-applied URL-selected standard to avoid redundant re-application
+    this._lastAppliedStdId = null;
+  }
 
-    /**
-     * @param {string} containerId - ID of the container element
-     * @param {GraphDataProvider} dataProvider - Data provider instance
-     */
-    constructor(containerId, dataProvider) {
-        super(containerId, "fullpage", dataProvider);
-        this.filterInput = document.getElementById("full-q-graph-filter__input");
-        this.filterButton = document.getElementById("full-q-graph-filter__btn");
-        this.centerButton = document.getElementById("full-q-graph-center__btn");
-        this.debounceTimeout = null;
-        // Persisted UI state
-        this.currentFilterTerm = ""; // raw input string (for URL/input)
-        this.currentFilterTerms = []; // parsed terms (array, max 10) — kept for backward compatibility
-        this.finalizedTerms = []; // chips terms (array, max 10)
-        this.filterChipsContainer = null; // container element for chips
-        // Track last-applied URL-selected standard to avoid redundant re-application
-        this._lastAppliedStdId = null;
+  /**
+   * Initialize the graph and register filter controls
+   * @returns {FullGraph} This graph instance for chaining
+   */
+  initialize() {
+    super.initialize();
+    this.registerFilterControls();
+    this.registerLegendToggles();
+    // Apply initial state from URL and listen to history changes
+    this._applyStateFromUrl(true);
+    globalThis.addEventListener("popstate", () => this._applyStateFromUrl(false));
+    return this;
+  }
+
+  /**
+   * Re-apply URL-driven selected standard after each render/rebuild.
+   * Ensures selection persists across filtering and other re-renders.
+   * @private
+   */
+  _reapplySelectedStandardIfAny() {
+    const state = this._readUrlState();
+    const stdId = state.selectedStandard;
+
+    if (stdId) {
+      // Ensure standards are visible when enforcing a specific selection
+      const stdToggleEl = document.getElementById("legend-toggle-standards");
+      if (stdToggleEl && !stdToggleEl.checked) stdToggleEl.checked = true;
+      if (this.renderer?.typeVisibility?.standard === false) {
+        this.renderer.setTypeVisibility("standard", true);
+        this._writeUrlState({ showStandards: true });
+      }
+      // Avoid redundant re-application if already applied and still active
+      const isCurrentlySelected =
+        this._lastAppliedStdId === stdId && this.renderer?.selectionActive;
+      if (!isCurrentlySelected) {
+        const applyOnce = () => {
+          const applied = this._selectStandardById(stdId);
+          if (applied) {
+            this._lastAppliedStdId = stdId;
+          }
+          return applied;
+        };
+
+        // Re-assert the selection if it gets dropped. Simulation
+        // stabilization and the center-view transition can clear the
+        // transient .highlighted classes during the first ~2s, so
+        // rather than a fixed ladder of timeouts we re-check when the
+        // layout actually settles (simulation "end"), with one short
+        // fallback for the case where it had already settled (so "end"
+        // won't fire again). The check is idempotent and URL-guarded.
+        const reassertIfDropped = () => {
+          const stillSelectedInUrl = this._readUrlState().selectedStandard === stdId;
+          const selectionOk =
+            this.renderer?.selectionActive === true &&
+            this.renderer?.selection?.id === stdId &&
+            this.renderer?.nodes?.filter(".highlighted").size() > 0;
+          if (stillSelectedInUrl && !selectionOk) {
+            applyOnce();
+          }
+        };
+
+        // Apply as soon as render is ready
+        this._waitForRenderThen(() => {
+          applyOnce();
+          // Namespaced so re-renders replace (not stack) the handler.
+          this.renderer?.simulation?.on("end.reapplyStd", reassertIfDropped);
+          setTimeout(reassertIfDropped, 1200);
+        });
+      }
+    } else {
+      // Clear cache when no selection is present in URL
+      this._lastAppliedStdId = null;
+    }
+  }
+
+  /**
+   * Override base render to re-apply URL-driven selection after rendering.
+   * Keeps public API unchanged.
+   */
+  render() {
+    const result = super.render();
+    // After the renderer is (re)created and data bound, re-apply selection from URL if any
+    this._reapplySelectedStandardIfAny();
+    return result;
+  }
+
+  /**
+   * Register legend toggles for qualities, requirements, and standards
+   */
+  registerLegendToggles() {
+    const qualToggle = document.getElementById("legend-toggle-qualities");
+    const reqToggle = document.getElementById("legend-toggle-requirements");
+    const stdToggle = document.getElementById("legend-toggle-standards");
+    const approachToggle = document.getElementById("legend-toggle-approaches");
+
+    // Sync current renderer state to inputs
+    if (qualToggle) {
+      qualToggle.checked = this.renderer.typeVisibility.quality;
+      qualToggle.addEventListener("change", (e) => {
+        const isChecked = e.target.checked;
+        this.#filterTypeState.quality = isChecked;
+        // Drive visibility via renderer to avoid resetting text filter
+        this.renderer.setTypeVisibility("quality", isChecked);
+        this._writeUrlState({ showQualities: isChecked });
+      });
     }
 
-    /**
-     * Initialize the graph and register filter controls
-     * @returns {FullGraph} This graph instance for chaining
-     */
-    initialize() {
-        super.initialize();
-        this.registerFilterControls();
-        this.registerLegendToggles();
-        // Apply initial state from URL and listen to history changes
-        this._applyStateFromUrl(true);
-        globalThis.addEventListener('popstate', () => this._applyStateFromUrl(false));
-        return this;
+    if (reqToggle) {
+      reqToggle.checked = this.renderer.typeVisibility.requirement;
+      reqToggle.addEventListener("change", (e) => {
+        const isChecked = e.target.checked;
+        this.#filterTypeState.requirement = isChecked;
+        // Drive visibility via renderer to avoid resetting text filter
+        this.renderer.setTypeVisibility("requirement", isChecked);
+        this._writeUrlState({ showRequirements: isChecked });
+      });
     }
 
-    /**
-     * Re-apply URL-driven selected standard after each render/rebuild.
-     * Ensures selection persists across filtering and other re-renders.
-     * @private
-     */
-    _reapplySelectedStandardIfAny() {
-        const state = this._readUrlState();
-        const stdId = state.selectedStandard;
-
-        if (stdId) {
-            // Ensure standards are visible when enforcing a specific selection
-            const stdToggleEl = document.getElementById('legend-toggle-standards');
-            if (stdToggleEl && !stdToggleEl.checked) stdToggleEl.checked = true;
-            if (this.renderer?.typeVisibility?.standard === false) {
-                this.renderer.setTypeVisibility('standard', true);
-                this._writeUrlState({ showStandards: true });
-            }
-            // Avoid redundant re-application if already applied and still active
-            const isCurrentlySelected = this._lastAppliedStdId === stdId && this.renderer?.selectionActive;
-            if (!isCurrentlySelected) {
-                const applyOnce = () => {
-                    const applied = this._selectStandardById(stdId);
-                    if (applied) {
-                        this._lastAppliedStdId = stdId;
-                    }
-                    return applied;
-                };
-
-                // Re-assert the selection if it gets dropped. Simulation
-                // stabilization and the center-view transition can clear the
-                // transient .highlighted classes during the first ~2s, so
-                // rather than a fixed ladder of timeouts we re-check when the
-                // layout actually settles (simulation "end"), with one short
-                // fallback for the case where it had already settled (so "end"
-                // won't fire again). The check is idempotent and URL-guarded.
-                const reassertIfDropped = () => {
-                    const stillSelectedInUrl = this._readUrlState().selectedStandard === stdId;
-                    const selectionOk = this.renderer?.selectionActive === true &&
-                        this.renderer?.selection?.id === stdId &&
-                        this.renderer?.nodes?.filter(".highlighted").size() > 0;
-                    if (stillSelectedInUrl && !selectionOk) {
-                        applyOnce();
-                    }
-                };
-
-                // Apply as soon as render is ready
-                this._waitForRenderThen(() => {
-                    applyOnce();
-                    // Namespaced so re-renders replace (not stack) the handler.
-                    this.renderer?.simulation?.on("end.reapplyStd", reassertIfDropped);
-                    setTimeout(reassertIfDropped, 1200);
-                });
-            }
+    if (stdToggle) {
+      stdToggle.checked = this.renderer.typeVisibility.standard;
+      stdToggle.addEventListener("change", (e) => {
+        const isChecked = e.target.checked;
+        this.renderer.setTypeVisibility("standard", isChecked);
+        this._writeUrlState({ showStandards: isChecked });
+        // When standards are hidden, clear any active standard selection
+        if (isChecked) {
+          // Standards turned ON: if a selectedStandard exists in URL, re-apply it immediately
+          const stdId = this._readUrlState().selectedStandard;
+          if (stdId) {
+            this._waitForRenderThen(() => {
+              const applied = this._selectStandardById(stdId);
+              if (applied) {
+                this._lastAppliedStdId = stdId;
+              }
+            });
+          }
         } else {
-            // Clear cache when no selection is present in URL
-            this._lastAppliedStdId = null;
+          // Clear persistent selection state and any highlight flags
+          if (this.renderer?.selectionActive) {
+            this.renderer.setSelectionDimming(null, null, false);
+          }
+          if (this.renderer?.nodes) {
+            this.renderer.nodes.each(function (node) {
+              node.highlighted = false;
+              node.connectedHighlighted = false;
+            });
+          }
+          // Remove selected standard from URL state
+          this._writeUrlState({ selectedStandard: null });
         }
+      });
     }
 
-    /**
-     * Override base render to re-apply URL-driven selection after rendering.
-     * Keeps public API unchanged.
-     */
-    render() {
-        const result = super.render();
-        // After the renderer is (re)created and data bound, re-apply selection from URL if any
-        this._reapplySelectedStandardIfAny();
-        return result;
+    if (approachToggle) {
+      approachToggle.checked = this.renderer.typeVisibility.approach;
+      approachToggle.addEventListener("change", (e) => {
+        const isChecked = e.target.checked;
+        this.renderer.setTypeVisibility("approach", isChecked);
+        this._writeUrlState({ showApproaches: isChecked });
+      });
     }
 
-    /**
-     * Register legend toggles for qualities, requirements, and standards
-     */
-    registerLegendToggles() {
-        const qualToggle = document.getElementById("legend-toggle-qualities");
-        const reqToggle = document.getElementById("legend-toggle-requirements");
-        const stdToggle = document.getElementById("legend-toggle-standards");
-        const approachToggle = document.getElementById("legend-toggle-approaches");
+    return this;
+  }
 
-        // Sync current renderer state to inputs
-        if (qualToggle) {
-            qualToggle.checked = this.renderer.typeVisibility.quality;
-            qualToggle.addEventListener("change", (e) => {
-                const isChecked = e.target.checked;
-                this.#filterTypeState.quality = isChecked;
-                // Drive visibility via renderer to avoid resetting text filter
-                this.renderer.setTypeVisibility('quality', isChecked);
-                this._writeUrlState({ showQualities: isChecked });
-            });
-        }
+  /**
+   * Register filter controls
+   * @returns {FullGraph} This graph instance for chaining
+   */
+  registerFilterControls() {
+    if (this.filterInput && this.filterButton) {
+      // Ensure chips container exists just below the input
+      this._ensureChipsContainer();
 
-        if (reqToggle) {
-            reqToggle.checked = this.renderer.typeVisibility.requirement;
-            reqToggle.addEventListener("change", (e) => {
-                const isChecked = e.target.checked;
-                this.#filterTypeState.requirement = isChecked;
-                // Drive visibility via renderer to avoid resetting text filter
-                this.renderer.setTypeVisibility('requirement', isChecked);
-                this._writeUrlState({ showRequirements: isChecked });
-            });
-        }
+      // Center view button
+      if (this.centerButton) {
+        this.centerButton.addEventListener("click", () => {
+          this.renderer.centerView();
+        });
+      }
 
-        if (stdToggle) {
-            stdToggle.checked = this.renderer.typeVisibility.standard;
-            stdToggle.addEventListener("change", (e) => {
-                const isChecked = e.target.checked;
-                this.renderer.setTypeVisibility('standard', isChecked);
-                this._writeUrlState({ showStandards: isChecked });
-                // When standards are hidden, clear any active standard selection
-                if (isChecked) {
-                    // Standards turned ON: if a selectedStandard exists in URL, re-apply it immediately
-                    const stdId = this._readUrlState().selectedStandard;
-                    if (stdId) {
-                        this._waitForRenderThen(() => {
-                            const applied = this._selectStandardById(stdId);
-                            if (applied) {
-                                this._lastAppliedStdId = stdId;
-                            }
-                        });
-                    }
-                } else {
-                    // Clear persistent selection state and any highlight flags
-                    if (this.renderer?.selectionActive) {
-                        this.renderer.setSelectionDimming(null, null, false);
-                    }
-                    if (this.renderer?.nodes) {
-                        this.renderer.nodes.each(function (node) {
-                            node.highlighted = false;
-                            node.connectedHighlighted = false;
-                        });
-                    }
-                    // Remove selected standard from URL state
-                    this._writeUrlState({ selectedStandard: null });
-                }
-            });
-        }
+      // Apply filter immediately when button is clicked
+      this.filterButton.addEventListener("click", () => {
+        // Finalize any pending input (treat whole input as terms, comma-separated)
+        this._finalizeInputIntoChips(this.filterInput.value, true);
+        this.filterInput.value = "";
+        this.filter("");
+      });
 
-        if (approachToggle) {
-            approachToggle.checked = this.renderer.typeVisibility.approach;
-            approachToggle.addEventListener("change", (e) => {
-                const isChecked = e.target.checked;
-                this.renderer.setTypeVisibility('approach', isChecked);
-                this._writeUrlState({ showApproaches: isChecked });
-            });
-        }
+      // Handle typing: when a comma appears, finalize preceding token(s) into chips
+      this.filterInput.addEventListener("input", (e) => {
+        this._handleTypingForChips(e.target);
+        // Also perform debounced live filtering using pending input (without creating chips)
+        this.debounceFilter(e.target.value);
+      });
 
-        return this;
-    }
-
-    /**
-     * Register filter controls
-     * @returns {FullGraph} This graph instance for chaining
-     */
-    registerFilterControls() {
-        if (this.filterInput && this.filterButton) {
-            // Ensure chips container exists just below the input
-            this._ensureChipsContainer();
-
-            // Center view button
-            if (this.centerButton) {
-                this.centerButton.addEventListener("click", () => {
-                    this.renderer.centerView();
-                });
-            }
-
-            // Apply filter immediately when button is clicked
-            this.filterButton.addEventListener("click", () => {
-                // Finalize any pending input (treat whole input as terms, comma-separated)
-                this._finalizeInputIntoChips(this.filterInput.value, true);
-                this.filterInput.value = "";
-                this.filter("");
-            });
-
-            // Handle typing: when a comma appears, finalize preceding token(s) into chips
-            this.filterInput.addEventListener("input", (e) => {
-                this._handleTypingForChips(e.target);
-                // Also perform debounced live filtering using pending input (without creating chips)
-                this.debounceFilter(e.target.value);
-            });
-
-            // Also handle Enter key for immediate filtering
-            this.filterInput.addEventListener("keyup", (e) => {
-                const isEnter = e.key === "Enter";
-                if (isEnter) {
-                    // Finalize pending token on Enter
-                    const val = this.filterInput.value.trim();
-                    if (val) {
-                        this._finalizeInputIntoChips(val, false);
-                        this.filterInput.value = "";
-                    }
-                    this.filter("");
-                }
-            });
-
-            this._renderFilterChips();
-        } else {
-            console.error("Filter input or button element not found");
-        }
-
-        return this;
-    }
-
-    /**
-     * Debounce live preview filtering with 300ms delay.
-     * While typing, apply filtering using finalized chip terms plus the pending input
-     * without changing chips or URL. Chips are only created on comma/Enter.
-     * @param {string} value - Current input value (pending token)
-     */
-    debounceFilter(value) {
-        clearTimeout(this.debounceTimeout);
-        this.debounceTimeout = setTimeout(() => {
-            this._applyFiltersPreview(value);
-        }, 300);
-    }
-
-    /**
-     * Apply filters for live preview combining finalized terms and an optional pending term.
-     * Does NOT update URL or chips; purely affects current rendered filter state.
-     * @param {string} pendingValue
-     */
-    _applyFiltersPreview(pendingValue) {
-        // If input is disabled due to reaching the cap, ignore pending text
-        const pending = this.filterInput?.disabled ? "" : String(pendingValue || "").trim();
-
-        // Compose terms: finalized chips + one pending token (if any)
-        const terms = [];
-        const seen = new Set();
-        for (const t of (this.finalizedTerms || [])) {
-            const k = this._termKey(t);
-            if (!seen.has(k)) {
-                seen.add(k);
-                terms.push(t);
-            }
-        }
-        if (pending) {
-            const pk = this._termKey(pending);
-            if (!seen.has(pk) && terms.length < MAX_FILTER_TERMS) {
-                terms.push(pending);
-            }
-        }
-
-        const termActive = terms.length > 0;
-        const qualitiesHidden = this.renderer?.typeVisibility?.quality === false;
-        const requirementsVisible = this.renderer?.typeVisibility?.requirement !== false;
-
-        if (termActive) {
-            this.dataProvider.filterByTerm(terms, { qualitiesHidden, requirementsVisible });
-        } else {
-            this.dataProvider.resetFilter();
-        }
-
-        // Preview: only visually show if selection would be lost. 
-        // We do not update URL state here as it is a preview.
-        const selId = this.renderer?.selection?.id;
-        if (this.renderer?.selectionActive && selId) {
-            const filteredData = this.dataProvider.getFilteredData();
-            const stillVisible = (filteredData.nodes || []).some(n => n.id === selId);
-            if (!stillVisible) {
-                // Clear highlight flags for preview (this.renderer.render will be called next)
-                this.renderer.nodes.each(function (node) {
-                    node.highlighted = false;
-                    node.connectedHighlighted = false;
-                });
-            }
-        }
-
-        if (this.renderer) this.renderer.isFiltering = termActive;
-        this.renderFiltered();
-    }
-
-    /**
-     * Clear all active filter terms, chips, and URL state, then rebuild the graph.
-     * @returns {FullGraph} This graph instance for chaining
-     */
-    resetFilter() {
-        this.finalizedTerms = [];
-        this.currentFilterTerms = [];
-        this.currentFilterTerm = "";
-        if (this.filterInput) {
+      // Also handle Enter key for immediate filtering
+      this.filterInput.addEventListener("keyup", (e) => {
+        const isEnter = e.key === "Enter";
+        if (isEnter) {
+          // Finalize pending token on Enter
+          const val = this.filterInput.value.trim();
+          if (val) {
+            this._finalizeInputIntoChips(val, false);
             this.filterInput.value = "";
-            this.filterInput.disabled = false;
+          }
+          this.filter("");
         }
-        if (this.filterButton) {
-            this.filterButton.disabled = false;
-        }
-        this._renderFilterChips();
-        this._writeUrlState({ filter: null });
-        return super.resetFilter();
+      });
+
+      this._renderFilterChips();
+    } else {
+      console.error("Filter input or button element not found");
     }
 
-    /**
-     * Register default event handlers for the full graph
-     * @returns {Graph} This graph instance for chaining
-     */
-    // Override filter to be aware of legend toggles and support multiple terms
-    filter(filterTerm) {
-        // In the new UX, filtering is driven by finalized chip terms only.
-        // Maintain currentFilterTerms for downstream compatibility.
-        this.currentFilterTerm = this.finalizedTerms.join(", ");
-        this.currentFilterTerms = [...this.finalizedTerms];
+    return this;
+  }
+
+  /**
+   * Debounce live preview filtering with 300ms delay.
+   * While typing, apply filtering using finalized chip terms plus the pending input
+   * without changing chips or URL. Chips are only created on comma/Enter.
+   * @param {string} value - Current input value (pending token)
+   */
+  debounceFilter(value) {
+    clearTimeout(this.debounceTimeout);
+    this.debounceTimeout = setTimeout(() => {
+      this._applyFiltersPreview(value);
+    }, 300);
+  }
+
+  /**
+   * Apply filters for live preview combining finalized terms and an optional pending term.
+   * Does NOT update URL or chips; purely affects current rendered filter state.
+   * @param {string} pendingValue
+   */
+  _applyFiltersPreview(pendingValue) {
+    // If input is disabled due to reaching the cap, ignore pending text
+    const pending = this.filterInput?.disabled ? "" : String(pendingValue || "").trim();
+
+    // Compose terms: finalized chips + one pending token (if any)
+    const terms = [];
+    const seen = new Set();
+    for (const t of this.finalizedTerms || []) {
+      const k = this._termKey(t);
+      if (!seen.has(k)) {
+        seen.add(k);
+        terms.push(t);
+      }
+    }
+    if (pending) {
+      const pk = this._termKey(pending);
+      if (!seen.has(pk) && terms.length < MAX_FILTER_TERMS) {
+        terms.push(pending);
+      }
+    }
+
+    const termActive = terms.length > 0;
+    const qualitiesHidden = this.renderer?.typeVisibility?.quality === false;
+    const requirementsVisible = this.renderer?.typeVisibility?.requirement !== false;
+
+    if (termActive) {
+      this.dataProvider.filterByTerm(terms, { qualitiesHidden, requirementsVisible });
+    } else {
+      this.dataProvider.resetFilter();
+    }
+
+    // Preview: only visually show if selection would be lost.
+    // We do not update URL state here as it is a preview.
+    const selId = this.renderer?.selection?.id;
+    if (this.renderer?.selectionActive && selId) {
+      const filteredData = this.dataProvider.getFilteredData();
+      const stillVisible = (filteredData.nodes || []).some((n) => n.id === selId);
+      if (!stillVisible) {
+        // Clear highlight flags for preview (this.renderer.render will be called next)
+        this.renderer.nodes.each(function (node) {
+          node.highlighted = false;
+          node.connectedHighlighted = false;
+        });
+      }
+    }
+
+    if (this.renderer) this.renderer.isFiltering = termActive;
+    this.renderFiltered();
+  }
+
+  /**
+   * Clear all active filter terms, chips, and URL state, then rebuild the graph.
+   * @returns {FullGraph} This graph instance for chaining
+   */
+  resetFilter() {
+    this.finalizedTerms = [];
+    this.currentFilterTerms = [];
+    this.currentFilterTerm = "";
+    if (this.filterInput) {
+      this.filterInput.value = "";
+      this.filterInput.disabled = false;
+    }
+    if (this.filterButton) {
+      this.filterButton.disabled = false;
+    }
+    this._renderFilterChips();
+    this._writeUrlState({ filter: null });
+    return super.resetFilter();
+  }
+
+  /**
+   * Register default event handlers for the full graph
+   * @returns {Graph} This graph instance for chaining
+   */
+  // Override filter to be aware of legend toggles and support multiple terms
+  filter(filterTerm) {
+    // In the new UX, filtering is driven by finalized chip terms only.
+    // Maintain currentFilterTerms for downstream compatibility.
+    this.currentFilterTerm = this.finalizedTerms.join(", ");
+    this.currentFilterTerms = [...this.finalizedTerms];
+    this.applyFiltersCombined();
+    this._writeUrlState({ filter: this.currentFilterTerm });
+    this._renderFilterChips();
+    return this;
+  }
+
+  /**
+   * Apply both standard and term filters together as needed
+   */
+  applyFiltersCombined() {
+    // Always use finalized (chip) terms for filtering
+    const terms = Array.isArray(this.finalizedTerms) ? this.finalizedTerms : [];
+    const termActive = terms.length > 0;
+
+    const qualitiesHidden = this.renderer?.typeVisibility?.quality === false;
+    const requirementsVisible = this.renderer?.typeVisibility?.requirement !== false;
+
+    if (termActive) {
+      this.dataProvider.filterByTerm(terms, { qualitiesHidden, requirementsVisible });
+    } else {
+      this.dataProvider.resetFilter();
+    }
+
+    // Validate selection: if a selected standard is now hidden by the text filter, remove it
+    const urlStd = this._readUrlState()?.selectedStandard;
+    if (urlStd) {
+      const filteredData = this.dataProvider.getFilteredData();
+      const stillVisible = (filteredData.nodes || []).some((n) => n.id === urlStd);
+      if (!stillVisible) {
+        // Clear selection state
+        if (this.renderer?.selectionActive) {
+          this.renderer.setSelectionDimming(null, null, false);
+        }
+        this.renderer.nodes.each(function (node) {
+          node.highlighted = false;
+          node.connectedHighlighted = false;
+        });
+        this._writeUrlState({ selectedStandard: null });
+        this._lastAppliedStdId = null;
+      }
+    }
+
+    if (this.renderer) this.renderer.isFiltering = termActive;
+    this.renderFiltered();
+    // Update chips after render/filter state change
+    this._renderFilterChips();
+    return this;
+  }
+
+  // ---------------- Helpers ----------------
+  _parseTerms(value) {
+    const v = (value || "").trim();
+    if (v === "") return [];
+    // Split by commas or whitespace, collapse multiples, dedupe, limit to 10
+    const parts = v
+      .split(/[\s,]+/)
+      .map((s) => s.trim())
+      .filter((s) => s.length > 0);
+    const seen = new Set();
+    const out = [];
+    for (const p of parts) {
+      const key = p.toLowerCase();
+      if (!seen.has(key)) {
+        seen.add(key);
+        out.push(p);
+        if (out.length >= MAX_FILTER_TERMS) break;
+      }
+    }
+    return out;
+  }
+
+  _normalizeTerm(t) {
+    return String(t || "").trim();
+  }
+
+  _termKey(t) {
+    return String(t).toLowerCase();
+  }
+
+  _addFinalizedTerms(tokens) {
+    if (!Array.isArray(tokens)) tokens = [tokens];
+    for (let raw of tokens) {
+      const term = this._normalizeTerm(raw);
+      if (!term) continue;
+      const key = this._termKey(term);
+      const existingKeys = new Set(this.finalizedTerms.map((x) => this._termKey(x)));
+      if (existingKeys.has(key)) continue;
+      if (this.finalizedTerms.length >= MAX_FILTER_TERMS) break;
+      this.finalizedTerms.push(term);
+    }
+    // Keep compatibility arrays in sync
+    this.currentFilterTerms = [...this.finalizedTerms];
+    this.currentFilterTerm = this.finalizedTerms.join(", ");
+  }
+
+  _removeFinalizedTerm(term) {
+    const key = this._termKey(term);
+    this.finalizedTerms = this.finalizedTerms.filter((t) => this._termKey(t) !== key);
+    this.currentFilterTerms = [...this.finalizedTerms];
+    this.currentFilterTerm = this.finalizedTerms.join(", ");
+  }
+
+  _finalizeInputIntoChips(inputValue, allowMultiple) {
+    const val = String(inputValue || "");
+    if (val) {
+      if (allowMultiple) {
+        // Split by commas; only commas finalize chips in this UX
+        let parts = val
+          .split(",")
+          .map((s) => s.trim())
+          .filter(Boolean);
+        const remaining = Math.max(0, MAX_FILTER_TERMS - this.finalizedTerms.length);
+        if (remaining > 0) {
+          if (parts.length > remaining) parts = parts.slice(0, remaining);
+          this._addFinalizedTerms(parts);
+        } else if (this.filterInput) {
+          this.filterInput.value = "";
+        }
+      } else {
+        const term = val.trim();
+        if (term) this._addFinalizedTerms([term]);
+      }
+      // After adding, apply filter and update URL/chips
+      this.applyFiltersCombined();
+      this._writeUrlState({ filter: this.currentFilterTerm });
+      this._renderFilterChips();
+    }
+  }
+
+  _handleTypingForChips(inputEl) {
+    // When a comma is typed, finalize the segment(s) before the last comma
+    const value = inputEl.value;
+    const lastComma = value.lastIndexOf(",");
+    if (lastComma !== -1) {
+      const before = value.slice(0, lastComma);
+      const after = value.slice(lastComma + 1);
+      let tokens = before
+        .split(",")
+        .map((s) => s.trim())
+        .filter(Boolean);
+      if (tokens.length > 0) {
+        const remaining = Math.max(0, MAX_FILTER_TERMS - this.finalizedTerms.length);
+        if (remaining > 0) {
+          if (tokens.length > remaining) tokens = tokens.slice(0, remaining);
+          this._addFinalizedTerms(tokens);
+        }
+        // Clear the finalized part, keep pending remainder in input
+        inputEl.value = remaining > 0 ? after.trimStart() : "";
         this.applyFiltersCombined();
         this._writeUrlState({ filter: this.currentFilterTerm });
         this._renderFilterChips();
-        return this;
+      }
     }
+  }
 
-    /**
-     * Apply both standard and term filters together as needed
-     */
-    applyFiltersCombined() {
-        // Always use finalized (chip) terms for filtering
-        const terms = Array.isArray(this.finalizedTerms) ? this.finalizedTerms : [];
-        const termActive = terms.length > 0;
+  // Ensure the chips container exists below the filter input
+  _ensureChipsContainer() {
+    if (!this.filterInput) return;
+    const exists = this.filterChipsContainer && document.body.contains(this.filterChipsContainer);
+    if (exists) return;
 
-        const qualitiesHidden = this.renderer?.typeVisibility?.quality === false;
-        const requirementsVisible = this.renderer?.typeVisibility?.requirement !== false;
+    let container = document.getElementById("full-q-graph-filter__chips");
+    if (!container) {
+      container = document.createElement("div");
+      container.id = "full-q-graph-filter__chips";
+      // Insert right after the input element
+      if (this.filterInput.nextSibling) {
+        this.filterInput.parentNode.insertBefore(container, this.filterInput.nextSibling);
+      } else {
+        this.filterInput.parentNode.appendChild(container);
+      }
+    }
+    this.filterChipsContainer = container;
+  }
 
-        if (termActive) {
-            this.dataProvider.filterByTerm(terms, { qualitiesHidden, requirementsVisible });
-        } else {
-            this.dataProvider.resetFilter();
-        }
+  // Render the current filter terms as chips below the input
+  _renderFilterChips() {
+    this._ensureChipsContainer();
+    const container = this.filterChipsContainer;
+    if (!container) return;
+    // Clear previous
+    container.textContent = "";
+    const terms = Array.isArray(this.finalizedTerms) ? this.finalizedTerms : [];
+    if (!terms.length) {
+      container.style.display = "none";
+      if (this.filterInput) this.filterInput.disabled = false;
+      if (this.filterButton) this.filterButton.disabled = false;
+      this._syncQuickFiltersState();
+      return;
+    }
+    container.style.display = "";
+    terms.forEach((term) => {
+      const chip = document.createElement("span");
+      chip.className = "q-chip";
 
-        // Validate selection: if a selected standard is now hidden by the text filter, remove it
-        const urlStd = this._readUrlState()?.selectedStandard;
-        if (urlStd) {
-            const filteredData = this.dataProvider.getFilteredData();
-            const stillVisible = (filteredData.nodes || []).some(n => n.id === urlStd);
-            if (!stillVisible) {
-                // Clear selection state
-                if (this.renderer?.selectionActive) {
-                    this.renderer.setSelectionDimming(null, null, false);
-                }
-                this.renderer.nodes.each(function (node) {
-                    node.highlighted = false;
-                    node.connectedHighlighted = false;
-                });
-                this._writeUrlState({ selectedStandard: null });
-                this._lastAppliedStdId = null;
-            }
-        }
+      const label = document.createElement("span");
+      label.className = "q-chip__label";
+      label.textContent = term;
 
-        if (this.renderer) this.renderer.isFiltering = termActive;
-        this.renderFiltered();
-        // Update chips after render/filter state change
+      const btn = document.createElement("button");
+      btn.className = "q-chip__close";
+      btn.type = "button";
+      btn.setAttribute("aria-label", `Remove ${term}`);
+      btn.textContent = "×";
+      btn.addEventListener("click", () => {
+        this._removeFinalizedTerm(term);
+        this.applyFiltersCombined();
+        this._writeUrlState({ filter: this.currentFilterTerm });
         this._renderFilterChips();
-        return this;
-    }
+      });
 
-    // ---------------- Helpers ----------------
-    _parseTerms(value) {
-        const v = (value || "").trim();
-        if (v === "") return [];
-        // Split by commas or whitespace, collapse multiples, dedupe, limit to 10
-        const parts = v
-            .split(/[\s,]+/)
-            .map(s => s.trim())
-            .filter(s => s.length > 0);
-        const seen = new Set();
-        const out = [];
-        for (const p of parts) {
-            const key = p.toLowerCase();
-            if (!seen.has(key)) {
-                seen.add(key);
-                out.push(p);
-                if (out.length >= MAX_FILTER_TERMS) break;
+      chip.appendChild(label);
+      chip.appendChild(btn);
+      container.appendChild(chip);
+    });
+
+    // Disable input and filter button if at cap; re-enable otherwise
+    const atCap = terms.length >= MAX_FILTER_TERMS;
+    if (this.filterInput) {
+      this.filterInput.disabled = atCap;
+      if (atCap) this.filterInput.value = "";
+    }
+    if (this.filterButton) {
+      this.filterButton.disabled = atCap;
+    }
+    this._syncQuickFiltersState();
+  }
+
+  _syncQuickFiltersState() {
+    const terms = Array.isArray(this.finalizedTerms) ? this.finalizedTerms : [];
+    const atCap = terms.length >= MAX_FILTER_TERMS;
+    const activeKeys = new Set(
+      terms.map((t) =>
+        String(t || "")
+          .trim()
+          .toLowerCase()
+          .replace(/^#/, ""),
+      ),
+    );
+
+    const quickFilterButtons = document.querySelectorAll(
+      ".mobile-quick-filter, .full-quick-filter",
+    );
+    quickFilterButtons.forEach((btn) => {
+      const rawTerm = btn.dataset.term || btn.textContent || "";
+      const key = String(rawTerm).trim().toLowerCase().replace(/^#/, "");
+      const isActive = activeKeys.has(key);
+
+      if (isActive) {
+        btn.style.display = "none";
+      } else {
+        btn.style.display = "";
+      }
+      btn.disabled = atCap;
+    });
+  }
+
+  registerDefaultEventHandlers() {
+    // Default double-click handler for navigation
+    const nodeDoubleClick = (event, d) => {
+      if (!isRootId(d.id)) {
+        globalThis.location.href = this.graph.getNodeAttribute(d.id, "page");
+      }
+    };
+
+    // Default hover handler for highlighting (non-persistent)
+    const nodeHover = (event, d) => {
+      if (this.renderer.selectionActive) return; // Don't interfere with active selection
+      // Toggle highlight state
+      const isHighlighted = d.highlighted;
+
+      // Clear all highlights first
+      this.renderer.nodes.each(function (node) {
+        node.highlighted = false;
+        node.connectedHighlighted = false;
+      });
+
+      let connectedNodes = new Set();
+      if (!isHighlighted) {
+        // Highlight this node and its connections
+        d.highlighted = true;
+
+        if (isStandard(d)) {
+          // Direct neighbors (qualities)
+          const qualities = new Set();
+          const props = new Set();
+          // First collect direct neighbors
+          this.renderer.links.each(function (link) {
+            if (link.source.id === d.id) {
+              qualities.add(link.target.id);
+              link.target.connectedHighlighted = true;
             }
-        }
-        return out;
-    }
-
-    _normalizeTerm(t) {
-        return String(t || "").trim();
-    }
-
-    _termKey(t) {
-        return String(t).toLowerCase();
-    }
-
-    _addFinalizedTerms(tokens) {
-        if (!Array.isArray(tokens)) tokens = [tokens];
-        for (let raw of tokens) {
-            const term = this._normalizeTerm(raw);
-            if (!term) continue;
-            const key = this._termKey(term);
-            const existingKeys = new Set(this.finalizedTerms.map(x => this._termKey(x)));
-            if (existingKeys.has(key)) continue;
-            if (this.finalizedTerms.length >= MAX_FILTER_TERMS) break;
-            this.finalizedTerms.push(term);
-        }
-        // Keep compatibility arrays in sync
-        this.currentFilterTerms = [...this.finalizedTerms];
-        this.currentFilterTerm = this.finalizedTerms.join(", ");
-    }
-
-    _removeFinalizedTerm(term) {
-        const key = this._termKey(term);
-        this.finalizedTerms = this.finalizedTerms.filter(t => this._termKey(t) !== key);
-        this.currentFilterTerms = [...this.finalizedTerms];
-        this.currentFilterTerm = this.finalizedTerms.join(", ");
-    }
-
-    _finalizeInputIntoChips(inputValue, allowMultiple) {
-        const val = String(inputValue || "");
-        if (val) {
-            if (allowMultiple) {
-                // Split by commas; only commas finalize chips in this UX
-                let parts = val.split(",").map(s => s.trim()).filter(Boolean);
-                const remaining = Math.max(0, MAX_FILTER_TERMS - this.finalizedTerms.length);
-                if (remaining > 0) {
-                    if (parts.length > remaining) parts = parts.slice(0, remaining);
-                    this._addFinalizedTerms(parts);
-                } else if (this.filterInput) {
-                    this.filterInput.value = "";
-                }
-
-            } else {
-                const term = val.trim();
-                if (term) this._addFinalizedTerms([term]);
+            if (link.target.id === d.id) {
+              qualities.add(link.source.id);
+              link.source.connectedHighlighted = true;
             }
-            // After adding, apply filter and update URL/chips
-            this.applyFiltersCombined();
-            this._writeUrlState({ filter: this.currentFilterTerm });
-            this._renderFilterChips();
-        }
-    }
-
-    _handleTypingForChips(inputEl) {
-        // When a comma is typed, finalize the segment(s) before the last comma
-        const value = inputEl.value;
-        const lastComma = value.lastIndexOf(",");
-        if (lastComma !== -1) {
-            const before = value.slice(0, lastComma);
-            const after = value.slice(lastComma + 1);
-            let tokens = before.split(",").map(s => s.trim()).filter(Boolean);
-            if (tokens.length > 0) {
-                const remaining = Math.max(0, MAX_FILTER_TERMS - this.finalizedTerms.length);
-                if (remaining > 0) {
-                    if (tokens.length > remaining) tokens = tokens.slice(0, remaining);
-                    this._addFinalizedTerms(tokens);
-                }
-                // Clear the finalized part, keep pending remainder in input
-                inputEl.value = remaining > 0 ? after.trimStart() : "";
-                this.applyFiltersCombined();
-                this._writeUrlState({ filter: this.currentFilterTerm });
-                this._renderFilterChips();
+          });
+          // Then collect dimensions 2-hop via qualities
+          const qualLookup = new Set(qualities);
+          this.renderer.links.each(function (link) {
+            if (qualLookup.has(link.source.id) && isProperty(link.target)) {
+              props.add(link.target.id);
+              link.target.connectedHighlighted = true;
             }
-        }
-    }
-
-    // Ensure the chips container exists below the filter input
-    _ensureChipsContainer() {
-        if (!this.filterInput) return;
-        const exists = this.filterChipsContainer && document.body.contains(this.filterChipsContainer);
-        if (exists) return;
-
-        let container = document.getElementById('full-q-graph-filter__chips');
-        if (!container) {
-            container = document.createElement('div');
-            container.id = 'full-q-graph-filter__chips';
-            // Insert right after the input element
-            if (this.filterInput.nextSibling) {
-                this.filterInput.parentNode.insertBefore(container, this.filterInput.nextSibling);
-            } else {
-                this.filterInput.parentNode.appendChild(container);
+            if (qualLookup.has(link.target.id) && isProperty(link.source)) {
+              props.add(link.source.id);
+              link.source.connectedHighlighted = true;
             }
-        }
-        this.filterChipsContainer = container;
-    }
-
-    // Render the current filter terms as chips below the input
-    _renderFilterChips() {
-        this._ensureChipsContainer();
-        const container = this.filterChipsContainer;
-        if (!container) return;
-        // Clear previous
-        container.textContent = '';
-        const terms = Array.isArray(this.finalizedTerms) ? this.finalizedTerms : [];
-        if (!terms.length) {
-            container.style.display = 'none';
-            if (this.filterInput) this.filterInput.disabled = false;
-            if (this.filterButton) this.filterButton.disabled = false;
-            this._syncQuickFiltersState();
-            return;
-        }
-        container.style.display = '';
-        terms.forEach(term => {
-            const chip = document.createElement('span');
-            chip.className = 'q-chip';
-
-            const label = document.createElement('span');
-            label.className = 'q-chip__label';
-            label.textContent = term;
-
-            const btn = document.createElement('button');
-            btn.className = 'q-chip__close';
-            btn.type = 'button';
-            btn.setAttribute('aria-label', `Remove ${ term }`);
-            btn.textContent = '×';
-            btn.addEventListener('click', () => {
-                this._removeFinalizedTerm(term);
-                this.applyFiltersCombined();
-                this._writeUrlState({ filter: this.currentFilterTerm });
-                this._renderFilterChips();
-            });
-
-            chip.appendChild(label);
-            chip.appendChild(btn);
-            container.appendChild(chip);
-        });
-
-        // Disable input and filter button if at cap; re-enable otherwise
-        const atCap = terms.length >= MAX_FILTER_TERMS;
-        if (this.filterInput) {
-            this.filterInput.disabled = atCap;
-            if (atCap) this.filterInput.value = '';
-        }
-        if (this.filterButton) {
-            this.filterButton.disabled = atCap;
-        }
-        this._syncQuickFiltersState();
-    }
-
-    _syncQuickFiltersState() {
-        const terms = Array.isArray(this.finalizedTerms) ? this.finalizedTerms : [];
-        const atCap = terms.length >= MAX_FILTER_TERMS;
-        const activeKeys = new Set(
-            terms.map(t => String(t || "").trim().toLowerCase().replace(/^#/, ""))
-        );
-
-        const quickFilterButtons = document.querySelectorAll(".mobile-quick-filter, .full-quick-filter");
-        quickFilterButtons.forEach(btn => {
-            const rawTerm = btn.dataset.term || btn.textContent || "";
-            const key = String(rawTerm).trim().toLowerCase().replace(/^#/, "");
-            const isActive = activeKeys.has(key);
-
-            if (isActive) {
-                btn.style.display = "none";
-            } else {
-                btn.style.display = "";
+          });
+          connectedNodes = new Set([...qualities, ...props]);
+        } else {
+          // Default: 1-hop neighbors
+          this.renderer.links.each(function (link) {
+            if (link.source.id === d.id) {
+              connectedNodes.add(link.target.id);
+              link.target.connectedHighlighted = true;
             }
-            btn.disabled = atCap;
-        });
-    }
-
-    registerDefaultEventHandlers() {
-        // Default double-click handler for navigation
-        const nodeDoubleClick = (event, d) => {
-            if (!isRootId(d.id)) {
-                globalThis.location.href = this.graph.getNodeAttribute(d.id, "page");
+            if (link.target.id === d.id) {
+              connectedNodes.add(link.source.id);
+              link.source.connectedHighlighted = true;
             }
-        };
-
-        // Default hover handler for highlighting (non-persistent)
-        const nodeHover = (event, d) => {
-            if (this.renderer.selectionActive) return; // Don't interfere with active selection
-            // Toggle highlight state
-            const isHighlighted = d.highlighted;
-
-            // Clear all highlights first
-            this.renderer.nodes.each(function (node) {
-                node.highlighted = false;
-                node.connectedHighlighted = false;
-            });
-
-            let connectedNodes = new Set();
-            if (!isHighlighted) {
-                // Highlight this node and its connections
-                d.highlighted = true;
-
-                if (isStandard(d)) {
-                    // Direct neighbors (qualities)
-                    const qualities = new Set();
-                    const props = new Set();
-                    // First collect direct neighbors
-                    this.renderer.links.each(function (link) {
-                        if (link.source.id === d.id) {
-                            qualities.add(link.target.id);
-                            link.target.connectedHighlighted = true;
-                        }
-                        if (link.target.id === d.id) {
-                            qualities.add(link.source.id);
-                            link.source.connectedHighlighted = true;
-                        }
-                    });
-                    // Then collect dimensions 2-hop via qualities
-                    const qualLookup = new Set(qualities);
-                    this.renderer.links.each(function (link) {
-                        if (qualLookup.has(link.source.id) && isProperty(link.target)) {
-                            props.add(link.target.id);
-                            link.target.connectedHighlighted = true;
-                        }
-                        if (qualLookup.has(link.target.id) && isProperty(link.source)) {
-                            props.add(link.source.id);
-                            link.source.connectedHighlighted = true;
-                        }
-                    });
-                    connectedNodes = new Set([...qualities, ...props]);
-                } else {
-                    // Default: 1-hop neighbors
-                    this.renderer.links.each(function (link) {
-                        if (link.source.id === d.id) {
-                            connectedNodes.add(link.target.id);
-                            link.target.connectedHighlighted = true;
-                        }
-                        if (link.target.id === d.id) {
-                            connectedNodes.add(link.source.id);
-                            link.source.connectedHighlighted = true;
-                        }
-                    });
-                }
-            }
-
-            // Update visual appearance
-            this.renderer.highlightNode(d.id, !isHighlighted, connectedNodes);
-        };
-
-        // Click handler: persistent selection for standards (dims unrelated)
-        const nodeClick = (event, d) => {
-            if (!isStandard(d)) return;
-            this._applyStandardSelectionInternal(d.id, true);
-        };
-
-        return this.registerEventHandlers({
-            nodeHover,
-            nodeDoubleClick,
-            nodeClick
-        });
-    }
-
-    // ---------------- Selection helpers (centralized) ----------------
-    /**
-     * Normalize an endpoint to id.
-     * @private
-     */
-    _endpointId(x) {
-        return (x && typeof x === 'object') ? x.id : x;
-    }
-
-    /**
-     * Resolve endpoint type robustly using node map if needed.
-     * @private
-     */
-    _endpointType(x, nodeById) {
-        if (x && typeof x === 'object') return x.qualityType;
-        const nid = this._endpointId(x);
-        const n = nodeById.get(nid);
-        return n ? n.qualityType : undefined;
-    }
-
-    /**
-     * Build a fast lookup map of current nodes by id.
-     * @private
-     */
-    _buildNodeByIdMap() {
-        const map = new Map();
-        this.renderer?.nodes?.each(function (n) {
-            map.set(n.id, n);
-        });
-        return map;
-    }
-
-    /**
-     * Compute connected node ids for a given standard id (qualities, dimensions, requirements, related qualities).
-     * Robust to varying link endpoint shapes.
-     * @param {string} stdId
-     * @returns {Set<string>} connected node ids
-     * @private
-     */
-    _collectConnectedForStandard(stdId) {
-        const connectedQuals = new Set();
-        const props = new Set();
-        const reqs = new Set();
-
-        if (!this.renderer?.links) return new Set();
-
-        const nodeById = this._buildNodeByIdMap();
-        const endpointType = (x) => this._endpointType(x, nodeById);
-        const getId = (x) => this._endpointId(x);
-
-        // First pass: collect direct neighbor qualities
-        this.renderer.links.each(function (link) {
-            const sId = getId(link.source);
-            const tId = getId(link.target);
-            const sType = endpointType(link.source);
-            const tType = endpointType(link.target);
-            if (sId === stdId && tType === 'quality') connectedQuals.add(tId);
-            if (tId === stdId && sType === 'quality') connectedQuals.add(sId);
-        });
-
-        const qualLookup = new Set(connectedQuals);
-        // Second pass: find dimensions and requirements attached to those qualities
-        this.renderer.links.each(function (link) {
-            const sId = getId(link.source);
-            const tId = getId(link.target);
-            const sType = endpointType(link.source);
-            const tType = endpointType(link.target);
-            if (qualLookup.has(sId) && tType === 'property') props.add(tId);
-            if (qualLookup.has(tId) && sType === 'property') props.add(sId);
-            if (qualLookup.has(sId) && tType === 'requirement') reqs.add(tId);
-            if (qualLookup.has(tId) && sType === 'requirement') reqs.add(sId);
-        });
-
-        // Intentionally exclude "related qualities" from the selection-connected set.
-        // Keeping only direct qualities and their dimensions/requirements makes dimming
-        // visually meaningful (otherwise too much stays undimmed and dimming appears ineffective).
-        return new Set([...connectedQuals, ...props, ...reqs]);
-    }
-
-    /**
-     * Apply standard selection and dim unrelated nodes using centralized logic.
-     * Optionally toggles off if the same selection is active.
-     * @param {string} stdId
-     * @param {boolean} toggleIfSame
-     * @returns {boolean} true if selection applied, false if cleared or failed
-     * @private
-     */
-    _applyStandardSelectionInternal(stdId, toggleIfSame = false) {
-        if (!this.renderer?.nodes) return false;
-
-        if (!this._isStandardValid(stdId)) {
-            this._writeUrlState({ selectedStandard: null });
-            return false;
+          });
         }
+      }
 
-        const isSame = this.renderer?.selection?.id === stdId;
-        this._clearAllHighlights();
+      // Update visual appearance
+      this.renderer.highlightNode(d.id, !isHighlighted, connectedNodes);
+    };
 
-        if (isSame && toggleIfSame) {
-            this._deactivateSelection(stdId);
-            return false;
-        }
+    // Click handler: persistent selection for standards (dims unrelated)
+    const nodeClick = (event, d) => {
+      if (!isStandard(d)) return;
+      this._applyStandardSelectionInternal(d.id, true);
+    };
 
-        const connectedNodes = this._collectConnectedForStandard(stdId);
-        this._activateSelection(stdId, connectedNodes);
+    return this.registerEventHandlers({
+      nodeHover,
+      nodeDoubleClick,
+      nodeClick,
+    });
+  }
+
+  // ---------------- Selection helpers (centralized) ----------------
+  /**
+   * Normalize an endpoint to id.
+   * @private
+   */
+  _endpointId(x) {
+    return x && typeof x === "object" ? x.id : x;
+  }
+
+  /**
+   * Resolve endpoint type robustly using node map if needed.
+   * @private
+   */
+  _endpointType(x, nodeById) {
+    if (x && typeof x === "object") return x.qualityType;
+    const nid = this._endpointId(x);
+    const n = nodeById.get(nid);
+    return n ? n.qualityType : undefined;
+  }
+
+  /**
+   * Build a fast lookup map of current nodes by id.
+   * @private
+   */
+  _buildNodeByIdMap() {
+    const map = new Map();
+    this.renderer?.nodes?.each(function (n) {
+      map.set(n.id, n);
+    });
+    return map;
+  }
+
+  /**
+   * Compute connected node ids for a given standard id (qualities, dimensions, requirements, related qualities).
+   * Robust to varying link endpoint shapes.
+   * @param {string} stdId
+   * @returns {Set<string>} connected node ids
+   * @private
+   */
+  _collectConnectedForStandard(stdId) {
+    const connectedQuals = new Set();
+    const props = new Set();
+    const reqs = new Set();
+
+    if (!this.renderer?.links) return new Set();
+
+    const nodeById = this._buildNodeByIdMap();
+    const endpointType = (x) => this._endpointType(x, nodeById);
+    const getId = (x) => this._endpointId(x);
+
+    // First pass: collect direct neighbor qualities
+    this.renderer.links.each(function (link) {
+      const sId = getId(link.source);
+      const tId = getId(link.target);
+      const sType = endpointType(link.source);
+      const tType = endpointType(link.target);
+      if (sId === stdId && tType === "quality") connectedQuals.add(tId);
+      if (tId === stdId && sType === "quality") connectedQuals.add(sId);
+    });
+
+    const qualLookup = new Set(connectedQuals);
+    // Second pass: find dimensions and requirements attached to those qualities
+    this.renderer.links.each(function (link) {
+      const sId = getId(link.source);
+      const tId = getId(link.target);
+      const sType = endpointType(link.source);
+      const tType = endpointType(link.target);
+      if (qualLookup.has(sId) && tType === "property") props.add(tId);
+      if (qualLookup.has(tId) && sType === "property") props.add(sId);
+      if (qualLookup.has(sId) && tType === "requirement") reqs.add(tId);
+      if (qualLookup.has(tId) && sType === "requirement") reqs.add(sId);
+    });
+
+    // Intentionally exclude "related qualities" from the selection-connected set.
+    // Keeping only direct qualities and their dimensions/requirements makes dimming
+    // visually meaningful (otherwise too much stays undimmed and dimming appears ineffective).
+    return new Set([...connectedQuals, ...props, ...reqs]);
+  }
+
+  /**
+   * Apply standard selection and dim unrelated nodes using centralized logic.
+   * Optionally toggles off if the same selection is active.
+   * @param {string} stdId
+   * @param {boolean} toggleIfSame
+   * @returns {boolean} true if selection applied, false if cleared or failed
+   * @private
+   */
+  _applyStandardSelectionInternal(stdId, toggleIfSame = false) {
+    if (!this.renderer?.nodes) return false;
+
+    if (!this._isStandardValid(stdId)) {
+      this._writeUrlState({ selectedStandard: null });
+      return false;
+    }
+
+    const isSame = this.renderer?.selection?.id === stdId;
+    this._clearAllHighlights();
+
+    if (isSame && toggleIfSame) {
+      this._deactivateSelection(stdId);
+      return false;
+    }
+
+    const connectedNodes = this._collectConnectedForStandard(stdId);
+    this._activateSelection(stdId, connectedNodes);
+    return true;
+  }
+
+  /**
+   * Check if a standard ID exists in the current data.
+   * @param {string} stdId
+   * @returns {boolean}
+   * @private
+   */
+  _isStandardValid(stdId) {
+    let found = false;
+    this.renderer?.nodes?.each(function (n) {
+      if (n.qualityType === "standard" && n.id === stdId) found = true;
+    });
+    return found;
+  }
+
+  /**
+   * Clear all highlight and connected-highlight flags from nodes.
+   * @private
+   */
+  _clearAllHighlights() {
+    this.renderer?.nodes?.each(function (node) {
+      node.highlighted = false;
+      node.connectedHighlighted = false;
+    });
+  }
+
+  /**
+   * Deactivate current selection and update UI/URL.
+   * @param {string} stdId
+   * @private
+   */
+  _deactivateSelection(stdId) {
+    if (!this.renderer) return;
+    this.renderer.selectionActive = false;
+    this.renderer.setSelectionDimming(null, null, false);
+    this.renderer.highlightNode(stdId, false, null);
+    this._writeUrlState({ selectedStandard: null });
+  }
+
+  /**
+   * Activate selection for a standard and its connections.
+   * @param {string} stdId
+   * @param {Set<string>} connectedNodes
+   * @private
+   */
+  _activateSelection(stdId, connectedNodes) {
+    if (!this.renderer) return;
+    const nodeById = this._buildNodeByIdMap();
+
+    connectedNodes.forEach((id) => {
+      const n = nodeById.get(id);
+      if (n) n.connectedHighlighted = true;
+    });
+
+    const stdNode = nodeById.get(stdId);
+    if (stdNode) stdNode.highlighted = true;
+
+    this.renderer.selectionActive = true;
+    this.renderer.highlightNode(stdId, true, connectedNodes);
+    this.renderer.setSelectionDimming(stdId, connectedNodes, true);
+
+    this.renderer.drawCanvas();
+    this.renderer.updateNodeVisibility?.(this.renderer.currentZoomScale);
+    this.renderer.updateLabelVisibility?.(this.renderer.currentZoomScale);
+
+    this._writeUrlState({ selectedStandard: stdId });
+  }
+
+  // ---------------- URL State Helpers ----------------
+  _readUrlState() {
+    const p = new URLSearchParams(globalThis.location.search);
+    const toBool = (v) => v === "1" || v === "true";
+    const state = {
+      filter: p.get("filter") || "",
+      showQualities: p.has("showQualities") ? toBool(p.get("showQualities")) : undefined,
+      showRequirements: p.has("showRequirements") ? toBool(p.get("showRequirements")) : undefined,
+      showStandards: p.has("showStandards") ? toBool(p.get("showStandards")) : undefined,
+      showApproaches: p.has("showApproaches") ? toBool(p.get("showApproaches")) : undefined,
+      selectedStandard: p.get("selectedStandard") || null,
+    };
+    this._urlState = state;
+    return state;
+  }
+
+  _writeUrlState(partial) {
+    const p = new URLSearchParams(globalThis.location.search);
+    const setOrDel = (key, val) => {
+      if (val === undefined) return; // leave as-is
+      if (val === null || val === "") {
+        p.delete(key);
+        return;
+      }
+      const isDefault = typeof val === "boolean" && val === this._defaultFor(key);
+      const boolValAsNum = val ? "1" : "0";
+      if (isDefault) {
+        p.delete(key);
+      } else {
+        p.set(key, typeof val === "boolean" ? boolValAsNum : String(val));
+      }
+    };
+    // merge with current known state
+    const cur = this._readUrlState();
+    const next = { ...cur, ...partial };
+    setOrDel("filter", next.filter);
+    setOrDel("showQualities", next.showQualities);
+    setOrDel("showRequirements", next.showRequirements);
+    setOrDel("showStandards", next.showStandards);
+    setOrDel("showApproaches", next.showApproaches);
+    setOrDel("selectedStandard", next.selectedStandard);
+    const newUrl = `${globalThis.location.pathname}?${p.toString()}`;
+    globalThis.history.replaceState({}, "", newUrl);
+    this._urlState = next;
+  }
+
+  _defaultFor(key) {
+    // default UI/renderer state — must mirror GraphRenderer.typeVisibility
+    switch (key) {
+      case "showQualities":
         return true;
+      case "showRequirements":
+        return false;
+      case "showStandards":
+        return false;
+      case "showApproaches":
+        return false;
+      default:
+        return null;
     }
+  }
 
-    /**
-     * Check if a standard ID exists in the current data.
-     * @param {string} stdId
-     * @returns {boolean}
-     * @private
-     */
-    _isStandardValid(stdId) {
-        let found = false;
-        this.renderer?.nodes?.each(function (n) {
-            if (n.qualityType === 'standard' && n.id === stdId) found = true;
-        });
-        return found;
+  _applyStateFromUrl(initial = false) {
+    const state = this._readUrlState();
+    this._applyTogglesFromUrl(state);
+    this._applyFilterFromUrl(state);
+    this._applySelectionFromUrl(state, initial);
+  }
+
+  _applyTogglesFromUrl(state) {
+    const qualToggle = document.getElementById("legend-toggle-qualities");
+    const reqToggle = document.getElementById("legend-toggle-requirements");
+    const stdToggle = document.getElementById("legend-toggle-standards");
+    const approachToggle = document.getElementById("legend-toggle-approaches");
+
+    if (state.showQualities !== undefined && qualToggle) {
+      const isVisible = !!state.showQualities;
+      qualToggle.checked = isVisible;
+      this.renderer.setTypeVisibility("quality", isVisible);
     }
-
-    /**
-     * Clear all highlight and connected-highlight flags from nodes.
-     * @private
-     */
-    _clearAllHighlights() {
-        this.renderer?.nodes?.each(function (node) {
-            node.highlighted = false;
-            node.connectedHighlighted = false;
-        });
+    if (state.showRequirements !== undefined && reqToggle) {
+      const isVisible = !!state.showRequirements;
+      reqToggle.checked = isVisible;
+      this.renderer.setTypeVisibility("requirement", isVisible);
     }
+    if (state.showStandards !== undefined && stdToggle) {
+      const isVisible = !!state.showStandards;
+      stdToggle.checked = isVisible;
+      this.renderer.setTypeVisibility("standard", isVisible);
+    }
+    if (state.showApproaches !== undefined && approachToggle) {
+      const isVisible = !!state.showApproaches;
+      approachToggle.checked = isVisible;
+      this.renderer.setTypeVisibility("approach", isVisible);
+    }
+  }
 
-    /**
-     * Deactivate current selection and update UI/URL.
-     * @param {string} stdId
-     * @private
-     */
-    _deactivateSelection(stdId) {
-        if (!this.renderer) return;
-        this.renderer.selectionActive = false;
+  _applyFilterFromUrl(state) {
+    if (typeof state.filter === "string" && this.filterInput) {
+      // Parse URL filter into finalized chips; leave input empty
+      this.currentFilterTerm = state.filter;
+      // Support both comma and whitespace separated for backward compatibility
+      const parsed = this._parseTerms(this.currentFilterTerm);
+      this.finalizedTerms = parsed.slice(0, MAX_FILTER_TERMS);
+      this.currentFilterTerms = [...this.finalizedTerms];
+      this.filterInput.value = "";
+      this.applyFiltersCombined();
+      this._renderFilterChips();
+    }
+  }
+
+  _applySelectionFromUrl(state, initial) {
+    if (state.selectedStandard) {
+      // Ensure standards are visible when a specific standard is selected via URL
+      const stdToggleEl = document.getElementById("legend-toggle-standards");
+      if (stdToggleEl && !stdToggleEl.checked) {
+        stdToggleEl.checked = true;
+      }
+      if (this.renderer?.typeVisibility?.standard === false) {
+        this.renderer.setTypeVisibility("standard", true);
+        // Reflect enforced visibility in URL state to avoid confusion when navigating
+        this._writeUrlState({ showStandards: true });
+      }
+      this._waitForRenderThen(() => {
+        const applied = this._selectStandardById(state.selectedStandard);
+        if (applied) {
+          this._lastAppliedStdId = state.selectedStandard;
+        }
+      });
+    } else if (!initial) {
+      // If cleared, ensure no selection
+      if (this.renderer?.selectionActive) {
         this.renderer.setSelectionDimming(null, null, false);
-        this.renderer.highlightNode(stdId, false, null);
-        this._writeUrlState({ selectedStandard: null });
+      }
     }
+  }
 
-    /**
-     * Activate selection for a standard and its connections.
-     * @param {string} stdId
-     * @param {Set<string>} connectedNodes
-     * @private
-     */
-    _activateSelection(stdId, connectedNodes) {
-        if (!this.renderer) return;
-        const nodeById = this._buildNodeByIdMap();
-
-        connectedNodes.forEach(id => {
-            const n = nodeById.get(id);
-            if (n) n.connectedHighlighted = true;
-        });
-
-        const stdNode = nodeById.get(stdId);
-        if (stdNode) stdNode.highlighted = true;
-
-        this.renderer.selectionActive = true;
-        this.renderer.highlightNode(stdId, true, connectedNodes);
-        this.renderer.setSelectionDimming(stdId, connectedNodes, true);
-
-        this.renderer.drawCanvas();
-        this.renderer.updateNodeVisibility?.(this.renderer.currentZoomScale);
-        this.renderer.updateLabelVisibility?.(this.renderer.currentZoomScale);
-
-        this._writeUrlState({ selectedStandard: stdId });
+  _waitForRenderThen(fn, tries = 0) {
+    const isReady = this.renderer?.links && this.renderer?.nodes && this.renderer?.labels;
+    if (isReady) {
+      fn();
+    } else if (tries < 100) {
+      setTimeout(() => this._waitForRenderThen(fn, tries + 1), 50);
     }
+  }
 
-    // ---------------- URL State Helpers ----------------
-    _readUrlState() {
-        const p = new URLSearchParams(globalThis.location.search);
-        const toBool = (v) => v === '1' || v === 'true';
-        const state = {
-            filter: p.get('filter') || '',
-            showQualities: p.has('showQualities') ? toBool(p.get('showQualities')) : undefined,
-            showRequirements: p.has('showRequirements') ? toBool(p.get('showRequirements')) : undefined,
-            showStandards: p.has('showStandards') ? toBool(p.get('showStandards')) : undefined,
-            showApproaches: p.has('showApproaches') ? toBool(p.get('showApproaches')) : undefined,
-            selectedStandard: p.get('selectedStandard') || null,
-        };
-        this._urlState = state;
-        return state;
-    }
-
-    _writeUrlState(partial) {
-        const p = new URLSearchParams(globalThis.location.search);
-        const setOrDel = (key, val) => {
-            if (val === undefined) return; // leave as-is
-            if (val === null || val === '') {
-                p.delete(key);
-                return;
-            }
-            const isDefault = typeof val === 'boolean' && val === this._defaultFor(key);
-            const boolValAsNum = val ? '1' : '0';
-            if (isDefault) {
-                p.delete(key);
-            } else {
-                p.set(key, typeof val === 'boolean' ? boolValAsNum : String(val));
-            }
-        };
-        // merge with current known state
-        const cur = this._readUrlState();
-        const next = { ...cur, ...partial };
-        setOrDel('filter', next.filter);
-        setOrDel('showQualities', next.showQualities);
-        setOrDel('showRequirements', next.showRequirements);
-        setOrDel('showStandards', next.showStandards);
-        setOrDel('showApproaches', next.showApproaches);
-        setOrDel('selectedStandard', next.selectedStandard);
-        const newUrl = `${ globalThis.location.pathname }?${ p.toString() }`;
-        globalThis.history.replaceState({}, '', newUrl);
-        this._urlState = next;
-    }
-
-    _defaultFor(key) {
-        // default UI/renderer state — must mirror GraphRenderer.typeVisibility
-        switch (key) {
-            case 'showQualities':
-                return true;
-            case 'showRequirements':
-                return false;
-            case 'showStandards':
-                return false;
-            case 'showApproaches':
-                return false;
-            default:
-                return null;
-        }
-    }
-
-    _applyStateFromUrl(initial = false) {
-        const state = this._readUrlState();
-        this._applyTogglesFromUrl(state);
-        this._applyFilterFromUrl(state);
-        this._applySelectionFromUrl(state, initial);
-    }
-
-    _applyTogglesFromUrl(state) {
-        const qualToggle = document.getElementById('legend-toggle-qualities');
-        const reqToggle = document.getElementById('legend-toggle-requirements');
-        const stdToggle = document.getElementById('legend-toggle-standards');
-        const approachToggle = document.getElementById('legend-toggle-approaches');
-
-        if (state.showQualities !== undefined && qualToggle) {
-            const isVisible = !!state.showQualities;
-            qualToggle.checked = isVisible;
-            this.renderer.setTypeVisibility('quality', isVisible);
-        }
-        if (state.showRequirements !== undefined && reqToggle) {
-            const isVisible = !!state.showRequirements;
-            reqToggle.checked = isVisible;
-            this.renderer.setTypeVisibility('requirement', isVisible);
-        }
-        if (state.showStandards !== undefined && stdToggle) {
-            const isVisible = !!state.showStandards;
-            stdToggle.checked = isVisible;
-            this.renderer.setTypeVisibility('standard', isVisible);
-        }
-        if (state.showApproaches !== undefined && approachToggle) {
-            const isVisible = !!state.showApproaches;
-            approachToggle.checked = isVisible;
-            this.renderer.setTypeVisibility('approach', isVisible);
-        }
-    }
-
-    _applyFilterFromUrl(state) {
-        if (typeof state.filter === 'string' && this.filterInput) {
-            // Parse URL filter into finalized chips; leave input empty
-            this.currentFilterTerm = state.filter;
-            // Support both comma and whitespace separated for backward compatibility
-            const parsed = this._parseTerms(this.currentFilterTerm);
-            this.finalizedTerms = parsed.slice(0, MAX_FILTER_TERMS);
-            this.currentFilterTerms = [...this.finalizedTerms];
-            this.filterInput.value = '';
-            this.applyFiltersCombined();
-            this._renderFilterChips();
-        }
-    }
-
-    _applySelectionFromUrl(state, initial) {
-        if (state.selectedStandard) {
-            // Ensure standards are visible when a specific standard is selected via URL
-            const stdToggleEl = document.getElementById('legend-toggle-standards');
-            if (stdToggleEl && !stdToggleEl.checked) {
-                stdToggleEl.checked = true;
-            }
-            if (this.renderer?.typeVisibility?.standard === false) {
-                this.renderer.setTypeVisibility('standard', true);
-                // Reflect enforced visibility in URL state to avoid confusion when navigating
-                this._writeUrlState({ showStandards: true });
-            }
-            this._waitForRenderThen(() => {
-                const applied = this._selectStandardById(state.selectedStandard);
-                if (applied) {
-                    this._lastAppliedStdId = state.selectedStandard;
-                }
-            });
-        } else if (!initial) {
-            // If cleared, ensure no selection
-            if (this.renderer?.selectionActive) {
-                this.renderer.setSelectionDimming(null, null, false);
-            }
-        }
-    }
-
-    _waitForRenderThen(fn, tries = 0) {
-        const isReady = this.renderer?.links && this.renderer?.nodes && this.renderer?.labels;
-        if (isReady) {
-            fn();
-        } else if (tries < 100) {
-            setTimeout(() => this._waitForRenderThen(fn, tries + 1), 50);
-        }
-    }
-
-    _selectStandardById(stdId) {
-        // Delegate to centralized helper; do not toggle off when coming from URL
-        return this._applyStandardSelectionInternal(stdId, false);
-    }
+  _selectStandardById(stdId) {
+    // Delegate to centralized helper; do not toggle off when coming from URL
+    return this._applyStandardSelectionInternal(stdId, false);
+  }
 }

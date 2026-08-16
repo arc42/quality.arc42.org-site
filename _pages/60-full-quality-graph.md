@@ -6,11 +6,19 @@ order: 60
 hide: true
 ---
 
-{% assign qualities_count = site.qualities | size %}
-{% assign requirements_count = site.requirements | size %}
-{% assign standards_count = site.standards | size %}
+{% assign qualities_count = site.qualities | size %} {% assign requirements_count = site.requirements | size %} {%
+assign standards_count = site.standards | size %}
 
 <header class="graph-intro">
+  <a
+    id="full-q-graph-home__btn"
+    class="btn"
+    href="{{ '/' | prepend: site.baseurl }}"
+    title="Back to home"
+    aria-label="Back to home"
+  >
+    <i class="fa fa-home" aria-hidden="true"></i>
+  </a>
   <h1 class="graph-intro__title">Quality Graph</h1>
   <p class="graph-intro__lede">
     {{ qualities_count }} characteristics, {{ requirements_count }} requirement examples, {{ standards_count }} standards.
@@ -84,10 +92,6 @@ hide: true
         </div>
 
         <button id="mobile-graph-reset__btn" class="btn" type="button">reset filters</button>
-        <a id="full-q-graph-home__btn" href="{{ '/' | prepend: site.baseurl }}">
-          <i class="fa fa-home" aria-hidden="true"></i>
-          back-to-home
-        </a>
         <hr />
       </div>
 

@@ -35,7 +35,7 @@
 
 .graph-intro {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   flex-wrap: wrap;
   gap: 0.4rem 0.85rem;
   padding: 0.4rem 0.9rem 0.45rem;
@@ -56,13 +56,12 @@
     font-size: 0.84rem;
     line-height: 1.35;
     color: var(--brand-blue-text);
-    max-width: 78ch;
+    flex: 1 1 auto;
   }
 
   @media (max-width: 800px) {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.15rem;
+    align-items: center;
+    gap: 0.25rem 0.6rem;
     padding: 0.35rem 0.7rem 0.4rem;
 
     &__title {
@@ -396,7 +395,6 @@
 
     #full-q-graph-filter__input,
     #full-q-graph-filter__btn,
-    #full-q-graph-home__btn,
     #mobile-graph-reset__btn {
       font-size: 0.92rem;
       min-height: 38px;
