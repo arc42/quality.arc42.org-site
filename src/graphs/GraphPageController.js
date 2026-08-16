@@ -146,6 +146,7 @@ export class GraphPageController {
 
     #applyQuickFilter(btn) {
         if (!this.#filterInput || !this.#filterButton) return;
+        if (btn.disabled || this.#filterInput.disabled || this.#filterButton.disabled) return;
         const term = btn.dataset.term;
         if (!term) return;
 
@@ -154,7 +155,6 @@ export class GraphPageController {
         this.#applyToggle(this.#requirementsToggle, btn.dataset.showRequirements === "true");
         this.#applyToggle(this.#approachesToggle, btn.dataset.showApproaches === "true");
 
-        this.#filterInput.disabled = false;
         this.#filterInput.value = term;
         this.#filterButton.click();
 
@@ -183,13 +183,16 @@ export class GraphPageController {
                     this.#filterInput.disabled = false;
                     this.#filterInput.value = "";
                 }
+                if (this.#filterButton) {
+                    this.#filterButton.disabled = false;
+                }
                 this.#filterButton?.click();
             }
             this.#setMobileDefaults();
             globalThis.setTimeout(() => this.#centerButton?.click(), 120);
         });
 
-        document.querySelectorAll(".mobile-quick-filter").forEach(btn => {
+        document.querySelectorAll(".mobile-quick-filter, .full-quick-filter").forEach(btn => {
             btn.addEventListener("click", () => this.#applyQuickFilter(btn));
         });
 

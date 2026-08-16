@@ -24,7 +24,7 @@
   position: absolute;
   top: 20px;
   left: 20px;
-  width: 250px;
+  width: 280px;
   background-color: rgba(255, 255, 255, 0.6);
   border: 1px solid #e0e0e0;
   border-radius: $radius-sm;
@@ -65,6 +65,12 @@
   font-style: italic;
 }
 
+#full-q-graph-filter__input:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  background-color: #f5f5f5;
+}
+
 #full-q-graph-filter__btn {
   width: 100%;
   padding: 0.5rem;
@@ -77,6 +83,12 @@
 
 #full-q-graph-filter__btn:hover {
   background-color: #cb9fff;
+}
+
+#full-q-graph-filter__btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background-color: #e6daf2;
 }
 
 .full-quick-filter-wrap {
@@ -116,6 +128,13 @@
   border-color: #73b1d4;
   outline: none;
 }
+
+.full-quick-filter:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
 // Suppressing the native outline obliges a ring (DESIGN.md focus rule);
 // a background tint alone loses keyboard position on the graph controls.
 .full-quick-filter:focus-visible {
@@ -169,6 +188,7 @@
   color: #414288;
   outline: none;
 }
+
 #full-q-graph-center__btn:focus-visible {
   box-shadow: var(--focus-ring); // no outline without a ring
 }
@@ -226,6 +246,7 @@
   color: #ebebeb;
   outline: none;
 }
+
 .q-chip__close:focus-visible {
   box-shadow: var(--focus-ring); // no outline without a ring
 }

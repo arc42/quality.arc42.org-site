@@ -28,8 +28,8 @@ export class FullGraph extends Graph {
         this.debounceTimeout = null;
         // Persisted UI state
         this.currentFilterTerm = ""; // raw input string (for URL/input)
-        this.currentFilterTerms = []; // parsed terms (array, max 5) — kept for backward compatibility
-        this.finalizedTerms = []; // chips terms (array, max 5)
+        this.currentFilterTerms = []; // parsed terms (array, max 10) — kept for backward compatibility
+        this.finalizedTerms = []; // chips terms (array, max 10)
         this.filterChipsContainer = null; // container element for chips
         // Track last-applied URL-selected standard to avoid redundant re-application
         this._lastAppliedStdId = null;
@@ -242,6 +242,8 @@ export class FullGraph extends Graph {
                     this.filter("");
                 }
             });
+
+            this._renderFilterChips();
         } else {
             console.error("Filter input or button element not found");
         }
@@ -325,7 +327,13 @@ export class FullGraph extends Graph {
         this.finalizedTerms = [];
         this.currentFilterTerms = [];
         this.currentFilterTerm = "";
-        if (this.filterInput) this.filterInput.value = "";
+        if (this.filterInput) {
+            this.filterInput.value = "";
+            this.filterInput.disabled = false;
+        }
+        if (this.filterButton) {
+            this.filterButton.disabled = false;
+        }
         this._renderFilterChips();
         this._writeUrlState({ filter: null });
         return super.resetFilter();
@@ -394,7 +402,7 @@ export class FullGraph extends Graph {
     _parseTerms(value) {
         const v = (value || "").trim();
         if (v === "") return [];
-        // Split by commas or whitespace, collapse multiples, dedupe, limit to 5
+        // Split by commas or whitespace, collapse multiples, dedupe, limit to 10
         const parts = v
             .split(/[\s,]+/)
             .map(s => s.trim())
@@ -522,6 +530,8 @@ export class FullGraph extends Graph {
         if (!terms.length) {
             container.style.display = 'none';
             if (this.filterInput) this.filterInput.disabled = false;
+            if (this.filterButton) this.filterButton.disabled = false;
+            this._syncQuickFiltersState();
             return;
         }
         container.style.display = '';
@@ -550,12 +560,38 @@ export class FullGraph extends Graph {
             container.appendChild(chip);
         });
 
-        // Disable input if at cap; re-enable otherwise
+        // Disable input and filter button if at cap; re-enable otherwise
+        const atCap = terms.length >= MAX_FILTER_TERMS;
         if (this.filterInput) {
-            const atCap = terms.length >= MAX_FILTER_TERMS;
             this.filterInput.disabled = atCap;
             if (atCap) this.filterInput.value = '';
         }
+        if (this.filterButton) {
+            this.filterButton.disabled = atCap;
+        }
+        this._syncQuickFiltersState();
+    }
+
+    _syncQuickFiltersState() {
+        const terms = Array.isArray(this.finalizedTerms) ? this.finalizedTerms : [];
+        const atCap = terms.length >= MAX_FILTER_TERMS;
+        const activeKeys = new Set(
+            terms.map(t => String(t || "").trim().toLowerCase().replace(/^#/, ""))
+        );
+
+        const quickFilterButtons = document.querySelectorAll(".mobile-quick-filter, .full-quick-filter");
+        quickFilterButtons.forEach(btn => {
+            const rawTerm = btn.dataset.term || btn.textContent || "";
+            const key = String(rawTerm).trim().toLowerCase().replace(/^#/, "");
+            const isActive = activeKeys.has(key);
+
+            if (isActive) {
+                btn.style.display = "none";
+            } else {
+                btn.style.display = "";
+            }
+            btn.disabled = atCap;
+        });
     }
 
     registerDefaultEventHandlers() {
@@ -843,10 +879,11 @@ export class FullGraph extends Graph {
                 return;
             }
             const isDefault = typeof val === 'boolean' && val === this._defaultFor(key);
+            const boolValAsNum = val ? '1' : '0';
             if (isDefault) {
                 p.delete(key);
             } else {
-                p.set(key, typeof val === 'boolean' ? (val ? '1' : '0') : String(val));
+                p.set(key, typeof val === 'boolean' ? boolValAsNum : String(val));
             }
         };
         // merge with current known state

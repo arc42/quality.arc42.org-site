@@ -216,6 +216,12 @@
     outline: none;
   }
 
+  .mobile-quick-filter:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+
   #mobile-graph-reset__btn {
     width: 100%;
     margin-bottom: 0.45rem;
