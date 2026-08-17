@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-27T10:01:16.621Z",
+  "generatedAt": "2026-08-17T07:04:52.724Z",
   "tags": [
     "wcag2a",
     "wcag2aa",
@@ -7,10 +7,10 @@
     "wcag21aa"
   ],
   "totals": {
-    "pagesScanned": 36,
-    "violations": 5,
-    "incomplete": 73,
-    "passes": 981,
+    "pagesScanned": 37,
+    "violations": 4,
+    "incomplete": 75,
+    "passes": 1025,
     "avgScore": 99
   },
   "pages": [
@@ -20,7 +20,7 @@
       "url": "http://127.0.0.1:4000/",
       "violationsCount": 0,
       "incompleteCount": 2,
-      "passesCount": 27,
+      "passesCount": 28,
       "score": 100,
       "violations": []
     },
@@ -30,7 +30,7 @@
       "url": "http://127.0.0.1:4000/dimensions/",
       "violationsCount": 1,
       "incompleteCount": 2,
-      "passesCount": 27,
+      "passesCount": 28,
       "score": 90,
       "violations": [
         {
@@ -49,7 +49,7 @@
       "url": "http://127.0.0.1:4000/qualities/",
       "violationsCount": 0,
       "incompleteCount": 2,
-      "passesCount": 26,
+      "passesCount": 27,
       "score": 100,
       "violations": []
     },
@@ -69,7 +69,7 @@
       "url": "http://127.0.0.1:4000/standards/",
       "violationsCount": 0,
       "incompleteCount": 3,
-      "passesCount": 24,
+      "passesCount": 25,
       "score": 100,
       "violations": []
     },
@@ -77,20 +77,11 @@
       "route": "/standards/explorer/",
       "title": "Standards Explorer | arc42 Quality Model",
       "url": "http://127.0.0.1:4000/standards/explorer/",
-      "violationsCount": 1,
+      "violationsCount": 0,
       "incompleteCount": 2,
-      "passesCount": 26,
-      "score": 90,
-      "violations": [
-        {
-          "id": "color-contrast",
-          "impact": "serious",
-          "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
-          "help": "Elements must meet minimum color contrast ratio thresholds",
-          "helpUrl": "https://dequeuniversity.com/rules/axe/4.12/color-contrast?application=playwright",
-          "nodes": 45
-        }
-      ]
+      "passesCount": 27,
+      "score": 100,
+      "violations": []
     },
     {
       "route": "/approaches/",
@@ -98,7 +89,7 @@
       "url": "http://127.0.0.1:4000/approaches/",
       "violationsCount": 0,
       "incompleteCount": 2,
-      "passesCount": 26,
+      "passesCount": 27,
       "score": 100,
       "violations": []
     },
@@ -108,7 +99,7 @@
       "url": "http://127.0.0.1:4000/aliases/",
       "violationsCount": 0,
       "incompleteCount": 2,
-      "passesCount": 27,
+      "passesCount": 28,
       "score": 100,
       "violations": []
     },
@@ -118,7 +109,7 @@
       "url": "http://127.0.0.1:4000/full-quality-graph/",
       "violationsCount": 0,
       "incompleteCount": 2,
-      "passesCount": 25,
+      "passesCount": 27,
       "score": 100,
       "violations": []
     },
@@ -167,7 +158,7 @@
       "url": "http://127.0.0.1:4000/resources/",
       "violationsCount": 0,
       "incompleteCount": 2,
-      "passesCount": 26,
+      "passesCount": 27,
       "score": 100,
       "violations": []
     },
@@ -280,12 +271,22 @@
       "violations": []
     },
     {
+      "route": "/articles/what-is-quality",
+      "title": "What is Quality? | arc42 Quality Model",
+      "url": "http://127.0.0.1:4000/articles/what-is-quality",
+      "violationsCount": 0,
+      "incompleteCount": 2,
+      "passesCount": 25,
+      "score": 100,
+      "violations": []
+    },
+    {
       "route": "/qualities/access-control",
       "title": "Access Control | arc42 Quality Model",
       "url": "http://127.0.0.1:4000/qualities/access-control",
       "violationsCount": 0,
       "incompleteCount": 2,
-      "passesCount": 26,
+      "passesCount": 27,
       "score": 100,
       "violations": []
     },
@@ -295,7 +296,7 @@
       "url": "http://127.0.0.1:4000/qualities/accountability",
       "violationsCount": 0,
       "incompleteCount": 2,
-      "passesCount": 26,
+      "passesCount": 27,
       "score": 100,
       "violations": []
     },
@@ -305,7 +306,7 @@
       "url": "http://127.0.0.1:4000/qualities/accuracy",
       "violationsCount": 0,
       "incompleteCount": 2,
-      "passesCount": 26,
+      "passesCount": 27,
       "score": 100,
       "violations": []
     },
@@ -315,7 +316,7 @@
       "url": "http://127.0.0.1:4000/qualities/adaptability",
       "violationsCount": 0,
       "incompleteCount": 2,
-      "passesCount": 26,
+      "passesCount": 27,
       "score": 100,
       "violations": []
     },
@@ -335,7 +336,7 @@
       "url": "http://127.0.0.1:4000/requirements/access-control-via-sso",
       "violationsCount": 0,
       "incompleteCount": 2,
-      "passesCount": 26,
+      "passesCount": 27,
       "score": 100,
       "violations": []
     },
@@ -345,7 +346,7 @@
       "url": "http://127.0.0.1:4000/requirements/access-find-function-quickly",
       "violationsCount": 0,
       "incompleteCount": 2,
-      "passesCount": 26,
+      "passesCount": 27,
       "score": 100,
       "violations": []
     },
@@ -355,7 +356,7 @@
       "url": "http://127.0.0.1:4000/requirements/accessible-user-interface",
       "violationsCount": 0,
       "incompleteCount": 2,
-      "passesCount": 26,
+      "passesCount": 27,
       "score": 100,
       "violations": []
     },
@@ -365,7 +366,7 @@
       "url": "http://127.0.0.1:4000/requirements/accurate-estimate-of-insurance-rate",
       "violationsCount": 0,
       "incompleteCount": 2,
-      "passesCount": 26,
+      "passesCount": 27,
       "score": 100,
       "violations": []
     },
@@ -405,7 +406,7 @@
       "url": "http://127.0.0.1:4000/standards/do-178c",
       "violationsCount": 0,
       "incompleteCount": 2,
-      "passesCount": 29,
+      "passesCount": 30,
       "score": 100,
       "violations": []
     },
