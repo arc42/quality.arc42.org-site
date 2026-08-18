@@ -81,6 +81,7 @@ Within each dimension: published approaches first, then open candidates ordered 
 | ✅ | — | Externalized Business Rules | Move decision logic into an editable rule set outside compiled code | ★ |
 | ✅ | — | Schema Evolution / Tolerant Reader | Evolve data schemas while remaining compatible with older consumers | ★ |
 | ✅ | — | Consumer-Driven Contracts | Consumers publish executable expectations; providers verify them in CI | ★ |
+| ✅ | — | Preserve Facts, Derive Interpretations | Preserve business facts so later policies can reinterpret them without rewriting history | ★ |
 | | P1 | Shared Repositories (Blackboard) | Bind producers and consumers via a runtime shared data store | B+ |
 | | P2 | Anti-Corruption Layer | Translate a foreign model at the boundary so an external system's concepts can't leak into the domain | ★ |
 | | P2 | Backward-Compatible API Versioning | Evolve public contracts without breaking existing consumers | P·O |
