@@ -61,6 +61,10 @@ async function main() {
 
   const projectRoot = process.cwd();
   const filePath = path.resolve(fileArg);
+  if (!filePath.startsWith(projectRoot + path.sep) && filePath !== projectRoot) {
+    console.error(`✗ path traversal detected: "${fileArg}" is outside the project root`);
+    process.exit(2);
+  }
 
   let raw;
   try {
