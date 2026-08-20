@@ -18,7 +18,7 @@ The revised interpretation must be applied retrospectively so that previous and 
 - The revised interpretation can be evaluated for **100% of a representative sample of at least 100 historical cases** using information captured before the revised interpretation existed
 - **0 historical source facts are modified, deleted, or rewritten** to produce the revised interpretation
 - **0 existing producers of those historical facts require modification** solely to support the retrospective interpretation
-- The previous and revised interpretations can be evaluated **side by side for the same 100 historical cases**
+- The previous and revised interpretations can be evaluated **side by side for the same sampled historical cases**
 - **100% of revised results** in the sample can be traced to the source facts used to derive them
 - Where an explicit business policy determines the interpretation, **100% of sampled results** identify the policy version used
 - Introducing the revised interpretation changes **no more than 3 existing modules or independently deployable components**, excluding tests, documentation, and the new interpretation itself

@@ -2,7 +2,7 @@
 layout: approach
 title: "Preserve Facts, Derive Interpretations"
 tags: [flexible, maintainable]
-aka: [Facts over State, Semantic Deferral]
+aka: [Facts over State, Semantic Deferral, Business Uncertainty Tolerance]
 supported_qualities: [evolvability, auditability, traceability, analysability]
 supported_qualities_notes:
   evolvability: "Preserved facts support later reinterpretation without rewriting history, keeping semantic change localized."
@@ -28,11 +28,9 @@ related_requirements_notes:
 permalink: /approaches/preserve-facts-derive-interpretations
 ---
 
-Business knowledge changes. If a system stores only today's derived state, the information needed for tomorrow's interpretation may already be lost. This is the architectural concern described as **Business Uncertainty Tolerance**: incomplete business knowledge should not force irreversible semantic commitments.
+Business knowledge changes. If a system stores only today's derived state, the information needed for tomorrow's interpretation may already be lost. This approach addresses that concern:
 
-A useful guiding principle is:
-
-> **Make facts durable, interpretations replaceable, and architectural commitments rare.**
+> **Business Uncertainty Tolerance** is the ability of a system to operate under incomplete or evolving business knowledge without being forced into irreversible semantic commitments — facts stay durable, interpretations stay replaceable, and architectural commitments stay rare.
 
 **Preserve Facts, Derive Interpretations** separates durable business observations from replaceable interpretations. Current states can still be materialized, while source facts and provenance remain available so later policies can derive different results.
 
