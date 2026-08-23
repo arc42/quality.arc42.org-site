@@ -34,9 +34,9 @@
     "lunr": "^2.3.9"
   },
   "devDependencies": {
-    "@axe-core/playwright": "^4.12.1",
+    "@axe-core/playwright": "^4.13.0",
     "@playwright/test": "1.62.1",
-    "esbuild": "^0.28.1",
+    "esbuild": "^0.28.2",
     "gray-matter": "^4.0.3",
     "lighthouse": "^13.4.1",
     "playwright-lighthouse": "^4.0.0",

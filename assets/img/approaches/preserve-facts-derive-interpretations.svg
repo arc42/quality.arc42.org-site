@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 360" role="img" aria-labelledby="title desc">
+  <title id="title">Preserve facts, derive interpretations</title>
+  <desc id="desc">Stable business facts feed versioned policies that derive replaceable interpretations over time.</desc>
+  <rect width="960" height="360" fill="#f8f9fa"/>
+  <rect x="70" y="100" width="250" height="160" rx="18" fill="#5fb49c"/>
+  <text x="195" y="145" text-anchor="middle" font-size="26" font-family="sans-serif" fill="#111">Durable facts</text>
+  <text x="195" y="185" text-anchor="middle" font-size="20" font-family="sans-serif" fill="#111">Document presented</text>
+  <text x="195" y="215" text-anchor="middle" font-size="20" font-family="sans-serif" fill="#111">Check succeeded</text>
+  <text x="195" y="245" text-anchor="middle" font-size="20" font-family="sans-serif" fill="#111">Operator confirmed</text>
+
+  <line x1="320" y1="180" x2="445" y2="180" stroke="#682d63" stroke-width="6"/>
+  <polygon points="445,180 425,168 425,192" fill="#682d63"/>
+
+  <rect x="450" y="105" width="190" height="150" rx="18" fill="#ffad80"/>
+  <text x="545" y="145" text-anchor="middle" font-size="24" font-family="sans-serif" fill="#111">Policy</text>
+  <text x="545" y="185" text-anchor="middle" font-size="20" font-family="sans-serif" fill="#111">v1</text>
+  <text x="545" y="220" text-anchor="middle" font-size="20" font-family="sans-serif" fill="#111">v2</text>
+
+  <line x1="640" y1="180" x2="755" y2="180" stroke="#682d63" stroke-width="6"/>
+  <polygon points="755,180 735,168 735,192" fill="#682d63"/>
+
+  <rect x="760" y="100" width="140" height="160" rx="18" fill="#00b8f5"/>
+  <text x="830" y="145" text-anchor="middle" font-size="24" font-family="sans-serif" fill="#111">Derived</text>
+  <text x="830" y="178" text-anchor="middle" font-size="24" font-family="sans-serif" fill="#111">meaning</text>
+  <text x="830" y="220" text-anchor="middle" font-size="19" font-family="sans-serif" fill="#111">replaceable</text>
+
+  <text x="480" y="320" text-anchor="middle" font-size="22" font-family="sans-serif" fill="#682d63">Facts stay stable; interpretations can change.</text>
+</svg>
