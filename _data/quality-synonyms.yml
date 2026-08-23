@@ -124,3 +124,5 @@ sustainability:
 # Controllability (user controllability is the ISO 25059 sub-characteristic name)
 controllability:
   - user-controllability
+  - human-controllability
+  - human-oversight
