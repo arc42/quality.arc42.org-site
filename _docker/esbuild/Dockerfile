@@ -1,4 +1,4 @@
-FROM node:22.13.1-bookworm-slim
+FROM node:22-bookworm-slim
 
 WORKDIR /tmp/deps
 

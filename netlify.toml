@@ -3,4 +3,4 @@
   publish = "_site"
 
 [build.environment]
-  NODE_VERSION = "22.13.1"
+  NODE_VERSION = "22"
