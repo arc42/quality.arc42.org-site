@@ -16,8 +16,8 @@ $font-family:
   sans-serif,
   "Apple Color Emoji",
   "Segoe UI Emoji";
-$heading-font-family: "Libre Caslon Text", "Iowan Old Style", "Palatino Linotype", Georgia,
-  "Times New Roman", serif;
+$heading-font-family:
+  "Libre Caslon Text", "Iowan Old Style", "Palatino Linotype", Georgia, "Times New Roman", serif;
 $font-size: 17px;
 
 // Modular scale — 1.333 (perfect fourth) from 1rem base.
@@ -32,8 +32,8 @@ $text-4xl: 3.15rem; // h1 / content display
 $text-5xl: 4.2rem; // hero display (use with clamp)
 
 // source code typography.
-$code-font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono",
-  monospace;
+$code-font-family:
+  ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
 $code-font-size: 0.9em;
 
 // vertical margin.

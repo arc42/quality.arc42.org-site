@@ -6,11 +6,20 @@ order: 60
 hide: true
 ---
 
-{% assign qualities_count = site.qualities | size %}
-{% assign requirements_count = site.requirements | size %}
-{% assign standards_count = site.standards | size %}
+{% assign qualities_count = site.qualities | size %} {% assign requirements_count = site.requirements | size %} {%
+assign standards_count = site.standards | size %}
 
 <header class="graph-intro">
+  <a
+    id="full-q-graph-home__btn"
+    class="btn"
+    href="{{ '/' | prepend: site.baseurl }}"
+    title="Back to home"
+    aria-label="Back to home"
+  >
+    <i class="fa fa-home" aria-hidden="true"></i>
+    <span class="sr-only">Back to home</span>
+  </a>
   <h1 class="graph-intro__title">Quality Graph</h1>
   <p class="graph-intro__lede">
     {{ qualities_count }} characteristics, {{ requirements_count }} requirement examples, {{ standards_count }} standards.
@@ -68,8 +77,20 @@ hide: true
         <input type="text" id="full-q-graph-filter__input" placeholder="Filter..." />
         <button id="full-q-graph-filter__btn" class="btn">Filter</button>
 
+        <button
+          id="mobile-graph-reset__btn"
+          class="btn"
+          type="button"
+          aria-label="Clear all filters"
+          aria-controls="full-q-graph-filter__chips"
+          hidden
+        >
+          clear all
+        </button>
+
         <div class="mobile-quick-filter-wrap">
           <p class="mobile-quick-filter-label">Quick filters &mdash; dimensions</p>
+          <p id="mobile-quick-filter-state" class="mobile-quick-filter-state" hidden>all applied</p>
           <div class="mobile-quick-filters">
             <button class="mobile-quick-filter" type="button" data-term="efficient">#efficient</button>
             <button class="mobile-quick-filter" type="button" data-term="flexible">#flexible</button>
@@ -82,12 +103,6 @@ hide: true
             <button class="mobile-quick-filter" type="button" data-term="usable">#usable</button>
           </div>
         </div>
-
-        <button id="mobile-graph-reset__btn" class="btn" type="button">reset filters</button>
-        <a id="full-q-graph-home__btn" href="{{ '/' | prepend: site.baseurl }}">
-          <i class="fa fa-home" aria-hidden="true"></i>
-          back-to-home
-        </a>
         <hr />
       </div>
 

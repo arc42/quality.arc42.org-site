@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-30T15:08:18.432Z",
+  "generatedAt": "2026-08-23T11:18:40.164Z",
   "results": [
     {
       "name": "Home",
@@ -27,7 +27,7 @@
       "name": "Full Graph",
       "path": "/full-quality-graph/",
       "scores": {
-        "performance": 96,
+        "performance": 95,
         "accessibility": 98,
         "bestPractices": 100,
         "seo": 100
@@ -38,7 +38,7 @@
       "name": "Qualities Index",
       "path": "/qualities/",
       "scores": {
-        "performance": 98,
+        "performance": 97,
         "accessibility": 100,
         "bestPractices": 100,
         "seo": 100
@@ -49,7 +49,7 @@
       "name": "Requirements Index",
       "path": "/requirements/",
       "scores": {
-        "performance": 98,
+        "performance": 80,
         "accessibility": 100,
         "bestPractices": 100,
         "seo": 100
@@ -71,7 +71,7 @@
       "name": "Approaches Index",
       "path": "/approaches/",
       "scores": {
-        "performance": 78,
+        "performance": 99,
         "accessibility": 100,
         "bestPractices": 100,
         "seo": 100
@@ -115,7 +115,7 @@
       "name": "Dimension: Operable",
       "path": "/tag-operable/",
       "scores": {
-        "performance": 99,
+        "performance": 98,
         "accessibility": 97,
         "bestPractices": 100,
         "seo": 100
@@ -126,7 +126,7 @@
       "name": "Dimension: Reliable",
       "path": "/tag-reliable/",
       "scores": {
-        "performance": 99,
+        "performance": 98,
         "accessibility": 97,
         "bestPractices": 100,
         "seo": 100
@@ -148,7 +148,7 @@
       "name": "Dimension: Secure",
       "path": "/tag-secure/",
       "scores": {
-        "performance": 99,
+        "performance": 98,
         "accessibility": 95,
         "bestPractices": 100,
         "seo": 100

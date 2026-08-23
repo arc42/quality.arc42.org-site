@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-17T07:04:52.724Z",
+  "generatedAt": "2026-08-23T11:16:34.916Z",
   "tags": [
     "wcag2a",
     "wcag2aa",
@@ -8,7 +8,7 @@
   ],
   "totals": {
     "pagesScanned": 37,
-    "violations": 4,
+    "violations": 5,
     "incomplete": 75,
     "passes": 1025,
     "avgScore": 99
@@ -17,7 +17,7 @@
     {
       "route": "/",
       "title": "Home | arc42 Quality Model",
-      "url": "http://127.0.0.1:4000/",
+      "url": "http://jekyll:4000/",
       "violationsCount": 0,
       "incompleteCount": 2,
       "passesCount": 28,
@@ -27,7 +27,7 @@
     {
       "route": "/dimensions/",
       "title": "Quality Dimensions | arc42 Quality Model",
-      "url": "http://127.0.0.1:4000/dimensions/",
+      "url": "http://jekyll:4000/dimensions/",
       "violationsCount": 1,
       "incompleteCount": 2,
       "passesCount": 28,
@@ -38,7 +38,7 @@
           "impact": "serious",
           "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
           "help": "Elements must meet minimum color contrast ratio thresholds",
-          "helpUrl": "https://dequeuniversity.com/rules/axe/4.12/color-contrast?application=playwright",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.13/color-contrast?application=playwright",
           "nodes": 4
         }
       ]
@@ -46,7 +46,7 @@
     {
       "route": "/qualities/",
       "title": "Quality Characteristics | arc42 Quality Model",
-      "url": "http://127.0.0.1:4000/qualities/",
+      "url": "http://jekyll:4000/qualities/",
       "violationsCount": 0,
       "incompleteCount": 2,
       "passesCount": 27,
@@ -56,7 +56,7 @@
     {
       "route": "/requirements/",
       "title": "Example Requirements | arc42 Quality Model",
-      "url": "http://127.0.0.1:4000/requirements/",
+      "url": "http://jekyll:4000/requirements/",
       "violationsCount": 0,
       "incompleteCount": 2,
       "passesCount": 27,
@@ -66,7 +66,7 @@
     {
       "route": "/standards/",
       "title": "Quality Standards | arc42 Quality Model",
-      "url": "http://127.0.0.1:4000/standards/",
+      "url": "http://jekyll:4000/standards/",
       "violationsCount": 0,
       "incompleteCount": 3,
       "passesCount": 25,
@@ -76,7 +76,7 @@
     {
       "route": "/standards/explorer/",
       "title": "Standards Explorer | arc42 Quality Model",
-      "url": "http://127.0.0.1:4000/standards/explorer/",
+      "url": "http://jekyll:4000/standards/explorer/",
       "violationsCount": 0,
       "incompleteCount": 2,
       "passesCount": 27,
@@ -86,7 +86,7 @@
     {
       "route": "/approaches/",
       "title": "Solution Approaches | arc42 Quality Model",
-      "url": "http://127.0.0.1:4000/approaches/",
+      "url": "http://jekyll:4000/approaches/",
       "violationsCount": 0,
       "incompleteCount": 2,
       "passesCount": 27,
@@ -96,7 +96,7 @@
     {
       "route": "/aliases/",
       "title": "Quality Aliases and Synonyms | arc42 Quality Model",
-      "url": "http://127.0.0.1:4000/aliases/",
+      "url": "http://jekyll:4000/aliases/",
       "violationsCount": 0,
       "incompleteCount": 2,
       "passesCount": 28,
@@ -106,7 +106,7 @@
     {
       "route": "/full-quality-graph/",
       "title": "Quality Graph | arc42 Quality Model",
-      "url": "http://127.0.0.1:4000/full-quality-graph/",
+      "url": "http://jekyll:4000/full-quality-graph/",
       "violationsCount": 0,
       "incompleteCount": 2,
       "passesCount": 27,
@@ -116,7 +116,7 @@
     {
       "route": "/aboutthissite/",
       "title": "About this Site | arc42 Quality Model",
-      "url": "http://127.0.0.1:4000/aboutthissite/",
+      "url": "http://jekyll:4000/aboutthissite/",
       "violationsCount": 1,
       "incompleteCount": 2,
       "passesCount": 28,
@@ -127,7 +127,7 @@
           "impact": "serious",
           "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
           "help": "Elements must meet minimum color contrast ratio thresholds",
-          "helpUrl": "https://dequeuniversity.com/rules/axe/4.12/color-contrast?application=playwright",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.13/color-contrast?application=playwright",
           "nodes": 4
         }
       ]
@@ -135,7 +135,7 @@
     {
       "route": "/qualities/accessibility",
       "title": "Accessibility | arc42 Quality Model",
-      "url": "http://127.0.0.1:4000/qualities/accessibility",
+      "url": "http://jekyll:4000/qualities/accessibility",
       "violationsCount": 0,
       "incompleteCount": 2,
       "passesCount": 27,
@@ -145,7 +145,7 @@
     {
       "route": "/qualities/time-to-market",
       "title": "Time to Market | arc42 Quality Model",
-      "url": "http://127.0.0.1:4000/qualities/time-to-market",
+      "url": "http://jekyll:4000/qualities/time-to-market",
       "violationsCount": 0,
       "incompleteCount": 2,
       "passesCount": 27,
@@ -155,7 +155,7 @@
     {
       "route": "/resources/",
       "title": "Resources | arc42 Quality Model",
-      "url": "http://127.0.0.1:4000/resources/",
+      "url": "http://jekyll:4000/resources/",
       "violationsCount": 0,
       "incompleteCount": 2,
       "passesCount": 27,
@@ -165,7 +165,7 @@
     {
       "route": "/articles/arc42-quality-model",
       "title": "arc42 Quality Model | quality characteristics, explained.",
-      "url": "http://127.0.0.1:4000/articles/arc42-quality-model",
+      "url": "http://jekyll:4000/articles/arc42-quality-model",
       "violationsCount": 0,
       "incompleteCount": 2,
       "passesCount": 30,
@@ -175,7 +175,7 @@
     {
       "route": "/articles/challenge-with-quality",
       "title": "Challenges with Quality | arc42 Quality Model",
-      "url": "http://127.0.0.1:4000/articles/challenge-with-quality",
+      "url": "http://jekyll:4000/articles/challenge-with-quality",
       "violationsCount": 0,
       "incompleteCount": 2,
       "passesCount": 28,
@@ -185,7 +185,7 @@
     {
       "route": "/articles/iso-25010-shortcomings",
       "title": "Shortcomings of ISO 25010 | arc42 Quality Model",
-      "url": "http://127.0.0.1:4000/articles/iso-25010-shortcomings",
+      "url": "http://jekyll:4000/articles/iso-25010-shortcomings",
       "violationsCount": 1,
       "incompleteCount": 2,
       "passesCount": 28,
@@ -196,7 +196,7 @@
           "impact": "minor",
           "description": "Ensure elements do not use deprecated roles",
           "help": "Deprecated ARIA roles must not be used",
-          "helpUrl": "https://dequeuniversity.com/rules/axe/4.12/aria-deprecated-role?application=playwright",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.13/aria-deprecated-role?application=playwright",
           "nodes": 2
         }
       ]
@@ -204,7 +204,7 @@
     {
       "route": "/articles/iso-25010-update-2023",
       "title": "Update on ISO 25010, version 2023 | arc42 Quality Model",
-      "url": "http://127.0.0.1:4000/articles/iso-25010-update-2023",
+      "url": "http://jekyll:4000/articles/iso-25010-update-2023",
       "violationsCount": 0,
       "incompleteCount": 2,
       "passesCount": 28,
@@ -214,7 +214,7 @@
     {
       "route": "/articles/q42-for-iso-users/",
       "title": "Q42 for ISO-25010 Users | arc42 Quality Model",
-      "url": "http://127.0.0.1:4000/articles/q42-for-iso-users/",
+      "url": "http://jekyll:4000/articles/q42-for-iso-users/",
       "violationsCount": 0,
       "incompleteCount": 2,
       "passesCount": 26,
@@ -224,7 +224,7 @@
     {
       "route": "/articles/quality-models",
       "title": "Quality Models | arc42 Quality Model",
-      "url": "http://127.0.0.1:4000/articles/quality-models",
+      "url": "http://jekyll:4000/articles/quality-models",
       "violationsCount": 0,
       "incompleteCount": 2,
       "passesCount": 30,
@@ -234,7 +234,7 @@
     {
       "route": "/articles/sei-quality-model",
       "title": "SEI Quality Model | arc42 Quality Model",
-      "url": "http://127.0.0.1:4000/articles/sei-quality-model",
+      "url": "http://jekyll:4000/articles/sei-quality-model",
       "violationsCount": 0,
       "incompleteCount": 2,
       "passesCount": 28,
@@ -244,26 +244,34 @@
     {
       "route": "/articles/specify-quality-requirements",
       "title": "How to specify quality requirements | arc42 Quality Model",
-      "url": "http://127.0.0.1:4000/articles/specify-quality-requirements",
-      "violationsCount": 1,
+      "url": "http://jekyll:4000/articles/specify-quality-requirements",
+      "violationsCount": 2,
       "incompleteCount": 2,
       "passesCount": 28,
-      "score": 90,
+      "score": 80,
       "violations": [
         {
           "id": "color-contrast",
           "impact": "serious",
           "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
           "help": "Elements must meet minimum color contrast ratio thresholds",
-          "helpUrl": "https://dequeuniversity.com/rules/axe/4.12/color-contrast?application=playwright",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.13/color-contrast?application=playwright",
           "nodes": 5
+        },
+        {
+          "id": "scrollable-region-focusable",
+          "impact": "serious",
+          "description": "Ensure elements that have scrollable content are accessible by keyboard in Safari",
+          "help": "Scrollable region must have keyboard access",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.13/scrollable-region-focusable?application=playwright",
+          "nodes": 2
         }
       ]
     },
     {
       "route": "/articles/sum-of-all-iso",
       "title": "The Sum of All ISO | arc42 Quality Model",
-      "url": "http://127.0.0.1:4000/articles/sum-of-all-iso",
+      "url": "http://jekyll:4000/articles/sum-of-all-iso",
       "violationsCount": 0,
       "incompleteCount": 2,
       "passesCount": 30,
@@ -273,7 +281,7 @@
     {
       "route": "/articles/what-is-quality",
       "title": "What is Quality? | arc42 Quality Model",
-      "url": "http://127.0.0.1:4000/articles/what-is-quality",
+      "url": "http://jekyll:4000/articles/what-is-quality",
       "violationsCount": 0,
       "incompleteCount": 2,
       "passesCount": 25,
@@ -283,7 +291,7 @@
     {
       "route": "/qualities/access-control",
       "title": "Access Control | arc42 Quality Model",
-      "url": "http://127.0.0.1:4000/qualities/access-control",
+      "url": "http://jekyll:4000/qualities/access-control",
       "violationsCount": 0,
       "incompleteCount": 2,
       "passesCount": 27,
@@ -293,7 +301,7 @@
     {
       "route": "/qualities/accountability",
       "title": "Accountability | arc42 Quality Model",
-      "url": "http://127.0.0.1:4000/qualities/accountability",
+      "url": "http://jekyll:4000/qualities/accountability",
       "violationsCount": 0,
       "incompleteCount": 2,
       "passesCount": 27,
@@ -303,7 +311,7 @@
     {
       "route": "/qualities/accuracy",
       "title": "Accuracy | arc42 Quality Model",
-      "url": "http://127.0.0.1:4000/qualities/accuracy",
+      "url": "http://jekyll:4000/qualities/accuracy",
       "violationsCount": 0,
       "incompleteCount": 2,
       "passesCount": 27,
@@ -313,7 +321,7 @@
     {
       "route": "/qualities/adaptability",
       "title": "Adaptability | arc42 Quality Model",
-      "url": "http://127.0.0.1:4000/qualities/adaptability",
+      "url": "http://jekyll:4000/qualities/adaptability",
       "violationsCount": 0,
       "incompleteCount": 2,
       "passesCount": 27,
@@ -323,7 +331,7 @@
     {
       "route": "/requirements/access-control-is-enforced",
       "title": "Access control is enforced | arc42 Quality Model",
-      "url": "http://127.0.0.1:4000/requirements/access-control-is-enforced",
+      "url": "http://jekyll:4000/requirements/access-control-is-enforced",
       "violationsCount": 0,
       "incompleteCount": 2,
       "passesCount": 27,
@@ -333,7 +341,7 @@
     {
       "route": "/requirements/access-control-via-sso",
       "title": "Access Control via SSO | arc42 Quality Model",
-      "url": "http://127.0.0.1:4000/requirements/access-control-via-sso",
+      "url": "http://jekyll:4000/requirements/access-control-via-sso",
       "violationsCount": 0,
       "incompleteCount": 2,
       "passesCount": 27,
@@ -343,7 +351,7 @@
     {
       "route": "/requirements/access-find-function-quickly",
       "title": "Access find function in three seconds | arc42 Quality Model",
-      "url": "http://127.0.0.1:4000/requirements/access-find-function-quickly",
+      "url": "http://jekyll:4000/requirements/access-find-function-quickly",
       "violationsCount": 0,
       "incompleteCount": 2,
       "passesCount": 27,
@@ -353,7 +361,7 @@
     {
       "route": "/requirements/accessible-user-interface",
       "title": "Accessible User Interface | arc42 Quality Model",
-      "url": "http://127.0.0.1:4000/requirements/accessible-user-interface",
+      "url": "http://jekyll:4000/requirements/accessible-user-interface",
       "violationsCount": 0,
       "incompleteCount": 2,
       "passesCount": 27,
@@ -363,7 +371,7 @@
     {
       "route": "/requirements/accurate-estimate-of-insurance-rate",
       "title": "Accurate estimate of insurance contract rate | arc42 Quality Model",
-      "url": "http://127.0.0.1:4000/requirements/accurate-estimate-of-insurance-rate",
+      "url": "http://jekyll:4000/requirements/accurate-estimate-of-insurance-rate",
       "violationsCount": 0,
       "incompleteCount": 2,
       "passesCount": 27,
@@ -373,7 +381,7 @@
     {
       "route": "/standards/aiuc-1",
       "title": "AIUC-1 – AI Agent Standard | arc42 Quality Model",
-      "url": "http://127.0.0.1:4000/standards/aiuc-1",
+      "url": "http://jekyll:4000/standards/aiuc-1",
       "violationsCount": 0,
       "incompleteCount": 2,
       "passesCount": 30,
@@ -383,7 +391,7 @@
     {
       "route": "/standards/cra",
       "title": "EU Cyber Resilience Act (CRA) — Regulation 2024/2847 | arc42 Quality Model",
-      "url": "http://127.0.0.1:4000/standards/cra",
+      "url": "http://jekyll:4000/standards/cra",
       "violationsCount": 0,
       "incompleteCount": 2,
       "passesCount": 28,
@@ -393,7 +401,7 @@
     {
       "route": "/standards/dicom",
       "title": "DICOM — Digital Imaging and Communications in Medicine | arc42 Quality Model",
-      "url": "http://127.0.0.1:4000/standards/dicom",
+      "url": "http://jekyll:4000/standards/dicom",
       "violationsCount": 0,
       "incompleteCount": 2,
       "passesCount": 30,
@@ -403,7 +411,7 @@
     {
       "route": "/standards/do-178c",
       "title": "DO-178C - Software Considerations in Airborne Systems and Equipment Certification | arc42 Quality Model",
-      "url": "http://127.0.0.1:4000/standards/do-178c",
+      "url": "http://jekyll:4000/standards/do-178c",
       "violationsCount": 0,
       "incompleteCount": 2,
       "passesCount": 30,
@@ -413,7 +421,7 @@
     {
       "route": "/standards/en-301-549",
       "title": "EN 301 549 - Accessibility requirements for ICT products and services | arc42 Quality Model",
-      "url": "http://127.0.0.1:4000/standards/en-301-549",
+      "url": "http://jekyll:4000/standards/en-301-549",
       "violationsCount": 0,
       "incompleteCount": 2,
       "passesCount": 30,

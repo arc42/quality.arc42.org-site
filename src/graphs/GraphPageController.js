@@ -8,210 +8,213 @@
  * - responsive defaults when the viewport crosses the mobile breakpoint
  */
 export class GraphPageController {
-    static #MOBILE_BREAKPOINT = "(max-width: 900px), (max-height: 700px)";
-    // Width-only: gates the legend-toggle defaults so short-but-wide desktop
-    // windows (e.g. 1366x768, or a 1080p display at 125% zoom) keep all node
-    // types visible — only genuinely narrow viewports get the simplified set.
-    static #NARROW_BREAKPOINT = "(max-width: 900px)";
+  static #MOBILE_BREAKPOINT = "(max-width: 900px), (max-height: 700px)";
+  // Width-only: gates the legend-toggle defaults so short-but-wide desktop
+  // windows (e.g. 1366x768, or a 1080p display at 125% zoom) keep all node
+  // types visible — only genuinely narrow viewports get the simplified set.
+  static #NARROW_BREAKPOINT = "(max-width: 900px)";
 
-    #graph;
-    #media;
-    #narrowMedia;
-    #sidebar;
-    #toggleButton;
-    #closeButton;
-    #resetButton;
-    #filterInput;
-    #filterButton;
-    #centerButton;
-    #qualityToggle;
-    #requirementsToggle;
-    #standardsToggle;
-    #approachesToggle;
+  #graph;
+  #media;
+  #narrowMedia;
+  #sidebar;
+  #toggleButton;
+  #closeButton;
+  #resetButton;
+  #filterInput;
+  #filterButton;
+  #centerButton;
+  #qualityToggle;
+  #requirementsToggle;
+  #standardsToggle;
+  #approachesToggle;
 
-    /**
-     * @param {import('./FullGraph.js').FullGraph} [graph] - Optional graph instance for direct reset
-     */
-    constructor(graph = null) {
-        this.#graph = graph;
-        this.#media = globalThis.matchMedia(GraphPageController.#MOBILE_BREAKPOINT);
-        this.#narrowMedia = globalThis.matchMedia(GraphPageController.#NARROW_BREAKPOINT);
-        this.#sidebar = document.getElementById("full-q-graph-sidebar");
-        this.#toggleButton = document.getElementById("mobile-graph-controls-toggle");
-        this.#closeButton = document.getElementById("mobile-graph-sheet-close");
-        this.#resetButton = document.getElementById("mobile-graph-reset__btn");
-        this.#filterInput = document.getElementById("full-q-graph-filter__input");
-        this.#filterButton = document.getElementById("full-q-graph-filter__btn");
-        this.#centerButton = document.getElementById("full-q-graph-center__btn");
-        this.#qualityToggle = document.getElementById("legend-toggle-qualities");
-        this.#requirementsToggle = document.getElementById("legend-toggle-requirements");
-        this.#standardsToggle = document.getElementById("legend-toggle-standards");
-        this.#approachesToggle = document.getElementById("legend-toggle-approaches");
+  /**
+   * @param {import('./FullGraph.js').FullGraph} [graph] - Optional graph instance for direct reset
+   */
+  constructor(graph = null) {
+    this.#graph = graph;
+    this.#media = globalThis.matchMedia(GraphPageController.#MOBILE_BREAKPOINT);
+    this.#narrowMedia = globalThis.matchMedia(GraphPageController.#NARROW_BREAKPOINT);
+    this.#sidebar = document.getElementById("full-q-graph-sidebar");
+    this.#toggleButton = document.getElementById("mobile-graph-controls-toggle");
+    this.#closeButton = document.getElementById("mobile-graph-sheet-close");
+    this.#resetButton = document.getElementById("mobile-graph-reset__btn");
+    this.#filterInput = document.getElementById("full-q-graph-filter__input");
+    this.#filterButton = document.getElementById("full-q-graph-filter__btn");
+    this.#centerButton = document.getElementById("full-q-graph-center__btn");
+    this.#qualityToggle = document.getElementById("legend-toggle-qualities");
+    this.#requirementsToggle = document.getElementById("legend-toggle-requirements");
+    this.#standardsToggle = document.getElementById("legend-toggle-standards");
+    this.#approachesToggle = document.getElementById("legend-toggle-approaches");
+  }
+
+  /**
+   * Bind all event listeners and apply the initial responsive state.
+   * @returns {GraphPageController} this – for chaining
+   */
+  initialize() {
+    this.#bindEvents();
+    // Sync the sheet aria state immediately so screen readers don't see
+    // the closed mobile sheet's controls during the ~180 ms window before
+    // the graph bundle finishes its own initialization. The template
+    // renders the sidebar with aria-hidden + inert (correct for mobile),
+    // so this call mainly matters on desktop where we need to expose it.
+    this.#syncSheetAriaState();
+    // Defer the legend/quick-filter setup so the graph bundle can finish
+    // its own initialization first — those toggles fire change events the
+    // graph must already be listening for.
+    globalThis.setTimeout(() => this.#setMobileDefaults(), 180);
+    return this;
+  }
+
+  // ── sheet open / close ────────────────────────────────────────────────────
+
+  #openSheet() {
+    if (!this.#sidebar || !this.#media.matches) return;
+    this.#sidebar.classList.add("is-open");
+    this.#sidebar.removeAttribute("inert");
+    this.#sidebar.removeAttribute("aria-hidden");
+    this.#toggleButton?.setAttribute("aria-expanded", "true");
+  }
+
+  #closeSheet() {
+    if (!this.#sidebar) return;
+    this.#sidebar.classList.remove("is-open");
+    if (this.#media.matches) {
+      this.#sidebar.setAttribute("inert", "");
+      this.#sidebar.setAttribute("aria-hidden", "true");
     }
+    this.#toggleButton?.setAttribute("aria-expanded", "false");
+  }
 
-    /**
-     * Bind all event listeners and apply the initial responsive state.
-     * @returns {GraphPageController} this – for chaining
-     */
-    initialize() {
-        this.#bindEvents();
-        // Sync the sheet aria state immediately so screen readers don't see
-        // the closed mobile sheet's controls during the ~180 ms window before
-        // the graph bundle finishes its own initialization. The template
-        // renders the sidebar with aria-hidden + inert (correct for mobile),
-        // so this call mainly matters on desktop where we need to expose it.
-        this.#syncSheetAriaState();
-        // Defer the legend/quick-filter setup so the graph bundle can finish
-        // its own initialization first — those toggles fire change events the
-        // graph must already be listening for.
-        globalThis.setTimeout(() => this.#setMobileDefaults(), 180);
-        return this;
+  // ── responsive defaults ───────────────────────────────────────────────────
+
+  /**
+   * Aria/inert state for the mobile sheet — safe to call synchronously
+   * at init because it doesn't touch the graph or fire any change events.
+   * Template renders the sidebar with aria-hidden + inert (mobile-default);
+   * on desktop we need to expose it before the user interacts.
+   */
+  #syncSheetAriaState() {
+    if (!this.#sidebar) return;
+    if (this.#media.matches) {
+      // Mobile: sheet is closed on first paint — keep it hidden from
+      // the a11y tree until the user opens it.
+      this.#sidebar.setAttribute("aria-hidden", "true");
+      this.#sidebar.setAttribute("inert", "");
+    } else {
+      // Desktop: sidebar is always visible — expose to screen readers.
+      this.#sidebar.removeAttribute("aria-hidden");
+      this.#sidebar.removeAttribute("inert");
     }
+  }
 
-    // ── sheet open / close ────────────────────────────────────────────────────
-
-    #openSheet() {
-        if (!this.#sidebar || !this.#media.matches) return;
-        this.#sidebar.classList.add("is-open");
-        this.#sidebar.removeAttribute("inert");
-        this.#sidebar.removeAttribute("aria-hidden");
-        this.#toggleButton?.setAttribute("aria-expanded", "true");
+  #setMobileDefaults() {
+    // Sheet UI (compact header, bottom sheet) reacts to the combined
+    // width-or-height breakpoint — short viewports need the sheet just
+    // as much as narrow ones do.
+    if (!this.#media.matches) {
+      // Desktop: sidebar is always visible — make sure it is reachable
+      document.body.classList.remove("graph-compact-header");
+      this.#sidebar?.removeAttribute("inert");
+      this.#sidebar?.removeAttribute("aria-hidden");
+    } else {
+      document.body.classList.add("graph-compact-header");
     }
+    this.#closeSheet();
 
-    #closeSheet() {
-        if (!this.#sidebar) return;
-        this.#sidebar.classList.remove("is-open");
-        if (this.#media.matches) {
-            this.#sidebar.setAttribute("inert", "");
-            this.#sidebar.setAttribute("aria-hidden", "true");
-        }
-        this.#toggleButton?.setAttribute("aria-expanded", "false");
+    // Legend-toggle defaults react to width only. A short-but-wide
+    // desktop window triggers the sheet above but must NOT lose the
+    // requirements/standards/approaches node types — that narrowing is
+    // only appropriate on genuinely narrow (mobile-width) viewports.
+    if (this.#narrowMedia.matches) {
+      this.#applyToggle(this.#qualityToggle, true);
+      this.#applyToggle(this.#requirementsToggle, false);
+      this.#applyToggle(this.#standardsToggle, false);
+      this.#applyToggle(this.#approachesToggle, false);
     }
+  }
 
-    // ── responsive defaults ───────────────────────────────────────────────────
+  // ── filtering helpers ─────────────────────────────────────────────────────
 
-    /**
-     * Aria/inert state for the mobile sheet — safe to call synchronously
-     * at init because it doesn't touch the graph or fire any change events.
-     * Template renders the sidebar with aria-hidden + inert (mobile-default);
-     * on desktop we need to expose it before the user interacts.
-     */
-    #syncSheetAriaState() {
-        if (!this.#sidebar) return;
-        if (this.#media.matches) {
-            // Mobile: sheet is closed on first paint — keep it hidden from
-            // the a11y tree until the user opens it.
-            this.#sidebar.setAttribute("aria-hidden", "true");
-            this.#sidebar.setAttribute("inert", "");
-        } else {
-            // Desktop: sidebar is always visible — expose to screen readers.
-            this.#sidebar.removeAttribute("aria-hidden");
-            this.#sidebar.removeAttribute("inert");
-        }
-    }
+  #applyToggle(toggle, checked) {
+    if (!toggle || toggle.checked === checked) return;
+    toggle.checked = checked;
+    toggle.dispatchEvent(new Event("change", { bubbles: true }));
+  }
 
-    #setMobileDefaults() {
-        // Sheet UI (compact header, bottom sheet) reacts to the combined
-        // width-or-height breakpoint — short viewports need the sheet just
-        // as much as narrow ones do.
-        if (!this.#media.matches) {
-            // Desktop: sidebar is always visible — make sure it is reachable
-            document.body.classList.remove("graph-compact-header");
-            this.#sidebar?.removeAttribute("inert");
-            this.#sidebar?.removeAttribute("aria-hidden");
-        } else {
-            document.body.classList.add("graph-compact-header");
-        }
+  #applyQuickFilter(btn) {
+    if (!this.#filterInput || !this.#filterButton) return;
+    if (btn.disabled || this.#filterInput.disabled || this.#filterButton.disabled) return;
+    const term = btn.dataset.term;
+    if (!term) return;
+
+    this.#applyToggle(this.#qualityToggle, true);
+    this.#applyToggle(this.#standardsToggle, btn.dataset.showStandards === "true");
+    this.#applyToggle(this.#requirementsToggle, btn.dataset.showRequirements === "true");
+    this.#applyToggle(this.#approachesToggle, btn.dataset.showApproaches === "true");
+
+    this.#filterInput.value = term;
+    this.#filterButton.click();
+
+    if (this.#media.matches) this.#closeSheet();
+    globalThis.setTimeout(() => this.#centerButton?.click(), 120);
+  }
+
+  // ── event binding ─────────────────────────────────────────────────────────
+
+  #bindEvents() {
+    this.#toggleButton?.addEventListener("click", () => {
+      if (this.#sidebar?.classList.contains("is-open")) {
         this.#closeSheet();
+      } else {
+        this.#openSheet();
+      }
+    });
 
-        // Legend-toggle defaults react to width only. A short-but-wide
-        // desktop window triggers the sheet above but must NOT lose the
-        // requirements/standards/approaches node types — that narrowing is
-        // only appropriate on genuinely narrow (mobile-width) viewports.
-        if (this.#narrowMedia.matches) {
-            this.#applyToggle(this.#qualityToggle, true);
-            this.#applyToggle(this.#requirementsToggle, false);
-            this.#applyToggle(this.#standardsToggle, false);
-            this.#applyToggle(this.#approachesToggle, false);
+    this.#closeButton?.addEventListener("click", () => this.#closeSheet());
+
+    this.#resetButton?.addEventListener("click", () => {
+      if (this.#graph) {
+        this.#graph.resetFilter();
+      } else {
+        if (this.#filterInput) {
+          this.#filterInput.disabled = false;
+          this.#filterInput.value = "";
         }
-    }
-
-    // ── filtering helpers ─────────────────────────────────────────────────────
-
-    #applyToggle(toggle, checked) {
-        if (!toggle || toggle.checked === checked) return;
-        toggle.checked = checked;
-        toggle.dispatchEvent(new Event("change", { bubbles: true }));
-    }
-
-    #applyQuickFilter(btn) {
-        if (!this.#filterInput || !this.#filterButton) return;
-        const term = btn.dataset.term;
-        if (!term) return;
-
-        this.#applyToggle(this.#qualityToggle, true);
-        this.#applyToggle(this.#standardsToggle, btn.dataset.showStandards === "true");
-        this.#applyToggle(this.#requirementsToggle, btn.dataset.showRequirements === "true");
-        this.#applyToggle(this.#approachesToggle, btn.dataset.showApproaches === "true");
-
-        this.#filterInput.disabled = false;
-        this.#filterInput.value = term;
-        this.#filterButton.click();
-
-        if (this.#media.matches) this.#closeSheet();
-        globalThis.setTimeout(() => this.#centerButton?.click(), 120);
-    }
-
-    // ── event binding ─────────────────────────────────────────────────────────
-
-    #bindEvents() {
-        this.#toggleButton?.addEventListener("click", () => {
-            if (this.#sidebar?.classList.contains("is-open")) {
-                this.#closeSheet();
-            } else {
-                this.#openSheet();
-            }
-        });
-
-        this.#closeButton?.addEventListener("click", () => this.#closeSheet());
-
-        this.#resetButton?.addEventListener("click", () => {
-            if (this.#graph) {
-                this.#graph.resetFilter();
-            } else {
-                if (this.#filterInput) {
-                    this.#filterInput.disabled = false;
-                    this.#filterInput.value = "";
-                }
-                this.#filterButton?.click();
-            }
-            this.#setMobileDefaults();
-            globalThis.setTimeout(() => this.#centerButton?.click(), 120);
-        });
-
-        document.querySelectorAll(".mobile-quick-filter").forEach(btn => {
-            btn.addEventListener("click", () => this.#applyQuickFilter(btn));
-        });
-
-        // Close sheet when tapping outside (mobile only)
-        document.addEventListener("click", event => {
-            if (!this.#media.matches || !this.#sidebar || !this.#toggleButton) return;
-            if (!(event.target instanceof Node)) return;
-            if (this.#sidebar.contains(event.target) || this.#toggleButton.contains(event.target)) return;
-            this.#closeSheet();
-        });
-
-        const onBreakpointChange = () => this.#setMobileDefaults();
-        if (typeof this.#media.addEventListener === "function") {
-            this.#media.addEventListener("change", onBreakpointChange);
-            // Separate listener: if height is already short, #media.matches
-            // stays true while the viewport narrows further, so #media never
-            // fires a "change" event even though the narrow breakpoint does.
-            this.#narrowMedia.addEventListener("change", onBreakpointChange);
-        } else {
-            // Safari < 14 fallback
-            this.#media.addListener(onBreakpointChange);
-            this.#narrowMedia.addListener(onBreakpointChange);
+        if (this.#filterButton) {
+          this.#filterButton.disabled = false;
         }
+        this.#filterButton?.click();
+      }
+      this.#setMobileDefaults();
+      globalThis.setTimeout(() => this.#centerButton?.click(), 120);
+    });
+
+    document.querySelectorAll(".mobile-quick-filter, .full-quick-filter").forEach((btn) => {
+      btn.addEventListener("click", () => this.#applyQuickFilter(btn));
+    });
+
+    // Close sheet when tapping outside (mobile only)
+    document.addEventListener("click", (event) => {
+      if (!this.#media.matches || !this.#sidebar || !this.#toggleButton) return;
+      if (!(event.target instanceof Node)) return;
+      if (this.#sidebar.contains(event.target) || this.#toggleButton.contains(event.target)) return;
+      this.#closeSheet();
+    });
+
+    const onBreakpointChange = () => this.#setMobileDefaults();
+    if (typeof this.#media.addEventListener === "function") {
+      this.#media.addEventListener("change", onBreakpointChange);
+      // Separate listener: if height is already short, #media.matches
+      // stays true while the viewport narrows further, so #media never
+      // fires a "change" event even though the narrow breakpoint does.
+      this.#narrowMedia.addEventListener("change", onBreakpointChange);
+    } else {
+      // Safari < 14 fallback
+      this.#media.addListener(onBreakpointChange);
+      this.#narrowMedia.addListener(onBreakpointChange);
     }
+  }
 }
