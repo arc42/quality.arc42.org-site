@@ -40,7 +40,7 @@
 }
 
 .toggle-checkbox:checked + .toggle-switch {
-  background: #e6daf2;
+  background: var(--brand-violet);
 }
 
 .toggle-checkbox:checked + .toggle-switch:before {

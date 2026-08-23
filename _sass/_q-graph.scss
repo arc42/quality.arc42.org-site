@@ -74,21 +74,35 @@
 #full-q-graph-filter__btn {
   width: 100%;
   padding: 0.5rem;
-  background-color: #e6daf2;
-  color: var(--brand-blue-text);
-  border: none;
+  background-color: var(--brand-violet);
+  color: var(--brand-violet-faint);
+  border: 1px solid var(--brand-violet-deep);
   border-radius: $radius-xs;
   cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s ease-in-out;
 }
 
 #full-q-graph-filter__btn:hover {
-  background-color: #cb9fff;
+  background-color: var(--brand-violet-deep);
+  border-color: var(--brand-violet-18);
+  color: var(--brand-cream);
+}
+
+#full-q-graph-filter__btn:focus-visible {
+  background-color: var(--brand-violet);
+  border-color: var(--brand-violet-deep);
+  box-shadow: var(--focus-ring);
+  color: #ffffff;
+  outline: none;
 }
 
 #full-q-graph-filter__btn:disabled {
   opacity: 0.5;
   cursor: not-allowed;
-  background-color: #e6daf2;
+  background-color: var(--brand-violet-soft);
+  color: var(--brand-violet-deep);
+  border-color: var(--brand-violet-18);
 }
 
 .full-quick-filter-wrap {
@@ -102,7 +116,7 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.04em;
-  color: #566f84;
+  color: var(--brand-blue-text);
 }
 
 .full-quick-filters {
@@ -112,9 +126,9 @@
 }
 
 .full-quick-filter {
-  border: 1px solid #9ecbe3;
-  background: #eef8ff;
-  color: var(--brand-blue-accent-dark);
+  border: 1px solid var(--brand-blue);
+  background: var(--brand-blue-soft);
+  color: var(--brand-blue-text);
   border-radius: $radius-pill;
   padding: 0.2rem 0.52rem;
   font-size: 0.73rem;
@@ -124,8 +138,9 @@
 
 .full-quick-filter:hover,
 .full-quick-filter:focus-visible {
-  background: #dff1ff;
-  border-color: #73b1d4;
+  background: var(--brand-blue);
+  border-color: var(--brand-blue-dark);
+  color: white;
   outline: none;
 }
 
@@ -147,9 +162,9 @@
   justify-content: center;
   width: 1.85rem;
   height: 1.85rem;
-  border: 1px solid #b7d9ed;
+  border: 1px solid var(--brand-blue-accent-dark);
   border-radius: $radius-pill;
-  background: #ecf8ff;
+  background: transparent;
   color: var(--brand-blue-accent-dark);
   font-size: 0.85rem;
   text-decoration: none;
@@ -160,8 +175,8 @@
 #full-q-graph-home__btn:hover,
 #full-q-graph-home__btn:focus-visible {
   text-decoration: none;
-  background: #def2ff;
-  border-color: #8fc4e5;
+  background: var(--brand-blue-soft);
+  border-color: var(--brand-blue-dark);
   color: var(--brand-blue-dark);
 }
 
@@ -172,7 +187,7 @@
 
 #full-q-graph-center__btn {
   background: transparent;
-  border: 1px solid #cb9fff;
+  border: 1px solid var(--brand-violet-24);
   border-radius: $radius-pill;
   display: inline-flex;
   align-items: center;
@@ -180,7 +195,7 @@
   cursor: pointer;
   padding: 0.22rem 0.62rem;
   transition: all 0.2s ease-in-out;
-  color: #414288;
+  color: var(--brand-violet-deep);
   font-size: 0.82rem;
   font-weight: 600;
   margin-left: 10px;
@@ -189,9 +204,9 @@
 
 #full-q-graph-center__btn:hover,
 #full-q-graph-center__btn:focus-visible {
-  border-color: #cb9fff;
-  background-color: rgba(203, 159, 255, 0.18);
-  color: #414288;
+  border-color: var(--brand-violet);
+  background-color: var(--brand-violet-18);
+  color: var(--brand-violet-deep);
   outline: none;
 }
 
@@ -218,9 +233,9 @@
   padding: 2px 4px 2px 8px;
   font-size: 0.75rem;
   line-height: 1.4;
-  background-color: #ebebeb;
-  border: 1px solid #414288;
-  color: #414288;
+  background-color: var(--brand-violet-faint);
+  border: 1px solid var(--brand-violet-24);
+  color: var(--brand-violet-deep);
   border-radius: $radius-lg;
   white-space: nowrap;
 }
@@ -236,7 +251,7 @@
   appearance: none;
   border: none;
   background: transparent;
-  color: #414288;
+  color: var(--brand-violet-deep);
   width: 18px;
   height: 18px;
   line-height: 1.4;
@@ -248,8 +263,8 @@
 
 .q-chip__close:hover,
 .q-chip__close:focus {
-  background-color: #414288;
-  color: #ebebeb;
+  background-color: var(--brand-violet-deep);
+  color: var(--brand-paper);
   outline: none;
 }
 
@@ -317,9 +332,8 @@
   // anything inside it) stack above unconditionally.
   z-index: 2;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  transition:
-    transform 0.2s ease-in-out,
-    background-color 0.2s ease-in-out;
+  transition: transform 0.2s ease-in-out,
+  background-color 0.2s ease-in-out;
 }
 
 #full-graph-toggle:hover {
