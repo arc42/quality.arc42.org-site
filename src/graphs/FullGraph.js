@@ -42,9 +42,11 @@ export class FullGraph extends Graph {
     super.initialize();
     this.registerFilterControls();
     this.registerLegendToggles();
+    this._syncSidebarScrollbarWidth();
     // Apply initial state from URL and listen to history changes
     this._applyStateFromUrl(true);
     globalThis.addEventListener("popstate", () => this._applyStateFromUrl(false));
+    globalThis.addEventListener("resize", () => this._syncSidebarScrollbarWidth());
     return this;
   }
 
@@ -400,6 +402,15 @@ export class FullGraph extends Graph {
   }
 
   // ---------------- Helpers ----------------
+  _syncSidebarScrollbarWidth() {
+    const sidebar = document.getElementById("full-q-graph-sidebar");
+    if (!sidebar) return;
+    const hasVerticalOverflow = sidebar.scrollHeight > sidebar.clientHeight + 1;
+    const scrollbarWidth = Math.max(0, sidebar.offsetWidth - sidebar.clientWidth);
+    const compensation = hasVerticalOverflow ? scrollbarWidth : 0;
+    sidebar.style.setProperty("--sidebar-scrollbar-width", `${compensation}px`);
+  }
+
   _parseTerms(value) {
     const v = (value || "").trim();
     if (v === "") return [];
@@ -515,11 +526,14 @@ export class FullGraph extends Graph {
     if (!container) {
       container = document.createElement("div");
       container.id = "full-q-graph-filter__chips";
-      // Insert right after the input element
-      if (this.filterInput.nextSibling) {
-        this.filterInput.parentNode.insertBefore(container, this.filterInput.nextSibling);
+      // Insert right after the "clear all" link (which sits under the
+      // filter input), so chips render below it; fall back to the input.
+      const resetButton = document.getElementById("mobile-graph-reset__btn");
+      const anchor = resetButton || this.filterInput;
+      if (anchor.nextSibling) {
+        anchor.parentNode.insertBefore(container, anchor.nextSibling);
       } else {
-        this.filterInput.parentNode.appendChild(container);
+        anchor.parentNode.appendChild(container);
       }
     }
     this.filterChipsContainer = container;
@@ -530,14 +544,17 @@ export class FullGraph extends Graph {
     this._ensureChipsContainer();
     const container = this.filterChipsContainer;
     if (!container) return;
+    const resetButton = document.getElementById("mobile-graph-reset__btn");
     // Clear previous
     container.textContent = "";
     const terms = Array.isArray(this.finalizedTerms) ? this.finalizedTerms : [];
     if (!terms.length) {
       container.style.display = "none";
+      if (resetButton) resetButton.hidden = true;
       if (this.filterInput) this.filterInput.disabled = false;
       if (this.filterButton) this.filterButton.disabled = false;
       this._syncQuickFiltersState();
+      this._syncSidebarScrollbarWidth();
       return;
     }
     container.style.display = "";
@@ -566,6 +583,10 @@ export class FullGraph extends Graph {
       container.appendChild(chip);
     });
 
+    // Show the "clear all" link above the chips (it lives in static
+    // markup right under the filter input, aligned to the right).
+    if (resetButton) resetButton.hidden = false;
+
     // Disable input and filter button if at cap; re-enable otherwise
     const atCap = terms.length >= MAX_FILTER_TERMS;
     if (this.filterInput) {
@@ -576,6 +597,7 @@ export class FullGraph extends Graph {
       this.filterButton.disabled = atCap;
     }
     this._syncQuickFiltersState();
+    this._syncSidebarScrollbarWidth();
   }
 
   _syncQuickFiltersState() {
@@ -593,18 +615,26 @@ export class FullGraph extends Graph {
     const quickFilterButtons = document.querySelectorAll(
       ".mobile-quick-filter, .full-quick-filter",
     );
+    let activeCount = 0;
     quickFilterButtons.forEach((btn) => {
       const rawTerm = btn.dataset.term || btn.textContent || "";
       const key = String(rawTerm).trim().toLowerCase().replace(/^#/, "");
       const isActive = activeKeys.has(key);
 
       if (isActive) {
+        activeCount += 1;
         btn.style.display = "none";
       } else {
         btn.style.display = "";
       }
       btn.disabled = atCap;
     });
+
+    const mobileAllAppliedHint = document.getElementById("mobile-quick-filter-state");
+    if (mobileAllAppliedHint) {
+      const allApplied = quickFilterButtons.length > 0 && activeCount === quickFilterButtons.length;
+      mobileAllAppliedHint.hidden = !allApplied;
+    }
   }
 
   registerDefaultEventHandlers() {

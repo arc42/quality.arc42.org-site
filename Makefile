@@ -1,9 +1,10 @@
-.PHONY: help build clean dev down doctor diagnose test wcag-test wcag-test-strict lighthouse-test assets
+.PHONY: help build clean dev down doctor diagnose test wcag-test wcag-test-strict lighthouse-test assets prettier-write
 
 help:
 	@printf "Available targets:\n"
 	@printf "  make build         Build all Docker images used by local development and tests.\n"
 	@printf "  make assets        Build minified production assets (JS/search index) via Docker.\n"
+	@printf "  make prettier-write  Run Prettier with --write on common content and source folders.\n"
 	@printf "  make help          Show this help.\n"
 	@printf "  make dev           Start the prebuilt development environment (docker compose up esbuild jekyll).\n"
 	@printf "  make down          Stop and remove dev containers + network. Preserves cache volumes.\n"
@@ -20,6 +21,9 @@ build:
 
 assets:
 	docker compose run --rm esbuild npm run build
+
+prettier-write:
+	npx prettier --write src _sass
 
 clean:
 	docker compose down --volumes 2>/dev/null || true

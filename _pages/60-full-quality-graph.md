@@ -18,6 +18,7 @@ assign standards_count = site.standards | size %}
     aria-label="Back to home"
   >
     <i class="fa fa-home" aria-hidden="true"></i>
+    <span class="sr-only">Back to home</span>
   </a>
   <h1 class="graph-intro__title">Quality Graph</h1>
   <p class="graph-intro__lede">
@@ -76,8 +77,20 @@ assign standards_count = site.standards | size %}
         <input type="text" id="full-q-graph-filter__input" placeholder="Filter..." />
         <button id="full-q-graph-filter__btn" class="btn">Filter</button>
 
+        <button
+          id="mobile-graph-reset__btn"
+          class="btn"
+          type="button"
+          aria-label="Clear all filters"
+          aria-controls="full-q-graph-filter__chips"
+          hidden
+        >
+          clear all
+        </button>
+
         <div class="mobile-quick-filter-wrap">
           <p class="mobile-quick-filter-label">Quick filters &mdash; dimensions</p>
+          <p id="mobile-quick-filter-state" class="mobile-quick-filter-state" hidden>all applied</p>
           <div class="mobile-quick-filters">
             <button class="mobile-quick-filter" type="button" data-term="efficient">#efficient</button>
             <button class="mobile-quick-filter" type="button" data-term="flexible">#flexible</button>
@@ -90,8 +103,6 @@ assign standards_count = site.standards | size %}
             <button class="mobile-quick-filter" type="button" data-term="usable">#usable</button>
           </div>
         </div>
-
-        <button id="mobile-graph-reset__btn" class="btn" type="button">reset filters</button>
         <hr />
       </div>
 

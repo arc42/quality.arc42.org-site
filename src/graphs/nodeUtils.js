@@ -1,5 +1,5 @@
 // Small utility helpers around node identities and types to avoid scattering string checks
-import { QUALITY_ROOT_ID, NODE_TYPES } from './constants';
+import { NODE_TYPES, QUALITY_ROOT_ID } from "./constants";
 
 /**
  * @typedef {Object} QNode
@@ -10,7 +10,7 @@ import { QUALITY_ROOT_ID, NODE_TYPES } from './constants';
 export const isRootId = (id) => id === QUALITY_ROOT_ID;
 export const isRoot = (node) => !!node && isRootId(node.id);
 
-export const getNodeType = (node) => (node && node.qualityType) || null;
+export const getNodeType = (node) => node?.qualityType || null;
 
 export const isQuality = (node) => getNodeType(node) === NODE_TYPES.QUALITY;
 export const isRequirement = (node) => getNodeType(node) === NODE_TYPES.REQUIREMENT;

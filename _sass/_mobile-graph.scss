@@ -183,6 +183,13 @@
     color: var(--brand-blue-text);
   }
 
+  .mobile-quick-filter-state {
+    margin: -0.12rem 0 0.34rem;
+    font-size: 0.69rem;
+    font-weight: 500;
+    color: var(--brand-muted);
+  }
+
   .mobile-quick-filters {
     display: flex;
     flex-wrap: wrap;
@@ -222,25 +229,31 @@
   }
 
   #mobile-graph-reset__btn {
-    width: 100%;
-    margin-bottom: 0.45rem;
-    padding: 0.5rem 0.6rem;
-    border-radius: $radius-xs;
-    border: 1px solid var(--req-text-color);
-    color: var(--req-text-color);
-    background: var(--reqs-soft-background-color);
-    font-weight: 700;
+    display: block;
+    width: fit-content;
+    margin: 0.2rem 0 0.35rem auto;
+    padding: 0.15rem 0.25rem;
+    min-height: 32px;
+    border-radius: 0.2rem;
+    border: none;
+    background: none;
+    color: var(--error-color);
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-decoration: none;
     cursor: pointer;
   }
 
+  #mobile-graph-reset__btn[hidden] {
+    display: none;
+  }
+
   #mobile-graph-reset__btn:hover {
-    background: var(--reqs-background-color);
-    border-color: var(--req-text-color);
+    color: var(--error-deep-color);
+    text-decoration: underline;
   }
 
   #mobile-graph-reset__btn:focus-visible {
-    background: var(--reqs-background-color);
-    border-color: var(--req-text-color);
     box-shadow: var(--focus-ring);
     outline: none;
   }
@@ -302,7 +315,7 @@
       // (e.g. 1366x768, or desktop at 125% zoom): capped at 420px instead
       // of stretching edge-to-edge.
       width: min(calc(100% - 1.2rem), 420px);
-      max-height: min(72dvh, 560px);
+      height: min(72dvh, 560px);
       /* No padding-top — sheet head sits flush against the top edge */
       padding: 0 0.72rem 0.72rem;
       border-radius: $radius-lg;
@@ -393,11 +406,18 @@
       font-size: 1rem;
     }
 
+    .mobile-graph-filter-header {
+      padding-top: 0.5rem;
+    }
+
     #full-q-graph-filter__input,
-    #full-q-graph-filter__btn,
-    #mobile-graph-reset__btn {
+    #full-q-graph-filter__btn {
       font-size: 0.92rem;
       min-height: 38px;
+    }
+
+    #mobile-graph-reset__btn {
+      font-size: 0.85rem;
     }
 
     #full-q-graph-filter__chips {

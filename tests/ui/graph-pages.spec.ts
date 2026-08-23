@@ -3,16 +3,28 @@ import { expect, test } from "@playwright/test";
 test("full graph page renders desktop controls and legend toggles", async ({ page }) => {
   await page.goto("/full-quality-graph");
 
+  const homeLink = page.getByRole("link", { name: "Back to home" });
   await expect(page.locator("#full-q-graph-container")).toBeVisible();
   await expect(page.locator("#full-q-graph-filter__input")).toBeAttached();
   await expect(page.locator("#full-q-graph-filter__btn")).toBeAttached();
-  await expect(page.locator("#full-q-graph-home__btn")).toBeAttached();
+  await expect(homeLink).toBeVisible();
+  await expect(homeLink).toHaveAttribute("href", /\/$/);
   await expect(page.locator("#full-q-graph-home__btn i.fa-home")).toBeAttached();
   await expect(page.locator(".mobile-quick-filters")).toBeAttached();
   await expect(page.locator(".mobile-quick-filter[data-term='secure']")).toBeAttached();
   await expect(page.locator("#legend-toggle-qualities")).toBeAttached();
   await expect(page.locator("#legend-toggle-standards")).toBeAttached();
   await expect(page.locator("#legend-toggle-requirements")).toBeAttached();
+});
+
+test("back-to-home control is keyboard-activatable", async ({ page }) => {
+  await page.goto("/full-quality-graph");
+
+  const homeLink = page.getByRole("link", { name: "Back to home" });
+  await homeLink.focus();
+  await expect(homeLink).toBeFocused();
+  await page.keyboard.press("Enter");
+  await expect(page).toHaveURL(/\/$/);
 });
 
 test("mobile graph view toggles filter sheet without horizontal overflow", async ({ page }) => {
@@ -102,6 +114,39 @@ test("desktop sidebar scrolls instead of clipping when content overflows", async
   expect(overflowY).toBe("auto");
 });
 
+test("sidebar grows by visible scrollbar width when filters cause overflow", async ({ page }) => {
+  await page.setViewportSize({ width: 1280, height: 760 });
+  await page.goto("/full-quality-graph");
+
+  const sidebar = page.locator("#full-q-graph-sidebar");
+  await expect(sidebar).toBeVisible();
+
+  const before = await sidebar.boundingBox();
+  expect(before).not.toBeNull();
+
+  const filterInput = page.locator("#full-q-graph-filter__input");
+  const filterBtn = page.locator("#full-q-graph-filter__btn");
+  await filterInput.fill("t1, t2, t3, t4, t5, t6, t7, t8, t9");
+  await filterBtn.click();
+  await expect(page.locator("#full-q-graph-filter__chips .q-chip")).toHaveCount(9);
+
+  const after = await sidebar.boundingBox();
+  expect(after).not.toBeNull();
+
+  const metrics = await sidebar.evaluate((el) => {
+    const hasVerticalOverflow = el.scrollHeight > el.clientHeight + 1;
+    const scrollbarWidth = Math.max(0, el.offsetWidth - el.clientWidth);
+    return { hasVerticalOverflow, scrollbarWidth };
+  });
+
+  if (metrics.hasVerticalOverflow && metrics.scrollbarWidth > 0) {
+    expect(Math.abs(after.width - (before.width + metrics.scrollbarWidth))).toBeLessThan(3);
+  } else {
+    expect(Math.abs(after.width - before.width)).toBeLessThan(3);
+  }
+  expect(Math.abs(after.height - before.height)).toBeLessThan(1);
+});
+
 test("quick filter disappears when selected and reappears when removed", async ({ page }) => {
   await page.setViewportSize({ width: 1280, height: 760 });
   await page.goto("/full-quality-graph");
@@ -126,6 +171,29 @@ test("quick filter disappears when selected and reappears when removed", async (
   // Quick filter reappears in the list
   await expect(secureQuickFilter).toBeVisible();
   await expect(chips).toHaveCount(0);
+});
+
+test("shows muted all-applied hint when all quick filters are active", async ({ page }) => {
+  await page.setViewportSize({ width: 1280, height: 760 });
+  await page.goto("/full-quality-graph");
+
+  await expect(page.locator(".mobile-quick-filter[data-term='secure']")).toBeVisible();
+  const allAppliedHint = page.locator("#mobile-quick-filter-state");
+  await expect(allAppliedHint).toBeAttached();
+  await expect(allAppliedHint).toBeHidden();
+
+  const quickFilters = page.locator(".mobile-quick-filter");
+  const quickFilterCount = await quickFilters.count();
+  for (let i = 0; i < quickFilterCount; i++) {
+    await quickFilters.nth(i).click();
+  }
+
+  await expect(allAppliedHint).toBeVisible();
+  await expect(allAppliedHint).toHaveText("all applied");
+
+  const chips = page.locator("#full-q-graph-filter__chips .q-chip");
+  await chips.first().locator(".q-chip__close").click();
+  await expect(allAppliedHint).toBeHidden();
 });
 
 test("allows up to 10 filters and disables filtering when cap is reached", async ({ page }) => {
@@ -176,10 +244,31 @@ test("allows up to 10 filters and disables filtering when cap is reached", async
 
   // Reset clears all filters and restores controls
   const resetBtn = page.locator("#mobile-graph-reset__btn");
-  await resetBtn.click();
+  await expect(resetBtn).toHaveAttribute("aria-label", "Clear all filters");
+  await expect(resetBtn).toBeVisible();
+  await resetBtn.focus();
+  await expect(resetBtn).toBeFocused();
+  await page.keyboard.press("Enter");
   await expect(chips).toHaveCount(0);
+  await expect(resetBtn).toBeHidden();
   await expect(filterInput).toBeEnabled();
   await expect(filterBtn).toBeEnabled();
   await expect(secureQuickFilter).toBeVisible();
   await expect(secureQuickFilter).toBeEnabled();
+});
+
+test("clear-all filter button stays hidden until filters exist and has an accessible label", async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 1280, height: 760 });
+  await page.goto("/full-quality-graph");
+
+  const resetBtn = page.locator("#mobile-graph-reset__btn");
+  await expect(resetBtn).toHaveAttribute("aria-label", "Clear all filters");
+  await expect(resetBtn).toBeHidden();
+
+  const secureQuickFilter = page.locator(".mobile-quick-filter[data-term='secure']");
+  await secureQuickFilter.click();
+
+  await expect(resetBtn).toBeVisible();
 });

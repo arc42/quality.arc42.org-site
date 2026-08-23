@@ -10,11 +10,7 @@ const dataProvider = new GraphDataProvider(propertyNodes, nodes, edges);
 
 // Initialize and render the fullpage graph
 const fullGraph = new FullGraph("full-q-graph-container", dataProvider);
-fullGraph
-    .initialize()
-    .buildGraph()
-    .registerDefaultEventHandlers()
-    .render();
+fullGraph.initialize().buildGraph().registerDefaultEventHandlers().render();
 
 // Initialize page UI controller (mobile sheet, quick filters, reset)
 new GraphPageController(fullGraph).initialize();
