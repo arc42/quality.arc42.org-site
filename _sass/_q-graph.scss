@@ -281,6 +281,11 @@
   margin-bottom: 0.5rem;
 }
 
+#full-q-graph-legend .legend-item .toggle {
+  flex: 1;
+  justify-content: space-between;
+}
+
 .color-box {
   display: inline-block;
   width: 20px;
