@@ -3,7 +3,7 @@ import { test, expect, request } from "@playwright/test";
 /**
  * PRODUCTION check: HTTP → HTTPS redirect.
  *
- * The Lighthouse suite audits the local dev server (http://jekyll:4000),
+ * The Lighthouse suite audits the local dev server (http://jekyll:4045),
  * which has no TLS listener — so Lighthouse's `redirects-http` audit can
  * never pass locally and is skipped there (see lighthouse.spec.ts). The
  * redirect itself is performed by GitHub Pages ("Enforce HTTPS"), i.e. by

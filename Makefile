@@ -1,3 +1,11 @@
+# This site's fixed local dev port. Every arc42 site has its own so their dev
+# servers can run side by side; see raw/port-assignment.md in meta.arc42.org.
+# Jekyll binds it inside the container too (--port in docker-compose.yml), not
+# just on the host side, so its "Server address:" startup banner names the real
+# port -- which is also why the Playwright container reaches the site at
+# http://jekyll:$(SITE_PORT) rather than at Jekyll's default 4000.
+SITE_PORT ?= 4045
+
 .PHONY: help build clean dev down doctor diagnose test wcag-test wcag-test-strict lighthouse-test assets prettier-write
 
 help:
@@ -6,10 +14,10 @@ help:
 	@printf "  make assets        Build minified production assets (JS/search index) via Docker.\n"
 	@printf "  make prettier-write  Run Prettier with --write on common content and source folders.\n"
 	@printf "  make help          Show this help.\n"
-	@printf "  make dev           Start the prebuilt development environment (docker compose up esbuild jekyll).\n"
+	@printf "  make dev           Start the prebuilt development environment on http://localhost:$(SITE_PORT) (docker compose up esbuild jekyll).\n"
 	@printf "  make down          Stop and remove dev containers + network. Preserves cache volumes.\n"
 	@printf "  make doctor        Check local dev setup and key URLs (including alias redirects).\n"
-	@printf "  make diagnose      Read-only health snapshot (Docker daemon, stack state, port 4000, HTTP probe).\n"
+	@printf "  make diagnose      Read-only health snapshot (Docker daemon, stack state, port $(SITE_PORT), HTTP probe).\n"
 	@printf "  make clean         Remove generated _site directory AND cache volumes.\n"
 	@printf "  make test          Ensure local site is up, run Playwright UI tests in Docker, optionally serve HTML report.\n"
 	@printf "  make wcag-test     Run axe-based WCAG scan in Docker and generate report assets (informative, non-blocking).\n"
@@ -32,6 +40,14 @@ clean:
 	rm -f assets/.esbuild-ready
 
 dev:
+	@printf "==> Open http://localhost:$(SITE_PORT)  (NOT http://0.0.0.0:$(SITE_PORT) — Firefox refuses to connect to 0.0.0.0)\n"
+	@holder=$$(docker ps --filter "publish=$(SITE_PORT)" --format '{{.Names}}'); \
+	if [ -n "$$holder" ] && [ -z "$$(docker compose ps -q jekyll 2>/dev/null)" ]; then \
+		printf "==> Port $(SITE_PORT) is already in use by another container: %s\n" "$$holder"; \
+		printf "==> That's likely a dev server from a sibling arc42 site repo. Stop it first, e.g.:\n"; \
+		printf "==>   docker stop %s\n" "$$holder"; \
+		exit 1; \
+	fi
 	docker compose up esbuild jekyll
 
 down:
@@ -54,39 +70,39 @@ diagnose:
 		exit 0; \
 	fi
 	@docker compose ps --format 'table {{.Service}}\t{{.State}}\t{{.Status}}\t{{.Ports}}' 2>&1 | sed 's/^/         /'
-	@printf "\n  --- Port 4000 publishing (container side) ---\n"
+	@printf "\n  --- Port $(SITE_PORT) publishing (container side) ---\n"
 	@jekyll_id=$$(docker compose ps -q jekyll 2>/dev/null); \
 	if [ -z "$$jekyll_id" ]; then \
 		printf "  [warn] Jekyll service not in the running stack.\n"; \
 	else \
 		ports=$$(docker inspect "$$jekyll_id" --format '{{json .NetworkSettings.Ports}}' 2>/dev/null); \
 		if echo "$$ports" | grep -q '"HostPort"'; then \
-			printf "  [ok]   Jekyll container: port 4000 published to host\n"; \
+			printf "  [ok]   Jekyll container: port $(SITE_PORT) published to host\n"; \
 		else \
-			printf "  [fail] Jekyll container: port 4000 NOT published to host\n"; \
+			printf "  [fail] Jekyll container: port $(SITE_PORT) NOT published to host\n"; \
 			printf "         Container has stale config (docker-compose.yml edited after start).\n"; \
 			printf "         Fix: make down && make dev\n"; \
 		fi; \
 	fi
-	@printf "\n  --- Host network (port 4000) ---\n"
-	@listener=$$(lsof -nP -iTCP:4000 -sTCP:LISTEN 2>/dev/null); \
+	@printf "\n  --- Host network (port $(SITE_PORT)) ---\n"
+	@listener=$$(lsof -nP -iTCP:$(SITE_PORT) -sTCP:LISTEN 2>/dev/null); \
 	if [ -z "$$listener" ]; then \
-		printf "  [fail] Nothing listening on host port 4000.\n"; \
+		printf "  [fail] Nothing listening on host port $(SITE_PORT).\n"; \
 		printf "         If the container shows it as published, restart Docker Desktop.\n"; \
 	else \
-		printf "  [ok]   Host port 4000: in use\n"; \
+		printf "  [ok]   Host port $(SITE_PORT): in use\n"; \
 		non_docker=$$(printf "%s\n" "$$listener" | awk 'NR>1 && tolower($$1) !~ /docker|com.docke|vpnkit/'); \
 		if [ -n "$$non_docker" ]; then \
-			printf "  [warn] A non-Docker process is also bound to port 4000:\n"; \
+			printf "  [warn] A non-Docker process is also bound to port $(SITE_PORT):\n"; \
 			printf "%s\n" "$$non_docker" | head -3 | sed 's/^/         /'; \
 		fi; \
 	fi
 	@printf "\n  --- HTTP probe ---\n"
-	@code=$$(curl -s --max-time 5 -o /dev/null -w "%{http_code}" http://localhost:4000/ 2>/dev/null || echo "000"); \
+	@code=$$(curl -s --max-time 5 -o /dev/null -w "%{http_code}" http://localhost:$(SITE_PORT)/ 2>/dev/null || echo "000"); \
 	case "$$code" in \
-		200) printf "  [ok]   GET http://localhost:4000/ -> 200\n";; \
-		000) printf "  [fail] GET http://localhost:4000/ -> connection refused or timeout\n";; \
-		*)   printf "  [warn] GET http://localhost:4000/ -> HTTP %s\n" "$$code";; \
+		200) printf "  [ok]   GET http://localhost:$(SITE_PORT)/ -> 200\n";; \
+		000) printf "  [fail] GET http://localhost:$(SITE_PORT)/ -> connection refused or timeout\n";; \
+		*)   printf "  [warn] GET http://localhost:$(SITE_PORT)/ -> HTTP %s\n" "$$code";; \
 	esac
 	@printf "\n[diagnose] Done. For deeper investigation:\n"
 	@printf "  docker compose logs --tail=60 jekyll esbuild\n\n"
@@ -103,10 +119,10 @@ doctor:
 	fi
 	@printf "[doctor] Ensuring dev services are running (docker compose up -d esbuild jekyll)...\n"
 	@docker compose up -d esbuild jekyll >/dev/null
-	@printf "[doctor] Waiting for http://localhost:4000 to become ready"
+	@printf "[doctor] Waiting for http://localhost:$(SITE_PORT) to become ready"
 	@ready=0; i=0; \
 	while [ $$i -lt 45 ]; do \
-		if curl -fsS http://localhost:4000 >/dev/null 2>&1; then \
+		if curl -fsS http://localhost:$(SITE_PORT) >/dev/null 2>&1; then \
 			ready=1; \
 			break; \
 		fi; \
@@ -116,15 +132,15 @@ doctor:
 	done; \
 	printf "\n"; \
 	if [ $$ready -ne 1 ]; then \
-		printf "❌ Site did not become ready on http://localhost:4000\n"; \
+		printf "❌ Site did not become ready on http://localhost:$(SITE_PORT)\n"; \
 		printf "Run: docker compose logs --tail=120 jekyll esbuild\n"; \
-		printf "Also verify no other process is using port 4000.\n"; \
+		printf "Also verify no other process is using port $(SITE_PORT).\n"; \
 		exit 1; \
 	fi
 	@printf "[doctor] Probing key routes...\n"
 	@fail=0; \
 	for path in "/" "/qualities/autonomy/" "/qualities/autonomicity/" ; do \
-		url="http://localhost:4000$$path"; \
+		url="http://localhost:$(SITE_PORT)$$path"; \
 		code=$$(curl -s -o /dev/null -w "%{http_code}" "$$url" || true); \
 		if [ "$$code" = "200" ] || [ "$$code" = "301" ] || [ "$$code" = "302" ]; then \
 			printf "  [ok]   %s -> HTTP %s\n" "$$path" "$$code"; \
@@ -138,17 +154,17 @@ doctor:
 		printf "Run: docker compose logs --tail=120 jekyll esbuild\n"; \
 		exit 1; \
 	fi
-	@printf "[doctor] Hostname tip: use http://localhost:4000 or http://127.0.0.1:4000 in browser.\n"
+	@printf "[doctor] Hostname tip: use http://localhost:$(SITE_PORT) or http://127.0.0.1:$(SITE_PORT) in browser.\n"
 	@printf "[doctor] 0.0.0.0 is a bind address and may fail as a browser URL on some systems.\n"
 	@printf "✅ doctor passed.\n\n"
 
 test:
 	@printf "\n[ui-test] Ensuring local site is running (docker compose up -d esbuild jekyll)...\n"
 	@docker compose up -d esbuild jekyll >/dev/null
-	@printf "[ui-test] Waiting for http://localhost:4000 to become ready"
+	@printf "[ui-test] Waiting for http://localhost:$(SITE_PORT) to become ready"
 	@ready=0; i=0; \
 	while [ $$i -lt 60 ]; do \
-		if curl -fsS http://localhost:4000 >/dev/null 2>&1; then \
+		if curl -fsS http://localhost:$(SITE_PORT) >/dev/null 2>&1; then \
 			ready=1; \
 			break; \
 		fi; \
@@ -158,14 +174,14 @@ test:
 	done; \
 	printf "\n"; \
 	if [ $$ready -ne 1 ]; then \
-		printf "❌ Timed out waiting for site on http://localhost:4000\n"; \
+		printf "❌ Timed out waiting for site on http://localhost:$(SITE_PORT)\n"; \
 		printf "Try: docker compose logs --tail=120 jekyll esbuild\n\n"; \
 		exit 1; \
 	fi
 	@printf "[ui-test] Running CSS lint checks...\n"
 	@npm run test:css || { printf "❌ CSS lint failed.\n"; exit 1; }
 	@printf "[ui-test] Running Playwright UI tests in Docker...\n"
-	@/bin/bash -lc 'set -o pipefail; docker compose --profile test run --rm -e UI_BASE_URL=http://jekyll:4000 playwright npx playwright test --config _docker/playwright/playwright.config.ts 2>&1 | sed "/^To open last HTML report run:/,+3d"; exit $${PIPESTATUS[0]}'; status=$$?; \
+	@/bin/bash -lc 'set -o pipefail; docker compose --profile test run --rm -e UI_BASE_URL=http://jekyll:$(SITE_PORT) playwright npx playwright test --config _docker/playwright/playwright.config.ts 2>&1 | sed "/^To open last HTML report run:/,+3d"; exit $${PIPESTATUS[0]}'; status=$$?; \
 	printf "\n"; \
 	if [ $$status -eq 0 ]; then \
 		printf "✅ Playwright UI tests passed.\n"; \
@@ -192,10 +208,10 @@ test:
 wcag-test:
 	@printf "\n[wcag-test] Ensuring local site is running (docker compose up -d esbuild jekyll)...\n"
 	@docker compose up -d esbuild jekyll >/dev/null
-	@printf "[wcag-test] Waiting for http://localhost:4000 to become ready"
+	@printf "[wcag-test] Waiting for http://localhost:$(SITE_PORT) to become ready"
 	@ready=0; i=0; \
 	while [ $$i -lt 60 ]; do \
-		if curl -fsS http://localhost:4000 >/dev/null 2>&1; then \
+		if curl -fsS http://localhost:$(SITE_PORT) >/dev/null 2>&1; then \
 			ready=1; \
 			break; \
 		fi; \
@@ -205,12 +221,12 @@ wcag-test:
 	done; \
 	printf "\n"; \
 	if [ $$ready -ne 1 ]; then \
-		printf "❌ Timed out waiting for site on http://localhost:4000\n"; \
+		printf "❌ Timed out waiting for site on http://localhost:$(SITE_PORT)\n"; \
 	printf "Try: docker compose logs --tail=120 jekyll esbuild\n\n"; \
 		exit 1; \
 	fi
 	@printf "[wcag-test] Running WCAG (wcag2a/wcag2aa/wcag21a/wcag21aa) scan in Docker (informative mode)...\n"
-	@/bin/bash -lc 'set -o pipefail; docker compose --profile test run --rm -e UI_BASE_URL=http://jekyll:4000 -e WCAG_STRICT=0 playwright npx playwright test --config _docker/playwright/playwright.config.ts tests/ui/wcag.spec.ts 2>&1 | sed "/^To open last HTML report run:/,+3d"; exit $${PIPESTATUS[0]}'; status=$$?; \
+	@/bin/bash -lc 'set -o pipefail; docker compose --profile test run --rm -e UI_BASE_URL=http://jekyll:$(SITE_PORT) -e WCAG_STRICT=0 playwright npx playwright test --config _docker/playwright/playwright.config.ts tests/ui/wcag.spec.ts 2>&1 | sed "/^To open last HTML report run:/,+3d"; exit $${PIPESTATUS[0]}'; status=$$?; \
 	printf "\n"; \
 	if [ $$status -eq 0 ]; then \
 		printf "✅ WCAG scan completed.\n"; \
@@ -225,10 +241,10 @@ wcag-test:
 wcag-test-strict:
 	@printf "\n[wcag-test-strict] Ensuring local site is running (docker compose up -d esbuild jekyll)...\n"
 	@docker compose up -d esbuild jekyll >/dev/null
-	@printf "[wcag-test-strict] Waiting for http://localhost:4000 to become ready"
+	@printf "[wcag-test-strict] Waiting for http://localhost:$(SITE_PORT) to become ready"
 	@ready=0; i=0; \
 	while [ $$i -lt 60 ]; do \
-		if curl -fsS http://localhost:4000 >/dev/null 2>&1; then \
+		if curl -fsS http://localhost:$(SITE_PORT) >/dev/null 2>&1; then \
 			ready=1; \
 			break; \
 		fi; \
@@ -238,12 +254,12 @@ wcag-test-strict:
 	done; \
 	printf "\n"; \
 	if [ $$ready -ne 1 ]; then \
-		printf "❌ Timed out waiting for site on http://localhost:4000\n"; \
+		printf "❌ Timed out waiting for site on http://localhost:$(SITE_PORT)\n"; \
 	printf "Try: docker compose logs --tail=120 jekyll esbuild\n\n"; \
 		exit 1; \
 	fi
 	@printf "[wcag-test-strict] Running strict WCAG scan (fails on violations)...\n"
-	@/bin/bash -lc 'set -o pipefail; docker compose --profile test run --rm -e UI_BASE_URL=http://jekyll:4000 -e WCAG_STRICT=1 playwright npx playwright test --config _docker/playwright/playwright.config.ts tests/ui/wcag.spec.ts 2>&1 | sed "/^To open last HTML report run:/,+3d"; exit $${PIPESTATUS[0]}'; status=$$?; \
+	@/bin/bash -lc 'set -o pipefail; docker compose --profile test run --rm -e UI_BASE_URL=http://jekyll:$(SITE_PORT) -e WCAG_STRICT=1 playwright npx playwright test --config _docker/playwright/playwright.config.ts tests/ui/wcag.spec.ts 2>&1 | sed "/^To open last HTML report run:/,+3d"; exit $${PIPESTATUS[0]}'; status=$$?; \
 	printf "\n"; \
 	if [ $$status -eq 0 ]; then \
 		printf "✅ Strict WCAG scan passed (zero violations).\n"; \
@@ -258,10 +274,10 @@ wcag-test-strict:
 lighthouse-test:
 	@printf "\n[lighthouse-test] Ensuring local site is running (docker compose up -d esbuild jekyll)...\n"
 	@docker compose up -d esbuild jekyll >/dev/null
-	@printf "[lighthouse-test] Waiting for http://localhost:4000 to become ready"
+	@printf "[lighthouse-test] Waiting for http://localhost:$(SITE_PORT) to become ready"
 	@ready=0; i=0; \
 	while [ $$i -lt 60 ]; do \
-		if curl -fsS http://localhost:4000 >/dev/null 2>&1; then \
+		if curl -fsS http://localhost:$(SITE_PORT) >/dev/null 2>&1; then \
 			ready=1; \
 			break; \
 		fi; \
@@ -271,12 +287,12 @@ lighthouse-test:
 	done; \
 	printf "\n"; \
 	if [ $$ready -ne 1 ]; then \
-		printf "❌ Timed out waiting for site on http://localhost:4000\n"; \
+		printf "❌ Timed out waiting for site on http://localhost:$(SITE_PORT)\n"; \
 	printf "Try: docker compose logs --tail=120 jekyll esbuild\n\n"; \
 		exit 1; \
 	fi
 	@printf "[lighthouse-test] Running Lighthouse audits in Docker...\n"
-	@/bin/bash -lc 'set -o pipefail; docker compose --profile test run --rm -e UI_BASE_URL=http://jekyll:4000 playwright npx playwright test --config _docker/playwright/playwright.config.ts tests/ui/lighthouse.spec.ts 2>&1 | sed "/^To open last HTML report run:/,+3d"; exit $${PIPESTATUS[0]}'; status=$$?; \
+	@/bin/bash -lc 'set -o pipefail; docker compose --profile test run --rm -e UI_BASE_URL=http://jekyll:$(SITE_PORT) playwright npx playwright test --config _docker/playwright/playwright.config.ts tests/ui/lighthouse.spec.ts 2>&1 | sed "/^To open last HTML report run:/,+3d"; exit $${PIPESTATUS[0]}'; status=$$?; \
 	printf "\n"; \
 	if [ $$status -eq 0 ]; then \
 		printf "✅ Lighthouse audits completed.\n"; \

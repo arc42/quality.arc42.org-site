@@ -107,16 +107,27 @@ make build
 make dev
 ```
 
-The site serves on http://localhost:4000. Content and front-matter changes
+The site serves on http://localhost:4045. Content and front-matter changes
 are picked up live; rebuild images only when `package-lock.json` or
 `Gemfile.lock` change.
+
+The port is fixed at **4045**, not Jekyll's default 4000, so this dev stack can
+run alongside the other arc42 sites' dev servers without a clash — see
+`raw/port-assignment.md` in meta.arc42.org for the full assignment. Jekyll binds
+4045 inside the container as well as on the host, so its "Server address:"
+startup banner names the real port. Four places must stay in step: `SITE_PORT`
+in the `Makefile`, the mapping plus `--port` in `docker-compose.yml`, `CMD` in
+`_docker/jekyll/Dockerfile`, and the `UI_BASE_URL` the Playwright service uses
+to reach the site (`http://jekyll:4045`). The `wcag-refresh` GitHub workflow
+still uses 4000 — it runs its own Jekyll on a CI runner with no siblings around,
+so nothing there can clash.
 
 **Common Make targets:**
 
 | Command                 | What it does                                                                                                                               |
 | ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
 | `make build`            | Build Docker images. Slow path — runs `bundle install` and `npm ci` inside the images.                                                     |
-| `make dev`              | Start the prebuilt dev stack (esbuild watcher + Jekyll on port 4000).                                                                      |
+| `make dev`              | Start the prebuilt dev stack (esbuild watcher + Jekyll on port 4045).                                                                      |
 | `make doctor`           | Sanity-check the dev stack: Docker up, site reachable, key routes (including alias redirects) responding.                                  |
 | `make clean`            | Remove `_site/`.                                                                                                                           |
 | `make test`             | Run Playwright UI tests in Docker. Starts the stack first if needed.                                                                       |

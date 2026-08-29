@@ -19,4 +19,4 @@ RUN chmod +x /usr/local/bin/jekyll-entrypoint
 WORKDIR /site
 
 ENTRYPOINT ["jekyll-entrypoint"]
-CMD ["bundle", "exec", "jekyll", "serve", "--incremental", "--watch", "--host", "0.0.0.0", "--force_polling"]
+CMD ["bundle", "exec", "jekyll", "serve", "--incremental", "--watch", "--host", "0.0.0.0", "--port", "4045", "--force_polling"]
