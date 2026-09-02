@@ -34,14 +34,14 @@ services:
       - jekyll_site:/site/_site
       - jekyll_cache:/site/.jekyll-cache
       - sass_cache:/site/.sass-cache
-    # 4045 is this site's fixed dev port (see raw/port-assignment.md in
+    # 4245 is this site's fixed dev port (see raw/port-assignment.md in
     # meta.arc42.org). --port below hands the same number to Jekyll: its
     # "Server address:" banner reports the port it was told to bind, so a
     # host-side-only mapping would leave the banner naming the wrong port.
     ports:
-      - "4045:4045"
+      - "4245:4245"
     command: >
-      sh -c "bundle exec jekyll serve --incremental --watch --host 0.0.0.0 --port 4045 $${POLLING} --config _config.yml,_config_dev.yml"
+      sh -c "bundle exec jekyll serve --incremental --watch --host 0.0.0.0 --port 4245 $${POLLING} --config _config.yml,_config_dev.yml"
 
   playwright:
     build:
@@ -53,7 +53,7 @@ services:
     extra_hosts:
       - "host.docker.internal:host-gateway"
     environment:
-      UI_BASE_URL: http://host.docker.internal:4045
+      UI_BASE_URL: http://host.docker.internal:4245
     volumes:
       - .:/site
       - playwright_node_modules:/site/node_modules

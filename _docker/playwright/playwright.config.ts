@@ -17,7 +17,7 @@ export default defineConfig({
     ["html", { open: "never", outputFolder: path.join(repoRoot, "playwright-report") }],
   ],
   use: {
-    baseURL: process.env.UI_BASE_URL || "http://127.0.0.1:4045",
+    baseURL: process.env.UI_BASE_URL || "http://127.0.0.1:4245",
     trace: "on-first-retry",
     screenshot: "only-on-failure",
     video: "retain-on-failure",

@@ -65,7 +65,7 @@ test.describe("Lighthouse Audits", () => {
           extends: "lighthouse:default",
           settings: {
             // Both HTTPS audits are environment artifacts here: the audit
-            // target is the local dev server (http://jekyll:4045), which has
+            // target is the local dev server (http://jekyll:4245), which has
             // no TLS listener, so neither "is HTTPS" nor "redirects to HTTPS"
             // can ever pass locally. The behaviour these audits want IS
             // asserted — against production, where the redirect actually
