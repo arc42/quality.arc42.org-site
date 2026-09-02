@@ -4,7 +4,7 @@
 # just on the host side, so its "Server address:" startup banner names the real
 # port -- which is also why the Playwright container reaches the site at
 # http://jekyll:$(SITE_PORT) rather than at Jekyll's default 4000.
-SITE_PORT ?= 4045
+SITE_PORT ?= 4245
 
 .PHONY: help build clean dev down doctor diagnose test wcag-test wcag-test-strict lighthouse-test assets prettier-write
 

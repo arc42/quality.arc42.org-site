@@ -8,7 +8,7 @@
 - Config: `_config.yml`, `Gemfile`, `docker-compose.yml`, `package.json`.
 
 ## Build, Test, and Development
-- `docker compose up`: builds the Jekyll site and serves on `http://localhost:4045/` — this site's fixed dev port, see `raw/port-assignment.md` in meta.arc42.org.
+- `docker compose up`: builds the Jekyll site and serves on `http://localhost:4245/` — this site's fixed dev port, see `raw/port-assignment.md` in meta.arc42.org.
 - `docker compose down`: stops stack so compose changes take effect on next start.
 - `npm run build`: generate graph data and bundle JS to `assets/js` once.
 - `npm run watch`: build and watch for JS changes.
