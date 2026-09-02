@@ -30,6 +30,28 @@
     <symbol id="domain-language-icon-award" viewBox="0 0 384 512">
       <path d="M288 358.3C302 350.2 305.5 328.3 316.9 316.9S350.2 302 358.3 288C366.2 274.2 358.4 253.5 362.6 237.7C366.7 222.5 383.1 208.5 383.1 192S365.8 161.5 361.7 146.3C357.5 130.5 365.3 109.8 357.4 96C349.3 82 327.4 78.5 316 67.1S301.1 33.8 287.1 25.7C273.3 17.7 252.6 25.5 236.9 21.3C222.5 17.3 208.5 0 192 0S161.5 17.3 146.3 21.3C130.5 25.5 109.8 17.7 96 25.7C82 33.8 78.5 55.7 67.1 67.1S33.8 82 25.7 96C17.7 109.7 25.6 130.5 21.4 146.2C17.3 161.5 0 175.5 0 192S17.3 222.5 21.3 237.7C25.5 253.5 17.7 274.2 25.7 288C33.8 302 55.7 305.5 67.1 316.9S82 350.2 96 358.3C109.8 366.3 130.5 358.5 146.3 362.7C161.5 366.7 175.5 384 192 384S222.5 366.7 237.7 362.7C253.5 358.5 274.2 366.3 288 358.3ZM112 192C112 147.7 147.8 112 192 112S272 147.7 272 192S236.2 272 192 272S112 236.2 112 192ZM1.7 433.2C-1.5 441.4 0 450.7 5.6 457.5C11.3 464.2 20.1 467.4 28.7 465.6L73.9 456.6L95.3 498.8C99.5 507 107.6 512 116.7 512H117.7C127.2 511.6 135.4 505.9 138.9 497.1L172.5 415C118.8 410.4 70.5 386.9 34.3 351.1L1.7 433.2ZM349.6 351.1C313.5 386.9 265.2 410.4 211.4 415L245 497.1C248.6 505.9 256.7 511.6 266.2 512H267.3C276.4 512 284.5 507 288.7 498.9L310.1 456.6L355.3 465.6C363.9 467.4 372.8 464.2 378.4 457.5C384.1 450.7 385.5 441.4 382.3 433.2L349.6 351.1Z"/>
     </symbol>
+
+    <!--
+      One clip path per box: the accent bars are drawn flush with the box edge and
+      clipped to its outline, so every bar picks up the same 12px corner radius
+      instead of floating inside or poking out. Keep each rect in sync with the
+      box-surface rect of the same name.
+    -->
+    <clipPath id="domain-language-clip-dimension">
+      <rect x="370" y="120" width="160" height="80" rx="12"/>
+    </clipPath>
+    <clipPath id="domain-language-clip-approach">
+      <rect x="0.5" y="320" width="169" height="120" rx="12"/>
+    </clipPath>
+    <clipPath id="domain-language-clip-characteristic">
+      <rect x="350" y="315" width="200" height="130" rx="12"/>
+    </clipPath>
+    <clipPath id="domain-language-clip-requirement">
+      <rect x="690" y="120" width="190" height="130" rx="12"/>
+    </clipPath>
+    <clipPath id="domain-language-clip-standard">
+      <rect x="690" y="328.5" width="190" height="105" rx="12"/>
+    </clipPath>
   </defs>
 
   <g class="domain-language-svg__connectors" aria-hidden="true">
@@ -75,8 +97,9 @@
   <a href="{{ '/dimensions/' | prepend: site.baseurl }}" class="domain-language-link domain-language-link--box" aria-label="Quality dimensions — the top-level tags structuring all characteristics">
     <title>Explore the quality dimensions</title>
     <rect class="domain-language-svg__box-surface" x="370" y="120" width="160" height="80" rx="12" fill="#e4edec" stroke="#e2d6dd"/>
-    <rect x="367" y="124" width="10" height="72" rx="3" fill="#0077ad"/>
-    <use href="#domain-language-icon-tag" x="381" y="122" width="27" height="27" fill="#003366"/>
+    <rect class="domain-language-svg__box-accent" x="370" y="120" width="10" height="80"
+      fill="#0077ad" clip-path="url(#domain-language-clip-dimension)"/>
+    <use href="#domain-language-icon-tag" x="385" y="122" width="27" height="27" fill="#003366"/>
     <text x="450" y="143" text-anchor="middle" fill="#003366">
       <tspan x="450" class="domain-language-svg__box-detail">(top-level)</tspan>
       <tspan x="450" dy="27" class="domain-language-svg__box-title">Dimension</tspan>
@@ -134,8 +157,9 @@
   <a href="{{ '/approaches/' | prepend: site.baseurl }}" class="domain-language-link domain-language-link--box" aria-label="Approaches — patterns, practices, tactics and strategies">
     <title>Explore solution approaches</title>
     <rect class="domain-language-svg__box-surface" x="0.5" y="320" width="169" height="120" rx="12" fill="#eaf6e2" stroke="#e2d6dd"/>
-    <rect x="0" y="322" width="10" height="114" rx="3" fill="#92ef80"/>
-    <use href="#domain-language-icon-puzzle" x="14" y="322" width="30" height="30" fill="#1b5e20"/>
+    <rect class="domain-language-svg__box-accent" x="0.5" y="320" width="10" height="120"
+      fill="#92ef80" clip-path="url(#domain-language-clip-approach)"/>
+    <use href="#domain-language-icon-puzzle" x="16" y="322" width="30" height="30" fill="#1b5e20"/>
     <text x="85" y="371" text-anchor="middle" fill="#1b5e20">
       <tspan x="85" class="domain-language-svg__box-title">Approach</tspan>
       <tspan x="85" dy="22" class="domain-language-svg__box-detail">pattern, practice,</tspan>
@@ -147,7 +171,8 @@
   <a href="{{ '/qualities/' | prepend: site.baseurl }}" class="domain-language-link domain-language-link--box" aria-label="Quality characteristics — the full list of specific quality terms">
     <title>Explore quality characteristics</title>
     <rect class="domain-language-svg__box-surface" x="350" y="315" width="200" height="130" rx="12" fill="#d5eef2" stroke="#e2d6dd"/>
-    <rect x="349" y="324" width="10" height="114" rx="3" fill="#00b8f5"/>
+    <rect class="domain-language-svg__box-accent" x="350" y="315" width="10" height="130"
+      fill="#00b8f5" clip-path="url(#domain-language-clip-characteristic)"/>
     <use href="#domain-language-icon-gem" x="366" y="324" width="30" height="30" fill="#003366"/>
     <text x="450" y="340" text-anchor="middle" fill="#113040">
       <tspan x="450" class="domain-language-svg__box-detail">(specific)</tspan>
@@ -161,7 +186,8 @@
   <a href="{{ '/requirements/' | prepend: site.baseurl }}" class="domain-language-link domain-language-link--box" aria-label="Example requirements with metrics and acceptance criteria">
     <title>Explore example quality requirements</title>
     <rect class="domain-language-svg__box-surface" x="690" y="120" width="190" height="130" rx="12" fill="#f9ede9" stroke="#e2d6dd"/>
-    <rect x="690" y="128" width="12" height="114" rx="3" fill="#ffb3b3"/>
+    <rect class="domain-language-svg__box-accent" x="690" y="120" width="10" height="130"
+      fill="#ffb3b3" clip-path="url(#domain-language-clip-requirement)"/>
     <use href="#domain-language-icon-target" x="707" y="124" width="23" height="23" fill="#8b0000"/>
     <text x="785" y="161" text-anchor="middle" fill="#8b0000">
       <tspan x="785" class="domain-language-svg__requirement-title">Example</tspan>
@@ -175,7 +201,8 @@
   <a href="{{ '/standards/' | prepend: site.baseurl }}" class="domain-language-link domain-language-link--box" aria-label="Quality-related standards">
     <title>Explore quality standards</title>
     <rect class="domain-language-svg__box-surface" x="690" y="328.5" width="190" height="105" rx="12" fill="#f9f3e6" stroke="#e2d6dd"/>
-    <rect x="690" y="336.5" width="12" height="89" rx="3" fill="#ffc95c"/>
+    <rect class="domain-language-svg__box-accent" x="690" y="328.5" width="10" height="105"
+      fill="#ffc95c" clip-path="url(#domain-language-clip-standard)"/>
     <use href="#domain-language-icon-award" x="705" y="331.5" width="29" height="29" fill="#2c3e50"/>
     <text x="785" y="374" text-anchor="middle" fill="#113040">
       <tspan x="785" class="domain-language-svg__box-title">Standard</tspan>
