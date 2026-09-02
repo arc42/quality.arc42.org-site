@@ -37,6 +37,9 @@
       instead of floating inside or poking out. Keep each rect in sync with the
       box-surface rect of the same name.
     -->
+    <clipPath id="domain-language-clip-quality">
+      <rect x="10" y="120" width="160" height="80" rx="12"/>
+    </clipPath>
     <clipPath id="domain-language-clip-dimension">
       <rect x="370" y="120" width="160" height="80" rx="12"/>
     </clipPath>
@@ -86,6 +89,8 @@
   <a href="{{ '/articles/what-is-quality' | prepend: site.baseurl }}" class="domain-language-link domain-language-link--box" aria-label="System- or product quality — what quality means">
     <title>Read the article: What is Quality?</title>
     <rect class="domain-language-svg__box-surface" x="10" y="120" width="160" height="80" rx="12" fill="#ece7e7" stroke="#e2d6dd"/>
+    <rect class="domain-language-svg__box-accent" x="10" y="120" width="10" height="80"
+      fill="#682d63" clip-path="url(#domain-language-clip-quality)"/>
     <text x="90" y="143" text-anchor="middle" class="domain-language-svg__system-title">
       <tspan x="90">System- or</tspan>
       <tspan x="90" dy="25">Product</tspan>
