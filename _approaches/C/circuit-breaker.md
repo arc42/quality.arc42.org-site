@@ -49,7 +49,7 @@ The circuit starts **Closed**. Once the failure rate or consecutive failure coun
 
 - **Chaos injection**: Use a tool (e.g., Chaos Monkey) to inject 100% latency or 500 errors into a dependency and verify the circuit trips to "Open" within the expected number of calls.
 - **Recovery check**: Verify that the circuit transitions to "Half-Open" and then "Closed" automatically once the dependency's health is restored.
-- **Fallback correctness**: Assert that the system returns the expected fallback response (e.g., cached data or a user-friendly message) while the circuit is "Open."
+- **Fallback correctness**: Assert that the system returns the expected fallback response (e.g., cached data or a user-friendly message) while the circuit is "Open".
 - **Metric validation**: Monitor state transitions and "Open" duration; the error rate for upstream callers should stay within the defined SLO even when the downstream service is down.
 
 ## Variants and Related Tactics

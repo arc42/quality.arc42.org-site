@@ -7,7 +7,7 @@ permalink: /tag-efficient/
 
 <div class="arc42-help" markdown="1">
 
-* Resource-efficient, fast, low-footprint, low latency.
+* Resource-efficient, fast, low-footprint, low latency
 * Energy-, storage- and network efficient, having adequate capacity
 * Development-efficient, being easy to change (although that aspect may better be covered by [#flexible](/tag-flexible))
 * Time-to-market, how efficient new features can _go live_

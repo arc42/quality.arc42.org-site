@@ -101,7 +101,7 @@ Q42 regards development teams as first-class citizens:
 * `#reliable` in terms of "We can add now features or otherwise modify the systems, and can reliably predict the consequences of our changes. We can reliably fix bugs. We can reliably predict runtime behaviour."
 * `#flexible` in several dimensions, e.g. flexible module or component structure, flexible code that is easy to modify, flexible software and hardware infrastructure.
 * `#usable` in terms of understandable module structures, understandable code and data structures, understandable runtime behaviour.
-* `#suitable` in terms of appropriately "We can easily understand, test and modify code, and we can add new responsibilities and functions with appropriate risks".
+* `#suitable` in terms of appropriately "We can easily understand, test and modify code, and we can add new responsibilities and functions with appropriate risks."
 
 ### Summary
 The arc42 quality model has yet to prove its practical applicability, as it hit the _market_ only in January 2023.

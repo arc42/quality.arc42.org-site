@@ -14,7 +14,7 @@ ISO/IEC/IEEE 12207 establishes a comprehensive framework for software life cycle
 This standard 
 
 * defines processes, activities, and tasks that apply during the acquisition, development, operation, maintenance, and disposal of software systems,
-* serves as the foundation for software process improvement, project management, and quality assurance across the software lifecycle 
+* serves as the foundation for software process improvement, project management, and quality assurance across the software lifecycle,
 * provides a process architecture that supports various software development methodologies, from traditional waterfall to agile and iterative approaches, while ensuring systematic management of software quality attributes.
 
 ## Software Life Cycle Process Framework

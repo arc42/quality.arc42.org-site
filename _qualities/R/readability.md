@@ -7,7 +7,7 @@ permalink: /qualities/readability
 
 See also:
 
-* [code readability](/qualities/code-readability).
+* [code readability](/qualities/code-readability)
 * [legibility](/qualities/legibility)
 
 <hr>

@@ -11,7 +11,7 @@ The term can be interpreted in two different directions:
 The goal (_required quality_) can be twofold: 
 
 * **free of redudancy** (or repetition), avoid duplication
-* **have (controlled)** redundancy or repetition, e.g. with redundant hardware or certain parts of systems to avoid downtime due to failures (e.g. due to hardware defects or component/service overload or similar).
+* **have (controlled)** redundancy or repetition, e.g. with redundant hardware or certain parts of systems to avoid downtime due to failures (e.g. due to hardware defects or component/service overload or similar)
 
   
 

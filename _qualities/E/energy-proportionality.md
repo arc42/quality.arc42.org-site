@@ -37,4 +37,4 @@ However, achieving good energy proportionality requires deliberate architectural
 ### Further reading
 
 * Sen, R. and Wood, D.A. (2017). [Energy-Proportional Computing: A New Definition](https://doi.org/10.1109/MC.2017.193). _Computer_, vol. 50, no. 8, pp. 26-33.
-* Microsoft Learn: [Sustainable Software Engineering — Energy Proportionality](https://learn.microsoft.com/en-us/learn/modules/sustainable-software-engineering-overview/7-energy-proportionality)
+* Microsoft Learn: [Sustainable Software Engineering — Energy Proportionality](https://learn.microsoft.com/en-us/learn/modules/sustainable-software-engineering-overview/7-energy-proportionality).

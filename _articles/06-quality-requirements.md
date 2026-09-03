@@ -305,5 +305,5 @@ Try this pragmatic two-tier approach (we like to call it _Q42-quality-scenario_)
 
 ##### Changelog
 
-- Originally written December 2023.
-- revised March 2026
+- Originally written December 2023
+- Revised March 2026

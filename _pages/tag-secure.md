@@ -9,7 +9,7 @@ permalink: /tag-secure/
 
 <div class="arc42-help" markdown="1">
 
-- preventing unauthorized access to assets such as computers, networks, and data.
+- preventing unauthorized access to assets such as computers, networks, and data
 - maintaining confidentiality, integrity and availability of (sensitive) information
 
 </div><br>

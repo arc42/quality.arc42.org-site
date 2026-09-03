@@ -96,7 +96,7 @@ Apart from being in wide use, these models really lack practical applicability, 
 I covered a few downsides in my [article on ISO-25010 shortcomings](/articles/iso-25010-shortcomings).
 To summarize:
 
-* Overly many terms, with a lot of overlap.
+* Overly many terms, with a lot of overlap
 * Critical qualities (e.g. safety, scalability, operational properties) missing from the official version
 * Despite proposing 30+ attributes, code- and architectural qualities are missing
 * No examples of how the ISO-model might be applied to real-world problems 

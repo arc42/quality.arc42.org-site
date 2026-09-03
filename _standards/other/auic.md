@@ -45,5 +45,5 @@ It also indirectly influences other attributes like maintainability, portability
 ## References
 
 - [AIUC-1 (official): https://aiuc-1.com/](https://aiuc-1.com/)
-- related, and much more "official": [ISO-42001:2023](https://www.iso.org/standard/42001). Like most of the ISO documents, the details are hidden behind a paywall.
+- related, and much more "official": [ISO-42001:2023](https://www.iso.org/standard/42001) — like most of the ISO documents, the details are hidden behind a paywall
 

@@ -133,6 +133,7 @@ Link validator checks: quality→quality `related`, quality→tag, quality→sta
 
 - **JS**: ES Modules, include `.js` in imports, kebab-case for entry files, PascalCase for class files, Prettier-formatted (2 spaces, semicolons, 100 cols).
 - **Content**: kebab-case permalinks, alphabetical subdirectories, filename ≈ permalink.
+- **Bullet punctuation**: a list item that is a complete sentence ends with a full stop; a fragment (term, label, criterion, reference entry) does not. Whichever applies, **every item in the same list is punctuated the same way**. Two exceptions, both already in use: one sentence split across bullets keeps its commas and its closing full stop, and a stop belongs inside a closing quote only when the quoted material is itself a complete sentence.
 - **Commits**: imperative mood with area prefix — `content: add ISO-42010`, `graph: fix edges for missing node`, `build: bump esbuild`.
 - **Git staging**: stage files explicitly by name. Do not use `git add -A`, `git add .`, `git commit -am`, or globs.
 
