@@ -168,10 +168,15 @@
   scroll-margin-top: 0.8rem;
 }
 
+// The reset here also has to undo `.site-content`'s prose measure: that block
+// caps every `ul` at 75ch for readability, which silently narrowed this list
+// to ~125px less than its bordered section. Only the tinted alias rows made it
+// visible -- their background stopped short of the section's right border.
 .index-explorer .ix-letter-list {
   list-style: none;
   margin: 0;
   padding: 0;
+  max-width: none;
 }
 
 // ─── Item grammar: title · meta · tags ─────────────────────────────────────
