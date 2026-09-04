@@ -77,11 +77,14 @@
   background-color: var(--article-background-color);
 }
 
-.panel.article-header h1,
-.panel.article-header h1 a,
-.site-content .panel.article-header h1,
-.site-content .panel.article-header h1 a {
-  color: var(--blue-text-color);
+// Articles are violet-coded across the site (violet hero accent,
+// --article-background-color); the listing title follows that, not the
+// blue that belongs to qualities.
+.panel.article-header :is(h1, h2),
+.panel.article-header :is(h1, h2) a,
+.site-content .panel.article-header :is(h1, h2),
+.site-content .panel.article-header :is(h1, h2) a {
+  color: var(--brand-violet-deep);
 }
 
 .category-header {
