@@ -4,7 +4,7 @@
  */
 import { Graph } from "./Graph";
 import { MAX_FILTER_TERMS } from "./constants";
-import { isProperty, isRootId, isStandard } from "./nodeUtils";
+import { isDimension, isProperty, isRootId, isStandard } from "./nodeUtils";
 
 export class FullGraph extends Graph {
   #filterTypeState = {
@@ -677,14 +677,16 @@ export class FullGraph extends Graph {
               link.source.connectedHighlighted = true;
             }
           });
-          // Then collect dimensions 2-hop via qualities
+          // Then collect dimensions 2-hop via qualities. Top-level nodes are
+          // typed "dimension"; "property" is the legacy spelling.
+          const isDim = (n) => isDimension(n) || isProperty(n);
           const qualLookup = new Set(qualities);
           this.renderer.links.each(function (link) {
-            if (qualLookup.has(link.source.id) && isProperty(link.target)) {
+            if (qualLookup.has(link.source.id) && isDim(link.target)) {
               props.add(link.target.id);
               link.target.connectedHighlighted = true;
             }
-            if (qualLookup.has(link.target.id) && isProperty(link.source)) {
+            if (qualLookup.has(link.target.id) && isDim(link.source)) {
               props.add(link.source.id);
               link.source.connectedHighlighted = true;
             }
@@ -783,14 +785,16 @@ export class FullGraph extends Graph {
     });
 
     const qualLookup = new Set(connectedQuals);
+    // Top-level nodes are typed "dimension"; "property" is the legacy spelling.
+    const isDimType = (t) => t === "dimension" || t === "property";
     // Second pass: find dimensions and requirements attached to those qualities
     this.renderer.links.each(function (link) {
       const sId = getId(link.source);
       const tId = getId(link.target);
       const sType = endpointType(link.source);
       const tType = endpointType(link.target);
-      if (qualLookup.has(sId) && tType === "property") props.add(tId);
-      if (qualLookup.has(tId) && sType === "property") props.add(sId);
+      if (qualLookup.has(sId) && isDimType(tType)) props.add(tId);
+      if (qualLookup.has(tId) && isDimType(sType)) props.add(sId);
       if (qualLookup.has(sId) && tType === "requirement") reqs.add(tId);
       if (qualLookup.has(tId) && sType === "requirement") reqs.add(sId);
     });
