@@ -390,17 +390,41 @@
     }
   }
 
+  // Compact listing used by /articles/. article-header.html renders each
+  // entry with heading_level="h2" so the document outline stays sound, so
+  // these rules must not be h1-only -- they were, which left every entry
+  // with the full display-heading size and its 1.5em margins inside a
+  // bordered panel, i.e. a column of tall, near-empty boxes.
   #search-results {
     .article-wrapper {
-      margin: 1em 0;
+      margin: 0;
     }
     article header {
       margin-bottom: 0;
       .panel {
-        padding: 0;
-        background-color: $background-color;
-        h1 {
-          font-size: 1.3em;
+        padding: 0.8rem 0.2rem;
+        background-color: transparent;
+        border: none;
+        border-radius: 0;
+
+        h1,
+        h2 {
+          margin: 0;
+          font-size: 1.2rem;
+          line-height: 1.35;
+          letter-spacing: 0;
+
+          a {
+            display: inline-block;
+            text-decoration: none;
+
+            &:hover,
+            &:focus-visible {
+              text-decoration: underline;
+              text-underline-offset: 0.15em;
+            }
+          }
+
           a.tag {
             font-size: 0.7em;
           }
