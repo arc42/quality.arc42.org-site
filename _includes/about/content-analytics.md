@@ -7,11 +7,14 @@ In the long run we aim at having everything well-connected:
 - Every quality has relations to other qualities (check: [Orphan Qualities](#orphanqualities))
 - We have a method for [synonyms](#synonyms) in place.
 - Every quality has at least one specific requirement (check: [Qualities without Requirements](#qualitieswithoutrequirements))
-- The list of related qualities (`related:`) in the header of every quality file contains only existing qualities (check: [No orphan relations for qualties](#opphanrelations))
+- The list of related qualities (`related:`) in the header of every quality file contains only existing qualities (check: [No orphan relations for qualities](#orphanrelations))
 - Every standard relates to one or multiple qualities (check: [No Standard without Qualities](#nostandardwithoutqualities))
 
 
 ### Qualities without Tag (aka _property_) {#qualitieswithouttag}
+
+>Tags assign a quality to one or more high-level _properties_, like `secure` or `usable`.
+>A quality without a tag shows up in no property overview and is hard to find.
 
 {% assign notag_qualities = "" | split: "," %}
 {% for quality in site.qualities %}
@@ -35,6 +38,8 @@ The following {{ notag_qualities.size }} qualities have no tag defined (excludin
 
 ### Orphan Qualities {#orphanqualities}
 
+>The `related:` field of a quality names the other qualities it is connected to.
+>A quality that names none is a dead end: the graph shows it isolated, and readers have nowhere to go from it.
 
 {% assign orphan_qualities = "" | split: "," %}
 {% for quality in site.qualities %}
@@ -56,8 +61,8 @@ The following {{ orphan_qualities.size }} qualities have no directly related qua
 
 ### Synonyms {#synonyms}
 
-We maintain a list of quality attribute synonyms where multiple terms refer to the same concept. 
-This helps consolidate duplicate content and provides clear redirects for alternative terminology.
+>Different terms often mean the same quality.
+>We keep one canonical page per concept and redirect the alternative terms to it, instead of maintaining near-duplicate content.
 
 See our complete [Quality Aliases and Synonyms mapping](/aliases/) for details.
 
@@ -72,6 +77,9 @@ The synonym system ensures:
 
 
 ### Qualities without Requirements {#qualitieswithoutrequirements}
+
+>Requirements make a quality concrete and testable.
+>They point at qualities via their `related:` field â€” a quality nobody points at stays an abstract term.
 
 {% assign unreferenced_qualities = "" | split: "," %}
 {% for quality in site.qualities %}
@@ -105,8 +113,8 @@ The following {{ unreferenced_qualities.size }} qualities currently have no requ
 
 ### No orphan relations for qualities {#orphanrelations}
 
->Explanation: Every quality has a field `related:` in its header, which contains the names of _related qualities_.
->Here we check for `related:` fields containing non-existing entries.
+>Every quality has a `related:` field in its header, listing the names of _related qualities_.
+>Here we check for entries in that field that name a quality which does not exist.
 
 {% assign orphan_relations = "" | split: "," %}
 {% assign all_quality_slugs = "" | split: "," %}
@@ -141,7 +149,8 @@ The following {{ orphan_relations.size }} orphan relations were found (quality â
 
 ### No standard without qualities {#nostandardwithoutqualities}
 
->Every quality standard (like ISO-5055) shall have at least one or more qualities related to it.
+>Every quality standard (like ISO-5055) should have at least one quality related to it.
+>Standards are linked from the `standards:` field of the qualities, not from the standard page itself.
 
 {% assign standards_without_qualities = "" | split: "," %}
 {% for standard in site.standards %}
