@@ -246,9 +246,13 @@ export class Graph {
   }
 
   _positionPropertyNodes(rootId, levelRadius) {
-    const propertyNodes = this.graph
-      .inNeighbors(rootId)
-      .filter((n) => this.graph.getNodeAttribute(n, "qualityType") === NODE_TYPES.PROPERTY);
+    // The nine top-level nodes are typed "dimension"; "property" is the legacy
+    // spelling. Both must be accepted -- an empty result here skips the entire
+    // radial layout, leaving every node stacked on one point.
+    const propertyNodes = this.graph.inNeighbors(rootId).filter((n) => {
+      const type = this.graph.getNodeAttribute(n, "qualityType");
+      return type === NODE_TYPES.DIMENSION || type === NODE_TYPES.PROPERTY;
+    });
 
     if (propertyNodes.length === 0) return [];
 
