@@ -7,8 +7,8 @@ In the long run we aim at having everything well-connected:
 - Every quality has relations to other qualities (check: [Orphan Qualities](#orphanqualities))
 - We have a method for [synonyms](#synonyms) in place.
 - Every quality has at least one specific requirement (check: [Qualities without Requirements](#qualitieswithoutrequirements))
-- The list of related qualities (`related:`) in the header of every quality file contains only existing qualities (check: [No orphan relations for qualities](#orphanrelations))
-- Every standard relates to one or multiple qualities (check: [No Standard without Qualities](#nostandardwithoutqualities))
+- The list of related qualities (`related:`) in the header of every quality file contains only existing qualities (check: [Orphan Relations](#orphanrelations))
+- Every standard relates to one or multiple qualities (check: [Standards without Qualities](#nostandardwithoutqualities))
 
 
 ### Qualities without Tag (aka _property_) {#qualitieswithouttag}
@@ -111,7 +111,7 @@ The following {{ unreferenced_qualities.size }} qualities currently have no requ
 
 {% for quality in unreferenced_qualities %}[{{ quality.title }}]({{ quality.permalink }}), {% endfor %}
 
-### No orphan relations for qualities {#orphanrelations}
+### Orphan Relations {#orphanrelations}
 
 >Every quality has a `related:` field in its header, listing the names of _related qualities_.
 >Here we check for entries in that field that name a quality which does not exist.
@@ -147,7 +147,7 @@ The following {{ orphan_relations.size }} orphan relations were found (quality â
 
 
 
-### No standard without qualities {#nostandardwithoutqualities}
+### Standards without Qualities {#nostandardwithoutqualities}
 
 >Every quality standard (like ISO-5055) should have at least one quality related to it.
 >Standards are linked from the `standards:` field of the qualities, not from the standard page itself.
