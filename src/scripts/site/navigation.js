@@ -7,6 +7,25 @@ export function initNavigation() {
     const mobileHeaderQuery = window.matchMedia('(max-width: 720px)');
     const hiddenHeaderClass = 'is-hidden';
 
+    // The header is sticky and its height changes with the viewport (one row
+    // on desktop, up to three on phones). Publish the measured height so the
+    // scroll-padding-top in base/_layout.scss can keep anchor targets clear
+    // of it instead of scrolling them underneath.
+    const publishHeaderHeight = () => {
+        if (!header) return;
+        const height = Math.round(header.getBoundingClientRect().height);
+        document.documentElement.style.setProperty('--site-header-height', `${height}px`);
+    };
+
+    if (header) {
+        publishHeaderHeight();
+        if (window.ResizeObserver) {
+            new ResizeObserver(publishHeaderHeight).observe(header);
+        } else {
+            window.addEventListener('resize', publishHeaderHeight);
+        }
+    }
+
     const revealHeader = () => {
         if (header) {
             header.classList.remove(hiddenHeaderClass);

@@ -11,16 +11,36 @@
     margin: 1.5em 0 0.5em;
     color: $site-title-color;
 
+    // Anchor jumps -- in-page TOCs, the heading permalinks below, shared
+    // links -- otherwise land the heading flush against the viewport top,
+    // where the sticky site header covers it. navigation.js keeps
+    // --site-header-height in sync with the measured header; the fallback
+    // matches its desktop size. scroll-margin (on the target) rather than
+    // scroll-padding (on the root), so that focusing the header's own
+    // search field does not scroll the page.
+    &[id] {
+      scroll-margin-top: calc(var(--site-header-height, 4rem) + 1rem);
+    }
+
     a {
       color: inherit;
     }
     .header-link {
+      display: inline-block;
       margin-left: 0.2em;
       color: $link-color;
       opacity: 0;
+      transition: opacity 0.15s ease-in-out;
     }
-    &:hover .header-link {
+    // Keyboard users have to see what they focused, and the copy
+    // confirmation has to stay visible after the pointer moves on.
+    &:hover .header-link,
+    .header-link:focus-visible,
+    .header-link.is-copied {
       opacity: 1;
+    }
+    .header-link.is-copied {
+      color: var(--approaches-text-color);
     }
   }
 
