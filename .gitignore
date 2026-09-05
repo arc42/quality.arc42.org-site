@@ -33,3 +33,4 @@ test-results/
 skills-lock.json
 .vscode
 /.vs
+.audit
