@@ -15,6 +15,8 @@ permalink: /qualities/portability
 Portability can be related to source code, configurations and **data**.
 For example, data might be encoded in [EBCDIC](https://en.wikipedia.org/wiki/EBCDIC) on a mainframe computer, and not readable by modern machines.
 
+Portability concerns the *environment* a product runs in. When it is the product itself that has to be exchanged — a supplier, a database engine, a model provider — the quality in question is [replaceability](/qualities/replaceability).
+
 > Effort required to transfer a program from one hardware configuration and/or software system environment to another.
 >
 > [McCall-1978](/references/#mccall)
