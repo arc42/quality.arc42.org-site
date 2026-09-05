@@ -22,8 +22,7 @@ name: WCAG score refresh
 #
 # Note: PR auto-creation requires "Allow GitHub Actions to create and
 # approve pull requests" in repo Settings → Actions → General → Workflow
-# permissions. The existing cleanup-decision-graphs.yml workflow already
-# uses this same pattern.
+# permissions.
 
 on:
   schedule:
