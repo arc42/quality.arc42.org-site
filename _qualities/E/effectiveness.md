@@ -1,7 +1,7 @@
 ---
 title: Effectiveness
-tags: [efficient]
-related: [efficiency]
+tags: [usable, suitable]
+related: [usability, functional-suitability, efficiency]
 standards: [iso25022, iso25019]
 permalink: /qualities/effectiveness
 ---

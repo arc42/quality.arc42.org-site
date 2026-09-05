@@ -16,5 +16,5 @@ A **feature** is a _"bit of functionality"_ with value for users or customers.
 
 <hr class="with-no-margin"/>
 
-A product having more **features** will be considered of _higher_ quality than others.
-Although a product should not have _unwanted_ features.
+More **features** do not by themselves make a product better.
+Functions that intended users do not need for their tasks reduce [functional appropriateness](/qualities/functional-appropriateness); the useful measure is whether the *needed* features are present (see [functional completeness](/qualities/functional-completeness)).

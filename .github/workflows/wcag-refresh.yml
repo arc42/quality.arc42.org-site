@@ -77,6 +77,8 @@ jobs:
         run: npx playwright install --with-deps chromium
 
       - name: Run WCAG scan
+        env:
+          UI_BASE_URL: http://localhost:4000
         run: npx playwright test --config _docker/playwright/playwright.config.ts tests/ui/wcag.spec.ts
 
       - name: Detect score change

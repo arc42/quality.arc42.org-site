@@ -9,4 +9,4 @@ permalink: /qualities/securability
 
 >Ability of a system to provide different levels of secure access
 >
->[Wikipedia](https://en.wiktionary.org/wiki/securability)
+>[Wiktionary](https://en.wiktionary.org/wiki/securability)

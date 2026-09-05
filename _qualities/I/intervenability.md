@@ -1,7 +1,7 @@
 ---
 title: Intervenability
-tags: [secure]
-related: [security]
+tags: [safe]
+related: [safety, fail-safe, controllability, operational-constraint]
 standards: [iso25059]
 permalink: /qualities/intervenability
 ---

@@ -20,4 +20,4 @@ Upgradeability refers to the ability of a software system or product to be easil
 
 An upgradeable system allows for the seamless installation of patches, enhancements, or major version changes while maintaining its reliability, compatibility, and performance. 
 
-(these explanations were drafted by [ChatGPT v 3.5](/chat.openai.com))
+(these explanations were drafted by [ChatGPT v 3.5](https://chat.openai.com))

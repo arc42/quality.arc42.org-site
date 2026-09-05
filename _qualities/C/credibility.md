@@ -12,7 +12,7 @@ permalink: /qualities/credibility
 
 <hr>
 
-In the context of software engineering and IT systems, "credibility" refers to the degree to which a software system or technology is perceived as trustworthy and reliable by its users and other stakeholders. T
+In the context of software engineering and IT systems, "credibility" refers to the degree to which a software system or technology is perceived as trustworthy and reliable by its users and other stakeholders.
 
 This perception is crucial because it influences user acceptance, satisfaction, and ultimately the success of the technology in the marketplace or operational environment.
 

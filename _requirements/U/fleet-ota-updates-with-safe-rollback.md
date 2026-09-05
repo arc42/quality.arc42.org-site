@@ -1,7 +1,7 @@
 ---
 title: "Fleet OTA updates with safe rollback"
 tags: [operable, maintainable]
-related: [updateability, maintainability, recoverability, availability, security]
+related: [updateability, upgradeability, maintainability, recoverability, availability, security]
 permalink: /requirements/fleet-ota-updates-with-safe-rollback
 ---
 
