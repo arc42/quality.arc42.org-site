@@ -1,0 +1,4 @@
+# Explicit issuers where the shortname does not identify the organization.
+# Other standards retain the explorer's existing shortname inference.
+c3a: BSI
+eucsf: EU

@@ -2,6 +2,7 @@
 title: Data Sovereignty
 tags: [secure, suitable]
 related: [privacy, security, compliance, data-protection, data-residency, data-localization]
+standards: [c3a, eucsf]
 permalink: /qualities/data-sovereignty
 ---
 

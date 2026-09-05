@@ -16,10 +16,11 @@ standard_id: iso25010
 shortname: "ISO/IEC 25010"
 categories: [general]
 permalink: /standards/iso-25010
+summary: "The SQuaRE product quality model defining nine characteristics, from functional suitability and performance to security, maintainability, and safety."
 ---
 ```
 
-These six fields are the complete schema — standards have no `tags`, no `aka`, no `related`. (One legacy page carries an `alias:` field; nothing consumes it — do not add it to new pages.)
+These seven fields are the complete schema — standards have no `tags`, no `aka`, no `related`. (One legacy page carries an `alias:` field; nothing consumes it — do not add it to new pages.)
 
 ## Front-Matter Rules
 
@@ -36,6 +37,9 @@ These six fields are the complete schema — standards have no `tags`, no `aka`,
   - A value outside the list still renders as a chip (there is a capitalize fallback) but the standard gets **no section** on the `/standards/` overview page — a silent placement failure, not a build error.
 - `permalink`:
   - `/standards/<kebab-slug>`, unique, stable. Filename ≈ slug. The subdirectory under `_standards/` does not affect the URL.
+- `summary`:
+  - One sentence, quoted, **under 165 characters** — what the standard is and what it defines. It is the card text on `/standards/explorer/`, the chip tooltip on `/standards/`, and part of the explorer's search text.
+  - Omitting it is not a build error and is easy to miss locally: both includes fall back to `page.excerpt`, which begins at the body's first `##` heading and runs it into the following sentence with no space, then truncates mid-word. Write the sentence rather than accept that fallback.
 
 ## Directory Placement
 
@@ -121,7 +125,7 @@ Run `npx prettier --write` on the finished file. Prettier aligns table pipes to 
 
 ## Definition of Done (Single Page)
 
-- Front matter has exactly the six schema fields; `standard_id` follows the convention, is unique, and collides with no quality/requirement/approach slug.
+- Front matter has exactly the seven schema fields, `summary` included; `standard_id` follows the convention, is unique, and collides with no quality/requirement/approach slug.
 - `categories` ⊆ the canonical taxonomy derived from `_pages/40-quality-standards.md`.
 - Every quality link in the table resolves to an existing `/qualities/<slug>` page.
 - Every quality in the table has the `standard_id` in its `standards:` array (bidirectionality rule) — verified mechanically, not by eye.

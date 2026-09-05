@@ -2,6 +2,7 @@
 title: Data Residency
 tags: [suitable]
 related: [data-sovereignty, data-localization, compliance, privacy]
+standards: [c3a, eucsf]
 permalink: /qualities/data-residency
 ---
 

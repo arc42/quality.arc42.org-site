@@ -66,16 +66,18 @@ no_layout_header: true
       {% if summary == "" %}
         {% assign summary = "Open standard detail page." %}
       {% endif %}
-      {% capture searchable %}
-        {{ std.shortname }} {{ std.title }} {{ summary }}
-        {% for category in std.categories %}{{ category }} {% endfor %}
-      {% endcapture %}
+      {% assign search_summary = std.summary | default: std.excerpt | strip_html | normalize_whitespace %}
+      {% assign organization = std.organization | default: site.data.standard-organizations[std.standard_id] %}
       <article
         class="standards-explorer-card"
+        data-standard-id="{{ std.standard_id | escape }}"
         data-shortname="{{ std.shortname | escape }}"
+        data-title="{{ std.title | escape }}"
+        data-summary="{{ search_summary | escape }}"
+        data-organization-label="{{ organization | escape }}"
         data-categories="{{ std.categories | join: ' ' }}"
-        data-search="{{ searchable | strip_html | strip_newlines | normalize_whitespace | downcase | escape }}"
       >
+        <template class="standards-search-body">{{ std.content | markdownify }}</template>
         <div class="standards-explorer-card-head">
           <a class="standards-explorer-shortname" href="{{ std.url | prepend: site.baseurl }}">{{ std.shortname }}</a>
         </div>

@@ -3,6 +3,7 @@ title: Autonomy
 aka: [Autonomicity]
 tags: [operable, suitable]
 related: [independence, self-containedness, controllability, composability, flexibility, configurability, adaptability, recoverability, fault-tolerance, resilience]
+standards: [c3a]
 permalink: /qualities/autonomy
 ---
 
