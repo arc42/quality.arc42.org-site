@@ -444,9 +444,6 @@ The workflow installs Node + Ruby, runs `npm run data && npm run build`
 (esbuild generates graph data + bundles JS), then `bundle exec jekyll build`,
 and uploads the result to the Pages environment.
 
-**Netlify** also builds the repo (see `netlify.toml`) for branch
-previews — useful when iterating on a PR before merging.
-
 The deployed footer WCAG score reflects whichever `_data/wcag.json` is on
 `main` at build time. To refresh it: run `make wcag-test` locally, commit
 the updated `_data/wcag.json`, push. A scheduled GitHub Action that

@@ -30,7 +30,7 @@ jobs:
       - name: Install Node.js
         uses: actions/setup-node@v7
         with:
-          node-version: '22.x'  # keep in sync with _docker/esbuild/Dockerfile, netlify.toml, package.json volta
+          node-version: '22.x'  # keep in sync with _docker/esbuild/Dockerfile, package.json volta
           cache: 'npm'
 
       - name: Install npm dependencies
