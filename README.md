@@ -446,8 +446,10 @@ and uploads the result to the Pages environment.
 
 The deployed footer WCAG score reflects whichever `_data/wcag.json` is on
 `main` at build time. To refresh it: run `make wcag-test` locally, commit
-the updated `_data/wcag.json`, push. A scheduled GitHub Action that
-opens a refresh PR automatically is planned.
+the updated `_data/wcag.json`, push. The `wcag-refresh` workflow also does
+this on its own, quarterly (1 Jan / 1 Apr / 1 Jul / 1 Oct), opening a PR
+only when the score actually changed. For a fresh score on demand:
+`gh workflow run wcag-refresh.yml`.
 
 Dependabot keeps `npm`, `bundler`, and `github-actions` dependencies
 current; see [`.github/dependabot.yml`](.github/dependabot.yml).
