@@ -6,10 +6,14 @@ name: WCAG score refresh
 # what keeps the displayed score current without any manual step.
 #
 # Triggers:
-#   - schedule: weekly (Monday 06:00 UTC) — keeps the score within a week
-#     of any real change, no impact on normal deploys
-#   - workflow_dispatch: manual button in the Actions tab — use this to
-#     validate the workflow without waiting for the cron
+#   - schedule: quarterly (06:00 UTC on 1 Jan / 1 Apr / 1 Jul / 1 Oct).
+#     Weekly was the original cadence, but the score moves far more slowly
+#     than that and every scan that found a change cost a manual PR review.
+#     Quarterly caps that at four reviews a year, and a PR is still only
+#     opened when the number actually changed.
+#   - workflow_dispatch: manual button in the Actions tab — the way to get
+#     a fresh score on demand, e.g. right after accessibility work, without
+#     waiting for the next quarter.
 #
 # To trigger manually:
 #   gh workflow run wcag-refresh.yml --ref <branch>
@@ -18,12 +22,11 @@ name: WCAG score refresh
 #
 # Note: PR auto-creation requires "Allow GitHub Actions to create and
 # approve pull requests" in repo Settings → Actions → General → Workflow
-# permissions. The existing cleanup-decision-graphs.yml workflow already
-# uses this same pattern.
+# permissions.
 
 on:
   schedule:
-    - cron: "0 6 * * 1"
+    - cron: "0 6 1 1,4,7,10 *"  # quarterly: 06:00 UTC on the 1st of Jan, Apr, Jul, Oct
   workflow_dispatch:
 
 permissions:
@@ -109,7 +112,7 @@ jobs:
 
           gh pr create \
             --title "chore(wcag): refresh score from scheduled scan" \
-            --body "Automated weekly WCAG scan. Updates \`_data/wcag.json\` (which powers the footer pill at build time) plus the full report at \`assets/reports/wcag/latest.{json,html}\`.
+            --body "Automated quarterly WCAG scan. Updates \`_data/wcag.json\` (which powers the footer pill at build time) plus the full report at \`assets/reports/wcag/latest.{json,html}\`.
 
           Triggered by: \`${{ github.event_name }}\`
           Run: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}" \

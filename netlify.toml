@@ -1,6 +1,0 @@
-[build]
-  command = "npm run build && bundle exec jekyll build"
-  publish = "_site"
-
-[build.environment]
-  NODE_VERSION = "22"
