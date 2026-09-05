@@ -5,11 +5,13 @@ related: [atomicity, consistency, transactionality, reliability, availability, r
 permalink: /qualities/durability
 ---
 
-> The ability of a software system to remain useful and meet user needs over a long period, particularly in the face of changing business requirements and technological advancements.
+> Durability guarantees that once a transaction has been committed, it will remain committed even in the case of a system failure (e.g., power outage or crash).
+>
+> [Wikipedia: ACID](https://en.wikipedia.org/wiki/ACID)
+
+Durability is one of the four ACID properties (Atomicity, Consistency, Isolation, Durability) of transactional systems.
+It depends on successful commit semantics from [Atomicity](/qualities/atomicity), and together with [Consistency](/qualities/consistency) and isolation it forms the ACID transaction guarantees.
 
 <hr class="with-no-margin"/>
 
-> In the context of database systems, durability is one of the four ACID (Atomicity, Consistency, Isolation, Durability) properties. 
-> It guarantees that once a transaction has been committed, it will remain committed even in the event of a system crash, power failure, or other errors.
-
-Durability depends on successful commit semantics from [Atomicity](/qualities/atomicity), and together with [Consistency](/qualities/consistency) and isolation it forms ACID transaction guarantees.
+The everyday meaning of "durable", a product that stays useful for a long time, is a different quality: see [longevity](/qualities/longevity).
