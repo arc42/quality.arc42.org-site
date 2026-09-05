@@ -34,6 +34,7 @@
     border-radius: $radius-sm;
     color: var(--brand-ink);
     text-decoration: none;
+    overflow: hidden; // clips the rail to the corner curve
     position: relative;
     transition:
       transform 0.15s ease,
@@ -43,12 +44,11 @@
     &::before {
       content: "";
       position: absolute;
-      top: 0.6rem;
-      bottom: 0.6rem;
+      top: 0;
+      bottom: 0;
       left: 0;
       width: 4px;
       background: var(--brand-violet);
-      border-radius: 3px;
       opacity: 0;
       transition: opacity 0.15s ease;
     }

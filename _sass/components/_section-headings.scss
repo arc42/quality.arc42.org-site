@@ -20,17 +20,17 @@ h2.section-heading {
   border-radius: $radius-sm;
   font-size: 1.5em;
   margin: 1.5rem 0 1rem;
+  overflow: hidden; // clips the rail to the corner curve
   padding: 0.55em 1em 0.55em 1.5em;
   position: relative;
 
   &::before {
     background: var(--cat);
-    border-radius: 3px;
-    bottom: 0.5rem;
+    bottom: 0;
     content: "";
     left: 0;
     position: absolute;
-    top: 0.5rem;
+    top: 0;
     width: 6px;
   }
 }

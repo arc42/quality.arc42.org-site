@@ -23,6 +23,7 @@
   border: 1px solid color-mix(in oklab, var(--brand-paper) 65%, var(--cat) 35%);
   border-radius: $radius-sm;
   margin-top: 1rem;
+  overflow: hidden; // clips the rail to the corner curve
   padding: 0.9rem 1rem 0.9rem 1.7rem;
   position: relative;
   // Anchor jumps from the tag-page hero meta links (`#qualities`,
@@ -33,12 +34,11 @@
 
   &::before {
     background: var(--cat);
-    border-radius: 3px;
-    bottom: 0.5rem;
+    bottom: 0;
     content: "";
     left: 0;
     position: absolute;
-    top: 0.5rem;
+    top: 0;
     width: 6px;
   }
 

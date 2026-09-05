@@ -7,6 +7,14 @@
 // (see _homenew.scss) so the homepage acts as a legend for the
 // destination section's identity colour.
 //
+// The rail is a full-height ::before pinned to the left edge; `overflow:
+// hidden` on the card clips it to the corner curve, so it fits the radius
+// exactly at any size — the same technique as the clipped accent rects in
+// the domain-language SVG (_includes/svg/q42-domain-language-v2026.svg).
+// Giving the rail its own border-radius instead cannot work: CSS scales
+// adjacent corner radii down to the rail's width, so the curve lands
+// shallower than the card's.
+//
 // The same component shape applies on index pages and on single-item
 // detail pages — detail pages get an eyebrow label ("Quality",
 // "Requirement", …) and a chips row beneath the title.
@@ -19,17 +27,17 @@
   border: 1px solid var(--brand-violet-18);
   border-radius: $radius-md;
   margin: 0 0 1.2rem;
+  overflow: hidden;
   padding: 0.75rem 1.4rem 0.7rem 2rem;
   position: relative;
 
   &::before {
     background: var(--cat);
-    border-radius: 3px;
-    bottom: 0.55rem;
+    bottom: 0;
     content: "";
     left: 0;
     position: absolute;
-    top: 0.55rem;
+    top: 0;
     width: 10px;
   }
 
