@@ -52,6 +52,8 @@ note: "Meta-commentary (free-form Markdown, rendered outside the card)"
 
 Body is **pure Markdown** — the `requirements` layout wraps it in `.quality-requirement`. Do **not** add a `<div class="quality-requirement">` wrapper.
 
+Authoring guardrails — the duplicate check, the two body modes, acceptance-criteria quality, and sourcing rules — live in the `write-requirement` skill (`.claude/skills/write-requirement/reference/requirements-template.md`). The load-bearing field is `related:`: a slug that does not match a quality permalink is **silently dropped**, taking its link and its graph edge with it.
+
 Section headings inside the body are `###` (h3). The page H1 is the requirement title (rendered by the section-hero), so `###` keeps the document outline coherent — `####` left a two-level skip from H1 that screen readers reported as broken structure.
 
 **Tier 1** (simple, 1–3 criteria):

@@ -30,6 +30,7 @@ test-results/
 .claude/skills/*
 !.claude/skills/write-approach/
 !.claude/skills/write-standards/
+!.claude/skills/write-requirement/
 skills-lock.json
 .vscode
 /.vs
