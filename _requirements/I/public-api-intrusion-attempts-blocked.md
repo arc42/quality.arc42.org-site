@@ -1,7 +1,7 @@
 ---
 title: "Public API intrusion attempts blocked and alerted"
 tags: [secure]
-related: [intrusion-prevention, intrusion-detection, security, availability]
+related: [intrusion-prevention, intrusion-detection, security, availability, injection-resistance]
 permalink: /requirements/public-api-intrusion-attempts-blocked
 ---
 

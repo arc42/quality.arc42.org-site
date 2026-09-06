@@ -6,7 +6,7 @@ order: 85
 hide: true
 ---
 
-[Aroms/NIST](#nist-idps) · [Bass et al.](#bass2021software) · [bbv](#bbvquality) · [Boehm 1976](#boehm1976quantitative) · [Boehm 1978](#boehm1978characteristics) · [Cavano/McCall](#mccall) · [Crosby](#crosby-quality) · [Eeles](#eeles2005capturing) · [Frost](#brad-frost-theming) · [Forsgren/Humble/Kim](#forsgren-accelerate) · [Grady](#grady1992practical) · [Harasymczuk](#astrotech) · [Harrer](#harrer-quality-tactics) · [Hohpe/Woolf](#hohpe2004enterprise) · [ISO 9241](#iso-9241-110) · [ISO 25010 (2011)](#iso-25010-2011) · [ISO 25010 (2023)](#iso-25010-2022) · [ISO 25059](#iso-25059) · [Jamwal et al.](#jamwal) · [Kazman et al.](#kazman-maintainability) · [Kohavi et al.](#kohavi2020trustworthy) · [Martin](#martin-clean-architecture) · [Nygard](#nygard2018release) · [McCabe](#mccabe1976complexity) · [McCall/Matsumoto](#mccall1980software) · [McCall/Walters](#mccall1977factors) · [Mockus et al.](#mockus2010experiences) · [Robertson/Robertson](#volere) · [SEI/QAW](#sei-qaw) · [Starke/Lorz](#starke2021software) · [SWEBOK](#swebok) · [W3C](#w3c-design-tokens) · [Wikipedia](#wikipedia-theming)
+[Aroms/NIST](#nist-idps) · [Bass et al.](#bass2021software) · [bbv](#bbvquality) · [Boehm 1976](#boehm1976quantitative) · [Boehm 1978](#boehm1978characteristics) · [Cavano/McCall](#mccall) · [Crosby](#crosby-quality) · [Eeles](#eeles2005capturing) · [Frost](#brad-frost-theming) · [Forsgren/Humble/Kim](#forsgren-accelerate) · [Grady](#grady1992practical) · [Harasymczuk](#astrotech) · [Harrer](#harrer-quality-tactics) · [Hohpe/Woolf](#hohpe2004enterprise) · [ISO 9241](#iso-9241-110) · [ISO 25010 (2011)](#iso-25010-2011) · [ISO 25010 (2023)](#iso-25010-2022) · [ISO 25019](#iso-25019) · [ISO 25059](#iso-25059) · [Jamwal et al.](#jamwal) · [Kazman et al.](#kazman-maintainability) · [Kohavi et al.](#kohavi2020trustworthy) · [Martin](#martin-clean-architecture) · [Nygard](#nygard2018release) · [McCabe](#mccabe1976complexity) · [McCall/Matsumoto](#mccall1980software) · [McCall/Walters](#mccall1977factors) · [Mockus et al.](#mockus2010experiences) · [Robertson/Robertson](#volere) · [SEI/QAW](#sei-qaw) · [Starke/Lorz](#starke2021software) · [SWEBOK](#swebok) · [W3C](#w3c-design-tokens) · [Wikipedia](#wikipedia-theming)
 
 ---
 
@@ -144,6 +144,16 @@ Available [online](https://www.iso.org/obp/ui/#iso:std:iso-iec:25010:ed-2:v1:en)
 The authoritative international standard defining the product quality model used as the backbone of this site. The 2023 revision restructures the eight top-level quality characteristics, extends the top-level quality characteristics with _Safety_ and refines sub-characteristics, superseding the 2011 edition for most practical purposes.
 
 However, as discussed in [Shortcomings of ISO 25010](/articles/iso-25010-shortcomings), the standard remains problematic for practitioners. Its abstract terminology, overlapping definitions, and rigid hierarchy often lack pragmatism, while essential aspects like code quality and operational concerns are largely ignored. The paywall further limits its practical accessibility for many development teams.
+
+<a id="iso-25019"></a>
+### ISO 25019 (v. 2023)
+
+ISO/IEC 25019:2023(en)
+Systems and software engineering — Systems and software Quality Requirements and Evaluation (SQuaRE) — Quality-in-use model
+
+Available [online](https://www.iso.org/standard/78177.html)
+
+The SQuaRE quality-in-use model, describing the outcome of system use through three characteristics — beneficialness, freedom from risk, and acceptability — and set out in full on the [ISO/IEC 25019 standard page](/standards/iso-25019). It replaces the quality-in-use model that was previously part of [ISO 25010 (2011)](#iso-25010-2011). It is the source of this site's definition of [suitability](/qualities/suitability), which it scopes to behaviours and outcomes and thereby distinguishes from the function-scoped functional suitability of [ISO 25010](#iso-25010-2023).
 
 <a id="iso-25059"></a>
 ### ISO 25059 (v. 2023, revision in progress)

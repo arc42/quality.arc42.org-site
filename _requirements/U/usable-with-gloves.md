@@ -1,7 +1,7 @@
 ---
 title: "Usable With Gloves"
 tags: [usable, suitable]
-related: [anticipated-workplace-environment, usability, interaction-capability]
+related: [anticipated-workplace-environment, usability, interaction-capability, expected-physical-environment]
 permalink: /requirements/usable-with-gloves
 ---
 

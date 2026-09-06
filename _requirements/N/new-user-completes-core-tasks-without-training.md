@@ -1,7 +1,7 @@
 ---
 title: "New user completes core tasks without prior training"
 tags: [usable]
-related: [learnability, usability, user-error-protection]
+related: [learnability, usability, user-error-protection, self-descriptiveness, effectiveness]
 permalink: /requirements/new-user-completes-core-tasks-without-training
 ---
 

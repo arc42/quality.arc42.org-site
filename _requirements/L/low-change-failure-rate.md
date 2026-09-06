@@ -1,7 +1,7 @@
 ---
 title: Low change-failure rate
 tags: [reliable]
-related: [change-failure-rate, reliability]
+related: [change-failure-rate, reliability, devops-metrics]
 permalink: /requirements/low-change-failure-rate
 source: "This scenario has been created with help from [ChatGPT](https://chat.openai.com) by using the prompt `create a quality scenario to describe a change-failure-rate requirement`."
 ---

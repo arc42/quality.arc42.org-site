@@ -1,7 +1,7 @@
 ---
 title: Access control is enforced
 tags: [secure, suitable]
-related: [access-control, auditability]
+related: [access-control, auditability, securability]
 permalink: /requirements/access-control-is-enforced
 source: "This scenario has been created with help from [ChatGPT](https://chat.openai.com) by using the prompt `create a quality scenario to describe an access control requirement`."
 ---

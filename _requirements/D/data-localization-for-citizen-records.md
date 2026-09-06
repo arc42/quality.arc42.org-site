@@ -1,7 +1,7 @@
 ---
 title: "Data Localization for Citizen Records"
 tags: [secure, suitable]
-related: [data-localization, data-sovereignty, compliance, privacy]
+related: [data-localization, data-sovereignty, compliance, privacy, data-residency]
 permalink: /requirements/data-localization-for-citizen-records
 ---
 

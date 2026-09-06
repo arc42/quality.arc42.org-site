@@ -1,7 +1,7 @@
 ---
 title: "Only authenticated users can access data"
 tags: [secure]
-related: [access-control, confidentiality, security, privacy]
+related: [access-control, confidentiality, security, privacy, securability]
 permalink: /requirements/only-authenticated-users-can-access
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: "Financial transactions are ACID-compliant and fully reconcilable"
 tags: [reliable, secure]
-related: [data-integrity, transactionality, consistency, correctness]
+related: [data-integrity, transactionality, consistency, correctness, durability]
 permalink: /requirements/financial-transactions-are-acid-compliant
 ---
 

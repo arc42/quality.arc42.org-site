@@ -1,7 +1,7 @@
 ---
 title: "Fast deployment"
 tags: [reliable, operable]
-related: [time-behaviour, operability, deployment-frequency, extensibility, lead-time-for-changes, cycle-time]
+related: [time-behaviour, operability, deployment-frequency, extensibility, lead-time-for-changes, cycle-time, devops-metrics]
 permalink: /requirements/fast-deployment
 ---
 

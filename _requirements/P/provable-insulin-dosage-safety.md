@@ -1,7 +1,7 @@
 ---
 title: "Provable Insulin Dosage Safety"
 tags: [reliable, safe]
-related: [provability, safety, reliability, certifiability]
+related: [provability, safety, reliability, certifiability, operational-constraint]
 permalink: /requirements/provable-insulin-dosage-safety
 ---
 

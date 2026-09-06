@@ -2,7 +2,7 @@
 title: Functional suitability
 tags: [usable, reliable, suitable]
 related: [usability, functionality, functional-completeness, suitability]
-standards: [iso25010, iso25019]
+standards: [iso25010]
 permalink: /qualities/functional-suitability
 ---
 
@@ -14,3 +14,4 @@ Definitions:
 >
 >[ISO-25010:2023](/references/#iso-25010-2023)
 
+[Suitability](/qualities/suitability) is a different characteristic, not a synonym: [ISO/IEC 25019](/standards/iso-25019) defines it in the quality-in-use model as the extent to which *behaviours or outcomes* satisfy specified quality requirements, whereas functional suitability — from the product quality model — concerns the *functions* a product provides.
