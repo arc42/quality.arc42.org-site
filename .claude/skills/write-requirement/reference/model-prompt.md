@@ -1,8 +1,12 @@
-# Requirements Prompt v3
+# Model Prompt — Requirement Examples
 
-For short, testable examples in the arc42 quality model. Replaces v2's fixed criterion count with a testable outcome and a clear evidence boundary. V2 remains available for comparison.
+For driving an **external model** (or a fresh session with no repo access) to draft a requirement example. Claude Code working in this repo does not need it: `SKILL.md` owns the procedure and `requirements-template.md` owns the rules, and the two are self-sufficient.
 
-## Copyable prompt
+Use this when you want a second model's draft to compare against, or when drafting away from the repo. Treat what comes back as input, not truth — run it through the template's Definition of Done before it becomes a page.
+
+Front matter is a separate publication step; this prompt returns the body only.
+
+## The prompt
 
 ```text
 Write one quality requirement that helps an architect make or assess a design decision.
@@ -91,39 +95,10 @@ include the precise document locator, not just the organization's home page.
 Do not repeat “source” and “horizon” labels in every bullet when one shared statement suffices.
 ```
 
-## What changed from v2
+## Driving the model
 
-- **Definition and duplicate check first.** A missing graph relation does not necessarily call for a new example. Longevity and functional adaptability illustrate why names alone are insufficient.
-- **No forced numerals or criterion quota.** Binary outcomes and scoped invariants can be precise without decorative percentages. One decisive criterion is better than three overlapping ones.
-- **One primary concern, with necessary boundaries.** A privacy control must not pass simply because the application refuses every valid request.
-- **Separate falsifiability from independence.** A shared cause can fail two criteria; each still needs an observable verdict. V2's wording could be read as requiring statistical or logical independence.
-- **Separate evidence from plans and assumptions.** The prompt can propose a test without claiming it ran. It can propose a threshold without inventing a benchmark.
-- **Conditional failure coverage.** Include failure behaviour where it matters, rather than adding a release gate to every example.
-- **Repository-compatible headings.** New requirements use `###`, as current pages do. Front matter is a separate publication step.
+Give the purpose and the acceptance boundary; do not prescribe a long reasoning sequence, and do not ask for a transcript of internal reasoning — both OpenAI and Anthropic advise against reasoning extraction for their reasoning models. State the output length, the authorized scope, and when assumptions are acceptable.
 
-## Using Astra and Fable
+Ask for the result, its evidence, and any material uncertainty. Low reasoning effort can suppress source retrieval, which is why the prompt requires retrieval explicitly whenever current facts matter.
 
-Checked against official guidance on **5 September 2026** for **GPT-6 Astra** and **Claude Fable 5.1**, with the Fable 5 guidance where it explains inherited behaviour. These are documented behaviours, not a head-to-head performance evaluation of this prompt.
-
-**Astra:** State the output length, authorized scope, and when assumptions are acceptable. OpenAI documents stronger instruction following, more clarification, and a tendency toward detailed formatting. The prompt therefore gives the model freedom to choose the example and verification method while setting explicit limits on output and unsupported claims. [OpenAI: GPT-6 Astra prompting guidance](https://developers.openai.com/api/docs/guides/latest-model#prompting-best-practices).
-
-**Fable:** Give the purpose and acceptance boundary, rather than a long prescribed reasoning sequence. Anthropic documents strong instruction following and the value of brief, clear writing instructions for Fable 5. Its Fable 5.1 guidance also warns that low effort can reduce source retrieval. The prompt explicitly requires retrieval when current facts matter. [Anthropic: Prompting Fable 5](https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-fable-5), [Prompting Fable 5.1](https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-fable-5-1).
-
-**Both:** Ask for the result, its evidence, and material uncertainty. Do not request a transcript of internal reasoning. OpenAI recommends direct prompts for reasoning models; Anthropic's Fable guidance explicitly cautions against reasoning extraction. [OpenAI: Reasoning best practices](https://developers.openai.com/api/docs/guides/reasoning-best-practices#how-to-prompt-reasoning-models-effectively), [Anthropic: Fable scaffolding guidance](https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-fable-5).
-
-Keep model and effort settings outside the reusable prompt. Compare settings on these requirements before paying for maximum effort by default. Model agreement is not evidence that a standard citation or numerical target is correct.
-
-## Small evaluation before wider use
-
-Run v2 and v3 with the same inputs on each available model. Use these six cases:
-
-1. **Themability:** provide the existing theme-switching requirement. V3 should propose reuse and its missing relation.
-2. **Consent withdrawal:** distinguish future optional processing from erasure of past data; do not invent a legal deadline.
-3. **Co-existence:** both products must still complete useful work; specify the comparison baseline.
-4. **Functional adaptability:** test learning from corrections, not configurability or drift detection alone.
-5. **Intervenability:** withhold the real system's safety limits. A project requirement must request the missing safety basis rather than invent one.
-6. **Conciseness:** preserve the required facts; a word count alone is insufficient.
-
-Have a reviewer assess quality fit, an unambiguous pass/fail decision, credible evidence, source accuracy, and readable wording. Record concrete defects, unresolved assumptions, and time spent correcting each output. Reject invented sources or approvals regardless of prose quality. A second model can review a draft, but source verification and editorial acceptance remain separate checks.
-
-This evaluation is proposed, not performed here. No claim is made that v3 outperforms v2 until both have been tested on the same cases.
+Keep model and effort settings outside the prompt. **Model agreement is not evidence** that a standard citation or a numeric target is correct — source verification and editorial acceptance stay separate checks.

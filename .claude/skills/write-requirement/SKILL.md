@@ -25,7 +25,9 @@ Everything about *what a good requirement page contains* — front-matter schema
 
 Read it before generating. This `SKILL.md` owns the **procedure**; the template owns the **rules**. Where a step below cites a convention, the authoritative wording lives in the template — do not restate it here.
 
-Together the two are self-sufficient: you do not need to open anything else to write a correct page. `TODO/requirements/requirements-prompt-v3.md` is **background only** — why the rules are shaped this way, the copyable model prompt, and a proposed evaluation. Read it when you want the reasoning, not to extract rules.
+Together the two are self-sufficient: you do not need to open anything else to write a correct page.
+
+`reference/model-prompt.md` is a separate artifact — a copyable prompt for driving an *external* model, or drafting away from the repo. It is not needed here.
 
 ## Procedure
 
@@ -34,7 +36,7 @@ Together the two are self-sufficient: you do not need to open anything else to w
    - `PURPOSE` — **defaults to *illustrative example***, which is what this site publishes. Only treat it as a *project requirement* when the author says so; that changes what you may invent (see the template's Truth and Sources). Do not ask.
    - `MODE` — Quality Gate or Scenario. Defaults to Quality Gate; let the content decide. See the template.
    - **Read the quality's own page** under `_qualities/`. Use its definition, not the everyday meaning of its name. Several qualities on this site carry definitions that differ from the obvious reading, and some are known to be tangled (durability/longevity, intervenability, effectiveness).
-   - Check `TODO/requirements/` for an existing proposal covering this quality — `README.md` names the plan of record. Treat its drafts as input, not truth.
+   - Check `TODO/requirements/` for an existing proposal covering this quality. Treat any draft you find there as input, not truth.
 
 2. **Confirm the gap is real — before drafting anything.**
 
