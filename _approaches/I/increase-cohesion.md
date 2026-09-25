@@ -2,7 +2,7 @@
 layout: approach
 title: "Increase Cohesion"
 tags: [maintainable, flexible]
-aka: [Split Module, Redistribute Responsibilities, Increase Semantic Coherence]
+aka: [Split Module, Redistribute Responsibilities]
 supported_qualities: [modularity, analysability, modifiability, testability]
 supported_qualities_notes:
   modularity: "Grouping one responsibility per module is what gives a decomposition meaningful, self-contained parts."

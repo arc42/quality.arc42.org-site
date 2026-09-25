@@ -6,7 +6,7 @@ order: 85
 hide: true
 ---
 
-[Aroms/NIST](#nist-idps) · [Bass et al.](#bass2021software) · [bbv](#bbvquality) · [Boehm 1976](#boehm1976quantitative) · [Boehm 1978](#boehm1978characteristics) · [Cavano/McCall](#mccall) · [Crosby](#crosby-quality) · [Eeles](#eeles2005capturing) · [Frost](#brad-frost-theming) · [Forsgren/Humble/Kim](#forsgren-accelerate) · [Grady](#grady1992practical) · [Harasymczuk](#astrotech) · [Harrer](#harrer-quality-tactics) · [Hohpe/Woolf](#hohpe2004enterprise) · [ISO 9241](#iso-9241-110) · [ISO 25010 (2011)](#iso-25010-2011) · [ISO 25010 (2023)](#iso-25010-2022) · [ISO 25019](#iso-25019) · [ISO 25059](#iso-25059) · [Jamwal et al.](#jamwal) · [Kazman et al.](#kazman-maintainability) · [Kohavi et al.](#kohavi2020trustworthy) · [Martin](#martin-clean-architecture) · [Nygard](#nygard2018release) · [McCabe](#mccabe1976complexity) · [McCall/Matsumoto](#mccall1980software) · [McCall/Walters](#mccall1977factors) · [Mockus et al.](#mockus2010experiences) · [Robertson/Robertson](#volere) · [SEI/QAW](#sei-qaw) · [Starke/Lorz](#starke2021software) · [SWEBOK](#swebok) · [W3C](#w3c-design-tokens) · [Wikipedia](#wikipedia-theming)
+[Aroms/NIST](#nist-idps) · [Bass et al.](#bass2021software) · [bbv](#bbvquality) · [Boehm 1976](#boehm1976quantitative) · [Boehm 1978](#boehm1978characteristics) · [Brooks](#brooks1975mythical) · [Cavano/McCall](#mccall) · [Crosby](#crosby-quality) · [Eeles](#eeles2005capturing) · [Frost](#brad-frost-theming) · [Forsgren/Humble/Kim](#forsgren-accelerate) · [Grady](#grady1992practical) · [Harasymczuk](#astrotech) · [Harrer](#harrer-quality-tactics) · [Hohpe/Woolf](#hohpe2004enterprise) · [ISO 9241](#iso-9241-110) · [ISO 25010 (2011)](#iso-25010-2011) · [ISO 25010 (2023)](#iso-25010-2022) · [ISO 25019](#iso-25019) · [ISO 25059](#iso-25059) · [Jamwal et al.](#jamwal) · [Kazman et al.](#kazman-maintainability) · [Kohavi et al.](#kohavi2020trustworthy) · [Martin](#martin-clean-architecture) · [Nygard](#nygard2018release) · [O'Brien/Toms](#obrien2008engagement) · [McCabe](#mccabe1976complexity) · [McCall/Matsumoto](#mccall1980software) · [McCall/Walters](#mccall1977factors) · [Mockus et al.](#mockus2010experiences) · [Robertson/Robertson](#volere) · [SEI/QAW](#sei-qaw) · [Starke/Lorz](#starke2021software) · [SWEBOK](#swebok) · [W3C](#w3c-design-tokens) · [Wikipedia](#wikipedia-theming)
 
 ---
 
@@ -63,6 +63,13 @@ Please note: Boehm's quality model is often (wrongly) dated to a 1978 publicatio
 B. Barry, ‘Characteristics of Software Quality, TRW Series of Software Technology’. New York: American Elsevier, 1978.
 
 The full monograph expanding the 1976 conference paper into a complete quality model with three top-level factors (product operation, product revision, product transition) and fifteen quality characteristics mapped to metrics. Together with the 1976 paper, this forms the "Boehm quality model" that influenced every subsequent quality standard.
+
+<a id="brooks1975mythical"></a>
+### Brooks: The Mythical Man-Month
+
+F. P. Brooks, ‘The Mythical Man-Month: Essays on Software Engineering’. Reading, MA: Addison-Wesley, 1975 (anniversary edition 1995).
+
+Chapter 4, "Aristocracy, Democracy, and System Design", argues that conceptual integrity — one set of design ideas reflected consistently throughout a system — is the most important consideration in system design. The source of this site's definition of [coherence](/qualities/coherence).
 
 <a id="crosby-quality"></a>
 ### Crosby: Quality is Free
@@ -278,6 +285,15 @@ E. Aroms, ‘NIST special publication 800-94 guide to intrusion detection and pr
 Available [online](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-94.pdf)
 
 The NIST reference guide for classifying and deploying intrusion detection and prevention systems, covering network-based, host-based, and wireless variants. Relevant background when specifying security monitoring quality requirements such as detection rate, false-positive thresholds, and response time.
+
+<a id="obrien2008engagement"></a>
+### O'Brien/Toms: What is User Engagement?
+
+H. L. O'Brien and E. G. Toms, ‘What is user engagement? A conceptual framework for defining user engagement with technology’, Journal of the American Society for Information Science and Technology, vol. 59, no. 6, pp. 938–955, 2008.
+
+Available [online](https://eprints.whiterose.ac.uk/id/eprint/78832/) (open access)
+
+The standard reference on user engagement. Defines it as a process with four stages (point of engagement, sustained engagement, disengagement, re-engagement) and lists its attributes — among them aesthetic appeal, focused attention, novelty, felt involvement and perceived usability. The basis for this site's distinction between [user engagement](/qualities/user-engagement) and [user interface aesthetics](/qualities/user-interface-aesthetics).
 
 <a id="swebok"></a>
 ### SWEBOK (IEEE): Guide to the Software Engineering Body of Knowledge

@@ -1,7 +1,8 @@
 ---
 title: Cohesion
+aka: [High Cohesion]
 tags: [efficient, suitable, maintainable]
-related: [coherence, modularity]
+related: [coherence, modularity, loose-coupling]
 permalink: /qualities/cohesion
 ---
 
@@ -20,3 +21,7 @@ And, from a gem of software engineering literature ("Structured Design" by Ed Yo
 >How tightly bound or related its internal elements are to one another. 
 >
 >[Yourdon & Constantine: Structured Design, 1978](http://vtda.org/books/Computing/Programming/StructuredDesign_EdwardYourdonLarryConstantine.pdf)
+
+### Not the same as coherence
+
+Cohesion is a property of a *single module*: do its elements belong together? For the *system-level* notion — do all the parts fit together under one set of design ideas — see [coherence](/qualities/coherence), which explains the difference.
