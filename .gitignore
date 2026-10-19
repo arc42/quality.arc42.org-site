@@ -35,3 +35,6 @@ skills-lock.json
 .vscode
 /.vs
 .audit
+
+# superpowers SDD scratch workspace
+.superpowers/
