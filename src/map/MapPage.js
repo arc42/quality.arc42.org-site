@@ -13,7 +13,7 @@ import { buildSubgraph } from "./subgraph.js";
 import { ListView } from "./ListView.js";
 import { MapView } from "./MapView.js";
 import { Panel } from "./Panel.js";
-import { singlesText, summaryText, unknownIdsText } from "./format.js";
+import { singlesChipText, summaryText, unknownIdsText } from "./format.js";
 
 // Thin controller for /map/: owns the selection state, wires the controls,
 // and re-renders every view after each change. Rendering lives in the views.
@@ -53,9 +53,9 @@ export class MapPage {
       );
     });
 
-    this.$("map-singles").addEventListener("click", () =>
-      this.update((s) => setShowSingles(s, !s.showSingles)),
-    );
+    const toggleSingles = () => this.update((s) => setShowSingles(s, !s.showSingles));
+    this.$("map-singles").addEventListener("click", toggleSingles);
+    this.$("map-singles-chip").addEventListener("click", toggleSingles);
 
     const toggle = this.$("map-hidden-toggle");
     toggle.addEventListener("click", () => {
@@ -138,9 +138,11 @@ export class MapPage {
       button.setAttribute("aria-pressed", String(state.layers.includes(button.dataset.layer)));
     });
     this.$("map-singles").setAttribute("aria-pressed", String(state.showSingles));
-    this.$("map-singles-hint").textContent = state.showSingles
-      ? ""
-      : singlesText(subgraph.singlesHidden);
+    const chipText = singlesChipText(subgraph, state);
+    const chip = this.$("map-singles-chip");
+    chip.textContent = chipText;
+    chip.hidden = chipText === "";
+    chip.setAttribute("aria-pressed", String(state.showSingles));
 
     this.renderHidden(subgraph);
     this.listView.render(subgraph, state);

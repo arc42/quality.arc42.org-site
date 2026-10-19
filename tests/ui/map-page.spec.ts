@@ -62,6 +62,22 @@ test("show singles toggle changes the row count", async ({ page }) => {
   await expect.poll(() => rows.count()).toBeGreaterThan(before);
 });
 
+test("legend explains the encoding; the singles chip mirrors the toggle", async ({ page }) => {
+  await page.addInitScript(
+    (seed) => localStorage.setItem("q42.map.v1", JSON.stringify(seed)),
+    SEED,
+  );
+  await page.goto("/map/");
+  await expect(page.locator("#map-legend")).toBeVisible();
+  await expect(page.locator("#map-legend")).toContainText("my priority");
+  const chip = page.locator("#map-singles-chip");
+  await expect(chip).toHaveText(/\d+ (approaches|items) with one link/);
+  await chip.click();
+  await expect(page.locator("#map-singles")).toHaveAttribute("aria-pressed", "true");
+  await expect(chip).toHaveText("Single-link items shown · Hide");
+  await expect(chip).toHaveAttribute("aria-pressed", "true");
+});
+
 test("canvas draws one node per quality and shared item; clicking an item opens the panel", async ({
   page,
 }) => {

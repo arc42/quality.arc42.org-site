@@ -40,12 +40,27 @@ hide: true
       <button class="map-pill map-pill--layer" type="button" data-layer="standards" aria-pressed="false"><span class="map-pill__check" aria-hidden="true">✓</span>Standards</button>
       <button class="map-pill map-pill--layer" type="button" data-layer="dimensions" aria-pressed="false"><span class="map-pill__check" aria-hidden="true">✓</span>Dimensions</button>
     </div>
-    <button id="map-singles" class="map-pill" type="button" aria-pressed="false" aria-describedby="map-singles-hint">Show singles</button>
-    <span id="map-singles-hint" class="map-controls__hint"></span>
+    <button id="map-singles" class="map-pill" type="button" aria-pressed="false">Show singles</button>
   </div>
 
   <div class="map-layout">
-    <div id="map-canvas" class="map-canvas" aria-hidden="true"></div>
+    <div class="map-stage">
+      <div id="map-canvas" class="map-canvas" aria-hidden="true"></div>
+      <div id="map-legend" class="map-legend">
+        <p class="map-legend__title">How to read</p>
+        <p>Size and fill show <strong>my priority</strong>. Nothing is rated automatically.</p>
+        <ul class="map-legend__list">
+          <li><span class="map-swatch map-swatch--q-none" aria-hidden="true"></span>none</li>
+          <li><span class="map-swatch map-swatch--q-med" aria-hidden="true"></span>med</li>
+          <li><span class="map-swatch map-swatch--q-high" aria-hidden="true"></span>high</li>
+        </ul>
+        <ul class="map-legend__list map-legend__list--stack">
+          <li><span class="map-swatch map-swatch--approach" aria-hidden="true"></span>approach · number = qualities served</li>
+          <li><span class="map-swatch map-swatch--custom" aria-hidden="true"></span>your own requirement</li>
+        </ul>
+      </div>
+      <button id="map-singles-chip" class="map-singles-chip" type="button" aria-pressed="false" hidden></button>
+    </div>
     <aside id="map-panel" class="map-panel" aria-label="Selected item"></aside>
   </div>
 

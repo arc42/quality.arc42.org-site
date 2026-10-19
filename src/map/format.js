@@ -41,10 +41,23 @@ export function priorityLabel(priority) {
   return PRIORITY_LABELS[priority] ?? "not rated";
 }
 
-/** Hint next to the "show singles" toggle; empty when nothing is held back. */
-export function singlesText(count) {
-  if (!count) return "";
-  return `${plural(count, "item links", "items link")} to only one of your qualities`;
+const LAYER_NOUNS = Object.freeze({
+  approaches: ["approach", "approaches"],
+  requirements: ["requirement", "requirements"],
+  standards: ["standard", "standards"],
+  dimensions: ["dimension", "dimensions"],
+});
+
+/** Text of the single-link chip; empty when nothing is held back and singles are off. */
+export function singlesChipText(subgraph, state) {
+  if (state.showSingles) return "Single-link items shown · Hide";
+  const n = subgraph.singlesHidden;
+  if (!n) return "";
+  const [one, many] = (state.layers.length === 1 && LAYER_NOUNS[state.layers[0]]) || [
+    "item",
+    "items",
+  ];
+  return `${n} ${n === 1 ? one : many} with one link ${n === 1 ? "is" : "are"} hidden · Show`;
 }
 
 /** Notice for selected ids that no longer exist on Q42. */
