@@ -398,3 +398,42 @@ test("copy falls back to selecting the URL; a backdrop click closes the dialog",
   await expect(dialog).toBeHidden();
   await expect(open).toBeFocused();
 });
+
+test("rating a quality sets its size and header, survives reload, and clears on a second press", async ({
+  page,
+}) => {
+  await page.addInitScript((seed) => {
+    if (!localStorage.getItem("q42.map.v1")) {
+      localStorage.setItem("q42.map.v1", JSON.stringify(seed));
+    }
+  }, SEED);
+  await page.goto("/map/");
+  const circle = page.locator('#map-canvas svg .map-node[data-id="availability"] circle');
+  const header = page.locator("#map-table thead th", { hasText: "Availability" });
+  await circle.click();
+
+  const panel = page.locator("#map-panel");
+  const group = panel.getByRole("group", { name: "My priority" });
+  await expect(group).toBeVisible();
+  await expect(panel).toContainText("Not rated yet. Your choice sets size and colour on the map.");
+  const high = group.getByRole("button", { name: "High" });
+  await high.click();
+
+  await expect(high).toHaveAttribute("aria-pressed", "true");
+  await expect(high).toBeFocused();
+  await expect(circle).toHaveAttribute("r", "58");
+  await expect(header).toContainText("high");
+
+  await page.reload();
+  await page.locator('#map-canvas svg .map-node[data-id="availability"] circle').click();
+  await expect(panel.getByRole("button", { name: "High" })).toHaveAttribute("aria-pressed", "true");
+  await expect(header).toContainText("high");
+
+  await panel.getByRole("button", { name: "High" }).click();
+  await expect(panel.getByRole("button", { name: "High" })).toHaveAttribute(
+    "aria-pressed",
+    "false",
+  );
+  await expect(circle).toHaveAttribute("r", "34");
+  await expect(header).toContainText("not rated");
+});

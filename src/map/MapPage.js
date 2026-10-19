@@ -7,6 +7,7 @@ import {
   saveState,
   setItemHidden,
   setLayers,
+  setPriority,
   setQualityHidden,
   setShowSingles,
 } from "./store.js";
@@ -38,6 +39,7 @@ export class MapPage {
     this.mapView = new MapView(this.$("map-canvas"), { onSelect: (id) => this.select(id) });
     this.panel = new Panel(this.$("map-panel"), {
       baseurl: this.baseurl,
+      onPriority: (id, priority) => this.update((s) => setPriority(s, id, priority)),
       onHide: (id, hidden) =>
         this.update((s) =>
           s.qualities.some((q) => q.id === id)

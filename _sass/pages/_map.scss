@@ -563,8 +563,62 @@ html:not(.js) .map-page {
   }
 }
 
-.map-panel__priority:empty {
-  display: none;
+.map-panel__priority {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+
+  &:empty {
+    display: none;
+  }
+}
+
+.map-panel__subheading {
+  font-size: 1rem;
+  margin: 0;
+}
+
+.map-panel__segments {
+  display: flex;
+}
+
+.map-panel__segment {
+  background: white;
+  border: 1px solid var(--brand-violet);
+  color: var(--brand-violet);
+  cursor: pointer;
+  flex: 1;
+  font: inherit;
+  font-weight: 700;
+  min-height: 44px;
+  padding: 0 0.75rem;
+
+  &:first-child {
+    border-radius: $radius-sm 0 0 $radius-sm;
+  }
+
+  &:last-child {
+    border-radius: 0 $radius-sm $radius-sm 0;
+  }
+
+  & + & {
+    margin-left: -1px;
+  }
+
+  &:hover {
+    background: var(--brand-violet-faint);
+  }
+
+  &[aria-pressed="true"] {
+    background: var(--brand-violet);
+    color: white;
+  }
+
+  &:focus-visible {
+    box-shadow: var(--focus-ring);
+    outline: none;
+    position: relative;
+  }
 }
 
 .map-panel__open {

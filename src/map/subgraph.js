@@ -11,7 +11,7 @@ const ROOT_ID = "quality-root";
 
 /**
  * @typedef {{ id: string, label: string, page: string, qualityType: string, priority: string|null, hidden: boolean, sharedCount: number }} MapQuality
- * @typedef {{ id: string, label: string, page: string, type: "approach"|"requirement"|"standard"|"dimension"|"custom", linkedQualityIds: string[], hidden: boolean }} MapItem
+ * @typedef {{ id: string, label: string, page: string, type: "approach"|"requirement"|"standard"|"dimension"|"custom", priority?: string|null, linkedQualityIds: string[], hidden: boolean }} MapItem
  * @typedef {{ source: string, target: string, kind: "link"|"custom" }} MapEdge
  * @typedef {{ qualities: MapQuality[], items: MapItem[], edges: MapEdge[], unknownIds: string[], singlesHidden: number }} Subgraph
  */
@@ -98,6 +98,7 @@ export function buildSubgraph(index, state) {
       label: c.title,
       page: "",
       type: "custom",
+      priority: c.priority ?? null,
       linkedQualityIds: order.filter((q) => c.qualities.includes(q)),
       hidden: hiddenItems.has(c.id),
     });

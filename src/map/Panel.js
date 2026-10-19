@@ -1,6 +1,8 @@
 // Side panel next to the map canvas: details of the selected node, a link to
-// its page on Q42 and the hide/show toggle. Priority controls arrive later and
-// fill the empty [data-panel-priority] slot.
+// its page on Q42, the priority rating and the hide/show toggle.
+
+import { PRIORITIES } from "./store.js";
+import { priorityLabel } from "./format.js";
 
 export const TYPE_BADGES = Object.freeze({
   quality: "Quality",
@@ -18,7 +20,10 @@ const SVG_NS = "http://www.w3.org/2000/svg";
 const plural = (n, one, many) => `${n} ${n === 1 ? one : many}`;
 
 export class Panel {
-  constructor(container, { baseurl = "", onHide = () => {}, onOpen = () => {} } = {}) {
+  constructor(
+    container,
+    { baseurl = "", onHide = () => {}, onOpen = () => {}, onPriority = () => {} } = {},
+  ) {
     this.container = container;
     this.doc = container.ownerDocument;
     this.baseurl = baseurl;
@@ -28,7 +33,11 @@ export class Panel {
     container.addEventListener("click", (event) => {
       const node = this.selection?.node;
       if (!node) return;
-      if (event.target.closest("[data-panel-hide]")) onHide(node.id, !node.hidden);
+      const choice = event.target.closest("[data-priority]");
+      if (choice) {
+        const next = choice.dataset.priority;
+        onPriority(node.id, next === node.priority ? null : next);
+      } else if (event.target.closest("[data-panel-hide]")) onHide(node.id, !node.hidden);
       else if (event.target.closest("[data-panel-open]")) onOpen(node.id);
     });
   }
@@ -42,9 +51,11 @@ export class Panel {
   }
 
   render(selection) {
-    // Keep keyboard focus on the toggle when it is rebuilt after a hide/show.
+    // Keep keyboard focus on the same control when it is rebuilt after a change.
     const active = this.doc.activeElement;
-    const refocus = this.container.contains(active) && active.matches("[data-panel-hide]");
+    const inside = this.container.contains(active);
+    const refocus = inside && active.matches("[data-panel-hide]");
+    const refocusPriority = inside ? active.closest("[data-priority]")?.dataset.priority : null;
     this.selection = selection;
     if (!selection) {
       this.container.replaceChildren(
@@ -83,14 +94,53 @@ export class Panel {
       );
     }
 
-    parts.push(
-      this.el("div", { className: "map-panel__priority", attrs: { "data-panel-priority": "" } }),
-    );
+    parts.push(this.priorityGroup(node, kind === "quality" || node.type === "custom"));
     if (node.page) parts.push(this.openLink(node.page));
     parts.push(this.hideButton(node.hidden));
 
     this.container.replaceChildren(...parts);
     if (refocus) this.container.querySelector("[data-panel-hide]")?.focus();
+    if (refocusPriority)
+      this.container.querySelector(`[data-priority="${refocusPriority}"]`)?.focus();
+  }
+
+  /** Low/Medium/High rating; empty slot for items that cannot be rated. */
+  priorityGroup(node, rateable) {
+    const slot = this.el("div", {
+      className: "map-panel__priority",
+      attrs: { "data-panel-priority": "" },
+    });
+    if (!rateable) return slot;
+    const priority = node.priority ?? null;
+    const group = this.el("div", {
+      className: "map-panel__segments",
+      attrs: { role: "group", "aria-label": "My priority" },
+    });
+    for (const value of PRIORITIES) {
+      group.append(
+        this.el("button", {
+          className: "map-panel__segment",
+          text: priorityLabel(value)[0].toUpperCase() + priorityLabel(value).slice(1),
+          attrs: {
+            type: "button",
+            "data-priority": value,
+            "aria-pressed": String(priority === value),
+          },
+        }),
+      );
+    }
+    slot.append(
+      this.el("h3", { className: "map-panel__subheading", text: "My priority" }),
+      this.el("p", {
+        className: "map-panel__hint",
+        text:
+          priority === null
+            ? "Not rated yet. Your choice sets size and colour on the map."
+            : `Rated ${priorityLabel(priority)}. Press the active choice again to clear.`,
+      }),
+      group,
+    );
+    return slot;
   }
 
   qualityList(qualities, linked) {
