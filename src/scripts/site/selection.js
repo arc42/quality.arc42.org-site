@@ -30,7 +30,9 @@ function syncButton(button, state) {
   const [addLabel, addedLabel] = labelsFor(button);
   const label = pressed ? addedLabel : addLabel;
   button.setAttribute("aria-pressed", String(pressed));
-  if (button.firstChild?.nodeType === 3 && button.firstChild.data === label) return;
+  // Rewriting the content adds DOM nodes; skip when it is already current.
+  if (button.dataset.mapLabel === label) return;
+  button.dataset.mapLabel = label;
 
   const doc = button.ownerDocument;
   button.textContent = label;
