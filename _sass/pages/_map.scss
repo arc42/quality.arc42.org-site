@@ -771,6 +771,17 @@ html:not(.js) .map-page {
   }
 }
 
+.map-panel__button--secondary {
+  border-color: var(--brand-muted);
+  color: var(--brand-muted-strong);
+
+  &:hover {
+    background: var(--brand-paper);
+    border-color: var(--brand-violet);
+    color: var(--brand-violet);
+  }
+}
+
 .map-panel__scenario {
   border-left: 3px solid var(--brand-violet-soft);
   margin: 0;

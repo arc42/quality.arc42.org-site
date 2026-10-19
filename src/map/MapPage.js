@@ -2,10 +2,12 @@ import {
   SELECTION_EVENT,
   STORAGE_KEY,
   addCustom,
+  createEmptyState,
   emitSelectionChanged,
   loadState,
   mergeStates,
   removeCustom,
+  removeQuality,
   saveState,
   setItemHidden,
   setLayers,
@@ -22,7 +24,7 @@ import { ExportPanel } from "./ExportPanel.js";
 import { CustomForm } from "./CustomForm.js";
 import { AddSearch } from "./AddSearch.js";
 import { SHARE_PARAM, decodeShare } from "./share.js";
-import { singlesChipText, summaryText, unknownIdsText } from "./format.js";
+import { plural, singlesChipText, summaryText, unknownIdsText } from "./format.js";
 
 // Thin controller for /map/: owns the selection state, wires the controls,
 // and re-renders every view after each change. Rendering lives in the views.
@@ -40,6 +42,8 @@ export class MapPage {
     // both take #map-notice over from the unknown-id notice.
     this.pendingShare = null;
     this.message = "";
+    // "Clear selection" was pressed once and awaits the inline confirmation.
+    this.pendingClear = false;
     this.listView = new ListView(this.$("map-table"), {
       baseurl: this.baseurl,
       onDetails: (id) => this.select(id, { focusPanel: true }),
@@ -58,6 +62,7 @@ export class MapPage {
       onEdit: (id, opener) =>
         this.customForm.open({ custom: this.state.custom.find((c) => c.id === id), opener }),
       onRemove: (id) => this.removeCustom(id),
+      onRemoveQuality: (id) => this.removeQuality(id),
     });
     this.customForm = new CustomForm(this.$("map-custom-dialog"), {
       getQualities: () => this.subgraph.qualities,
@@ -134,9 +139,20 @@ export class MapPage {
     const exportOpen = this.$("map-export-open");
     exportOpen.addEventListener("click", () => this.exportPanel.open(exportOpen));
 
+    const clear = this.$("map-clear");
+    clear.addEventListener("click", () => {
+      this.pendingClear = true;
+      this.renderNotice();
+      // Land on the safe choice; the reader confirms with a second press.
+      this.$("map-notice").querySelector('[data-notice-choice="keep"]')?.focus();
+    });
+
     this.$("map-notice").addEventListener("click", (event) => {
-      const button = event.target.closest("[data-share-choice]");
-      if (button) this.resolveShare(button.dataset.shareChoice);
+      const choice = event.target.closest("[data-notice-choice]")?.dataset.noticeChoice;
+      if (!choice) return;
+      if (choice === "clear" || choice === "keep") this.resolveClear(choice);
+      else if (choice === "prune") this.pruneUnknown();
+      else this.resolveShare(choice);
     });
     this.doc.defaultView?.addEventListener("hashchange", () => this.readShareHash());
 
@@ -161,7 +177,7 @@ export class MapPage {
     this.message = "";
     this.renderNotice();
     if (this.state.qualities.length === 0) {
-      this.$("map-notice").querySelector('[data-share-choice="replace"]').focus();
+      this.$("map-notice").querySelector('[data-notice-choice="replace"]').focus();
     }
   }
 
@@ -173,9 +189,44 @@ export class MapPage {
     else if (incoming && choice === "merge") this.update((s) => mergeStates(s, incoming));
     else this.renderNotice();
     // The pressed button is gone; land on the summary, which reports the result.
+    this.focusSummary();
+  }
+
+  focusSummary() {
     const summary = this.$("map-summary");
     summary.tabIndex = -1;
     summary.focus();
+  }
+
+  resolveClear(choice) {
+    this.pendingClear = false;
+    if (choice !== "clear") {
+      this.renderNotice();
+      this.$("map-clear").focus();
+      return;
+    }
+    this.selectedId = null;
+    this.update(() => createEmptyState());
+    this.message = "Selection cleared";
+    this.renderNotice();
+    this.$("map-add-input").focus();
+  }
+
+  /** Drop selected ids that no longer exist on Q42, after the reader asked for it. */
+  pruneUnknown() {
+    const ids = this.subgraph.unknownIds;
+    this.update((s) => ids.reduce((next, id) => removeQuality(next, id), s));
+    this.focusSummary();
+  }
+
+  /** Remove a quality from the selection (the panel's "Remove from selection"). */
+  removeQuality(id) {
+    const label = this.subgraph.qualities.find((q) => q.id === id)?.label ?? id;
+    if (this.selectedId === id) this.selectedId = null;
+    this.update((s) => removeQuality(s, id));
+    this.message = `${label} removed from your selection`;
+    this.renderNotice();
+    this.focusSummary();
   }
 
   clearHash() {
@@ -188,34 +239,66 @@ export class MapPage {
     );
   }
 
+  /**
+   * #map-notice shows, in order: a pending share link, a pending clear, a
+   * one-off message, or the stale-id report. Unchanged content is left alone
+   * so the live region does not announce it again on every render.
+   */
   renderNotice() {
-    const notice = this.$("map-notice");
     if (this.pendingShare) {
-      if (notice.querySelector("[data-share-choice]")) return;
-      const text = this.doc.createElement("span");
-      text.textContent = "A shared map was opened.";
-      const actions = this.doc.createElement("span");
-      actions.className = "map-notice__actions";
-      for (const [choice, label] of [
+      this.noticeWithChoices("share", "A shared map was opened.", [
         ["replace", "Replace my selection"],
         ["merge", "Merge"],
         ["ignore", "Ignore"],
-      ]) {
-        const button = this.doc.createElement("button");
-        button.type = "button";
-        button.className = "map-pill";
-        button.dataset.shareChoice = choice;
-        button.textContent = label;
-        actions.append(button);
-      }
-      notice.replaceChildren(text, " ", actions);
+      ]);
       return;
     }
-    notice.textContent = this.message || unknownIdsText(this.subgraph.unknownIds.length);
+    if (this.pendingClear) {
+      const n = this.state.qualities.length;
+      const own = this.state.custom.length;
+      const what = own
+        ? `${plural(n, "quality", "qualities")} and ${plural(own, "own requirement", "own requirements")}`
+        : plural(n, "quality", "qualities");
+      this.noticeWithChoices(`clear:${n}:${own}`, `Remove all ${what}?`, [
+        ["clear", "Clear"],
+        ["keep", "Keep"],
+      ]);
+      return;
+    }
+    const unknown = this.subgraph.unknownIds;
+    if (!this.message && unknown.length) {
+      this.noticeWithChoices(`prune:${unknown.join(",")}`, unknownIdsText(unknown), [
+        ["prune", "Remove them"],
+      ]);
+      return;
+    }
+    const notice = this.$("map-notice");
+    delete notice.dataset.notice;
+    if (notice.textContent !== this.message) notice.textContent = this.message;
+  }
+
+  noticeWithChoices(key, message, choices) {
+    const notice = this.$("map-notice");
+    if (notice.dataset.notice === key) return;
+    notice.dataset.notice = key;
+    const text = this.doc.createElement("span");
+    text.textContent = message;
+    const actions = this.doc.createElement("span");
+    actions.className = "map-notice__actions";
+    for (const [choice, label] of choices) {
+      const button = this.doc.createElement("button");
+      button.type = "button";
+      button.className = "map-pill";
+      button.dataset.noticeChoice = choice;
+      button.textContent = label;
+      actions.append(button);
+    }
+    notice.replaceChildren(text, " ", actions);
   }
 
   update(fn) {
     this.message = "";
+    this.pendingClear = false;
     const next = fn(this.state);
     try {
       this.state = saveState(next);
@@ -268,6 +351,7 @@ export class MapPage {
     this.root.querySelector(".map-list").hidden = empty;
     // An own requirement needs qualities to link to.
     this.$("map-custom-open").hidden = empty;
+    this.$("map-clear").hidden = empty;
     this.$("map-summary").textContent = empty
       ? "No qualities selected yet"
       : summaryText(subgraph, state);

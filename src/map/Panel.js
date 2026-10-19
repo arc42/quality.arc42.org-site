@@ -34,6 +34,7 @@ export class Panel {
       getCustom = () => null,
       onEdit = () => {},
       onRemove = () => {},
+      onRemoveQuality = () => {},
     } = {},
   ) {
     this.container = container;
@@ -54,6 +55,7 @@ export class Panel {
       else if (event.target.closest("[data-panel-open]")) onOpen(node.id);
       else if (event.target.closest("[data-panel-edit]")) onEdit(node.id, event.target);
       else if (event.target.closest("[data-panel-remove]")) onRemove(node.id);
+      else if (event.target.closest("[data-panel-remove-quality]")) onRemoveQuality(node.id);
     });
   }
 
@@ -118,6 +120,7 @@ export class Panel {
     if (node.page) parts.push(this.openLink(node.page));
     if (custom) parts.push(this.customActions(), this.proposeBlock(custom));
     parts.push(this.hideButton(node.hidden));
+    if (kind === "quality") parts.push(this.removeQualityButton());
 
     this.container.replaceChildren(...parts);
     if (refocus) this.container.querySelector("[data-panel-hide]")?.focus();
@@ -241,6 +244,14 @@ export class Panel {
     path.setAttribute("d", EXTERNAL_ICON);
     svg.append(path);
     return svg;
+  }
+
+  removeQualityButton() {
+    return this.el("button", {
+      className: "map-panel__button map-panel__button--secondary",
+      text: "Remove from selection",
+      attrs: { type: "button", "data-panel-remove-quality": "" },
+    });
   }
 
   hideButton(hidden) {

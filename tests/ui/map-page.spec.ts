@@ -144,8 +144,8 @@ test("hidden list reports unknown ids and restores hidden qualities and items", 
   };
   await page.addInitScript((s) => localStorage.setItem("q42.map.v1", JSON.stringify(s)), seed);
   await page.goto("/map/");
-  await expect(page.locator("#map-notice")).toHaveText(
-    "1 quality in your selection no longer exists on Q42 and was ignored",
+  await expect(page.locator("#map-notice")).toContainText(
+    "1 quality in your selection no longer exists on Q42: no-such-quality.",
   );
   const svg = page.locator("#map-canvas svg");
   await expect(svg.locator('.map-node[data-id="resilience"]')).toHaveCount(0);
@@ -718,6 +718,72 @@ test.describe("own requirements", () => {
     results = await new AxeBuilder({ page }).withTags(tags).analyze();
     expect(results.violations.map((v) => v.id)).toEqual([]);
   });
+});
+
+test("a quality can be removed from the panel", async ({ page }) => {
+  const svg = await seedAndOpen(page);
+  await svg.locator('.map-node[data-id="availability"] circle').click();
+  const panel = page.locator("#map-panel");
+  await panel.getByRole("button", { name: "Remove from selection" }).click();
+  await expect(page.locator("#map-notice")).toHaveText("Availability removed from your selection");
+  await expect(svg.locator('.map-node[data-id="availability"]')).toHaveCount(0);
+  await expect(page.locator("#map-summary")).toContainText("2 qualities");
+  await expect(page.locator("#map-summary")).toBeFocused();
+  await expect(panel).toContainText("Select a node on the map");
+  await expect(page.locator("[data-map-tray-count]")).toHaveText("2");
+  const ids = await page.evaluate(() =>
+    JSON.parse(localStorage.getItem("q42.map.v1")!).qualities.map((q) => q.id),
+  );
+  expect(ids).toEqual(["resilience", "fault-tolerance"]);
+});
+
+test("clear selection asks inline before removing everything", async ({ page }) => {
+  await seedAndOpen(page);
+  const clear = page.locator("#map-clear");
+  const notice = page.locator("#map-notice");
+  await clear.click();
+  await expect(notice).toContainText("Remove all 3 qualities?");
+  await expect(notice.getByRole("button", { name: "Keep" })).toBeFocused();
+  await notice.getByRole("button", { name: "Keep" }).click();
+  await expect(notice).toHaveText("");
+  await expect(clear).toBeFocused();
+  await expect(page.locator("#map-summary")).toContainText("3 qualities");
+  await clear.click();
+  await notice.getByRole("button", { name: "Clear", exact: true }).click();
+  await expect(page.locator("#map-empty")).toBeVisible();
+  await expect(clear).toBeHidden();
+  await expect(page.locator("#map-add-input")).toBeFocused();
+  await expect(page.locator("[data-map-tray]")).toBeHidden();
+  const count = await page.evaluate(
+    () => JSON.parse(localStorage.getItem("q42.map.v1")!).qualities.length,
+  );
+  expect(count).toBe(0);
+});
+
+test("stale quality ids are reported and removed on request", async ({ page }) => {
+  const seed = {
+    ...SEED,
+    qualities: [...SEED.qualities, { id: "no-such-quality", priority: null, hidden: false }],
+  };
+  await page.addInitScript((s) => {
+    if (localStorage.getItem("q42.map.v1") === null) {
+      localStorage.setItem("q42.map.v1", JSON.stringify(s));
+    }
+  }, seed);
+  await page.goto("/map/");
+  const notice = page.locator("#map-notice");
+  await expect(notice).toContainText(
+    "1 quality in your selection no longer exists on Q42: no-such-quality.",
+  );
+  await expect(page.locator("[data-map-tray-count]")).toHaveText("4");
+  await notice.getByRole("button", { name: "Remove them" }).click();
+  await expect(notice).toHaveText("");
+  await expect(page.locator("#map-summary")).toContainText("3 qualities");
+  await expect(page.locator("#map-summary")).toBeFocused();
+  await expect(page.locator("[data-map-tray-count]")).toHaveText("3");
+  await page.reload();
+  await expect(page.locator("#map-summary")).toContainText("3 qualities");
+  await expect(notice).toHaveText("");
 });
 
 // Press Tab until the focused element matches `selector`; keyboard only.

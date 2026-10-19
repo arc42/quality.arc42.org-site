@@ -7,7 +7,8 @@ const TYPE_ORDER = Object.freeze([
   { type: "dimension", layer: "dimensions" },
 ]);
 
-const plural = (n, one, many) => `${n} ${n === 1 ? one : many}`;
+/** "1 quality", "3 qualities". */
+export const plural = (n, one, many) => `${n} ${n === 1 ? one : many}`;
 
 /** Summary line under the page title; parts are joined by " · ". */
 export function summaryText(subgraph, state) {
@@ -60,12 +61,13 @@ export function singlesChipText(subgraph, state) {
   return `${n} ${n === 1 ? one : many} with one link ${n === 1 ? "is" : "are"} hidden · Show`;
 }
 
-/** Notice for selected ids that no longer exist on Q42. */
-export function unknownIdsText(count) {
+/** Notice for selected ids that no longer exist on Q42; names them so the reader can decide. */
+export function unknownIdsText(ids) {
+  const count = ids.length;
   if (!count) return "";
   return `${plural(count, "quality", "qualities")} in your selection no longer ${
     count === 1 ? "exists" : "exist"
-  } on Q42 and ${count === 1 ? "was" : "were"} ignored`;
+  } on Q42: ${ids.join(", ")}.`;
 }
 
 /** Heading of each item group in the list view. */

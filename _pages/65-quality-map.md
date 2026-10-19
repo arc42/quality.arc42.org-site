@@ -20,6 +20,7 @@ hide: true
       <div id="map-export" class="map-export">
         <button id="map-export-open" class="map-pill" type="button" aria-haspopup="dialog" aria-controls="map-export-dialog">Export &amp; share</button>
       </div>
+      <button id="map-clear" class="map-pill" type="button" hidden>Clear selection</button>
     </div>
   </header>
 

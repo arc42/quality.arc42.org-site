@@ -1,6 +1,12 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { summaryText, servesText, priorityLabel, singlesChipText } from "../src/map/format.js";
+import {
+  summaryText,
+  servesText,
+  priorityLabel,
+  singlesChipText,
+  unknownIdsText,
+} from "../src/map/format.js";
 
 test("summary wording", () => {
   const sg = (n, items) => ({
@@ -45,4 +51,16 @@ test("single-link chip wording", () => {
   );
   assert.equal(singlesChipText(sg(0), st(["approaches"])), "");
   assert.equal(singlesChipText(sg(0), st(["approaches"], true)), "Single-link items shown · Hide");
+});
+
+test("unknown-id notice names the stale ids", () => {
+  assert.equal(unknownIdsText([]), "");
+  assert.equal(
+    unknownIdsText(["gone"]),
+    "1 quality in your selection no longer exists on Q42: gone.",
+  );
+  assert.equal(
+    unknownIdsText(["a", "b"]),
+    "2 qualities in your selection no longer exist on Q42: a, b.",
+  );
 });
