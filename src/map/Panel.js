@@ -3,7 +3,8 @@
 // requirements also Edit, Remove and the propose-as-issue link.
 
 import { PRIORITIES } from "./store.js";
-import { priorityLabel } from "./format.js";
+import { plural, priorityLabel } from "./format.js";
+import { el } from "./dom.js";
 import { proposeIssueUrl } from "./propose.js";
 
 export const TYPE_BADGES = Object.freeze({
@@ -21,8 +22,6 @@ const PRIVACY_NOTE =
   "Shares title, scenario and linked qualities. Not shared: your priorities, selection and map.";
 const EXTERNAL_ICON = "M14 4h6v6M20 4l-9 9M19 14v6H4V5h6";
 const SVG_NS = "http://www.w3.org/2000/svg";
-
-const plural = (n, one, many) => `${n} ${n === 1 ? one : many}`;
 
 export class Panel {
   constructor(
@@ -60,14 +59,6 @@ export class Panel {
     });
   }
 
-  el(tag, { className, text, attrs } = {}) {
-    const node = this.doc.createElement(tag);
-    if (className) node.className = className;
-    if (text !== undefined) node.textContent = text;
-    for (const [name, value] of Object.entries(attrs ?? {})) node.setAttribute(name, value);
-    return node;
-  }
-
   render(selection) {
     // Keep keyboard focus on the same control when it is rebuilt after a change.
     const active = this.doc.activeElement;
@@ -77,7 +68,7 @@ export class Panel {
     this.selection = selection;
     if (!selection) {
       this.container.replaceChildren(
-        this.el("p", { className: "map-panel__placeholder", text: PLACEHOLDER }),
+        el(this.doc, "p", { className: "map-panel__placeholder", text: PLACEHOLDER }),
       );
       return;
     }
@@ -85,20 +76,24 @@ export class Panel {
     const { kind, node, subgraph } = selection;
     const type = kind === "quality" ? "quality" : node.type;
     const parts = [
-      this.el("span", {
+      el(this.doc, "span", {
         className: "map-panel__badge",
         text: TYPE_BADGES[type],
         attrs: { "data-type": type },
       }),
       // Focus target for the list view's Details buttons.
-      this.el("h2", { className: "map-panel__title", text: node.label, attrs: { tabindex: "-1" } }),
+      el(this.doc, "h2", {
+        className: "map-panel__title",
+        text: node.label,
+        attrs: { tabindex: "-1" },
+      }),
     ];
 
     if (kind === "item") {
       const total = subgraph.qualities.length;
       const linked = new Set(node.linkedQualityIds);
       parts.push(
-        this.el("p", {
+        el(this.doc, "p", {
           className: "map-panel__summary",
           text: `Supports ${linked.size} of ${plural(total, "quality", "qualities")}`,
         }),
@@ -106,7 +101,7 @@ export class Panel {
       );
     } else {
       parts.push(
-        this.el("p", {
+        el(this.doc, "p", {
           className: "map-panel__summary",
           text: plural(node.sharedCount, "shared item", "shared items"),
         }),
@@ -115,7 +110,9 @@ export class Panel {
 
     const custom = node.type === "custom" ? this.getCustom(node.id) : null;
     if (custom?.scenario.trim()) {
-      parts.push(this.el("p", { className: "map-panel__scenario", text: custom.scenario.trim() }));
+      parts.push(
+        el(this.doc, "p", { className: "map-panel__scenario", text: custom.scenario.trim() }),
+      );
     }
     parts.push(this.priorityGroup(node, kind === "quality" || node.type === "custom"));
     if (node.page) parts.push(this.openLink(node.page));
@@ -131,19 +128,19 @@ export class Panel {
 
   /** Low/Medium/High rating; empty slot for items that cannot be rated. */
   priorityGroup(node, rateable) {
-    const slot = this.el("div", {
+    const slot = el(this.doc, "div", {
       className: "map-panel__priority",
       attrs: { "data-panel-priority": "" },
     });
     if (!rateable) return slot;
     const priority = node.priority ?? null;
-    const group = this.el("div", {
+    const group = el(this.doc, "div", {
       className: "map-segments",
       attrs: { role: "group", "aria-label": "My priority" },
     });
     for (const value of PRIORITIES) {
       group.append(
-        this.el("button", {
+        el(this.doc, "button", {
           className: "map-segment",
           text: priorityLabel(value)[0].toUpperCase() + priorityLabel(value).slice(1),
           attrs: {
@@ -155,8 +152,8 @@ export class Panel {
       );
     }
     slot.append(
-      this.el("h3", { className: "map-panel__subheading", text: "My priority" }),
-      this.el("p", {
+      el(this.doc, "h3", { className: "map-panel__subheading", text: "My priority" }),
+      el(this.doc, "p", {
         className: "map-panel__hint",
         text:
           priority === null
@@ -169,12 +166,12 @@ export class Panel {
   }
 
   qualityList(qualities, linked) {
-    const ul = this.el("ul", { className: "map-panel__qualities" });
+    const ul = el(this.doc, "ul", { className: "map-panel__qualities" });
     for (const q of qualities) {
       const on = linked.has(q.id);
-      const li = this.el("li", { className: on ? "is-linked" : "is-unlinked" });
+      const li = el(this.doc, "li", { className: on ? "is-linked" : "is-unlinked" });
       li.append(
-        this.el("span", {
+        el(this.doc, "span", {
           className: "map-panel__mark",
           text: on ? "✓" : "–",
           attrs: { "aria-hidden": "true" },
@@ -187,7 +184,7 @@ export class Panel {
   }
 
   openLink(page) {
-    const a = this.el("a", {
+    const a = el(this.doc, "a", {
       className: "map-panel__open",
       text: "Open on Q42",
       attrs: { href: this.baseurl + page, "data-panel-open": "" },
@@ -197,14 +194,14 @@ export class Panel {
   }
 
   customActions() {
-    const wrap = this.el("div", { className: "map-panel__actions" });
+    const wrap = el(this.doc, "div", { className: "map-panel__actions" });
     wrap.append(
-      this.el("button", {
+      el(this.doc, "button", {
         className: "map-panel__button",
         text: "Edit",
         attrs: { type: "button", "data-panel-edit": "" },
       }),
-      this.el("button", {
+      el(this.doc, "button", {
         className: "map-panel__button",
         text: "Remove",
         attrs: { type: "button", "data-panel-remove": "" },
@@ -215,17 +212,17 @@ export class Panel {
 
   /** "Propose as contribution": a prefilled GitHub issue, opened in a new tab. */
   proposeBlock(custom) {
-    const wrap = this.el("div", { className: "map-panel__propose" });
-    const a = this.el("a", {
+    const wrap = el(this.doc, "div", { className: "map-panel__propose" });
+    const a = el(this.doc, "a", {
       className: "map-propose",
       text: "Propose as contribution",
       attrs: { href: proposeIssueUrl(custom), target: "_blank", rel: "noopener" },
     });
     a.append(
       this.externalIcon(),
-      this.el("span", { className: "sr-only", text: " (opens GitHub in a new tab)" }),
+      el(this.doc, "span", { className: "sr-only", text: " (opens GitHub in a new tab)" }),
     );
-    wrap.append(a, this.el("p", { className: "map-panel__hint", text: PRIVACY_NOTE }));
+    wrap.append(a, el(this.doc, "p", { className: "map-panel__hint", text: PRIVACY_NOTE }));
     return wrap;
   }
 
@@ -248,7 +245,7 @@ export class Panel {
   }
 
   removeQualityButton() {
-    return this.el("button", {
+    return el(this.doc, "button", {
       className: "map-panel__button map-panel__button--secondary",
       text: "Remove from selection",
       attrs: { type: "button", "data-panel-remove-quality": "" },
@@ -256,14 +253,14 @@ export class Panel {
   }
 
   hideButton(hidden) {
-    const wrap = this.el("div", { className: "map-panel__hide" });
+    const wrap = el(this.doc, "div", { className: "map-panel__hide" });
     wrap.append(
-      this.el("button", {
+      el(this.doc, "button", {
         className: "map-panel__button",
         text: hidden ? "Show on map" : "Hide from map",
         attrs: { type: "button", "data-panel-hide": "" },
       }),
-      this.el("p", {
+      el(this.doc, "p", {
         className: "map-panel__hint",
         text: hidden
           ? "Hidden from the map. It stays in your selection."

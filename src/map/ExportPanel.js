@@ -1,4 +1,4 @@
-import { SHARE_MAX_LENGTH, SHARE_PARAM, encodeShare } from "./share.js";
+import { SHARE_MAX_LENGTH, SHARE_PARAM, shareUrl } from "./share.js";
 import { fromImportJson, toExportJson } from "./exporters/json.js";
 import { MARKDOWN_SECTIONS, toMarkdown } from "./exporters/markdown.js";
 import { downloadBlob, downloadText } from "./download.js";
@@ -77,9 +77,11 @@ export class ExportPanel {
     this.copyButton.disabled = true;
     this.urlInput.value = "";
     this.shareFailed.hidden = true;
-    let token;
+    const { origin, pathname } = this.doc.location;
+    const prefix = `${origin}${pathname}#${SHARE_PARAM}=`;
+    let url;
     try {
-      token = await encodeShare(this.getState());
+      url = await shareUrl(this.getState(), `${origin}${pathname}`);
     } catch {
       // E.g. no CompressionStream in this browser: point to the JSON file instead.
       this.urlRow.hidden = true;
@@ -87,27 +89,36 @@ export class ExportPanel {
       this.shareFailed.hidden = false;
       return;
     }
-    const tooLong = token.length > SHARE_MAX_LENGTH;
+    // The limit applies to the token, the part a share link decodes.
+    const tooLong = url.length - prefix.length > SHARE_MAX_LENGTH;
     this.urlRow.hidden = tooLong;
     this.tooLong.hidden = !tooLong;
     if (tooLong) return;
-    const { origin, pathname } = this.doc.location;
-    this.urlInput.value = `${origin}${pathname}#${SHARE_PARAM}=${token}`;
+    this.urlInput.value = url;
     this.copyButton.disabled = false;
   }
 
-  async copy() {
-    const url = this.urlInput.value;
-    if (!url) return;
+  /**
+   * Copy `text` and report it in `statusEl`. Without the clipboard API or
+   * permission, `select()` selects the same text on the page for a manual copy.
+   */
+  async copyWithFallback(text, statusEl, select) {
     try {
-      await this.doc.defaultView.navigator.clipboard.writeText(url);
-      this.setStatus(this.status, COPIED);
+      await this.doc.defaultView.navigator.clipboard.writeText(text);
+      this.setStatus(statusEl, COPIED);
     } catch {
-      // No clipboard API or permission denied: select the text for a manual copy.
+      select();
+      this.setStatus(statusEl, SELECTED);
+    }
+  }
+
+  copy() {
+    const url = this.urlInput.value;
+    if (!url) return undefined;
+    return this.copyWithFallback(url, this.status, () => {
       this.urlInput.focus();
       this.urlInput.select();
-      this.setStatus(this.status, SELECTED);
-    }
+    });
   }
 
   markdown() {
@@ -124,18 +135,14 @@ export class ExportPanel {
     this.mdPreview.textContent = this.markdown();
   }
 
-  async copyMarkdown() {
+  copyMarkdown() {
     const text = this.markdown();
-    try {
-      await this.doc.defaultView.navigator.clipboard.writeText(text);
-      this.setStatus(this.mdStatus, COPIED);
-    } catch {
-      // Select the preview for a manual copy; it shows exactly this text.
+    return this.copyWithFallback(text, this.mdStatus, () => {
+      // The preview then shows exactly the text that was meant to be copied.
       this.mdPreview.textContent = text;
       this.mdPreview.parentElement.focus();
       this.doc.getSelection().selectAllChildren(this.mdPreview);
-      this.setStatus(this.mdStatus, SELECTED);
-    }
+    });
   }
 
   downloadMarkdown() {

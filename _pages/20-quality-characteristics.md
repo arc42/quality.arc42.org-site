@@ -27,7 +27,7 @@ no_layout_header: true
   meta=qualities_meta %}
 
 {%- comment -%} Starts hidden; selection.js shows it unless the reader dismissed it before, so returning readers never see it flash. {%- endcomment -%}
-<aside class="map-banner" data-map-banner hidden aria-label="Build your own map">
+<aside class="map-banner" data-map-banner data-map-banner-next="#qualities-explorer" hidden aria-label="Build your own map">
   <span class="map-banner__icon" aria-hidden="true">
     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" focusable="false"><circle cx="6" cy="6" r="3"></circle><circle cx="18" cy="6" r="3"></circle><circle cx="12" cy="18" r="3"></circle><path d="M8.5 7.5l2.5 8M15.5 7.5l-2.5 8M9 6h6"></path></svg>
   </span>

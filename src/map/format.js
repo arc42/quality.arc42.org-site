@@ -10,6 +10,9 @@ const TYPE_ORDER = Object.freeze([
 /** "1 quality", "3 qualities". */
 export const plural = (n, one, many) => `${n} ${n === 1 ? one : many}`;
 
+/** Absolute URL of a Q42 page on `site`; null when there is no page. */
+export const absolute = (site, page) => (page ? `${site.replace(/\/$/, "")}${page}` : null);
+
 /** Summary line under the page title; parts are joined by " · ". */
 export function summaryText(subgraph, state) {
   const n = subgraph.qualities.length;

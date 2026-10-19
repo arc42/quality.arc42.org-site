@@ -17,6 +17,8 @@ export const HERO_ADDED_LABEL = "✓ In selection";
 export const BANNER_DISMISSED_KEY = "q42.map.banner-dismissed";
 
 const BUTTON_SELECTOR = "[data-map-add]";
+const FOCUSABLE =
+  'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
 const TOAST_TIMEOUT_MS = 6000;
 
 let initialized = false;
@@ -63,6 +65,24 @@ function syncTray(doc, state) {
   });
 }
 
+// After a banner is dismissed its button is gone: move focus to the first
+// visible control of the banner's target (`data-map-banner-next`), else to
+// that target's first heading, so keyboard focus never drops to <body>.
+function focusAfterBanner(doc, banner) {
+  const target = doc.querySelector(banner.dataset.mapBannerNext || "main");
+  if (!target) return;
+  const control = [...target.querySelectorAll(FOCUSABLE)].find(
+    (el) => el.getClientRects().length > 0,
+  );
+  if (control) {
+    control.focus();
+    return;
+  }
+  const heading = target.querySelector("h1, h2, h3") ?? target;
+  heading.tabIndex = -1;
+  heading.focus();
+}
+
 // Banners ship `hidden` in the page and are only revealed here, so readers
 // who dismissed one never see it flash on load.
 function initBanners(doc) {
@@ -84,6 +104,7 @@ function initBanners(doc) {
         // Storage full or blocked: the banner still hides for this page view.
       }
       banner.hidden = true;
+      focusAfterBanner(doc, banner);
     });
   });
 }

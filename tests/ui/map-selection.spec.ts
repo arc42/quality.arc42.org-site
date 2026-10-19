@@ -103,6 +103,13 @@ test("the qualities index shows a dismissible map banner that stays dismissed", 
   expect(box!.height).toBeGreaterThanOrEqual(44);
   await dismiss.click();
   await expect(banner).toBeHidden();
+  // The dismiss button is gone: focus moves on to the explorer, not to <body>.
+  expect(
+    await page.evaluate(() =>
+      document.getElementById("qualities-explorer")!.contains(document.activeElement),
+    ),
+  ).toBe(true);
+  expect(await page.evaluate(() => localStorage.getItem("q42.map.banner-dismissed"))).toBe("1");
   await page.reload();
   await expect(page.locator("#qualities-explorer")).toBeVisible();
   await expect(page.locator("[data-map-banner]")).toBeHidden();

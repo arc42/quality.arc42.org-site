@@ -31,10 +31,9 @@ function issueBody(custom) {
 
 /**
  * GitHub "new issue" URL proposing a custom requirement for the Q42 catalogue.
- * `qualityTitles` (id → title) is accepted for callers that show names; the
- * body lists ids, the form the `related:` front matter needs.
+ * The body lists quality ids, the form the `related:` front matter needs.
  */
-export function proposeIssueUrl(custom, qualityTitles, { repo = PROPOSE_REPO } = {}) {
+export function proposeIssueUrl(custom, { repo = PROPOSE_REPO } = {}) {
   const params = new URLSearchParams({
     title: clipTitle(custom.title),
     labels: PROPOSE_LABEL,

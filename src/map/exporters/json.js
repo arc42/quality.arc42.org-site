@@ -1,4 +1,5 @@
 import { STORE_VERSION, normalizeState } from "../store.js";
+import { absolute } from "../format.js";
 
 // JSON export and import of a map selection. The export is self-describing
 // (titles and absolute URLs) so it stays useful outside Q42, e.g. for an LLM;
@@ -8,8 +9,6 @@ export const EXPORT_FORMAT = "q42-map";
 export const DEFAULT_SITE = "https://quality.arc42.org";
 
 const NOT_A_MAP = "Not a Q42 map file";
-
-const absolute = (site, page) => (page ? `${site.replace(/\/$/, "")}${page}` : null);
 
 export function toExportJson(state, subgraph, { site = DEFAULT_SITE, now = new Date() } = {}) {
   const known = new Map(subgraph.qualities.map((q) => [q.id, q]));

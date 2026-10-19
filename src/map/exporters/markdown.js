@@ -1,4 +1,5 @@
 import { DEFAULT_SITE } from "./json.js";
+import { absolute, plural } from "../format.js";
 
 // Markdown export of a map, shaped for arc42: §1.2 quality goals, §10 quality
 // tree (with own requirements) and an approach × quality matrix. Pure over
@@ -10,12 +11,10 @@ const PRIORITY_RANK = { high: 0, medium: 1, low: 2 };
 const NO_PRIORITY = "–";
 const LINKED = "●";
 
-const absolute = (site, page) => `${site.replace(/\/$/, "")}${page}`;
 // A "|" inside a cell would split the table row.
 const cell = (text) => String(text).replace(/\|/g, "\\|");
 // Titles are user or content text: keep them from turning into emphasis, links or code.
 export const escapeInline = (text) => String(text).replace(/[\\*_[\]`]/g, "\\$&");
-const plural = (n, one, many) => `${n} ${n === 1 ? one : many}`;
 
 function goalsSection(qualities, title) {
   const ranked = qualities
