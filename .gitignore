@@ -11,6 +11,7 @@ node_modules
 assets/js/**/*.js.map
 assets/js/fullpage/*.js
 assets/js/homepage/*.js
+assets/js/map/*.js
 assets/.esbuild-ready
 assets/data
 

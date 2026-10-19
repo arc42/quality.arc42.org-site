@@ -1,0 +1,335 @@
+// map — the /map/ page: summary, layer toggles, layout mount points, list view.
+//
+// Driven by src/map/MapPage.js. The canvas and side panel are filled later;
+// this file sizes their containers and styles everything around them.
+
+// Without JavaScript the <noscript> fallback replaces the whole page.
+html:not(.js) .map-page {
+  display: none;
+}
+
+.map-page {
+  padding: 0 0.9rem 1.5rem;
+}
+
+.map-intro {
+  margin: 0 -0.9rem 0.6rem;
+}
+
+.map-intro__actions {
+  align-items: flex-start;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-left: auto;
+}
+
+// ── Pill buttons (tokens shared with .map-add) ──────────────
+
+.map-pill {
+  align-items: center;
+  background: var(--brand-paper);
+  border: 1px solid var(--brand-violet);
+  border-radius: $radius-pill;
+  color: var(--brand-violet);
+  cursor: pointer;
+  display: inline-flex;
+  font: inherit;
+  font-size: 0.92rem;
+  font-weight: 700;
+  gap: 0.4rem;
+  line-height: 1.2;
+  min-height: 44px;
+  padding: 0 1rem;
+  white-space: nowrap;
+
+  &[hidden] {
+    display: none;
+  }
+
+  &:hover {
+    background: var(--brand-violet-faint);
+  }
+
+  &[aria-pressed="true"] {
+    background: var(--brand-violet);
+    color: var(--brand-cream);
+  }
+
+  &[aria-pressed="true"]:hover {
+    background: var(--brand-violet-deep);
+  }
+
+  &:focus-visible {
+    box-shadow: var(--focus-ring);
+    outline: none;
+  }
+}
+
+.map-pill__count {
+  align-items: center;
+  background: var(--brand-violet);
+  border-radius: $radius-pill;
+  color: var(--brand-cream);
+  display: inline-flex;
+  font-size: 0.8rem;
+  height: 1.4rem;
+  justify-content: center;
+  min-width: 1.4rem;
+  padding: 0 0.35rem;
+}
+
+// Layer chips carry their node colour when pressed, so the toggles double as legend.
+.map-pill__check {
+  display: none;
+}
+
+.map-pill--layer[aria-pressed="true"] {
+  .map-pill__check {
+    display: inline;
+  }
+
+  &[data-layer="approaches"] {
+    background: var(--approaches-background-color);
+    border-color: var(--approaches-text-color);
+    color: var(--approaches-text-color);
+  }
+
+  &[data-layer="requirements"] {
+    background: var(--reqs-background-color);
+    border-color: var(--req-text-color);
+    color: var(--req-text-color);
+  }
+
+  &[data-layer="standards"] {
+    background: var(--standard-background-color);
+    border-color: var(--standard-text-color);
+    color: var(--standard-text-color);
+  }
+
+  &[data-layer="dimensions"] {
+    background: var(--dimension-background-color);
+    border-color: var(--dimension-background-color);
+    color: var(--dimension-text-color);
+  }
+
+  &:hover {
+    filter: brightness(0.95);
+  }
+}
+
+// ── Controls row ────────────────────────────────────────────
+
+.map-controls {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 0.75rem;
+  margin: 0 0 1rem;
+
+  &[hidden] {
+    display: none;
+  }
+}
+
+.map-controls__label {
+  color: var(--brand-muted-strong);
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.map-controls__layers {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.map-controls__hint {
+  color: var(--brand-muted-strong);
+  font-size: 0.88rem;
+}
+
+// ── Hidden list ─────────────────────────────────────────────
+
+.map-hidden {
+  position: relative;
+}
+
+.map-hidden__list {
+  background: var(--brand-paper);
+  border: 1px solid var(--brand-violet-soft);
+  border-radius: $radius-sm;
+  box-shadow: 0 10px 30px rgba(36, 24, 35, 0.15);
+  margin-top: 0.4rem;
+  min-width: 18rem;
+  padding: 0.5rem 0.75rem 0.75rem;
+  position: absolute;
+  right: 0;
+  z-index: var(--z-popover);
+
+  &[hidden] {
+    display: none;
+  }
+}
+
+.map-hidden__items {
+  list-style: none;
+  margin: 0 0 0.5rem;
+  padding: 0;
+
+  li {
+    align-items: center;
+    border-bottom: 1px solid var(--brand-violet-soft);
+    display: flex;
+    gap: 0.75rem;
+    justify-content: space-between;
+    padding: 0.35rem 0;
+  }
+}
+
+// ── Notice and empty state ──────────────────────────────────
+
+.map-notice {
+  margin: 0;
+
+  &:not(:empty) {
+    background: var(--brand-violet-faint);
+    border-left: 4px solid var(--brand-violet);
+    border-radius: $radius-xs;
+    margin: 0 0 1rem;
+    padding: 0.5rem 0.9rem;
+  }
+}
+
+.map-empty {
+  margin: 2rem auto;
+  max-width: 40rem;
+
+  &[hidden] {
+    display: none;
+  }
+}
+
+// ── Canvas + panel layout ───────────────────────────────────
+
+.map-layout {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+
+  &[hidden] {
+    display: none;
+  }
+}
+
+.map-canvas {
+  flex: 999 1 560px;
+  min-height: 420px;
+  min-width: 0;
+}
+
+.map-panel {
+  flex: 1 1 300px;
+  max-width: 400px;
+}
+
+// ── List view ───────────────────────────────────────────────
+
+.map-list {
+  &[hidden] {
+    display: none;
+  }
+}
+
+.map-list__title {
+  font-size: 1.15rem;
+  margin: 0 0 0.5rem;
+}
+
+.map-table-wrap {
+  overflow-x: auto;
+
+  &:focus-visible {
+    box-shadow: var(--focus-ring);
+    outline: none;
+  }
+}
+
+.map-table {
+  border-collapse: collapse;
+  font-size: 0.92rem;
+  width: 100%;
+
+  caption {
+    color: var(--brand-muted-strong);
+    padding: 0 0 0.5rem;
+    text-align: left;
+  }
+
+  th,
+  td {
+    border-bottom: 1px solid var(--brand-violet-soft);
+    padding: 0.4rem 0.6rem;
+    vertical-align: top;
+  }
+
+  thead th {
+    background: var(--brand-paper);
+    text-align: center;
+    white-space: nowrap;
+
+    &:first-child {
+      text-align: left;
+    }
+  }
+
+  tbody th[scope="row"] {
+    background: var(--brand-paper);
+    font-weight: 400;
+    text-align: left;
+  }
+
+  .is-hidden {
+    color: var(--brand-muted-strong);
+  }
+}
+
+.map-table__group th {
+  background: var(--brand-violet-faint);
+  font-weight: 700;
+  text-align: left;
+}
+
+.map-table__priority {
+  color: var(--brand-muted-strong);
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 400;
+}
+
+.map-table__cell,
+.map-table__serves {
+  text-align: center;
+  white-space: nowrap;
+}
+
+.map-table__badge {
+  border: 1px solid currentColor;
+  border-radius: $radius-pill;
+  display: inline-block;
+  font-size: 0.75rem;
+  margin-left: 0.4rem;
+  padding: 0 0.4rem;
+}
+
+// Keep the item column in view while the quality columns scroll.
+@media screen and (min-width: $mobile-width) {
+  .map-table thead th:first-child,
+  .map-table tbody th[scope="row"] {
+    left: 0;
+    position: sticky;
+    z-index: 1;
+  }
+}
