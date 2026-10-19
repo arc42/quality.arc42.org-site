@@ -21,6 +21,7 @@ import {
   clearState,
   emitSelectionChanged,
   SELECTION_EVENT,
+  mergeStates,
 } from "../src/map/store.js";
 
 test("empty state has version 1, no qualities, approaches layer on", () => {
@@ -190,4 +191,46 @@ test("emitSelectionChanged dispatches the event and tolerates a missing target",
   assert.equal(events[0].type, SELECTION_EVENT);
   assert.equal(events[0].detail.state, state);
   assert.doesNotThrow(() => emitSelectionChanged(state, undefined));
+});
+
+test("mergeStates keeps existing priorities, appends new qualities and renumbers custom", () => {
+  let current = addQuality(addQuality(createEmptyState(), "availability"), "resilience");
+  current = setPriority(current, "availability", "high");
+  current = addCustom(current, { title: "Mine", qualities: ["availability"] });
+  current = setItemHidden(current, "bulkheads", true);
+
+  let incoming = addQuality(addQuality(createEmptyState(), "availability"), "security");
+  incoming = setPriority(incoming, "availability", "low");
+  incoming = setPriority(incoming, "security", "medium");
+  incoming = addCustom(incoming, { title: "Theirs", scenario: "S", qualities: ["security"] });
+  incoming = setItemHidden(incoming, "circuit-breaker", true);
+  incoming = setItemHidden(incoming, "c-1", true);
+  incoming = setItemHidden(incoming, "bulkheads", true);
+  incoming = setLayers(incoming, ["requirements", "standards"]);
+
+  const merged = mergeStates(current, incoming);
+  assert.deepEqual(merged.qualities, [
+    { id: "availability", priority: "high", hidden: false },
+    { id: "resilience", priority: null, hidden: false },
+    { id: "security", priority: "medium", hidden: false },
+  ]);
+  assert.deepEqual(
+    merged.custom.map((c) => [c.id, c.title, c.scenario, c.qualities]),
+    [
+      ["c-1", "Mine", "", ["availability"]],
+      ["c-2", "Theirs", "S", ["security"]],
+    ],
+  );
+  // The incoming custom id c-1 became c-2; its hidden flag follows it.
+  assert.deepEqual(merged.hiddenItems, ["bulkheads", "circuit-breaker", "c-2"]);
+  assert.deepEqual(merged.layers, ["requirements", "standards"]);
+  assert.equal(current.qualities.length, 2, "does not mutate");
+});
+
+test("mergeStates into an empty selection equals the incoming selection", () => {
+  let incoming = addQuality(createEmptyState(), "availability");
+  incoming = addCustom(incoming, { title: "Theirs" });
+  const merged = mergeStates(createEmptyState(), incoming);
+  assert.deepEqual(merged.qualities, incoming.qualities);
+  assert.deepEqual(merged.custom, incoming.custom);
 });

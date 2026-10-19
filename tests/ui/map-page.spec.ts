@@ -256,3 +256,145 @@ test("a slow drag keeps the node under the pointer and pins it across re-renders
   await expect(svg.locator('.map-node[data-id="bulkheads"]')).toHaveCount(1);
   await expect(node).toHaveAttribute("transform", pinned);
 });
+
+// ── Share link, export and import ───────────────────────────
+
+const SHARED = {
+  ...SEED,
+  qualities: [
+    { id: "availability", priority: "high", hidden: false },
+    { id: "resilience", priority: null, hidden: false },
+  ],
+};
+
+async function mintToken(page, state) {
+  await page.goto("/map/");
+  await page.waitForFunction(() => "q42Map" in window);
+  return page.evaluate((s) => (window as any).q42Map.encodeShare(s), state);
+}
+
+test("opening a share link offers replace; replace loads it and clears the hash", async ({
+  page,
+}) => {
+  await page.addInitScript(() => localStorage.removeItem("q42.map.v1"));
+  const token = await mintToken(page, SHARED);
+  await page.goto("about:blank");
+  await page.goto(`/map/#s=${token}`);
+  const notice = page.locator("#map-notice");
+  await expect(notice).toContainText("A shared map was opened.");
+  await expect(notice.getByRole("button", { name: "Merge" })).toBeVisible();
+  await expect(notice.getByRole("button", { name: "Ignore" })).toBeVisible();
+  await notice.getByRole("button", { name: "Replace my selection" }).click();
+  await expect(page.locator("#map-summary")).toContainText("2 qualities");
+  await expect(notice.getByRole("button")).toHaveCount(0);
+  expect(await page.evaluate(() => location.hash)).toBe("");
+});
+
+test("merging a share link keeps the current selection and adds the new one", async ({ page }) => {
+  await page.addInitScript(
+    (seed) => localStorage.setItem("q42.map.v1", JSON.stringify(seed)),
+    SEED,
+  );
+  const token = await mintToken(page, {
+    ...SEED,
+    qualities: [{ id: "security", priority: null, hidden: false }],
+  });
+  await page.goto("about:blank");
+  await page.goto(`/map/#s=${token}`);
+  await page.locator("#map-notice").getByRole("button", { name: "Merge" }).click();
+  await expect(page.locator("#map-summary")).toContainText("4 qualities");
+  expect(await page.evaluate(() => location.hash)).toBe("");
+});
+
+test("a damaged share link shows a notice and clears the hash", async ({ page }) => {
+  await page.goto("/map/#s=v1.not-a-valid-token");
+  await expect(page.locator("#map-notice")).toHaveText("This share link is invalid or damaged.");
+  expect(await page.evaluate(() => location.hash)).toBe("");
+});
+
+test("export dialog shows a share URL and copies it", async ({ page }) => {
+  // The test server is plain http (no secure context, no Clipboard API): record writes.
+  await page.addInitScript(() => {
+    Object.defineProperty(navigator, "clipboard", {
+      value: { writeText: async (text) => ((window as any).__copied = text) },
+    });
+  });
+  await seedAndOpen(page);
+  const open = page.locator("#map-export-open");
+  await open.click();
+  const dialog = page.locator("#map-export-dialog");
+  await expect(dialog).toBeVisible();
+  await expect(dialog).toHaveAccessibleName("Export & share");
+  await expect(dialog.getByRole("heading", { level: 2, name: "Export & share" })).toBeVisible();
+  const input = dialog.getByRole("textbox", { name: "Share URL" });
+  await expect(input).toHaveAttribute("readonly", "");
+  await dialog.getByRole("button", { name: "Copy", exact: true }).click();
+  await expect(input).toHaveValue(/\/map\/#s=v1\./);
+  await expect(dialog.locator(".map-export__status")).toHaveText("Copied");
+  expect(await page.evaluate(() => (window as any).__copied)).toBe(await input.inputValue());
+  await expect(dialog.getByRole("button", { name: /Markdown/ })).toBeDisabled();
+  await page.keyboard.press("Escape");
+  await expect(dialog).toBeHidden();
+  await expect(open).toBeFocused();
+});
+
+test("export dialog downloads q42-map.json and imports a file", async ({ page }) => {
+  await seedAndOpen(page);
+  await page.locator("#map-export-open").click();
+  const dialog = page.locator("#map-export-dialog");
+  const [download] = await Promise.all([
+    page.waitForEvent("download"),
+    dialog.getByRole("button", { name: "Download q42-map.json" }).click(),
+  ]);
+  expect(download.suggestedFilename()).toBe("q42-map.json");
+
+  const file = dialog.locator('input[type="file"]');
+  await file.setInputFiles({
+    name: "bad.json",
+    mimeType: "application/json",
+    buffer: Buffer.from("{}"),
+  });
+  await expect(dialog.locator(".map-export__error")).toHaveText(/Not a Q42 map file/);
+
+  await file.setInputFiles({
+    name: "map.json",
+    mimeType: "application/json",
+    buffer: Buffer.from(JSON.stringify({ ...SEED, qualities: [SEED.qualities[0]] })),
+  });
+  await expect(dialog).toBeHidden();
+  await expect(page.locator("#map-summary")).toContainText("1 quality");
+});
+
+test("open export dialog passes an axe scan", async ({ page }) => {
+  await seedAndOpen(page);
+  await page.locator("#map-export-open").click();
+  await expect(page.locator("#map-export-dialog")).toBeVisible();
+  const results = await new AxeBuilder({ page })
+    .withTags(["wcag2a", "wcag2aa", "wcag21a", "wcag21aa", "wcag22aa"])
+    .analyze();
+  expect(results.violations.map((v) => v.id)).toEqual([]);
+});
+
+test("copy falls back to selecting the URL; a backdrop click closes the dialog", async ({
+  page,
+}) => {
+  await page.addInitScript(() => {
+    Object.defineProperty(navigator, "clipboard", {
+      value: { writeText: () => Promise.reject(new Error("denied")) },
+    });
+  });
+  await seedAndOpen(page);
+  const open = page.locator("#map-export-open");
+  await open.click();
+  const dialog = page.locator("#map-export-dialog");
+  await dialog.getByRole("button", { name: "Copy", exact: true }).click();
+  await expect(dialog.locator(".map-export__status")).toContainText("Ctrl+C");
+  const selected = await page.evaluate(() => {
+    const input = document.getElementById("map-export-url") as HTMLInputElement;
+    return input.selectionEnd! - input.selectionStart! === input.value.length;
+  });
+  expect(selected).toBe(true);
+  await page.mouse.click(4, 4);
+  await expect(dialog).toBeHidden();
+  await expect(open).toBeFocused();
+});

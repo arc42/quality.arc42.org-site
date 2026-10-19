@@ -17,9 +17,68 @@ hide: true
         </button>
         <div id="map-hidden-list" class="map-hidden__list" hidden></div>
       </div>
-      <div id="map-export" class="map-export"></div>
+      <div id="map-export" class="map-export">
+        <button id="map-export-open" class="map-pill" type="button" aria-haspopup="dialog" aria-controls="map-export-dialog">Export &amp; share</button>
+      </div>
     </div>
   </header>
+
+  <dialog id="map-export-dialog" class="map-export-dialog" aria-labelledby="map-export-title">
+    <div class="map-export-dialog__body">
+      <div class="map-export-dialog__head">
+        <h2 class="map-export-dialog__title"><span id="map-export-title">Export &amp; share</span></h2>
+        <button class="map-pill" type="button" data-export-close>Close</button>
+      </div>
+      <p class="map-export-dialog__lede">
+        Your map lives in this browser only. Take it with you as a link or a file.
+      </p>
+
+      <section class="map-export__section" aria-labelledby="map-export-share-title">
+        <h3 class="map-export__title"><span id="map-export-share-title">Share link</span></h3>
+        <p class="map-export__hint">The whole map is encoded in the URL. No server, nothing stored.</p>
+        <div class="map-export__row" data-share-row>
+          <label for="map-export-url" class="sr-only">Share URL</label>
+          <input id="map-export-url" class="map-export__url" type="text" readonly data-share-url>
+          <button class="map-pill map-pill--primary" type="button" data-share-copy disabled>Copy</button>
+          <span class="map-export__status" role="status" data-share-status></span>
+        </div>
+        <p class="map-export__warning" data-share-too-long hidden>
+          This map is too large for a share link. Download the JSON file instead.
+        </p>
+        <p class="map-export__hint">Whoever opens it can merge it into their own selection or replace it.</p>
+      </section>
+
+      <section class="map-export__section" aria-labelledby="map-export-json-title">
+        <h3 class="map-export__title"><span id="map-export-json-title">JSON file</span></h3>
+        <p class="map-export__hint">Keep it with the project, re-import it on any machine, or feed it to an LLM.</p>
+        <div class="map-export__row">
+          <button class="map-pill" type="button" data-export-download>Download q42-map.json</button>
+          <button class="map-pill" type="button" data-import-open>Import…</button>
+          <input class="map-export__file" type="file" accept="application/json" hidden data-import-file aria-label="Import a map file">
+        </div>
+        <p class="map-export__hint">Importing replaces your current selection.</p>
+        <p class="map-export__error" role="alert" data-import-error hidden></p>
+      </section>
+
+      <section class="map-export__section map-export__section--soon" aria-labelledby="map-export-md-title">
+        <h3 class="map-export__title"><span id="map-export-md-title">Markdown for arc42</span></h3>
+        <p class="map-export__hint">Quality goals, quality tree and approach matrix. Coming soon.</p>
+        <div class="map-export__row">
+          <button class="map-pill" type="button" disabled>Copy Markdown</button>
+          <button class="map-pill" type="button" disabled>Download .md</button>
+        </div>
+      </section>
+
+      <section class="map-export__section map-export__section--soon" aria-labelledby="map-export-img-title">
+        <h3 class="map-export__title"><span id="map-export-img-title">Image for slides</span></h3>
+        <p class="map-export__hint">The map as drawn, with legend, as PNG or SVG. Coming soon.</p>
+        <div class="map-export__row">
+          <button class="map-pill" type="button" disabled>PNG</button>
+          <button class="map-pill" type="button" disabled>SVG</button>
+        </div>
+      </section>
+    </div>
+  </dialog>
 
   <p id="map-notice" class="map-notice" role="status"></p>
 

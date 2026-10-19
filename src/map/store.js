@@ -199,3 +199,24 @@ export function emitSelectionChanged(state, target = globalThis.document) {
   if (!target) return;
   target.dispatchEvent(new CustomEvent(SELECTION_EVENT, { detail: { state } }));
 }
+
+/**
+ * Merge an incoming selection (e.g. from a share link) into the current one:
+ * existing qualities keep their priorities, new ones are appended, incoming
+ * custom requirements are appended with fresh ids, hidden items are united,
+ * and the layers come from the incoming selection.
+ */
+export function mergeStates(current, incoming) {
+  let next = { ...current, qualities: [...current.qualities] };
+  for (const q of incoming.qualities) {
+    if (!hasQuality(next, q.id)) next.qualities.push({ ...q });
+  }
+  const renamed = new Map();
+  for (const c of incoming.custom) {
+    next = addCustom(next, c);
+    renamed.set(c.id, next.custom[next.custom.length - 1].id);
+  }
+  const hidden = new Set(current.hiddenItems);
+  for (const id of incoming.hiddenItems) hidden.add(renamed.get(id) ?? id);
+  return { ...setLayers(next, incoming.layers), hiddenItems: [...hidden] };
+}

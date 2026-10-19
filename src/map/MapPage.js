@@ -3,6 +3,7 @@ import {
   STORAGE_KEY,
   emitSelectionChanged,
   loadState,
+  mergeStates,
   saveState,
   setItemHidden,
   setLayers,
@@ -13,6 +14,8 @@ import { buildSubgraph } from "./subgraph.js";
 import { ListView } from "./ListView.js";
 import { MapView } from "./MapView.js";
 import { Panel } from "./Panel.js";
+import { ExportPanel } from "./ExportPanel.js";
+import { SHARE_PARAM, decodeShare } from "./share.js";
 import { singlesChipText, summaryText, unknownIdsText } from "./format.js";
 
 // Thin controller for /map/: owns the selection state, wires the controls,
@@ -27,6 +30,10 @@ export class MapPage {
     this.baseurl = root.dataset.baseurl ?? "";
     this.$ = (id) => this.doc.getElementById(id);
     this.selectedId = null;
+    // A decoded share link awaiting the user's choice, and a one-off message;
+    // both take #map-notice over from the unknown-id notice.
+    this.pendingShare = null;
+    this.message = "";
     this.listView = new ListView(this.$("map-table"), { baseurl: this.baseurl });
     this.mapView = new MapView(this.$("map-canvas"), { onSelect: (id) => this.select(id) });
     this.panel = new Panel(this.$("map-panel"), {
@@ -37,6 +44,11 @@ export class MapPage {
             ? setQualityHidden(s, id, hidden)
             : setItemHidden(s, id, hidden),
         ),
+    });
+    this.exportPanel = new ExportPanel(this.$("map-export-dialog"), {
+      getState: () => this.state,
+      getSubgraph: () => this.subgraph,
+      onImport: (state) => this.update(() => state),
     });
   }
 
@@ -89,11 +101,91 @@ export class MapPage {
       this.render();
     });
 
+    const exportOpen = this.$("map-export-open");
+    exportOpen.addEventListener("click", () => this.exportPanel.open(exportOpen));
+
+    this.$("map-notice").addEventListener("click", (event) => {
+      const button = event.target.closest("[data-share-choice]");
+      if (button) this.resolveShare(button.dataset.shareChoice);
+    });
+    this.doc.defaultView?.addEventListener("hashchange", () => this.readShareHash());
+
     this.render();
+    this.readShareHash();
     return this;
   }
 
+  /** Read a `#s=` share link from the address bar and ask what to do with it. */
+  async readShareHash() {
+    const { hash } = this.doc.location;
+    if (!hash.startsWith(`#${SHARE_PARAM}=`)) return;
+    const decoded = await decodeShare(hash);
+    if (!decoded) {
+      this.clearHash();
+      this.pendingShare = null;
+      this.message = "This share link is invalid or damaged.";
+      this.renderNotice();
+      return;
+    }
+    this.pendingShare = decoded;
+    this.message = "";
+    this.renderNotice();
+    if (this.state.qualities.length === 0) {
+      this.$("map-notice").querySelector('[data-share-choice="replace"]').focus();
+    }
+  }
+
+  resolveShare(choice) {
+    const incoming = this.pendingShare;
+    this.pendingShare = null;
+    this.clearHash();
+    if (incoming && choice === "replace") this.update(() => incoming);
+    else if (incoming && choice === "merge") this.update((s) => mergeStates(s, incoming));
+    else this.renderNotice();
+    // The pressed button is gone; land on the summary, which reports the result.
+    const summary = this.$("map-summary");
+    summary.tabIndex = -1;
+    summary.focus();
+  }
+
+  clearHash() {
+    const { location, defaultView } = this.doc;
+    if (!location.hash) return;
+    defaultView.history.replaceState(
+      defaultView.history.state,
+      "",
+      location.pathname + location.search,
+    );
+  }
+
+  renderNotice() {
+    const notice = this.$("map-notice");
+    if (this.pendingShare) {
+      if (notice.querySelector("[data-share-choice]")) return;
+      const text = this.doc.createElement("span");
+      text.textContent = "A shared map was opened.";
+      const actions = this.doc.createElement("span");
+      actions.className = "map-notice__actions";
+      for (const [choice, label] of [
+        ["replace", "Replace my selection"],
+        ["merge", "Merge"],
+        ["ignore", "Ignore"],
+      ]) {
+        const button = this.doc.createElement("button");
+        button.type = "button";
+        button.className = "map-pill";
+        button.dataset.shareChoice = choice;
+        button.textContent = label;
+        actions.append(button);
+      }
+      notice.replaceChildren(text, " ", actions);
+      return;
+    }
+    notice.textContent = this.message || unknownIdsText(this.subgraph.unknownIds.length);
+  }
+
   update(fn) {
+    this.message = "";
     const next = fn(this.state);
     try {
       this.state = saveState(next);
@@ -127,7 +219,7 @@ export class MapPage {
     this.$("map-summary").textContent = empty
       ? "No qualities selected yet"
       : summaryText(subgraph, state);
-    this.$("map-notice").textContent = unknownIdsText(subgraph.unknownIds.length);
+    this.renderNotice();
     if (empty) {
       this.hideHiddenList();
       this.selectedId = null;
