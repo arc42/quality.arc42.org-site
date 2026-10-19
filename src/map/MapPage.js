@@ -69,6 +69,7 @@ export class MapPage {
     this.exportPanel = new ExportPanel(this.$("map-export-dialog"), {
       getState: () => this.state,
       getSubgraph: () => this.subgraph,
+      getSvg: () => this.mapView.svg?.node() ?? null,
       onImport: (state) => this.update(() => state),
     });
   }

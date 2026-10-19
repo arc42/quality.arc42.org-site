@@ -83,12 +83,13 @@ hide: true
         </div>
       </section>
 
-      <section class="map-export__section map-export__section--soon" aria-labelledby="map-export-img-title">
+      <section class="map-export__section" aria-labelledby="map-export-img-title">
         <h3 class="map-export__title"><span id="map-export-img-title">Image for slides</span></h3>
-        <p class="map-export__hint">The map as drawn, with legend, as PNG or SVG. Coming soon.</p>
+        <p class="map-export__hint">The map as drawn, with legend.</p>
         <div class="map-export__row">
-          <button class="map-pill" type="button" disabled>PNG</button>
-          <button class="map-pill" type="button" disabled>SVG</button>
+          <button class="map-pill" type="button" data-image-png>PNG</button>
+          <button class="map-pill" type="button" data-image-svg>SVG</button>
+          <span class="map-export__status" role="status" data-image-status></span>
         </div>
       </section>
     </div>

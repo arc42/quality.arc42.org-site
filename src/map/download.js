@@ -14,3 +14,19 @@ export function downloadText(filename, text, mime = "text/plain", doc = globalTh
     setTimeout(() => URL.revokeObjectURL(url), 0);
   }
 }
+
+/** Save a Blob as a file (same pattern as downloadText). */
+export function downloadBlob(filename, blob, doc = globalThis.document) {
+  const url = URL.createObjectURL(blob);
+  const a = doc.createElement("a");
+  a.href = url;
+  a.download = filename;
+  a.hidden = true;
+  doc.body.append(a);
+  try {
+    a.click();
+  } finally {
+    a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 0);
+  }
+}

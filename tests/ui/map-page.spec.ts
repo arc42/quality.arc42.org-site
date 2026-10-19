@@ -1,5 +1,6 @@
 import AxeBuilder from "@axe-core/playwright";
 import { expect, test } from "@playwright/test";
+import fs from "node:fs";
 
 const SEED = {
   v: 1,
@@ -477,6 +478,32 @@ test("markdown preview follows the section checkboxes; copy and download work", 
     dialog.getByRole("button", { name: "Download .md" }).click(),
   ]);
   expect(download.suggestedFilename()).toBe("quality-map.md");
+});
+
+test("image export downloads quality-map.svg and quality-map.png", async ({ page }) => {
+  await seedAndOpen(page);
+  await page.locator("#map-export-open").click();
+  const dialog = page.locator("#map-export-dialog");
+  const [svg] = await Promise.all([
+    page.waitForEvent("download"),
+    dialog.getByRole("button", { name: "SVG", exact: true }).click(),
+  ]);
+  expect(svg.suggestedFilename()).toBe("quality-map.svg");
+  const text = fs.readFileSync((await svg.path())!, "utf8");
+  expect(text).toMatch(/^(<\?xml|<svg)/);
+  expect(text).toContain("<svg");
+  expect(text).toContain("xmlns=");
+  expect(text).toContain("Availability");
+  expect(text).toContain("How to read");
+  expect(text).not.toContain("class=");
+
+  const [png] = await Promise.all([
+    page.waitForEvent("download"),
+    dialog.getByRole("button", { name: "PNG", exact: true }).click(),
+  ]);
+  expect(png.suggestedFilename()).toBe("quality-map.png");
+  expect(fs.statSync((await png.path())!).size).toBeGreaterThan(0);
+  await expect(dialog.locator("[data-image-status]")).toHaveText("Downloaded");
 });
 
 test("a share link that cannot be encoded shows a warning instead of an empty field", async ({

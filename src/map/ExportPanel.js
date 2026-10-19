@@ -1,8 +1,11 @@
 import { SHARE_MAX_LENGTH, SHARE_PARAM, encodeShare } from "./share.js";
 import { fromImportJson, toExportJson } from "./exporters/json.js";
 import { MARKDOWN_SECTIONS, toMarkdown } from "./exporters/markdown.js";
-import { downloadText } from "./download.js";
+import { downloadBlob, downloadText } from "./download.js";
+import { serializeMapSvg, svgToPngBlob } from "./exporters/svg.js";
 
+const SVG_FILENAME = "quality-map.svg";
+const PNG_FILENAME = "quality-map.png";
 const EXPORT_FILENAME = "q42-map.json";
 const MARKDOWN_FILENAME = "quality-map.md";
 const MAX_IMPORT_BYTES = 1024 * 1024;
@@ -15,11 +18,12 @@ const SELECTED = "Selected: press Ctrl+C or ⌘C to copy";
 // The markup lives in _pages/65-quality-map.md; this class only wires it.
 
 export class ExportPanel {
-  constructor(dialog, { getState, getSubgraph, onImport }) {
+  constructor(dialog, { getState, getSubgraph, getSvg = () => null, onImport }) {
     this.dialog = dialog;
     this.doc = dialog.ownerDocument;
     this.getState = getState;
     this.getSubgraph = getSubgraph;
+    this.getSvg = getSvg;
     this.onImport = onImport;
     this.opener = null;
     this.statusTimers = new Map();
@@ -35,6 +39,8 @@ export class ExportPanel {
     this.mdOptions = [...dialog.querySelectorAll("[data-md-option]")];
     this.mdPreview = $("[data-md-preview]");
     this.mdStatus = $("[data-md-status]");
+    this.imageButtons = [$("[data-image-png]"), $("[data-image-svg]")];
+    this.imageStatus = $("[data-image-status]");
 
     $("[data-export-close]").addEventListener("click", () => this.close());
     // A click on the dialog element itself (not its content) hit the backdrop.
@@ -52,6 +58,8 @@ export class ExportPanel {
     for (const box of this.mdOptions) box.addEventListener("change", () => this.refreshMarkdown());
     $("[data-md-copy]").addEventListener("click", () => this.copyMarkdown());
     $("[data-md-download]").addEventListener("click", () => this.downloadMarkdown());
+    $("[data-image-svg]").addEventListener("click", () => this.exportImage("svg"));
+    $("[data-image-png]").addEventListener("click", () => this.exportImage("png"));
   }
 
   open(opener = this.doc.activeElement) {
@@ -59,8 +67,12 @@ export class ExportPanel {
     this.setImportError("");
     this.setStatus(this.status, "");
     this.setStatus(this.mdStatus, "");
+    this.setStatus(this.imageStatus, "");
     // The selection may have changed since the last opening.
     this.refreshMarkdown();
+    // Nothing drawn, nothing to export.
+    const empty = this.getState().qualities.length === 0;
+    for (const button of this.imageButtons) button.disabled = empty;
     if (!this.dialog.open) this.dialog.showModal();
     return this.refreshShare();
   }
@@ -136,6 +148,23 @@ export class ExportPanel {
 
   downloadMarkdown() {
     downloadText(MARKDOWN_FILENAME, this.markdown(), "text/markdown", this.doc);
+  }
+
+  async exportImage(format) {
+    const svg = this.getSvg();
+    if (!svg) return;
+    this.setStatus(this.imageStatus, "Preparing…");
+    try {
+      const text = serializeMapSvg(svg);
+      if (format === "svg") {
+        downloadText(SVG_FILENAME, text, "image/svg+xml", this.doc);
+      } else {
+        downloadBlob(PNG_FILENAME, await svgToPngBlob(text), this.doc);
+      }
+      this.setStatus(this.imageStatus, "Downloaded");
+    } catch (error) {
+      this.setStatus(this.imageStatus, error.message || "Export failed");
+    }
   }
 
   setStatus(element, text) {
