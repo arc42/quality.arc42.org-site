@@ -4,6 +4,7 @@ export const SHARE_PARAM = "s";
 export const SHARE_MAX_LENGTH = 8000;
 
 const TOKEN_PREFIX = "v1.";
+const MAX_INFLATED_BYTES = 1024 * 1024;
 const BASE64URL = /^[A-Za-z0-9_-]*$/;
 
 const priorityToCompact = (p) => (PRIORITIES.includes(p) ? p[0] : 0);
@@ -42,7 +43,7 @@ function fromCompact(obj) {
       priority: priorityFromCompact(p),
     })),
     hiddenItems: obj.h,
-    layers: ALL_LAYERS.filter((l) => String(obj.l).includes(l[0])),
+    layers: typeof obj.l === "string" ? ALL_LAYERS.filter((l) => obj.l.includes(l[0])) : undefined,
     showSingles: obj.x === 1,
   });
 }
@@ -56,8 +57,23 @@ const deflate = (text) =>
   pipe(new TextEncoder().encode(text), new CompressionStream("deflate-raw"));
 
 async function inflate(bytes) {
-  const raw = await pipe(bytes, new DecompressionStream("deflate-raw"));
-  return new TextDecoder("utf-8", { fatal: true }).decode(raw);
+  const reader = new Blob([bytes])
+    .stream()
+    .pipeThrough(new DecompressionStream("deflate-raw"))
+    .getReader();
+  const chunks = [];
+  let total = 0;
+  for (;;) {
+    const { done, value } = await reader.read();
+    if (done) break;
+    total += value.length;
+    if (total > MAX_INFLATED_BYTES) {
+      await reader.cancel();
+      throw new RangeError("Share payload too large");
+    }
+    chunks.push(value);
+  }
+  return new TextDecoder("utf-8", { fatal: true }).decode(await new Blob(chunks).arrayBuffer());
 }
 
 function b64urlEncode(bytes) {
@@ -91,7 +107,7 @@ export async function encodeShare(state) {
 export async function decodeShare(fragmentOrUrl) {
   try {
     const token = extractToken(fragmentOrUrl);
-    if (!token.startsWith(TOKEN_PREFIX)) return null;
+    if (token.length > SHARE_MAX_LENGTH || !token.startsWith(TOKEN_PREFIX)) return null;
     const json = await inflate(b64urlDecode(token.slice(TOKEN_PREFIX.length)));
     return fromCompact(JSON.parse(json));
   } catch {

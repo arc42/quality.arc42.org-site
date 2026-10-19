@@ -5,6 +5,10 @@ import {
   createEmptyState,
   addQuality,
   addCustom,
+  removeCustom,
+  setQualityHidden,
+  setItemHidden,
+  setShowSingles,
   setPriority,
   setLayers,
 } from "../src/map/store.js";
@@ -56,4 +60,58 @@ test("60 qualities with priorities stay under the length budget", async () => {
 test("shareUrl appends the fragment", async () => {
   const url = await shareUrl(sample(), "https://quality.arc42.org/map/");
   assert.match(url, /^https:\/\/quality\.arc42\.org\/map\/#s=v1\./);
+});
+
+async function tokenFor(text) {
+  const out = new Blob([new TextEncoder().encode(text)])
+    .stream()
+    .pipeThrough(new CompressionStream("deflate-raw"));
+  const bytes = new Uint8Array(await new Response(out).arrayBuffer());
+  return `v1.${Buffer.from(bytes).toString("base64url")}`;
+}
+
+const strip = ({ updated, ...rest }) => rest;
+
+test("round-trips every field, non-ASCII text and non-sequential custom ids", async () => {
+  let s = addQuality(addQuality(createEmptyState(), "availability"), "resilience");
+  s = setQualityHidden(s, "resilience", true);
+  s = setItemHidden(setItemHidden(s, "approach-a", true), "c-2", true);
+  s = setShowSingles(s, true);
+  s = addCustom(s, {
+    title: "Größe ✓ 日本語",
+    scenario: 'Zeile\n"zwei"',
+    qualities: ["resilience"],
+  });
+  s = addCustom(s, { title: "Second", qualities: [], priority: "low" });
+  s = removeCustom(s, "c-1");
+  assert.equal(s.custom[0].id, "c-2");
+  assert.deepEqual(strip(await decodeShare(await encodeShare(s))), strip(s));
+});
+
+test("round-trips an empty state", async () => {
+  const s = createEmptyState();
+  assert.deepEqual(strip(await decodeShare(await encodeShare(s))), strip(s));
+});
+
+test("returns null for tokens that are valid base64url but not a share payload", async () => {
+  const token = await encodeShare(sample());
+  assert.equal(await decodeShare(token.slice(0, -8)), null);
+  assert.equal(await decodeShare("#s=v1.AAAAAAAA"), null);
+  assert.equal(await decodeShare(`#s=${await tokenFor("not json")}`), null);
+  assert.equal(await decodeShare(`#s=${await tokenFor("{}")}`), null);
+  assert.equal(await decodeShare(`#s=${await tokenFor('{"v":1}')}`), null);
+});
+
+test("rejects over-length tokens and oversized inflated payloads", async () => {
+  assert.equal(await decodeShare(`#s=v1.${"A".repeat(SHARE_MAX_LENGTH)}`), null);
+  const bomb = await tokenFor(
+    JSON.stringify({ v: 1, q: [], c: [], h: ["x".repeat(2 * 1024 * 1024)] }),
+  );
+  assert.ok(bomb.length < SHARE_MAX_LENGTH);
+  assert.equal(await decodeShare(bomb), null);
+});
+
+test("a compact object without `l` decodes to the default layers", async () => {
+  const back = await decodeShare(await tokenFor(JSON.stringify({ v: 1, q: [], c: [], h: [] })));
+  assert.deepEqual(back.layers, ["approaches"]);
 });
