@@ -23,6 +23,15 @@ test("tray is hidden until a quality is added from the index", async ({ page }) 
   await expect(page.getByRole("status")).toContainText("Availability added");
 });
 
+test("tray hit area reaches 44px above the visible pill", async ({ page }) => {
+  await page.goto("/qualities/");
+  await page.locator('[data-map-add="availability"]').click();
+  const box = await page.locator("[data-map-tray]").boundingBox();
+  expect(box).not.toBeNull();
+  await page.mouse.click(box!.x + box!.width / 2, box!.y - 3);
+  await expect(page).toHaveURL(/\/map\/?$/);
+});
+
 test("undo in the toast removes the quality again", async ({ page }) => {
   await page.goto("/qualities/");
   await page.locator('[data-map-add="availability"]').click();
@@ -32,6 +41,23 @@ test("undo in the toast removes the quality again", async ({ page }) => {
     "false",
   );
   await expect(page.locator("[data-map-tray]")).toBeHidden();
+  await expect(page.getByRole("status")).toContainText("Availability removed again");
+  await expect(page.getByRole("status").getByRole("button", { name: "Undo" })).toHaveCount(0);
+});
+
+test("undo keeps a change made in another tab meanwhile", async ({ page }) => {
+  await page.goto("/qualities/");
+  await page.locator('[data-map-add="availability"]').click();
+  await page.evaluate(() => {
+    const state = JSON.parse(localStorage.getItem("q42.map.v1")!);
+    state.qualities.push({ id: "security", priority: null, hidden: false });
+    localStorage.setItem("q42.map.v1", JSON.stringify(state));
+  });
+  await page.getByRole("status").getByRole("button", { name: "Undo" }).click();
+  const ids = await page.evaluate(() =>
+    JSON.parse(localStorage.getItem("q42.map.v1")!).qualities.map((q) => q.id),
+  );
+  expect(ids).toEqual(["security"]);
 });
 
 test("selection persists across pages and the detail hero button reflects it", async ({ page }) => {

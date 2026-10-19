@@ -112,12 +112,24 @@ ul.posts li.map-add-row {
   height: 2.35rem;
   letter-spacing: 0;
   padding: 0 0.3rem 0 0.85rem;
+  position: relative;
   text-decoration: none;
   text-transform: none;
   white-space: nowrap;
 
   &[hidden] {
     display: none;
+  }
+
+  // The pill keeps header parity (2.35rem) visually; this transparent layer
+  // extends the hit area to the 44px minimum target size.
+  &::after {
+    bottom: calc((2.35rem - 44px) / 2);
+    content: "";
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: calc((2.35rem - 44px) / 2);
   }
 
   &:hover {

@@ -114,7 +114,8 @@ export function initSelection({ document = globalThis.document } = {}) {
     if (!toast.contains(event.relatedTarget)) scheduleHide();
   });
 
-  const showToast = (message, undo) => {
+  // `undo` is optional: the confirmation after an undo has no Undo of its own.
+  const showToast = (message, undo = null) => {
     const count = state.qualities.length;
     const text = document.createElement("div");
     text.className = "map-toast__text";
@@ -126,16 +127,15 @@ export function initSelection({ document = globalThis.document } = {}) {
     detail.textContent = `${count} ${count === 1 ? "quality" : "qualities"} in your selection`;
     text.append(title, detail);
 
-    const undoButton = document.createElement("button");
-    undoButton.type = "button";
-    undoButton.className = "map-toast__undo";
-    undoButton.textContent = "Undo";
-    undoButton.addEventListener("click", () => {
-      hideToast();
-      undo();
-    });
-
-    toast.replaceChildren(text, undoButton);
+    toast.replaceChildren(text);
+    if (undo) {
+      const undoButton = document.createElement("button");
+      undoButton.type = "button";
+      undoButton.className = "map-toast__undo";
+      undoButton.textContent = "Undo";
+      undoButton.addEventListener("click", undo);
+      toast.append(undoButton);
+    }
     toast.classList.add("is-visible");
     scheduleHide();
   };
@@ -144,12 +144,15 @@ export function initSelection({ document = globalThis.document } = {}) {
     const id = button.dataset.mapAdd;
     const title = button.dataset.mapTitle || id;
     const wasSelected = hasQuality(state, id);
-    const before = state;
     commit(wasSelected ? removeQuality(state, id) : addQuality(state, id));
     showToast(`${title} ${wasSelected ? "removed" : "added"}`, () => {
-      // Undo restores the exact previous state, including priorities, and
-      // returns focus to the button the reader started from.
-      commit(before);
+      // Undo is the single inverse step, applied to the current stored state
+      // so a change made in another tab meanwhile is kept.
+      const current = loadState();
+      commit(wasSelected ? addQuality(current, id) : removeQuality(current, id));
+      // Announce the undo in the same live region, then return focus to the
+      // button the reader started from.
+      showToast(`${title} ${wasSelected ? "added" : "removed"} again`);
       if (button.isConnected) button.focus();
     });
   };
