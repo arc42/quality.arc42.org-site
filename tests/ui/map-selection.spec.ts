@@ -92,6 +92,7 @@ test("the qualities index shows a dismissible map banner that stays dismissed", 
   const banner = page.locator("[data-map-banner]");
   await expect(banner).toBeVisible();
   await expect(banner).toContainText("Build your own map.");
+  await expect(banner).toContainText("add your own requirements");
   await expect(banner.getByRole("link", { name: "Open the map" })).toHaveAttribute(
     "href",
     /\/map\/$/,

@@ -15,7 +15,8 @@ export const TYPE_BADGES = Object.freeze({
   custom: "Own requirement",
 });
 
-const PLACEHOLDER = "Select a node on the map to see details.";
+const PLACEHOLDER =
+  "Select a node on the map or a Details button in the list to see details. You can also add your own requirement with the button above.";
 const PRIVACY_NOTE =
   "Shares title, scenario and linked qualities. Not shared: your priorities, selection and map.";
 const EXTERNAL_ICON = "M14 4h6v6M20 4l-9 9M19 14v6H4V5h6";

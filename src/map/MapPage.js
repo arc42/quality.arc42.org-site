@@ -134,7 +134,16 @@ export class MapPage {
     });
 
     const customOpen = this.$("map-custom-open");
-    customOpen.addEventListener("click", () => this.customForm.open({ opener: customOpen }));
+    customOpen.addEventListener("click", () => {
+      if (this.state.qualities.length > 0) {
+        this.customForm.open({ opener: customOpen });
+        return;
+      }
+      // An own requirement needs qualities to link to: point at the search.
+      this.message = "Add a quality first so your requirement has something to link to.";
+      this.renderNotice();
+      this.$("map-add-input").focus();
+    });
 
     const exportOpen = this.$("map-export-open");
     exportOpen.addEventListener("click", () => this.exportPanel.open(exportOpen));
@@ -349,8 +358,6 @@ export class MapPage {
     this.root.querySelector(".map-layout").hidden = empty;
     this.root.querySelector(".map-controls").hidden = empty;
     this.root.querySelector(".map-list").hidden = empty;
-    // An own requirement needs qualities to link to.
-    this.$("map-custom-open").hidden = empty;
     this.$("map-clear").hidden = empty;
     this.$("map-summary").textContent = empty
       ? "No qualities selected yet"

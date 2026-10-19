@@ -31,7 +31,7 @@ no_layout_header: true
   <span class="map-banner__icon" aria-hidden="true">
     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" focusable="false"><circle cx="6" cy="6" r="3"></circle><circle cx="18" cy="6" r="3"></circle><circle cx="12" cy="18" r="3"></circle><path d="M8.5 7.5l2.5 8M15.5 7.5l-2.5 8M9 6h6"></path></svg>
   </span>
-  <p class="map-banner__text"><strong>Build your own map.</strong> Add the qualities you care about one by one while you browse, then open the map to see what they have in common. Nothing leaves your browser. <a href="{{ '/map/' | prepend: site.baseurl }}">Open the map</a></p>
+  <p class="map-banner__text"><strong>Build your own map.</strong> Add the qualities you care about one by one while you browse, then open the map to see what they have in common and add your own requirements. Nothing leaves your browser. <a href="{{ '/map/' | prepend: site.baseurl }}">Open the map</a></p>
   <button class="map-banner__dismiss" type="button" aria-label="Dismiss" data-map-banner-dismiss>&times;</button>
 </aside>
 

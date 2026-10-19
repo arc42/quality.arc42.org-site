@@ -220,7 +220,9 @@ test("selecting highlights node and edges; clicking empty canvas clears the pane
   const badge = await item.locator(".map-node__badge-text").textContent();
   await expect(svg.locator(".map-edge.is-highlighted")).toHaveCount(Number(badge));
   await svg.click({ position: { x: 4, y: 4 } });
-  await expect(page.locator("#map-panel")).toHaveText("Select a node on the map to see details.");
+  await expect(page.locator("#map-panel")).toHaveText(
+    "Select a node on the map or a Details button in the list to see details. You can also add your own requirement with the button above.",
+  );
   await expect(svg.locator(".map-node.is-selected")).toHaveCount(0);
   await expect(svg.locator(".map-edge.is-highlighted")).toHaveCount(0);
 });
@@ -525,6 +527,40 @@ test("a share link that cannot be encoded shows a warning instead of an empty fi
   );
 });
 
+// Deterministic text that deflate cannot shrink much (a fixed-seed LCG).
+function noisyText(length: number, seed: number) {
+  const alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 .,;-";
+  let x = seed;
+  let out = "";
+  for (let i = 0; i < length; i += 1) {
+    x = (x * 1103515245 + 12345) % 2147483648;
+    out += alphabet[x % alphabet.length];
+  }
+  return out;
+}
+
+test("a map too large for a share link shows the warning instead of the URL", async ({ page }) => {
+  const seed = {
+    ...SEED,
+    custom: Array.from({ length: 10 }, (_, i) => ({
+      id: `c-${i + 1}`,
+      title: `Own requirement ${i + 1}`,
+      scenario: noisyText(900, i + 1),
+      qualities: ["availability"],
+      priority: null,
+    })),
+  };
+  await page.addInitScript((s) => localStorage.setItem("q42.map.v1", JSON.stringify(s)), seed);
+  await page.goto("/map/");
+  await expect(page.locator("#map-summary")).toContainText("10 own requirements");
+  await page.locator("#map-export-open").click();
+  const dialog = page.locator("#map-export-dialog");
+  await expect(dialog.locator("[data-share-too-long]")).toBeVisible();
+  await expect(dialog.locator("[data-share-url]")).toBeHidden();
+  // The row is hidden, so look the button up directly rather than by role.
+  await expect(dialog.locator("[data-share-copy]")).toBeDisabled();
+});
+
 test.describe("add to map search", () => {
   async function seedThree(page) {
     await page.addInitScript((seed) => {
@@ -657,7 +693,9 @@ test.describe("own requirements", () => {
     await panel.getByRole("button", { name: "Remove" }).click();
     await expect(node).toHaveCount(0);
     await expect(page.locator("#map-notice")).toHaveText("Checkout survives outages removed");
-    await expect(panel).toHaveText("Select a node on the map to see details.");
+    await expect(panel).toHaveText(
+      "Select a node on the map or a Details button in the list to see details. You can also add your own requirement with the button above.",
+    );
     await page.reload();
     await expect(svg.locator(".map-node").first()).toBeVisible();
     await expect(node).toHaveCount(0);
@@ -713,11 +751,23 @@ test.describe("own requirements", () => {
     await expect(title).not.toHaveAttribute("aria-describedby", /./);
   });
 
-  test("the own-requirement button is hidden in the empty state", async ({ page }) => {
+  test("the own-requirement button sits in the title row and asks for a quality first", async ({
+    page,
+  }) => {
     await page.addInitScript(() => localStorage.removeItem("q42.map.v1"));
     await page.goto("/map/");
-    await expect(page.locator("#map-empty")).toBeVisible();
-    await expect(page.locator("#map-custom-open")).toBeHidden();
+    await expect(page.locator("#map-empty")).toContainText(
+      "Once you have added qualities, you can also write your own requirements and link them to those qualities.",
+    );
+    const open = page.locator(".map-intro__actions #map-custom-open");
+    await expect(open).toBeVisible();
+    await expect(open).toHaveText("+ Add own requirement");
+    await open.click();
+    await expect(page.locator("#map-custom-dialog")).toBeHidden();
+    await expect(page.locator("#map-notice")).toHaveText(
+      "Add a quality first so your requirement has something to link to.",
+    );
+    await expect(page.locator("#map-add-input")).toBeFocused();
   });
 
   test("open form and own-requirement panel pass an axe scan", async ({ page }) => {

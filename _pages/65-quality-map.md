@@ -20,6 +20,7 @@ hide: true
       <div id="map-export" class="map-export">
         <button id="map-export-open" class="map-pill" type="button" aria-haspopup="dialog" aria-controls="map-export-dialog">Export &amp; share</button>
       </div>
+      <button id="map-custom-open" class="map-pill" type="button" aria-haspopup="dialog" aria-controls="map-custom-dialog">+ Add own requirement</button>
       <button id="map-clear" class="map-pill" type="button" hidden>Clear selection</button>
     </div>
   </header>
@@ -160,7 +161,6 @@ hide: true
       <ul id="map-add-results" class="map-add-search__results" role="listbox" aria-label="Matching qualities" hidden></ul>
       <p id="map-add-status" class="sr-only" role="status"></p>
     </div>
-    <button id="map-custom-open" class="map-pill" type="button" aria-haspopup="dialog" aria-controls="map-custom-dialog" hidden>+ Own requirement</button>
   </div>
 
   <section id="map-empty" class="map-empty" hidden>
@@ -169,6 +169,7 @@ hide: true
       Add qualities while you browse, using the <strong>+ Add</strong> buttons on quality pages and lists.
       Your map then shows the approaches, requirements and standards they share.
     </p>
+    <p>Once you have added qualities, you can also write your own requirements and link them to those qualities.</p>
     <p><a href="{{ '/qualities/' | prepend: site.baseurl }}">Browse the quality characteristics</a></p>
   </section>
 

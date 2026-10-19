@@ -117,4 +117,7 @@ test("the how-to page explains the quality map", async ({ page }) => {
     "href",
     /\/map\/$/,
   );
+  await expect(
+    page.locator("p", { hasText: "any own requirements you write and link to them" }),
+  ).toBeVisible();
 });

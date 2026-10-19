@@ -53,7 +53,7 @@ Now let's consider the terms in more detail:
 ## Build your own quality map
 
 Add the qualities that matter for your system from the [quality characteristics](/qualities/) list or any quality page, one at a time while you browse.
-The [**quality map**](/map/) then shows how your selection connects: the approaches, requirements and standards the qualities share.
+The [**quality map**](/map/) then shows how your selection connects: the approaches, requirements and standards the qualities share, plus any own requirements you write and link to them.
 Your selection stays in your browser; export it as a link, a JSON file, Markdown or an image when you want to take it to a workshop or review.
 
 ## Three Axis of Quality
