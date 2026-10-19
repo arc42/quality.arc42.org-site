@@ -46,7 +46,7 @@ hide: true
 
   <div class="map-layout">
     <div id="map-canvas" class="map-canvas" aria-hidden="true"></div>
-    <div id="map-panel" class="map-panel"></div>
+    <aside id="map-panel" class="map-panel" aria-label="Selected item"></aside>
   </div>
 
   <section class="map-list" aria-labelledby="map-list-title">

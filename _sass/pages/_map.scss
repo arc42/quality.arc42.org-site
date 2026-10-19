@@ -1,7 +1,7 @@
 // map — the /map/ page: summary, layer toggles, layout mount points, list view.
 //
-// Driven by src/map/MapPage.js. The canvas and side panel are filled later;
-// this file sizes their containers and styles everything around them.
+// Driven by src/map/MapPage.js: the SVG canvas (MapView), the side panel
+// (Panel) and the list view (ListView).
 
 // Without JavaScript the <noscript> fallback replaces the whole page.
 html:not(.js) .map-page {
@@ -225,14 +225,235 @@ html:not(.js) .map-page {
 }
 
 .map-canvas {
+  background-color: white;
+  background-image: radial-gradient(var(--brand-violet-soft) 1px, transparent 1px);
+  background-size: 24px 24px;
+  border: 1px solid var(--brand-violet-soft);
+  border-radius: $radius-md;
   flex: 999 1 560px;
-  min-height: 420px;
+  height: clamp(420px, 70vh, 640px);
   min-width: 0;
+  overflow: hidden;
 }
 
+.map-svg {
+  cursor: grab;
+  display: block;
+  height: 100%;
+  touch-action: none;
+  width: 100%;
+
+  &:active {
+    cursor: grabbing;
+  }
+}
+
+// ── Canvas nodes (colours come from src/map/nodeStyle.js) ───
+
+.map-edge {
+  pointer-events: none;
+}
+
+.map-node {
+  cursor: pointer;
+  font-family: inherit;
+
+  &:focus {
+    outline: none;
+  }
+
+  text {
+    pointer-events: none;
+    user-select: none;
+  }
+}
+
+.map-node__shape {
+  stroke-width: 2px;
+  transition: stroke-width 120ms ease;
+}
+
+.map-node:hover .map-node__shape {
+  stroke-width: 3px;
+}
+
+.map-node.is-selected .map-node__shape {
+  filter: drop-shadow(0 0 6px var(--brand-violet-46));
+  stroke-width: 4px;
+}
+
+.map-node__label {
+  font-size: 13px;
+  font-weight: 700;
+  text-anchor: middle;
+}
+
+.map-node__sub {
+  font-size: 11px;
+  text-anchor: middle;
+}
+
+.map-node__pill-label {
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.map-node__badge-text {
+  font-size: 11px;
+  font-weight: 700;
+  text-anchor: middle;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .map-node__shape {
+    transition: none;
+  }
+}
+
+// ── Side panel ──────────────────────────────────────────────
+
 .map-panel {
+  align-self: flex-start;
+  background: white;
+  border: 1px solid var(--brand-violet-soft);
+  border-radius: $radius-md;
+  box-sizing: border-box;
+  display: flex;
   flex: 1 1 300px;
+  flex-direction: column;
+  gap: 1rem;
   max-width: 400px;
+  padding: 1.25rem 1.5rem;
+}
+
+.map-panel__placeholder {
+  color: var(--brand-muted-strong);
+  margin: 0;
+}
+
+.map-panel__badge {
+  align-self: flex-start;
+  background: var(--brand-violet-faint);
+  border-radius: $radius-pill;
+  color: var(--brand-violet);
+  font-size: 0.82rem;
+  font-weight: 700;
+  padding: 0.2rem 0.75rem;
+
+  &[data-type="quality"] {
+    background: var(--brand-blue-soft);
+    color: var(--brand-blue-text);
+  }
+
+  &[data-type="approach"] {
+    background: var(--approaches-soft-background-color);
+    color: var(--approaches-text-color);
+  }
+
+  &[data-type="requirement"],
+  &[data-type="custom"] {
+    background: var(--reqs-soft-background-color);
+    color: var(--req-text-color);
+  }
+
+  &[data-type="standard"] {
+    background: var(--standard-background-color);
+    color: var(--standard-text-color);
+  }
+
+  &[data-type="dimension"] {
+    background: var(--dimension-background-color);
+    color: var(--dimension-text-color);
+  }
+}
+
+.map-panel__title {
+  font-size: 1.6rem;
+  line-height: 1.15;
+  margin: 0;
+}
+
+.map-panel__summary {
+  color: var(--brand-muted-strong);
+  margin: -0.5rem 0 0;
+}
+
+.map-panel__qualities {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  li {
+    align-items: baseline;
+    display: flex;
+    gap: 0.6rem;
+  }
+
+  .is-linked .map-panel__mark {
+    color: var(--approaches-text-color);
+    font-weight: 700;
+  }
+
+  .is-unlinked {
+    color: var(--brand-muted-strong);
+  }
+}
+
+.map-panel__priority:empty {
+  display: none;
+}
+
+.map-panel__open {
+  align-items: center;
+  align-self: flex-start;
+  border-top: 1px solid var(--brand-violet-soft);
+  display: inline-flex;
+  font-weight: 700;
+  gap: 0.5rem;
+  min-height: 44px;
+  padding-top: 0.5rem;
+
+  &:focus-visible {
+    box-shadow: var(--focus-ring);
+    outline: none;
+  }
+}
+
+.map-panel__hide {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.map-panel__button {
+  align-self: flex-start;
+  background: white;
+  border: 1px solid var(--brand-violet);
+  border-radius: $radius-sm;
+  color: var(--brand-violet);
+  cursor: pointer;
+  font: inherit;
+  font-weight: 700;
+  min-height: 44px;
+  padding: 0 1rem;
+
+  &:hover {
+    background: var(--brand-violet-faint);
+  }
+
+  &:focus-visible {
+    box-shadow: var(--focus-ring);
+    outline: none;
+  }
+}
+
+.map-panel__hint {
+  color: var(--brand-muted-strong);
+  font-size: 0.85rem;
+  margin: 0;
 }
 
 // ── List view ───────────────────────────────────────────────

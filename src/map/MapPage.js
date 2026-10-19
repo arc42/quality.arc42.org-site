@@ -11,6 +11,8 @@ import {
 } from "./store.js";
 import { buildSubgraph } from "./subgraph.js";
 import { ListView } from "./ListView.js";
+import { MapView } from "./MapView.js";
+import { Panel } from "./Panel.js";
 import { singlesText, summaryText, unknownIdsText } from "./format.js";
 
 // Thin controller for /map/: owns the selection state, wires the controls,
@@ -24,7 +26,18 @@ export class MapPage {
     this.state = initialState;
     this.baseurl = root.dataset.baseurl ?? "";
     this.$ = (id) => this.doc.getElementById(id);
+    this.selectedId = null;
     this.listView = new ListView(this.$("map-table"), { baseurl: this.baseurl });
+    this.mapView = new MapView(this.$("map-canvas"), { onSelect: (id) => this.select(id) });
+    this.panel = new Panel(this.$("map-panel"), {
+      baseurl: this.baseurl,
+      onHide: (id, hidden) =>
+        this.update((s) =>
+          s.qualities.some((q) => q.id === id)
+            ? setQualityHidden(s, id, hidden)
+            : setItemHidden(s, id, hidden),
+        ),
+    });
   }
 
   mount() {
@@ -115,7 +128,11 @@ export class MapPage {
       ? "No qualities selected yet"
       : summaryText(subgraph, state);
     this.$("map-notice").textContent = unknownIdsText(subgraph.unknownIds.length);
-    if (empty) return;
+    if (empty) {
+      this.hideHiddenList();
+      this.selectedId = null;
+      return;
+    }
 
     this.root.querySelectorAll("#map-layers [data-layer]").forEach((button) => {
       button.setAttribute("aria-pressed", String(state.layers.includes(button.dataset.layer)));
@@ -127,6 +144,34 @@ export class MapPage {
 
     this.renderHidden(subgraph);
     this.listView.render(subgraph, state);
+    this.mapView.render(subgraph, state);
+    this.renderSelection();
+  }
+
+  select(id) {
+    this.selectedId = id;
+    this.renderSelection();
+  }
+
+  /** Panel and canvas highlight for the selected node; hidden nodes stay selectable. */
+  renderSelection() {
+    const { qualities, items } = this.subgraph;
+    const id = this.selectedId;
+    const quality = qualities.find((q) => q.id === id);
+    const item = quality ? null : items.find((i) => i.id === id);
+    const node = quality ?? item;
+    if (!node) this.selectedId = null;
+    this.panel.render(
+      node ? { kind: quality ? "quality" : "item", node, subgraph: this.subgraph } : null,
+    );
+    this.mapView.focusNode(this.selectedId);
+  }
+
+  hideHiddenList() {
+    const toggle = this.$("map-hidden-toggle");
+    toggle.hidden = true;
+    toggle.setAttribute("aria-expanded", "false");
+    this.$("map-hidden-list").hidden = true;
   }
 
   renderHidden(subgraph) {
@@ -137,11 +182,8 @@ export class MapPage {
     const toggle = this.$("map-hidden-toggle");
     const list = this.$("map-hidden-list");
     this.$("map-hidden-count").textContent = String(hidden.length);
-    toggle.hidden = hidden.length === 0;
-    if (hidden.length === 0) {
-      toggle.setAttribute("aria-expanded", "false");
-      list.hidden = true;
-    }
+    if (hidden.length === 0) this.hideHiddenList();
+    else toggle.hidden = false;
 
     const doc = this.doc;
     const ul = doc.createElement("ul");
