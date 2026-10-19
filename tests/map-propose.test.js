@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { proposeIssueUrl, PROPOSE_BODY_MAX } from "../src/map/propose.js";
+import { proposeIssueUrl, PROPOSE_BODY_MAX, PROPOSE_TITLE_MAX } from "../src/map/propose.js";
 
 const CUSTOM = {
   id: "c-1",
@@ -71,4 +71,26 @@ test("a very long scenario is truncated with a note", () => {
       "\n\n_(scenario truncated for the issue form — full text in your map's JSON export)_",
     ),
   );
+  assert.ok(body.includes("related: [availability, resilience]"), "related: line kept");
+});
+
+test("a 200-character title with a long scenario keeps the body within limits", () => {
+  const params = parse(
+    proposeIssueUrl({ ...CUSTOM, title: "t".repeat(200), scenario: "x".repeat(20000) }, TITLES),
+  );
+  const body = params.get("body");
+  assert.ok(body.length <= 6100, `body has ${body.length} chars`);
+  assert.ok(body.includes("t".repeat(200)));
+  assert.ok(body.includes("related: [availability, resilience]"));
+});
+
+test("an over-long title is cut to 200 characters in the issue title and body", () => {
+  const params = parse(
+    proposeIssueUrl({ ...CUSTOM, title: "t".repeat(10000), scenario: "x".repeat(20000) }, TITLES),
+  );
+  assert.equal(params.get("title").length, PROPOSE_TITLE_MAX);
+  const body = params.get("body");
+  assert.ok(body.length <= 6100, `body has ${body.length} chars`);
+  assert.ok(!body.includes("t".repeat(201)));
+  assert.ok(body.includes("related: [availability, resilience]"));
 });

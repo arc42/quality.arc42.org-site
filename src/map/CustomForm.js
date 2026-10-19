@@ -132,6 +132,10 @@ export class CustomForm {
   setTitleError(invalid) {
     this.title.setAttribute("aria-invalid", String(invalid));
     this.titleError.hidden = !invalid;
+    // Point at the error only while it is shown, so a valid field is not
+    // described by a hidden message.
+    if (invalid) this.title.setAttribute("aria-describedby", this.titleError.id);
+    else this.title.removeAttribute("aria-describedby");
   }
 
   /** The form's current values, shaped like a custom requirement. */

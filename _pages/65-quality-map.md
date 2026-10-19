@@ -104,7 +104,7 @@ hide: true
 
       <div class="map-custom__field">
         <label class="map-custom__label" for="map-custom-title-input">Title</label>
-        <input id="map-custom-title-input" class="map-custom__input" type="text" required autocomplete="off" aria-describedby="map-custom-title-error" data-custom-title>
+        <input id="map-custom-title-input" class="map-custom__input" type="text" required maxlength="200" autocomplete="off" data-custom-title>
         <p id="map-custom-title-error" class="map-export__error" hidden data-custom-title-error>Enter a title for your requirement.</p>
       </div>
 

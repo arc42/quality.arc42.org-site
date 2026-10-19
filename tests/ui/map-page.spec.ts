@@ -680,6 +680,22 @@ test.describe("own requirements", () => {
     await expect(svg.locator('.map-node[data-type="custom"]')).toHaveCount(0);
   });
 
+  test("the title input is capped and points at its error only while invalid", async ({ page }) => {
+    await seedAndOpen(page);
+    await page.locator("#map-custom-open").click();
+    const dialog = page.locator("#map-custom-dialog");
+    const title = dialog.getByLabel("Title");
+    await expect(title).toHaveAttribute("maxlength", "200");
+    await expect(title).not.toHaveAttribute("aria-describedby", /./);
+    await dialog.getByRole("button", { name: "Add to map" }).click();
+    await expect(title).toHaveAttribute("aria-describedby", "map-custom-title-error");
+    await title.fill("Checkout keeps working");
+    await dialog.getByRole("button", { name: "Add to map" }).click();
+    await expect(dialog).toBeHidden();
+    await page.locator("#map-custom-open").click();
+    await expect(title).not.toHaveAttribute("aria-describedby", /./);
+  });
+
   test("the own-requirement button is hidden in the empty state", async ({ page }) => {
     await page.addInitScript(() => localStorage.removeItem("q42.map.v1"));
     await page.goto("/map/");

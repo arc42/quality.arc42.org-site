@@ -5,13 +5,17 @@
 export const PROPOSE_REPO = "arc42/quality.arc42.org-site";
 export const PROPOSE_LABEL = "requirement-proposal";
 export const PROPOSE_BODY_MAX = 6000;
+// Matches the title input's maxlength; also guards titles from imported maps.
+export const PROPOSE_TITLE_MAX = 200;
 const TRUNCATED_NOTE =
   "\n\n_(scenario truncated for the issue form — full text in your map's JSON export)_";
 const NO_SCENARIO = "- [to be specified]";
 
+const clipTitle = (title) => String(title ?? "").slice(0, PROPOSE_TITLE_MAX);
+
 function issueBody(custom) {
   const scenario = custom.scenario?.trim() ? custom.scenario.trim() : NO_SCENARIO;
-  const head = `### Requirement\n${custom.title}\n\n### Acceptance Criteria\n`;
+  const head = `### Requirement\n${clipTitle(custom.title)}\n\n### Acceptance Criteria\n`;
   const tail = [
     "",
     "",
@@ -32,7 +36,7 @@ function issueBody(custom) {
  */
 export function proposeIssueUrl(custom, qualityTitles, { repo = PROPOSE_REPO } = {}) {
   const params = new URLSearchParams({
-    title: custom.title,
+    title: clipTitle(custom.title),
     labels: PROPOSE_LABEL,
     body: issueBody(custom),
   });
