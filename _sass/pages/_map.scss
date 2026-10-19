@@ -85,6 +85,12 @@ html:not(.js) .map-page {
   }
 }
 
+// Compact pill for table cells; keeps the 44 px target height.
+.map-pill--small {
+  font-size: 0.8rem;
+  padding: 0 0.7rem;
+}
+
 .map-pill__count {
   align-items: center;
   background: var(--brand-violet);
@@ -622,6 +628,16 @@ html:not(.js) .map-page {
   font-size: 1.6rem;
   line-height: 1.15;
   margin: 0;
+
+  // Focused programmatically from the list view's Details buttons.
+  &:focus {
+    outline: none;
+  }
+
+  &:focus-visible {
+    border-radius: $radius-xs;
+    box-shadow: var(--focus-ring);
+  }
 }
 
 .map-panel__summary {
@@ -888,6 +904,15 @@ html:not(.js) .map-page {
 .map-table__serves {
   text-align: center;
   white-space: nowrap;
+}
+
+.map-table__details {
+  margin-left: 0.5rem;
+  vertical-align: middle;
+}
+
+thead .map-table__details {
+  margin: 0.25rem 0 0;
 }
 
 .map-table__badge {

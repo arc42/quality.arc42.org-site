@@ -40,7 +40,10 @@ export class MapPage {
     // both take #map-notice over from the unknown-id notice.
     this.pendingShare = null;
     this.message = "";
-    this.listView = new ListView(this.$("map-table"), { baseurl: this.baseurl });
+    this.listView = new ListView(this.$("map-table"), {
+      baseurl: this.baseurl,
+      onDetails: (id) => this.select(id, { focusPanel: true }),
+    });
     this.mapView = new MapView(this.$("map-canvas"), { onSelect: (id) => this.select(id) });
     this.panel = new Panel(this.$("map-panel"), {
       baseurl: this.baseurl,
@@ -291,9 +294,15 @@ export class MapPage {
     this.renderSelection();
   }
 
-  select(id) {
+  /**
+   * Show `id` in the panel and highlight it on the canvas. With `focusPanel`
+   * (the list view's Details buttons) focus moves to the panel heading, so the
+   * next Tab reaches the panel's first control.
+   */
+  select(id, { focusPanel = false } = {}) {
     this.selectedId = id;
     this.renderSelection();
+    if (focusPanel) this.$("map-panel").querySelector("h2")?.focus();
   }
 
   /** Panel and canvas highlight for the selected node; hidden nodes stay selectable. */

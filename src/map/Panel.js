@@ -87,7 +87,8 @@ export class Panel {
         text: TYPE_BADGES[type],
         attrs: { "data-type": type },
       }),
-      this.el("h2", { className: "map-panel__title", text: node.label }),
+      // Focus target for the list view's Details buttons.
+      this.el("h2", { className: "map-panel__title", text: node.label, attrs: { tabindex: "-1" } }),
     ];
 
     if (kind === "item") {

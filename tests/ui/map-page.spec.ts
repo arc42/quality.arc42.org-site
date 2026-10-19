@@ -720,6 +720,45 @@ test.describe("own requirements", () => {
   });
 });
 
+// Press Tab until the focused element matches `selector`; keyboard only.
+async function tabTo(page, selector: string, max = 200) {
+  for (let i = 0; i < max; i += 1) {
+    await page.keyboard.press("Tab");
+    if (await page.evaluate((sel) => document.activeElement?.matches(sel) ?? false, selector)) {
+      return;
+    }
+  }
+  throw new Error(`Tab never reached ${selector}`);
+}
+
+test("panel actions are reachable from the list view with the keyboard alone", async ({ page }) => {
+  const svg = await seedAndOpen(page);
+  await expect(page.locator("#map-table table")).toBeVisible();
+  // Start from the list region; from there on only keys are pressed.
+  await page.locator("#map-table").focus();
+  await tabTo(page, 'thead [data-map-details="availability"]');
+  await page.keyboard.press("Enter");
+  const panel = page.locator("#map-panel");
+  await expect(panel.getByRole("heading", { level: 2 })).toHaveText("Availability");
+  await expect(panel.getByRole("heading", { level: 2 })).toBeFocused();
+  await tabTo(page, '#map-panel [data-priority="high"]');
+  await page.keyboard.press("Enter");
+  const high = panel.getByRole("button", { name: "High" });
+  await expect(high).toHaveAttribute("aria-pressed", "true");
+  await expect(high).toBeFocused();
+  await expect(svg.locator('.map-node[data-id="availability"] circle')).toHaveAttribute("r", "58");
+
+  await tabTo(page, 'tbody[data-type="approach"] [data-map-details]');
+  const id = await page.evaluate(() => (document.activeElement as HTMLElement).dataset.mapDetails!);
+  await page.keyboard.press("Enter");
+  await expect(panel.getByRole("heading", { level: 2 })).toBeFocused();
+  await tabTo(page, "#map-panel [data-panel-hide]");
+  await expect(page.locator(":focus")).toHaveText("Hide from map");
+  await page.keyboard.press("Enter");
+  await expect(svg.locator(`.map-node[data-id="${id}"]`)).toHaveCount(0);
+  await expect(panel.getByRole("button", { name: "Show on map" })).toBeFocused();
+});
+
 test("the list view stays inside the viewport on a phone", async ({ page }) => {
   await page.setViewportSize({ width: 375, height: 812 });
   await page.addInitScript(

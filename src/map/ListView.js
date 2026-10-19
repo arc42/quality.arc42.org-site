@@ -6,10 +6,16 @@ import { GROUP_LABELS, priorityLabel, servesText, summaryText } from "./format.j
 const GROUP_ORDER = Object.freeze(["approach", "requirement", "standard", "dimension", "custom"]);
 
 export class ListView {
-  constructor(container, { baseurl = "" } = {}) {
+  constructor(container, { baseurl = "", onDetails = () => {} } = {}) {
     this.container = container;
     this.baseurl = baseurl;
     this.doc = container.ownerDocument;
+    // Delegated once: the table is rebuilt on every render. The Details
+    // buttons are the keyboard path to the panel (the canvas is aria-hidden).
+    container.addEventListener("click", (event) => {
+      const button = event.target.closest("[data-map-details]");
+      if (button) onDetails(button.dataset.mapDetails);
+    });
   }
 
   el(tag, { className, text, attrs } = {}) {
@@ -22,6 +28,14 @@ export class ListView {
 
   srOnly(text) {
     return this.el("span", { className: "sr-only", text });
+  }
+
+  detailsButton(id, label) {
+    return this.el("button", {
+      className: "map-pill map-pill--small map-table__details",
+      text: "Details",
+      attrs: { type: "button", "data-map-details": id, "aria-label": `Details for ${label}` },
+    });
   }
 
   hiddenBadge() {
@@ -44,6 +58,7 @@ export class ListView {
         this.el("span", { className: "map-table__priority", text: priorityLabel(q.priority) }),
       );
       if (q.hidden) th.append(this.hiddenBadge());
+      th.append(this.detailsButton(q.id, q.label));
       headRow.append(th);
     }
     headRow.append(this.el("th", { text: "Serves", attrs: { scope: "col" } }));
@@ -80,6 +95,7 @@ export class ListView {
       th.append(this.doc.createTextNode(item.label));
     }
     if (item.hidden) th.append(this.hiddenBadge());
+    th.append(this.detailsButton(item.id, item.label));
     tr.append(th);
 
     const linked = new Set(item.linkedQualityIds);
