@@ -1,5 +1,6 @@
 import { PRIORITIES } from "./store.js";
 import { proposeIssueUrl } from "./propose.js";
+import { bindDialog } from "./dialog.js";
 
 const HEADINGS = { add: "Add your own requirement", edit: "Edit your requirement" };
 const SUBMIT_LABELS = { add: "Add to map", edit: "Save" };
@@ -23,8 +24,8 @@ export class CustomForm {
     this.getQualities = getQualities;
     this.onSubmit = onSubmit;
     this.onRemove = onRemove;
-    this.onFocusLost = onFocusLost;
-    this.opener = null;
+    // In edit mode the opener (the panel's Edit button) is rebuilt on save.
+    this.modal = bindDialog(dialog, { onFocusLost });
     this.editing = null; // the custom requirement being edited, or null when adding
     this.priority = null;
     const $ = (sel) => dialog.querySelector(sel);
@@ -46,16 +47,6 @@ export class CustomForm {
       this.save();
     });
     $("[data-custom-cancel]").addEventListener("click", () => this.close());
-    // A click on the dialog element itself (not its content) hit the backdrop.
-    dialog.addEventListener("click", (event) => {
-      if (event.target === dialog) this.close();
-    });
-    dialog.addEventListener("close", () => {
-      // In edit mode the opener (the panel's Edit button) is rebuilt on save.
-      if (this.opener?.isConnected) this.opener.focus();
-      else this.onFocusLost();
-      this.opener = null;
-    });
     this.title.addEventListener("input", () => {
       if (this.title.value.trim()) this.setTitleError(false);
       this.refreshPropose();
@@ -82,7 +73,6 @@ export class CustomForm {
 
   /** Open empty to add, or pre-filled with `custom` to edit it. */
   open({ custom = null, opener = this.doc.activeElement } = {}) {
-    this.opener = opener;
     this.editing = custom;
     const mode = custom ? "edit" : "add";
     this.heading.textContent = HEADINGS[mode];
@@ -94,13 +84,13 @@ export class CustomForm {
     this.setPriority(custom?.priority ?? null);
     this.renderChips(new Set(custom?.qualities ?? []));
     this.refreshPropose();
-    if (!this.dialog.open) this.dialog.showModal();
+    this.modal.open(opener);
     // Keep the heading in view on short screens.
     this.title.focus({ preventScroll: true });
   }
 
   close() {
-    if (this.dialog.open) this.dialog.close();
+    this.modal.close();
   }
 
   renderChips(linked) {

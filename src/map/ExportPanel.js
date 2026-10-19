@@ -3,6 +3,7 @@ import { fromImportJson, toExportJson } from "./exporters/json.js";
 import { MARKDOWN_SECTIONS, toMarkdown } from "./exporters/markdown.js";
 import { downloadBlob, downloadText } from "./download.js";
 import { serializeMapSvg, svgToPngBlob } from "./exporters/svg.js";
+import { bindDialog } from "./dialog.js";
 
 const SVG_FILENAME = "quality-map.svg";
 const PNG_FILENAME = "quality-map.png";
@@ -25,7 +26,7 @@ export class ExportPanel {
     this.getSubgraph = getSubgraph;
     this.getSvg = getSvg;
     this.onImport = onImport;
-    this.opener = null;
+    this.modal = bindDialog(dialog);
     this.statusTimers = new Map();
     const $ = (sel) => dialog.querySelector(sel);
     this.urlRow = $("[data-share-row]");
@@ -43,14 +44,6 @@ export class ExportPanel {
     this.imageStatus = $("[data-image-status]");
 
     $("[data-export-close]").addEventListener("click", () => this.close());
-    // A click on the dialog element itself (not its content) hit the backdrop.
-    dialog.addEventListener("click", (event) => {
-      if (event.target === dialog) this.close();
-    });
-    dialog.addEventListener("close", () => {
-      this.opener?.focus();
-      this.opener = null;
-    });
     this.copyButton.addEventListener("click", () => this.copy());
     $("[data-export-download]").addEventListener("click", () => this.download());
     $("[data-import-open]").addEventListener("click", () => this.fileInput.click());
@@ -63,7 +56,6 @@ export class ExportPanel {
   }
 
   open(opener = this.doc.activeElement) {
-    this.opener = opener;
     this.setImportError("");
     this.setStatus(this.status, "");
     this.setStatus(this.mdStatus, "");
@@ -73,12 +65,12 @@ export class ExportPanel {
     // Nothing drawn, nothing to export.
     const empty = this.getState().qualities.length === 0;
     for (const button of this.imageButtons) button.disabled = empty;
-    if (!this.dialog.open) this.dialog.showModal();
+    this.modal.open(opener);
     return this.refreshShare();
   }
 
   close() {
-    if (this.dialog.open) this.dialog.close();
+    this.modal.close();
   }
 
   async refreshShare() {

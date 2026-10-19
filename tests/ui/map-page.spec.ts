@@ -680,6 +680,23 @@ test.describe("own requirements", () => {
     await expect(svg.locator('.map-node[data-type="custom"]')).toHaveCount(0);
   });
 
+  test("a drag that ends on the backdrop keeps the dialog and the draft", async ({ page }) => {
+    await seedAndOpen(page);
+    await page.locator("#map-custom-open").click();
+    const dialog = page.locator("#map-custom-dialog");
+    await dialog.getByLabel("Title").fill("Draft that must survive");
+    const box = (await dialog.getByLabel(/Scenario/).boundingBox())!;
+    await page.mouse.move(box.x + 10, box.y + 10);
+    await page.mouse.down();
+    await page.mouse.move(4, 4, { steps: 5 });
+    await page.mouse.up();
+    await expect(dialog).toBeVisible();
+    await expect(dialog.getByLabel("Title")).toHaveValue("Draft that must survive");
+    // A real click on the backdrop still closes it.
+    await page.mouse.click(4, 4);
+    await expect(dialog).toBeHidden();
+  });
+
   test("the title input is capped and points at its error only while invalid", async ({ page }) => {
     await seedAndOpen(page);
     await page.locator("#map-custom-open").click();
