@@ -22,6 +22,7 @@
       </nav>
 
       <div class="site-actions">
+        <a class="map-tray" href="{{ '/map/' | prepend: site.baseurl }}" data-map-tray hidden>Selection <span class="map-tray__count" data-map-tray-count>0</span><span class="map-tray__cta">Open map</span></a>
         <form class="site-search" action="{{ '/search/' | prepend: site.baseurl }}" role="search" data-site-search>
           <label class="sr-only" for="site-search-input">Search Q42</label>
           <input
