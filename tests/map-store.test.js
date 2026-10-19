@@ -1,20 +1,48 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import {
-  STORAGE_KEY, createEmptyState, addQuality, removeQuality, hasQuality, setPriority,
-  setQualityHidden, setItemHidden, setLayers, addCustom, removeCustom, normalizeState,
-  createMemoryStorage, resolveStorage, loadState, saveState,
+  STORAGE_KEY,
+  createEmptyState,
+  addQuality,
+  removeQuality,
+  hasQuality,
+  setPriority,
+  setQualityHidden,
+  setItemHidden,
+  setLayers,
+  addCustom,
+  removeCustom,
+  normalizeState,
+  createMemoryStorage,
+  resolveStorage,
+  loadState,
+  saveState,
+  setShowSingles,
+  clearState,
+  emitSelectionChanged,
+  SELECTION_EVENT,
 } from "../src/map/store.js";
 
 test("empty state has version 1, no qualities, approaches layer on", () => {
   const s = createEmptyState(new Date("2026-10-19T10:00:00Z"));
-  assert.deepEqual(s, { v: 1, qualities: [], custom: [], hiddenItems: [], layers: ["approaches"], showSingles: false, updated: "2026-10-19T10:00:00.000Z" });
+  assert.deepEqual(s, {
+    v: 1,
+    qualities: [],
+    custom: [],
+    hiddenItems: [],
+    layers: ["approaches"],
+    showSingles: false,
+    updated: "2026-10-19T10:00:00.000Z",
+  });
 });
 
 test("addQuality is idempotent, ordered, and does not mutate", () => {
   const s0 = createEmptyState();
   const s1 = addQuality(addQuality(addQuality(s0, "availability"), "resilience"), "availability");
-  assert.deepEqual(s1.qualities.map((q) => q.id), ["availability", "resilience"]);
+  assert.deepEqual(
+    s1.qualities.map((q) => q.id),
+    ["availability", "resilience"],
+  );
   assert.equal(s1.qualities[0].priority, null);
   assert.equal(s1.qualities[0].hidden, false);
   assert.equal(s0.qualities.length, 0);
@@ -58,14 +86,25 @@ test("addCustom assigns c-N ids and rejects empty titles", () => {
   s = addCustom(s, { title: "Second" });
   s = removeCustom(s, "c-1");
   s = addCustom(s, { title: "Third" });
-  assert.deepEqual(s.custom.map((c) => [c.id, c.title]), [["c-2", "Second"], ["c-3", "Third"]]);
+  assert.deepEqual(
+    s.custom.map((c) => [c.id, c.title]),
+    [
+      ["c-2", "Second"],
+      ["c-3", "Third"],
+    ],
+  );
   assert.throws(() => addCustom(s, { title: "   " }), RangeError);
 });
 
 test("normalizeState survives garbage and wrong versions", () => {
   assert.equal(normalizeState(null).qualities.length, 0);
   assert.equal(normalizeState({ v: 99, qualities: [{ id: "x" }] }).qualities.length, 0);
-  const n = normalizeState({ v: 1, qualities: [{ id: "a", priority: "nope" }, { nope: 1 }], layers: "approaches", extra: 1 });
+  const n = normalizeState({
+    v: 1,
+    qualities: [{ id: "a", priority: "nope" }, { nope: 1 }],
+    layers: "approaches",
+    extra: 1,
+  });
   assert.deepEqual(n.qualities, [{ id: "a", priority: null, hidden: false }]);
   assert.deepEqual(n.layers, ["approaches"]);
   assert.equal("extra" in n, false);
@@ -81,8 +120,74 @@ test("load/save round-trip through a storage object; corrupt JSON yields empty s
 });
 
 test("resolveStorage falls back to memory when the candidate throws", () => {
-  const throwing = { getItem() { throw new Error("denied"); }, setItem() { throw new Error("denied"); } };
+  const throwing = {
+    getItem() {
+      throw new Error("denied");
+    },
+    setItem() {
+      throw new Error("denied");
+    },
+  };
   const storage = resolveStorage(throwing);
   storage.setItem("k", "v");
   assert.equal(storage.getItem("k"), "v");
+});
+
+test("resolveStorage returns one shared memory fallback across calls", () => {
+  const throwing = {
+    getItem() {
+      throw new Error("denied");
+    },
+    setItem() {
+      throw new Error("denied");
+    },
+  };
+  assert.equal(resolveStorage(throwing), resolveStorage(throwing));
+  saveState(addQuality(createEmptyState(), "availability"), resolveStorage(throwing));
+  assert.ok(hasQuality(loadState(resolveStorage(throwing)), "availability"));
+  clearState(resolveStorage(throwing));
+});
+
+test("loadState and saveState survive a throwing globalThis.localStorage getter", () => {
+  const original = Object.getOwnPropertyDescriptor(globalThis, "localStorage");
+  Object.defineProperty(globalThis, "localStorage", {
+    configurable: true,
+    get() {
+      throw new Error("SecurityError");
+    },
+  });
+  try {
+    assert.equal(loadState().qualities.length, 0);
+    saveState(addQuality(createEmptyState(), "availability"));
+    assert.ok(hasQuality(loadState(), "availability"));
+    clearState();
+  } finally {
+    if (original) Object.defineProperty(globalThis, "localStorage", original);
+    else delete globalThis.localStorage;
+  }
+});
+
+test("setShowSingles sets the flag without mutating", () => {
+  const s0 = createEmptyState();
+  const s1 = setShowSingles(s0, true);
+  assert.equal(s1.showSingles, true);
+  assert.equal(s0.showSingles, false);
+});
+
+test("clearState removes the stored selection", () => {
+  const storage = createMemoryStorage();
+  saveState(addQuality(createEmptyState(), "availability"), storage);
+  clearState(storage);
+  assert.equal(storage.getItem(STORAGE_KEY), null);
+  assert.equal(loadState(storage).qualities.length, 0);
+});
+
+test("emitSelectionChanged dispatches the event and tolerates a missing target", () => {
+  const events = [];
+  const state = createEmptyState();
+  emitSelectionChanged(state, { dispatchEvent: (e) => events.push(e) });
+  assert.equal(events.length, 1);
+  assert.equal(events[0].type, SELECTION_EVENT);
+  assert.equal(events[0].detail.state, state);
+  assert.doesNotThrow(() => emitSelectionChanged(state, undefined));
 });

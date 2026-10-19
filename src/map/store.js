@@ -161,13 +161,17 @@ export function createMemoryStorage() {
   };
 }
 
-export function resolveStorage(candidate = globalThis.localStorage) {
+let fallbackStorage = null;
+
+export function resolveStorage(candidate) {
   try {
-    candidate.setItem(PROBE_KEY, "1");
-    candidate.removeItem(PROBE_KEY);
-    return candidate;
+    const storage = candidate ?? globalThis.localStorage;
+    storage.setItem(PROBE_KEY, "1");
+    storage.removeItem(PROBE_KEY);
+    return storage;
   } catch {
-    return createMemoryStorage();
+    fallbackStorage ??= createMemoryStorage();
+    return fallbackStorage;
   }
 }
 
