@@ -96,6 +96,13 @@ hide: true
 
   <p id="map-notice" class="map-notice" role="status"></p>
 
+  <div id="map-add" class="map-add-search">
+    <label class="map-add-search__label-text" for="map-add-input">Add a quality</label>
+    <input id="map-add-input" class="map-add-search__input" type="search" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="map-add-results" autocomplete="off" placeholder="Search all qualities">
+    <ul id="map-add-results" class="map-add-search__results" role="listbox" aria-label="Matching qualities" hidden></ul>
+    <p id="map-add-status" class="sr-only" role="status"></p>
+  </div>
+
   <section id="map-empty" class="map-empty" hidden>
     <h2>No qualities selected yet</h2>
     <p>

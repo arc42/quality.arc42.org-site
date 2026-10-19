@@ -16,6 +16,7 @@ import { ListView } from "./ListView.js";
 import { MapView } from "./MapView.js";
 import { Panel } from "./Panel.js";
 import { ExportPanel } from "./ExportPanel.js";
+import { AddSearch } from "./AddSearch.js";
 import { SHARE_PARAM, decodeShare } from "./share.js";
 import { singlesChipText, summaryText, unknownIdsText } from "./format.js";
 
@@ -55,6 +56,8 @@ export class MapPage {
   }
 
   mount() {
+    new AddSearch(this.$("map-add"), { baseurl: this.baseurl }).mount();
+
     this.$("map-layers").addEventListener("click", (event) => {
       const button = event.target.closest("[data-layer]");
       if (!button) return;

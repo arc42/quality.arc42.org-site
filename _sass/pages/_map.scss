@@ -164,6 +164,85 @@ html:not(.js) .map-page {
   gap: 0.5rem;
 }
 
+// ── Add a quality (combobox) ────────────────────────────────
+
+.map-add-search {
+  margin: 0 0 1rem;
+  max-width: 28rem;
+  position: relative;
+}
+
+.map-add-search__label-text {
+  color: var(--brand-muted-strong);
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+  text-transform: uppercase;
+}
+
+.map-add-search__input {
+  background: var(--brand-paper);
+  border: 1px solid var(--brand-muted);
+  border-radius: $radius-sm;
+  box-sizing: border-box;
+  color: var(--brand-ink);
+  font: inherit;
+  min-height: 44px;
+  padding: 0 0.75rem;
+  width: 100%;
+
+  &:focus-visible {
+    box-shadow: var(--focus-ring);
+    outline: none;
+  }
+}
+
+.map-add-search__results {
+  background: var(--brand-paper);
+  border: 1px solid var(--brand-violet-soft);
+  border-radius: $radius-sm;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+  left: 0;
+  list-style: none;
+  margin: 0.25rem 0 0;
+  max-height: 60vh;
+  overflow-y: auto;
+  padding: 0.25rem;
+  position: absolute;
+  right: 0;
+  z-index: 20;
+
+  &[hidden] {
+    display: none;
+  }
+}
+
+.map-add-search__item {
+  align-items: center;
+  border-radius: $radius-sm;
+  display: flex;
+  gap: 0.75rem;
+  justify-content: space-between;
+  min-height: 44px;
+  padding: 0.25rem 0.25rem 0.25rem 0.5rem;
+
+  &[aria-selected="true"] {
+    background: var(--brand-violet-faint);
+  }
+}
+
+.map-add-search__label {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.map-add-search__via {
+  color: var(--brand-muted-strong);
+  font-size: 0.82rem;
+}
+
 // ── Hidden list ─────────────────────────────────────────────
 
 .map-hidden {

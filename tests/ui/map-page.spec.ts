@@ -497,3 +497,62 @@ test("a share link that cannot be encoded shows a warning instead of an empty fi
     "## 1.2 Quality goals",
   );
 });
+
+test.describe("add to map search", () => {
+  async function seedThree(page) {
+    await page.addInitScript((seed) => {
+      if (localStorage.getItem("q42.map.v1") === null) {
+        localStorage.setItem("q42.map.v1", JSON.stringify(seed));
+      }
+    }, SEED);
+    await page.goto("/map/");
+    await expect(page.locator("#map-summary")).toContainText("3 qualities");
+  }
+
+  test("typing finds a quality and its Add button puts it on the map", async ({ page }) => {
+    await seedThree(page);
+    const input = page.locator("#map-add-input");
+    await input.fill("recover");
+    await expect(input).toHaveAttribute("aria-expanded", "true");
+    const add = page.locator('#map-add-results [data-map-add="recoverability"]');
+    await expect(add).toBeVisible();
+    await add.click();
+    await expect(page.locator("#map-summary")).toContainText("4 qualities");
+    await expect(page.locator('svg .map-node[data-id="recoverability"]')).toHaveCount(1);
+    // The list stays open and the row now reads as added.
+    await expect(add).toHaveAttribute("aria-pressed", "true");
+    await expect(add).toContainText("Added");
+  });
+
+  test("arrow keys and Enter add the first result; Escape closes", async ({ page }) => {
+    await seedThree(page);
+    const input = page.locator("#map-add-input");
+    await input.fill("recover");
+    await expect(page.locator("#map-add-results [role=option]").first()).toBeVisible();
+    await input.press("ArrowDown");
+    const first = page.locator("#map-add-results [role=option]").first();
+    await expect(input).toHaveAttribute("aria-activedescendant", (await first.getAttribute("id"))!);
+    await input.press("Enter");
+    await expect(page.locator("#map-summary")).toContainText("4 qualities");
+    await input.press("Escape");
+    await expect(page.locator("#map-add-results")).toBeHidden();
+    await expect(input).toHaveAttribute("aria-expanded", "false");
+  });
+
+  test("an alias hit names the alias and a miss says so", async ({ page }) => {
+    await seedThree(page);
+    const input = page.locator("#map-add-input");
+    await input.fill("exactn");
+    await expect(page.locator("#map-add-results")).toContainText("via exactness");
+    await input.fill("zzzzqq");
+    await expect(page.locator("#map-add-status")).toHaveText("No results");
+  });
+
+  test("works with an empty selection", async ({ page }) => {
+    await page.addInitScript(() => localStorage.removeItem("q42.map.v1"));
+    await page.goto("/map/");
+    await page.locator("#map-add-input").fill("recover");
+    await page.locator('#map-add-results [data-map-add="recoverability"]').click();
+    await expect(page.locator("#map-summary")).toContainText("1 quality");
+  });
+});
