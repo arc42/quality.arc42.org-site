@@ -80,7 +80,8 @@ export class MapView {
       .stop()
       .on("tick", () => {
         this.ticks += 1;
-        if (this.ticks >= MAX_TICKS) this.simulation.stop();
+        // Never cap mid-drag: alphaTarget stays above zero until the drag ends.
+        if (this.ticks >= MAX_TICKS && this.simulation.alphaTarget() === 0) this.simulation.stop();
         this.draw();
       });
 
@@ -92,11 +93,12 @@ export class MapView {
         d.fy = d.y;
       })
       .on("drag", (event, d) => {
-        d.fx = event.x;
-        d.fy = event.y;
+        d.fx = d.x = event.x;
+        d.fy = d.y = event.y;
         this.draw();
       })
       .on("end", (event) => {
+        this.ticks = 0;
         if (!event.active) this.simulation.alphaTarget(0);
       });
   }
@@ -104,9 +106,14 @@ export class MapView {
   render(subgraph) {
     const qualities = subgraph.qualities.filter((q) => !q.hidden);
     const items = subgraph.items.filter((i) => !i.hidden);
+    const shownQualities = new Set(qualities.map((q) => q.id));
     const nodes = [
       ...qualities.map((q) => ({ ...q, kind: "quality", type: "quality" })),
-      ...items.map((i) => ({ ...i, kind: "item", count: i.linkedQualityIds.length })),
+      ...items.map((i) => ({
+        ...i,
+        kind: "item",
+        count: i.linkedQualityIds.filter((id) => shownQualities.has(id)).length,
+      })),
     ];
     const visible = new Set(nodes.map((n) => n.id));
     this.nodesById = new Map(nodes.map((n) => [n.id, n]));
@@ -129,7 +136,6 @@ export class MapView {
         enter
           .append("g")
           .attr("class", "map-node")
-          .attr("tabindex", "-1")
           .call(this.dragBehaviour)
           .on("click", (event, d) => {
             event.stopPropagation();

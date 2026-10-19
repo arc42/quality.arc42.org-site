@@ -156,3 +156,68 @@ test("selected item panel passes an axe scan", async ({ page }) => {
     .analyze();
   expect(results.violations.map((v) => v.id)).toEqual([]);
 });
+
+// Screen position of a node's origin (its translate), from the live SVG matrix.
+async function nodeOrigin(locator) {
+  return locator.evaluate((el) => {
+    const m = el.getScreenCTM();
+    return { x: m.e, y: m.f };
+  });
+}
+
+async function seedAndOpen(page) {
+  await page.addInitScript(
+    (seed) => localStorage.setItem("q42.map.v1", JSON.stringify(seed)),
+    SEED,
+  );
+  await page.goto("/map/");
+  return page.locator("#map-canvas svg");
+}
+
+test("selecting highlights node and edges; clicking empty canvas clears the panel", async ({
+  page,
+}) => {
+  const svg = await seedAndOpen(page);
+  const item = svg.locator('.map-node[data-type="approach"]').first();
+  await item.click();
+  await expect(item).toHaveClass(/is-selected/);
+  const badge = await item.locator(".map-node__badge-text").textContent();
+  await expect(svg.locator(".map-edge.is-highlighted")).toHaveCount(Number(badge));
+  await svg.click({ position: { x: 4, y: 4 } });
+  await expect(page.locator("#map-panel")).toHaveText("Select a node on the map to see details.");
+  await expect(svg.locator(".map-node.is-selected")).toHaveCount(0);
+  await expect(svg.locator(".map-edge.is-highlighted")).toHaveCount(0);
+});
+
+test("a slow drag keeps the node under the pointer and pins it across re-renders", async ({
+  page,
+}) => {
+  test.setTimeout(30_000);
+  const svg = await seedAndOpen(page);
+  const node = svg.locator('.map-node[data-id="timeout"]');
+  const start = await nodeOrigin(node);
+  await page.mouse.move(start.x, start.y);
+  await page.mouse.down();
+  // Spread the drag over more than the 300-tick cap (~5 s at 60 fps).
+  let target = { x: start.x + 60, y: start.y + 40 };
+  await page.mouse.move(target.x, target.y, { steps: 10 });
+  await page.waitForTimeout(3500);
+  target = { x: start.x - 50, y: start.y + 70 };
+  await page.mouse.move(target.x, target.y, { steps: 10 });
+  await page.waitForTimeout(3500);
+  target = { x: start.x + 30, y: start.y - 60 };
+  await page.mouse.move(target.x, target.y, { steps: 10 });
+  const during = await nodeOrigin(node);
+  expect(Math.abs(during.x - target.x)).toBeLessThan(3);
+  expect(Math.abs(during.y - target.y)).toBeLessThan(3);
+  await page.mouse.up();
+
+  // Pinned: hiding and restoring an unrelated item re-renders without moving it.
+  const pinned = await node.getAttribute("transform");
+  await svg.locator('.map-node[data-id="bulkheads"]').click();
+  await page.locator("#map-panel").getByRole("button", { name: "Hide from map" }).click();
+  await expect(svg.locator('.map-node[data-id="bulkheads"]')).toHaveCount(0);
+  await page.locator("#map-panel").getByRole("button", { name: "Show on map" }).click();
+  await expect(svg.locator('.map-node[data-id="bulkheads"]')).toHaveCount(1);
+  await expect(node).toHaveAttribute("transform", pinned);
+});

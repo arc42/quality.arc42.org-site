@@ -258,10 +258,6 @@ html:not(.js) .map-page {
   cursor: pointer;
   font-family: inherit;
 
-  &:focus {
-    outline: none;
-  }
-
   text {
     pointer-events: none;
     user-select: none;
