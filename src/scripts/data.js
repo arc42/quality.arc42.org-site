@@ -307,43 +307,84 @@ function stripInlineMarkdown(text) {
 }
 
 /**
- * First prose paragraph of a Markdown body as plain text, for the map's
- * Markdown export. Liquid tags, HTML comments, headings and lines that are
- * only HTML wrappers are skipped; blockquote markers are removed.
+ * Split a Markdown body into paragraphs. Liquid tags, HTML comments, headings
+ * and lines that are only HTML wrappers separate paragraphs; a switch between
+ * quoted and unquoted lines does too. List items are run together.
  * @param {string|undefined} body
- * @returns {string} at most EXCERPT_MAX characters plus "…" when cut
+ * @returns {{ raw: string, text: string, quote: boolean, list: boolean }[]}
  */
-export function bodyExcerpt(body) {
+function paragraphsOf(body) {
     const cleaned = String(body ?? "")
         .replace(/<!--[\s\S]*?-->/g, "")
         .replace(/\{%[\s\S]*?%\}/g, "")
         .replace(/\{\{[\s\S]*?\}\}/g, "");
-    let paragraph = [];
-    let text = "";
-    for (const raw of [...cleaned.split("\n"), ""]) {
-        const line = raw.replace(/^\s*(>\s?)+/, "").trim();
+    const out = [];
+    let lines = [];
+    let quote = false;
+    let list = false;
+    const flush = () => {
+        if (!lines.length) return;
+        const raw = lines.join("");
+        out.push({ raw: raw.trim(), text: stripInlineMarkdown(raw), quote, list });
+        lines = [];
+    };
+    for (const source of cleaned.split("\n")) {
+        const quoted = /^\s*>/.test(source);
+        const line = source.replace(/^\s*(>\s?)+/, "").trim();
         const skip = line === "" || /^#{1,6}\s/.test(line) || /^(<[^>]+>\s*)+$/.test(line);
-        if (!skip) {
-            const item = line.replace(/^([-*+]|\d+\.)\s+/, "");
-            // Run list items together as one sentence-like line.
-            const glue = item !== line && paragraph.length && !/[.;:!?]$/.test(paragraph.at(-1)) ? "; " : " ";
-            paragraph.push(paragraph.length ? `${glue}${item}` : item);
+        if (skip || (lines.length && quoted !== quote)) flush();
+        if (skip) continue;
+        const item = line.replace(/^([-*+]|\d+\.)\s+/, "");
+        if (!lines.length) {
+            quote = quoted;
+            list = item !== line;
+            lines.push(item);
             continue;
         }
-        if (!paragraph.length) continue;
-        text = stripInlineMarkdown(paragraph.join(""));
-        paragraph = [];
-        if (text && !isSignpost(text)) break;
-        text = "";
+        // Run list items together as one sentence-like line.
+        const glue = item !== line && !/[.;:!?]$/.test(lines.at(-1)) ? "; " : " ";
+        lines.push(`${glue}${item}`);
     }
+    flush();
+    return out;
+}
+
+/**
+ * The definition of a quality as plain text, for the map's Markdown export:
+ * the first blockquote paragraph (pages quote their definitions), else the
+ * first prose paragraph. Signposts ("Definition:", "See also …" with the list
+ * under it) and bare citation links are never taken.
+ * @param {string|undefined} body
+ * @returns {string} at most EXCERPT_MAX characters plus "…" when cut
+ */
+export function bodyExcerpt(body) {
+    const candidates = [];
+    let afterPointer = false;
+    for (const p of paragraphsOf(body)) {
+        const pointerList = afterPointer && p.list;
+        afterPointer = isPointer(p.text) || (pointerList && afterPointer);
+        if (!p.text || pointerList || isSignpost(p.text) || isCitation(p.raw)) continue;
+        candidates.push(p);
+    }
+    const text = (candidates.find((p) => p.quote) ?? candidates[0])?.text ?? "";
     if (text.length > EXCERPT_MAX) return `${text.slice(0, EXCERPT_MAX).trimEnd()}…`;
     // A lead-in to a list ("... the following:") reads as cut off without the list.
     return text.replace(/:$/, "…");
 }
 
-/** Lead-ins such as "Definition:" or "See also #usable" say nothing on their own. */
+/** "See also …" or "Synonym: …" point elsewhere, and so does a list right under them. */
+function isPointer(text) {
+    return /^(see|synonyms?)\b/i.test(text);
+}
+
+/** Lead-ins such as "Definition:" say nothing on their own. */
 function isSignpost(text) {
-    return (text.endsWith(":") && text.length <= 40) || /^(see|synonyms?)\b/i.test(text);
+    return (text.endsWith(":") && text.length <= 40) || isPointer(text);
+}
+
+/** A paragraph that is only a source link, e.g. "[ISO-25010:2023](/references/…)". */
+function isCitation(raw) {
+    return /^(\S+\s+)?\[[^\]]+\]\([^)]*\)\.?$/.test(raw);
 }
 
 /**

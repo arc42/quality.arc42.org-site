@@ -13,7 +13,7 @@ const ROOT_ID = "quality-root";
  * @typedef {{ id: string, label: string, page: string, qualityType: string, priority: string|null, hidden: boolean, sharedCount: number, excerpt: string, dimensions: string[] }} MapQuality
  * @typedef {{ id: string, label: string, page: string, type: "approach"|"requirement"|"standard"|"dimension"|"custom", priority?: string|null, linkedQualityIds: string[], hidden: boolean }} MapItem
  * @typedef {{ source: string, target: string, kind: "link"|"custom" }} MapEdge
- * @typedef {{ qualities: MapQuality[], items: MapItem[], edges: MapEdge[], unknownIds: string[], singlesHidden: number }} Subgraph
+ * @typedef {{ qualities: MapQuality[], items: MapItem[], edges: MapEdge[], unknownIds: string[], singlesHidden: number, singlesHiddenByType: { approach: number, requirement: number, standard: number, dimension: number } }} Subgraph
  */
 
 function link(neighbours, a, b) {
@@ -75,11 +75,15 @@ export function buildSubgraph(index, state) {
 
   const items = [];
   let singlesHidden = 0;
+  const singlesHiddenByType = { approach: 0, requirement: 0, standard: 0, dimension: 0 };
   for (const id of candidates) {
     const node = byId.get(id);
     const linked = order.filter((q) => neighbours.get(id).has(q));
     if (linked.length < (state.showSingles ? 1 : 2)) {
-      if (linked.length === 1) singlesHidden++;
+      if (linked.length === 1) {
+        singlesHidden++;
+        singlesHiddenByType[node.qualityType]++;
+      }
       continue;
     }
     items.push({
@@ -132,5 +136,5 @@ export function buildSubgraph(index, state) {
       .sort(),
   }));
 
-  return { qualities, items, edges, unknownIds, singlesHidden };
+  return { qualities, items, edges, unknownIds, singlesHidden, singlesHiddenByType };
 }

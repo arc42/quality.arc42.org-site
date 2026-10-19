@@ -191,3 +191,86 @@ test("bodyExcerpt takes the first prose paragraph, stripped of Markdown, cut at 
   assert.equal(bodyExcerpt(""), "");
   assert.equal(bodyExcerpt(undefined), "");
 });
+
+test("the singles note counts approaches only, not single-link requirements", () => {
+  const s = setLayers(
+    ["availability", "resilience", "recoverability"].reduce(addQuality, createEmptyState()),
+    ["approaches", "requirements"],
+  );
+  const sg = buildSubgraph(index, s);
+  assert.equal(sg.singlesHidden, 2); // quarantine and zone-failure
+  assert.ok(
+    toMarkdown(s, sg, { sections: ["matrix"], now: NOW }).endsWith(
+      "\n1 approach with a single link omitted.\n",
+    ),
+  );
+});
+
+test("own requirements get their own ## section when the tree is left out", () => {
+  assert.ok(md(sample()).includes("\n### Own requirements\n"));
+  const out = md(sample(), { sections: ["goals", "custom"] });
+  assert.ok(out.includes("\n## Own requirements\n"));
+  assert.ok(!out.includes("### Own requirements"));
+});
+
+test("titles are escaped so they stay plain text", () => {
+  const s = addCustom(addQuality(createEmptyState(), "availability"), {
+    title: "A*B [c]",
+    qualities: ["availability"],
+  });
+  assert.ok(md(s).includes("- **A\\*B \\[c\\]** (Availability)\n"));
+});
+
+test("hidden own requirements are still exported, marked as hidden on the map", () => {
+  const s = setItemHidden(sample(), "c-1", true);
+  assert.ok(
+    md(s).includes("- **Checkout survives** (Availability, Resilience) _(hidden on map)_\n"),
+  );
+});
+
+// The first lines of _qualities/U/usability.md and _qualities/A/accessibility.md.
+const USABILITY_BODY = `
+
+See also 
+
+* [#usable](/tag-usable)
+* [interaction-capability](/qualities/interaction-capability), a term that is used within the ISO-25010:2023 standard as a successor to "usability"
+
+
+Definitions:
+
+>Capability of a product to be used by specified users to exchange information between a user and an interactive system via the user interface to complete the intended task.
+>
+>[ISO-25010:2023](/references/#iso-25010-2023)
+`;
+
+const ACCESSIBILITY_BODY = `
+
+See also [#usable](/tag-usable). 
+
+There is a [W3C standard on this topic](https://www.w3.org/TR/WCAG21/)
+
+Definitions:
+
+>Capability of a product or system to be usable by people with the widest range of characteristics and capabilities to achieve a specified goal in a specified context of use.
+>
+>Note: The range of capabilities includes disabilities associated with age.
+>
+>Derived from [ISO-25010-2011](/references/#iso-25010-2011)
+`;
+
+test("bodyExcerpt prefers the quoted definition over signposts and meta sentences", () => {
+  assert.equal(
+    bodyExcerpt(USABILITY_BODY),
+    "Capability of a product to be used by specified users to exchange information between a user and an interactive system via the user interface to complete the intended task.",
+  );
+  assert.equal(
+    bodyExcerpt(ACCESSIBILITY_BODY),
+    "Capability of a product or system to be usable by people with the widest range of characteristics and capabilities to achieve a specified goal in a specified context of use.",
+  );
+  // Without a quote, the first prose paragraph after the signposts is taken.
+  assert.equal(
+    bodyExcerpt("See also\n\n* [a](/a)\n* b\n\nAtomicity is all or nothing.\n"),
+    "Atomicity is all or nothing.",
+  );
+});

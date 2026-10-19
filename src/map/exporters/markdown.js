@@ -13,6 +13,8 @@ const LINKED = "●";
 const absolute = (site, page) => `${site.replace(/\/$/, "")}${page}`;
 // A "|" inside a cell would split the table row.
 const cell = (text) => String(text).replace(/\|/g, "\\|");
+// Titles are user or content text: keep them from turning into emphasis, links or code.
+export const escapeInline = (text) => String(text).replace(/[\\*_[\]`]/g, "\\$&");
 const plural = (n, one, many) => `${n} ${n === 1 ? one : many}`;
 
 function goalsSection(qualities, title) {
@@ -55,12 +57,16 @@ function treeSection(qualities, title) {
   return lines;
 }
 
-function customSection(custom, qualities) {
-  const labels = new Map(qualities.map((q) => [q.id, q.label]));
-  const lines = ["### Own requirements", ""];
+function customSection(custom, qualities, hiddenItems, insideTree) {
+  const labels = new Map(qualities.map((q) => [q.id, escapeInline(q.label)]));
+  const hidden = new Set(hiddenItems);
+  // Inside §10 when the tree is exported, a section of its own otherwise.
+  const lines = [`${insideTree ? "###" : "##"} Own requirements`, ""];
   for (const c of custom) {
     const linked = c.qualities.filter((id) => labels.has(id)).map((id) => labels.get(id));
-    lines.push(`- **${c.title}**${linked.length ? ` (${linked.join(", ")})` : ""}`);
+    const qualityList = linked.length ? ` (${linked.join(", ")})` : "";
+    const hiddenNote = hidden.has(c.id) ? " _(hidden on map)_" : "";
+    lines.push(`- **${escapeInline(c.title)}**${qualityList}${hiddenNote}`);
     const scenario = c.scenario.trim();
     if (scenario) lines.push(...scenario.split("\n").map((l) => `  ${l.trim()}`));
   }
@@ -90,11 +96,12 @@ function matrixSection(state, subgraph, title) {
     lines.push("_No approach is shown on the map for these qualities._");
   }
   const notes = [];
-  if (hidden.length) notes.push(`Hidden by you: ${hidden.map((i) => i.label).join(", ")}.`);
-  if (subgraph.singlesHidden > 0 && !state.showSingles) {
-    notes.push(
-      `${plural(subgraph.singlesHidden, "approach", "approaches")} with a single link omitted.`,
-    );
+  if (hidden.length)
+    notes.push(`Hidden by you: ${hidden.map((i) => escapeInline(i.label)).join(", ")}.`);
+  // Only approaches: other layers' singles are not part of this matrix.
+  const singles = subgraph.singlesHiddenByType?.approach ?? 0;
+  if (singles > 0 && !state.showSingles) {
+    notes.push(`${plural(singles, "approach", "approaches")} with a single link omitted.`);
   }
   if (notes.length) lines.push("", notes.join(" "));
   return lines;
@@ -116,8 +123,10 @@ export function toMarkdown(
   } = {},
 ) {
   // Qualities and approaches have a page on Q42; own requirements and dimensions do not.
-  const linkTitle = (node) =>
-    links && node.page ? `[${node.label}](${absolute(site, node.page)})` : node.label;
+  const linkTitle = (node) => {
+    const label = escapeInline(node.label);
+    return links && node.page ? `[${label}](${absolute(site, node.page)})` : label;
+  };
   const want = new Set(sections);
   const { qualities } = subgraph;
   const blocks = [
@@ -125,8 +134,9 @@ export function toMarkdown(
   ];
   if (want.has("goals")) blocks.push(goalsSection(qualities, linkTitle));
   if (want.has("tree")) blocks.push(treeSection(qualities, linkTitle));
-  if (want.has("custom") && state.custom.length)
-    blocks.push(customSection(state.custom, qualities));
+  if (want.has("custom") && state.custom.length) {
+    blocks.push(customSection(state.custom, qualities, state.hiddenItems, want.has("tree")));
+  }
   if (want.has("matrix")) blocks.push(matrixSection(state, subgraph, linkTitle));
   return `${blocks.map((b) => b.join("\n")).join("\n\n")}\n`;
 }

@@ -98,3 +98,15 @@ test("qualities carry their excerpt and their sorted dimension ids", () => {
   assert.deepEqual(byId.availability.dimensions, ["reliable"]);
   assert.deepEqual(byId.resilience.dimensions, ["reliable", "secure"]);
 });
+
+test("singles are also counted per item type", () => {
+  const sg = buildSubgraph(index, setLayers(base, ["approaches", "requirements"]));
+  // quarantine (approach → recoverability), zone-failure (requirement → availability)
+  assert.equal(sg.singlesHidden, 2);
+  assert.deepEqual(sg.singlesHiddenByType, {
+    approach: 1,
+    requirement: 1,
+    standard: 0,
+    dimension: 0,
+  });
+});
