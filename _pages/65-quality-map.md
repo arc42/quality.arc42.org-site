@@ -45,6 +45,7 @@ hide: true
         <p class="map-export__warning" data-share-too-long hidden>
           This map is too large for a share link. Download the JSON file instead.
         </p>
+        <p class="map-export__warning" data-share-failed hidden>The share link could not be created in this browser. Use the JSON export instead.</p>
         <p class="map-export__hint">Whoever opens it can merge it into their own selection or replace it.</p>
       </section>
 
@@ -60,12 +61,25 @@ hide: true
         <p class="map-export__error" role="alert" data-import-error hidden></p>
       </section>
 
-      <section class="map-export__section map-export__section--soon" aria-labelledby="map-export-md-title">
+      <section class="map-export__section" aria-labelledby="map-export-md-title">
         <h3 class="map-export__title"><span id="map-export-md-title">Markdown for arc42</span></h3>
-        <p class="map-export__hint">Quality goals, quality tree and approach matrix. Coming soon.</p>
+        <p class="map-export__hint">Quality goals, quality tree and approach matrix, ready to paste into your arc42 documentation.</p>
+        <fieldset class="map-export__options">
+          <legend class="sr-only">Include in the Markdown</legend>
+          <label class="map-export__option"><input type="checkbox" data-md-option="goals" checked> §1.2 Quality goals, ranked by my priority</label>
+          <label class="map-export__option"><input type="checkbox" data-md-option="tree" checked> §10 Quality tree with Q42 definitions</label>
+          <label class="map-export__option"><input type="checkbox" data-md-option="matrix" checked> Approach × quality matrix</label>
+          <label class="map-export__option"><input type="checkbox" data-md-option="custom" checked> My own requirements</label>
+          <label class="map-export__option"><input type="checkbox" data-md-option="links"> Links back to quality.arc42.org</label>
+        </fieldset>
         <div class="map-export__row">
-          <button class="map-pill" type="button" disabled>Copy Markdown</button>
-          <button class="map-pill" type="button" disabled>Download .md</button>
+          <button class="map-pill map-pill--primary" type="button" data-md-copy>Copy Markdown</button>
+          <button class="map-pill" type="button" data-md-download>Download .md</button>
+          <span class="map-export__status" role="status" data-md-status></span>
+        </div>
+        <p class="map-export__hint" id="map-export-md-preview-title">Preview · quality-map.md</p>
+        <div class="map-export__preview" role="region" aria-labelledby="map-export-md-preview-title" tabindex="0">
+          <pre data-md-preview></pre>
         </div>
       </section>
 

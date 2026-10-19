@@ -6,6 +6,7 @@ export const ALL_LAYERS = Object.freeze(["approaches", "requirements", "standard
 export const SELECTION_EVENT = "q42:selection-changed";
 
 const PROBE_KEY = "q42.map.probe";
+const CUSTOM_ID = /^c-\d+$/;
 
 /** @typedef {{ id: string, priority: "low"|"medium"|"high"|null, hidden: boolean }} SelectedQuality */
 /** @typedef {{ id: string, title: string, scenario: string, qualities: string[], priority: "low"|"medium"|"high"|null }} CustomRequirement */
@@ -203,7 +204,8 @@ export function emitSelectionChanged(state, target = globalThis.document) {
 /**
  * Merge an incoming selection (e.g. from a share link) into the current one:
  * existing qualities keep their priorities, new ones are appended, incoming
- * custom requirements are appended with fresh ids, hidden items are united,
+ * custom requirements are appended with fresh ids, hidden items are united
+ * (incoming custom ids follow their renamed requirement),
  * and the layers come from the incoming selection.
  */
 export function mergeStates(current, incoming) {
@@ -217,6 +219,10 @@ export function mergeStates(current, incoming) {
     renamed.set(c.id, next.custom[next.custom.length - 1].id);
   }
   const hidden = new Set(current.hiddenItems);
-  for (const id of incoming.hiddenItems) hidden.add(renamed.get(id) ?? id);
+  for (const id of incoming.hiddenItems) {
+    if (renamed.has(id)) hidden.add(renamed.get(id));
+    // A stale custom id (its requirement is gone) must not hide one of mine.
+    else if (!CUSTOM_ID.test(id)) hidden.add(id);
+  }
   return { ...setLayers(next, incoming.layers), hiddenItems: [...hidden] };
 }

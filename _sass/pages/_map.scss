@@ -880,6 +880,61 @@ html:not(.js) .map-page {
   }
 }
 
+.map-export__options {
+  border: 0;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+}
+
+.map-export__option {
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  gap: 0.6rem;
+  min-height: 44px;
+
+  input {
+    accent-color: var(--brand-violet);
+    flex-shrink: 0;
+    height: 1.15rem;
+    margin: 0;
+    width: 1.15rem;
+
+    &:focus-visible {
+      box-shadow: var(--focus-ring);
+      outline: none;
+    }
+  }
+}
+
+.map-export__preview {
+  background: var(--brand-cream);
+  border: 1px solid var(--brand-violet-soft);
+  border-radius: $radius-sm;
+  max-height: 18rem;
+  overflow: auto;
+
+  &:focus-visible {
+    box-shadow: var(--focus-ring);
+    outline: none;
+  }
+
+  pre {
+    background: transparent;
+    border: 0;
+    color: var(--brand-ink);
+    font-family: ui-monospace, Menlo, Consolas, monospace;
+    font-size: 0.8rem;
+    line-height: 1.55;
+    margin: 0;
+    overflow-wrap: anywhere;
+    padding: 0.75rem 1rem;
+    white-space: pre-wrap;
+  }
+}
+
 .map-export__section--soon .map-export__title {
   color: var(--brand-muted-strong);
 }

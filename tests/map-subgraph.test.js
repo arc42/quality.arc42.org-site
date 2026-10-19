@@ -86,3 +86,15 @@ test("custom requirements are items of type custom with custom edges, regardless
     ["availability", "resilience"],
   );
 });
+
+test("qualities carry their excerpt and their sorted dimension ids", () => {
+  const sg = buildSubgraph(index, base);
+  const byId = Object.fromEntries(sg.qualities.map((q) => [q.id, q]));
+  assert.equal(
+    byId.availability.excerpt,
+    "Capability of a product to be accessible and operational when required for use.",
+  );
+  assert.equal(byId.resilience.excerpt, "");
+  assert.deepEqual(byId.availability.dimensions, ["reliable"]);
+  assert.deepEqual(byId.resilience.dimensions, ["reliable", "secure"]);
+});

@@ -1,12 +1,17 @@
 import { SHARE_MAX_LENGTH, SHARE_PARAM, encodeShare } from "./share.js";
 import { fromImportJson, toExportJson } from "./exporters/json.js";
+import { MARKDOWN_SECTIONS, toMarkdown } from "./exporters/markdown.js";
 import { downloadText } from "./download.js";
 
 const EXPORT_FILENAME = "q42-map.json";
+const MARKDOWN_FILENAME = "quality-map.md";
 const MAX_IMPORT_BYTES = 1024 * 1024;
 const STATUS_CLEAR_MS = 3000;
+const COPIED = "Copied";
+const SELECTED = "Selected: press Ctrl+C or ⌘C to copy";
 
-// The "Export & share" dialog on /map/: share link, JSON download and import.
+// The "Export & share" dialog on /map/: share link, JSON download and import,
+// Markdown for arc42 with a live preview.
 // The markup lives in _pages/65-quality-map.md; this class only wires it.
 
 export class ExportPanel {
@@ -17,15 +22,19 @@ export class ExportPanel {
     this.getSubgraph = getSubgraph;
     this.onImport = onImport;
     this.opener = null;
-    this.statusTimer = 0;
+    this.statusTimers = new Map();
     const $ = (sel) => dialog.querySelector(sel);
     this.urlRow = $("[data-share-row]");
     this.urlInput = $("[data-share-url]");
     this.copyButton = $("[data-share-copy]");
     this.status = $("[data-share-status]");
     this.tooLong = $("[data-share-too-long]");
+    this.shareFailed = $("[data-share-failed]");
     this.fileInput = $("[data-import-file]");
     this.importError = $("[data-import-error]");
+    this.mdOptions = [...dialog.querySelectorAll("[data-md-option]")];
+    this.mdPreview = $("[data-md-preview]");
+    this.mdStatus = $("[data-md-status]");
 
     $("[data-export-close]").addEventListener("click", () => this.close());
     // A click on the dialog element itself (not its content) hit the backdrop.
@@ -40,14 +49,19 @@ export class ExportPanel {
     $("[data-export-download]").addEventListener("click", () => this.download());
     $("[data-import-open]").addEventListener("click", () => this.fileInput.click());
     this.fileInput.addEventListener("change", () => this.importFile());
+    for (const box of this.mdOptions) box.addEventListener("change", () => this.refreshMarkdown());
+    $("[data-md-copy]").addEventListener("click", () => this.copyMarkdown());
+    $("[data-md-download]").addEventListener("click", () => this.downloadMarkdown());
   }
 
   open(opener = this.doc.activeElement) {
     this.opener = opener;
     this.setImportError("");
-    this.setStatus("");
-    if (!this.dialog.open) this.dialog.showModal();
+    this.setStatus(this.status, "");
+    this.setStatus(this.mdStatus, "");
     // The selection may have changed since the last opening.
+    this.refreshMarkdown();
+    if (!this.dialog.open) this.dialog.showModal();
     return this.refreshShare();
   }
 
@@ -58,7 +72,17 @@ export class ExportPanel {
   async refreshShare() {
     this.copyButton.disabled = true;
     this.urlInput.value = "";
-    const token = await encodeShare(this.getState());
+    this.shareFailed.hidden = true;
+    let token;
+    try {
+      token = await encodeShare(this.getState());
+    } catch {
+      // E.g. no CompressionStream in this browser: point to the JSON file instead.
+      this.urlRow.hidden = true;
+      this.tooLong.hidden = true;
+      this.shareFailed.hidden = false;
+      return;
+    }
     const tooLong = token.length > SHARE_MAX_LENGTH;
     this.urlRow.hidden = tooLong;
     this.tooLong.hidden = !tooLong;
@@ -73,19 +97,56 @@ export class ExportPanel {
     if (!url) return;
     try {
       await this.doc.defaultView.navigator.clipboard.writeText(url);
-      this.setStatus("Copied");
+      this.setStatus(this.status, COPIED);
     } catch {
       // No clipboard API or permission denied: select the text for a manual copy.
       this.urlInput.focus();
       this.urlInput.select();
-      this.setStatus("Selected: press Ctrl+C or ⌘C to copy");
+      this.setStatus(this.status, SELECTED);
     }
   }
 
-  setStatus(text) {
-    clearTimeout(this.statusTimer);
-    this.status.textContent = text;
-    if (text) this.statusTimer = setTimeout(() => (this.status.textContent = ""), STATUS_CLEAR_MS);
+  markdown() {
+    const checked = new Set(this.mdOptions.filter((b) => b.checked).map((b) => b.dataset.mdOption));
+    const sections = MARKDOWN_SECTIONS.filter((s) => checked.has(s));
+    return toMarkdown(this.getState(), this.getSubgraph(), {
+      sections,
+      links: checked.has("links"),
+    });
+  }
+
+  refreshMarkdown() {
+    // textContent, never innerHTML: titles and scenarios are user text.
+    this.mdPreview.textContent = this.markdown();
+  }
+
+  async copyMarkdown() {
+    const text = this.markdown();
+    try {
+      await this.doc.defaultView.navigator.clipboard.writeText(text);
+      this.setStatus(this.mdStatus, COPIED);
+    } catch {
+      // Select the preview for a manual copy; it shows exactly this text.
+      this.mdPreview.textContent = text;
+      this.mdPreview.parentElement.focus();
+      this.doc.getSelection().selectAllChildren(this.mdPreview);
+      this.setStatus(this.mdStatus, SELECTED);
+    }
+  }
+
+  downloadMarkdown() {
+    downloadText(MARKDOWN_FILENAME, this.markdown(), "text/markdown", this.doc);
+  }
+
+  setStatus(element, text) {
+    clearTimeout(this.statusTimers.get(element));
+    element.textContent = text;
+    if (text) {
+      this.statusTimers.set(
+        element,
+        setTimeout(() => (element.textContent = ""), STATUS_CLEAR_MS),
+      );
+    }
   }
 
   download() {

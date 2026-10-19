@@ -330,9 +330,8 @@ test("export dialog shows a share URL and copies it", async ({ page }) => {
   await expect(input).toHaveAttribute("readonly", "");
   await dialog.getByRole("button", { name: "Copy", exact: true }).click();
   await expect(input).toHaveValue(/\/map\/#s=v1\./);
-  await expect(dialog.locator(".map-export__status")).toHaveText("Copied");
+  await expect(dialog.locator("[data-share-status]")).toHaveText("Copied");
   expect(await page.evaluate(() => (window as any).__copied)).toBe(await input.inputValue());
-  await expect(dialog.getByRole("button", { name: /Markdown/ })).toBeDisabled();
   await page.keyboard.press("Escape");
   await expect(dialog).toBeHidden();
   await expect(open).toBeFocused();
@@ -388,12 +387,17 @@ test("copy falls back to selecting the URL; a backdrop click closes the dialog",
   await open.click();
   const dialog = page.locator("#map-export-dialog");
   await dialog.getByRole("button", { name: "Copy", exact: true }).click();
-  await expect(dialog.locator(".map-export__status")).toContainText("Ctrl+C");
+  await expect(dialog.locator("[data-share-status]")).toContainText("Ctrl+C");
   const selected = await page.evaluate(() => {
     const input = document.getElementById("map-export-url") as HTMLInputElement;
     return input.selectionEnd! - input.selectionStart! === input.value.length;
   });
   expect(selected).toBe(true);
+  await dialog.getByRole("button", { name: "Copy Markdown" }).click();
+  await expect(dialog.locator("[data-md-status]")).toContainText("Ctrl+C");
+  expect(await page.evaluate(() => document.getSelection()!.toString())).toContain(
+    "## 1.2 Quality goals",
+  );
   await page.mouse.click(4, 4);
   await expect(dialog).toBeHidden();
   await expect(open).toBeFocused();
@@ -436,4 +440,60 @@ test("rating a quality sets its size and header, survives reload, and clears on 
   );
   await expect(circle).toHaveAttribute("r", "34");
   await expect(header).toContainText("not rated");
+});
+
+test("markdown preview follows the section checkboxes; copy and download work", async ({
+  page,
+}) => {
+  await page.addInitScript(() => {
+    Object.defineProperty(navigator, "clipboard", {
+      value: { writeText: async (text) => ((window as any).__copied = text) },
+    });
+  });
+  await seedAndOpen(page);
+  await page.locator("#map-export-open").click();
+  const dialog = page.locator("#map-export-dialog");
+  const preview = dialog.getByRole("region", { name: /Preview/ }).locator("pre");
+  await expect(preview).toContainText("## 1.2 Quality goals");
+  await expect(preview).toContainText("## 10 Quality tree");
+  await expect(preview).toContainText("## Approaches serving two or more quality goals");
+  const links = dialog.getByRole("checkbox", { name: "Links back to quality.arc42.org" });
+  await expect(links).not.toBeChecked();
+
+  await dialog.getByRole("checkbox", { name: /Quality tree/ }).uncheck();
+  await expect(preview).not.toContainText("## 10 Quality tree");
+  await expect(preview).toContainText("## 1.2 Quality goals");
+  await links.check();
+  await expect(preview).toContainText(
+    "[Availability](https://quality.arc42.org/qualities/availability)",
+  );
+
+  await dialog.getByRole("button", { name: "Copy Markdown" }).click();
+  await expect(dialog.locator("[data-md-status]")).toHaveText("Copied");
+  expect(await page.evaluate(() => (window as any).__copied)).toBe(await preview.textContent());
+
+  const [download] = await Promise.all([
+    page.waitForEvent("download"),
+    dialog.getByRole("button", { name: "Download .md" }).click(),
+  ]);
+  expect(download.suggestedFilename()).toBe("quality-map.md");
+});
+
+test("a share link that cannot be encoded shows a warning instead of an empty field", async ({
+  page,
+}) => {
+  await page.addInitScript(() => {
+    delete (window as any).CompressionStream;
+  });
+  await seedAndOpen(page);
+  await page.locator("#map-export-open").click();
+  const dialog = page.locator("#map-export-dialog");
+  await expect(dialog.locator("[data-share-failed]")).toHaveText(
+    "The share link could not be created in this browser. Use the JSON export instead.",
+  );
+  await expect(dialog.locator("[data-share-row]")).toBeHidden();
+  // The rest of the dialog keeps working.
+  await expect(dialog.getByRole("region", { name: /Preview/ })).toContainText(
+    "## 1.2 Quality goals",
+  );
 });

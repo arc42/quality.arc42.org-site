@@ -234,3 +234,19 @@ test("mergeStates into an empty selection equals the incoming selection", () => 
   assert.deepEqual(merged.qualities, incoming.qualities);
   assert.deepEqual(merged.custom, incoming.custom);
 });
+
+test("mergeStates drops incoming hidden custom ids that do not belong to an incoming custom", () => {
+  let current = addCustom(addQuality(createEmptyState(), "availability"), { title: "Mine" });
+  // A stale "c-1" in the link (its custom requirement was removed) must not hide my own c-1.
+  const incoming = setItemHidden(
+    setItemHidden(addQuality(createEmptyState(), "resilience"), "c-1", true),
+    "bulkheads",
+    true,
+  );
+  const merged = mergeStates(current, incoming);
+  assert.deepEqual(merged.hiddenItems, ["bulkheads"]);
+  assert.deepEqual(
+    merged.custom.map((c) => c.id),
+    ["c-1"],
+  );
+});

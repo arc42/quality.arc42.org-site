@@ -10,7 +10,7 @@ export const LAYER_TO_TYPE = Object.freeze({
 const ROOT_ID = "quality-root";
 
 /**
- * @typedef {{ id: string, label: string, page: string, qualityType: string, priority: string|null, hidden: boolean, sharedCount: number }} MapQuality
+ * @typedef {{ id: string, label: string, page: string, qualityType: string, priority: string|null, hidden: boolean, sharedCount: number, excerpt: string, dimensions: string[] }} MapQuality
  * @typedef {{ id: string, label: string, page: string, type: "approach"|"requirement"|"standard"|"dimension"|"custom", priority?: string|null, linkedQualityIds: string[], hidden: boolean }} MapItem
  * @typedef {{ source: string, target: string, kind: "link"|"custom" }} MapEdge
  * @typedef {{ qualities: MapQuality[], items: MapItem[], edges: MapEdge[], unknownIds: string[], singlesHidden: number }} Subgraph
@@ -126,6 +126,10 @@ export function buildSubgraph(index, state) {
     priority: sel.priority,
     hidden: sel.hidden,
     sharedCount: sharedCount.get(node.id),
+    excerpt: node.excerpt ?? "",
+    dimensions: [...(neighbours.get(node.id) ?? [])]
+      .filter((n) => byId.get(n)?.qualityType === NODE_TYPES.DIMENSION)
+      .sort(),
   }));
 
   return { qualities, items, edges, unknownIds, singlesHidden };

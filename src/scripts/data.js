@@ -23,6 +23,7 @@ import { NODE_COLORS, NODE_TEXT_COLORS } from "../graphs/colors.js";
  * @property {string} qualityType - Node quality type
  * @property {string} page - Link to documentation
  * @property {string[]} [standards] - Related standards (for quality nodes)
+ * @property {string} [excerpt] - First paragraph of the body as plain text (quality nodes)
  */
 
 /**
@@ -283,6 +284,68 @@ function processRelatedNodes(id, relatedIds, edges, synonymMap = {}) {
     }
 }
 
+const EXCERPT_MAX = 240;
+
+/**
+ * Strip inline Markdown (images, links, code, emphasis, HTML tags) from one paragraph.
+ * @param {string} text
+ * @returns {string}
+ */
+function stripInlineMarkdown(text) {
+    return text
+        .replace(/!\[[^\]]*\]\([^)]*\)/g, "")
+        .replace(/\[([^\]]+)\]\([^)]*\)/g, "$1")
+        .replace(/\[([^\]]+)\]\[[^\]]*\]/g, "$1")
+        .replace(/\[([^\]]+)\]/g, "$1")
+        .replace(/`([^`]+)`/g, "$1")
+        .replace(/<[^>]+>/g, "")
+        .replace(/\{:[^}]*\}/g, "")
+        .replace(/(\*\*|__)(.+?)\1/g, "$2")
+        .replace(/(^|[^\w*])[*_]([^*_\s][^*_]*?)[*_](?=[^\w*]|$)/g, "$1$2")
+        .replace(/\s+/g, " ")
+        .trim();
+}
+
+/**
+ * First prose paragraph of a Markdown body as plain text, for the map's
+ * Markdown export. Liquid tags, HTML comments, headings and lines that are
+ * only HTML wrappers are skipped; blockquote markers are removed.
+ * @param {string|undefined} body
+ * @returns {string} at most EXCERPT_MAX characters plus "…" when cut
+ */
+export function bodyExcerpt(body) {
+    const cleaned = String(body ?? "")
+        .replace(/<!--[\s\S]*?-->/g, "")
+        .replace(/\{%[\s\S]*?%\}/g, "")
+        .replace(/\{\{[\s\S]*?\}\}/g, "");
+    let paragraph = [];
+    let text = "";
+    for (const raw of [...cleaned.split("\n"), ""]) {
+        const line = raw.replace(/^\s*(>\s?)+/, "").trim();
+        const skip = line === "" || /^#{1,6}\s/.test(line) || /^(<[^>]+>\s*)+$/.test(line);
+        if (!skip) {
+            const item = line.replace(/^([-*+]|\d+\.)\s+/, "");
+            // Run list items together as one sentence-like line.
+            const glue = item !== line && paragraph.length && !/[.;:!?]$/.test(paragraph.at(-1)) ? "; " : " ";
+            paragraph.push(paragraph.length ? `${glue}${item}` : item);
+            continue;
+        }
+        if (!paragraph.length) continue;
+        text = stripInlineMarkdown(paragraph.join(""));
+        paragraph = [];
+        if (text && !isSignpost(text)) break;
+        text = "";
+    }
+    if (text.length > EXCERPT_MAX) return `${text.slice(0, EXCERPT_MAX).trimEnd()}…`;
+    // A lead-in to a list ("... the following:") reads as cut off without the list.
+    return text.replace(/:$/, "…");
+}
+
+/** Lead-ins such as "Definition:" or "See also #usable" say nothing on their own. */
+function isSignpost(text) {
+    return (text.endsWith(":") && text.length <= 40) || /^(see|synonyms?)\b/i.test(text);
+}
+
 /**
  * @param {string} id
  * @param {FrontmatterData} data
@@ -313,7 +376,8 @@ function addMainNode(id, data, isRequirements, nodes, synonymMap = {}) {
         color: config.color,
         qualityType: config.qualityType,
         page: data.permalink,
-        ...(standards.length ? { standards } : {})
+        ...(standards.length ? { standards } : {}),
+        ...(!isRequirements ? { excerpt: bodyExcerpt(data.body) } : {})
     });
 }
 
