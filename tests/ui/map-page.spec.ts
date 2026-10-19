@@ -78,6 +78,25 @@ test("legend explains the encoding; the singles chip mirrors the toggle", async 
   await expect(chip).toHaveAttribute("aria-pressed", "true");
 });
 
+test("the legend lets pointer events through to the canvas", async ({ page }) => {
+  const errors: string[] = [];
+  page.on("console", (msg) => msg.type() === "error" && errors.push(msg.text()));
+  await page.setViewportSize({ width: 1280, height: 900 });
+  await seedAndOpen(page);
+  const legend = page.locator("#map-legend");
+  const box = (await legend.boundingBox())!;
+  const x = box.x + box.width / 2;
+  const y = box.y + box.height / 2;
+  const hitsLegend = await page.evaluate(
+    ([px, py]) => !!document.elementFromPoint(px, py)?.closest("#map-legend"),
+    [x, y],
+  );
+  expect(hitsLegend).toBe(false);
+  await page.mouse.click(x, y);
+  await expect(legend).toBeVisible();
+  expect(errors).toEqual([]);
+});
+
 test("canvas draws one node per quality and shared item; clicking an item opens the panel", async ({
   page,
 }) => {

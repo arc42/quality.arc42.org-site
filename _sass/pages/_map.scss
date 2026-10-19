@@ -355,6 +355,7 @@ html:not(.js) .map-page {
   .map-legend {
     left: 1rem;
     max-width: 16rem;
+    pointer-events: none; // no interactive children: let drag, pan and zoom reach the canvas
   }
 
   .map-singles-chip {
