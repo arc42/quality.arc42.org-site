@@ -703,3 +703,18 @@ test.describe("own requirements", () => {
     expect(results.violations.map((v) => v.id)).toEqual([]);
   });
 });
+
+test("the list view stays inside the viewport on a phone", async ({ page }) => {
+  await page.setViewportSize({ width: 375, height: 812 });
+  await page.addInitScript(
+    (seed) => localStorage.setItem("q42.map.v1", JSON.stringify(seed)),
+    SEED,
+  );
+  await page.goto("/map/");
+  await expect(page.locator("#map-table tbody th[scope=row]").first()).toBeAttached();
+  const { scrollWidth, innerWidth } = await page.evaluate(() => ({
+    scrollWidth: document.documentElement.scrollWidth,
+    innerWidth: window.innerWidth,
+  }));
+  expect(scrollWidth).toBeLessThanOrEqual(innerWidth);
+});

@@ -805,6 +805,8 @@ html:not(.js) .map-page {
 // ── List view ───────────────────────────────────────────────
 
 .map-list {
+  min-width: 0;
+
   &[hidden] {
     display: none;
   }
@@ -815,8 +817,14 @@ html:not(.js) .map-page {
   margin: 0 0 0.5rem;
 }
 
+// The wrapper is the table's scroll container on narrow screens. It is also
+// the containing block for the cells' absolutely positioned .sr-only labels,
+// which would otherwise escape the scroll area and widen the page.
 .map-table-wrap {
+  max-width: 100%;
+  min-width: 0;
   overflow-x: auto;
+  position: relative;
 
   &:focus-visible {
     box-shadow: var(--focus-ring);
