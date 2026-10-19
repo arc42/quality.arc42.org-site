@@ -1,8 +1,10 @@
 // Side panel next to the map canvas: details of the selected node, a link to
-// its page on Q42, the priority rating and the hide/show toggle.
+// its page on Q42, the priority rating and the hide/show toggle; for own
+// requirements also Edit, Remove and the propose-as-issue link.
 
 import { PRIORITIES } from "./store.js";
 import { priorityLabel } from "./format.js";
+import { proposeIssueUrl } from "./propose.js";
 
 export const TYPE_BADGES = Object.freeze({
   quality: "Quality",
@@ -14,6 +16,8 @@ export const TYPE_BADGES = Object.freeze({
 });
 
 const PLACEHOLDER = "Select a node on the map to see details.";
+const PRIVACY_NOTE =
+  "Shares title, scenario and linked qualities. Not shared: your priorities, selection and map.";
 const EXTERNAL_ICON = "M14 4h6v6M20 4l-9 9M19 14v6H4V5h6";
 const SVG_NS = "http://www.w3.org/2000/svg";
 
@@ -22,12 +26,21 @@ const plural = (n, one, many) => `${n} ${n === 1 ? one : many}`;
 export class Panel {
   constructor(
     container,
-    { baseurl = "", onHide = () => {}, onOpen = () => {}, onPriority = () => {} } = {},
+    {
+      baseurl = "",
+      onHide = () => {},
+      onOpen = () => {},
+      onPriority = () => {},
+      getCustom = () => null,
+      onEdit = () => {},
+      onRemove = () => {},
+    } = {},
   ) {
     this.container = container;
     this.doc = container.ownerDocument;
     this.baseurl = baseurl;
     this.selection = null;
+    this.getCustom = getCustom;
 
     // Delegated once: the panel content is rebuilt on every render.
     container.addEventListener("click", (event) => {
@@ -39,6 +52,8 @@ export class Panel {
         onPriority(node.id, next === node.priority ? null : next);
       } else if (event.target.closest("[data-panel-hide]")) onHide(node.id, !node.hidden);
       else if (event.target.closest("[data-panel-open]")) onOpen(node.id);
+      else if (event.target.closest("[data-panel-edit]")) onEdit(node.id, event.target);
+      else if (event.target.closest("[data-panel-remove]")) onRemove(node.id);
     });
   }
 
@@ -94,8 +109,13 @@ export class Panel {
       );
     }
 
+    const custom = node.type === "custom" ? this.getCustom(node.id) : null;
+    if (custom?.scenario.trim()) {
+      parts.push(this.el("p", { className: "map-panel__scenario", text: custom.scenario.trim() }));
+    }
     parts.push(this.priorityGroup(node, kind === "quality" || node.type === "custom"));
     if (node.page) parts.push(this.openLink(node.page));
+    if (custom) parts.push(this.customActions(), this.proposeBlock(custom));
     parts.push(this.hideButton(node.hidden));
 
     this.container.replaceChildren(...parts);
@@ -113,13 +133,13 @@ export class Panel {
     if (!rateable) return slot;
     const priority = node.priority ?? null;
     const group = this.el("div", {
-      className: "map-panel__segments",
+      className: "map-segments",
       attrs: { role: "group", "aria-label": "My priority" },
     });
     for (const value of PRIORITIES) {
       group.append(
         this.el("button", {
-          className: "map-panel__segment",
+          className: "map-segment",
           text: priorityLabel(value)[0].toUpperCase() + priorityLabel(value).slice(1),
           attrs: {
             type: "button",
@@ -167,6 +187,44 @@ export class Panel {
       text: "Open on Q42",
       attrs: { href: this.baseurl + page, "data-panel-open": "" },
     });
+    a.append(this.externalIcon());
+    return a;
+  }
+
+  customActions() {
+    const wrap = this.el("div", { className: "map-panel__actions" });
+    wrap.append(
+      this.el("button", {
+        className: "map-panel__button",
+        text: "Edit",
+        attrs: { type: "button", "data-panel-edit": "" },
+      }),
+      this.el("button", {
+        className: "map-panel__button",
+        text: "Remove",
+        attrs: { type: "button", "data-panel-remove": "" },
+      }),
+    );
+    return wrap;
+  }
+
+  /** "Propose as contribution": a prefilled GitHub issue, opened in a new tab. */
+  proposeBlock(custom) {
+    const wrap = this.el("div", { className: "map-panel__propose" });
+    const a = this.el("a", {
+      className: "map-propose",
+      text: "Propose as contribution",
+      attrs: { href: proposeIssueUrl(custom), target: "_blank", rel: "noopener" },
+    });
+    a.append(
+      this.externalIcon(),
+      this.el("span", { className: "sr-only", text: " (opens GitHub in a new tab)" }),
+    );
+    wrap.append(a, this.el("p", { className: "map-panel__hint", text: PRIVACY_NOTE }));
+    return wrap;
+  }
+
+  externalIcon() {
     const svg = this.doc.createElementNS(SVG_NS, "svg");
     for (const [k, v] of Object.entries({
       "aria-hidden": "true",
@@ -181,8 +239,7 @@ export class Panel {
     const path = this.doc.createElementNS(SVG_NS, "path");
     path.setAttribute("d", EXTERNAL_ICON);
     svg.append(path);
-    a.append(svg);
-    return a;
+    return svg;
   }
 
   hideButton(hidden) {

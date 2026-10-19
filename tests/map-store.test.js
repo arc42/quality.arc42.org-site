@@ -12,6 +12,7 @@ import {
   setLayers,
   addCustom,
   removeCustom,
+  updateCustom,
   normalizeState,
   createMemoryStorage,
   resolveStorage,
@@ -249,4 +250,30 @@ test("mergeStates drops incoming hidden custom ids that do not belong to an inco
     merged.custom.map((c) => c.id),
     ["c-1"],
   );
+});
+
+test("updateCustom replaces the fields and keeps the id and position", () => {
+  let s = addCustom(createEmptyState(), { title: "First" });
+  s = addCustom(s, { title: "Second" });
+  s = updateCustom(s, "c-1", {
+    title: " Renamed ",
+    scenario: "- 99.9 %",
+    qualities: ["availability"],
+    priority: "medium",
+  });
+  assert.deepEqual(s.custom[0], {
+    id: "c-1",
+    title: "Renamed",
+    scenario: "- 99.9 %",
+    qualities: ["availability"],
+    priority: "medium",
+  });
+  assert.equal(s.custom[1].title, "Second");
+});
+
+test("updateCustom validates like addCustom and ignores unknown ids", () => {
+  const s = addCustom(createEmptyState(), { title: "First" });
+  assert.throws(() => updateCustom(s, "c-1", { title: "  " }), RangeError);
+  assert.throws(() => updateCustom(s, "c-1", { title: "X", priority: "urgent" }), RangeError);
+  assert.deepEqual(updateCustom(s, "c-9", { title: "X" }).custom, s.custom);
 });

@@ -73,21 +73,28 @@ export function setShowSingles(state, flag) {
   return { ...state, showSingles: Boolean(flag) };
 }
 
-export function addCustom(state, { title, scenario = "", qualities = [], priority = null }) {
+/** Validated fields of a custom requirement, without its id. */
+function customFields({ title, scenario = "", qualities = [], priority = null }) {
   const trimmed = typeof title === "string" ? title.trim() : "";
   if (!trimmed) throw new RangeError("Custom requirement needs a title");
   if (priority !== null && !PRIORITIES.includes(priority)) {
     throw new RangeError(`Invalid priority: ${priority}`);
   }
+  return { title: trimmed, scenario, qualities: [...qualities], priority };
+}
+
+export function addCustom(state, fields) {
+  const entry = customFields(fields);
   const max = state.custom.reduce((m, c) => Math.max(m, Number(c.id.slice(2)) || 0), 0);
-  const entry = {
-    id: `c-${max + 1}`,
-    title: trimmed,
-    scenario,
-    qualities: [...qualities],
-    priority,
+  return { ...state, custom: [...state.custom, { id: `c-${max + 1}`, ...entry }] };
+}
+
+export function updateCustom(state, id, fields) {
+  const entry = customFields(fields);
+  return {
+    ...state,
+    custom: state.custom.map((c) => (c.id === id ? { id, ...entry } : c)),
   };
-  return { ...state, custom: [...state.custom, entry] };
 }
 
 export function removeCustom(state, id) {

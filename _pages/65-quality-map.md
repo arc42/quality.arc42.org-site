@@ -94,13 +94,71 @@ hide: true
     </div>
   </dialog>
 
+  <dialog id="map-custom-dialog" class="map-export-dialog map-custom-dialog" aria-labelledby="map-custom-title">
+    <form class="map-export-dialog__body map-custom" novalidate data-custom-form>
+      <h2 class="map-export-dialog__title"><span id="map-custom-title" data-custom-heading>Add your own requirement</span></h2>
+      <p class="map-export-dialog__lede">
+        Something your system must do well that the catalogue does not cover. It stays in this browser, on your map.
+      </p>
+
+      <div class="map-custom__field">
+        <label class="map-custom__label" for="map-custom-title-input">Title</label>
+        <input id="map-custom-title-input" class="map-custom__input" type="text" required autocomplete="off" aria-describedby="map-custom-title-error" data-custom-title>
+        <p id="map-custom-title-error" class="map-export__error" hidden data-custom-title-error>Enter a title for your requirement.</p>
+      </div>
+
+      <div class="map-custom__field">
+        <label class="map-custom__label" for="map-custom-scenario">Scenario <span class="map-custom__optional">(optional)</span></label>
+        <p id="map-custom-scenario-hint" class="map-export__hint">
+          Add measurable acceptance criteria with units and thresholds where you can.
+          <a href="{{ '/requirements/' | prepend: site.baseurl }}">How to specify quality requirements</a>
+        </p>
+        <textarea id="map-custom-scenario" class="map-custom__input map-custom__textarea" rows="5" aria-describedby="map-custom-scenario-hint" data-custom-scenario></textarea>
+      </div>
+
+      <fieldset class="map-custom__group">
+        <legend class="map-custom__label">Link to qualities</legend>
+        <p class="map-export__hint">In your selection</p>
+        <div class="map-custom__chips" data-custom-chips></div>
+        <p class="map-export__hint" hidden data-custom-no-qualities>Your selection has no qualities to link to yet.</p>
+      </fieldset>
+
+      <fieldset class="map-custom__group">
+        <legend class="map-custom__label">My priority</legend>
+        <div class="map-segments">
+          <button class="map-segment" type="button" aria-pressed="false" data-custom-priority="low">Low</button>
+          <button class="map-segment" type="button" aria-pressed="false" data-custom-priority="medium">Medium</button>
+          <button class="map-segment" type="button" aria-pressed="false" data-custom-priority="high">High</button>
+        </div>
+        <p class="map-export__hint">Press the active choice again to clear it.</p>
+      </fieldset>
+
+      <section class="map-export__section" aria-labelledby="map-custom-share-title">
+        <h3 class="map-export__title"><span id="map-custom-share-title">Share it with Q42</span></h3>
+        <p class="map-export__hint">Think others need it too? Propose it for the catalogue as a prefilled GitHub issue.</p>
+        <a class="map-propose" href="#" target="_blank" rel="noopener" hidden data-custom-propose>Propose as contribution<svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 4h6v6M20 4l-9 9M19 14v6H4V5h6"/></svg><span class="sr-only"> (opens GitHub in a new tab)</span></a>
+        <p class="map-export__hint" data-custom-propose-hint>Add a title to propose it.</p>
+        <p class="map-export__hint">Shares title, scenario and linked qualities. Not shared: your priorities, selection and map.</p>
+      </section>
+
+      <div class="map-custom__actions">
+        <button class="map-pill map-pill--primary" type="submit" data-custom-submit>Add to map</button>
+        <button class="map-pill" type="button" data-custom-cancel>Cancel</button>
+        <button class="map-pill map-custom__remove" type="button" hidden data-custom-remove>Remove</button>
+      </div>
+    </form>
+  </dialog>
+
   <p id="map-notice" class="map-notice" role="status"></p>
 
-  <div id="map-add" class="map-add-search">
-    <label class="map-add-search__label-text" for="map-add-input">Add a quality</label>
-    <input id="map-add-input" class="map-add-search__input" type="search" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="map-add-results" autocomplete="off" placeholder="Search all qualities">
-    <ul id="map-add-results" class="map-add-search__results" role="listbox" aria-label="Matching qualities" hidden></ul>
-    <p id="map-add-status" class="sr-only" role="status"></p>
+  <div class="map-add-bar">
+    <div id="map-add" class="map-add-search">
+      <label class="map-add-search__label-text" for="map-add-input">Add a quality</label>
+      <input id="map-add-input" class="map-add-search__input" type="search" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="map-add-results" autocomplete="off" placeholder="Search all qualities">
+      <ul id="map-add-results" class="map-add-search__results" role="listbox" aria-label="Matching qualities" hidden></ul>
+      <p id="map-add-status" class="sr-only" role="status"></p>
+    </div>
+    <button id="map-custom-open" class="map-pill" type="button" aria-haspopup="dialog" aria-controls="map-custom-dialog" hidden>+ Own requirement</button>
   </div>
 
   <section id="map-empty" class="map-empty" hidden>

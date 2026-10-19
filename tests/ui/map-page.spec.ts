@@ -556,3 +556,123 @@ test.describe("add to map search", () => {
     await expect(page.locator("#map-summary")).toContainText("1 quality");
   });
 });
+
+test.describe("own requirements", () => {
+  test("add, propose, edit and remove an own requirement", async ({ page }) => {
+    const svg = await seedAndOpen(page);
+    const open = page.locator("#map-custom-open");
+    await open.click();
+    const dialog = page.locator("#map-custom-dialog");
+    await expect(dialog).toBeVisible();
+    await expect(dialog.getByRole("heading", { level: 2 })).toHaveText("Add your own requirement");
+    await expect(
+      dialog.getByRole("link", { name: "How to specify quality requirements" }),
+    ).toHaveAttribute("href", /\/requirements\/$/);
+
+    // An empty title is reported inline; the dialog stays open.
+    const title = dialog.getByLabel("Title");
+    await dialog.getByRole("button", { name: "Add to map" }).click();
+    await expect(title).toHaveAttribute("aria-invalid", "true");
+    await expect(title).toBeFocused();
+    await expect(dialog.locator("#map-custom-title-error")).toBeVisible();
+    await expect(dialog).toBeVisible();
+
+    await title.fill("Checkout keeps working");
+    await dialog.getByLabel(/Scenario/).fill("- Checkout stays up during a zone outage");
+    const chip = (name: string) => dialog.getByRole("button", { name, exact: true });
+    await expect(chip("Availability")).toHaveAttribute("aria-pressed", "false");
+    await chip("Availability").click();
+    await chip("Resilience").click();
+    await expect(chip("Resilience")).toHaveAttribute("aria-pressed", "true");
+    await dialog
+      .getByRole("group", { name: "My priority" })
+      .getByRole("button", { name: "High" })
+      .click();
+    await dialog.getByRole("button", { name: "Add to map" }).click();
+    await expect(dialog).toBeHidden();
+
+    const node = svg.locator('.map-node[data-type="custom"]');
+    await expect(node).toHaveCount(1);
+    await expect(node.locator(".map-node__shape")).toHaveAttribute("stroke-dasharray", /\d/);
+    await expect(svg.locator(".map-edge")).not.toHaveCount(0);
+
+    const panel = page.locator("#map-panel");
+    await expect(panel.getByRole("heading", { level: 2 })).toHaveText("Checkout keeps working");
+    await expect(panel.locator('[data-priority="high"]')).toHaveAttribute("aria-pressed", "true");
+    const propose = panel.getByRole("link", { name: /Propose as contribution/ });
+    await expect(propose).toHaveAttribute("target", "_blank");
+    await expect(propose).toHaveAttribute("rel", "noopener");
+    const href = (await propose.getAttribute("href"))!;
+    expect(href.startsWith("https://github.com/arc42/quality.arc42.org-site/issues/new?")).toBe(
+      true,
+    );
+    const params = new URL(href).searchParams;
+    expect(params.get("title")).toBe("Checkout keeps working");
+    expect(params.get("body")).toContain("related: [availability, resilience]");
+    await expect(panel).toContainText(
+      "Shares title, scenario and linked qualities. Not shared: your priorities, selection and map.",
+    );
+
+    // Edit pre-fills the form and renames the node and the table row.
+    const edit = panel.getByRole("button", { name: "Edit" });
+    await edit.click();
+    await expect(dialog.getByRole("heading", { level: 2 })).toHaveText("Edit your requirement");
+    await expect(title).toHaveValue("Checkout keeps working");
+    await expect(chip("Availability")).toHaveAttribute("aria-pressed", "true");
+    await title.fill("Checkout survives outages");
+    await dialog.getByRole("button", { name: "Save" }).click();
+    await expect(dialog).toBeHidden();
+    await expect(node).toContainText("Checkout survives outages");
+    await expect(page.locator("#map-table")).toContainText("Checkout survives outages");
+    await expect(panel.getByRole("heading", { level: 2 })).toHaveText("Checkout survives outages");
+    await expect(panel.getByRole("button", { name: "Edit" })).toBeFocused();
+
+    await panel.getByRole("button", { name: "Remove" }).click();
+    await expect(node).toHaveCount(0);
+    await expect(page.locator("#map-notice")).toHaveText("Checkout survives outages removed");
+    await expect(panel).toHaveText("Select a node on the map to see details.");
+    await page.reload();
+    await expect(svg.locator(".map-node").first()).toBeVisible();
+    await expect(node).toHaveCount(0);
+  });
+
+  test("cancel and Escape close the form without adding; focus returns", async ({ page }) => {
+    const svg = await seedAndOpen(page);
+    const open = page.locator("#map-custom-open");
+    const dialog = page.locator("#map-custom-dialog");
+    await open.click();
+    await dialog.getByLabel("Title").fill("Not this one");
+    await dialog.getByRole("button", { name: "Cancel" }).click();
+    await expect(dialog).toBeHidden();
+    await expect(open).toBeFocused();
+    await open.click();
+    await expect(dialog.getByLabel("Title")).toHaveValue("");
+    await page.keyboard.press("Escape");
+    await expect(dialog).toBeHidden();
+    await expect(open).toBeFocused();
+    await expect(svg.locator('.map-node[data-type="custom"]')).toHaveCount(0);
+  });
+
+  test("the own-requirement button is hidden in the empty state", async ({ page }) => {
+    await page.addInitScript(() => localStorage.removeItem("q42.map.v1"));
+    await page.goto("/map/");
+    await expect(page.locator("#map-empty")).toBeVisible();
+    await expect(page.locator("#map-custom-open")).toBeHidden();
+  });
+
+  test("open form and own-requirement panel pass an axe scan", async ({ page }) => {
+    await seedAndOpen(page);
+    await page.locator("#map-custom-open").click();
+    const dialog = page.locator("#map-custom-dialog");
+    await dialog.getByRole("button", { name: "Add to map" }).click();
+    await expect(dialog.getByLabel("Title")).toHaveAttribute("aria-invalid", "true");
+    const tags = ["wcag2a", "wcag2aa", "wcag21a", "wcag21aa", "wcag22aa"];
+    let results = await new AxeBuilder({ page }).withTags(tags).analyze();
+    expect(results.violations.map((v) => v.id)).toEqual([]);
+    await dialog.getByLabel("Title").fill("Checkout keeps working");
+    await dialog.getByRole("button", { name: "Add to map" }).click();
+    await expect(page.locator("#map-panel").getByRole("link", { name: /Propose/ })).toBeVisible();
+    results = await new AxeBuilder({ page }).withTags(tags).analyze();
+    expect(results.violations.map((v) => v.id)).toEqual([]);
+  });
+});

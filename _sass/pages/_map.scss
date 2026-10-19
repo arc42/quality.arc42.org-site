@@ -166,9 +166,19 @@ html:not(.js) .map-page {
 
 // ── Add a quality (combobox) ────────────────────────────────
 
-.map-add-search {
+.map-add-bar {
+  align-items: flex-end;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 0.75rem;
   margin: 0 0 1rem;
+}
+
+.map-add-search {
+  flex: 1 1 16rem;
+  margin: 0;
   max-width: 28rem;
+  min-width: 0;
   position: relative;
 }
 
@@ -181,7 +191,8 @@ html:not(.js) .map-page {
   text-transform: uppercase;
 }
 
-.map-add-search__input {
+// [type="search"] outranks the normalize rule that sets content-box on search inputs.
+.map-add-search__input[type="search"] {
   background: var(--brand-paper);
   border: 1px solid var(--brand-muted);
   border-radius: $radius-sm;
@@ -657,11 +668,11 @@ html:not(.js) .map-page {
   margin: 0;
 }
 
-.map-panel__segments {
+.map-segments {
   display: flex;
 }
 
-.map-panel__segment {
+.map-segment {
   background: white;
   border: 1px solid var(--brand-violet);
   color: var(--brand-violet);
@@ -736,6 +747,47 @@ html:not(.js) .map-page {
 
   &:hover {
     background: var(--brand-violet-faint);
+  }
+
+  &:focus-visible {
+    box-shadow: var(--focus-ring);
+    outline: none;
+  }
+}
+
+.map-panel__scenario {
+  border-left: 3px solid var(--brand-violet-soft);
+  margin: 0;
+  overflow-wrap: anywhere;
+  padding-left: 0.75rem;
+  white-space: pre-wrap;
+}
+
+.map-panel__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.map-panel__propose {
+  border-top: 1px solid var(--brand-violet-soft);
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding-top: 0.5rem;
+}
+
+// "Propose as contribution" — in the panel and in the form.
+.map-propose {
+  align-items: center;
+  align-self: flex-start;
+  display: inline-flex;
+  font-weight: 700;
+  gap: 0.5rem;
+  min-height: 44px;
+
+  &[hidden] {
+    display: none;
   }
 
   &:focus-visible {
@@ -1016,4 +1068,79 @@ html:not(.js) .map-page {
 
 .map-export__section--soon .map-export__title {
   color: var(--brand-muted-strong);
+}
+
+// ── Own requirement dialog ──────────────────────────────────
+
+.map-custom__field,
+.map-custom__group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.map-custom__group {
+  border: 0;
+  margin: 0;
+  min-width: 0;
+  padding: 0;
+}
+
+.map-custom__label {
+  font-weight: 700;
+  padding: 0;
+}
+
+.map-custom__optional {
+  color: var(--brand-muted-strong);
+  font-weight: 400;
+}
+
+.map-custom__input {
+  background: white;
+  border: 1px solid var(--brand-muted);
+  border-radius: $radius-sm;
+  box-sizing: border-box;
+  color: var(--brand-ink);
+  font: inherit;
+  min-height: 44px;
+  padding: 0.5rem 0.75rem;
+  width: 100%;
+
+  &:focus-visible {
+    box-shadow: var(--focus-ring);
+    outline: none;
+  }
+
+  &[aria-invalid="true"] {
+    border-color: var(--error-color);
+  }
+}
+
+.map-custom__textarea {
+  resize: vertical;
+}
+
+.map-custom__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.map-custom__chip {
+  white-space: normal;
+
+  &[aria-pressed="true"] .map-pill__check {
+    display: inline;
+  }
+}
+
+.map-custom__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.map-custom__remove {
+  margin-left: auto;
 }

@@ -1,21 +1,25 @@
 import {
   SELECTION_EVENT,
   STORAGE_KEY,
+  addCustom,
   emitSelectionChanged,
   loadState,
   mergeStates,
+  removeCustom,
   saveState,
   setItemHidden,
   setLayers,
   setPriority,
   setQualityHidden,
   setShowSingles,
+  updateCustom,
 } from "./store.js";
 import { buildSubgraph } from "./subgraph.js";
 import { ListView } from "./ListView.js";
 import { MapView } from "./MapView.js";
 import { Panel } from "./Panel.js";
 import { ExportPanel } from "./ExportPanel.js";
+import { CustomForm } from "./CustomForm.js";
 import { AddSearch } from "./AddSearch.js";
 import { SHARE_PARAM, decodeShare } from "./share.js";
 import { singlesChipText, summaryText, unknownIdsText } from "./format.js";
@@ -47,6 +51,20 @@ export class MapPage {
             ? setQualityHidden(s, id, hidden)
             : setItemHidden(s, id, hidden),
         ),
+      getCustom: (id) => this.state.custom.find((c) => c.id === id) ?? null,
+      onEdit: (id, opener) =>
+        this.customForm.open({ custom: this.state.custom.find((c) => c.id === id), opener }),
+      onRemove: (id) => this.removeCustom(id),
+    });
+    this.customForm = new CustomForm(this.$("map-custom-dialog"), {
+      getQualities: () => this.subgraph.qualities,
+      onSubmit: (data, id) => this.saveCustom(data, id),
+      onRemove: (id) => this.removeCustom(id),
+      // The opener was rebuilt or removed: land on the item's Edit button or the add button.
+      onFocusLost: () =>
+        (
+          this.$("map-panel").querySelector("[data-panel-edit]") ?? this.$("map-custom-open")
+        ).focus(),
     });
     this.exportPanel = new ExportPanel(this.$("map-export-dialog"), {
       getState: () => this.state,
@@ -105,6 +123,9 @@ export class MapPage {
       this.state = loadState();
       this.render();
     });
+
+    const customOpen = this.$("map-custom-open");
+    customOpen.addEventListener("click", () => this.customForm.open({ opener: customOpen }));
 
     const exportOpen = this.$("map-export-open");
     exportOpen.addEventListener("click", () => this.exportPanel.open(exportOpen));
@@ -202,6 +223,26 @@ export class MapPage {
     this.render();
   }
 
+  /** Add (id null) or update an own requirement, then show it in the panel. */
+  saveCustom(data, id) {
+    if (id) this.update((s) => updateCustom(s, id, data));
+    else this.update((s) => addCustom(s, data));
+    this.select(id ?? this.state.custom[this.state.custom.length - 1].id);
+  }
+
+  removeCustom(id) {
+    const custom = this.state.custom.find((c) => c.id === id);
+    if (!custom) return;
+    if (this.selectedId === id) this.selectedId = null;
+    // Drop a hidden flag too, so a later requirement reusing the id starts visible.
+    this.update((s) => setItemHidden(removeCustom(s, id), id, false));
+    this.message = `${custom.title} removed`;
+    this.renderNotice();
+    if (!this.doc.activeElement || this.doc.activeElement === this.doc.body) {
+      this.$("map-custom-open").focus();
+    }
+  }
+
   restoreAll(state) {
     let next = state;
     for (const q of this.subgraph.qualities)
@@ -221,6 +262,8 @@ export class MapPage {
     this.root.querySelector(".map-layout").hidden = empty;
     this.root.querySelector(".map-controls").hidden = empty;
     this.root.querySelector(".map-list").hidden = empty;
+    // An own requirement needs qualities to link to.
+    this.$("map-custom-open").hidden = empty;
     this.$("map-summary").textContent = empty
       ? "No qualities selected yet"
       : summaryText(subgraph, state);
