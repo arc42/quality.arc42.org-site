@@ -1,0 +1,19 @@
+{
+  "v": 3,
+  "createdOnFiles": { "v": 1, "at": "2026-10-19T10:40:00Z" },
+  "title": "Quality Map Builder Mockup",
+  "launch": { "view": "canvas" },
+  "pages": [],
+  "boards": {
+    "Collect.dc.html": { "x": 0, "y": 0, "w": 1440, "h": 1180, "title": "1 · Collect while browsing", "expand": "fill" },
+    "Detail.dc.html": { "x": 1520, "y": 0, "w": 1440, "h": 1180, "title": "2 · Quality detail page", "expand": "fill" },
+    "Main.dc.html": { "x": 0, "y": 1420, "w": 1440, "h": 1560, "title": "3 · Your map", "expand": "fill" },
+    "Export.dc.html": { "x": 1520, "y": 1420, "w": 1440, "h": 1560, "title": "4 · Export and share", "expand": "fill" }
+  },
+  "order": ["Collect.dc.html", "Detail.dc.html", "Main.dc.html", "Export.dc.html"],
+  "notes": {
+    "t1": { "x": 0, "y": -240, "text": "Quality Map Builder — collect qualities on the content pages", "kind": "title1", "maxW": 2960 },
+    "t2": { "x": 0, "y": 1180, "text": "Then open the map: shared approaches, priorities, export", "kind": "title1", "maxW": 2960 }
+  },
+  "designSystems": []
+}

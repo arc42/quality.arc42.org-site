@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Qualities list with Add buttons</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@400;500;700&family=Libre+Caslon+Text:wght@400;700&display=swap">
+<style>
+body{margin:0;background:#f8f7f2;font-family:"Atkinson Hyperlegible Next","Atkinson Hyperlegible",system-ui,sans-serif;color:#241823}
+a{color:#682d63}a:hover{color:#52214f}
+</style>
+</helmet>
+<div style="font-family: 'Atkinson Hyperlegible Next', 'Atkinson Hyperlegible', system-ui, sans-serif; color: #241823; background: #f8f7f2; min-height: 1180px; display: flex; flex-direction: column">
+
+  <!-- site header -->
+  <header style="background: #682d63; color: #ffffff; padding: 0 40px; height: 68px; display: flex; align-items: center; gap: 36px; flex-wrap: wrap">
+    <div style="display: flex; align-items: baseline; gap: 8px">
+      <span style="font-family: 'Libre Caslon Text', Georgia, serif; font-size: 24px; font-weight: 700">Q42</span>
+      <span style="font-size: 15px; opacity: 0.85">quality model</span>
+    </div>
+    <nav aria-label="Primary" style="display: flex; gap: 26px; font-size: 16px; font-weight: 500">
+      <a href="#how" style="color: #ffffff; text-decoration: none; opacity: 0.85">How-To</a>
+      <a href="#q" style="color: #ffffff; text-decoration: none; border-bottom: 3px solid #ffffff; padding-bottom: 4px">Qualities</a>
+      <a href="#r" style="color: #ffffff; text-decoration: none; opacity: 0.85">Requirements</a>
+      <a href="#a" style="color: #ffffff; text-decoration: none; opacity: 0.85">Approaches</a>
+      <a href="#s" style="color: #ffffff; text-decoration: none; opacity: 0.85">Standards</a>
+    </nav>
+    <div style="margin-left: auto; display: flex; align-items: center; gap: 12px">
+      <label for="search" style="position: absolute; left: -9999px">Search Q42</label>
+      <input id="search" placeholder="Search Q42" style="height: 40px; width: 240px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.4); background: rgba(255,255,255,0.14); color: #ffffff; padding: 0 14px; font: inherit; font-size: 15px">
+      <!-- selection tray: only shown once the selection is non-empty -->
+      <a href="Main.dc.html" style="display: flex; align-items: center; gap: 10px; height: 40px; padding: 0 6px 0 14px; border-radius: 999px; background: #ffffff; color: #682d63; text-decoration: none; font-weight: 700; font-size: 15px">
+        <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6" cy="6" r="3"></circle><circle cx="18" cy="6" r="3"></circle><circle cx="12" cy="18" r="3"></circle><path d="M8.5 7.5l2.5 8M15.5 7.5l-2.5 8M9 6h6"></path></svg>
+        <span>Selection</span>
+        <span style="background: #682d63; color: #ffffff; border-radius: 999px; min-width: 22px; height: 22px; display: inline-flex; align-items: center; justify-content: center; font-size: 13px">3</span>
+        <span style="background: #5fb49c; color: #0f3d31; border-radius: 999px; padding: 0 12px; height: 28px; display: inline-flex; align-items: center; font-size: 14px">Open map</span>
+      </a>
+    </div>
+  </header>
+
+  <main style="max-width: 1200px; width: 100%; margin: 0 auto; padding: 44px 24px 60px; box-sizing: border-box; display: flex; flex-direction: column; gap: 28px; position: relative">
+
+    <!-- toast -->
+    <div role="status" style="position: absolute; right: 24px; top: 40px; background: #241823; color: #ffffff; border-radius: 10px; padding: 14px 18px; display: flex; align-items: center; gap: 14px; box-shadow: 0 10px 30px rgba(36,24,35,0.25); min-width: 380px">
+      <span style="width: 28px; height: 28px; border-radius: 999px; background: #5fb49c; color: #0f3d31; display: inline-flex; align-items: center; justify-content: center">
+        <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5 9-11"></path></svg>
+      </span>
+      <div style="display: flex; flex-direction: column; gap: 2px">
+        <span style="font-weight: 700; font-size: 15px">Recoverability added</span>
+        <span style="font-size: 13px; opacity: 0.8">3 qualities in your selection</span>
+      </div>
+      <button style="margin-left: auto; background: transparent; border: 0; color: #ffffff; font: inherit; font-weight: 700; font-size: 15px; padding: 8px 10px; cursor: pointer; min-height: 44px">Undo</button>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 10px">
+      <h1 style="margin: 0; font-family: 'Libre Caslon Text', Georgia, serif; font-size: 44px; font-weight: 700; line-height: 1.1">Quality Characteristics</h1>
+      <p style="margin: 0; font-size: 18px; color: #5c4f59">Definitions, aliases, related qualities, and the standards that back them up.</p>
+    </div>
+
+    <!-- intro banner -->
+    <div style="background: #ffffff; border: 1px solid #e9d9e8; border-radius: 10px; padding: 18px 22px; display: flex; align-items: center; gap: 18px">
+      <span style="width: 44px; height: 44px; border-radius: 10px; background: #f5eef4; color: #682d63; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0">
+        <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6" cy="6" r="3"></circle><circle cx="18" cy="6" r="3"></circle><circle cx="12" cy="18" r="3"></circle><path d="M8.5 7.5l2.5 8M15.5 7.5l-2.5 8M9 6h6"></path></svg>
+      </span>
+      <p style="margin: 0; font-size: 16px; line-height: 1.5"><strong>Build your own map.</strong> Add the qualities you care about one by one while you browse, then open the map to see what they have in common. Nothing leaves your browser.</p>
+      <button aria-label="Dismiss" style="margin-left: auto; background: transparent; border: 0; color: #746671; font-size: 22px; cursor: pointer; min-width: 44px; min-height: 44px">×</button>
+    </div>
+
+    <!-- dimension filter -->
+    <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap">
+      <span style="font-size: 15px; color: #5c4f59; margin-right: 6px">Filter by dimension</span>
+      <a href="#efficient" style="text-decoration: none; border: 1px solid #cfc6cd; border-radius: 999px; padding: 9px 16px; font-size: 15px; color: #241823; background: #ffffff">efficient <span style="color: #746671">35</span></a>
+      <a href="#flexible" style="text-decoration: none; border: 1px solid #cfc6cd; border-radius: 999px; padding: 9px 16px; font-size: 15px; color: #241823; background: #ffffff">flexible <span style="color: #746671">28</span></a>
+      <a href="#maintainable" style="text-decoration: none; border: 1px solid #cfc6cd; border-radius: 999px; padding: 9px 16px; font-size: 15px; color: #241823; background: #ffffff">maintainable <span style="color: #746671">19</span></a>
+      <a href="#operable" style="text-decoration: none; border: 1px solid #cfc6cd; border-radius: 999px; padding: 9px 16px; font-size: 15px; color: #241823; background: #ffffff">operable <span style="color: #746671">41</span></a>
+      <a href="#reliable" aria-current="true" style="text-decoration: none; border: 1px solid #682d63; border-radius: 999px; padding: 9px 16px; font-size: 15px; color: #ffffff; background: #682d63; font-weight: 700">reliable <span style="opacity: 0.85">61</span></a>
+      <a href="#safe" style="text-decoration: none; border: 1px solid #cfc6cd; border-radius: 999px; padding: 9px 16px; font-size: 15px; color: #241823; background: #ffffff">safe <span style="color: #746671">16</span></a>
+      <a href="#secure" style="text-decoration: none; border: 1px solid #cfc6cd; border-radius: 999px; padding: 9px 16px; font-size: 15px; color: #241823; background: #ffffff">secure <span style="color: #746671">28</span></a>
+      <a href="#suitable" style="text-decoration: none; border: 1px solid #cfc6cd; border-radius: 999px; padding: 9px 16px; font-size: 15px; color: #241823; background: #ffffff">suitable <span style="color: #746671">35</span></a>
+      <a href="#usable" style="text-decoration: none; border: 1px solid #cfc6cd; border-radius: 999px; padding: 9px 16px; font-size: 15px; color: #241823; background: #ffffff">usable <span style="color: #746671">62</span></a>
+    </div>
+
+    <!-- list -->
+    <section aria-labelledby="list-title" style="background: #ffffff; border: 1px solid #e9d9e8; border-radius: 10px; overflow: hidden">
+      <div style="padding: 20px 24px; border-bottom: 1px solid #eee6ed; display: flex; flex-direction: column; gap: 4px">
+        <h2 id="list-title" style="margin: 0; font-size: 20px; font-weight: 700">Qualities tagged <span style="color: #682d63">#reliable</span></h2>
+        <p style="margin: 0; font-size: 14px; color: #746671">The filter only narrows the list. Qualities are added one at a time.</p>
+      </div>
+
+      <div style="display: flex; flex-direction: column">
+        <div style="display: grid; grid-template-columns: 1.6fr 1.2fr 1.2fr 150px; align-items: center; gap: 16px; padding: 14px 24px; border-bottom: 1px solid #eee6ed; background: #f5eef4">
+          <a href="#availability" style="font-size: 18px; font-weight: 700; text-decoration: none">Availability</a>
+          <span style="font-size: 14px; color: #746671; font-family: ui-monospace, Menlo, monospace">related 11 · standards 16</span>
+          <span style="display: flex; gap: 6px"><span style="background: #eee6ed; border-radius: 999px; padding: 3px 10px; font-size: 13px; color: #5c4f59">#reliable</span><span style="background: #eee6ed; border-radius: 999px; padding: 3px 10px; font-size: 13px; color: #5c4f59">#usable</span></span>
+          <button aria-pressed="true" style="justify-self: end; min-height: 44px; padding: 0 16px; border-radius: 8px; border: 1px solid #682d63; background: #682d63; color: #ffffff; font: inherit; font-weight: 700; font-size: 15px; display: inline-flex; align-items: center; gap: 8px; cursor: pointer; width: 120px; justify-content: center">✓ Added</button>
+        </div>
+        <div style="display: grid; grid-template-columns: 1.6fr 1.2fr 1.2fr 150px; align-items: center; gap: 16px; padding: 14px 24px; border-bottom: 1px solid #eee6ed">
+          <a href="#dependability" style="font-size: 18px; font-weight: 700; text-decoration: none">Dependability</a>
+          <span style="font-size: 14px; color: #746671; font-family: ui-monospace, Menlo, monospace">related 4 · standards 3</span>
+          <span style="display: flex; gap: 6px"><span style="background: #eee6ed; border-radius: 999px; padding: 3px 10px; font-size: 13px; color: #5c4f59">#reliable</span></span>
+          <button aria-pressed="false" style="justify-self: end; min-height: 44px; padding: 0 16px; border-radius: 8px; border: 1px solid #682d63; background: #ffffff; color: #682d63; font: inherit; font-weight: 700; font-size: 15px; display: inline-flex; align-items: center; gap: 8px; cursor: pointer; width: 120px; justify-content: center">+ Add</button>
+        </div>
+        <div style="display: grid; grid-template-columns: 1.6fr 1.2fr 1.2fr 150px; align-items: center; gap: 16px; padding: 14px 24px; border-bottom: 1px solid #eee6ed; background: #f5eef4">
+          <a href="#fault-tolerance" style="font-size: 18px; font-weight: 700; text-decoration: none">Fault tolerance</a>
+          <span style="font-size: 14px; color: #746671; font-family: ui-monospace, Menlo, monospace">related 8 · standards 3</span>
+          <span style="display: flex; gap: 6px"><span style="background: #eee6ed; border-radius: 999px; padding: 3px 10px; font-size: 13px; color: #5c4f59">#reliable</span><span style="background: #eee6ed; border-radius: 999px; padding: 3px 10px; font-size: 13px; color: #5c4f59">#usable</span></span>
+          <button aria-pressed="true" style="justify-self: end; min-height: 44px; padding: 0 16px; border-radius: 8px; border: 1px solid #682d63; background: #682d63; color: #ffffff; font: inherit; font-weight: 700; font-size: 15px; display: inline-flex; align-items: center; gap: 8px; cursor: pointer; width: 120px; justify-content: center">✓ Added</button>
+        </div>
+        <div style="display: grid; grid-template-columns: 1.6fr 1.2fr 1.2fr 150px; align-items: center; gap: 16px; padding: 14px 24px; border-bottom: 1px solid #eee6ed">
+          <a href="#faultlessness" style="font-size: 18px; font-weight: 700; text-decoration: none">Faultlessness</a>
+          <span style="font-size: 14px; color: #746671; font-family: ui-monospace, Menlo, monospace">related 3 · standards 1</span>
+          <span style="display: flex; gap: 6px"><span style="background: #eee6ed; border-radius: 999px; padding: 3px 10px; font-size: 13px; color: #5c4f59">#reliable</span><span style="background: #eee6ed; border-radius: 999px; padding: 3px 10px; font-size: 13px; color: #5c4f59">#secure</span></span>
+          <button aria-pressed="false" style="justify-self: end; min-height: 44px; padding: 0 16px; border-radius: 8px; border: 1px solid #682d63; background: #ffffff; color: #682d63; font: inherit; font-weight: 700; font-size: 15px; display: inline-flex; align-items: center; gap: 8px; cursor: pointer; width: 120px; justify-content: center">+ Add</button>
+        </div>
+        <div style="display: grid; grid-template-columns: 1.6fr 1.2fr 1.2fr 150px; align-items: center; gap: 16px; padding: 14px 24px; border-bottom: 1px solid #eee6ed">
+          <a href="#graceful-degradation" style="font-size: 18px; font-weight: 700; text-decoration: none">Graceful degradation</a>
+          <span style="font-size: 14px; color: #746671; font-family: ui-monospace, Menlo, monospace">related 7 · standards 0</span>
+          <span style="display: flex; gap: 6px"><span style="background: #eee6ed; border-radius: 999px; padding: 3px 10px; font-size: 13px; color: #5c4f59">#reliable</span><span style="background: #eee6ed; border-radius: 999px; padding: 3px 10px; font-size: 13px; color: #5c4f59">#usable</span></span>
+          <button aria-pressed="false" style="justify-self: end; min-height: 44px; padding: 0 16px; border-radius: 8px; border: 1px solid #682d63; background: #ffffff; color: #682d63; font: inherit; font-weight: 700; font-size: 15px; display: inline-flex; align-items: center; gap: 8px; cursor: pointer; width: 120px; justify-content: center">+ Add</button>
+        </div>
+        <div style="display: grid; grid-template-columns: 1.6fr 1.2fr 1.2fr 150px; align-items: center; gap: 16px; padding: 14px 24px; border-bottom: 1px solid #eee6ed; background: #f5eef4">
+          <a href="#recoverability" style="font-size: 18px; font-weight: 700; text-decoration: none">Recoverability</a>
+          <span style="font-size: 14px; color: #746671; font-family: ui-monospace, Menlo, monospace">related 7 · standards 5</span>
+          <span style="display: flex; gap: 6px"><span style="background: #eee6ed; border-radius: 999px; padding: 3px 10px; font-size: 13px; color: #5c4f59">#reliable</span><span style="background: #eee6ed; border-radius: 999px; padding: 3px 10px; font-size: 13px; color: #5c4f59">#usable</span></span>
+          <button aria-pressed="true" style="justify-self: end; min-height: 44px; padding: 0 16px; border-radius: 8px; border: 1px solid #682d63; background: #682d63; color: #ffffff; font: inherit; font-weight: 700; font-size: 15px; display: inline-flex; align-items: center; gap: 8px; cursor: pointer; width: 120px; justify-content: center">✓ Added</button>
+        </div>
+        <div style="display: grid; grid-template-columns: 1.6fr 1.2fr 1.2fr 150px; align-items: center; gap: 16px; padding: 14px 24px; border-bottom: 1px solid #eee6ed">
+          <a href="#reliability" style="font-size: 18px; font-weight: 700; text-decoration: none">Reliability</a>
+          <span style="font-size: 14px; color: #746671; font-family: ui-monospace, Menlo, monospace">related 6 · standards 24</span>
+          <span style="display: flex; gap: 6px"><span style="background: #eee6ed; border-radius: 999px; padding: 3px 10px; font-size: 13px; color: #5c4f59">#reliable</span></span>
+          <button aria-pressed="false" style="justify-self: end; min-height: 44px; padding: 0 16px; border-radius: 8px; border: 1px solid #682d63; background: #ffffff; color: #682d63; font: inherit; font-weight: 700; font-size: 15px; display: inline-flex; align-items: center; gap: 8px; cursor: pointer; width: 120px; justify-content: center">+ Add</button>
+        </div>
+        <div style="display: grid; grid-template-columns: 1.6fr 1.2fr 1.2fr 150px; align-items: center; gap: 16px; padding: 14px 24px; border-bottom: 1px solid #eee6ed">
+          <a href="#resilience" style="font-size: 18px; font-weight: 700; text-decoration: none">Resilience</a>
+          <span style="font-size: 14px; color: #746671; font-family: ui-monospace, Menlo, monospace">related 2 · standards 5</span>
+          <span style="display: flex; gap: 6px"><span style="background: #eee6ed; border-radius: 999px; padding: 3px 10px; font-size: 13px; color: #5c4f59">#reliable</span><span style="background: #eee6ed; border-radius: 999px; padding: 3px 10px; font-size: 13px; color: #5c4f59">#secure</span></span>
+          <button aria-pressed="false" style="justify-self: end; min-height: 44px; padding: 0 16px; border-radius: 8px; border: 1px solid #682d63; background: #ffffff; color: #682d63; font: inherit; font-weight: 700; font-size: 15px; display: inline-flex; align-items: center; gap: 8px; cursor: pointer; width: 120px; justify-content: center">+ Add</button>
+        </div>
+      </div>
+
+      <div style="padding: 16px 24px; display: flex; align-items: center; justify-content: space-between">
+        <span style="font-size: 14px; color: #746671">Showing 8 of 61</span>
+        <a href="#more" style="font-weight: 700; font-size: 15px; text-decoration: none">Load more</a>
+      </div>
+    </section>
+  </main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1180}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return {};
+  }
+}
+</script>
+</body>
+</html>
