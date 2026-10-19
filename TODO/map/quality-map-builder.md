@@ -1,7 +1,7 @@
 # Quality Map Builder — recommendation and design sketch
 
 Source: [issue #552](https://github.com/arc42/quality.arc42.org-site/issues/552) by BoboTheBarbar, incl. seven mockups.
-Status: proposal, 2026-10-19. Nothing built yet.
+Status: implemented on branch map-feature (2026-10-19); see docs/superpowers/plans/2026-10-19-quality-map-builder.md
 
 ## The idea in one paragraph
 

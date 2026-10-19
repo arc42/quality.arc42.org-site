@@ -108,3 +108,13 @@ test("clicking a metamodel shape navigates", async ({ page }) => {
   await firstLink.click();
   await page.waitForURL((url) => url.pathname.startsWith(href ?? "/"));
 });
+
+test("the how-to page explains the quality map", async ({ page }) => {
+  await page.goto("/how-to-use-this-site/");
+  const heading = page.getByRole("heading", { name: "Build your own quality map", level: 2 });
+  await expect(heading).toBeVisible();
+  await expect(page.getByRole("link", { name: "quality map", exact: true })).toHaveAttribute(
+    "href",
+    /\/map\/$/,
+  );
+});

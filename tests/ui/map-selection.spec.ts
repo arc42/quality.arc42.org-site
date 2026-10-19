@@ -6,6 +6,7 @@ test.beforeEach(async ({ page }) => {
   await page.addInitScript(() => {
     if (sessionStorage.getItem("q42.test.cleared")) return;
     localStorage.removeItem("q42.map.v1");
+    localStorage.removeItem("q42.map.banner-dismissed");
     sessionStorage.setItem("q42.test.cleared", "1");
   });
 });
@@ -82,4 +83,26 @@ test("add buttons are keyboard operable and announce state", async ({ page }) =>
   await hero.focus();
   await page.keyboard.press("Enter");
   await expect(hero).toHaveAttribute("aria-pressed", "true");
+});
+
+test("the qualities index shows a dismissible map banner that stays dismissed", async ({
+  page,
+}) => {
+  await page.goto("/qualities/");
+  const banner = page.locator("[data-map-banner]");
+  await expect(banner).toBeVisible();
+  await expect(banner).toContainText("Build your own map.");
+  await expect(banner.getByRole("link", { name: "Open the map" })).toHaveAttribute(
+    "href",
+    /\/map\/$/,
+  );
+  const dismiss = banner.getByRole("button", { name: "Dismiss" });
+  const box = await dismiss.boundingBox();
+  expect(box!.width).toBeGreaterThanOrEqual(44);
+  expect(box!.height).toBeGreaterThanOrEqual(44);
+  await dismiss.click();
+  await expect(banner).toBeHidden();
+  await page.reload();
+  await expect(page.locator("#qualities-explorer")).toBeVisible();
+  await expect(page.locator("[data-map-banner]")).toBeHidden();
 });

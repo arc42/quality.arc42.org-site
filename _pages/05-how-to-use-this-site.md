@@ -50,6 +50,12 @@ Now let's consider the terms in more detail:
 | **Standard**  | <i class="fa fa-award" style="color: var(--standard-text-color);"></i>| Numerous international standards describe/prescribe/care about certain aspects of quality. Important ones are ISO-25000:2023, ISO-27001 or MISRA.  |
 
 
+## Build your own quality map
+
+Add the qualities that matter for your system from the [quality characteristics](/qualities/) list or any quality page, one at a time while you browse.
+The [**quality map**](/map/) then shows how your selection connects: the approaches, requirements and standards the qualities share.
+Your selection stays in your browser; export it as a link, a JSON file, Markdown or an image when you want to take it to a workshop or review.
+
 ## Three Axis of Quality
 
 ![3 Axis of Quality](/images/domain-language/terms-3-axis.drawio.webp)

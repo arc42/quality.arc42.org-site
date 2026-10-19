@@ -6,6 +6,7 @@ import {
   hasQuality,
   loadState,
   removeQuality,
+  resolveStorage,
   saveState,
 } from "../../map/store.js";
 
@@ -13,6 +14,7 @@ export const ADD_LABEL = "+ Add";
 export const ADDED_LABEL = "✓ Added";
 export const HERO_ADD_LABEL = "+ Add to selection";
 export const HERO_ADDED_LABEL = "✓ In selection";
+export const BANNER_DISMISSED_KEY = "q42.map.banner-dismissed";
 
 const BUTTON_SELECTOR = "[data-map-add]";
 const TOAST_TIMEOUT_MS = 6000;
@@ -61,6 +63,31 @@ function syncTray(doc, state) {
   });
 }
 
+// Banners ship `hidden` in the page and are only revealed here, so readers
+// who dismissed one never see it flash on load.
+function initBanners(doc) {
+  const storage = resolveStorage();
+  const read = () => {
+    try {
+      return storage.getItem(BANNER_DISMISSED_KEY);
+    } catch {
+      return null;
+    }
+  };
+  if (read() === "1") return;
+  doc.querySelectorAll("[data-map-banner]").forEach((banner) => {
+    banner.hidden = false;
+    banner.querySelector("[data-map-banner-dismiss]")?.addEventListener("click", () => {
+      try {
+        storage.setItem(BANNER_DISMISSED_KEY, "1");
+      } catch {
+        // Storage full or blocked: the banner still hides for this page view.
+      }
+      banner.hidden = true;
+    });
+  });
+}
+
 function createToast(doc) {
   const toast = doc.createElement("div");
   toast.className = "map-toast";
@@ -75,6 +102,7 @@ export function initSelection({ document = globalThis.document } = {}) {
   initialized = true;
 
   let state = loadState();
+  initBanners(document);
   const toast = createToast(document);
   let toastTimer = null;
 

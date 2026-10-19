@@ -4,6 +4,7 @@
 //   .map-add    toggle button on quality lists and the quality hero
 //   .map-tray   header pill linking to /map/, shown once the selection is non-empty
 //   .map-toast  polite live region confirming each add/remove, with Undo
+//   .map-banner dismissible "Build your own map" intro on index pages
 
 // ── Add / Added toggle ──────────────────────────────────────
 
@@ -263,5 +264,80 @@ ul.posts li.map-add-row {
   &:focus-visible {
     box-shadow: var(--focus-ring-on-violet);
     outline: none;
+  }
+}
+
+// ── Intro banner ────────────────────────────────────────────
+
+.map-banner {
+  align-items: center;
+  background: var(--brand-paper);
+  border: 1px solid var(--brand-violet-soft);
+  border-radius: $radius-md;
+  display: flex;
+  gap: 1rem;
+  margin: 0 0 1.25rem;
+  padding: 0.75rem 0.5rem 0.75rem 1rem;
+
+  &[hidden] {
+    display: none;
+  }
+}
+
+.map-banner__icon {
+  align-items: center;
+  background: var(--brand-violet-faint);
+  border-radius: $radius-md;
+  color: var(--brand-violet);
+  display: inline-flex;
+  flex: 0 0 auto;
+  height: 44px;
+  justify-content: center;
+  width: 44px;
+}
+
+// Doubled class beats the article's `.post-content p` margins.
+.map-banner__text.map-banner__text {
+  flex: 1 1 auto;
+  line-height: 1.5;
+  margin: 0;
+  min-width: 0;
+
+  a:focus-visible {
+    border-radius: 2px;
+    box-shadow: var(--focus-ring);
+    outline: none;
+  }
+}
+
+.map-banner__dismiss {
+  align-self: flex-start;
+  background: transparent;
+  border: 0;
+  border-radius: $radius-sm;
+  color: var(--brand-muted-strong);
+  cursor: pointer;
+  flex: 0 0 auto;
+  font: inherit;
+  font-size: 1.4rem;
+  line-height: 1;
+  min-height: 44px;
+  min-width: 44px;
+
+  &:hover {
+    background: var(--brand-violet-faint);
+    color: var(--brand-violet);
+  }
+
+  &:focus-visible {
+    box-shadow: var(--focus-ring);
+    outline: none;
+  }
+}
+
+// Phones: give the sentence the icon's width.
+@media screen and (max-width: $nav-narrow-width) {
+  .map-banner__icon {
+    display: none;
   }
 }
