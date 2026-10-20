@@ -248,11 +248,20 @@
   padding: 0.75rem 2rem 0.85rem;
 }
 
+// Label and links sit in two columns, so wrapped links stay indented
+// under the first link instead of sliding back under the label.
 .site-secondary-nav__group {
-  align-items: center;
+  align-items: baseline;
+  display: flex;
+  gap: 0.35rem;
+  min-width: 0;
+}
+
+.site-secondary-nav__links {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.35rem;
+  gap: 0 0.35rem;
+  min-width: 0;
 }
 
 .site-secondary-nav__primary {
@@ -263,8 +272,10 @@
   color: var(--brand-cream-74); // cream-48 measured 3.85:1 at 0.75rem — fails AA
   font-size: $text-xs;
   font-weight: 700;
+  flex: 0 0 auto;
   letter-spacing: 0.06em;
   margin-right: 0.2rem;
+  min-width: 2.75rem;
   text-transform: uppercase;
 }
 
@@ -307,28 +318,28 @@
   }
 }
 
+// Collapse in steps: below $nav-collapse-width brand and primary nav keep
+// the first row and the actions take a full-width second row; below
+// $nav-compact-width the primary nav moves into the menu and brand and
+// actions share one row; below $nav-narrow-width the actions wrap again.
 @media screen and (max-width: $nav-collapse-width) {
   .site-header__inner {
-    align-items: flex-start;
-    flex-direction: column;
-    gap: 0.9rem;
+    flex-wrap: wrap;
+    row-gap: 0.9rem;
   }
 
+  // Lets nav and actions wrap as items of the header row.
   .site-header__right {
-    align-items: flex-start;
-    flex-direction: column;
-    gap: 0.9rem;
-    width: 100%;
+    display: contents;
   }
 
   .site-primary-nav {
-    flex-wrap: wrap;
-    gap: 0.9rem;
+    margin-left: auto;
   }
 
   .site-actions {
+    flex: 1 1 100%;
     grid-template-columns: minmax(0, 1fr) 2.35rem;
-    width: 100%;
   }
 
   .site-actions:has(> .map-tray:not([hidden])) {
@@ -338,9 +349,24 @@
   .site-search {
     width: 100%;
   }
+}
+
+@media screen and (max-width: $nav-compact-width) {
+  .site-primary-nav {
+    display: none;
+  }
+
+  .site-actions {
+    flex: 1 1 0;
+  }
 
   .site-secondary-nav__primary {
     display: flex;
+  }
+
+  .site-secondary-nav__inner {
+    flex-direction: column;
+    gap: 0.5rem;
   }
 }
 
@@ -359,9 +385,7 @@
     min-width: 0;
   }
 
-  .site-secondary-nav__inner {
-    align-items: flex-start;
-    flex-direction: column;
-    gap: 0.75rem;
+  .site-actions {
+    flex-basis: 100%;
   }
 }

@@ -70,7 +70,10 @@ export function initNavigation() {
                 toggle.setAttribute('aria-expanded', isActive ? 'true' : 'false');
 
                 if (isActive) {
-                    const firstFocusable = target.querySelector(FOCUSABLE_SELECTOR);
+                    // Skip links in groups hidden at this width (the "Main"
+                    // group only shows once the primary nav collapses).
+                    const firstFocusable = [...target.querySelectorAll(FOCUSABLE_SELECTOR)]
+                        .find(el => el.getClientRects().length > 0);
                     if (firstFocusable) firstFocusable.focus();
                 }
             }

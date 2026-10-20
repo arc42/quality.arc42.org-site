@@ -66,16 +66,20 @@
     <div class="site-secondary-nav__inner">
       <div class="site-secondary-nav__group site-secondary-nav__primary">
         <span class="site-secondary-nav__label">Main</span>
-        {% for item in primary_nav %}
-          <a href="{{ item.url | prepend: site.baseurl }}">{{ item.label }}</a>
-        {% endfor %}
+        <div class="site-secondary-nav__links">
+          {% for item in primary_nav %}
+            <a href="{{ item.url | prepend: site.baseurl }}">{{ item.label }}</a>
+          {% endfor %}
+        </div>
       </div>
 
       <div class="site-secondary-nav__group">
         <span class="site-secondary-nav__label">More</span>
-        {% for item in secondary_nav %}
-          <a href="{{ item.url | prepend: site.baseurl }}">{{ item.label }}</a>
-        {% endfor %}
+        <div class="site-secondary-nav__links">
+          {% for item in secondary_nav %}
+            <a href="{{ item.url | prepend: site.baseurl }}">{{ item.label }}</a>
+          {% endfor %}
+        </div>
       </div>
     </div>
   </nav>

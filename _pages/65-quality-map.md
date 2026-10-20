@@ -173,7 +173,7 @@ hide: true
     <p><a href="{{ '/qualities/' | prepend: site.baseurl }}">Browse the quality characteristics</a></p>
   </section>
 
-  <div class="map-controls" role="group" aria-label="Map layers">
+  <div class="map-controls" role="group" aria-label="Map layers and layout">
     <span class="map-controls__label" aria-hidden="true">Show</span>
     <div id="map-layers" class="map-controls__layers">
       <button class="map-pill map-pill--layer" type="button" data-layer="approaches" aria-pressed="false"><span class="map-pill__check" aria-hidden="true">✓</span>Approaches</button>
@@ -181,7 +181,7 @@ hide: true
       <button class="map-pill map-pill--layer" type="button" data-layer="standards" aria-pressed="false"><span class="map-pill__check" aria-hidden="true">✓</span>Standards</button>
       <button class="map-pill map-pill--layer" type="button" data-layer="dimensions" aria-pressed="false"><span class="map-pill__check" aria-hidden="true">✓</span>Dimensions</button>
     </div>
-    <button id="map-singles" class="map-pill" type="button" aria-pressed="false">Show singles</button>
+    <button id="map-tighten" class="map-pill map-controls__action" type="button" title="Release dragged nodes, pull them together and fit the map into view">Reduce distance</button>
   </div>
 
   <div class="map-layout">

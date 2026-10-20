@@ -97,9 +97,10 @@ export class MapPage {
       );
     });
 
-    const toggleSingles = () => this.update((s) => setShowSingles(s, !s.showSingles));
-    this.$("map-singles").addEventListener("click", toggleSingles);
-    this.$("map-singles-chip").addEventListener("click", toggleSingles);
+    this.$("map-singles-chip").addEventListener("click", () =>
+      this.update((s) => setShowSingles(s, !s.showSingles)),
+    );
+    this.$("map-tighten").addEventListener("click", () => this.mapView.tighten());
 
     const toggle = this.$("map-hidden-toggle");
     toggle.addEventListener("click", () => {
@@ -372,7 +373,6 @@ export class MapPage {
     this.root.querySelectorAll("#map-layers [data-layer]").forEach((button) => {
       button.setAttribute("aria-pressed", String(state.layers.includes(button.dataset.layer)));
     });
-    this.$("map-singles").setAttribute("aria-pressed", String(state.showSingles));
     const chipText = singlesChipText(subgraph, state);
     const chip = this.$("map-singles-chip");
     chip.textContent = chipText;

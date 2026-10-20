@@ -170,6 +170,11 @@ html:not(.js) .map-page {
   gap: 0.5rem;
 }
 
+// An action, not a layer toggle: set apart at the row's end.
+.map-controls__action {
+  margin-left: auto;
+}
+
 // ── Add a quality (combobox) ────────────────────────────────
 
 .map-add-bar {

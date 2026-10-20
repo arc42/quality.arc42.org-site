@@ -1,5 +1,13 @@
 import { select } from "d3-selection";
-import { forceSimulation, forceLink, forceManyBody, forceCollide, forceCenter } from "d3-force";
+import {
+  forceSimulation,
+  forceLink,
+  forceManyBody,
+  forceCollide,
+  forceCenter,
+  forceX,
+  forceY,
+} from "d3-force";
 import { zoom, zoomIdentity } from "d3-zoom";
 import { drag } from "d3-drag";
 import {
@@ -14,12 +22,15 @@ import {
 
 // The map canvas: the selection's subgraph as a D3 force layout in an <svg>.
 // The svg is aria-hidden: the list view is the accessible twin. Nodes keep
-// their positions across re-renders; dragging pins a node, double-click frees it.
+// their positions across re-renders; dragging pins a node, double-click frees it,
+// and tighten() frees them all and fits the regrouped layout into view.
 
 const WIDTH = 960;
 const HEIGHT = 600;
 const LINK_DISTANCE = 140;
 const CHARGE = -420;
+// A weak pull toward the centre keeps unlinked qualities from drifting off.
+const GRAVITY = 0.05;
 const COLLIDE_GAP = 18;
 const MAX_TICKS = 300;
 const RESTART_ALPHA = 0.3;
@@ -77,6 +88,8 @@ export class MapView {
         forceCollide((d) => nodeRadius(d) + COLLIDE_GAP),
       )
       .force("center", forceCenter(WIDTH / 2, HEIGHT / 2))
+      .force("x", forceX(WIDTH / 2).strength(GRAVITY))
+      .force("y", forceY(HEIGHT / 2).strength(GRAVITY))
       .stop()
       .on("tick", () => {
         this.ticks += 1;
@@ -187,6 +200,21 @@ export class MapView {
     for (let i = 0; i < MAX_TICKS; i++) this.simulation.tick();
     this.draw();
     if (!this.fitted && this.simulation.nodes().length) this.fit();
+  }
+
+  /** Release every pinned node, settle the layout afresh and fit it into view. */
+  tighten() {
+    const nodes = this.simulation.nodes();
+    if (!nodes.length) return;
+    for (const d of nodes) {
+      d.fx = null;
+      d.fy = null;
+    }
+    this.ticks = 0;
+    this.simulation.alpha(1).stop();
+    for (let i = 0; i < MAX_TICKS; i++) this.simulation.tick();
+    this.draw();
+    this.fit();
   }
 
   /** Zoom out (never in) so the whole settled layout is visible. */

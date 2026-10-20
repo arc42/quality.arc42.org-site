@@ -51,7 +51,7 @@ test("seeded selection renders summary, layer toggles and the table", async ({ p
   );
 });
 
-test("show singles toggle changes the row count", async ({ page }) => {
+test("the singles chip changes the row count", async ({ page }) => {
   await page.addInitScript(
     (seed) => localStorage.setItem("q42.map.v1", JSON.stringify(seed)),
     SEED,
@@ -59,11 +59,11 @@ test("show singles toggle changes the row count", async ({ page }) => {
   await page.goto("/map/");
   const rows = page.locator("#map-table tbody tr");
   const before = await rows.count();
-  await page.locator("#map-singles").click();
+  await page.locator("#map-singles-chip").click();
   await expect.poll(() => rows.count()).toBeGreaterThan(before);
 });
 
-test("legend explains the encoding; the singles chip mirrors the toggle", async ({ page }) => {
+test("legend explains the encoding; the singles chip toggles its own state", async ({ page }) => {
   await page.addInitScript(
     (seed) => localStorage.setItem("q42.map.v1", JSON.stringify(seed)),
     SEED,
@@ -74,7 +74,6 @@ test("legend explains the encoding; the singles chip mirrors the toggle", async 
   const chip = page.locator("#map-singles-chip");
   await expect(chip).toHaveText(/\d+ (approaches|items) with one link/);
   await chip.click();
-  await expect(page.locator("#map-singles")).toHaveAttribute("aria-pressed", "true");
   await expect(chip).toHaveText("Single-link items shown · Hide");
   await expect(chip).toHaveAttribute("aria-pressed", "true");
 });
@@ -258,6 +257,28 @@ test("a slow drag keeps the node under the pointer and pins it across re-renders
   await page.locator("#map-panel").getByRole("button", { name: "Show on map" }).click();
   await expect(svg.locator('.map-node[data-id="bulkheads"]')).toHaveCount(1);
   await expect(node).toHaveAttribute("transform", pinned);
+});
+
+test("reduce distance releases dragged nodes and fits the map into view", async ({ page }) => {
+  const svg = await seedAndOpen(page);
+  const node = svg.locator('.map-node[data-id="timeout"]');
+  const start = await nodeOrigin(node);
+  await page.mouse.move(start.x, start.y);
+  await page.mouse.down();
+  await page.mouse.move(start.x + 400, start.y + 250, { steps: 10 });
+  await page.mouse.up();
+  const dragged = await node.getAttribute("transform");
+
+  await page.locator("#map-tighten").click();
+  await expect(node).not.toHaveAttribute("transform", dragged);
+  const box = await svg.boundingBox();
+  for (const n of await svg.locator(".map-node").all()) {
+    const b = await n.boundingBox();
+    expect(b.x).toBeGreaterThanOrEqual(box.x - 1);
+    expect(b.y).toBeGreaterThanOrEqual(box.y - 1);
+    expect(b.x + b.width).toBeLessThanOrEqual(box.x + box.width + 1);
+    expect(b.y + b.height).toBeLessThanOrEqual(box.y + box.height + 1);
+  }
 });
 
 // ── Share link, export and import ───────────────────────────
