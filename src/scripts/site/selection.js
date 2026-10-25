@@ -55,13 +55,17 @@ function syncButtons(root, state) {
   root.querySelectorAll?.(BUTTON_SELECTOR).forEach((button) => syncButton(button, state));
 }
 
+// The tray is always there: a plain "Map" link while the selection is empty,
+// "Selection <n> · Open map" once it holds qualities.
 function syncTray(doc, state) {
   const count = state.qualities.length;
   doc.querySelectorAll("[data-map-tray]").forEach((tray) => {
-    tray.hidden = count === 0;
-  });
-  doc.querySelectorAll("[data-map-tray-count]").forEach((badge) => {
+    tray.classList.toggle("is-empty", count === 0);
+    tray.querySelector("[data-map-tray-label]").textContent = count === 0 ? "Map" : "Selection";
+    const badge = tray.querySelector("[data-map-tray-count]");
     badge.textContent = String(count);
+    badge.hidden = count === 0;
+    tray.querySelector("[data-map-tray-cta]").hidden = count === 0;
   });
 }
 

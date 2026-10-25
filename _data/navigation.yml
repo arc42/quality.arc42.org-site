@@ -11,8 +11,6 @@ primary:
     url: /standards/
 
 secondary:
-  - label: Map
-    url: /map/
   - label: Dimensions
     url: /dimensions/
   - label: Aliases

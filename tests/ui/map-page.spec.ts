@@ -21,6 +21,7 @@ test("empty selection shows the empty state and a link to qualities", async ({ p
   await page.goto("/map/");
   await expect(page.locator("#map-empty")).toBeVisible();
   await expect(page.locator("#map-empty a[href$='/qualities/']")).toBeVisible();
+  await expect(page.locator("[data-map-tray]")).toHaveAttribute("aria-current", "page");
 });
 
 test("seeded selection renders summary, layer toggles and the table", async ({ page }) => {
@@ -841,7 +842,7 @@ test("clear selection asks inline before removing everything", async ({ page }) 
   await expect(page.locator("#map-empty")).toBeVisible();
   await expect(clear).toBeHidden();
   await expect(page.locator("#map-add-input")).toBeFocused();
-  await expect(page.locator("[data-map-tray]")).toBeHidden();
+  await expect(page.locator("[data-map-tray]")).toHaveText("Map", { useInnerText: true });
   const count = await page.evaluate(
     () => JSON.parse(localStorage.getItem("q42.map.v1")!).qualities.length,
   );

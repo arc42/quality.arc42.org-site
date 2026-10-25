@@ -11,15 +11,18 @@ test.beforeEach(async ({ page }) => {
   });
 });
 
-test("tray is hidden until a quality is added from the index", async ({ page }) => {
+test("tray reads Map until a quality is added from the index", async ({ page }) => {
   await page.goto("/qualities/");
   const tray = page.locator("[data-map-tray]");
-  await expect(tray).toBeHidden();
+  await expect(tray).toBeVisible();
+  await expect(tray).toHaveText("Map", { useInnerText: true });
+  await expect(tray).toHaveAttribute("href", /\/map\/$/);
+  await expect(page.locator("[data-map-tray-count]")).toBeHidden();
   const add = page.locator('[data-map-add="availability"]');
   await add.click();
   await expect(add).toHaveAttribute("aria-pressed", "true");
   await expect(add).toHaveText(/Added/);
-  await expect(tray).toBeVisible();
+  await expect(tray).toHaveText(/^Selection\s*1\s*Open map$/, { useInnerText: true });
   await expect(page.locator("[data-map-tray-count]")).toHaveText("1");
   await expect(page.getByRole("status")).toContainText("Availability added");
 });
@@ -41,7 +44,7 @@ test("undo in the toast removes the quality again", async ({ page }) => {
     "aria-pressed",
     "false",
   );
-  await expect(page.locator("[data-map-tray]")).toBeHidden();
+  await expect(page.locator("[data-map-tray]")).toHaveText("Map", { useInnerText: true });
   await expect(page.getByRole("status")).toContainText("Availability removed again");
   await expect(page.getByRole("status").getByRole("button", { name: "Undo" })).toHaveCount(0);
 });
@@ -69,7 +72,7 @@ test("selection persists across pages and the detail hero button reflects it", a
   await expect(hero).toHaveAttribute("aria-pressed", "true");
   await hero.click();
   await expect(hero).toHaveAttribute("aria-pressed", "false");
-  await expect(page.locator("[data-map-tray]")).toBeHidden();
+  await expect(page.locator("[data-map-tray]")).toHaveText("Map", { useInnerText: true });
 });
 
 test("tag pages carry add buttons too", async ({ page }) => {

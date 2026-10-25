@@ -2,7 +2,7 @@
 //
 // Three pieces, all driven by src/scripts/site/selection.js:
 //   .map-add    toggle button on quality lists and the quality hero
-//   .map-tray   header pill linking to /map/, shown once the selection is non-empty
+//   .map-tray   header pill linking to /map/: outlined "Map" while empty, filled with the count after
 //   .map-toast  polite live region confirming each add/remove, with Undo
 //   .map-banner dismissible "Build your own map" intro on index pages
 
@@ -118,8 +118,19 @@ ul.posts li.map-add-row {
   text-transform: none;
   white-space: nowrap;
 
-  &[hidden] {
-    display: none;
+  // Empty selection: an outlined link that matches the search field, so the
+  // filled pill only stands out once there is something to open.
+  &.is-empty {
+    background: transparent;
+    border: 1px solid var(--brand-cream-46);
+    color: var(--header-on-violet);
+    padding: 0 0.85rem;
+
+    &:hover,
+    &[aria-current="page"] {
+      background: var(--brand-cream-14);
+      color: var(--header-on-violet);
+    }
   }
 
   // The pill keeps header parity (2.35rem) visually; this transparent layer
@@ -155,6 +166,10 @@ ul.posts li.map-add-row {
   justify-content: center;
   min-width: 1.4rem;
   padding: 0 0.35rem;
+
+  &[hidden] {
+    display: none;
+  }
 }
 
 .map-tray__cta {
@@ -166,10 +181,14 @@ ul.posts li.map-add-row {
   font-size: 0.86rem;
   height: 1.75rem;
   padding: 0 0.75rem;
+
+  &[hidden] {
+    display: none;
+  }
 }
 
 @media screen and (max-width: $nav-compact-width) {
-  .site-header .map-tray {
+  .site-header .map-tray:not(.is-empty) {
     padding-right: 0.5rem;
   }
 

@@ -108,16 +108,11 @@
   display: grid;
   flex: 0 0 auto;
   gap: 0.45rem;
-  grid-template-columns: minmax(0, clamp(9rem, 16vw, 12rem)) 2.35rem;
-  min-width: 0;
-}
-
-// The map selection tray takes a third column only while it is visible;
-// a hidden tray is not a grid item, so the default two columns stay put.
-// The search field gives up a little width so the primary nav still fits
-// just above $nav-collapse-width.
-.site-actions:has(> .map-tray:not([hidden])) {
+  // Map tray, search, menu toggle. The search field gives up a little width
+  // so the primary nav still fits next to the full tray just above
+  // $nav-collapse-width.
   grid-template-columns: auto minmax(0, clamp(8rem, 14vw, 12rem)) 2.35rem;
+  min-width: 0;
 }
 
 .site-search {
@@ -339,10 +334,6 @@
 
   .site-actions {
     flex: 1 1 100%;
-    grid-template-columns: minmax(0, 1fr) 2.35rem;
-  }
-
-  .site-actions:has(> .map-tray:not([hidden])) {
     grid-template-columns: auto minmax(0, 1fr) 2.35rem;
   }
 
