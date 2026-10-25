@@ -98,6 +98,19 @@ function renderItem(item, { baseUrl, tagUrl }) {
     li.appendChild(createTagsLine(item.tags, tagUrl));
   }
 
+  // Map selection toggle; state and labels are synced by site/selection.js.
+  if (item.kind === "canonical") {
+    const add = document.createElement("button");
+    add.type = "button";
+    add.className = "map-add";
+    add.dataset.mapAdd = item.id;
+    add.dataset.mapTitle = item.title;
+    add.setAttribute("aria-pressed", "false");
+    add.textContent = "+ Add";
+    li.classList.add("has-map-add");
+    li.appendChild(add);
+  }
+
   return li;
 }
 

@@ -1,0 +1,362 @@
+// map-selection — collect qualities for the Quality Map while browsing.
+//
+// Three pieces, all driven by src/scripts/site/selection.js:
+//   .map-add    toggle button on quality lists and the quality hero
+//   .map-tray   header pill linking to /map/: outlined "Map" while empty, filled with the count after
+//   .map-toast  polite live region confirming each add/remove, with Undo
+//   .map-banner dismissible "Build your own map" intro on index pages
+
+// ── Add / Added toggle ──────────────────────────────────────
+
+.map-add {
+  align-items: center;
+  background: var(--brand-paper);
+  border: 1px solid var(--brand-violet);
+  border-radius: $radius-sm;
+  color: var(--brand-violet);
+  cursor: pointer;
+  display: inline-flex;
+  flex: 0 0 auto;
+  font: inherit;
+  font-size: 0.92rem;
+  font-weight: 700;
+  gap: 0.4rem;
+  justify-content: center;
+  line-height: 1.2;
+  min-height: 44px;
+  min-width: 7.5rem;
+  padding: 0 1rem;
+  white-space: nowrap;
+
+  &:hover {
+    background: var(--brand-violet-faint);
+  }
+
+  &[aria-pressed="true"] {
+    background: var(--brand-violet);
+    color: var(--brand-cream);
+  }
+
+  &[aria-pressed="true"]:hover {
+    background: var(--brand-violet-deep);
+  }
+
+  &:focus-visible {
+    box-shadow: var(--focus-ring);
+    outline: none;
+  }
+}
+
+// Qualities index (JS-rendered explorer): button in its own column.
+.index-explorer .ix-item.has-map-add {
+  align-items: center;
+  column-gap: 1rem;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+
+  > * {
+    grid-column: 1;
+  }
+
+  > .map-add {
+    grid-column: 2;
+    grid-row: 1 / span 3;
+  }
+}
+
+// Tag pages: link then button on one line.
+ul.posts li.map-add-row {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 1rem;
+  justify-content: space-between;
+  padding: 0.2rem 0;
+}
+
+// Quality detail hero: button beside the title on wide screens, stacked below otherwise.
+.site-content .section-hero .section-hero__actions {
+  margin: 0.4rem 0 0.2rem;
+}
+
+@media screen and (min-width: 800px) {
+  .site-content .section-hero:has(> .section-hero__actions) {
+    column-gap: 1.5rem;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+
+    > * {
+      grid-column: 1;
+    }
+
+    > .section-hero__actions {
+      align-self: center;
+      grid-column: 2;
+      grid-row: 1 / span 2;
+      margin: 0;
+    }
+  }
+}
+
+// ── Header tray ─────────────────────────────────────────────
+
+// `.site-header` scoping beats the header's `a { color: inherit }` reset.
+.site-header .map-tray {
+  align-items: center;
+  background: var(--brand-cream);
+  border-radius: $radius-pill;
+  color: var(--brand-violet);
+  display: inline-flex;
+  font-size: 0.92rem;
+  font-weight: 700;
+  gap: 0.5rem;
+  height: 2.35rem;
+  letter-spacing: 0;
+  padding: 0 0.3rem 0 0.85rem;
+  position: relative;
+  text-decoration: none;
+  text-transform: none;
+  white-space: nowrap;
+
+  // Empty selection: an outlined link that matches the search field, so the
+  // filled pill only stands out once there is something to open.
+  &.is-empty {
+    background: transparent;
+    border: 1px solid var(--brand-cream-46);
+    color: var(--header-on-violet);
+    padding: 0 0.85rem;
+
+    &:hover,
+    &[aria-current="page"] {
+      background: var(--brand-cream-14);
+      color: var(--header-on-violet);
+    }
+  }
+
+  // The pill keeps header parity (2.35rem) visually; this transparent layer
+  // extends the hit area to the 44px minimum target size.
+  &::after {
+    bottom: calc((2.35rem - 44px) / 2);
+    content: "";
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: calc((2.35rem - 44px) / 2);
+  }
+
+  &:hover {
+    color: var(--brand-violet-deep);
+    text-decoration: none;
+  }
+
+  &:focus-visible {
+    box-shadow: var(--focus-ring-on-violet);
+    outline: none;
+  }
+}
+
+.map-tray__count {
+  align-items: center;
+  background: var(--brand-violet);
+  border-radius: $radius-pill;
+  color: var(--brand-cream);
+  display: inline-flex;
+  font-size: 0.8rem;
+  height: 1.4rem;
+  justify-content: center;
+  min-width: 1.4rem;
+  padding: 0 0.35rem;
+
+  &[hidden] {
+    display: none;
+  }
+}
+
+.map-tray__cta {
+  align-items: center;
+  background: var(--brand-teal);
+  border-radius: $radius-pill;
+  color: var(--brand-ink);
+  display: inline-flex;
+  font-size: 0.86rem;
+  height: 1.75rem;
+  padding: 0 0.75rem;
+
+  &[hidden] {
+    display: none;
+  }
+}
+
+@media screen and (max-width: $nav-compact-width) {
+  .site-header .map-tray:not(.is-empty) {
+    padding-right: 0.5rem;
+  }
+
+  .map-tray__cta {
+    display: none;
+  }
+}
+
+// ── Toast ───────────────────────────────────────────────────
+
+// The live region always exists; while empty it is clipped like .sr-only so
+// it stays in the accessibility tree and announces the next update.
+.map-toast {
+  border: 0;
+  clip: rect(0, 0, 0, 0);
+  height: 1px;
+  overflow: hidden;
+  position: fixed;
+  white-space: nowrap;
+  width: 1px;
+
+  &.is-visible {
+    align-items: center;
+    background: var(--brand-ink);
+    border-radius: $radius-md;
+    bottom: 1.5rem;
+    box-shadow: 0 10px 30px rgba(36, 24, 35, 0.25);
+    clip: auto;
+    color: var(--brand-cream);
+    display: flex;
+    gap: 0.9rem;
+    height: auto;
+    max-width: calc(100vw - 2rem);
+    overflow: visible;
+    padding: 0.6rem 0.6rem 0.6rem 1.1rem;
+    right: 1rem;
+    white-space: normal;
+    width: 24rem;
+    z-index: var(--z-popover);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .map-toast.is-visible {
+    animation: map-toast-in 0.18s ease-out;
+  }
+}
+
+@keyframes map-toast-in {
+  // Transform only: fading opacity would leave the text below contrast mid-animation.
+  from {
+    transform: translateY(0.5rem);
+  }
+}
+
+.map-toast__text {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  gap: 0.1rem;
+  min-width: 0;
+}
+
+.map-toast__title {
+  font-weight: 700;
+}
+
+.map-toast__detail {
+  color: var(--brand-cream-82);
+  font-size: 0.85rem;
+}
+
+.map-toast__undo {
+  background: transparent;
+  border: 0;
+  border-radius: $radius-xs;
+  color: var(--brand-cream);
+  cursor: pointer;
+  flex: 0 0 auto;
+  font: inherit;
+  font-weight: 700;
+  min-height: 44px;
+  min-width: 44px;
+  padding: 0 0.75rem;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+
+  &:hover {
+    background: var(--brand-cream-14);
+  }
+
+  &:focus-visible {
+    box-shadow: var(--focus-ring-on-violet);
+    outline: none;
+  }
+}
+
+// ── Intro banner ────────────────────────────────────────────
+
+.map-banner {
+  align-items: center;
+  background: var(--brand-paper);
+  border: 1px solid var(--brand-violet-soft);
+  border-radius: $radius-md;
+  display: flex;
+  gap: 1rem;
+  margin: 0 0 1.25rem;
+  padding: 0.75rem 0.5rem 0.75rem 1rem;
+
+  &[hidden] {
+    display: none;
+  }
+}
+
+.map-banner__icon {
+  align-items: center;
+  background: var(--brand-violet-faint);
+  border-radius: $radius-md;
+  color: var(--brand-violet);
+  display: inline-flex;
+  flex: 0 0 auto;
+  height: 44px;
+  justify-content: center;
+  width: 44px;
+}
+
+// Doubled class beats the article's `.post-content p` margins.
+.map-banner__text.map-banner__text {
+  flex: 1 1 auto;
+  line-height: 1.5;
+  margin: 0;
+  min-width: 0;
+
+  a:focus-visible {
+    border-radius: 2px;
+    box-shadow: var(--focus-ring);
+    outline: none;
+  }
+}
+
+.map-banner__dismiss {
+  align-self: flex-start;
+  background: transparent;
+  border: 0;
+  border-radius: $radius-sm;
+  color: var(--brand-muted-strong);
+  cursor: pointer;
+  flex: 0 0 auto;
+  font: inherit;
+  font-size: 1.4rem;
+  line-height: 1;
+  min-height: 44px;
+  min-width: 44px;
+
+  &:hover {
+    background: var(--brand-violet-faint);
+    color: var(--brand-violet);
+  }
+
+  &:focus-visible {
+    box-shadow: var(--focus-ring);
+    outline: none;
+  }
+}
+
+// Phones: give the sentence the icon's width.
+@media screen and (max-width: $nav-narrow-width) {
+  .map-banner__icon {
+    display: none;
+  }
+}

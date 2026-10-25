@@ -1,5 +1,11 @@
 import { expect, test } from "@playwright/test";
 
+// The full-body search test serves a mocked page through route.fulfill.
+// Chromium (since ~142) treats such a page as public, so Local Network Access
+// blocks its scripts and styles from the local dev server and the page never
+// initialises. Turn the check off for this file's browser only.
+test.use({ launchOptions: { args: ["--disable-features=LocalNetworkAccessChecks"] } });
+
 test("standards search ranks names, searches prose and combines issuer filters", async ({
   page,
 }) => {

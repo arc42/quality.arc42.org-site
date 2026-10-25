@@ -47,6 +47,7 @@ const ENTRY_ROUTES = [
   "/approaches/",
   "/aliases/",
   "/full-quality-graph/",
+  "/map/",
   "/aboutthissite/",
   "/qualities/accessibility",
   "/qualities/time-to-market",

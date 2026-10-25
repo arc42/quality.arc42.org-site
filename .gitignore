@@ -11,6 +11,7 @@ node_modules
 assets/js/**/*.js.map
 assets/js/fullpage/*.js
 assets/js/homepage/*.js
+assets/js/map/*.js
 assets/.esbuild-ready
 assets/data
 
@@ -35,3 +36,9 @@ skills-lock.json
 .vscode
 /.vs
 .audit
+
+# superpowers SDD scratch workspace
+.superpowers/
+
+# local Playwright helper scripts (run via the playwright container)
+scratch-*.mjs

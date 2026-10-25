@@ -22,6 +22,8 @@
       </nav>
 
       <div class="site-actions">
+        {% if page.url contains '/map/' %}{% assign map_active = true %}{% else %}{% assign map_active = false %}{% endif %}
+        <a class="map-tray is-empty" href="{{ '/map/' | prepend: site.baseurl }}" data-map-tray{% if map_active %} aria-current="page"{% endif %}><span data-map-tray-label>Map</span><span class="map-tray__count" data-map-tray-count hidden>0</span><span class="map-tray__cta" data-map-tray-cta hidden>Open map</span></a>
         <form class="site-search" action="{{ '/search/' | prepend: site.baseurl }}" role="search" data-site-search>
           <label class="sr-only" for="site-search-input">Search Q42</label>
           <input
@@ -65,16 +67,20 @@
     <div class="site-secondary-nav__inner">
       <div class="site-secondary-nav__group site-secondary-nav__primary">
         <span class="site-secondary-nav__label">Main</span>
-        {% for item in primary_nav %}
-          <a href="{{ item.url | prepend: site.baseurl }}">{{ item.label }}</a>
-        {% endfor %}
+        <div class="site-secondary-nav__links">
+          {% for item in primary_nav %}
+            <a href="{{ item.url | prepend: site.baseurl }}">{{ item.label }}</a>
+          {% endfor %}
+        </div>
       </div>
 
       <div class="site-secondary-nav__group">
         <span class="site-secondary-nav__label">More</span>
-        {% for item in secondary_nav %}
-          <a href="{{ item.url | prepend: site.baseurl }}">{{ item.label }}</a>
-        {% endfor %}
+        <div class="site-secondary-nav__links">
+          {% for item in secondary_nav %}
+            <a href="{{ item.url | prepend: site.baseurl }}">{{ item.label }}</a>
+          {% endfor %}
+        </div>
       </div>
     </div>
   </nav>

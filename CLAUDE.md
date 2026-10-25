@@ -146,9 +146,11 @@ Link validator checks: quality→quality `related`, quality→tag, quality→sta
 ```
 _qualities/    _requirements/    _standards/    _articles/    _pages/      # content
 _layouts/      _includes/        _sass/                                    # templates
-src/graphs/    src/scripts/                                                # JS source
+src/graphs/    src/scripts/      src/map/                                  # JS source
 assets/data/   assets/js/                                                  # generated
 _config.yml    package.json      Gemfile        docker-compose.yml
 ```
+
+**Quality map** (`/map/`): `src/map/` holds the store, subgraph, views and exporters. The reader's selection lives in `localStorage` under `q42.map.v1` and never leaves the browser. Any element with `data-map-add="<quality-id>"` (plus `data-map-title`) becomes an Add toggle via `src/scripts/site/selection.js`, which also drives the header tray, the toast and `[data-map-banner]` intros. Restart Docker after touching `_pages/65-quality-map.md` or `src/scripts/build.js`.
 
 Build details and graph class internals live in the code — read `src/scripts/build.js`, `src/scripts/data.js`, and `src/graphs/*.js` directly when needed.

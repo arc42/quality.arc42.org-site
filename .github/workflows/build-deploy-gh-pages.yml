@@ -36,6 +36,9 @@ jobs:
       - name: Install npm dependencies
         run: npm ci
 
+      - name: Run unit tests
+        run: npm run test:unit
+
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v6

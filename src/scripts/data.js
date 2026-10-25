@@ -23,6 +23,7 @@ import { NODE_COLORS, NODE_TEXT_COLORS } from "../graphs/colors.js";
  * @property {string} qualityType - Node quality type
  * @property {string} page - Link to documentation
  * @property {string[]} [standards] - Related standards (for quality nodes)
+ * @property {string} [excerpt] - First paragraph of the body as plain text (quality nodes)
  */
 
 /**
@@ -283,6 +284,109 @@ function processRelatedNodes(id, relatedIds, edges, synonymMap = {}) {
     }
 }
 
+const EXCERPT_MAX = 240;
+
+/**
+ * Strip inline Markdown (images, links, code, emphasis, HTML tags) from one paragraph.
+ * @param {string} text
+ * @returns {string}
+ */
+function stripInlineMarkdown(text) {
+    return text
+        .replace(/!\[[^\]]*\]\([^)]*\)/g, "")
+        .replace(/\[([^\]]+)\]\([^)]*\)/g, "$1")
+        .replace(/\[([^\]]+)\]\[[^\]]*\]/g, "$1")
+        .replace(/\[([^\]]+)\]/g, "$1")
+        .replace(/`([^`]+)`/g, "$1")
+        .replace(/<[^>]+>/g, "")
+        .replace(/\{:[^}]*\}/g, "")
+        .replace(/(\*\*|__)(.+?)\1/g, "$2")
+        .replace(/(^|[^\w*])[*_]([^*_\s][^*_]*?)[*_](?=[^\w*]|$)/g, "$1$2")
+        .replace(/\s+/g, " ")
+        .trim();
+}
+
+/**
+ * Split a Markdown body into paragraphs. Liquid tags, HTML comments, headings
+ * and lines that are only HTML wrappers separate paragraphs; a switch between
+ * quoted and unquoted lines does too. List items are run together.
+ * @param {string|undefined} body
+ * @returns {{ raw: string, text: string, quote: boolean, list: boolean }[]}
+ */
+function paragraphsOf(body) {
+    const cleaned = String(body ?? "")
+        .replace(/<!--[\s\S]*?-->/g, "")
+        .replace(/\{%[\s\S]*?%\}/g, "")
+        .replace(/\{\{[\s\S]*?\}\}/g, "");
+    const out = [];
+    let lines = [];
+    let quote = false;
+    let list = false;
+    const flush = () => {
+        if (!lines.length) return;
+        const raw = lines.join("");
+        out.push({ raw: raw.trim(), text: stripInlineMarkdown(raw), quote, list });
+        lines = [];
+    };
+    for (const source of cleaned.split("\n")) {
+        const quoted = /^\s*>/.test(source);
+        const line = source.replace(/^\s*(>\s?)+/, "").trim();
+        const skip = line === "" || /^#{1,6}\s/.test(line) || /^(<[^>]+>\s*)+$/.test(line);
+        if (skip || (lines.length && quoted !== quote)) flush();
+        if (skip) continue;
+        const item = line.replace(/^([-*+]|\d+\.)\s+/, "");
+        if (!lines.length) {
+            quote = quoted;
+            list = item !== line;
+            lines.push(item);
+            continue;
+        }
+        // Run list items together as one sentence-like line.
+        const glue = item !== line && !/[.;:!?]$/.test(lines.at(-1)) ? "; " : " ";
+        lines.push(`${glue}${item}`);
+    }
+    flush();
+    return out;
+}
+
+/**
+ * The definition of a quality as plain text, for the map's Markdown export:
+ * the first blockquote paragraph (pages quote their definitions), else the
+ * first prose paragraph. Signposts ("Definition:", "See also …" with the list
+ * under it) and bare citation links are never taken.
+ * @param {string|undefined} body
+ * @returns {string} at most EXCERPT_MAX characters plus "…" when cut
+ */
+export function bodyExcerpt(body) {
+    const candidates = [];
+    let afterPointer = false;
+    for (const p of paragraphsOf(body)) {
+        const pointerList = afterPointer && p.list;
+        afterPointer = isPointer(p.text) || (pointerList && afterPointer);
+        if (!p.text || pointerList || isSignpost(p.text) || isCitation(p.raw)) continue;
+        candidates.push(p);
+    }
+    const text = (candidates.find((p) => p.quote) ?? candidates[0])?.text ?? "";
+    if (text.length > EXCERPT_MAX) return `${text.slice(0, EXCERPT_MAX).trimEnd()}…`;
+    // A lead-in to a list ("... the following:") reads as cut off without the list.
+    return text.replace(/:$/, "…");
+}
+
+/** "See also …" or "Synonym: …" point elsewhere, and so does a list right under them. */
+function isPointer(text) {
+    return /^(see|synonyms?)\b/i.test(text);
+}
+
+/** Lead-ins such as "Definition:" say nothing on their own. */
+function isSignpost(text) {
+    return (text.endsWith(":") && text.length <= 40) || isPointer(text);
+}
+
+/** A paragraph that is only a source link, e.g. "[ISO-25010:2023](/references/…)". */
+function isCitation(raw) {
+    return /^(\S+\s+)?\[[^\]]+\]\([^)]*\)\.?$/.test(raw);
+}
+
 /**
  * @param {string} id
  * @param {FrontmatterData} data
@@ -313,7 +417,8 @@ function addMainNode(id, data, isRequirements, nodes, synonymMap = {}) {
         color: config.color,
         qualityType: config.qualityType,
         page: data.permalink,
-        ...(standards.length ? { standards } : {})
+        ...(standards.length ? { standards } : {}),
+        ...(!isRequirements ? { excerpt: bodyExcerpt(data.body) } : {})
     });
 }
 

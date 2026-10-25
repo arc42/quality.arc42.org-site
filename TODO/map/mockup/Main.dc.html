@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Your map</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@400;500;700&family=Libre+Caslon+Text:wght@400;700&display=swap">
+<style>
+body{margin:0;background:#f8f7f2;font-family:"Atkinson Hyperlegible Next","Atkinson Hyperlegible",system-ui,sans-serif;color:#241823}
+a{color:#682d63}a:hover{color:#52214f}
+</style>
+</helmet>
+<div style="font-family: 'Atkinson Hyperlegible Next', 'Atkinson Hyperlegible', system-ui, sans-serif; color: #241823; background: #f8f7f2; min-height: 1560px; display: flex; flex-direction: column">
+
+  <!-- site header -->
+  <header style="background: #682d63; color: #ffffff; padding: 0 40px; height: 68px; display: flex; align-items: center; gap: 36px; flex-wrap: wrap">
+    <div style="display: flex; align-items: baseline; gap: 8px">
+      <span style="font-family: 'Libre Caslon Text', Georgia, serif; font-size: 24px; font-weight: 700">Q42</span>
+      <span style="font-size: 15px; opacity: 0.85">quality model</span>
+    </div>
+    <nav aria-label="Primary" style="display: flex; gap: 26px; font-size: 16px; font-weight: 500">
+      <a href="#how" style="color: #ffffff; text-decoration: none; opacity: 0.85">How-To</a>
+      <a href="Collect.dc.html" style="color: #ffffff; text-decoration: none; opacity: 0.85">Qualities</a>
+      <a href="#r" style="color: #ffffff; text-decoration: none; opacity: 0.85">Requirements</a>
+      <a href="#a" style="color: #ffffff; text-decoration: none; opacity: 0.85">Approaches</a>
+      <a href="#s" style="color: #ffffff; text-decoration: none; opacity: 0.85">Standards</a>
+    </nav>
+    <div style="margin-left: auto; display: flex; align-items: center; gap: 12px">
+      <label for="search" style="position: absolute; left: -9999px">Search Q42</label>
+      <input id="search" placeholder="Search Q42" style="height: 40px; width: 240px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.4); background: rgba(255,255,255,0.14); color: #ffffff; padding: 0 14px; font: inherit; font-size: 15px">
+      <a href="Main.dc.html" aria-current="page" style="display: flex; align-items: center; gap: 10px; height: 40px; padding: 0 6px 0 14px; border-radius: 999px; background: #ffffff; color: #682d63; text-decoration: none; font-weight: 700; font-size: 15px; box-shadow: 0 0 0 3px rgba(255,255,255,0.35)">
+        <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6" cy="6" r="3"></circle><circle cx="18" cy="6" r="3"></circle><circle cx="12" cy="18" r="3"></circle><path d="M8.5 7.5l2.5 8M15.5 7.5l-2.5 8M9 6h6"></path></svg>
+        <span>Selection</span>
+        <span style="background: #682d63; color: #ffffff; border-radius: 999px; min-width: 22px; height: 22px; display: inline-flex; align-items: center; justify-content: center; font-size: 13px">4</span>
+        <span style="background: #5fb49c; color: #0f3d31; border-radius: 999px; padding: 0 12px; height: 28px; display: inline-flex; align-items: center; font-size: 14px">Map</span>
+      </a>
+    </div>
+  </header>
+
+  <main style="max-width: 1360px; width: 100%; margin: 0 auto; padding: 40px 24px 60px; box-sizing: border-box; display: flex; flex-direction: column; gap: 24px">
+
+    <!-- title row -->
+    <div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; flex-wrap: wrap">
+      <div style="display: flex; flex-direction: column; gap: 8px">
+        <h1 style="margin: 0; font-family: 'Libre Caslon Text', Georgia, serif; font-size: 44px; font-weight: 700; line-height: 1.1">Your map</h1>
+        <p style="margin: 0; font-size: 18px; color: #5c4f59">4 qualities · 11 approaches serve two or more of them · 1 own requirement</p>
+      </div>
+      <div style="display: flex; gap: 10px; align-items: center">
+        <button style="min-height: 44px; padding: 0 16px; border-radius: 999px; border: 1px solid #cfc6cd; background: #ffffff; color: #241823; font: inherit; font-size: 15px; display: inline-flex; align-items: center; gap: 8px; cursor: pointer">
+          <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3l18 18M10.6 10.6a2 2 0 002.8 2.8M9.9 5.1A10.5 10.5 0 0121 12a10.6 10.6 0 01-2.6 3.4M6.2 6.2A10.6 10.6 0 003 12a10.5 10.5 0 0014.6 4.6"></path></svg>
+          Hidden <span style="background: #682d63; color: #ffffff; border-radius: 999px; min-width: 22px; height: 22px; display: inline-flex; align-items: center; justify-content: center; font-size: 13px">1</span>
+        </button>
+        <a href="Export.dc.html" style="min-height: 44px; padding: 0 18px; border-radius: 999px; border: 1px solid #682d63; background: #682d63; color: #ffffff; font-weight: 700; font-size: 15px; display: inline-flex; align-items: center; gap: 8px; text-decoration: none">
+          <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12M7 10l5 5 5-5M4 21h16"></path></svg>
+          Export &amp; share
+        </a>
+      </div>
+    </div>
+
+    <!-- layer toggles -->
+    <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap">
+      <span style="font-size: 15px; color: #5c4f59; margin-right: 6px">Show</span>
+      <button aria-pressed="true" style="min-height: 44px; padding: 0 18px; border-radius: 999px; border: 1px solid #682d63; background: #f5eef4; color: #682d63; font: inherit; font-weight: 700; font-size: 15px; cursor: pointer">✓ Qualities</button>
+      <button aria-pressed="true" style="min-height: 44px; padding: 0 18px; border-radius: 999px; border: 1px solid #1b5e20; background: #d9f7d3; color: #1b5e20; font: inherit; font-weight: 700; font-size: 15px; cursor: pointer">✓ Approaches</button>
+      <button aria-pressed="true" style="min-height: 44px; padding: 0 18px; border-radius: 999px; border: 1px solid #8b0000; background: #ffe0e0; color: #8b0000; font: inherit; font-weight: 700; font-size: 15px; cursor: pointer">✓ Requirements</button>
+      <button aria-pressed="false" style="min-height: 44px; padding: 0 18px; border-radius: 999px; border: 1px solid #cfc6cd; background: #ffffff; color: #241823; font: inherit; font-size: 15px; cursor: pointer">Standards</button>
+      <button aria-pressed="false" style="min-height: 44px; padding: 0 18px; border-radius: 999px; border: 1px solid #cfc6cd; background: #ffffff; color: #241823; font: inherit; font-size: 15px; cursor: pointer">Dimensions</button>
+      <span style="margin-left: auto; font-size: 14px; color: #746671">Only items shared by 2 or more of your qualities are drawn · <a href="#singles">show singles</a></span>
+    </div>
+
+    <!-- map + side panel -->
+    <div style="display: flex; gap: 24px; flex-wrap: wrap; align-items: stretch">
+
+      <!-- canvas -->
+      <div style="flex: 999 1 640px; min-width: 0; position: relative; background: #ffffff; border: 1px solid #e9d9e8; border-radius: 14px; height: 680px; overflow: hidden; background-image: radial-gradient(#e2dbe0 1px, transparent 1px); background-size: 24px 24px">
+
+        <!-- edges (decorative; the list twin below is the accessible form) -->
+        <svg aria-hidden="true" viewBox="0 0 960 680" preserveAspectRatio="none" style="position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none">
+          <!-- faint links -->
+          <line x1="190" y1="420" x2="330" y2="230" stroke="#d8d0d6" stroke-width="2"></line>
+          <line x1="190" y1="420" x2="460" y2="490" stroke="#d8d0d6" stroke-width="2"></line>
+          <line x1="190" y1="420" x2="620" y2="400" stroke="#d8d0d6" stroke-width="2"></line>
+          <line x1="190" y1="420" x2="360" y2="600" stroke="#d8d0d6" stroke-width="2"></line>
+          <line x1="500" y1="130" x2="330" y2="230" stroke="#d8d0d6" stroke-width="2"></line>
+          <line x1="500" y1="130" x2="480" y2="300" stroke="#d8d0d6" stroke-width="2"></line>
+          <line x1="500" y1="130" x2="460" y2="490" stroke="#d8d0d6" stroke-width="2"></line>
+          <line x1="810" y1="320" x2="480" y2="300" stroke="#d8d0d6" stroke-width="2"></line>
+          <line x1="810" y1="320" x2="620" y2="400" stroke="#d8d0d6" stroke-width="2"></line>
+          <line x1="810" y1="320" x2="460" y2="490" stroke="#d8d0d6" stroke-width="2"></line>
+          <line x1="740" y1="580" x2="620" y2="400" stroke="#d8d0d6" stroke-width="2"></line>
+          <line x1="740" y1="580" x2="580" y2="580" stroke="#d8d0d6" stroke-width="2"></line>
+          <line x1="740" y1="580" x2="360" y2="600" stroke="#d8d0d6" stroke-width="2"></line>
+          <line x1="190" y1="420" x2="580" y2="580" stroke="#d8d0d6" stroke-width="2"></line>
+          <!-- own requirement: dashed -->
+          <line x1="190" y1="420" x2="300" y2="330" stroke="#8b0000" stroke-width="2" stroke-dasharray="6 5"></line>
+          <line x1="500" y1="130" x2="300" y2="330" stroke="#8b0000" stroke-width="2" stroke-dasharray="6 5"></line>
+          <line x1="810" y1="320" x2="300" y2="330" stroke="#8b0000" stroke-width="2" stroke-dasharray="6 5"></line>
+          <!-- selected approach: highlighted -->
+          <line x1="500" y1="130" x2="660" y2="210" stroke="#1b5e20" stroke-width="4"></line>
+          <line x1="810" y1="320" x2="660" y2="210" stroke="#1b5e20" stroke-width="4"></line>
+          <line x1="190" y1="420" x2="660" y2="210" stroke="#1b5e20" stroke-width="4"></line>
+        </svg>
+
+        <button style="position: absolute; left: 20px; top: 20px; min-height: 44px; padding: 0 16px; border-radius: 8px; border: 1px solid #682d63; background: #ffffff; color: #682d63; font: inherit; font-weight: 700; font-size: 15px; cursor: pointer; z-index: 2">+ Add to map</button>
+
+        <!-- quality nodes: size and fill = my priority -->
+        <a href="#availability" aria-label="Availability, priority high, 11 shared" style="position: absolute; left: 110px; top: 340px; width: 160px; height: 160px; border-radius: 999px; background: #00b8f5; color: #003366; display: flex; flex-direction: column; align-items: center; justify-content: center; text-decoration: none; text-align: center; box-shadow: 0 8px 24px rgba(0,184,245,0.3)">
+          <span style="font-weight: 700; font-size: 19px">Availability</span>
+          <span style="font-size: 13px; opacity: 0.85">11 shared · high</span>
+        </a>
+        <a href="#resilience" aria-label="Resilience, priority high, 4 shared" style="position: absolute; left: 430px; top: 60px; width: 140px; height: 140px; border-radius: 999px; background: #00b8f5; color: #003366; display: flex; flex-direction: column; align-items: center; justify-content: center; text-decoration: none; text-align: center; box-shadow: 0 8px 24px rgba(0,184,245,0.3)">
+          <span style="font-weight: 700; font-size: 18px">Resilience</span>
+          <span style="font-size: 13px; opacity: 0.85">4 shared · high</span>
+        </a>
+        <a href="#fault-tolerance" aria-label="Fault tolerance, priority medium, 5 shared" style="position: absolute; left: 752px; top: 262px; width: 116px; height: 116px; border-radius: 999px; background: #a6e4fb; color: #003366; display: flex; flex-direction: column; align-items: center; justify-content: center; text-decoration: none; text-align: center">
+          <span style="font-weight: 700; font-size: 16px; line-height: 1.1">Fault<br>tolerance</span>
+          <span style="font-size: 12px; opacity: 0.85">5 shared · med</span>
+        </a>
+        <a href="#recoverability" aria-label="Recoverability, not rated, 7 shared" style="position: absolute; left: 692px; top: 532px; width: 96px; height: 96px; border-radius: 999px; background: #ffffff; border: 3px solid #00b8f5; color: #003366; display: flex; flex-direction: column; align-items: center; justify-content: center; text-decoration: none; text-align: center; box-sizing: border-box">
+          <span style="font-weight: 700; font-size: 14px">Recoverability</span>
+          <span style="font-size: 11px; opacity: 0.85">7 shared</span>
+        </a>
+
+        <!-- approach pills: number = qualities served -->
+        <a href="#circuit-breaker" aria-current="true" style="position: absolute; left: 566px; top: 188px; height: 44px; padding: 0 18px; border-radius: 999px; background: #1b5e20; color: #ffffff; display: inline-flex; align-items: center; gap: 10px; text-decoration: none; font-weight: 700; font-size: 15px; box-shadow: 0 0 0 4px #d9f7d3">Circuit Breaker <span style="background: #ffffff; color: #1b5e20; border-radius: 999px; min-width: 22px; height: 22px; display: inline-flex; align-items: center; justify-content: center; font-size: 13px">3</span></a>
+        <a href="#bulkheads" style="position: absolute; left: 410px; top: 280px; height: 40px; padding: 0 16px; border-radius: 999px; background: #d9f7d3; border: 1px solid #1b5e20; color: #1b5e20; display: inline-flex; align-items: center; gap: 10px; text-decoration: none; font-weight: 700; font-size: 14px; box-sizing: border-box">Bulkheads <span style="background: #1b5e20; color: #ffffff; border-radius: 999px; min-width: 20px; height: 20px; display: inline-flex; align-items: center; justify-content: center; font-size: 12px">3</span></a>
+        <a href="#rate-limiting" style="position: absolute; left: 254px; top: 210px; height: 40px; padding: 0 16px; border-radius: 999px; background: #d9f7d3; border: 1px solid #1b5e20; color: #1b5e20; display: inline-flex; align-items: center; gap: 10px; text-decoration: none; font-weight: 700; font-size: 14px; box-sizing: border-box">Rate Limiting <span style="background: #1b5e20; color: #ffffff; border-radius: 999px; min-width: 20px; height: 20px; display: inline-flex; align-items: center; justify-content: center; font-size: 12px">2</span></a>
+        <a href="#timeout" style="position: absolute; left: 566px; top: 380px; height: 40px; padding: 0 16px; border-radius: 999px; background: #d9f7d3; border: 1px solid #1b5e20; color: #1b5e20; display: inline-flex; align-items: center; gap: 10px; text-decoration: none; font-weight: 700; font-size: 14px; box-sizing: border-box">Timeout <span style="background: #1b5e20; color: #ffffff; border-radius: 999px; min-width: 20px; height: 20px; display: inline-flex; align-items: center; justify-content: center; font-size: 12px">2</span></a>
+        <a href="#feature-degradation" style="position: absolute; left: 366px; top: 470px; height: 40px; padding: 0 16px; border-radius: 999px; background: #d9f7d3; border: 1px solid #1b5e20; color: #1b5e20; display: inline-flex; align-items: center; gap: 10px; text-decoration: none; font-weight: 700; font-size: 14px; box-sizing: border-box">Feature Degradation <span style="background: #1b5e20; color: #ffffff; border-radius: 999px; min-width: 20px; height: 20px; display: inline-flex; align-items: center; justify-content: center; font-size: 12px">3</span></a>
+        <a href="#saga" style="position: absolute; left: 510px; top: 560px; height: 40px; padding: 0 16px; border-radius: 999px; background: #d9f7d3; border: 1px solid #1b5e20; color: #1b5e20; display: inline-flex; align-items: center; gap: 10px; text-decoration: none; font-weight: 700; font-size: 14px; box-sizing: border-box">Saga Pattern <span style="background: #1b5e20; color: #ffffff; border-radius: 999px; min-width: 20px; height: 20px; display: inline-flex; align-items: center; justify-content: center; font-size: 12px">2</span></a>
+        <a href="#blue-green" style="position: absolute; left: 270px; top: 580px; height: 40px; padding: 0 16px; border-radius: 999px; background: #d9f7d3; border: 1px solid #1b5e20; color: #1b5e20; display: inline-flex; align-items: center; gap: 10px; text-decoration: none; font-weight: 700; font-size: 14px; box-sizing: border-box">Blue-Green Deployment <span style="background: #1b5e20; color: #ffffff; border-radius: 999px; min-width: 20px; height: 20px; display: inline-flex; align-items: center; justify-content: center; font-size: 12px">2</span></a>
+
+        <!-- own requirement: dashed box -->
+        <a href="#own-1" style="position: absolute; left: 190px; top: 304px; width: 220px; padding: 10px 14px; border-radius: 8px; background: #ffe0e0; border: 2px dashed #8b0000; color: #8b0000; display: flex; align-items: center; gap: 10px; text-decoration: none; font-weight: 700; font-size: 14px; line-height: 1.25; box-sizing: border-box">Checkout keeps working when the payment provider is down <span style="background: #8b0000; color: #ffffff; border-radius: 999px; min-width: 20px; height: 20px; display: inline-flex; align-items: center; justify-content: center; font-size: 12px; flex-shrink: 0">3</span></a>
+
+        <!-- legend -->
+        <div style="position: absolute; left: 20px; bottom: 20px; background: #ffffff; border: 1px solid #e9d9e8; border-radius: 10px; padding: 14px 16px; width: 250px; display: flex; flex-direction: column; gap: 8px; font-size: 13px; color: #5c4f59; box-sizing: border-box">
+          <span style="font-weight: 700; color: #241823; font-size: 14px">How to read</span>
+          <span>Size and fill show <strong>my priority</strong>. Nothing is rated automatically.</span>
+          <span style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap">
+            <span style="display: inline-flex; align-items: center; gap: 5px"><span style="width: 14px; height: 14px; border-radius: 999px; border: 2px solid #00b8f5; box-sizing: border-box"></span>none</span>
+            <span style="display: inline-flex; align-items: center; gap: 5px"><span style="width: 14px; height: 14px; border-radius: 999px; background: #a6e4fb"></span>med</span>
+            <span style="display: inline-flex; align-items: center; gap: 5px"><span style="width: 14px; height: 14px; border-radius: 999px; background: #00b8f5"></span>high</span>
+          </span>
+          <span style="display: inline-flex; align-items: center; gap: 6px"><span style="width: 26px; height: 14px; border-radius: 999px; background: #d9f7d3; border: 1px solid #1b5e20; box-sizing: border-box"></span>approach · number = qualities served</span>
+          <span style="display: inline-flex; align-items: center; gap: 6px"><span style="width: 26px; height: 14px; border-radius: 4px; background: #ffe0e0; border: 2px dashed #8b0000; box-sizing: border-box"></span>your own requirement</span>
+        </div>
+
+        <span style="position: absolute; right: 20px; bottom: 20px; border: 1px dashed #cfc6cd; border-radius: 999px; padding: 8px 16px; font-size: 13px; color: #5c4f59; background: #ffffff">9 approaches with one link are hidden · <a href="#show">Show</a></span>
+      </div>
+
+      <!-- side panel -->
+      <aside aria-label="Selected item" style="flex: 1 1 320px; max-width: 400px; background: #ffffff; border: 1px solid #e9d9e8; border-radius: 14px; padding: 24px; box-sizing: border-box; display: flex; flex-direction: column; gap: 18px">
+        <span style="align-self: flex-start; background: #d9f7d3; color: #1b5e20; border-radius: 999px; padding: 4px 12px; font-size: 13px; font-weight: 700">Approach</span>
+        <div style="display: flex; flex-direction: column; gap: 6px">
+          <h2 style="margin: 0; font-family: 'Libre Caslon Text', Georgia, serif; font-size: 30px; font-weight: 700; line-height: 1.1">Circuit Breaker</h2>
+          <p style="margin: 0; font-size: 16px; color: #5c4f59">Supports 3 of your 4 qualities</p>
+        </div>
+        <ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; font-size: 16px">
+          <li style="display: flex; align-items: center; gap: 10px"><span style="color: #1b5e20; font-weight: 700">✓</span>Availability</li>
+          <li style="display: flex; align-items: center; gap: 10px"><span style="color: #1b5e20; font-weight: 700">✓</span>Resilience</li>
+          <li style="display: flex; align-items: center; gap: 10px"><span style="color: #1b5e20; font-weight: 700">✓</span>Fault tolerance</li>
+          <li style="display: flex; align-items: center; gap: 10px; color: #746671"><span>–</span>Recoverability, not linked</li>
+        </ul>
+        <div style="display: flex; flex-direction: column; gap: 8px">
+          <span style="font-weight: 700; font-size: 15px">My priority</span>
+          <span style="font-size: 14px; color: #746671">Not rated yet. Your choice sets size and colour on the map.</span>
+          <div role="group" aria-label="Priority" style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); background: #f5eef4; border-radius: 8px; padding: 4px; gap: 4px">
+            <button style="min-height: 44px; border: 0; border-radius: 6px; background: transparent; font: inherit; font-size: 15px; color: #241823; cursor: pointer">Low</button>
+            <button style="min-height: 44px; border: 0; border-radius: 6px; background: transparent; font: inherit; font-size: 15px; color: #241823; cursor: pointer">Medium</button>
+            <button style="min-height: 44px; border: 0; border-radius: 6px; background: transparent; font: inherit; font-size: 15px; color: #241823; cursor: pointer">High</button>
+          </div>
+        </div>
+        <hr style="border: 0; border-top: 1px solid #eee6ed; margin: 4px 0">
+        <a href="#open" style="font-weight: 700; font-size: 16px; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; min-height: 44px">Open on Q42
+          <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 4h6v6M20 4l-9 9M19 14v6H4V5h6"></path></svg>
+        </a>
+        <button style="align-self: flex-start; min-height: 44px; padding: 0 14px; border-radius: 8px; border: 1px solid #cfc6cd; background: #ffffff; font: inherit; font-weight: 700; font-size: 15px; color: #241823; display: inline-flex; align-items: center; gap: 8px; cursor: pointer">
+          <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3l18 18M10.6 10.6a2 2 0 002.8 2.8M9.9 5.1A10.5 10.5 0 0121 12a10.6 10.6 0 01-2.6 3.4M6.2 6.2A10.6 10.6 0 003 12a10.5 10.5 0 0014.6 4.6"></path></svg>
+          Hide from map
+        </button>
+        <span style="font-size: 13px; color: #746671">Stays in your selection and keeps counting. Bring it back from the Hidden list.</span>
+      </aside>
+    </div>
+
+    <!-- list twin -->
+    <section aria-labelledby="twin-title" style="background: #ffffff; border: 1px solid #e9d9e8; border-radius: 14px; overflow: hidden">
+      <div style="padding: 20px 24px; border-bottom: 1px solid #eee6ed; display: flex; align-items: baseline; justify-content: space-between; gap: 16px; flex-wrap: wrap">
+        <h2 id="twin-title" style="margin: 0; font-size: 20px; font-weight: 700">List view — the same map as a table</h2>
+        <span style="font-size: 14px; color: #746671">Screen-reader friendly · what the Markdown export contains</span>
+      </div>
+      <div style="overflow-x: auto">
+        <table style="border-collapse: collapse; width: 100%; font-size: 15px">
+          <thead>
+            <tr style="background: #f5eef4">
+              <th scope="col" style="text-align: left; padding: 12px 24px; font-weight: 700">Approach</th>
+              <th scope="col" style="text-align: center; padding: 12px 16px; font-weight: 700; color: #003366">Availability<br><span style="font-size: 12px; font-weight: 400; color: #5c4f59">high</span></th>
+              <th scope="col" style="text-align: center; padding: 12px 16px; font-weight: 700; color: #003366">Resilience<br><span style="font-size: 12px; font-weight: 400; color: #5c4f59">high</span></th>
+              <th scope="col" style="text-align: center; padding: 12px 16px; font-weight: 700; color: #003366">Fault tolerance<br><span style="font-size: 12px; font-weight: 400; color: #5c4f59">medium</span></th>
+              <th scope="col" style="text-align: center; padding: 12px 16px; font-weight: 700; color: #003366">Recoverability<br><span style="font-size: 12px; font-weight: 400; color: #5c4f59">not rated</span></th>
+              <th scope="col" style="text-align: right; padding: 12px 24px; font-weight: 700">Serves</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-top: 1px solid #eee6ed; background: #d9f7d3">
+              <th scope="row" style="text-align: left; padding: 12px 24px; font-weight: 700"><a href="#circuit-breaker" style="text-decoration: none; color: #1b5e20">Circuit Breaker</a></th>
+              <td style="text-align: center; padding: 12px 16px; color: #1b5e20; font-weight: 700">●</td>
+              <td style="text-align: center; padding: 12px 16px; color: #1b5e20; font-weight: 700">●</td>
+              <td style="text-align: center; padding: 12px 16px; color: #1b5e20; font-weight: 700">●</td>
+              <td style="text-align: center; padding: 12px 16px; color: #cfc6cd">–</td>
+              <td style="text-align: right; padding: 12px 24px; font-family: ui-monospace, Menlo, monospace">3 of 4</td>
+            </tr>
+            <tr style="border-top: 1px solid #eee6ed">
+              <th scope="row" style="text-align: left; padding: 12px 24px; font-weight: 700"><a href="#bulkheads" style="text-decoration: none; color: #1b5e20">Bulkheads</a></th>
+              <td style="text-align: center; padding: 12px 16px; color: #1b5e20; font-weight: 700">●</td>
+              <td style="text-align: center; padding: 12px 16px; color: #1b5e20; font-weight: 700">●</td>
+              <td style="text-align: center; padding: 12px 16px; color: #1b5e20; font-weight: 700">●</td>
+              <td style="text-align: center; padding: 12px 16px; color: #cfc6cd">–</td>
+              <td style="text-align: right; padding: 12px 24px; font-family: ui-monospace, Menlo, monospace">3 of 4</td>
+            </tr>
+            <tr style="border-top: 1px solid #eee6ed">
+              <th scope="row" style="text-align: left; padding: 12px 24px; font-weight: 700"><a href="#feature-degradation" style="text-decoration: none; color: #1b5e20">Feature Degradation</a></th>
+              <td style="text-align: center; padding: 12px 16px; color: #1b5e20; font-weight: 700">●</td>
+              <td style="text-align: center; padding: 12px 16px; color: #1b5e20; font-weight: 700">●</td>
+              <td style="text-align: center; padding: 12px 16px; color: #cfc6cd">–</td>
+              <td style="text-align: center; padding: 12px 16px; color: #1b5e20; font-weight: 700">●</td>
+              <td style="text-align: right; padding: 12px 24px; font-family: ui-monospace, Menlo, monospace">3 of 4</td>
+            </tr>
+            <tr style="border-top: 1px solid #eee6ed">
+              <th scope="row" style="text-align: left; padding: 12px 24px; font-weight: 700"><a href="#rate-limiting" style="text-decoration: none; color: #1b5e20">Rate Limiting</a></th>
+              <td style="text-align: center; padding: 12px 16px; color: #1b5e20; font-weight: 700">●</td>
+              <td style="text-align: center; padding: 12px 16px; color: #1b5e20; font-weight: 700">●</td>
+              <td style="text-align: center; padding: 12px 16px; color: #cfc6cd">–</td>
+              <td style="text-align: center; padding: 12px 16px; color: #cfc6cd">–</td>
+              <td style="text-align: right; padding: 12px 24px; font-family: ui-monospace, Menlo, monospace">2 of 4</td>
+            </tr>
+            <tr style="border-top: 1px solid #eee6ed">
+              <th scope="row" style="text-align: left; padding: 12px 24px; font-weight: 700"><a href="#timeout" style="text-decoration: none; color: #1b5e20">Timeout</a></th>
+              <td style="text-align: center; padding: 12px 16px; color: #1b5e20; font-weight: 700">●</td>
+              <td style="text-align: center; padding: 12px 16px; color: #cfc6cd">–</td>
+              <td style="text-align: center; padding: 12px 16px; color: #1b5e20; font-weight: 700">●</td>
+              <td style="text-align: center; padding: 12px 16px; color: #cfc6cd">–</td>
+              <td style="text-align: right; padding: 12px 24px; font-family: ui-monospace, Menlo, monospace">2 of 4</td>
+            </tr>
+            <tr style="border-top: 1px solid #eee6ed">
+              <th scope="row" style="text-align: left; padding: 12px 24px; font-weight: 700"><a href="#saga" style="text-decoration: none; color: #1b5e20">Saga Pattern</a></th>
+              <td style="text-align: center; padding: 12px 16px; color: #cfc6cd">–</td>
+              <td style="text-align: center; padding: 12px 16px; color: #cfc6cd">–</td>
+              <td style="text-align: center; padding: 12px 16px; color: #1b5e20; font-weight: 700">●</td>
+              <td style="text-align: center; padding: 12px 16px; color: #1b5e20; font-weight: 700">●</td>
+              <td style="text-align: right; padding: 12px 24px; font-family: ui-monospace, Menlo, monospace">2 of 4</td>
+            </tr>
+            <tr style="border-top: 1px solid #eee6ed">
+              <th scope="row" style="text-align: left; padding: 12px 24px; font-weight: 700"><a href="#blue-green" style="text-decoration: none; color: #1b5e20">Blue-Green Deployment</a></th>
+              <td style="text-align: center; padding: 12px 16px; color: #1b5e20; font-weight: 700">●</td>
+              <td style="text-align: center; padding: 12px 16px; color: #cfc6cd">–</td>
+              <td style="text-align: center; padding: 12px 16px; color: #cfc6cd">–</td>
+              <td style="text-align: center; padding: 12px 16px; color: #1b5e20; font-weight: 700">●</td>
+              <td style="text-align: right; padding: 12px 24px; font-family: ui-monospace, Menlo, monospace">2 of 4</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1560}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return {};
+  }
+}
+</script>
+</body>
+</html>
