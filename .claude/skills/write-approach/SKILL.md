@@ -26,6 +26,8 @@ Read it before generating. This `SKILL.md` owns the **procedure**; the template 
    - `APPROACH_SLUG` = kebab-case of the name (e.g. `graceful-degradation`).
    - **Stop if it already exists.** If `_approaches/<LETTER>/<slug>.md` is already present, do not overwrite — report it and ask the author before proceeding.
    - **Stop on a node-ID collision.** The graph node ID is the last permalink segment, and qualities, requirements, and approaches share one node namespace (one `nodes.json`). If `<slug>` already exists as a quality or requirement slug (check the lists from step 2), the two pages collapse into a single graph node and one is silently dropped, conflating their edges. Do not create the approach under that slug — report the clash and ask the author (rename the approach, or treat the term as a quality, not a tactic).
+   - **Admission check.** An approach is a structure designed *into* a system — a constructive, design-time decision in the spirit of Circuit Breaker, CQRS, Hexagonal Architecture, or Plugin Architecture. Process, organisational, migration, and measurement practices do not qualify, and neither do no-brainers: the audience is experienced teams. If the candidate fails this test, stop and say why instead of writing it.
+   - **Overlap check.** Search the published approaches — including their `## Variants and Related Tactics` sections — for the name and every `aka` candidate: `grep -ril "<term>" _approaches/`. When an existing page already covers the idea as a variant, state in one sentence the mechanism that makes the new page distinct (e.g. Dead Man's Switch: continuation needs an *active, periodic* confirmation, whereas Watchdog Supervision reacts to a *missing* machine heartbeat). If that sentence does not come, propose extending the existing page instead and ask the author. Keep the hits: step 6 links them back.
    - **Branch.** Create `content/<slug>` before writing anything, unless the author names a different base or branch. One branch per approach.
    - Check `TODO/approaches/approaches-planning-and-status.md` — the single planning source — for the approach. Its rows often suggest `tags`, `supported_qualities`, and `tradeoffs` candidates. Treat these as proposals, not truth: every slug is still validated in step 4. Prefer the planning-file `tags` when present and sensible.
    - `tags`: 1–3 of the 9 dimensions only — `suitable usable secure reliable operable efficient flexible safe maintainable`.
@@ -40,21 +42,25 @@ Read it before generating. This `SKILL.md` owns the **procedure**; the template 
 
 3. **Generate** the page following `reference/approaches-template.md`. Choose the closest-matching *existing* quality slugs for `supported_qualities` / `tradeoffs`. Do not coin new slugs, and do not use compound slugs (`reliability-availability` is forbidden — pick `reliability` or `availability`). When a slug's fit is unclear, open its quality page under `_qualities/` and confirm the note you would write is actually true of it. An approach may share its name with a quality (e.g. `graceful-degradation` is also a quality); omit that self-named slug from `supported_qualities` unless it carries a distinct, non-circular note.
 
-4. **Validate.** Write the draft, then run the checked-in validator and fix findings until it exits green:
+   **Describe current practice.** Write `mechanism` and `## How It Works` as teams implement the tactic in today's mainstream stacks, not as the source literature's era framed it. Example: Tolerant Reader today means a subset DTO with the deserializer set to ignore unknown properties; Fowler's 2011 XPath-style extraction is only a document-format variant. Sanity-check every mechanism bullet against how a current enterprise team would build it — the author reviews pages for exactly this.
+
+4. **Validate.** Write the draft, then run the repository's validator and fix every error (`✗`) until it exits green:
    ```bash
-   .claude/skills/write-approach/scripts/validate-approach.sh _approaches/<LETTER>/<slug>.md
+   npm run validate:approach -- _approaches/<LETTER>/<slug>.md
    ```
-   It mechanically checks: all `supported_qualities` / `tradeoffs` slugs ∈ ALLOWED_QUALITY_SLUGS; all `related_requirements` slugs ∈ ALLOWED_REQUIREMENT_SLUGS; all `related` slugs exist as approach files and are not double-declared on the counterpart page; every `*_notes` key matches a slug in its own array; `tags` ⊆ the 9 dimensions; no node-ID collision; `aka` terms not reused on another approach; all length budgets (using the template's canonical counting method); body structure (allowed `##` set, no `###`); `layout` and `permalink`. If the script is unavailable, perform the same checks by hand per the template.
+   It parses the front matter with the same YAML parser as the build and mechanically checks: all `supported_qualities` / `tradeoffs` slugs ∈ ALLOWED_QUALITY_SLUGS; all `related_requirements` slugs ∈ ALLOWED_REQUIREMENT_SLUGS; all `related` slugs exist as approach files and are not double-declared on the counterpart page; every `*_notes` key matches a slug in its own array; `tags` ⊆ the 9 dimensions; no node-ID collision; `aka` terms not reused on another approach; body structure (allowed `##` set, no `###`); `layout`, `permalink`, filename, and letter directory; that every local image exists and every SVG is well-formed; and that every `/references/#anchor` link hits an anchor on the References page. It reports the body word count (template counting method) and **warns** — never errors — on length. Treat each warning as a prompt to tighten: a body above the target is fine when the extra words carry trade-offs or failure modes, not when they restate. Pass several files to check a batch (`npm run validate:approach -- _approaches/*/*.md`).
 
 5. **Write** to `_approaches/<LETTER>/<slug>.md`, where `<LETTER>` is the **uppercase first letter** of the slug (`graceful-degradation` → `_approaches/G/graceful-degradation.md`). Create the letter directory if it does not exist.
 
 6. **Companion artifacts** (established site conventions):
    - **Diagram:** hand-authored SVG at `assets/img/approaches/<slug>.svg`, referenced with `![alt](/assets/img/approaches/<slug>.svg)` right after the overview paragraphs (the image line is excluded from the body word count). Site palette — violet `#682d63`, teal `#5fb49c`, blue `#00b8f5`, orange `#e88a55`/`#ffad80`, neutral `#f8f9fa` — with `<title>`/`<desc>` accessibility markup; check well-formedness with `xmllint --noout`. Keep the diagram consistent with the body's example.
-   - **Planning status:** in `TODO/approaches/approaches-planning-and-status.md`, mark the approach's row done (`✅` in the status column, `—` in the prio column); add a row in the fitting section if none exists.
+   - **Planning status:** in `TODO/approaches/approaches-planning-and-status.md`, mark the approach's row done (`✅` in the status column, `—` in the prio column); add a row in the fitting section if none exists. If an older dated proposal doc in `TODO/approaches/` (e.g. `*-tactics-260610.md`) lists the approach, tick it there too.
+   - **Link back:** for every existing approach that mentions the new one in prose (the overlap-check hits from step 1), turn the mention into a link to `/approaches/<slug>`, or add a `related:` entry when the two are genuinely adjacent — on **one** page only (the new page or the counterpart, never both). Re-run the validator on every page you touched.
 
 7. **Report and hand off.** Print:
-   - the file paths written (page, SVG, planning file);
-   - the exact slugs used for each list, so the author can eyeball them; and
+   - the file paths written (page, SVG, planning file, linked-back pages);
+   - the exact slugs used for each list, so the author can eyeball them;
+   - the body word count and any remaining validator warnings, with a one-line reason for each one kept; and
    - this manual checklist (the skill does **not** do these):
      1. `docker compose restart` — regenerates graph data.
      2. Open the page; confirm every note renders and no "No … specified" placeholder appears where content was intended. If the page declares `related:`, check the counterpart page shows the reverse relation.
@@ -70,5 +76,8 @@ Read it before generating. This `SKILL.md` owns the **procedure**; the template 
 | Tag outside the 9 dimensions | Broken tag link / missing tag page | Use only the 9 |
 | `###` heading in body | Breaks the document outline | Use `##` only |
 | Declaring `related:` on both pages | Relation renders twice; duplicate graph edge | Declare one-sided; check the counterpart first |
-| Counting `## Example` / image line into the body budget | False over-budget alarms, needless trimming | Use the template's canonical pipeline (or the validator) |
+| Counting `## Example` / image line into the body budget | False over-budget alarms, needless trimming | Use the validator's count |
+| Trimming trade-offs or failure modes to hit the body target | The page loses what makes it worth reading | The body target is soft; cut restatement and overview first |
+| Writing a page for a tactic an existing page covers as a variant | Two thin pages instead of one strong one | Run the overlap check in step 1 |
+| Link to a `/references/#anchor` that does not exist | Link lands at the top of the References page | Add the entry to `_pages/85-references.md` or cite without the anchor |
 | Restarting Docker or committing here | Out of scope; surprises the author | Stop after writing; hand off the checklist |

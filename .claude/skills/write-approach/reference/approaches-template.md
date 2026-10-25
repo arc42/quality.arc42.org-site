@@ -49,7 +49,7 @@ permalink: /approaches/circuit-breaker
 - `tradeoff_notes`:
   - Map keyed by each slug in `tradeoffs`. Value: name a concrete cost (a metric impact, a maintenance task, a class of stale data) *and* its consequence or triggering condition — not a generic warning. Trade-offs are a key differentiator of the site, so favour a substantive note (one or two sentences, ~50 words) over a terse one; length follows substance, don't pad.
 - `related` (optional):
-  - Array of approach slugs that exist as `_approaches/<LETTER>/<slug>.md`. Approach↔approach relations are declared **one-sided**: exactly one of the two pages carries the entry; `_layouts/approach.html` renders the relation on both pages and `src/scripts/data.js` emits one graph edge. Never declare the same relation on both pages. The link validator does **not** check these slugs — confirm each target file exists, or the entry vanishes silently.
+  - Array of approach slugs that exist as `_approaches/<LETTER>/<slug>.md`. Approach↔approach relations are declared **one-sided**: exactly one of the two pages carries the entry; `_layouts/approach.html` renders the relation on both pages and `src/scripts/data.js` emits one graph edge. Never declare the same relation on both pages. The site-wide link validator does **not** check these slugs; `npm run validate:approach` does — run it, or the entry can vanish silently.
 - `related_notes`:
   - Map keyed by each slug in `related`. One sentence. The note renders on **both** pages, so write it symmetrically — it must read correctly from either page's point of view.
 - `related_requirements`:
@@ -68,20 +68,14 @@ permalink: /approaches/circuit-breaker
 
 ## Length Budgets
 
-Count words mechanically with `wc -w` — do not eyeball. Nothing in the build enforces these.
+Count words mechanically — do not eyeball. `npm run validate:approach -- <file>` reports the counts and warns above each target; nothing errors on length, and nothing in the build enforces it. The targets are a discipline, not a quota: tighten restatement and overview prose first, and let a topic with real trade-offs or failure modes run past the body target rather than cutting those.
 
 - `intent`: one sentence, ≤ 25 words.
 - `mechanism`: one sentence or short paragraph, ≤ 50 words.
 - `applicability`: ≤ 50 words. Cover both "use when" and "skip when".
 - `supported_qualities_notes` / `related_notes` / `related_requirements_notes` value: one sentence, ≤ 25 words.
 - `tradeoff_notes` value: name the concrete cost *and* its consequence or the condition under which it bites; one or two sentences, ~50 words as a soft ceiling. Length follows substance — don't pad a simple cost, don't truncate a real one.
-- Body: ≤ 350 words across the overview paragraphs and the (max 4) content sections. The image line (`![…]`), `## Example` / `## Mini Example`, and `## References` are **excluded** from the count. Count with exactly this pipeline — `wc -w` counts bullet dashes, em-dashes, and table pipes as words, and the budget is calibrated to that, so do not hand-adjust:
-
-  ```bash
-  awk 'BEGIN{fm=0} /^---$/{fm++; next} fm>=2{print}' <file> \
-    | awk '/^## (References|Example|Mini Example)/{skip=1; next} /^## /{skip=0} !skip && !/^!\[/' \
-    | wc -w
-  ```
+- Body: target ~350 words across the overview paragraphs and the (max 4) content sections; the validator warns above 450. The image line (`![…]`), `## Example` / `## Mini Example`, and `## References` are **excluded** from the count. The count splits on whitespace, so bullet dashes, em-dashes, and table pipes count as words — the target is calibrated to that, so do not hand-adjust.
 
 ## Body Structure
 
@@ -155,7 +149,8 @@ Voice: precise, pragmatic, trustworthy — a technical handbook for software arc
 - `related` contains only existing approach slugs, each relation declared on **one** page only (check the counterpart's front matter), and every note reads correctly from both pages.
 - Every `*_notes` key matches a slug present in its corresponding array.
 - Tags use only the 9 dimensions listed above.
-- Length budgets hold (see "Length Budgets").
+- `npm run validate:approach -- <file>` exits green; every remaining length warning has a reason (see "Length Budgets").
+- A diagram sits after the overview, and every `/references/#anchor` link resolves.
 - Page renders correctly with no broken links.
 - `tradeoff_notes` name concrete costs; `## Verification` items name measurable signals.
 - Restart Docker after adding the file so graph data regenerates; confirm notes render and no "No … specified" placeholders appear where content was intended.
