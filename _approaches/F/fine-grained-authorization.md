@@ -2,14 +2,14 @@
 layout: approach
 title: "Fine-Grained Authorization (RBAC/ABAC)"
 tags: [secure]
-supported_qualities: [security, access-control, confidentiality, integrity, compliance, policy-enforcement, auditability]
+supported_qualities: [security, access-control, confidentiality, integrity, compliance, governability, auditability]
 supported_qualities_notes:
   security: Fine-grained authorization is a core security control that limits what authenticated actors can do, reducing the impact of compromised accounts and insider threats.
   access-control: Decides permission per actor, action, resource, and context instead of relying on coarse endpoint visibility or UI hiding.
   confidentiality: Prevents users and services from reading records outside their tenant, ownership scope, clearance, or purpose of use.
   integrity: Blocks unauthorized state changes such as modifying salaries, approvals, or regulated records without the required entitlements.
   compliance: Regulatory frameworks (GDPR, PCI DSS, HIPAA, SOX) require demonstrable, auditable access restrictions at the data and action level.
-  policy-enforcement: Central policy definitions can be evaluated consistently across APIs, services, and data-access paths.
+  governability: Central policy definitions can be evaluated consistently across APIs, services, and data-access paths.
   auditability: Decision logs can record who attempted which action on which resource, under which policy, and with what result.
 tradeoffs: [code-complexity, operability, latency, usability]
 tradeoff_notes:

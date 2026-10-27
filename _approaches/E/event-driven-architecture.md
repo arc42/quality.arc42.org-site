@@ -9,9 +9,9 @@ supported_qualities_notes:
   evolvability: "Event contracts outlive individual services: implementations change or get replaced behind a stable stream without coordinated rewrites."
   autonomy: "Each consumer reacts with its own logic and data, and keeps working from already-received events while peers are down."
   integrability: "A new system integrates by subscribing to the existing event stream; producers need no adapter code and no release."
-tradeoffs: [eventual-consistency, understandability, debuggability]
+tradeoffs: [consistency, understandability, debuggability]
 tradeoff_notes:
-  eventual-consistency: "Consumers learn about a state change only when its event reaches them, so parts of the system disagree for the propagation interval. Reads issued mid-propagation return stale data — acceptable for a search index, hazardous for a balance check."
+  consistency: "Consumers learn about a state change only when its event reaches them, so parts of the system disagree for the propagation interval. Reads issued mid-propagation return stale data — acceptable for a search index, hazardous for a balance check."
   understandability: "End-to-end behavior is written down nowhere: it emerges from which consumers subscribe to which events. Answering 'what happens when an order is placed?' takes an inventory of subscriptions across services, and the answer silently changes whenever any team adds one."
   debuggability: "One business flow becomes a chain of events across broker hops, retries, and consumers. Reconstructing why something happened — or failed to happen — needs correlation IDs propagated through every event and traces collected from every participant."
 intent: "Connect components through asynchronous events so producers publish facts without knowing their consumers, and new behavior attaches by subscription instead of modification."

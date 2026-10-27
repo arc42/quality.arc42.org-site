@@ -9,9 +9,9 @@ supported_qualities_notes:
   recoverability: "After a managed resource fails or disappears, repeated reconciliation recreates or repairs it from the durable desired-state description."
   drift-detectability: "Every comparison exposes the delta between declared and observed state, making configuration and runtime drift explicit."
   operability: "Operators change one declarative specification while the controller handles ordering, retries, and repeated correction across managed resources."
-tradeoffs: [eventual-consistency, code-complexity, resource-utilization]
+tradeoffs: [consistency, code-complexity, resource-utilization]
 tradeoff_notes:
-  eventual-consistency: "Desired and observed state differ while actions run or observations lag. Callers must tolerate the convergence window; a controller that needs five minutes to repair drift cannot satisfy a requirement that assumes immediate consistency."
+  consistency: "Desired and observed state differ while actions run or observations lag. Callers must tolerate the convergence window; a controller that needs five minutes to repair drift cannot satisfy a requirement that assumes immediate consistency."
   code-complexity: "Each controller needs idempotent actions, ownership rules, retry and backoff, status reporting, and safe handling of partial progress. Interacting controllers multiply the state space and can turn a simple deployment workflow into a distributed system."
   resource-utilization: "Polling, repeated reads, and unsuccessful corrections consume API, network, and compute capacity. A tight retry loop during a dependency outage can overload the control plane and slow every controller sharing it."
 intent: "Continuously drive observed system state toward declared intent, so failures and drift trigger automatic correction instead of manual repair."
