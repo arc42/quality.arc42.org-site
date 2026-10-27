@@ -56,7 +56,7 @@ The idea was formalized by Saltzer and Schroeder in 1975 as one of eight design 
 
 - Deny-by-default access control applies fail-safe defaults to authorization: any request not explicitly permitted is denied.
 - Watchdog supervision uses a periodic heartbeat; absence of the heartbeat triggers the safe-state transition.
-- Dead man's switch requires continuous active confirmation to remain in an operational mode — releasing the switch defaults to safe.
+- [Dead man's switch](/approaches/dead-mans-switch) requires continuous active confirmation to remain in an operational mode — releasing the switch defaults to safe.
 - Circuit breaker implements a fail-safe default for remote dependencies: when failures exceed a threshold, the breaker opens and returns a safe fallback rather than forwarding requests.
 
 ## References

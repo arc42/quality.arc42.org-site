@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 430" role="img" aria-labelledby="title desc">
+  <title id="title">Dead man's switch: continuation needs fresh confirmations</title>
+  <desc id="desc">A timeline with two lanes. In the confirmer lane, three confirmations each reset the timer in the timer lane back to zero. After the last confirmation none arrives, because the operator is absent, the link is lost or the client crashed. The timer keeps rising, crosses a warning level, and reaches expiry. At expiry the enforcer stops the operation or restores the last confirmed state, using local means only.</desc>
+  <defs>
+    <style>
+      .heading { font: 700 21px system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #2d2530; }
+      .label { font: 700 16px system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #2d2530; }
+      .small { font: 14px system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #554b57; }
+      .tiny { font: 12px system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #554b57; }
+      .band { font: 700 14px system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    </style>
+  </defs>
+
+  <rect width="1120" height="430" rx="22" fill="#f8f9fa"/>
+  <text x="560" y="38" text-anchor="middle" class="heading">Continuation needs fresh confirmations; silence ends in the safe state</text>
+
+  <g aria-label="Confirmer lane">
+    <text x="40" y="125" class="label">Confirmer</text>
+    <line x1="140" y1="120" x2="1080" y2="120" stroke="#d7d0d7" stroke-width="2"/>
+    <g transform="translate(250 120)">
+      <circle r="15" fill="#e8f5f1" stroke="#2f806d" stroke-width="2"/>
+      <path d="M-6 0 L-1 5 L7 -5" fill="none" stroke="#2f806d" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      <text y="36" text-anchor="middle" class="tiny">confirm</text>
+    </g>
+    <g transform="translate(390 120)">
+      <circle r="15" fill="#e8f5f1" stroke="#2f806d" stroke-width="2"/>
+      <path d="M-6 0 L-1 5 L7 -5" fill="none" stroke="#2f806d" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      <text y="36" text-anchor="middle" class="tiny">confirm</text>
+    </g>
+    <g transform="translate(530 120)">
+      <circle r="15" fill="#e8f5f1" stroke="#2f806d" stroke-width="2"/>
+      <path d="M-6 0 L-1 5 L7 -5" fill="none" stroke="#2f806d" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      <text y="36" text-anchor="middle" class="tiny">confirm</text>
+    </g>
+    <text x="700" y="104" text-anchor="middle" class="small" font-style="italic">no confirmation: operator absent, link lost, client crashed</text>
+  </g>
+
+  <g aria-label="Timer lane">
+    <text x="40" y="245" class="label">Timer</text>
+    <line x1="140" y1="170" x2="1080" y2="170" stroke="#e88a55" stroke-width="2" stroke-dasharray="8 6"/>
+    <text x="1080" y="162" text-anchor="end" class="tiny">expiry</text>
+    <line x1="140" y1="230" x2="1080" y2="230" stroke="#ffad80" stroke-width="2" stroke-dasharray="4 6"/>
+    <text x="1080" y="222" text-anchor="end" class="tiny">warning</text>
+    <line x1="140" y1="300" x2="1080" y2="300" stroke="#d7d0d7" stroke-width="2"/>
+    <polyline points="140,300 250,257 250,300 390,245 390,300 530,245 530,300 861,170" fill="none" stroke="#00b8f5" stroke-width="3" stroke-linejoin="round"/>
+    <circle cx="861" cy="170" r="6" fill="#682d63"/>
+    <line x1="861" y1="138" x2="861" y2="330" stroke="#682d63" stroke-width="2"/>
+  </g>
+
+  <g aria-label="System state">
+    <rect x="140" y="330" width="568" height="34" rx="8" fill="#e8f5f1" stroke="#2f806d" stroke-width="2"/>
+    <text x="424" y="352" text-anchor="middle" class="band" fill="#1f5c4d">Operating — confirmed</text>
+    <rect x="708" y="330" width="153" height="34" rx="8" fill="#fff0e8" stroke="#e88a55" stroke-width="2"/>
+    <text x="784" y="352" text-anchor="middle" class="band" fill="#8a4318">Warning</text>
+    <rect x="861" y="330" width="219" height="34" rx="8" fill="#682d63"/>
+    <text x="970" y="352" text-anchor="middle" class="band" fill="#ffffff">Safe state / revert</text>
+    <text x="1080" y="395" text-anchor="end" class="small">Enforcer stops the operation or restores the last confirmed state —</text>
+    <text x="1080" y="414" text-anchor="end" class="small">locally, without the confirmer's channel</text>
+  </g>
+</svg>
