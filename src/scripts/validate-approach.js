@@ -84,6 +84,10 @@ async function loadContext(projectRoot) {
   return {
     projectRoot,
     qualitySlugs: new Set(qData.map((d) => slugOf(d.permalink)).filter(Boolean)),
+    // Alias quality pages (`alias_of:`) are redirects; map their slug to the canonical one.
+    qualityAliases: new Map(
+      qData.filter((d) => d.alias_of).map((d) => [slugOf(d.permalink), String(d.alias_of)])
+    ),
     requirementSlugs: new Set(rData.map((d) => slugOf(d.permalink)).filter(Boolean)),
     approaches,
     referenceAnchors,
@@ -125,7 +129,7 @@ function validateFile(raw, filePath, ctx) {
   const warn = (m) => warnings.push(m);
 
   const { data: fm, content: body } = matter(raw);
-  const { qualitySlugs, requirementSlugs, approaches, referenceAnchors } = ctx;
+  const { qualitySlugs, qualityAliases, requirementSlugs, approaches, referenceAnchors } = ctx;
 
   // --- front-matter basics ---
   if (fm.layout !== "approach") {
@@ -210,6 +214,21 @@ function validateFile(raw, filePath, ctx) {
   const otherApproaches = new Set([...approaches.keys()].filter((s) => s !== approachSlug));
   checkPair("supported_qualities", "supported_qualities_notes", qualitySlugs, "quality", BUDGETS.note);
   checkPair("tradeoffs", "tradeoff_notes", qualitySlugs, "quality", BUDGETS.tradeoffNote);
+
+  // --- alias quality slugs: the link works (redirect), but the canonical quality page's
+  // "Related Approaches" list matches supported_qualities against the canonical slug only.
+  const aliasEffect = {
+    supported_qualities: "the approach is missing from that quality's Related Approaches list",
+    tradeoffs: "the link goes through a redirect page",
+  };
+  for (const [field, effect] of Object.entries(aliasEffect)) {
+    for (const slug of asArray(fm[field])) {
+      const canonical = qualityAliases.get(slug);
+      if (canonical) {
+        warn(`${field}: "${slug}" is an alias of "${canonical}" — use the canonical slug; otherwise ${effect}.`);
+      }
+    }
+  }
   checkPair("related_requirements", "related_requirements_notes", requirementSlugs, "requirement", BUDGETS.note);
   checkPair("related", "related_notes", otherApproaches, "approach", BUDGETS.note);
 
