@@ -24,6 +24,8 @@
     lede           Single paragraph of plain text shown below the title.
     chips_html     Pre-rendered HTML for the taxonomy chip row (tags, categories).
     meta           Inline metadata line (e.g. counts). HTML allowed.
+    actions_html   Pre-rendered HTML for actions shown next to the title
+                   (e.g. the map "Add to selection" button on quality pages).
 
   Example (index page):
     {% raw %}{% include section-hero.liquid
@@ -50,6 +52,7 @@
     {% endif %}
   {% endif %}
   <h1 class="section-hero__title">{{ include.title }}</h1>
+  {% if include.actions_html and include.actions_html != "" %}<div class="section-hero__actions">{{ include.actions_html }}</div>{% endif %}
   {% if include.lede and include.lede != "" %}<p class="section-hero__lede">{{ include.lede }}</p>{% endif %}
   {% if include.chips_html and include.chips_html != "" %}<div class="section-hero__chips">{{ include.chips_html }}</div>{% endif %}
   {% if include.meta and include.meta != "" %}<p class="section-hero__meta">{{ include.meta }}</p>{% endif %}

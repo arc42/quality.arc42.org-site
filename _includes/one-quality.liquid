@@ -21,7 +21,12 @@ as these pages need to display all related qualities/requirements.
   {% if filtered_qualities.size > 0 %}
     <ul class="posts">
       {%- for item in filtered_qualities -%}
-        <li> <a href="{{ item.url }}">{% include icon.html name="gem" size="xs" class="bullet" style="color: var(--quality-text-color);" %} {{ item.title }}</a></li>
+        <li class="map-add-row"> <a href="{{ item.url }}">{% include icon.html name="gem" size="xs" class="bullet" style="color: var(--quality-text-color);" %} {{ item.title }}</a>
+          {%- unless item.alias_of -%}
+            {%- assign item_id = item.permalink | split: "/" | last -%}
+            <button type="button" class="map-add" data-map-add="{{ item_id }}" data-map-title="{{ item.title | escape }}" aria-pressed="false">+ Add</button>
+          {%- endunless -%}
+        </li>
       {%- endfor -%}
     </ul>
   {% else %}

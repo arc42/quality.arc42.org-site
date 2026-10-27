@@ -1,0 +1,121 @@
+{
+  "nodes": [
+    {
+      "id": "availability",
+      "label": "Availability",
+      "labels": ["Availability"],
+      "size": 25,
+      "color": "#00B8F5",
+      "qualityType": "quality",
+      "page": "/qualities/availability",
+      "excerpt": "Capability of a product to be accessible and operational when required for use.",
+      "standards": ["ISO25010"]
+    },
+    {
+      "id": "resilience",
+      "label": "Resilience",
+      "labels": ["Resilience"],
+      "size": 25,
+      "color": "#00B8F5",
+      "qualityType": "quality",
+      "page": "/qualities/resilience"
+    },
+    {
+      "id": "fault-tolerance",
+      "label": "Fault Tolerance",
+      "labels": ["Fault Tolerance"],
+      "size": 25,
+      "color": "#00B8F5",
+      "qualityType": "quality",
+      "page": "/qualities/fault-tolerance"
+    },
+    {
+      "id": "recoverability",
+      "label": "Recoverability",
+      "labels": ["Recoverability"],
+      "size": 25,
+      "color": "#00B8F5",
+      "qualityType": "quality",
+      "page": "/qualities/recoverability"
+    },
+    {
+      "id": "circuit-breaker",
+      "label": "Circuit Breaker",
+      "labels": ["Circuit Breaker"],
+      "size": 15,
+      "color": "#99cc99",
+      "qualityType": "approach",
+      "page": "/approaches/circuit-breaker"
+    },
+    {
+      "id": "bulkheads",
+      "label": "Bulkheads",
+      "labels": ["Bulkheads"],
+      "size": 15,
+      "color": "#99cc99",
+      "qualityType": "approach",
+      "page": "/approaches/bulkheads"
+    },
+    {
+      "id": "quarantine",
+      "label": "Quarantine",
+      "labels": ["Quarantine"],
+      "size": 15,
+      "color": "#99cc99",
+      "qualityType": "approach",
+      "page": "/approaches/quarantine"
+    },
+    {
+      "id": "zone-failure",
+      "label": "Zone failure is survived",
+      "labels": ["Zone failure is survived"],
+      "size": 15,
+      "color": "#ffb3b3",
+      "qualityType": "requirement",
+      "page": "/requirements/zone-failure"
+    },
+    {
+      "id": "iso25010",
+      "label": "ISO 25010",
+      "labels": ["ISO 25010"],
+      "size": 45,
+      "color": "#FFC95C",
+      "qualityType": "standard",
+      "page": "/standards/iso25010"
+    }
+  ],
+  "propertyNodes": [
+    {
+      "id": "reliable",
+      "label": "Reliable",
+      "size": 35,
+      "color": "#f8f9fa",
+      "qualityType": "dimension",
+      "page": "/tags/reliable"
+    },
+    {
+      "id": "secure",
+      "label": "Secure",
+      "size": 35,
+      "color": "#f8f9fa",
+      "qualityType": "dimension",
+      "page": "/tags/secure"
+    }
+  ],
+  "edges": [
+    { "source": "availability", "target": "reliable" },
+    { "source": "resilience", "target": "reliable" },
+    { "source": "fault-tolerance", "target": "reliable" },
+    { "source": "recoverability", "target": "reliable" },
+    { "source": "resilience", "target": "secure" },
+    { "source": "circuit-breaker", "target": "availability" },
+    { "source": "circuit-breaker", "target": "resilience" },
+    { "source": "circuit-breaker", "target": "fault-tolerance" },
+    { "source": "bulkheads", "target": "availability" },
+    { "source": "bulkheads", "target": "resilience" },
+    { "source": "quarantine", "target": "recoverability" },
+    { "source": "zone-failure", "target": "availability" },
+    { "source": "zone-failure", "target": "fault-tolerance" },
+    { "source": "availability", "target": "resilience" }
+  ]
+}

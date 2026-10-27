@@ -1,0 +1,1191 @@
+// map — the /map/ page: summary, layer toggles, layout mount points, list view.
+//
+// Driven by src/map/MapPage.js: the SVG canvas (MapView), the side panel
+// (Panel) and the list view (ListView).
+
+// Without JavaScript the <noscript> fallback replaces the whole page.
+html:not(.js) .map-page {
+  display: none;
+}
+
+.map-page {
+  padding: 0 0.9rem 1.5rem;
+}
+
+.map-intro {
+  margin: 0 -0.9rem 0.6rem;
+}
+
+.map-intro__actions {
+  align-items: flex-start;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-left: auto;
+}
+
+// ── Pill buttons (tokens shared with .map-add) ──────────────
+
+.map-pill {
+  align-items: center;
+  background: var(--brand-paper);
+  border: 1px solid var(--brand-violet);
+  border-radius: $radius-pill;
+  color: var(--brand-violet);
+  cursor: pointer;
+  display: inline-flex;
+  font: inherit;
+  font-size: 0.92rem;
+  font-weight: 700;
+  gap: 0.4rem;
+  line-height: 1.2;
+  min-height: 44px;
+  padding: 0 1rem;
+  white-space: nowrap;
+
+  &[hidden] {
+    display: none;
+  }
+
+  &:hover {
+    background: var(--brand-violet-faint);
+  }
+
+  &[aria-pressed="true"] {
+    background: var(--brand-violet);
+    color: var(--brand-cream);
+  }
+
+  &[aria-pressed="true"]:hover {
+    background: var(--brand-violet-deep);
+  }
+
+  &:disabled {
+    border-color: var(--brand-muted);
+    color: var(--brand-muted);
+    cursor: not-allowed;
+
+    &:hover {
+      background: var(--brand-paper);
+    }
+  }
+
+  &:focus-visible {
+    box-shadow: var(--focus-ring);
+    outline: none;
+  }
+}
+
+.map-pill--primary:not(:disabled) {
+  background: var(--brand-violet);
+  color: var(--brand-cream);
+
+  &:hover {
+    background: var(--brand-violet-deep);
+  }
+}
+
+// Compact pill for table cells; keeps the 44 px target height.
+.map-pill--small {
+  font-size: 0.8rem;
+  padding: 0 0.7rem;
+}
+
+.map-pill__count {
+  align-items: center;
+  background: var(--brand-violet);
+  border-radius: $radius-pill;
+  color: var(--brand-cream);
+  display: inline-flex;
+  font-size: 0.8rem;
+  height: 1.4rem;
+  justify-content: center;
+  min-width: 1.4rem;
+  padding: 0 0.35rem;
+}
+
+// Layer chips carry their node colour when pressed, so the toggles double as legend.
+.map-pill__check {
+  display: none;
+}
+
+.map-pill--layer[aria-pressed="true"] {
+  .map-pill__check {
+    display: inline;
+  }
+
+  &[data-layer="approaches"] {
+    background: var(--approaches-background-color);
+    border-color: var(--approaches-text-color);
+    color: var(--approaches-text-color);
+  }
+
+  &[data-layer="requirements"] {
+    background: var(--reqs-background-color);
+    border-color: var(--req-text-color);
+    color: var(--req-text-color);
+  }
+
+  &[data-layer="standards"] {
+    background: var(--standard-background-color);
+    border-color: var(--standard-text-color);
+    color: var(--standard-text-color);
+  }
+
+  &[data-layer="dimensions"] {
+    background: var(--dimension-background-color);
+    border-color: var(--dimension-background-color);
+    color: var(--dimension-text-color);
+  }
+
+  &:hover {
+    filter: brightness(0.95);
+  }
+}
+
+// ── Controls row ────────────────────────────────────────────
+
+.map-controls {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 0.75rem;
+  margin: 0 0 1rem;
+
+  &[hidden] {
+    display: none;
+  }
+}
+
+.map-controls__label {
+  color: var(--brand-muted-strong);
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.map-controls__layers {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+// An action, not a layer toggle: set apart at the row's end.
+.map-controls__action {
+  margin-left: auto;
+}
+
+// ── Add a quality (combobox) ────────────────────────────────
+
+.map-add-bar {
+  align-items: flex-end;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 0.75rem;
+  margin: 0 0 1rem;
+}
+
+.map-add-search {
+  flex: 1 1 16rem;
+  margin: 0;
+  max-width: 28rem;
+  min-width: 0;
+  position: relative;
+}
+
+.map-add-search__label-text {
+  color: var(--brand-muted-strong);
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+  text-transform: uppercase;
+}
+
+// [type="search"] outranks the normalize rule that sets content-box on search inputs.
+.map-add-search__input[type="search"] {
+  background: var(--brand-paper);
+  border: 1px solid var(--brand-muted);
+  border-radius: $radius-sm;
+  box-sizing: border-box;
+  color: var(--brand-ink);
+  font: inherit;
+  min-height: 44px;
+  padding: 0 0.75rem;
+  width: 100%;
+
+  &:focus-visible {
+    box-shadow: var(--focus-ring);
+    outline: none;
+  }
+}
+
+.map-add-search__results {
+  background: var(--brand-paper);
+  border: 1px solid var(--brand-violet-soft);
+  border-radius: $radius-sm;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+  left: 0;
+  list-style: none;
+  margin: 0.25rem 0 0;
+  max-height: 60vh;
+  overflow-y: auto;
+  padding: 0.25rem;
+  position: absolute;
+  right: 0;
+  z-index: 20;
+
+  &[hidden] {
+    display: none;
+  }
+}
+
+.map-add-search__item {
+  align-items: center;
+  border-radius: $radius-sm;
+  display: flex;
+  gap: 0.75rem;
+  justify-content: space-between;
+  min-height: 44px;
+  padding: 0.25rem 0.25rem 0.25rem 0.5rem;
+
+  &[aria-selected="true"] {
+    background: var(--brand-violet-faint);
+  }
+}
+
+.map-add-search__label {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.map-add-search__via {
+  color: var(--brand-muted-strong);
+  font-size: 0.82rem;
+}
+
+// ── Hidden list ─────────────────────────────────────────────
+
+.map-hidden {
+  position: relative;
+}
+
+.map-hidden__list {
+  background: var(--brand-paper);
+  border: 1px solid var(--brand-violet-soft);
+  border-radius: $radius-sm;
+  box-shadow: 0 10px 30px rgba(36, 24, 35, 0.15);
+  margin-top: 0.4rem;
+  min-width: 18rem;
+  padding: 0.5rem 0.75rem 0.75rem;
+  position: absolute;
+  right: 0;
+  z-index: var(--z-popover);
+
+  &[hidden] {
+    display: none;
+  }
+}
+
+.map-hidden__items {
+  list-style: none;
+  margin: 0 0 0.5rem;
+  padding: 0;
+
+  li {
+    align-items: center;
+    border-bottom: 1px solid var(--brand-violet-soft);
+    display: flex;
+    gap: 0.75rem;
+    justify-content: space-between;
+    padding: 0.35rem 0;
+  }
+}
+
+// ── Notice and empty state ──────────────────────────────────
+
+.map-notice {
+  margin: 0;
+
+  &:not(:empty) {
+    background: var(--brand-violet-faint);
+    border-left: 4px solid var(--brand-violet);
+    border-radius: $radius-xs;
+    margin: 0 0 1rem;
+    padding: 0.5rem 0.9rem;
+  }
+}
+
+.map-notice__actions {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-left: 0.5rem;
+  vertical-align: middle;
+}
+
+.map-empty {
+  margin: 2rem auto;
+  max-width: 40rem;
+
+  &[hidden] {
+    display: none;
+  }
+}
+
+// ── Canvas + panel layout ───────────────────────────────────
+
+.map-layout {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+
+  &[hidden] {
+    display: none;
+  }
+}
+
+.map-stage {
+  display: flex;
+  flex: 999 1 560px;
+  flex-direction: column;
+  gap: 0.75rem;
+  min-width: 0;
+  position: relative;
+}
+
+// Legend and chip sit over the canvas corners on wide screens, below it on phones.
+.map-legend {
+  background: var(--brand-paper);
+  border: 1px solid var(--brand-violet-soft);
+  border-radius: $radius-sm;
+  box-sizing: border-box;
+  color: var(--brand-muted-strong);
+  display: flex;
+  flex-direction: column;
+  font-size: 0.85rem;
+  gap: 0.5rem;
+  padding: 0.8rem 1rem;
+
+  p {
+    margin: 0;
+  }
+}
+
+.map-legend__title {
+  color: var(--brand-ink);
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.map-legend__list {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 0.75rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  li {
+    align-items: center;
+    display: inline-flex;
+    gap: 0.4rem;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.map-legend__list--stack {
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+// Fills and pill colours mirror src/map/nodeStyle.js (QUALITY_FILL, ITEM_STYLES).
+.map-swatch {
+  border: 2px solid transparent;
+  box-sizing: border-box;
+  flex: none;
+  height: 14px;
+  width: 14px;
+}
+
+.map-swatch--q-none,
+.map-swatch--q-med,
+.map-swatch--q-high {
+  border-radius: 999px;
+}
+
+.map-swatch--q-none {
+  background: white;
+  border-color: var(--quality-background-color);
+}
+
+.map-swatch--q-med {
+  // 35% quality blue on white = QUALITY_FILL.medium (#a6e4fb) in nodeStyle.js.
+  background: color-mix(in srgb, var(--quality-background-color) 35%, white);
+}
+
+.map-swatch--q-high {
+  background: var(--quality-background-color);
+}
+
+.map-swatch--approach {
+  background: var(--approaches-soft-background-color);
+  border: 1px solid var(--approaches-text-color);
+  border-radius: 999px;
+  width: 26px;
+}
+
+.map-swatch--custom {
+  background: var(--reqs-soft-background-color);
+  border: 2px dashed var(--req-text-color);
+  border-radius: 4px;
+  width: 26px;
+}
+
+.map-singles-chip {
+  align-self: flex-start;
+  background: var(--brand-paper);
+  border: 1px dashed var(--brand-muted);
+  border-radius: 999px;
+  color: var(--brand-muted-strong);
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.85rem;
+  min-height: 44px;
+  padding: 0.5rem 1rem;
+
+  &:hover {
+    border-color: var(--brand-violet);
+    color: var(--brand-ink);
+  }
+
+  &:focus-visible {
+    box-shadow: var(--focus-ring);
+    outline: none;
+  }
+
+  &[hidden] {
+    display: none;
+  }
+}
+
+@media screen and (min-width: $mobile-width) {
+  .map-legend,
+  .map-singles-chip {
+    bottom: 1rem;
+    position: absolute;
+  }
+
+  .map-legend {
+    left: 1rem;
+    max-width: 16rem;
+    pointer-events: none; // no interactive children: let drag, pan and zoom reach the canvas
+  }
+
+  .map-singles-chip {
+    right: 1rem;
+  }
+}
+
+.map-canvas {
+  background-color: white;
+  background-image: radial-gradient(var(--brand-violet-soft) 1px, transparent 1px);
+  background-size: 24px 24px;
+  border: 1px solid var(--brand-violet-soft);
+  border-radius: $radius-md;
+  height: clamp(420px, 70vh, 640px);
+  min-width: 0;
+  overflow: hidden;
+}
+
+.map-svg {
+  cursor: grab;
+  display: block;
+  height: 100%;
+  touch-action: none;
+  width: 100%;
+
+  &:active {
+    cursor: grabbing;
+  }
+}
+
+// ── Canvas nodes (colours come from src/map/nodeStyle.js) ───
+
+.map-edge {
+  pointer-events: none;
+}
+
+.map-node {
+  cursor: pointer;
+  font-family: inherit;
+
+  text {
+    pointer-events: none;
+    user-select: none;
+  }
+}
+
+.map-node__shape {
+  stroke-width: 2px;
+  transition: stroke-width 120ms ease;
+}
+
+.map-node:hover .map-node__shape {
+  stroke-width: 3px;
+}
+
+.map-node.is-selected .map-node__shape {
+  filter: drop-shadow(0 0 6px var(--brand-violet-46));
+  stroke-width: 4px;
+}
+
+.map-node__label {
+  font-size: 13px;
+  font-weight: 700;
+  text-anchor: middle;
+}
+
+.map-node__sub {
+  font-size: 11px;
+  text-anchor: middle;
+}
+
+.map-node__pill-label {
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.map-node__badge-text {
+  font-size: 11px;
+  font-weight: 700;
+  text-anchor: middle;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .map-node__shape {
+    transition: none;
+  }
+}
+
+// ── Side panel ──────────────────────────────────────────────
+
+.map-panel {
+  align-self: flex-start;
+  background: white;
+  border: 1px solid var(--brand-violet-soft);
+  border-radius: $radius-md;
+  box-sizing: border-box;
+  display: flex;
+  flex: 1 1 300px;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 400px;
+  padding: 1.25rem 1.5rem;
+}
+
+.map-panel__placeholder {
+  color: var(--brand-muted-strong);
+  margin: 0;
+}
+
+.map-panel__badge {
+  align-self: flex-start;
+  background: var(--brand-violet-faint);
+  border-radius: $radius-pill;
+  color: var(--brand-violet);
+  font-size: 0.82rem;
+  font-weight: 700;
+  padding: 0.2rem 0.75rem;
+
+  &[data-type="quality"] {
+    background: var(--brand-blue-soft);
+    color: var(--brand-blue-text);
+  }
+
+  &[data-type="approach"] {
+    background: var(--approaches-soft-background-color);
+    color: var(--approaches-text-color);
+  }
+
+  &[data-type="requirement"],
+  &[data-type="custom"] {
+    background: var(--reqs-soft-background-color);
+    color: var(--req-text-color);
+  }
+
+  &[data-type="standard"] {
+    background: var(--standard-background-color);
+    color: var(--standard-text-color);
+  }
+
+  &[data-type="dimension"] {
+    background: var(--dimension-background-color);
+    color: var(--dimension-text-color);
+  }
+}
+
+.map-panel__title {
+  font-size: 1.6rem;
+  line-height: 1.15;
+  margin: 0;
+
+  // Focused programmatically from the list view's Details buttons.
+  &:focus {
+    outline: none;
+  }
+
+  &:focus-visible {
+    border-radius: $radius-xs;
+    box-shadow: var(--focus-ring);
+  }
+}
+
+.map-panel__summary {
+  color: var(--brand-muted-strong);
+  margin: -0.5rem 0 0;
+}
+
+.map-panel__qualities {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  li {
+    align-items: baseline;
+    display: flex;
+    gap: 0.6rem;
+  }
+
+  .is-linked .map-panel__mark {
+    color: var(--approaches-text-color);
+    font-weight: 700;
+  }
+
+  .is-unlinked {
+    color: var(--brand-muted-strong);
+  }
+}
+
+.map-panel__priority {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+
+  &:empty {
+    display: none;
+  }
+}
+
+.map-panel__subheading {
+  font-size: 1rem;
+  margin: 0;
+}
+
+.map-segments {
+  display: flex;
+}
+
+.map-segment {
+  background: white;
+  border: 1px solid var(--brand-violet);
+  color: var(--brand-violet);
+  cursor: pointer;
+  flex: 1;
+  font: inherit;
+  font-weight: 700;
+  min-height: 44px;
+  padding: 0 0.75rem;
+
+  &:first-child {
+    border-radius: $radius-sm 0 0 $radius-sm;
+  }
+
+  &:last-child {
+    border-radius: 0 $radius-sm $radius-sm 0;
+  }
+
+  & + & {
+    margin-left: -1px;
+  }
+
+  &:hover {
+    background: var(--brand-violet-faint);
+  }
+
+  &[aria-pressed="true"] {
+    background: var(--brand-violet);
+    color: white;
+  }
+
+  &:focus-visible {
+    box-shadow: var(--focus-ring);
+    outline: none;
+    position: relative;
+  }
+}
+
+.map-panel__open {
+  align-items: center;
+  align-self: flex-start;
+  border-top: 1px solid var(--brand-violet-soft);
+  display: inline-flex;
+  font-weight: 700;
+  gap: 0.5rem;
+  min-height: 44px;
+  padding-top: 0.5rem;
+
+  &:focus-visible {
+    box-shadow: var(--focus-ring);
+    outline: none;
+  }
+}
+
+.map-panel__hide {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.map-panel__button {
+  align-self: flex-start;
+  background: white;
+  border: 1px solid var(--brand-violet);
+  border-radius: $radius-sm;
+  color: var(--brand-violet);
+  cursor: pointer;
+  font: inherit;
+  font-weight: 700;
+  min-height: 44px;
+  padding: 0 1rem;
+
+  &:hover {
+    background: var(--brand-violet-faint);
+  }
+
+  &:focus-visible {
+    box-shadow: var(--focus-ring);
+    outline: none;
+  }
+}
+
+.map-panel__button--secondary {
+  border-color: var(--brand-muted);
+  color: var(--brand-muted-strong);
+
+  &:hover {
+    background: var(--brand-paper);
+    border-color: var(--brand-violet);
+    color: var(--brand-violet);
+  }
+}
+
+.map-panel__scenario {
+  border-left: 3px solid var(--brand-violet-soft);
+  margin: 0;
+  overflow-wrap: anywhere;
+  padding-left: 0.75rem;
+  white-space: pre-wrap;
+}
+
+.map-panel__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.map-panel__propose {
+  border-top: 1px solid var(--brand-violet-soft);
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding-top: 0.5rem;
+}
+
+// "Propose as contribution" — in the panel and in the form.
+.map-propose {
+  align-items: center;
+  align-self: flex-start;
+  display: inline-flex;
+  font-weight: 700;
+  gap: 0.5rem;
+  min-height: 44px;
+
+  &[hidden] {
+    display: none;
+  }
+
+  &:focus-visible {
+    box-shadow: var(--focus-ring);
+    outline: none;
+  }
+}
+
+.map-panel__hint {
+  color: var(--brand-muted-strong);
+  font-size: 0.85rem;
+  margin: 0;
+}
+
+// ── List view ───────────────────────────────────────────────
+
+.map-list {
+  min-width: 0;
+
+  &[hidden] {
+    display: none;
+  }
+}
+
+.map-list__title {
+  font-size: 1.15rem;
+  margin: 0 0 0.5rem;
+}
+
+// The wrapper is the table's scroll container on narrow screens. It is also
+// the containing block for the cells' absolutely positioned .sr-only labels,
+// which would otherwise escape the scroll area and widen the page.
+.map-table-wrap {
+  max-width: 100%;
+  min-width: 0;
+  overflow-x: auto;
+  position: relative;
+
+  &:focus-visible {
+    box-shadow: var(--focus-ring);
+    outline: none;
+  }
+}
+
+.map-table {
+  border-collapse: collapse;
+  font-size: 0.92rem;
+  width: 100%;
+
+  caption {
+    color: var(--brand-muted-strong);
+    padding: 0 0 0.5rem;
+    text-align: left;
+  }
+
+  th,
+  td {
+    border-bottom: 1px solid var(--brand-violet-soft);
+    padding: 0.4rem 0.6rem;
+    vertical-align: top;
+  }
+
+  thead th {
+    background: var(--brand-paper);
+    text-align: center;
+    white-space: nowrap;
+
+    &:first-child {
+      text-align: left;
+    }
+  }
+
+  tbody th[scope="row"] {
+    background: var(--brand-paper);
+    font-weight: 400;
+    text-align: left;
+  }
+
+  .is-hidden {
+    color: var(--brand-muted-strong);
+  }
+}
+
+.map-table__group th {
+  background: var(--brand-violet-faint);
+  font-weight: 700;
+  text-align: left;
+}
+
+.map-table__priority {
+  color: var(--brand-muted-strong);
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 400;
+}
+
+.map-table__cell,
+.map-table__serves {
+  text-align: center;
+  white-space: nowrap;
+}
+
+.map-table__details {
+  margin-left: 0.5rem;
+  vertical-align: middle;
+}
+
+thead .map-table__details {
+  margin: 0.25rem 0 0;
+}
+
+.map-table__badge {
+  border: 1px solid currentColor;
+  border-radius: $radius-pill;
+  display: inline-block;
+  font-size: 0.75rem;
+  margin-left: 0.4rem;
+  padding: 0 0.4rem;
+}
+
+// Keep the item column in view while the quality columns scroll.
+@media screen and (min-width: $mobile-width) {
+  .map-table thead th:first-child,
+  .map-table tbody th[scope="row"] {
+    left: 0;
+    position: sticky;
+    z-index: 1;
+  }
+}
+
+// ── Export & share dialog ───────────────────────────────────
+
+.map-export-dialog {
+  background: var(--brand-paper);
+  border: 1px solid var(--brand-violet-soft);
+  border-radius: $radius-lg;
+  box-shadow: 0 20px 50px rgba(36, 24, 35, 0.25);
+  color: var(--brand-ink);
+  margin: auto;
+  max-height: calc(100dvh - 2rem);
+  max-width: 38rem;
+  overflow: auto;
+  padding: 0;
+  width: calc(100% - 2rem);
+
+  &::backdrop {
+    background: rgba(36, 24, 35, 0.45);
+  }
+}
+
+.map-export-dialog__body {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1.25rem 1.25rem 1.5rem;
+}
+
+.map-export-dialog__head {
+  align-items: center;
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+}
+
+.map-export-dialog__title {
+  margin: 0;
+}
+
+.map-export-dialog__lede {
+  color: var(--brand-muted-strong);
+  margin: 0;
+}
+
+.map-export__section {
+  border: 1px solid var(--brand-violet-soft);
+  border-radius: $radius-sm;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  padding: 1rem;
+}
+
+.map-export__title {
+  font-size: 1.1rem;
+  margin: 0;
+}
+
+.map-export__hint {
+  color: var(--brand-muted-strong);
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.map-export__row {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+
+  &[hidden] {
+    display: none;
+  }
+}
+
+.map-export__url {
+  background: var(--brand-cream);
+  border: 1px solid var(--brand-muted);
+  border-radius: $radius-sm;
+  color: var(--brand-ink);
+  flex: 1 1 12rem;
+  font-family: ui-monospace, Menlo, Consolas, monospace;
+  font-size: 0.85rem;
+  min-height: 44px;
+  min-width: 0;
+  padding: 0 0.75rem;
+
+  &:focus-visible {
+    box-shadow: var(--focus-ring);
+    outline: none;
+  }
+}
+
+.map-export__status {
+  color: var(--brand-violet);
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.map-export__warning,
+.map-export__error {
+  border-left: 4px solid var(--error-color);
+  border-radius: $radius-xs;
+  margin: 0;
+  padding: 0.4rem 0.75rem;
+
+  &[hidden] {
+    display: none;
+  }
+}
+
+.map-export__options {
+  border: 0;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+}
+
+.map-export__option {
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  gap: 0.6rem;
+  min-height: 44px;
+
+  input {
+    accent-color: var(--brand-violet);
+    flex-shrink: 0;
+    height: 1.15rem;
+    margin: 0;
+    width: 1.15rem;
+
+    &:focus-visible {
+      box-shadow: var(--focus-ring);
+      outline: none;
+    }
+  }
+}
+
+.map-export__preview {
+  background: var(--brand-cream);
+  border: 1px solid var(--brand-violet-soft);
+  border-radius: $radius-sm;
+  max-height: 18rem;
+  overflow: auto;
+
+  &:focus-visible {
+    box-shadow: var(--focus-ring);
+    outline: none;
+  }
+
+  pre {
+    background: transparent;
+    border: 0;
+    color: var(--brand-ink);
+    font-family: ui-monospace, Menlo, Consolas, monospace;
+    font-size: 0.8rem;
+    line-height: 1.55;
+    margin: 0;
+    overflow-wrap: anywhere;
+    padding: 0.75rem 1rem;
+    white-space: pre-wrap;
+  }
+}
+
+// ── Own requirement dialog ──────────────────────────────────
+
+.map-custom__field,
+.map-custom__group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.map-custom__group {
+  border: 0;
+  margin: 0;
+  min-width: 0;
+  padding: 0;
+}
+
+.map-custom__label {
+  font-weight: 700;
+  padding: 0;
+}
+
+.map-custom__optional {
+  color: var(--brand-muted-strong);
+  font-weight: 400;
+}
+
+.map-custom__input {
+  background: white;
+  border: 1px solid var(--brand-muted);
+  border-radius: $radius-sm;
+  box-sizing: border-box;
+  color: var(--brand-ink);
+  font: inherit;
+  min-height: 44px;
+  padding: 0.5rem 0.75rem;
+  width: 100%;
+
+  &:focus-visible {
+    box-shadow: var(--focus-ring);
+    outline: none;
+  }
+
+  &[aria-invalid="true"] {
+    border-color: var(--error-color);
+  }
+}
+
+.map-custom__textarea {
+  resize: vertical;
+}
+
+.map-custom__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.map-custom__chip {
+  white-space: normal;
+
+  &[aria-pressed="true"] .map-pill__check {
+    display: inline;
+  }
+}
+
+.map-custom__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.map-custom__remove {
+  margin-left: auto;
+}

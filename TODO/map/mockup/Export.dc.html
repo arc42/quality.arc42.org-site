@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Export and share your map</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@400;500;700&family=Libre+Caslon+Text:wght@400;700&display=swap">
+<style>
+body{margin:0;background:#f8f7f2;font-family:"Atkinson Hyperlegible Next","Atkinson Hyperlegible",system-ui,sans-serif;color:#241823}
+a{color:#682d63}a:hover{color:#52214f}
+</style>
+</helmet>
+<div style="font-family: 'Atkinson Hyperlegible Next', 'Atkinson Hyperlegible', system-ui, sans-serif; color: #241823; background: #f8f7f2; min-height: 1560px; display: flex; flex-direction: column">
+
+  <!-- site header -->
+  <header style="background: #682d63; color: #ffffff; padding: 0 40px; height: 68px; display: flex; align-items: center; gap: 36px; flex-wrap: wrap">
+    <div style="display: flex; align-items: baseline; gap: 8px">
+      <span style="font-family: 'Libre Caslon Text', Georgia, serif; font-size: 24px; font-weight: 700">Q42</span>
+      <span style="font-size: 15px; opacity: 0.85">quality model</span>
+    </div>
+    <nav aria-label="Primary" style="display: flex; gap: 26px; font-size: 16px; font-weight: 500">
+      <a href="#how" style="color: #ffffff; text-decoration: none; opacity: 0.85">How-To</a>
+      <a href="Collect.dc.html" style="color: #ffffff; text-decoration: none; opacity: 0.85">Qualities</a>
+      <a href="#r" style="color: #ffffff; text-decoration: none; opacity: 0.85">Requirements</a>
+      <a href="#a" style="color: #ffffff; text-decoration: none; opacity: 0.85">Approaches</a>
+      <a href="#s" style="color: #ffffff; text-decoration: none; opacity: 0.85">Standards</a>
+    </nav>
+    <div style="margin-left: auto; display: flex; align-items: center; gap: 12px">
+      <label for="search" style="position: absolute; left: -9999px">Search Q42</label>
+      <input id="search" placeholder="Search Q42" style="height: 40px; width: 240px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.4); background: rgba(255,255,255,0.14); color: #ffffff; padding: 0 14px; font: inherit; font-size: 15px">
+      <a href="Main.dc.html" style="display: flex; align-items: center; gap: 10px; height: 40px; padding: 0 6px 0 14px; border-radius: 999px; background: #ffffff; color: #682d63; text-decoration: none; font-weight: 700; font-size: 15px">
+        <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6" cy="6" r="3"></circle><circle cx="18" cy="6" r="3"></circle><circle cx="12" cy="18" r="3"></circle><path d="M8.5 7.5l2.5 8M15.5 7.5l-2.5 8M9 6h6"></path></svg>
+        <span>Selection</span>
+        <span style="background: #682d63; color: #ffffff; border-radius: 999px; min-width: 22px; height: 22px; display: inline-flex; align-items: center; justify-content: center; font-size: 13px">4</span>
+        <span style="background: #5fb49c; color: #0f3d31; border-radius: 999px; padding: 0 12px; height: 28px; display: inline-flex; align-items: center; font-size: 14px">Map</span>
+      </a>
+    </div>
+  </header>
+
+  <main style="max-width: 1360px; width: 100%; margin: 0 auto; padding: 40px 24px 60px; box-sizing: border-box; display: flex; flex-direction: column; gap: 28px">
+
+    <nav aria-label="Breadcrumb" style="font-size: 15px; color: #746671"><a href="Main.dc.html">Your map</a> / Export &amp; share</nav>
+
+    <div style="display: flex; flex-direction: column; gap: 8px; max-width: 820px">
+      <h1 style="margin: 0; font-family: 'Libre Caslon Text', Georgia, serif; font-size: 44px; font-weight: 700; line-height: 1.1">Export &amp; share</h1>
+      <p style="margin: 0; font-size: 18px; color: #5c4f59; line-height: 1.5">Your map lives in this browser only. Take it with you as a link, a file, or text you can paste straight into your architecture documentation.</p>
+    </div>
+
+    <div style="display: flex; gap: 24px; flex-wrap: wrap; align-items: flex-start">
+
+      <!-- options column -->
+      <div style="flex: 1 1 380px; max-width: 480px; display: flex; flex-direction: column; gap: 16px">
+
+        <!-- share url -->
+        <section aria-labelledby="ex-url" style="background: #ffffff; border: 1px solid #e9d9e8; border-radius: 14px; padding: 22px 24px; display: flex; flex-direction: column; gap: 12px">
+          <div style="display: flex; align-items: center; gap: 12px">
+            <span style="width: 40px; height: 40px; border-radius: 10px; background: #f5eef4; color: #682d63; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0">
+              <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 14a4 4 0 005.7 0l3-3a4 4 0 00-5.7-5.7l-1 1M14 10a4 4 0 00-5.7 0l-3 3a4 4 0 005.7 5.7l1-1"></path></svg>
+            </span>
+            <div style="display: flex; flex-direction: column; gap: 2px">
+              <h2 id="ex-url" style="margin: 0; font-size: 19px; font-weight: 700">Share link</h2>
+              <span style="font-size: 14px; color: #746671">The whole map is encoded in the URL. No server, nothing stored.</span>
+            </div>
+          </div>
+          <div style="display: flex; gap: 8px">
+            <label for="share-url" style="position: absolute; left: -9999px">Share URL</label>
+            <input id="share-url" readonly value="https://quality.arc42.org/map/#v1.eJyrVkrOz1XySy1XslIyNDIwMjYwMjQ0M…" style="flex: 1 1 auto; min-width: 0; height: 44px; border-radius: 8px; border: 1px solid #cfc6cd; padding: 0 12px; font: inherit; font-size: 14px; font-family: ui-monospace, Menlo, monospace; color: #5c4f59; background: #f8f7f2">
+            <button style="min-height: 44px; padding: 0 16px; border-radius: 8px; border: 1px solid #682d63; background: #682d63; color: #ffffff; font: inherit; font-weight: 700; font-size: 15px; cursor: pointer; white-space: nowrap">Copy</button>
+          </div>
+          <span style="font-size: 13px; color: #746671">Whoever opens it can merge it into their own selection or replace it. Good for a wiki page or a workshop projector.</span>
+        </section>
+
+        <!-- markdown -->
+        <section aria-labelledby="ex-md" style="background: #ffffff; border: 2px solid #682d63; border-radius: 14px; padding: 22px 24px; display: flex; flex-direction: column; gap: 12px">
+          <div style="display: flex; align-items: center; gap: 12px">
+            <span style="width: 40px; height: 40px; border-radius: 10px; background: #682d63; color: #ffffff; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0">
+              <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 5h16v14H4zM7 15V9l2.5 3L12 9v6M16 9v6M14 13l2 2 2-2"></path></svg>
+            </span>
+            <div style="display: flex; flex-direction: column; gap: 2px">
+              <h2 id="ex-md" style="margin: 0; font-size: 19px; font-weight: 700">Markdown for arc42</h2>
+              <span style="font-size: 14px; color: #746671">Quality goals, quality tree, approach matrix. Preview on the right.</span>
+            </div>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 8px; font-size: 15px">
+            <label style="display: flex; align-items: center; gap: 10px; min-height: 32px"><input type="checkbox" checked style="width: 18px; height: 18px; accent-color: #682d63"> §1.2 Quality goals, ranked by my priority</label>
+            <label style="display: flex; align-items: center; gap: 10px; min-height: 32px"><input type="checkbox" checked style="width: 18px; height: 18px; accent-color: #682d63"> §10 Quality tree with Q42 definitions</label>
+            <label style="display: flex; align-items: center; gap: 10px; min-height: 32px"><input type="checkbox" checked style="width: 18px; height: 18px; accent-color: #682d63"> Approach × quality matrix</label>
+            <label style="display: flex; align-items: center; gap: 10px; min-height: 32px"><input type="checkbox" checked style="width: 18px; height: 18px; accent-color: #682d63"> My own requirements</label>
+            <label style="display: flex; align-items: center; gap: 10px; min-height: 32px"><input type="checkbox" style="width: 18px; height: 18px; accent-color: #682d63"> Links back to quality.arc42.org</label>
+          </div>
+          <div style="display: flex; gap: 8px; flex-wrap: wrap">
+            <button style="min-height: 44px; padding: 0 16px; border-radius: 8px; border: 1px solid #682d63; background: #682d63; color: #ffffff; font: inherit; font-weight: 700; font-size: 15px; cursor: pointer">Copy Markdown</button>
+            <button style="min-height: 44px; padding: 0 16px; border-radius: 8px; border: 1px solid #682d63; background: #ffffff; color: #682d63; font: inherit; font-weight: 700; font-size: 15px; cursor: pointer">Download .md</button>
+          </div>
+        </section>
+
+        <!-- json -->
+        <section aria-labelledby="ex-json" style="background: #ffffff; border: 1px solid #e9d9e8; border-radius: 14px; padding: 22px 24px; display: flex; flex-direction: column; gap: 12px">
+          <div style="display: flex; align-items: center; gap: 12px">
+            <span style="width: 40px; height: 40px; border-radius: 10px; background: #f5eef4; color: #682d63; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0">
+              <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 4c-2 0-3 1-3 3v3c0 1-1 2-2 2 1 0 2 1 2 2v3c0 2 1 3 3 3M16 4c2 0 3 1 3 3v3c0 1 1 2 2 2-1 0-2 1-2 2v3c0 2-1 3-3 3"></path></svg>
+            </span>
+            <div style="display: flex; flex-direction: column; gap: 2px">
+              <h2 id="ex-json" style="margin: 0; font-size: 19px; font-weight: 700">JSON file</h2>
+              <span style="font-size: 14px; color: #746671">Keep it with the project, re-import on any machine, or feed it to an LLM.</span>
+            </div>
+          </div>
+          <div style="display: flex; gap: 8px; flex-wrap: wrap">
+            <button style="min-height: 44px; padding: 0 16px; border-radius: 8px; border: 1px solid #682d63; background: #ffffff; color: #682d63; font: inherit; font-weight: 700; font-size: 15px; cursor: pointer">Download q42-map.json</button>
+            <button style="min-height: 44px; padding: 0 16px; border-radius: 8px; border: 1px solid #cfc6cd; background: #ffffff; color: #241823; font: inherit; font-size: 15px; cursor: pointer">Import…</button>
+          </div>
+        </section>
+
+        <!-- image -->
+        <section aria-labelledby="ex-img" style="background: #ffffff; border: 1px solid #e9d9e8; border-radius: 14px; padding: 22px 24px; display: flex; flex-direction: column; gap: 12px">
+          <div style="display: flex; align-items: center; gap: 12px">
+            <span style="width: 40px; height: 40px; border-radius: 10px; background: #f5eef4; color: #682d63; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0">
+              <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"></rect><circle cx="9" cy="10" r="1.5"></circle><path d="M21 16l-5-5-8 8"></path></svg>
+            </span>
+            <div style="display: flex; flex-direction: column; gap: 2px">
+              <h2 id="ex-img" style="margin: 0; font-size: 19px; font-weight: 700">Image for slides</h2>
+              <span style="font-size: 14px; color: #746671">The map as drawn, with legend. PNG or SVG.</span>
+            </div>
+          </div>
+          <div style="display: flex; gap: 8px; flex-wrap: wrap">
+            <button style="min-height: 44px; padding: 0 16px; border-radius: 8px; border: 1px solid #682d63; background: #ffffff; color: #682d63; font: inherit; font-weight: 700; font-size: 15px; cursor: pointer">PNG</button>
+            <button style="min-height: 44px; padding: 0 16px; border-radius: 8px; border: 1px solid #682d63; background: #ffffff; color: #682d63; font: inherit; font-weight: 700; font-size: 15px; cursor: pointer">SVG</button>
+          </div>
+        </section>
+
+        <p style="margin: 0; font-size: 13px; color: #746671; padding: 0 4px">Own requirements can be proposed to Q42 from the map: that opens a prefilled GitHub issue you review and send yourself. Your priorities and selection are never part of it.</p>
+      </div>
+
+      <!-- markdown preview -->
+      <section aria-labelledby="pv" style="flex: 999 1 560px; min-width: 0; background: #ffffff; border: 1px solid #e9d9e8; border-radius: 14px; overflow: hidden">
+        <div style="padding: 16px 24px; border-bottom: 1px solid #eee6ed; display: flex; align-items: center; justify-content: space-between; gap: 12px; background: #f5eef4">
+          <h2 id="pv" style="margin: 0; font-size: 16px; font-weight: 700">Preview · quality-map.md</h2>
+          <span style="font-size: 13px; color: #746671; font-family: ui-monospace, Menlo, monospace">generated 2026-10-19 · 4 qualities · 7 approaches · 1 own requirement</span>
+        </div>
+        <pre style="margin: 0; padding: 24px 28px; font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 13.5px; line-height: 1.6; color: #241823; white-space: pre-wrap; overflow-wrap: anywhere"># Quality map — Checkout platform
+
+Built with Q42, https://quality.arc42.org · 2026-10-19
+
+## 1.2 Quality goals
+
+| Priority | Quality          | Why it matters (edit me)         |
+|----------|------------------|----------------------------------|
+| high     | Availability     | [YOUR REASON]                    |
+| high     | Resilience       | [YOUR REASON]                    |
+| medium   | Fault tolerance  | [YOUR REASON]                    |
+| –        | Recoverability   | [YOUR REASON]                    |
+
+## 10 Quality tree
+
+- **#reliable**
+  - **Availability** — The degree to which a system is operational
+    and accessible when required for use.
+  - **Fault tolerance** — The ability to continue operating as
+    intended despite hardware or software faults.
+  - **Recoverability** — The ability to recover data and re-establish
+    the desired state after an interruption or failure.
+  - **Resilience** — The ability to keep delivering an acceptable
+    level of service while faults disturb normal operation.
+- **#secure**
+  - Resilience (also listed above)
+
+### Own requirements
+
+- **Checkout keeps working when the payment provider is down**
+  (Availability, Resilience, Fault tolerance)
+  When the payment provider returns errors for more than 30 seconds,
+  checkout queues the order and tells the customer. No order is lost.
+
+## Approaches serving two or more quality goals
+
+| Approach              | Availability | Resilience | Fault tol. | Recoverab. |
+|-----------------------|:---:|:---:|:---:|:---:|
+| Circuit Breaker       | ● | ● | ● |   |
+| Bulkheads             | ● | ● | ● |   |
+| Feature Degradation   | ● | ● |   | ● |
+| Rate Limiting         | ● | ● |   |   |
+| Timeout               | ● |   | ● |   |
+| Saga Pattern          |   |   | ● | ● |
+| Blue-Green Deployment | ● |   |   | ● |
+
+Hidden by you: Quarantine. 9 approaches with a single link omitted.</pre>
+      </section>
+    </div>
+  </main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1560}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return {};
+  }
+}
+</script>
+</body>
+</html>

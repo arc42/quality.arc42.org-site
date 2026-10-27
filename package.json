@@ -13,6 +13,7 @@
   ],
   "scripts": {
     "build": "node src/scripts/build.js",
+    "test:unit": "node --test \"tests/*.test.js\"",
     "watch": "node src/scripts/build.js --watch",
     "color-scheme": "node src/scripts/generate-color-scheme-preview.js",
     "data": "rimraf \"./assets/data\" && node src/scripts/data.js",

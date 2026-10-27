@@ -15,8 +15,16 @@
 
 {% capture chips_html %}{% for tag in page.tags %}<a class="tag" href="{{ '/tag-' | append: tag | prepend: site.baseurl }}">#{{ tag }}</a>{% endfor %}{% endcapture %}
 
+{% comment %} Map "Add to selection" button: only on canonical quality pages
+  (alias stubs redirect; the index page also reuses this include). {% endcomment %}
+{% assign actions_html = "" %}
+{% assign canonical_slug = page.permalink | remove: "/qualities/" | replace: "/", "" %}
+{% if page.collection == "qualities" and canonical_slug != "" %}{% unless page.alias_of %}
+  {% capture actions_html %}<button type="button" class="map-add map-add--hero" data-map-add="{{ canonical_slug }}" data-map-title="{{ page.title | escape }}" data-map-add-variant="hero" aria-pressed="false">+ Add to selection</button>{% endcapture %}
+{% endunless %}{% endif %}
+
 {% if include.show_category_link == false %}
-  {% include section-hero.liquid section="qualities" title=page.title chips_html=chips_html %}
+  {% include section-hero.liquid section="qualities" title=page.title chips_html=chips_html actions_html=actions_html %}
 {% else %}
-  {% include section-hero.liquid section="qualities" title=page.title eyebrow_label="Quality" eyebrow_href="/qualities/" chips_html=chips_html %}
+  {% include section-hero.liquid section="qualities" title=page.title eyebrow_label="Quality" eyebrow_href="/qualities/" chips_html=chips_html actions_html=actions_html %}
 {% endif %}

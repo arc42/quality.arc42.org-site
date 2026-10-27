@@ -111,6 +111,7 @@ async function build({ watch = false } = {}) {
         "requirements-explorer": "src/explorers/requirements.js",
         "approaches-explorer": "src/explorers/approaches.js",
         "standards-explorer": "src/explorers/standards.js",
+        "map/main": "src/map/main.js",
       },
       outdir: "assets/js",
       bundle: true,
