@@ -169,7 +169,7 @@ Within each dimension: published approaches first, then open candidates ordered 
 | | P1 | Separated Safety | Split into certified safety-critical and non-critical portions to cut certification cost | B+ |
 | | P1 | Repair-State Recovery | Transition through a validated repair state before normal operation resumes | ★·B+ |
 | | P1 | Predictive Hazard Models | Use predictive models to anticipate unsafe states and trigger safeguards | ★·B+ |
-| | P1 | Dead Man's Switch / Operator Confirmation | Require active periodic confirmation to continue hazardous operations | ★ |
+| ✅ | — | Dead Man's Switch | Require active periodic confirmation to continue hazardous operations | ★ |
 | | P2 | Unsafe State Detection (Comparison/Timeout/Monitoring) | Detect hazardous drift via comparison, timeout, timestamp, condition monitoring | ★·B+ |
 | | P2 | Redundant Sensors | Replicate safety-critical sensors, monitored independently, to survive single-sensor failure | B+ |
 | | P2 | Hazard Analysis (FMEA / STPA) | Systematic derivation of safety constraints from identified hazards | P |
