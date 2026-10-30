@@ -3,12 +3,12 @@ layout: approach
 title: "Watchdog Supervision"
 tags: [safe, reliable]
 aka: [Monitor]
-supported_qualities: [availability, fault-tolerance, recoverability, self-healing, mean-time-to-recovery, safety]
+supported_qualities: [availability, fault-tolerance, recoverability, autonomy, mean-time-to-recovery, safety]
 supported_qualities_notes:
   availability: Hung or unresponsive processes are detected and restarted automatically, reducing the window of unavailability.
   fault-tolerance: The system tolerates process-level failures by replacing the failed component rather than allowing the fault to persist.
   recoverability: Automated restart returns the supervised component to a functional state without waiting for human intervention.
-  self-healing: The watchdog closes the detect-restart loop autonomously, making the system self-correcting for a class of failures.
+  autonomy: The watchdog closes the detect-restart loop autonomously, making the system self-correcting for a class of failures.
   mean-time-to-recovery: Detection and restart happen on a fixed timer, bounding recovery time to a predictable interval.
   safety: In safety-critical systems, a missed heartbeat triggers a transition to a safe state, preventing a hung controller from causing harm.
 tradeoffs: [determinism, observability, code-complexity]

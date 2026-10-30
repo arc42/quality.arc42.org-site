@@ -9,9 +9,9 @@ supported_qualities_notes:
   performance: Queries hit purpose-built projections instead of traversing a normalized write model, reducing join depth and index contention.
   extensibility: New read models can be projected from the same event or change stream without modifying command-side logic.
   responsiveness: Asynchronous projection keeps the write path fast by deferring view updates to background consumers.
-tradeoffs: [eventual-consistency, code-complexity, operability, observability]
+tradeoffs: [consistency, code-complexity, operability, observability]
 tradeoff_notes:
-  eventual-consistency: Read models lag behind the write model by the projection delay, which can range from milliseconds to seconds under load.
+  consistency: Read models lag behind the write model by the projection delay, which can range from milliseconds to seconds under load.
   code-complexity: Teams maintain two distinct data models, projection logic, and synchronization plumbing instead of one shared schema.
   operability: Projection pipelines, consumer lag dashboards, and rebuild tooling add operational surface area.
   observability: Monitoring projection lag, data drift, and consumer health is critical for maintaining trust in the read models.

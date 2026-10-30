@@ -9,9 +9,9 @@ supported_qualities_notes:
   scalability: Consumers can scale independently from request-handling components.
   loose-coupling: Producers and consumers evolve independently via stable message contracts.
   lead-time-for-changes: Teams can release producer and consumer changes separately with backward-compatible schemas.
-tradeoffs: [eventual-consistency, determinism, observability, code-complexity, latency]
+tradeoffs: [consistency, determinism, observability, code-complexity, latency]
 tradeoff_notes:
-  eventual-consistency: Downstream views are updated after processing, not immediately at request time.
+  consistency: Downstream views are updated after processing, not immediately at request time.
   determinism: Maintaining strict event order across distributed consumers often requires partition-key constraints that reduce maximum parallelism.
   observability: Tracing a business transaction across broker hops and retries is harder than synchronous call chains.
   code-complexity: Durable messaging needs idempotency, retries, dead-letter handling, and schema governance.

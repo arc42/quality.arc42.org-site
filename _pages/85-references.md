@@ -6,7 +6,7 @@ order: 85
 hide: true
 ---
 
-[Aroms/NIST](#nist-idps) · [Bass et al.](#bass2021software) · [bbv](#bbvquality) · [Boehm 1976](#boehm1976quantitative) · [Boehm 1978](#boehm1978characteristics) · [Brooks](#brooks1975mythical) · [Cavano/McCall](#mccall) · [Crosby](#crosby-quality) · [Eeles](#eeles2005capturing) · [Frost](#brad-frost-theming) · [Forsgren/Humble/Kim](#forsgren-accelerate) · [Grady](#grady1992practical) · [Harasymczuk](#astrotech) · [Harrer](#harrer-quality-tactics) · [Hohpe/Woolf](#hohpe2004enterprise) · [ISO 9241](#iso-9241-110) · [ISO 25010 (2011)](#iso-25010-2011) · [ISO 25010 (2023)](#iso-25010-2022) · [ISO 25019](#iso-25019) · [ISO 25059](#iso-25059) · [Jamwal et al.](#jamwal) · [Kazman et al.](#kazman-maintainability) · [Kohavi et al.](#kohavi2020trustworthy) · [Martin](#martin-clean-architecture) · [Nygard](#nygard2018release) · [O'Brien/Toms](#obrien2008engagement) · [McCabe](#mccabe1976complexity) · [McCall/Matsumoto](#mccall1980software) · [McCall/Walters](#mccall1977factors) · [Mockus et al.](#mockus2010experiences) · [Robertson/Robertson](#volere) · [SEI/QAW](#sei-qaw) · [Starke/Lorz](#starke2021software) · [SWEBOK](#swebok) · [W3C](#w3c-design-tokens) · [Wikipedia](#wikipedia-theming)
+[Aroms/NIST](#nist-idps) · [Bass et al.](#bass2021software) · [bbv](#bbvquality) · [Boehm 1976](#boehm1976quantitative) · [Boehm 1978](#boehm1978characteristics) · [Brooks](#brooks1975mythical) · [Cavano/McCall](#mccall) · [Cooper et al.](#cooper2014face) · [Crosby](#crosby-quality) · [Eeles](#eeles2005capturing) · [Frost](#brad-frost-theming) · [Forsgren/Humble/Kim](#forsgren-accelerate) · [Grady](#grady1992practical) · [Harasymczuk](#astrotech) · [Harrer](#harrer-quality-tactics) · [Hodgson](#hodgson2017feature) · [Hohpe/Woolf](#hohpe2004enterprise) · [ISO 9241](#iso-9241-110) · [ISO 25010 (2011)](#iso-25010-2011) · [ISO 25010 (2023)](#iso-25010-2022) · [ISO 25019](#iso-25019) · [ISO 25059](#iso-25059) · [Jamwal et al.](#jamwal) · [Kazman et al.](#kazman-maintainability) · [Kohavi et al.](#kohavi2020trustworthy) · [Marcotte](#marcotte2011responsive) · [Martin](#martin-clean-architecture) · [Nygard](#nygard2018release) · [O'Brien/Toms](#obrien2008engagement) · [McCabe](#mccabe1976complexity) · [McCall/Matsumoto](#mccall1980software) · [McCall/Walters](#mccall1977factors) · [Mockus et al.](#mockus2010experiences) · [Robertson/Robertson](#volere) · [SEI/QAW](#sei-qaw) · [Starke/Lorz](#starke2021software) · [SWEBOK](#swebok) · [W3C](#w3c-design-tokens) · [Wikipedia](#wikipedia-theming)
 
 ---
 
@@ -71,6 +71,13 @@ F. P. Brooks, ‘The Mythical Man-Month: Essays on Software Engineering’. Read
 
 Chapter 4, "Aristocracy, Democracy, and System Design", argues that conceptual integrity — one set of design ideas reflected consistently throughout a system — is the most important consideration in system design. The source of this site's definition of [coherence](/qualities/coherence).
 
+<a id="cooper2014face"></a>
+### Cooper et al.: About Face
+
+A. Cooper, R. Reimann, D. Cronin, and C. Noessel, _About Face: The Essentials of Interaction Design_, 4th ed. Wiley, 2014.
+
+A standard interaction-design reference covering goal-directed design, personas, and interaction patterns, including how to reveal advanced functions gradually instead of confronting beginners with everything at once.
+
 <a id="crosby-quality"></a>
 ### Crosby: Quality is Free
 
@@ -113,6 +120,15 @@ M. Harrer, _Quality Tactics: Developing Quality-Driven Solution Strategies for S
 Available [online](https://leanpub.com/qualitytactics)
 
 A practical reference for software architects covering hundreds of proven tactics across eight quality dimensions (functional suitability, usability, reliability, performance efficiency, security, maintainability, compatibility, portability). Originally published in German as _Qualitätstaktiken_.
+
+<a id="hodgson2017feature"></a>
+### Hodgson: Feature Toggles
+
+P. Hodgson, "Feature Toggles (aka Feature Flags)", martinfowler.com, 2017.
+
+Available [online](https://martinfowler.com/articles/feature-toggles.html)
+
+Classifies feature toggles by longevity and dynamism (release, experiment, ops, and permission toggles) and shows how to implement, manage, and retire them before toggle debt accumulates.
 
 <a id="hohpe2004enterprise"></a>
 ### G. Hohpe and B. Woolf, Enterprise integration patterns
@@ -200,6 +216,15 @@ R. Kohavi, D. Tang, and Y. Xu, _Trustworthy Online Controlled Experiments: A Pra
 Available [online](https://experimentguide.com/)
 
 The definitive practitioner guide to online controlled experiments (A/B tests), drawing on experience running tens of thousands of experiments a year at Microsoft, Google, and LinkedIn. Covers experiment design, statistical trustworthiness, primary and guardrail metrics, and common pitfalls such as peeking, the primacy/novelty effect, and Twyman's law. Directly relevant to suitability and usability requirements validated on live traffic.
+
+<a id="marcotte2011responsive"></a>
+### Marcotte: Responsive Web Design
+
+E. Marcotte, _Responsive Web Design_. A Book Apart, 2011.
+
+The book expands his 2010 A List Apart article, available [online](https://alistapart.com/article/responsive-web-design/), which coined the term.
+
+Introduced responsive web design: fluid grids, flexible images, and media queries let one layout adapt to any screen width instead of maintaining separate sites per device class.
 
 <a id="martin-clean-architecture"></a>
 ### Martin et al.: Clean Architecture

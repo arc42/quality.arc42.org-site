@@ -9,9 +9,9 @@ supported_qualities_notes:
   throughput: Fan-out of requests across thousands of edge nodes multiplies effective serving capacity far beyond a single origin.
   availability: Edge caches absorb traffic spikes before they reach the origin; during an origin outage, already-cached content keeps serving users — provided serve-stale (stale-if-error) is configured.
   scalability: Traffic surges are absorbed by the CDN's elastic edge fleet without provisioning origin capacity.
-tradeoffs: [currentness, cost, debuggability]
+tradeoffs: [timeliness, cost, debuggability]
 tradeoff_notes:
-  currentness: Cached content can lag the origin until TTLs expire or explicit purges propagate across the edge network.
+  timeliness: Cached content can lag the origin until TTLs expire or explicit purges propagate across the edge network.
   cost: Commercial CDN egress and request pricing adds a recurring operational expense that scales with traffic.
   debuggability: Faults and anomalies can originate at any of many edge nodes, cache layers, or routing decisions outside direct control.
 related_requirements: [near-instant-search-results, response-time-for-image-rendering, handle-sudden-increase-in-traffic]

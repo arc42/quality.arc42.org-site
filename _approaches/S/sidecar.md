@@ -3,10 +3,10 @@ layout: approach
 title: "Sidecar"
 tags: [flexible, operable]
 aka: [Ambassador]
-supported_qualities: [extensibility, legacy-support, observability, interoperability]
+supported_qualities: [extensibility, backward-compatibility, observability, interoperability]
 supported_qualities_notes:
   extensibility: "New capabilities — TLS, retries, telemetry — arrive as a deployed companion, with zero changes to application code."
-  legacy-support: "Retrofits current platform capabilities onto processes nobody can or wants to modify."
+  backward-compatibility: "Retrofits current platform capabilities onto processes nobody can or wants to modify."
   observability: "A telemetry sidecar gives every service uniform logs, metrics, and traces without touching any codebase."
   interoperability: "An adapter or ambassador sidecar translates protocols, letting mismatched components talk without changing either side."
 tradeoffs: [resource-efficiency, latency, simplicity]

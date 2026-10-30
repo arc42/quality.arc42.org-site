@@ -9,10 +9,10 @@ supported_qualities_notes:
   evolvability: "New read models derive retroactively from the full history, long after the original events were recorded."
   recoverability: "Replaying the log rebuilds corrupted or lost derived state; a fixed handler replays history to repair the damage it caused."
   debuggability: "Replaying events up to a chosen point reproduces the exact state in which a defect occurred."
-tradeoffs: [maintainability, eventual-consistency, privacy, performance]
+tradeoffs: [maintainability, consistency, privacy, performance]
 tradeoff_notes:
   maintainability: "Event schemas last forever: every version ever written must stay replayable, so the team maintains upcasters or versioned handlers for years. A simple field rename becomes a migration of the readers, not of the data."
-  eventual-consistency: "Queries run against projections that lag the log. A client that writes and immediately reads sees the old value unless the team builds read-your-own-writes mechanics on top."
+  consistency: "Queries run against projections that lag the log. A client that writes and immediately reads sees the old value unless the team builds read-your-own-writes mechanics on top."
   privacy: "Erasure obligations (GDPR Art. 17) clash with an immutable log. Crypto-shredding — deleting a per-subject encryption key — restores erasability, at the cost of key management and encrypted payloads that plain CRUD storage never needs."
   performance: "State is computed, not read: loading an aggregate replays its events. Long-lived aggregates need snapshots, and the log grows without bound unless archiving is designed in from the start."
 intent: "Persist every state change as an immutable event; the log is the system of record, and any state derives from replaying it."
