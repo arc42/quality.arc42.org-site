@@ -39,7 +39,7 @@
     "@playwright/test": "1.64.1",
     "esbuild": "^0.28.2",
     "gray-matter": "^4.0.3",
-    "lighthouse": "^13.5.0",
+    "lighthouse": "^13.6.0",
     "playwright-lighthouse": "^4.0.0",
     "prettier": "^3.9.10",
     "rimraf": "^6.1.3"
